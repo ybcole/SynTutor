@@ -37508,5 +37508,1764 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-569",
+    "domain": "clauses",
+    "concept": "Open and remote conditionals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Open and remote conditionals differ in grammatical form and in the way the speaker presents the condition's status.",
+    "condition": "Applies to the construction described in §14 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Remoteness is a grammatical distinction and cannot be inferred from an estimate of probability alone.",
+        "pages": [
+          739
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the gate is locked, we will use the side entrance.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the gate were locked, we would use the side entrance.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14",
+        "pages": [
+          739
+        ],
+        "pdf_pages": [
+          759
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Open and remote conditionals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-570",
+    "domain": "clauses",
+    "concept": "Core relation in an open if conditional",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An open if conditional excludes the combination in which the condition holds and the associated proposition fails.",
+    "condition": "Applies to the construction described in §14.1.1 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The construction does not itself make the condition necessary for the outcome.",
+        "pages": [
+          739,
+          740
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the battery is flat, the motor will not start.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If a whole number is divisible by four, it is even.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.1.1",
+        "pages": [
+          739,
+          740
+        ],
+        "pdf_pages": [
+          759,
+          760
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Core relation in an open if conditional",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-571",
+    "domain": "clauses",
+    "concept": "Consequence and relevance readings",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A conditional often suggests that the consequent follows from the condition. It can instead make the consequent relevant to the listener under that condition.",
+    "condition": "Applies to the construction described in §14.1.1 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "On the relevance reading, the cable can be in the drawer regardless of whether it is needed.",
+        "pages": [
+          739,
+          740
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the pipe freezes, it may burst.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If you need a spare cable, there is one in the drawer.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.1.1",
+        "pages": [
+          739,
+          740
+        ],
+        "pdf_pages": [
+          759,
+          760
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Consequence and relevance readings",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-572",
+    "domain": "clauses",
+    "concept": "Cancellable only-if inference",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An ordinary if clause can suggest that the outcome depends on the stated condition being met.",
+    "condition": "Applies to the construction described in §14.1.1 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Context or an explicit continuation can cancel the suggested converse.",
+        "pages": [
+          740,
+          741
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the weather improves, we will eat outside.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the weather improves, we will eat outside, and we might do so even if it does not.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.1.1",
+        "pages": [
+          740,
+          741
+        ],
+        "pdf_pages": [
+          760,
+          761
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Cancellable only-if inference",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-573",
+    "domain": "clauses",
+    "concept": "Speaker knowledge and open conditions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An open condition often suggests uncertainty about whether it holds, but a speaker can use the same construction while committing to its truth or falsity.",
+    "condition": "Applies to the construction described in §14.1.1 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The suggestion of uncertainty is an implicature.",
+        "pages": [
+          741,
+          742
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If Rae is still here, she will be at her desk.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the bell rings, and it will, use the rear door.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.1.1",
+        "pages": [
+          741,
+          742
+        ],
+        "pdf_pages": [
+          761,
+          762
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Speaker knowledge and open conditions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-574",
+    "domain": "clauses",
+    "concept": "Logical equivalents and pragmatic readings",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Reversing and negating both parts can preserve the core exclusion while changing the inference about what explains what.",
+    "condition": "Applies to the construction described in §14.1.1 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Equivalent truth conditions do not guarantee equivalent explanatory or conversational effects.",
+        "pages": [
+          742,
+          743
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the lift is moving, its indicator is lit.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the indicator is not lit, the lift is not moving.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.1.1",
+        "pages": [
+          742,
+          743
+        ],
+        "pdf_pages": [
+          762,
+          763
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Logical equivalents and pragmatic readings",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-575",
+    "domain": "clauses",
+    "concept": "Conditionals over repeated situations",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An if clause can restrict the occasions over which a repeated or habitual situation is described.",
+    "condition": "Applies to the construction described in §14.1.1 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A frequency adjunct can specify how regularly the outcome holds on relevant occasions.",
+        "pages": [
+          743
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She cycled to work if she started early enough.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We usually eat outside if the weather is mild.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.1.1",
+        "pages": [
+          743
+        ],
+        "pdf_pages": [
+          763
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Conditionals over repeated situations",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-576",
+    "domain": "clauses",
+    "concept": "Time reference in open conditionals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The time of a condition and the time of its associated proposition can differ. Present tense can refer to future time in an open protasis.",
+    "condition": "Applies to the construction described in §14.1.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Future-oriented will can occur in a protasis in special interpretations, including when a prediction is being entertained.",
+        "pages": [
+          743,
+          744
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the crew arrives tomorrow, show them the new entrance.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the delivery came yesterday, the parcel should be on the shelf now.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.1.2",
+        "pages": [
+          743,
+          744
+        ],
+        "pdf_pages": [
+          763,
+          764
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Time reference in open conditionals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-577",
+    "domain": "clauses",
+    "concept": "Modal and subjunctive choices in open conditionals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An open apodosis can carry different modal qualifications. A plain-form subjunctive protasis is also available in a restricted formal pattern.",
+    "condition": "Applies to the construction described in §14.1.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The subjunctive pattern is much less usual than indicative alternatives.",
+        "pages": [
+          744,
+          745
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If it rains, the roads may flood.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If any objection be raised, refer it to the chair.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.1.2",
+        "pages": [
+          744,
+          745
+        ],
+        "pdf_pages": [
+          764,
+          765
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Modal and subjunctive choices in open conditionals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-578",
+    "domain": "clauses",
+    "concept": "Polarity-sensitive forms in open protases",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An open protasis can license non-affirmative items such as at all or yet, with the choice of expression interacting with expectations.",
+    "condition": "Applies to the construction described in §14.1.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Affirmative alternatives such as already can occur when the context supports the relevant expectation.",
+        "pages": [
+          745
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If you are at all uncertain, call the office.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the parcel has not arrived yet, contact dispatch.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.1.2",
+        "pages": [
+          745
+        ],
+        "pdf_pages": [
+          765
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Polarity-sensitive forms in open protases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-579",
+    "domain": "clauses",
+    "concept": "Only if and necessary conditions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Only if marks a necessary condition. Whether the condition is also sufficient can depend on the context or be stated explicitly.",
+    "condition": "Applies to the construction described in §14.1.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The only-if construction can suggest sufficiency without encoding it.",
+        "pages": [
+          746,
+          747
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You can enter only if your pass is valid.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The device activates if and only if both switches are on.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.1.3",
+        "pages": [
+          746,
+          747
+        ],
+        "pdf_pages": [
+          766,
+          767
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Only if and necessary conditions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-580",
+    "domain": "clauses",
+    "concept": "Even if and alternative conditions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Even if presents the outcome as holding in the highlighted case and can suggest that it also holds in relevant alternatives.",
+    "condition": "Applies to the construction described in §14.1.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Focus can make the highlighted case the least expected, or the minimal case sufficient for the outcome.",
+        "pages": [
+          747,
+          748
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We will sail even if it rains.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You must retake the course even if you fail just one exam.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.1.3",
+        "pages": [
+          747,
+          748
+        ],
+        "pdf_pages": [
+          767,
+          768
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Even if and alternative conditions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-581",
+    "domain": "clauses",
+    "concept": "Remote conditionals and counterfactual inference",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Remote conditionals often suggest that a present or past condition is false. The inference can remain open when the speaker is uncertain.",
+    "condition": "Applies to the construction described in §14.2.1 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A remote past conditional can be used to reason about an unresolved possibility.",
+        "pages": [
+          748,
+          749,
+          750
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the pump were working, the tank would be full.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If she had taken the key, the lock would now be open.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.2.1",
+        "pages": [
+          748,
+          749,
+          750
+        ],
+        "pdf_pages": [
+          768,
+          769,
+          770
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Remote conditionals and counterfactual inference",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-582",
+    "domain": "clauses",
+    "concept": "Remote future conditions and tentative requests",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Remote forms can present a future condition as unlikely or make an appeal more tentative.",
+    "condition": "Applies to the construction described in §14.2.1 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Polite use need not indicate that compliance is unlikely.",
+        "pages": [
+          750,
+          751
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the flight were cancelled, we would take the train.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I would be grateful if you could check the totals.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.2.1",
+        "pages": [
+          750,
+          751
+        ],
+        "pdf_pages": [
+          770,
+          771
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Remote future conditions and tentative requests",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-583",
+    "domain": "clauses",
+    "concept": "If only versus only if",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "If only can present a condition as desired or as the obstacle to a hoped-for outcome.",
+    "condition": "Applies to the construction described in §14.2.1 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The same wording can occur in an independent wish or within a conditional construction.",
+        "pages": [
+          751
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If only we had more time.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We could finish tonight if only the lift were working.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.2.1",
+        "pages": [
+          751
+        ],
+        "pdf_pages": [
+          771
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "If only versus only if",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-584",
+    "domain": "clauses",
+    "concept": "Tense and mood in remote protases",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Remote protases can use modal preterite, irrealis were, or a preterite perfect, with time interpreted in context.",
+    "condition": "Applies to the construction described in §14.2.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The time of the protasis and the time of the apodosis can differ.",
+        "pages": [
+          751,
+          752
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If she were here now, she would help.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If they had checked yesterday, we would know by now.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.2.2",
+        "pages": [
+          751,
+          752
+        ],
+        "pdf_pages": [
+          771,
+          772
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Tense and mood in remote protases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-585",
+    "domain": "clauses",
+    "concept": "Modal apodosis in remote conditionals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The canonical remote apodosis uses a modal construction, commonly with would, could, might, or should.",
+    "condition": "Applies to the construction described in §14.2.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An imperative open apodosis lacks a direct canonical remote counterpart.",
+        "pages": [
+          752
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the gate were open, we could walk through.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If I knew the answer, I would tell you.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.2.2",
+        "pages": [
+          752
+        ],
+        "pdf_pages": [
+          772
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Modal apodosis in remote conditionals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-586",
+    "domain": "clauses",
+    "concept": "Conditional should and were to",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Should and were to can mark special conditional protases. Were to can present a remote future contingency.",
+    "condition": "Applies to the construction described in §14.2.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Should can occur with an open directive apodosis.",
+        "pages": [
+          753
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If you should need assistance, ring the bell.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the bridge were to close, we would have to turn back.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.2.2",
+        "pages": [
+          753
+        ],
+        "pdf_pages": [
+          773
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Conditional should and were to",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-587",
+    "domain": "clauses",
+    "concept": "Inversion in place of if",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Certain conditional protases omit if and place had, were, or should before the subject.",
+    "condition": "Applies to the construction described in §14.2.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The construction is lexically restricted and does not allow general do-support.",
+        "pages": [
+          753
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Had I known, I would have called.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Should you need help, ring the bell.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.2.2",
+        "pages": [
+          753
+        ],
+        "pdf_pages": [
+          773
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inversion in place of if",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-588",
+    "domain": "clauses",
+    "concept": "Doubly remote conditionals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A perfect in the protasis or modal apodosis can add remoteness even when the situation referred to lies in the future relative to speech time.",
+    "condition": "Applies to the construction described in §14.2.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The time interpretation depends on the full construction and context, including any explicit time adjunct.",
+        "pages": [
+          754
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If you had told me you were busy, I would have come tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the office had stayed open, I would have picked up the parcel tomorrow.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.2.2",
+        "pages": [
+          754
+        ],
+        "pdf_pages": [
+          774
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Doubly remote conditionals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-589",
+    "domain": "clauses",
+    "concept": "Modal preterite and ordinary past readings",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A preterite in a conditional can express modal remoteness, past time, or backshift. Similar surface forms can therefore support different analyses.",
+    "condition": "Applies to the construction described in §14.2.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Habitual past context and reported speech can produce forms that resemble remote conditionals.",
+        "pages": [
+          754,
+          755
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If we got home late, the caretaker would lock the gate.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She said that if they arrived late, they would miss dinner.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.2.2",
+        "pages": [
+          754,
+          755
+        ],
+        "pdf_pages": [
+          774,
+          775
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Modal preterite and ordinary past readings",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-590",
+    "domain": "clauses",
+    "concept": "Mixed conditional forms",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some conditional constructions combine a remote-looking protasis with an apodosis lacking the canonical remote modal pattern.",
+    "condition": "Applies to the construction described in §14.2.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Relevance to the addressee can support the mixed pattern.",
+        "pages": [
+          755
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If you needed a ride, Kai is happy to help.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If you wanted a copy, there is one at reception.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.2.2",
+        "pages": [
+          755
+        ],
+        "pdf_pages": [
+          775
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Mixed conditional forms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-591",
+    "domain": "clauses",
+    "concept": "Unless and exceptions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Unless identifies a condition that would prevent or qualify the stated outcome. An if not paraphrase can approximate the meaning in suitable contexts.",
+    "condition": "Applies to the construction described in §14.3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The substitution can fail when the context allows the outcome even if the stated exception occurs.",
+        "pages": [
+          755,
+          756
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The shop will open unless the power fails.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The report will be ready unless the server goes down.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.3",
+        "pages": [
+          755,
+          756
+        ],
+        "pdf_pages": [
+          775,
+          776
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Unless and exceptions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-592",
+    "domain": "clauses",
+    "concept": "Reduced conditional clauses",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Conditional if can introduce reduced participial or verbless expressions when the fuller relation is recoverable.",
+    "condition": "Applies to the construction described in §14.4 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Predicative if can instead have a concessive interpretation in some constructions.",
+        "pages": [
+          756,
+          757
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The sample will stay fresh if kept cool.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We can reschedule if necessary.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.4",
+        "pages": [
+          756,
+          757
+        ],
+        "pdf_pages": [
+          776,
+          777
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reduced conditional clauses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-593",
+    "domain": "clauses",
+    "concept": "If phrases that qualify a claim",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some if expressions narrow or qualify an assertion, cancel an inference, or offer a minimal reason.",
+    "condition": "Applies to the construction described in §14.4 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "These uses need not introduce a literal condition on the truth of the matrix clause.",
+        "pages": [
+          757
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The trail is scenic, if steep.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I will go along, if only to keep her company.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.4",
+        "pages": [
+          757
+        ],
+        "pdf_pages": [
+          777
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "If phrases that qualify a claim",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-594",
+    "domain": "clauses",
+    "concept": "Alternative conditional markers",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Provided, as long as, and on condition that can introduce explicit conditions. Other expressions can identify exceptions or contingencies.",
+    "condition": "Applies to the construction described in §14.4 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The markers differ in complement form and in whether they express a requirement or an exception.",
+        "pages": [
+          758
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We can start provided that everyone is present.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Barring further delays, we should arrive before noon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.4",
+        "pages": [
+          758
+        ],
+        "pdf_pages": [
+          778
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Alternative conditional markers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-595",
+    "domain": "clauses",
+    "concept": "Implicit conditionals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A quantified NP, coordination, or another construction can convey a conditional relation without an overt if clause.",
+    "condition": "Applies to the construction described in §14.4 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The conditional interpretation depends on the construction and context.",
+        "pages": [
+          759
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Press that button again and the alarm will sound.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Anyone who enters without a pass will be turned away.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.4",
+        "pages": [
+          759
+        ],
+        "pdf_pages": [
+          779
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Implicit conditionals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-596",
+    "domain": "clauses",
+    "concept": "Conditional adjunct scope and focus",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Conditional adjuncts can take scope relative to negation and can be contrasted in an alternative question.",
+    "condition": "Applies to the construction described in §14.5 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Context and prosody can distinguish available scope readings.",
+        "pages": [
+          760
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We will not cancel if the rain stops.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Do you use this form if you are a member or if you are a guest?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.5",
+        "pages": [
+          760
+        ],
+        "pdf_pages": [
+          780
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Conditional adjunct scope and focus",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-597",
+    "domain": "clauses",
+    "concept": "Stacked conditions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A clause can have more than one conditional adjunct, with one supplying the setting for a proposition that contains another condition.",
+    "condition": "Applies to the construction described in §14.5 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The conditions can operate at different levels instead of forming a single coordinated protasis.",
+        "pages": [
+          760
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the proposal passes, members will receive a refund if they apply by Friday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the hall opens, we will serve lunch outside if the weather is fine.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§14.5",
+        "pages": [
+          760
+        ],
+        "pdf_pages": [
+          780
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Stacked conditions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]
