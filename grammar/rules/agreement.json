@@ -242,7 +242,7 @@
           75
         ],
         "pdf_pages": [
-          5
+          95
         ]
       }
     ],
@@ -262,7 +262,7 @@
       "MORPH-002",
       "MORPH-006"
     ],
-    "review_notes": "The rule applies to inflecting present-tense verbs and be in the preterite; modal auxiliaries are excluded because their present form is invariant for person and number (Cambridge Ch. 3 §1.1, p. 75). Notional-number departures are retained as a separate exception (Ch. 2 §5, p. 56). Explicit human approval of this refinement was given on 2026-11-05. Burton-Roberts mapping remains unverified.",
+    "review_notes": "The rule applies to inflecting present-tense verbs and be in the preterite; modal auxiliaries are excluded because their present form is invariant for person and number (Cambridge Ch. 3 §1.1, p. 75). Notional-number departures are retained as a separate exception (Ch. 2 §5, p. 56). Explicit human approval of this refinement was given on 2026-11-05. Burton-Roberts mapping remains unverified. Full-volume source locator normalized: Chapter 3 printed p. 75 = one-based full-volume PDF p. 95; prior p. 5 referred to the chapter-split PDF. Grammatical claim and prior approval status unchanged.",
     "diagnostic": null
   }
 ]
