@@ -5247,5 +5247,1357 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-081",
+    "domain": "word_categories",
+    "concept": "Adverb modification of whole noun phrases",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Some adverbs modify an NP as a whole without functioning as attributive modifiers of its noun head.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Adverbs can modify heads or phrases of several categories. Whole-NP modification differs from ordinary adjective attribution inside a nominal.",
+        "pages": [
+          563
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Almost the whole shipment arrived.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Even those two parcels were damaged.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§5.1",
+        "pages": [
+          563
+        ],
+        "pdf_pages": [
+          583
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adverb modification of whole noun phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-082",
+    "domain": "word_categories",
+    "concept": "Heterogeneity and limits of the adverb category",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Adverbs share some characteristic distributions, but the category has fewer uniform diagnostics than nouns or verbs. Adjunct function alone is insufficient to identify it.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A clause adjunct can also have PP, NP or clausal form.",
+        "pages": [
+          563,
+          564
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Luckily, the ferry arrived.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We left after lunch.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§5.1",
+        "pages": [
+          563,
+          564
+        ],
+        "pdf_pages": [
+          583,
+          584
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Heterogeneity and limits of the adverb category",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-083",
+    "domain": "word_categories",
+    "concept": "Prepositions without NP complements versus adverbs",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A preposition can remain in its category when used without a complement. Similar meanings and distributions across its uses can support a unified analysis.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The absence of an NP complement does not alone establish adverb status.",
+        "pages": [
+          564
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo waited outside the station.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Jo waited outside.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§5.1",
+        "pages": [
+          564
+        ],
+        "pdf_pages": [
+          584
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Prepositions without NP complements versus adverbs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-084",
+    "domain": "word_categories",
+    "concept": "Temporal adjuncts headed by deictic nominals",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Temporal expressions such as yesterday can function as adjuncts with nominal structure. Adjunct function does not require an adverb head.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A related noun-modifying use does not by itself establish a distinct adverb.",
+        "pages": [
+          564,
+          565
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Yesterday was unusually warm.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The gate was repaired yesterday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§5.1",
+        "pages": [
+          564,
+          565
+        ],
+        "pdf_pages": [
+          584,
+          585
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Temporal adjuncts headed by deictic nominals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-085",
+    "domain": "word_categories",
+    "concept": "Adverb formation with ly",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Many adverbs derive from adjectives through ly suffixation. The derivation is productive but has lexical and semantic limits.",
+    "condition": "Applies to the construction described in §5.2 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Adjectival ly words and adjectives that lack a conventional ly adverb require separate analysis.",
+        "pages": [
+          565,
+          566
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The instructions were clear.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She explained the instructions clearly.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§5.2",
+        "pages": [
+          565,
+          566
+        ],
+        "pdf_pages": [
+          585,
+          586
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adverb formation with ly",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-086",
+    "domain": "word_categories",
+    "concept": "Other adverb formation patterns",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Some adverbs derive from nominal bases or use suffixes such as ways and wise. Others are compounds or have no transparent derivation.",
+    "condition": "Applies to the construction described in §5.2 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Different formations can have different register or productivity. The suffix alone is not decisive evidence of category.",
+        "pages": [
+          566,
+          567
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The trolley slid sideways.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The players turned clockwise.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§5.2",
+        "pages": [
+          566,
+          567
+        ],
+        "pdf_pages": [
+          586,
+          587
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Other adverb formation patterns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-087",
+    "domain": "word_categories",
+    "concept": "Shared forms and semantic divergence",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An adjective and adverb can have the same spelling, and a related ly adverb can develop a different meaning.",
+    "condition": "Applies to the construction described in §5.2 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Shared spelling does not make the syntactic uses interchangeable. Hardly differs in meaning from hard as an adverb.",
+        "pages": [
+          567,
+          568
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They worked hard all morning.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They hardly worked at all.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§5.2",
+        "pages": [
+          567,
+          568
+        ],
+        "pdf_pages": [
+          587,
+          588
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Shared forms and semantic divergence",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-088",
+    "domain": "word_categories",
+    "concept": "Plain and ly adverb alternants",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Some plain-form and ly adverbs have overlapping meanings but differ in position, register or interpretation.",
+    "condition": "Applies to the construction described in §5.2 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Plain forms can be restricted to particular expressions or varieties. The existence of a ly form does not make every plain adverb nonstandard.",
+        "pages": [
+          568,
+          569
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They drove slowly through the village.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Drive slow near the school.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§5.2",
+        "pages": [
+          568,
+          569
+        ],
+        "pdf_pages": [
+          588,
+          589
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Plain and ly adverb alternants",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-089",
+    "domain": "word_categories",
+    "concept": "Enumerative first and firstly",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "First and firstly can serve as connective adjuncts in enumeration. Other temporal or ordering uses of first do not generally allow firstly.",
+    "condition": "Applies to the construction described in §5.2 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Availability depends on function rather than a general preference between spellings.",
+        "pages": [
+          568,
+          569
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Firstly, check the pressure.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The leak was first noticed on Monday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§5.2",
+        "pages": [
+          568,
+          569
+        ],
+        "pdf_pages": [
+          588,
+          589
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Enumerative first and firstly",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-090",
+    "domain": "word_categories",
+    "concept": "Grade and simple adverb lexemes",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A limited group of adverbs has inflectional grade, while many others use analytic forms. Some adverbs have no transparent adjective base.",
+    "condition": "Applies to the construction described in §5.2 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Better can be the comparative of adverb well. Some simple forms are homonymous with words of other categories.",
+        "pages": [
+          569,
+          570
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo arrived earlier than expected.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina answered more carefully this time.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§5.2",
+        "pages": [
+          569,
+          570
+        ],
+        "pdf_pages": [
+          589,
+          590
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Grade and simple adverb lexemes",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-091",
+    "domain": "word_categories",
+    "concept": "Direct complements of ly adverbs",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A restricted set of ly adverbs license direct PP or clausal complements. Some inherit a complement pattern from a related adjective.",
+    "condition": "Applies to the construction described in §6.1 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some adverb senses license a complement not available with the related adjective. A neighboring PP can instead attach outside the AdvP.",
+        "pages": [
+          571,
+          572
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They decided independently of the committee.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Happily for Jo, the latch held.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§6.1",
+        "pages": [
+          571,
+          572
+        ],
+        "pdf_pages": [
+          591,
+          592
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Direct complements of ly adverbs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-092",
+    "domain": "word_categories",
+    "concept": "Indirect complements in adverb phrases",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An AdvP can contain a complement licensed by a degree modifier or comparative marking rather than by the adverb itself.",
+    "condition": "Applies to the construction described in §6.1 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The complement is inside the AdvP even though the adverb itself does not license it directly.",
+        "pages": [
+          572
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She ran too slowly to catch the bus.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She arrived earlier than I expected.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§6.1",
+        "pages": [
+          572
+        ],
+        "pdf_pages": [
+          592
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Indirect complements in adverb phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-093",
+    "domain": "word_categories",
+    "concept": "Stacking and submodification in AdvPs",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "AdvPs allow a modifier to take another phrase as its target or multiple modifiers to attach at different levels.",
+    "condition": "Applies to the construction described in §6.2 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The attachment must be established from constituency and interpretation. Two adjacent adverbs need not form a constituent.",
+        "pages": [
+          572,
+          573
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The machine ran quite remarkably smoothly.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The machine stalled only very rarely.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§6.2",
+        "pages": [
+          572,
+          573
+        ],
+        "pdf_pages": [
+          592,
+          593
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Stacking and submodification in AdvPs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-094",
+    "domain": "word_categories",
+    "concept": "Categories of AdvP modifiers",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "AdvP modifiers can have adverbial, determinative, nominal or prepositional form in restricted constructions.",
+    "condition": "Applies to the construction described in §6.2 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Measure NPs and degree modifiers are limited by the head and construction. Some adjacent PPs are clause-level modifiers instead.",
+        "pages": [
+          573,
+          574
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The ferry arrived three hours late.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The new pump works a bit faster.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§6.2",
+        "pages": [
+          573,
+          574
+        ],
+        "pdf_pages": [
+          593,
+          594
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Categories of AdvP modifiers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-095",
+    "domain": "word_categories",
+    "concept": "External functions of adverb phrases",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "AdvPs occur as modifiers and supplements across several phrase and clause environments. Their distribution as complements is more limited.",
+    "condition": "Applies to the construction described in §7 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A sentence supplement and an internal degree modifier occupy different syntactic roles.",
+        "pages": [
+          574,
+          575
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Frankly, I expected better.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The estimate was remarkably accurate.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§7",
+        "pages": [
+          574,
+          575
+        ],
+        "pdf_pages": [
+          594,
+          595
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "External functions of adverb phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-096",
+    "domain": "word_categories",
+    "concept": "Front, central and end positions for adjuncts",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Clause-level AdvPs can occur before the subject, centrally near the verb or auxiliaries, or at the end. Each position has further restrictions.",
+    "condition": "Applies to the construction described in §7.1 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Central position includes different slots around auxiliaries. Availability depends on the adjunct's interpretation and clause structure.",
+        "pages": [
+          575
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Yesterday, Jo checked the latch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Jo checked the latch yesterday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§7.1",
+        "pages": [
+          575
+        ],
+        "pdf_pages": [
+          595
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Front, central and end positions for adjuncts",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-097",
+    "domain": "word_categories",
+    "concept": "VP-oriented and clause-oriented adjuncts",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "VP-oriented adjuncts tend to stay close to the predicate, while clause-oriented adjuncts tend to occupy positions farther from it.",
+    "condition": "Applies to the construction described in §7.1 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "These are preferences rather than absolute rules. A single adverb may allow more than one interpretation.",
+        "pages": [
+          576,
+          577
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo opened the box carefully.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Fortunately, Jo opened the box.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§7.1",
+        "pages": [
+          576,
+          577
+        ],
+        "pdf_pages": [
+          596,
+          597
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "VP-oriented and clause-oriented adjuncts",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-098",
+    "domain": "word_categories",
+    "concept": "Prosodic detachment and interpretation",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A detached adjunct can form its own prosodic unit and take a different interpretation from an integrated adjunct in the same broad position.",
+    "condition": "Applies to the construction described in §7.1 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Punctuation can suggest detachment in writing. Position alone does not guarantee the intended reading.",
+        "pages": [
+          577,
+          578
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Frankly, she answered the question.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She answered the question frankly.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§7.1",
+        "pages": [
+          577,
+          578
+        ],
+        "pdf_pages": [
+          597,
+          598
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Prosodic detachment and interpretation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-099",
+    "domain": "word_categories",
+    "concept": "Placement preferences by adjunct type",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Manner, frequency, time, modality and evaluation differ in their preferred positions. Preferences interact with integration and scope.",
+    "condition": "Applies to the construction described in §7.1 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some positions are marked or favor another interpretation. Avoid treating every unusual order as ungrammatical.",
+        "pages": [
+          578,
+          579,
+          580
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo often checks the latch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Jo checked the latch carefully.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§7.1",
+        "pages": [
+          578,
+          579,
+          580
+        ],
+        "pdf_pages": [
+          598,
+          599,
+          600
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Placement preferences by adjunct type",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-100",
+    "domain": "word_categories",
+    "concept": "Front position and relative adjunct order",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The relative order of adjuncts depends on semantic orientation and discourse structure. Front position can promote a clause-level or connective reading.",
+    "condition": "Applies to the construction described in §7.1 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The source's ordering contrasts are tendencies, with prosody and context affecting particular examples.",
+        "pages": [
+          580,
+          581
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Unfortunately, the bus had already left.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Yesterday, the bus left early.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§7.1",
+        "pages": [
+          580,
+          581
+        ],
+        "pdf_pages": [
+          600,
+          601
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Front position and relative adjunct order",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-101",
+    "domain": "word_categories",
+    "concept": "Adverb position around infinitival to",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An adjunct can occur between infinitival to and the verb. The position can help distinguish modification of the infinitival from modification of the higher clause.",
+    "condition": "Applies to the construction described in §7.1 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The split position is a grammatical option. Scope, rhythm and the availability of another clear placement affect the choice.",
+        "pages": [
+          581,
+          582
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We agreed to carefully inspect the latch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She urged us to really listen.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§7.1",
+        "pages": [
+          581,
+          582
+        ],
+        "pdf_pages": [
+          601,
+          602
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adverb position around infinitival to",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-102",
+    "domain": "word_categories",
+    "concept": "Adverb placement to avoid attachment ambiguity",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Moving an adverb can change or clarify whether it modifies a matrix predicate or an embedded infinitival. Some expressions conventionally favor one position.",
+    "condition": "Applies to the construction described in §7.1 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Neither position mechanically fixes interpretation in every context. A split infinitival can improve clarity when another position is ambiguous.",
+        "pages": [
+          582
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She agreed eventually to call.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She agreed to eventually call.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§7.1",
+        "pages": [
+          582
+        ],
+        "pdf_pages": [
+          602
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adverb placement to avoid attachment ambiguity",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]

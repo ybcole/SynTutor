@@ -238,3 +238,7 @@ Printed pp. 525–542 yielded 21 records (`WCAT-036`–`WCAT-056`), including on
 ## Chapter 6 second checkpoint (2026-11-12)
 
 Printed pp. 543–562 yielded 24 records (`WCAT-057`–`WCAT-080`), including one inactive constraint specification. Continue at p. 563 with the distribution of adverb modifiers.
+
+## Chapter 6 third checkpoint (2026-11-12)
+
+Printed pp. 563–582 yielded 22 records (`WCAT-081`–`WCAT-102`). Continue at p. 583 with adverbial modification of adjectives and adverbs.
