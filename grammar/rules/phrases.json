@@ -4810,5 +4810,2136 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against the printed CGEL page and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-072",
+    "domain": "phrases",
+    "concept": "Agreement with the mass media",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Both singular and plural agreement are established with the media when it denotes mass communication.",
+    "condition": "Applies to the construction and sense described in §3.2.4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Keep distinct the plural of medium when referring to several individual channels or materials.",
+        "pages": [
+          349
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The media is covering the recount closely.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The media are covering the recount closely.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.2.4",
+        "pages": [
+          349
+        ],
+        "pdf_pages": [
+          369
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Agreement with the mass media",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL text and rendered PDF. Original English examples."
+  },
+  {
+    "id": "PHR-073",
+    "domain": "phrases",
+    "concept": "Number transparency with a lot",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In the noncount quantity construction a lot of, the complement of of determines the grammatical number of the larger noun phrase.",
+    "condition": "Applies to the construction and sense described in §3.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A count lot meaning a group takes its own number. An omitted of-phrase still supplies number when understood.",
+        "pages": [
+          349
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A lot of paint was spilled in transit.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A lot of parcels were damaged in transit.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.3",
+        "pages": [
+          349
+        ],
+        "pdf_pages": [
+          369
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Number transparency with a lot",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL text and rendered PDF. Original English examples."
+  },
+  {
+    "id": "PHR-074",
+    "domain": "phrases",
+    "concept": "Partitive and nonpartitive complements",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A partitive complement identifies a set or quantity from which a portion is selected. The nonpartitive construction simply quantifies over the noun's denotation.",
+    "condition": "Applies to the construction and sense described in §3.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The partitive complement is normally definite. A bare plural can follow a lot of, while bare many combines directly with the nominal.",
+        "pages": [
+          349
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A lot of the seedlings survived the frost.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A lot of seedlings survived the frost.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.3",
+        "pages": [
+          349
+        ],
+        "pdf_pages": [
+          369
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Partitive and nonpartitive complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL text and rendered PDF. Original English examples."
+  },
+  {
+    "id": "PHR-075",
+    "domain": "phrases",
+    "concept": "Determiner selection with quantity lot and plenty",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Singular quantity lot takes a and allows limited modification. Quantity plenty takes neither a determiner nor a modifier in this construction.",
+    "condition": "Applies to the construction and sense described in §3.3(a) of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Count lot has a wider range of determiners. A hell of a lot can transmit number from the complement of of through the larger phrase.",
+        "pages": [
+          350
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A whole lot of ink was wasted.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Plenty of volunteers are available.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.3(a)",
+        "pages": [
+          350
+        ],
+        "pdf_pages": [
+          370
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Determiner selection with quantity lot and plenty",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL text and rendered PDF. Original English examples."
+  },
+  {
+    "id": "PHR-076",
+    "domain": "phrases",
+    "concept": "Register and partitives with informal quantity nouns",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Quantity lots and colloquial forms such as heaps and oodles occur without determiners. The very colloquial forms strongly disfavor partitive complements.",
+    "condition": "Applies to the construction and sense described in §3.3(a) of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The source treats the disfavor as a tendency. It does not extend it to all number-transparent nouns.",
+        "pages": [
+          350
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Lots of boxes were still in the hall.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Heaps of time was spent sorting receipts.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.3(a)",
+        "pages": [
+          350
+        ],
+        "pdf_pages": [
+          370
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Register and partitives with informal quantity nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL text and rendered PDF. Original English examples."
+  },
+  {
+    "id": "PHR-077",
+    "domain": "phrases",
+    "concept": "Partitive rest and remainder",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Quantity rest and remainder take the definite article and a partitive complement in this construction.",
+    "condition": "Applies to the construction and sense described in §3.3(a) of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Other senses of rest and remainder have different syntax, including count remainder in arithmetic.",
+        "pages": [
+          350
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The rest of the crates were unloaded at dawn.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The remainder of the flour was sealed in a jar.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.3(a)",
+        "pages": [
+          350
+        ],
+        "pdf_pages": [
+          370
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Partitive rest and remainder",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL text and rendered PDF. Original English examples."
+  },
+  {
+    "id": "PHR-078",
+    "domain": "phrases",
+    "concept": "Number-transparent number and couple",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Quantificational number and couple take plural complements of of. Their singular forms require a determiner, and number also occurs in the plural.",
+    "condition": "Applies to the construction and sense described in §3.3(a) of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The number of can report a total and take singular agreement. Couple admits the in appropriate definite contexts.",
+        "pages": [
+          350
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "An unusually large number of applications have arrived.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The couple of gaps we found were filled overnight.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.3(a)",
+        "pages": [
+          350
+        ],
+        "pdf_pages": [
+          370
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Number-transparent number and couple",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL text and rendered PDF. Original English examples."
+  },
+  {
+    "id": "PHR-079",
+    "domain": "phrases",
+    "concept": "Agreement with the number as a total",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "When a subject headed by the number denotes the total, the subject is singular even if the embedded complement is plural.",
+    "condition": "Applies to the construction and sense described in §3.3(a) of Chapter 5.",
+    "violation": "A plural finite verb is used with the number as a singular total.",
+    "exceptions": [
+      {
+        "description": "Quantificational a number of instead passes on plural number, and constructions headed by plural numbers take plural agreement.",
+        "pages": [
+          350
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The number of deliveries has doubled.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The number of available seats is uncertain.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The number of deliveries have doubled.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The number of available seats are uncertain.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.3(a)",
+        "pages": [
+          350
+        ],
+        "pdf_pages": [
+          370
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Agreement with the number as a total",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "agreement",
+      "error_pattern": "A plural finite verb is used with the number as a singular total.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The number of deliveries have doubled. ||| The number of deliveries has doubled.",
+        "The number of available seats are uncertain. ||| The number of available seats is uncertain."
+      ],
+      "learner_explanation": "When a subject headed by the number denotes the total, the subject is singular even if the embedded complement is plural.",
+      "corrected_paragraph_template": "Use singular agreement when the subject denotes the total.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "A number of deliveries have arrived.",
+        "The numbers on the chart are uncertain."
+      ],
+      "lesson_tags": [
+        "NP_structure",
+        "number_agreement"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL text and rendered PDF. Original English examples."
+  },
+  {
+    "id": "PHR-080",
+    "domain": "phrases",
+    "concept": "Singular complement with a great deal of",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "Quantificational a great deal of takes a singular complement, with a noncount interpretation for a nonpartitive complement.",
+    "condition": "Applies to the construction and sense described in §3.3(b) of Chapter 5.",
+    "violation": "A plural complement is used with quantificational deal.",
+    "exceptions": [
+      {
+        "description": "Deal in this use requires a modifier such as great or good. Count deal meaning an agreement or transaction is a different use.",
+        "pages": [
+          349,
+          350
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A great deal of grit settled on the shelves.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A good deal of repetition was needed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "A great deal of specks settled on the shelves.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "A good deal of retries was needed.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.3(b)",
+        "pages": [
+          349,
+          350
+        ],
+        "pdf_pages": [
+          369,
+          370
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Singular complement with a great deal of",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "article_determiner",
+      "error_pattern": "A plural complement is used with quantificational deal.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "A great deal of specks settled on the shelves. ||| A great deal of grit settled on the shelves.",
+        "A good deal of retries was needed. ||| A good deal of repetition was needed."
+      ],
+      "learner_explanation": "Quantificational a great deal of takes a singular complement, with a noncount interpretation for a nonpartitive complement.",
+      "corrected_paragraph_template": "Use a mass noun to express quantity, or a plural-compatible quantifier when counting the original items.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "A great deal of the equipment was damaged.",
+        "A good deal was negotiated before lunch."
+      ],
+      "lesson_tags": [
+        "NP_structure",
+        "quantification"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL text and rendered PDF. Original English examples."
+  },
+  {
+    "id": "PHR-081",
+    "domain": "phrases",
+    "concept": "Quantificational bit and smidgen",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Informal bit and smidgen select singular complements in the quantity construction.",
+    "condition": "Applies to the construction and sense described in §3.3(b) of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Count bit meaning a piece can take a numeral and is a separate use.",
+        "pages": [
+          350
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A bit of luck would help.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A smidgen of garlic improved the sauce.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.3(b)",
+        "pages": [
+          350
+        ],
+        "pdf_pages": [
+          370
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Quantificational bit and smidgen",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL text and rendered PDF. Original English examples."
+  },
+  {
+    "id": "PHR-082",
+    "domain": "phrases",
+    "concept": "Variation with amount and quantity",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Many speakers prefer singular complements with amount and quantity, while others also allow plurals, especially when no exact count is at issue.",
+    "condition": "Applies to the construction and sense described in §3.3(b) of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Plural noncount complements are also attested. Amount and quantity can themselves be pluralized and counted.",
+        "pages": [
+          350
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Two small quantities of dye were prepared.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A large amount of loose pebbles washed into the drain.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.3(b)",
+        "pages": [
+          350
+        ],
+        "pdf_pages": [
+          370
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Variation with amount and quantity",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL text and rendered PDF. Original English examples."
+  },
+  {
+    "id": "PHR-083",
+    "domain": "phrases",
+    "concept": "Of with plural approximate number nouns",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "Plural quantity nouns such as dozens and hundreds take an of-complement when they directly express an approximate count of its members.",
+    "condition": "Applies to the construction and sense described in §3.3(c) of Chapter 5.",
+    "violation": "The of required by a plural approximate-number noun is absent.",
+    "exceptions": [
+      {
+        "description": "A singular numeral such as a dozen or four hundred can directly determine the nominal or head a partitive construction.",
+        "pages": [
+          351
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Dozens of lanterns lit the route.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Hundreds of tickets were sold by noon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Dozens lanterns lit the route.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Hundreds tickets were sold by noon.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.3(c)",
+        "pages": [
+          351
+        ],
+        "pdf_pages": [
+          371
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Of with plural approximate number nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "missing_word",
+      "error_pattern": "The of required by a plural approximate-number noun is absent.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Dozens lanterns lit the route. ||| Dozens of lanterns lit the route.",
+        "Hundreds tickets were sold by noon. ||| Hundreds of tickets were sold by noon."
+      ],
+      "learner_explanation": "Plural quantity nouns such as dozens and hundreds take an of-complement when they directly express an approximate count of its members.",
+      "corrected_paragraph_template": "Insert of between the plural quantity noun and the following noun phrase.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "A dozen lanterns lit the route.",
+        "Four hundred tickets were sold by noon."
+      ],
+      "lesson_tags": [
+        "NP_structure",
+        "quantification"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL text and rendered PDF. Original English examples."
+  },
+  {
+    "id": "PHR-084",
+    "domain": "phrases",
+    "concept": "Number selection by plural quantity nouns",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "In the approximate counting construction, dozens and hundreds select plural complements of of.",
+    "condition": "Applies to the construction and sense described in §3.3(c) of Chapter 5.",
+    "violation": "A singular mass complement follows a plural approximate-number noun.",
+    "exceptions": [
+      {
+        "description": "A plural unit noun can quantify a singular mass concept indirectly. A measured quantity such as hundreds of litres of milk has a plural unit complement.",
+        "pages": [
+          351
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Dozens of stationery orders were filed yesterday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Hundreds of condensation droplets covered the window.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Dozens of stationery were filed yesterday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Hundreds of condensation covered the window.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.3(c)",
+        "pages": [
+          351
+        ],
+        "pdf_pages": [
+          371
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Number selection by plural quantity nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "article_determiner",
+      "error_pattern": "A singular mass complement follows a plural approximate-number noun.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Dozens of stationery were filed yesterday. ||| Dozens of stationery orders were filed yesterday.",
+        "Hundreds of condensation covered the window. ||| Hundreds of condensation droplets covered the window."
+      ],
+      "learner_explanation": "In the approximate counting construction, dozens and hundreds select plural complements of of.",
+      "corrected_paragraph_template": "Use a plural count noun or unit if counting, or choose a quantity expression that takes a singular mass complement.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Hundreds of litres of milk were delivered.",
+        "A great deal of condensation covered the window."
+      ],
+      "lesson_tags": [
+        "NP_structure",
+        "quantification"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL text and rendered PDF. Original English examples."
+  },
+  {
+    "id": "PHR-085",
+    "domain": "phrases",
+    "concept": "Iteration of plural approximate number nouns",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Approximate quantity nouns such as thousands do not take an exact cardinal as a dependent in this construction. Larger approximate numbers can be formed by nesting of-phrases.",
+    "condition": "Applies to the construction and sense described in §3.3(c) of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some definite determiners and many are permitted. Tens is largely restricted to iterative combinations in the cited description.",
+        "pages": [
+          351
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Tens of thousands of seedlings were planted.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The thousands of letters we received are archived.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.3(c)",
+        "pages": [
+          351
+        ],
+        "pdf_pages": [
+          371
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Iteration of plural approximate number nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL text and rendered PDF. Original English examples."
+  },
+  {
+    "id": "PHR-086",
+    "domain": "phrases",
+    "concept": "Constituency of the quantificational of-phrase",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Cambridge analyzes number as the head and of plus its complement as a PP. The plural number of the embedded noun phrase determines agreement for the whole phrase in the quantificational use.",
+    "condition": "Applies to the construction and sense described in §3.3(c) of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Ellipsis drops the entire PP, relativization can move it, and the head number admits modification and determiner changes. The alternative complex-quantifier analysis is a theoretical contrast.",
+        "pages": [
+          351,
+          352
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Many applicants came early, and a number stayed late.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We thanked the volunteers, of whom a number had travelled overnight.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.3(c)",
+        "pages": [
+          351,
+          352
+        ],
+        "pdf_pages": [
+          371,
+          372
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Constituency of the quantificational of-phrase",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL text and rendered PDF. Original English examples."
+  },
+  {
+    "id": "PHR-087",
+    "domain": "phrases",
+    "concept": "Demonstrative number agreement",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "In ordinary demonstrative determiner uses, this and that agree with singular heads, and these and those agree with plural heads.",
+    "condition": "Applies to the construction and sense described in §3.4 of Chapter 5.",
+    "violation": "A demonstrative determiner has the wrong number for the nominal in its ordinary reading.",
+    "exceptions": [
+      {
+        "description": "Check singular measure construals, invariant nouns, and established informal kind, sort, and type constructions before flagging.",
+        "pages": [
+          352,
+          353
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This folder belongs upstairs.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Those ladders belong outside.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "These folder belongs upstairs.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "That ladders belong outside.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.4",
+        "pages": [
+          352,
+          353
+        ],
+        "pdf_pages": [
+          372,
+          373
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Demonstrative number agreement",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "agreement",
+      "error_pattern": "A demonstrative determiner has the wrong number for the nominal in its ordinary reading.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "These folder belongs upstairs. ||| This folder belongs upstairs.",
+        "That ladders belong outside. ||| Those ladders belong outside."
+      ],
+      "learner_explanation": "In ordinary demonstrative determiner uses, this and that agree with singular heads, and these and those agree with plural heads.",
+      "corrected_paragraph_template": "Choose the demonstrative form that agrees with the intended number of the noun phrase.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "This five miles is the hardest stretch.",
+        "These kind of lamps are common in older houses."
+      ],
+      "lesson_tags": [
+        "NP_structure",
+        "number_agreement"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL text and rendered PDF. Original English examples."
+  },
+  {
+    "id": "PHR-088",
+    "domain": "phrases",
+    "concept": "Number selection by cardinal determiners",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "The cardinal one normally selects a singular head, while cardinal values greater than one take plural heads, including noninteger values.",
+    "condition": "Applies to the construction and sense described in §3.4 of Chapter 5.",
+    "violation": "The noun does not have the number selected by the cardinal expression.",
+    "exceptions": [
+      {
+        "description": "A proportional expression such as one in ten can take a plural head, as can one or two and one or more. More than one selects a singular head.",
+        "pages": [
+          352,
+          353
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "One cyclist finished before noon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "One and a half pumpkins went into the soup.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "One cyclists finished before noon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "One and a half pumpkin went into the soup.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.4",
+        "pages": [
+          352,
+          353
+        ],
+        "pdf_pages": [
+          372,
+          373
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Number selection by cardinal determiners",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "article_determiner",
+      "error_pattern": "The noun does not have the number selected by the cardinal expression.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "One cyclists finished before noon. ||| One cyclist finished before noon.",
+        "One and a half pumpkin went into the soup. ||| One and a half pumpkins went into the soup."
+      ],
+      "learner_explanation": "The cardinal one normally selects a singular head, while cardinal values greater than one take plural heads, including noninteger values.",
+      "corrected_paragraph_template": "Match the noun form to the cardinal construction while keeping the intended quantity.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "One in ten cyclists stopped for water.",
+        "One or more pumpkins were damaged."
+      ],
+      "lesson_tags": [
+        "NP_structure",
+        "quantification"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL text and rendered PDF. Original English examples."
+  },
+  {
+    "id": "PHR-089",
+    "domain": "phrases",
+    "concept": "Informal demonstrative with singular kind, sort, or type",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Established informal usage permits a plural demonstrative with singular kind, sort, or type followed by a plural of-complement. The embedded plural controls the whole phrase's number, even when the phrase denotes a single category.",
+    "condition": "Applies to the construction and sense described in §3.4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Ordinary this kind of and these kinds of patterns remain available and differ in category count.",
+        "pages": [
+          352,
+          353
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "These kind of cables are hard to find.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Those sort of comments are common after a close match.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.4",
+        "pages": [
+          352,
+          353
+        ],
+        "pdf_pages": [
+          372,
+          373
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Informal demonstrative with singular kind, sort, or type",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL text and rendered PDF. Original English examples."
+  },
+  {
+    "id": "PHR-090",
+    "domain": "phrases",
+    "concept": "Number-selective and number-neutral dependents",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The, which, and no do not impose singular or plural number. Other dependents select singular count, singular noncount, or plural heads in the ordinary constructions.",
+    "condition": "Applies to the construction and sense described in §3.4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some plural noncount nouns marginally admit singular quantity determinatives. You can precede a singular noun in vocatives and exclamations.",
+        "pages": [
+          353
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Which route was blocked?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Which routes were blocked?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.4",
+        "pages": [
+          353
+        ],
+        "pdf_pages": [
+          373
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Number-selective and number-neutral dependents",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL text and rendered PDF. Original English examples."
+  },
+  {
+    "id": "PHR-091",
+    "domain": "phrases",
+    "concept": "Another with a quantified plural",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Another, an additional, a further, and a good can combine with a singular nominal or a plural nominal quantified by a numeral or few in the construction described.",
+    "condition": "Applies to the construction and sense described in §3.4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A good with a singular head is restricted to certain abstract and measure nouns in the quantity use. This is distinct from evaluative good.",
+        "pages": [
+          353
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Another four tents were delivered.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A further few volunteers joined at noon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.4",
+        "pages": [
+          353
+        ],
+        "pdf_pages": [
+          373
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Another with a quantified plural",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL text and rendered PDF. Original English examples."
+  },
+  {
+    "id": "PHR-092",
+    "domain": "phrases",
+    "concept": "Singular construal of plural measures",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A formally plural measure nominal can be construed as one amount or interval and then combines with singular demonstratives and singular agreement.",
+    "condition": "Applies to the construction and sense described in §3.4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The plural construal is generally also available. A suitable numeral or few licenses the singular measure pattern, which can also occur with an understood batch in a fused-head NP.",
+        "pages": [
+          354
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This last three miles is the steepest stretch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "These last three miles are the steepest part of the route.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.4",
+        "pages": [
+          354
+        ],
+        "pdf_pages": [
+          374
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Singular construal of plural measures",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL text and rendered PDF. Original English examples."
+  },
+  {
+    "id": "PHR-093",
+    "domain": "phrases",
+    "concept": "Singular agreement with each or every measure group",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "When each or every selects a quantified plural measure nominal construed as a unit, the resulting subject takes singular agreement.",
+    "condition": "Applies to the construction and sense described in §3.4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Ordinary counted entities in another plus a plural numeral phrase can require plural agreement. An actual measure with another can allow both construals.",
+        "pages": [
+          354
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Every ten minutes is precious on a call like this.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Every twelve hours counts as a separate monitoring interval.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.4",
+        "pages": [
+          354
+        ],
+        "pdf_pages": [
+          374
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Singular agreement with each or every measure group",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL text and rendered PDF. Original English examples."
+  },
+  {
+    "id": "PHR-094",
+    "domain": "phrases",
+    "concept": "Determiner licensing for nominal expressions",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A determiner commonly turns a nominal into a determined noun phrase and specifies definiteness or indefiniteness. Bare plural count and noncount nominals can form indefinite noun phrases on their own.",
+    "condition": "Applies to the construction and sense described in §4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Ordinary referential singular count nouns generally need a determiner. Bare singulars have restricted uses in role predicates, conventional activities, and fixed expressions. Proper names are primarily inherently definite.",
+        "pages": [
+          354,
+          355
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A damaged crate fell off the trolley.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Broken glass lay beneath the trolley.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§4",
+        "pages": [
+          354,
+          355
+        ],
+        "pdf_pages": [
+          374,
+          375
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Determiner licensing for nominal expressions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL text and rendered PDF. Original English examples."
+  },
+  {
+    "id": "PHR-095",
+    "domain": "phrases",
+    "concept": "Determiner function and determinative category",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The determiner function may be filled by a determinative phrase, a genitive noun phrase, or certain plain noun phrases and preposition phrases. A determinative can serve functions other than determiner.",
+    "condition": "Applies to the construction and sense described in §4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Other functions include predeterminer, nominal modifier, degree modifier, predicative complement, coordination marker, and fused determiner-head.",
+        "pages": [
+          355,
+          356
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "All the windows were locked.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Maya borrowed two and left the rest on the desk.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§4",
+        "pages": [
+          355,
+          356
+        ],
+        "pdf_pages": [
+          375,
+          376
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Determiner function and determinative category",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL text and rendered PDF. Original English examples."
+  },
+  {
+    "id": "PHR-096",
+    "domain": "phrases",
+    "concept": "Basic determinative subclasses and inflection",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Basic determinatives include articles, demonstratives, quantifiers, and interrogative and relative forms. Their inflectional distinctions can mark number, case, dependent versus independent use, or grade.",
+    "condition": "Applies to the construction and sense described in §4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Certain multiword expressions count as basic determinatives in the source analysis. Interrogative and relative uses can differ in definiteness, and some relative forms are archaic.",
+        "pages": [
+          356,
+          357
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We volunteers waited behind the stage.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The organizer thanked us volunteers after the show.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§4",
+        "pages": [
+          356,
+          357
+        ],
+        "pdf_pages": [
+          376,
+          377
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Basic determinative subclasses and inflection",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL text and rendered PDF. Original English examples."
+  },
+  {
+    "id": "PHR-097",
+    "domain": "phrases",
+    "concept": "Genitive subject-determiners",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A genitive noun phrase may mark the larger noun phrase as definite while also supplying its subject-like relation.",
+    "condition": "Applies to the construction and sense described in §4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Genitives also have fused-head, predicative, oblique, and clause-subject uses. Most personal pronouns distinguish dependent and independent forms.",
+        "pages": [
+          357
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Lena's departure surprised the committee.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The spare key is hers.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§4",
+        "pages": [
+          357
+        ],
+        "pdf_pages": [
+          377
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Genitive subject-determiners",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL text and rendered PDF. Original English examples."
+  },
+  {
+    "id": "PHR-098",
+    "domain": "phrases",
+    "concept": "Plain noun phrases as minor determiners",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Plain noun phrases expressing elementary properties or certain temporal references can function as minor determiners.",
+    "condition": "Applies to the construction and sense described in §4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "For a demonstrative property phrase, the post-head variant is strongly preferred in the source. In weekday constructions the second noun supplies number.",
+        "pages": [
+          357
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What shape tiles did you order?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Tuesday mornings are usually quiet here.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§4",
+        "pages": [
+          357
+        ],
+        "pdf_pages": [
+          377
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Plain noun phrases as minor determiners",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL text and rendered PDF. Original English examples."
+  },
+  {
+    "id": "PHR-099",
+    "domain": "phrases",
+    "concept": "Preposition phrases as minor determiners",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Some preposition phrases with cardinal numeral complements function as minor determiners expressing ranges, bounds, or approximations.",
+    "condition": "Applies to the construction and sense described in §4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A degree or comparative determinative phrase can express a similar quantity with a different structure.",
+        "pages": [
+          357
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Around forty guests attended the rehearsal.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Between ten and twelve chairs fit on the platform.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§4",
+        "pages": [
+          357
+        ],
+        "pdf_pages": [
+          377
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Preposition phrases as minor determiners",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL text and rendered PDF. Original English examples."
+  },
+  {
+    "id": "PHR-100",
+    "domain": "phrases",
+    "concept": "Cambridge noun-headed analysis of ordinary noun phrases",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Cambridge treats the determiner as a dependent and the nominal as the head in ordinary determined noun phrases.",
+    "condition": "Applies to the construction and sense described in §4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The nominal supplies selectional properties, and many ordinary noun phrases are bare. Restricted fused-head patterns do not change the analysis of ordinary determined noun phrases.",
+        "pages": [
+          357,
+          358
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The museum restored the portrait.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Volunteers restored furniture.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§4",
+        "pages": [
+          357,
+          358
+        ],
+        "pdf_pages": [
+          377,
+          378
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Cambridge noun-headed analysis of ordinary noun phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL text and rendered PDF. Original English examples."
+  },
+  {
+    "id": "PHR-101",
+    "domain": "phrases",
+    "concept": "Semantic quantification and syntactic category",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Quantification is a semantic function available across several word categories, while some determinatives, including demonstratives, do not express quantification.",
+    "condition": "Applies to the construction and sense described in §5 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Genitive subject-determiners mark definiteness and supply a subject argument without necessarily expressing quantity.",
+        "pages": [
+          358
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Numerous lamps lit the passage.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Those lamps lit the passage.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§5",
+        "pages": [
+          358
+        ],
+        "pdf_pages": [
+          378
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Semantic quantification and syntactic category",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL text and rendered PDF. Original English examples."
+  },
+  {
+    "id": "PHR-102",
+    "domain": "phrases",
+    "concept": "Predication property of a quantified noun phrase",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Abstracting over the quantified noun phrase in a clause yields the property used to identify what is being counted or measured.",
+    "condition": "Applies to the construction and sense described in §5 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The quantified noun phrase can be a subject or object, and the quantity can be discrete or a subquantity of a mass.",
+        "pages": [
+          358
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Three runners crossed the bridge.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The shelter distributed enough water.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§5",
+        "pages": [
+          358
+        ],
+        "pdf_pages": [
+          378
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Predication property of a quantified noun phrase",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL text and rendered PDF. Original English examples."
+  },
+  {
+    "id": "PHR-103",
+    "domain": "phrases",
+    "concept": "Existential and universal quantification",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Existential quantification asserts a nonzero number or quantity satisfying the relevant property. Universal quantification ranges over the full relevant set or quantity.",
+    "condition": "Applies to the construction and sense described in §5.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An ordinary some assertion does not by itself rule out all. The full treatment of scope and negation continues on subsequent pages.",
+        "pages": [
+          358
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Some of the flour had spilled.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "All of the flour had spilled.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§5.1",
+        "pages": [
+          358
+        ],
+        "pdf_pages": [
+          378
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Existential and universal quantification",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed CGEL text and rendered PDF. Original English examples."
   }
 ]

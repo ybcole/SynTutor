@@ -139,4 +139,9 @@ Chapter 5 pp.323–340 inspected (contents-only 323–325, expository 326–340)
 
 ## Chapter 5 second checkpoint (2026-11-11)
 
-Printed pp.341–348 checked against text and page layouts. The batch adds 24 records (`PHR-048`–`PHR-071`) for plural-only nouns, invariant count forms, and sense-dependent agreement. Continue at printed p.349 with the end of §3.2.4 and §3.3. The chapter remains on its rolling draft PR.
+Printed pp.341–348 checked against text and page layouts. The batch adds 24 records (`PHR-048`–`PHR-071`) for plural-only nouns, invariant count forms, and sense-dependent agreement. The next checkpoint covers printed pp.349–358. The chapter remains on its rolling draft PR.
+
+
+## Chapter 5 third checkpoint (2026-11-11)
+
+Printed pp.349–358 checked in text and rendered layout. The 32 original-example records (`PHR-072`–`PHR-103`) cover number transparency, number selection and agreement, the determiner function, and the introduction to quantification. Continue at p.359 with the rest of §5.1 on the same draft PR.
