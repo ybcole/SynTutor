@@ -130,7 +130,7 @@ let tools;
 let embedded = null;
 function currentPalette() {
   return embedded
-    ? { labels: ['PHRASE-a', 'PHRASE-b', 'PHRASE-c'], features: [] }
+    ? { labels: embedded.labels || ['PHRASE-a', 'PHRASE-b', 'PHRASE-c'], features: [] }
     : paletteFor(state.canonicalProfile || builderProfile());
 }
 export function initSyntaxBuilder({ onStatusChange, setWorkspaceView, userId } = {}) {
@@ -215,8 +215,9 @@ export function mountEmbeddedBuilder(stage, exercise) {
   ensureWired();
   const canvas = state.canvas;
   const home = canvas.parentElement;
-  embedded = stage;
+  embedded = exercise;
   stage.append(canvas);
+  stage.classList.toggle('lesson-touch-builder', Boolean(exercise.profile));
   canvas.hidden = false;
   resize();
   tools.open({ embedded: exercise });
@@ -556,6 +557,40 @@ function wireCanvas(canvas) {
   canvas.addEventListener('contextmenu', onContextMenu);
   canvas.addEventListener('wheel', onWheel, { passive: false });
   canvas.addEventListener('keydown', onKeyDown);
+
+  // In the compact labelled exercise, a hold opens the same menu as right-click.
+  let touch = null;
+  canvas.addEventListener('pointerdown', event => {
+    if (event.pointerType !== 'touch' || !embedded?.profile || touch) return;
+    event.preventDefault();
+    canvas.setPointerCapture(event.pointerId);
+    const { clientX, clientY } = event;
+    const timer = setTimeout(() => {
+      if (!embedded?.profile) return;
+      onKeyDown({ key: 'Escape' });
+      const { sx, sy } = eventPos(event);
+      const point = toWorld(sx, sy);
+      openMenu(clientX, clientY, point, nodeHit(state.model, point.x, point.y));
+      touch.menu = true;
+    }, 450);
+    touch = { id: event.pointerId, clientX, clientY, timer, menu: false };
+    onMouseDown({ button: 0, clientX, clientY });
+  });
+  canvas.addEventListener('pointermove', event => {
+    if (event.pointerId !== touch?.id || touch.menu) return;
+    if (Math.hypot(event.clientX - touch.clientX, event.clientY - touch.clientY) < 8) return;
+    clearTimeout(touch.timer);
+    onMouseMove(event);
+  });
+  function finishTouch(event) {
+    if (event.pointerId !== touch?.id) return;
+    clearTimeout(touch.timer);
+    if (event.type === 'pointercancel') onKeyDown({ key: 'Escape' });
+    else if (!touch.menu) onMouseUp(event);
+    touch = null;
+  }
+  canvas.addEventListener('pointerup', finishTouch);
+  canvas.addEventListener('pointercancel', finishTouch);
 }
 
 function onMouseDown(e) {
@@ -1054,6 +1089,21 @@ function openMenu(clientX, clientY, world, node) {
   search.addEventListener('input', () => render(search.value));
 
   if (node) {
+    if (embedded?.profile && node.kind === NODE.PHRASE && !node.canonicalData?.unlabelled) {
+      const words = childrenOf(state.model, node.id);
+      if (node.canonicalTriangle || (words.length && words.every(child => child.kind === NODE.WORD))) {
+        const triangle = document.createElement('button');
+        triangle.type = 'button';
+        triangle.className = 'builder-menu-item';
+        triangle.textContent = node.canonicalTriangle ? 'Expand triangle' : 'Collapse to triangle';
+        triangle.addEventListener('click', () => {
+          node.canonicalTriangle = !node.canonicalTriangle;
+          closeMenu();
+          changed();
+        });
+        menu.appendChild(triangle);
+      }
+    }
     const del = document.createElement('button');
     del.type = 'button';
     del.className = 'builder-menu-delete';

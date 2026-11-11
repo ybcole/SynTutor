@@ -84,7 +84,7 @@ export function foundationsArticle(lesson) {
   };
 }
 
-export function addWorkedExample(body, { el, button, lesson, showWorkedTree }, labels) {
+export function addWorkedExample(body, { el, button, lesson, showWorkedTree }, labels, { highlightWords = false } = {}) {
   const worked = lesson.worked_example;
   body.append(el('p', worked.sentence, 'lesson-example-sentence'));
   if (!worked.tree) {
@@ -100,11 +100,20 @@ export function addWorkedExample(body, { el, button, lesson, showWorkedTree }, l
   const caption = el('p', undefined, 'constituent-caption');
   caption.setAttribute('aria-live', 'polite');
   const choices = worked.steps.map((step, index) => button(labels[index], () => select(index)));
-  function select(index) {
+  function describe(index) {
     choices.forEach((choice, position) => choice.setAttribute('aria-pressed', String(position === index)));
     const step = worked.steps[index];
     caption.textContent = step.text;
-    showWorkedTree(diagram, step.focus_node_id).after(caption);
+  }
+  function select(index) {
+    describe(index);
+    showWorkedTree(diagram, worked.steps[index].focus_node_id, {
+      highlightWords,
+      onSelect: highlightWords ? nodeId => {
+        const selected = worked.steps.findIndex(step => step.focus_node_id === nodeId);
+        if (selected !== -1) describe(selected);
+      } : null,
+    }).after(caption);
   }
   controls.append(...choices);
   body.append(controls, diagram);

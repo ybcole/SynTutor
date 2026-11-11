@@ -301,3 +301,6 @@
   border-radius:8px;
   background:var(--panel);
 }
+
+.lesson-touch-builder > canvas { touch-action:none; }
+.lesson-builder-link { margin-block-start:12px; }

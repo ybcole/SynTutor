@@ -1,3 +1,4 @@
+import { addEmbeddedTreeExercise } from './lesson-tree-exercise.js';
 import { NODE, addPhrase, addWordsFromText, canConnect, childrenOf, connect, createModel, roots } from './syntax-builder.js';
 
 const sentence = 'beside the red gate';
@@ -88,42 +89,6 @@ function check(model) {
   return 'Look for a branch under the outer node that covers exactly “the red gate”.';
 }
 
-export function addConstituentTreeBuilder(body, { el, button, mountBuilder }) {
-  const workspace = el('section', undefined, 'first-tree-builder');
-  workspace.setAttribute('aria-label', 'Build your first tree exercise');
-  const guidance = el('ol', undefined, 'first-tree-guide');
-  guidance.id = 'first-tree-guide';
-  guidance.setAttribute('role', 'list');
-  guidance.hidden = true;
-  const status = el('p', undefined, 'first-tree-feedback');
-  status.setAttribute('role', 'status');
-  function checkTree() {
-    status.textContent = editor.check();
-  }
-  for (const [index, step] of guide.entries()) {
-    const item = el('li');
-    const action = button(undefined, () => {
-      if (step.apply) status.textContent = editor.edit(step.apply);
-      else checkTree();
-    }, 'first-tree-guide-action');
-    const number = el('span', `${index + 1}.`, 'first-tree-guide-number');
-    number.setAttribute('aria-hidden', 'true');
-    action.append(number, el('strong', step.title), el('span', step.text, 'first-tree-guide-description'));
-    item.append(action);
-    guidance.append(item);
-  }
-  const toggle = button('Guide me', () => {
-    guidance.hidden = !guidance.hidden;
-    toggle.setAttribute('aria-expanded', String(!guidance.hidden));
-  });
-  toggle.setAttribute('aria-expanded', 'false');
-  toggle.setAttribute('aria-controls', guidance.id);
-
-  const stage = el('div', undefined, 'first-tree-stage');
-  const checkButton = button('Check construction', checkTree);
-  const toolbar = el('div', undefined, 'first-tree-toolbar');
-  toolbar.append(toggle, checkButton);
-  workspace.append(toolbar, guidance, status, stage);
-  body.append(workspace);
-  const editor = mountBuilder(stage, { id: 'br-01', seed, check });
+export function addConstituentTreeBuilder(body, ui) {
+  addEmbeddedTreeExercise(body, ui, { id: 'br-01', label: 'Build your first tree exercise', guide, seed, check });
 }

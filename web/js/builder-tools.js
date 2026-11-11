@@ -28,13 +28,13 @@ export function createBuilderTools(config){
   if(lessonPractice)seedPractice(lessonPractice.lesson);
   if(inline){
    config.state.model=inline.seed();
-   config.state.canonicalProfile=builderProfile(1);
+   config.state.canonicalProfile=inline.profile||builderProfile(1);
    config.state.targetId=null;
    config.state.view={ox:24,oy:20,scale:1};
    config.reset();
   }
   const lessonId=inline?.id||lessonPractice?.lesson.lesson_id;
-  const draftIdentity=lessonId?`${identity}:lesson:${lessonId}`:identity;
+  const draftIdentity=inline?.profile?`${identity}:inline:${lessonId}`:lessonId?`${identity}:lesson:${lessonId}`:identity;
   session=createBuilderSession({storage,identity:draftIdentity,initial:snapshot()});
   if(recover)apply(session.load());else session.save();
  }

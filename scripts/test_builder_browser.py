@@ -88,7 +88,7 @@ try:
   expect(panel).to_contain_text('Exercise: matched.')
   assert checks[-1]['target_lesson_id']=='br-02'
   tools.get_by_role('button',name='Return to lesson').click()
-  expect(lesson.get_by_role('heading',name='Reading the NP and VP Branches')).to_be_visible()
+  expect(lesson.get_by_role('heading',name='Reading and Building the NP/VP Tree')).to_be_visible()
   assert page.evaluate("localStorage.getItem('syntutor:builder:v1:guest')")==standalone
   assert page.evaluate("JSON.parse(localStorage.getItem('syntutor:lessons:v1:guest'))['br-02@1.0.0'].stage")==2
   lesson.get_by_role('button',name='Try in Syntax Builder').click()

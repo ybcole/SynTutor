@@ -5,7 +5,7 @@ import { requestEvidence, renderEvidence } from './explanation-evidence.js';
 import { subscribeAuthState } from './auth.js';
 import { enableCanvasView } from './canvas-view.js';
 import { addConstituentReview, addConstituentTeaching, constituentHeadings, constituentOpeningCheck, constituentReferences } from './constituents-lesson.js';
-import { addSubjectPredicateTeaching, subjectPredicateHeadings } from './subject-predicate-lesson.js';
+import { addSubjectPredicateTeaching, subjectPredicateHeadings, subjectPredicateOpeningCheck } from './subject-predicate-lesson.js';
 import { foundationsArticle } from './foundations-lesson.js';
 import { lessonNotation } from './lesson-notation.js';
 
@@ -19,6 +19,8 @@ const articleLessons = {
   },
   'br-02': {
     headings: subjectPredicateHeadings,
+    openingCheck: subjectPredicateOpeningCheck,
+    openingIntro: 'Before you begin, try three short questions about the parts of a sentence. This check is unscored.',
     teach: addSubjectPredicateTeaching,
     postTestIntro: 'Use the NP and VP branches to identify the subject and predicate. Check each answer before continuing.',
   },
@@ -168,6 +170,7 @@ export function renderLessonTree(envelope, {
       const bottom = y + rows.length * 18;
       g.append(svgNode('polygon',{points:`${x},${bottom+12} ${x-half},${bottom+45} ${x+half},${bottom+45}`}));
       const words=svgNode('text',{x,y:bottom+68,'text-anchor':'middle'});words.textContent=node.words.join(' ');g.append(words);
+      if (highlightWords) wordLabels.set(node, words);
     }
     if (typeof onSelectNode === 'function' && node.id) {
       g.setAttribute('role','button');
@@ -438,7 +441,7 @@ function clearLessonCanvases() {
   lessonCanvases.clear();
 }
 
-function appendWorkedTree(aside, worked, { focusId, blank = null, comparisonTree = null, inline = false }) {
+function appendWorkedTree(aside, worked, { focusId, blank = null, comparisonTree = null, inline = false, highlightWords = false, onSelect = null }) {
   const evidence=el('details',undefined,'lesson-shared-evidence');
   evidence.dataset.xai7Lesson = '';
   const title=el('summary','Explanation');
@@ -473,6 +476,7 @@ function appendWorkedTree(aside, worked, { focusId, blank = null, comparisonTree
         if (!isSelected) item.classList.remove('lesson-tree-focus');
       }
     }
+    onSelect?.(nodeId);
     evidence.open=true;
     const version=++requestVersion;
     slot.replaceChildren(el('p','Explaining this word or phrase…'));
@@ -493,7 +497,7 @@ function appendWorkedTree(aside, worked, { focusId, blank = null, comparisonTree
     onSelectNode: inspect,
     stackFeatures: true,
     wordBaseline: comparisonTree ? 2 : 0,
-    highlightWords: Boolean(comparisonTree),
+    highlightWords: highlightWords || Boolean(comparisonTree),
   });
   if (inline) {
     if (selected) describeSelection(worked.tree.root, selected);
@@ -571,7 +575,7 @@ function addOpeningQuestions(panel, lesson, prompts) {
 function articleScreen(lesson, p, article) {
   const page = articlePage;
   const reviewing = Boolean(p.completed_at);
-  const openingCheck = article.openingCheck;
+  const openingCheck = typeof article.openingCheck === 'function' ? article.openingCheck(lesson) : article.openingCheck;
   const body = el('article', undefined, 'lesson-stage-body');
   const heading = el('h2', article.headings[page]);
   heading.id = 'constituent-page-title';
@@ -594,9 +598,9 @@ function articleScreen(lesson, p, article) {
       clearLessonDiagram(figure);
       return mountLessonCanvas(figure, tree, options);
     },
-    showWorkedTree: (figure, focusId) => {
+    showWorkedTree: (figure, focusId, options) => {
       clearLessonDiagram(figure);
-      return appendWorkedTree(figure, lesson.worked_example, { focusId, inline: true });
+      return appendWorkedTree(figure, lesson.worked_example, { focusId, inline: true, ...options });
     },
     showComparisonTree: (figure, flatTree) => {
       clearLessonDiagram(figure);
@@ -628,7 +632,7 @@ function articleScreen(lesson, p, article) {
     title.id = 'lesson-pre-test-title';
     preTest.setAttribute('aria-labelledby', title.id);
     preTest.append(title, el('p', openingCheck
-      ? 'Before you begin, try three short questions about how words group together. Choose the answer that makes the most sense to you. This check is unscored.'
+      ? article.openingIntro ?? 'Before you begin, try three short questions about how words group together. Choose the answer that makes the most sense to you. This check is unscored.'
       : 'Answer this short question before you begin. Your answer is unscored, and any choice lets you continue.'));
     if (p.responses.predict) {
       // Earlier versions used a different prompt with the same saved response key.
