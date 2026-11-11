@@ -4180,464 +4180,464 @@
     {
       "page": 597,
       "chapter": 7,
-      "status": "unprocessed",
-      "reason": null,
-      "evidence": null
+      "status": "skipped_with_reason",
+      "reason": "Chapter title and contents only, verified in the full-volume PDF.",
+      "evidence": "sources/cambridge/chapter_07/PP597_617_REPORT.md"
     },
     {
       "page": 598,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP597_617_REPORT.md"
     },
     {
       "page": 599,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP597_617_REPORT.md"
     },
     {
       "page": 600,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP597_617_REPORT.md"
     },
     {
       "page": 601,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP597_617_REPORT.md"
     },
     {
       "page": 602,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP597_617_REPORT.md"
     },
     {
       "page": 603,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP597_617_REPORT.md"
     },
     {
       "page": 604,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP597_617_REPORT.md"
     },
     {
       "page": 605,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP597_617_REPORT.md"
     },
     {
       "page": 606,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP597_617_REPORT.md"
     },
     {
       "page": 607,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP597_617_REPORT.md"
     },
     {
       "page": 608,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP597_617_REPORT.md"
     },
     {
       "page": 609,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP597_617_REPORT.md"
     },
     {
       "page": 610,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP597_617_REPORT.md"
     },
     {
       "page": 611,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP597_617_REPORT.md"
     },
     {
       "page": 612,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP597_617_REPORT.md"
     },
     {
       "page": 613,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP597_617_REPORT.md"
     },
     {
       "page": 614,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP597_617_REPORT.md"
     },
     {
       "page": 615,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP597_617_REPORT.md"
     },
     {
       "page": 616,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP597_617_REPORT.md"
     },
     {
       "page": 617,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP597_617_REPORT.md"
     },
     {
       "page": 618,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP618_634_REPORT.md"
     },
     {
       "page": 619,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP618_634_REPORT.md"
     },
     {
       "page": 620,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP618_634_REPORT.md"
     },
     {
       "page": 621,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP618_634_REPORT.md"
     },
     {
       "page": 622,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP618_634_REPORT.md"
     },
     {
       "page": 623,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP618_634_REPORT.md"
     },
     {
       "page": 624,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP618_634_REPORT.md"
     },
     {
       "page": 625,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP618_634_REPORT.md"
     },
     {
       "page": 626,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP618_634_REPORT.md"
     },
     {
       "page": 627,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP618_634_REPORT.md"
     },
     {
       "page": 628,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP618_634_REPORT.md"
     },
     {
       "page": 629,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP618_634_REPORT.md"
     },
     {
       "page": 630,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP618_634_REPORT.md"
     },
     {
       "page": 631,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP618_634_REPORT.md"
     },
     {
       "page": 632,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP618_634_REPORT.md"
     },
     {
       "page": 633,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP618_634_REPORT.md"
     },
     {
       "page": 634,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP618_634_REPORT.md"
     },
     {
       "page": 635,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP635_662_REPORT.md"
     },
     {
       "page": 636,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP635_662_REPORT.md"
     },
     {
       "page": 637,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP635_662_REPORT.md"
     },
     {
       "page": 638,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP635_662_REPORT.md"
     },
     {
       "page": 639,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP635_662_REPORT.md"
     },
     {
       "page": 640,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP635_662_REPORT.md"
     },
     {
       "page": 641,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP635_662_REPORT.md"
     },
     {
       "page": 642,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP635_662_REPORT.md"
     },
     {
       "page": 643,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP635_662_REPORT.md"
     },
     {
       "page": 644,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP635_662_REPORT.md"
     },
     {
       "page": 645,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP635_662_REPORT.md"
     },
     {
       "page": 646,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP635_662_REPORT.md"
     },
     {
       "page": 647,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP635_662_REPORT.md"
     },
     {
       "page": 648,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP635_662_REPORT.md"
     },
     {
       "page": 649,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP635_662_REPORT.md"
     },
     {
       "page": 650,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP635_662_REPORT.md"
     },
     {
       "page": 651,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP635_662_REPORT.md"
     },
     {
       "page": 652,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP635_662_REPORT.md"
     },
     {
       "page": 653,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP635_662_REPORT.md"
     },
     {
       "page": 654,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP635_662_REPORT.md"
     },
     {
       "page": 655,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP635_662_REPORT.md"
     },
     {
       "page": 656,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP635_662_REPORT.md"
     },
     {
       "page": 657,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP635_662_REPORT.md"
     },
     {
       "page": 658,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP635_662_REPORT.md"
     },
     {
       "page": 659,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP635_662_REPORT.md"
     },
     {
       "page": 660,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP635_662_REPORT.md"
     },
     {
       "page": 661,
       "chapter": 7,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP635_662_REPORT.md"
     },
     {
       "page": 662,
       "chapter": 7,
       "status": "skipped_with_reason",
       "reason": "Reported textless by the split-source manifest and independently checked textless in the uploaded full PDF.",
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_07/PP635_662_REPORT.md"
     },
     {
       "page": 663,

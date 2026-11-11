@@ -180,3 +180,17 @@ Printed pp.479–502 checked in text and rendered layout. Added 30 original-exam
 ## Chapter 5 source extraction complete (2026-11-11)
 
 The final batch adds 26 records (`PHR-346`–`PHR-371`) for pp.503–523 and confirms that full-volume PDF p.544, corresponding to printed p.524, is blank. Chapter 5 has 198 substantive pages extracted, three contents-only skips, one verified split-source exclusion, and zero unprocessed pages. Phase B next proceeds to Chapter 7 under the priority sequence in the master plan.
+
+
+## Chapter 7 first checkpoint (2026-11-11)
+
+Printed pp.597–617 checked in text and rendered layout. Page 597 contains the chapter title and contents only. The 20 substantive pages yielded 28 records (`PHR-372`–`PHR-399`). Continue at p.618 with idiomatic and fossilised expressions.
+
+
+## Chapter 7 second checkpoint (2026-11-11)
+
+Printed pp.618–634 yielded 24 records (`PHR-400`–`PHR-423`). Continue at p.635 with the end of PP preposing and the start of PP complementation.
+
+## Chapter 7 source extraction complete (2026-11-11)
+
+The final accelerated batch covers 27 substantive pages, printed pp.635–661, and verifies that p.662 is blank. It adds 35 records (`PHR-424`–`PHR-458`). Chapter 7 closes with 64 substantive pages, two justified skips and zero unprocessed pages. Chapter 10 is next in the master plan priority order.
