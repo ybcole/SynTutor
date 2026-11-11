@@ -32,6 +32,6 @@ All stored rules use original paraphrases and newly authored English examples, n
 - Chapter 3 printed page span **71–212**: **139 source-audited expository pages**, **3 justified contents-only skips (71–73)**, **0 unprocessed** and **0 unavailable**. This is **complete page-level source extraction**, not a claim of completed independent rule review, source crosswalk, runtime detector integration, or calibrated XAI diagnostic coverage.
 - Book-wide ledger: **139 extracted**, **1,610 unprocessed**, **13 skipped**, **2 unavailable** out of 1,764 printed pages.
 - Grammar catalog after this batch: **887 records** (previous 855 + 32).
-- **Next necessary action:** mechanically verify the chapter's page inventory, perform independent linguistic exception/cross-reference QA, then continue full-book Phase B extraction at the next chapter range according to the master plan. The chapter's review and runtime activation gates remain separately tracked.
+- **Next necessary action:** mechanically verify the chapter's page inventory and independently audit linguistic exceptions and cross-references, then implement Chapter 3 Phase C detector/XAI and Phase D corrected-paragraph gates before proceeding to the next chapter, as specified by the master plan. The chapter's review and runtime activation gates remain separately tracked.
 
 The source PDF and its images are not part of the committed repository output.
