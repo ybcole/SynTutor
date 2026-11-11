@@ -11,7 +11,7 @@
 | 3. The verb | 142 | 139 | 0 | 3 | 0 | Source-extracted; QA pending |
 | 4. The clause: complements | 110 | 107 | 0 | 3 | 0 | Source extracted; QA pending |
 | 5. Nouns and noun phrases | 202 | 198 | 0 | 3 | 1 | Source-extracted |
-| 6. Adjectives and adverbs | 72 | 17 | 53 | 2 | 0 | In progress (pp. 525–542) |
+| 6. Adjectives and adverbs | 72 | 37 | 33 | 2 | 0 | In progress (pp. 525–562) |
 | 7. Prepositions and preposition phrases | 66 | 64 | 0 | 2 | 0 | Source-extracted |
 | 8. The clause: adjuncts | 122 | 0 | 122 | 0 | 0 | Incomplete |
 | 9. Negation | 66 | 0 | 65 | 1 | 0 | Incomplete |
@@ -27,7 +27,7 @@
 | 19. Lexical word-formation | 102 | 99 | 0 | 3 | 0 | Source-extracted |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **717 extracted**, 1021 unprocessed, 24 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **737 extracted**, 1001 unprocessed, 24 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -234,3 +234,7 @@ Chapter 14 has 99 substantive pages, three justified skips and zero unprocessed 
 ## Chapter 6 pp. 525–542
 
 The opening batch accounts for 17 substantive pages and one contents page and adds 21 records (`WCAT-036`–`WCAT-056`). See the [source report](sources/cambridge/chapter_06/PP525_542_REPORT.md) and [audit manifest](sources/cambridge/chapter_06/PP525_542_AUDIT.json). Continue at p. 543.
+
+## Chapter 6 pp. 543–562
+
+The second batch covers 20 substantive pages and adds 24 records (`WCAT-057`–`WCAT-080`) on adjective complementation, modification, position and restricted functions. See the [source report](sources/cambridge/chapter_06/PP543_562_REPORT.md) and [audit manifest](sources/cambridge/chapter_06/PP543_562_AUDIT.json). Continue at p. 563.

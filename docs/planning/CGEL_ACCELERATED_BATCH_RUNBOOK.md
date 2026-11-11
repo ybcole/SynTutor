@@ -234,3 +234,7 @@ Printed pp. 1246–1271 yielded 36 records (`CLS-374`–`CLS-409`), including tw
 ## Chapter 6 first checkpoint (2026-11-12)
 
 Printed pp. 525–542 yielded 21 records (`WCAT-036`–`WCAT-056`), including one inactive constraint specification. Continue at p. 543 with adjective complementation.
+
+## Chapter 6 second checkpoint (2026-11-12)
+
+Printed pp. 543–562 yielded 24 records (`WCAT-057`–`WCAT-080`), including one inactive constraint specification. Continue at p. 563 with the distribution of adverb modifiers.

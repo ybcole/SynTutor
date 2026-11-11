@@ -3725,5 +3725,1527 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-057",
+    "domain": "word_categories",
+    "concept": "Lexically selected adjective PP complements",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An adjective can license a PP headed by a particular preposition. The inventory depends on the adjective and its sense.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Many adjectives license no complement. Semantic similarity does not guarantee identical preposition selection.",
+        "pages": [
+          543,
+          544,
+          545
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She is afraid of spiders.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He is capable of repairing the lock.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§3.1",
+        "pages": [
+          543,
+          544,
+          545
+        ],
+        "pdf_pages": [
+          563,
+          564,
+          565
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexically selected adjective PP complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-058",
+    "domain": "word_categories",
+    "concept": "Preposition choice and interpretation after adjectives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An adjective can license different PPs that express different relations or interpretations.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Selected alternatives need not be interchangeable. Some vary by register or variety.",
+        "pages": [
+          543,
+          544,
+          545
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She is responsible for the equipment.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She is responsible to the director.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§3.1",
+        "pages": [
+          543,
+          544,
+          545
+        ],
+        "pdf_pages": [
+          563,
+          564,
+          565
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Preposition choice and interpretation after adjectives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-059",
+    "domain": "word_categories",
+    "concept": "Prepositional to after adjectives",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "Adjectives such as accustomed license prepositional to, which can take a gerund-participial complement.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 6.",
+    "violation": "An uninflected verb follows prepositional to as the intended activity complement of accustomed.",
+    "exceptions": [
+      {
+        "description": "Distinguish prepositional to from the marker in an adjective's infinitival complement, as in eager to leave.",
+        "pages": [
+          545
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo is accustomed to working late.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina is accustomed to taking the early train.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Jo is accustomed to work late.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Mina is accustomed to take the early train.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§3.1",
+        "pages": [
+          545
+        ],
+        "pdf_pages": [
+          565
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Prepositional to after adjectives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "verb_form",
+      "error_pattern": "An uninflected verb follows prepositional to as the intended activity complement of accustomed.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Jo is accustomed to work late. ||| Jo is accustomed to working late.",
+        "Mina is accustomed to take the early train. ||| Mina is accustomed to taking the early train."
+      ],
+      "learner_explanation": "Adjectives such as accustomed license prepositional to, which can take a gerund-participial complement.",
+      "corrected_paragraph_template": "Use the gerund-participle after prepositional to in this pattern.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "She was accustomed to the noise.",
+        "He is eager to work late.",
+        "They are accustomed to work that requires patience."
+      ],
+      "lesson_tags": [
+        "adjectives",
+        "complementation"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-060",
+    "domain": "word_categories",
+    "concept": "Clausal complement types of adjectives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Adjectives can license declarative, interrogative, exclamative and non-finite complements, subject to lexical selection.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Interrogatives and exclamatives are more restricted than declaratives. Non-finite complements can be ordinary or hollow.",
+        "pages": [
+          545,
+          546
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She was sure that the latch would hold.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He was unsure whether the latch would hold.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§3.1",
+        "pages": [
+          545,
+          546
+        ],
+        "pdf_pages": [
+          565,
+          566
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Clausal complement types of adjectives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-061",
+    "domain": "word_categories",
+    "concept": "Ordinary and hollow non-finite adjective complements",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A hollow complement contains a non-subject gap interpreted from outside the complement. An ordinary complement need not contain such a gap.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Worth can license a hollow gerund-participial, while busy can take an ordinary one.",
+        "pages": [
+          546
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The latch is hard to repair.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The mechanic is willing to repair the latch.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§3.1",
+        "pages": [
+          546
+        ],
+        "pdf_pages": [
+          566
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ordinary and hollow non-finite adjective complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-062",
+    "domain": "word_categories",
+    "concept": "Restricted NP complements of adjectives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A small group of adjectives can take NP complements, including measure expressions or expressions of value.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Measure NPs are not always complements. The construction with due has variety and participant-role restrictions.",
+        "pages": [
+          546,
+          547
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The parcel is worth fifty dollars.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The amount is due you.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§3.1",
+        "pages": [
+          546,
+          547
+        ],
+        "pdf_pages": [
+          566,
+          567
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Restricted NP complements of adjectives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-063",
+    "domain": "word_categories",
+    "concept": "Indirect complements in adjective phrases",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An AdjP can contain a complement licensed by a modifier or by comparative inflection rather than by the adjective itself.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The dependency is indirect even though the complement is inside the AdjP.",
+        "pages": [
+          547
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The box was too heavy to lift.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The route was shorter than I expected.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§3.1",
+        "pages": [
+          547
+        ],
+        "pdf_pages": [
+          567
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Indirect complements in adjective phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-064",
+    "domain": "word_categories",
+    "concept": "Stacked modification and submodification",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Two modifiers can occur at separate levels of an AdjP, or one modifier can modify another within a dependent phrase.",
+    "condition": "Applies to the construction described in §3.2 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The two structures differ in constituency and semantic scope.",
+        "pages": [
+          547,
+          548
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The remarks were occasionally very rude.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The remarks were quite unnecessarily rude.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§3.2",
+        "pages": [
+          547,
+          548
+        ],
+        "pdf_pages": [
+          567,
+          568
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Stacked modification and submodification",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-065",
+    "domain": "word_categories",
+    "concept": "Different modifiers in comparative and non-comparative AdjPs",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Degree modifiers select different forms of adjective phrase. Some are characteristic of comparatives and others of non-comparatives.",
+    "condition": "Applies to the construction described in §3.2 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A modifier such as very can occur inside a larger expression that modifies a comparative, so adjacent words alone do not identify the dependency.",
+        "pages": [
+          548
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The box was very heavy.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The second box was much heavier.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§3.2",
+        "pages": [
+          548
+        ],
+        "pdf_pages": [
+          568
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Different modifiers in comparative and non-comparative AdjPs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-066",
+    "domain": "word_categories",
+    "concept": "Forms of AdjP modifiers",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "AdjP modifiers can be adverbs, determinatives, adjective phrases, NPs or PPs in the licensed constructions.",
+    "condition": "Applies to the construction described in §3.2 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Measure NPs and quantificational NPs have different distributions. PP modifier position depends on the pattern.",
+        "pages": [
+          548,
+          549,
+          550
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The gate was that wide.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The gate was two metres wide.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§3.2",
+        "pages": [
+          548,
+          549,
+          550
+        ],
+        "pdf_pages": [
+          568,
+          569,
+          570
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Forms of AdjP modifiers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-067",
+    "domain": "word_categories",
+    "concept": "Predeterminer adjective phrases",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Certain degree constructions allow an AdjP before the indefinite article and nominal.",
+    "condition": "Applies to the construction described in §3.3 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The pattern is restricted by degree expression and NP structure. Ordinary attributive adjectives follow the article.",
+        "pages": [
+          550,
+          551
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was so heavy a box that we needed help.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "How wide a gap can the plank span?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§3.3",
+        "pages": [
+          550,
+          551
+        ],
+        "pdf_pages": [
+          570,
+          571
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Predeterminer adjective phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-068",
+    "domain": "word_categories",
+    "concept": "Post-head dependents in attributive adjective phrases",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An attributive AdjP generally excludes post-head complements, though restricted post-head modifiers can occur.",
+    "condition": "Applies to the construction described in §3.3 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Complement-bearing AdjPs may be licensed predicatively or postpositively. Fixed expressions and some short post-head modifiers require separate treatment.",
+        "pages": [
+          551,
+          552
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She bought a much cheaper ticket.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She bought an expensive ticket.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§3.3",
+        "pages": [
+          551,
+          552
+        ],
+        "pdf_pages": [
+          571,
+          572
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Post-head dependents in attributive adjective phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-069",
+    "domain": "word_categories",
+    "concept": "Measure phrases and attributive distribution",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Some NP degree or measure modifiers that are possible in a predicative AdjP are excluded in ordinary attributive position.",
+    "condition": "Applies to the construction described in §3.3 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The compound attributive pattern is structurally distinct from the predicative phrase. Determinative much can occur in some attributive comparatives.",
+        "pages": [
+          551,
+          552
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The bridge is three years old.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They rebuilt the three-year-old bridge.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§3.3",
+        "pages": [
+          551,
+          552
+        ],
+        "pdf_pages": [
+          571,
+          572
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Measure phrases and attributive distribution",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-070",
+    "domain": "word_categories",
+    "concept": "Postpositive and predicative AdjPs",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Postpositive AdjPs are licensed by restricted nominal or dependent configurations. Predicative position permits a broader range of dependents.",
+    "condition": "Applies to the construction described in §3.3 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A degree expression can show that a modifier belongs inside a predicative AdjP rather than modifying the clause.",
+        "pages": [
+          552,
+          553
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Anyone keen to help should sign up.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The volunteers were keen to help.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§3.3",
+        "pages": [
+          552,
+          553
+        ],
+        "pdf_pages": [
+          572,
+          573
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Postpositive and predicative AdjPs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-071",
+    "domain": "word_categories",
+    "concept": "Attributive restriction by adjective sense",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Some adjectives are attributive-only in a particular sense, even when another sense is predicative.",
+    "condition": "Applies to the construction described in §4.1 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The former-school reading is distinct from age. Compare lexical sense before treating a missing predicative counterpart as an error.",
+        "pages": [
+          553,
+          554,
+          555
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo visited her old school.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The building is old.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§4.1",
+        "pages": [
+          553,
+          554,
+          555
+        ],
+        "pdf_pages": [
+          573,
+          574,
+          575
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Attributive restriction by adjective sense",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-072",
+    "domain": "word_categories",
+    "concept": "Ascriptive and non-ascriptive attributives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An ascriptive attributive applies a property to the referent. A non-ascriptive reading can qualify a description without assigning the corresponding property independently.",
+    "condition": "Applies to the construction described in §4.1 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "With hard worker the relevant interpretation concerns working hard. Modification and fused-head behavior are additional diagnostics, with exceptions.",
+        "pages": [
+          554,
+          555
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo met a shy worker.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Jo met a hard worker.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§4.1",
+        "pages": [
+          554,
+          555
+        ],
+        "pdf_pages": [
+          574,
+          575
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ascriptive and non-ascriptive attributives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-073",
+    "domain": "word_categories",
+    "concept": "Intensifying and quantifying attributives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Some attributives express intensity or quantify over a nominal rather than independently describing its referent.",
+    "condition": "Applies to the construction described in §4.1 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The contribution depends on the noun and lexical sense. Some adjectives also have ordinary ascriptive uses.",
+        "pages": [
+          555,
+          556
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "That was sheer nonsense.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The entire class attended.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§4.1",
+        "pages": [
+          555,
+          556
+        ],
+        "pdf_pages": [
+          575,
+          576
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Intensifying and quantifying attributives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-074",
+    "domain": "word_categories",
+    "concept": "Temporal, locational and associative attributives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Some attributive adjectives locate the description in time or place or mark an association with another domain.",
+    "condition": "Applies to the construction described in §4.1 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Associative adjectives can resemble noun modifiers. Some have an ascriptive reading in a different context.",
+        "pages": [
+          556,
+          557
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo met the former director.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They planned a lunar mission.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§4.1",
+        "pages": [
+          556,
+          557
+        ],
+        "pdf_pages": [
+          576,
+          577
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Temporal, locational and associative attributives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-075",
+    "domain": "word_categories",
+    "concept": "Process and modal attributives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A process-oriented attributive can describe an activity associated with a role noun, while a modal attributive qualifies the applicability of the description.",
+    "condition": "Applies to the construction described in §4.1 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Fast typist can describe typing speed. Possible explanation does not assert that the item is an explanation.",
+        "pages": [
+          557,
+          558
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They hired a fast typist.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We found a possible explanation.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§4.1",
+        "pages": [
+          557,
+          558
+        ],
+        "pdf_pages": [
+          577,
+          578
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Process and modal attributives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-076",
+    "domain": "word_categories",
+    "concept": "Particularising, specifying and hypallage readings",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An attributive can identify a particular referent, specify a relation, or convey a property understood of a participant associated with the noun.",
+    "condition": "Applies to the construction described in §4.1 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "In hypallage the property can be interpreted via the occasion or associated participant. Novel examples depend on context.",
+        "pages": [
+          558,
+          559
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A certain guest asked about the key.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Jo had a quiet cup of tea.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§4.1",
+        "pages": [
+          558,
+          559
+        ],
+        "pdf_pages": [
+          578,
+          579
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Particularising, specifying and hypallage readings",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-077",
+    "domain": "word_categories",
+    "concept": "Predicative but normally non-attributive adjectives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Some adjectives, including a-prefix formations and others with selected complements, are normally predicative or postpositive in the relevant use.",
+    "condition": "Applies to the construction described in §4.2 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An attributive reading can be possible in another sense, in a compound, or in a special coordination or modification environment.",
+        "pages": [
+          559,
+          560
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The child was asleep.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Jo was loath to leave.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§4.2",
+        "pages": [
+          559,
+          560
+        ],
+        "pdf_pages": [
+          579,
+          580
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Predicative but normally non-attributive adjectives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-078",
+    "domain": "word_categories",
+    "concept": "Postpositive-only lexical uses",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A small set of adjectives have lexical senses restricted to postpositive position and often to particular heads.",
+    "condition": "Applies to the construction described in §4.2 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Available also occurs elsewhere and illustrates a broader postpositive pattern. Elect in the role-title construction is more narrowly restricted.",
+        "pages": [
+          560,
+          561
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The president elect addressed the room.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The funds available were insufficient.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§4.2",
+        "pages": [
+          560,
+          561
+        ],
+        "pdf_pages": [
+          580,
+          581
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Postpositive-only lexical uses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-079",
+    "domain": "word_categories",
+    "concept": "Intensification by repetition or near synonymy",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Repeated or near-synonymous attributives can reinforce degree in informal or expressive constructions.",
+    "condition": "Applies to the construction described in §4.3 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Productivity varies by expression and speaker. Repetition can also serve other discourse functions.",
+        "pages": [
+          561,
+          562
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They walked a long, long way.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A tiny little bird landed beside us.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§4.3",
+        "pages": [
+          561,
+          562
+        ],
+        "pdf_pages": [
+          581,
+          582
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Intensification by repetition or near synonymy",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "WCAT-080",
+    "domain": "word_categories",
+    "concept": "Adverbs as modifiers across categories",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Adverbs can modify heads in several categories, including verbs, adjectives and adverbs, with some constructions allowing still broader attachment.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 6.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The ordinary pre-head modifier inside a nominal is distinct from an adverb modifying an entire NP.",
+        "pages": [
+          562
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They almost fell.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The cabin was remarkably quiet.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 6,
+        "section": "§5.1",
+        "pages": [
+          562
+        ],
+        "pdf_pages": [
+          582
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adverbs as modifiers across categories",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]
