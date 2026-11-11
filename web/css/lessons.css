@@ -213,6 +213,8 @@
 .lesson-feedback { padding:12px 14px; border-left:3px solid var(--accent); background:var(--accent-soft); }
 .lesson-feedback.correct { border-color:var(--ok); }
 .lesson-feedback.retry { border-color:var(--warn); }
+.lesson-feedback:empty { margin:0; padding:0; border:0; }
+.lesson-warmup-reason { margin-top:20px; }
 .lesson-example-sentence { font-size:1.25rem; font-weight:650; }
 .lesson-tree-wrap { overflow:auto; padding:8px 0; }
 .lesson-tree-wrap svg { display:block; max-width:none; font:15px system-ui,sans-serif; }

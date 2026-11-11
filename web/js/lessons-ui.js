@@ -5,7 +5,7 @@ import { requestEvidence, renderEvidence } from './explanation-evidence.js';
 import { subscribeAuthState } from './auth.js';
 import { enableCanvasView } from './canvas-view.js';
 import { addConstituentReview, addConstituentTeaching, constituentHeadings, constituentOpeningCheck, constituentReferences } from './constituents-lesson.js';
-import { addSubjectPredicateTeaching, subjectPredicateHeadings, subjectPredicateOpeningCheck } from './subject-predicate-lesson.js';
+import { addSubjectPredicateTeaching, subjectPredicateHeadings, subjectPredicateOpeningCheck, subjectPredicateReferences } from './subject-predicate-lesson.js';
 import { foundationsArticle } from './foundations-lesson.js';
 import { lessonNotation } from './lesson-notation.js';
 
@@ -15,6 +15,7 @@ const articleLessons = {
     openingCheck: constituentOpeningCheck,
     teach: addConstituentTeaching,
     review: addConstituentReview,
+    references: constituentReferences,
     postTestIntro: 'Use what you learned about groups, brackets, and branches. Check each answer before continuing.',
   },
   'br-02': {
@@ -22,6 +23,7 @@ const articleLessons = {
     openingCheck: subjectPredicateOpeningCheck,
     openingIntro: 'Before you begin, try three short questions about the parts of a sentence. This check is unscored.',
     teach: addSubjectPredicateTeaching,
+    references: subjectPredicateReferences,
     postTestIntro: 'Use the NP and VP branches to identify the subject and predicate. Check each answer before continuing.',
   },
 };
@@ -44,9 +46,7 @@ function lessonReferences(lesson) {
   for (const source of course.sources.filter(source => ids.has(source.id))) {
     list.append(el('li', `${source.title} · ${source.edition} · Chapter ${source.chapter} · printed p. ${source.printed_page}`));
   }
-  if (lesson.lesson_id === 'br-01') {
-    for (const reference of constituentReferences) list.append(el('li', reference));
-  }
+  for (const reference of articleLessons[lesson.lesson_id]?.references || []) list.append(el('li', reference));
   details.append(list, el('p', 'AI checked the cited pages. The lesson has no human instructor sign-off.'));
   return details;
 }
@@ -588,6 +588,11 @@ function articleScreen(lesson, p, article) {
 
   article.teach(body, page, {
     el, button, lesson,
+    showClosingWarmup: page === 5 && !reviewing && !p.responses.guided && STAGES[p.stage] === 'guided',
+    practiceQuestion: (key, prompt, choices, onAnswer) => question(
+      lesson, key, { responses: {} }, false, onAnswer,
+      { prompt, options: choices.map((text, index) => ({ id: String(index), text })) },
+    ),
     openBuilderPractice: options.onBuilderPractice,
     mountBuilder: (stage, exercise) => {
       const editor = options.mountBuilder(stage, exercise);
