@@ -19,15 +19,15 @@
 | 11. Content clauses and reported speech | 84 | 0 | 84 | 0 | 0 | Incomplete |
 | 12. Relative constructions | 66 | 0 | 66 | 0 | 0 | Incomplete |
 | 13. Comparative constructions | 74 | 0 | 74 | 0 | 0 | Incomplete |
-| 14. Non-finite and verbless clauses | 102 | 21 | 78 | 3 | 0 | In progress (pp. 1171–1193) |
+| 14. Non-finite and verbless clauses | 102 | 37 | 62 | 3 | 0 | In progress (pp. 1171–1209) |
 | 15. Coordination and supplementation | 90 | 0 | 90 | 0 | 0 | Incomplete |
 | 16. Information packaging | 86 | 0 | 85 | 1 | 0 | Incomplete |
 | 17. Deixis and anaphora | 116 | 0 | 116 | 0 | 0 | Incomplete |
 | 18. Inflectional morphology | 56 | 0 | 55 | 1 | 0 | Incomplete |
-| 19. Lexical word-formation | 102 | 21 | 78 | 3 | 0 | In progress (pp. 1171–1193) |
+| 19. Lexical word-formation | 102 | 37 | 62 | 3 | 0 | In progress (pp. 1171–1209) |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **622 extracted**, 1117 unprocessed, 23 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **638 extracted**, 1101 unprocessed, 23 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -212,3 +212,7 @@ Chapter 10 has 93 substantive pages extracted, three justified skips and zero un
 ## Chapter 14 pp. 1171–1193
 
 The opening batch covers 21 substantive pages and two contents pages. It adds 27 records (`CLS-271`–`CLS-297`) on non-finite form and function, catenative structures, infinitival markers, gerund-participials and understood subjects. See the [source report](sources/cambridge/chapter_14/PP1171_1193_REPORT.md) and [audit manifest](sources/cambridge/chapter_14/PP1171_1193_AUDIT.json). Continue at p. 1194.
+
+## Chapter 14 pp. 1194–1209
+
+The second batch covers 16 substantive pages and adds 23 records (`CLS-298`–`CLS-320`) on raising, ordinary and complex catenatives, concealed passives and the catenative complement function. See the [source report](sources/cambridge/chapter_14/PP1194_1209_REPORT.md) and [audit manifest](sources/cambridge/chapter_14/PP1194_1209_AUDIT.json). Continue at p. 1210.

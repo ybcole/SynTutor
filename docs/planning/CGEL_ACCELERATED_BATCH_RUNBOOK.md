@@ -214,3 +214,7 @@ The final batch covers 21 substantive pages, printed pp. 925–945, and verifies
 ## Chapter 14 first checkpoint (2026-11-11)
 
 Printed pp. 1171–1193 account for two contents pages and 21 substantive pages and yield 27 records (`CLS-271`–`CLS-297`), including two inactive constraint specifications. Continue at p. 1194 with simple catenative constructions.
+
+## Chapter 14 second checkpoint (2026-11-11)
+
+Printed pp. 1194–1209 yielded 23 records (`CLS-298`–`CLS-320`), including one inactive constraint specification. This shorter batch groups the dense raising and complementation diagnostics. Continue at p. 1210 with competing analyses of auxiliaries.

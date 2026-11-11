@@ -20842,5 +20842,1438 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-298",
+    "domain": "clauses",
+    "concept": "Ordinary and raised subjects of infinitival catenatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An ordinary subject supplies an argument of the matrix verb and can control the infinitival subject. A raised subject has its semantic role in the infinitival alone.",
+    "condition": "Applies to the construction described in §2.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A finite paraphrase can expose the distinction when the matrix verb allows a finite complement.",
+        "pages": [
+          1194,
+          1195
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina hoped to finish the audit.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina seemed to finish the audit.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§2.1",
+        "pages": [
+          1194,
+          1195
+        ],
+        "pdf_pages": [
+          1214,
+          1215
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ordinary and raised subjects of infinitival catenatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-299",
+    "domain": "clauses",
+    "concept": "Voice neutrality with raised subjects",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Changing the lower clause from active to passive can preserve propositional meaning with a raising verb. With a non-raising verb the changed matrix subject can alter who holds the attitude.",
+    "condition": "Applies to the construction described in §2.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Differences in discourse prominence can remain even when propositional content is equivalent.",
+        "pages": [
+          1195
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The dog seemed to frighten the visitors.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The visitors seemed to be frightened by the dog.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§2.1",
+        "pages": [
+          1195
+        ],
+        "pdf_pages": [
+          1215
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Voice neutrality with raised subjects",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-300",
+    "domain": "clauses",
+    "concept": "Selection and dummy subjects in raising",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A raised subject need only satisfy the lower predicate's selection restrictions. A dummy there or it is possible if licensed in the lower clause.",
+    "condition": "Applies to the construction described in §2.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A referential it with an independently established antecedent is not a dummy.",
+        "pages": [
+          1195
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There seemed to be a delay.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It seemed to be raining.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§2.1",
+        "pages": [
+          1195
+        ],
+        "pdf_pages": [
+          1215
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Selection and dummy subjects in raising",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-301",
+    "domain": "clauses",
+    "concept": "Complement and passive diagnostics for subject raising",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A non-raising verb can allow an active complex counterpart or an extraposed passive. For the infinitival raising verbs under comparison, the simple construction is the available catenative pattern.",
+    "condition": "Applies to the construction described in §2.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Lack of a complex or passive counterpart does not by itself establish raising. The finite complement diagnostic is unavailable if a verb lacks such complements.",
+        "pages": [
+          1196,
+          1197
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We arranged for the ferry to leave early.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was hoped to reopen the pier by noon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§2.1",
+        "pages": [
+          1196,
+          1197
+        ],
+        "pdf_pages": [
+          1216,
+          1217
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Complement and passive diagnostics for subject raising",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-302",
+    "domain": "clauses",
+    "concept": "Aspectual raising and apparent agency",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Aspectual begin allows dummy subjects and voice-neutral contrasts. Apparent agency with a particular subject can arise from the predicate and context without requiring a separate agent argument of begin.",
+    "condition": "Applies to the construction described in §2.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Active and passive versions can differ in naturalness. A context that makes the activity intentional does not by itself settle raising.",
+        "pages": [
+          1197,
+          1198
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There began to be a problem with the alarm.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Nina began to unwrap the parcel.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§2.1",
+        "pages": [
+          1197,
+          1198
+        ],
+        "pdf_pages": [
+          1217,
+          1218
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Aspectual raising and apparent agency",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-303",
+    "domain": "clauses",
+    "concept": "Ordinary and raised subjects with gerund-participials",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The ordinary-versus-raised distinction also applies to simple gerund-participial catenatives. Enjoy assigns a role to its subject, while aspectual keep does not impose an independent subject role.",
+    "condition": "Applies to the construction described in §2.2 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Finite paraphrases are less widely available than with infinitivals, so voice, selection and dummy subjects are important evidence.",
+        "pages": [
+          1198,
+          1199
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mara enjoyed reading to the children.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There kept being interruptions.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§2.2",
+        "pages": [
+          1198,
+          1199
+        ],
+        "pdf_pages": [
+          1218,
+          1219
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ordinary and raised subjects with gerund-participials",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-304",
+    "domain": "clauses",
+    "concept": "Simple and complex alternation with gerund-participials",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some verbs allow both a simple and a complex gerund-participial construction. The semantic effect of adding an intervening NP depends on the verb.",
+    "condition": "Applies to the construction described in §2.2 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Complex keep can add a causative interpretation. With like, the matrix experiencer remains the same across the simple and complex patterns.",
+        "pages": [
+          1199
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Omar kept waiting outside.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Omar kept us waiting outside.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§2.2",
+        "pages": [
+          1199
+        ],
+        "pdf_pages": [
+          1219
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Simple and complex alternation with gerund-participials",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-305",
+    "domain": "clauses",
+    "concept": "Matrix passive possibilities with gerund-participials",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Gerund-participial complements seldom promote in a matrix passive. Some non-raising verbs allow it, especially where the understood subject need not be the matrix subject.",
+    "condition": "Applies to the construction described in §2.2 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Acceptability varies with the lexical head and context. Promotion does not by itself establish ordinary NP-object status.",
+        "pages": [
+          1199
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Walking alone at night is not recommended.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Parking on the verge was discouraged.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§2.2",
+        "pages": [
+          1199
+        ],
+        "pdf_pages": [
+          1219
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Matrix passive possibilities with gerund-participials",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-306",
+    "domain": "clauses",
+    "concept": "Concealed passives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A gerund-participial complement of certain verbs can have a passive interpretation without overt passive marking.",
+    "condition": "Applies to the construction described in §2.3 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An ing expression can also have a nominal analysis. Want with the meaning need has a variety-sensitive distribution.",
+        "pages": [
+          1199,
+          1200
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The fence needs painting.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The application requires checking.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§2.3",
+        "pages": [
+          1199,
+          1200
+        ],
+        "pdf_pages": [
+          1219,
+          1220
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Concealed passives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-307",
+    "domain": "clauses",
+    "concept": "Concealed passives versus hollow clauses",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A concealed passive has a passive interpretation. A hollow clause is active and has an understood non-subject element linked elsewhere in the construction.",
+    "condition": "Applies to the construction described in §2.3 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Worth permits a hollow construction rather than the concealed passive pattern. Some verbs admit both patterns with different complementation.",
+        "pages": [
+          1200
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The report needs reviewing.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The report is worth reviewing.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§2.3",
+        "pages": [
+          1200
+        ],
+        "pdf_pages": [
+          1220
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Concealed passives versus hollow clauses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-308",
+    "domain": "clauses",
+    "concept": "Ordinary and raised objects of plain-complex infinitivals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In the plain-complex infinitival construction the intervening NP is a matrix object. Its semantic role can be associated with the matrix verb, or solely with the infinitival.",
+    "condition": "Applies to the construction described in §3.1.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Persuade assigns a persuadee role, whereas the intended situation supplies Jo's role in the second example.",
+        "pages": [
+          1201,
+          1202
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina persuaded Jo to interview the finalist.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina intended Jo to interview the finalist.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§3.1.1",
+        "pages": [
+          1201,
+          1202
+        ],
+        "pdf_pages": [
+          1221,
+          1222
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ordinary and raised objects of plain-complex infinitivals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-309",
+    "domain": "clauses",
+    "concept": "Voice and selection diagnostics for object raising",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A raised object can change with the lower clause's voice while the intended situation remains equivalent. A non-raised object is independently selected by the matrix predicate.",
+    "condition": "Applies to the construction described in §3.1.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Changing the object of persuade would also change whom the persuasion targeted. Metaphorical uses can extend selection.",
+        "pages": [
+          1201,
+          1202
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina intended Jo to inspect the latch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina intended the latch to be inspected by Jo.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§3.1.1",
+        "pages": [
+          1201,
+          1202
+        ],
+        "pdf_pages": [
+          1221,
+          1222
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Voice and selection diagnostics for object raising",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-310",
+    "domain": "clauses",
+    "concept": "Dummy objects and optional intervening NPs",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Dummy objects can occur with raised-object verbs if the infinitival licenses them. Some raised-object verbs also allow a simple construction when the understood subject is coreferential.",
+    "condition": "Applies to the construction described in §3.1.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Believe can require the intervening object even with coreference. The absence of a simple alternative does not exclude raising.",
+        "pages": [
+          1202,
+          1203
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They intended there to be a break.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I intended to leave before sunset.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§3.1.1",
+        "pages": [
+          1202,
+          1203
+        ],
+        "pdf_pages": [
+          1222,
+          1223
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dummy objects and optional intervening NPs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-311",
+    "domain": "clauses",
+    "concept": "Subject interpretation in the for-complex construction",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "For introduces an overt infinitival subject in the complex construction. A corresponding simple construction can have a subjectless infinitival controlled by the matrix subject.",
+    "condition": "Applies to the construction described in §3.1.2 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Verbs vary in whether they allow both constructions. Related patterns with the same verb can differ in meaning or complementation.",
+        "pages": [
+          1203
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I arranged for her to travel by rail.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I arranged to travel by rail.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§3.1.2",
+        "pages": [
+          1203
+        ],
+        "pdf_pages": [
+          1223
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subject interpretation in the for-complex construction",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-312",
+    "domain": "clauses",
+    "concept": "Oblique control in complex catenatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A selected prepositional complement can contain an NP controlling the understood subject of a separate infinitival complement.",
+    "condition": "Applies to the construction described in §3.1.3 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The controller has an independent role. The construction does not license existential dummy there as that oblique controller.",
+        "pages": [
+          1204
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She relied on him to lock the shop.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I signaled to her to stop.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§3.1.3",
+        "pages": [
+          1204
+        ],
+        "pdf_pages": [
+          1224
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Oblique control in complex catenatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-313",
+    "domain": "clauses",
+    "concept": "Ordinary objects and subordinate subjects with gerund-participials",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Catch can have a matrix object controlling a gerund-participial. With resent the preceding NP is instead the subject of the gerund-participial complement.",
+    "condition": "Applies to the construction described in §3.2.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The first NP can promote in a matrix passive. The second can be genitive and forms a constituent with the following VP.",
+        "pages": [
+          1204,
+          1205
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We caught Mina reading the log.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We resented Mina's reading the log.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§3.2.1",
+        "pages": [
+          1204,
+          1205
+        ],
+        "pdf_pages": [
+          1224,
+          1225
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ordinary objects and subordinate subjects with gerund-participials",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-314",
+    "domain": "clauses",
+    "concept": "Raised objects with perception verbs",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Catenative see can take a syntactic matrix object that is semantically an argument of the following gerund-participial alone.",
+    "condition": "Applies to the construction described in §3.2.2 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The relevant NP cannot take genitive case. A gerund-participial adjunct with see has a distinct analysis.",
+        "pages": [
+          1205,
+          1206
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I saw the storm approaching.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The storm was seen approaching.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§3.2.2",
+        "pages": [
+          1205,
+          1206
+        ],
+        "pdf_pages": [
+          1225,
+          1226
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Raised objects with perception verbs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-315",
+    "domain": "clauses",
+    "concept": "Complex concealed passives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A concealed passive can occur with an intervening NP interpreted as the affected participant in the lower situation.",
+    "condition": "Applies to the construction described in §3.2.3 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The complex pattern is variety-sensitive. Genitive marking of the whole intervening NP is unavailable in this construction.",
+        "pages": [
+          1206
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She needs her coat mending.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The manager wants the locks changing.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§3.2.3",
+        "pages": [
+          1206
+        ],
+        "pdf_pages": [
+          1226
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Complex concealed passives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-316",
+    "domain": "clauses",
+    "concept": "Catenative complements as a distinct function",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Similarities between an NP complement and a non-finite clause do not establish identical functions. The chapter distinguishes catenative complements from objects and predicatives.",
+    "condition": "Applies to the construction described in §4.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some non-finite clauses do have familiar functions, such as subject or predicative complement, in non-catenative constructions.",
+        "pages": [
+          1206,
+          1207
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They remembered the address.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They remembered to check the address.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§4.1",
+        "pages": [
+          1206,
+          1207
+        ],
+        "pdf_pages": [
+          1226,
+          1227
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Catenative complements as a distinct function",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-317",
+    "domain": "clauses",
+    "concept": "Limits of object, oblique and predicative analogies",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Object–oblique contrasts with NPs and object–predicative contrasts with NPs or AdjPs do not systematically extend to catenative infinitivals.",
+    "condition": "Applies to the construction described in §4.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A matrix verb can license both a predicative and a catenative complement. That alternation does not establish that they have the same function.",
+        "pages": [
+          1207,
+          1208
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She seems calm.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She seems to understand the instructions.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§4.1",
+        "pages": [
+          1207,
+          1208
+        ],
+        "pdf_pages": [
+          1227,
+          1228
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Limits of object, oblique and predicative analogies",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-318",
+    "domain": "clauses",
+    "concept": "Degrees of resemblance to objects",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Promotion, pronoun substitution, interrogative what and clefts provide uneven evidence that a catenative complement resembles an NP object.",
+    "condition": "Applies to the construction described in §4.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some gerund-participials promote, and a few infinitivals occur in extraposed passive patterns. Neither result generalizes to the whole class.",
+        "pages": [
+          1208,
+          1209
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Leaving without notice was not recommended.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was planned to move the office in June.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§4.1",
+        "pages": [
+          1208,
+          1209
+        ],
+        "pdf_pages": [
+          1228,
+          1229
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Degrees of resemblance to objects",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-319",
+    "domain": "clauses",
+    "concept": "Core and non-core uses of auxiliaries",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An auxiliary in core use combines with a following non-finite verb. Some auxiliaries have additional uses with a different complement structure.",
+    "condition": "Applies to the construction described in §4.2 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Auxiliary status in the chapter depends on negation, inversion, code and emphasis. A core use can also occur with its complement omitted by ellipsis.",
+        "pages": [
+          1209
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The door is opening.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The door is open.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§4.2",
+        "pages": [
+          1209
+        ],
+        "pdf_pages": [
+          1229
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Core and non-core uses of auxiliaries",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-320",
+    "domain": "clauses",
+    "concept": "Overt object with active believe plus an infinitival",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "In the active believe construction with a to-infinitival complement, an intervening matrix object is required, including when it refers to the matrix subject.",
+    "condition": "Applies to the construction described in §3.1.1 of Chapter 14.",
+    "violation": "An active believe clause takes a to-infinitival without the required intervening object.",
+    "exceptions": [
+      {
+        "description": "The corresponding passive has no intervening object. Believe also takes finite complements, and other catenative verbs allow subject-controlled infinitivals.",
+        "pages": [
+          1203
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Nina believed herself to be qualified.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I believed myself to be ready.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Nina believed to be qualified.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "I believed to be ready.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§3.1.1",
+        "pages": [
+          1203
+        ],
+        "pdf_pages": [
+          1223
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Overt object with active believe plus an infinitival",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "missing_word",
+      "error_pattern": "An active believe clause takes a to-infinitival without the required intervening object.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Nina believed to be qualified. ||| Nina believed herself to be qualified.",
+        "I believed to be ready. ||| I believed myself to be ready."
+      ],
+      "learner_explanation": "In the active believe construction with a to-infinitival complement, an intervening matrix object is required, including when it refers to the matrix subject.",
+      "corrected_paragraph_template": "Supply an object, using a reflexive when the object refers back to the matrix subject.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Nina was believed to be qualified.",
+        "I believed that I was ready.",
+        "Nina hoped to be qualified."
+      ],
+      "lesson_tags": [
+        "clause-type",
+        "missing-word"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]
