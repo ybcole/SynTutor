@@ -19,15 +19,15 @@
 | 11. Content clauses and reported speech | 84 | 0 | 84 | 0 | 0 | Incomplete |
 | 12. Relative constructions | 66 | 0 | 66 | 0 | 0 | Incomplete |
 | 13. Comparative constructions | 74 | 0 | 74 | 0 | 0 | Incomplete |
-| 14. Non-finite and verbless clauses | 102 | 37 | 62 | 3 | 0 | In progress (pp. 1171–1209) |
+| 14. Non-finite and verbless clauses | 102 | 54 | 45 | 3 | 0 | In progress (pp. 1171–1226) |
 | 15. Coordination and supplementation | 90 | 0 | 90 | 0 | 0 | Incomplete |
 | 16. Information packaging | 86 | 0 | 85 | 1 | 0 | Incomplete |
 | 17. Deixis and anaphora | 116 | 0 | 116 | 0 | 0 | Incomplete |
 | 18. Inflectional morphology | 56 | 0 | 55 | 1 | 0 | Incomplete |
-| 19. Lexical word-formation | 102 | 37 | 62 | 3 | 0 | In progress (pp. 1171–1209) |
+| 19. Lexical word-formation | 102 | 54 | 45 | 3 | 0 | In progress (pp. 1171–1226) |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **638 extracted**, 1101 unprocessed, 23 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **655 extracted**, 1084 unprocessed, 23 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -216,3 +216,7 @@ The opening batch covers 21 substantive pages and two contents pages. It adds 27
 ## Chapter 14 pp. 1194–1209
 
 The second batch covers 16 substantive pages and adds 23 records (`CLS-298`–`CLS-320`) on raising, ordinary and complex catenatives, concealed passives and the catenative complement function. See the [source report](sources/cambridge/chapter_14/PP1194_1209_REPORT.md) and [audit manifest](sources/cambridge/chapter_14/PP1194_1209_AUDIT.json). Continue at p. 1210.
+
+## Chapter 14 pp. 1210–1226
+
+The third batch covers 17 substantive pages and adds 24 records (`CLS-321`–`CLS-344`) on auxiliary analysis, gerund-participials, adjunct diagnostics and the framework for classifying catenative verbs. See the [source report](sources/cambridge/chapter_14/PP1210_1226_REPORT.md) and [audit manifest](sources/cambridge/chapter_14/PP1210_1226_AUDIT.json). Continue at p. 1227.

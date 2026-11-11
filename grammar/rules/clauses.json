@@ -22275,5 +22275,1536 @@
     },
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-321",
+    "domain": "clauses",
+    "concept": "Independence in coordination and subordination",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Coordinated main clauses can independently vary polarity and retain their main-clause status. A subordinate complement contributes to a larger utterance and has a more restricted range of clause types.",
+    "condition": "Applies to the construction described in §4.2.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Whether a closed interrogative complement is available can depend on the polarity or clause type of the matrix.",
+        "pages": [
+          1210,
+          1211
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Maya checked the meter, but Jo didn't record it.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Maya said that Jo didn't record it.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§4.2.1",
+        "pages": [
+          1210,
+          1211
+        ],
+        "pdf_pages": [
+          1230,
+          1231
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Independence in coordination and subordination",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-322",
+    "domain": "clauses",
+    "concept": "Reduced options in non-finite complementation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A non-finite complement lacks inflectional tense and often leaves its subject and time interpretation to the governing construction or context.",
+    "condition": "Applies to the construction described in §4.2.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Loss of some independent options is compatible with clause status.",
+        "pages": [
+          1211
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mara said that she opened the gate yesterday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mara asked to open the gate after lunch.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§4.2.1",
+        "pages": [
+          1211
+        ],
+        "pdf_pages": [
+          1231
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reduced options in non-finite complementation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-323",
+    "domain": "clauses",
+    "concept": "Dependent-auxiliary analysis",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The dependent-auxiliary proposal treats a core auxiliary as a dependent in a verbal group headed by the lexical verb. It appeals to the close integration of auxiliary and following verb.",
+    "condition": "Applies to the construction described in §4.2.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This is the competing analysis considered in the chapter. The chapter ultimately adopts the catenative analysis.",
+        "pages": [
+          1210,
+          1211,
+          1212,
+          1213,
+          1214
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The crew had repaired the lift.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The lift had been repaired by the crew.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§4.2.1",
+        "pages": [
+          1210,
+          1211,
+          1212,
+          1213,
+          1214
+        ],
+        "pdf_pages": [
+          1230,
+          1231,
+          1232,
+          1233,
+          1234
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dependent-auxiliary analysis",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-324",
+    "domain": "clauses",
+    "concept": "Non-argument subjects of auxiliaries and lexical raising verbs",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Core auxiliaries need not assign an independent semantic role to the subject. Lexical raising verbs show the same property, so subject selection alone does not justify a separate auxiliary structure.",
+    "condition": "Applies to the construction described in §4.2.1–4.2.2 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Voice neutrality and the availability of dummy subjects help diagnose the shared property.",
+        "pages": [
+          1211,
+          1212,
+          1213,
+          1214,
+          1215
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There had been an error.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There seemed to be an error.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§4.2.1–4.2.2",
+        "pages": [
+          1211,
+          1212,
+          1213,
+          1214,
+          1215
+        ],
+        "pdf_pages": [
+          1231,
+          1232,
+          1233,
+          1234,
+          1235
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-argument subjects of auxiliaries and lexical raising verbs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-325",
+    "domain": "clauses",
+    "concept": "Syntactic negation versus scope with modals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The same syntactic pattern of modal plus not can have different scope relations. Negation may apply to the modal meaning or occur within its scope.",
+    "condition": "Applies to the construction described in §4.2.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "With the permission reading of may, the first denies permission. The second imposes a requirement to refrain.",
+        "pages": [
+          1212,
+          1213
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You may not open the panel yet.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You must not open the panel yet.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§4.2.1",
+        "pages": [
+          1212,
+          1213
+        ],
+        "pdf_pages": [
+          1232,
+          1233
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Syntactic negation versus scope with modals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-326",
+    "domain": "clauses",
+    "concept": "Modal and perfect interpretation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A perfect following a modal can locate the modalized event before the orientation time or contribute to a past-oriented modal judgment. The order stays the same.",
+    "condition": "Applies to the construction described in §4.2.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some combinations are ambiguous in context. The scope relations do not require a reversal of surface order.",
+        "pages": [
+          1214
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I may have left it in the van.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I should have checked the latch yesterday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§4.2.1",
+        "pages": [
+          1214
+        ],
+        "pdf_pages": [
+          1234
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Modal and perfect interpretation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-327",
+    "domain": "clauses",
+    "concept": "Placement and interpretation of frequency adjuncts",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The syntactic position of a frequency adjunct and the predicate it qualifies semantically need not coincide in a modal construction.",
+    "condition": "Applies to the construction described in §4.2.1–4.2.2 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "With epistemic must, a reading can associate frequency with the checking, even when the adjunct precedes must.",
+        "pages": [
+          1214,
+          1215
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He must always have checked the locks.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He always must have checked the locks.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§4.2.1–4.2.2",
+        "pages": [
+          1214,
+          1215
+        ],
+        "pdf_pages": [
+          1234,
+          1235
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Placement and interpretation of frequency adjuncts",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-328",
+    "domain": "clauses",
+    "concept": "Auxiliary uses and lexical raising parallels",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The catenative analysis groups core auxiliary uses with lexical catenatives, allowing them to select a non-finite complement. Subject relations and certain non-core uses support treating the auxiliary as a head.",
+    "condition": "Applies to the construction described in §4.2.2 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Special uses of dare and would rather provide further evidence against treating auxiliaries uniformly as dependents.",
+        "pages": [
+          1215
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She had finished the inspection.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She seemed to have finished the inspection.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§4.2.2",
+        "pages": [
+          1215
+        ],
+        "pdf_pages": [
+          1235
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Auxiliary uses and lexical raising parallels",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-329",
+    "domain": "clauses",
+    "concept": "Primary and secondary negation with auxiliaries",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A negative can apply to the auxiliary clause or to its lower non-finite complement. Some constructions allow both.",
+    "condition": "Applies to the construction described in §4.2.2 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A reversed-polarity tag can distinguish matrix negation from lower negation. Double negation of the two levels is relatively uncommon.",
+        "pages": [
+          1215,
+          1216,
+          1217
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She can't always answer the phone, can she?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She can always not answer the phone, can't she?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§4.2.2",
+        "pages": [
+          1215,
+          1216,
+          1217
+        ],
+        "pdf_pages": [
+          1235,
+          1236,
+          1237
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Primary and secondary negation with auxiliaries",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-330",
+    "domain": "clauses",
+    "concept": "Separate temporal specifications with catenatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some catenatives permit distinct time specifications for the matrix and lower events, while others tightly integrate their times. Auxiliary constructions can also distinguish an orientation time from an event time.",
+    "condition": "Applies to the construction described in §4.2.2 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A fronted time adjunct tends to specify the higher time or time of orientation. Lexical selection constrains separate time specifications.",
+        "pages": [
+          1217
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This morning Jo promised to return tonight.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "When Jo called, the crew had already left.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§4.2.2",
+        "pages": [
+          1217
+        ],
+        "pdf_pages": [
+          1237
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Separate temporal specifications with catenatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-331",
+    "domain": "clauses",
+    "concept": "Constituency evidence for auxiliary complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Preposing and coordination can treat the lexical VP with its complements as a constituent excluding the auxiliary. An adjunct can also intervene between the auxiliary and that VP.",
+    "condition": "Applies to the construction described in §4.2.2 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Not all coordination is diagnostic. Delayed right constituent coordination can produce apparent counterexamples.",
+        "pages": [
+          1217,
+          1218,
+          1219
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She said he'd be repairing the gate, and repairing the gate he was.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You can't join the choir and not sing.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§4.2.2",
+        "pages": [
+          1217,
+          1218,
+          1219
+        ],
+        "pdf_pages": [
+          1237,
+          1238,
+          1239
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Constituency evidence for auxiliary complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-332",
+    "domain": "clauses",
+    "concept": "Auxiliary order under the catenative analysis",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In the catenative analysis the order of core auxiliaries follows from their form and selection restrictions. A modal heads the chain, and passive be immediately precedes the passivized verb.",
+    "condition": "Applies to the construction described in §4.2.2 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The second example is grammatically possible but stylistically heavy. Have to can appear on either side of perfect have because its have is not a modal auxiliary.",
+        "pages": [
+          1219,
+          1220
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The report may have been revised.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The report has been being revised.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§4.2.2",
+        "pages": [
+          1219,
+          1220
+        ],
+        "pdf_pages": [
+          1239,
+          1240
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Auxiliary order under the catenative analysis",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-333",
+    "domain": "clauses",
+    "concept": "Perfect have precedes progressive be",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "In a core auxiliary chain expressing both perfect and progressive, perfect have precedes progressive be.",
+    "condition": "Applies to the construction described in §4.2.1–4.2.2 of Chapter 14.",
+    "violation": "Progressive be precedes perfect have in a core chain intended to express perfect progressive aspect.",
+    "exceptions": [
+      {
+        "description": "The constraint applies to core perfect have and progressive be in one chain. Lexical having and separate clauses have different structures.",
+        "pages": [
+          1214,
+          1215,
+          1216,
+          1217,
+          1218,
+          1219
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She has been checking the seals.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They have been inspecting the roof.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "She is having checked the seals.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "They are having inspected the roof.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§4.2.1–4.2.2",
+        "pages": [
+          1214,
+          1215,
+          1216,
+          1217,
+          1218,
+          1219
+        ],
+        "pdf_pages": [
+          1234,
+          1235,
+          1236,
+          1237,
+          1238,
+          1239
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Perfect have precedes progressive be",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "word_order",
+      "error_pattern": "Progressive be precedes perfect have in a core chain intended to express perfect progressive aspect.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "She is having checked the seals. ||| She has been checking the seals.",
+        "They are having inspected the roof. ||| They have been inspecting the roof."
+      ],
+      "learner_explanation": "In a core auxiliary chain expressing both perfect and progressive, perfect have precedes progressive be.",
+      "corrected_paragraph_template": "Use finite perfect have followed by been and the gerund-participle.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "She is having the seals checked.",
+        "They have inspected the roof.",
+        "They are inspecting the roof."
+      ],
+      "lesson_tags": [
+        "clause-type",
+        "word-order"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-334",
+    "domain": "clauses",
+    "concept": "Case variation and traditional ing categories",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Subject case distinguishes certain complement and supplementary gerund-participials. Subjectless constructions supply no comparable internal case evidence for splitting the verbal inflection.",
+    "condition": "Applies to the construction described in §4.3 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Non-genitive case is also possible in many complements. A supplementary nominative is relatively formal.",
+        "pages": [
+          1220,
+          1221
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She resented his being selected first.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He being the only volunteer, we asked him to start.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§4.3",
+        "pages": [
+          1220,
+          1221
+        ],
+        "pdf_pages": [
+          1240,
+          1241
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Case variation and traditional ing categories",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-335",
+    "domain": "clauses",
+    "concept": "Limits of noun and adjective analogies for gerund-participials",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Alternation with an NP or AdjP does not consistently divide gerund-participial complements into object-like and predicative classes. Related aspectual verbs can license different non-clausal dependents.",
+    "condition": "Applies to the construction described in §4.3 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The comparison concerns verbal ing clauses. A gerundial noun and a participial adjective remain separate categories.",
+        "pages": [
+          1221,
+          1222
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He kept checking the gauges.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He stopped checking the gauges.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§4.3",
+        "pages": [
+          1221,
+          1222
+        ],
+        "pdf_pages": [
+          1241,
+          1242
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Limits of noun and adjective analogies for gerund-participials",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-336",
+    "domain": "clauses",
+    "concept": "Aspect does not separate the traditional ing categories",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Whether an ing clause receives a progressive interpretation depends on the construction and context. It does not consistently track the traditional gerund and present-participle labels.",
+    "condition": "Applies to the construction described in §4.3 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The ing inflection alone does not establish progressive aspect.",
+        "pages": [
+          1222
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We saw Jo repairing the latch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Jo began repairing the latch.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§4.3",
+        "pages": [
+          1222
+        ],
+        "pdf_pages": [
+          1242
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Aspect does not separate the traditional ing categories",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-337",
+    "domain": "clauses",
+    "concept": "Purpose adjuncts versus catenative complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A purpose adjunct can often take in order and move to the front. A selected infinitival complement instead supplies content licensed by its governing verb.",
+    "condition": "Applies to the construction described in §4.4 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "With some verbs a string permits both readings. Prosody, punctuation and lexical meaning can affect the interpretation.",
+        "pages": [
+          1222,
+          1223
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "In order to impress the panel, she rehearsed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She promised to impress the panel.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§4.4",
+        "pages": [
+          1222,
+          1223
+        ],
+        "pdf_pages": [
+          1242,
+          1243
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Purpose adjuncts versus catenative complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-338",
+    "domain": "clauses",
+    "concept": "Purpose and complementation with motion verbs",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A to-infinitival following a motion verb can resemble a purpose adjunct but have a tighter semantic relation with the verb. Some uses of be or move license a complement rather than an optional purpose specification.",
+    "condition": "Applies to the construction described in §4.4 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "With go, wait and hurry the boundary can be less sharp. Availability of a purpose paraphrase alone is not decisive.",
+        "pages": [
+          1223
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina has been to see the new exhibition.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The council moved to address the complaints.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§4.4",
+        "pages": [
+          1223
+        ],
+        "pdf_pages": [
+          1243
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Purpose and complementation with motion verbs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-339",
+    "domain": "clauses",
+    "concept": "Result and cause adjuncts versus complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An infinitival may describe an optional result or cause, or may be licensed as a complement in a particular sense of a verb.",
+    "condition": "Applies to the construction described in §4.4 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Omission and coordination paraphrases can help. Omission may leave a grammatical sentence while changing the matrix sense.",
+        "pages": [
+          1224
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I ran to the platform, only to find it empty.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She lived to see the bridge reopen.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§4.4",
+        "pages": [
+          1224
+        ],
+        "pdf_pages": [
+          1244
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Result and cause adjuncts versus complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-340",
+    "domain": "clauses",
+    "concept": "Depictive gerund-participials",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A gerund-participial can depict a concurrent state or activity. With certain motion and posture verbs the boundary between adjunct and complement can be less clear.",
+    "condition": "Applies to the construction described in §4.4 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Adding a locative can make an adjunct more readily omissible in a posture construction.",
+        "pages": [
+          1224,
+          1225
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He came in smiling broadly.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She sat on the patio reading the newspaper.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§4.4",
+        "pages": [
+          1224,
+          1225
+        ],
+        "pdf_pages": [
+          1244,
+          1245
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Depictive gerund-participials",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-341",
+    "domain": "clauses",
+    "concept": "Try and and plain-form go constructions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The chapter analyzes the and phrase after try in the illustrated use as a non-finite complement. A restricted go construction permits a following plain verb without and.",
+    "condition": "Applies to the construction described in §4.4 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Ordinary coordination with go and occurs more widely. In the no-and construction both verbs are plain forms.",
+        "pages": [
+          1225
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Try and keep the door closed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Go get the spare key.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§4.4",
+        "pages": [
+          1225
+        ],
+        "pdf_pages": [
+          1245
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Try and and plain-form go constructions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-342",
+    "domain": "clauses",
+    "concept": "Dimensions of catenative classification",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Catenative verbs are classified by simple or complex complementation, complement form and syntactic diagnostics. Distinct senses of a verb may require separate entries.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "In the examples, try means endeavor with the infinitival and test a method with the gerund-participial. Some verbs alternate without that change of sense.",
+        "pages": [
+          1225,
+          1226
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They tried to free the latch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They tried pressing the latch sideways.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§5.1",
+        "pages": [
+          1225,
+          1226
+        ],
+        "pdf_pages": [
+          1245,
+          1246
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dimensions of catenative classification",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-343",
+    "domain": "clauses",
+    "concept": "Passive patterns in catenative classification",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Passive classification distinguishes promotion of an intervening NP, extraposition of an infinitival, and promotion of a gerund-participial.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "These patterns have different distributions. Some verbs require or block a particular passive, and finite alternants and other complement options are recorded separately.",
+        "pages": [
+          1226
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She was advised to wait.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Waiting outside was not recommended.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§5.1",
+        "pages": [
+          1226
+        ],
+        "pdf_pages": [
+          1246
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Passive patterns in catenative classification",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-344",
+    "domain": "clauses",
+    "concept": "Finite alternants of catenative complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some catenatives have a finite declarative alternant or near-alternant. Its form can be unmodalized or include a modal preterite, will, a mandative, or should.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 14.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "With some predicates the finite alternative changes the interpretation. The finite pattern has to be established for each lexical sense.",
+        "pages": [
+          1226
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They demanded to speak first.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They demanded that they speak first.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 14,
+        "section": "§5.1",
+        "pages": [
+          1226
+        ],
+        "pdf_pages": [
+          1246
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Finite alternants of catenative complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]

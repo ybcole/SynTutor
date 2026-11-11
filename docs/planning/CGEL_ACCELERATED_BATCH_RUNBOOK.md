@@ -218,3 +218,7 @@ Printed pp. 1171–1193 account for two contents pages and 21 substantive pages 
 ## Chapter 14 second checkpoint (2026-11-11)
 
 Printed pp. 1194–1209 yielded 23 records (`CLS-298`–`CLS-320`), including one inactive constraint specification. This shorter batch groups the dense raising and complementation diagnostics. Continue at p. 1210 with competing analyses of auxiliaries.
+
+## Chapter 14 third checkpoint (2026-11-11)
+
+Printed pp. 1210–1226 yielded 24 records (`CLS-321`–`CLS-344`), including one inactive constraint specification. The batch groups the competing auxiliary analyses and the framework for catenative classification. Continue at p. 1227 with the omissions note and Class 1 verbs.
