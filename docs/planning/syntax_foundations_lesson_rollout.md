@@ -28,7 +28,7 @@ affected section.
 
 | Page | What the learner does | What the page needs |
 | --- | --- | --- |
-| 1. Introduction and opening check | Recall an idea from the previous chapter. Make a prediction about a short example and reveal the explanation. | A plain-language **What this chapter covers**, a small contrast showing why the new idea matters, and concrete outcomes. End with three unscored questions shown one at a time, with the reviewed prediction as the saved first response. |
+| 1. Introduction and opening check | Recall an idea from the previous chapter. Make a prediction about a short example and reveal the explanation. | A plain-language **What this chapter covers**, a small contrast showing why the new idea matters, and concrete outcomes. Include a visible **What you’ll see in this chapter** preview with examples from the upcoming reading, worked activity, and application pages. End with three unscored questions shown one at a time, with the reviewed prediction as the saved first response. |
 | 2. Core concepts | Work through the book's reasoning using the chapter's example and a contrasting example. Try a diagnostic or decide between two analyses. | Several descriptive subheadings. Under each, explain one idea in short paragraphs, show which words or branches provide evidence, and give feedback on a likely misunderstanding. Keep the essential explanation visible and use disclosures for answers and extra detail. |
 | 3. Worked analysis and guided construction | Read a tree from a meaningful starting node. Trace the words and compare the same relationship in another example. Build or edit the part that demonstrates the concept. | An authored canvas, a nearby notation guide, and short captions explaining the relation. For tree construction, place the editable canvas with **Guide me** and **Check construction** in the lesson. Match the scope of the construction task to the chapter's outcome. |
 | 4. Apply the concept | Compare a pair of sentences or analyse a new one. Explain which evidence supports the decision, then practise the relationship again. | A new example that requires the same reasoning, feedback that explains the result, and a worked reveal. If the application asks learners to build, provide a second guided editor on this page with its own draft. |
@@ -45,6 +45,9 @@ the example shows and gives the learner a decision to make. Use diagrams,
 sentence pairs, brackets, and short practice prompts to break up reading.
 A terminology note alone is too little for a topic page. Cambridge can
 clarify a distinction within a page that already teaches the B-R concept.
+Before each worked figure, name the sentence, connect the figure to the
+preceding explanation, and tell learners which words or branches to trace.
+Explain unfamiliar symbols before asking learners to use the diagram.
 
 ## Chapter 2 reference implementation
 
@@ -53,6 +56,10 @@ Burton-Roberts introduces the subject–predicate split on printed pp. 24–28,
 then noun and verb phrases, category versus function, and triangles on
 pp. 29–31. Figure [33] (stored as `ch2-33`) supports the shape of the authored
 catalog tree. The reviewed M4 outcome `br-02/o1` assesses the top-level split.
+The launch curriculum lists pp. 29–30 as the reviewed evidence for that
+outcome. The surrounding pages can inform examples and explanations, while
+broader objectives such as head and dependent relationships belong to the
+later coverage already mapped in the curriculum.
 
 | Page | Implemented teaching sequence |
 | --- | --- |

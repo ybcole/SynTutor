@@ -316,6 +316,9 @@ try:
    page.evaluate("()=>import('/js/lessons-ui.js').then(m=>m.openLessons('br-02'))")
   view.locator('.lesson-module').nth(1).get_by_role('button',name='Start lesson',exact=True).click()
   expect(part_heading).to_have_text('Introduction to Subject and Predicate')
+  preview=view.get_by_role('heading',name='What you’ll see in this chapter')
+  expect(preview).to_be_visible()
+  expect(preview.locator('+ ol > li')).to_have_count(3)
   introductory_split=view.get_by_text('[The robins] [sing]',exact=True)
   expect(introductory_split).to_be_hidden()
   view.get_by_text('See the two parts',exact=True).press('Enter')
@@ -349,6 +352,7 @@ try:
   view.get_by_role('button',name='Next →',exact=True).click()
   view.get_by_role('button',name='Next →',exact=True).click()
   expect(part_heading).to_have_text('Reading and Building the NP/VP Tree')
+  assert view.get_by_role('heading',name='What the triangles show').bounding_box()['y'] < view.locator('.canonical-viewport').bounding_box()['y']
   view.get_by_role('button',name='Subject',exact=True).click()
   expect(view.locator('.lesson-word-traced')).to_have_text('The robins')
   expect(view.locator('.constituent-selection mark')).to_have_text(['The','robins'])

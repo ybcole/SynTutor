@@ -230,6 +230,18 @@ export function addSubjectPredicateTeaching(body, page, ui) {
       'Use a tree to see the difference between the kind of phrase and its job.',
       'Build a tree showing the two main parts of a sentence.',
     ]);
+    section('What you’ll see in this chapter');
+    const preview = el('ol');
+    for (const [topic, example] of [
+      ['Find the two groups.', 'Use a yes/no question to find the whole subject in “The robins near the gate are singing softly”.'],
+      ['Read and build a tree.', 'Follow the branches in “The robins sing”, then draw them in the lesson canvas.'],
+      ['Try a new sentence.', 'See how “the robins” changes jobs in “Maya watched the robins”, then build a tree for a sentence about an open gate.'],
+    ]) {
+      const item = el('li');
+      item.append(el('strong', topic), ` ${example}`);
+      preview.append(item);
+    }
+    body.append(preview);
   }
 
   if (page === 1) {
@@ -276,12 +288,14 @@ export function addSubjectPredicateTeaching(body, page, ui) {
 
   if (page === 2) {
     section('Read the tree from the top',
-      'Find S at the top. It stands for the whole sentence. Follow its left branch down to NP and its right branch down to VP. These nodes share the same parent, so we call them sisters.',
-      'Switch between the two sentences. Select Subject or Predicate, or select a label in the tree, to see the words each branch covers. The longer example has more words, and you can still find the same two direct branches under S.');
-    const practiceLongTree = addTreeComparison(body, ui);
+      'On the previous page, you split “The robins sing” into two groups. A tree shows that same split with two lines. It puts a label above each group so you can see what kind of phrase it is.',
+      'The top label, S, covers the whole sentence. Its left branch leads to NP, the noun phrase “The robins”. Its right branch leads to VP, the verb phrase “sing”. These nodes share the same parent, so we call them sisters.');
     section('What the triangles show',
-      'Follow the NP triangle in the longer tree down to “The robins near the gate”. It shows that all five words are part of this NP. The triangle leaves any smaller groups inside it for another drawing.',
-      'Read the VP triangle in the same way. In the short tree it covers only “sing”. In the longer tree it covers “are singing softly”.');
+      'A triangle points to the words in a phrase. It leaves any smaller branches inside that phrase for another drawing. In the short tree, the NP triangle covers two words and the VP triangle covers just “sing”.',
+      'Before you look at the longer tree, recall the question from the previous page. It showed that “The robins near the gate” stays together. Use the NP triangle to check whether the tree includes all five words in that group.');
+    section('Compare the two trees',
+      'Select Subject or Predicate to highlight the words that branch covers. Switch to the longer sentence and repeat the comparison. Look for the same two branches under S and see which words each one now covers.');
+    const practiceLongTree = addTreeComparison(body, ui);
     section('Build your first labelled tree',
       'Start with the words of “The robins sing”. Add S, NP and VP and connect their branches. Use Guide me for help, or build directly on the canvas.',
       'Right-click or press and hold to open a node menu. Connect the words to their phrases first, then use the menu to collapse NP and VP to triangles. Use Check construction to see which part needs attention.');
@@ -314,7 +328,7 @@ export function addSubjectPredicateTeaching(body, page, ui) {
     const contrast = sentenceTree('br-02-contrast', contrastSentence, 'Maya', 'watched the robins');
     section('Follow the two NPs',
       'In “The robins sing”, the NP “The robins” connects straight to S. In “Maya watched the robins”, the NP “Maya” takes that position. The whole VP is “watched the robins”, including the birds Maya watched.',
-      'Open the close-up to compare the two connections. One NP connects directly to S and the other sits one level lower, inside VP. This is the same idea of groups within groups that you saw in Chapter 1.');
+      'First read the two triangles in the overview. The NP triangle ends at “Maya”. The VP triangle covers all of “watched the robins”. Then open the close-up to see the smaller NP inside that VP. This is the same idea of groups within groups that you saw in Chapter 1.');
     const overview = el('div', undefined, 'constituent-diagram');
     body.append(overview);
     ui.showDiagram(overview, contrast);
