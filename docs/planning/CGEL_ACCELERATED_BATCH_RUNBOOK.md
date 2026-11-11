@@ -198,3 +198,7 @@ The final accelerated batch covers 27 substantive pages, printed pp.635–661, a
 ## Chapter 10 first checkpoint (2026-11-11)
 
 Printed pp. 851–878 account for 26 substantive pages and two contents pages. The 41 records (`CLS-121`–`CLS-161`) include five inactive constraint specifications. Continue at p. 879 with the final discussion of direction questions and the start of biased questions.
+
+## Chapter 10 second checkpoint (2026-11-11)
+
+Printed pp. 879–902 yielded 39 records (`CLS-162`–`CLS-200`), including three inactive constraint specifications. Chapter 10 has 50 substantive pages extracted and 43 pages unprocessed. Continue at p. 903 with interrogative words and phrases.

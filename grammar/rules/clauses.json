@@ -12162,5 +12162,2481 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-162",
+    "domain": "clauses",
+    "concept": "Rightness of answers to direction questions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A directive answer can settle a choice offered to the addressee or provide advice that can be judged appropriate to the circumstances.",
+    "condition": "Applies to the construction described in §4.6 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An answer that grants or declines an offer need not be assessed in the same way as advice.",
+        "pages": [
+          879
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Shall I hold the door? — Yes, please.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Shall I cycle home in this storm? — Take the bus.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.6",
+        "pages": [
+          879
+        ],
+        "pdf_pages": [
+          899
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Rightness of answers to direction questions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-163",
+    "domain": "clauses",
+    "concept": "Neutral questions and degrees of bias",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A biased question presents one answer as favored, whereas a neutral question leaves the options open. Bias can range from a slight inclination to certainty.",
+    "condition": "Applies to the construction described in §4.7–4.7.1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "If the speaker takes the answer as settled, the question can acknowledge information or convey a statement instead of seeking information.",
+        "pages": [
+          879,
+          880,
+          881
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Have you received any notices this month?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The courier has already been here?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.7–4.7.1",
+        "pages": [
+          879,
+          880,
+          881
+        ],
+        "pdf_pages": [
+          899,
+          900,
+          901
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Neutral questions and degrees of bias",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-164",
+    "domain": "clauses",
+    "concept": "Epistemic, deontic and desiderative bias",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A speaker can favor an answer because it seems true, because it ought to be true, or because they want it to be true. These kinds can coexist and favor different answers.",
+    "condition": "Applies to the construction described in §4.7.1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "In a reproach, the speaker may believe an action was omitted while judging that it ought to have been done.",
+        "pages": [
+          880
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Didn't you lock the cupboard?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "May I have some more soup?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.7.1",
+        "pages": [
+          880
+        ],
+        "pdf_pages": [
+          900
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Epistemic, deontic and desiderative bias",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-165",
+    "domain": "clauses",
+    "concept": "Contextual, prosodic and grammatical bias",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Bias can arise from context and prosody or be marked by the grammatical construction. Declarative questions and negative interrogatives are strongly biased in the uses described here.",
+    "condition": "Applies to the construction described in §4.7.1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Complete bias can also occur in an ordinary interrogative form when the speaker already knows the answer.",
+        "pages": [
+          881
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You haven't heard the news?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Didn't you hear the bell?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.7.1",
+        "pages": [
+          881
+        ],
+        "pdf_pages": [
+          901
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Contextual, prosodic and grammatical bias",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-166",
+    "domain": "clauses",
+    "concept": "Polarity of declarative questions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A declarative question typically seeks confirmation of the proposition it presents. Its epistemic bias ordinarily follows the polarity of that proposition.",
+    "condition": "Applies to the construction described in §4.7.2 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "These forms can also carry a preference or judgment about what should be the case.",
+        "pages": [
+          881,
+          882
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The gates are open?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The gates aren't open?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.7.2",
+        "pages": [
+          881,
+          882
+        ],
+        "pdf_pages": [
+          901,
+          902
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Polarity of declarative questions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-167",
+    "domain": "clauses",
+    "concept": "Confidence markers outside question scope",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Expressions such as surely and of course can reinforce bias without becoming part of the proposition the addressee is asked to confirm.",
+    "condition": "Applies to the construction described in §4.7.2 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Confirmatory replies such as Exactly can acknowledge the expected proposition. Comparable items in interrogatives can convey weaker commitment.",
+        "pages": [
+          882
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The plumber has been notified, of course?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You surely kept the receipt?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.7.2",
+        "pages": [
+          882
+        ],
+        "pdf_pages": [
+          902
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Confidence markers outside question scope",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-168",
+    "domain": "clauses",
+    "concept": "Scope of indirect declarative questions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A declarative used as a question may pragmatically place only its subordinate proposition in question, even when a matrix expression is part of the syntax.",
+    "condition": "Applies to the construction described in §4.7.2 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A matrix qualification can remain outside the inferred question scope. A question about permission can also function as a request.",
+        "pages": [
+          882,
+          883
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I take it you found the key?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I don't suppose I could borrow your charger?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.7.2",
+        "pages": [
+          882,
+          883
+        ],
+        "pdf_pages": [
+          902,
+          903
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Scope of indirect declarative questions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-169",
+    "domain": "clauses",
+    "concept": "Bias direction in negative interrogatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Negative interrogative form strongly biases a question but does not by itself determine which answer the speaker favors. Context can reverse the epistemic orientation.",
+    "condition": "Applies to the construction described in §4.7.3 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A negative interrogative can indirectly express reproach, apology, or an emphatic exclamatory statement in suitable contexts.",
+        "pages": [
+          883,
+          884
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Didn't I leave the spare key here?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Isn't that the address you gave me?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.7.3",
+        "pages": [
+          883,
+          884
+        ],
+        "pdf_pages": [
+          903,
+          904
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Bias direction in negative interrogatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-170",
+    "domain": "clauses",
+    "concept": "Polarity-sensitive items in positive interrogatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In a positive interrogative, a positively oriented item can make a positive answer more expected or desirable than the corresponding negatively oriented item does.",
+    "condition": "Applies to the construction described in §4.7.4 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Already can signal a stronger positive bias than some and its compounds. An offer with some is compatible with a preference for acceptance.",
+        "pages": [
+          884,
+          885
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Has anyone called about the leak?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Has someone called about the leak?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.7.4",
+        "pages": [
+          884,
+          885
+        ],
+        "pdf_pages": [
+          904,
+          905
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Polarity-sensitive items in positive interrogatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-171",
+    "domain": "clauses",
+    "concept": "Negative polarity items in simple positive declarative questions",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "A simple positive declarative question does not license temporal ever merely by being used as a question.",
+    "condition": "Applies to the construction described in §4.7.4 of Chapter 10.",
+    "violation": "Temporal ever appears in a simple positive declarative question without an independent licensing environment.",
+    "exceptions": [
+      {
+        "description": "Limit the specification to affirmative declarative syntax with no independent licensor. Preserve interrogative inversion, negative environments, and licensed scalar uses.",
+        "pages": [
+          885
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You've already visited the gallery?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You've already tried the new route?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "You've ever visited the gallery?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "You've ever tried the new route?",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.7.4",
+        "pages": [
+          885
+        ],
+        "pdf_pages": [
+          905
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negative polarity items in simple positive declarative questions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "Temporal ever appears in a simple positive declarative question without an independent licensing environment.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "You've ever visited the gallery? ||| You've already visited the gallery?",
+        "You've ever tried the new route? ||| You've already tried the new route?"
+      ],
+      "learner_explanation": "A simple positive declarative question does not license temporal ever merely by being used as a question.",
+      "corrected_paragraph_template": "Keep declarative order with a suitable positive expression, or use interrogative inversion to retain ever.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Have you ever visited the gallery?",
+        "You haven't ever tried the new route?",
+        "It's the best route you've ever tried."
+      ],
+      "lesson_tags": [
+        "clause-type",
+        "other"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-172",
+    "domain": "clauses",
+    "concept": "Polarity-sensitive items in negative interrogatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A negatively oriented item can favor the negative answer in a negative interrogative. A positively oriented item can occur with either bias, often with a salient positive interpretation.",
+    "condition": "Applies to the construction described in §4.7.4 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The context can still matter for positively oriented forms. Positive orientation also occurs in reminders and indirect exclamations.",
+        "pages": [
+          885,
+          886
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Haven't they told anyone yet?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Haven't they told someone already?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.7.4",
+        "pages": [
+          885,
+          886
+        ],
+        "pdf_pages": [
+          905,
+          906
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Polarity-sensitive items in negative interrogatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-173",
+    "domain": "clauses",
+    "concept": "Echo question types and stimulus modification",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A polar echo repeats a stimulus, an alternative echo offers replacements, and a variable echo substitutes a question expression. The echo can shorten the stimulus or adjust pronouns to the new speaker.",
+    "condition": "Applies to the construction described in §4.8 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A changed speaker can require a change in deictic expressions.",
+        "pages": [
+          886
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I repaired the latch. — You repaired the latch?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I left it in the cabinet. — You left it where?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.8",
+        "pages": [
+          886
+        ],
+        "pdf_pages": [
+          906
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Echo question types and stimulus modification",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-174",
+    "domain": "clauses",
+    "concept": "Echo questions as indirect speech acts",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An echo typically asks about what the previous speaker said or meant. An ordinary question with similar wording can ask about the state of affairs itself.",
+    "condition": "Applies to the construction described in §4.8.1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Reusing wording from the previous turn is insufficient by itself to establish an echo analysis.",
+        "pages": [
+          887
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Did Lena call? — Did Lena call? I couldn't hear you.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You said the ferry was delayed. Was it delayed?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.8.1",
+        "pages": [
+          887
+        ],
+        "pdf_pages": [
+          907
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Echo questions as indirect speech acts",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-175",
+    "domain": "clauses",
+    "concept": "Form and position of variable echo words",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A variable echo word can occupy the position of the echoed expression, even where an ordinary interrogative word cannot occur in that category. It does not trigger inversion by fronting.",
+    "condition": "Applies to the construction described in §4.8.2 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Subject echoes and some in-situ ordinary questions can overlap in order. Prosody and context help distinguish them.",
+        "pages": [
+          888
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He was recalibrating it. — He was whatting it?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They left it in the kiln. — They left it in the what?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.8.2",
+        "pages": [
+          888
+        ],
+        "pdf_pages": [
+          908
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Form and position of variable echo words",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-176",
+    "domain": "clauses",
+    "concept": "Echo constructions across clause types",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Variable echo marking can combine with declaratives, interrogatives, exclamatives or imperatives. The echoed construction normally supplies the order and clause-type properties.",
+    "condition": "Applies to the construction described in §4.8.2 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A question word in an echo need not mark an open interrogative clause.",
+        "pages": [
+          888,
+          889
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Send the receipt to Mina. — Send what to Mina?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Did Omar complain? — Did who complain?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.8.2",
+        "pages": [
+          888,
+          889
+        ],
+        "pdf_pages": [
+          908,
+          909
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Echo constructions across clause types",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-177",
+    "domain": "clauses",
+    "concept": "Multi-variable echoes",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An echo can substitute question expressions for more than one part of its stimulus. Prosody can distinguish several echo words from an ordinary interrogative word plus an echo word.",
+    "condition": "Applies to the construction described in §4.8.2 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Ambiguity can remain where the syntactic order is compatible with several analyses.",
+        "pages": [
+          889
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They mailed the maps to Lina. — They mailed what to whom?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Give the bolt to Amir. — Give what to whom?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.8.2",
+        "pages": [
+          889
+        ],
+        "pdf_pages": [
+          909
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Multi-variable echoes",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-178",
+    "domain": "clauses",
+    "concept": "Polar echoes and bare predication",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Polar echoes commonly retain the stimulus form and signal echo meaning through rising intonation. An informal bare predication can reduce the echoed material.",
+    "condition": "Applies to the construction described in §4.8.3 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Pronoun subjects in the informal bare-predication pattern tend toward accusative case. Ordinary declarative questions can have the same surface form as a polar echo.",
+        "pages": [
+          889,
+          890
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The pump failed. — The pump failed?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She's our new mechanic. — Her our new mechanic?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.8.3",
+        "pages": [
+          889,
+          890
+        ],
+        "pdf_pages": [
+          909,
+          910
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Polar echoes and bare predication",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-179",
+    "domain": "clauses",
+    "concept": "Repetition and clarification echoes",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A repetition echo seeks to recover wording that was missed or doubted. A clarification echo asks the speaker to make their intended reference or meaning more explicit.",
+    "condition": "Applies to the construction described in §4.8.4 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Clarification can be polar, alternative or variable. Its interpretation and intonation can differ from those of a repetition echo.",
+        "pages": [
+          890,
+          891
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Put it beside the lathe. — Beside the what?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Put it beside the machine. — Beside which machine?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.8.4",
+        "pages": [
+          890,
+          891
+        ],
+        "pdf_pages": [
+          910,
+          911
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Repetition and clarification echoes",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-180",
+    "domain": "clauses",
+    "concept": "Interrogative supplements and anchors",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An interrogative tag or parenthetical is a supplement to an anchor clause and can affect the force of the utterance as a whole.",
+    "condition": "Applies to the construction described in §5–5.1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The anchor is commonly declarative, but other clause types occur, including imperatives and exclamatives.",
+        "pages": [
+          891,
+          892
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The desk is ready, isn't it?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Is the desk ready, do you think?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§5–5.1",
+        "pages": [
+          891,
+          892
+        ],
+        "pdf_pages": [
+          911,
+          912
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Interrogative supplements and anchors",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-181",
+    "domain": "clauses",
+    "concept": "Reversed and constant polarity tags",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A reversed polarity tag has polarity opposite to its anchor. A constant polarity tag has the same polarity as its anchor.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Few and hardly can make an anchor negative without overt not. Negative constant polarity tags are not accepted by many speakers.",
+        "pages": [
+          892
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You found the file, didn't you?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "So you found the file, did you?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§5.1",
+        "pages": [
+          892
+        ],
+        "pdf_pages": [
+          912
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reversed and constant polarity tags",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-182",
+    "domain": "clauses",
+    "concept": "Auxiliary choice and tense in canonical tags",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "A canonical tag matches the anchor auxiliary and tense, using supportive do where the anchor has a lexical predicator and no auxiliary.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 10.",
+    "violation": "The canonical reversed-polarity tag uses the wrong auxiliary or tense for an unambiguous simple anchor.",
+    "exceptions": [
+      {
+        "description": "Guard dialectal substitutions, invariant tags, subordinate anchors, imperative tags, and cases where an apparently different tense reflects a different anchor.",
+        "pages": [
+          892,
+          893
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They can stay, can't they?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She filed it, didn't she?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "They can stay, don't they?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "She filed it, doesn't she?",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§5.1",
+        "pages": [
+          892,
+          893
+        ],
+        "pdf_pages": [
+          912,
+          913
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Auxiliary choice and tense in canonical tags",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "verb_form",
+      "error_pattern": "The canonical reversed-polarity tag uses the wrong auxiliary or tense for an unambiguous simple anchor.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "They can stay, don't they? ||| They can stay, can't they?",
+        "She filed it, doesn't she? ||| She filed it, didn't she?"
+      ],
+      "learner_explanation": "A canonical tag matches the anchor auxiliary and tense, using supportive do where the anchor has a lexical predicator and no auxiliary.",
+      "corrected_paragraph_template": "Repeat the anchor auxiliary or use do with the anchor tense when the anchor has a lexical verb.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "I think she filed it, didn't she?",
+        "You ought to tell her, shouldn't you?",
+        "Close the door, will you?",
+        "They can stay, right?"
+      ],
+      "lesson_tags": [
+        "clause-type",
+        "verb-form"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-183",
+    "domain": "clauses",
+    "concept": "Agreement with the pronoun in canonical tags",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "In a canonical tag, the auxiliary agrees with the tag's personal-pronoun subject. That subject is selected in relation to the anchor.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 10.",
+    "violation": "The auxiliary in a canonical tag does not agree with its own subject pronoun.",
+    "exceptions": [
+      {
+        "description": "Agreement follows the tag pronoun. Singular they and indefinite antecedents may produce different number marking from the anchor.",
+        "pages": [
+          893
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The windows are open, aren't they?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The lamp is on, isn't it?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The windows are open, isn't they?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The lamp is on, aren't it?",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§5.1",
+        "pages": [
+          893
+        ],
+        "pdf_pages": [
+          913
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Agreement with the pronoun in canonical tags",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "agreement",
+      "error_pattern": "The auxiliary in a canonical tag does not agree with its own subject pronoun.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The windows are open, isn't they? ||| The windows are open, aren't they?",
+        "The lamp is on, aren't it? ||| The lamp is on, isn't it?"
+      ],
+      "learner_explanation": "In a canonical tag, the auxiliary agrees with the tag's personal-pronoun subject. That subject is selected in relation to the anchor.",
+      "corrected_paragraph_template": "Choose the auxiliary form that agrees with the tag pronoun.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Everybody has arrived, haven't they?",
+        "I'm next, aren't I?",
+        "The windows are open, right?"
+      ],
+      "lesson_tags": [
+        "clause-type",
+        "agreement"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-184",
+    "domain": "clauses",
+    "concept": "Tags based on subordinate clauses",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A tag can pick up the subordinate proposition when the matrix expression functions as a qualification of it. Negation in the matrix can affect the interpretation of the subordinate proposition.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Apply the analysis to communicatively foregrounded complements, including some with think, seem or suppose.",
+        "pages": [
+          893,
+          894
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I think the shutters are closed, aren't they?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I don't think the latch is broken, is it?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§5.1",
+        "pages": [
+          893,
+          894
+        ],
+        "pdf_pages": [
+          913,
+          914
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Tags based on subordinate clauses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-185",
+    "domain": "clauses",
+    "concept": "Variation in auxiliary choice and anchor form",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some tag forms depart from the canonical auxiliary match. Choices can depend on variety, lexical alternatives and whether the anchor supplies a finite verb.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Most speakers lack mayn't, and there is no single agreed substitute. Have got can take a do tag for some speakers.",
+        "pages": [
+          893,
+          894
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You ought to tell her, shouldn't you?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Lovely morning, isn't it?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§5.1",
+        "pages": [
+          893,
+          894
+        ],
+        "pdf_pages": [
+          913,
+          914
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Variation in auxiliary choice and anchor form",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-186",
+    "domain": "clauses",
+    "concept": "Rising and falling reversed-polarity tags",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A rising reversed-polarity tag can seek verification, while a falling tag commonly seeks acknowledgment without expressing doubt.",
+    "condition": "Applies to the construction described in §5.2 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A negative anchor with a particular rising contour can express apprehension and favor a positive answer. Punctuation alone does not distinguish the contours.",
+        "pages": [
+          894,
+          895
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The meter is still running, isn't it? — I can't tell from here.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It's cold in here, isn't it? — It certainly is.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§5.2",
+        "pages": [
+          894,
+          895
+        ],
+        "pdf_pages": [
+          914,
+          915
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Rising and falling reversed-polarity tags",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-187",
+    "domain": "clauses",
+    "concept": "Constant polarity tags and prior discourse",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A constant polarity tag can signal surprise, acknowledgment or reproach when the anchor proposition comes from earlier discourse or is attributed to the addressee.",
+    "condition": "Applies to the construction described in §5.2 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Reproach is optional. Exclamative anchors normally favor reversed-polarity tags.",
+        "pages": [
+          895
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "So you've ordered a second desk, have you?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The spare parts have arrived, have they?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§5.2",
+        "pages": [
+          895
+        ],
+        "pdf_pages": [
+          915
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Constant polarity tags and prior discourse",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-188",
+    "domain": "clauses",
+    "concept": "Parenthetical syntax and information structure",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A parenthetical can follow or interrupt an independent anchor. A corresponding integrated construction instead uses that material as a subordinate complement.",
+    "condition": "Applies to the construction described in §5.3 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Parentheticals lack the complement of their integrated counterparts and normally background the qualification.",
+        "pages": [
+          895,
+          896
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I think the bridge is safe.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The bridge is, I think, safe.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§5.3",
+        "pages": [
+          895,
+          896
+        ],
+        "pdf_pages": [
+          915,
+          916
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Parenthetical syntax and information structure",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-189",
+    "domain": "clauses",
+    "concept": "Interrogative parentheticals and question force",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An interrogative parenthetical can request confirmation of a declarative anchor or qualify the interpretation of an interrogative anchor. The latter usually conveys one question overall.",
+    "condition": "Applies to the construction described in §5.3 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The corresponding integrated question can instead be about what somebody said. In the surveyed pattern, do you know as a parenthetical takes a closed interrogative anchor.",
+        "pages": [
+          896,
+          897
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The route is clear, don't you think?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "When will the train arrive, did she say?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§5.3",
+        "pages": [
+          896,
+          897
+        ],
+        "pdf_pages": [
+          916,
+          917
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Interrogative parentheticals and question force",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-190",
+    "domain": "clauses",
+    "concept": "Parentheticals attached to echoes",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An interrogative parenthetical can identify an echo as seeking repetition or clarification without adding a second independent question.",
+    "condition": "Applies to the construction described in §5.3 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The integrated form can have a different clause structure and communicative interpretation.",
+        "pages": [
+          897
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She ordered what, did you say?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Use the blue folder, do you mean?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§5.3",
+        "pages": [
+          897
+        ],
+        "pdf_pages": [
+          917
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Parentheticals attached to echoes",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-191",
+    "domain": "clauses",
+    "concept": "Question–answer presupposition and alternative questions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An information question ordinarily presupposes a right answer. An alternative question presents a set of mutually exclusive candidate answers and ordinarily presupposes that one applies.",
+    "condition": "Applies to the construction described in §6–6.1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An explicit both option adds an alternative and makes the earlier options exclusive of the combined choice.",
+        "pages": [
+          897,
+          898
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Will you drive or take the train?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Would you like crackers, grapes, or both?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§6–6.1",
+        "pages": [
+          897,
+          898
+        ],
+        "pdf_pages": [
+          917,
+          918
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Question–answer presupposition and alternative questions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-192",
+    "domain": "clauses",
+    "concept": "Question–answer presupposition of polar questions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A polar question's question–answer presupposition is the disjunction of a proposition and its negation. This is logically exhaustive, but asking can still pragmatically signal that one possibility cannot be taken for granted.",
+    "condition": "Applies to the construction described in §6.2 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The same disjunction underlies the positive and negative formulations. An indirect accusation can arise pragmatically.",
+        "pages": [
+          898
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Did the package arrive?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Didn't the package arrive?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§6.2",
+        "pages": [
+          898
+        ],
+        "pdf_pages": [
+          918
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Question–answer presupposition of polar questions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-193",
+    "domain": "clauses",
+    "concept": "Question–answer presupposition of variable questions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A variable question normally presupposes a suitable value exists. Replacing its variable with a matching indefinite can represent that presupposition.",
+    "condition": "Applies to the construction described in §6.3 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The domain of the indefinite follows the interrogative word. The indefinite proposition does not itself supply a particular answer.",
+        "pages": [
+          899
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Who signed the receipt?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "When did the courier leave?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§6.3",
+        "pages": [
+          899
+        ],
+        "pdf_pages": [
+          919
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Question–answer presupposition of variable questions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-194",
+    "domain": "clauses",
+    "concept": "Answer eligibility and variable domains",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A response supports the presupposition of a variable question when it supplies a value in the relevant domain. A true proposition can fail to answer when it lacks that property.",
+    "condition": "Applies to the construction described in §6.3 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "For an elliptical reply, the listener may need to infer an additional domain-membership premise.",
+        "pages": [
+          899,
+          900
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Which plumber repaired the tap? — Rosa repaired it.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Which plumber repaired the tap? — Rosa repaired it, but she's an electrician.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§6.3",
+        "pages": [
+          899,
+          900
+        ],
+        "pdf_pages": [
+          919,
+          920
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Answer eligibility and variable domains",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-195",
+    "domain": "clauses",
+    "concept": "Rejection of question presuppositions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A response can reject the presupposition of a question by denying that any listed alternative or suitable value applies.",
+    "condition": "Applies to the construction described in §6.4 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A negative quantificational reply can reject the existence of a value without furnishing one.",
+        "pages": [
+          900
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Will you walk or cycle? — Neither. I'm staying here.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Who delivered the parcel? — Nobody. It's still at the depot.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§6.4",
+        "pages": [
+          900
+        ],
+        "pdf_pages": [
+          920
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Rejection of question presuppositions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-196",
+    "domain": "clauses",
+    "concept": "Contextual cancellation of question presuppositions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A variable question can be used without its ordinary existence presupposition. This is possible in rhetorical challenges and some conventional indirect statements.",
+    "condition": "Applies to the construction described in §6.5 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Should can occur with or without cancellation. Interpretation depends on context.",
+        "pages": [
+          900,
+          901
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Why should she sign that?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "How should I know?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§6.5",
+        "pages": [
+          900,
+          901
+        ],
+        "pdf_pages": [
+          920,
+          921
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Contextual cancellation of question presuppositions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-197",
+    "domain": "clauses",
+    "concept": "Forms associated with presupposition cancellation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Negatively oriented items and some bare infinitival why questions can signal that the speaker takes no suitable value for granted.",
+    "condition": "Applies to the construction described in §6.5 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A finite negative why question can preserve the presupposition, for example when it seeks the reason for a present preference.",
+        "pages": [
+          901
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Where could we find anything quieter?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Why postpone the launch?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§6.5",
+        "pages": [
+          901
+        ],
+        "pdf_pages": [
+          921
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Forms associated with presupposition cancellation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-198",
+    "domain": "clauses",
+    "concept": "Secondary presuppositions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A question can carry background assumptions from its predicate or another construction in addition to its ordinary question–answer presupposition.",
+    "condition": "Applies to the construction described in §6.6 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The first ordinarily assumes prior cycling, and the second ordinarily assumes that the deletion happened. These assumptions depend on the wording.",
+        "pages": [
+          901,
+          902
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Has Mira stopped cycling to work?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Did Max erase the file deliberately?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§6.6",
+        "pages": [
+          901,
+          902
+        ],
+        "pdf_pages": [
+          921,
+          922
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Secondary presuppositions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-199",
+    "domain": "clauses",
+    "concept": "Interrogative role and core syntactic role",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An interrogative word marks a question variable and also plays a role within the clause, such as heading an NP or determining a nominal.",
+    "condition": "Applies to the construction described in §7 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Interrogative subordinators belong to a different class. Who and whom are case forms of one lexeme in this analysis.",
+        "pages": [
+          902
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Who borrowed the spanner?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What tools did you borrow?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§7",
+        "pages": [
+          902
+        ],
+        "pdf_pages": [
+          922
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Interrogative role and core syntactic role",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-200",
+    "domain": "clauses",
+    "concept": "Selection from a definite set with which",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Which asks for a value selected from a definite set recoverable from the wording or context.",
+    "condition": "Applies to the construction described in §7.1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The set need not be stated explicitly in the question. The next page develops explicit set expressions.",
+        "pages": [
+          902
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Which drawer contains the tape?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Which do you prefer?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§7.1",
+        "pages": [
+          902
+        ],
+        "pdf_pages": [
+          922
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Selection from a definite set with which",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]
