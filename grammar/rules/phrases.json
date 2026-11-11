@@ -1520,5 +1520,1765 @@
     "protocol_version": "1.0",
     "status": "APPROVED",
     "diagnostic": null
+  },
+  {
+    "id": "PHR-020",
+    "domain": "phrases",
+    "concept": "Noun phrase complements and head nouns",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "NPs prototypically serve as clause subjects, objects and PCs, and usually contain a noun as head.",
+    "condition": "When interpreting noun phrase complements and head nouns in the specific English NP construction or noun sense discussed in Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Fused-head structures are an explicit exception to the ordinary head-noun requirement.",
+        "pages": [
+          326
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The engineer arrived early.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We met an engineer at the station.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§1",
+        "pages": [
+          326
+        ],
+        "pdf_pages": [
+          346
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Noun phrase complements and head nouns",
+        "relation": "unverified",
+        "note": "Independent B-R NP structure crosswalk required; Cambridge extraction alone does not verify tree nodes."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Full-volume CGEL Chapter 5 printed page directly checked; independently authored English examples, no independent linguistic authorization or production activation."
+  },
+  {
+    "id": "PHR-021",
+    "domain": "phrases",
+    "concept": "Noun number and genitive paradigms",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Typical nouns contrast singular and plural and plain and genitive forms, although lexical nouns have inflectional restrictions.",
+    "condition": "When interpreting noun number and genitive paradigms in the specific English NP construction or noun sense discussed in Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Equipment lacks a regular count plural in its ordinary sense; children is an irregular plural.",
+        "pages": [
+          326
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The children's books were new.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The dogs' bowls were empty.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§1",
+        "pages": [
+          326
+        ],
+        "pdf_pages": [
+          346
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Noun number and genitive paradigms",
+        "relation": "unverified",
+        "note": "Independent B-R NP structure crosswalk required; Cambridge extraction alone does not verify tree nodes."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Full-volume CGEL Chapter 5 printed page directly checked; independently authored English examples, no independent linguistic authorization or production activation."
+  },
+  {
+    "id": "PHR-022",
+    "domain": "phrases",
+    "concept": "Personal pronouns as noun subclass",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Personal pronouns head NPs and can occupy subject, object and predicative functions despite their distinctive case paradigm.",
+    "condition": "When interpreting personal pronouns as noun subclass in the specific English NP construction or noun sense discussed in Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Formal and informal case choices in specifying PC require separate analysis.",
+        "pages": [
+          327
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She contacted the director.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The director contacted her.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§1",
+        "pages": [
+          327
+        ],
+        "pdf_pages": [
+          347
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Personal pronouns as noun subclass",
+        "relation": "unverified",
+        "note": "Independent B-R NP structure crosswalk required; Cambridge extraction alone does not verify tree nodes."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Full-volume CGEL Chapter 5 printed page directly checked; independently authored English examples, no independent linguistic authorization or production activation."
+  },
+  {
+    "id": "PHR-023",
+    "domain": "phrases",
+    "concept": "NP non-clausal functions and dummy there",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "NPs can also modify phrases, serve as complements of prepositions, supplements and vocatives; existential there occupies subject NP function.",
+    "condition": "When interpreting np non-clausal functions and dummy there in the specific English NP construction or noun sense discussed in Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Dummies need not fill all NP complement positions to qualify as NPs.",
+        "pages": [
+          327
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There are several choices.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Ava, your train is leaving.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§1",
+        "pages": [
+          327
+        ],
+        "pdf_pages": [
+          347
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "NP non-clausal functions and dummy there",
+        "relation": "unverified",
+        "note": "Independent B-R NP structure crosswalk required; Cambridge extraction alone does not verify tree nodes."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Full-volume CGEL Chapter 5 printed page directly checked; independently authored English examples, no independent linguistic authorization or production activation."
+  },
+  {
+    "id": "PHR-024",
+    "domain": "phrases",
+    "concept": "Bare role noun phrase as PC",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An undetermined role nominal can be a predicative complement after be or appoint, but cannot ordinarily be a referential subject/object.",
+    "condition": "When interpreting bare role noun phrase as pc in the specific English NP construction or noun sense discussed in Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Titles and proper names differ from bare role PCs; determiner omission is not a generic NP permission.",
+        "pages": [
+          328
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She became treasurer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They appointed her coordinator.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§1–§2",
+        "pages": [
+          328
+        ],
+        "pdf_pages": [
+          348
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Bare role noun phrase as PC",
+        "relation": "unverified",
+        "note": "Independent B-R NP structure crosswalk required; Cambridge extraction alone does not verify tree nodes."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Full-volume CGEL Chapter 5 printed page directly checked; independently authored English examples, no independent linguistic authorization or production activation."
+  },
+  {
+    "id": "PHR-025",
+    "domain": "phrases",
+    "concept": "Common proper and pronominal nouns",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Common nouns, proper nouns and pronouns are noun subclasses; a proper noun need not always head a proper name.",
+    "condition": "When interpreting common proper and pronominal nouns in the specific English NP construction or noun sense discussed in Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A common noun may head a proper name; a proper noun can occur in a descriptive NP such as another Einstein.",
+        "pages": [
+          328
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The visitor waved.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mika waved.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§1–§2",
+        "pages": [
+          328
+        ],
+        "pdf_pages": [
+          348
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Common proper and pronominal nouns",
+        "relation": "unverified",
+        "note": "Independent B-R NP structure crosswalk required; Cambridge extraction alone does not verify tree nodes."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Full-volume CGEL Chapter 5 printed page directly checked; independently authored English examples, no independent linguistic authorization or production activation."
+  },
+  {
+    "id": "PHR-026",
+    "domain": "phrases",
+    "concept": "Countability belongs to the lexical sense",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A noun can have count and noncount senses, often with different individuation or food-substance meanings.",
+    "condition": "When interpreting countability belongs to the lexical sense in the specific English NP construction or noun sense discussed in Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Pluralization or numerals select a count reading only when a count sense is licensed.",
+        "pages": [
+          328
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She ordered two cakes.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We have enough cake for everyone.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§1–§2",
+        "pages": [
+          328
+        ],
+        "pdf_pages": [
+          348
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Countability belongs to the lexical sense",
+        "relation": "unverified",
+        "note": "Independent B-R NP structure crosswalk required; Cambridge extraction alone does not verify tree nodes."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Full-volume CGEL Chapter 5 printed page directly checked; independently authored English examples, no independent linguistic authorization or production activation."
+  },
+  {
+    "id": "PHR-027",
+    "domain": "phrases",
+    "concept": "Nominal is intermediate between noun and NP",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A nominal can contain a noun and internal dependents yet fail the distribution of a fully determined NP.",
+    "condition": "When interpreting nominal is intermediate between noun and np in the specific English NP construction or noun sense discussed in Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Nominal is not equivalent to a complete NP, and nominal modifiers cannot simply be replaced by NPs.",
+        "pages": [
+          329
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The old cabinet was heavy.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Those Ministry officials arrived.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§2",
+        "pages": [
+          329
+        ],
+        "pdf_pages": [
+          349
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nominal is intermediate between noun and NP",
+        "relation": "unverified",
+        "note": "Independent B-R NP structure crosswalk required; Cambridge extraction alone does not verify tree nodes."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Full-volume CGEL Chapter 5 printed page directly checked; independently authored English examples, no independent linguistic authorization or production activation."
+  },
+  {
+    "id": "PHR-028",
+    "domain": "phrases",
+    "concept": "Bare nominal cannot occupy ordinary singular count subject",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "An ordinary singular count nominal lacking a determiner cannot appear as a canonical referential subject NP in Standard English.",
+    "condition": "When interpreting bare nominal cannot occupy ordinary singular count subject in the specific English NP construction or noun sense discussed in Chapter 5.",
+    "violation": "The selected determiner or nominal category is not licensed in this particular Standard English NP construction.",
+    "exceptions": [
+      {
+        "description": "Licensed bare plurals, mass nouns, names and bare role PCs are excluded from this narrow rule.",
+        "pages": [
+          329
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The old technician arrived.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The new administrator arrived.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Old technician arrived.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "New administrator arrived.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§2",
+        "pages": [
+          329
+        ],
+        "pdf_pages": [
+          349
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Bare nominal cannot occupy ordinary singular count subject",
+        "relation": "unverified",
+        "note": "Independent B-R NP structure crosswalk required; Cambridge extraction alone does not verify tree nodes."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "article_determiner",
+      "error_pattern": "The selected determiner or nominal category is not licensed in this particular Standard English NP construction.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Old technician arrived. ||| The old technician arrived.",
+        "New administrator arrived. ||| The new administrator arrived."
+      ],
+      "learner_explanation": "An ordinary singular count nominal lacking a determiner cannot appear as a canonical referential subject NP in Standard English. The noun sense, head class and construction must be checked before this is treated as an error, because the Cambridge grammar lists specific exceptions.",
+      "corrected_paragraph_template": "Replace only the nonlicensed determiner or missing determiner with the cited construction-appropriate option, preserving unrelated parts.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The workers arrived.",
+        "She became treasurer."
+      ],
+      "lesson_tags": [
+        "NP_structure",
+        "countability"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Full-volume CGEL Chapter 5 printed page directly checked; independently authored English examples, no independent linguistic authorization or production activation."
+  },
+  {
+    "id": "PHR-029",
+    "domain": "phrases",
+    "concept": "Determiner function is distinct from determinative category",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An NP determiner can be a determinative phrase or genitive NP, while determinatives also have modifier uses.",
+    "condition": "When interpreting determiner function is distinct from determinative category in the specific English NP construction or noun sense discussed in Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The category all has different function in all visitors versus all the visitors.",
+        "pages": [
+          330
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The actor's notebook disappeared.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "All the visitors were seated.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§2",
+        "pages": [
+          330
+        ],
+        "pdf_pages": [
+          350
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Determiner function is distinct from determinative category",
+        "relation": "unverified",
+        "note": "Independent B-R NP structure crosswalk required; Cambridge extraction alone does not verify tree nodes."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Full-volume CGEL Chapter 5 printed page directly checked; independently authored English examples, no independent linguistic authorization or production activation."
+  },
+  {
+    "id": "PHR-030",
+    "domain": "phrases",
+    "concept": "Recursive NP-internal modifiers",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An NP nominal may contain multiple nested prehead modifiers and posthead dependents; nominal levels form nested constituents.",
+    "condition": "When interpreting recursive np-internal modifiers in the specific English NP construction or noun sense discussed in Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Do not conflate the ultimate lexical noun with the NP's immediate nominal head.",
+        "pages": [
+          330
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The unusually warm wool blanket dried.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The quiet old stone cottage remained.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§2",
+        "pages": [
+          330
+        ],
+        "pdf_pages": [
+          350
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Recursive NP-internal modifiers",
+        "relation": "unverified",
+        "note": "Independent B-R NP structure crosswalk required; Cambridge extraction alone does not verify tree nodes."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Full-volume CGEL Chapter 5 printed page directly checked; independently authored English examples, no independent linguistic authorization or production activation."
+  },
+  {
+    "id": "PHR-031",
+    "domain": "phrases",
+    "concept": "NP-internal complements versus modifiers",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Prehead and posthead dependents can be internal to the nominal, while external determiners attach at NP level.",
+    "condition": "When interpreting np-internal complements versus modifiers in the specific English NP construction or noun sense discussed in Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The difference between of-complement and relative-clause modifier is relation to the head, not just PP/Clause category.",
+        "pages": [
+          331
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The photographs of Kyoto were beautiful.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The photographs that she took were beautiful.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§2",
+        "pages": [
+          331
+        ],
+        "pdf_pages": [
+          351
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "NP-internal complements versus modifiers",
+        "relation": "unverified",
+        "note": "Independent B-R NP structure crosswalk required; Cambridge extraction alone does not verify tree nodes."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Full-volume CGEL Chapter 5 printed page directly checked; independently authored English examples, no independent linguistic authorization or production activation."
+  },
+  {
+    "id": "PHR-032",
+    "domain": "phrases",
+    "concept": "Predeterminer versus peripheral modifiers",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "External modifiers include predeterminers before determiners and peripheral modifiers before or after the NP head.",
+    "condition": "When interpreting predeterminer versus peripheral modifiers in the specific English NP construction or noun sense discussed in Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Both in both proposals is determiner, not predeterminer; peripheral alone can follow the NP.",
+        "pages": [
+          331
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Both those proposals are expensive.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Even the youngest visitor understood.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§2",
+        "pages": [
+          331
+        ],
+        "pdf_pages": [
+          351
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Predeterminer versus peripheral modifiers",
+        "relation": "unverified",
+        "note": "Independent B-R NP structure crosswalk required; Cambridge extraction alone does not verify tree nodes."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Full-volume CGEL Chapter 5 printed page directly checked; independently authored English examples, no independent linguistic authorization or production activation."
+  },
+  {
+    "id": "PHR-033",
+    "domain": "phrases",
+    "concept": "Fused head is not necessarily ellipsis",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In fused-head NPs, a determinative or modifier simultaneously serves as head; some fused examples cannot be expanded with an unspoken noun.",
+    "condition": "When interpreting fused head is not necessarily ellipsis in the specific English NP construction or noun sense discussed in Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Predeterminer-head fusion is rarer; simple cases may allow an expanded equivalent without requiring an ellipsis analysis.",
+        "pages": [
+          332
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Many were invited.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The wealthy were concerned.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§2",
+        "pages": [
+          332
+        ],
+        "pdf_pages": [
+          352
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fused head is not necessarily ellipsis",
+        "relation": "unverified",
+        "note": "Independent B-R NP structure crosswalk required; Cambridge extraction alone does not verify tree nodes."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Full-volume CGEL Chapter 5 printed page directly checked; independently authored English examples, no independent linguistic authorization or production activation."
+  },
+  {
+    "id": "PHR-034",
+    "domain": "phrases",
+    "concept": "Simple partitive special fused heads",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A fused-head NP may be recoverable from context, denote a subset in an of-PP partitive, or have a special generalized interpretation.",
+    "condition": "When interpreting simple partitive special fused heads in the specific English NP construction or noun sense discussed in Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A partitive of-PP is an internal complement, and special fused heads may refer to things rather than people.",
+        "pages": [
+          333
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Five were unavailable.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The poorest of the applicants needed assistance.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§2–§3",
+        "pages": [
+          333
+        ],
+        "pdf_pages": [
+          353
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Simple partitive special fused heads",
+        "relation": "unverified",
+        "note": "Independent B-R NP structure crosswalk required; Cambridge extraction alone does not verify tree nodes."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Full-volume CGEL Chapter 5 printed page directly checked; independently authored English examples, no independent linguistic authorization or production activation."
+  },
+  {
+    "id": "PHR-035",
+    "domain": "phrases",
+    "concept": "Content clauses are not NP categories",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Subordinate content and nonfinite clauses can occupy NP-like grammatical functions while retaining clausal internal structure.",
+    "condition": "When interpreting content clauses are not np categories in the specific English NP construction or noun sense discussed in Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A clause subject is not a noun phrase merely because it fills a subject function.",
+        "pages": [
+          333
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "That the doors were closed surprised us.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Whether the meeting is cancelled is unclear.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§2–§3",
+        "pages": [
+          333
+        ],
+        "pdf_pages": [
+          353
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Content clauses are not NP categories",
+        "relation": "unverified",
+        "note": "Independent B-R NP structure crosswalk required; Cambridge extraction alone does not verify tree nodes."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Full-volume CGEL Chapter 5 printed page directly checked; independently authored English examples, no independent linguistic authorization or production activation."
+  },
+  {
+    "id": "PHR-036",
+    "domain": "phrases",
+    "concept": "Singular and plural in agreement domains",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Number appears in noun morphology, NP internal determiners, pronoun–antecedent agreement and subject–verb agreement.",
+    "condition": "When interpreting singular and plural in agreement domains in the specific English NP construction or noun sense discussed in Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Number of an NP need not always equal head-noun morphology, as with quantified measures.",
+        "pages": [
+          334
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "These students are ready.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "This student is ready.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3–§3.1",
+        "pages": [
+          334
+        ],
+        "pdf_pages": [
+          354
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Singular and plural in agreement domains",
+        "relation": "unverified",
+        "note": "Independent B-R NP structure crosswalk required; Cambridge extraction alone does not verify tree nodes."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Full-volume CGEL Chapter 5 printed page directly checked; independently authored English examples, no independent linguistic authorization or production activation."
+  },
+  {
+    "id": "PHR-037",
+    "domain": "phrases",
+    "concept": "Cardinal numeral as count test",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A sense that freely takes one/two/three is count; an ordinary noncount sense such as crockery rejects such low numerals.",
+    "condition": "When interpreting cardinal numeral as count test in the specific English NP construction or noun sense discussed in Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Do not infer all plural-only nouns are count, nor exclude serving/variety count senses.",
+        "pages": [
+          334
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Three plates were broken.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We need more crockery.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3–§3.1",
+        "pages": [
+          334
+        ],
+        "pdf_pages": [
+          354
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Cardinal numeral as count test",
+        "relation": "unverified",
+        "note": "Independent B-R NP structure crosswalk required; Cambridge extraction alone does not verify tree nodes."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Full-volume CGEL Chapter 5 printed page directly checked; independently authored English examples, no independent linguistic authorization or production activation."
+  },
+  {
+    "id": "PHR-038",
+    "domain": "phrases",
+    "concept": "Count noncount polysemy not homonymy",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Many nouns such as paper and study have related count objects and noncount material/activity uses.",
+    "condition": "When interpreting count noncount polysemy not homonymy in the specific English NP construction or noun sense discussed in Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Sense-specific categorization avoids flagging valid plural forms in a licensed count interpretation.",
+        "pages": [
+          335
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The office needs more paper.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She submitted three papers.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.1",
+        "pages": [
+          335
+        ],
+        "pdf_pages": [
+          355
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Count noncount polysemy not homonymy",
+        "relation": "unverified",
+        "note": "Independent B-R NP structure crosswalk required; Cambridge extraction alone does not verify tree nodes."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Full-volume CGEL Chapter 5 printed page directly checked; independently authored English examples, no independent linguistic authorization or production activation."
+  },
+  {
+    "id": "PHR-039",
+    "domain": "phrases",
+    "concept": "Homogeneous versus heterogeneous noncount",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Noncount nouns may denote homogeneous substances or heterogeneous aggregations such as clothing and furniture.",
+    "condition": "When interpreting homogeneous versus heterogeneous noncount in the specific English NP construction or noun sense discussed in Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An aggregate consisting of separable individual objects need not itself license numerals as a count noun.",
+        "pages": [
+          336
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We need more water.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The shop sells furniture.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.1",
+        "pages": [
+          336
+        ],
+        "pdf_pages": [
+          356
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Homogeneous versus heterogeneous noncount",
+        "relation": "unverified",
+        "note": "Independent B-R NP structure crosswalk required; Cambridge extraction alone does not verify tree nodes."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Full-volume CGEL Chapter 5 printed page directly checked; independently authored English examples, no independent linguistic authorization or production activation."
+  },
+  {
+    "id": "PHR-040",
+    "domain": "phrases",
+    "concept": "Servings and varieties license count shifts",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Drink nouns can denote a count serving and food nouns sometimes a restaurant order or a variety of a substance.",
+    "condition": "When interpreting servings and varieties license count shifts in the specific English NP construction or noun sense discussed in Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Restaurant order readings and varietal senses are context-sensitive; they cannot be declared incorrect universally.",
+        "pages": [
+          336
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We ordered two coffees.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The menu offers several cheeses.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.1",
+        "pages": [
+          336
+        ],
+        "pdf_pages": [
+          356
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Servings and varieties license count shifts",
+        "relation": "unverified",
+        "note": "Independent B-R NP structure crosswalk required; Cambridge extraction alone does not verify tree nodes."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Full-volume CGEL Chapter 5 printed page directly checked; independently authored English examples, no independent linguistic authorization or production activation."
+  },
+  {
+    "id": "PHR-041",
+    "domain": "phrases",
+    "concept": "Animal meat and restricted abstract senses",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A count animal name may have noncount meat use, while abstract-noun event/result count conversions are restricted lexically.",
+    "condition": "When interpreting animal meat and restricted abstract senses in the specific English NP construction or noun sense discussed in Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Not all abstract nouns allow an event count reading (e.g. harm); special nonliteral substance coercion is possible.",
+        "pages": [
+          337
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The farmer raised chickens.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They served chicken with vegetables.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.1",
+        "pages": [
+          337
+        ],
+        "pdf_pages": [
+          357
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Animal meat and restricted abstract senses",
+        "relation": "unverified",
+        "note": "Independent B-R NP structure crosswalk required; Cambridge extraction alone does not verify tree nodes."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Full-volume CGEL Chapter 5 printed page directly checked; independently authored English examples, no independent linguistic authorization or production activation."
+  },
+  {
+    "id": "PHR-042",
+    "domain": "phrases",
+    "concept": "Countability and morphological number crosscut",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Although noncount nouns are usually singular, some plural-only noncount nouns exist; count nouns can also have invariant plural forms.",
+    "condition": "When interpreting countability and morphological number crosscut in the specific English NP construction or noun sense discussed in Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A plural noun is not automatically count; a base plural is not an unpluralizable mass noun.",
+        "pages": [
+          338
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The oats are ready.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The sheep are grazing.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.1",
+        "pages": [
+          338
+        ],
+        "pdf_pages": [
+          358
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Countability and morphological number crosscut",
+        "relation": "unverified",
+        "note": "Independent B-R NP structure crosswalk required; Cambridge extraction alone does not verify tree nodes."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Full-volume CGEL Chapter 5 printed page directly checked; independently authored English examples, no independent linguistic authorization or production activation."
+  },
+  {
+    "id": "PHR-043",
+    "domain": "phrases",
+    "concept": "Noncount selectors much and a little",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "Determiner much or a little in the quantity use requires noncount construal, not an ordinary count-singular noun.",
+    "condition": "When interpreting noncount selectors much and a little in the specific English NP construction or noun sense discussed in Chapter 5.",
+    "violation": "The selected determiner or nominal category is not licensed in this particular Standard English NP construction.",
+    "exceptions": [
+      {
+        "description": "Adjectival little and count-sense shifts are different constructions.",
+        "pages": [
+          339
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They needed much encouragement.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She drank a little water.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "She hired much assistant.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "He bought a little bicycle.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.1",
+        "pages": [
+          339
+        ],
+        "pdf_pages": [
+          359
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Noncount selectors much and a little",
+        "relation": "unverified",
+        "note": "Independent B-R NP structure crosswalk required; Cambridge extraction alone does not verify tree nodes."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "article_determiner",
+      "error_pattern": "The selected determiner or nominal category is not licensed in this particular Standard English NP construction.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "She hired much assistant. ||| They needed much encouragement.",
+        "He bought a little bicycle. ||| She drank a little water."
+      ],
+      "learner_explanation": "Determiner much or a little in the quantity use requires noncount construal, not an ordinary count-singular noun. The noun sense, head class and construction must be checked before this is treated as an error, because the Cambridge grammar lists specific exceptions.",
+      "corrected_paragraph_template": "Replace only the nonlicensed determiner or missing determiner with the cited construction-appropriate option, preserving unrelated parts.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "He bought a little bicycle.",
+        "They received much support."
+      ],
+      "lesson_tags": [
+        "NP_structure",
+        "countability"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Full-volume CGEL Chapter 5 printed page directly checked; independently authored English examples, no independent linguistic authorization or production activation."
+  },
+  {
+    "id": "PHR-044",
+    "domain": "phrases",
+    "concept": "Distributive each and every select count singular",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "In their ordinary singular determiner use, each and every require a count singular nominal, not a noncount mass noun.",
+    "condition": "When interpreting distributive each and every select count singular in the specific English NP construction or noun sense discussed in Chapter 5.",
+    "violation": "The selected determiner or nominal category is not licensed in this particular Standard English NP construction.",
+    "exceptions": [
+      {
+        "description": "Licensed count recategorizations of chocolate and discipline must not be rejected.",
+        "pages": [
+          339
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Each volunteer received a badge.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Every chair was numbered.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Each furniture was packed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Every equipment was checked.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.1",
+        "pages": [
+          339
+        ],
+        "pdf_pages": [
+          359
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Distributive each and every select count singular",
+        "relation": "unverified",
+        "note": "Independent B-R NP structure crosswalk required; Cambridge extraction alone does not verify tree nodes."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "article_determiner",
+      "error_pattern": "The selected determiner or nominal category is not licensed in this particular Standard English NP construction.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Each furniture was packed. ||| Each volunteer received a badge.",
+        "Every equipment was checked. ||| Every chair was numbered."
+      ],
+      "learner_explanation": "In their ordinary singular determiner use, each and every require a count singular nominal, not a noncount mass noun. The noun sense, head class and construction must be checked before this is treated as an error, because the Cambridge grammar lists specific exceptions.",
+      "corrected_paragraph_template": "Replace only the nonlicensed determiner or missing determiner with the cited construction-appropriate option, preserving unrelated parts.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Each chocolate was wrapped.",
+        "Every department received new equipment."
+      ],
+      "lesson_tags": [
+        "NP_structure",
+        "countability"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Full-volume CGEL Chapter 5 printed page directly checked; independently authored English examples, no independent linguistic authorization or production activation."
+  },
+  {
+    "id": "PHR-045",
+    "domain": "phrases",
+    "concept": "Indefinite a with certain noncount nouns",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The article a usually selects count singulars but occurs in restricted quantified/noncount constructions such as a good knowledge.",
+    "condition": "When interpreting indefinite a with certain noncount nouns in the specific English NP construction or noun sense discussed in Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A with an exceptional noncount noun does not make ordinary plural or another freely licensed.",
+        "pages": [
+          339
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She has a good knowledge of French.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They have a high regard for her.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.1",
+        "pages": [
+          339
+        ],
+        "pdf_pages": [
+          359
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Indefinite a with certain noncount nouns",
+        "relation": "unverified",
+        "note": "Independent B-R NP structure crosswalk required; Cambridge extraction alone does not verify tree nodes."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Full-volume CGEL Chapter 5 printed page directly checked; independently authored English examples, no independent linguistic authorization or production activation."
+  },
+  {
+    "id": "PHR-046",
+    "domain": "phrases",
+    "concept": "Bare singular count NP determiner default",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An ordinary referential count-singular common noun generally requires a determiner, unlike plural or noncount generic uses.",
+    "condition": "When interpreting bare singular count np determiner default in the specific English NP construction or noun sense discussed in Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Temporal all week and other conventional bare forms require separate licensing.",
+        "pages": [
+          340
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The visitor is waiting.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Water was available.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.1–§3.2.1",
+        "pages": [
+          340
+        ],
+        "pdf_pages": [
+          360
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Bare singular count NP determiner default",
+        "relation": "unverified",
+        "note": "Independent B-R NP structure crosswalk required; Cambridge extraction alone does not verify tree nodes."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Full-volume CGEL Chapter 5 printed page directly checked; independently authored English examples, no independent linguistic authorization or production activation."
+  },
+  {
+    "id": "PHR-047",
+    "domain": "phrases",
+    "concept": "Base plural and plural-only nouns",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Invariant plural sheep is grammatically plural in plural contexts, while equipment is noncount and plural-only clothes/scissors have no matching singular in their ordinary senses.",
+    "condition": "When interpreting base plural and plural-only nouns in the specific English NP construction or noun sense discussed in Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Sheep is a base plural, not a noncount singular; plural-only bipartites are often one physical object.",
+        "pages": [
+          340
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The sheep are resting.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "These scissors are sharp.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§3.1–§3.2.1",
+        "pages": [
+          340
+        ],
+        "pdf_pages": [
+          360
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Base plural and plural-only nouns",
+        "relation": "unverified",
+        "note": "Independent B-R NP structure crosswalk required; Cambridge extraction alone does not verify tree nodes."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Full-volume CGEL Chapter 5 printed page directly checked; independently authored English examples, no independent linguistic authorization or production activation."
   }
 ]

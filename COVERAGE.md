@@ -1,6 +1,6 @@
 # CGEL printed-page coverage
 
-**Chapter 4 Phase B source pages complete (2026-11-11):** 107 substantive pages extracted, 3 justified skips (213–214 contents-only; 322 confirmed blank), 0 unprocessed. Independent linguistic QA and Phase C/D detector activation remain separate gates. Continue with the remaining Cambridge chapters.
+**Chapter 5 Phase B underway (2026-11-11):** printed pp.323–340 checked, 15 expository pages extracted and 3 contents-only skips; Chapter 4 remains source-complete. All new grammar rules remain inactive.
 
 **Phase B extraction status: 2026-11-11.** Pages are counted as extracted when a page-specific source audit report is recorded. This is not a claim of full-chapter audit, new live diagnostic detection, or completion of the 20-chapter reference.
 
@@ -10,7 +10,7 @@
 | 2. Syntactic overview | 28 | 0 | 27 | 0 | 1 | Incomplete |
 | 3. The verb | 142 | 139 | 0 | 3 | 0 | Source-extracted; QA pending |
 | 4. The clause: complements | 110 | 107 | 0 | 3 | 0 | Source extracted; QA pending |
-| 5. Nouns and noun phrases | 202 | 0 | 201 | 0 | 1 | Incomplete |
+| 5. Nouns and noun phrases | 202 | 15 | 183 | 3 | 1 | In progress: pp. 323–340 |
 | 6. Adjectives and adverbs | 72 | 0 | 71 | 1 | 0 | Incomplete |
 | 7. Prepositions and preposition phrases | 66 | 0 | 65 | 1 | 0 | Incomplete |
 | 8. The clause: adjuncts | 122 | 0 | 122 | 0 | 0 | Incomplete |
@@ -27,7 +27,7 @@
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **246 extracted**, 1501 unprocessed, 15 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **261 extracted**, 1483 unprocessed, 18 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -124,3 +124,8 @@ Added 35 inactive source-linked grammar records (COMP-164–COMP-198), audit sou
 ## Chapter 4 final substantive pages: 308–321
 
 Added 39 inactive English-only records (COMP-199–COMP-237), source audit sources/cambridge/chapter_04/PP308_321_REPORT.md, machine manifest sources/cambridge/chapter_04/PP308_321_AUDIT.json. Page 322 blank as confirmed against full PDF, existing skip retained. **All Chapter 4 printed pages accounted for; independent QA / live XAI still pending.** Next source focus, according to the accelerated plan: Chapter 1 or 2 according to source manifest priority, rather than re-reading Chapter 4.
+
+
+## Chapter 5 pp.323–340
+
+28 original-example non-live source records (PHR-020–PHR-047); source report sources/cambridge/chapter_05/PP323_340_REPORT.md, audit sources/cambridge/chapter_05/PP323_340_AUDIT.json. Next printed page 341. No new detector enabled.

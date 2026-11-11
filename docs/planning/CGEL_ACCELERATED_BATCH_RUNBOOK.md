@@ -130,3 +130,8 @@ Source-audited 15 consecutive pages on the chapter branch. Report sources/cambri
 ## Chapter 4 source extraction closed, 2026-11-11
 
 Printed 213–321 and blank 322 accounted for. Chapter 4 107 extracted substantive pages, 3 justified skips, zero unprocessed. This last batch source audit: sources/cambridge/chapter_04/PP308_321_REPORT.md, manifest: sources/cambridge/chapter_04/PP308_321_AUDIT.json, 39 new records. Close the draft PR only after both GitHub CI workflows and batch/ledger/schema gates pass. New rules stay NEEDS_REVIEW and runtime activation remains blocked. Next extraction priority: chapters with remaining unprocessed pages.
+
+
+## Chapter 5 first checkpoint — 2026-11-11
+
+Chapter 5 pp.323–340 inspected (contents-only 323–325, expository 326–340), with 28 inert grammar records. Report sources/cambridge/chapter_05/PP323_340_REPORT.md; audit sources/cambridge/chapter_05/PP323_340_AUDIT.json. Continue at printed p.341 on a chapter-level branch. Independent linguistic QA remains separate from Phase B.

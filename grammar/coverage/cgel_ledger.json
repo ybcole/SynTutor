@@ -2262,128 +2262,128 @@
     {
       "page": 323,
       "chapter": 5,
-      "status": "unprocessed",
-      "reason": null,
-      "evidence": null
+      "status": "skipped_with_reason",
+      "reason": "Chapter 5 contents only, source inspected; no grammar exposition.",
+      "evidence": "sources/cambridge/chapter_05/PP323_340_REPORT.md"
     },
     {
       "page": 324,
       "chapter": 5,
-      "status": "unprocessed",
-      "reason": null,
-      "evidence": null
+      "status": "skipped_with_reason",
+      "reason": "Chapter 5 contents only, source inspected; no grammar exposition.",
+      "evidence": "sources/cambridge/chapter_05/PP323_340_REPORT.md"
     },
     {
       "page": 325,
       "chapter": 5,
-      "status": "unprocessed",
-      "reason": null,
-      "evidence": null
+      "status": "skipped_with_reason",
+      "reason": "Chapter 5 contents only, source inspected; no grammar exposition.",
+      "evidence": "sources/cambridge/chapter_05/PP323_340_REPORT.md"
     },
     {
       "page": 326,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP323_340_REPORT.md"
     },
     {
       "page": 327,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP323_340_REPORT.md"
     },
     {
       "page": 328,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP323_340_REPORT.md"
     },
     {
       "page": 329,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP323_340_REPORT.md"
     },
     {
       "page": 330,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP323_340_REPORT.md"
     },
     {
       "page": 331,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP323_340_REPORT.md"
     },
     {
       "page": 332,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP323_340_REPORT.md"
     },
     {
       "page": 333,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP323_340_REPORT.md"
     },
     {
       "page": 334,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP323_340_REPORT.md"
     },
     {
       "page": 335,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP323_340_REPORT.md"
     },
     {
       "page": 336,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP323_340_REPORT.md"
     },
     {
       "page": 337,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP323_340_REPORT.md"
     },
     {
       "page": 338,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP323_340_REPORT.md"
     },
     {
       "page": 339,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP323_340_REPORT.md"
     },
     {
       "page": 340,
       "chapter": 5,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_05/PP323_340_REPORT.md"
     },
     {
       "page": 341,
