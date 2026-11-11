@@ -420,17 +420,7 @@ try:
   expect(labelled.get_by_role('status')).to_contain_text('Your tree matches')
   page.screenshot(path=str(OUT/'br-02-builder-desktop.png'),full_page=True)
 
-  # The standalone handoff opens its own seed and restores the inline draft.
-  view.get_by_role('button',name='Try in Syntax Builder').click()
-  builder=page.locator('#builderTools')
-  expect(builder.get_by_text('Build “The robins sing”',exact=True)).to_be_visible()
-  expect(builder.get_by_label('B-R convention',exact=True)).to_have_value('2')
-  assert page.evaluate("()=>import('/js/syntax-builder-ui.js').then(m=>Object.values(m.builderModel().nodes).map(n=>n.text))")==['The','robins','sing']
-  builder.get_by_role('button',name='Return to lesson').click()
-  expect(part_heading).to_have_text('Reading and Building the NP/VP Tree')
-  labelled.get_by_role('button',name='Check construction').click()
-  expect(labelled.get_by_role('status')).to_contain_text('Your tree matches')
-  assert page.evaluate("localStorage.getItem('syntutor:lessons:v1:guest')===window.practiceProgress")
+  expect(view.get_by_role('button',name='Try in Syntax Builder')).to_have_count(0)
 
   page.set_viewport_size({'width':390,'height':844})
   assert view.evaluate('(el) => el.scrollWidth <= el.clientWidth'), 'Chapter 2 article has horizontal overflow'
@@ -445,6 +435,22 @@ try:
   view.get_by_text('Look inside the predicate',exact=True).press('Enter')
   expect(view.locator('.lesson-word-traced')).to_have_text('the robins')
   assert view.evaluate('(el) => el.scrollWidth <= el.clientWidth'), 'Chapter 2 contrast tree has horizontal overflow'
+  transfer=view.get_by_role('region',name='Build a tree for a new sentence exercise')
+  expect(transfer.locator('#builderCanvas')).to_be_visible()
+  expect(transfer.locator('#builderTools')).to_have_count(0)
+  transfer.get_by_role('button',name='Guide me').click()
+  transfer_steps=transfer.locator('.first-tree-guide button')
+  expect(transfer_steps).to_have_count(4)
+  for row in transfer_steps.all():
+   row.press('Enter')
+  expect(transfer.get_by_role('status')).to_contain_text('NP covers “The gate by our house”')
+  assert page.evaluate("localStorage.getItem('syntutor:lessons:v1:guest')===window.practiceProgress")
+  view.get_by_role('button',name='← Previous',exact=True).click()
+  labelled.get_by_role('button',name='Check construction').click()
+  expect(labelled.get_by_role('status')).to_contain_text('NP covers “The robins”')
+  view.get_by_role('button',name='Next →',exact=True).click()
+  transfer.get_by_role('button',name='Check construction').click()
+  expect(transfer.get_by_role('status')).to_contain_text('NP covers “The gate by our house”')
   page.evaluate("localStorage.removeItem('syntutor:builder:v1:guest:inline:br-02')")
   view.get_by_role('button',name='← Previous',exact=True).click()
   labelled.get_by_role('button',name='Guide me').click()

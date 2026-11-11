@@ -68,32 +68,25 @@ try:
   }))""")
   page.goto(base+'/#lesson/S',wait_until='domcontentloaded')
   lesson=page.locator('#curriculumView')
-  launch=lesson.get_by_role('button',name='Try in Syntax Builder')
-  expect(launch).to_be_visible()
+  inline=lesson.get_by_role('region',name='Build your first labelled tree exercise')
+  expect(inline.locator('#builderCanvas')).to_be_visible()
+  expect(tools).to_be_hidden()
   standalone=page.evaluate("localStorage.getItem('syntutor:builder:v1:guest')")
-  launch.click()
-  expect(tools.get_by_text('Build “The robins sing”',exact=True)).to_be_visible()
-  words=nodes()
-  assert [n['text'] for n in words]==['The','robins','sing']
-  ids={}
-  for label in ['S','NP','VP']:
-   tools.get_by_label('New B-R category',exact=True).select_option(label)
-   tools.get_by_role('button',name='Add category',exact=True).click()
-   ids[label]=next(n['id'] for n in nodes() if n['type']==label)
-  attach(ids['NP'],ids['S']);attach(ids['VP'],ids['S'])
-  for w in words:attach(w['id'],ids['VP'] if w['text']=='sing' else ids['NP'])
-  for label in ['NP','VP']:
-   select(ids[label]);tools.get_by_role('button',name='Collapse to triangle',exact=True).click()
-  tools.get_by_role('button',name='Check construction').click()
-  expect(panel).to_contain_text('Exercise: matched.')
-  assert checks[-1]['target_lesson_id']=='br-02'
-  tools.get_by_role('button',name='Return to lesson').click()
-  expect(lesson.get_by_role('heading',name='Reading and Building the NP/VP Tree')).to_be_visible()
+  assert [n['text'] for n in nodes()]==['The','robins','sing']
+  inline.get_by_role('button',name='Guide me').click()
+  for step in inline.locator('.first-tree-guide button').all():
+   step.press('Enter')
+  expect(inline.get_by_role('status')).to_contain_text('Your tree matches')
+  page.locator('.sidebar-item[data-view="builder"]').click()
+  expect(tools).to_be_visible()
   assert page.evaluate("localStorage.getItem('syntutor:builder:v1:guest')")==standalone
+  assert [n['text'] for n in nodes()]!=['The','robins','sing']
+  page.locator('.sidebar-item[data-view="lessons"]').click()
+  lesson.locator('.lesson-module').nth(1).get_by_role('button',name='Resume lesson').click()
+  expect(lesson.get_by_role('heading',name='Reading and Building the NP/VP Tree')).to_be_visible()
+  inline.get_by_role('button',name='Check construction').click()
+  expect(inline.get_by_role('status')).to_contain_text('Your tree matches')
   assert page.evaluate("JSON.parse(localStorage.getItem('syntutor:lessons:v1:guest'))['br-02@1.0.0'].stage")==2
-  lesson.get_by_role('button',name='Try in Syntax Builder').click()
-  expect(tools.get_by_text('Build “The robins sing”',exact=True)).to_be_visible()
-  assert len(nodes())==6
   assert not parses,parses
   assert not errors,errors
   page.locator('.sidebar-item[data-view="tutor"]').click();expect(tools).to_be_hidden();browser.close();print('PASS: keyboard/touch node editing, canonical target match, separate verdicts, undo/redo, profile errors, safe import, draft reload, progressive hints/model, mobile layout and no parse/progress side effects.')

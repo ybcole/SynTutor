@@ -593,7 +593,6 @@ function articleScreen(lesson, p, article) {
       lesson, key, { responses: {} }, false, onAnswer,
       { prompt, options: choices.map((text, index) => ({ id: String(index), text })) },
     ),
-    openBuilderPractice: options.onBuilderPractice,
     mountBuilder: (stage, exercise) => {
       const editor = options.mountBuilder(stage, exercise);
       embeddedBuilderCleanup = editor.destroy;

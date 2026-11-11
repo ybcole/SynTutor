@@ -436,7 +436,7 @@ export function boot() {
   setActiveNav(workspaceView);
   initSyntaxBuilder({ onStatusChange: (msg) => log(msg), setWorkspaceView, userId: () => activeUserId });
   initQuizzes({ userId: () => activeUserId, client: () => supabase, onExit: enterTutorMode, onLesson: enterLessonsMode, onNavigate: enterAssessmentMode });
-  initLessons({ userId: () => activeUserId, client: () => supabase, onNavigate: enterLessonsMode, onExit: enterTutorMode, onBuilderPractice: enterLessonBuilderPractice, mountBuilder: mountEmbeddedBuilder });
+  initLessons({ userId: () => activeUserId, client: () => supabase, onNavigate: enterLessonsMode, onExit: enterTutorMode, mountBuilder: mountEmbeddedBuilder });
   initResizers();
   syncInputClearBtn();
   // The one auth modal: the sidebar login and the lessons gateway both land
@@ -721,18 +721,6 @@ function enterBuilderMode(canonicalTree = null) {
   setQuizMode(false);
   setWorkspaceView('builder');
   openBuilderView(canonicalTree ? { canonicalTree } : {});
-}
-
-function enterLessonBuilderPractice(lesson, steps) {
-  teardownWorkspace();
-  setQuizMode(false);
-  setWorkspaceView('builder');
-  openBuilderView({
-    lessonPractice: {
-      lesson, steps,
-      onReturn: () => enterLessonsMode(lesson.lesson_id, { workedExample: true }),
-    },
-  });
 }
 
 // Leaderboard / Achievements: a full-bleed workspace view, docked next to

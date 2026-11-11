@@ -1,11 +1,15 @@
 import { addEmbeddedTreeExercise } from './lesson-tree-exercise.js';
 import { NODE, addPhrase, addWordsFromText, canConnect, childrenOf, connect, createModel, toCanonicalEnvelope } from './syntax-builder.js';
 
-export function addSubjectPredicateBuilder(body, ui) {
-  const target = ui.lesson.worked_example.tree;
+export function addSubjectPredicateBuilder(body, ui, {
+  target = ui.lesson.worked_example.tree,
+  id = ui.lesson.lesson_id,
+  label = 'Build your first labelled tree exercise',
+} = {}) {
   const { root, sentence, convention_profile: profile } = target;
   const branches = root.children;
   const labels = [root.label, ...branches.map(branch => branch.label)];
+  const [subject, predicate] = branches.map(branch => branch.words.join(' '));
   const nodesFor = (model, kind, field, values) => values.map(value => {
     const matches = Object.values(model.nodes).filter(node => node.kind === kind && node[field] === value);
     return matches.length === 1 ? matches[0] : null;
@@ -45,7 +49,7 @@ export function addSubjectPredicateBuilder(body, ui) {
       }
       if (!group.triangle) return `Collapse ${branch.label} to a triangle to match the worked tree.`;
     }
-    return 'Your tree matches the worked example. NP covers “The robins” and functions as the subject. VP covers “sing” and functions as the predicate.';
+    return `Your tree matches the target. NP covers “${subject}” and functions as the subject. VP covers “${predicate}” and functions as the predicate.`;
   }
 
   const guide = [
@@ -57,8 +61,13 @@ export function addSubjectPredicateBuilder(body, ui) {
         if (labels.some(label => existing.filter(node => node.type === label).length > 1)) {
           return 'Keep one of each label: S, NP and VP.';
         }
+        const [left, right] = branches.map(branch => {
+          const words = nodesFor(model, NODE.WORD, 'text', branch.words).filter(Boolean);
+          return words.length ? (words[0].x + words.at(-1).x) / 2 : null;
+        });
+        const centers = [((left ?? 37) + (right ?? 214)) / 2, left ?? 37, right ?? 214];
         for (const [index, node] of phrases(model).entries()) {
-          if (!node) addPhrase(model, labels[index], [105, 37, 214][index], index === 0 ? 20 : 100);
+          if (!node) addPhrase(model, labels[index], centers[index], index === 0 ? 20 : 100);
         }
         return 'S, NP and VP are on the canvas.';
       },
@@ -74,15 +83,15 @@ export function addSubjectPredicateBuilder(body, ui) {
     },
     {
       title: 'Connect the words to their phrases',
-      text: 'Attach “The robins” to NP and “sing” to VP.',
+      text: `Attach “${subject}” to NP and “${predicate}” to VP.`,
       apply(model) {
         const [, ...groups] = phrases(model);
         const links = branches.flatMap((branch, index) =>
           nodesFor(model, NODE.WORD, 'text', branch.words).map(word => [groups[index], word]));
         if (links.some(([parent, word]) => !parent || !word)) {
-          return 'Use one NP, one VP and one copy of each word: The, robins and sing.';
+          return `Use one NP, one VP and one copy of each word in “${sentence}”.`;
         }
-        return attach(model, links) || 'NP now covers “The robins”. VP covers “sing”.';
+        return attach(model, links) || `NP now covers “${subject}”. VP covers “${predicate}”.`;
       },
     },
     {
@@ -104,8 +113,7 @@ export function addSubjectPredicateBuilder(body, ui) {
   ];
 
   addEmbeddedTreeExercise(body, ui, {
-    id: ui.lesson.lesson_id,
-    label: 'Build your first labelled tree exercise',
+    id, label,
     profile, labels, guide, check,
     seed() {
       const model = createModel();
