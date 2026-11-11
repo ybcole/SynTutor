@@ -144,4 +144,9 @@ Printed pp.341–348 checked against text and page layouts. The batch adds 24 re
 
 ## Chapter 5 third checkpoint (2026-11-11)
 
-Printed pp.349–358 checked in text and rendered layout. The 32 original-example records (`PHR-072`–`PHR-103`) cover number transparency, number selection and agreement, the determiner function, and the introduction to quantification. Continue at p.359 with the rest of §5.1 on the same draft PR.
+Printed pp.349–358 checked in text and rendered layout. The 32 original-example records (`PHR-072`–`PHR-103`) cover number transparency, number selection and agreement, the determiner function, and the introduction to quantification. The next checkpoint covers printed pp.359–382.
+
+
+## Chapter 5 fourth checkpoint (2026-11-11)
+
+Printed pp.359–382 checked against text and rendered pages as a 24-page accelerated batch. Added 43 original-example records (`PHR-104`–`PHR-146`). Continue with §7.5 at printed p.383 on the same draft PR.
