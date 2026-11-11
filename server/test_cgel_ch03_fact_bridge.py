@@ -276,13 +276,13 @@ class CanonicalBridgeTests(unittest.TestCase):
         tree = canonical("He must forgets", 1, [
             ("MOD", [1]), ("V", [2]),
         ])
+        fact = bound_facts(tree, relation(1, 2))
         tree["accepted_alternatives"] = [{
             "analysis_id": "alternate-candidate",
             "root": deepcopy(tree["root"]),
             "acceptance": "NEEDS_REVIEW",
             "rationale": "A separate synthetic analysis, not merged into the primary tree.",
         }]
-        fact = bound_facts(tree, relation(1, 2))
         result = probe_ch03_on_canonical(
             analysis(tree), fact, variety="standard_english",
         )
