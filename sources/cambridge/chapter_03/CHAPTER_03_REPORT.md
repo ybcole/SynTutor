@@ -117,3 +117,10 @@ Added **70** independently paraphrased, narrowly cited records OTH-414–OTH-483
 ## Phase B autonomous continuation — 2026-11-11, printed pp. 203–210
 
 Added **86 original, narrowly source-cited records**, OTH-484–OTH-569: 75 classifications, 7 descriptive generalizations, 2 variety-restricted records, and 2 reports of traditional tense analyses rejected by Cambridge. They distinguish internal versus external modal-perfect scope, modal polarity/negation, modal and lexical interrogatives, dialect-sensitive *have got to*, quasi-modal *be*, and CGEL's treatment of *will/shall* as mood rather than future tense. Full source audit: `PHASE_B_PP203_210_REPORT.md`. Chapter 3 now **137/142 extracted**, 3 justified contents-only skips and **2 unprocessed (211–212)**. Book-wide unprocessed: **1,612**. Total catalog: **855** records. No active detectors, precision/recall figures, or chapter-wide completion claim. Continue at printed **211** without per-range approval.
+
+
+---
+
+## Phase B final chapter source extraction — 2026-11-11, printed pp. 211–212
+
+Added **32** original paraphrases cited directly to the complete CGEL PDF (OTH-570–OTH-601), concentrating on idiomatic *be going to*, its register, form, present focus, progressive origin, future-in-past actualisation, intention versus refusal, and footnote exceptions. The detailed final-page report is `PHASE_B_PP211_212_REPORT.md`. **The Chapter 3 source-page inventory is now complete:** 139 extracted pages, 3 justified chapter-contents skips (pp. 71–73), 0 unprocessed and 0 unavailable (printed 71–212 inclusive = 142 pages). Book-wide unprocessed pages: **1,610**; total catalog: **887** records (196 earlier + 691 Phase B). **This is source-extraction completeness only.** Independent content validation, B-R comparison, false-positive testing, runtime diagnostics, learner-facing lessons/quizzes and measured precision/recall remain separate pending gates. No newly active detectors or validated performance figures are claimed. Continue the approved autonomous plan without a manual review requirement.

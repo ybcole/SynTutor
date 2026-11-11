@@ -33019,5 +33019,1894 @@
     "status": "NEEDS_REVIEW",
     "review_notes": "Paraphrased from the cited printed page of the supplied complete CGEL PDF; original English contrasts. Non-constraint: classification or usage only; no runtime detector enabled.",
     "diagnostic": null
+  },
+  {
+    "id": "OTH-570",
+    "domain": "other",
+    "concept": "Idiomatic be going lacks literal motion",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In its future idiom, be going to no longer asserts physical movement.",
+    "condition": "A finite be going to introduces a prospective event rather than a destination of travel.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The progressive form of lexical go retains a literal movement reading in other constructions.",
+        "pages": [
+          211
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The workshop is going to close at five.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The committee is going to announce its decision.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.2 Idiomatic be going",
+        "pages": [
+          211
+        ],
+        "pdf_pages": [
+          231
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Idiomatic be going lacks literal motion",
+        "relation": "unverified",
+        "note": "A directly equivalent Burton-Roberts passage has not been independently verified."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from CGEL printed p. 211; original English illustrations. Non-constraints are intended for explanation, not active correction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-571",
+    "domain": "other",
+    "concept": "Going and to form a close idiomatic unit",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The future idiom combines going closely with to rather than freely separating the two as in lexical motion.",
+    "condition": "Going to introduces a future-oriented infinitival event.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Literal go can occur without a to-infinitival complement, and spoken varieties may reduce the sequence.",
+        "pages": [
+          211
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The concert is going to begin shortly.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The machine is going to stop working.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.2 Idiomatic be going",
+        "pages": [
+          211
+        ],
+        "pdf_pages": [
+          231
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Going and to form a close idiomatic unit",
+        "relation": "unverified",
+        "note": "A directly equivalent Burton-Roberts passage has not been independently verified."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from CGEL printed p. 211; original English illustrations. Non-constraints are intended for explanation, not active correction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-572",
+    "domain": "other",
+    "concept": "Be going to selects a to-infinitival",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Future be going uses a to-infinitival complement, contrasting with the bare infinitival complement of will.",
+    "condition": "Two ordinary prospective clauses differ in the form licensed after the future expression.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A following place phrase in literal be going to the station is not the idiomatic to-infinitival.",
+        "pages": [
+          211
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The students are going to organise an exhibition.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The students will organise an exhibition.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.2 Idiomatic be going",
+        "pages": [
+          211
+        ],
+        "pdf_pages": [
+          231
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Be going to selects a to-infinitival",
+        "relation": "unverified",
+        "note": "A directly equivalent Burton-Roberts passage has not been independently verified."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from CGEL printed p. 211; original English illustrations. Non-constraints are intended for explanation, not active correction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-573",
+    "domain": "other",
+    "concept": "Reduced gonna in spoken English",
+    "rule_type": "variety_restricted",
+    "scope": "clause",
+    "variety": "Colloquial spoken varieties admitting reduced gonna",
+    "statement": "Some varieties fuse the going-to sequence into a reduced spoken future marker.",
+    "condition": "A colloquial future clause uses the pronunciation conventionally represented as gonna.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "It is a variety and register difference, not a requirement for edited academic writing.",
+        "pages": [
+          211
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I'm gonna call the library tomorrow. [colloquial]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We're gonna repaint the hall. [colloquial]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.2 Idiomatic be going",
+        "pages": [
+          211
+        ],
+        "pdf_pages": [
+          231
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reduced gonna in spoken English",
+        "relation": "unverified",
+        "note": "A directly equivalent Burton-Roberts passage has not been independently verified."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from CGEL printed p. 211; original English illustrations. Non-constraints are intended for explanation, not active correction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-574",
+    "domain": "other",
+    "concept": "Be going to is generally less formal than will",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Be going to is associated with relatively informal style, whereas future will is style-neutral.",
+    "condition": "The same future event is expressed with either prospective be going to or will.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Both forms are grammatical in a wide range of registers; relative frequency is not a prohibition.",
+        "pages": [
+          211
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We're going to revise the schedule.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We will revise the schedule.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.2 Idiomatic be going",
+        "pages": [
+          211
+        ],
+        "pdf_pages": [
+          231
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Be going to is generally less formal than will",
+        "relation": "unverified",
+        "note": "A directly equivalent Burton-Roberts passage has not been independently verified."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from CGEL printed p. 211; original English illustrations. Non-constraints are intended for explanation, not active correction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-575",
+    "domain": "other",
+    "concept": "Inflection resides in be",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The be component permits present and past finite forms within the prospective idiom.",
+    "condition": "The future expression uses inflected am, is, are, was or were before going to.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The idiom does not have a productive further progressive form with being going.",
+        "pages": [
+          211
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The panel is going to meet on Friday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The panel was going to meet on Friday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.2 Idiomatic be going",
+        "pages": [
+          211
+        ],
+        "pdf_pages": [
+          231
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inflection resides in be",
+        "relation": "unverified",
+        "note": "A directly equivalent Burton-Roberts passage has not been independently verified."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from CGEL printed p. 211; original English illustrations. Non-constraints are intended for explanation, not active correction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-576",
+    "domain": "other",
+    "concept": "Be going to can follow perfect have",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The prospective idiom can be embedded after perfect have, unlike a bare finite will clause.",
+    "condition": "A past-perfect prospective expression describes an earlier intention or expectation.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Embedding does not entail that its projected event occurred.",
+        "pages": [
+          211
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The organiser had been going to invite a guest speaker.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Our neighbours had been going to move last year.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.2 Idiomatic be going",
+        "pages": [
+          211
+        ],
+        "pdf_pages": [
+          231
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Be going to can follow perfect have",
+        "relation": "unverified",
+        "note": "A directly equivalent Burton-Roberts passage has not been independently verified."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from CGEL printed p. 211; original English illustrations. Non-constraints are intended for explanation, not active correction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-577",
+    "domain": "other",
+    "concept": "Be going to can be embedded under a modal",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An outer modal can govern be going to because its be component permits nonfinite forms.",
+    "condition": "A modal or another auxiliary selects be going to as its complement.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This is a constructional distinction from finite modal will, not a reason to forbid will generally.",
+        "pages": [
+          211
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The director may be going to resign.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The council might be going to alter the timetable.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.2 Idiomatic be going",
+        "pages": [
+          211
+        ],
+        "pdf_pages": [
+          231
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Be going to can be embedded under a modal",
+        "relation": "unverified",
+        "note": "A directly equivalent Burton-Roberts passage has not been independently verified."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from CGEL printed p. 211; original English illustrations. Non-constraints are intended for explanation, not active correction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-578",
+    "domain": "other",
+    "concept": "No gerund-participial being going in futurate",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The idiom lacks a double-progressive gerund-participial variant of its auxiliary be.",
+    "condition": "A speaker attempts to add another progressive layer to future be going.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Ordinary gerund-participial uses of literal motion verbs remain grammatical.",
+        "pages": [
+          211
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The roof is going to be repaired.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They were going to improve the lighting.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.2 Idiomatic be going",
+        "pages": [
+          211
+        ],
+        "pdf_pages": [
+          231
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "No gerund-participial being going in futurate",
+        "relation": "unverified",
+        "note": "A directly equivalent Burton-Roberts passage has not been independently verified."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from CGEL printed p. 211; original English illustrations. Non-constraints are intended for explanation, not active correction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-579",
+    "domain": "other",
+    "concept": "Subordinate event is future relative to matrix",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The infinitival situation in idiomatic be going is later than the time established by its matrix be.",
+    "condition": "The matrix prospective is present or past and the infinitival event lies subsequently.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This does not mean the event must be in the future relative to speaking when matrix be is past.",
+        "pages": [
+          211
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The guests are going to arrive tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The guests were going to arrive the following week.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.2 Idiomatic be going",
+        "pages": [
+          211
+        ],
+        "pdf_pages": [
+          231
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subordinate event is future relative to matrix",
+        "relation": "unverified",
+        "note": "A directly equivalent Burton-Roberts passage has not been independently verified."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from CGEL printed p. 211; original English illustrations. Non-constraints are intended for explanation, not active correction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-580",
+    "domain": "other",
+    "concept": "Matrix time determined by matrix tense",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Present is going to and past was going to establish different times of orientation for the same projected event.",
+    "condition": "A clause uses be going with present or preterite matrix be.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The future infinitival situation does not determine the morphological tense of matrix be.",
+        "pages": [
+          211
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The editor is going to publish a correction.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The editor was going to publish a correction.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.2 Idiomatic be going",
+        "pages": [
+          211
+        ],
+        "pdf_pages": [
+          231
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Matrix time determined by matrix tense",
+        "relation": "unverified",
+        "note": "A directly equivalent Burton-Roberts passage has not been independently verified."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from CGEL printed p. 211; original English illustrations. Non-constraints are intended for explanation, not active correction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-581",
+    "domain": "other",
+    "concept": "Greater matrix-time focus than futurity will",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Prospective be going to usually highlights present evidence or an existing arrangement more than future will does.",
+    "condition": "The current situation provides grounds for a predicted event.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Will can still concern present commitment, so the difference is one of degree rather than exclusivity.",
+        "pages": [
+          211
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Look at that crack; the glass is going to break.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The replacement glass will arrive on Monday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.2 Idiomatic be going",
+        "pages": [
+          211
+        ],
+        "pdf_pages": [
+          231
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Greater matrix-time focus than futurity will",
+        "relation": "unverified",
+        "note": "A directly equivalent Burton-Roberts passage has not been independently verified."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from CGEL printed p. 211; original English illustrations. Non-constraints are intended for explanation, not active correction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-582",
+    "domain": "other",
+    "concept": "Immediate evidence often favours be going to",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An imminently threatened event often uses be going to to make current evidence salient.",
+    "condition": "A speaker observes signs that a near-future event is likely.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Immediacy is a frequent implicature, not a required short temporal distance.",
+        "pages": [
+          211
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The branch is going to fall—move away!",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Those clouds are going to bring heavy rain.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.2 Idiomatic be going",
+        "pages": [
+          211
+        ],
+        "pdf_pages": [
+          231
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Immediate evidence often favours be going to",
+        "relation": "unverified",
+        "note": "A directly equivalent Burton-Roberts passage has not been independently verified."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from CGEL printed p. 211; original English illustrations. Non-constraints are intended for explanation, not active correction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-583",
+    "domain": "other",
+    "concept": "Going to can indicate a settled arrangement",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A going to prediction can indicate that a relevant arrangement is already in force.",
+    "condition": "The predicted action is associated with a pre-existing decision at the matrix time.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Will can also be used, but may favour a contingent request interpretation in context.",
+        "pages": [
+          211
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The office is going to issue passes tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The guide is going to distribute the maps.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.2 Idiomatic be going",
+        "pages": [
+          211
+        ],
+        "pdf_pages": [
+          231
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Going to can indicate a settled arrangement",
+        "relation": "unverified",
+        "note": "A directly equivalent Burton-Roberts passage has not been independently verified."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from CGEL printed p. 211; original English illustrations. Non-constraints are intended for explanation, not active correction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-584",
+    "domain": "other",
+    "concept": "Future will can imply contextual contingency",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In relevant contexts, will predicts an outcome conditional on a later request or circumstance.",
+    "condition": "An agent's future act depends on being asked or another understood condition.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The alternative be going to may also have an implicit negative condition such as unless prevented.",
+        "pages": [
+          211
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If you ask, the clerk will print a receipt.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The caretaker will help you when you request it.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.2 Idiomatic be going",
+        "pages": [
+          211
+        ],
+        "pdf_pages": [
+          231
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Future will can imply contextual contingency",
+        "relation": "unverified",
+        "note": "A directly equivalent Burton-Roberts passage has not been independently verified."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from CGEL printed p. 211; original English illustrations. Non-constraints are intended for explanation, not active correction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-585",
+    "domain": "other",
+    "concept": "Going to in if-clause with present developments",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Prospective going to can appear in the antecedent of a condition about an emerging intention or event.",
+    "condition": "An if-clause refers to current signs of a later development.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Futurity will is restricted in such antecedents and only works with a distinct modal reading.",
+        "pages": [
+          211
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If you're going to leave early, please tell me.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the guests are going to arrive at dawn, we should prepare tonight.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.2 Idiomatic be going",
+        "pages": [
+          211
+        ],
+        "pdf_pages": [
+          231
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Going to in if-clause with present developments",
+        "relation": "unverified",
+        "note": "A directly equivalent Burton-Roberts passage has not been independently verified."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from CGEL printed p. 211; original English illustrations. Non-constraints are intended for explanation, not active correction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-586",
+    "domain": "other",
+    "concept": "Going to in purpose-oriented conditional",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Going to can link a present course of action with the aim of reaching a future goal.",
+    "condition": "An if-clause states a prospective goal, followed by what is needed to achieve it.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Pure futurity will does not replace going to in this goal-oriented construction.",
+        "pages": [
+          211
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If we're going to finish on time, we need to begin now.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If she's going to catch the train, she must leave soon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.2 Idiomatic be going",
+        "pages": [
+          211
+        ],
+        "pdf_pages": [
+          231
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Going to in purpose-oriented conditional",
+        "relation": "unverified",
+        "note": "A directly equivalent Burton-Roberts passage has not been independently verified."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from CGEL printed p. 211; original English illustrations. Non-constraints are intended for explanation, not active correction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-587",
+    "domain": "other",
+    "concept": "Be going to allows distant futurity",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Future be going to does not require the event to occur in the immediate future.",
+    "condition": "A presently formed intention concerns an event months or years away.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Near-term interpretations merely make matrix-time focus particularly salient.",
+        "pages": [
+          212
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I'm going to retire in fifteen years.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The school is going to open a new wing in five years.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.2 Idiomatic be going",
+        "pages": [
+          212
+        ],
+        "pdf_pages": [
+          232
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Be going to allows distant futurity",
+        "relation": "unverified",
+        "note": "A directly equivalent Burton-Roberts passage has not been independently verified."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from CGEL printed p. 212; original English illustrations. Non-constraints are intended for explanation, not active correction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-588",
+    "domain": "other",
+    "concept": "Present intention licenses long-range future",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An existing plan can justify going to even with a distant future-time adjunct.",
+    "condition": "An agent presently intends to perform a remote future action.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The future event is not guaranteed to occur; the construction marks current intention.",
+        "pages": [
+          212
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We are going to relocate after graduation.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She is going to publish a memoir in ten years.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.2 Idiomatic be going",
+        "pages": [
+          212
+        ],
+        "pdf_pages": [
+          232
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Present intention licenses long-range future",
+        "relation": "unverified",
+        "note": "A directly equivalent Burton-Roberts passage has not been independently verified."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from CGEL printed p. 212; original English illustrations. Non-constraints are intended for explanation, not active correction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-589",
+    "domain": "other",
+    "concept": "Present focus is graded across constructions",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The matrix-time focus of be going to is greater than that of futurity will but weaker than the strict present focus of present perfect.",
+    "condition": "Different tense-aspect constructions are compared for present-oriented relevance.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The simple preterite and present perfect exhibit a different, sharper distinction than will and going to.",
+        "pages": [
+          212
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I'm going to read the report next Monday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I have finished the report today.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.2 Idiomatic be going",
+        "pages": [
+          212
+        ],
+        "pdf_pages": [
+          232
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Present focus is graded across constructions",
+        "relation": "unverified",
+        "note": "A directly equivalent Burton-Roberts passage has not been independently verified."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from CGEL printed p. 212; original English illustrations. Non-constraints are intended for explanation, not active correction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-590",
+    "domain": "other",
+    "concept": "Will may still have present focus",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Future will can make the speaker's current decision or disposition relevant.",
+    "condition": "Will is used to announce a consequence or refusal anchored in the present.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This does not erase be going to's stronger characteristic focus on the matrix situation.",
+        "pages": [
+          212
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I will now have to postpone the trip.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I won't accept that explanation.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.2 Idiomatic be going",
+        "pages": [
+          212
+        ],
+        "pdf_pages": [
+          232
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Will may still have present focus",
+        "relation": "unverified",
+        "note": "A directly equivalent Burton-Roberts passage has not been independently verified."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from CGEL printed p. 212; original English illustrations. Non-constraints are intended for explanation, not active correction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-591",
+    "domain": "other",
+    "concept": "Future adjuncts remain licensed with going to",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A future time expression may directly modify the eventuality projected by be going to.",
+    "condition": "The infinitival situation is explicitly dated with tomorrow or another future adjunct.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The idiom's present focus does not impose present-time reference on its infinitival event.",
+        "pages": [
+          212
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I'm going to send the files tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They're going to visit the museum on Sunday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.2 Idiomatic be going",
+        "pages": [
+          212
+        ],
+        "pdf_pages": [
+          232
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Future adjuncts remain licensed with going to",
+        "relation": "unverified",
+        "note": "A directly equivalent Burton-Roberts passage has not been independently verified."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from CGEL printed p. 212; original English illustrations. Non-constraints are intended for explanation, not active correction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-592",
+    "domain": "other",
+    "concept": "Past was going to does not entail actualisation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A preterite be going to describes a past plan but leaves open whether the projected event happened.",
+    "condition": "The matrix tense is past and the planned event was subsequent to that past reference.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A listener may infer nonactualisation, but this remains defeasible.",
+        "pages": [
+          212
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They were going to repair the bridge.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mara was going to attend the meeting.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.2 Idiomatic be going",
+        "pages": [
+          212
+        ],
+        "pdf_pages": [
+          232
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Past was going to does not entail actualisation",
+        "relation": "unverified",
+        "note": "A directly equivalent Burton-Roberts passage has not been independently verified."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from CGEL printed p. 212; original English illustrations. Non-constraints are intended for explanation, not active correction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-593",
+    "domain": "other",
+    "concept": "Narrative would tends to entail actualisation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Formal narrative future-in-the-past would presents a later event as actually occurring.",
+    "condition": "A retrospective narrative uses would to preview a subsequent event.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Modal-remote or volitional would does not carry this narrative entailment.",
+        "pages": [
+          212
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Two years later, the artist would win an award.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The village would eventually become a major port.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.2 Idiomatic be going",
+        "pages": [
+          212
+        ],
+        "pdf_pages": [
+          232
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Narrative would tends to entail actualisation",
+        "relation": "unverified",
+        "note": "A directly equivalent Burton-Roberts passage has not been independently verified."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from CGEL printed p. 212; original English illustrations. Non-constraints are intended for explanation, not active correction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-594",
+    "domain": "other",
+    "concept": "Nonactualisation inference of was going to",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Past going to commonly suggests that a planned action was abandoned or not realised.",
+    "condition": "The speaker reports an earlier plan without stating completion.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This is an implicature; an accompanying statement can confirm that the event nevertheless happened.",
+        "pages": [
+          212
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I was going to call the organiser yesterday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The committee was going to reopen the archive.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.2 Idiomatic be going",
+        "pages": [
+          212
+        ],
+        "pdf_pages": [
+          232
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nonactualisation inference of was going to",
+        "relation": "unverified",
+        "note": "A directly equivalent Burton-Roberts passage has not been independently verified."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from CGEL printed p. 212; original English illustrations. Non-constraints are intended for explanation, not active correction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-595",
+    "domain": "other",
+    "concept": "Had been going to strengthens nonactualisation inference",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A past perfect prospective expression especially encourages an inference that the event did not take place.",
+    "condition": "Had been going to introduces a plan holding before a later past reference time.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The inference is still cancellable rather than a logical entailment.",
+        "pages": [
+          212
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We had been going to remodel the kitchen.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The team had been going to present the prototype.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.2 Idiomatic be going",
+        "pages": [
+          212
+        ],
+        "pdf_pages": [
+          232
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Had been going to strengthens nonactualisation inference",
+        "relation": "unverified",
+        "note": "A directly equivalent Burton-Roberts passage has not been independently verified."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from CGEL printed p. 212; original English illustrations. Non-constraints are intended for explanation, not active correction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-596",
+    "domain": "other",
+    "concept": "About to conveys extreme closeness",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Be about to explicitly places a future event just beyond the orientation time.",
+    "condition": "An event is on the verge of occurring at the matrix time.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Be going to can also describe near events but does not require that proximity.",
+        "pages": [
+          212
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The lights are about to go out.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Our guests are about to depart.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.2 Idiomatic be going",
+        "pages": [
+          212
+        ],
+        "pdf_pages": [
+          232
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "About to conveys extreme closeness",
+        "relation": "unverified",
+        "note": "A directly equivalent Burton-Roberts passage has not been independently verified."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from CGEL printed p. 212; original English illustrations. Non-constraints are intended for explanation, not active correction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-597",
+    "domain": "other",
+    "concept": "On the point of conveys imminence",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Be on the point of followed by a gerund-participial phrase explicitly signals near-immediate futurity.",
+    "condition": "The matrix situation is at the verge of an event.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This construction is less frequent than be about to and differs from the infinitival syntax of going to.",
+        "pages": [
+          212
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The caretaker is on the point of retiring.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The engineer was on the point of leaving.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.2 Idiomatic be going",
+        "pages": [
+          212
+        ],
+        "pdf_pages": [
+          232
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "On the point of conveys imminence",
+        "relation": "unverified",
+        "note": "A directly equivalent Burton-Roberts passage has not been independently verified."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from CGEL printed p. 212; original English illustrations. Non-constraints are intended for explanation, not active correction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-598",
+    "domain": "other",
+    "concept": "Already and just modify near-future idioms",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Temporal already and just can occur with going to and about to to foreground matrix-time proximity.",
+    "condition": "A prospective idiom is modified by an adverb indicating an approaching action.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The same sense of just or already is not available directly with futurity will in the compared construction.",
+        "pages": [
+          212
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The organiser was just about to begin.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The presenter was already going to announce the result.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.2 Idiomatic be going",
+        "pages": [
+          212
+        ],
+        "pdf_pages": [
+          232
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Already and just modify near-future idioms",
+        "relation": "unverified",
+        "note": "A directly equivalent Burton-Roberts passage has not been independently verified."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from CGEL printed p. 212; original English illustrations. Non-constraints are intended for explanation, not active correction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-599",
+    "domain": "other",
+    "concept": "Negative going to conveys intention more than refusal",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Isn't going to often expresses a present intention not to act, while won't more readily suggests refusal.",
+    "condition": "A future agentive action is negated in a prospective or volitional construction.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Neither form is a grammatical error and either may be understood dynamically in suitable context.",
+        "pages": [
+          212
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She isn't going to accept the invitation.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She won't accept the invitation.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.2 Idiomatic be going",
+        "pages": [
+          212
+        ],
+        "pdf_pages": [
+          232
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negative going to conveys intention more than refusal",
+        "relation": "unverified",
+        "note": "A directly equivalent Burton-Roberts passage has not been independently verified."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from CGEL printed p. 212; original English illustrations. Non-constraints are intended for explanation, not active correction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-600",
+    "domain": "other",
+    "concept": "Past wouldn't foregrounds refusal",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In past-time narratives wouldn't is typically preferable for a persistent refusal to act.",
+    "condition": "An agent is described as declining a requested action at an earlier time.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Wasn't going to can instead refer to an earlier plan that was later revised.",
+        "pages": [
+          212
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The witness wouldn't answer the question.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The technician wouldn't release the logs.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.2 Idiomatic be going",
+        "pages": [
+          212
+        ],
+        "pdf_pages": [
+          232
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Past wouldn't foregrounds refusal",
+        "relation": "unverified",
+        "note": "A directly equivalent Burton-Roberts passage has not been independently verified."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from CGEL printed p. 212; original English illustrations. Non-constraints are intended for explanation, not active correction.",
+    "diagnostic": null
+  },
+  {
+    "id": "OTH-601",
+    "domain": "other",
+    "concept": "Wasn't going to permits later reversal",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A negated past prospective can truthfully report an earlier intention even if the actor later changed their mind.",
+    "condition": "The earlier intention not to act was superseded by a later decision.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Past wouldn't tends to focus on the refusal itself, so it is less natural for the changed-mind reading.",
+        "pages": [
+          212
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Initially she wasn't going to sing, but then she performed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We weren't going to visit the gallery, but later we did.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 3,
+        "section": "§10.2 Idiomatic be going",
+        "pages": [
+          212
+        ],
+        "pdf_pages": [
+          232
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Wasn't going to permits later reversal",
+        "relation": "unverified",
+        "note": "A directly equivalent Burton-Roberts passage has not been independently verified."
+      }
+    ],
+    "related_rules": [],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "review_notes": "Paraphrased from CGEL printed p. 212; original English illustrations. Non-constraints are intended for explanation, not active correction.",
+    "diagnostic": null
   }
 ]

@@ -1478,16 +1478,16 @@
     {
       "page": 211,
       "chapter": 3,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_03/PHASE_B_PP211_212_REPORT.md"
     },
     {
       "page": 212,
       "chapter": 3,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_03/PHASE_B_PP211_212_REPORT.md"
     },
     {
       "page": 213,
