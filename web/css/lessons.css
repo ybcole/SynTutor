@@ -68,7 +68,6 @@
 .lesson-page-actions .lesson-primary { margin:0; }
 .curriculum-view:has(.constituent-page) {
   background:var(--panel);
-  font-family:Inter,system-ui,sans-serif;
 }
 .constituent-header,.constituent-page,.curriculum-view:has(.constituent-page) .lesson-save-status {
   max-width:47rem;
@@ -113,7 +112,6 @@
 .constituent-page p { margin-block:0 1em; }
 .constituent-page .lesson-stage-body > p:not([role="status"]),
 .constituent-page .lesson-stage-body > ul {
-  font-family:"PT Serif",Georgia,serif;
   font-size:clamp(1.1rem,2.2vw,1.2rem);
 }
 .constituent-page .lesson-stage-body > ul { padding-inline-start:1.35em; }
