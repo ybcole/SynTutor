@@ -6,13 +6,23 @@ export const constituentReferences = [
 ];
 
 export const constituentHeadings = [
-  'Why words group together',
-  'How to find a constituent',
-  'What changes when we group words differently?',
-  'One sentence, two meanings',
-  'Chapter recap',
-  'Chapter post-test',
+  'Introduction to Constituents and Hierarchy',
+  'Identifying Constituents in a Sentence',
+  'Comparing Flat and Nested Trees',
+  'Structural Ambiguity',
+  'Chapter Recap',
+  'Chapter Post-test',
 ];
+
+// The saved prediction is a completion marker. Any choice satisfies the pre-test.
+export const constituentPreTest = {
+  prompt: 'In “Mara rested beside the river”, which words could you replace with “there”?',
+  options: [
+    { id: 'a', text: 'the river' },
+    { id: 'b', text: 'beside the river' },
+    { id: 'c', text: 'rested beside' },
+  ],
+};
 
 const word = (text, position) => ({ id: `word-${position}`, word: text });
 const group = (name, ...children) => ({ id: name, label: name, children });
@@ -53,18 +63,27 @@ export function addConstituentTeaching(body, page, { el, button, renderTree, wor
   }
 
   if (page === 0) {
-    paragraph('When you read “near the quiet garden”, you probably picture the garden as one thing and “near” as locating something in relation to it. You made sense of the words by grouping them. In this chapter, you’ll make that grouping visible.');
-    paragraph('By the end, you’ll be able to find a group inside a sentence, show it with brackets and branches, and explain how a different grouping can change the meaning.');
-    section('Before you begin', 'Answer this quick pre-test to check what you already know. Choose the answer that makes the most sense to you. Any answer lets you continue.');
+    paragraph('Syntax studies how words combine to form phrases and sentences. A constituent is a word or group of words that functions as a unit within a larger structure. Hierarchy describes how these units fit inside one another.');
+    section('What this chapter covers',
+      'Consider “We met near the quiet garden”. The words “the quiet garden” name a place, and “near the quiet garden” tells us where we met. The smaller group sits inside the larger one, and each group has a job in the sentence.');
+    const list = el('ul');
+    for (const objective of [
+      'Use replacement and simple questions to test whether words act as a unit.',
+      'Read brackets and branches to see which words a tree groups together.',
+      'Explain how two groupings can give the same sentence different meanings.',
+    ]) list.append(el('li', objective));
+    body.append(list);
   }
   if (page === 1) {
-    section('Start with a group that does a job',
-      'Read “We visited the quiet garden”. The last three words name the place we visited. A group of words that functions as a unit within a larger structure is a constituent. A smaller constituent can sit inside a larger one. For instance, “the quiet garden” can also be part of “near the quiet garden”.');
-    section('Look for evidence in the sentence',
-      'Try “We visited it”. The single word “it” takes the place of “the quiet garden”, and the sentence keeps the same basic structure. Replacing only “the quiet” would leave “We visited it garden”, which breaks the structure. Successful replacement is evidence for the whole group. If one replacement fails, try another suitable replacement or check the group another way.',
-      'You can also ask “What did we visit?” The whole group “the quiet garden” answers that question naturally. Ask the question in the original sentence so you can see what role the words play there.');
-    section('Show the grouping',
-      'In [near [the quiet garden]], the inner brackets enclose the garden group, and the outer brackets enclose the whole phrase. In a tree, the point where branches meet is a node. Follow its branches down to see which words it dominates, or contains in the drawing. A node representing the garden group must cover exactly those three words.');
+    paragraph('To find a constituent, start with the sentence and ask what a group of words does there. Then use the brackets or tree to show the grouping your evidence supports.');
+    section('Test a group with replacement',
+      'In “We visited the quiet garden”, try replacing “the quiet garden” with “it”. The result, “We visited it”, still has the same basic pattern. One word has taken over the job of naming what we visited. That gives us evidence that the three words act as one unit.',
+      'Now try replacing only “the quiet”. The result, “We visited it garden”, breaks that pattern. If a replacement fails, try a suitable substitute or check the group another way before deciding.');
+    section('Check what answers a question',
+      'Ask “What did we visit?” The natural answer “the quiet garden” gives the whole group. An answer such as “the quiet” leaves the name of the place unfinished. Both tests point to the same three words in this example.');
+    section('Read the brackets and the branches',
+      'In [near [the quiet garden]], the inner brackets enclose the garden group. The outer brackets enclose that group together with “near”. The tree draws those two groups as separate nodes. A node is a point in the tree from which you can trace branches down to the words it contains.',
+      'Use the two choices below to highlight the inner and outer groups. Follow the branches from the highlighted node. Notice that the outer group reaches one more word, “near”.');
     const diagram = el('div', undefined, 'constituent-diagram');
     const sentence = el('p', undefined, 'constituent-selection');
     sentence.setAttribute('aria-live', 'polite');
@@ -79,7 +98,9 @@ export function addConstituentTeaching(body, page, { el, button, renderTree, wor
     });
   }
   if (page === 2) {
-    paragraph('Compare two drawings of “near the quiet garden”. The words appear in the same order in both. Look for a node that reaches all three garden words without also reaching “near”.');
+    paragraph('A tree shows how an analysis groups words. Two trees can put the words in the same order while making different claims about which words belong together. Compare both drawings of “near the quiet garden” and trace the branches that lead to “the quiet garden”.');
+    section('Compare the two drawings',
+      'Switch between the flat and nested drawings below. In each drawing, start at the lowest node that contains all three garden words. Does that node also contain “near”?');
     const flat = renderTree(drawings(['near', 'the', 'quiet', 'garden'])[0]);
     const nested = workedCanvas();
     const caption = el('p', undefined, 'constituent-caption');
@@ -91,11 +112,11 @@ export function addConstituentTeaching(body, page, { el, button, renderTree, wor
       flat.hidden = Boolean(index);
       nested.hidden = !index;
       caption.textContent = index
-        ? 'The inner node gives “the quiet garden” a branch of its own. The outer node still contains the whole phrase.'
-        : 'All the words branch directly from the same node. There is no node for “the quiet garden” alone.';
+        ? 'In the nested drawing, PHRASE-b covers just “the quiet garden”. PHRASE-a contains that whole group together with “near”.'
+        : 'In the flat drawing, all four words connect directly to PHRASE-a. The only node covering the three garden words also covers “near”.';
     }, 1);
     section('Try giving a group its own branch',
-      'Imagine a flat drawing of “beside the red gate”. Select the words that need their own node while keeping the rest under the outer node.');
+      'The drawing below puts all four words of “beside the red gate” under one node. Which words name what you are beside? Select that whole group, then check your answer to see where the new branch goes.');
     const [before, after] = drawings(['beside', 'the', 'red', 'gate']);
     const repairTree = el('div', undefined, 'constituent-diagram');
     repairTree.append(renderTree(before));
@@ -121,7 +142,9 @@ export function addConstituentTeaching(body, page, { el, button, renderTree, wor
     body.append(repairTree, choices, check, feedback);
   }
   if (page === 3) {
-    paragraph('“I watched the hikers with a telescope” can describe two situations. Read the sentence both ways, then follow the branch above “with a telescope” to see what it joins.');
+    paragraph('Structural ambiguity occurs when the same sentence can be grouped in two ways and each grouping gives it a different meaning. In “I watched the hikers with a telescope”, the phrase “with a telescope” could tell us how I watched or describe the hikers.');
+    section('Trace the telescope phrase',
+      'Switch between the two readings below. In each tree, follow “with a telescope” up to the highlighted group. Look at what else sits under that same node.');
     const alternatives = readings();
     const caption = el('p', undefined, 'constituent-caption');
     caption.setAttribute('aria-live', 'polite');
@@ -135,9 +158,11 @@ export function addConstituentTeaching(body, page, { el, button, renderTree, wor
         : '“With a telescope” joins the larger group that includes “watched”. It tells us how I watched.';
       tree.replaceChildren(renderTree(alternatives[index], { focusId: index ? 'PHRASE-b' : 'PHRASE-a' }));
     });
-    paragraph('The words stay in the same order, but their grouping changes what the sentence means. This is structural ambiguity.');
+    paragraph('To explain the difference in your own words, ask “Who had the telescope?” In one reading it was the person watching. In the other it was the hikers. The branch shows which reading the tree represents.');
   }
   if (page === 4) {
+    paragraph('You’ve used evidence from a sentence to identify its groups, then shown how those groups fit together. Use this summary to review the steps before the post-test.');
+    section('Key ideas');
     const list = el('ul', undefined, 'constituent-recap');
     for (const [term, explanation] of [
       ['Constituents', 'Words can function together as a unit, and one group can sit inside another.'],
@@ -150,7 +175,8 @@ export function addConstituentTeaching(body, page, { el, button, renderTree, wor
       list.append(item);
     }
     body.append(list);
-    paragraph('The post-test checks how you read a tree and identify groups in new examples.');
+    section('Before the post-test',
+      'Look for the complete group. If you’re reading a tree, follow its branches to the words. If you’re testing a sentence, try a replacement or ask what the group answers.');
   }
 }
 

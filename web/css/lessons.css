@@ -66,11 +66,52 @@
 .lesson-columns { display:grid; grid-template-columns:minmax(300px,.85fr) minmax(0,1.15fr); gap:20px; align-items:start; }
 .lesson-page-actions { display:flex; justify-content:flex-end; margin-top:20px; }
 .lesson-page-actions .lesson-primary { margin:0; }
-.constituent-page .lesson-stage-body { padding:clamp(18px,4vw,42px); }
-.constituent-page .lesson-stage-body > p,.constituent-page h3,.constituent-recap { max-width:72ch; }
-.constituent-page h3 { margin:28px 0 8px; }
+.constituent-header,.constituent-page,.curriculum-view:has(.constituent-page) .lesson-save-status {
+  max-width:54rem;
+  margin-inline:auto;
+}
+.constituent-header {
+  padding-bottom:18px;
+  border-bottom:1px solid var(--border);
+  margin-bottom:clamp(28px,5vw,52px);
+}
+.constituent-header .lesson-eyebrow { margin:22px 0 5px; }
+.curriculum-view .constituent-header h1 { font-size:1.1rem; letter-spacing:0; margin:0; }
+.curriculum-view .constituent-header button { background:none; padding-inline:0; border-color:transparent; }
+.curriculum-view .constituent-header button:hover { text-decoration:underline; }
+.constituent-page .lesson-stage-body { background:none; border:0; border-radius:0; padding:0; }
+.curriculum-view .constituent-page h2 {
+  font-size:clamp(1.85rem,4vw,2.85rem);
+  line-height:1.14;
+  letter-spacing:-.035em;
+  margin:0 0 24px;
+}
+.constituent-page .lesson-stage-body > p,
+.constituent-page .lesson-stage-body > ul,
+.constituent-page .constituent-pre-test > p { font-size:1.04rem; }
+.constituent-page h3 { margin:clamp(28px,4vw,42px) 0 10px; font-size:1.2rem; line-height:1.4; }
+.constituent-page p { margin-block:0 1em; }
 .constituent-page .lesson-question + .constituent-review,.constituent-page .lesson-question + .lesson-question { margin-top:24px; }
-.constituent-actions { gap:12px; flex-wrap:wrap; }
+.constituent-page .constituent-pre-test,.constituent-page .lesson-sources {
+  margin:clamp(30px,5vw,48px) 0 0;
+  padding:22px 0 0;
+  border:0;
+  border-top:1px solid var(--border);
+  border-radius:0;
+  background:none;
+}
+.constituent-pre-test h3 { margin-top:0; }
+.constituent-pre-test .lesson-option {
+  margin:0;
+  padding:12px 0;
+  border:0;
+  border-bottom:1px solid var(--border);
+  border-radius:0;
+  background:none;
+}
+.constituent-pre-test .lesson-option:hover { color:var(--accent-strong); }
+.constituent-pre-test .constituent-pre-test-status { margin-bottom:0; color:var(--ok); font-weight:650; }
+.constituent-actions { gap:12px; flex-wrap:wrap; border-top:1px solid var(--border); margin-top:36px; padding-top:20px; }
 .constituent-actions > :first-child:not(.lesson-primary) { margin-inline-end:auto; }
 .constituent-controls,.constituent-choices { display:flex; flex-wrap:wrap; gap:10px; margin:12px 0; }
 .constituent-controls button[aria-pressed=true] { border-color:var(--accent); background:var(--accent-soft); color:var(--accent-strong); }
@@ -78,7 +119,6 @@
 .constituent-diagram .lesson-tree-wrap { max-width:100%; }
 .constituent-diagram .lesson-tree-wrap:has(> svg) { background:var(--bg); padding:12px; border-radius:10px; }
 .constituent-diagram .lesson-tree-wrap > svg { margin-inline:auto; }
-.constituent-caption,.constituent-selection { max-width:72ch; }
 .constituent-choices { border:0; padding:0; }
 .constituent-choices legend { margin-bottom:8px; font-weight:650; }
 .constituent-choices label { display:flex; align-items:center; gap:6px; }
@@ -86,7 +126,7 @@
 .lesson-tree-canvas [data-constituent-selected] > text { fill:var(--accent-strong); font-weight:750; }
 .constituent-recap { padding-inline-start:24px; }
 .constituent-recap li { margin-block:12px; }
-.constituent-review details { border-top:1px solid var(--border); max-width:72ch; }
+.constituent-review details { border-top:1px solid var(--border); }
 .lesson-question fieldset { border:0; padding:0; margin:0; }
 .lesson-question legend { font-size:1.15rem; font-weight:600; line-height:1.55; margin-bottom:16px; }
 .lesson-option { display:flex; align-items:flex-start; gap:12px; padding:14px; border:1px solid var(--border); border-radius:9px; margin:10px 0; cursor:pointer; line-height:1.55; }

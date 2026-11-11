@@ -4,7 +4,7 @@ import { createLessonStore } from './lesson-progress.js';
 import { requestEvidence, renderEvidence } from './explanation-evidence.js';
 import { subscribeAuthState } from './auth.js';
 import { enableCanvasView } from './canvas-view.js';
-import { addConstituentReview, addConstituentTeaching, constituentHeadings, constituentReferences } from './constituents-lesson.js';
+import { addConstituentReview, addConstituentTeaching, constituentHeadings, constituentPreTest, constituentReferences } from './constituents-lesson.js';
 
 let options = {}, course, store, host, active = null, step = 0, track = 'foundations', busy = false, notice = '', generation = 0, lastFocus = null;
 let reviewStage = null;
@@ -195,7 +195,10 @@ async function act(event, afterSave) {
   catch(error) { if(token!==generation){busy=false;return;}notice=error.message; }
   busy=false;render();
   if (saved && afterSave) { afterSave(saved); return; }
-  if(event.type==='answer' && focusName)host.querySelector(`input[name="${CSS.escape(focusName)}"][value="${focusValue}"]`)?.focus();
+  if(event.type==='answer' && focusName) {
+    const response = host.querySelector(`input[name="${CSS.escape(focusName)}"][value="${focusValue}"]`);
+    (response || host.querySelector('.constituent-pre-test-status'))?.focus();
+  }
   else { const h=host.querySelector('.lesson-stage-body h2');if(h){h.tabIndex=-1;h.focus();} }
 }
 function selectLesson(id) {
@@ -310,8 +313,8 @@ function catalog() {
   layout.append(content, progressSummary());
   host.append(layout);
 }
-function question(lesson,key,p,locked,onAnswer = answer => act({type:'answer',answer})) {
-  const data=lesson[key], section=el('section',undefined,'lesson-question');section.dataset.question=key;
+function question(lesson,key,p,locked,onAnswer = answer => act({type:'answer',answer}), data = lesson[key]) {
+  const section=el('section',undefined,'lesson-question');section.dataset.question=key;
   const field=el('fieldset');field.disabled=busy || locked;field.append(el('legend',data.prompt));
   for (const option of data.options) {
     const label=el('label',undefined,'lesson-option'),radio=el('input');radio.type='radio';radio.name=`${lesson.lesson_id}-${key}`;radio.value=option.id;radio.checked=p.responses[key]===option.id;
@@ -321,14 +324,16 @@ function question(lesson,key,p,locked,onAnswer = answer => act({type:'answer',an
   if (p.responses[key]) {
     const chosen = data.options.find(option => option.id === p.responses[key]);
     const correct = chosen.id === data.answer;
-    const preTest = lesson.lesson_id === 'br-01' && key === 'predict';
-    const feedback = preTest && !correct
-      ? 'Response recorded. On the next page, you’ll see how the same words can form different groupings.'
-      : chosen.feedback;
-    section.append(el('p', feedback, correct ? 'lesson-feedback correct' : preTest ? 'lesson-feedback' : 'lesson-feedback retry'));
+    section.append(el('p', chosen.feedback, correct ? 'lesson-feedback correct' : 'lesson-feedback retry'));
   }
-  const hint=el('details');hint.append(el('summary','Need a hint?'),el('p',data.hint));section.append(hint);return section;
+  if (data.hint) {
+    const hint=el('details');
+    hint.append(el('summary','Need a hint?'),el('p',data.hint));
+    section.append(hint);
+  }
+  return section;
 }
+
 function appendWorkedTree(aside, worked, { focusId, blank = null, constituentPilot = false }) {
   const evidence=el('details',undefined,'lesson-shared-evidence');
   evidence.dataset.xai7Lesson = '';
@@ -405,8 +410,10 @@ function showConstituentPage(page) {
 function constituentScreen(lesson, p) {
   const page = constituentPage;
   const reviewing = Boolean(p.completed_at);
-  const body = el('section', undefined, 'lesson-stage-body');
+  const body = el('article', undefined, 'lesson-stage-body');
   const heading = el('h2', constituentHeadings[page]);
+  heading.id = 'constituent-page-title';
+  body.setAttribute('aria-labelledby', heading.id);
   heading.tabIndex = -1;
   body.append(heading);
   const layout = el('div', undefined, 'constituent-page');
@@ -426,8 +433,22 @@ function constituentScreen(lesson, p) {
   });
 
   if (page === 0) {
-    body.append(question(lesson, 'predict', p, reviewing || p.visited.includes('predict')));
+    const preTest = el('section', undefined, 'constituent-pre-test');
+    preTest.append(el('h3', 'Pre-test'), el('p', 'Answer this short question before you begin. Your answer is unscored, and any choice lets you continue.'));
+    if (p.responses.predict) {
+      // Earlier versions used a different prompt with the same saved response key.
+      // Acknowledge submission without applying an older choice to the new prompt.
+      const recorded = el('p', 'Response recorded.', 'constituent-pre-test-status');
+      recorded.setAttribute('role', 'status');
+      recorded.tabIndex = -1;
+      preTest.append(recorded);
+    } else {
+      preTest.append(question(lesson, 'predict', p, reviewing, undefined, constituentPreTest));
+    }
+    body.append(preTest);
   }
+
+  if (page === 4) body.append(lessonReferences(lesson));
 
   const actions = el('div', undefined, 'lesson-page-actions constituent-actions');
   if (page > 0) {
@@ -514,9 +535,8 @@ function constituentScreen(lesson, p) {
       actions.append(next);
     }
     if (key === 'exit' || reviewing) addConstituentReview(body, { el });
-    host.append(lessonReferences(lesson));
   }
-  host.append(actions);
+  layout.append(actions);
 }
 
 function lessonScreen() {
@@ -525,7 +545,7 @@ function lessonScreen() {
   const reviewing = reviewStage !== null;
   const constituentPilot = lesson.lesson_id === 'br-01';
   const chapter = constituentPilot ? 'Chapter 1' : lesson.track === 'foundations' ? `B-R · Chapter ${lesson.chapter}` : `Cambridge · Chapter ${lesson.chapter}`;
-  const header=el('header',undefined,'lesson-header');header.append(button('← All lessons', showCatalog),el('p',chapter,'lesson-eyebrow'));
+  const header=el('header',undefined,constituentPilot ? 'lesson-header constituent-header' : 'lesson-header');header.append(button('← All lessons', showCatalog),el('p',chapter,'lesson-eyebrow'));
   const h1=el('h1',lesson.title);h1.tabIndex=-1;header.append(h1);
   if (!constituentPilot) header.append(el('p',lesson.outcomes[0].text,'lesson-lead'));
   host.append(header);

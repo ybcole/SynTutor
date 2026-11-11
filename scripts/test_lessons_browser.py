@@ -53,22 +53,29 @@ try:
   page.set_viewport_size({'width':1440,'height':1050})
   part_heading=view.locator('.lesson-stage-body h2')
   part_titles=['Predict','Understand','See it','Build it','Apply it','Exit check']
-  chapter_one_titles=['Why words group together','How to find a constituent',
-                      'What changes when we group words differently?', 'One sentence, two meanings',
-                      'Chapter recap','Chapter post-test']
+  chapter_one_titles=['Introduction to Constituents and Hierarchy','Identifying Constituents in a Sentence',
+                      'Comparing Flat and Nested Trees', 'Structural Ambiguity',
+                      'Chapter Recap','Chapter Post-test']
   for ident in ['br-01','br-06','br-10']:
    titles=chapter_one_titles if ident=='br-01' else part_titles
    page.evaluate("id=>import('/js/lessons-ui.js').then(m=>m.openLessons(id))",ident)
    expect(part_heading).to_have_text(titles[0])
    if ident=='br-01':
     expect(view.locator('.lesson-tree-canvas')).to_have_count(0)
-    intro=view.get_by_role('heading',name='Before you begin')
+    expect(view.locator('article')).to_have_attribute('aria-labelledby','constituent-page-title')
+    intro=view.get_by_role('heading',name='Pre-test',exact=True)
+    expect(view.locator('[data-question="predict"] legend')).to_contain_text('Mara rested beside the river')
     expect(intro).to_be_visible()
     assert intro.bounding_box()['y'] < view.locator('[data-question="predict"]').bounding_box()['y']
+    page.screenshot(path=str(OUT/'br-01-intro-desktop.png'),full_page=True)
+    page.set_viewport_size({'width':390,'height':844})
+    assert view.evaluate('(el) => el.scrollWidth <= el.clientWidth'), 'Introduction has horizontal overflow'
+    page.screenshot(path=str(OUT/'br-01-intro-mobile.png'),full_page=True)
+    page.set_viewport_size({'width':1440,'height':1050})
    expect(view.get_by_text(re.compile(r'^Part \d+ of 6$'))).to_have_count(0)
    next_button=view.locator('.lesson-page-actions').get_by_role('button',name='Next →',exact=True)
    expect(next_button).to_be_disabled()
-   columns=view.locator('.lesson-columns, .constituent-page').bounding_box()
+   columns=view.locator('.lesson-columns, .constituent-page article').bounding_box()
    action=next_button.bounding_box()
    assert action['y'] >= columns['y'] + columns['height']
    assert abs(action['x'] + action['width'] - columns['x'] - columns['width']) < 1
@@ -78,18 +85,22 @@ try:
    prediction_answer=lesson['predict']['answer']
    if ident=='br-01':
     prediction_answer=next(o['id'] for o in lesson['predict']['options'] if o['id']!=prediction_answer)
-   prediction.locator(f'input[value="{prediction_answer}"]').check()
-   expect(prediction.locator('.lesson-feedback')).to_be_visible()
+   prediction.locator(f'input[value="{prediction_answer}"]').click()
+   if ident=='br-01':
+    expect(view.locator('.constituent-pre-test-status')).to_have_text('Response recorded.')
+    expect(prediction).to_have_count(0)
+   else:
+    expect(prediction.locator('.lesson-feedback')).to_be_visible()
    expect(next_button).to_be_enabled()
    view.get_by_role('button',name='Next →',exact=True).click()
    expect(part_heading).to_have_text(titles[1])
    if ident=='br-01':
-    expect(view.get_by_role('heading',name='Look for evidence in the sentence')).to_be_visible()
+    expect(view.get_by_role('heading',name='Test a group with replacement')).to_be_visible()
     view.get_by_role('button',name='near the quiet garden',exact=True).click()
     expect(view.locator('.lesson-tree-focus text')).to_have_text('PHRASE-a')
     view.get_by_role('button',name='← Previous',exact=True).click()
-    expect(prediction.locator('input').first).to_be_disabled()
-    expect(prediction.locator('input:checked')).to_have_value(prediction_answer)
+    expect(view.locator('.constituent-pre-test-status')).to_have_text('Response recorded.')
+    expect(prediction).to_have_count(0)
     view.get_by_role('button',name='Next →',exact=True).click()
     expect(part_heading).to_have_text(titles[1])
    view.get_by_role('button',name='Next →',exact=True).click()
@@ -140,8 +151,12 @@ try:
   view.get_by_role('button',name='Next →',exact=True).click()
   expect(part_heading).to_have_text(chapter_one_titles[4])
   expect(view.locator('.constituent-recap li')).to_have_count(4)
+  references=view.locator('article .lesson-sources')
+  references.locator('summary').click()
+  expect(references.get_by_text('AI checked',exact=False)).to_be_visible()
   view.get_by_role('button',name='Start post-test').click()
   expect(part_heading).to_have_text(chapter_one_titles[5])
+  expect(view.locator('.lesson-sources')).to_have_count(0)
   chapter_one=COURSE['lessons'][0]
   guided=view.locator('[data-question="guided"]')
   tree_text=view.get_by_text('Read the tree as text',exact=True)
@@ -211,7 +226,8 @@ try:
   page.evaluate("()=>import('/js/lessons-ui.js').then(m=>m.openLessons('br-01'))")
   expect(part_heading).to_have_text(chapter_one_titles[0])
   expect(view.get_by_text('Completed for this content version. Reviewing cannot award another 15 XP.',exact=True)).to_have_count(0)
-  expect(view.locator('.lesson-option input').first).to_be_disabled()
+  expect(view.locator('.constituent-pre-test-status')).to_have_text('Response recorded.')
+  expect(view.locator('[data-question="predict"]')).to_have_count(0)
   for _ in range(4):
    view.get_by_role('button',name='Next →',exact=True).click()
   view.get_by_role('button',name='Start post-test',exact=True).click()
