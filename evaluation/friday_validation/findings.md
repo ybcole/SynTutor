@@ -110,3 +110,63 @@ Expected:
 **Reproduction:** test_rule_attribution.py
 
 **Status:** Confirmed against the local QA backend.
+
+## QA-008 — Lexical/modal ambiguity causes unresolved syntax tree
+
+**Severity:** Medium
+**Area:** Constituency parsing and Burton-Roberts normalization
+**Status:** Reproduced with automated regression test
+
+### Problem
+
+SynTutor fails to normalize an acceptable sentence when the
+word "can" functions as a lexical verb rather than a modal.
+
+### Reproduction
+
+Sentence: They can the peaches.
+
+Expected:
+- Recognize the intended lexical-verb interpretation.
+- Produce a normalized transitive clause tree.
+- Do not report a grammatical error.
+
+Actual:
+- Benepar labels "can" as MD (modal auxiliary).
+- Raw parse: (VP (MD can) (NP ...))
+- B-R analysis status: unresolved
+- Diagnostic: PROFILE_MAPPING_NOT_APPROVED
+- Reason: Auxiliary has no overt VP complement.
+- No legacy grammar error is reported.
+
+### Contrastive example
+
+Sentence: She cans the peaches.
+
+Actual:
+- Benepar labels "cans" as VBZ.
+- B-R analysis status: normalized.
+- No grammar error is reported.
+
+### Root-cause evidence
+
+The upstream parser selects an incorrect modal interpretation
+for "They can the peaches." The B-R normalizer subsequently
+rejects the unsupported auxiliary-plus-NP structure.
+
+This identifies the immediate failure mechanism, not the
+complete architectural root cause.
+
+### Recommended investigation
+
+Evaluate constrained alternative lexical analyses when the
+initial parser interpretation is incompatible with supported
+syntactic evidence.
+
+Do not apply a blanket MD-to-VB conversion.
+
+### Regression test
+
+evaluation/friday_validation/test_lexical_can_structure.py
+
+Current result: 2 passed, 1 failed.
