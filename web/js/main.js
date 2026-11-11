@@ -1601,20 +1601,7 @@ function showCanonicalTree(payload) {
     ? 'B-R working tree. Triangles preserve spans that need further analysis. Select a node to see its status. Drag to pan, scroll to zoom.'
     : 'Select a node to inspect its Burton-Roberts structure and available book evidence. Drag to pan, scroll to zoom.';
   host.append(help);
-  const wordMarks = new Map();
-  const target = payload.parse.sentences[payload.meta.target_sentence - 1];
-  if (target && envelope.sentence === payload.parse.text) {
-    const errors = buildHighlightSpans(payload).filter(span => span.status === 'error');
-    for (const [index, token] of envelope.tokens.entries()) {
-      const [start, end] = token.char_span;
-      const error = end > start && errors.find(span =>
-        span.start <= target.start + start && target.start + end <= span.end);
-      if (error) wordMarks.set(index, error);
-    }
-  }
-  const visual = renderLessonTree(envelope, {
-    stackFeatures: true, displayLabels, interactive: true, markedTokens: wordMarks,
-  });
+  const visual = renderLessonTree(envelope, {stackFeatures: true, displayLabels, interactive: true});
   host.append(visual);
   host.hidden = false;
   // Moves the SVG into a pannable/zoomable viewport; everything below queries
@@ -1649,9 +1636,7 @@ function showCanonicalTree(payload) {
       group.setAttribute('role', 'button');
     }
     const accessibleLabel = node.word ? 'word' : facts.label;
-    const markedWords = [...group.querySelectorAll('.tree-word-invalid')].map(word => word.textContent);
-    const wordFeedback = markedWords.length ? `. Grammar checker flagged ${markedWords.join(', ')}` : '';
-    group.setAttribute('aria-label', `Inspect Burton-Roberts ${accessibleLabel}${facts.surface ? ` for ${facts.surface}` : ''}${wordFeedback}`);
+    group.setAttribute('aria-label', `Inspect Burton-Roberts ${accessibleLabel}${facts.surface ? ` for ${facts.surface}` : ''}`);
     if (!interactiveSvg) group.setAttribute('aria-pressed', 'false');
     const select = async () => {
       const selectedVersion = ++requestVersion;
@@ -1668,20 +1653,6 @@ function showCanonicalTree(payload) {
       if (!pane) return;
       document.querySelector('#emptyExplainState')?.classList.add('hidden');
       pane.replaceChildren();
-      if (markedWords.length) {
-        const [start, end] = node.token_span;
-        const messages = new Set();
-        for (let index = start; index < end; index++) {
-          const message = wordMarks.get(index)?.message;
-          if (message) messages.add(message);
-        }
-        for (const message of messages) {
-          const feedback = document.createElement('p');
-          feedback.className = 'learner-grammar-paragraph';
-          feedback.textContent = message;
-          pane.append(feedback);
-        }
-      }
       const evidenceSlot = document.createElement('section');
       pane.append(evidenceSlot);
       try {
@@ -2051,7 +2022,7 @@ async function executePipeline(opts, request) {
     input.value = text;
     syncInputClearBtn();
   }
-  const spans = buildHighlightSpans(payload);
+  const spans = buildHighlightSpans(text, payload);
   if (opts.isSentenceNav || opts.mergeSpans) {
     historySpans = mergeHighlightSpans(historySpans, spans);
   } else {
@@ -2111,7 +2082,7 @@ async function executePipeline(opts, request) {
   }
 }
 
-function buildHighlightSpans(payload) {
+function buildHighlightSpans(text, payload) {
   const target = payload.parse.sentences[payload.meta.target_sentence - 1];
   if (!target) return [];
   const tokens = payload.parse.tokens || [];
@@ -2125,34 +2096,26 @@ function buildHighlightSpans(payload) {
       tokenRanges.push({ start: token.start, end: token.end, index: token.i });
     }
   } else {
-    let cursor = 0;
-    const sentence = payload.parse.text || '';
+    let cursor = target.start;
     for (const token of tokens) {
-      const start = sentence.indexOf(token.t, cursor);
-      if (start < 0) continue;
+      const start = text.indexOf(token.t, cursor);
+      if (start < 0 || start >= target.end) continue;
+      tokenRanges.push({ start, end: start + token.t.length, index: token.i });
       cursor = start + token.t.length;
-      tokenRanges.push({ start: target.start + start, end: target.start + cursor, index: token.i });
     }
   }
-  const locations = Object.values(payload.node_details).flatMap(detail => {
-    if (detail.status !== 'error') return [];
-    if (detail.constraint === 'C-CAPITALIZATION') {
-      const first = tokenRanges[0]?.index;
-      return [{ start: first, end: first + 1, message: detail.text }];
-    }
-    const edit = detail.remediation?.edit;
-    if (Number.isInteger(edit?.start) && Number.isInteger(edit?.end)) {
-      // A missing word has an insertion point, so there is no existing word to color.
-      return edit.start < edit.end ? [{ start: edit.start, end: edit.end, message: detail.text }] : [];
-    }
-    if (detail.id === payload.tree?.id || !detail.span) return [];
-    return [{ start: detail.span[0], end: detail.span[1], message: detail.text }];
-  });
   const sentenceClean = payload.summary?.verdict === 'grammatical';
   return tokenRanges.map((token) => {
-    const location = locations.find(span => span.start <= token.index && token.index < span.end);
-    const status = location ? 'error' : sentenceClean ? 'valid' : 'neutral';
-    return { start: token.start, end: token.end, status, message: location?.message };
+    let status = sentenceClean ? 'valid' : 'neutral';
+    const isSentenceInitialToken = token.index === tokenRanges[0]?.index;
+    for (const detail of Object.values(payload.node_details)) {
+      if (detail.status === 'error' && detail.span[0] <= token.index && token.index < detail.span[1]) {
+        if (detail.constraint === 'C-CAPITALIZATION' && !isSentenceInitialToken) continue;
+        status = 'error';
+        break;
+      }
+    }
+    return { start: token.start, end: token.end, status };
   });
 }
 
@@ -2168,7 +2131,7 @@ function renderInputHighlights(text, payload = null) {
   if (!layer) return;
   layer.textContent = '';
   if (!text) return;
-  const spans = payload ? mergeHighlightSpans(historySpans, buildHighlightSpans(payload)) : historySpans;
+  const spans = payload ? mergeHighlightSpans(historySpans, buildHighlightSpans(text, payload)) : historySpans;
   const target = payload?.parse?.sentences?.[(payload.meta.target_sentence || 1) - 1];
   let sentenceStart = target?.start ?? -1;
   let sentenceEnd = target?.end ?? -1;

@@ -1457,11 +1457,6 @@ body.lesson-view #explainNode:empty { display: none; }
   fill: var(--accent);
   text-decoration: underline;
 }
-.canonical-tree-view .tree-word-invalid {
-  fill: var(--err);
-  color: var(--err);
-  text-decoration: underline;
-}
 .tree-authority-notice button {
   pointer-events: auto;
   margin-top: 6px;
