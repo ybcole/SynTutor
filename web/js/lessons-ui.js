@@ -55,7 +55,7 @@ function svgNode(name, attrs = {}) { const n = document.createElementNS(SVG_NS,n
 export function renderLessonTree(envelope, {
   focusId = null, blank = null, stackFeatures = false, displayLabels = null,
   interactive = false, onSelectNode = null, zoomControls = false, wordBaseline = 0,
-  textDisclosure = true,
+  textDisclosure = true, traceBranches = false,
 } = {}) {
   const wrap = el('div',undefined,'lesson-tree-wrap');
   const root = envelope.root;
@@ -130,12 +130,33 @@ export function renderLessonTree(envelope, {
   const height=Math.max(...positions.map(p=>p.y + featureRows(p.node).length * 18 + (p.node.triangle ? 80 : 35)));
   const role = !textDisclosure && typeof onSelectNode === 'function' ? 'group' : 'img';
   const svg=svgNode('svg',{viewBox:`0 0 ${width} ${height}`,width,height,role,'aria-label':`B-R tree for ${envelope.sentence}`});
-  for (const [a,b] of edges) svg.append(svgNode('line',{x1:a.x,y1:a.y+12+featureRows(a.node).length*18,x2:b.x,y2:b.y-18,class:'lesson-branch'}));
+  const branchLines = edges.map(([a,b]) => {
+    const line = svgNode('line',{x1:a.x,y1:a.y+12+featureRows(a.node).length*18,x2:b.x,y2:b.y-18,class:'lesson-branch'});
+    svg.append(line);
+    return line;
+  });
+  const wordLabels = new Map();
+  function trace(nodeId) {
+    const covered = new Set();
+    function collect(node) {
+      covered.add(node);
+      for (const child of node.children || []) collect(child);
+    }
+    const selected = positions.find(({ node }) => node.id === nodeId);
+    if (selected) collect(selected.node);
+    edges.forEach(([parent], index) => {
+      branchLines[index].classList.toggle('lesson-branch-traced', covered.has(parent.node));
+    });
+    for (const [node, label] of wordLabels) {
+      label.classList.toggle('lesson-word-traced', covered.has(node));
+    }
+  }
   for (const {node,x,y} of positions) {
     const g=svgNode('g',{'data-node-id':node.id || '',class:node.id===focusId ? 'lesson-tree-focus' : ''});
     if (node.id===focusId) g.append(svgNode('rect',{x:x-55,y:y-20,width:110,height:40,rx:9}));
     const t=svgNode('text',{x,y,'text-anchor':'middle'});
     t.textContent=visibleLabel(node);g.append(t);
+    if (traceBranches && node.word) wordLabels.set(node, t);
     const rows = featureRows(node);
     rows.forEach((feature, index) => {
       const row = svgNode('text', {x, y: y + (index + 1) * 18, 'text-anchor': 'middle', class: 'br-feature-row'});
@@ -153,7 +174,10 @@ export function renderLessonTree(envelope, {
       g.setAttribute('tabindex','0');
       g.setAttribute('aria-label','Inspect B-R ' + (node.label || 'tree position')
         + ' for ' + (node.word || node.words?.join(' ') || node.label || 'this position'));
-      const choose = () => onSelectNode(node.id, null);
+      const choose = () => {
+        if (traceBranches) trace(node.id);
+        onSelectNode(node.id, null);
+      };
       g.addEventListener('click', choose);
       g.addEventListener('keydown', event => {
         if (event.target !== g) return;
@@ -179,6 +203,7 @@ export function renderLessonTree(envelope, {
     }
     svg.append(g);
   }
+  if (traceBranches) trace(focusId);
   if (zoomControls) {
     const toolbar=el('div',undefined,'xai7-tree-zoom');
     toolbar.dataset.xai7Zoom = '';
@@ -467,6 +492,7 @@ function appendWorkedTree(aside, worked, { focusId, blank = null, comparisonTree
     onSelectNode: inspect,
     stackFeatures: true,
     wordBaseline: comparisonTree ? 2 : 0,
+    traceBranches: Boolean(comparisonTree),
   });
   if (inline) {
     if (selected) describeSelection(worked.tree.root, selected);
@@ -518,7 +544,9 @@ function articleScreen(lesson, p, article) {
     },
     showComparisonTree: (figure, flatTree) => {
       clearLessonDiagram(figure);
-      if (flatTree) return mountLessonCanvas(figure, flatTree, { wordBaseline: 2 });
+      if (flatTree) return mountLessonCanvas(figure, flatTree, {
+        focusId: flatTree.root.id, wordBaseline: 2, traceBranches: true,
+      });
       const worked = lesson.worked_example;
       const focusId = worked.steps.at(-1).focus_node_id;
       // Expand the teaching diagram only. Explanations still use the canonical tree and node IDs.

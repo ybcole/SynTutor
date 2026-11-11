@@ -106,7 +106,7 @@ export function addConstituentTeaching(body, page, { el, button, showDiagram, sh
   if (page === 2) {
     paragraph('You found evidence that “the quiet garden” is a group inside “near the quiet garden”. Now compare two ways of drawing those same four words. Where does each drawing put the boundary of the garden group?');
     section('Compare the two drawings',
-      'Start with the flat drawing. Trace “the”, “quiet”, and “garden” upward to the first node they share. Does that node also reach “near”? Switch to the nested drawing and try again.');
+      'Compare the highlighted branches in both drawings. Is there one node that reaches exactly “the quiet garden”? In the nested drawing, select PHRASE-a or PHRASE-b to see which words each node reaches.');
     const [flat] = drawings(['near', 'the', 'quiet', 'garden']);
     const tree = el('div');
     const caption = el('p', undefined, 'constituent-caption');
@@ -116,8 +116,8 @@ export function addConstituentTeaching(body, page, { el, button, showDiagram, sh
     body.append(example);
     figureControls('Compare drawings', ['Flat drawing', 'Nested drawing'], tree, index => {
       caption.textContent = index
-        ? 'PHRASE-b reaches exactly “the quiet garden”. One level up, PHRASE-a contains that group and “near”. The nested tree shows both constituents.'
-        : 'The three garden words first meet at PHRASE-a, which also reaches “near”. The flat tree shows the whole phrase as a group and gives the garden words no node of their own.';
+        ? 'PHRASE-b reaches exactly “the quiet garden”. PHRASE-a reaches all four words.'
+        : 'The three garden words meet at PHRASE-a, which also reaches “near”.';
       showComparisonTree(tree, index ? null : flat).after(caption);
     }, 1);
     section('Build your first tree',

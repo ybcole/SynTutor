@@ -106,11 +106,20 @@ try:
   for drawing_name, branches in [('Flat drawing',4),('Nested drawing',5)]:
    view.get_by_role('button',name=drawing_name).click()
    expect(comparison.locator('svg .lesson-branch')).to_have_count(branches)
+   traced_words = ['near','the','quiet','garden'] if drawing_name == 'Flat drawing' else ['the','quiet','garden']
+   expect(comparison.locator('svg .lesson-word-traced')).to_have_text(traced_words)
+   expect(comparison.locator('svg .lesson-branch-traced')).to_have_count(len(traced_words))
    expect(comparison.locator('svg')).to_have_attribute('viewBox',nested_viewbox)
    expect(comparison.get_by_role('button',name='Zoom in B-R tree')).to_be_visible()
    assert comparison.bounding_box()['width']==nested_box['width']
    assert comparison.bounding_box()['height']==nested_box['height']
    expect(comparison.locator('svg text').filter(has_text=re.compile(r'^(near|the|quiet|garden)$'))).to_have_count(4)
+  comparison.get_by_role('button',name='Inspect B-R PHRASE-a for PHRASE-a',exact=True).press('Enter')
+  expect(comparison.locator('svg .lesson-branch-traced')).to_have_count(5)
+  expect(comparison.locator('svg .lesson-word-traced')).to_have_text(['near','the','quiet','garden'])
+  comparison.get_by_role('button',name=re.compile(r'^Inspect B-R PHRASE-b\b')).press('Enter')
+  expect(comparison.locator('svg .lesson-branch-traced')).to_have_count(3)
+  expect(comparison.locator('svg .lesson-word-traced')).to_have_text(['the','quiet','garden'])
   viewport=comparison.bounding_box()
   drawing=comparison.locator('svg')
   initial_width=drawing.bounding_box()['width']
