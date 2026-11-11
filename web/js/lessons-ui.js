@@ -4,6 +4,7 @@ import { createLessonStore } from './lesson-progress.js';
 import { requestEvidence, renderEvidence } from './explanation-evidence.js';
 import { subscribeAuthState } from './auth.js';
 import { enableCanvasView } from './canvas-view.js';
+import { addConstituentTeaching, constituentHeadings, constituentReferences } from './constituents-lesson.js';
 
 let options = {}, course, store, host, active = null, step = 0, track = 'foundations', busy = false, notice = '', generation = 0, lastFocus = null;
 let reviewStage = null;
@@ -19,6 +20,9 @@ function lessonReferences(lesson) {
   const list = el('ul');
   for (const source of course.sources.filter(source => ids.has(source.id))) {
     list.append(el('li', `${source.title} · ${source.edition} · Chapter ${source.chapter} · printed p. ${source.printed_page}`));
+  }
+  if (lesson.lesson_id === 'br-01') {
+    for (const reference of constituentReferences) list.append(el('li', reference));
   }
   details.append(list, el('p', 'AI checked the cited pages. The lesson has no human instructor sign-off.'));
   return details;
@@ -311,20 +315,26 @@ function lessonScreen() {
   const lesson = currentLesson(), p = progressFor(lesson);
   const stage = reviewStage ?? p.stage, key = STAGES[stage];
   const reviewing = reviewStage !== null;
-  const header=el('header',undefined,'lesson-header');header.append(button('← All lessons', showCatalog),el('p',`${lesson.track==='foundations' ? `B-R · Chapter ${lesson.chapter}` : `Cambridge · Chapter ${lesson.chapter}`}`,'lesson-eyebrow'));
+  const constituentPilot = lesson.lesson_id === 'br-01';
+  const chapter = constituentPilot ? 'Chapter 1' : lesson.track === 'foundations' ? `B-R · Chapter ${lesson.chapter}` : `Cambridge · Chapter ${lesson.chapter}`;
+  const header=el('header',undefined,'lesson-header');header.append(button('← All lessons', showCatalog),el('p',chapter,'lesson-eyebrow'));
   const h1=el('h1',lesson.title);h1.tabIndex=-1;header.append(h1,el('p',lesson.outcomes[0].text,'lesson-lead'));host.append(header);
-  const columns=el('div',undefined,'lesson-columns'),body=el('section',undefined,'lesson-stage-body'),aside=el('aside',undefined,'lesson-evidence-card');
-  const partHeading = el('h2', STAGE_TITLES[stage]);
+  const columns=el('div',undefined,constituentPilot ? 'constituent-page' : 'lesson-columns'),body=el('section',undefined,'lesson-stage-body'),aside=el('aside',undefined,'lesson-evidence-card');
+  const partHeading = el('h2', constituentPilot ? constituentHeadings[key] : STAGE_TITLES[stage]);
   partHeading.tabIndex = -1;
   body.append(partHeading);
+  const worked = lesson.worked_example;
+  if (constituentPilot) addConstituentTeaching(body, key, { el, renderTree: renderLessonTree, worked, step });
   if (lesson[key]) body.append(question(lesson,key,p,reviewing));
-  if (key==='understand') {
+  if (key==='understand' && !constituentPilot) {
     for (const block of lesson.teaching) body.append(el('p', block.text));
     for (const insight of lesson.cambridge_insights) { const card=el('section',undefined,'lesson-insight');card.append(el('h3','Cambridge insight'),el('p',insight.text));body.append(card); }
   }
-  const worked=lesson.worked_example;
-  aside.append(el('h2',worked.tree ? 'Worked B-R example' : 'Worked example'),el('p',worked.sentence,'lesson-example-sentence'));
-  if (worked.tree) {
+  const showWorked = !constituentPilot || key === 'worked' || key === 'guided';
+  if (showWorked) {
+    aside.append(el('h2',constituentPilot || !worked.tree ? 'Worked example' : 'Worked B-R example'),el('p',worked.sentence,'lesson-example-sentence'));
+  }
+  if (showWorked && worked.tree) {
     const evidence=el('details',undefined,'lesson-shared-evidence');
     evidence.dataset.xai7Lesson = '';
     const title=el('summary','Explanation');
@@ -332,8 +342,30 @@ function lessonScreen() {
     evidence.append(title,slot);
     let requestVersion=0;
     let selected=key==='guided' ? lesson.guided.build_target?.node_id : worked.steps[step]?.focus_node_id;
+    const selectedWords = el('p', undefined, 'constituent-selection');
+    selectedWords.setAttribute('aria-live', 'polite');
+    function describeSelection(node, id) {
+      if (node.id === id) {
+        const [start, end] = node.token_span || [];
+        if (Number.isInteger(start) && Number.isInteger(end)) {
+          selectedWords.replaceChildren('Selected words: ');
+          worked.tree.tokens.forEach((token, index) => {
+            if (index) selectedWords.append(' ');
+            selectedWords.append(index >= start && index < end ? el('mark', token.text) : token.text);
+          });
+        }
+      } else {
+        for (const child of node.children || []) describeSelection(child, id);
+      }
+    }
     const inspect=async (nodeId, feature=null) => {
       selected=nodeId;
+      if (constituentPilot) {
+        describeSelection(worked.tree.root, nodeId);
+        for (const item of canvas.querySelectorAll('svg [data-node-id]')) {
+          item.toggleAttribute('data-constituent-selected', item.dataset.nodeId === nodeId);
+        }
+      }
       evidence.open=true;
       const version=++requestVersion;
       slot.replaceChildren(el('p','Explaining this word or phrase…'));
@@ -355,13 +387,17 @@ function lessonScreen() {
     });
     canvas.append(treeView);
     aside.append(canvas, el('p', worked.origin, 'lesson-origin'));
+    if (constituentPilot) {
+      describeSelection(worked.tree.root, selected);
+      aside.append(selectedWords);
+    }
     lessonCanvas = enableCanvasView(canvas, treeView);
     if (selected) aside.append(button('Inspect highlighted tree position',()=>inspect(selected)));
     evidence.addEventListener('toggle',()=>{if(evidence.open&&!slot.childElementCount&&selected)inspect(selected);});
     aside.append(evidence);
   }
-  else aside.append(el('p',lesson.chapter===11 && lesson.track==='foundations' ? 'This closing chapter is a text-only synthesis. No new tree convention or gradable tree is introduced.' : 'Use the text contrast without renaming B-R tree categories.'), el('p', worked.origin, 'lesson-origin'));
-  if(key==='worked') {
+  else if (showWorked) aside.append(el('p',lesson.chapter===11 && lesson.track==='foundations' ? 'This closing chapter is a text-only synthesis. No new tree convention or gradable tree is introduced.' : 'Use the text contrast without renaming B-R tree categories.'), el('p', worked.origin, 'lesson-origin'));
+  if(key==='worked' && !constituentPilot) {
     body.append(el('p',`Step ${step+1} of ${worked.steps.length}`),el('p',worked.steps[step].text));
   }
   if(key==='guided' && lesson.guided.build_target) body.append(el('p','Fill the highlighted missing label or feature in the worked tree. The complete original returns when your answer matches.','lesson-guide-note'));
@@ -385,7 +421,9 @@ function lessonScreen() {
     const following=course.lessons.find(l=>l.prerequisites.some(pr=>pr.lesson_id===lesson.lesson_id) && !progressFor(l).completed_at);
     if (following) actions.append(button(`Next lesson: ${following.title}`, () => openLesson(following.lesson_id), 'lesson-primary'));
   }
-  columns.append(body,aside);host.append(columns);
+  columns.append(body);
+  if (showWorked) columns.append(aside);
+  host.append(columns);
   if (key === 'exit') host.append(lessonReferences(lesson));
   if (actions.childElementCount) host.append(actions);
 }

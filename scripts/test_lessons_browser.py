@@ -53,13 +53,18 @@ try:
   page.set_viewport_size({'width':1440,'height':1050})
   part_heading=view.locator('.lesson-stage-body h2')
   part_titles=['Predict','Understand','See it','Build it','Apply it','Exit check']
+  chapter_one_titles=['Which words belong together?','Words form groups','Trace a group through the tree',
+                      'Give a group its own branch','One sentence, two meanings','Try a fresh example']
   for ident in ['br-01','br-06','br-10']:
+   titles=chapter_one_titles if ident=='br-01' else part_titles
    page.evaluate("id=>import('/js/lessons-ui.js').then(m=>m.openLessons(id))",ident)
-   expect(part_heading).to_have_text('Predict')
+   expect(part_heading).to_have_text(titles[0])
+   if ident=='br-01':
+    expect(view.locator('.lesson-tree-canvas')).to_have_count(0)
    expect(view.get_by_text(re.compile(r'^Part \d+ of 6$'))).to_have_count(0)
    next_button=view.locator('.lesson-page-actions').get_by_role('button',name='Next →',exact=True)
    expect(next_button).to_be_disabled()
-   columns=view.locator('.lesson-columns').bounding_box()
+   columns=view.locator('.lesson-columns, .constituent-page').bounding_box()
    action=next_button.bounding_box()
    assert action['y'] >= columns['y'] + columns['height']
    assert abs(action['x'] + action['width'] - columns['x'] - columns['width']) < 1
@@ -69,9 +74,12 @@ try:
    prediction.locator('input[value="'+lesson['predict']['answer']+'"]').check()
    expect(prediction.locator('.lesson-feedback.correct')).to_be_visible()
    view.get_by_role('button',name='Next →',exact=True).click()
-   expect(part_heading).to_have_text('Understand')
+   expect(part_heading).to_have_text(titles[1])
+   if ident=='br-01':
+    expect(view.get_by_role('heading',name='Test a group in a sentence')).to_be_visible()
+    expect(view.locator('.lesson-tree-canvas')).to_have_count(0)
    view.get_by_role('button',name='Next →',exact=True).click()
-   expect(part_heading).to_have_text('See it')
+   expect(part_heading).to_have_text(titles[2])
    assert view.locator('svg[role="img"]').count()==1
    canvas=view.locator('.canonical-viewport')
    viewport=canvas.bounding_box()
@@ -95,19 +103,31 @@ try:
   expect(first.get_by_text('2 of 6 stages completed',exact=True)).to_be_visible()
   expect(summary.get_by_role('button',name='Constituents and hierarchy',exact=True)).to_be_visible()
   first.get_by_role('button',name='Resume lesson',exact=True).click()
-  expect(part_heading).to_have_text('See it')
+  expect(part_heading).to_have_text(chapter_one_titles[2])
   # Complete every published lesson, in prerequisite order, using rendered controls.
   for lesson in COURSE['lessons']:
    page.evaluate("id=>import('/js/lessons-ui.js').then(m=>m.openLessons(id))",lesson['lesson_id'])
    # Representative previews may already have advanced to the worked stage.
-   current=0
-   current=part_titles.index(part_heading.inner_text())
+   is_chapter_one=lesson['lesson_id']=='br-01'
+   titles=chapter_one_titles if is_chapter_one else part_titles
+   current=titles.index(part_heading.inner_text())
    for i in range(current,6):
     key=['predict','understand','worked','guided','transfer','exit'][i]
-    expect(part_heading).to_have_text(part_titles[i])
+    expect(part_heading).to_have_text(titles[i])
     print('Checking',lesson['lesson_id'],key,flush=True)
     if key=='worked':
      for _ in range(len(lesson['worked_example']['steps'])-1):view.get_by_role('button',name='Next →',exact=True).click()
+     if is_chapter_one:
+      expect(view.locator('.constituent-comparison svg')).to_have_count(2)
+      expect(view.locator('.constituent-selection mark')).to_have_text(['the','quiet','garden'])
+    if is_chapter_one and key=='guided':
+     for word in ['the','red','gate']:
+      view.get_by_role('checkbox',name=word,exact=True).check()
+     view.get_by_role('button',name='Check grouping').click()
+     expect(view.get_by_text('Exactly. The three words share one node.',exact=True)).to_be_visible()
+    if is_chapter_one and key=='transfer':
+     expect(view.locator('.constituent-comparison svg')).to_have_count(2)
+     expect(view.locator('.lesson-evidence-card')).to_have_count(0)
     if lesson.get(key):
      question=view.locator(f'[data-question="{key}"]')
      expect(question).to_be_visible()
@@ -127,7 +147,7 @@ try:
    expect(view.locator('.lesson-save-status')).to_contain_text('15 lesson XP awarded',timeout=10000)
    if lesson['lesson_id']=='br-11':assert view.locator('svg').count()==0,'Chapter 11 must remain text-only'
   page.evaluate("()=>import('/js/lessons-ui.js').then(m=>m.openLessons('br-01'))")
-  expect(part_heading).to_have_text('Predict')
+  expect(part_heading).to_have_text(chapter_one_titles[0])
   expect(view.get_by_text('Completed for this content version. Reviewing cannot award another 15 XP.',exact=True)).to_have_count(0)
   expect(view.locator('.lesson-option input').first).to_be_disabled()
   for _ in range(4+len(COURSE['lessons'][0]['worked_example']['steps'])):
