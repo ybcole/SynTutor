@@ -29020,5 +29020,1280 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-429",
+    "domain": "clauses",
+    "concept": "Countability belongs to noun senses",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Count senses combine with numerals and count-selecting determiners. Non-count senses take a different range of determiners.",
+    "condition": "Applies to the construction described in §5 of Chapter 2.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A noun can have distinct count and non-count senses. Singular count nouns normally need a determiner, with construction-specific exceptions.",
+        "pages": [
+          57
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Three chairs were missing.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Some furniture was missing.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§5",
+        "pages": [
+          57
+        ],
+        "pdf_pages": [
+          77
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Countability belongs to noun senses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-430",
+    "domain": "clauses",
+    "concept": "Adjectival and adverbial functions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Adjectives commonly modify nouns or serve predicatively. Adverbs commonly modify clauses, VPs, adjectives or other adverbs.",
+    "condition": "Applies to the construction described in §6 of Chapter 2.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "AdjPs and AdvPs can have their own dependents. The suffix ly is a common cue, not a category test by itself.",
+        "pages": [
+          57,
+          58
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The remarkably clear instructions helped.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The crew worked remarkably quickly.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§6",
+        "pages": [
+          57,
+          58
+        ],
+        "pdf_pages": [
+          77,
+          78
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjectival and adverbial functions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-431",
+    "domain": "clauses",
+    "concept": "Complements and modifiers of adjectives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A complement is licensed by its adjective, while degree modifiers can apply across a wider range of gradable adjectives.",
+    "condition": "Applies to the construction described in §6 of Chapter 2.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Adjectival complements can have PP or clausal form.",
+        "pages": [
+          57
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo was fond of the old bridge.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Jo was very fond of the old bridge.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§6",
+        "pages": [
+          57
+        ],
+        "pdf_pages": [
+          77
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Complements and modifiers of adjectives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-432",
+    "domain": "clauses",
+    "concept": "Prepositions with varied complement types",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Prepositions can take NP, clause or other complements, and some can occur without an overt complement.",
+    "condition": "Applies to the construction described in §7 of Chapter 2.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The chapter's category includes some items traditionally classified as adverbs or subordinating conjunctions.",
+        "pages": [
+          58
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We waited until the gate opened.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Jo waited outside.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§7",
+        "pages": [
+          58
+        ],
+        "pdf_pages": [
+          78
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Prepositions with varied complement types",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-433",
+    "domain": "clauses",
+    "concept": "Fronted and stranded prepositions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A dependency can carry a preposition along with the fronted phrase or leave the preposition in its ordinary position.",
+    "condition": "Applies to the construction described in §7 of Chapter 2.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Availability depends on construction and register. Stranding is grammatical in standard English.",
+        "pages": [
+          58,
+          59
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Which shelf did she put it on?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "On which shelf did she put it?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§7",
+        "pages": [
+          58,
+          59
+        ],
+        "pdf_pages": [
+          78,
+          79
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fronted and stranded prepositions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-434",
+    "domain": "clauses",
+    "concept": "Adjunct functions and semantic classes",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Adjuncts cover modifiers in clause or VP structure and related supplements. Their semantic roles include time, place, manner, reason and degree.",
+    "condition": "Applies to the construction described in §8 of Chapter 2.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Adjunct versus complement is a syntactic distinction, and semantic labels alone do not settle it.",
+        "pages": [
+          59
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We met after lunch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Fortunately, nobody was hurt.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§8",
+        "pages": [
+          59
+        ],
+        "pdf_pages": [
+          79
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjunct functions and semantic classes",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-435",
+    "domain": "clauses",
+    "concept": "Clause polarity and embedded negative expressions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A clause can contain a negative expression without having negative clause polarity. Tags and continuations can help distinguish the two.",
+    "condition": "Applies to the construction described in §9 of Chapter 2.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The second clause remains positive despite no within a time adjunct.",
+        "pages": [
+          59,
+          60
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo didn't finish, did she?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Jo finished in no time, didn't she?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§9",
+        "pages": [
+          59,
+          60
+        ],
+        "pdf_pages": [
+          79,
+          80
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Clause polarity and embedded negative expressions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-436",
+    "domain": "clauses",
+    "concept": "Polarity-sensitive expressions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Certain lexical items favor or require environments with a particular polarity orientation.",
+    "condition": "Applies to the construction described in §9 of Chapter 2.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Licensing is not reducible to the presence of not. Interrogatives can also license some negatively oriented expressions.",
+        "pages": [
+          60
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She hasn't seen it yet.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She has already seen it.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§9",
+        "pages": [
+          60
+        ],
+        "pdf_pages": [
+          80
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Polarity-sensitive expressions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-437",
+    "domain": "clauses",
+    "concept": "Scope of negation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Negation can have scope over a quantified expression or modal, or fall within its scope. Surface position alone does not determine every interpretation.",
+    "condition": "Applies to the construction described in §9 of Chapter 2.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Modal combinations such as need not and must not illustrate distinct scope relations.",
+        "pages": [
+          60,
+          61
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Not many students called.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Many students didn't call.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§9",
+        "pages": [
+          60,
+          61
+        ],
+        "pdf_pages": [
+          80,
+          81
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Scope of negation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-438",
+    "domain": "clauses",
+    "concept": "Clause type and speech-act force",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Clause type is a syntactic classification. An utterance can use one clause type to convey a speech act typically associated with another.",
+    "condition": "Applies to the construction described in §10 of Chapter 2.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An interrogative can function as an indirect directive. The literal inquiry remains available in suitable contexts.",
+        "pages": [
+          61,
+          62
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Could you pass the salt?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Please pass the salt.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§10",
+        "pages": [
+          61,
+          62
+        ],
+        "pdf_pages": [
+          81,
+          82
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Clause type and speech-act force",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-439",
+    "domain": "clauses",
+    "concept": "Content clauses and reported speech",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Content clauses can serve as complements and preserve several clause-type contrasts. Indirect reports use a subordinate clause, while direct reports present quoted wording.",
+    "condition": "Applies to the construction described in §11 of Chapter 2.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Deictic expressions and tense can shift in indirect reporting. Subordinate clause order can differ from main clause order.",
+        "pages": [
+          62,
+          63
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo said, “I will return.”",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Jo said that she would return.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§11",
+        "pages": [
+          62,
+          63
+        ],
+        "pdf_pages": [
+          82,
+          83
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Content clauses and reported speech",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-440",
+    "domain": "clauses",
+    "concept": "Integrated, supplementary and fused relatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A relative can modify a nominal or occur as a supplement. A fused relative combines the antecedent and relativized roles within one expression.",
+    "condition": "Applies to the construction described in §12 of Chapter 2.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Fused relatives can have NP distribution. Supplements have a looser relation to their anchor.",
+        "pages": [
+          63
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The lamp that broke was new.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What she bought was a lamp.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§12",
+        "pages": [
+          63
+        ],
+        "pdf_pages": [
+          83
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Integrated, supplementary and fused relatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-441",
+    "domain": "clauses",
+    "concept": "Unbounded dependencies",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An overt phrase or antecedent can be interpreted in relation to a gap across several clause boundaries.",
+    "condition": "Applies to the construction described in §12 of Chapter 2.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The dependency is not limited to a fixed number of clauses, but independently constrained positions can block it.",
+        "pages": [
+          63,
+          64
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Here is the note that Jo wrote.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Here is the note that Mina thinks Jo wrote.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§12",
+        "pages": [
+          63,
+          64
+        ],
+        "pdf_pages": [
+          83,
+          84
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Unbounded dependencies",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-442",
+    "domain": "clauses",
+    "concept": "Comparison and comparative clauses",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Comparatives can express equality or inequality, with as or than introducing a comparison complement.",
+    "condition": "Applies to the construction described in §13 of Chapter 2.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A comparative clause can be reduced or contain a gap interpreted with the comparison expression.",
+        "pages": [
+          64
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo is as tall as Mina is.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Jo is taller than Mina is.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§13",
+        "pages": [
+          64
+        ],
+        "pdf_pages": [
+          84
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Comparison and comparative clauses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-443",
+    "domain": "clauses",
+    "concept": "Non-finite and verbless clause types",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Non-finites include to-infinitivals, bare infinitivals, gerund-participials and past-participials. A verbless clause can have a subject and nonverbal predicate.",
+    "condition": "Applies to the construction described in §14 of Chapter 2.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A clause label and its verb-form label describe different units. Many non-finites lack an overt subject.",
+        "pages": [
+          64,
+          65
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They helped Jo carry the crate.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They waited with the gate open.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§14",
+        "pages": [
+          64,
+          65
+        ],
+        "pdf_pages": [
+          84,
+          85
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-finite and verbless clause types",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-444",
+    "domain": "clauses",
+    "concept": "Catenative chains and raising",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Catenative verbs license non-finite internal complements. A matrix subject or object can have its semantic role only in the lower clause.",
+    "condition": "Applies to the construction described in §14 of Chapter 2.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Matrix syntax can place a raised NP outside the clause that supplies its semantic role.",
+        "pages": [
+          65,
+          66
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo seemed to recognize the trail.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They believed Jo to be nearby.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§14",
+        "pages": [
+          65,
+          66
+        ],
+        "pdf_pages": [
+          85,
+          86
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Catenative chains and raising",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-445",
+    "domain": "clauses",
+    "concept": "Coordination of equivalent units",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Coordination links syntactically equal units. It can apply below the clause level and can involve more than two coordinates.",
+    "condition": "Applies to the construction described in §15 of Chapter 2.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A coordinator can mark a noninitial coordinate. A similar meaning alone does not make a structure coordinate.",
+        "pages": [
+          66
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo opened the gate and checked the latch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Jo brought bread, cheese and fruit.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§15",
+        "pages": [
+          66
+        ],
+        "pdf_pages": [
+          86
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Coordination of equivalent units",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-446",
+    "domain": "clauses",
+    "concept": "Supplements and anchors",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A supplement elaborates an anchor without being integrated into it as a modifier or complement.",
+    "condition": "Applies to the construction described in §15 of Chapter 2.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The anchor can be an NP or a larger expression. Prosody and punctuation can signal the looser relation.",
+        "pages": [
+          66,
+          67
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo, exhausted after the hike, went home.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Jo forgot the key, a mistake that cost us an hour.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§15",
+        "pages": [
+          66,
+          67
+        ],
+        "pdf_pages": [
+          86,
+          87
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Supplements and anchors",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-447",
+    "domain": "clauses",
+    "concept": "Information packaging alternatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Different syntactic constructions can present similar propositional content in different information orders or alignments.",
+    "condition": "Applies to the construction described in §16 of Chapter 2.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Preposing, existential clauses, clefts and passives differ in their discourse conditions and structural effects.",
+        "pages": [
+          67,
+          68
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo found the missing key.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was Jo who found the missing key.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§16",
+        "pages": [
+          67,
+          68
+        ],
+        "pdf_pages": [
+          87,
+          88
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Information packaging alternatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-448",
+    "domain": "clauses",
+    "concept": "Active and passive alignment",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In a corresponding passive, the active object becomes subject and the active subject can be represented by a by phrase. Passive be takes a past-participial complement.",
+    "condition": "Applies to the construction described in §16 of Chapter 2.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The by phrase can be omitted. Passive and active alternatives can differ in how they organize familiar and new information.",
+        "pages": [
+          68
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina repaired the latch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The latch was repaired by Mina.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§16",
+        "pages": [
+          68
+        ],
+        "pdf_pages": [
+          88
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Active and passive alignment",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-449",
+    "domain": "clauses",
+    "concept": "Deictic and anaphoric interpretation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Deictic expressions depend on the utterance situation. Anaphoric expressions depend on an antecedent or other material in the discourse.",
+    "condition": "Applies to the construction described in §17 of Chapter 2.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Anaphora can involve pronouns, substitutes or gaps. Under restricted conditions an anaphor can precede its antecedent.",
+        "pages": [
+          68,
+          69
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Meet me here tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Jo repaired the latch, and Mina did so too.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 2,
+        "section": "§17",
+        "pages": [
+          68,
+          69
+        ],
+        "pdf_pages": [
+          88,
+          89
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Deictic and anaphoric interpretation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]

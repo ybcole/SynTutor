@@ -7,7 +7,7 @@
 | Chapter | Printed pages | Extracted | Unprocessed | Skipped | Absent from split | Status |
 |---|---:|---:|---:|---:|---:|---|
 | 1. Preliminaries | 42 | 0 | 41 | 1 | 0 | Incomplete |
-| 2. Syntactic overview | 28 | 13 | 13 | 1 | 1 | In progress (pp. 43–56) |
+| 2. Syntactic overview | 28 | 26 | 0 | 1 | 1 | Source-extracted |
 | 3. The verb | 142 | 139 | 0 | 3 | 0 | Source-extracted; QA pending |
 | 4. The clause: complements | 110 | 107 | 0 | 3 | 0 | Source extracted; QA pending |
 | 5. Nouns and noun phrases | 202 | 198 | 0 | 3 | 1 | Source-extracted |
@@ -27,7 +27,7 @@
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **713 extracted**, 1025 unprocessed, 24 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **726 extracted**, 1012 unprocessed, 24 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -234,3 +234,9 @@ Chapter 14 has 99 substantive pages, three justified skips and zero unprocessed 
 ## Chapter 2 pp. 43–56
 
 The opening batch covers 13 substantive pages and one contents page. It adds 19 source-linked classifications (`CLS-410`–`CLS-428`). See the [source report](sources/cambridge/chapter_02/PP43_56_REPORT.md) and [audit manifest](sources/cambridge/chapter_02/PP43_56_AUDIT.json). Continue at p. 57.
+
+## Chapter 2 source extraction complete
+
+The final batch covers 13 substantive pages (pp. 57–69) and verifies the blank boundary at p. 70. It adds 21 classifications (`CLS-429`–`CLS-449`). See the [source report](sources/cambridge/chapter_02/PP57_70_REPORT.md) and [audit manifest](sources/cambridge/chapter_02/PP57_70_AUDIT.json).
+
+Chapter 2 has 26 substantive pages, one contents-only page, one verified split-source exclusion and zero unprocessed pages.

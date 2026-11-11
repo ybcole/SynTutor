@@ -1,0 +1,191 @@
+{
+  "manifest_version": 1,
+  "chapter": 2,
+  "printed_start": 57,
+  "printed_end": 70,
+  "report": "sources/cambridge/chapter_02/PP57_70_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 57,
+    "pdf_page": 77
+  },
+  "added_rule_ids": [
+    "CLS-429",
+    "CLS-430",
+    "CLS-431",
+    "CLS-432",
+    "CLS-433",
+    "CLS-434",
+    "CLS-435",
+    "CLS-436",
+    "CLS-437",
+    "CLS-438",
+    "CLS-439",
+    "CLS-440",
+    "CLS-441",
+    "CLS-442",
+    "CLS-443",
+    "CLS-444",
+    "CLS-445",
+    "CLS-446",
+    "CLS-447",
+    "CLS-448",
+    "CLS-449"
+  ],
+  "page_checks": [
+    {
+      "page": 57,
+      "status": "extracted",
+      "section": "§§5–6",
+      "summary": "Completes countability and surveys adjective and adverb functions and phrase structure.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 58,
+      "status": "extracted",
+      "section": "§§6–7",
+      "summary": "Completes the adverb discussion and surveys preposition categories, complementation and stranding.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 59,
+      "status": "extracted",
+      "section": "§§7–9",
+      "summary": "Completes stranding, introduces adjunct classes and distinguishes clause polarity.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 60,
+      "status": "extracted",
+      "section": "§9",
+      "summary": "Uses polarity diagnostics and compares polarity-sensitive items and the scope of negation.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 61,
+      "status": "extracted",
+      "section": "§§9–10",
+      "summary": "Compares modal scope and introduces clause type and characteristic illocutionary forces.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 62,
+      "status": "extracted",
+      "section": "§§10–11",
+      "summary": "Explains indirect speech acts and describes content clauses and subordinate clause-type contrasts.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 63,
+      "status": "extracted",
+      "section": "§§11–12",
+      "summary": "Compares direct and indirect reporting and introduces relative constructions and dependency gaps.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 64,
+      "status": "extracted",
+      "section": "§§12–14",
+      "summary": "Illustrates long-distance gaps, surveys comparative clauses and introduces non-finite clauses.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 65,
+      "status": "extracted",
+      "section": "§14",
+      "summary": "Lists non-finite and verbless forms and describes simple and complex catenative constructions.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 66,
+      "status": "extracted",
+      "section": "§§14–15",
+      "summary": "Completes raising and distinguishes coordination from supplementation.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 67,
+      "status": "extracted",
+      "section": "§§15–16",
+      "summary": "Completes supplementation and surveys information packaging constructions.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 68,
+      "status": "extracted",
+      "section": "§§16–17",
+      "summary": "Explains passive alignment and pragmatic constraints and introduces deixis and anaphora.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 69,
+      "status": "extracted",
+      "section": "§17",
+      "summary": "Surveys anaphoric expressions and the restricted possibility of an anaphor preceding its antecedent.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 70,
+      "status": "absent_from_source",
+      "section": "Chapter boundary",
+      "summary": "Printed p. 70 is absent from the split source and full-volume PDF p. 90 is blank.",
+      "source_checked": true,
+      "nonprose_present": false,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

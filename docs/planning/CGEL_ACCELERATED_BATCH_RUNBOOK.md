@@ -234,3 +234,7 @@ Printed pp. 1246–1271 yielded 36 records (`CLS-374`–`CLS-409`), including tw
 ## Chapter 2 first checkpoint (2026-11-12)
 
 Printed pp. 43–56 account for one contents page and 13 substantive pages. The batch adds 19 records (`CLS-410`–`CLS-428`). Continue at p. 57 with countability and adjective and adverb phrases.
+
+## Chapter 2 source extraction complete (2026-11-12)
+
+Printed pp. 57–69 yielded 21 records (`CLS-429`–`CLS-449`). The matching full-volume page for p. 70 is blank. Chapter 2 closes with 26 substantive pages and zero unprocessed pages. Chapter 6 is next in the master plan priority order.
