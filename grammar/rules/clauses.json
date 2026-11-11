@@ -30295,5 +30295,1770 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-450",
+    "domain": "clauses",
+    "concept": "Adjuncts and semantic counterparts",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A semantic category can include both adjuncts and complements. Lexical licensing helps determine the syntactic function of a particular dependent.",
+    "condition": "Applies to the construction described in §1 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The optionality of a dependent is insufficient by itself to identify adjunct status.",
+        "pages": [
+          665,
+          666
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The courier waited near the entrance.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The courier put the parcel near the entrance.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§1",
+        "pages": [
+          665,
+          666
+        ],
+        "pdf_pages": [
+          685,
+          686
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjuncts and semantic counterparts",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-451",
+    "domain": "clauses",
+    "concept": "Focusing as an adjunct diagnostic",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Alternative questions, contrastive negation and it-clefts test whether a dependent can serve as informational focus. Inability to occur in all three points to adjunct status.",
+    "condition": "Applies to the construction described in §1 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Clefts are more selective and can sound awkward with manner adverbs that can be focused elsewhere.",
+        "pages": [
+          666,
+          667
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Did Lea leave at noon or at dusk?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Fortunately, Lea left before the storm.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§1",
+        "pages": [
+          666,
+          667
+        ],
+        "pdf_pages": [
+          686,
+          687
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Focusing as an adjunct diagnostic",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-452",
+    "domain": "clauses",
+    "concept": "Restrictive and nonrestrictive adjuncts",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Restrictive adjuncts affect the circumstances under which an assertion is true. An evaluative supplement can leave those circumstances intact.",
+    "condition": "Applies to the construction described in §1 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Modal adjuncts can affect the proposition while resisting informational focus.",
+        "pages": [
+          667
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The train arrived after lunch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Luckily, the train arrived.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§1",
+        "pages": [
+          667
+        ],
+        "pdf_pages": [
+          687
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Restrictive and nonrestrictive adjuncts",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-453",
+    "domain": "clauses",
+    "concept": "Questioning semantic categories",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Interrogative phrases can stand for many types of adjunct. The same interrogative word can ask about distinct semantic relations.",
+    "condition": "Applies to the construction described in §1 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Evaluative supplements lack a corresponding interrogative adjunct.",
+        "pages": [
+          667
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Why did the guard open the gate?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "When did the gate close?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§1",
+        "pages": [
+          667
+        ],
+        "pdf_pages": [
+          687
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Questioning semantic categories",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-454",
+    "domain": "clauses",
+    "concept": "Adjunct scope relative to negation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A reason phrase can explain a negative situation or fall within the scope of the negation.",
+    "condition": "Applies to the construction described in §1 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Without prosodic or contextual cues, some clauses allow both scope readings.",
+        "pages": [
+          668
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Because the road flooded, we did not travel.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We did not hire Jo simply because she was available.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§1",
+        "pages": [
+          668
+        ],
+        "pdf_pages": [
+          688
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjunct scope relative to negation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-455",
+    "domain": "clauses",
+    "concept": "Relative scope of adjuncts",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An evaluation or probability adjunct can apply to a situation already qualified by a frequency adjunct.",
+    "condition": "Applies to the construction described in §1 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The order of interpretation depends on the construction and cannot be inferred from semantic labels alone in every case.",
+        "pages": [
+          668
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Fortunately, the pumps rarely fail.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The pumps probably run every night.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§1",
+        "pages": [
+          668
+        ],
+        "pdf_pages": [
+          688
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Relative scope of adjuncts",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-456",
+    "domain": "clauses",
+    "concept": "Bounding by goal or extent",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Adding a goal or an extent can turn an activity into a bounded accomplishment, making an elapsed-time interpretation with an in phrase available.",
+    "condition": "Applies to the construction described in §1 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The diagnostic depends on the intended aspectual reading, including whether the in phrase measures time to completion.",
+        "pages": [
+          668,
+          669
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Nia jogged for fifteen minutes.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Nia jogged to the bridge in fifteen minutes.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§1",
+        "pages": [
+          668,
+          669
+        ],
+        "pdf_pages": [
+          688,
+          689
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Bounding by goal or extent",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-457",
+    "domain": "clauses",
+    "concept": "Syntactic realization of adjuncts",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Adverb and preposition phrases are common adjunct forms. Noun phrases, finite clauses, nonfinite clauses and verbless clauses also occur in this function.",
+    "condition": "Applies to the construction described in §1 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The semantic relation of a nonfinite or verbless adjunct is often inferred from context.",
+        "pages": [
+          669
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Had we checked the map, we would have stopped earlier.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The crew left last Tuesday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§1",
+        "pages": [
+          669
+        ],
+        "pdf_pages": [
+          689
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Syntactic realization of adjuncts",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-458",
+    "domain": "clauses",
+    "concept": "Adjunct placement",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Front, central and end positions provide a starting point for describing adjunct distribution.",
+    "condition": "Applies to the construction described in §1 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some types are positionally restricted and a clause may contain multiple adjuncts in one zone.",
+        "pages": [
+          669,
+          670
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Luckily, the key still worked.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The key still worked, luckily.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§1",
+        "pages": [
+          669,
+          670
+        ],
+        "pdf_pages": [
+          689,
+          690
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjunct placement",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-459",
+    "domain": "clauses",
+    "concept": "Manner and how questions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Manner dependents specify how a situation proceeds and often answer questions with how.",
+    "condition": "Applies to the construction described in §2.1 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Manner is common in dynamic clauses, but some stative situations permit it.",
+        "pages": [
+          670,
+          671
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Nia folded the letter neatly.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The families own the cabin jointly.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§2.1",
+        "pages": [
+          670,
+          671
+        ],
+        "pdf_pages": [
+          690,
+          691
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Manner and how questions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-460",
+    "domain": "clauses",
+    "concept": "Manner complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some verbs, including certain uses of behave and treat, license manner dependents as complements.",
+    "condition": "Applies to the construction described in §2.1 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The relevant sense of the verb matters when testing whether it licenses the dependent.",
+        "pages": [
+          671
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The guests behaved impeccably.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They treated their interns fairly.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§2.1",
+        "pages": [
+          671
+        ],
+        "pdf_pages": [
+          691
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Manner complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-461",
+    "domain": "clauses",
+    "concept": "Phrase forms of manner dependents",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Manner can be expressed by an adverb phrase, a preposition phrase or a noun phrase with a suitable head such as way.",
+    "condition": "Applies to the construction described in §2.1 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The possible realizations are construction-specific and do not make every phrase of those categories a manner dependent.",
+        "pages": [
+          671,
+          672
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina answered in a low voice.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Please file the receipt this way.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§2.1",
+        "pages": [
+          671,
+          672
+        ],
+        "pdf_pages": [
+          691,
+          692
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Phrase forms of manner dependents",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-462",
+    "domain": "clauses",
+    "concept": "Manner with resultant implications",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A manner adjunct can describe how an action proceeds and imply a property of its result.",
+    "condition": "Applies to the construction described in §2.1 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The noise example characterizes the process without assigning the resulting lid a property.",
+        "pages": [
+          672
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Rae tied the ribbon loosely.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Rae closed the lid noisily.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§2.1",
+        "pages": [
+          672
+        ],
+        "pdf_pages": [
+          692
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Manner with resultant implications",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-463",
+    "domain": "clauses",
+    "concept": "Primary and secondary manner",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Primary manner characterizes the process. A secondary manner adjunct gives the participant's mood in a way that can color the performance of the act.",
+    "condition": "Applies to the construction described in §2.1 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A fronted mood adverb such as sadly can instead express the speaker's evaluation.",
+        "pages": [
+          672,
+          673
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Rae whispered bitterly.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Gloomily, the crew packed the equipment.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§2.1",
+        "pages": [
+          672,
+          673
+        ],
+        "pdf_pages": [
+          692,
+          693
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Primary and secondary manner",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-464",
+    "domain": "clauses",
+    "concept": "Manner implied by a cognate object",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A modifier inside a cognate object can describe the process named by the verb.",
+    "condition": "Applies to the construction described in §2.1 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This interpretation arises within the object construction even when a corresponding manner adverb is unavailable.",
+        "pages": [
+          673
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The team fought a determined fight.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Nia dreamed a strange dream.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§2.1",
+        "pages": [
+          673
+        ],
+        "pdf_pages": [
+          693
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Manner implied by a cognate object",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-465",
+    "domain": "clauses",
+    "concept": "Means and instruments",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Means identifies a method or enabling process. An instrument typically identifies a tool used in carrying out an action.",
+    "condition": "Applies to the construction described in §2.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An instrument can sometimes be the subject of a corresponding clause.",
+        "pages": [
+          673,
+          674
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We got there by train.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We opened the crate with a crowbar.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§2.2",
+        "pages": [
+          673,
+          674
+        ],
+        "pdf_pages": [
+          693,
+          694
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Means and instruments",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-466",
+    "domain": "clauses",
+    "concept": "Lexically restricted transport forms",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some transport and delivery expressions realize means through special lexical constructions.",
+    "condition": "Applies to the construction described in §2.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "These options depend on the transport expression and cannot be extended freely to other nouns.",
+        "pages": [
+          674
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We sent the envelope airmail.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We sent the envelope by airmail.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§2.2",
+        "pages": [
+          674
+        ],
+        "pdf_pages": [
+          694
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexically restricted transport forms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-467",
+    "domain": "clauses",
+    "concept": "Means and passive by phrases",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A passive by phrase can introduce the internalized complement or identify a means. Both may occur together.",
+    "condition": "Applies to the construction described in §2.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A gerund-participial by phrase can correspond to an active subject whose interpretation itself identifies a means.",
+        "pages": [
+          674,
+          675
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The lock was opened by the caretaker by using a spare key.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The account was accessed by guessing the password.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§2.2",
+        "pages": [
+          674,
+          675
+        ],
+        "pdf_pages": [
+          694,
+          695
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Means and passive by phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-468",
+    "domain": "clauses",
+    "concept": "Adverbial counterparts to quantified passive complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "With certain passive verbs, an adverb can convey the interpretation of a quantified internalized complement.",
+    "condition": "Applies to the construction described in §2.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The pattern is lexically restricted and commonly involves stative predicates with experiencers.",
+        "pages": [
+          675
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The story was widely believed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The founder was universally admired.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§2.2",
+        "pages": [
+          675
+        ],
+        "pdf_pages": [
+          695
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adverbial counterparts to quantified passive complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-469",
+    "domain": "clauses",
+    "concept": "Act-related and manner readings",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An act-related adjunct can assess the choice to perform an action, while a manner adjunct describes its performance.",
+    "condition": "Applies to the construction described in §3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some adverbs support both readings in the same position, and context can determine the interpretation.",
+        "pages": [
+          675,
+          676,
+          677
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Foolishly, Jo answered the anonymous email.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Jo folded the map carefully.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§3",
+        "pages": [
+          675,
+          676,
+          677
+        ],
+        "pdf_pages": [
+          695,
+          696,
+          697
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Act-related and manner readings",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-470",
+    "domain": "clauses",
+    "concept": "Subjective and volitional act-related adjuncts",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Subjective adjuncts evaluate the act. Volitional adjuncts characterize intention or related aspects of agency.",
+    "condition": "Applies to the construction described in §3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some volitional adverbs can occur in questions that are less natural with subjective evaluations.",
+        "pages": [
+          676,
+          677,
+          678
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Wisely, Tess brought a spare battery.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Tess deliberately left the window open.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§3",
+        "pages": [
+          676,
+          677,
+          678
+        ],
+        "pdf_pages": [
+          696,
+          697,
+          698
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subjective and volitional act-related adjuncts",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-471",
+    "domain": "clauses",
+    "concept": "Agency and act-related adjuncts",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A passive or a noncanonical subject can leave the agent or responsible participant to be inferred when an act-related adjunct is interpreted.",
+    "condition": "Applies to the construction described in §3 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The adjunct's interpretation is not determined solely by the surface subject.",
+        "pages": [
+          678,
+          679
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The memo was inadvertently sent without the attachment.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The shed was deliberately left unlocked.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§3",
+        "pages": [
+          678,
+          679
+        ],
+        "pdf_pages": [
+          698,
+          699
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Agency and act-related adjuncts",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-472",
+    "domain": "clauses",
+    "concept": "Spatial location and movement roles",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Static location identifies a place. Movement dependents distinguish source, goal, path and direction.",
+    "condition": "Applies to the construction described in §4.1 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The same preposition can support a location reading or a movement reading in different constructions.",
+        "pages": [
+          679,
+          680
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We rested under the bridge.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We walked from the station to the pier via the park.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§4.1",
+        "pages": [
+          679,
+          680
+        ],
+        "pdf_pages": [
+          699,
+          700
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Spatial location and movement roles",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-473",
+    "domain": "clauses",
+    "concept": "Locative complements and adjuncts",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some predicates license location as a complement, while a freely added location can be a clause adjunct. Replacement with do so can help test the distinction.",
+    "condition": "Applies to the construction described in §4.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The intended verb sense and reading affect the replacement test.",
+        "pages": [
+          680,
+          681
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina kept the spare keys in the drawer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina read the manual in the kitchen, and Dev did so on the porch.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§4.2",
+        "pages": [
+          680,
+          681
+        ],
+        "pdf_pages": [
+          700,
+          701
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Locative complements and adjuncts",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-474",
+    "domain": "clauses",
+    "concept": "Situation and theme location",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A locative can identify where a situation occurred or where a participant with the theme role was located.",
+    "condition": "Applies to the construction described in §4.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some examples allow either reading, and a theme can be associated with more than one grammatical function.",
+        "pages": [
+          681
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I spotted the kite above the roof.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I reviewed the report at the library.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§4.2",
+        "pages": [
+          681
+        ],
+        "pdf_pages": [
+          701
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Situation and theme location",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-475",
+    "domain": "clauses",
+    "concept": "Body-part locatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A locative complement can specify the part of a patient's body affected by contact or injury.",
+    "condition": "Applies to the construction described in §4.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A corresponding direct object headed by the body-part noun is only approximately equivalent.",
+        "pages": [
+          681
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The medic tapped him on the knee.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The cyclist was scratched on the arm.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§4.2",
+        "pages": [
+          681
+        ],
+        "pdf_pages": [
+          701
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Body-part locatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-476",
+    "domain": "clauses",
+    "concept": "Temporal implications and metonymic location",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Location phrases can imply a time associated with a place or use an event or activity to identify its associated setting.",
+    "condition": "Applies to the construction described in §4.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The spatial, temporal and institutional readings depend on the context.",
+        "pages": [
+          681,
+          682
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I met her at the rehearsal.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He fell ill in Lisbon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§4.2",
+        "pages": [
+          681,
+          682
+        ],
+        "pdf_pages": [
+          701,
+          702
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Temporal implications and metonymic location",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-477",
+    "domain": "clauses",
+    "concept": "Multiple spatial specifications",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Locative phrases can combine at different levels of specificity or identify distinct spatial domains.",
+    "condition": "Applies to the construction described in §4.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Different locatives in a clause need not specify the same spatial relation.",
+        "pages": [
+          682
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We met at the library, in the city centre.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "In this town, children usually play outdoors.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§4.2",
+        "pages": [
+          682
+        ],
+        "pdf_pages": [
+          702
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Multiple spatial specifications",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-478",
+    "domain": "clauses",
+    "concept": "Static location phrase forms",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Preposition phrases dominate the expression of location. Some prepositions allow no overt complement, and others can describe a static position through an implied endpoint or direction.",
+    "condition": "Applies to the construction described in §4.2 of Chapter 8.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Locative home is restricted to subject-oriented complement use in the construction described here.",
+        "pages": [
+          682,
+          683
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The crew camped several miles into the woods.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The children played nearby.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 8,
+        "section": "§4.2",
+        "pages": [
+          682,
+          683
+        ],
+        "pdf_pages": [
+          702,
+          703
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Static location phrase forms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]

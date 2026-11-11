@@ -254,3 +254,7 @@ Printed pp. 563–582 yielded 22 records (`WCAT-081`–`WCAT-102`). Continue at 
 ## Chapter 6 source extraction complete (2026-11-12)
 
 Printed pp. 583–595 yielded 18 records (`WCAT-103`–`WCAT-120`). Printed p. 596 is blank. Chapter 6 closes with 70 substantive pages and zero unprocessed pages. Chapter 8 is next in the master plan priority order.
+
+## Chapter 8 first checkpoint
+
+Printed pp. 663–683 yielded 29 classification records (`CLS-450`–`CLS-478`). Continue at p. 684 with locative realization and change of location.
