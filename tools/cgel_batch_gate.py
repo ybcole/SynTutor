@@ -233,6 +233,7 @@ def main() -> int:
     p = argparse.ArgumentParser(description=__doc__)
     group = p.add_mutually_exclusive_group(required=True)
     group.add_argument("--manifest", help="Committed JSON batch audit to validate")
+    group.add_argument("--all", action="store_true", help="Validate every committed audit and new extracted page")
     group.add_argument("--scaffold", action="store_true", help="Create unverified page checklist template")
     p.add_argument("--chapter", type=int)
     p.add_argument("--start", type=int)
@@ -240,6 +241,38 @@ def main() -> int:
     p.add_argument("--report")
     p.add_argument("--output", help="Scaffold output JSON file")
     args = p.parse_args()
+    if args.all:
+        batches = sorted(ROOT.glob("sources/cambridge/chapter_*/PP*_AUDIT.json"))
+        errors = []
+        covered = set()
+        for batch in batches:
+            name = batch.relative_to(ROOT).as_posix()
+            try:
+                manifest = load(batch)
+                errors.extend(f"{name}: {problem}" for problem in check_batch(manifest))
+                page_checks = manifest.get("page_checks", [])
+                for item in page_checks:
+                    if not isinstance(item, dict):
+                        continue
+                    page = item.get("page")
+                    if type(page) is not int:
+                        continue
+                    if page in covered:
+                        errors.append(f"{name}: page {page} is claimed by two batch audits")
+                    covered.add(page)
+            except (OSError, ValueError, KeyError, TypeError, json.JSONDecodeError) as exc:
+                errors.append(f"{name}: invalid audit: {exc}")
+        # Existing Chapter 3 reports predate structured batch manifests.
+        # Future chapter page extraction cannot bypass this new gate simply by
+        # omitting the corresponding batch audit from the PR.
+        for row in load(LEDGER)["pages"]:
+            if row.get("chapter") != 3 and row.get("status") == "extracted":
+                if row.get("page") not in covered:
+                    errors.append(f"p{row.get('page')}: new extracted page has no batch audit")
+        print(json.dumps({"audits": len(batches), "pages_audited": len(covered),
+                          "passed": not errors, "errors": errors[:60],
+                          "error_count": len(errors)}, indent=2))
+        return 1 if errors else 0
     if args.scaffold:
         if None in (args.chapter, args.start, args.end, args.report, args.output):
             p.error("--scaffold requires --chapter, --start, --end, --report and --output")
