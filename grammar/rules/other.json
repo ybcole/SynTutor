@@ -26084,8 +26084,10 @@
     "confidence": "high",
     "protocol_version": "1.1",
     "status": "NEEDS_REVIEW",
-    "related_rules": [],
-    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203.",
+    "related_rules": [
+      "CLS-119"
+    ],
+    "review_notes": "Paraphrased, original English examples; source read on the cited printed page. Where interpretations vary, guard rather than activate a detector. Source pp. 195–202 examined consecutively; further §9.8.4 discussion continues on p. 203. Source cross-reference: CLS-119 describes the same modal-remote apodosis requirement from printed p. 107. These are complementary records, not independent error counts; deduplicate a future shared runtime finding by construction and span.",
     "diagnostic": {
       "error_family": "missing_word",
       "error_pattern": "A true modal-remote conditional consequent lacks a modal auxiliary where standard English requires one.",
