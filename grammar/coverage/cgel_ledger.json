@@ -1492,142 +1492,142 @@
     {
       "page": 213,
       "chapter": 4,
-      "status": "unprocessed",
-      "reason": null,
-      "evidence": null
+      "status": "skipped_with_reason",
+      "reason": "Chapter contents only; visually checked.",
+      "evidence": "sources/cambridge/chapter_04/PP213_232_REPORT.md"
     },
     {
       "page": 214,
       "chapter": 4,
-      "status": "unprocessed",
-      "reason": null,
-      "evidence": null
+      "status": "skipped_with_reason",
+      "reason": "Chapter contents only; visually checked.",
+      "evidence": "sources/cambridge/chapter_04/PP213_232_REPORT.md"
     },
     {
       "page": 215,
       "chapter": 4,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_04/PP213_232_REPORT.md"
     },
     {
       "page": 216,
       "chapter": 4,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_04/PP213_232_REPORT.md"
     },
     {
       "page": 217,
       "chapter": 4,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_04/PP213_232_REPORT.md"
     },
     {
       "page": 218,
       "chapter": 4,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_04/PP213_232_REPORT.md"
     },
     {
       "page": 219,
       "chapter": 4,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_04/PP213_232_REPORT.md"
     },
     {
       "page": 220,
       "chapter": 4,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_04/PP213_232_REPORT.md"
     },
     {
       "page": 221,
       "chapter": 4,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_04/PP213_232_REPORT.md"
     },
     {
       "page": 222,
       "chapter": 4,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_04/PP213_232_REPORT.md"
     },
     {
       "page": 223,
       "chapter": 4,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_04/PP213_232_REPORT.md"
     },
     {
       "page": 224,
       "chapter": 4,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_04/PP213_232_REPORT.md"
     },
     {
       "page": 225,
       "chapter": 4,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_04/PP213_232_REPORT.md"
     },
     {
       "page": 226,
       "chapter": 4,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_04/PP213_232_REPORT.md"
     },
     {
       "page": 227,
       "chapter": 4,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_04/PP213_232_REPORT.md"
     },
     {
       "page": 228,
       "chapter": 4,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_04/PP213_232_REPORT.md"
     },
     {
       "page": 229,
       "chapter": 4,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_04/PP213_232_REPORT.md"
     },
     {
       "page": 230,
       "chapter": 4,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_04/PP213_232_REPORT.md"
     },
     {
       "page": 231,
       "chapter": 4,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_04/PP213_232_REPORT.md"
     },
     {
       "page": 232,
       "chapter": 4,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_04/PP213_232_REPORT.md"
     },
     {
       "page": 233,

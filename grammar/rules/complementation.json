@@ -3083,5 +3083,1270 @@
     "related_rules": [],
     "review_notes": "Source-linked paraphrase checked against CGEL printed pages; examples independently authored. No downstream detector activation is claimed. The form be remains invariant, but the auxiliary do reflects subject agreement. Positive if you be is possible for only some speakers.",
     "diagnostic": null
+  },
+  {
+    "id": "COMP-045",
+    "domain": "complementation",
+    "concept": "Predicator versus complement and adjunct",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Predicator is a clause function distinct from its verb category; complements are licensed dependents while adjuncts are less verb-specific.",
+    "condition": "When analysing predicator versus complement and adjunct in a canonical or cited noncanonical clause.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The chapter's chosen auxiliary-headed analysis need not match a verb-group analysis.",
+        "pages": [
+          215
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Tara quietly filed the papers.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She has finished the task.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.1",
+        "pages": [
+          215
+        ],
+        "pdf_pages": [
+          235
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Predicator versus complement and adjunct",
+        "relation": "unverified",
+        "note": "Separate crosswalk audit outstanding."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Page-source checked; English examples newly authored; no independent linguistic approval or detector enablement.",
+    "related_rules": []
+  },
+  {
+    "id": "COMP-046",
+    "domain": "complementation",
+    "concept": "Valency versus transitivity",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Valency counts syntactic complements, including subject; transitivity classifies object-containing clauses and can diverge from valency.",
+    "condition": "When analysing valency versus transitivity in a canonical or cited noncanonical clause.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The source distinguishes valency from semantic adicity in its footnote.",
+        "pages": [
+          219
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The child slept.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The child sent Alex a postcard.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.2",
+        "pages": [
+          219
+        ],
+        "pdf_pages": [
+          239
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Valency versus transitivity",
+        "relation": "unverified",
+        "note": "Separate crosswalk audit outstanding."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Page-source checked; English examples newly authored; no independent linguistic approval or detector enablement.",
+    "related_rules": []
+  },
+  {
+    "id": "COMP-047",
+    "domain": "complementation",
+    "concept": "Lexical licensing of PP prepositions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "With verb-selected PP complements, a lexical verb can require a specific preposition and not merely an arbitrary PP.",
+    "condition": "When analysing lexical licensing of pp prepositions in a canonical or cited noncanonical clause.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Different prepositions with look or push can give independently licensed different meanings.",
+        "pages": [
+          220
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The recipe consists of vegetables.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The project depends on the budget.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.2",
+        "pages": [
+          220
+        ],
+        "pdf_pages": [
+          240
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical licensing of PP prepositions",
+        "relation": "unverified",
+        "note": "Separate crosswalk audit outstanding."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Page-source checked; English examples newly authored; no independent linguistic approval or detector enablement.",
+    "related_rules": []
+  },
+  {
+    "id": "COMP-048",
+    "domain": "complementation",
+    "concept": "Optional versus obligatory internal complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some verbs such as read license an intransitive use while others such as peruse select an obligatory object in an ordinary declarative.",
+    "condition": "When analysing optional versus obligatory internal complements in a canonical or cited noncanonical clause.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Elliptical utterances and alternate verb senses require separate treatment.",
+        "pages": [
+          221
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She read the agenda.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She read quietly.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.2",
+        "pages": [
+          221
+        ],
+        "pdf_pages": [
+          241
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Optional versus obligatory internal complements",
+        "relation": "unverified",
+        "note": "Separate crosswalk audit outstanding."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Page-source checked; English examples newly authored; no independent linguistic approval or detector enablement.",
+    "related_rules": []
+  },
+  {
+    "id": "COMP-049",
+    "domain": "complementation",
+    "concept": "Peripheral complements and passive by-phrases",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A PP can be a non-core complement even when optional, including some locative PPs and passive by-phrases.",
+    "condition": "When analysing peripheral complements and passive by-phrases in a canonical or cited noncanonical clause.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Be licenses many internal dependents; the book rejects mechanically extending obligatory-complement analysis to all such dependents.",
+        "pages": [
+          222
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They deposited the coins in the bank.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The letter was signed by its author.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.2",
+        "pages": [
+          222
+        ],
+        "pdf_pages": [
+          242
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Peripheral complements and passive by-phrases",
+        "relation": "unverified",
+        "note": "Separate crosswalk audit outstanding."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Page-source checked; English examples newly authored; no independent linguistic approval or detector enablement.",
+    "related_rules": []
+  },
+  {
+    "id": "COMP-050",
+    "domain": "complementation",
+    "concept": "Do-so anaphora scope test",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Do so normally reproduces the internal complements of a VP antecedent while allowing a new adjunct; semantic restrictions limit converse inferences.",
+    "condition": "When analysing do-so anaphora scope test in a canonical or cited noncanonical clause.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A failed substitution may reflect semantic incompatibility, not complement status.",
+        "pages": [
+          223
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Lee painted the wall on Monday and Ava did so on Tuesday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I checked the figures in the morning; Omar did so later.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.2",
+        "pages": [
+          223
+        ],
+        "pdf_pages": [
+          243
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Do-so anaphora scope test",
+        "relation": "unverified",
+        "note": "Separate crosswalk audit outstanding."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Page-source checked; English examples newly authored; no independent linguistic approval or detector enablement.",
+    "related_rules": []
+  },
+  {
+    "id": "COMP-051",
+    "domain": "complementation",
+    "concept": "Syntactic category versus clause function",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An NP, AdvP or PP can be a complement or adjunct depending on the head and construction, rather than on category alone.",
+    "condition": "When analysing syntactic category versus clause function in a canonical or cited noncanonical clause.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "NP time/manner adjuncts and AdvP complements exist.",
+        "pages": [
+          224
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They contacted us last week.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They treated the visitors courteously.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.2",
+        "pages": [
+          224
+        ],
+        "pdf_pages": [
+          244
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Syntactic category versus clause function",
+        "relation": "unverified",
+        "note": "Separate crosswalk audit outstanding."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Page-source checked; English examples newly authored; no independent linguistic approval or detector enablement.",
+    "related_rules": []
+  },
+  {
+    "id": "COMP-052",
+    "domain": "complementation",
+    "concept": "Finite and nonfinite clause dependents",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Finite and nonfinite subordinate clauses can be licensed complements or optional adjuncts; clausal category alone does not determine function.",
+    "condition": "When analysing finite and nonfinite clause dependents in a canonical or cited noncanonical clause.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Content clauses are common complements but some can serve as adjuncts.",
+        "pages": [
+          225
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I regret returning early.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I returned early to help.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.2",
+        "pages": [
+          225
+        ],
+        "pdf_pages": [
+          245
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Finite and nonfinite clause dependents",
+        "relation": "unverified",
+        "note": "Separate crosswalk audit outstanding."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Page-source checked; English examples newly authored; no independent linguistic approval or detector enablement.",
+    "related_rules": []
+  },
+  {
+    "id": "COMP-053",
+    "domain": "complementation",
+    "concept": "Argumenthood, dummy subjects and raising",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Syntactic complements need not be semantic arguments of their immediate head; dummy pronouns and raised complements reveal mismatches.",
+    "condition": "When analysing argumenthood, dummy subjects and raising in a canonical or cited noncanonical clause.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Raising as used here does not assert a derivational movement mechanism.",
+        "pages": [
+          226
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It seems that the road is closed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Lina seems to understand.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.2",
+        "pages": [
+          226
+        ],
+        "pdf_pages": [
+          246
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Argumenthood, dummy subjects and raising",
+        "relation": "unverified",
+        "note": "Separate crosswalk audit outstanding."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Page-source checked; English examples newly authored; no independent linguistic approval or detector enablement.",
+    "related_rules": []
+  },
+  {
+    "id": "COMP-054",
+    "domain": "complementation",
+    "concept": "Semantic selection is not syntactic error",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Semantic selection restrictions can yield odd or metaphorically interpretable meanings in otherwise well-formed syntactic structures.",
+    "condition": "When analysing semantic selection is not syntactic error in a canonical or cited noncanonical clause.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The book marks # semantic/pragmatic anomaly separately from * ungrammaticality.",
+        "pages": [
+          227
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The announcement surprised the students.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The dog frightened the child.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.2",
+        "pages": [
+          227
+        ],
+        "pdf_pages": [
+          247
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Semantic selection is not syntactic error",
+        "relation": "unverified",
+        "note": "Separate crosswalk audit outstanding."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Page-source checked; English examples newly authored; no independent linguistic approval or detector enablement.",
+    "related_rules": []
+  },
+  {
+    "id": "COMP-055",
+    "domain": "complementation",
+    "concept": "Verb and PP jointly determine semantic role",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The interpretation of a PP role may depend on both the lexical preposition and the selecting verb, especially for recipient versus spatial goal.",
+    "condition": "When analysing verb and pp jointly determine semantic role in a canonical or cited noncanonical clause.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A specific preposition does not always determine recipient or goal independently of the verb.",
+        "pages": [
+          228
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They moved the chair towards the garden.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She gave the key to the visitor.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§2.1",
+        "pages": [
+          228
+        ],
+        "pdf_pages": [
+          248
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Verb and PP jointly determine semantic role",
+        "relation": "unverified",
+        "note": "Separate crosswalk audit outstanding."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Page-source checked; English examples newly authored; no independent linguistic approval or detector enablement.",
+    "related_rules": []
+  },
+  {
+    "id": "COMP-056",
+    "domain": "complementation",
+    "concept": "Voice and presentational status",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Changing voice can change the subject and information prominence without changing the roles of the participants in an event.",
+    "condition": "When analysing voice and presentational status in a canonical or cited noncanonical clause.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Symmetric and converse senses are lexical and should not be generalised to every verb.",
+        "pages": [
+          229
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Maya photographed Owen.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Owen was photographed by Maya.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§2.1",
+        "pages": [
+          229
+        ],
+        "pdf_pages": [
+          249
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Voice and presentational status",
+        "relation": "unverified",
+        "note": "Separate crosswalk audit outstanding."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Page-source checked; English examples newly authored; no independent linguistic approval or detector enablement.",
+    "related_rules": []
+  },
+  {
+    "id": "COMP-057",
+    "domain": "complementation",
+    "concept": "Agent versus causer",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Causer is broader than agent; a non-volitional inanimate event can cause an effect without acting as an agent.",
+    "condition": "When analysing agent versus causer in a canonical or cited noncanonical clause.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Agentive readings depend on the predicate, animacy and context.",
+        "pages": [
+          230
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The storm damaged the roof.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The carpenter repaired the roof.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§2.2",
+        "pages": [
+          230
+        ],
+        "pdf_pages": [
+          250
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Agent versus causer",
+        "relation": "unverified",
+        "note": "Separate crosswalk audit outstanding."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Page-source checked; English examples newly authored; no independent linguistic approval or detector enablement.",
+    "related_rules": []
+  },
+  {
+    "id": "COMP-058",
+    "domain": "complementation",
+    "concept": "Instrument and volitional agent",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An implement used by an agent is an instrument, whereas when the same implement is a subject it may function as causer.",
+    "condition": "When analysing instrument and volitional agent in a canonical or cited noncanonical clause.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Purpose phrases can require a deliberate rather than involuntary agent interpretation.",
+        "pages": [
+          231
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The cook cut the bread with a knife.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The knife cut the bread.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§2.2",
+        "pages": [
+          231
+        ],
+        "pdf_pages": [
+          251
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Instrument and volitional agent",
+        "relation": "unverified",
+        "note": "Separate crosswalk audit outstanding."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Page-source checked; English examples newly authored; no independent linguistic approval or detector enablement.",
+    "related_rules": []
+  },
+  {
+    "id": "COMP-059",
+    "domain": "complementation",
+    "concept": "Experiencer, stimulus and theme",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Experiencer and stimulus recur in cognitive and perceptual states, while theme spans motion, location, possession and transfer.",
+    "condition": "When analysing experiencer, stimulus and theme in a canonical or cited noncanonical clause.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Thematic roles are not a strict one-to-one correspondence with grammatical functions.",
+        "pages": [
+          232
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I heard the warning.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The document fell from the table.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§2.2",
+        "pages": [
+          232
+        ],
+        "pdf_pages": [
+          252
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Experiencer, stimulus and theme",
+        "relation": "unverified",
+        "note": "Separate crosswalk audit outstanding."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "review_notes": "Page-source checked; English examples newly authored; no independent linguistic approval or detector enablement.",
+    "related_rules": []
+  },
+  {
+    "id": "COMP-060",
+    "domain": "complementation",
+    "concept": "Consist selects of",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "For the compositional sense of consist, the head selects an of-PP complement.",
+    "condition": "For the compositional sense of consist, the head selects an of-PP complement.",
+    "violation": "An unlicensed preposition replaces of in that sense.",
+    "exceptions": [
+      {
+        "description": "A different verb and a different lexical sense may select another preposition.",
+        "pages": [
+          220
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The mixture consists of milk and flour.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The team consists of seven players.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The mixture consists with milk and flour.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The team consists on seven players.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.2",
+        "pages": [
+          220
+        ],
+        "pdf_pages": [
+          240
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Consist selects of",
+        "relation": "unverified",
+        "note": "Separate crosswalk audit outstanding."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "preposition",
+      "error_pattern": "An unlicensed preposition replaces of in that sense.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The mixture consists with milk and flour. ||| The mixture consists of milk and flour.",
+        "The team consists on seven players. ||| The team consists of seven players."
+      ],
+      "learner_explanation": "For the compositional sense of consist, the head selects an of-PP complement. The unlicensed form does not satisfy the particular complement pattern selected by this verb, but independently valid constructions must not be flagged.",
+      "corrected_paragraph_template": "Show the repaired complement within the original sentence and explain the lexical selection requirement without changing unrelated words.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "It depends on the weather.",
+        "The mixture consists of vegetables."
+      ],
+      "lesson_tags": [
+        "complementation",
+        "Chapter_4"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "review_notes": "Page-source checked; English examples newly authored; no independent linguistic approval or detector enablement.",
+    "related_rules": []
+  },
+  {
+    "id": "COMP-061",
+    "domain": "complementation",
+    "concept": "Tend selects a to-infinitival action clause",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "In the catenative tendency sense, tend selects to followed by an infinitival verb phrase.",
+    "condition": "In the catenative tendency sense, tend selects to followed by an infinitival verb phrase.",
+    "violation": "A gerund-participial complement follows tend in this sense.",
+    "exceptions": [
+      {
+        "description": "The unrelated lexical use tend meaning care for is outside this constraint.",
+        "pages": [
+          220
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The door tends to stick.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The students tend to arrive early.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The door tends sticking.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The students tend arriving early.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.2",
+        "pages": [
+          220
+        ],
+        "pdf_pages": [
+          240
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Tend selects a to-infinitival action clause",
+        "relation": "unverified",
+        "note": "Separate crosswalk audit outstanding."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "verb_form",
+      "error_pattern": "A gerund-participial complement follows tend in this sense.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The door tends sticking. ||| The door tends to stick.",
+        "The students tend arriving early. ||| The students tend to arrive early."
+      ],
+      "learner_explanation": "In the catenative tendency sense, tend selects to followed by an infinitival verb phrase. The unlicensed form does not satisfy the particular complement pattern selected by this verb, but independently valid constructions must not be flagged.",
+      "corrected_paragraph_template": "Show the repaired complement within the original sentence and explain the lexical selection requirement without changing unrelated words.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "They tend to arrive late.",
+        "We tend the garden."
+      ],
+      "lesson_tags": [
+        "complementation",
+        "Chapter_4"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "review_notes": "Page-source checked; English examples newly authored; no independent linguistic approval or detector enablement.",
+    "related_rules": []
+  },
+  {
+    "id": "COMP-062",
+    "domain": "complementation",
+    "concept": "Enjoy excludes a to-infinitival action complement",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "Enjoy with an action complement normally selects a gerund-participial rather than a to-infinitival clause.",
+    "condition": "Enjoy with an action complement normally selects a gerund-participial rather than a to-infinitival clause.",
+    "violation": "A to-infinitival complement follows enjoy in its ordinary action sense.",
+    "exceptions": [
+      {
+        "description": "NP complements of enjoy are valid without any nonfinite clause.",
+        "pages": [
+          221
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She enjoys running.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The students enjoy debating.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "She enjoys to run.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The students enjoy to debate.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.2",
+        "pages": [
+          221
+        ],
+        "pdf_pages": [
+          241
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Enjoy excludes a to-infinitival action complement",
+        "relation": "unverified",
+        "note": "Separate crosswalk audit outstanding."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "verb_form",
+      "error_pattern": "A to-infinitival complement follows enjoy in its ordinary action sense.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "She enjoys to run. ||| She enjoys running.",
+        "The students enjoy to debate. ||| The students enjoy debating."
+      ],
+      "learner_explanation": "Enjoy with an action complement normally selects a gerund-participial rather than a to-infinitival clause. The unlicensed form does not satisfy the particular complement pattern selected by this verb, but independently valid constructions must not be flagged.",
+      "corrected_paragraph_template": "Show the repaired complement within the original sentence and explain the lexical selection requirement without changing unrelated words.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "She enjoys the weather.",
+        "They enjoy the music."
+      ],
+      "lesson_tags": [
+        "complementation",
+        "Chapter_4"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "review_notes": "Page-source checked; English examples newly authored; no independent linguistic approval or detector enablement.",
+    "related_rules": []
+  },
+  {
+    "id": "COMP-063",
+    "domain": "complementation",
+    "concept": "Peruse normally requires an object",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "In an unreduced finite declarative with peruse meaning examine/read, the verb selects an explicit direct object.",
+    "condition": "In an unreduced finite declarative with peruse meaning examine/read, the verb selects an explicit direct object.",
+    "violation": "The direct object is omitted without licensed ellipsis.",
+    "exceptions": [
+      {
+        "description": "Separate ellipsis and verb sense variation; read has a common intransitive use.",
+        "pages": [
+          221
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We perused the contract.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Lena perused the catalogue.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "We perused.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Lena perused yesterday.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 4,
+        "section": "§1.2",
+        "pages": [
+          221
+        ],
+        "pdf_pages": [
+          241
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Peruse normally requires an object",
+        "relation": "unverified",
+        "note": "Separate crosswalk audit outstanding."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "missing_word",
+      "error_pattern": "The direct object is omitted without licensed ellipsis.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "We perused. ||| We perused the contract.",
+        "Lena perused yesterday. ||| Lena perused the catalogue."
+      ],
+      "learner_explanation": "In an unreduced finite declarative with peruse meaning examine/read, the verb selects an explicit direct object. The unlicensed form does not satisfy the particular complement pattern selected by this verb, but independently valid constructions must not be flagged.",
+      "corrected_paragraph_template": "Show the repaired complement within the original sentence and explain the lexical selection requirement without changing unrelated words.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "We read.",
+        "Lena read yesterday."
+      ],
+      "lesson_tags": [
+        "complementation",
+        "Chapter_4"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "review_notes": "Page-source checked; English examples newly authored; no independent linguistic approval or detector enablement.",
+    "related_rules": []
   }
 ]

@@ -100,3 +100,8 @@ Do not remove or downgrade existing CI checks to accelerate a PR. Instead, **red
 ## Work cadence and stopping rules
 
 Process the entire current batch and its gate autonomously, fix failures, commit it and continue through the chapter. No review/approval prompts to the user. If source information is inaccessible or unsafe to infer, record the exact page/figure and blocker; never manufacture extraction. In each user turn, complete the most work actually possible and disclose any remaining blocker or incomplete PR. Future work does not run while the chat is closed.
+
+
+## Rolling checkpoint 2026-11-11
+
+The dense opening of Chapter 4 was split to 213–232; source audit and 19 inactive grammar records are in `sources/cambridge/chapter_04/PP213_232_AUDIT.json` and `sources/cambridge/chapter_04/PP213_232_REPORT.md`. Complete pp.233–252 next, then continue through p.322 before final chapter PR/CI merge. Do not treat source review as independent reviewer approval.
