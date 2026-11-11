@@ -86,8 +86,11 @@ function addTreeComparison(body, ui) {
   switches.setAttribute('role', 'group');
   switches.setAttribute('aria-label', 'Choose a worked sentence');
   const sentence = el('p', undefined, 'lesson-example-sentence');
-  const prompt = el('p', 'Which branch covers exactly “are singing softly”? Select a branch to check.');
-  prompt.tabIndex = -1;
+  const prompt = el('div');
+  prompt.append(
+    el('h3', 'Find the full predicate'),
+    el('p', 'The subject ends at “gate”. Find the node that covers the remaining words, “are singing softly”. Select its label in the tree or use the buttons below.'),
+  );
   const feedback = el('p', undefined, 'lesson-feedback');
   feedback.setAttribute('role', 'status');
   const branches = el('div', undefined, 'constituent-controls lesson-tree-steps');
@@ -96,9 +99,10 @@ function addTreeComparison(body, ui) {
   const diagram = el('div', undefined, 'constituent-diagram');
   const caption = el('p', undefined, 'constituent-caption');
   caption.setAttribute('role', 'status');
-  const picker = ['Short sentence', 'Longer sentence'].map((label, index) =>
+  const picker = ['Short sentence', 'Try the longer sentence'].map((label, index) =>
     button(label, () => chooseExample(index)));
-  const branchButtons = ['Whole sentence', 'Subject', 'Predicate'].map((label, index) =>
+  const branchLabels = [['Whole sentence', 'Subject', 'Predicate'], ['S', 'NP', 'VP']];
+  const branchButtons = branchLabels[0].map((label, index) =>
     button(label, () => selectBranch(index, true)));
   const explanations = [
     'S covers the whole sentence. Its two direct branches divide the words into two groups.',
@@ -109,7 +113,7 @@ function addTreeComparison(body, ui) {
 
   function describe(index, answer) {
     branchButtons.forEach((control, i) => control.setAttribute('aria-pressed', String(i === index)));
-    caption.textContent = explanations[index];
+    caption.textContent = explanations[index] ?? '';
     if (current === 0 || !answer) return;
     feedback.className = `lesson-feedback ${index === 2 ? 'correct' : 'retry'}`;
     feedback.textContent = [
@@ -132,7 +136,7 @@ function addTreeComparison(body, ui) {
       }
       describe(selected, true);
     };
-    const focusId = nodes[index].id;
+    const focusId = nodes[index]?.id;
     const canvas = current === 0
       ? showWorkedTree(diagram, focusId, { highlightWords: true, onSelect })
       : showDiagram(diagram, tree, { focusId, highlightWords: true, onSelectNode: onSelect });
@@ -142,20 +146,17 @@ function addTreeComparison(body, ui) {
   function chooseExample(index) {
     current = index;
     picker.forEach((control, i) => control.setAttribute('aria-pressed', String(i === index)));
+    branchButtons.forEach((control, i) => { control.textContent = branchLabels[index][i]; });
     sentence.textContent = examples[index].sentence;
     prompt.hidden = index === 0;
     feedback.textContent = '';
-    selectBranch(0);
+    selectBranch(index === 0 ? 0 : null);
   }
 
   switches.append(...picker);
   branches.append(...branchButtons);
   body.append(switches, sentence, prompt, branches, diagram, feedback);
   chooseExample(0);
-  return () => {
-    chooseExample(1);
-    prompt.focus();
-  };
 }
 
 function addSubjectBoundary(body, { el, button }) {
@@ -265,15 +266,12 @@ export function addSubjectPredicateTeaching(body, page, ui) {
       'A triangle points to the words in a phrase. It leaves any smaller branches inside that phrase for another drawing. In the short tree, the NP triangle covers two words and the VP triangle covers just “sing”.',
       'Before you look at the longer tree, recall the question from the previous page. It showed that “The robins near the gate” stays together. Use the NP triangle to check whether the tree includes all five words in that group.');
     section('Compare the two trees',
-      'Select Subject or Predicate to highlight the words that branch covers. Switch to the longer sentence and repeat the comparison. Look for the same two branches under S and see which words each one now covers.');
-    const practiceLongTree = addTreeComparison(body, ui);
+      'Select Subject or Predicate to see which words each branch covers in the short tree. Then choose Try the longer sentence to check whether you can find the full predicate on your own.');
+    addTreeComparison(body, ui);
     section('Build your first labelled tree',
       'Start with the words of “The robins sing”. Add S, NP and VP and connect their branches. Use Guide me for help, or build directly on the canvas.',
       'Right-click or press and hold to open a node menu. Connect the words to their phrases first, then use the menu to collapse NP and VP to triangles. Use Check construction to see which part needs attention.');
     addSubjectPredicateBuilder(body, ui);
-    section('Find the branch that covers the whole predicate',
-      'Try the longer tree and check which branch includes all three predicate words.');
-    body.append(ui.button('Practice on the longer tree', practiceLongTree, 'lesson-builder-link'));
   }
 
   if (page === 3) {
