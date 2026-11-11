@@ -52,6 +52,7 @@ jobs:
           python -m unittest -v tools.test_cgel_phase_b_179_186
           python -m unittest -v tools.test_cgel_phase_b_187_194
           python -m unittest -v tools.test_cgel_phase_b_195_202
+          python -m unittest -v tools.test_cgel_phase_b_203_210
 
       - name: Verify progression with concurrent PostgreSQL sessions
         env:
