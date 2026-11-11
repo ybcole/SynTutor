@@ -54,6 +54,8 @@ jobs:
           python -m unittest -v tools.test_cgel_phase_b_195_202
           python -m unittest -v tools.test_cgel_phase_b_203_210
           python -m unittest -v tools.test_cgel_phase_b_211_212
+          python tools/audit_cgel_ch03.py --check --output /tmp/cgel-ch03-audit.json
+          python -m unittest -v tools.test_cgel_ch03_qa
 
       - name: Verify progression with concurrent PostgreSQL sessions
         env:
