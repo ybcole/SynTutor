@@ -14638,5 +14638,2336 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-201",
+    "domain": "clauses",
+    "concept": "Set expressions in which partitives",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "Interrogative which can take a partitive whose complement identifies the set by a definite NP or an enumeration of its members. A cardinal can specify how many members to select.",
+    "condition": "Applies to the construction described in §7.1 of Chapter 10.",
+    "violation": "A which partitive takes an indefinite NP in place of an identifiable set expression.",
+    "exceptions": [
+      {
+        "description": "Out of can replace of in some examples. Do not confuse the set-denoting complement with an indefinite NP elsewhere in the clause.",
+        "pages": [
+          903
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Which two of these switches are faulty?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Which of these woods would you use?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Which two of some switches are faulty?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Which of some woods would you use?",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§7.1",
+        "pages": [
+          903
+        ],
+        "pdf_pages": [
+          923
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Set expressions in which partitives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "article_determiner",
+      "error_pattern": "A which partitive takes an indefinite NP in place of an identifiable set expression.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Which two of some switches are faulty? ||| Which two of these switches are faulty?",
+        "Which of some woods would you use? ||| Which of these woods would you use?"
+      ],
+      "learner_explanation": "Interrogative which can take a partitive whose complement identifies the set by a definite NP or an enumeration of its members. A cardinal can specify how many members to select.",
+      "corrected_paragraph_template": "Use a definite set expression or enumerate the members in the partitive.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Which of cedar, pine, and oak would you use?",
+        "Which of them did you try?",
+        "Which out of the spare parts fits?",
+        "Which switches are faulty?"
+      ],
+      "lesson_tags": [
+        "clause-type",
+        "article-determiner"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-202",
+    "domain": "clauses",
+    "concept": "Contextual sets with which and what",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Which encodes selection from an identifiable set, even when the set is supplied by the context. What can sometimes ask the same practical question without encoding the set restriction.",
+    "condition": "Applies to the construction described in §7.1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The contrast is clearer when which has an explicit partitive. A familiar, limited set can make the difference pragmatically small.",
+        "pages": [
+          903,
+          904
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Which route did you take?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What route did you take?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§7.1",
+        "pages": [
+          903,
+          904
+        ],
+        "pdf_pages": [
+          923,
+          924
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Contextual sets with which and what",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-203",
+    "domain": "clauses",
+    "concept": "Interrogative whose",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Interrogative whose is a personal genitive. It can determine a following noun, serve predicatively, or fuse determiner and head when the noun is recoverable.",
+    "condition": "Applies to the construction described in §7.2 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Fused use is relatively infrequent, and the explicit partitive available with which is generally unavailable with whose.",
+        "pages": [
+          904
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Whose umbrella is on the rack?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Whose is the striped one?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§7.2",
+        "pages": [
+          904
+        ],
+        "pdf_pages": [
+          924
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Interrogative whose",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-204",
+    "domain": "clauses",
+    "concept": "Who and whom and the contrast with which",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Who and whom are personal interrogative heads. Which can select an individual from an identified group, while who can ask for the person's identity.",
+    "condition": "Applies to the construction described in §7.3 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The intended readings can overlap. Who permits some full partitives with of or out of, so a general ban on partitives with who would be too strong.",
+        "pages": [
+          904,
+          905
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Who is the new supervisor?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Which is the new supervisor?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§7.3",
+        "pages": [
+          904,
+          905
+        ],
+        "pdf_pages": [
+          924,
+          925
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Who and whom and the contrast with which",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-205",
+    "domain": "clauses",
+    "concept": "Personal identity and ascriptive predication",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In a specifying question about a person, who asks for an identity. What in an ascriptive question can ask about a relevant category, such as occupation.",
+    "condition": "Applies to the construction described in §7.3 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The relevant category of properties depends on the discourse.",
+        "pages": [
+          904,
+          905
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Who is Rina? — She's the project lead.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What is Rina? — She's an architect.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§7.3",
+        "pages": [
+          904,
+          905
+        ],
+        "pdf_pages": [
+          924,
+          925
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Personal identity and ascriptive predication",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-206",
+    "domain": "clauses",
+    "concept": "Temporal functions of when",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "When questions time as an adjunct, a complement, or an element of a specifying construction. It can also complement a preposition.",
+    "condition": "Applies to the construction described in §7.4 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Since when may challenge a claimed situation rather than merely seek its starting date.",
+        "pages": [
+          905
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "When will the shop reopen?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Since when have you had the key?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§7.4",
+        "pages": [
+          905
+        ],
+        "pdf_pages": [
+          925
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Temporal functions of when",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-207",
+    "domain": "clauses",
+    "concept": "Spatial functions of where",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Where can question location or goal and has a range of clause functions comparable to temporal when. It can be the complement of a spatial preposition.",
+    "condition": "Applies to the construction described in §7.5 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Fronted from where is markedly formal in the illustrated contrast. At is available in some uses and varieties.",
+        "pages": [
+          905,
+          906
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Where should we put the ladder?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Where did you come from?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§7.5",
+        "pages": [
+          905,
+          906
+        ],
+        "pdf_pages": [
+          925,
+          926
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Spatial functions of where",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-208",
+    "domain": "clauses",
+    "concept": "Reason and purpose with why",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Why questions reason or purpose as an adjunct or in a reason cleft. A specifying question asking for the identity of a reason instead uses what.",
+    "condition": "Applies to the construction described in §7.6 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Informal what for can replace adjunct why, subject to the construction. It does not directly substitute for why in the reason cleft.",
+        "pages": [
+          906
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Why did you close the shutters?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What was the reason for the delay?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§7.6",
+        "pages": [
+          906
+        ],
+        "pdf_pages": [
+          926
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reason and purpose with why",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-209",
+    "domain": "clauses",
+    "concept": "Why in suggestions and responses",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Why can introduce a suggestion or challenge without presupposing an available reason. As a response to a directive or question, it can ask why the prior act was performed or why one should comply.",
+    "condition": "Applies to the construction described in §7.6 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Why is restricted in the direction and infinitival patterns discussed here. A reason for asking can be requested separately from the information sought by the original question.",
+        "pages": [
+          906,
+          907
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Why not wait until morning?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Check the back door. — Why?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§7.6",
+        "pages": [
+          906,
+          907
+        ],
+        "pdf_pages": [
+          926,
+          927
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Why in suggestions and responses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-210",
+    "domain": "clauses",
+    "concept": "Predicative and degree uses of how",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Adjectival how can ask about a subject or object predicative complement. Adverbial how can modify gradable expressions and ask for a point on a scale.",
+    "condition": "Applies to the construction described in §7.7 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Degree how modifies relatively few verbs directly. How much is available more broadly, and different scale adjectives carry different presuppositions.",
+        "pages": [
+          907,
+          908
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "How was the rehearsal?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "How tightly did you fasten the clamp?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§7.7",
+        "pages": [
+          907,
+          908
+        ],
+        "pdf_pages": [
+          927,
+          928
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Predicative and degree uses of how",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-211",
+    "domain": "clauses",
+    "concept": "Means and manner with how",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "How can question the means by which an event is accomplished or the manner in which it unfolds. A predicative use instead asks for a characterization.",
+    "condition": "Applies to the construction described in §7.7 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The verb and context can support more than one reading.",
+        "pages": [
+          908
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "How did you open it? — With a spare key.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "How did she speak? — Quietly.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§7.7",
+        "pages": [
+          908
+        ],
+        "pdf_pages": [
+          928
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Means and manner with how",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-212",
+    "domain": "clauses",
+    "concept": "How for evidence and reason",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "How can request evidence with verbs such as know and expressions such as be sure. In a reason cleft it can overlap with why.",
+    "condition": "Applies to the construction described in §7.7 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An evidence question can challenge a claim without presupposing that the addressee has adequate evidence.",
+        "pages": [
+          908,
+          909
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "How do you know the hinge is loose?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "How is it that the gate always sticks?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§7.7",
+        "pages": [
+          908,
+          909
+        ],
+        "pdf_pages": [
+          928,
+          929
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "How for evidence and reason",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-213",
+    "domain": "clauses",
+    "concept": "Clause order after idiomatic how come",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "Informal how come introduces a reason question with ordinary subject–predicator order.",
+    "condition": "Applies to the construction described in §7.7 of Chapter 10.",
+    "violation": "The subject and auxiliary are inverted after idiomatic how come.",
+    "exceptions": [
+      {
+        "description": "Distinguish idiomatic how come from a standard inverted why question and from a compositional construction with the verb come.",
+        "pages": [
+          909
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "How come the gate is locked?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "How come Maya left early?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "How come is the gate locked?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "How come did Maya leave early?",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§7.7",
+        "pages": [
+          909
+        ],
+        "pdf_pages": [
+          929
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Clause order after idiomatic how come",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "word_order",
+      "error_pattern": "The subject and auxiliary are inverted after idiomatic how come.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "How come is the gate locked? ||| How come the gate is locked?",
+        "How come did Maya leave early? ||| How come Maya left early?"
+      ],
+      "learner_explanation": "Informal how come introduces a reason question with ordinary subject–predicator order.",
+      "corrected_paragraph_template": "Use ordinary clause order after how come, adjusting the lexical verb if do-support was added.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Why is the gate locked?",
+        "How did it come to be locked?",
+        "How come Maya did leave early after all?"
+      ],
+      "lesson_tags": [
+        "clause-type",
+        "word-order"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-214",
+    "domain": "clauses",
+    "concept": "How about and other how idioms",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "How about can introduce a suggestion or bring another participant or topic into a discussion. Other formulas with how can have conventional force beyond an ordinary information question.",
+    "condition": "Applies to the construction described in §7.7 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The construction is informal and can take an NP, a gerund-participial expression, or a finite clause.",
+        "pages": [
+          909
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "How about taking a break?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I prefer the early train. How about you?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§7.7",
+        "pages": [
+          909
+        ],
+        "pdf_pages": [
+          929
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "How about and other how idioms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-215",
+    "domain": "clauses",
+    "concept": "Determiner and pronoun what",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Interrogative what can determine a following noun or serve as a pronoun heading an NP. Its lexical contrasts depend on the role.",
+    "condition": "Applies to the construction described in §7.8 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Interrogative what differs from which in selectivity and from who in its ordinary nonpersonal use.",
+        "pages": [
+          909,
+          910
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What paint did you use?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What did you find?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§7.8",
+        "pages": [
+          909,
+          910
+        ],
+        "pdf_pages": [
+          929,
+          930
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Determiner and pronoun what",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-216",
+    "domain": "clauses",
+    "concept": "Verbless what and what if constructions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "What can stand alone as a reduced question, an echo, or an acknowledgment. What about can raise a topic, and what if can raise a possible situation for consideration.",
+    "condition": "Applies to the construction described in §7.8 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Context distinguishes echo from ordinary reduction. So what conventionally challenges relevance.",
+        "pages": [
+          910
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I found something. — What?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What if the shop closes before we arrive?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§7.8",
+        "pages": [
+          910
+        ],
+        "pdf_pages": [
+          930
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Verbless what and what if constructions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-217",
+    "domain": "clauses",
+    "concept": "Maximal interrogative phrases",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "The interrogative feature can extend from a word through nested phrases. When fronting applies, the maximal interrogative phrase moves together.",
+    "condition": "Applies to the construction described in §7.9 of Chapter 10.",
+    "violation": "A smaller interrogative phrase fronts while the remainder of its maximal nominal phrase is left behind.",
+    "exceptions": [
+      {
+        "description": "This account allows more than one level of interrogative phrase within a single constituent.",
+        "pages": [
+          910,
+          911
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What size boots did you order?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "How large a crate did they build?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "What size did you order boots?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "How large did they build a crate?",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§7.9",
+        "pages": [
+          910,
+          911
+        ],
+        "pdf_pages": [
+          930,
+          931
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Maximal interrogative phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "word_order",
+      "error_pattern": "A smaller interrogative phrase fronts while the remainder of its maximal nominal phrase is left behind.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "What size did you order boots? ||| What size boots did you order?",
+        "How large did they build a crate? ||| How large a crate did they build?"
+      ],
+      "learner_explanation": "The interrogative feature can extend from a word through nested phrases. When fronting applies, the maximal interrogative phrase moves together.",
+      "corrected_paragraph_template": "Front the complete nominal interrogative phrase in the intended question.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "What size did you order?",
+        "You ordered what size boots?",
+        "How large did they build it?"
+      ],
+      "lesson_tags": [
+        "clause-type",
+        "word-order"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-218",
+    "domain": "clauses",
+    "concept": "Stranded and fronted prepositions in interrogatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An interrogative NP can front with the preposition stranded, or a containing PP can front in a more formal construction.",
+    "condition": "Applies to the construction described in §7.9 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Nested structures can allow fronting of a higher PP. The corresponding bare NP containing an embedded interrogative PP is not generally a frontable alternative.",
+        "pages": [
+          911,
+          912
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Which shelf did you put it on?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "On which shelf did you put it?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§7.9",
+        "pages": [
+          911,
+          912
+        ],
+        "pdf_pages": [
+          931,
+          932
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Stranded and fronted prepositions in interrogatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-219",
+    "domain": "clauses",
+    "concept": "Questioned element versus fronted phrase",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The grammatical unit fronted in a question can be larger than the expression replaced to form an answer.",
+    "condition": "Applies to the construction described in §7.10 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A PP often retains its preposition in the answer. Idioms such as what for and what like can instead be answered by replacing the whole PP.",
+        "pages": [
+          912,
+          913
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Whose laptop is charging? — Farah's laptop is charging.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "With whom did you travel? — I traveled with Farah.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§7.10",
+        "pages": [
+          912,
+          913
+        ],
+        "pdf_pages": [
+          932,
+          933
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Questioned element versus fronted phrase",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-220",
+    "domain": "clauses",
+    "concept": "Questioning predications with what",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Questions built with do or happen can seek a predication rather than an NP replacement for what. A following PP can identify the participant involved.",
+    "condition": "Applies to the construction described in §7.10 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Do with can ask how something was disposed of or placed. Happen to allows a wider range of participant roles than an affected patient alone.",
+        "pages": [
+          913,
+          914
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What did you do to the latch? — I tightened its screws.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What happened to the parcel? — It fell off the cart.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§7.10",
+        "pages": [
+          913,
+          914
+        ],
+        "pdf_pages": [
+          933,
+          934
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Questioning predications with what",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-221",
+    "domain": "clauses",
+    "concept": "Unbounded open interrogative dependencies",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A fronted interrogative phrase can be linked to a gap within an embedded clause, including across more than one clause boundary.",
+    "condition": "Applies to the construction described in §7.11–7.12 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The number of intervening clauses is not fixed in principle. This does not eliminate independent restrictions on where gaps can occur.",
+        "pages": [
+          914,
+          915
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What did Arun buy?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What do you think Arun said he wanted to buy?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§7.11–7.12",
+        "pages": [
+          914,
+          915
+        ],
+        "pdf_pages": [
+          934,
+          935
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Unbounded open interrogative dependencies",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-222",
+    "domain": "clauses",
+    "concept": "Attachment ambiguity in complex interrogatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The same fronted interrogative phrase can have different core roles, including attachment to a higher or lower clause.",
+    "condition": "Applies to the construction described in §7.12 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Adjunct attachment is a common source of ambiguity. Some complements also permit distinct roles in restricted configurations.",
+        "pages": [
+          914,
+          915
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "When did they decide to depart?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Why do you think the pump stopped?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§7.12",
+        "pages": [
+          914,
+          915
+        ],
+        "pdf_pages": [
+          934,
+          935
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Attachment ambiguity in complex interrogatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-223",
+    "domain": "clauses",
+    "concept": "Scope of in-situ phrases in multi-variable questions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In a complex multi-variable question, an in-situ interrogative phrase can be interpreted with a higher question or with an embedded question.",
+    "condition": "Applies to the construction described in §7.12 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An answer can pair informants with values or identify someone who knows all relevant pairings, depending on scope.",
+        "pages": [
+          915,
+          916
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Who knows which shops stock which parts?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Who can tell me which trains stop at which stations?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§7.12",
+        "pages": [
+          915,
+          916
+        ],
+        "pdf_pages": [
+          935,
+          936
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Scope of in-situ phrases in multi-variable questions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-224",
+    "domain": "clauses",
+    "concept": "Interrogative word modifiers",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A limited set of modifiers can follow interrogative words to emphasize uncertainty, add alternatives, or request precision.",
+    "condition": "Applies to the construction described in §7.13 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The available modifier depends on the interrogative word and placement. Else can occur in constructions unavailable to some emphatic modifiers.",
+        "pages": [
+          916
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Who on earth left the tap running?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What exactly did you order?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§7.13",
+        "pages": [
+          916
+        ],
+        "pdf_pages": [
+          936
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Interrogative word modifiers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-225",
+    "domain": "clauses",
+    "concept": "Subject and predicative complement in be questions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A clause beginning with an interrogative NP and be can have an interrogative subject or a fronted predicative complement. Modal insertion or embedding can help distinguish the structures.",
+    "condition": "Applies to the construction described in §7.14 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some specifying and ascriptive cases remain structurally ambiguous. Pronoun case can provide a clue in suitable examples.",
+        "pages": [
+          917
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Who will be treasurer?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What time will it be?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§7.14",
+        "pages": [
+          917
+        ],
+        "pdf_pages": [
+          937
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subject and predicative complement in be questions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-226",
+    "domain": "clauses",
+    "concept": "Exclamative phrases and obligatory non-subject fronting",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "What and how mark exclamative phrases. An exclamative subject stays in subject position, while a non-subject exclamative phrase occurs initially and can link to an embedded gap.",
+    "condition": "Applies to the construction described in §8.1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Preposition stranding and fronting both occur in the appropriate exclamative patterns. Certain subject exclamatives resemble interrogatives in writing.",
+        "pages": [
+          918
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What unusual birds live here!",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "How expensive she expected the repairs to be!",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§8.1",
+        "pages": [
+          918
+        ],
+        "pdf_pages": [
+          938
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Exclamative phrases and obligatory non-subject fronting",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-227",
+    "domain": "clauses",
+    "concept": "Degree modification by exclamative how",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Exclamative how presents degree as remarkable and can modify an adjective, adverb, degree determinative, or degree modifier.",
+    "condition": "Applies to the construction described in §8.1.1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An interrogative degree question instead asks for a value on the scale. The exclamative pattern permits a degree modifier after how.",
+        "pages": [
+          919
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "How quickly the pond froze!",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "How very carefully she packed the glass!",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§8.1.1",
+        "pages": [
+          919
+        ],
+        "pdf_pages": [
+          939
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Degree modification by exclamative how",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-228",
+    "domain": "clauses",
+    "concept": "Exclamative how with verbs",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "When how modifies the verb in an exclamative, it expresses remarkable degree. In a corresponding ordinary interrogative, how can question means or manner.",
+    "condition": "Applies to the construction described in §8.1.1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Inversion with verb-modifying how in the illustrated contrast gives the interrogative analysis.",
+        "pages": [
+          919
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "How they admired her!",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "How did they persuade her?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§8.1.1",
+        "pages": [
+          919
+        ],
+        "pdf_pages": [
+          939
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Exclamative how with verbs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-229",
+    "domain": "clauses",
+    "concept": "Exclamative what and singular count NPs",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "Exclamative what modifies an NP. With a singular count noun in the illustrated pattern, what precedes a or an. Plural and non-count patterns lack that article.",
+    "condition": "Applies to the construction described in §8.1.2 of Chapter 10.",
+    "violation": "A singular count NP modified by exclamative what is missing a or an.",
+    "exceptions": [
+      {
+        "description": "Guard interrogative what, plural and non-count exclamatives, fused relatives, and fixed formulas outside this pattern.",
+        "pages": [
+          919,
+          920
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What a strange noise it made!",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What an unusual instrument she found!",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "What strange noise it made!",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "What unusual instrument she found!",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§8.1.2",
+        "pages": [
+          919,
+          920
+        ],
+        "pdf_pages": [
+          939,
+          940
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Exclamative what and singular count NPs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "article_determiner",
+      "error_pattern": "A singular count NP modified by exclamative what is missing a or an.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "What strange noise it made! ||| What a strange noise it made!",
+        "What unusual instrument she found! ||| What an unusual instrument she found!"
+      ],
+      "learner_explanation": "Exclamative what modifies an NP. With a singular count noun in the illustrated pattern, what precedes a or an. Plural and non-count patterns lack that article.",
+      "corrected_paragraph_template": "Place a or an after exclamative what in this singular count pattern.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "What strange noises it made!",
+        "What beautiful music she found!",
+        "What instrument did she find?",
+        "What she found!"
+      ],
+      "lesson_tags": [
+        "clause-type",
+        "article-determiner"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-230",
+    "domain": "clauses",
+    "concept": "Quality and distribution of exclamative what",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Exclamative what presents quality or degree as remarkable. It modifies an NP directly, whereas a how phrase can be an external modifier of a singular count NP.",
+    "condition": "Applies to the construction described in §8.1.2 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Approval or disapproval is inferred from context. Exclamative how tends toward more formal style.",
+        "pages": [
+          920
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What beautiful handwriting she has!",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "How elegant a solution it was!",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§8.1.2",
+        "pages": [
+          920
+        ],
+        "pdf_pages": [
+          940
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Quality and distribution of exclamative what",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-231",
+    "domain": "clauses",
+    "concept": "Subject position and inversion in exclamatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A fronted non-subject exclamative phrase usually precedes ordinary subject–predicator order. Some literary exclamatives permit inversion or, in a distinct pattern, a postposed subject.",
+    "condition": "Applies to the construction described in §8.1.3 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An inverted sequence with an exclamation mark can instead be a rhetorical interrogative. Punctuation alone cannot settle the analysis.",
+        "pages": [
+          920,
+          921
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What a racket the fan made!",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What a surprise would it have been if the doors had opened!",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§8.1.3",
+        "pages": [
+          920,
+          921
+        ],
+        "pdf_pages": [
+          940,
+          941
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subject position and inversion in exclamatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-232",
+    "domain": "clauses",
+    "concept": "Verbless exclamatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An exclamative can consist of the exclamative phrase alone or include an additional clause interpreted in relation to an understood predication.",
+    "condition": "Applies to the construction described in §8.1.4 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A following infinitival can be relative in one pattern and an extraposed subject in another. The source also records less common gerund-participial cases.",
+        "pages": [
+          921
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What an odd coincidence!",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "How strange that nobody called!",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§8.1.4",
+        "pages": [
+          921
+        ],
+        "pdf_pages": [
+          941
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Verbless exclamatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-233",
+    "domain": "clauses",
+    "concept": "Meaning and force of exclamatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An exclamative normally foregrounds the speaker's evaluation or reaction while presenting the underlying situation as given. It is conventionally an exclamatory statement.",
+    "condition": "Applies to the construction described in §8.2 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A falling tag can invite agreement with the evaluation. Echoes aside, an answer does not normally supply a value for the exclamative expression.",
+        "pages": [
+          922,
+          923
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "How bright the room is now!",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What a mess they've made!",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§8.2",
+        "pages": [
+          922,
+          923
+        ],
+        "pdf_pages": [
+          942,
+          943
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Meaning and force of exclamatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-234",
+    "domain": "clauses",
+    "concept": "Exclamations with non-exclamative syntax",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Closed interrogatives and clauses with so or such can convey exclamatory force through their wording and prosody. Their ordinary syntax can remain intact.",
+    "condition": "Applies to the construction described in §8.3 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "So and such do not obligatorily front and can occur outside declaratives in appropriate constructions.",
+        "pages": [
+          923,
+          924
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Wasn't that an extraordinary finish!",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They were so patient!",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§8.3",
+        "pages": [
+          923,
+          924
+        ],
+        "pdf_pages": [
+          943,
+          944
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Exclamations with non-exclamative syntax",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-235",
+    "domain": "clauses",
+    "concept": "Exclamatory NPs and imprecative retorts",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some NPs or fused relatives stand as exclamations and can correspond to extraposed NPs. An imprecative retort can use an expletive followed by a pronoun and auxiliary with an understood complement.",
+    "condition": "Applies to the construction described in §8.3 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The NP type often conveys disapproval. The retort is strongly informal.",
+        "pages": [
+          924
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The prices they charge for repairs!",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I'll cancel the booking. — Like hell you will!",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§8.3",
+        "pages": [
+          924
+        ],
+        "pdf_pages": [
+          944
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Exclamatory NPs and imprecative retorts",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-236",
+    "domain": "clauses",
+    "concept": "Ordinary and let-imperative clauses",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Imperatives allow an optional subject, a plain verb form, and supportive do even with be in the relevant constructions. Let marks a subtype with properties explored separately.",
+    "condition": "Applies to the construction described in §9.1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Lexical let meaning allow remains available in ordinary imperatives. The apparent similarity of the forms does not settle the analysis.",
+        "pages": [
+          924
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Keep the corridor clear.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Let's keep the corridor clear.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§9.1",
+        "pages": [
+          924
+        ],
+        "pdf_pages": [
+          944
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ordinary and let-imperative clauses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]

@@ -202,3 +202,7 @@ Printed pp. 851–878 account for 26 substantive pages and two contents pages. T
 ## Chapter 10 second checkpoint (2026-11-11)
 
 Printed pp. 879–902 yielded 39 records (`CLS-162`–`CLS-200`), including three inactive constraint specifications. Chapter 10 has 50 substantive pages extracted and 43 pages unprocessed. Continue at p. 903 with interrogative words and phrases.
+
+## Chapter 10 third checkpoint (2026-11-11)
+
+Printed pp. 903–924 yielded 36 records (`CLS-201`–`CLS-236`), including four inactive constraint specifications. Chapter 10 has 72 substantive pages extracted and 21 pages unprocessed. Continue at p. 925 with the detailed imperative analysis.

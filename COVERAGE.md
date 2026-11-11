@@ -15,7 +15,7 @@
 | 7. Prepositions and preposition phrases | 66 | 64 | 0 | 2 | 0 | Source-extracted |
 | 8. The clause: adjuncts | 122 | 0 | 122 | 0 | 0 | Incomplete |
 | 9. Negation | 66 | 0 | 65 | 1 | 0 | Incomplete |
-| 10. Clause type and illocutionary force | 96 | 50 | 43 | 3 | 0 | In progress (pp. 851–902) |
+| 10. Clause type and illocutionary force | 96 | 72 | 21 | 3 | 0 | In progress (pp. 851–924) |
 | 11. Content clauses and reported speech | 84 | 0 | 84 | 0 | 0 | Incomplete |
 | 12. Relative constructions | 66 | 0 | 66 | 0 | 0 | Incomplete |
 | 13. Comparative constructions | 74 | 0 | 74 | 0 | 0 | Incomplete |
@@ -27,7 +27,7 @@
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **558 extracted**, 1183 unprocessed, 21 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **580 extracted**, 1161 unprocessed, 21 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -198,3 +198,7 @@ The 28-page opening batch includes two contents pages and 26 substantive pages. 
 ## Chapter 10 pp. 879–902
 
 The second accelerated batch accounts for 24 substantive pages and adds 39 records (`CLS-162`–`CLS-200`) on biased questions, polarity, echoes, tags, parentheticals, and question presuppositions. Three constraints are inactive specifications. See the [source report](sources/cambridge/chapter_10/PP879_902_REPORT.md) and [audit manifest](sources/cambridge/chapter_10/PP879_902_AUDIT.json). Continue at p. 903 with partitive interrogative phrases headed by which.
+
+## Chapter 10 pp. 903–924
+
+The third batch covers 22 substantive pages and adds 36 records (`CLS-201`–`CLS-236`) on interrogative phrases, dependencies, exclamatives, and the opening distinction between imperative subtypes. Four constraints are inactive specifications. See the [source report](sources/cambridge/chapter_10/PP903_924_REPORT.md) and [audit manifest](sources/cambridge/chapter_10/PP903_924_AUDIT.json). Continue at p. 925.
