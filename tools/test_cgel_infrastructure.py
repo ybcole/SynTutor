@@ -17,7 +17,9 @@ class Tests(unittest.TestCase):
         self.assertGreater(sum(p["status"]=="unprocessed" for p in pages),0)
     def test_integrity_not_certification(self):
         self.assertEqual(ledger.check(self.data,self.manifest,allow_unprocessed=True),[])
-        errors=ledger.check(self.data,self.manifest,chapter=3)
+        # Chapter 3 now has complete page-level source accounting; the book as a whole does not.
+        self.assertEqual(ledger.check(self.data,self.manifest,chapter=3), [])
+        errors=ledger.check(self.data,self.manifest,chapter=4)
         self.assertTrue(any("unprocessed" in e for e in errors))
     def test_unverified_extraction_rejected(self):
         bad=copy.deepcopy(self.data)
