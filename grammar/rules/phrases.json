@@ -15132,5 +15132,2677 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-235",
+    "domain": "phrases",
+    "concept": "Scope of determinative phrase modifiers",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A modifier may combine with the following quantifier to form a determinative phrase or modify the containing noun phrase peripherally.",
+    "condition": "Applies to the construction and sense described in §11 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Linear adjacency alone may leave attachment uncertain.",
+        "pages": [
+          431
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Almost all tickets sold.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Almost the whole block flooded.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§11",
+        "pages": [
+          431
+        ],
+        "pdf_pages": [
+          451
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Scope of determinative phrase modifiers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-236",
+    "domain": "phrases",
+    "concept": "Negation inside determinative phrases",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Not readily modifies quantifiers such as many, much, all, every, and enough in determinative phrase structure.",
+    "condition": "Applies to the construction and sense described in §11 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Both and each exclude this DP use in the cited analysis. Not one may be an NP-level modifier.",
+        "pages": [
+          431
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Not all flights left on time.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Not enough water reached the seedlings.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§11",
+        "pages": [
+          431
+        ],
+        "pdf_pages": [
+          451
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negation inside determinative phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-237",
+    "domain": "phrases",
+    "concept": "Approximation and precision with quantifiers",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Numerals and selected other quantifiers admit approximation, precision, or approximate negation.",
+    "condition": "Applies to the construction and sense described in §11 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Approximation some is limited to numerals. Related meanings can also arise through coordination or affixation.",
+        "pages": [
+          431
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Roughly thirty people signed up.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Hardly any paint remained.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§11",
+        "pages": [
+          431
+        ],
+        "pdf_pages": [
+          451
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Approximation and precision with quantifiers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-238",
+    "domain": "phrases",
+    "concept": "Degree and completeness modifiers",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Gradable many, much, few, and little take degree modifiers. Enough and sufficient take some completeness modifiers.",
+    "condition": "Applies to the construction and sense described in §11 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Not every adjective degree modifier is available with determinatives. Fully also modifies numerals.",
+        "pages": [
+          431,
+          432
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We had too little time to check.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The reserve was marginally sufficient for the trip.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§11",
+        "pages": [
+          431,
+          432
+        ],
+        "pdf_pages": [
+          451,
+          452
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Degree and completeness modifiers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-239",
+    "domain": "phrases",
+    "concept": "Comparative complements inside and outside a DP",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "More, less, and fewer can take a following than-phrase inside the DP when its complement is quantificational. Other comparison complements follow the nominal head.",
+    "condition": "Applies to the construction and sense described in §11 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A quantified than-phrase can also be delayed. Additional more does not necessarily make a comparison.",
+        "pages": [
+          432
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Fewer than thirty seats remained.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "More seats than we expected remained.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§11",
+        "pages": [
+          432
+        ],
+        "pdf_pages": [
+          452
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Comparative complements inside and outside a DP",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-240",
+    "domain": "phrases",
+    "concept": "Singular selection with more than one and one more",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "More than one selects a singular noun despite describing multiple entities. One more also selects a singular noun.",
+    "condition": "Applies to the construction and sense described in §11 of Chapter 5.",
+    "violation": "The head noun is plural where more than one or one more selects singular.",
+    "exceptions": [
+      {
+        "description": "An additive one more can report a single additional item rather than the size of the cumulative set.",
+        "pages": [
+          432
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "More than one panel was damaged.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "One more parcel has arrived.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "More than one panels was damaged.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "One more parcels has arrived.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§11",
+        "pages": [
+          432
+        ],
+        "pdf_pages": [
+          452
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Singular selection with more than one and one more",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "agreement",
+      "error_pattern": "The head noun is plural where more than one or one more selects singular.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "More than one panels was damaged. ||| More than one panel was damaged.",
+        "One more parcels has arrived. ||| One more parcel has arrived."
+      ],
+      "learner_explanation": "More than one selects a singular noun despite describing multiple entities. One more also selects a singular noun.",
+      "corrected_paragraph_template": "Use a singular head with more than one or one more in the cited construction.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "More than two panels were damaged.",
+        "One or more parcels have arrived."
+      ],
+      "lesson_tags": [
+        "NP_structure",
+        "nominal_dependents"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-241",
+    "domain": "phrases",
+    "concept": "Upper and lower bounds in DPs",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "At most sets an upper bound, while at least sets a lower bound. These modifiers combine with numerals and several other quantifiers.",
+    "condition": "Applies to the construction and sense described in §11 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Several accepts at least much more readily than at most.",
+        "pages": [
+          432
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "At most six guests can stay.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "At least a few seats are still available.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§11",
+        "pages": [
+          432
+        ],
+        "pdf_pages": [
+          452
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Upper and lower bounds in DPs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-242",
+    "domain": "phrases",
+    "concept": "Post-head PP modifiers in DPs",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Condition, exception, proportion, and arithmetic can be expressed by PPs after a determinative head. In many cases the PP can instead follow the noun.",
+    "condition": "Applies to the construction and sense described in §11 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The internal exception PP occurs with all in the source contrast. With every, no, or any the exception follows the noun.",
+        "pages": [
+          433
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "All but two windows were open.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Every window but two was open.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§11",
+        "pages": [
+          433
+        ],
+        "pdf_pages": [
+          453
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Post-head PP modifiers in DPs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-243",
+    "domain": "phrases",
+    "concept": "Range PPs as determiners",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A restricted range of preposition phrases can determine a noun phrase, including between ranges and from–to ranges.",
+    "condition": "Applies to the construction and sense described in §11 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "These are structurally distinct from DPs with a numeral head.",
+        "pages": [
+          433
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Between four and six trucks can park here.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We expect from eight to twelve volunteers.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§11",
+        "pages": [
+          433
+        ],
+        "pdf_pages": [
+          453
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Range PPs as determiners",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-244",
+    "domain": "phrases",
+    "concept": "Predeterminer subtypes and attachment",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Universal quantifiers, fractions, multipliers, and a restricted set of adjectival expressions can function as external modifiers of an NP.",
+    "condition": "Applies to the construction and sense described in §12 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some can modify a fused relative or a suitably modified pronoun. All before a bare cardinal can instead be the determiner.",
+        "pages": [
+          433,
+          434
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Both her proposals passed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "All three proposals passed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§12",
+        "pages": [
+          433,
+          434
+        ],
+        "pdf_pages": [
+          453,
+          454
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Predeterminer subtypes and attachment",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-245",
+    "domain": "phrases",
+    "concept": "Fractional predeterminers",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Fractional predeterminers are noun phrases. Bare half combines with concrete and indefinite noun phrases more freely than the other fractions.",
+    "condition": "Applies to the construction and sense described in §12 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Other fractions can precede abstract measure nominals. A partitive construction with of licenses a broader range.",
+        "pages": [
+          434
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We used half the flour.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It took a third of the time.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§12",
+        "pages": [
+          434
+        ],
+        "pdf_pages": [
+          454
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fractional predeterminers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-246",
+    "domain": "phrases",
+    "concept": "Multiplier predeterminers",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Multiplier expressions such as two times and twice modify definite noun phrases in the cited construction.",
+    "condition": "Applies to the construction and sense described in §12 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Double and similar forms have other uses. The multiplier predeterminer does not form an equivalent of-partitive.",
+        "pages": [
+          434
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They paid twice the quoted fee.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The update tripled the load to three times the original level.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§12",
+        "pages": [
+          434
+        ],
+        "pdf_pages": [
+          454
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Multiplier predeterminers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-247",
+    "domain": "phrases",
+    "concept": "Such and exclamative what before a",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "Such and exclamative what precede the indefinite article as external modifiers. With bare plural and noncount nominals they occur internally.",
+    "condition": "Applies to the construction and sense described in §12 of Chapter 5.",
+    "violation": "The predeterminer follows a in the specified construction.",
+    "exceptions": [
+      {
+        "description": "Such can also follow certain determiners with a kind reading. Legal-register determiner such is a separate use.",
+        "pages": [
+          435
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was such a relief.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What a mess that was!",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "It was a such relief.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "A what mess that was!",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§12",
+        "pages": [
+          435
+        ],
+        "pdf_pages": [
+          455
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Such and exclamative what before a",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "word_order",
+      "error_pattern": "The predeterminer follows a in the specified construction.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "It was a such relief. ||| It was such a relief.",
+        "A what mess that was! ||| What a mess that was!"
+      ],
+      "learner_explanation": "Such and exclamative what precede the indefinite article as external modifiers. With bare plural and noncount nominals they occur internally.",
+      "corrected_paragraph_template": "Place such or exclamative what before a in this pattern.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "It was such welcome news.",
+        "It was a further such delay."
+      ],
+      "lesson_tags": [
+        "NP_structure",
+        "nominal_dependents"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-248",
+    "domain": "phrases",
+    "concept": "Degree adjective phrases as predeterminers",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Adjective phrases introduced by so, as, how, too, this, or that can appear before indefinite a. Analytic more and less may also occur there.",
+    "condition": "Applies to the construction and sense described in §12 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Inflectional comparatives occur internally. Post-head degree constructions are distinct and can modify plural or noncount heads.",
+        "pages": [
+          435
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "How serious a delay was it?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They faced a more serious delay.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§12",
+        "pages": [
+          435
+        ],
+        "pdf_pages": [
+          455
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Degree adjective phrases as predeterminers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-249",
+    "domain": "phrases",
+    "concept": "Combining different predeterminers",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A predeterminer can occasionally modify a noun phrase already containing a predeterminer of another type.",
+    "condition": "Applies to the construction and sense described in §12 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The combination is unusual and depends on compatible scope and meaning.",
+        "pages": [
+          436
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We need double all the supplies we brought.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The new shed has half such a large footprint as the old one.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§12",
+        "pages": [
+          436
+        ],
+        "pdf_pages": [
+          456
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Combining different predeterminers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-250",
+    "domain": "phrases",
+    "concept": "Peripheral modifier scope and focusing",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An NP-initial adverb can have clause or NP scope. Passive relocation can distinguish a modifier moving with the NP from a stationary clause adjunct.",
+    "condition": "Applies to the construction and sense described in §13 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Focusing modifiers can be initial or final and may attach to several phrase categories.",
+        "pages": [
+          436
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Possibly, the west wall was damaged by hail.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The trophy was won by possibly the youngest entrant.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§13",
+        "pages": [
+          436
+        ],
+        "pdf_pages": [
+          456
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Peripheral modifier scope and focusing",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-251",
+    "domain": "phrases",
+    "concept": "Scaling modifiers at the NP periphery",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Peripheral reinforcement, approximation, negation, and precision depend on the kind of scale available in the modified phrase.",
+    "condition": "Applies to the construction and sense described in §13 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some reinforcers are restricted to superlatives. Precision expressions can sometimes appear finally.",
+        "pages": [
+          437
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "That was easily the shortest route.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The interview lasted twenty minutes exactly.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§13",
+        "pages": [
+          437
+        ],
+        "pdf_pages": [
+          457
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Scaling modifiers at the NP periphery",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-252",
+    "domain": "phrases",
+    "concept": "Peripheral meaning classes",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Frequency, domain, modal, and evaluative modifiers can be internal to the larger NP while applying to properties expressed in it.",
+    "condition": "Applies to the construction and sense described in §13 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Frequency modifiers in this use favor event or result heads. These adverbs can also function at clause level.",
+        "pages": [
+          438
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was economically the strongest proposal.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They met after possibly the longest rehearsal of the season.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§13",
+        "pages": [
+          438
+        ],
+        "pdf_pages": [
+          458
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Peripheral meaning classes",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-253",
+    "domain": "phrases",
+    "concept": "Peripheral predicative quantification",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Predicative NPs can contain quantifying modifiers indicating degree or composition.",
+    "condition": "Applies to the construction and sense described in §13 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Predicative all wool differs in structure and meaning from determiner all with the same noun.",
+        "pages": [
+          438
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The scarf is all silk.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She is every inch a professional.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§13",
+        "pages": [
+          438
+        ],
+        "pdf_pages": [
+          458
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Peripheral predicative quantification",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-254",
+    "domain": "phrases",
+    "concept": "Reflexive and stacked peripheral modifiers",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An emphatic reflexive can be an external post-head NP modifier. More than one peripheral modifier can form successive layers.",
+    "condition": "Applies to the construction and sense described in §13 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A reflexive with a subject antecedent can instead be a clause adjunct. A modifier can be peripheral to an embedded NP without being outermost.",
+        "pages": [
+          438,
+          439
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The curator herself signed the label.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Please invite the curator herself too.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§13",
+        "pages": [
+          438,
+          439
+        ],
+        "pdf_pages": [
+          458,
+          459
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reflexive and stacked peripheral modifiers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-255",
+    "domain": "phrases",
+    "concept": "Categories of nominal complements",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Pre-head nominal complements are usually nominals, with some adjectives. Post-head complements are typically preposition phrases or clauses.",
+    "condition": "Applies to the construction and sense described in §14.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A direct quotation can be a main clause complement. Nominal heads generally do not take direct objects, although some allow locative NP complements.",
+        "pages": [
+          439
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We hired a tax adviser.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The decision to wait surprised us.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§14.1",
+        "pages": [
+          439
+        ],
+        "pdf_pages": [
+          459
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Categories of nominal complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-256",
+    "domain": "phrases",
+    "concept": "Noun licensing and complement optionality",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The choice of clause type or preposition depends on the noun. Nominal complements are usually optional, so omission is a weak test of function.",
+    "condition": "Applies to the construction and sense described in §14.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Denizen normally needs an expressed or otherwise licensed complement. Deverbal nouns do not uniformly use of.",
+        "pages": [
+          440
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Their reliance on backup power increased.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A brief inspection followed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§14.1",
+        "pages": [
+          440
+        ],
+        "pdf_pages": [
+          460
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Noun licensing and complement optionality",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-257",
+    "domain": "phrases",
+    "concept": "Anaphoric one and complement diagnostics",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Anaphoric one often combines more readily with modifiers than with noun-licensed complements. The contrast can help distinguish two readings of a dependent.",
+    "condition": "Applies to the construction and sense described in §14.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some deverbal heads allow one with a complement. A noncount antecedent independently blocks count one.",
+        "pages": [
+          441
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I took the key in the drawer, not the one on the shelf.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They lifted the ban on bicycles but kept the one on scooters.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§14.1",
+        "pages": [
+          441
+        ],
+        "pdf_pages": [
+          461
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Anaphoric one and complement diagnostics",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-258",
+    "domain": "phrases",
+    "concept": "Pre-head complements adjacent to the noun",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "An attributive complement immediately precedes its head and follows separate pre-head modifiers.",
+    "condition": "Applies to the construction and sense described in §14.1 of Chapter 5.",
+    "violation": "A separate modifier intervenes between an attributive complement and the head noun.",
+    "exceptions": [
+      {
+        "description": "The restriction concerns complements. Post-head complement adjacency is ordinarily a preference.",
+        "pages": [
+          441
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We hired an experienced tax adviser.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She consulted a respected legal adviser.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "We hired a tax experienced adviser.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "She consulted a legal respected adviser.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§14.1",
+        "pages": [
+          441
+        ],
+        "pdf_pages": [
+          461
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pre-head complements adjacent to the noun",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "word_order",
+      "error_pattern": "A separate modifier intervenes between an attributive complement and the head noun.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "We hired a tax experienced adviser. ||| We hired an experienced tax adviser.",
+        "She consulted a legal respected adviser. ||| She consulted a respected legal adviser."
+      ],
+      "learner_explanation": "An attributive complement immediately precedes its head and follows separate pre-head modifiers.",
+      "corrected_paragraph_template": "Put the nominal complement next to the noun, after the separate modifier.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "She consulted an adviser on legal matters.",
+        "We hired a highly experienced adviser."
+      ],
+      "lesson_tags": [
+        "NP_structure",
+        "nominal_dependents"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-259",
+    "domain": "phrases",
+    "concept": "Semantic roles of of-complements",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Of-complements can denote arguments, sources, inherent wholes, owners, or predicands of the head.",
+    "condition": "Applies to the construction and sense described in §14.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some alternate with genitive subject-determiners. The evaluative predicand construction has an indefinite article in the oblique phrase.",
+        "pages": [
+          442
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The roof of the barn needed repairs.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That gem of a book deserves a second reading.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§14.1",
+        "pages": [
+          442
+        ],
+        "pdf_pages": [
+          462
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Semantic roles of of-complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-260",
+    "domain": "phrases",
+    "concept": "Nominal complements and semantic selection",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The semantic role and selectional restrictions of a complement depend on the head noun. Nominal phrases lack direct counterparts to clause-level dummy and raised complements in the cited analysis.",
+    "condition": "Applies to the construction and sense described in §14.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A pragmatically odd referent is not by itself evidence of a structural error.",
+        "pages": [
+          442,
+          443
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The resignation of the director surprised us.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The criticism of the director surprised us.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§14.1",
+        "pages": [
+          442,
+          443
+        ],
+        "pdf_pages": [
+          462,
+          463
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nominal complements and semantic selection",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-261",
+    "domain": "phrases",
+    "concept": "Indirect noun phrase complements",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A post-head dependent can be licensed by a comparative, degree, sufficiency, or adjective expression rather than by the noun.",
+    "condition": "Applies to the construction and sense described in §14.1 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some licensors can also follow the noun. Comparative same and adjective-plus-hollow-clause constructions limit some alternatives.",
+        "pages": [
+          443
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was a longer delay than we expected.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We found an easy person to work with.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§14.1",
+        "pages": [
+          443
+        ],
+        "pdf_pages": [
+          463
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Indirect noun phrase complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-262",
+    "domain": "phrases",
+    "concept": "Categories and constraints on attributive modifiers",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Attributive modifiers can be DPs, AdjPs, participial VPs, and plain or genitive nominals, among other restricted patterns.",
+    "condition": "Applies to the construction and sense described in §14.2 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Their own post-head dependents are generally excluded, with limited exceptions for some adjective phrases, DPs, and institutional names.",
+        "pages": [
+          444
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We opened the recently renovated hall.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The more than twenty responses were logged.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§14.2",
+        "pages": [
+          444
+        ],
+        "pdf_pages": [
+          464
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Categories and constraints on attributive modifiers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-263",
+    "domain": "phrases",
+    "concept": "Nonce attributive formations",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Creative attributive formations can draw on structures that are unavailable in ordinary productive modifier syntax.",
+    "condition": "Applies to the construction and sense described in §14.2 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some are established expressions. These formations do not remove ordinary placement constraints.",
+        "pages": [
+          444,
+          445
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They installed floor-to-ceiling shelves.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She gave us her don't-ask-me-again look.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§14.2",
+        "pages": [
+          444,
+          445
+        ],
+        "pdf_pages": [
+          464,
+          465
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nonce attributive formations",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-264",
+    "domain": "phrases",
+    "concept": "Postpositive determinatives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Comparative determinatives can follow a noun when a determiner is present in the described construction. Enough can follow the noun if unmodified.",
+    "condition": "Applies to the construction and sense described in §14.2 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Ordinary determiner enough can itself be modified, and comparative quantity words have pre-head alternatives.",
+        "pages": [
+          445
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We need one day more.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There is time enough to finish.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§14.2",
+        "pages": [
+          445
+        ],
+        "pdf_pages": [
+          465
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Postpositive determinatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-265",
+    "domain": "phrases",
+    "concept": "Adjective placement and lexical exceptions",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Adjective phrases with their own post-head dependents generally follow the noun. Some adjective uses are lexically restricted to postpositive position or change meaning there.",
+    "condition": "Applies to the construction and sense described in §14.2 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Fixed phrases and specialized cases such as net after a specified sum have separate licensing.",
+        "pages": [
+          445,
+          446
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The members unhappy with the vote left early.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The members present signed the record.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§14.2",
+        "pages": [
+          445,
+          446
+        ],
+        "pdf_pages": [
+          465,
+          466
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjective placement and lexical exceptions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-266",
+    "domain": "phrases",
+    "concept": "Post-head NP, PP and clause modifiers",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Post-head noun phrase modifiers are restricted in meaning. Preposition phrases are common, and finite clause modifiers are relatives rather than content clauses.",
+    "condition": "Applies to the construction and sense described in §14.2 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Nonfinite modifiers include infinitival, gerund-participial, and past-participial clauses.",
+        "pages": [
+          446
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We need boxes this size.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The plans submitted yesterday are on the desk.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§14.2",
+        "pages": [
+          446
+        ],
+        "pdf_pages": [
+          466
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Post-head NP, PP and clause modifiers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-267",
+    "domain": "phrases",
+    "concept": "Stacking versus other multiple dependent structures",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Successive nominal layers support stacked modification. Submodification, coordination within one modifier, and multiple complements have different structures.",
+    "condition": "Applies to the construction and sense described in §14.2 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Pre-head and post-head modifiers can admit more than one attachment. Coordination and anaphora help diagnose the layers.",
+        "pages": [
+          446,
+          447
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I prefer blue cotton curtains to those white ones.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They reviewed the award of the grant to the other team.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§14.2",
+        "pages": [
+          446,
+          447
+        ],
+        "pdf_pages": [
+          466,
+          467
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Stacking versus other multiple dependent structures",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-268",
+    "domain": "phrases",
+    "concept": "Integrated apposition and entailment",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Substitution of the appositive for the whole NP systematically preserves an entailment in the construction. Integrated apposition belongs in the same intonation unit.",
+    "condition": "Applies to the construction and sense described in §14.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Integration need not imply restrictiveness or a choice among multiple referents. Proper names can be heads or appositives.",
+        "pages": [
+          447
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She performed in the opera Tosca.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "My brother Jonas called this morning.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§14.3",
+        "pages": [
+          447
+        ],
+        "pdf_pages": [
+          467
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Integrated apposition and entailment",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-269",
+    "domain": "phrases",
+    "concept": "Appositive obliques and content clauses",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An appositive proper name may be introduced by of after a month or geographical category noun. A noun-licensed content clause is a complement rather than an appositive.",
+    "condition": "Applies to the construction and sense described in §14.3 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Entailment with fact reflects the lexical meaning of fact. Marked appositives may be indefinite when a name has multiple bearers.",
+        "pages": [
+          448
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They met in the city of Lisbon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The claim that we missed the deadline was disputed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§14.3",
+        "pages": [
+          448
+        ],
+        "pdf_pages": [
+          468
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Appositive obliques and content clauses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-270",
+    "domain": "phrases",
+    "concept": "Composite nominals and compound bases",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Independent coordination or modification of an element diagnoses syntactic composition rather than an indivisible lexical compound in the cited contrast.",
+    "condition": "Applies to the construction and sense described in §14.4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A failed test alone may be inconclusive. Separate head modification can be blocked independently by adjacency requirements.",
+        "pages": [
+          448,
+          449
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The library stocks science and history textbooks.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She ordered two reasonably new bicycles.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§14.4",
+        "pages": [
+          448,
+          449
+        ],
+        "pdf_pages": [
+          468,
+          469
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Composite nominals and compound bases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-271",
+    "domain": "phrases",
+    "concept": "Semantic transparency and compound reanalysis",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Transparent meanings do not guarantee independent syntactic constituents. A context can reanalyze compound bases as separately coordinated words.",
+    "condition": "Applies to the construction and sense described in §14.4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Borderline cases need construction-specific evidence. Identical semantic relations can occur in composites and compounds.",
+        "pages": [
+          450
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She photographed the sunrise and the sunset.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We store cutlery and wine-glass boxes upstairs.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§14.4",
+        "pages": [
+          450
+        ],
+        "pdf_pages": [
+          470
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Semantic transparency and compound reanalysis",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-272",
+    "domain": "phrases",
+    "concept": "Limits of stress, spelling, and meaning tests",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Stress, orthography, specialization, and productivity correlate imperfectly with compound status. The analysis prioritizes independent coordination and modification.",
+    "condition": "Applies to the construction and sense described in §14.4 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Spelling variants and compounds written as two words prevent an orthographic rule. Productivity is gradient.",
+        "pages": [
+          451
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The company offers desktop and internet publishing services.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She put a full stop after the abbreviation.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§14.4",
+        "pages": [
+          451
+        ],
+        "pdf_pages": [
+          471
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Limits of stress, spelling, and meaning tests",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-273",
+    "domain": "phrases",
+    "concept": "Rigid versus labile ordering",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Rigid ordering constraints define structurally required positions, while labile constraints give defaults that scope and information packaging can override.",
+    "condition": "Applies to the construction and sense described in §15 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Size before color is ordinarily preferred, but a discourse contrast can reverse it. NP-internal determiner placement is rigid.",
+        "pages": [
+          452
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They bought a small green sofa.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They wanted a green small sofa, not a blue one.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§15",
+        "pages": [
+          452
+        ],
+        "pdf_pages": [
+          472
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Rigid versus labile ordering",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-274",
+    "domain": "phrases",
+    "concept": "Basic noun phrase order",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The usual structural sequence places external pre-head modifiers before the determiner, then pre-head internal modifiers, complement, and head, followed by internal and external post-head dependents.",
+    "condition": "Applies to the construction and sense described in §15 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Peripheral pre-head modifiers precede predeterminers. Post-head internal ordering has its own preferences and exceptions.",
+        "pages": [
+          452
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Even all the new reports arrived late.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We checked both those detailed safety reports in the folder too.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§15",
+        "pages": [
+          452
+        ],
+        "pdf_pages": [
+          472
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Basic noun phrase order",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-275",
+    "domain": "phrases",
+    "concept": "Early attributive modifiers and scope",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Determiner-like internal modifiers, superlatives, ordinals, and primacy adjectives normally precede residual modifiers. Compatible early modifiers may change order.",
+    "condition": "Applies to the construction and sense described in §15 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Reverse orders can be licensed. The change can affect the scope of ordinal and ranking expressions.",
+        "pages": [
+          453
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They inspected the two largest rooms.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "An unsuccessful second attempt ended the trial.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§15",
+        "pages": [
+          453
+        ],
+        "pdf_pages": [
+          473
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Early attributive modifiers and scope",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-276",
+    "domain": "phrases",
+    "concept": "Residual adjective and nominal order preferences",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Evaluation, general property, age, color, provenance, manufacture, and type provide a default ordering for residual modifiers.",
+    "condition": "Applies to the construction and sense described in §15 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Discourse and restrictive scope can override the default. Some modifiers of distinct properties have no strong mutual preference.",
+        "pages": [
+          453,
+          454
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She wore a beautiful old blue wool coat.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They chose a cotton new shirt rather than a linen one from the new stock.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§15",
+        "pages": [
+          453,
+          454
+        ],
+        "pdf_pages": [
+          473,
+          474
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Residual adjective and nominal order preferences",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
+  },
+  {
+    "id": "PHR-277",
+    "domain": "phrases",
+    "concept": "Weight and order after the nominal head",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Light complements tend to precede modifiers, and light dependents tend to precede heavy ones. Two heavy dependents can allow either order.",
+    "condition": "Applies to the construction and sense described in §15 of Chapter 5.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some immediate dependents have rigid placement. With compound determinatives else precedes a restrictor and ordinary residual dependents.",
+        "pages": [
+          454
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The complaint about noise in the newsletter prompted a reply.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The rumor in the newsletter that classes would close was false.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 5,
+        "section": "§15",
+        "pages": [
+          454
+        ],
+        "pdf_pages": [
+          474
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Weight and order after the nominal head",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against the printed source and rendered PDF. Examples are independently authored."
   }
 ]

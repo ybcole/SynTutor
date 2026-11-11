@@ -159,4 +159,9 @@ Printed pp.383–406 checked against text and rendered pages as a 24-page batch.
 
 ## Chapter 5 sixth checkpoint (2026-11-11)
 
-Printed pp.407–430 checked against text and rendered pages as a 24-page batch. Added 44 original-example records (`PHR-191`–`PHR-234`). Continue at printed p.431 on the same draft PR.
+Printed pp.407–430 checked against text and rendered pages as a 24-page batch. Added 44 original-example records (`PHR-191`–`PHR-234`). The next checkpoint covers printed pp.431–454.
+
+
+## Chapter 5 seventh checkpoint (2026-11-11)
+
+Printed pp.431–454 checked against text and rendered pages as a 24-page batch. Added 43 original-example records (`PHR-235`–`PHR-277`). Continue at printed p.455 on the same draft PR.

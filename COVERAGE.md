@@ -1,6 +1,6 @@
 # CGEL printed-page coverage
 
-**Chapter 5 Phase B underway (2026-11-11):** printed pp.323–430 checked, 105 expository pages extracted and 3 contents-only skips; Chapter 4 remains source-complete. All new grammar rules remain inactive.
+**Chapter 5 Phase B underway (2026-11-11):** printed pp.323–454 checked, 129 expository pages extracted and 3 contents-only skips; Chapter 4 remains source-complete. All new grammar rules remain inactive.
 
 **Phase B extraction status: 2026-11-11.** Pages are counted as extracted when a page-specific source audit report is recorded. This is not a claim of full-chapter audit, new live diagnostic detection, or completion of the 20-chapter reference.
 
@@ -10,7 +10,7 @@
 | 2. Syntactic overview | 28 | 0 | 27 | 0 | 1 | Incomplete |
 | 3. The verb | 142 | 139 | 0 | 3 | 0 | Source-extracted; QA pending |
 | 4. The clause: complements | 110 | 107 | 0 | 3 | 0 | Source extracted; QA pending |
-| 5. Nouns and noun phrases | 202 | 105 | 93 | 3 | 1 | In progress: pp. 323–430 |
+| 5. Nouns and noun phrases | 202 | 129 | 69 | 3 | 1 | In progress: pp. 323–454 |
 | 6. Adjectives and adverbs | 72 | 0 | 71 | 1 | 0 | Incomplete |
 | 7. Prepositions and preposition phrases | 66 | 0 | 65 | 1 | 0 | Incomplete |
 | 8. The clause: adjuncts | 122 | 0 | 122 | 0 | 0 | Incomplete |
@@ -27,7 +27,7 @@
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **351 extracted**, 1393 unprocessed, 18 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **375 extracted**, 1369 unprocessed, 18 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -153,4 +153,9 @@ Added 39 inactive English-only records (COMP-199–COMP-237), source audit sourc
 
 ## Chapter 5 pp.407–430
 
-44 original-example records (`PHR-191`–`PHR-234`) cover generic and bare noun phrases, fused heads, ellipsis, and pronouns. See the [source report](sources/cambridge/chapter_05/PP407_430_REPORT.md) and [audit manifest](sources/cambridge/chapter_05/PP407_430_AUDIT.json). Continue at printed p.431.
+44 original-example records (`PHR-191`–`PHR-234`) cover generic and bare noun phrases, fused heads, ellipsis, and pronouns. See the [source report](sources/cambridge/chapter_05/PP407_430_REPORT.md) and [audit manifest](sources/cambridge/chapter_05/PP407_430_AUDIT.json).
+
+
+## Chapter 5 pp.431–454
+
+43 original-example records (`PHR-235`–`PHR-277`) cover determinative phrases, nominal dependents, apposition, compounds, and word order. See the [source report](sources/cambridge/chapter_05/PP431_454_REPORT.md) and [audit manifest](sources/cambridge/chapter_05/PP431_454_AUDIT.json). Continue at printed p.455.
