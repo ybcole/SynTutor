@@ -122,7 +122,7 @@ def audit(root: Path = ROOT) -> tuple[dict, list[str], dict]:
     by_id = {r.get("id"): r for r in all_rules}
     if len(by_id) != len(all_rules):
         errors.append("Rule IDs must be unique across all rule JSON files")
-    chapter_rules = [r for r in all_rules if source_pages(r)]
+    chapter_rules = [r for r in all_rules if any(\n        s.get("chapter") == CHAPTER and "cambridge" in str(s.get("book", "")).lower()\n        for s in r.get("sources", []))]
     ledger = load_json(root / "grammar/coverage/cgel_ledger.json")["pages"]
     chapter_rows = [row for row in ledger if row.get("chapter") == CHAPTER]
     expected = list(range(START, END + 1))
