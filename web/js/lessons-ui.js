@@ -5,10 +5,26 @@ import { requestEvidence, renderEvidence } from './explanation-evidence.js';
 import { subscribeAuthState } from './auth.js';
 import { enableCanvasView } from './canvas-view.js';
 import { addConstituentReview, addConstituentTeaching, constituentHeadings, constituentPreTest, constituentReferences } from './constituents-lesson.js';
+import { addSubjectPredicateTeaching, subjectPredicateHeadings } from './subject-predicate-lesson.js';
+
+const articleLessons = {
+  'br-01': {
+    headings: constituentHeadings,
+    preTest: constituentPreTest,
+    teach: addConstituentTeaching,
+    review: addConstituentReview,
+    postTestIntro: 'Use what you learned about groups, brackets, and branches. Check each answer before continuing.',
+  },
+  'br-02': {
+    headings: subjectPredicateHeadings,
+    teach: addSubjectPredicateTeaching,
+    postTestIntro: 'Use the NP and VP branches to identify the subject and predicate. Check each answer before continuing.',
+  },
+};
 
 let options = {}, course, store, host, active = null, step = 0, track = 'foundations', busy = false, notice = '', generation = 0, lastFocus = null;
 let reviewStage = null;
-let constituentPage = 0, practiceResponses = null;
+let articlePage = 0, practiceResponses = null;
 const postTestKeys = ['guided', 'transfer', 'exit'];
 let lessonCanvas = null;
 const el = (tag, text, cls) => { const node = document.createElement(tag); if (text !== undefined) node.textContent = text; if (cls) node.className = cls; return node; };
@@ -214,9 +230,9 @@ function selectLesson(id) {
   notice = '';
   reviewStage = id && progressFor(currentLesson()).completed_at ? 0 : null;
   practiceResponses = null;
-  if (id === 'br-01') {
+  if (articleLessons[id]) {
     const progress = progressFor(currentLesson());
-    constituentPage = progress.completed_at ? 0 : progress.stage >= 3 ? 5 : progress.stage;
+    articlePage = progress.completed_at ? 0 : progress.stage >= 3 ? 5 : progress.stage;
   }
 }
 function openLesson(id) {
@@ -349,7 +365,7 @@ function mountLessonCanvas(host, treeView) {
   return canvas;
 }
 
-function appendWorkedTree(aside, worked, { focusId, blank = null, comparisonTree = null }) {
+function appendWorkedTree(aside, worked, { focusId, blank = null, comparisonTree = null, inline = false }) {
   const evidence=el('details',undefined,'lesson-shared-evidence');
   evidence.dataset.xai7Lesson = '';
   const title=el('summary','Explanation');
@@ -375,7 +391,7 @@ function appendWorkedTree(aside, worked, { focusId, blank = null, comparisonTree
   }
   const inspect=async (nodeId, feature=null) => {
     selected=nodeId;
-    if (comparisonTree) {
+    if (inline) {
       describeSelection(worked.tree.root, nodeId);
       for (const item of canvas.querySelectorAll('svg [data-node-id]')) {
         const isSelected = item.dataset.nodeId === nodeId;
@@ -404,7 +420,7 @@ function appendWorkedTree(aside, worked, { focusId, blank = null, comparisonTree
     stackFeatures: true,
     wordBaseline: comparisonTree ? 2 : 0,
   }));
-  if (comparisonTree) {
+  if (inline) {
     if (selected) describeSelection(worked.tree.root, selected);
     aside.append(selectedWords);
   } else {
@@ -415,18 +431,18 @@ function appendWorkedTree(aside, worked, { focusId, blank = null, comparisonTree
   aside.append(evidence);
 }
 
-function showConstituentPage(page) {
-  constituentPage = page;
+function showArticlePage(page) {
+  articlePage = page;
   render();
   host.scrollTop = 0;
   host.querySelector('.lesson-stage-body h2')?.focus({ preventScroll: true });
 }
 
-function constituentScreen(lesson, p) {
-  const page = constituentPage;
+function articleScreen(lesson, p, article) {
+  const page = articlePage;
   const reviewing = Boolean(p.completed_at);
   const body = el('article', undefined, 'lesson-stage-body');
-  const heading = el('h2', constituentHeadings[page]);
+  const heading = el('h2', article.headings[page]);
   heading.id = 'constituent-page-title';
   body.setAttribute('aria-labelledby', heading.id);
   heading.tabIndex = -1;
@@ -435,8 +451,13 @@ function constituentScreen(lesson, p) {
   layout.append(body);
   host.append(layout);
 
-  addConstituentTeaching(body, page, {
-    el, button, renderTree: renderLessonTree,
+  article.teach(body, page, {
+    el, button, lesson, renderTree: renderLessonTree,
+    showWorkedTree: (figure, focusId) => {
+      lessonCanvas?.destroy();
+      figure.replaceChildren();
+      appendWorkedTree(figure, lesson.worked_example, { focusId, inline: true });
+    },
     showComparisonTree: (figure, flatTree) => {
       lessonCanvas?.destroy();
       figure.replaceChildren();
@@ -456,7 +477,7 @@ function constituentScreen(lesson, p) {
           children: node.words.map(word => ({ word })),
         } : node),
       };
-      appendWorkedTree(figure, worked, { focusId, comparisonTree: { ...worked.tree, root } });
+      appendWorkedTree(figure, worked, { focusId, comparisonTree: { ...worked.tree, root }, inline: true });
     },
   });
 
@@ -471,7 +492,8 @@ function constituentScreen(lesson, p) {
       recorded.tabIndex = -1;
       preTest.append(recorded);
     } else {
-      preTest.append(question(lesson, 'predict', p, reviewing, undefined, constituentPreTest));
+      const { prompt, options } = article.preTest ?? lesson.predict;
+      preTest.append(question(lesson, 'predict', p, reviewing, undefined, { prompt, options }));
     }
     body.append(preTest);
   }
@@ -480,23 +502,23 @@ function constituentScreen(lesson, p) {
 
   const actions = el('div', undefined, 'lesson-page-actions constituent-actions');
   if (page > 0) {
-    const previous = button('← Previous', () => showConstituentPage(page - 1));
+    const previous = button('← Previous', () => showArticlePage(page - 1));
     previous.disabled = busy;
     actions.append(previous);
   }
 
   if (page < 5) {
     const next = button(page === 4 ? 'Start post-test' : 'Next →', () => {
-      // The comparison, ambiguity and recap pages share the existing worked stage.
+      // The worked example and remaining reading pages share the existing worked stage.
       // The three saved answer stages begin together at the post-test.
       const checkpoint = page === 4 ? 2 : page < 2 ? page : null;
       const advancesProgress = !reviewing && p.stage === checkpoint;
       if (advancesProgress) {
         act({ type: 'advance' }, result => {
-          if (result.stage !== p.stage) showConstituentPage(page + 1);
+          if (result.stage !== p.stage) showArticlePage(page + 1);
         });
       } else {
-        showConstituentPage(page + 1);
+        showArticlePage(page + 1);
       }
     }, 'lesson-primary');
     next.disabled = busy || (page === 0 && !p.responses.predict && !reviewing);
@@ -507,7 +529,7 @@ function constituentScreen(lesson, p) {
     const keys = reviewing ? postTestKeys : [key];
     body.append(el('p', practice ? 'Try the chapter questions again. This is a practice attempt.'
       : reviewing ? 'Review your answers and feedback from the completed chapter.'
-        : 'Use what you learned about groups, brackets, and branches. Check each answer before continuing.'));
+        : article.postTestIntro));
     for (const item of keys) {
       const response = practice ? { responses: practiceResponses } : p;
       if (item === 'guided') {
@@ -532,13 +554,13 @@ function constituentScreen(lesson, p) {
       if (!practice) {
         actions.append(button('Retake post-test', () => {
           practiceResponses = {};
-          showConstituentPage(5);
+          showArticlePage(5);
         }));
       }
       actions.append(button(practice ? 'Finish practice' : 'Finish review', () => {
         if (!practice) { showCatalog(); return; }
         practiceResponses = null;
-        showConstituentPage(5);
+        showArticlePage(5);
       }, 'lesson-primary'));
       if (practice) {
         actions.lastElementChild.disabled = !postTestKeys.every(item => practiceResponses[item]);
@@ -546,7 +568,7 @@ function constituentScreen(lesson, p) {
     } else {
       const next = button(busy ? 'Saving…' : key === 'exit' ? 'Complete lesson' : 'Next question →', () => {
         act({ type: 'advance' }, result => {
-          if (result.completed_at) showConstituentPage(5);
+          if (result.completed_at) showArticlePage(5);
           else {
             const prompt = host.querySelector('.lesson-question legend');
             if (prompt) {
@@ -559,7 +581,7 @@ function constituentScreen(lesson, p) {
       next.disabled = busy || !canAdvance(lesson, p);
       actions.append(next);
     }
-    if (key === 'exit' || reviewing) addConstituentReview(body, { el });
+    if (key === 'exit' || reviewing) article.review?.(body, { el });
   }
   layout.append(actions);
 }
@@ -568,13 +590,13 @@ function lessonScreen() {
   const lesson = currentLesson(), p = progressFor(lesson);
   const stage = reviewStage ?? p.stage, key = STAGES[stage];
   const reviewing = reviewStage !== null;
-  const constituentPilot = lesson.lesson_id === 'br-01';
-  const chapter = constituentPilot ? 'Chapter 1' : lesson.track === 'foundations' ? `B-R · Chapter ${lesson.chapter}` : `Cambridge · Chapter ${lesson.chapter}`;
-  const header = el('header', undefined, constituentPilot ? 'lesson-header constituent-header' : 'lesson-header');
+  const article = articleLessons[lesson.lesson_id];
+  const chapter = article ? `Chapter ${lesson.chapter}` : lesson.track === 'foundations' ? `B-R · Chapter ${lesson.chapter}` : `Cambridge · Chapter ${lesson.chapter}`;
+  const header = el('header', undefined, article ? 'lesson-header constituent-header' : 'lesson-header');
   header.append(button('← All lessons', showCatalog));
   const h1 = el('h1', lesson.title);
   h1.tabIndex = -1;
-  if (constituentPilot) {
+  if (article) {
     const chapterTitle = el('div', undefined, 'constituent-chapter');
     chapterTitle.append(el('p', chapter), h1);
     header.append(chapterTitle);
@@ -582,7 +604,7 @@ function lessonScreen() {
     header.append(el('p', chapter, 'lesson-eyebrow'), h1, el('p', lesson.outcomes[0].text, 'lesson-lead'));
   }
   host.append(header);
-  if (constituentPilot) { constituentScreen(lesson, p); return; }
+  if (article) { articleScreen(lesson, p, article); return; }
   const columns=el('div',undefined,'lesson-columns'),body=el('section',undefined,'lesson-stage-body'),aside=el('aside',undefined,'lesson-evidence-card');
   const partHeading = el('h2', STAGE_TITLES[stage]);
   partHeading.tabIndex = -1;
