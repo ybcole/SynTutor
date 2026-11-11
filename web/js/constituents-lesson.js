@@ -1,3 +1,5 @@
+import { addConstituentTreeBuilder } from './constituent-tree-builder.js';
+
 // Original examples following Analysing Sentences, 3rd ed., Chapter 1.
 export const constituentReferences = [
   'Noel Burton-Roberts, Analysing Sentences, 3rd ed. · Chapter 1, printed pp. 6–10 · Word order and hierarchical structure',
@@ -116,52 +118,8 @@ export function addConstituentTeaching(body, page, { el, button, showDiagram, sh
       showComparisonTree(tree, index ? null : flat).after(caption);
     }, 1);
     section('Build your first tree',
-      'Add an inner node to “beside the red gate”. Select the words to connect to it. The other words stay connected to the outer node.');
-    const [before] = drawings(['beside', 'the', 'red', 'gate']);
-    const words = before.root.children;
-    const repairTree = el('div', undefined, 'constituent-diagram');
-    const choices = el('fieldset', undefined, 'constituent-choices');
-    choices.append(el('legend', 'Connect words to the inner node'));
-    const inputs = words.map(({ word }) => {
-      const label = el('label');
-      const check = el('input');
-      check.type = 'checkbox';
-      label.append(check, word);
-      choices.append(label);
-      return check;
-    });
-    const feedback = el('p');
-    feedback.setAttribute('role', 'status');
-    function drawGroup(start, end) {
-      const inner = group('PHRASE-b', ...words.slice(start, end));
-      const root = group('PHRASE-a', ...words.slice(0, start), inner, ...words.slice(end));
-      showDiagram(repairTree, { sentence: before.sentence, root }, { focusId: inner.id });
-    }
-    const connect = button('Connect selected words', () => {
-      const positions = inputs.flatMap((input, index) => input.checked ? [index] : []);
-      if (!positions.length) {
-        feedback.textContent = 'Select the words you want to connect to the inner node.';
-        return;
-      }
-      const start = positions[0], end = positions.at(-1) + 1;
-      if (positions.length !== end - start) {
-        feedback.textContent = 'Select words that are next to each other so their branches keep the words in order.';
-        return;
-      }
-      drawGroup(start, end);
-      const covered = words.slice(start, end).map(({ word }) => word).join(' ');
-      feedback.textContent = start === 1 && end === words.length
-        ? 'Exactly. The new node covers “the red gate”. The outer node still covers the whole phrase.'
-        : `The inner node covers “${covered}”. Try connecting exactly the words that name the gate.`;
-    });
-    choices.append(connect);
-    const addNode = button('Add an inner node', () => {
-      drawGroup(words.length, words.length);
-      addNode.replaceWith(choices);
-      inputs[0].focus();
-    });
-    showDiagram(repairTree, before);
-    body.append(repairTree, addNode, feedback);
+      'Build a branch for “the red gate” in the tree below. Select nodes on the canvas, or use the controls underneath to edit and connect them.');
+    addConstituentTreeBuilder(body, { el, button });
   }
   if (page === 3) {
     paragraph('Structural ambiguity occurs when the same sentence can be grouped in two ways and each grouping gives it a different meaning. In “I watched the hikers with a telescope”, the phrase “with a telescope” could tell us how I watched or describe the hikers.');

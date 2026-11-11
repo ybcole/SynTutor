@@ -167,7 +167,7 @@
 .curriculum-view .constituent-actions .lesson-primary { border-radius:999px; font-weight:600; }
 [data-theme="dark"] .curriculum-view .constituent-actions .lesson-primary { color:var(--bg); }
 .curriculum-view:has(.constituent-page) .lesson-save-status { border-top:0; padding-top:0; }
-.constituent-controls,.constituent-choices { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0; }
+.constituent-controls { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0; }
 .curriculum-view .constituent-controls button { padding:7px 13px; font-size:.9rem; }
 .constituent-controls button[aria-pressed=true] { border-color:var(--accent); background:var(--accent-soft); color:var(--accent-strong); }
 .constituent-diagram { margin:20px 0; min-width:0; }
@@ -184,9 +184,6 @@
 .constituent-page .constituent-caption,.constituent-page .constituent-selection { font-size:.9rem; }
 .constituent-page .lesson-shared-evidence { margin:0 0 12px; }
 .constituent-page .lesson-tree-canvas + .constituent-caption { margin:12px 0 0; color:var(--muted); }
-.constituent-choices { border:0; padding:0; }
-.constituent-choices legend { margin-bottom:8px; font-weight:650; }
-.constituent-choices label { display:flex; align-items:center; gap:6px; }
 .constituent-selection:empty { display:none; }
 .constituent-selection mark { background:var(--accent-soft); color:var(--accent-strong); font-weight:650; }
 .lesson-tree-canvas [data-constituent-selected] > text { fill:var(--accent-strong); font-weight:750; }
@@ -243,3 +240,53 @@
 .lesson-notation dt { color:var(--accent-strong); font-weight:650; }
 .lesson-notation dd { margin:0; }
 .lesson-notation > details { border-top:1px solid var(--border); }
+
+.first-tree-builder {
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:clamp(12px,3vw,20px);
+  background:var(--bg);
+}
+.first-tree-canvas {
+  overflow:auto;
+  margin:12px 0 16px;
+  border:1px solid var(--border);
+  border-radius:8px;
+  background:var(--panel);
+}
+.first-tree-surface { position:relative; margin-inline:auto; }
+.first-tree-surface svg { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+.first-tree-surface line { stroke:var(--muted); stroke-width:1.5; }
+.curriculum-view .first-tree-node {
+  position:absolute;
+  transform:translate(-50%,-50%);
+  max-width:min(var(--node-width),22%);
+  padding:7px 8px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  border-radius:8px;
+  font-size:.8rem;
+}
+.first-tree-node[data-kind="phrase"] { font-weight:650; }
+.first-tree-node[aria-pressed="true"],.first-tree-toolbar [aria-pressed="true"] {
+  border-color:var(--accent);
+  color:var(--accent-strong);
+  background:var(--accent-soft);
+}
+.first-tree-controls { display:grid; gap:12px; }
+.first-tree-toolbar,.first-tree-field { display:flex; align-items:end; flex-wrap:wrap; gap:8px; }
+.first-tree-field[hidden] { display:none; }
+.first-tree-controls label { display:grid; gap:4px; min-width:0; font-size:.9rem; font-weight:600; }
+.first-tree-controls select,.first-tree-controls input {
+  width:min(100%,15rem);
+  padding:8px;
+  border:1px solid var(--border);
+  border-radius:8px;
+  background:var(--panel);
+  color:var(--ink);
+  font:inherit;
+}
+.first-tree-controls button,.first-tree-toolbar button { font-size:.88rem; padding:7px 12px; }
+.first-tree-builder > details { margin-top:8px; }
+.first-tree-builder .first-tree-status { margin:0; color:var(--ink); }
