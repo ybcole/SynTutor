@@ -15,7 +15,7 @@
 | 7. Prepositions and preposition phrases | 66 | 64 | 0 | 2 | 0 | Source-extracted |
 | 8. The clause: adjuncts | 122 | 0 | 122 | 0 | 0 | Incomplete |
 | 9. Negation | 66 | 0 | 65 | 1 | 0 | Incomplete |
-| 10. Clause type and illocutionary force | 96 | 0 | 95 | 1 | 0 | Incomplete |
+| 10. Clause type and illocutionary force | 96 | 26 | 67 | 3 | 0 | In progress (pp. 851–878) |
 | 11. Content clauses and reported speech | 84 | 0 | 84 | 0 | 0 | Incomplete |
 | 12. Relative constructions | 66 | 0 | 66 | 0 | 0 | Incomplete |
 | 13. Comparative constructions | 74 | 0 | 74 | 0 | 0 | Incomplete |
@@ -27,7 +27,7 @@
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **508 extracted**, 1235 unprocessed, 19 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **534 extracted**, 1207 unprocessed, 21 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -190,3 +190,7 @@ Added 39 inactive English-only records (COMP-199–COMP-237), source audit sourc
 The final accelerated batch covers printed pp.635–661 and verifies blank p.662. It adds 35 records (`PHR-424`–`PHR-458`) covering preposition complementation, PP modification and function, spatial meanings, and grammaticised uses. See the [source report](sources/cambridge/chapter_07/PP635_662_REPORT.md) and [audit manifest](sources/cambridge/chapter_07/PP635_662_AUDIT.json).
 
 Chapter 7 has 64 substantive pages extracted, two justified skips, and zero unprocessed pages. The 87 Chapter 7 records remain outside the live detector registry.
+
+## Chapter 10 pp. 851–878
+
+The 28-page opening batch includes two contents pages and 26 substantive pages. It adds 41 records (`CLS-121`–`CLS-161`) covering clause types, illocutionary force, and question structures. Five constraints are inactive specifications. See the [source report](sources/cambridge/chapter_10/PP851_878_REPORT.md) and [audit manifest](sources/cambridge/chapter_10/PP851_878_AUDIT.json). Continue at p. 879.

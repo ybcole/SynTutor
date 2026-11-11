@@ -9495,5 +9495,2672 @@
         "explain"
       ]
     }
+  },
+  {
+    "id": "CLS-121",
+    "domain": "clauses",
+    "concept": "Five major clause types",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The five major clause types are declarative, closed interrogative, open interrogative, exclamative, and imperative. Each has a characteristic communicative use.",
+    "condition": "Applies to the construction described in §1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The hall is warm.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "How warm the hall is!",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§1",
+        "pages": [
+          853
+        ],
+        "pdf_pages": [
+          873
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Five major clause types",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-122",
+    "domain": "clauses",
+    "concept": "Characteristic force and clause type",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Clause structure and communicative force classify different properties. A declarative or closed interrogative can function as a directive, and an imperative can express a wish.",
+    "condition": "Applies to the construction described in §1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A use associated with a clause type is a default, not a condition for classifying individual clauses.",
+        "pages": [
+          853,
+          854
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Visitors are asked to leave their bags here.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Enjoy your holiday!",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§1",
+        "pages": [
+          853,
+          854
+        ],
+        "pdf_pages": [
+          873,
+          874
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Characteristic force and clause type",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-123",
+    "domain": "clauses",
+    "concept": "Clause types across clause environments",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Declarative, closed and open interrogative, and exclamative structures occur in main and subordinate clauses. Imperatives are normally confined to main clauses.",
+    "condition": "Applies to the construction described in §1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An apparent embedded imperative in reported discourse can retain main-clause properties. Different coordinated clauses can have different types.",
+        "pages": [
+          854,
+          855
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I wonder whether the door is locked.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You can stay here, but lock the door.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§1",
+        "pages": [
+          854,
+          855
+        ],
+        "pdf_pages": [
+          874,
+          875
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Clause types across clause environments",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-124",
+    "domain": "clauses",
+    "concept": "Clause fragments and type ambiguity",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some verbless fragments belong to a clause type. The same written sequence can also admit competing analyses depending on context, prosody or punctuation.",
+    "condition": "Applies to the construction described in §1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A single interpretation assigns one grammatical clause type. An echo use does not create a separate grammatical type.",
+        "pages": [
+          855
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Which drawer?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What a mess!",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§1",
+        "pages": [
+          855
+        ],
+        "pdf_pages": [
+          875
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Clause fragments and type ambiguity",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-125",
+    "domain": "clauses",
+    "concept": "Inversion in main closed interrogatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A canonical finite main closed interrogative places the first auxiliary before the subject, adding supportive do where the corresponding declarative has only a lexical verb.",
+    "condition": "Applies to the construction described in §2 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Declarative questions retain declarative order. Embedded interrogatives have their own syntax, and inversion also occurs in some non-interrogative constructions.",
+        "pages": [
+          855,
+          856
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Did Mina close the gate?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Does Leo work here?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§2",
+        "pages": [
+          855,
+          856
+        ],
+        "pdf_pages": [
+          875,
+          876
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inversion in main closed interrogatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-126",
+    "domain": "clauses",
+    "concept": "Plain form after supportive do in questions",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "In a finite main closed question with supportive do, tense and agreement are marked on do and the following lexical verb takes its plain form.",
+    "condition": "Applies to the construction described in §2 of Chapter 10.",
+    "violation": "The lexical verb carries tense or agreement after supportive do in a main closed interrogative.",
+    "exceptions": [
+      {
+        "description": "Apply only when do is the interrogative auxiliary. Preserve finite lexical verbs in subject questions and distinguish lexical do and verbal ellipsis.",
+        "pages": [
+          856
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Did Nora leave early?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Does Ravi collect stamps?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Did Nora left early?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Does Ravi collects stamps?",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§2",
+        "pages": [
+          856
+        ],
+        "pdf_pages": [
+          876
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Plain form after supportive do in questions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "verb_form",
+      "error_pattern": "The lexical verb carries tense or agreement after supportive do in a main closed interrogative.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Did Nora left early? ||| Did Nora leave early?",
+        "Does Ravi collects stamps? ||| Does Ravi collect stamps?"
+      ],
+      "learner_explanation": "In a finite main closed question with supportive do, tense and agreement are marked on do and the following lexical verb takes its plain form.",
+      "corrected_paragraph_template": "Use the plain form of the lexical verb after did or does.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Who left early?",
+        "What does Ravi do?",
+        "Did Nora?"
+      ],
+      "lesson_tags": [
+        "clause-type",
+        "verb-form"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-127",
+    "domain": "clauses",
+    "concept": "Subject and non-subject open interrogatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In a canonical main open interrogative, fronting a non-subject interrogative phrase triggers subject–auxiliary inversion. A subject interrogative phrase occupies the ordinary subject position.",
+    "condition": "Applies to the construction described in §2 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The non-subject phrase may stay in situ, and subordinate open interrogatives generally follow different ordering.",
+        "pages": [
+          856
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Who found the receipt?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What did Mara find?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§2",
+        "pages": [
+          856
+        ],
+        "pdf_pages": [
+          876
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subject and non-subject open interrogatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-128",
+    "domain": "clauses",
+    "concept": "Inversion with a fronted non-subject question phrase",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "A fronted non-subject interrogative phrase in an ordinary finite main open question requires the auxiliary before the subject.",
+    "condition": "Applies to the construction described in §2 of Chapter 10.",
+    "violation": "The subject precedes the auxiliary in an ordinary finite main question with a fronted non-subject interrogative phrase.",
+    "exceptions": [
+      {
+        "description": "Do not apply to embedded clauses, subject questions, in-situ questions, quotations, or nonfinite interrogatives.",
+        "pages": [
+          856
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Where did Mina park?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What is Leon carrying?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Where Mina did park?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "What Leon is carrying?",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§2",
+        "pages": [
+          856
+        ],
+        "pdf_pages": [
+          876
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inversion with a fronted non-subject question phrase",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "word_order",
+      "error_pattern": "The subject precedes the auxiliary in an ordinary finite main question with a fronted non-subject interrogative phrase.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Where Mina did park? ||| Where did Mina park?",
+        "What Leon is carrying? ||| What is Leon carrying?"
+      ],
+      "learner_explanation": "A fronted non-subject interrogative phrase in an ordinary finite main open question requires the auxiliary before the subject.",
+      "corrected_paragraph_template": "Place the auxiliary before the subject in the main question.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "I know where Mina parked.",
+        "Who is carrying the bag?",
+        "And Leon is carrying what?",
+        "How to get there?"
+      ],
+      "lesson_tags": [
+        "clause-type",
+        "word-order"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-129",
+    "domain": "clauses",
+    "concept": "Reduced interrogatives and exclamatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An open interrogative can reduce to its interrogative phrase. An exclamative can reduce to a predicative exclamative phrase headed by what or how.",
+    "condition": "Applies to the construction described in §2 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A full exclamative normally has subject–predicator order, with some cases of subject postposing or inversion.",
+        "pages": [
+          856,
+          857
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Which route?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What a narrow escape!",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§2",
+        "pages": [
+          856,
+          857
+        ],
+        "pdf_pages": [
+          876,
+          877
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reduced interrogatives and exclamatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-130",
+    "domain": "clauses",
+    "concept": "Plain form in ordinary imperatives",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "An ordinary imperative uses the plain verb form, even with an overt subject that would take a third-person singular present form in a declarative.",
+    "condition": "Only with independent evidence of imperative intent. Incorrect examples are evaluated as intended commands and are grammatical as declaratives.",
+    "violation": "A third-person singular verb ending occurs in a clause established as an imperative.",
+    "exceptions": [
+      {
+        "description": "Check that the clause is intended as an imperative, since a third-person subject can also occur with a finite verb in a declarative.",
+        "pages": [
+          857
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Everybody bring a pencil.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Each guest take a seat.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Everybody brings a pencil.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Each guest takes a seat.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§2",
+        "pages": [
+          857
+        ],
+        "pdf_pages": [
+          877
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Plain form in ordinary imperatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "verb_form",
+      "error_pattern": "A third-person singular verb ending occurs in a clause established as an imperative.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Everybody brings a pencil. ||| Everybody bring a pencil.",
+        "Each guest takes a seat. ||| Each guest take a seat."
+      ],
+      "learner_explanation": "An ordinary imperative uses the plain verb form, even with an overt subject that would take a third-person singular present form in a declarative.",
+      "corrected_paragraph_template": "For the intended command, use the plain form of the verb.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Everybody brings a pencil every Monday.",
+        "Each guest takes a seat after signing in.",
+        "You bring a pencil."
+      ],
+      "lesson_tags": [
+        "clause-type",
+        "verb-form"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-131",
+    "domain": "clauses",
+    "concept": "Supportive do with be in ordinary negative imperatives",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "An ordinary negative imperative with be uses supportive do, as do other verbal negatives in this imperative construction.",
+    "condition": "Ordinary present-day directives in a neutral register.",
+    "violation": "An ordinary negative imperative uses be plus not without supportive do.",
+    "exceptions": [
+      {
+        "description": "Restrict to ordinary verbal negation. Preserve declarative negatives with be, and do not generalize to archaic or stylized formulas.",
+        "pages": [
+          857
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Don't be late for rehearsal.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Don't be careless with the glass.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Be not late for rehearsal.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Be not careless with the glass.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§2",
+        "pages": [
+          857
+        ],
+        "pdf_pages": [
+          877
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Supportive do with be in ordinary negative imperatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "missing_word",
+      "error_pattern": "An ordinary negative imperative uses be plus not without supportive do.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Be not late for rehearsal. ||| Don't be late for rehearsal.",
+        "Be not careless with the glass. ||| Don't be careless with the glass."
+      ],
+      "learner_explanation": "An ordinary negative imperative with be uses supportive do, as do other verbal negatives in this imperative construction.",
+      "corrected_paragraph_template": "For an ordinary present-day negative command, use don’t followed by be.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "You aren't late for rehearsal.",
+        "Be careful with the glass.",
+        "Be not afraid, dear pilgrim."
+      ],
+      "lesson_tags": [
+        "clause-type",
+        "missing-word"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-132",
+    "domain": "clauses",
+    "concept": "Subject placement and auxiliary behavior in imperatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A second-person imperative subject is omissible. When you is overt in ordinary verbal negatives, it usually follows don't. Supportive do can also mark emphasis and occur in code, even with be.",
+    "condition": "Applies to the construction described in §2 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Order alone is insufficient to distinguish every declarative and imperative.",
+        "pages": [
+          857,
+          858
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Don't you open that drawer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Do be careful with the paint.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§2",
+        "pages": [
+          857,
+          858
+        ],
+        "pdf_pages": [
+          877,
+          878
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subject placement and auxiliary behavior in imperatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-133",
+    "domain": "clauses",
+    "concept": "Illocutionary force and speaker intent",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Illocutionary force describes the act performed in context, such as making a statement, issuing a directive, or asking a question.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A particular directive can function as advice, a command, a request or an instruction.",
+        "pages": [
+          858,
+          859
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The lights are still on.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Please check the lights.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§3.1",
+        "pages": [
+          858,
+          859
+        ],
+        "pdf_pages": [
+          878,
+          879
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Illocutionary force and speaker intent",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-134",
+    "domain": "clauses",
+    "concept": "Performative use and concurrent forces",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A suitable verb can name the act that the speaker performs by uttering the clause. A concurrent statement can be secondary to the promise, apology or other act.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The same verb may describe a habit or report a prior act without performing it at the time of utterance.",
+        "pages": [
+          859,
+          860
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I hereby resign from the committee.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I promise to repay you on Friday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§3.1",
+        "pages": [
+          859,
+          860
+        ],
+        "pdf_pages": [
+          879,
+          880
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Performative use and concurrent forces",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-135",
+    "domain": "clauses",
+    "concept": "Illocutionary force and perlocutionary effect",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An utterance can perform an act even when the audience does not respond in the intended way.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The intended effect helps explain the act without determining whether the act has occurred.",
+        "pages": [
+          860
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Please move your bag. — I can't move it yet.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The room is empty. — I don't believe you.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§3.1",
+        "pages": [
+          860
+        ],
+        "pdf_pages": [
+          880
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Illocutionary force and perlocutionary effect",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-136",
+    "domain": "clauses",
+    "concept": "Propositional and non-propositional meaning",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A declarative and its closed interrogative counterpart can share propositional content while differing in the act they conventionally perform.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Please and intonation can contribute to non-propositional meaning.",
+        "pages": [
+          861
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The parcel arrived yesterday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Did the parcel arrive yesterday?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§3.1",
+        "pages": [
+          861
+        ],
+        "pdf_pages": [
+          881
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Propositional and non-propositional meaning",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-137",
+    "domain": "clauses",
+    "concept": "Direct and indirect speech acts",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An utterance can perform one act directly and another indirectly when context supports an inference about the speaker's intent.",
+    "condition": "Applies to the construction described in §3.2 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A literal answer may address the direct question while leaving the indirect request or question unresolved.",
+        "pages": [
+          861,
+          862
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Do you know when the doors open?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Can you reach the top shelf?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§3.2",
+        "pages": [
+          861,
+          862
+        ],
+        "pdf_pages": [
+          881,
+          882
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Direct and indirect speech acts",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-138",
+    "domain": "clauses",
+    "concept": "Degrees of indirectness",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Indirect acts vary in how readily their intended force can be inferred from the proposition expressed and the surrounding circumstances.",
+    "condition": "Applies to the construction described in §3.2 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The source distinguishes indirectness of a speech act from syntactic embedding in reported questions.",
+        "pages": [
+          862,
+          863
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I'd like to book a seat for Friday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "May I remind you that the form is due today?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§3.2",
+        "pages": [
+          862,
+          863
+        ],
+        "pdf_pages": [
+          882,
+          883
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Degrees of indirectness",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-139",
+    "domain": "clauses",
+    "concept": "Direct and indirect requests and applications",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Requests and written applications can be made through conventional indirect formulations as well as overt expressions that name the act.",
+    "condition": "Applies to the construction described in §3.2 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A syntactic question may perform a request, and the degree of indirectness can vary across formulations.",
+        "pages": [
+          863,
+          864
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I hereby apply for the advertised position.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I would be grateful if you would consider me for the advertised position.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§3.2",
+        "pages": [
+          863,
+          864
+        ],
+        "pdf_pages": [
+          883,
+          884
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Direct and indirect requests and applications",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-140",
+    "domain": "clauses",
+    "concept": "Markers and conventional indirect force",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Wording, intonation and punctuation can influence how prominently an utterance conveys an indirect act. An idiomatic request construction can background the literal ability question.",
+    "condition": "Applies to the construction described in §3.2 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Ability questions can also serve as indirect requests when the context supports that reading.",
+        "pages": [
+          864,
+          865
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Can you pass the folder, please?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Are you able to reach the folder from your chair?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§3.2",
+        "pages": [
+          864,
+          865
+        ],
+        "pdf_pages": [
+          884,
+          885
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Markers and conventional indirect force",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-141",
+    "domain": "clauses",
+    "concept": "Semantic questions and answer sets",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A semantic question defines possible answers. Multiple verbal forms can express the same answer, so surface forms alone do not determine the size of the set.",
+    "condition": "Applies to the construction described in §4.1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A variable question can restrict its set of answers explicitly.",
+        "pages": [
+          865,
+          866
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Has the bus left? — Yes, it has.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Which bus left? — The airport bus.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.1",
+        "pages": [
+          865,
+          866
+        ],
+        "pdf_pages": [
+          885,
+          886
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Semantic questions and answer sets",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-142",
+    "domain": "clauses",
+    "concept": "Answers versus responses",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An answer expresses an alternative in the question's semantic answer set. A response can instead convey uncertainty, challenge the question or imply an answer.",
+    "condition": "Applies to the construction described in §4.1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An indirect reply may supply enough evidence for the listener to infer an answer.",
+        "pages": [
+          866
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Is the gate locked? — No, it isn't.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Is the gate locked? — I haven't checked.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.1",
+        "pages": [
+          866
+        ],
+        "pdf_pages": [
+          886
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Answers versus responses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-143",
+    "domain": "clauses",
+    "concept": "Inquiry as a pragmatic use of a question",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An inquiry seeks an answer from the addressee. A semantic question can instead express surprise or wondering, test knowledge, or organize exposition.",
+    "condition": "Applies to the construction described in §4.1 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An embedded clause can express a semantic question without performing an inquiry by itself.",
+        "pages": [
+          866,
+          867
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Has the shop closed? — Yes, at noon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What causes a tide? Explain in two sentences.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.1",
+        "pages": [
+          866,
+          867
+        ],
+        "pdf_pages": [
+          886,
+          887
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inquiry as a pragmatic use of a question",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-144",
+    "domain": "clauses",
+    "concept": "Independent dimensions of question classification",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Questions can be classified by how they define answers, by the distinction between information and direction, by bias, and by whether they echo prior material.",
+    "condition": "Applies to the construction described in §4.2 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Intonation can signal that a declarative is being used as a question without changing its syntactic clause type.",
+        "pages": [
+          867,
+          868
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Is the library open?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Which desk should I use?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.2",
+        "pages": [
+          867,
+          868
+        ],
+        "pdf_pages": [
+          887,
+          888
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Independent dimensions of question classification",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-145",
+    "domain": "clauses",
+    "concept": "Polar questions and the polarity of answers",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A polar question defines a positive answer and its negative counterpart. Yes and no track the polarity of the answer in the illustrated English pattern.",
+    "condition": "Applies to the construction described in §4.3 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A bare yes may be disfavored after a negative question. Fragments and declaratives can also express polar questions.",
+        "pages": [
+          868
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Is the printer working? — No, it isn't.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Isn't the printer working? — Yes, it is.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.3",
+        "pages": [
+          868
+        ],
+        "pdf_pages": [
+          888
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Polar questions and the polarity of answers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-146",
+    "domain": "clauses",
+    "concept": "Answer sets and form of alternative questions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An alternative question presents its candidate answers through or-coordination. Spoken alternatives commonly show rising pitch on an earlier coordinate and falling pitch on the last.",
+    "condition": "Applies to the construction described in §4.4 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The coordinates can be phrases or clauses, and there can be more than two.",
+        "pages": [
+          868,
+          869
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Would you like soup, salad, or noodles?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Are we meeting inside or outside?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.4",
+        "pages": [
+          868,
+          869
+        ],
+        "pdf_pages": [
+          888,
+          889
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Answer sets and form of alternative questions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-147",
+    "domain": "clauses",
+    "concept": "Polar and alternative readings of or",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An or sequence can offer alternative answers or form a single proposition whose truth is at issue. Either paired with or forces the latter reading in the construction described here.",
+    "condition": "Applies to the construction described in §4.4 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The first question can be ambiguous in writing. Spoken prosody and context can disambiguate.",
+        "pages": [
+          869,
+          870
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Are you free on Monday or Friday?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Are you free on either Monday or Friday?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.4",
+        "pages": [
+          869,
+          870
+        ],
+        "pdf_pages": [
+          889,
+          890
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Polar and alternative readings of or",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-148",
+    "domain": "clauses",
+    "concept": "Alternative meaning and clause type",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Alternative question meaning comes from coordination. The clauses involved may have the same form as clauses expressing polar questions.",
+    "condition": "Applies to the construction described in §4.4 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Whether can appear in both coordinates in an embedded alternative question.",
+        "pages": [
+          870
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Did Saira call or did Leon text?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I can't tell whether the switch is broken or whether the bulb has failed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.4",
+        "pages": [
+          870
+        ],
+        "pdf_pages": [
+          890
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Alternative meaning and clause type",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-149",
+    "domain": "clauses",
+    "concept": "Polar-alternative questions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A polar-alternative question explicitly coordinates a proposition with its negative counterpart. A polar question expresses one proposition and derives its opposite.",
+    "condition": "Applies to the construction described in §4.4 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Ellipsis can reduce the second coordinate. In embedded questions or not may immediately follow whether.",
+        "pages": [
+          870,
+          871
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Is the cabinet locked or not?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Is the cabinet locked?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.4",
+        "pages": [
+          870,
+          871
+        ],
+        "pdf_pages": [
+          890,
+          891
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Polar-alternative questions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-150",
+    "domain": "clauses",
+    "concept": "Licensing of alternatives in embedded and exhaustive constructions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In the illustrated frames, wonder licenses polar and alternative complements, whereas doubt takes the polar pattern. The exhaustive conditional requires an alternative reading.",
+    "condition": "Applies to the construction described in §4.4 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The restriction concerns interpretation. An or inside a polar complement does not necessarily make that complement an alternative question.",
+        "pages": [
+          871
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I wonder whether the latch is open or closed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I'll start whether the latch is open or not.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.4",
+        "pages": [
+          871
+        ],
+        "pdf_pages": [
+          891
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Licensing of alternatives in embedded and exhaustive constructions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-151",
+    "domain": "clauses",
+    "concept": "Pragmatic differences between polar and polar-alternative questions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The explicit negative in a polar-alternative question can emphasize choice or exhaustiveness. Ordinary polar wording can better fit a speaker already inclined toward one answer.",
+    "condition": "Applies to the construction described in §4.4 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Insistence is a contextual effect rather than an invariant meaning of or not.",
+        "pages": [
+          871,
+          872
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Have you paid the invoice?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Have you paid the invoice or not?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.4",
+        "pages": [
+          871,
+          872
+        ],
+        "pdf_pages": [
+          891,
+          892
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pragmatic differences between polar and polar-alternative questions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-152",
+    "domain": "clauses",
+    "concept": "Variables and interrogative phrases",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A variable question defines an answer by asking for a value for an interrogative variable. The question can specify a limited range of values.",
+    "condition": "Applies to the construction described in §4.5 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An explicitly limited set of values still permits a variable question.",
+        "pages": [
+          872,
+          873
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Who unlocked the cabinet?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Which of the two keys unlocked it?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.5",
+        "pages": [
+          872,
+          873
+        ],
+        "pdf_pages": [
+          892,
+          893
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Variables and interrogative phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-153",
+    "domain": "clauses",
+    "concept": "In-situ question phrases",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A main open interrogative can keep a non-subject interrogative phrase in its ordinary postverbal position without inversion. This occurs in some sustained inquiries.",
+    "condition": "Applies to the construction described in §4.5 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An in-situ question can ask for new information rather than repeat or clarify prior speech.",
+        "pages": [
+          873
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "And you signed the form where?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You received how many invoices, exactly?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.5",
+        "pages": [
+          873
+        ],
+        "pdf_pages": [
+          893
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "In-situ question phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-154",
+    "domain": "clauses",
+    "concept": "Subjectless infinitival open interrogatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Infinitival open interrogatives in these constructions have no overt subject. To-infinitivals occur in headings and in some independent questions, while bare infinitivals occur mainly with why.",
+    "condition": "Applies to the construction described in §4.5 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Independent to-infinitival questions can be literary. Bare how examples are marginal. Why not plus a plain verb commonly conveys a suggestion.",
+        "pages": [
+          873,
+          874
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "How to repair a loose hinge",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Why replace the whole cabinet?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.5",
+        "pages": [
+          873,
+          874
+        ],
+        "pdf_pages": [
+          893,
+          894
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subjectless infinitival open interrogatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-155",
+    "domain": "clauses",
+    "concept": "Number and coordination of question variables",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An open question can ask for several values at once. Coordinated interrogative phrases can share a grammatical function or express different functions.",
+    "condition": "Applies to the construction described in §4.5 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Values for coordinated phrases need not themselves be coordinated when the phrases express different functions.",
+        "pages": [
+          874
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "How many coats and how many blankets should we bring?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "When and where will the meeting take place?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.5",
+        "pages": [
+          874
+        ],
+        "pdf_pages": [
+          894
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Number and coordination of question variables",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-156",
+    "domain": "clauses",
+    "concept": "Single fronting of uncoordinated interrogative phrases",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "In the illustrated multi-variable questions, at most one of the uncoordinated interrogative phrases is fronted.",
+    "condition": "Applies to the construction described in §4.5 of Chapter 10.",
+    "violation": "Two distinct uncoordinated interrogative phrases are fronted in the same finite open question.",
+    "exceptions": [
+      {
+        "description": "Preserve coordination, single complex interrogative phrases, in-situ interrogatives, and separate clauses.",
+        "pages": [
+          874
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What did she hand to whom?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Where did they store which boxes?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "What to whom did she hand?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Where which boxes did they store?",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.5",
+        "pages": [
+          874
+        ],
+        "pdf_pages": [
+          894
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Single fronting of uncoordinated interrogative phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "word_order",
+      "error_pattern": "Two distinct uncoordinated interrogative phrases are fronted in the same finite open question.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "What to whom did she hand? ||| What did she hand to whom?",
+        "Where which boxes did they store? ||| Where did they store which boxes?"
+      ],
+      "learner_explanation": "In the illustrated multi-variable questions, at most one of the uncoordinated interrogative phrases is fronted.",
+      "corrected_paragraph_template": "Front one question phrase and leave the other in its ordinary position.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "When and where will they meet?",
+        "Which of these boxes did they store?",
+        "She handed what to whom?"
+      ],
+      "lesson_tags": [
+        "clause-type",
+        "word-order"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-157",
+    "domain": "clauses",
+    "concept": "Values and pairing in multi-variable answers",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A singulary answer supplies one value per variable. A multiple answer supplies tuples. In a multi-variable question, how values are paired can form part of the answer.",
+    "condition": "Applies to the construction described in §4.5 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A single-variable question can receive an elaborated response that goes beyond its answer requirements.",
+        "pages": [
+          875,
+          876
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Who delivered what? — Ira delivered the maps.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Who delivered what? — Ira delivered the maps and Cora delivered the labels.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.5",
+        "pages": [
+          875,
+          876
+        ],
+        "pdf_pages": [
+          895,
+          896
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Values and pairing in multi-variable answers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-158",
+    "domain": "clauses",
+    "concept": "Juxtaposed variable and polar or alternative questions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A variable question can be followed by a polar or alternative question that proposes a value or narrows the available values.",
+    "condition": "Applies to the construction described in §4.5 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Apparent coordination in a reduced continuation need not represent coordination inside the first interrogative clause.",
+        "pages": [
+          876
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Where did Jo leave it? In the car?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Who called? Ben or Sal?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.5",
+        "pages": [
+          876
+        ],
+        "pdf_pages": [
+          896
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Juxtaposed variable and polar or alternative questions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-159",
+    "domain": "clauses",
+    "concept": "Information and direction questions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Answers to information questions characteristically make statements. Answers to direction questions characteristically tell the questioner what to do. Both uses occur across polar, alternative, and variable questions.",
+    "condition": "Applies to the construction described in §4.6 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Yes and no can serve in both answer patterns. A directive cannot be evaluated as true or false in the way a statement can.",
+        "pages": [
+          876,
+          877
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Did I shut the door? — Yes, you did.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Shall I shut the door? — Yes, shut it.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.6",
+        "pages": [
+          876,
+          877
+        ],
+        "pdf_pages": [
+          896,
+          897
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Information and direction questions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-160",
+    "domain": "clauses",
+    "concept": "Shall and should in direction questions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "First-person main questions with shall can ask for direction. Some questions with shall or should also have a predictive or epistemic reading in an appropriate context.",
+    "condition": "Applies to the construction described in §4.6 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Context determines whether the question concerns the speaker's action or what is expected to happen.",
+        "pages": [
+          877,
+          878
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Shall I turn on the fan?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Should I get a reply by Friday?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.6",
+        "pages": [
+          877,
+          878
+        ],
+        "pdf_pages": [
+          897,
+          898
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Shall and should in direction questions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-161",
+    "domain": "clauses",
+    "concept": "Infinitival embedded direction questions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An embedded infinitival interrogative presents a question about what to do. A finite counterpart can instead report a request for information.",
+    "condition": "Applies to the construction described in §4.6 of Chapter 10.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Embedded interrogatives do not themselves carry the force of an independent question. Embedded shall does not retain the main-clause direction use.",
+        "pages": [
+          878
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I asked how to unlock the cabinet.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I asked how she unlocked the cabinet.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 10,
+        "section": "§4.6",
+        "pages": [
+          878
+        ],
+        "pdf_pages": [
+          898
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Infinitival embedded direction questions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]

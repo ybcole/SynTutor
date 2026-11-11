@@ -194,3 +194,7 @@ Printed pp.618–634 yielded 24 records (`PHR-400`–`PHR-423`). Continue at p.6
 ## Chapter 7 source extraction complete (2026-11-11)
 
 The final accelerated batch covers 27 substantive pages, printed pp.635–661, and verifies that p.662 is blank. It adds 35 records (`PHR-424`–`PHR-458`). Chapter 7 closes with 64 substantive pages, two justified skips and zero unprocessed pages. Chapter 10 is next in the master plan priority order.
+
+## Chapter 10 first checkpoint (2026-11-11)
+
+Printed pp. 851–878 account for 26 substantive pages and two contents pages. The 41 records (`CLS-121`–`CLS-161`) include five inactive constraint specifications. Continue at p. 879 with the final discussion of direction questions and the start of biased questions.
