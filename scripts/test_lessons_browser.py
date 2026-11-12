@@ -565,7 +565,11 @@ try:
    expect(view.locator('.lesson-closing-result')).to_have_count(0)
    expect(view.locator('.lesson-intro-example > p')).to_have_count(3)
    expect(view.locator('.lesson-intro-example .lesson-example-sentence')).to_be_visible()
-   expect(view.locator('.lesson-intro-example')).to_have_css('background-color','rgb(255, 255, 255)')
+   if ident in {'br-09','br-11'}:
+    expect(view.locator('.lesson-intro-example')).to_have_css('background-color','rgb(255, 255, 255)')
+   else:
+    expect(view.locator('.lesson-intro-example')).to_have_css('border-top-width','0px')
+    expect(view.locator('.lesson-intro-example .lesson-bracketed-example')).to_have_css('text-align','center')
    expect(view.get_by_role('region',name='Check what you know')).to_be_visible()
    prediction=view.locator('[data-question="predict"]')
    expect(prediction.locator('legend')).to_have_text(lesson['predict']['prompt'])

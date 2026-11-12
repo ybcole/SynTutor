@@ -208,6 +208,12 @@
   color:var(--ink);
   overflow-wrap:anywhere;
 }
+/* Let bracketed examples sit directly in the lesson text. */
+.constituent-page .lesson-intro-example:has(> .lesson-bracketed-example) {
+  padding:0;
+  border:0;
+  background:transparent;
+}
 .constituent-page :is(.lesson-tree-observation,.lesson-intro-example) > p { margin:0; }
 .constituent-page :is(.lesson-tree-observation,.lesson-intro-example) > p:not(:empty) + p:not(:empty) { margin-block-start:8px; }
 .lesson-tree-observation:not(:has(> p:not(:empty))) { display:none; }
@@ -349,6 +355,7 @@
 .lesson-tree-canvas svg .lesson-branch.lesson-branch-traced { stroke:var(--accent-strong); stroke-width:2.5; }
 .lesson-transfer-context mark { color:var(--accent-strong); background:var(--accent-soft); }
 .lesson-transfer-example { margin-block:8px; }
+.lesson-transfer-example > .lesson-bracketed-example { margin-block:.3rem .6rem; }
 .constituent-controls[hidden], .lesson-transfer [hidden] { display:none; }
 .lesson-transfer-choices { align-items:center; }
 .curriculum-view .lesson-transfer-choices button { min-height:40px; }
