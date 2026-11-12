@@ -452,3 +452,7 @@ Chapter 13 source extraction is complete. Printed pp. 1097–1170 are accounted 
 ## Chapter 16 first checkpoint
 
 Printed pp. 1363–1373 account for 9 substantive pages and two contents-only pages, adding 21 inactive records (`CLS-1279`–`CLS-1299`). The chapter has 74 unprocessed pages and one previously accounted-for textless page. Continue at p. 1374 with non-focus complement preposing.
+
+## Chapter 16 second checkpoint
+
+Printed pp. 1374–1381 add eight substantive pages and 21 inactive records (`CLS-1300`–`CLS-1320`). Chapter 16 has 66 unprocessed pages. Continue at p. 1382 with the end of focus preposing and the start of postposing.

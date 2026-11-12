@@ -81290,5 +81290,1107 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1300",
+    "domain": "clauses",
+    "concept": "Focus versus non-focus complement preposing",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Focus preposing places all or part of the informational focus in the preposed complement. In non-focus preposing the complement has prominence but the main stress follows it.",
+    "condition": "Compare the position of nuclear stress rather than whether the fronted expression bears any stress.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Did you order tea? COFFEE I ordered.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We needed to send two forms. One I sent to PAYROLL.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§3",
+        "pages": [
+          1374
+        ],
+        "pdf_pages": [
+          1394
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Focus versus non-focus complement preposing",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1301",
+    "domain": "clauses",
+    "concept": "Dual familiarity of a focused preposed complement",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The fronted expression in focus preposing is discourse-old as a link to an evoked entity or set, and discourse-new as the value of the variable in the open proposition.",
+    "condition": "The price, quantity, or alternative belongs to a salient domain before its particular value is supplied.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "How much did the used stool cost? TWENTY dollars it cost.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Did you choose the red folder? The BLUE folder I chose.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§3",
+        "pages": [
+          1374
+        ],
+        "pdf_pages": [
+          1394
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dual familiarity of a focused preposed complement",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1302",
+    "domain": "clauses",
+    "concept": "Categories in non-focus complement preposing",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "NPs, PPs, AdjPs and VPs can serve as preposed non-focus complements. NP preposing is the commonest, and the VP pattern occurs in proposition assessment.",
+    "condition": "The fronted constituent retains the complement relation appropriate to its category.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We discussed both invoices. One I sent to FINANCE.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They promised to stay until closing, and stay they DID.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§3.1",
+        "pages": [
+          1374
+        ],
+        "pdf_pages": [
+          1394
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Categories in non-focus complement preposing",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1303",
+    "domain": "clauses",
+    "concept": "Explicit property contrast with preposed adjective phrases",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Non-focus preposing of an adjective phrase requires an explicit contrast between properties. A common pattern affirms one property and denies another while evaluating a salient entity.",
+    "condition": "The properties may be introduced in the preceding discourse or contrasted within the same utterance.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Quiet it is, but cheap it isn't.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The old models were light and durable. These may still be durable, but light they aren't.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§3.1",
+        "pages": [
+          1375
+        ],
+        "pdf_pages": [
+          1395
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Explicit property contrast with preposed adjective phrases",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1304",
+    "domain": "clauses",
+    "concept": "Syntactic and interactional variants of the property contrast",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The two property expressions need not both be fronted AdjPs. A predicative NP or an object NP with have can supply the contrast, and a response can question or reject one of the properties.",
+    "condition": "What matters is explicit evocation of contrasting properties in the exchange.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A bargain it may be, but reliable it isn't.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They say he's arrogant and careless. Careless I wouldn't say he is.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§3.1",
+        "pages": [
+          1375
+        ],
+        "pdf_pages": [
+          1395
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Syntactic and interactional variants of the property contrast",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1305",
+    "domain": "clauses",
+    "concept": "Static locatives and the open-proposition condition",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A preposed complement with a static locative reading still requires a discourse link but can occur without a discourse-old open proposition. A dynamic path reading does not receive this relaxation.",
+    "condition": "The distinction depends on the reading of the situation, not the preposition alone.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The courtyard has an old stone arch. Under it they keep their bicycles.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The garden has a brick wall. Against it they have stacked the spare tiles.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§3.1",
+        "pages": [
+          1376
+        ],
+        "pdf_pages": [
+          1396
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Static locatives and the open-proposition condition",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1306",
+    "domain": "clauses",
+    "concept": "Polarity focus in proposition assessment",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Proposition assessment is non-focus complement preposing with informational focus on polarity. Main stress typically falls on an auxiliary or on not.",
+    "condition": "Affirmation, suspension and denial differ in the speaker's commitment to the evoked proposition.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She promised to return the keys, and return them she WILL.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The guide calls the trail gentle. Gentle it is NOT.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§3.2",
+        "pages": [
+          1376,
+          1377
+        ],
+        "pdf_pages": [
+          1396,
+          1397
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Polarity focus in proposition assessment",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1307",
+    "domain": "clauses",
+    "concept": "Auxiliary selection in emphatic proposition assessment",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The emphatic polarity pattern normally uses an auxiliary. Supportive do carries the emphasis if the unemphatic counterpart has no other auxiliary.",
+    "condition": "A nonfinite VP is frequent, but auxiliary be can license other complement categories, and auxiliary have does so for some speakers.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They said they might complain, and complain they DID.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He promised to check the locks, and check them he WILL.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§3.2",
+        "pages": [
+          1377
+        ],
+        "pdf_pages": [
+          1397
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Auxiliary selection in emphatic proposition assessment",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1308",
+    "domain": "clauses",
+    "concept": "Formal antecedent match in affirmation and suspension",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Affirmation and suspension require a close formal relation between the preposed complement and material evoked in the preceding discourse. Pronoun substitution, inflectional changes and some derivational differences are compatible with the relation.",
+    "condition": "A merely implied synonym does not in general satisfy this formal matching requirement.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She promised to lock the gate, and lock it she did.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A postponement of the hearing was expected. Postpone it they did.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§3.2",
+        "pages": [
+          1377
+        ],
+        "pdf_pages": [
+          1397
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Formal antecedent match in affirmation and suspension",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1309",
+    "domain": "clauses",
+    "concept": "Logical dependence in proposition affirmation",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Affirmation is logically dependent when prior discourse already presents the proposition as true, and independent when prior discourse merely evokes it. Dependent affirmation needs a separate motivation.",
+    "condition": "The distinction tracks the discourse's treatment of the proposition, including reported material treated as factual.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We hoped to repair the clock, and repair it we did.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She finished the race despite the injury, and finish it she did, well ahead of the field.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§3.2",
+        "pages": [
+          1377,
+          1378
+        ],
+        "pdf_pages": [
+          1397,
+          1398
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Logical dependence in proposition affirmation",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1310",
+    "domain": "clauses",
+    "concept": "Concessive proposition affirmation",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Concessive affirmation confirms the proposition despite an evoked counterconsideration. It can be logically dependent or independent and is introduced by a concessive coordinator or adjunct.",
+    "condition": "Use a marker such as but, yet or nevertheless to signal the concessive relation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "No one expected them to appeal, but appeal they did.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Fixing the roof in a storm seemed impossible. Nevertheless, fix it they did.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§3.2",
+        "pages": [
+          1378
+        ],
+        "pdf_pages": [
+          1398
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Concessive proposition affirmation",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1311",
+    "domain": "clauses",
+    "concept": "Scalar proposition affirmation",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Scalar affirmation presents the subject as reaching a remarkable value on a scale associated with the predicate. The prior discourse may already present the proposition as true or merely evoke it.",
+    "condition": "Context supplies the scale, such as extent, duration, quantity or quality.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We asked them to sing, and sing they did, for nearly three hours.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He promised to collect donations, and collect donations he did: the total doubled overnight.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§3.2",
+        "pages": [
+          1378,
+          1379
+        ],
+        "pdf_pages": [
+          1398,
+          1399
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Scalar proposition affirmation",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1312",
+    "domain": "clauses",
+    "concept": "Simple proposition affirmation",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Simple affirmation is the neutral type, without concession or a high scalar interpretation. It is felicitous when logically independent.",
+    "condition": "A prior promise, expectation or plan can evoke a proposition without asserting its truth.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She said she would call at noon, and call at noon she did.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He bet he would choose envelope seven, and choose it he did.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§3.2",
+        "pages": [
+          1379
+        ],
+        "pdf_pages": [
+          1399
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Simple proposition affirmation",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1313",
+    "domain": "clauses",
+    "concept": "Acceptance with preposed complement and it plus be",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The idiom with a preposed complement followed by it and be accepts the addressee's selection and signals a commitment to accommodate it.",
+    "condition": "The chosen value belongs to an already evoked set, and default order does not carry the same acceptance reading.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Would you rather meet on Friday or Saturday? Saturday. Saturday it is.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Which color would you like? Green, please. Green it is.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§3.2",
+        "pages": [
+          1379
+        ],
+        "pdf_pages": [
+          1399
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Acceptance with preposed complement and it plus be",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1314",
+    "domain": "clauses",
+    "concept": "Emphatic agreement and answers with preposed that",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Anaphoric that can be preposed in a specialized affirmation used for emphatic agreement or a positive answer to a polar question.",
+    "condition": "Agreement uses are especially natural after evaluative or subjective statements.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "That was a generous offer. That it was.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Are you going to apply? That I am.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§3.2",
+        "pages": [
+          1379
+        ],
+        "pdf_pages": [
+          1399
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Emphatic agreement and answers with preposed that",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1315",
+    "domain": "clauses",
+    "concept": "Proposition suspension in an if phrase",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Conditional if can introduce a preposing construction that suspends commitment to a proposition otherwise entailed by the matrix.",
+    "condition": "The matrix must add information beyond the proposition in the if clause to avoid tautology.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She mailed the form on Monday, if mail it she did.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They crossed the river after sunset, if cross it they did.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§3.2",
+        "pages": [
+          1379,
+          1380
+        ],
+        "pdf_pages": [
+          1399,
+          1400
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Proposition suspension in an if phrase",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1316",
+    "domain": "clauses",
+    "concept": "Ironic proposition denial with copular be",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Proposition denial fronts a copular complement and often uses understatement for ironic effect. Its property must be salient or inferable in the preceding context.",
+    "condition": "The denial can imply that the entity has the opposite property to a striking degree.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The contract runs to ninety pages. Brief it is not.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He spent the whole interview praising himself. Modest he wasn't.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§3.2",
+        "pages": [
+          1380
+        ],
+        "pdf_pages": [
+          1400
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ironic proposition denial with copular be",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1317",
+    "domain": "clauses",
+    "concept": "Epitomisation in proposition denial",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Epitomisation fronts a definite NP, often a proper name, whose referent exemplifies a high value of the relevant property.",
+    "condition": "The comparison scale comes from context, and the denial need not concern literal identity.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The village pond was big enough for a paddle. Lake Superior it wasn't.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The converted garage has a small stage. Broadway it isn't.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§3.2",
+        "pages": [
+          1380,
+          1381
+        ],
+        "pdf_pages": [
+          1400,
+          1401
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Epitomisation in proposition denial",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1318",
+    "domain": "clauses",
+    "concept": "Lexical-verb exceptions in proposition affirmation",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Affirmation usually preposes a complement of an auxiliary. A narrow extension permits preposing a complement of a lexical verb with auxiliary-like semantics, such as stay expressing continuity.",
+    "condition": "The preposed expression is closely anchored in the preceding discourse and the affirmation confirms persistence of the established situation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We've put the spare key in the safe, and in the safe it stays.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I promised to call Lena, and call her I did.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§3.2",
+        "pages": [
+          1381
+        ],
+        "pdf_pages": [
+          1401
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical-verb exceptions in proposition affirmation",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1319",
+    "domain": "clauses",
+    "concept": "Verb form in preposed complements of perfect have",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "With a preposed complement of perfect have, both a plain form and a past participle can be acceptable. The form in the preceding discourse influences the preference.",
+    "condition": "The plain form is favored after an antecedent in the plain form, while a previously used participle favors a participle without excluding a plain form.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She said she wouldn't write to us, but write to us she has.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He denies he has spoken to them, but spoken to them he has.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§3.2",
+        "pages": [
+          1381
+        ],
+        "pdf_pages": [
+          1401
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Verb form in preposed complements of perfect have",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1320",
+    "domain": "clauses",
+    "concept": "Preposed focus as link and variable value",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The focused preposed complement both connects with the previous discourse and specifies the value in the discourse-old open proposition expressed by the rest of the clause.",
+    "condition": "The relevant domain can be a quantity, a name, a time or another salient alternative.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We bought a lot of fabric. SIX meters I think we bought.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Did you order soup? SALAD I ordered.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§3.3",
+        "pages": [
+          1381
+        ],
+        "pdf_pages": [
+          1401
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Preposed focus as link and variable value",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
   }
 ]
