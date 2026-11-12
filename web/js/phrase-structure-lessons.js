@@ -169,7 +169,6 @@ function addBranchExercise(body, ui, chapter) {
     id: `${ui.lesson.lesson_id}-branch`,
     label: `${chapter.buildTitle} exercise`,
     profile,
-    recovery: true,
     seed() {
       const model = fromCanonicalEnvelope(target);
       disconnect(model, child.id);
@@ -191,7 +190,7 @@ function addBranchExercise(body, ui, chapter) {
         if (!model.nodes[parent.id] || !model.nodes[child.id]) {
           return 'A starting node is missing. Choose Restart exercise to restore it, or recreate it on the canvas.';
         }
-        return connect(model, parent.id, child.id) ? 'The branch is connected. Check the construction.' : chapter.build.hint;
+        return connect(model, parent.id, child.id) ? 'The branch is connected. Check how it fits into the whole tree.' : chapter.build.hint;
       },
     }, {
       title: 'Check the branch',
@@ -255,7 +254,7 @@ export const phraseStructureArticles = Object.fromEntries(Object.entries(chapter
       if (chapter.build) {
         body.append(el('p', chapter.treeTakeaway));
         sections([[chapter.buildTitle, chapter.build.prompt]]);
-        body.append(el('p', 'Drag a branch from the parent’s connection point to the detached node. Use Guide me for help, then select Check construction.'));
+        body.append(el('p', 'Drag a branch from the parent’s connection point to the detached node. Use Guide me for help, then select Check my tree.'));
         addBranchExercise(body, ui, chapter);
       } else {
         sections([chapter.workedPractice]);

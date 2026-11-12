@@ -311,7 +311,22 @@
   padding:clamp(12px,3vw,20px);
   background:var(--bg);
 }
-.first-tree-toolbar { display:flex; flex-wrap:wrap; gap:8px; }
+.first-tree-toolbar { display:flex; align-items:flex-start; justify-content:space-between; gap:8px; }
+.first-tree-help { display:flex; flex-wrap:wrap; gap:8px; }
+.curriculum-view .first-tree-undo {
+  flex:none;
+  min-width:44px;
+  min-height:44px;
+  padding:0;
+  font-size:1.4rem;
+}
+.first-tree-footer { display:flex; flex-wrap:wrap; align-items:center; gap:8px 16px; }
+.curriculum-view .first-tree-footer .lesson-primary {
+  margin:0 0 0 auto;
+  border-radius:999px;
+  font-weight:600;
+}
+[data-theme="dark"] .curriculum-view .first-tree-footer .lesson-primary { color:var(--bg); }
 .first-tree-guide {
   margin:8px 0 0;
   padding:0;
@@ -339,6 +354,7 @@
 .first-tree-guide-description { grid-column:2; font-size:.9rem; color:var(--muted); }
 .first-tree-feedback:empty { display:none; }
 .first-tree-builder .first-tree-feedback { margin:10px 0 0; }
+.first-tree-builder .first-tree-footer .first-tree-feedback { flex:1 1 14rem; margin:0; }
 .first-tree-stage {
   position:relative;
   height:clamp(300px,55vw,440px);

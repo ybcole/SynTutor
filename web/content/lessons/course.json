@@ -20,7 +20,7 @@
     {
       "id": "foundations",
       "title": "Syntax Foundations",
-      "description": "A chapter-ordered B-R spine: ten tree-convention lessons and a text-only synthesis."
+      "description": "Ten lessons on how to read and build syntax trees, followed by a lesson on how grammar rules describe sentence patterns."
     },
     {
       "id": "grammar",
@@ -977,7 +977,7 @@
       },
       "cambridge_insights": [
         {
-          "text": "Cambridge distinguishes the sentence as a text-level unit from the clause as a syntactic category. Central clauses have a subject–predicate structure and clauses can be embedded. These terms provide grammatical context; they do not rename B-R S nodes. This classification is a teaching insight, not a whole-sentence correctness test.",
+          "text": "Cambridge distinguishes the sentence as a text-level unit from the clause as a syntactic category. Central clauses have a subject–predicate structure and clauses can be embedded. The label S marks the clause with its subject and predicate in these trees.",
           "source_ids": [
             "CGEL-2002-CH02-P0044",
             "CGEL-2002-CH02-P0045"
@@ -1356,21 +1356,21 @@
           {
             "id": "a",
             "text": "ADJP",
-            "feedback": "Try again. Use the B-R label for this chapter."
+            "feedback": "Try again. Look for the label for a phrase headed by an adjective."
           },
           {
             "id": "b",
             "text": "NP",
-            "feedback": "Try again. Use the B-R label for this chapter."
+            "feedback": "Try again. Look for the label for a phrase headed by an adjective."
           },
           {
             "id": "c",
             "text": "AP",
-            "feedback": "B-R uses AP for this adjective phrase."
+            "feedback": "AP labels this adjective phrase."
           }
         ],
         "answer": "c",
-        "hint": "Use the B-R label for this chapter.",
+        "hint": "Look for the label for an adjective phrase.",
         "source_ids": [
           "BR-3E-P55",
           "BR-3E-P62"
@@ -3116,7 +3116,7 @@
       },
       "cambridge_insights": [
         {
-          "text": "Cambridge distinguishes the sentence as a text-level unit from the clause as a syntactic category. Central clauses have a subject–predicate structure and clauses can be embedded. These terms provide grammatical context; they do not rename B-R S nodes. This classification is a teaching insight, not a whole-sentence correctness test.",
+          "text": "Cambridge distinguishes the sentence as a text-level unit from the clause as a syntactic category. Central clauses have a subject–predicate structure and clauses can be embedded. The label S marks the clause with its subject and predicate in these trees.",
           "source_ids": [
             "CGEL-2002-CH02-P0044",
             "CGEL-2002-CH02-P0045"
@@ -4335,7 +4335,7 @@
       "review_receipt": "sources/cambridge/reviews/2026-11-08-lessons.json",
       "teaching": [
         {
-          "text": "Cambridge distinguishes the sentence as a text-level unit from the clause as a syntactic category. Central clauses have a subject–predicate structure and clauses can be embedded. These terms provide grammatical context; they do not rename B-R S nodes. This classification is a teaching insight, not a whole-sentence correctness test.",
+          "text": "Cambridge distinguishes the sentence as a text-level unit from the clause as a syntactic category. Central clauses have a subject–predicate structure and clauses can be embedded. The label S marks the clause with its subject and predicate in these trees.",
           "source_ids": [
             "CGEL-2002-CH02-P0044",
             "CGEL-2002-CH02-P0045"
@@ -4344,7 +4344,7 @@
       ],
       "worked_example": {
         "sentence": "Nora reports that the robins sing.",
-        "origin": "Original SynTutor contrast; no new Cambridge tree labels are imposed on B-R.",
+        "origin": "Original SynTutor example comparing a whole sentence with a clause inside it.",
         "tree": null,
         "accepted_alternatives": [],
         "source_ids": [

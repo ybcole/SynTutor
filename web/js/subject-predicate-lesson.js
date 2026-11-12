@@ -281,7 +281,7 @@ export function addSubjectPredicateTeaching(body, page, ui) {
     addTreeComparison(body, ui);
     section('Build your first labelled tree',
       'Start with the words of “The robins sing”. Add S, NP and VP and connect their branches. Use Guide me for help, or build directly on the canvas.',
-      'Right-click or press and hold to open a node menu. Connect the words to their phrases first, then use the menu to collapse NP and VP to triangles. Use Check construction to see which part needs attention.');
+      'Right-click or press and hold to open a node menu. Connect the words to their phrases first, then use the menu to collapse NP and VP to triangles. Use Check my tree to see which part needs attention.');
     addSubjectPredicateBuilder(body, ui);
   }
 

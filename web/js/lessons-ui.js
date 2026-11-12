@@ -44,7 +44,11 @@ function lessonReferences(lesson) {
   const details = el('details', undefined, 'lesson-sources');
   details.append(el('summary', 'References and source review'));
   const list = el('ul');
-  for (const source of course.sources.filter(source => ids.has(source.id))) {
+  const sources = course.sources.filter(source => ids.has(source.id));
+  if (sources.some(source => source.book === 'B-R')) {
+    details.append(el('p', 'Book reference for the cited syntax trees and conventions: Noel Burton-Roberts, Analysing Sentences.'));
+  }
+  for (const source of sources) {
     list.append(el('li', `${source.title} · ${source.edition} · Chapter ${source.chapter} · printed p. ${source.printed_page}`));
   }
   for (const reference of articleLessons[lesson.lesson_id]?.references || []) list.append(el('li', reference));
@@ -65,7 +69,7 @@ export function renderLessonTree(envelope, {
   const hint = el('p', textDisclosure
     ? 'Scroll sideways to inspect the whole tree, or open its text view.'
     : 'Scroll sideways to inspect the whole tree.', 'lesson-tree-hint');
-  wrap.append(hint);wrap.tabIndex=0;wrap.setAttribute('aria-label','Scrollable B-R tree');
+  wrap.append(hint);wrap.tabIndex=0;wrap.setAttribute('aria-label','Scrollable syntax tree');
   function label(node, withFeatures = true) {
     const master = displayLabels?.[node.id];
     if (master) return withFeatures ? master.join(' ') : master[0] || '';
@@ -132,7 +136,7 @@ export function renderLessonTree(envelope, {
   }
   const height=Math.max(...positions.map(p=>p.y + featureRows(p.node).length * 18 + (p.node.triangle ? 80 : 35)));
   const role = !textDisclosure && typeof onSelectNode === 'function' ? 'group' : 'img';
-  const svg=svgNode('svg',{viewBox:`0 0 ${width} ${height}`,width,height,role,'aria-label':`B-R tree for ${envelope.sentence}`});
+  const svg=svgNode('svg',{viewBox:`0 0 ${width} ${height}`,width,height,role,'aria-label':`Syntax tree for ${envelope.sentence}`});
   const branches = new Map();
   const parents = new Map();
   for (const [a,b] of edges) {
@@ -191,8 +195,8 @@ export function renderLessonTree(envelope, {
       g.setAttribute('tabindex','0');
       g.setAttribute('aria-pressed', String(node.id === focusId));
       const parentLabel = parents.get(node.id)?.label;
-      g.setAttribute('aria-label', node.gap && parentLabel ? `Inspect B-R gap under ${parentLabel}`
-        : 'Inspect B-R ' + (node.label || 'tree position')
+      g.setAttribute('aria-label', node.gap && parentLabel ? `Inspect gap under ${parentLabel}`
+        : 'Inspect ' + (node.label || 'tree position')
           + ' for ' + (node.word || node.words?.join(' ') || node.label || 'this position'));
       const choose = (feature = null) => {
         svg.querySelector('g[aria-pressed=true]')?.setAttribute('aria-pressed', 'false');
@@ -210,7 +214,7 @@ export function renderLessonTree(envelope, {
         row.setAttribute('role','button');
         row.setAttribute('tabindex','0');
         row.dataset.featureLabel = row.textContent;
-        row.setAttribute('aria-label','Inspect recorded B-R feature ' + row.textContent
+        row.setAttribute('aria-label','Inspect feature ' + row.textContent
           + ' for ' + (node.word || node.label));
         const featureName=()=>{const text=row.textContent.trim();return text.startsWith('[') && text.endsWith(']') ? text.slice(1,-1) : text;};
         row.addEventListener('click', event => {
@@ -232,7 +236,7 @@ export function renderLessonTree(envelope, {
     const toolbar=el('div',undefined,'xai7-tree-zoom');
     toolbar.dataset.xai7Zoom = '';
     toolbar.setAttribute('role','group');
-    toolbar.setAttribute('aria-label','Zoom the B-R syntax tree');
+    toolbar.setAttribute('aria-label','Zoom the syntax tree');
     let zoom=1;
     const originalWidth=svg.getAttribute('width');
     const originalHeight=svg.getAttribute('height');
@@ -873,7 +877,7 @@ function lessonScreen() {
   const article = articleFor(lesson);
   const chapter = lesson.track === 'grammar'
     ? `Cambridge · Chapter ${lesson.chapter}`
-    : article ? `Chapter ${lesson.chapter}` : `B-R · Chapter ${lesson.chapter}`;
+    : `Chapter ${lesson.chapter}`;
   const header = el('header', undefined, article ? 'lesson-header constituent-header' : 'lesson-header');
   header.append(button('← All lessons', showCatalog));
   const h1 = el('h1', lesson.title);
@@ -897,12 +901,12 @@ function lessonScreen() {
     for (const block of lesson.teaching) body.append(el('p', block.text));
     for (const insight of lesson.cambridge_insights) { const card=el('section',undefined,'lesson-insight');card.append(el('h3','Cambridge insight'),el('p',insight.text));body.append(card); }
   }
-  aside.append(el('h2', worked.tree ? 'Worked B-R example' : 'Worked example'),el('p',worked.sentence,'lesson-example-sentence'));
+  aside.append(el('h2', 'Worked example'),el('p',worked.sentence,'lesson-example-sentence'));
   if (worked.tree) appendWorkedTree(aside, worked, {
     focusId: key === 'guided' ? lesson.guided.build_target?.node_id : worked.steps[step]?.focus_node_id,
     blank: key === 'guided' && p.responses.guided !== lesson.guided.answer ? lesson.guided.build_target : null,
   });
-  else aside.append(el('p',lesson.chapter===11 && lesson.track==='foundations' ? 'This closing chapter is a text-only synthesis. No new tree convention or gradable tree is introduced.' : 'Use the text contrast without renaming B-R tree categories.'), el('p', worked.origin, 'lesson-origin'));
+  else aside.append(el('p',lesson.chapter===11 && lesson.track==='foundations' ? 'This closing chapter is a text-only synthesis. No new tree convention or gradable tree is introduced.' : 'Compare the whole sentence with the clause inside it.'), el('p', worked.origin, 'lesson-origin'));
   if(key==='worked') {
     body.append(el('p',`Step ${step+1} of ${worked.steps.length}`),el('p',worked.steps[step].text));
   }

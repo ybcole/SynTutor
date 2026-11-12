@@ -202,7 +202,7 @@ export const advancedFoundationsChapters = {
     concepts: [
       ['Find the verb that changes with tense', 'Read “Nora plans to inspect the bridge” and “Nora planned to inspect the bridge”. Only “plans” changes. The infinitival group stays the same because it has no tense of its own. That is why it is called non-finite.'],
       ['Recognise the basic form of the verb', 'Look inside the group that stayed the same. After infinitival “to”, the verb “inspect” appears in its stem, or basic, form. The same spelling also appears in the present-tense statement “They inspect the bridge every week”. The words around the verb help identify its use.'],
-      ['Give “to” a VP complement', 'In the infinitival group, “inspect” and its object “the bridge” form the lexical VP. Burton-Roberts analyses that whole VP as the complement of the auxiliary “to”. The feature [-tense], read “minus tense”, belongs on the auxiliary branch.'],
+      ['Give “to” a VP complement', 'In the infinitival group, “inspect” and its object “the bridge” form the lexical VP. That whole VP is the complement of the auxiliary “to”. The feature [-tense], read “minus tense”, belongs on the auxiliary branch.'],
     ],
     contrast: ['Look at what comes after “to”', [
       '“To inspect the bridge” contains a lexical VP after infinitival “to”.',
@@ -234,7 +234,7 @@ export const advancedFoundationsChapters = {
       ['Check where tense goes', 'Return to the first sentence and change “hopes” to “hoped”. Which words stay the same? Use the answer to separate tense in the larger sentence from the [-tense] feature inside the infinitival group.'],
     ],
     reveal: ['Check your analysis', 'In the first sentence, “visit the museum” is a lexical VP, so “to” is the untensed auxiliary. “Hoped” carries past tense outside that group. In the second sentence, “the museum” is an NP, so “to” is a preposition introducing a destination.'],
-    recapSummary: 'Changing “plans” to “planned” leaves “to inspect the bridge” intact. That contrast locates tense in the larger sentence. Inside the infinitival group, Burton-Roberts marks “to” as [-tense] and gives it the lexical VP “inspect the bridge” as a complement. To distinguish this use from the preposition, check what comes after “to”.',
+    recapSummary: 'Changing “plans” to “planned” leaves “to inspect the bridge” intact. That contrast locates tense in the larger sentence. Inside the infinitival group, “To” carries the feature [-tense] and takes the lexical VP “inspect the bridge” as its complement. To distinguish this use from the preposition, check what comes after “to”.',
     recap: ['Locate the verb that carries tense in the larger sentence.', 'In the infinitival fragment, group the stem-form verb with its object.', 'Attach the lexical VP beside “to” and read [-tense] on the auxiliary.'],
     selfCheck: ['In “Leo agreed to repair the lamp”, which words form the lexical VP inside the infinitive?', '“Repair the lamp” is the lexical VP. The higher VP also includes the untensed auxiliary “to”.'],
     postTestIntro: 'Read the [-tense] feature and locate the full VP that “to” takes as its complement.',

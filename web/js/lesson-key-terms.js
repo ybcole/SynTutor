@@ -35,22 +35,22 @@ const keyTerms = {
   'br-07': [
     ['Determiner (DET)', 'A word or expression that helps identify or quantify what a noun phrase refers to. DET labels its position in the tree.'],
     ['Demonstrative (DEM)', 'A word such as “this”, “that”, “these”, or “those” that points out a referent.'],
-    ['Nominal (NOM)', 'The part of a noun phrase built around the head noun. In Burton-Roberts trees, NOM forms a layer between NP and N and can contain noun modifiers.'],
+    ['Nominal (NOM)', 'The part of a noun phrase built around the head noun. In the tree, NOM labels the layer between NP and the head noun. That layer can also contain modifiers.'],
     ['Head noun (N)', 'The noun that heads the nominal and gives the noun phrase its basic reference.'],
   ],
   'br-08': [
     ['Embedded clause', 'A clause that forms part of a larger phrase or clause.'],
     ['Complementiser (C)', 'A word such as “that” or “whether” that introduces a subordinate clause. C labels its position in the tree.'],
-    ['S and S′', 'In Burton-Roberts trees, S labels the clause with its subject and predicate. S′, read “S-bar”, is the higher layer that groups C with S.'],
+    ['S and S′', 'S labels the clause with its subject and predicate. S′, read “S-bar”, is the higher layer that groups C with S.'],
   ],
   'br-09': [
     ['Fronting', 'Placing a word or phrase near the beginning of a clause, earlier than its usual position.'],
-    ['C1', 'The lower front position in the Burton-Roberts question tree. A fronted tensed auxiliary occupies C1 in a main-clause question.'],
-    ['C2', 'The higher front position in the Burton-Roberts question tree. A fronted wh-expression such as “what” occupies C2.'],
+    ['C1', 'The lower front position in a question tree. A fronted tensed auxiliary occupies C1 in a main-clause question.'],
+    ['C2', 'The higher front position in a question tree. A fronted wh-expression such as “what” occupies C2.'],
     ['Gap', 'A position with no spoken word or phrase. In a tree with fronting, a gap marks the position associated with the fronted expression.'],
   ],
   'br-10': [
-    ['Infinitival “to”', 'The marker “to” that precedes a base-form verb in a to-infinitive. Burton-Roberts analyses it as an untensed auxiliary.'],
+    ['Infinitival “to”', 'The marker “to” that precedes a base-form verb in a to-infinitive. In the tree, it acts as an untensed auxiliary with a verb phrase as its complement.'],
     ['Non-finite', 'A term for verb forms and clauses that carry no tense of their own. Infinitives and participles are non-finite verb forms.'],
     ['Stem form', 'The base form of a verb, such as “go”, “write”, or “inspect”.'],
     ['Lexical VP', 'A verb phrase headed by the main verb, together with any complements of that verb.'],
