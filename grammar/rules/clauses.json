@@ -56989,5 +56989,1153 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-891",
+    "domain": "clauses",
+    "concept": "Wh infinitival relatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An infinitival wh relative uses a fronted preposition phrase and has no overt subject.",
+    "condition": "Applies to the construction described in §5 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An equivalent non-wh infinitival can strand the preposition and may allow a for subject.",
+        "pages": [
+          1067
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We found a shelf on which to display the vase.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She wanted a colleague in whom to confide.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§5",
+        "pages": [
+          1067
+        ],
+        "pdf_pages": [
+          1087
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Wh infinitival relatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-892",
+    "domain": "clauses",
+    "concept": "Non-wh infinitival relatives and overt subjects",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A non-wh infinitival relative can contain a gap in several functions and can generally express an overt subject with for.",
+    "condition": "Applies to the construction described in §5 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An overt subject is excluded when the relativised element is itself the subject.",
+        "pages": [
+          1067
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We found a bench for the children to sit on.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She found a book for us to read.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§5",
+        "pages": [
+          1067
+        ],
+        "pdf_pages": [
+          1087
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-wh infinitival relatives and overt subjects",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-893",
+    "domain": "clauses",
+    "concept": "Relative versus purpose infinitival attachment",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An infinitival can modify a noun or function as a purpose adjunct, with attachment depending on the matrix predicate and the nominal structure.",
+    "condition": "Applies to the construction described in §5 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some matrix predicates and objects support both analyses.",
+        "pages": [
+          1067,
+          1068
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She found a book for the children to read.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She bought it for the children to read.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§5",
+        "pages": [
+          1067,
+          1068
+        ],
+        "pdf_pages": [
+          1087,
+          1088
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Relative versus purpose infinitival attachment",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-894",
+    "domain": "clauses",
+    "concept": "Modal and nonmodal infinitival relatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Infinitival relatives commonly have an interpretation comparable to can or should. A subject-gap relative can also identify an actual event.",
+    "condition": "Applies to the construction described in §5 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Ordinal and similar modifiers can favor the nonmodal interpretation.",
+        "pages": [
+          1068
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Here is a tool to use on the latch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina was the first person to arrive.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§5",
+        "pages": [
+          1068
+        ],
+        "pdf_pages": [
+          1088
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Modal and nonmodal infinitival relatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-895",
+    "domain": "clauses",
+    "concept": "Fused relative phrases and antecedent fusion",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A fused relative combines antecedent and relative functions in one expression. The larger construction can distribute as an NP, PP, or another phrase type.",
+    "condition": "Applies to the construction described in §6–6.1 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A construction with an overt antecedent and a separate relative clause has a different internal structure.",
+        "pages": [
+          1068,
+          1069
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We ate what she had prepared.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Put the key where you found it.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§6–6.1",
+        "pages": [
+          1068,
+          1069
+        ],
+        "pdf_pages": [
+          1088,
+          1089
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fused relative phrases and antecedent fusion",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-896",
+    "domain": "clauses",
+    "concept": "Agreement and inversion with fused relatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An NP fused relative can show agreement determined by its nominal content and can participate in subject–auxiliary inversion.",
+    "condition": "Applies to the construction described in §6.1 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A subordinate clause does not generally have the same distribution or number behavior.",
+        "pages": [
+          1069
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What money we have is in the bank.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Are what books we have still in the attic?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§6.1",
+        "pages": [
+          1069
+        ],
+        "pdf_pages": [
+          1089
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Agreement and inversion with fused relatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-897",
+    "domain": "clauses",
+    "concept": "Phrase distribution of fused relatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Fused relatives can fill phrase functions such as subject, object and complement of a preposition. Their extraposition behavior differs from that of ordinary clausal subjects.",
+    "condition": "Applies to the construction described in §6.1 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The syntactic category depends on the fused relative construction rather than on its initial wh word alone.",
+        "pages": [
+          1069,
+          1070
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What she suggested was sensible.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We agreed with what she suggested.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§6.1",
+        "pages": [
+          1069,
+          1070
+        ],
+        "pdf_pages": [
+          1089,
+          1090
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Phrase distribution of fused relatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-898",
+    "domain": "clauses",
+    "concept": "Fused relatives with further dependents",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A fused relative phrase can itself host an additional integrated or supplementary relative.",
+    "condition": "Applies to the construction described in §6.1 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The additional relative relates to the fused phrase and is separate from the dependency internal to it.",
+        "pages": [
+          1070
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Whatever they gave him that he did not need went to the charity.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What she submitted, which was unusually brief, was accepted.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§6.1",
+        "pages": [
+          1070
+        ],
+        "pdf_pages": [
+          1090
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fused relatives with further dependents",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-899",
+    "domain": "clauses",
+    "concept": "Entity readings versus embedded questions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A fused relative can denote an entity, while an open interrogative with similar wording presents an embedded question.",
+    "condition": "Applies to the construction described in §6.2 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some governors permit both analyses and context can determine the interpretation.",
+        "pages": [
+          1070,
+          1071
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I liked what she wrote.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I wondered what she wrote.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§6.2",
+        "pages": [
+          1070,
+          1071
+        ],
+        "pdf_pages": [
+          1090,
+          1091
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Entity readings versus embedded questions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-900",
+    "domain": "clauses",
+    "concept": "Agreement and preposition diagnostics",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Number agreement and compatibility with particular prepositions can distinguish fused relatives from open interrogatives.",
+    "condition": "Applies to the construction described in §6.2 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The diagnostic depends on the whole construction and the governor's complement options.",
+        "pages": [
+          1071,
+          1072
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What ideas she has are interesting.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What ideas she has remains unclear.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§6.2",
+        "pages": [
+          1071,
+          1072
+        ],
+        "pdf_pages": [
+          1091,
+          1092
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Agreement and preposition diagnostics",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-901",
+    "domain": "clauses",
+    "concept": "Ever forms and interrogative fragments",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Fused relatives can use compound forms such as whatever in environments where an ordinary embedded interrogative favors a simple wh form.",
+    "condition": "Applies to the construction described in §6.2 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Ever also has a separate emotive use in interrogatives, and interrogative fragments can occur without the rest of their clause.",
+        "pages": [
+          1072,
+          1073
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She accepted whatever he offered.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She asked what he offered.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§6.2",
+        "pages": [
+          1072,
+          1073
+        ],
+        "pdf_pages": [
+          1092,
+          1093
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ever forms and interrogative fragments",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-902",
+    "domain": "clauses",
+    "concept": "Case in personal fused relatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Personal fused relatives can involve competing case requirements from the outer phrase and the role inside the relative clause.",
+    "condition": "Applies to the construction described in §6.3 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The availability of whom or whomever depends on the syntactic roles and register, and case conflicts can affect acceptability.",
+        "pages": [
+          1073,
+          1074
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Whoever finishes first will receive a prize.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We will interview whoever is available.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§6.3",
+        "pages": [
+          1073,
+          1074
+        ],
+        "pdf_pages": [
+          1093,
+          1094
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Case in personal fused relatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-903",
+    "domain": "clauses",
+    "concept": "Simple and compound fused relative forms",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Fused relatives use simple wh forms and compound forms ending in ever, with different distributions across constructions.",
+    "condition": "Applies to the construction described in §6.4 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A form that occurs in a fused construction need not be available with an overt antecedent.",
+        "pages": [
+          1074
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Take what you need.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Whoever finishes first will receive the key.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§6.4",
+        "pages": [
+          1074
+        ],
+        "pdf_pages": [
+          1094
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Simple and compound fused relative forms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-904",
+    "domain": "clauses",
+    "concept": "Personal and nonpersonal reference in fused relatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Fused forms differ in the type of entity or choice they can denote, including personal whoever and selection from a set with whichever.",
+    "condition": "Applies to the construction described in §6.4 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The available choices and interpretation of the set depend on context.",
+        "pages": [
+          1074,
+          1075
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Whoever finds the key should keep it.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Choose whichever of these two fits.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§6.4",
+        "pages": [
+          1074,
+          1075
+        ],
+        "pdf_pages": [
+          1094,
+          1095
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Personal and nonpersonal reference in fused relatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-905",
+    "domain": "clauses",
+    "concept": "Free-choice fused relatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A fused relative can leave the choice of an individual, place or action open to a participant.",
+    "condition": "Applies to the construction described in §6.4 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Both simple and ever forms are possible in some free-choice constructions, with lexical and structural restrictions.",
+        "pages": [
+          1075
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Invite whoever you like.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You can sit wherever you like.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§6.4",
+        "pages": [
+          1075
+        ],
+        "pdf_pages": [
+          1095
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Free-choice fused relatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-906",
+    "domain": "clauses",
+    "concept": "Other uses of compound ever forms",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Compound ever forms can refer to an unidentified individual or express nonspecific alternatives beyond deliberate choice.",
+    "condition": "Applies to the construction described in §6.4 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The context can identify a particular individual without identifying that individual by name.",
+        "pages": [
+          1076
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Whoever sent this has not read the instructions.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Bring a pen, a marker or whatever you have handy.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§6.4",
+        "pages": [
+          1076
+        ],
+        "pdf_pages": [
+          1096
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Other uses of compound ever forms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-907",
+    "domain": "clauses",
+    "concept": "Non-specific and quantity-limited simple fused relatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Simple fused relatives can have nonspecific readings or identify a limited amount of something.",
+    "condition": "Applies to the construction described in §6.4 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The small-quantity inference can depend on the lexical material and construction.",
+        "pages": [
+          1076,
+          1077
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I will do what I can.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We used what little time we had.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§6.4",
+        "pages": [
+          1076,
+          1077
+        ],
+        "pdf_pages": [
+          1096,
+          1097
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-specific and quantity-limited simple fused relatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-908",
+    "domain": "clauses",
+    "concept": "When and how in fused and interrogative constructions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A form such as when can locate a situation in time or introduce an embedded question about its timing.",
+    "condition": "Applies to the construction described in §6.4 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Similar wording does not establish identical constituent category or function.",
+        "pages": [
+          1077
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "That was when we arrived.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She asked when we arrived.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§6.4",
+        "pages": [
+          1077
+        ],
+        "pdf_pages": [
+          1097
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "When and how in fused and interrogative constructions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-909",
+    "domain": "clauses",
+    "concept": "Temporal and spatial fused relatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A fused relative can locate a situation in time or space, with the interpretation depending on the matrix construction.",
+    "condition": "Applies to the construction described in §6.4 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A recurrent temporal construction can suggest a conditional interpretation, while a single occasion can supply a temporal anchor.",
+        "pages": [
+          1078
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "When it rains, we work indoors.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I put the key where I always put it.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§6.4",
+        "pages": [
+          1078
+        ],
+        "pdf_pages": [
+          1098
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Temporal and spatial fused relatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]
