@@ -27,6 +27,48 @@ CASES = [
 ]
 
 
+# Freeze these expectations before running the configured parser.
+MODAL_EVALUATION_CASES = [
+    ("third-person form", "The courier might arrives before noon.", "The courier might arrive before noon."),
+    ("third-person form", "Our guide will brings a spare lantern.", "Our guide will bring a spare lantern."),
+    ("third-person form", "The committee should approves the request.", "The committee should approve the request."),
+    ("extra to", "The caretaker must to lock the side gate.", "The caretaker must lock the side gate."),
+    ("extra to", "A volunteer could to move the cabinet.", "A volunteer could move the cabinet."),
+    ("extra to", "The hikers may to cross the bridge.", "The hikers may cross the bridge."),
+    ("stress: negation", "The courier might not arrives before noon.", "The courier might not arrive before noon."),
+    ("stress: inversion", "Could the courier arrives before noon?", "Could the courier arrive before noon?"),
+    ("stress: intervening adjunct", "The courier might soon arrives.", "The courier might soon arrive."),
+    ("control: plain", "The courier might arrive before noon.", None),
+    ("control: perfect", "The courier might have arrived already.", None),
+    ("control: passive", "The side gate must be locked.", None),
+    ("control: noncentral modal", "The caretaker ought to lock the gate.", None),
+    ("control: lexical need", "The guide needs to bring a spare lantern.", None),
+    ("control: coordination", "The hikers may or may not cross the bridge.", None),
+    ("control: lexical can", "The crew cans peaches in August.", None),
+    ("control: infinitival purpose", "The caretaker will wait to lock the gate.", None),
+    ("control: quotation", "The sign read, “You may cross the bridge.”", None),
+]
+
+
+def evaluate_modal_cases(probe_modal_parser):
+    rows = []
+    for group, sentence, expected in MODAL_EVALUATION_CASES:
+        observation = observe_modal(analyze(sentence), probe_modal_parser)
+        candidates = observation["probe"]["candidates"]
+        exact_reparse = len(candidates) == 1 and (
+            candidates[0].get("reparse_observation", {}).get("sentence") == expected
+            and candidates[0].get("reparse_observation", {}).get("candidate_count") == 0
+        )
+        rows.append({
+            "group": group,
+            "sentence": sentence,
+            "expected_repair": expected,
+            "exact_reparse": exact_reparse,
+            **observation,
+        })
+    return rows
+
+
 def summarize_matrix(evaluation):
     summary = evaluation["summary"]
     node_errors = []
@@ -116,7 +158,17 @@ def main():
                         help="Also observe the inactive passive causative candidate")
     parser.add_argument("--modal-candidate", action="store_true",
                         help="Observe parser-backed central modal candidates and canonical node alignment")
+    parser.add_argument("--modal-evaluation", action="store_true",
+                        help="Run the separate modal evaluation on configured parser output")
     args = parser.parse_args()
+    if args.modal_evaluation:
+        if args.fixtures or args.matrix or args.passive_candidate or args.modal_candidate:
+            parser.error("--modal-evaluation runs separately on configured parser output")
+        from cgel_modal_parser_probe import probe_modal_parser
+
+        print(json.dumps({"input": "configured_parser",
+                          "modal_evaluation": evaluate_modal_cases(probe_modal_parser)}, indent=2))
+        return
     if args.modal_candidate and args.fixtures:
         parser.error("--modal-candidate requires configured parser output")
     if args.modal_candidate:
