@@ -69840,6 +69840,65 @@
     "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
   },
   {
+    "id": "CLS-1102",
+    "domain": "clauses",
+    "concept": "Pragmatically asymmetric coordination licenses cataphora",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Formally coordinated clauses can allow a pronoun in the first clause to anticipate a name later where the first clause functions concessively or conditionally.",
+    "condition": "Interpret the pragmatic relation between coordinates, not just the coordinating conjunction.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Equal-status sequential clauses generally do not show this license.",
+        "pages": [
+          1479
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She had only recently joined the team, but Laila already led the meetings.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Say one critical word about him and Owen will walk away.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.4.1",
+        "pages": [
+          1479
+        ],
+        "pdf_pages": [
+          1499
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pragmatically asymmetric coordination licenses cataphora",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
     "id": "CLS-1103",
     "domain": "clauses",
     "concept": "Pride lexically requires the subject-bound reflexive object",
