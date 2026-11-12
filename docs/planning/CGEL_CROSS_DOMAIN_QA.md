@@ -30,3 +30,18 @@ This pass compares the source scopes with the current implementations in `server
 | CLS-130 | Legacy 6.15 C-IMPERATIVE-VERB checks imperative verb form. Some catalog examples have an ordinary declarative reading in isolation. | Require an independently supported directive reading before proposing an edit. Keep valid overt-subject declaratives and avoid inferring imperativity from a third-person ending alone. |
 
 The matrix's finding merge can choose a displayed remediation and suppress particular duplicate cases, but its node-level grouping does not establish that two rules describe the same governing relation. The Phase C test cases should verify one finding for each equivalent relation and preserve separate findings when the required repairs differ. The rows above are a static implementation review. They do not assert parser coverage on the catalog examples.
+
+## Representative overlap probes
+
+Run `python scripts/audit_cgel_overlap_probes.py` in the configured parser environment to collect legacy rule findings from actual parser output. The explicit `--fixtures` option instead runs the same sentences through hand-authored constituency trees. The report contains rule IDs, constraint IDs and node IDs. Its scope is the legacy ruleset collector, so matrix findings and the inactive Cambridge candidate probe are outside this measurement.
+
+| Fixture probe | Observed legacy errors |
+|---|---|
+| Modal followed by infinitival to | One, C-MODAL-TO |
+| Active causative make with infinitival to | One, C-CAUSATIVE-TO |
+| Enjoy with a to-infinitival action complement | One, C-GERUND-INFINITIVE |
+| Modal followed by goes | Zero |
+| Passive causative make missing to | Zero |
+| Six controls covering a plain modal complement, ought to, modal coordination, both licensed make forms and a nominal enjoy complement | Zero |
+
+The two misses are specific to the supplied trees and this collector. They justify separate parser and matrix checks before deciding which existing rules can be reused. The six controls only verify the specified trees. This environment lacks torch, spaCy, benepar and the parser models, so the configured-parser observations remain pending.
