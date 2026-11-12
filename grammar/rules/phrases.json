@@ -29158,5 +29158,3316 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "PHR-459",
+    "domain": "phrases",
+    "concept": "Temporal deixis depends on utterance time",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Expressions such as now and yesterday locate a time relative to the act of utterance rather than a fixed calendar date.",
+    "condition": "Classify the time-relative expression by whether its interpretation shifts with the speaking or writing time.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The centre can move to the reader or a reported consciousness in special uses.",
+        "pages": [
+          1451
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I finished the outline yesterday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We need the invoices now.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.1",
+        "pages": [
+          1451
+        ],
+        "pdf_pages": [
+          1471
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Temporal deixis depends on utterance time",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-460",
+    "domain": "phrases",
+    "concept": "Locative deixis distinguishes speaker-relative locations",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Here and the demonstratives this and those can identify places or objects through their location relative to a speaker.",
+    "condition": "Track proximity to the deictic centre when interpreting locative expressions.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Pointing or shared spatial context may be needed to identify the intended referent.",
+        "pages": [
+          1451
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Please put this folder beside me.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Those chairs by the door are reserved.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.1",
+        "pages": [
+          1451
+        ],
+        "pdf_pages": [
+          1471
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Locative deixis distinguishes speaker-relative locations",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-461",
+    "domain": "phrases",
+    "concept": "Person deixis identifies utterance participants",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "First-person and second-person expressions ordinarily identify the speaker and addressee from roles in the utterance rather than a preceding NP.",
+    "condition": "When I and you occur in their primary uses, resolve their referents from the utterance participants.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Quoted speech and role-play can shift the participants represented.",
+        "pages": [
+          1451
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I will return the keys tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Could you close the window?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.1",
+        "pages": [
+          1451
+        ],
+        "pdf_pages": [
+          1471
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Person deixis identifies utterance participants",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-462",
+    "domain": "phrases",
+    "concept": "Deictic versus non-deictic reference",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A place or time can be identified directly from the utterance situation or by another descriptive relation that is independent of the act of utterance.",
+    "condition": "Compare speaker-relative here or last month with named locations and event-relative dates.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Descriptive referring expressions can vary between utterances without becoming deictic.",
+        "pages": [
+          1452
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They met here last month.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They met in Cebu the week after graduation.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.1",
+        "pages": [
+          1452
+        ],
+        "pdf_pages": [
+          1472
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Deictic versus non-deictic reference",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-463",
+    "domain": "phrases",
+    "concept": "Deictic marker versus full expression",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A deictic marker may be one word within a larger deictic expression; its contribution of proximity or temporal orientation does not constitute the whole expression.",
+    "condition": "Separate demonstrative determinatives and temporal words from the larger phrases whose referents they help identify.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A stand-alone demonstrative may be both marker and complete deictic expression.",
+        "pages": [
+          1452
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "These packages are for the laboratory.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I submitted the proposal last Tuesday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.1",
+        "pages": [
+          1452
+        ],
+        "pdf_pages": [
+          1472
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Deictic marker versus full expression",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-464",
+    "domain": "phrases",
+    "concept": "Indexing acts in deictic interpretation",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Pointing, head movement and gaze can establish reference together with a deictic expression; some utterances require this external information.",
+    "condition": "Interpret gesture-dependent words such as thus, so, or there in their immediate situational context.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Written arrows and diagrams sometimes substitute for physical indexing.",
+        "pages": [
+          1452
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Please place the parcel there, by that chair.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The statue is about this high, she said while holding up her hand.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.1",
+        "pages": [
+          1452
+        ],
+        "pdf_pages": [
+          1472
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Indexing acts in deictic interpretation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-465",
+    "domain": "phrases",
+    "concept": "Speaker as deictic centre",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The default deictic centre is the current speaker, and the centre changes when the speaker changes in dialogue.",
+    "condition": "Resolve I, here and now from each turn's speaker and location, not from the previous turn by default.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This is the default, not an exceptionless restriction on embedded or notice language.",
+        "pages": [
+          1453
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A: I am here. B: I am outside.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A: These notes are mine. B: Those notes are yours.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.1",
+        "pages": [
+          1453
+        ],
+        "pdf_pages": [
+          1473
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Speaker as deictic centre",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-466",
+    "domain": "phrases",
+    "concept": "Shifted deictic centre in notices and report",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A public instruction can orient now to its reader's time, and an embedded temporal expression can adopt a reported thinker's perspective.",
+    "condition": "When a notice or a free indirect report supplies a centre other than the actual writer, interpret the temporal expression accordingly.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An utterance-centred reading of ago can remain available in the reporting construction.",
+        "pages": [
+          1453
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Please wash your hands now.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Dana realized Omar had left several days ago.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.1",
+        "pages": [
+          1453
+        ],
+        "pdf_pages": [
+          1473
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Shifted deictic centre in notices and report",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-467",
+    "domain": "phrases",
+    "concept": "Anaphor and antecedent",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Anaphora links an expression of reduced or dependent interpretation to a prior or later linguistic antecedent supplying the relevant content.",
+    "condition": "Identify the expression providing an interpretation and the expression receiving it.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The relation need not require identical grammatical functions or co-reference.",
+        "pages": [
+          1453
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Nora claimed that she had finished.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The suggestion was ambitious, but I believed so.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.2",
+        "pages": [
+          1453
+        ],
+        "pdf_pages": [
+          1473
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Anaphor and antecedent",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-468",
+    "domain": "phrases",
+    "concept": "Anaphoric links need not match syntactic functions",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Antecedent and anaphor may be subject, object or different syntactic functions, and may occur in separate sentences.",
+    "condition": "Do not require subject-to-subject links when resolving a personal pronoun.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Local binding constraints apply to certain special anaphors, especially reflexives.",
+        "pages": [
+          1454
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I thanked Malik because he had helped.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Rina arrived early. The tutor greeted her.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.2",
+        "pages": [
+          1454
+        ],
+        "pdf_pages": [
+          1474
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Anaphoric links need not match syntactic functions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-469",
+    "domain": "phrases",
+    "concept": "Multiple antecedent candidates and grammatical ambiguity",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Ordinary discourse can permit several potential antecedents for a third-person pronoun; ambiguity can be stylistically undesirable without being ungrammatical.",
+    "condition": "Distinguish genuine semantic ambiguity from a violation of syntactic agreement or binding.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Context may resolve a pronoun even where several nearby NPs are formally compatible.",
+        "pages": [
+          1454
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina told Eva that she would be late.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Leo met Sam before he left.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.2",
+        "pages": [
+          1454
+        ],
+        "pdf_pages": [
+          1474
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Multiple antecedent candidates and grammatical ambiguity",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-470",
+    "domain": "phrases",
+    "concept": "Anaphoric marker versus anaphoric NP",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The anaphoric marker may be a demonstrative component inside a larger NP rather than itself the entire anaphor.",
+    "condition": "For a phrase such as that colleague, track the demonstrative marker separately from the complete NP linked to an earlier name.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A pronoun such as she can serve as both marker and full anaphor.",
+        "pages": [
+          1454
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We spoke to Niko; that colleague was helpful.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I met Asha yesterday; that scientist won a prize.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.2",
+        "pages": [
+          1454
+        ],
+        "pdf_pages": [
+          1474
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Anaphoric marker versus anaphoric NP",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-471",
+    "domain": "phrases",
+    "concept": "Simultaneous deictic and anaphoric interpretation",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A plural person pronoun or locative expression may combine reference to speaker/place with identification supplied by an earlier expression.",
+    "condition": "Represent both participant-relative and text-relative components where both are active.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Here and there can have the same antecedent while encoding different speaker-relative distance.",
+        "pages": [
+          1455
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Lea will join us; we are planning dinner.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I grew up in Perth and still work here.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.2",
+        "pages": [
+          1455
+        ],
+        "pdf_pages": [
+          1475
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Simultaneous deictic and anaphoric interpretation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-472",
+    "domain": "phrases",
+    "concept": "Alternation between deictic and anaphoric readings",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Demonstratives, relational away and soon admit either utterance-centred or text-anchored interpretation depending on context.",
+    "condition": "Classify a relative location or time by whether it is anchored to the discourse or to the present utterance.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A word's deictic and anaphoric uses may share residual semantic content.",
+        "pages": [
+          1455
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The exhibition opens tomorrow, so we should leave soon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "After the interview, the candidates soon received replies.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.2",
+        "pages": [
+          1455
+        ],
+        "pdf_pages": [
+          1475
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Alternation between deictic and anaphoric readings",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-473",
+    "domain": "phrases",
+    "concept": "Retrospective and anticipatory anaphora",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In the default retrospective pattern an antecedent precedes its anaphor, while anticipatory anaphora uses a later antecedent.",
+    "condition": "Record linear order separately from syntactic or referential licensing.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Anticipatory reference has tighter licensing restrictions than ordinary retrospective anaphora.",
+        "pages": [
+          1455,
+          1456
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "When Clara arrived, she asked for tea.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Before she entered, Clara checked the sign.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.2",
+        "pages": [
+          1455,
+          1456
+        ],
+        "pdf_pages": [
+          1475,
+          1476
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Retrospective and anticipatory anaphora",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-474",
+    "domain": "phrases",
+    "concept": "Integrated versus non-integrated anticipatory antecedent",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An anticipatory antecedent can form part of the containing syntax or be a supplementary explanation of a provisional pronoun.",
+    "condition": "Distinguish a later embedded antecedent from a non-integrated explanatory supplement.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An integrated antecedent may or may not allow a reverse order; a non-integrated explanation has a different reversibility rationale.",
+        "pages": [
+          1456
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "While he was waiting, the technician reviewed the file.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It's confirmed: the event starts at noon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.2",
+        "pages": [
+          1456
+        ],
+        "pdf_pages": [
+          1476
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Integrated versus non-integrated anticipatory antecedent",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-475",
+    "domain": "phrases",
+    "concept": "Anaphoric chains with intermediate links",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A chain of anaphors can transmit an interpretation across pronouns or gaps rather than attaching each later expression directly to the first NP.",
+    "condition": "Represent each anaphoric relation and the relevant local link separately.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Anaphoric chains may include gaps and covert subjects; local reflexive licensing still applies.",
+        "pages": [
+          1457
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Cora found her glasses. She cleaned them before leaving.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If he hurt himself, Arun would apologize.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.2",
+        "pages": [
+          1457
+        ],
+        "pdf_pages": [
+          1477
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Anaphoric chains with intermediate links",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-476",
+    "domain": "phrases",
+    "concept": "Discourse referents can evolve across anaphoric chains",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "During descriptions of sequential actions, a nominal referent can change physical state without invalidating later anaphoric reference.",
+    "condition": "Track the evolving state of a discourse referent rather than assume all anaphors denote an unchanged physical object.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Long discourse chains can be maintained through intermediate expressions that preserve salience.",
+        "pages": [
+          1457
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Chop the carrots and then simmer them until soft.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Fold the dough, chill it, and roll it again.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.2",
+        "pages": [
+          1457
+        ],
+        "pdf_pages": [
+          1477
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Discourse referents can evolve across anaphoric chains",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-477",
+    "domain": "phrases",
+    "concept": "Coreference in definite NP anaphora",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "When both linked NPs are referring expressions, coreference means they pick out the same entity, rather than the pronoun referring to the antecedent's words.",
+    "condition": "In straightforward definite third-person anaphora, compare the external referents of the two expressions.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Many non-definite and non-NP cases are anaphoric without coreference.",
+        "pages": [
+          1458
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The pianist was late because she missed the bus.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The editor arrived and he greeted the team.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.3(a)",
+        "pages": [
+          1458
+        ],
+        "pdf_pages": [
+          1478
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Coreference in definite NP anaphora",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-478",
+    "domain": "phrases",
+    "concept": "Bound-variable anaphora with quantifiers",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Quantified antecedents such as no one or every vehicle can license corresponding pronouns without either expression referring to one specific individual.",
+    "condition": "Represent the anaphoric reading as a variable bound by the quantifier rather than identity of reference.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Bound-variable readings should not be marked as pronoun mismatches merely because the antecedent is not referential.",
+        "pages": [
+          1458
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Every author checked their final draft.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "No cyclist forgot their helmet.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.3(b)",
+        "pages": [
+          1458
+        ],
+        "pdf_pages": [
+          1478
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Bound-variable anaphora with quantifiers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-479",
+    "domain": "phrases",
+    "concept": "Anaphoric NP with a clause or VP antecedent",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A pronoun can recover an event, claim or proposition from a clause, and this relationship is not NP-to-NP coreference.",
+    "condition": "Permit a clausal or VP antecedent for an NP referring to the situation or act evoked.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The intended abstract referent may be narrower than the entire preceding clause.",
+        "pages": [
+          1458
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The queue grew longer, and that worried us.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They might cancel the lecture, which would disappoint the class.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.3(c)",
+        "pages": [
+          1458
+        ],
+        "pdf_pages": [
+          1478
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Anaphoric NP with a clause or VP antecedent",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-480",
+    "domain": "phrases",
+    "concept": "Nominal one anaphora denotes a kind rather than one object",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Anaphoric one replaces a nominal denotation while the containing NP may refer to a different physical item.",
+    "condition": "When one is modified by a contrasting property, link it to the common nominal rather than force the NPs to be co-referential.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The denoted kind can include modifiers and arguments, but the definite referents normally differ.",
+        "pages": [
+          1459
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I ordered a red notebook, but they supplied a blue one.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The first camera is heavy; the smaller one fits my bag.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.3(d)",
+        "pages": [
+          1459
+        ],
+        "pdf_pages": [
+          1479
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nominal one anaphora denotes a kind rather than one object",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-481",
+    "domain": "phrases",
+    "concept": "Implicit reference inside anaphoric VPs",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A VP pro-form or gap can inherit a reference to a contained NP when that NP itself refers to a specific entity.",
+    "condition": "Identify implicit coreference inside an elided predicate without identifying the VP itself as referential.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A contained indefinite may not have a referent capable of implicit coreference.",
+        "pages": [
+          1459
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If you want me to call Maya, I will do so.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Nina expected to receive the award, and she did.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.3(d)",
+        "pages": [
+          1459
+        ],
+        "pdf_pages": [
+          1479
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Implicit reference inside anaphoric VPs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-482",
+    "domain": "phrases",
+    "concept": "Split antecedents for plural anaphors",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A plural pronoun can denote the set introduced jointly by more than one separate antecedent NP.",
+    "condition": "Allow multiple earlier NPs to supply one plural pronoun interpretation.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The components of a split antecedent need not have formed one syntactic constituent.",
+        "pages": [
+          1460
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Ari and Bea worked separately, but they agreed on the result.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Tomas invited Iris; later they both arrived.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.3(e)",
+        "pages": [
+          1460
+        ],
+        "pdf_pages": [
+          1480
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Split antecedents for plural anaphors",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-483",
+    "domain": "phrases",
+    "concept": "Missing antecedent introduced through ellipsis",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An elliptical clause can introduce a discourse entity that a subsequent pronoun refers to, even if no overt prior NP expresses that entity.",
+    "condition": "Recover the intended missing material before classifying a later pronoun as lacking any possible referent.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The direct antecedent for the later pronoun is conceptually supplied, not necessarily an overt string.",
+        "pages": [
+          1460
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I didn't bring a pen, but Kai did, and he lent it to me.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Lea hadn't packed a coat, but Arun had, so she borrowed his.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.3(e)",
+        "pages": [
+          1460
+        ],
+        "pdf_pages": [
+          1480
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Missing antecedent introduced through ellipsis",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-484",
+    "domain": "phrases",
+    "concept": "Discourse deixis as reference to linguistic material",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A demonstrative can point to a word, phrase or utterance event itself, rather than an entity described by that material.",
+    "condition": "Distinguish demonstratives mentioning an expression from ordinary object-level anaphora.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Discourse deixis targets the current discourse and should not be conflated with ordinary NP coreference.",
+        "pages": [
+          1460
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The village is called Ngawi. Can you spell that?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The judge called it an aberration. Is that a legal term?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.3",
+        "pages": [
+          1460
+        ],
+        "pdf_pages": [
+          1480
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Discourse deixis as reference to linguistic material",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-485",
+    "domain": "phrases",
+    "concept": "Speech-act versus proposition with that",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "That can point to an earlier speech act or an event described in it; the two uses have different reference.",
+    "condition": "Classify reactions to the utterance as discourse-deictic and reactions to the situation as anaphoric.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The intended target must be determined from the predicate and context.",
+        "pages": [
+          1461
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A: The bridge has collapsed. B: That's alarming.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A: The bridge has collapsed. B: That's a false claim.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.3",
+        "pages": [
+          1461
+        ],
+        "pdf_pages": [
+          1481
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Speech-act versus proposition with that",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-486",
+    "domain": "phrases",
+    "concept": "Hereby as self-referential discourse deixis",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Hereby marks an action performed by the current speech act and is reserved for discourse-deictic use.",
+    "condition": "Interpret hereby as referring to the performative act of the same utterance.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Other discourse expressions can also refer to their own utterance without sharing this lexical restriction.",
+        "pages": [
+          1461
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I hereby submit my resignation.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We hereby announce the results.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.3",
+        "pages": [
+          1461
+        ],
+        "pdf_pages": [
+          1481
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Hereby as self-referential discourse deixis",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-487",
+    "domain": "phrases",
+    "concept": "Pro-form as a low-content anaphor",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A pro-form is a word or restricted idiom that derives most of its interpretation from an antecedent and has little descriptive content of its own.",
+    "condition": "Separate one-word pro-forms from anaphoric NPs that retain substantial lexical content.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The anaphoric NP that researcher is not itself a pro-form even if that is an anaphoric marker.",
+        "pages": [
+          1461
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Lia finished the report, and she sent it.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The panel agreed, and I believe so.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.4",
+        "pages": [
+          1461
+        ],
+        "pdf_pages": [
+          1481
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pro-form as a low-content anaphor",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-488",
+    "domain": "phrases",
+    "concept": "Pronouns need not function as anaphoric pro-forms",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Interrogative who and what lack antecedents in their normal interrogative use, while first- and second-person pronouns are mainly deictic.",
+    "condition": "Distinguish the syntactic subclass pronoun from the semantic subclass pro-form.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Personal pronouns can sometimes function anaphorically, but their category does not depend on doing so.",
+        "pages": [
+          1462
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Who left the lights on?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What caused the interruption?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.4(a)",
+        "pages": [
+          1462
+        ],
+        "pdf_pages": [
+          1482
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pronouns need not function as anaphoric pro-forms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-489",
+    "domain": "phrases",
+    "concept": "Pro-nominal one is a common noun rather than a pronoun",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The anaphoric noun one can take determiners and plural inflection, unlike the central personal pronouns.",
+    "condition": "Classify pro-nominal one and ones as common nouns by their syntactic behavior.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The source's pronoun category is a subclass of nouns but does not take ordinary determiners.",
+        "pages": [
+          1462
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The cheaper ones are on the bottom shelf.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We compared three phones and purchased the newest one.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.4(b)",
+        "pages": [
+          1462
+        ],
+        "pdf_pages": [
+          1482
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pro-nominal one is a common noun rather than a pronoun",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-490",
+    "domain": "phrases",
+    "concept": "Anaphoric spatial and temporal there and then",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "There and then can retrieve location and time from prior PPs and are analyzed as intransitive prepositions rather than NP pronouns.",
+    "condition": "Identify anaphoric spatial or temporal expression and its typically PP antecedent.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "These forms can have deictic uses as well as anaphoric ones.",
+        "pages": [
+          1462
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We stayed in the northern lodge and ate there.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The train arrives at six; I'll meet you then.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.4(b)",
+        "pages": [
+          1462
+        ],
+        "pdf_pages": [
+          1482
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Anaphoric spatial and temporal there and then",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-491",
+    "domain": "phrases",
+    "concept": "Pro-X labels require matching category",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A label such as pro-NP, pro-clause, pro-nominal, or pro-PP fits when the antecedent and replacement are of the same syntactic category.",
+    "condition": "Use the pro-X classification only if both source category and possible expanded replacement are X.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Anaphors may have different syntactic categories from their semantic antecedents; no pro-X label is claimed in those cases.",
+        "pages": [
+          1463
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The exhibit is closed, but it will reopen tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She predicted a delay, and I think so too.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.4",
+        "pages": [
+          1463
+        ],
+        "pdf_pages": [
+          1483
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pro-X labels require matching category",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-492",
+    "domain": "phrases",
+    "concept": "Personal-pronoun person system",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "First person includes a speaker; second person includes an addressee but no speaker; third person is the remaining grammatical category.",
+    "condition": "Determine person features from pronoun lexemes rather than social status or gender of the referent.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The third-person class also includes ordinary NPs and interrogative pronouns.",
+        "pages": [
+          1463
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We have reviewed the draft.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You have reviewed the draft.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2",
+        "pages": [
+          1463
+        ],
+        "pdf_pages": [
+          1483
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Personal-pronoun person system",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-493",
+    "domain": "phrases",
+    "concept": "Third person is the default NP category",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An NP is third person unless it is marked first person by I/we or second person by you; third person is not inherently deictic.",
+    "condition": "Classify grammatical person using explicit pronoun marking, not by whether a noun phrase denotes someone present.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A third-person NP may denote the actual speaker or addressee.",
+        "pages": [
+          1464
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The instructor has arrived.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Everyone here knows the answer.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.1",
+        "pages": [
+          1464
+        ],
+        "pdf_pages": [
+          1484
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Third person is the default NP category",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-494",
+    "domain": "phrases",
+    "concept": "Third-person self-reference and address",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A third-person NP can denote the current speaker, writer or addressee while keeping third-person agreement.",
+    "condition": "Distinguish the real-world participant from third-person grammatical form.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Verb agreement follows the grammatical person of the NP, not the person of its referent.",
+        "pages": [
+          1464
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The author wishes to thank the audience.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Does the professor need another chair?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.1",
+        "pages": [
+          1464
+        ],
+        "pdf_pages": [
+          1484
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Third-person self-reference and address",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-495",
+    "domain": "phrases",
+    "concept": "We as a separate lexeme from I",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "We denotes a group including at least one speaker and is not treated here as the simple plural inflection of I.",
+    "condition": "When interpreting first-person plural, identify the speaker-containing set, not a grammatical number form of singular I.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Joint written authorship and unison public speaking may involve multiple speakers.",
+        "pages": [
+          1465
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We have signed the agreement together.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We should finish the survey today.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.2.1",
+        "pages": [
+          1465
+        ],
+        "pdf_pages": [
+          1485
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "We as a separate lexeme from I",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-496",
+    "domain": "phrases",
+    "concept": "Inclusive versus exclusive we",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "We can include the addressee as well as the speaker or include speakers and others but exclude the addressee.",
+    "condition": "Determine whether we includes the addressee from the discourse situation.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "English does not normally encode the distinction in the lexical form we.",
+        "pages": [
+          1465
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We could walk to the station together.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We can send you a copy of the minutes.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.2.1",
+        "pages": [
+          1465
+        ],
+        "pdf_pages": [
+          1485
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inclusive versus exclusive we",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-497",
+    "domain": "phrases",
+    "concept": "Let's as inclusive first-person imperative",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The first-person plural imperative with let plus contracted us necessarily includes the addressee, unlike ordinary let meaning allow.",
+    "condition": "Keep the let's imperative construction separate from a request that someone allow us to do something.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The reduced clitic 's is not licensed with ordinary lexical let in the permissive sense.",
+        "pages": [
+          1466
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Let's meet near the library.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Please let us enter the building.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.2.1",
+        "pages": [
+          1466
+        ],
+        "pdf_pages": [
+          1486
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Let's as inclusive first-person imperative",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-498",
+    "domain": "phrases",
+    "concept": "Variable referential groups with we and plural you",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "We may refer to a family, institution or humankind including the speaker; plural you applies to a set including an addressee but no speaker.",
+    "condition": "Use utterance context and the speaker/addressee roles rather than a fixed group size.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "You is invariant for singular/plural except yourselves; some varieties use plural youse or y'all.",
+        "pages": [
+          1466
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We have faced similar problems for decades.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Have you both read the instructions?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.2.1",
+        "pages": [
+          1466
+        ],
+        "pdf_pages": [
+          1486
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Variable referential groups with we and plural you",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-499",
+    "domain": "phrases",
+    "concept": "Authorial we in single-author writing",
+    "rule_type": "stylistic_or_prescriptive",
+    "scope": "phrase",
+    "statement": "A single author may use we to involve readers or soften overt self-reference, even if only the author performs the stated act.",
+    "condition": "Read authorial we according to rhetorical involvement rather than assert multiple actual writers.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Advice to avoid I in scholarly prose is a stylistic convention, not a grammatical prohibition.",
+        "pages": [
+          1467
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We will explain the method in Section Four.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "As we noted earlier, the results were inconclusive.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.2.2(a)",
+        "pages": [
+          1467
+        ],
+        "pdf_pages": [
+          1487
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Authorial we in single-author writing",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-500",
+    "domain": "phrases",
+    "concept": "Secondary we for one speaker or addressee",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Colloquial us may mean the speaker alone, and we addressed to a patient or pupil can refer mainly to the addressee.",
+    "condition": "Distinguish these pragmatic secondary uses from the default speaker-containing plurality.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The single-speaker us is very colloquial; the medical/tuition use risks sounding patronising; the royal singular we is archaic.",
+        "pages": [
+          1467
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Give us a moment, would you?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "How are we feeling after the appointment?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.2.2(b–c)",
+        "pages": [
+          1467
+        ],
+        "pdf_pages": [
+          1487
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Secondary we for one speaker or addressee",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-501",
+    "domain": "phrases",
+    "concept": "Non-referential generic you",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "You can express a general statement about people rather than refer to the addressee personally; it may be informal relative to one.",
+    "condition": "Identify generalizing you from the scope and communicative intent, not a required second-person referent.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A generalization may be addressed to someone to whom the property does not literally apply.",
+        "pages": [
+          1467,
+          1468
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You never know how a journey will end.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You can get tired even during a short commute.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.2.2(d)",
+        "pages": [
+          1467,
+          1468
+        ],
+        "pdf_pages": [
+          1487,
+          1488
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-referential generic you",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-502",
+    "domain": "phrases",
+    "concept": "Role-playing deictic pronouns",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In rehearsed dialogue or pretence, first- and second-person pronouns can be understood as referring to fictional roles rather than the real-world speaker/addressee.",
+    "condition": "Allow a shift to the character roles established by performance context.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This is a restricted pragmatic setting, not ordinary person-deixis.",
+        "pages": [
+          1468
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "In the rehearsal I play the captain and you play the guard.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I'll pretend to be the witness while you question me.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.2.2(e)",
+        "pages": [
+          1468
+        ],
+        "pdf_pages": [
+          1488
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Role-playing deictic pronouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-503",
+    "domain": "phrases",
+    "concept": "Third-person pronouns typically resume identifiable antecedents",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The characteristic use of he, she, it and they is to retrieve an identifiable referent made salient by earlier discourse.",
+    "condition": "In ordinary referring use, look for an NP whose referent is already recoverable.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Non-anaphoric third-person uses are also well attested and must not be banned.",
+        "pages": [
+          1468
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I met Amara yesterday. She seemed pleased.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The forms were missing, but they appeared later.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.3.1",
+        "pages": [
+          1468
+        ],
+        "pdf_pages": [
+          1488
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Third-person pronouns typically resume identifiable antecedents",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-504",
+    "domain": "phrases",
+    "concept": "Pronoun and antecedent feature consistency",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Anaphoric third-person pronouns convey gender/number information consistent with an antecedent, although the antecedent need not itself specify these features.",
+    "condition": "Require semantic compatibility of intended referents rather than exact gender marking on the antecedent noun.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Number and gender interpretation can be context-sensitive; singular they and other constructions are described in Chapter 5.",
+        "pages": [
+          1469
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The new manager arrived, and she greeted the staff.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The engineer sent the design; it was approved.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.3.1",
+        "pages": [
+          1469
+        ],
+        "pdf_pages": [
+          1489
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pronoun and antecedent feature consistency",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-505",
+    "domain": "phrases",
+    "concept": "Pragmatic preference among pronoun antecedents",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "When several NPs are formally compatible, world knowledge and discourse structure often favor one without making the other grammatical interpretation impossible.",
+    "condition": "Model antecedent resolution as interpretation with candidates rather than force a unique antecedent from syntax alone.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An appositive repeated name can disambiguate careful writing.",
+        "pages": [
+          1469
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Elena told Mara that she had won.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Rafi thanked Omar because he had helped.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.3.1",
+        "pages": [
+          1469
+        ],
+        "pdf_pages": [
+          1489
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pragmatic preference among pronoun antecedents",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-506",
+    "domain": "phrases",
+    "concept": "Contextually salient non-anaphoric third-person reference",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A third-person pronoun can directly identify a contextually prominent person or object without any preceding overt antecedent.",
+    "condition": "Allow identifiability from visible events, routine knowledge or active context.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "These pronouns are definite but not deictic in the strict speaker-relative lexical sense.",
+        "pages": [
+          1470
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She is about to win, said while watching the runner.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Is he home yet? asked about an expected visitor.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.3.1(a)",
+        "pages": [
+          1470
+        ],
+        "pdf_pages": [
+          1490
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Contextually salient non-anaphoric third-person reference",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-507",
+    "domain": "phrases",
+    "concept": "Indirect ostension in pronoun reference",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A gesture to a contextually related object can make an absent person salient enough to be referred to by a personal pronoun.",
+    "condition": "Distinguish pointing to an artist's painting from pointing directly at the artist.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The third-person pronoun still does not encode a demonstrative speaker-location relation.",
+        "pages": [
+          1470
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He must have been talented, said while indicating an old mural.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She built this? said while looking at a model of an architect's tower.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.3.1(a)",
+        "pages": [
+          1470
+        ],
+        "pdf_pages": [
+          1490
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Indirect ostension in pronoun reference",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-508",
+    "domain": "phrases",
+    "concept": "Quasi-anaphora through associative discourse salience",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Mention of a shop, marriage, family member or group can make an associated person identifiable with a pronoun without that NP being the antecedent.",
+    "condition": "Model an accessible associated referent rather than forcing exact antecedent identity.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Borderline collective cases can be analysed as anaphoric, particularly under plural collective agreement.",
+        "pages": [
+          1471
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I went to the dentist, but she was running late.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Leo is getting married, and his partner is already here.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.3.1(b)",
+        "pages": [
+          1471
+        ],
+        "pdf_pages": [
+          1491
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Quasi-anaphora through associative discourse salience",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-509",
+    "domain": "phrases",
+    "concept": "Register of quasi-anaphoric pronouns",
+    "rule_type": "stylistic_or_prescriptive",
+    "scope": "phrase",
+    "statement": "Pronouns licensed by loose associations are common in casual conversation and may be replaced by fuller NPs in careful writing.",
+    "condition": "Treat preference for overt reference as a clarity or register issue rather than automatic ungrammaticality.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The boundary with standard anaphora is not sharply defined.",
+        "pages": [
+          1471
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I stopped by the café, but they had closed early.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We joined the theatre club; they rehearse on Fridays.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.3.1(b)",
+        "pages": [
+          1471
+        ],
+        "pdf_pages": [
+          1491
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Register of quasi-anaphoric pronouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-510",
+    "domain": "phrases",
+    "concept": "Archaic proverbial he who pattern",
+    "rule_type": "variety_restricted",
+    "scope": "phrase",
+    "statement": "The construction he who can introduce a generic relative with an old-fashioned or literary interpretation.",
+    "condition": "Recognise the fixed proverbial pattern separately from ordinary anaphoric he.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "It and they do not participate in this pattern in the same way; demonstrative that is used instead.",
+        "pages": [
+          1471
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He who hesitates may miss the opportunity.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She who studies diligently will understand the proof.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.3.1(c)",
+        "pages": [
+          1471
+        ],
+        "pdf_pages": [
+          1491
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Archaic proverbial he who pattern",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping.",
+    "variety": "archaic literary/proverbial English"
+  },
+  {
+    "id": "PHR-511",
+    "domain": "phrases",
+    "concept": "Institutional they with unspecified authority",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "They can refer vaguely to an unspecified institution or group empowered to make decisions, with no explicit prior plural antecedent.",
+    "condition": "Use situational knowledge to infer an institutional collective rather than flag a pronoun lacking a named NP.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This construction can overlap with contextually salient and quasi-anaphoric interpretations.",
+        "pages": [
+          1472
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They have closed the main road for repairs.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They raised the permit fee last month.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.3.1(d)",
+        "pages": [
+          1472
+        ],
+        "pdf_pages": [
+          1492
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Institutional they with unspecified authority",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-512",
+    "domain": "phrases",
+    "concept": "Generic they versus generic you",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "They may generalize over unspecified people in a way similar to non-referential you but is less syntactically flexible.",
+    "condition": "Separate institutional or generic they as clause subject from a singular-plural anaphoric reference.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The nonreferential use is largely nominative; replacing object you with them in generic constructions is not generally equivalent.",
+        "pages": [
+          1472
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They say the valley gets very cold in winter.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They call this procedure peer review.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.3.1(d)",
+        "pages": [
+          1472
+        ],
+        "pdf_pages": [
+          1492
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Generic they versus generic you",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-513",
+    "domain": "phrases",
+    "concept": "Definite and indefinite NP antecedents for referential pronouns",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Anaphoric pronouns may corefer with a previously definite entity or with a discourse entity newly introduced by an indefinite NP.",
+    "condition": "Recover the referent introduced by the antecedent, independent of whether the antecedent has an article or a name.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Whether the referent exists is a separate question when the antecedent is hypothetical.",
+        "pages": [
+          1472
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I met a violinist; she offered to help.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The violinist arrived, and she tuned her instrument.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.3.2(a–b)",
+        "pages": [
+          1472
+        ],
+        "pdf_pages": [
+          1492
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Definite and indefinite NP antecedents for referential pronouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-514",
+    "domain": "phrases",
+    "concept": "Hypothetical entities licensed by indefinite antecedents",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An anaphoric pronoun may refer within an imagined scenario to an entity that has not yet come into actual existence.",
+    "condition": "For hypothetical contexts, permit an indefinite antecedent and a pronoun tied to the imagined entity.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The real-world existence of the entity is not entailed by hypothetical or imperative contexts.",
+        "pages": [
+          1472
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If I find a suitable apartment, I'll rent it.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Dig a shallow trench and cover it with a board.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.3.2(c)",
+        "pages": [
+          1472
+        ],
+        "pdf_pages": [
+          1492
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Hypothetical entities licensed by indefinite antecedents",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
   }
 ]

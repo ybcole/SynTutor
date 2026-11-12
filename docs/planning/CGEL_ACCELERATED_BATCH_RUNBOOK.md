@@ -356,3 +356,7 @@ Printed pp. 1323–1342 audited consecutively in text and rendered layout, inclu
 ## Chapter 15 Phase B source closure
 
 Printed pp. 1343–1362 were checked against text, all rendered page layouts and the two syntax-tree diagrams; the batch adds 59 inert records (`CLS-1037`–`CLS-1095`). Chapter 15 printed pp. 1273–1362 are fully accounted for (88 substantive and 2 contents-only skips; zero unprocessed). The Chapter 15 draft PR remains subject to complete local/CI gates and independent source QA, with no newly enabled runtime rules. Next chapter in priority order: Chapter 17.
+
+## Chapter 17 first checkpoint — 2026-11-12
+
+Printed pp. 1449–1472 checked consecutively in uploaded full-volume PDF text and page layout. Two contents-only pages (1449–1450) are properly skipped. The 22 substantive pages (1451–1472) yield 62 inert, source-attributed original-example records (PHR-459–PHR-514 and CLS-1096–CLS-1101), one narrow spec-only reflexive constraint with explicit guards. Next begins at p. 1473. No runtime enablement, fabricated B-R crosswalk or independent source approval.

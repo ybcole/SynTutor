@@ -22,12 +22,12 @@
 | 14. Non-finite and verbless clauses | 102 | 99 | 0 | 3 | 0 | Source-extracted |
 | 15. Coordination and supplementation | 90 | 88 | 0 | 2 | 0 | Source-extracted; independent QA pending |
 | 16. Information packaging | 86 | 0 | 85 | 1 | 0 | Incomplete |
-| 17. Deixis and anaphora | 116 | 0 | 116 | 0 | 0 | Incomplete |
+| 17. Deixis and anaphora | 116 | 22 | 92 | 2 | 0 | In progress (pp. 1449–1472) |
 | 18. Inflectional morphology | 56 | 0 | 55 | 1 | 0 | Incomplete |
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **1214 extracted**, 514 unprocessed, 34 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **1236 extracted**, 490 unprocessed, 36 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -354,3 +354,7 @@ Checked 20 consecutive substantive pages and added 41 original-example inactive 
 ## Chapter 15 Phase B source extraction complete — printed pp. 1273–1362
 
 The final consecutively source-checked batch accounts for pp. 1343–1362 and adds 59 inactive records (`CLS-1037`–`CLS-1095`) including 1 `spec_only` constraint. [Audit report](sources/cambridge/chapter_15/PP1343_1362_REPORT.md) · [Audit manifest](sources/cambridge/chapter_15/PP1343_1362_AUDIT.json). Chapter 15 ledger: 88 substantive pages extracted, 2 contents-only skips, zero unprocessed pages. Book-wide ledger: 1214 extracted, 514 unprocessed, 34 justified skips, 2 absent from split source. Source complete ≠ independent review ≠ B-R crosswalk verified ≠ detector activation. Both GitHub CI workflows and chapter QA are required before PR merge. Next: Chapter 17.
+
+## Chapter 17 Phase B checkpoint — printed pp. 1449–1472
+
+Checked all 24 page layouts and source text; pp.1449–1450 are chapter contents only. Extracted pp.1451–1472 with 62 English-only inactive source records (PHR-459–PHR-514; CLS-1096–CLS-1101); see [source report](sources/cambridge/chapter_17/PP1449_1472_REPORT.md) and [machine audit](sources/cambridge/chapter_17/PP1449_1472_AUDIT.json). Chapter 17 has 22 substantive extracted, 2 justified skips, 92 unprocessed. B-R crosswalks and independent linguistic QA remain pending; Cambridge registry unchanged. Continue at p.1473.

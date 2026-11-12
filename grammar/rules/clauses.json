@@ -69446,5 +69446,397 @@
     },
     "related_rules": [],
     "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1096",
+    "domain": "clauses",
+    "concept": "Elliptical anaphor as recoverable gap",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An elliptical gap can act as an anaphor whose interpretation comes from an overt antecedent VP, including when the gap precedes that antecedent.",
+    "condition": "When an auxiliary or infinitival marker has an omitted complement, seek a compatible predicate in the same discourse.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The default gap follows its antecedent; anticipatory ellipsis has tighter licensing conditions.",
+        "pages": [
+          1456
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If you want me to attend, I will.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If you want me to, I will attend.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.2",
+        "pages": [
+          1456
+        ],
+        "pdf_pages": [
+          1476
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Elliptical anaphor as recoverable gap",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "CLS-1097",
+    "domain": "clauses",
+    "concept": "VP pro-form and VP ellipsis share denotation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Do so and an auxiliary-stranded gap can recover the denotation of a VP without requiring NP-to-NP coreference.",
+    "condition": "Determine the predicate content restored after auxiliary stranding or the pro-VP expression.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An internal pronoun can have strict or bound-variable interpretation, which is independent of VP denotation.",
+        "pages": [
+          1459
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If Maya wants to continue, she will do so.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Alex may arrive early, and Ben may too.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.3(d)",
+        "pages": [
+          1459
+        ],
+        "pdf_pages": [
+          1479
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "VP pro-form and VP ellipsis share denotation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "CLS-1098",
+    "domain": "clauses",
+    "concept": "Bound-variable interpretation inside elided reflexive predicate",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Where an elided antecedent VP contains a locally bound reflexive, the reflexive's referent shifts with the new subject rather than remaining fixed to the first subject.",
+    "condition": "Interpret reflexives inside the recovered predicate relative to the subject of each coordinated clause.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The interpretation is not an accidental stylistic looseness; an identical first-subject referent is not licensed for the reflexive.",
+        "pages": [
+          1460
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Farah blamed herself, and Sonia did too.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Noah dressed himself, and Hugo did too.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.3(d)",
+        "pages": [
+          1460
+        ],
+        "pdf_pages": [
+          1480
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Bound-variable interpretation inside elided reflexive predicate",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "CLS-1099",
+    "domain": "clauses",
+    "concept": "Cross-category anaphoric source and replacement",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An anaphor may need a syntactic replacement of different category from its antecedent, so a simple pro-X analysis is not always available.",
+    "condition": "Check the expanded grammatical frame rather than copying the antecedent word for word into the anaphor slot.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some strongly modified so constructions have no ordinary equivalent replacement.",
+        "pages": [
+          1463
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We entered the chapel and found three visitors there.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They objected strongly, so much so that the proposal was withdrawn.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.4",
+        "pages": [
+          1463
+        ],
+        "pdf_pages": [
+          1483
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Cross-category anaphoric source and replacement",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "CLS-1100",
+    "domain": "clauses",
+    "concept": "Person agreement is stricter than descriptive gender agreement",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "For the antecedent relation under discussion, a third-person personal pronoun cannot simply use first- or second-person I/you as its grammatical antecedent; the difference is person category, not the sex encoded by an NP.",
+    "condition": "When evaluating an anaphoric relation, separate person feature matching from broader reference to speaker/addressee by a third-person expression.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Third-person expressions can independently refer to the speaker or addressee; those are not cases of I/you becoming a third-person antecedent.",
+        "pages": [
+          1469
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I told the author that she would be quoted.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You told the editor that he would be interviewed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.3.1",
+        "pages": [
+          1469
+        ],
+        "pdf_pages": [
+          1489
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Person agreement is stricter than descriptive gender agreement",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "CLS-1101",
+    "domain": "clauses",
+    "concept": "Reflexive anaphor requires the appropriate local antecedent in a chain",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "A reflexive anaphor in an embedded clause cannot skip a mismatched local subject to take a more distant nominal as its antecedent.",
+    "condition": "For a reflexive serving as object of a finite predicate, its person/number/gender must be compatible with a locally licensed subject antecedent, even when that subject is itself anticipatorily anaphoric.",
+    "violation": "A reflexive is assigned an intended antecedent across a clause boundary although a mismatched local subject blocks that relation.",
+    "exceptions": [
+      {
+        "description": "A chain can link the reflexive indirectly through a compatible local personal pronoun; this is not a direct long-distance reflexive link.",
+        "pages": [
+          1457
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If he injures himself, Kiran will seek treatment.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If she blames herself, Mira will apologize.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "w1",
+          "text": "If they injure himself, Kiran will seek treatment.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "w2",
+          "text": "If he blames herself, Mira will apologize.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§1.2",
+        "pages": [
+          1457
+        ],
+        "pdf_pages": [
+          1477
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reflexive anaphor requires the appropriate local antecedent in a chain",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk and syntax-tree analysis are required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "pronoun_case",
+      "error_pattern": "For a reflexive serving as object of a finite predicate, its person/number/gender must be compatible with a locally licensed subject antecedent, even when that subject is itself anticipatorily anaphoric.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "If they injure himself, Kiran will seek treatment. ||| If he injures himself, Kiran will seek treatment.",
+        "If he blames herself, Mira will apologize. ||| If she blames herself, Mira will apologize."
+      ],
+      "learner_explanation": "The reflexive pronoun must be licensed by a compatible antecedent within the relevant clause. Here the nearby subject does not match the reflexive, so replace the pronoun or restructure the clause to preserve the intended referent.",
+      "corrected_paragraph_template": "Correct the local subject–reflexive relationship without changing the surrounding claims, then recheck all remaining pronoun links.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "If he injures himself, Kiran will seek treatment.",
+        "If she blames herself, Mira will apologize.",
+        "Kiran said he would look after himself."
+      ],
+      "lesson_tags": [
+        "reflexives",
+        "anaphora",
+        "local_binding"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
   }
 ]
