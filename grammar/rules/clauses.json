@@ -74029,5 +74029,1153 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1173",
+    "domain": "clauses",
+    "concept": "Distribution of noncorrelative comparative the",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Comparative the can modify a comparative in an adjective, adverb, verbal or determinative construction. Its omissibility depends on the construction.",
+    "condition": "It is retained in all the more, the cited supplement, and fronted purpose the better. In this noncorrelative term construction it is unavailable with an overt or anaphorically recovered secondary term. Set comparison can independently license the better.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "That makes it all the more urgent.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She stepped aside, the better to see the stage.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Of the two designs, this is the better.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.4.2",
+        "pages": [
+          1131,
+          1132
+        ],
+        "pdf_pages": [
+          1151,
+          1152
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Distribution of noncorrelative comparative the",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1174",
+    "domain": "clauses",
+    "concept": "Reanalyzed more than as a verb modifier",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In examples such as more than doubled, more than functions together as a modifier of the following verb. The verb receives its form from the containing construction.",
+    "condition": "With did more than plus plain verb, more instead heads the comparative expression. That construction can use less and can refer to an additional achievement of another kind.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The grant more than covered the repairs.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The grant did more than cover the repairs.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.5(a)",
+        "pages": [
+          1132,
+          1133
+        ],
+        "pdf_pages": [
+          1152,
+          1153
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reanalyzed more than as a verb modifier",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1175",
+    "domain": "clauses",
+    "concept": "Reanalyzed comparative modifiers outside ordinary degree phrases",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "So much as and as good as can modify a verb as idiomatic expressions. More than and less than can also jointly modify an adjective or adverb.",
+    "condition": "So much as favors non-affirmative contexts. The source does not extend the same reanalysis to more than plus a numeral in a quantified NP.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She didn't so much as blink.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He as good as promised to help.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "The result was more than adequate.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.5(a)",
+        "pages": [
+          1132,
+          1133
+        ],
+        "pdf_pages": [
+          1152,
+          1153
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reanalyzed comparative modifiers outside ordinary degree phrases",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1176",
+    "domain": "clauses",
+    "concept": "Idiomatic negative parallels with no or any more than",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "No more than or any more than plus a comparative clause can deny both propositions without comparing degrees.",
+    "condition": "An obviously false secondary proposition can emphasize the denial. Literal degree comparison remains possible in some contexts.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The bell was no more broken than the switch was.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She wouldn't reveal the password any more than I would.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.5(b)",
+        "pages": [
+          1133
+        ],
+        "pdf_pages": [
+          1153
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Idiomatic negative parallels with no or any more than",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1177",
+    "domain": "clauses",
+    "concept": "Sooner, as soon and immediate temporal succession",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Would sooner and would as soon can express preference or equal willingness. Temporal as soon as can mean immediately when rather than comparing degrees of earliness.",
+    "condition": "Distinguish the temporal idiom from ordinary variable and constant comparisons.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I'd sooner wait outside.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Call me as soon as the train arrives.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "The parcel may arrive as soon as tomorrow.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.5(c)",
+        "pages": [
+          1133,
+          1134
+        ],
+        "pdf_pages": [
+          1153,
+          1154
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Sooner, as soon and immediate temporal succession",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1178",
+    "domain": "clauses",
+    "concept": "No sooner and overlapping temporal idioms",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Temporal no sooner can indicate that a second event followed immediately. Fronted no sooner commonly takes subject–auxiliary inversion.",
+    "condition": "Hardly, barely and scarcely with when have similar meanings. Than and when blends are attested and receive differing usage judgments.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "No sooner had I sat down than the phone rang.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Hardly had I sat down when the phone rang.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.5(c)",
+        "pages": [
+          1133,
+          1134
+        ],
+        "pdf_pages": [
+          1153,
+          1154
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "No sooner and overlapping temporal idioms",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1179",
+    "domain": "clauses",
+    "concept": "Conditional and scope-limiting long and far idioms",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "As long as can compare durations or mean provided that. In affirmative contexts the so variant supports the conditional idiom. As or so far as can limit knowledge or scope.",
+    "condition": "Regarding uses can omit be concerned in some varieties. Go so far as to marks an extreme action, and insofar as marks extent.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I'll stay so long as the door remains open.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "As far as I know, the train is on time.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "She went so far as to cancel the order.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.5(d)",
+        "pages": [
+          1134
+        ],
+        "pdf_pages": [
+          1154
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Conditional and scope-limiting long and far idioms",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1180",
+    "domain": "clauses",
+    "concept": "Comparative and additive uses of as well",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "As well as can express comparison or serve as an additive marker. Standalone additive as well is a connective adjunct.",
+    "condition": "With possibility modals, might as well can express a grudging suggestion or dissatisfaction. Just as well can express that something was fortunate.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I packed a sweater as well as a coat.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We might as well wait here.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "It's just as well we brought a map.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.5(e)",
+        "pages": [
+          1134,
+          1135
+        ],
+        "pdf_pages": [
+          1154,
+          1155
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Comparative and additive uses of as well",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1181",
+    "domain": "clauses",
+    "concept": "Idiomatic better and best",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Know better than to conveys awareness that an action is inappropriate. In the cited as best construction, best occurs with can.",
+    "condition": "The inference about whether the action actually happened depends on the utterance.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I knew better than to touch the switch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We'll manage as best we can.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.5(e)",
+        "pages": [
+          1135
+        ],
+        "pdf_pages": [
+          1155
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Idiomatic better and best",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1182",
+    "domain": "clauses",
+    "concept": "Basic and fronted correlative comparatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In the basic correlative construction, the subordinate adjunct follows the main clause. In the common fronted version, it comes first and the main comparative phrase is also fronted.",
+    "condition": "The subordinate comparative phrase is fronted in both versions. Fronted comparative phrases begin with modifier the; rare non-fronted uses of the are attested.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The more we practice, the faster we work.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We work faster the more we practice.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.6",
+        "pages": [
+          1135
+        ],
+        "pdf_pages": [
+          1155
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Basic and fronted correlative comparatives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1183",
+    "domain": "clauses",
+    "concept": "Covariation and direction of dependency",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Correlative comparatives express parallel changes on two scales. Reversing which clause is subordinate can change the claim.",
+    "condition": "An as-clause can approximate the meaning. The basic construction marginally permits a scalar-change verb in place of a syntactic comparative.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The more we rest, the better we work.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The better we work, the more we rest.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.6",
+        "pages": [
+          1135,
+          1136
+        ],
+        "pdf_pages": [
+          1155,
+          1156
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Covariation and direction of dependency",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1184",
+    "domain": "clauses",
+    "concept": "Correlative clause status and embedding",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The correlative adjunct is a subordinate content clause even though its comparative fronting does not uniquely mark subordination.",
+    "condition": "Question inversion and relativization target the matrix in the basic version. The fronted version can be embedded with that or a relative phrase such as in which case. Some speakers also place that after the subordinate comparative phrase.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Won't the job get easier the more we practice?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She realized that the longer she waited, the harder the decision would be.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.6",
+        "pages": [
+          1136,
+          1137
+        ],
+        "pdf_pages": [
+          1156,
+          1157
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Correlative clause status and embedding",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1185",
+    "domain": "clauses",
+    "concept": "Reduction in correlative comparatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The verb be can be omitted in the predicative adjective construction, and the fronted version permits reduction of one or both clauses to their comparative phrases.",
+    "condition": "The full form and the reduced expression share the covariation pattern.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The harder the climb, the more she enjoyed it.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The sooner, the better.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.6",
+        "pages": [
+          1136
+        ],
+        "pdf_pages": [
+          1156
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reduction in correlative comparatives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1186",
+    "domain": "clauses",
+    "concept": "Ambiguous non-scalar term and set comparisons",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A non-scalar comparison may compare members of a set or compare a primary term with an unexpressed secondary term.",
+    "condition": "A plural expression can identify the comparison set but need not do so under the term interpretation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They offered the same deal to Mira and Lee.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Our proposals are similar.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5",
+        "pages": [
+          1137
+        ],
+        "pdf_pages": [
+          1157
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ambiguous non-scalar term and set comparisons",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1187",
+    "domain": "clauses",
+    "concept": "Reciprocal paraphrases of non-scalar set comparisons",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A set comparison can sometimes be restated as a term comparison with a reciprocal secondary term. The simple set construction is often more natural.",
+    "condition": "In the cited non-preposed pattern, a governor preceding the expression denoting the set cannot freely take the reciprocal expansion.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The three estimates are different.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The three estimates are different from one another.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5",
+        "pages": [
+          1137
+        ],
+        "pdf_pages": [
+          1157
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reciprocal paraphrases of non-scalar set comparisons",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1188",
+    "domain": "clauses",
+    "concept": "Definiteness with attributive same",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "Attributive same normally occurs in a definite NP. The indefinite article does not license the ordinary identity use.",
+    "condition": "Definiteness can be expressed with a demonstrative. Informal same as usual and formal anaphoric same have separate patterns.",
+    "violation": "The indefinite article introduces an attributive same NP with the ordinary identity reading.",
+    "exceptions": [
+      {
+        "description": "Definiteness can be expressed with a demonstrative. Informal same as usual and formal anaphoric same have separate patterns.",
+        "pages": [
+          1138
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They made the same mistake.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They chose this same route.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c3",
+          "text": "They chose the same route.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "They made an identical mistake.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "They made a same mistake.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "They chose a same route.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.1",
+        "pages": [
+          1138
+        ],
+        "pdf_pages": [
+          1158
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Definiteness with attributive same",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "The indefinite article introduces an attributive same NP with the ordinary identity reading.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "They made a same mistake. ||| They made the same mistake.",
+        "They chose a same route. ||| They chose the same route."
+      ],
+      "learner_explanation": "Attributive same normally occurs in a definite NP. The indefinite article does not license the ordinary identity use. Use a definite determiner with attributive same, or use identical if an indefinite NP is intended.",
+      "corrected_paragraph_template": "Use a definite determiner with attributive same, or use identical if an indefinite NP is intended.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "They made an identical mistake.",
+        "They chose this same route."
+      ],
+      "lesson_tags": [
+        "comparison",
+        "determiners"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1189",
+    "domain": "clauses",
+    "concept": "Predicative and adverbial the same",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Predicative the same is analyzed as an AdjP with the as a dependent. Manner the same can be an AdvP.",
+    "condition": "Some fixed or formal anaphoric uses omit the under separate conditions.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The two jackets are the same.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They treated us all the same.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.1",
+        "pages": [
+          1138
+        ],
+        "pdf_pages": [
+          1158
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Predicative and adverbial the same",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1190",
+    "domain": "clauses",
+    "concept": "Comparative and relative clauses with same",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Same can take as plus a comparative clause or accompany a relative clause expressing corresponding identity. Same is often omissible in the relative construction.",
+    "condition": "The comparative permits greater reduction and characteristic inversion. Its head noun cannot contrast with another head noun as in the cited scalar comparisons. The relative use with same is accepted.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We booked the same room as we had last year.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We booked the same room that we had last year.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "They used the same method as was used before.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.1",
+        "pages": [
+          1138,
+          1139
+        ],
+        "pdf_pages": [
+          1158,
+          1159
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Comparative and relative clauses with same",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1191",
+    "domain": "clauses",
+    "concept": "Same with a bare comparative complement",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "As plus NP with same can allow clausal expansion in some contexts and compare constant referents without such expansion in others.",
+    "condition": "Gerund-participial complements are also found in the non-scalar identity pattern.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I arrived at the same time as Jo did.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "My answer is the same as hers.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Offering to help isn't the same as helping.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.1",
+        "pages": [
+          1139
+        ],
+        "pdf_pages": [
+          1159
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Same with a bare comparative complement",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1192",
+    "domain": "clauses",
+    "concept": "Identity with same versus lower-bound scalar equality",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Same with a gradable noun can suggest much the same comparison as scalar as, while its identity interpretation has different truth conditions.",
+    "condition": "Someone two years older can satisfy as old as but does not satisfy the same age as. Ordinary negation also distinguishes the readings.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo is as old as I am, in fact two years older.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Jo isn't the same age as I am; she's two years older.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.1",
+        "pages": [
+          1139
+        ],
+        "pdf_pages": [
+          1159
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Identity with same versus lower-bound scalar equality",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
   }
 ]
