@@ -130,3 +130,11 @@ The configured parser evaluation at `2f0339d6` produced six exact repairs across
 Printed p. 221 (PDF p. 241) uses an unlicensed to-infinitival after *enjoy* to illustrate complement selection. The inactive COMP-062 probe requires a direct subjectless infinitival in the constituency tree, adjacent source spans, and an attested gerund-participial replacement. A candidate covers the selecting verb and the lower verb as one relation. Nominal complements, purpose clauses accompanying an object, and embedded infinitivals inside an otherwise licensed complement serve as controls.
 
 Run `python scripts/audit_cgel_overlap_probes.py --enjoy-evaluation` to measure the 16 frozen cases with the configured parser. The report records exact edits, reparse results, and canonical alignment where available. The split infinitive and coordination stress cases are outside the first implementation. Production licensing and the canonical crosswalk remain pending.
+
+### Modal stacks and inverted supportive do
+
+Cambridge pp. 105 and 107 support COMP-031 for two central modals in one Standard English auxiliary chain. Coordination and varieties that license double modals need separate treatment. The parser probe requires nested VPs with two modal tags and a plain verb under the second modal. The final requirement guards against the configured parser's modal reading of lexical *can* in a sentence about preserving fruit.
+
+Cambridge pp. 92–94 and 105 support CLS-100 with COMP-030 as corroboration. The probe requires a root polar question with overt subject and positive evidence of a following auxiliary. Lexical and causative *have*, negative and emphatic imperatives, and separate clauses are controls. The configured parser's copular example with a trailing time adjunct fell outside the narrow two-part predicate pattern. Declarative, embedded and wh-question structures remain outside this evaluation.
+
+Both probes return candidate relations without repair hints. In particular, choosing one of two modals can change the intended meaning. Run `python scripts/audit_cgel_overlap_probes.py --auxiliary-evaluation` for the fixed 16-case comparison. [Initial parser evidence](https://github.com/ybcole/SynTutor/actions/runs/43332018584/artifacts/13994624282)

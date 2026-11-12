@@ -62,6 +62,8 @@ class ModalParserProbeTests(unittest.TestCase):
         self.assertEqual(probe(sentence, tree, variety=None)["candidates"], [])
         lexical = tree.replace("(MD can) (VP (VB fish))", "(VB can) (NP (NN fish))")
         self.assertEqual(probe(sentence, lexical)["candidates"], [])
+        mistagged = tree.replace("(MD can) (VP (VB fish))", "(MD can) (VP (NNS peaches))")
+        self.assertEqual(probe("They might can peaches.", mistagged)["candidates"], [])
 
     def test_inverted_supportive_do_requires_an_auxiliary_complement(self):
         cases = [

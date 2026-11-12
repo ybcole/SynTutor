@@ -51,6 +51,11 @@ def _relation(modal, parts):
     surface = dependent.get("surface", "").casefold()
     pos = dependent.get("pos")
     if pos == "MD" and surface in MODALS:
+        if len(parts) != 2 or parts[1]["type"] != "VP":
+            return None
+        lower = parts[1].get("children", [])
+        if not lower or lower[0].get("pos") != "VB":
+            return None
         return {**relation, "dependent_role": "central_modal"}
     plain = None
     if pos == "VBZ":
