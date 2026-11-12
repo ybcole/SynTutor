@@ -17,7 +17,7 @@
 | 9. Negation | 66 | 64 | 0 | 2 | 0 | Source-extracted |
 | 10. Clause type and illocutionary force | 96 | 93 | 0 | 3 | 0 | Source-extracted |
 | 11. Content clauses and reported speech | 84 | 82 | 0 | 2 | 0 | Source-extracted |
-| 12. Relative constructions | 66 | 0 | 66 | 0 | 0 | Incomplete |
+| 12. Relative constructions | 66 | 15 | 49 | 2 | 0 | In progress (pp. 1031–1047) |
 | 13. Comparative constructions | 74 | 0 | 74 | 0 | 0 | Incomplete |
 | 14. Non-finite and verbless clauses | 102 | 99 | 0 | 3 | 0 | Source-extracted |
 | 15. Coordination and supplementation | 90 | 0 | 90 | 0 | 0 | Incomplete |
@@ -27,7 +27,7 @@
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **1062 extracted**, 670 unprocessed, 30 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **1077 extracted**, 653 unprocessed, 32 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -318,3 +318,7 @@ This batch adds 21 records (`CLS-799`–`CLS-819`) across 16 substantive pages. 
 ## Chapter 11 pp. 1011–1030
 
 The final batch adds 26 records (`CLS-820`–`CLS-845`) across 20 substantive pages. Chapter 11 has 82 substantive pages, two contents pages and zero unprocessed pages. See the [source report](sources/cambridge/chapter_11/PP1011_1030_REPORT.md) and [audit manifest](sources/cambridge/chapter_11/PP1011_1030_AUDIT.json).
+
+## Chapter 12 pp. 1031–1047
+
+The first batch adds 22 records (`CLS-846`–`CLS-867`) across 15 substantive pages and accounts for two contents pages. See the [source report](sources/cambridge/chapter_12/PP1031_1047_REPORT.md) and [audit manifest](sources/cambridge/chapter_12/PP1031_1047_AUDIT.json). Continue at p. 1048.

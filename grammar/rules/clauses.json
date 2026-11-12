@@ -54259,5 +54259,1339 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-846",
+    "domain": "clauses",
+    "concept": "Relative clauses and relative constructions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A relative construction can contain a relative clause modifying an antecedent or can itself form a phrase with fused relative structure.",
+    "condition": "Applies to the construction described in §1–2.1 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The distribution of a fused phrase differs from that of a clause modifying an overt antecedent.",
+        "pages": [
+          1033,
+          1034
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I kept the notes that she sent.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I kept what she sent.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§1–2.1",
+        "pages": [
+          1033,
+          1034
+        ],
+        "pdf_pages": [
+          1053,
+          1054
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Relative clauses and relative constructions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-847",
+    "domain": "clauses",
+    "concept": "Wh, that and bare relatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Finite relatives can be introduced by a relative wh phrase, introduced by the subordinator that, or left without an overt marker in licensed environments.",
+    "condition": "Applies to the construction described in §2.1 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The three forms are not interchangeable in all syntactic positions.",
+        "pages": [
+          1034
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I kept the note which she sent.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I kept the note she sent.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§2.1",
+        "pages": [
+          1034
+        ],
+        "pdf_pages": [
+          1054
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Wh, that and bare relatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-848",
+    "domain": "clauses",
+    "concept": "Integrated and supplementary relatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An integrated relative forms part of a nominal expression. A supplementary relative is attached more loosely and has a wider range of possible anchors.",
+    "condition": "Applies to the construction described in §2.2 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Integrated structure is not equivalent to a restrictive interpretation in every context.",
+        "pages": [
+          1034,
+          1035
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The technicians who passed the test stayed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The technicians, who had passed the test, stayed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§2.2",
+        "pages": [
+          1034,
+          1035
+        ],
+        "pdf_pages": [
+          1054,
+          1055
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Integrated and supplementary relatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-849",
+    "domain": "clauses",
+    "concept": "Non-nominal anchors of supplementary relatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A supplementary relative can take a clause or another non-nominal expression as its anchor.",
+    "condition": "Applies to the construction described in §2.2 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An integrated nominal relative does not have the same range of anchors.",
+        "pages": [
+          1035
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The ferry left early, which surprised us.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina is afraid of heights, which Dev is too.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§2.2",
+        "pages": [
+          1035
+        ],
+        "pdf_pages": [
+          1055
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-nominal anchors of supplementary relatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-850",
+    "domain": "clauses",
+    "concept": "Cleft relative clauses",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An it-cleft pairs a foregrounded expression with a relative clause containing a corresponding gap.",
+    "condition": "Applies to the construction described in §2.2 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The relative belongs to the cleft construction rather than acting as an ordinary modifier within the foregrounded phrase.",
+        "pages": [
+          1035
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was Mina who repaired the latch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was on Tuesday that they arrived.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§2.2",
+        "pages": [
+          1035
+        ],
+        "pdf_pages": [
+          1055
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Cleft relative clauses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-851",
+    "domain": "clauses",
+    "concept": "Fused relative phrases",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In a fused relative, the relative expression combines a role within the relative clause with the function associated with an antecedent in the larger phrase.",
+    "condition": "Applies to the construction described in §2.2 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A fused form can resemble an open interrogative without having the same distribution.",
+        "pages": [
+          1035,
+          1036
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What she found was valuable.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Put the key where you found it.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§2.2",
+        "pages": [
+          1035,
+          1036
+        ],
+        "pdf_pages": [
+          1055,
+          1056
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fused relative phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-852",
+    "domain": "clauses",
+    "concept": "Finite and infinitival relatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Relative clauses can be finite or infinitival. Infinitival relatives can occur with a fronted preposition phrase or without a wh expression in suitable environments.",
+    "condition": "Applies to the construction described in §2.3 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Infinitival relatives have their own restrictions on marking and the interpretation of the subject.",
+        "pages": [
+          1036
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We found a ledge from which to watch the race.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We need a bench to sit on.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§2.3",
+        "pages": [
+          1036
+        ],
+        "pdf_pages": [
+          1056
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Finite and infinitival relatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-853",
+    "domain": "clauses",
+    "concept": "Relativisation and prenuclear position",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A relative phrase that corresponds to a noninitial element commonly occurs in prenuclear position, with a gap in its ordinary position.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A relativised subject already corresponds to an initial function, so the relation is less visible in surface order.",
+        "pages": [
+          1037,
+          1038
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The advice which she gave me helped.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The person whom we invited arrived.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§3.1",
+        "pages": [
+          1037,
+          1038
+        ],
+        "pdf_pages": [
+          1057,
+          1058
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Relativisation and prenuclear position",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-854",
+    "domain": "clauses",
+    "concept": "Relative and content clauses after nouns",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A relative clause contains a dependency linked to an antecedent. A declarative content clause can instead specify the proposition associated with a noun.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some strings permit both analyses when the verb can occur with or without the element that would be relativised.",
+        "pages": [
+          1038,
+          1039
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They rejected the proposal that Mina had drafted.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They rejected the proposal that Mina should lead the team.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§3.1",
+        "pages": [
+          1038,
+          1039
+        ],
+        "pdf_pages": [
+          1058,
+          1059
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Relative and content clauses after nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-855",
+    "domain": "clauses",
+    "concept": "Relative words and larger relative phrases",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A relative word can be the whole fronted relative phrase or can occur inside a larger fronted constituent.",
+    "condition": "Applies to the construction described in §3.2 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The antecedent corresponds to the relative element, while the gap can correspond to the larger phrase.",
+        "pages": [
+          1039,
+          1040
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The parcel which she opened was empty.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The cabinet in which she found it was locked.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§3.2",
+        "pages": [
+          1039,
+          1040
+        ],
+        "pdf_pages": [
+          1059,
+          1060
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Relative words and larger relative phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-856",
+    "domain": "clauses",
+    "concept": "Fronted prepositions and stranding",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A preposition can be fronted together with its wh complement or remain in its ordinary position when the relative element is fronted alone.",
+    "condition": "Applies to the construction described in §3.2.1 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The availability of the alternants depends on the preposition and the type of relative construction.",
+        "pages": [
+          1040
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "That is the curtain behind which she hid.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That is the curtain which she hid behind.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§3.2.1",
+        "pages": [
+          1040
+        ],
+        "pdf_pages": [
+          1060
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fronted prepositions and stranding",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-857",
+    "domain": "clauses",
+    "concept": "Fronting an NP containing a relative PP",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A relative PP can occur inside a larger fronted NP, including in constructions with relational nouns and quantificational expressions.",
+    "condition": "Applies to the construction described in §3.2.2 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The acceptability and meaning of smaller and larger fronted constituents can differ.",
+        "pages": [
+          1040,
+          1041,
+          1042
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She took the exam, the result of which we expect tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He answered ten questions, only five of which were compulsory.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§3.2.2",
+        "pages": [
+          1040,
+          1041,
+          1042
+        ],
+        "pdf_pages": [
+          1060,
+          1061,
+          1062
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fronting an NP containing a relative PP",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-858",
+    "domain": "clauses",
+    "concept": "Recursive fronting of containing phrases",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A relative expression can be embedded in several layers of a larger fronted phrase.",
+    "condition": "Applies to the construction described in §3.2.2 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The analysis preserves the internal relations among each preposition, noun and dependent.",
+        "pages": [
+          1042
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They found a chest from the bottom of which protruded a broken hinge.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She pointed to a tower from the top of which hung a flag.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§3.2.2",
+        "pages": [
+          1042
+        ],
+        "pdf_pages": [
+          1062
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Recursive fronting of containing phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-859",
+    "domain": "clauses",
+    "concept": "Fronting an adjective phrase with a relative PP",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A supplementary relative can front an adjective phrase containing a relative PP.",
+    "condition": "Applies to the construction described in §3.2.3 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The pattern is restricted and should not be extended to arbitrary adjective phrases.",
+        "pages": [
+          1042
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The club supports several projects, prominent among which is the literacy program.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We considered several issues, central among which was access.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§3.2.3",
+        "pages": [
+          1042
+        ],
+        "pdf_pages": [
+          1062
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fronting an adjective phrase with a relative PP",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-860",
+    "domain": "clauses",
+    "concept": "Fronted nonfinite phrases in supplementary relatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some supplementary relatives front an infinitival or gerund-participial phrase that contains a relative element.",
+    "condition": "Applies to the construction described in §3.2.4 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "These patterns are restricted and often formal.",
+        "pages": [
+          1043
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They required a practical exam, passing which qualifies candidates for a license.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She made a claim, to refute which we needed better records.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§3.2.4",
+        "pages": [
+          1043
+        ],
+        "pdf_pages": [
+          1063
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fronted nonfinite phrases in supplementary relatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-861",
+    "domain": "clauses",
+    "concept": "Genitive whose and the fronted NP",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Relative whose can function within a larger NP that is fronted as the relative phrase.",
+    "condition": "Applies to the construction described in §3.2.5 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Whose is available with human and nonhuman antecedents.",
+        "pages": [
+          1043
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We thanked the author whose essay we had discussed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They repaired the machine whose motor had failed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§3.2.5",
+        "pages": [
+          1043
+        ],
+        "pdf_pages": [
+          1063
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Genitive whose and the fronted NP",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-862",
+    "domain": "clauses",
+    "concept": "Determinative which inside a relative NP",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In suitable supplementary relatives, which can determine a noun inside the relative phrase.",
+    "condition": "Applies to the construction described in §3.2.6 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The noun can characterize the anchor rather than repeat an identical noun from it.",
+        "pages": [
+          1043,
+          1044
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He proposed a delay, which suggestion the board rejected.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She called the rule unfair, which description we accepted.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§3.2.6",
+        "pages": [
+          1043,
+          1044
+        ],
+        "pdf_pages": [
+          1063,
+          1064
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Determinative which inside a relative NP",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-863",
+    "domain": "clauses",
+    "concept": "Relativisable subjects and objects",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Subjects and various objects can be relativised, with the corresponding gap in the relevant function.",
+    "condition": "Applies to the construction described in §3.3 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Different object constructions and relative forms impose additional restrictions.",
+        "pages": [
+          1044,
+          1045
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The technician who called has arrived.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The technician whom we called has arrived.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§3.3",
+        "pages": [
+          1044,
+          1045
+        ],
+        "pdf_pages": [
+          1064,
+          1065
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Relativisable subjects and objects",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-864",
+    "domain": "clauses",
+    "concept": "Relativising predicatives and adjuncts",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Relativisation can target more than subjects and objects, including some predicatives and temporal or locative adjuncts.",
+    "condition": "Applies to the construction described in §3.3 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The available relative expression depends on the semantic relation and construction.",
+        "pages": [
+          1045,
+          1046
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was a year when everything changed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We returned to the place where we had parked.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§3.3",
+        "pages": [
+          1045,
+          1046
+        ],
+        "pdf_pages": [
+          1065,
+          1066
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Relativising predicatives and adjuncts",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-865",
+    "domain": "clauses",
+    "concept": "Relativising a genitive or verbal constituent",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In restricted constructions the relative relation can target a genitive dependent or a verbal expression.",
+    "condition": "Applies to the construction described in §3.3 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The availability of verbal relativisation depends on the particular construction, including the form of the verbal expression.",
+        "pages": [
+          1046
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We met the client whose measurements were missing.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She had to explain the change, which she did.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§3.3",
+        "pages": [
+          1046
+        ],
+        "pdf_pages": [
+          1066
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Relativising a genitive or verbal constituent",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-866",
+    "domain": "clauses",
+    "concept": "Relativisation across clause embedding",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The gap linked to a relative phrase can occur inside a clause embedded within the relative clause.",
+    "condition": "Applies to the construction described in §3.4 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The general possibility of embedding is subject to further dependency constraints.",
+        "pages": [
+          1046,
+          1047
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The book which she said he recommended is missing.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The driver who we believe caused the delay has arrived.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§3.4",
+        "pages": [
+          1046,
+          1047
+        ],
+        "pdf_pages": [
+          1066,
+          1067
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Relativisation across clause embedding",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-867",
+    "domain": "clauses",
+    "concept": "Bare relatives with subject versus embedded subject gaps",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An integrated bare relative normally excludes a gap as its own subject, but can have a gap as the subject of a more deeply embedded clause.",
+    "condition": "Applies to the construction described in §3.4 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The location of the gap, rather than its subject function alone, controls this contrast.",
+        "pages": [
+          1047
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We need a car that is safe.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We need a car we know is safe.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§3.4",
+        "pages": [
+          1047
+        ],
+        "pdf_pages": [
+          1067
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Bare relatives with subject versus embedded subject gaps",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]
