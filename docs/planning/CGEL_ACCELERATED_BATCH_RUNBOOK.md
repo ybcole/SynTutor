@@ -496,3 +496,7 @@ Printed pp. 1621–1631 account for nine substantive pages and two contents-only
 ## Chapter 19 second checkpoint
 
 Printed pp. 1632–1639 add eight substantive pages and 20 inactive records (`MORPH-161`–`MORPH-180`). Chapter 19 has 82 unprocessed pages. Continue at p. 1640 with the close of phonological modification and the start of conversion.
+
+## Chapter 19 third checkpoint
+
+Printed pp. 1640–1647 add 8 substantive pages and 31 inactive records (`MORPH-181`–`MORPH-211`). Chapter 19 has 74 unprocessed pages. Continue at p. 1648 with non-hyponymic and coordinative noun compounds.

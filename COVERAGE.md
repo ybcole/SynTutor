@@ -24,10 +24,10 @@
 | 16. Information packaging | 86 | 83 | 0 | 3 | 0 | Source extraction complete |
 | 17. Deixis and anaphora | 116 | 114 | 0 | 2 | 0 | Source extraction complete |
 | 18. Inflectional morphology | 56 | 53 | 0 | 3 | 0 | Source extraction complete |
-| 19. Lexical word-formation | 102 | 17 | 82 | 3 | 0 | In progress (pp. 1621–1639) |
+| 19. Lexical word-formation | 102 | 25 | 74 | 3 | 0 | In progress (pp. 1621–1647) |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **1593 extracted**, 124 unprocessed, 45 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **1601 extracted**, 116 unprocessed, 45 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -524,3 +524,9 @@ Source audit: `sources/cambridge/chapter_19/PP1621_1631_REPORT.md`.
 Printed pp. 1632–1639 add eight substantive pages and 20 inactive records (`MORPH-161`–`MORPH-180`). Chapter 19 has 82 unprocessed pages. Continue at p. 1640 with the close of phonological modification and the start of conversion.
 
 Source audit: `sources/cambridge/chapter_19/PP1632_1639_REPORT.md`.
+
+## Chapter 19 third checkpoint
+
+Printed pp. 1640–1647 add 8 substantive pages and 31 inactive records (`MORPH-181`–`MORPH-211`). Chapter 19 has 74 unprocessed pages. Continue at p. 1648 with non-hyponymic and coordinative noun compounds.
+
+Source audit: `sources/cambridge/chapter_19/PP1640_1647_REPORT.md`.

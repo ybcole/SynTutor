@@ -11379,5 +11379,1745 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-181",
+    "domain": "morphology",
+    "concept": "Final stop voicing in lexical pairs",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "A small inherited set of related verbs and nouns contrasts final voiced /d/ with voiceless /t/.",
+    "condition": "This French-derived alternation has never been productive in English.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The plane began to descend before sunrise.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We made the descent in silence.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§2.6",
+        "pages": [
+          1640
+        ],
+        "pdf_pages": [
+          1660
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Final stop voicing in lexical pairs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-182",
+    "domain": "morphology",
+    "concept": "Primary-category conversion",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Conversion normally creates a lexeme in a different primary category while preserving its form.",
+    "condition": "A category difference can distinguish two lexemes even when neither has an inflectional paradigm.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The organizer will host a workshop.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Our host greeted the late arrivals.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§3.1",
+        "pages": [
+          1640
+        ],
+        "pdf_pages": [
+          1660
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Primary-category conversion",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-183",
+    "domain": "morphology",
+    "concept": "Conversion of an affix to a free word",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "A pre-existing affix can acquire the grammatical properties of an independent word.",
+    "condition": "The resulting word has its own syntactic distribution.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Her essay questioned every ism she had encountered.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The tenants were anti the proposed rent increase.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§3.1",
+        "pages": [
+          1640
+        ],
+        "pdf_pages": [
+          1660
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Conversion of an affix to a free word",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-184",
+    "domain": "morphology",
+    "concept": "Secondary class and conversion",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "A difference in secondary classification, such as transitivity or proper versus common noun status, is insufficient to establish conversion.",
+    "condition": "Compare uses within one primary category.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A change in use within the same primary category need not create a conversion pair.",
+        "pages": [
+          1640
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mira opened the shutters.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The shutters opened at noon. The pressure is measured in pascals, a unit named for Pascal.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§3.1",
+        "pages": [
+          1640
+        ],
+        "pdf_pages": [
+          1660
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Secondary class and conversion",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-185",
+    "domain": "morphology",
+    "concept": "Morphological structure under conversion",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Conversion preserves the input's morphological base type. The resulting base can be simple, compound or already derived.",
+    "condition": "Compare the morphological structure of the input and output of a category-changing process.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Affixation adds a morphological element. The Cambridge analysis does not posit a zero affix to account for category change.",
+        "pages": [
+          1640,
+          1641
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The officer left a spare handcuff in the cabinet after handcuffing the suspect.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We must package the lenses before we damage the package.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§3.1",
+        "pages": [
+          1640,
+          1641
+        ],
+        "pdf_pages": [
+          1660,
+          1661
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Morphological structure under conversion",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-186",
+    "domain": "morphology",
+    "concept": "Semantic direction of noun–verb conversion",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Where one sense is defined in terms of the other, semantic dependence can motivate an analysis of which word is basic.",
+    "condition": "The historical direction is unclear for many same-form noun–verb pairs.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The clerk bottled the juice before lunch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The final whistle came after the referee whistled twice.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§3.2",
+        "pages": [
+          1641
+        ],
+        "pdf_pages": [
+          1661
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Semantic direction of noun–verb conversion",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-187",
+    "domain": "morphology",
+    "concept": "Instrument nouns and converted verbs",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "In instrument pairs the noun is generally the semantic starting point. In body-part pairs the body-part noun is basic.",
+    "condition": "Compare same-form nouns and verbs involving an instrument or a body part.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some instrument pairs have a basic verb, as with hoist and whistle.",
+        "pages": [
+          1642
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Tara hammered the bracket into place.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The guard elbowed his way through the crowd.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§3.2",
+        "pages": [
+          1642
+        ],
+        "pdf_pages": [
+          1662
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Instrument nouns and converted verbs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-188",
+    "domain": "morphology",
+    "concept": "Person-denoting nouns in conversion",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "A noun for a person may motivate a verb for a characteristic role, or a verb may motivate a noun for the person doing it.",
+    "condition": "Direction depends on the particular pair.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They ushered us past the blocked entrance.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The spy left a message after spying on the courier.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§3.2",
+        "pages": [
+          1642
+        ],
+        "pdf_pages": [
+          1662
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Person-denoting nouns in conversion",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-189",
+    "domain": "morphology",
+    "concept": "Applying and removing in denominal verbs",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Some verbs based on nouns mean applying the named material. Others mean removing the entity named by the noun.",
+    "condition": "The base noun identifies the material applied or the entity removed.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Verbs in noun–verb pairs tend to be dynamic. Smell and taste permit stative and dynamic uses.",
+        "pages": [
+          1642
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Please oil the hinges before you rehang the door.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We shelled the peas before supper.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§3.2",
+        "pages": [
+          1642
+        ],
+        "pdf_pages": [
+          1662
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Applying and removing in denominal verbs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-190",
+    "domain": "morphology",
+    "concept": "Productivity and base type in noun–verb conversion",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Both directions remain productive, especially noun to verb. Simple bases predominate, while compound nouns are an important input to compound verbs.",
+    "condition": "Compare conversion between noun and verb bases of different morphological types.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Derived bases are less receptive, with package and dislike among the exceptions.",
+        "pages": [
+          1642
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The library networked its catalog terminals.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The dispatcher logged the delay, and the log stayed on file.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§3.2",
+        "pages": [
+          1642
+        ],
+        "pdf_pages": [
+          1662
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Productivity and base type in noun–verb conversion",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-191",
+    "domain": "morphology",
+    "concept": "Stress shift and phrasal sources outside conversion",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Stress alternation and the fusion of a verb-particle sequence are distinct from conversion without formal change.",
+    "condition": "A two-word source sequence does not itself constitute a compound verb.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The rebels will rebel against the new governor.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The crew cleaned up the spill before the cleanup was inspected.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§3.2",
+        "pages": [
+          1642
+        ],
+        "pdf_pages": [
+          1662
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Stress shift and phrasal sources outside conversion",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [
+      "MORPH-208"
+    ],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-192",
+    "domain": "morphology",
+    "concept": "Adjective-to-noun conversion and meaning",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "A converted noun can name an entity associated with an adjective, often a kind of person, and can develop multiple lexical senses.",
+    "condition": "The adjective supplies a salient property of the person or thing denoted by the noun.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some senses are informal or variety-specific, such as the British pub sense of local.",
+        "pages": [
+          1642
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The new regular always ordered tea.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Two originals were returned to the artist after the show.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§3.3(a)",
+        "pages": [
+          1642
+        ],
+        "pdf_pages": [
+          1662
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjective-to-noun conversion and meaning",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-193",
+    "domain": "morphology",
+    "concept": "Colour and periodical nouns from adjectives",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Colour adjectives can have noun counterparts for a colour or another specialized referent. Time-period adjectives can yield nouns for publications.",
+    "condition": "The adjectival input names a colour or describes a time interval.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Individual noun senses can extend beyond these interpretations.",
+        "pages": [
+          1642
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The painter mixed a warmer blue for the doorway.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A regional weekly interviewed the new coach.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§3.3(a)",
+        "pages": [
+          1642
+        ],
+        "pdf_pages": [
+          1662
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Colour and periodical nouns from adjectives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-194",
+    "domain": "morphology",
+    "concept": "Plural preference in converted nouns",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Some nouns converted from adjectives occur typically or exclusively with plural inflection in their lexicalized senses.",
+    "condition": "This preference applies to individual senses and does not extend to all converted nouns.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The instructor reviewed the basics before the dive.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We served the greens with lentils.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§3.3(a)",
+        "pages": [
+          1642
+        ],
+        "pdf_pages": [
+          1662
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Plural preference in converted nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-195",
+    "domain": "morphology",
+    "concept": "Converted noun versus fused modifier-head",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "An adjective functioning as fused modifier-head keeps its adjective category. A converted noun is a separate lexeme.",
+    "condition": "An omitted or understood noun alone does not establish conversion.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We sold two originals before noon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Of the two jackets, she picked the lighter.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§3.3(a)",
+        "pages": [
+          1642
+        ],
+        "pdf_pages": [
+          1662
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Converted noun versus fused modifier-head",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-196",
+    "domain": "morphology",
+    "concept": "Noun modifiers and adjective conversion",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Prenominal modification by itself provides no evidence that a noun has become an adjective. Degree modifiers characteristic of adjectives can support a gradable adjective analysis.",
+    "condition": "Distinguish the modifier function from word category and test the candidate adjective in a degree construction.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Noun-to-adjective conversion is rare. Adjectival fun varies by speaker, and the analysis of some derivatives in -ist and -ite is tentative.",
+        "pages": [
+          1643
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The museum director greeted us at the door.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That was a very fun afternoon for the volunteers.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§3.3(b)",
+        "pages": [
+          1643
+        ],
+        "pdf_pages": [
+          1663
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Noun modifiers and adjective conversion",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-197",
+    "domain": "morphology",
+    "concept": "Change-of-state verbs from adjectives",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Verbs converted from adjectives frequently mean entering the state in an intransitive use or causing the state in a transitive use.",
+    "condition": "The adjective names the state entered or brought about.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some lexemes support both patterns.",
+        "pages": [
+          1643
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The fabric dried in the courtyard.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We dried the fabric over a railing.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§3.4(a)",
+        "pages": [
+          1643
+        ],
+        "pdf_pages": [
+          1663
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Change-of-state verbs from adjectives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-198",
+    "domain": "morphology",
+    "concept": "Manner verbs from adjectives",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Some verbs converted from adjectives specify the manner of an action instead of a resulting state.",
+    "condition": "This reading depends on the particular verb.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The hikers braved the icy crossing.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The reviewer savaged the opening chapter.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§3.4(a)",
+        "pages": [
+          1643
+        ],
+        "pdf_pages": [
+          1663
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Manner verbs from adjectives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-199",
+    "domain": "morphology",
+    "concept": "Base types in adjective-to-verb conversion",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Simple adjective bases predominate, with some derivatives and compounds participating as well.",
+    "condition": "The input is an adjective and the output is a same-form verb.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Inflected inputs such as better and best are exceptional. Regular comparative lower is particularly unusual.",
+        "pages": [
+          1643
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We waterproofed the canvas before the expedition.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The gardener lowered the baskets after the wind picked up.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§3.4(a)",
+        "pages": [
+          1643
+        ],
+        "pdf_pages": [
+          1663
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Base types in adjective-to-verb conversion",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-200",
+    "domain": "morphology",
+    "concept": "Participial adjectives and inflected inputs",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Adjectives can share the form of a gerund-participle or a past participle. This productive pattern uses an inflected form as its input.",
+    "condition": "The adjective shares its form with a participle and shows independently adjectival distribution.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An individual verb may have an adjectival counterpart for only one participle. Homonymy alone leaves the category to be determined in context.",
+        "pages": [
+          1644
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The countdown was very worrying.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The family seemed deeply worried about the delay.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§3.4(b)",
+        "pages": [
+          1644
+        ],
+        "pdf_pages": [
+          1664
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Participial adjectives and inflected inputs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-201",
+    "domain": "morphology",
+    "concept": "Compound versus syntactic construction",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "In clear contrasts, spelling, main stress and the availability of internal modification help distinguish a compound base from a sequence of syntactically combined words.",
+    "condition": "Compare word boundary evidence in a candidate compound and a corresponding syntactic sequence.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The criteria can fail to converge, especially with noun-final combinations. No single spelling or stress test decides every case.",
+        "pages": [
+          1644
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A blackbird landed on the post.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A particularly dark black bird landed on the post.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.1",
+        "pages": [
+          1644
+        ],
+        "pdf_pages": [
+          1664
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Compound versus syntactic construction",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [
+      "MORPH-208"
+    ],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-202",
+    "domain": "morphology",
+    "concept": "Hyponymic compounds and entailment",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "A hyponymic compound entails the head in the relevant sense. The head alone leaves open which subtype applies.",
+    "condition": "This one-way test extends to adjective and verb compounds as well as nouns.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The child wore snowboots to school.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We hand-painted the signs for the sale.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.1",
+        "pages": [
+          1645
+        ],
+        "pdf_pages": [
+          1665
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Hyponymic compounds and entailment",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-203",
+    "domain": "morphology",
+    "concept": "Lexicalization and historical change in compound meaning",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "A compound can lose entailment to its head through an idiosyncratic lexical meaning or a change in the ordinary meaning of the head.",
+    "condition": "Compare the whole compound with its head under present-day interpretations.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Lexicalization and historical change may coexist.",
+        "pages": [
+          1645
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A glow-worm lit the bank by the footpath.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The rookie became a hotshot after the tournament.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.1",
+        "pages": [
+          1645
+        ],
+        "pdf_pages": [
+          1665
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexicalization and historical change in compound meaning",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-204",
+    "domain": "morphology",
+    "concept": "Head senses unavailable independently",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Head entailment can fail when the required sense needs a complement or is unavailable as an independent word of the compound's category.",
+    "condition": "Compare the same sense and category in the entailment test.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The bakery supplied a sugar-free filling.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We watched the sunset from the empty platform.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.1",
+        "pages": [
+          1645
+        ],
+        "pdf_pages": [
+          1665
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Head senses unavailable independently",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-205",
+    "domain": "morphology",
+    "concept": "Property-denoting bases in non-hyponymic compounds",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Some compounds use their component bases to characterize an entity whose category lies outside the literal denotation of the apparent head.",
+    "condition": "The chapter uses the hyponymy test directly because rigorous definitions for the traditional exocentric and endocentric labels pose problems.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The crossword champion called herself an egghead.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The young redhead waved to the marshal.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.1",
+        "pages": [
+          1645
+        ],
+        "pdf_pages": [
+          1665
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Property-denoting bases in non-hyponymic compounds",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [
+      "MORPH-202"
+    ],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-206",
+    "domain": "morphology",
+    "concept": "Subordinative compounds",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "In a subordinative compound, one base functions as head and the other as dependent.",
+    "condition": "One component can be identified as structurally dependent on the other.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The head is usually second.",
+        "pages": [
+          1646
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The school built a boathouse beside the lake.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The rescue crew lowered a lifeboat into the bay.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.1",
+        "pages": [
+          1646
+        ],
+        "pdf_pages": [
+          1666
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subordinative compounds",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-207",
+    "domain": "morphology",
+    "concept": "Coordinative compounds",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "In a coordinative compound, the bases have equal structural status and can often be glossed with and.",
+    "condition": "These patterns occur across more than one output category.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A singer-songwriter opened the festival.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The reunion felt bittersweet.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.1",
+        "pages": [
+          1646
+        ],
+        "pdf_pages": [
+          1666
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Coordinative compounds",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-208",
+    "domain": "morphology",
+    "concept": "Dephrasal compounds",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "A dephrasal compound fuses words from a syntactic construction into a lexical base and may retain internal inflection.",
+    "condition": "Hyphenation is usual but does not itself establish the analysis. A fused base can also enter a derivative.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They unveiled a one-size-fits-all policy.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A fly-by-night operator took the deposit and vanished.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.1",
+        "pages": [
+          1640,
+          1646
+        ],
+        "pdf_pages": [
+          1660,
+          1666
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dephrasal compounds",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [
+      "MORPH-191"
+    ],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-209",
+    "domain": "morphology",
+    "concept": "Noun-centred and verb-centred compound nouns",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "A verb-centred compound noun draws on the meaning of a verbal base, directly or through a derivative or converted form. A noun-centred compound draws on a head primarily or exclusively nominal.",
+    "condition": "Identify the base whose nominal or verbal meaning supplies the semantic centre.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some verb-centred compounds have an initial verbal head.",
+        "pages": [
+          1646,
+          1647
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The truck driver waited outside the boathouse.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The dog walker left her keys in the teahouse.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.2",
+        "pages": [
+          1646,
+          1647
+        ],
+        "pdf_pages": [
+          1666,
+          1667
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Noun-centred and verb-centred compound nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-210",
+    "domain": "morphology",
+    "concept": "Head position in noun-centred compounds",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "A noun-centred compound has a noun as its final base, and in most patterns that base heads the compound.",
+    "condition": "The final base is nominal.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Small coordinative patterns have equal-status bases instead.",
+        "pages": [
+          1647
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A snowplough cleared the driveway.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A truck stop opened near the junction.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.2.1",
+        "pages": [
+          1647
+        ],
+        "pdf_pages": [
+          1667
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Head position in noun-centred compounds",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-211",
+    "domain": "morphology",
+    "concept": "Semantic relations in noun plus noun compounds",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Noun plus noun compounding is highly productive. The modifier can cue the intended subtype without uniquely determining the semantic relationship.",
+    "condition": "Interpretation depends on lexical knowledge or context, particularly for new compounds.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She put the toothbrush beside the doorknob she had taken off the door.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The ranger named the new marker a fog bell after explaining when it rings.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.2.1",
+        "pages": [
+          1647
+        ],
+        "pdf_pages": [
+          1667
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Semantic relations in noun plus noun compounds",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]
