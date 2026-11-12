@@ -282,3 +282,7 @@ Printed pp. 761–784 yielded 29 classification records (`CLS-598`–`CLS-626`).
 ## Chapter 9 first checkpoint
 
 Printed pp. 785–805 yielded 29 classification records (`CLS-627`–`CLS-655`) across 20 substantive pages and one contents page. Continue at p. 806 with secondary and non-verbal negation.
+
+## Chapter 9 second checkpoint
+
+Printed pp. 806–821 yielded 29 classification records (`CLS-656`–`CLS-684`). Continue at p. 822 with polarity-sensitive items.

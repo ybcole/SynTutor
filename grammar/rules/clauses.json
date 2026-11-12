@@ -42782,5 +42782,1755 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-656",
+    "domain": "clauses",
+    "concept": "Adjuncts separating a negator from an auxiliary",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An intervening adjunct can make it clear that not belongs to the nonfinite complement of an auxiliary.",
+    "condition": "Applies to the construction described in §2.3.2 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Without the adjunct, context or prosody may be needed to distinguish primary and secondary negation.",
+        "pages": [
+          806
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You can simply not reply.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You could always not renew the subscription.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§2.3.2",
+        "pages": [
+          806
+        ],
+        "pdf_pages": [
+          826
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjuncts separating a negator from an auxiliary",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-657",
+    "domain": "clauses",
+    "concept": "Negative requests with an inverted auxiliary",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A question-shaped request can use not to negate the requested action in the nonfinite complement.",
+    "condition": "Applies to the construction described in §2.3.2 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An inverted question without please can also have an interpretation with matrix negation.",
+        "pages": [
+          806
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Would you please not lean on the glass?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Could you please not move the papers?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§2.3.2",
+        "pages": [
+          806
+        ],
+        "pdf_pages": [
+          826
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negative requests with an inverted auxiliary",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-658",
+    "domain": "clauses",
+    "concept": "Not before a quantified subject",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Not can combine with an initial quantifier to deny the amount or proportion expressed by the quantifier.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The position of the quantified phrase and the relevant polarity test matter when assessing the containing clause.",
+        "pages": [
+          807,
+          808
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Not all of the lamps worked.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Not every visitor had a ticket.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§3.1",
+        "pages": [
+          807,
+          808
+        ],
+        "pdf_pages": [
+          827,
+          828
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Not before a quantified subject",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-659",
+    "domain": "clauses",
+    "concept": "Not one versus higher numerals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Not one can deny that even a single member meets the condition. Not with a higher numeral can indicate that a measure falls below that numeral.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The higher-numeral pattern has a restricted distribution and does not behave like the negative quantifier not one.",
+        "pages": [
+          808
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Not one driver stopped.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Not three months ago, the bridge was open.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§3.1",
+        "pages": [
+          808
+        ],
+        "pdf_pages": [
+          828
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Not one versus higher numerals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-660",
+    "domain": "clauses",
+    "concept": "Litotic not a little and not a few",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Not a little and not a few can convey a substantial amount or number through litotes.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "These combinations need not make the clause syntactically negative.",
+        "pages": [
+          808,
+          809
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The announcement caused not a little confusion.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Not a few volunteers stayed behind to help.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§3.1",
+        "pages": [
+          808,
+          809
+        ],
+        "pdf_pages": [
+          828,
+          829
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Litotic not a little and not a few",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-661",
+    "domain": "clauses",
+    "concept": "Not even and not only",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Not even rejects a focused case, often one at the low end of an expectation scale. Not only adds another case beyond an accepted one.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Fronted not only can trigger inversion even when the corresponding proposition is affirmed.",
+        "pages": [
+          809
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Not even our captain knew the route.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Not only did our captain know the route, but she also knew the currents.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§3.1",
+        "pages": [
+          809
+        ],
+        "pdf_pages": [
+          829
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Not even and not only",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-662",
+    "domain": "clauses",
+    "concept": "Not with modified adjective phrases",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Not can negate an adjective phrase with a modifier such as very or quite.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Direct negation of a bare adjective is more restricted in these environments.",
+        "pages": [
+          809
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We had a not very productive meeting.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The connection seemed not entirely secure.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§3.1",
+        "pages": [
+          809
+        ],
+        "pdf_pages": [
+          829
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Not with modified adjective phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-663",
+    "domain": "clauses",
+    "concept": "Negating a negative adjective",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Not can modify an affixally negative adjective and convey a qualified assessment.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The two negative expressions need not yield the same interpretation as the unprefixed positive adjective.",
+        "pages": [
+          809,
+          810
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The design is not unattractive.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The payment is not insignificant.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§3.1",
+        "pages": [
+          809,
+          810
+        ],
+        "pdf_pages": [
+          829,
+          830
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negating a negative adjective",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-664",
+    "domain": "clauses",
+    "concept": "Non-verbal negation of adverbs",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Not can modify some adverbs without making the containing clause negative.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The pattern is lexically restricted. The clause can independently carry verbal negation.",
+        "pages": [
+          810
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Not surprisingly, the queue grew.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Not unreasonably, she asked for a receipt.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§3.1",
+        "pages": [
+          810
+        ],
+        "pdf_pages": [
+          830
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-verbal negation of adverbs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-665",
+    "domain": "clauses",
+    "concept": "Clausal and subclausal not with PPs",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Not with a fronted PP can mark clausal negation or deny only the value expressed by the PP.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Inversion and the entailments of the clause help distinguish the readings.",
+        "pages": [
+          810
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Not at any point did the alarm sound.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Not for the first time, the alarm sounded late.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§3.1",
+        "pages": [
+          810
+        ],
+        "pdf_pages": [
+          830
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Clausal and subclausal not with PPs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-666",
+    "domain": "clauses",
+    "concept": "Not in verbless supplements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Not can negate a verbless supplement while the main clause retains its own polarity.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The relation between the supplement and the main situation can be inferred from context.",
+        "pages": [
+          811
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Not an experienced climber, Mina took the easier route.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Not fully awake, Dev reached for the wrong switch.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§3.1",
+        "pages": [
+          811
+        ],
+        "pdf_pages": [
+          831
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Not in verbless supplements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-667",
+    "domain": "clauses",
+    "concept": "Supplementary not that clauses",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A detached not that clause can reject an inference that the preceding utterance might otherwise invite.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The supplement has its own negative content and need not change the preceding clause's polarity.",
+        "pages": [
+          811
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I will cover the shift. Not that I am eager to do it.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She kept the letter. Not that she agreed with it.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§3.1",
+        "pages": [
+          811
+        ],
+        "pdf_pages": [
+          831
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Supplementary not that clauses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-668",
+    "domain": "clauses",
+    "concept": "Contrastive coordination with not",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Not can mark an alternative rejected in a coordination or a detached contrast.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The negation can be restricted to a coordinate while the larger clause remains positive.",
+        "pages": [
+          811,
+          812
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We are leaving not on Friday but on Saturday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Bring a pencil, not a pen.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§3.1",
+        "pages": [
+          811,
+          812
+        ],
+        "pdf_pages": [
+          831,
+          832
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Contrastive coordination with not",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-669",
+    "domain": "clauses",
+    "concept": "Unintegrated final not",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An independent final not can retract or reverse an apparently positive utterance for rhetorical effect.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This construction is informal and differs prosodically from ordinary integrated negation.",
+        "pages": [
+          812
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "That was a brilliant idea, not!",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I am thrilled to be working late again, not!",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§3.1",
+        "pages": [
+          812
+        ],
+        "pdf_pages": [
+          832
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Unintegrated final not",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-670",
+    "domain": "clauses",
+    "concept": "Absolute non-verbal negators and polarity",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "No, none, nobody and related forms can mark absolute clausal negation without a negative verb.",
+    "condition": "Applies to the construction described in §3.2.1 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The effect depends on the constituent's position and interpretation.",
+        "pages": [
+          812
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Nobody answered, did they?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina had received nothing, and neither had Dev.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§3.2.1",
+        "pages": [
+          812
+        ],
+        "pdf_pages": [
+          832
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Absolute non-verbal negators and polarity",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-671",
+    "domain": "clauses",
+    "concept": "Alternation with verbal negation and any",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A clause with an absolute non-verbal negator often has a counterpart with verbal negation and a corresponding any form.",
+    "condition": "Applies to the construction described in §3.2.1 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The alternation is not generally available when the negative expression is in subject position.",
+        "pages": [
+          813
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We found nothing.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We did not find anything.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§3.2.1",
+        "pages": [
+          813
+        ],
+        "pdf_pages": [
+          833
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Alternation with verbal negation and any",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-672",
+    "domain": "clauses",
+    "concept": "Predicative no and distance limits",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Predicative no can have a verbal-negation counterpart in some constructions. The distance between verb and negative constituent can limit alternation.",
+    "condition": "Applies to the construction described in §3.2.1 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Idiomatic or evaluative predicative expressions can lack a natural counterpart, and a distant replacement can change the scope.",
+        "pages": [
+          813,
+          814
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This is no place for a picnic.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "This is not any place for a picnic.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§3.2.1",
+        "pages": [
+          813,
+          814
+        ],
+        "pdf_pages": [
+          833,
+          834
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Predicative no and distance limits",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-673",
+    "domain": "clauses",
+    "concept": "Non-verbal negation and clause boundaries",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A non-verbal negator inside a subordinate construction ordinarily has a local interpretation. Some constructions allow it to affect the interpretation of the matrix clause.",
+    "condition": "Applies to the construction described in §3.2.1 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Polarity tests and the relation between the clauses can help determine whether a wider analysis is available.",
+        "pages": [
+          814,
+          815
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She said that nobody had called.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They promised to make no changes.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§3.2.1",
+        "pages": [
+          814,
+          815
+        ],
+        "pdf_pages": [
+          834,
+          835
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-verbal negation and clause boundaries",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-674",
+    "domain": "clauses",
+    "concept": "Subclausal absolute negation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A negative NP in a PP, an evaluative expression, or an NP with an implicit predication can leave the containing clause positive.",
+    "condition": "Applies to the construction described in §3.2.2 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A phrase with a compressed predication can admit a different scope analysis in context.",
+        "pages": [
+          815
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We managed with no spare parts.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That was no small achievement, wasn't it?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§3.2.2",
+        "pages": [
+          815
+        ],
+        "pdf_pages": [
+          835
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subclausal absolute negation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-675",
+    "domain": "clauses",
+    "concept": "Approximate negator classes",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Approximate negators include the determinatives few and little, frequency adverbs rarely and seldom, and degree adverbs barely, hardly and scarcely.",
+    "condition": "Applies to the construction described in §3.3 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Comparative and superlative forms of few and little do not behave like their plain forms in the polarity tests.",
+        "pages": [
+          815,
+          816
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Few students applied.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The needle barely moved.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§3.3",
+        "pages": [
+          815,
+          816
+        ],
+        "pdf_pages": [
+          835,
+          836
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Approximate negator classes",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-676",
+    "domain": "clauses",
+    "concept": "Approximation and the nonzero inference",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Approximate negation often suggests a small nonzero quantity or frequency, unlike absolute negation.",
+    "condition": "Applies to the construction described in §3.3 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The inference of a nonzero value can be cancelled in appropriate contexts.",
+        "pages": [
+          816,
+          817
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Few tickets were sold.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She rarely misses a rehearsal.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§3.3",
+        "pages": [
+          816,
+          817
+        ],
+        "pdf_pages": [
+          836,
+          837
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Approximation and the nonzero inference",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-677",
+    "domain": "clauses",
+    "concept": "Few versus a few",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Few presents the quantity as low and can act as a negator. A few presents a positive quantity and behaves differently in polarity tests.",
+    "condition": "Applies to the construction described in §3.3 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A few can be followed by a correction to a larger quantity without adopting the polarity of few.",
+        "pages": [
+          816,
+          817
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Few of the lights worked.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A few of the lights worked.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§3.3",
+        "pages": [
+          816,
+          817
+        ],
+        "pdf_pages": [
+          836,
+          837
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Few versus a few",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-678",
+    "domain": "clauses",
+    "concept": "Approximate negation in temporal sequencing",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Hardly can occur with a past perfect and a following when clause to indicate that one event followed the other very closely.",
+    "condition": "Applies to the construction described in §3.3 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The construction conveys close succession rather than denying that the first event occurred.",
+        "pages": [
+          817
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I had hardly sat down when the phone rang.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She had hardly closed the door when the dog barked.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§3.3",
+        "pages": [
+          817
+        ],
+        "pdf_pages": [
+          837
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Approximate negation in temporal sequencing",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-679",
+    "domain": "clauses",
+    "concept": "Downward entailment as a semantic diagnostic",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In a downward-entailing environment, replacing a class with a relevant subclass can preserve entailment.",
+    "condition": "Applies to the construction described in §3.3 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The comparison requires a stable contextual standard and reference class.",
+        "pages": [
+          817,
+          818,
+          819
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Few visitors bought a souvenir.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Few visitors bought a ceramic souvenir.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§3.3",
+        "pages": [
+          817,
+          818,
+          819
+        ],
+        "pdf_pages": [
+          837,
+          838,
+          839
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Downward entailment as a semantic diagnostic",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-680",
+    "domain": "clauses",
+    "concept": "Frequency negators and reference classes",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Rarely and seldom can support downward entailments when the compared situations are assessed against the same reference class.",
+    "condition": "Applies to the construction described in §3.3 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A change in the comparison class can invalidate the apparent inference.",
+        "pages": [
+          819,
+          820
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She rarely reads fiction.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She rarely reads historical fiction.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§3.3",
+        "pages": [
+          819,
+          820
+        ],
+        "pdf_pages": [
+          839,
+          840
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Frequency negators and reference classes",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-681",
+    "domain": "clauses",
+    "concept": "Clause polarity with approximate negators",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Approximate negators can pass tests for clausal negation, including reversed tags and negative additive continuations.",
+    "condition": "Applies to the construction described in §3.3 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Late or embedded placement can favor subclausal negation, and the approximate negators differ in behavior.",
+        "pages": [
+          820
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Few members spoke, did they?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina seldom complained, and neither did Dev.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§3.3",
+        "pages": [
+          820
+        ],
+        "pdf_pages": [
+          840
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Clause polarity with approximate negators",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-682",
+    "domain": "clauses",
+    "concept": "Subclausal approximate negation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An approximate negator can remain within a smaller constituent while the clause has positive polarity.",
+    "condition": "Applies to the construction described in §3.3 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A clause containing a restricted negative expression can still license a positive-polarity continuation.",
+        "pages": [
+          820,
+          821
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We could manage with barely any supplies.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She visits her cousins only rarely.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§3.3",
+        "pages": [
+          820,
+          821
+        ],
+        "pdf_pages": [
+          840,
+          841
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subclausal approximate negation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-683",
+    "domain": "clauses",
+    "concept": "Affixal versus verbal negation on a scale",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A negative prefix can reverse a scale or select its negative region, while verbal negation denies a predication.",
+    "condition": "Applies to the construction described in §3.4 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "On a gradable scale, intermediate cases can satisfy neither of the two contrasting adjective predicates.",
+        "pages": [
+          821
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The error is not common.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The error is uncommon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§3.4",
+        "pages": [
+          821
+        ],
+        "pdf_pages": [
+          841
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Affixal versus verbal negation on a scale",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-684",
+    "domain": "clauses",
+    "concept": "Degree and affixal negation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Degree modification of a negatively prefixed adjective measures the negative property. Negation of a degree-modified positive adjective denies that degree.",
+    "condition": "Applies to the construction described in §3.4 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The contrast is especially visible with gradable adjectives and need not apply the same way to complementary predicates.",
+        "pages": [
+          821
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The result is not very common.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The result is very uncommon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§3.4",
+        "pages": [
+          821
+        ],
+        "pdf_pages": [
+          841
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Degree and affixal negation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]
