@@ -26536,5 +26536,1903 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-458",
+    "domain": "morphology",
+    "concept": "Ory and atory in adjective and noun families",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ory and atory generally occur with Latinate bases and often correspond to nouns in ion and ation through suffix replacement.",
+    "condition": "Some adjectives lack the corresponding noun. Ory differs from ary, which can attach outside ion.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The revised form is compulsory for new applicants.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The report included an explanatory note.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.8(p)",
+        "pages": [
+          1712
+        ],
+        "pdf_pages": [
+          1732
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ory and atory in adjective and noun families",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-459",
+    "domain": "morphology",
+    "concept": "Ous variants and related nouns",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ous and its variants usually occur on nominal bases. A final y can disappear or have a reflex in the derived spelling, and ious and atious often correspond to nominal ion and ation.",
+    "condition": "Many forms are loans or established derivatives. Some variants also occur in jocular coinages.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The hazardous material was removed before opening.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The group had a disputatious meeting after lunch.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.8(q)",
+        "pages": [
+          1712
+        ],
+        "pdf_pages": [
+          1732
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ous variants and related nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-460",
+    "domain": "morphology",
+    "concept": "Adjectival some",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Some has formed adjectives from nouns, verbs and adjectives. In some words the base category is ambiguous.",
+    "condition": "Many historical forms have disappeared or become opaque. Current productivity is uncertain in the source.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A meddlesome neighbour interrupted the conversation.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The climb became irksome after the rain started.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.8(r)",
+        "pages": [
+          1712
+        ],
+        "pdf_pages": [
+          1732
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjectival some",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-461",
+    "domain": "morphology",
+    "concept": "Adjectival y and ey",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Productive y usually forms adjectives for a quality, covering or propensity. It attaches mostly to short everyday nouns and also to verbs and some adjectives.",
+    "condition": "Some forms are informal, but informality is not inherent. Ey occurs after some bases ending in a complex vowel spelling in y, and the source records two rare spellings for the derivative of sky.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A squeaky hinge woke the dog.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The stream left clayey mud on the path.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.8(s)",
+        "pages": [
+          1712,
+          1713
+        ],
+        "pdf_pages": [
+          1732,
+          1733
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjectival y and ey",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-462",
+    "domain": "morphology",
+    "concept": "Participial adjective conversion and pronunciation",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Inflected gerund-participles and past participles readily yield adjectives. Certain past-participle adjectives can have a syllabic ending in addition to an unmodified pronunciation.",
+    "condition": "Syllabic pronunciations of blessed and cursed are especially associated with attributive uses. Accursed and beloved show related variation with obsolete verbal sources.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The first design seemed promising.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They spent another hour looking for the cursed key.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.8(t)",
+        "pages": [
+          1713
+        ],
+        "pdf_pages": [
+          1733
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Participial adjective conversion and pronunciation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-463",
+    "domain": "morphology",
+    "concept": "Verbal ate and historical source",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Most ate verbs are loans or use Latin models. Some English derivatives have nominal or adjectival bases, while apparent verb-to-verb cases can be back-formations.",
+    "condition": "The pattern also occurs in mock-learned coinages. A transparent modern relation alone does not settle the history.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The editor chose to hyphenate the title.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A technician will activate the alarm after the test.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.9(a)",
+        "pages": [
+          1713
+        ],
+        "pdf_pages": [
+          1733
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Verbal ate and historical source",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-464",
+    "domain": "morphology",
+    "concept": "Verbal be and transitivity",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Be has often attached to verbs, sometimes intensifying the action or making an intransitive base transitive. A few forms have nominal or adjectival bases in present-day analysis.",
+    "condition": "Some old be words are no longer segmentable. The source sees continuing productivity chiefly in adjectival formations such as bejewelled.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The travellers bemoaned the delay.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The senior guide befriended a new volunteer.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.9(b)",
+        "pages": [
+          1713,
+          1714
+        ],
+        "pdf_pages": [
+          1733,
+          1734
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Verbal be and transitivity",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-465",
+    "domain": "morphology",
+    "concept": "Verbal en and base shape",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "En chiefly forms change-of-state verbs from adjectives ending in a stop or fricative. The source describes more recent bases as restricted to final t or d.",
+    "condition": "A few nominal-base forms survive. Many en verbs have both transitive and intransitive uses.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The clouds darkened as the wind rose.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The sunlight brightened the front room.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.9(c)",
+        "pages": [
+          1714
+        ],
+        "pdf_pages": [
+          1734
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Verbal en and base shape",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-466",
+    "domain": "morphology",
+    "concept": "Verbal em en and in",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Em and en can form verbs with meanings such as putting into a place or making something have a property. Em occurs before bilabial b or p in the pattern.",
+    "condition": "The pattern is probably no longer productive. Some forms vary with in, while ensure and insure have distinct meanings and enquire versus inquire has variety-sensitive usage.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The builder enlarged the opening.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The charter empowered the committee to act.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.9(d)",
+        "pages": [
+          1714
+        ],
+        "pdf_pages": [
+          1734
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Verbal em en and in",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-467",
+    "domain": "morphology",
+    "concept": "Verbal ify and fy",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ify often means make with adjectival bases or make into with nominal ones. It remains available for new formations, especially on Latinate bases.",
+    "condition": "Established forms can have specialized or disparaging meanings. Some loans have fy and associated faction nouns, and verbal inputs are rare.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They simplified the application form.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The archivist classified the notes by subject.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.9(e)",
+        "pages": [
+          1714
+        ],
+        "pdf_pages": [
+          1734
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Verbal ify and fy",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-468",
+    "domain": "morphology",
+    "concept": "Regional ise and ize spellings",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ise and ize are spelling variants of a verbal suffix, with different conventions across varieties.",
+    "condition": "The variation concerns the suffix. In advertise and capsize the ending belongs to the base.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The team will computerize the booking system.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The council plans to standardise the forms.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.9(f)",
+        "pages": [
+          1715
+        ],
+        "pdf_pages": [
+          1735
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Regional ise and ize spellings",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-469",
+    "domain": "morphology",
+    "concept": "Productive ise meanings and bases",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ise productively forms verbs. Adjectival inputs often yield a make reading, while meanings with nominal bases are more varied.",
+    "condition": "The result is often transitive, with intransitives also attested. Base-final y can be lost and some forms replace ic. Objections to new coinages are prescriptive.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The hospital digitised its appointment records.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The researchers theorised about the unusual result.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.9(f)",
+        "pages": [
+          1715
+        ],
+        "pdf_pages": [
+          1735
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Productive ise meanings and bases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-470",
+    "domain": "morphology",
+    "concept": "Mixed affix behaviour of ise",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ise can precede ation and trigger consonant pronunciation in some bases, but it can also follow er and is usually stress-neutral.",
+    "condition": "The properties do not fit a single affix class. Other verbalising formations can coexist with similar or different meanings.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The team will containerise the service before launch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The chair agreed to solemnise the ceremony.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.9(f)",
+        "pages": [
+          1715
+        ],
+        "pdf_pages": [
+          1735
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Mixed affix behaviour of ise",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-471",
+    "domain": "morphology",
+    "concept": "Removal prefixes as verb formers",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "De, dis and un can form verbs from nouns when expressing removal.",
+    "condition": "This is an instance of a prefix changing the primary category of its base.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The mechanic degreased the housing.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The officer disarmed the device.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.9(g)",
+        "pages": [
+          1715
+        ],
+        "pdf_pages": [
+          1735
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Removal prefixes as verb formers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-472",
+    "domain": "morphology",
+    "concept": "Verb formation without ordinary affixation",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Back-formation, conversion and dephrasal compounding can produce verbs. Noun inputs are common in back-formation and conversion, and some adjective inputs occur.",
+    "condition": "Some outputs are simple bases and some are compounds.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The courier will fast-track the shipment.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The contractor offered to babysit on Saturday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.9(h)",
+        "pages": [
+          1715
+        ],
+        "pdf_pages": [
+          1735
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Verb formation without ordinary affixation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-473",
+    "domain": "morphology",
+    "concept": "Numerals and numbers",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "A numeral is a linguistic expression for a number. More than one expression can denote the same number, and numeral structure ranges from morphological words to syntactic constructions.",
+    "condition": "The source treats fractions and dates as related constructions.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The label listed fifteen hundred pieces.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The invoice listed one thousand five hundred pieces.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.10",
+        "pages": [
+          1715,
+          1716
+        ],
+        "pdf_pages": [
+          1735,
+          1736
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Numerals and numbers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-474",
+    "domain": "morphology",
+    "concept": "Cardinal formation below one hundred",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Single-word cardinals include simple bases, teen derivatives, ty derivatives and compounds of a ty form with a unit numeral.",
+    "condition": "Teen adds ten, ty multiplies by ten, and a final unit in a compound adds its value. Something can occur in a related age expression.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The club welcomed twenty-six new members.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The coach counted seventeen helmets after practice.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.10.1",
+        "pages": [
+          1716
+        ],
+        "pdf_pages": [
+          1736
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Cardinal formation below one hundred",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-475",
+    "domain": "morphology",
+    "concept": "Irregular cardinal forms and teen stress",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Established cardinals show irregular base forms, sound changes and spellings. Teen stress can vary with the following stress environment.",
+    "condition": "Eleven and twelve are treated as synchronically simple. Teen can also stand as a noun for an age or another value from thirteen to nineteen.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We stored forty chairs in the hall.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The thermometer dropped into the teens overnight.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.10.1",
+        "pages": [
+          1716,
+          1717
+        ],
+        "pdf_pages": [
+          1736,
+          1737
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Irregular cardinal forms and teen stress",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-476",
+    "domain": "morphology",
+    "concept": "Recursive structure of composite cardinals",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "A composite numeral has a multiplier before a power-of-ten head and may have an additional numeral after it. A dependent can itself be a composite numeral.",
+    "condition": "The additional position can use and with a single-word numeral or take a composite numeral.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The survey received three hundred and eight replies.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The plant shipped two thousand six hundred units.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.10.1",
+        "pages": [
+          1717
+        ],
+        "pdf_pages": [
+          1737
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Recursive structure of composite cardinals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-477",
+    "domain": "morphology",
+    "concept": "Uninflected power heads inside numerals",
+    "rule_type": "constraint",
+    "scope": "word",
+    "statement": "Power-of-ten heads such as hundred and thousand are uninflected inside composite numerals.",
+    "condition": "A power-of-ten head occurs inside an exact composite cardinal numeral.",
+    "violation": "The power head takes a plural ending.",
+    "exceptions": [
+      {
+        "description": "Power-of-ten heads such as hundred and thousand are uninflected inside composite numerals. An exact multiplier uses hundred or thousand without a plural ending. Use the plural in expressions such as hundreds of desks.",
+        "pages": [
+          1717
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The school ordered four hundred desks.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The library digitised two thousand photographs.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The school ordered four hundreds desks.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The library digitised two thousands photographs.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.10.1",
+        "pages": [
+          1717
+        ],
+        "pdf_pages": [
+          1737
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Uninflected power heads inside numerals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "spelling_inflection",
+      "error_pattern": "The power head takes a plural ending.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The school ordered four hundreds desks. ||| The school ordered four hundred desks.",
+        "The library digitised two thousands photographs. ||| The library digitised two thousand photographs."
+      ],
+      "learner_explanation": "An exact multiplier uses hundred or thousand without a plural ending. Use the plural in expressions such as hundreds of desks.",
+      "corrected_paragraph_template": "An exact multiplier uses hundred or thousand without a plural ending. Use the plural in expressions such as hundreds of desks.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Hundreds of desks arrived.",
+        "Thousands of photographs survived."
+      ],
+      "lesson_tags": [
+        "numerals",
+        "number-expressions"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-478",
+    "domain": "morphology",
+    "concept": "Illion formations and scale readings",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Billion and higher forms can be analysed with a numerical prefix and the bound base illion. The source describes short- and long-scale interpretations.",
+    "condition": "Million is treated as simple. The short-scale reading is predominant in the British and American usage described by Cambridge.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The budget reached two billion dollars.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The estimate exceeded one trillion units.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.10.1",
+        "pages": [
+          1717
+        ],
+        "pdf_pages": [
+          1737
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Illion formations and scale readings",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-479",
+    "domain": "morphology",
+    "concept": "Ordering embedded power heads",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "An embedded power head is generally lower than the matrix head. Equal heads are possible in the multiplier with some very high values.",
+    "condition": "A thousand thousand can occur in an explicit definition, although the source disfavors it as an ordinary amount expression.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The fund received two hundred thousand pounds.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The exhibition attracted one thousand two hundred visitors.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.10.1",
+        "pages": [
+          1717,
+          1718
+        ],
+        "pdf_pages": [
+          1737,
+          1738
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ordering embedded power heads",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-480",
+    "domain": "morphology",
+    "concept": "Multipliers of hundred",
+    "rule_type": "constraint",
+    "scope": "word",
+    "statement": "The multiplier of hundred cannot be ten or a round ty derivative in the standard composite numeral pattern described.",
+    "condition": "Hundred is the head of an exact composite cardinal, and the intended multiplier is ten or a round multiple of ten.",
+    "violation": "Ten or a round ty form is used as the multiplier of hundred.",
+    "exceptions": [
+      {
+        "description": "Nonround multipliers such as nineteen and sixty-one can occur. Some numbers have both hundred-based and thousand-based expressions.",
+        "pages": [
+          1717,
+          1718
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The archive received one thousand letters.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The farmer sold six thousand and twelve seedlings.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The archive received ten hundred letters.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The farmer sold sixty hundred and twelve seedlings.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.10.1",
+        "pages": [
+          1717,
+          1718
+        ],
+        "pdf_pages": [
+          1737,
+          1738
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Multipliers of hundred",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "Ten or a round ty form is used as the multiplier of hundred.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The archive received ten hundred letters. ||| The archive received one thousand letters.",
+        "The farmer sold sixty hundred and twelve seedlings. ||| The farmer sold six thousand and twelve seedlings."
+      ],
+      "learner_explanation": "Use a thousand-based expression for these round multipliers. Nonround forms such as nineteen hundred are also available.",
+      "corrected_paragraph_template": "Use a thousand-based expression for these round multipliers. Nonround forms such as nineteen hundred are also available.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "They saved nineteen hundred dollars.",
+        "The shop sold sixty-one hundred tickets."
+      ],
+      "lesson_tags": [
+        "numerals",
+        "number-expressions"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-481",
+    "domain": "morphology",
+    "concept": "A and one in composite numerals",
+    "rule_type": "constraint",
+    "scope": "word",
+    "statement": "A can replace an initial one in a composite numeral. It is unavailable in an embedded position after earlier numeral words.",
+    "condition": "The article a is used in place of the multiplier one inside a composite numeral.",
+    "violation": "A appears after an earlier numeral word.",
+    "exceptions": [
+      {
+        "description": "A can replace an initial one in a composite numeral. It is unavailable in an embedded position after earlier numeral words. Use one where the multiplier follows earlier numeral words. A is available at the beginning, and the multiplier can sometimes be omitted after a determiner.",
+        "pages": [
+          1718
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They paid two thousand one hundred and fifteen pounds.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They saved three thousand one hundred and fifteen pounds.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "They paid two thousand a hundred and fifteen pounds.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "They saved three thousand a hundred and fifteen pounds.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.10.1",
+        "pages": [
+          1718
+        ],
+        "pdf_pages": [
+          1738
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "A and one in composite numerals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "A appears after an earlier numeral word.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "They paid two thousand a hundred and fifteen pounds. ||| They paid two thousand one hundred and fifteen pounds.",
+        "They saved three thousand a hundred and fifteen pounds. ||| They saved three thousand one hundred and fifteen pounds."
+      ],
+      "learner_explanation": "Use one where the multiplier follows earlier numeral words. A is available at the beginning, and the multiplier can sometimes be omitted after a determiner.",
+      "corrected_paragraph_template": "Use one where the multiplier follows earlier numeral words. A is available at the beginning, and the multiplier can sometimes be omitted after a determiner.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "They paid a hundred pounds.",
+        "They set aside the hundred pounds they owed."
+      ],
+      "lesson_tags": [
+        "numerals",
+        "number-expressions"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-482",
+    "domain": "morphology",
+    "concept": "Ordinal formation from the final cardinal base",
+    "rule_type": "constraint",
+    "scope": "word",
+    "statement": "An ordinal changes the final base of its corresponding cardinal. One, two and three have suppletive forms, while th formations can involve stem or spelling changes.",
+    "condition": "A composite ordinal ends in a cardinal unit whose ordinal form is suppletive or has a stem change.",
+    "violation": "The final base keeps its regular cardinal shape when the ordinal requires a special form.",
+    "exceptions": [
+      {
+        "description": "An ordinal changes the final base of its corresponding cardinal. One, two and three have suppletive forms, while th formations can involve stem or spelling changes. Form the ordinal from the final unit. Use second for two and fifth for five, including in twenty-second and forty-fifth.",
+        "pages": [
+          1718,
+          1719
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Their twenty-second entry won a prize.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The forty-fifth runner finished before dark.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Their twenty-twoth entry won a prize.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The forty-fiveth runner finished before dark.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.10.2",
+        "pages": [
+          1718,
+          1719
+        ],
+        "pdf_pages": [
+          1738,
+          1739
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ordinal formation from the final cardinal base",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "spelling_inflection",
+      "error_pattern": "The final base keeps its regular cardinal shape when the ordinal requires a special form.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Their twenty-twoth entry won a prize. ||| Their twenty-second entry won a prize.",
+        "The forty-fiveth runner finished before dark. ||| The forty-fifth runner finished before dark."
+      ],
+      "learner_explanation": "Form the ordinal from the final unit. Use second for two and fifth for five, including in twenty-second and forty-fifth.",
+      "corrected_paragraph_template": "Form the ordinal from the final unit. Use second for two and fifth for five, including in twenty-second and forty-fifth.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The twenty-fourth entry won a prize.",
+        "The twentieth runner stopped at the checkpoint."
+      ],
+      "lesson_tags": [
+        "numerals",
+        "number-expressions"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-483",
+    "domain": "morphology",
+    "concept": "Numerator and denominator in fractions",
+    "rule_type": "constraint",
+    "scope": "word",
+    "statement": "A fraction phrase has a cardinal numerator as determiner and a denominator noun as head. The denominator normally shows the singular-plural distinction.",
+    "condition": "A fraction is expressed as a cardinal numerator greater than one followed by a count denominator noun.",
+    "violation": "The denominator noun remains singular after the plural numerator.",
+    "exceptions": [
+      {
+        "description": "A singular denominator is used with one or a, and half allows omission of the numerator in the construction discussed.",
+        "pages": [
+          1719
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The team completed two thirds of the route.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The group finished three quarters of the report.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The team completed two third of the route.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The group finished three quarter of the report.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.10.2",
+        "pages": [
+          1719
+        ],
+        "pdf_pages": [
+          1739
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Numerator and denominator in fractions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "spelling_inflection",
+      "error_pattern": "The denominator noun remains singular after the plural numerator.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The team completed two third of the route. ||| The team completed two thirds of the route.",
+        "The group finished three quarter of the report. ||| The group finished three quarters of the report."
+      ],
+      "learner_explanation": "Use a plural denominator after a numerator greater than one, as in two thirds or three quarters.",
+      "corrected_paragraph_template": "Use a plural denominator after a numerator greater than one, as in two thirds or three quarters.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "They finished one third of the route.",
+        "She kept half of the fabric.",
+        "They booked a three-quarter-hour lesson."
+      ],
+      "lesson_tags": [
+        "numerals",
+        "number-expressions"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-484",
+    "domain": "morphology",
+    "concept": "Written dates and ambiguity",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Written dates allow both day-month and month-day order and use several styles of figures and punctuation. All-numeric forms can be ambiguous across conventions.",
+    "condition": "The source notes a preference for written cardinals and a minority Roman-numeral month format.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The receipt was dated 4 May 1998.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The envelope was postmarked May 4, 1998.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.10.2",
+        "pages": [
+          1719
+        ],
+        "pdf_pages": [
+          1739
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Written dates and ambiguity",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-485",
+    "domain": "morphology",
+    "concept": "Spoken dates and year expressions",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Spoken dates can use an ordinal day phrase with a fused head. Years in the range discussed can use a hundreds form or a split reading, with hundred retained for years ending in two zeros.",
+    "condition": "The account describes preferences of its period. The book's observations on early years of the new millennium are time-bound.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The gallery opened on the fifth of April, nineteen ninety-six.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The cornerstone was laid in eighteen hundred.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.10.2",
+        "pages": [
+          1719
+        ],
+        "pdf_pages": [
+          1739
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Spoken dates and year expressions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-486",
+    "domain": "morphology",
+    "concept": "Numerical elements in lexical formations",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "English numerals and elements from other languages can enter compounds and derivatives. The numerical element can be a free base, bound base, prefix or combining form.",
+    "condition": "Some related elements are quantifiers. Classical variants can reflect ordinal sources or the presence of a boundary vowel, and some English compounds are freely coined.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The engineers drew a thirty-two-sided figure.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The quartet rehearsed in the downstairs hall.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.10.3",
+        "pages": [
+          1719,
+          1720
+        ],
+        "pdf_pages": [
+          1739,
+          1740
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Numerical elements in lexical formations",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-487",
+    "domain": "morphology",
+    "concept": "Temporal bi and its two readings",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Bi with some temporal bases can mean twice per period or once every two periods. Different base forms can distinguish the readings in particular words.",
+    "condition": "The ambiguity is lexical and contextual. The source contrasts biannual with biennial.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The journal publishes a bimonthly newsletter.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A biennial exhibition returned to the town hall.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.10.3",
+        "pages": [
+          1720
+        ],
+        "pdf_pages": [
+          1740
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Temporal bi and its two readings",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-488",
+    "domain": "morphology",
+    "concept": "Age decades and large-unit elements",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Latin-derived forms name people in particular decades of age. Large measurement units can contain elements assigned numerical values in the unit system.",
+    "condition": "An element's historical source need not have denoted that value, and a numerical source need not yield a literal numerical meaning in every word.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The centenary project interviewed a nonagenarian.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The transmitter operated at a frequency of one megahertz.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.10.3",
+        "pages": [
+          1720
+        ],
+        "pdf_pages": [
+          1740
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Age decades and large-unit elements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-489",
+    "domain": "morphology",
+    "concept": "Fractional elements in words and unit names",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Fractional words can contain half, semi, hemi or demi. Unit names use additional elements for decimal subdivisions.",
+    "condition": "The table distinguishes the origins and uses of elements such as centi, milli, micro and nano. Some newer small-unit names draw on other languages.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The children stood in a semicircle around the guide.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The recipe calls for fifty millilitres of oil.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.10.3",
+        "pages": [
+          1721
+        ],
+        "pdf_pages": [
+          1741
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fractional elements in words and unit names",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]

@@ -532,3 +532,7 @@ Printed pp. 1696–1703 add 8 substantive pages and 33 inactive records (`MORPH-
 ## Chapter 19 eleventh checkpoint
 
 Printed pp. 1704–1711 add 8 substantive pages and 34 inactive records (`MORPH-424`–`MORPH-457`), including one inactive possessive-adjective specification. Chapter 19 has 10 unprocessed pages. Continue at p. 1712 with the remaining adjectivalisation patterns.
+
+## Chapter 19 completion checkpoint
+
+Printed pp. 1712–1721 add 10 substantive pages and 32 inactive records (`MORPH-458`–`MORPH-489`), including five inactive numeral specifications. Chapter 19 is source-extraction complete with 99 substantive pages, two contents-only pages, and one verified textless page. Chapter 20 begins at printed p. 1723.
