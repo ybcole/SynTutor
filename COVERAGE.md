@@ -6,7 +6,7 @@
 
 | Chapter | Printed pages | Extracted | Unprocessed | Skipped | Absent from split | Status |
 |---|---:|---:|---:|---:|---:|---|
-| 1. Preliminaries | 42 | 18 | 22 | 2 | 0 | In progress (pp. 1–19) |
+| 1. Preliminaries | 42 | 31 | 9 | 2 | 0 | In progress (pp. 1–32) |
 | 2. Syntactic overview | 28 | 26 | 0 | 1 | 1 | Source-extracted |
 | 3. The verb | 142 | 139 | 0 | 3 | 0 | Source-extracted; QA pending |
 | 4. The clause: complements | 110 | 107 | 0 | 3 | 0 | Source extracted; QA pending |
@@ -27,7 +27,7 @@
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **1399 extracted**, 324 unprocessed, 39 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **1412 extracted**, 311 unprocessed, 39 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -406,3 +406,7 @@ Printed pp. 1–10 are accounted for, with nine substantive pages and one conten
 ## Chapter 1 second Phase B checkpoint
 
 Printed pp. 11–19 add nine substantive pages and 17 inactive records (`OTH-617`–`OTH-633`). Chapter 1 now has 18 substantive pages extracted, two justified skips (the contents page and the existing boundary skip), and 22 unprocessed pages. Continue at printed p. 20 with the transition to basic syntax. [Report](sources/cambridge/chapter_01/PP11_19_REPORT.md) · [Audit](sources/cambridge/chapter_01/PP11_19_AUDIT.json).
+
+## Chapter 1 third Phase B checkpoint
+
+Printed pp. 20–32 add 13 substantive pages and 20 inactive records (`OTH-634`–`OTH-653`). Chapter 1 now has 31 substantive pages extracted, two justified skips, and nine unprocessed pages. Continue at printed p. 33 with semantics and pragmatics. [Report](sources/cambridge/chapter_01/PP20_32_REPORT.md) · [Audit](sources/cambridge/chapter_01/PP20_32_AUDIT.json).

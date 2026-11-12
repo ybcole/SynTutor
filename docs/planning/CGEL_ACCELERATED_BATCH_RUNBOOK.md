@@ -408,3 +408,7 @@ Printed pp. 1–10 are accounted for, with nine substantive pages and one conten
 ## Chapter 1 second checkpoint
 
 Printed pp. 11–19 add nine substantive pages and 17 inactive records (`OTH-617`–`OTH-633`). Chapter 1 now has 18 substantive pages extracted, two justified skips (the contents page and the existing boundary skip), and 22 unprocessed pages. Continue at printed p. 20 with the transition to basic syntax.
+
+## Chapter 1 third checkpoint
+
+Printed pp. 20–32 add 13 substantive pages and 20 inactive records (`OTH-634`–`OTH-653`). Chapter 1 now has 31 substantive pages extracted, two justified skips, and nine unprocessed pages. Continue at printed p. 33 with semantics and pragmatics.

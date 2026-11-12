@@ -36686,5 +36686,1118 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-634",
+    "domain": "other",
+    "concept": "Hierarchical constituency",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "A sentence has constituents that can themselves contain constituents. A sequence in the illustrated tree is a constituent when a single node dominates just its words.",
+    "condition": "Immediate constituents are one level below the containing unit. In these syntax trees the words are the ultimate constituents.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The dog chased a rabbit. [the dog and chased a rabbit are immediate constituents]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A fox crossed the lane. [fox crossed does not form one constituent]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§4.2.1",
+        "pages": [
+          20,
+          21
+        ],
+        "pdf_pages": [
+          40,
+          41
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Hierarchical constituency",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-635",
+    "domain": "other",
+    "concept": "Modal adjunct position as evidence for constituency",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "Positions available to an integrated modal adjunct in a simple clause provide evidence about grouping. The cited integrated pattern resists insertion within an NP or between a verb and its ordinary object.",
+    "condition": "A separately punctuated or intoned supplement can interrupt the same linear sequence. This evidence works with other tests of structure.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Apparently the porter locked the door.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The porter apparently locked the door.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "The porter locked, apparently, the door.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§4.2.1; §4.2.3",
+        "pages": [
+          21,
+          25
+        ],
+        "pdf_pages": [
+          41,
+          45
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Modal adjunct position as evidence for constituency",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-636",
+    "domain": "other",
+    "concept": "Lexical category inventory",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "The lexical categories are noun, verb, adjective, adverb, preposition, determinative, subordinator, coordinator and interjection.",
+    "condition": "The framework treats pronouns as nouns and distinguishes determinatives from adjectives and coordinators from subordinators.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Oh, they found some old maps. [interjection, pronoun and determinative]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She waited until dawn and left. [preposition and coordinator]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§4.2.2",
+        "pages": [
+          21,
+          22
+        ],
+        "pdf_pages": [
+          41,
+          42
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical category inventory",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-637",
+    "domain": "other",
+    "concept": "Phrasal category inventory and projection",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "The inventory includes clause, VP, NP, nominal, AdjP, AdvP, PP and determinative phrase. Phrase categories are commonly expansions of lexical heads.",
+    "condition": "A phrase can consist of one word. Sentence is a different notion, typically realized by a main clause or a coordination of main clauses.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Almost every ticket sold. [almost every is a determinative phrase]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The old lamp works quite reliably. [old lamp is a nominal and quite reliably an adverb phrase]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§4.2.2",
+        "pages": [
+          22,
+          23
+        ],
+        "pdf_pages": [
+          42,
+          43
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Phrasal category inventory and projection",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-638",
+    "domain": "other",
+    "concept": "Category and function are independent",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "A category identifies structural type. A grammatical function identifies a constituent's relation to its containing construction.",
+    "condition": "NPs can be subjects or objects. A subject can be realized by an NP or a clause.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The delay annoyed Lee.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That the train was late annoyed Lee.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§4.2.3",
+        "pages": [
+          23
+        ],
+        "pdf_pages": [
+          43
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Category and function are independent",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-639",
+    "domain": "other",
+    "concept": "Head and dependent distribution",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "A head normally determines the distribution of its phrase and licenses particular dependents. Dependents are subordinate and often optional.",
+    "condition": "A content clause and an NP can serve the same function in one construction yet differ in where else they occur. The category of a head also conditions degree modifier selection.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The news that we had won surprised us.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The news of our victory surprised us.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "They were too cautious.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§4.2.3",
+        "pages": [
+          24
+        ],
+        "pdf_pages": [
+          44
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Head and dependent distribution",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-640",
+    "domain": "other",
+    "concept": "Predicate and predicator as head functions",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "The predicate is the head of a clause. The predicator is the verb heading the VP.",
+    "condition": "The two labels refer to different levels of structure.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mira opened the window. [opened the window is predicate; opened is predicator]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They read the letter. [read the letter is predicate; read is predicator]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§4.2.3",
+        "pages": [
+          24
+        ],
+        "pdf_pages": [
+          44
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Predicate and predicator as head functions",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-641",
+    "domain": "other",
+    "concept": "Complement, modifier and determiner",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Complements are governed by heads, while modifiers and determiners stand in different dependent relations. Determiner is a function found in NP structure.",
+    "condition": "Object, subject and predicative are more specific complement functions in this framework.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The portrait of Jo that we restored is upstairs. [of Jo complements portrait; the relative modifies the nominal]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She restored the portrait. [the portrait is object]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§4.2.3",
+        "pages": [
+          24,
+          25
+        ],
+        "pdf_pages": [
+          44,
+          45
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Complement, modifier and determiner",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-642",
+    "domain": "other",
+    "concept": "Determinative category and determiner function",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Determinative is a category and determiner a function. A determinative can serve as modifier and a genitive NP can serve as determiner.",
+    "condition": "The source abbreviates the category as D and the function as Det.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo's bicycle is outside.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Hold the cup about this high.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "This cup is cracked.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§4.2.3",
+        "pages": [
+          24,
+          25,
+          26
+        ],
+        "pdf_pages": [
+          44,
+          45,
+          46
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Determinative category and determiner function",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-643",
+    "domain": "other",
+    "concept": "Non-headed coordination and supplementation",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Coordinates have equal syntactic status within a non-headed coordination. A supplement is loosely attached rather than integrated as a dependent or coordinate.",
+    "condition": "Separate intonation or punctuation can mark the supplement, which may interrupt a sequence unavailable to an integrated dependent.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She bought bread and cheese.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The parcel contained, I was told, a rare book.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§4.2.3",
+        "pages": [
+          25
+        ],
+        "pdf_pages": [
+          45
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-headed coordination and supplementation",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-644",
+    "domain": "other",
+    "concept": "Representing functions on syntax trees",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Functions describe the relation of a constituent to the larger unit. The source labels a function separately from the category in its tree diagrams.",
+    "condition": "This is the book's notation. A matching Burton-Roberts label must be verified separately.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The river flooded. [subject is the function of the river; NP is its category]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We crossed the bridge. [object is the function of the bridge; NP is its category]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§4.2.3",
+        "pages": [
+          25,
+          26
+        ],
+        "pdf_pages": [
+          45,
+          46
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Representing functions on syntax trees",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-645",
+    "domain": "other",
+    "concept": "Singulary branching in a one-word phrase",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "A phrase may have a head without dependents. The source represents this as one branch from the phrase node to the head.",
+    "condition": "A determiner plus noun instead supplies two branches in the illustrated NP.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Dogs barked. [Dogs is a one-word NP]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Some dogs barked. [Some dogs has determiner and head]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§4.2.3",
+        "pages": [
+          26
+        ],
+        "pdf_pages": [
+          46
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Singulary branching in a one-word phrase",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-646",
+    "domain": "other",
+    "concept": "Word, token and lexeme",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "A word is a syntactically distinguished form, a token an occurrence, and a lexeme the abstract vocabulary item underlying its forms.",
+    "condition": "Variable lexemes have multiple inflectional forms. A multiword analytic expression does not become another word form of its lexical head.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She is ready and they are ready. [is and are belong to be]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He worked carefully, but she worked more carefully. [analytic comparison]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§4.3",
+        "pages": [
+          26,
+          27
+        ],
+        "pdf_pages": [
+          46,
+          47
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Word, token and lexeme",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-647",
+    "domain": "other",
+    "concept": "Inflection and syntactic selection",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Syntax determines where an inflection is required or allowed. Inflectional morphology specifies the form that realizes it for the lexeme.",
+    "condition": "Tense, number, grade and the limited nominative–accusative contrast have different lexical ranges. Perfect have selects the past participle of the following verb.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She has written the report.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They have closed the shop.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§4.3",
+        "pages": [
+          27,
+          28
+        ],
+        "pdf_pages": [
+          47,
+          48
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inflection and syntactic selection",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-648",
+    "domain": "other",
+    "concept": "Compounding, derivation and conversion",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Compounding combines bases, derivation adds an affix, and conversion forms a related base of another category with the same shape.",
+    "condition": "Derivation can preserve or change category. These processes form lexical bases rather than inflectional variants.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The raincoat dried by the fire.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We reopened the gate.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "She pocketed the receipt.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§4.3",
+        "pages": [
+          28
+        ],
+        "pdf_pages": [
+          48
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Compounding, derivation and conversion",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-649",
+    "domain": "other",
+    "concept": "Limits of meaning-based definitions",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Traditional notional definitions use meaning to identify forms or categories, but the English classification depends on grammatical behavior.",
+    "condition": "Past time, directive force and reference to a thing are insufficient as stand-alone tests for preterite, imperative and noun.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She said the concert started tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Could you turn the light off?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Their arrival surprised me.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§4.4",
+        "pages": [
+          28,
+          29,
+          30
+        ],
+        "pdf_pages": [
+          48,
+          49,
+          50
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Limits of meaning-based definitions",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-650",
+    "domain": "other",
+    "concept": "Preterite form versus time reference",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "English preterites are identified by inflection and distribution, with past-time reference as their primary use. Backshift and modal remoteness can produce other temporal readings.",
+    "condition": "Regular -ed is shared with the past participle, and most preterites lack subject agreement, with be as the exception.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He said the bus left tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I wish the train left later.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "I regret leaving so early.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§4.4",
+        "pages": [
+          29,
+          31,
+          32
+        ],
+        "pdf_pages": [
+          49,
+          51,
+          52
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Preterite form versus time reference",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-651",
+    "domain": "other",
+    "concept": "Imperative construction versus directive force",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "English imperatives have structural diagnostics including plain be, possible omission of a second-person subject and negative do. Their characteristic use is directive, but an imperative can express a wish and an interrogative can make a request.",
+    "condition": "Imperative is a clause construction here rather than a separate verb inflection.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Enjoy your holiday!",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Don't be late.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Could you close the window?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§4.4",
+        "pages": [
+          29,
+          30,
+          31,
+          32
+        ],
+        "pdf_pages": [
+          49,
+          50,
+          51,
+          52
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Imperative construction versus directive force",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-652",
+    "domain": "other",
+    "concept": "Noun versus verb distribution",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Nouns and verbs can express closely related meanings while differing in inflection, complement licensing and modifiers.",
+    "condition": "A nominal may take a determiner or genitive and an of complement where a transitive verb has a nominative subject and a direct object.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Their sudden withdrawal of the offer surprised us.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They suddenly withdrew the offer.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§4.4",
+        "pages": [
+          30,
+          32
+        ],
+        "pdf_pages": [
+          50,
+          52
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Noun versus verb distribution",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-653",
+    "domain": "other",
+    "concept": "General and English-specific category definitions",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "An English-specific definition uses distribution and form to classify expressions. A general definition may use characteristic meaning to motivate the same category label across languages.",
+    "condition": "Semantic tendencies apply to a category as a whole without requiring every member to have the prototypical meaning.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A window and an idea. [concrete and abstract nouns]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Be careful! and Have a good trip! [directive and wish uses of imperatives]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§4.4",
+        "pages": [
+          31,
+          32
+        ],
+        "pdf_pages": [
+          51,
+          52
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "General and English-specific category definitions",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
   }
 ]
