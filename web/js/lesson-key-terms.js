@@ -1,69 +1,69 @@
 const keyTerms = {
   'br-01': [
-    ['Constituent', 'A word or group of words that acts as one unit in a sentence.', '“The quiet garden” forms a unit inside “near the quiet garden”.'],
-    ['Hierarchy', 'The arrangement of smaller units inside larger ones.', 'The garden group sits inside the whole place phrase.'],
-    ['Replacement test', 'A way to check a group by substituting one suitable expression for it.', '“It” replaces “the quiet garden” in “We met near it”.'],
-    ['Structural ambiguity', 'Two possible meanings that come from grouping the same words differently.', '“With a telescope” can describe how the speaker watched or identify which hikers the speaker watched.'],
+    ['Constituent', 'A word or group of words that acts as a unit within a larger expression.'],
+    ['Hierarchy', 'The arrangement of smaller units inside larger ones. In a syntax tree, branches show which units belong together.'],
+    ['Replacement test', 'A way to check whether words form a unit by replacing them with a suitable expression, such as a pronoun, and checking that the rest of the sentence still fits.'],
+    ['Structural ambiguity', 'Two or more possible readings that come from grouping or attaching the same words differently.'],
   ],
   'br-02': [
-    ['Subject', 'The group the predicate says something about in the simple statements studied here.', '“The robins” is the subject in “The robins sing”.'],
-    ['Predicate', 'The group that says something about the subject.', '“Are singing softly” is the whole predicate in the longer robins example.'],
-    ['Category', 'The kind of group a phrase is.', 'Noun phrase (NP) and verb phrase (VP) are categories.'],
-    ['Function', 'The job a phrase does in a larger structure.', '“The robins” is an NP in both examples. It serves as subject in “The robins sing” and as object in “Maya watched the robins”.'],
+    ['Subject', 'A grammatical function within a clause. In a typical English statement, the subject comes before the verb and controls agreement where the verb shows it.'],
+    ['Predicate', 'The part of a clause that says what the subject does, what happens to it, or what state it is in.'],
+    ['Category', 'The kind of word or phrase something is, such as a noun phrase (NP) or a verb phrase (VP).'],
+    ['Function', 'The grammatical role a word or phrase has within a larger structure, such as subject or object.'],
   ],
   'br-03': [
-    ['Head', 'The word that gives a phrase its basic grammatical character.', '“Cheerful” is the head of “very cheerful”.'],
-    ['Adjective phrase (AP)', 'A phrase headed by an adjective (A).', 'Both “cheerful” and “very cheerful” can form an AP.'],
-    ['Degree word (DEG)', 'A word that indicates the strength or degree of a description.', '“Very” indicates the degree of cheerfulness.'],
+    ['Head', 'The central word of a phrase, which determines the phrase’s grammatical category.'],
+    ['Adjective phrase (AP)', 'A phrase headed by an adjective. It can consist of the adjective alone or include words that modify or complete it.'],
+    ['Degree word (DEG)', 'A word such as “very” or “quite” that indicates the degree to which a quality applies.'],
   ],
   'br-04': [
-    ['Transitive verb (V [trans])', 'In the pattern here, a verb used with a direct object.', '“Inspected” takes the object “the bridge”.'],
-    ['Direct object', 'A complement of the verb that identifies what or whom the action concerns in these examples.', 'Ask what Nora inspected. “The bridge” is the complete answer and the object NP.'],
-    ['Sister nodes', 'Nodes that share an immediate parent in a tree.', 'V and the direct-object NP are sisters under VP.'],
+    ['Transitive verb (V [trans])', 'A verb used with a direct object. Transitivity describes how the verb is used in a particular construction.'],
+    ['Direct object', 'A verb complement that typically follows the verb in an active English clause. It often identifies the person or thing affected by the action.'],
+    ['Sister nodes', 'Nodes that share the same immediate parent in a tree.'],
   ],
   'br-05': [
-    ['Complement', 'A group that fills a role in the grammatical pattern of a head.', 'The object “the bridge” is the complement of “inspected”.'],
-    ['Adjunct', 'A group that adds information such as time or place to a larger group.', '“In June” adds the time of the inspection.'],
-    ['Inner and outer VP', 'Two verb phrases, with one contained in the other.', '“Inspected the bridge” is the inner VP. The outer VP adds “in June”.'],
+    ['Complement', 'A phrase or clause that fills a role licensed by its head. A direct object is one kind of verb complement.'],
+    ['Adjunct', 'A modifier that adds information such as time, place, or manner to a phrase or clause.'],
+    ['Inner and outer VP', 'Two levels of verb phrase structure. The inner VP sits inside the outer VP, which also covers material attached at the higher level.'],
   ],
   'br-06': [
-    ['Progressive auxiliary (PROG)', 'A form of “be” used with an -ing verb to present an activity as in progress.', '“Is” is the progressive auxiliary in “Nora is inspecting the bridge”.'],
-    ['Lexical VP', 'The verb phrase headed by the main verb in this analysis.', '“Inspecting the bridge” groups the main verb and its object.'],
-    ['VP complement', 'A verb phrase that fills the complement role of another head.', 'The whole lexical VP is the complement of “is”.'],
-    ['Tense', 'A grammatical feature of a verb form, such as present or past.', 'The tense feature [pres] belongs to PROG in “is inspecting”.'],
+    ['Progressive auxiliary (PROG)', 'A form of “be” used with a verb in its -ing form to present a situation as ongoing.'],
+    ['Lexical VP', 'A verb phrase headed by the main verb, together with any complements of that verb.'],
+    ['VP complement', 'A verb phrase that serves as the complement of a head, such as an auxiliary.'],
+    ['Tense', 'A grammatical feature, such as present or past, that helps locate a situation in time.'],
   ],
   'br-07': [
-    ['Determiner (DET)', 'The position for a word that helps identify or specify what a noun phrase refers to.', 'DET is one of the two immediate branches under NP.'],
-    ['Demonstrative (DEM)', 'A word such as “this” or “those” that points out which thing or group is meant.', '“Those” is a DEM inside DET.'],
-    ['Nominal (NOM)', 'The level of noun phrase structure that contains the head noun and any modifiers in this analysis.', 'NOM contains only “lanterns” in the worked example.'],
-    ['Head noun (N)', 'The noun that supplies the basic kind of thing named by the phrase.', '“Lanterns” is the head noun of “those lanterns”.'],
+    ['Determiner (DET)', 'A word or expression that helps identify or quantify what a noun phrase refers to. DET labels its position in the tree.'],
+    ['Demonstrative (DEM)', 'A word such as “this”, “that”, “these”, or “those” that points out a referent.'],
+    ['Nominal (NOM)', 'The part of a noun phrase built around the head noun. In Burton-Roberts trees, NOM forms a layer between NP and N and can contain noun modifiers.'],
+    ['Head noun (N)', 'The noun that heads the nominal and gives the noun phrase its basic reference.'],
   ],
   'br-08': [
-    ['Embedded clause', 'A clause that appears inside a larger grammatical structure.', '“Nora is inspecting the bridge” has its own subject and predicate inside Leo’s report.'],
-    ['Complementiser (C)', 'A word that introduces a subordinate clause in the pattern taught here.', '“That” introduces the reported content and appears under C.'],
-    ['S and S′', 'S marks the inner subject–predicate structure. S′ groups C with that inner S in this pattern.', 'S begins at “Nora”. S′ begins at “that”.'],
+    ['Embedded clause', 'A clause that forms part of a larger phrase or clause.'],
+    ['Complementiser (C)', 'A word such as “that” or “whether” that introduces a subordinate clause. C labels its position in the tree.'],
+    ['S and S′', 'In Burton-Roberts trees, S labels the clause with its subject and predicate. S′, read “S-bar”, is the higher layer that groups C with S.'],
   ],
   'br-09': [
-    ['Fronting', 'Placing a word or phrase earlier than its corresponding position in the statement.', '“What” appears at the start of the question, while the corresponding object follows “inspecting” in the statement.'],
-    ['C1', 'The front position used by the tensed auxiliary in these questions.', '“Is” occupies C1 in “What is Nora inspecting?”'],
-    ['C2', 'The higher front position for the wh-expression in this analysis.', '“What” occupies C2.'],
-    ['Gap', 'An unspoken position in the tree that shows where a fronted item belongs in the corresponding statement.', 'One gap is under PROG for “is”. The other is under the object NP for “what”.'],
+    ['Fronting', 'Placing a word or phrase near the beginning of a clause, earlier than its usual position.'],
+    ['C1', 'The lower front position in the Burton-Roberts question tree. A fronted tensed auxiliary occupies C1 in a main-clause question.'],
+    ['C2', 'The higher front position in the Burton-Roberts question tree. A fronted wh-expression such as “what” occupies C2.'],
+    ['Gap', 'A position with no spoken word or phrase. In a tree with fronting, a gap marks the position associated with the fronted expression.'],
   ],
   'br-10': [
-    ['Infinitival “to”', 'The form of “to” used with the base form of a verb. In this analysis it is an untensed auxiliary.', '“To” in “to inspect the bridge” carries the feature [-tense].'],
-    ['Non-finite', 'A verb form or phrase that has no tense of its own in the pattern taught here.', '“To inspect the bridge” stays the same after “plans” or “planned”.'],
-    ['Stem form', 'The base form of a verb, without endings such as -s, -ed, or -ing.', '“Inspect” is the stem after infinitival “to”.'],
-    ['Lexical VP', 'The phrase headed by the main verb.', '“Inspect the bridge” is the lexical VP that follows “to”.'],
+    ['Infinitival “to”', 'The marker “to” that precedes a base-form verb in a to-infinitive. Burton-Roberts analyses it as an untensed auxiliary.'],
+    ['Non-finite', 'A term for verb forms and clauses that carry no tense of their own. Infinitives and participles are non-finite verb forms.'],
+    ['Stem form', 'The base form of a verb, such as “go”, “write”, or “inspect”.'],
+    ['Lexical VP', 'A verb phrase headed by the main verb, together with any complements of that verb.'],
   ],
   'br-11': [
-    ['Grammar', 'A system of rules that describes how expressions can be built and grouped.', 'The toy grammar has basic sentences and a rule for joining them.'],
-    ['Combination rule', 'An instruction for building a larger expression from eligible inputs.', 'The rule joins two complete sentences with “and”.'],
-    ['Recursion', 'Using the output of a rule as an input to that same rule.', 'A sentence made by joining “Iris rests” and “Leo waits” can be joined with another sentence.'],
+    ['Grammar', 'A system of patterns that describes how words and groups combine to form larger expressions.'],
+    ['Combination rule', 'An instruction that specifies which units can combine and how the resulting structure is grouped.'],
+    ['Recursion', 'A pattern in which a rule can apply again within or to the structure it produces, allowing further layers.'],
   ],
   'cgel-clauses': [
-    ['Written sentence', 'A complete unit of written text, usually marked by an initial capital and final punctuation.', '“Nora reports that the robins sing.” is one written sentence.'],
-    ['Clause', 'A grammatical unit that typically contains a subject and predicate.', '“The robins sing” has a subject and predicate.'],
-    ['Embedded clause', 'A clause that forms part of a larger grammatical structure.', 'The robins’ singing is reported inside the larger clause about Nora.'],
+    ['Written sentence', 'A unit of written text, usually marked by an initial capital letter and sentence-ending punctuation.'],
+    ['Clause', 'A grammatical unit organised around a predicate. A typical clause has a subject and a predicate.'],
+    ['Embedded clause', 'A clause that forms part of a larger phrase or clause.'],
   ],
 };
 
@@ -73,13 +73,9 @@ export function addLessonKeyTerms(body, el, lessonId) {
   const section = el('section', undefined, 'lesson-key-terms');
   section.append(el('h3', 'Key terms'));
   const list = el('dl');
-  for (const [term, definition, example] of terms) {
-    const description = el('dd');
-    const use = el('p');
-    use.append(el('strong', 'In this chapter'), ' ', example);
-    description.append(el('p', definition), use);
+  for (const [term, definition] of terms) {
     const entry = el('div');
-    entry.append(el('dt', term), description);
+    entry.append(el('dt', term), el('dd', definition));
     list.append(entry);
   }
   section.append(list);

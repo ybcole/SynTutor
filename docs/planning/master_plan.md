@@ -350,7 +350,7 @@ Use **B-R for the core syntax curriculum** because it teaches the method of cons
 ### Recommended lesson sequence
 
 1. **Predict (diagnostic MCQ):** begin with a short opening check. Show the number correct after completion. The result has no passing threshold or XP effect.
-2. **Understand:** a short learning objective, B-R definition/convention, and a Cambridge insight where useful. Introduce each example in a full sentence that tells learners what to look for. When using brackets, explain what they mark. Place key terms below the introduction preview, with a plain definition and chapter-specific example for each.
+2. **Understand:** a short learning objective, B-R definition/convention, and a Cambridge insight where useful. Introduce each example in a full sentence that tells learners what to look for. When using brackets, explain what they mark. Place key terms below the introduction preview, with a plain definition that learners can use across examples.
 3. **See it:** a worked B-R tree with progressive highlighting of the head, dependents, complements, features, or other current concept. Number controls that teach a sequence. Each step should change what learners see in the tree. Keep comparison and answer controls unnumbered. Put the selected words and the teaching explanation in a visible callout directly under the tree. Move explanation-only steps into that text.
 4. **Build it:** guided construction in the Syntax Builder, with hints that progressively fade.
 5. **Apply it:** an original transfer example or a different sentence requiring the learner to use the concept independently.

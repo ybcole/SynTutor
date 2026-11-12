@@ -7,7 +7,7 @@ in its own terminology.
 
 ## Page sequence
 
-1. **Introduction.** Introduce the example in context and explain the bracketed groups. Use the regular lesson background for the example panel. After **What you’ll see in this chapter**, put **Key terms** in one transparent container. Give each term a plain definition and a chapter-specific example.
+1. **Introduction.** Introduce the example in context and explain the bracketed groups. Use the regular lesson background for the example panel. After **What you’ll see in this chapter**, put **Key terms** in one transparent container. Give each term a plain definition that learners can use across examples. Identify notation specific to the tree conventions.
 2. **Core concepts.** Build on the terms introduced on the first page. Use the same terms in the worked analysis, transfer practice, and recap.
 3. **Worked analysis.** Let learners trace the structure in numbered steps. Put the visible explanation below the diagram in a neutral, bordered panel.
 4. **Transfer.** Give the learner a new example and explain what makes the selected analysis work.

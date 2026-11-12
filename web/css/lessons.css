@@ -373,7 +373,4 @@
   background:transparent;
 }
 .lesson-key-terms dt { font-weight:700; }
-.lesson-key-terms dd { margin-inline-start:0; }
-.constituent-page .lesson-key-terms dd > p { margin:4px 0 0; }
-.constituent-page .lesson-key-terms dd > p + p { color:var(--muted); font-size:.9rem; }
-.lesson-key-terms dd strong { font-weight:600; }
+.lesson-key-terms dd { margin:4px 0 0; line-height:1.72; }
