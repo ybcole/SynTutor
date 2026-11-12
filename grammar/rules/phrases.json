@@ -43924,5 +43924,1665 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-699",
+    "domain": "phrases",
+    "concept": "Lexical selection of finite complement ellipsis",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The lexical head constrains whether an omitted finite complement is understood as declarative or interrogative.",
+    "condition": "Agree and convince license declarative recovery; ask and inquire license interrogative recovery. Forget, recall, remember, certain and sure can allow both. Explain and inquire illustrate interrogative recovery; persuade and suppose illustrate declarative recovery. Hear, know, mind and tell are also listed with both readings.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I said the trail was closed, and she agreed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We didn't know when the gate would open, so he asked.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.4",
+        "pages": [
+          1529
+        ],
+        "pdf_pages": [
+          1549
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical selection of finite complement ellipsis",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-700",
+    "domain": "phrases",
+    "concept": "Indirect recovery of omitted clause type",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The understood finite complement can differ in clause type from its antecedent. Modality, hypothetical framing and the selecting head guide recovery.",
+    "condition": "A possibility can prompt whether recovery, while a hypothetical scenario can support a declarative describing what happened within it.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The seal might have leaked. We'll never know.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I locked every window. Ask Nora.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.4",
+        "pages": [
+          1529
+        ],
+        "pdf_pages": [
+          1549
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Indirect recovery of omitted clause type",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-701",
+    "domain": "phrases",
+    "concept": "Dialect differences in finite complement omission",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "The source reports ellipsis with suppose in American and Australian English, compared with so in British English, and declarative ellipsis with know in British and Australian English, compared with an overt pro-form in American English.",
+    "condition": "These are differences in the cited readings and varieties.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Will they reopen? I suppose.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The bridge is closed. Yes, I know it.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.4",
+        "pages": [
+          1529
+        ],
+        "pdf_pages": [
+          1549
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dialect differences in finite complement omission",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-702",
+    "domain": "phrases",
+    "concept": "Conditional and fixed complement omission",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Conditional if can license an understood complement after want, prefer, like or choose where a corresponding nonconditional omission is unavailable in the cited reading.",
+    "condition": "Fixed offers such as Allow me can recover an action situationally.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We can meet outside if you prefer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You can leave now if you want.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.4",
+        "pages": [
+          1529
+        ],
+        "pdf_pages": [
+          1549
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Conditional and fixed complement omission",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-703",
+    "domain": "phrases",
+    "concept": "Do so as an anaphoric VP",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Do so can provide a somewhat more formal counterpart to auxiliary ellipsis, stranded infinitival to or dialectal pro-form do.",
+    "condition": "Do inflects as required by the construction.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She hasn't filed it, but she intends to do so.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He may already have done so.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.5",
+        "pages": [
+          1529
+        ],
+        "pdf_pages": [
+          1549
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Do so as an anaphoric VP",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-704",
+    "domain": "phrases",
+    "concept": "Auxiliary-headed antecedent exclusion for do so",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "Do so cannot recover an antecedent VP headed by an auxiliary, including predicative be.",
+    "condition": "An auxiliary in the larger antecedent clause does not prevent a lexical VP inside it from serving as antecedent.",
+    "violation": "Do so is used to recover a VP headed by predicative be or another auxiliary.",
+    "exceptions": [
+      {
+        "description": "An auxiliary in the larger antecedent clause does not prevent a lexical VP inside it from serving as antecedent.",
+        "pages": [
+          1530
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They asked me to be discreet, and I was.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They asked me to seal the box, and I did so.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c3",
+          "text": "She tried to be patient, and eventually she was.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "Mira has packed the bag, and Theo has done so too.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "They asked me to be discreet, and I did so.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "She tried to be patient, and eventually she did so.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.5",
+        "pages": [
+          1530
+        ],
+        "pdf_pages": [
+          1550
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Auxiliary-headed antecedent exclusion for do so",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "Do so is used to recover a VP headed by predicative be or another auxiliary.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "They asked me to be discreet, and I did so. ||| They asked me to be discreet, and I was.",
+        "She tried to be patient, and eventually she did so. ||| She tried to be patient, and eventually she was."
+      ],
+      "learner_explanation": "Do so cannot recover an antecedent VP headed by an auxiliary, including predicative be. Use the corresponding form of be when it heads the intended antecedent VP.",
+      "corrected_paragraph_template": "Use the corresponding form of be when it heads the intended antecedent VP.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Mira has packed the bag, and Theo has done so too.",
+        "They asked me to seal the box, and I did so."
+      ],
+      "lesson_tags": [
+        "anaphora",
+        "pro_forms"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-705",
+    "domain": "phrases",
+    "concept": "Contrastive objects and do so",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "Do so replaces at least the verb and its complements, so a contrasting direct object of the recovered verb cannot follow it.",
+    "condition": "Bare do may instead recover just the verb. An adjunct or a separately licensed complement in another do construction is a different case.",
+    "violation": "A direct object of the recovered lexical verb follows do so.",
+    "exceptions": [
+      {
+        "description": "Bare do may instead recover just the verb. An adjunct or a separately licensed complement in another do construction is a different case.",
+        "pages": [
+          1530
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I didn't invite Rae, but I did invite Sol.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I didn't invite Rae, but I did Sol.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "I won't inspect the roof, but I will inspect the cellar.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "I checked the latch and did so carefully.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c5",
+          "text": "I hope they won't do that to me.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "I didn't invite Rae, but I did so Sol.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "I won't inspect the roof, but I will do so the cellar.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.5",
+        "pages": [
+          1530
+        ],
+        "pdf_pages": [
+          1550
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Contrastive objects and do so",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "A direct object of the recovered lexical verb follows do so.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "I didn't invite Rae, but I did so Sol. ||| I didn't invite Rae, but I did Sol.",
+        "I won't inspect the roof, but I will do so the cellar. ||| I won't inspect the roof, but I will inspect the cellar."
+      ],
+      "learner_explanation": "Do so replaces at least the verb and its complements, so a contrasting direct object of the recovered verb cannot follow it. Retain the lexical verb or use an available reduced VP that licenses the contrasting object.",
+      "corrected_paragraph_template": "Retain the lexical verb or use an available reduced VP that licenses the contrasting object.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "I checked the latch and did so carefully.",
+        "I hope they won't do that to me."
+      ],
+      "lesson_tags": [
+        "anaphora",
+        "pro_forms"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-706",
+    "domain": "phrases",
+    "concept": "Do so in comparisons",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "In the cited than and as comparisons, do so is unavailable in the comparative complement where reduced do is licensed.",
+    "condition": "Distinguish an ordinary clause containing do so and an adjunct that compares manners.",
+    "violation": "Do so replaces reduced do in the comparative complement itself.",
+    "exceptions": [
+      {
+        "description": "Distinguish an ordinary clause containing do so and an adjunct that compares manners.",
+        "pages": [
+          1530
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She cycles farther than I do.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He judged it fair, as I did.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "She cleaned the vent and did so more carefully than before.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "I closed the hatch. As I did so, the warning light went out.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "She cycles farther than I do so.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "He judged it fair, as I did so.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.5",
+        "pages": [
+          1530
+        ],
+        "pdf_pages": [
+          1550
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Do so in comparisons",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "Do so replaces reduced do in the comparative complement itself.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "She cycles farther than I do so. ||| She cycles farther than I do.",
+        "He judged it fair, as I did so. ||| He judged it fair, as I did."
+      ],
+      "learner_explanation": "In the cited than and as comparisons, do so is unavailable in the comparative complement where reduced do is licensed. Use the reduced comparative construction without so.",
+      "corrected_paragraph_template": "Use the reduced comparative construction without so.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "She cleaned the vent and did so more carefully than before.",
+        "I closed the hatch. As I did so, the warning light went out."
+      ],
+      "lesson_tags": [
+        "anaphora",
+        "pro_forms"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-707",
+    "domain": "phrases",
+    "concept": "Dynamic antecedents of do so",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Do so generally takes a dynamic VP antecedent, including an event without an agent. Stative antecedents such as ordinary like disfavor it.",
+    "condition": "Agentivity is a separate property from dynamicity.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The shutter rattled, and did so for an hour.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mira liked the music, and Theo did too.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.5",
+        "pages": [
+          1530
+        ],
+        "pdf_pages": [
+          1550
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dynamic antecedents of do so",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-708",
+    "domain": "phrases",
+    "concept": "Do so versus maximally reduced tags and replies",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Canonical interrogative tags and minimal polar replies use the more reduced VP rather than do so. Do so also lacks the purely situational recovery illustrated by a bare warning.",
+    "condition": "A full follow-up question with a separate discourse purpose must be distinguished from a minimal response.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo has filed it, hasn't she?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Did she file it? Yes, she did.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Seeing Jo about to touch the wire, I said, 'Don't!'",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.5",
+        "pages": [
+          1530
+        ],
+        "pdf_pages": [
+          1550
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Do so versus maximally reduced tags and replies",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-709",
+    "domain": "phrases",
+    "concept": "Chaining and crossed anaphoric links",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Auxiliary or infinitival ellipsis is generally more natural than repeated do so in chains or crossed anaphoric links.",
+    "condition": "This concerns preference and ease of recovery, rather than an absolute prohibition.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Will you join us? I might; I'd like to, but I'm not sure I can.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Call and ask whether Rae has arrived. I will, but I'm sure she hasn't.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.5",
+        "pages": [
+          1531
+        ],
+        "pdf_pages": [
+          1551
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Chaining and crossed anaphoric links",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-710",
+    "domain": "phrases",
+    "concept": "Noncontrastive adjuncts with do so",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Do so can license a noncontrastive adjunct in the reduced VP where bare pro-form do is unavailable in the cited pattern.",
+    "condition": "The adjunct supplies new manner or circumstance information instead of replacing a contrasting antecedent adjunct.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She volunteered, but did so reluctantly.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Anyone who enters does so at their own risk.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.5",
+        "pages": [
+          1531
+        ],
+        "pdf_pages": [
+          1551
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Noncontrastive adjuncts with do so",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-711",
+    "domain": "phrases",
+    "concept": "Do so in nonfinite clauses",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Doing so and to do so can express an understood VP where bare lexical pro-form do or stranding is unavailable or disfavored.",
+    "condition": "Availability of bare doing varies by dialect. Infinitival stranding is subject to structural constraints.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I didn't protest because doing so would have delayed us.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I didn't appeal because to do so would have cost too much.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.5",
+        "pages": [
+          1531
+        ],
+        "pdf_pages": [
+          1551
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Do so in nonfinite clauses",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-712",
+    "domain": "phrases",
+    "concept": "Antecedent differences with do so",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Do so can readily carry an inflection different from the antecedent's. It tolerates some voice or category differences more readily than ellipsis, though these may be stylistically awkward.",
+    "condition": "The required inflection remains overt on do.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We didn't protest because doing so would delay the vote.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The boards should be replaced wherever it is practical to do so.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.5",
+        "pages": [
+          1531
+        ],
+        "pdf_pages": [
+          1551
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Antecedent differences with do so",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-713",
+    "domain": "phrases",
+    "concept": "Complement status and placement of so in do so",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "So is a complement without object status, so it cannot become a passive subject. It usually follows do but may precede it in gerund-participials and rarely in to-infinitivals.",
+    "condition": "Passives with it or a demonstrative have a separate construction with an NP object.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They are in the process of so doing.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They signed the lease and did so willingly.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.5",
+        "pages": [
+          1532
+        ],
+        "pdf_pages": [
+          1552
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Complement status and placement of so in do so",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-714",
+    "domain": "phrases",
+    "concept": "Agentivity of do with an NP object",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Do it, do this and do that require an agentive interpretation, whereas do so can denote a non-agentive dynamic event.",
+    "condition": "An antecedent headed by be remains excluded in the cited substitution even when interpreted agentively.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The branch snapped, and did so loudly.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Rae reset the alarm, and did it quietly.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.6",
+        "pages": [
+          1532
+        ],
+        "pdf_pages": [
+          1552
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Agentivity of do with an NP object",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-715",
+    "domain": "phrases",
+    "concept": "Compositional NP objects in general agentive do",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Do it and do this or that are compositional combinations of general agentive do with a genuine object. Their object can supply anaphoric or deictic reference and can become a passive subject.",
+    "condition": "Idiomatic do so lacks the same object behavior.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Don't do that again, said Mira as Jo pushed the switch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They completed both surveys in a day. It had never been done before.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.6",
+        "pages": [
+          1532
+        ],
+        "pdf_pages": [
+          1552
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Compositional NP objects in general agentive do",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-716",
+    "domain": "phrases",
+    "concept": "Interrogative, relative and comparative expressions with general do",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "General agentive do combines with interrogative or relative expressions to question or relativize a VP meaning, and with expressions such as the same or otherwise to compare actions.",
+    "condition": "A passive relative with general do is distinct from a supplementary relative that strands an auxiliary.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What did Rae do after lunch?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What she did surprised me.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "We changed the locks, and our neighbors did likewise.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.6",
+        "pages": [
+          1533
+        ],
+        "pdf_pages": [
+          1553
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Interrogative, relative and comparative expressions with general do",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-717",
+    "domain": "phrases",
+    "concept": "Patient to-phrase with general agentive do",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "General agentive do can combine with a to-PP whose NP denotes the patient, including where that patient contrasts with an antecedent object.",
+    "condition": "The patient phrase occurs with anaphoric, deictic and interrogative objects.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They kept Sal waiting all morning. Don't do that to me.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What did they do to you?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.6",
+        "pages": [
+          1533
+        ],
+        "pdf_pages": [
+          1553
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Patient to-phrase with general agentive do",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-718",
+    "domain": "phrases",
+    "concept": "General dynamic happen with subject anaphora",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Happen takes a subject that can refer to a situation anaphorically or deictically. It also combines with interrogative and relative expressions to question or relativize a clause meaning.",
+    "condition": "Happen denotes a dynamic situation without entailing an agent.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The roads might flood. That happened last spring.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What happened was the lights went out.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.6",
+        "pages": [
+          1533,
+          1534
+        ],
+        "pdf_pages": [
+          1553,
+          1554
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "General dynamic happen with subject anaphora",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-719",
+    "domain": "phrases",
+    "concept": "Event kind versus specific participants with do so and do it",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Do so can recover an event kind without preserving the identity of participants. Definite it or that in anaphoric agentive do characteristically refers to a specific event or action with the same internal participants.",
+    "condition": "The definiteness of the object helps distinguish the readings.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Rae nearly found a fossil today and hopes to do so tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Rae nearly reached that ledge today and hopes to do it tomorrow.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.6",
+        "pages": [
+          1534
+        ],
+        "pdf_pages": [
+          1554
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Event kind versus specific participants with do so and do it",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-720",
+    "domain": "phrases",
+    "concept": "Stress contrast between do it and do that",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "It in do it and so in do so are unstressed in the cited use. That in do that readily takes stress and gives contrastive focus to the action.",
+    "condition": "Do it can fit a context where an action was already under consideration; stressed that can focus on newly disclosed behavior.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We discussed canceling the order. Did you do it?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You canceled the order? Why did you do THAT?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.6",
+        "pages": [
+          1534
+        ],
+        "pdf_pages": [
+          1554
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Stress contrast between do it and do that",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-721",
+    "domain": "phrases",
+    "concept": "Six grammatical uses of do",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The source distinguishes supportive auxiliary do, dialectal pro-form do, the head of do so, general agentive do, light do and ordinary lexical do.",
+    "condition": "Lexical uses can occur with supportive do. Auxiliary plain forms occur in emphatic or negative imperatives. Ordinary lexical do can be intransitive, monotransitive or ditransitive.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Do sit down.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They did a little gardening.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Didn't you do that yesterday?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "She did us a favor.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.6",
+        "pages": [
+          1534,
+          1535
+        ],
+        "pdf_pages": [
+          1554,
+          1555
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Six grammatical uses of do",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-722",
+    "domain": "phrases",
+    "concept": "Deictic degree and manner so",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Deictic degree so marks a degree supplied by an indexing act; manner so can accompany a demonstration and has the alternant like so.",
+    "condition": "So far may mean up to now deictically or up to then anaphorically.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Holding his hands apart, Cal said, 'The gap was about so wide.'",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Turn the handle like so, said Bea as she demonstrated.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.7.1",
+        "pages": [
+          1535
+        ],
+        "pdf_pages": [
+          1555
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Deictic degree and manner so",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-723",
+    "domain": "phrases",
+    "concept": "Discourse-deictic so with naming predicates",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "So with naming predicates can recover a linguistic expression rather than its denotation.",
+    "condition": "This is a discourse-deictic use in predicative complement function.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The lookout is called Lantern Point, so named for its old beacon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The route is called the Loop and is so labeled on the map.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.7.1",
+        "pages": [
+          1535
+        ],
+        "pdf_pages": [
+          1555
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Discourse-deictic so with naming predicates",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-724",
+    "domain": "phrases",
+    "concept": "Declarative recovery by pro-clause so",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Anaphoric so in the cited complement construction represents a declarative clause even when the antecedent is interrogative. It occurs with selected verbs, with afraid and with conditional if.",
+    "condition": "Appear and seem take impersonal it. Some licensing verbs also have a passive construction with extraposed so. Confirm, doubt, realize and resent do not generally license this so, and know has a marked jocular exception.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Will they extend the deadline? I hope so.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It seems so.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Will the road reopen? If so, we'll leave at noon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.7.2",
+        "pages": [
+          1536
+        ],
+        "pdf_pages": [
+          1556
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Declarative recovery by pro-clause so",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-725",
+    "domain": "phrases",
+    "concept": "Pro-clause so versus it and that",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "With verbs such as believe, so can give a qualified answer about the truth of an antecedent proposition, whereas it or that can make the speaker's belief itself the issue.",
+    "condition": "A proposition taken for granted with regret it differs from the qualified affirmative reading of regret so.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Will the shop close early? Yes, I believe so.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You actually believe the shop is closing? Yes, I believe that.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.7.2",
+        "pages": [
+          1536
+        ],
+        "pdf_pages": [
+          1556
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pro-clause so versus it and that",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-726",
+    "domain": "phrases",
+    "concept": "Polarity contrast between pro-clause so and not",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "So normally represents the positive proposition and not its negative counterpart. Say and tell can use so to recover a negative clause.",
+    "condition": "Negative not with say and tell is especially associated with question responses. Matrix negation can yield the interpretation of embedded negation with verbs such as think.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Will it freeze tonight? I hope not.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She didn't approve and told us so.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Will the road close? I don't think so.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.7.2",
+        "pages": [
+          1536
+        ],
+        "pdf_pages": [
+          1556
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Polarity contrast between pro-clause so and not",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
   }
 ]

@@ -1,0 +1,132 @@
+{
+  "manifest_version": 1,
+  "chapter": 17,
+  "printed_start": 1529,
+  "printed_end": 1536,
+  "report": "sources/cambridge/chapter_17/PP1529_1536_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1529,
+    "pdf_page": 1549
+  },
+  "added_rule_ids": [
+    "PHR-699",
+    "PHR-700",
+    "PHR-701",
+    "PHR-702",
+    "PHR-703",
+    "PHR-704",
+    "PHR-705",
+    "PHR-706",
+    "PHR-707",
+    "PHR-708",
+    "PHR-709",
+    "PHR-710",
+    "PHR-711",
+    "PHR-712",
+    "PHR-713",
+    "PHR-714",
+    "PHR-715",
+    "PHR-716",
+    "PHR-717",
+    "PHR-718",
+    "PHR-719",
+    "PHR-720",
+    "PHR-721",
+    "PHR-722",
+    "PHR-723",
+    "PHR-724",
+    "PHR-725",
+    "PHR-726"
+  ],
+  "page_checks": [
+    {
+      "page": 1529,
+      "status": "extracted",
+      "section": "§§7.4–7.5",
+      "summary": "Head-dependent recovery of omitted clause type, dialect differences, conditional and fixed cases, and do so as an anaphoric VP.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1530,
+      "status": "extracted",
+      "section": "§7.5",
+      "summary": "Auxiliary-headed antecedents, contrasting objects, comparisons, stative readings, tags, minimal replies and purely situational interpretation.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1531,
+      "status": "extracted",
+      "section": "§7.5",
+      "summary": "Anaphoric chains, crossed links, noncontrastive adjuncts, nonfinite uses, inflection and major antecedent mismatches.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1532,
+      "status": "extracted",
+      "section": "§§7.5–7.6",
+      "summary": "Complement status and position of so, agentivity, NP object reference and corresponding passives.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1533,
+      "status": "extracted",
+      "section": "§7.6",
+      "summary": "General do with interrogative, relative and comparative forms, patient to-phrases and general dynamic happen.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1534,
+      "status": "extracted",
+      "section": "§7.6",
+      "summary": "Happen in questions and relatives, event kind and participant reference, stress, and the six uses of do.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1535,
+      "status": "extracted",
+      "section": "§§7.6–7.7.2",
+      "summary": "Auxiliary and lexical do distinctions, deictic degree and manner, discourse-deictic naming and so far.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1536,
+      "status": "extracted",
+      "section": "§7.7.2(a)",
+      "summary": "Declarative pro-clause so, lexical licensing and exceptions, it and that contrasts, and positive or negative polarity.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}
