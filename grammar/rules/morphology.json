@@ -24702,5 +24702,1839 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-424",
+    "domain": "morphology",
+    "concept": "Office and skill nouns in ship",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ship can form nouns for offices, ranks, associated benefits, and kinds of skill or craft.",
+    "condition": "Lectureship unusually uses lecture as its base. Craft readings often occur with compound bases in man, and some other senses are lexicalized.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Her lectureship began in September.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The judges admired the craftsmanship of the cabinet.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.2(k)",
+        "pages": [
+          1704
+        ],
+        "pdf_pages": [
+          1724
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Office and skill nouns in ship",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-425",
+    "domain": "morphology",
+    "concept": "Abstract nouns in th",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Th survives mainly in nouns formed from adjectives, with a few verbal bases and many irregular sound relationships.",
+    "condition": "The pattern is unproductive. Historical relatives such as foul and filth no longer have a transparent morphological relationship in the source's analysis.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The crew measured the length of the rope.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A patch of new growth appeared near the fence.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.2(l)",
+        "pages": [
+          1704
+        ],
+        "pdf_pages": [
+          1724
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Abstract nouns in th",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-426",
+    "domain": "morphology",
+    "concept": "Nouns in ure",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ure occurs in loans and a small number of English formations, most clearly on verbal or bound bases.",
+    "condition": "The suffix is probably no longer productive. A few words have nominal or adjectival bases.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The delay postponed their departure until noon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The committee considered her candidature in May.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.2(m)",
+        "pages": [
+          1704
+        ],
+        "pdf_pages": [
+          1724
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nouns in ure",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-427",
+    "domain": "morphology",
+    "concept": "Abstract nominal y and evidence for segmentation",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Nominal y is clearest with free adjective, verb or noun bases. Contrasts with other derivatives can support segmentation where the base is bound.",
+    "condition": "A final letter y alone does not establish a suffix. Neo-classical families often provide useful contrasts.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The manager appreciated her honesty about the error.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The composer sought euphony in the final passage.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.2(n)",
+        "pages": [
+          1704
+        ],
+        "pdf_pages": [
+          1724
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Abstract nominal y and evidence for segmentation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-428",
+    "domain": "morphology",
+    "concept": "Alternating t and s in y endings",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Many nouns in acy, cy and sy have relatives with t. A plausible analysis attaches y to the t base and treats the change to s as morphophonological.",
+    "condition": "Some words permit other analyses, and supremacy requires acy as a suffix on a free base.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The tenants wanted more privacy in the courtyard.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The documentary examined the growth of parliamentary supremacy.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.2(n)",
+        "pages": [
+          1704,
+          1705
+        ],
+        "pdf_pages": [
+          1724,
+          1725
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Alternating t and s in y endings",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-429",
+    "domain": "morphology",
+    "concept": "Cy and ty on free bases",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Cy often forms nouns from titles and offices, while ty forms a small group of abstract nouns from adjectives.",
+    "condition": "Bankruptcy illustrates an adjectival cy base. Admiralty has a noun base and is exceptional for ty. Minstrelsy appears to have a spelling variant of cy.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She accepted the captaincy after the vote.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The repair improved the safety of the crossing.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.2(n)",
+        "pages": [
+          1705
+        ],
+        "pdf_pages": [
+          1725
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Cy and ty on free bases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-430",
+    "domain": "morphology",
+    "concept": "Ery and ry meanings and bases",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ery and ry form nouns for conditions, behaviours, collectivities and places from bases of several categories.",
+    "condition": "Ery is more common. Some words have bound bases.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The apprentice cleaned the machinery before lunch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A creamery opened beside the market.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.2(n)",
+        "pages": [
+          1705
+        ],
+        "pdf_pages": [
+          1725
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ery and ry meanings and bases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-431",
+    "domain": "morphology",
+    "concept": "Y after bases ending in er",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Some words in ery can be analyzed as adding y to a base ending in er. Embroidery and upholstery support this analysis because er belongs to their verbal bases.",
+    "condition": "Some other words, such as bakery, permit an alternative analysis with ery on a shorter base.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The embroidery took several evenings to finish.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The bakery opens just before sunrise.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.2(n)",
+        "pages": [
+          1705
+        ],
+        "pdf_pages": [
+          1725
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Y after bases ending in er",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-432",
+    "domain": "morphology",
+    "concept": "Ancy and ency word families",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ancy and ency nouns correspond to words in ant and ent, usually adjectives. Related ance and ence nouns can coexist.",
+    "condition": "The y form is often countable or more specialized. Suffix-variant and t-to-s alternation analyses are both possible.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The course lists five competencies for new instructors.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The vacancy drew applications from several departments.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.2(n)",
+        "pages": [
+          1705
+        ],
+        "pdf_pages": [
+          1725
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ancy and ency word families",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-433",
+    "domain": "morphology",
+    "concept": "Minor deverbal nominal suffixes",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "A small group of established deverbal nouns contains recognizable suffixes that no longer produce new words.",
+    "condition": "These include the endings in laughter, merger, hatred and complaint.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The merger closed the smaller office.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Her complaint reached the committee on Monday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.2(o)",
+        "pages": [
+          1706
+        ],
+        "pdf_pages": [
+          1726
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Minor deverbal nominal suffixes",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-434",
+    "domain": "morphology",
+    "concept": "Non-affixal deverbal nominalisation",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Deverbal nouns can arise by voicing or stress changes, conversion with no formal change, or compounding with a preposition.",
+    "condition": "In verb-first compounds the main stress commonly shifts to the verbal base. Some preposition-first compounds instead stress their first base.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A sudden decrease worried the planners.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We booked a stopover on the way home.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.2(p)",
+        "pages": [
+          1706
+        ],
+        "pdf_pages": [
+          1726
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-affixal deverbal nominalisation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-435",
+    "domain": "morphology",
+    "concept": "Scope of adjectivalisation",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Adjectivalisation usually forms adjectives from other categories. It can also include adjective-to-adjective derivation where the same process applies to other base types.",
+    "condition": "Suffix y illustrates the use with nouns, verbs and occasional adjectives.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A thirsty runner stopped at the water station.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A lanky teenager volunteered to carry the ladder.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.8",
+        "pages": [
+          1706
+        ],
+        "pdf_pages": [
+          1726
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Scope of adjectivalisation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-436",
+    "domain": "morphology",
+    "concept": "Adjectival a from on",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "The prefix historically related to on forms some adjectives from nouns, verbs or adjectives, as well as words in other categories.",
+    "condition": "New adjective formations are limited and often poetic, with verbal inputs the main productive possibility.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A faint light showed that someone was awake.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The planks lay askew beside the door.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.8(a)",
+        "pages": [
+          1706
+        ],
+        "pdf_pages": [
+          1726
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjectival a from on",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-437",
+    "domain": "morphology",
+    "concept": "Able and ible variants",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Able is the productive member of the pair. Ible occurs mainly with Latin loans or bases and typically shows Class I behaviour.",
+    "condition": "A few forms coexist with little difference or with distinct meanings. Able behaves less uniformly and can attach to dephrasal bases. Uble occurs in a few loans.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Able can omit or retain ate in some derivatives, and stress can vary. Ible often triggers base alternation and usually takes negative in, while able can take in or un. Some doublets differ in meaning.",
+        "pages": [
+          1706,
+          1707
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The notice was readable from the gate.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The clerk checked whether each applicant was eligible.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.8(b)",
+        "pages": [
+          1706,
+          1707
+        ],
+        "pdf_pages": [
+          1726,
+          1727
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Able and ible variants",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-438",
+    "domain": "morphology",
+    "concept": "Active and passive modal readings in able adjectives",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "The central productive pattern describes what can be done to the referent. Some derivatives instead have active readings or allow either interpretation.",
+    "condition": "Perishable has an active reading. Adaptable and changeable can have active and passive readings.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The metal brackets are replaceable.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The volunteers sorted perishable goods before opening the stall.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.8(b)",
+        "pages": [
+          1707
+        ],
+        "pdf_pages": [
+          1727
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Active and passive modal readings in able adjectives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-439",
+    "domain": "morphology",
+    "concept": "Modal strength and specialized meanings of able adjectives",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Able adjectives can express capability, permission, obligation, a future outcome or fitness, depending on the word and context.",
+    "condition": "Some derivatives also acquire specialized meanings. Photocopiable can refer to feasibility or permission.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The deposit is refundable after inspection.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The fee is payable by Friday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.8(b)",
+        "pages": [
+          1707
+        ],
+        "pdf_pages": [
+          1727
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Modal strength and specialized meanings of able adjectives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-440",
+    "domain": "morphology",
+    "concept": "Prepositional and nominal bases for able",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Able formations from prepositional verbs usually omit the preposition but may retain it inside or after the derivative. The suffix can also attach to nouns.",
+    "condition": "Some denominal forms have a passive-like interpretation. Other denominal forms have lexicalized meanings.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The spare pump proved dependable.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The dealer declared the remaining stock saleable.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.8(b)",
+        "pages": [
+          1707
+        ],
+        "pdf_pages": [
+          1727
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Prepositional and nominal bases for able",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-441",
+    "domain": "morphology",
+    "concept": "Adjectival al ar ial and ual",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "These endings generally form relational adjectives, especially from Latinate and other borrowed bases. Some derivatives have bound bases or specialized meanings.",
+    "condition": "Al is productive after tion, ment and oid. Ar often occurs near l, ial commonly follows or or relates to ance and ence nouns, and some apparent boundary vowels belong to the base.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The council adopted additional safeguards.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The archive published confidential notes from the hearing.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.8(c)",
+        "pages": [
+          1707,
+          1708
+        ],
+        "pdf_pages": [
+          1727,
+          1728
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjectival al ar ial and ual",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-442",
+    "domain": "morphology",
+    "concept": "Adjectives in ant and ent",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ant and ent adjectives often reflect Latin or French participial forms. They may have free or bound bases and may correspond to verbs in ate or ify.",
+    "condition": "Vowel and consonant changes can occur, and neither suffix is clearly productive in this use.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The guide was observant enough to spot the broken latch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The report described a significant change in demand.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.8(d)",
+        "pages": [
+          1708
+        ],
+        "pdf_pages": [
+          1728
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjectives in ant and ent",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-443",
+    "domain": "morphology",
+    "concept": "Adjectival ary",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ary occurs in loans and attaches mainly to nouns in ion or final t in English, especially to forms ending in tion and ment.",
+    "condition": "Its remaining productivity may be limited to such base types.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The board issued a cautionary statement.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The conservator reconstructed a fragmentary inscription.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.8(e)",
+        "pages": [
+          1708
+        ],
+        "pdf_pages": [
+          1728
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjectival ary",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-444",
+    "domain": "morphology",
+    "concept": "Adjectival ate",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Adjectival ate occurs in loans and learned words. The clearest English formations in the source are built on nouns ending in ion.",
+    "condition": "This suffix has limited historical use as an English adjective-forming process.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Her affectionate greeting reassured the children.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The editorial described the charge as extortionate.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.8(f)",
+        "pages": [
+          1708,
+          1709
+        ],
+        "pdf_pages": [
+          1728,
+          1729
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjectival ate",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-445",
+    "domain": "morphology",
+    "concept": "Possessive ed and plural nominal inputs",
+    "rule_type": "constraint",
+    "scope": "word",
+    "statement": "Adjectival ed can attach to a noun or a dependent-plus-head nominal to express possession or another with relation. The noun loses plural inflection before the suffix.",
+    "condition": "A numeral-plus-count-noun nominal forms a possessive adjective with ed, as in three-bedroomed or two-wheeled.",
+    "violation": "The count noun retains its plural inflection before the adjectival suffix.",
+    "exceptions": [
+      {
+        "description": "An independent nominal can carry plural inflection. This restriction concerns the numeral-plus-noun input of a possessive adjective, with verbal participles and lexicalized forms outside its scope.",
+        "pages": [
+          1709
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They rented a three-bedroomed flat.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A two-wheeled cart blocked the passage.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "They rented a three-bedroomsed flat.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "A two-wheelsed cart blocked the passage.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.8(g)",
+        "pages": [
+          1709
+        ],
+        "pdf_pages": [
+          1729
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Possessive ed and plural nominal inputs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "spelling_inflection",
+      "error_pattern": "The count noun retains its plural inflection before the adjectival suffix.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "They rented a three-bedroomsed flat. ||| They rented a three-bedroomed flat.",
+        "A two-wheelsed cart blocked the passage. ||| A two-wheeled cart blocked the passage."
+      ],
+      "learner_explanation": "Use the singular noun before the possessive adjective ending ed. The numeral already gives the quantity, as in three-bedroomed and two-wheeled.",
+      "corrected_paragraph_template": "Remove the internal plural ending before adjectival ed.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The flat has three bedrooms.",
+        "The cart has two wheels.",
+        "They rented a three-bedroom flat.",
+        "She wheeled the cart into the garage."
+      ],
+      "lesson_tags": [
+        "possessive-adjectives",
+        "plural-inflection"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [
+      "MORPH-258",
+      "MORPH-446"
+    ],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-446",
+    "domain": "morphology",
+    "concept": "Pronunciation of adjectival ed",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Possessive ed usually shows the same three sound alternants as regular participial ed.",
+    "condition": "Some lexicalized adjectives have an extra syllable, and pronunciations of legged can vary.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The one-armed figure stood at the gate.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A three-legged stool supported the lamp.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.8(g)",
+        "pages": [
+          1709
+        ],
+        "pdf_pages": [
+          1729
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pronunciation of adjectival ed",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-447",
+    "domain": "morphology",
+    "concept": "Material and resemblance adjectives in en",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "A small group of material nouns forms adjectives in en, with literal material and figurative resemblance readings.",
+    "condition": "Some forms now mainly have the figurative reading. Literal material readings are often expressed by an attributive noun.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The keys lay in a wooden box.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The actor's performance seemed wooden.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.8(h)",
+        "pages": [
+          1709
+        ],
+        "pdf_pages": [
+          1729
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Material and resemblance adjectives in en",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-448",
+    "domain": "morphology",
+    "concept": "Adjectives in ful",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ful can express possession, display or causation on a nominal base and propensity on some verbal bases.",
+    "condition": "The ordinary meaning of awful is lexicalized. The source questions the current productivity of ful and distinguishes it from free full in compounds.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The evening was delightful despite the rain.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A forgetful passenger returned for his bag.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.8(i)",
+        "pages": [
+          1709
+        ],
+        "pdf_pages": [
+          1729
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjectives in ful",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-449",
+    "domain": "morphology",
+    "concept": "Ic and nominal base endings",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ic often forms adjectives from Greek or Latin nominal bases and can replace final y or another nominal ending.",
+    "condition": "Related suffixes can form additional members of the same family. Nominal endings such as ia, itis and cracy also occur in input-output contrasts.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The town studied the economic effect of the closure.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The group debated how democratic the procedure was.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.8(j)",
+        "pages": [
+          1709,
+          1710
+        ],
+        "pdf_pages": [
+          1729,
+          1730
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ic and nominal base endings",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-450",
+    "domain": "morphology",
+    "concept": "Atic and ific variants",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Atic commonly occurs with bases in m or ma. Ific often participates in families with verbs in ify.",
+    "condition": "Operatic and scientific depart from the respective common patterns. Some boundaries admit alternative segmentations.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The reviewer praised the cinematic opening.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The team published a scientific explanation of the finding.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.8(j)",
+        "pages": [
+          1710
+        ],
+        "pdf_pages": [
+          1730
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Atic and ific variants",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-451",
+    "domain": "morphology",
+    "concept": "Ic and ical doublets",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ic and ical are treated as suffix variants. Both can occur with a base, sometimes with different meanings or collocations.",
+    "condition": "Their adverbs generally end in ically. Publicly is exceptional.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The city lowered its economic forecast.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The mechanic found a more economical way to run the pump.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.8(j)",
+        "pages": [
+          1710
+        ],
+        "pdf_pages": [
+          1730
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ic and ical doublets",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-452",
+    "domain": "morphology",
+    "concept": "Istic as one adjectival suffix",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Istic is analyzed as one suffix rather than a sequence of ist and ic. Its meaning typically relates to an underlying base or ism noun.",
+    "condition": "Some derivatives lack an ist counterpart. An existing ist noun need not supply the adjective's meaning.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The editor suggested a stylistic revision.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The seminar explored linguistic diversity.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.8(j)",
+        "pages": [
+          1710
+        ],
+        "pdf_pages": [
+          1730
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Istic as one adjectival suffix",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-453",
+    "domain": "morphology",
+    "concept": "Adjectival ine",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ine occurs mainly in Latin-derived adjectives or words based on Latin models and is probably no longer productive in this pattern.",
+    "condition": "Its pronunciation varies across established words, with masculine and feminine illustrating the short-vowel pattern.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The guide identified an alpine plant.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The display included a crystalline mineral.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.8(k)",
+        "pages": [
+          1710
+        ],
+        "pdf_pages": [
+          1730
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjectival ine",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-454",
+    "domain": "morphology",
+    "concept": "Adjectival ive and ative",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ive often attaches to a Latinate verbal base and describes a tendency. Related nouns in ion or ation are common, and some pairs show a consonant change.",
+    "condition": "Ative can also occur without an ate base. Talkative has no ation counterpart, and some formations have noun or dephrasal bases.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The normally quiet passenger became talkative during the trip.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The researcher compared permissive rules with stricter ones.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.8(l)",
+        "pages": [
+          1711
+        ],
+        "pdf_pages": [
+          1731
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjectival ive and ative",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-455",
+    "domain": "morphology",
+    "concept": "Privative less adjectives",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Less productively forms adjectives expressing absence of what the base denotes. Ful counterparts exist for some derivatives.",
+    "condition": "Pairs are lexically uneven, and negative un does not normally combine with less. A few verbal bases give modal passive readings.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The trail crossed a treeless hillside.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The box held countless scraps of paper.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.8(m)",
+        "pages": [
+          1711
+        ],
+        "pdf_pages": [
+          1731
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Privative less adjectives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-456",
+    "domain": "morphology",
+    "concept": "Like as an adjectival compound base",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Like combines productively with nouns to form resemblance adjectives. Cambridge treats it as a compound base because it has a corresponding free form and meaning.",
+    "condition": "Many formations are coined for a particular occasion.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A hook-like branch caught the sleeve.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Her childlike curiosity kept the interview lively.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.8(n)",
+        "pages": [
+          1711
+        ],
+        "pdf_pages": [
+          1731
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Like as an adjectival compound base",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-457",
+    "domain": "morphology",
+    "concept": "Adjectival ly",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Adjectival ly commonly attaches to nouns to express a characteristic, and with time nouns it can express recurrence.",
+    "condition": "Some bases are adjectives and many senses are lexicalized. The source treats the adjectival pattern as unproductive.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A friendly neighbour brought the parcel inside.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The team publishes a weekly bulletin.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.8(o)",
+        "pages": [
+          1711
+        ],
+        "pdf_pages": [
+          1731
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjectival ly",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]
