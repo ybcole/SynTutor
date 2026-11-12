@@ -488,3 +488,7 @@ Printed pp. 1430–1437 add eight substantive pages and 20 inactive records (`CL
 ## Chapter 16 completion checkpoint
 
 Chapter 16 source extraction is complete. Printed pp. 1363–1448 comprise 83 extracted pages, two contents-only pages and one blank page. The final batch adds 22 inactive records (`CLS-1465`–`CLS-1486`), including one `spec_only` constraint. Chapter 16 adds 208 records in total. Chapter 19 is next, beginning at printed p. 1621.
+
+## Chapter 19 first checkpoint
+
+Printed pp. 1621–1631 account for nine substantive pages and two contents-only pages, adding 18 inactive records (`MORPH-143`–`MORPH-160`). Chapter 19 has 90 unprocessed pages and one previously accounted-for textless page. Continue at p. 1632 with minor word-formation processes.

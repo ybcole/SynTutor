@@ -11348,79 +11348,79 @@
     {
       "page": 1621,
       "chapter": 19,
-      "status": "unprocessed",
-      "reason": null,
-      "evidence": null
+      "status": "skipped_with_reason",
+      "reason": "Contents-only page verified in the uploaded full PDF.",
+      "evidence": "sources/cambridge/chapter_19/PP1621_1631_REPORT.md"
     },
     {
       "page": 1622,
       "chapter": 19,
-      "status": "unprocessed",
-      "reason": null,
-      "evidence": null
+      "status": "skipped_with_reason",
+      "reason": "Contents-only page verified in the uploaded full PDF.",
+      "evidence": "sources/cambridge/chapter_19/PP1621_1631_REPORT.md"
     },
     {
       "page": 1623,
       "chapter": 19,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_19/PP1621_1631_REPORT.md"
     },
     {
       "page": 1624,
       "chapter": 19,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_19/PP1621_1631_REPORT.md"
     },
     {
       "page": 1625,
       "chapter": 19,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_19/PP1621_1631_REPORT.md"
     },
     {
       "page": 1626,
       "chapter": 19,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_19/PP1621_1631_REPORT.md"
     },
     {
       "page": 1627,
       "chapter": 19,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_19/PP1621_1631_REPORT.md"
     },
     {
       "page": 1628,
       "chapter": 19,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_19/PP1621_1631_REPORT.md"
     },
     {
       "page": 1629,
       "chapter": 19,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_19/PP1621_1631_REPORT.md"
     },
     {
       "page": 1630,
       "chapter": 19,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_19/PP1621_1631_REPORT.md"
     },
     {
       "page": 1631,
       "chapter": 19,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_19/PP1621_1631_REPORT.md"
     },
     {
       "page": 1632,
