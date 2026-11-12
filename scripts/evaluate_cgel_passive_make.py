@@ -7,8 +7,40 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "server"))
+from burton_roberts import build_canonical_analysis
 from cgel_passive_make_candidate import probe_passive_make
 from parse_engine import analyze
+from xai_facts import build_fact_graph
+
+
+def observe_canonical(parsed, candidates=()):
+    """Record canonical availability and overt node alignment without licensing a rule."""
+    result = build_canonical_analysis(parsed)
+    report = {
+        "status": result["status"],
+        "reason_codes": [reason["code"] for reason in result["reasons"]],
+        "working_tree_available": bool(result.get("working_tree")),
+        "candidate_nodes": [],
+    }
+    if result["status"] != "normalized" or not candidates:
+        return report
+
+    graph = build_fact_graph(result)
+    if graph["status"] != "observed":
+        return report
+    nodes_by_id = {node["node_id"]: node for node in graph["nodes"]}
+    tokens_by_span = {tuple(token["char_span"]): token for token in graph["token_index"]}
+    for candidate in candidates:
+        relation = candidate["relation"]
+        evidence = {}
+        for role in ("governor", "dependent"):
+            token = tokens_by_span.get(tuple(relation[f"{role}_char_span"]))
+            if token and not token["opaque"]:
+                lexical = nodes_by_id.get(token["lexical_ancestor_id"])
+                if lexical:
+                    evidence[role] = {"node_id": lexical["node_id"], "label": lexical["label"]}
+        report["candidate_nodes"].append(evidence)
+    return report
 
 
 def observe(case, variety):
@@ -16,6 +48,7 @@ def observe(case, variety):
     expected = case["expected_sentence"]
     parsed = analyze(sentence)
     result = probe_passive_make(sentence, parsed["root"], variety=variety)
+    canonical = observe_canonical(parsed, result["candidates"])
     edits = []
     for candidate in result["candidates"]:
         hint = candidate["edit_hint"]
@@ -27,6 +60,7 @@ def observe(case, variety):
             "sentence": corrected,
             "recheck_status": recheck["status"],
             "remaining_candidates": len(recheck["candidates"]),
+            "canonical": observe_canonical(repaired),
         })
     exact_repair = expected is not None and len(edits) == 1 and edits[0]["sentence"] == expected
     return {
@@ -35,6 +69,7 @@ def observe(case, variety):
         "reason": result.get("reason"),
         "parse": parsed["parse_string"],
         "candidate_count": len(edits),
+        "canonical": canonical,
         "exact_repair": exact_repair,
         "edits": edits,
     }
@@ -63,6 +98,18 @@ def main():
             "exact_repairs_without_a_candidate_after_reparse": sum(
                 row["exact_repair"] and row["edits"][0]["recheck_status"] == "candidate_only"
                 and row["edits"][0]["remaining_candidates"] == 0 for row in positives
+            ),
+            "positive_cases_with_normalized_canonical_tree": sum(
+                row["canonical"]["status"] == "normalized" for row in positives
+            ),
+            "positive_cases_with_both_candidate_nodes": sum(
+                any({"governor", "dependent"} <= evidence.keys()
+                    for evidence in row["canonical"]["candidate_nodes"])
+                for row in positives
+            ),
+            "exact_repairs_with_normalized_canonical_tree": sum(
+                row["exact_repair"] and row["edits"][0]["canonical"]["status"] == "normalized"
+                for row in positives
             ),
             "valid_controls": len(controls),
             "controls_with_candidates": sum(row["candidate_count"] > 0 for row in controls),
