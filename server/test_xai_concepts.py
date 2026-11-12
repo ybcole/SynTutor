@@ -125,11 +125,11 @@ class XAI1ConceptTests(unittest.TestCase):
         self.assertEqual(pending_by_node("UNKNOWN-CATEGORY"), [])
 
     def test_never_enable_live_cambridge_or_live_templates(self):
-        active = read_json(LIVE_CAMBRIDGE).get("active_rules", [])
+        active = read_json(LIVE_CAMBRIDGE).get("enabled_rules", [])
         existing = read_json(LIVE_TEMPLATES)
         self.assertEqual(active, [])
-        self.assertEqual(len(existing["templates"]), 2)
-        self.assertEqual(len(existing["sources"]), 4)
+        self.assertEqual(sum(row["independent_review"] is True for row in existing["templates"]), 2)
+        self.assertEqual(sum(row["status"] == "approved" for row in existing["sources"]), 4)
         self.assertTrue(all(not any(c["runtime"].values())
                             for c in self.catalog["concepts"]))
 
