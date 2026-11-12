@@ -14583,5 +14583,1531 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-239",
+    "domain": "morphology",
+    "concept": "Plural reluctance in ing plus preposition nouns",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Compounds of the dressing-down type are less readily pluralized than agentive er compounds with a final preposition.",
+    "condition": "Cambridge marks both possible plural positions as doubtful in its dressing-down example. The judgment supports a tendency rather than a universal prohibition.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The coach gave him a dressing-down after practice.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The editor asked for a summing-up of the discussion.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.2.2",
+        "pages": [
+          1656
+        ],
+        "pdf_pages": [
+          1676
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Plural reluctance in ing plus preposition nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [
+      "MORPH-237",
+      "MORPH-238"
+    ],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-240",
+    "domain": "morphology",
+    "concept": "Adjective bases in verb-centred nouns",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "A small set of verb-centred compound nouns begins with an adjective, often followed by an er derivative. The first base can have a relation like that of an adverb to a verb.",
+    "condition": "Lexicalized senses often prevent a straightforward clausal paraphrase.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The best-seller was already out of stock.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A newcomer asked where to leave her bag.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.2.2",
+        "pages": [
+          1656
+        ],
+        "pdf_pages": [
+          1676
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjective bases in verb-centred nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-241",
+    "domain": "morphology",
+    "concept": "Classes of compound adjectives",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Compound adjectives can be adjective-centred, verb-centred, or members of a residual group with nominal or preposition-plus-noun structure.",
+    "condition": "The output category can be adjectival even if neither input is independently an adjective.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The upmarket shop sold handmade toys.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A highbrow critic found the red-hot debate entertaining.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.3",
+        "pages": [
+          1656
+        ],
+        "pdf_pages": [
+          1676
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Classes of compound adjectives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-242",
+    "domain": "morphology",
+    "concept": "Lexicalization in noun plus adjective compounds",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "A noun before an adjective often combines with it as a compound. In lexicalized cases the compound can fail to entail the adjective alone.",
+    "condition": "Adjectives have few syntactic pre-head NP dependents, though that syntactic possibility exists.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The empty cart was still top-heavy.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The headstrong puppy ignored its handler.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.3.1",
+        "pages": [
+          1656
+        ],
+        "pdf_pages": [
+          1676
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexicalization in noun plus adjective compounds",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-243",
+    "domain": "morphology",
+    "concept": "Comparison and intensification in compound adjectives",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "A noun can supply a standard of comparison and often intensifies the property expressed by the adjective head.",
+    "condition": "In colour terms, the noun can instead identify a shade without strengthening the colour property. Both patterns entail the adjective head in the relevant sense.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The sheets were bone-dry before noon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She painted the side door bottle-green.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.3.1",
+        "pages": [
+          1656
+        ],
+        "pdf_pages": [
+          1676
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Comparison and intensification in compound adjectives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-244",
+    "domain": "morphology",
+    "concept": "Extent in noun plus adjective compounds",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "A noun can give the extent of a gradable property. The adjective is interpreted relative to a scale, without implying an extent above the contextual norm.",
+    "condition": "Some forms have lexicalized senses. In compounds such as state-wide, wide concerns area.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They crossed an ankle-deep stream.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The week-long festival began on Friday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.3.1",
+        "pages": [
+          1657
+        ],
+        "pdf_pages": [
+          1677
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Extent in noun plus adjective compounds",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-245",
+    "domain": "morphology",
+    "concept": "Incorporated nominal dependents of adjectives",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "The initial noun in many compound adjectives corresponds to the nominal complement of a preposition in a related adjective phrase.",
+    "condition": "Availability depends on the head. Free is productive, prone and proof lack the relevant independent uses, and fond and keen seldom compound. Fail-safe and tamper-proof have verbal first bases.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The farm installed a burglar-proof lock.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The airport has a tax-free shop near the gate.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.3.1",
+        "pages": [
+          1657
+        ],
+        "pdf_pages": [
+          1677
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Incorporated nominal dependents of adjectives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-246",
+    "domain": "morphology",
+    "concept": "Adjective-centred self compounds",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Adjective-centred self compounds often describe people, and entailment of the adjective head varies with the lexeme.",
+    "condition": "Some apply to propositions or other nonhuman predicands. Other self compounds are verb-centred.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The speaker remained self-confident through the interview.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The two instructions together were self-contradictory.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.3.1",
+        "pages": [
+          1657
+        ],
+        "pdf_pages": [
+          1677
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjective-centred self compounds",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-247",
+    "domain": "morphology",
+    "concept": "Coordination in adjective plus adjective compounds",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Equal-status adjective bases can express two simultaneous properties or a relation between the entities named by their bases.",
+    "condition": "Compounds coordinating nationality terms or areas of analysis are productive and predominantly attributive.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The talks focused on Swedish-Irish trade.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The reunion ended on a bittersweet note.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.3.1",
+        "pages": [
+          1658
+        ],
+        "pdf_pages": [
+          1678
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Coordination in adjective plus adjective compounds",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-248",
+    "domain": "morphology",
+    "concept": "Subordination in adjective plus adjective compounds",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "One adjective base can modify another by intensifying it or specifying a shade.",
+    "condition": "Cambridge treats some cases as subordinative where other analyses allow coordination. The extension to two colour terms is tentative.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The mechanic waited for the red-hot pipe to cool.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The wall was painted a muted blue-grey.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.3.1",
+        "pages": [
+          1658
+        ],
+        "pdf_pages": [
+          1678
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subordination in adjective plus adjective compounds",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-249",
+    "domain": "morphology",
+    "concept": "Noun roles in gerund-participial compound adjectives",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "The noun in a gerund-participle-headed adjective typically corresponds to a verbal object or to the complement of an understood preposition.",
+    "condition": "With a prepositional relation, the verb can be intransitive.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The lab convened a fact-finding panel.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They planted winter-flowering shrubs beside the walkway.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.3.2",
+        "pages": [
+          1658
+        ],
+        "pdf_pages": [
+          1678
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Noun roles in gerund-participial compound adjectives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-250",
+    "domain": "morphology",
+    "concept": "Understood subjects of gerund-participial compound adjectives",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "The modified noun supplies the understood verbal subject in attributive use. In predicative use that role comes from the adjective's predicand.",
+    "condition": "Compare a gerund-participle-headed compound in attributive and predicative uses.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "In mouth-watering the predicand is the cause and mouth is the understood subject of water.",
+        "pages": [
+          1658
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We read a thought-provoking essay during the seminar.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Everyone found the essay thought-provoking.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.3.2",
+        "pages": [
+          1658
+        ],
+        "pdf_pages": [
+          1678
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Understood subjects of gerund-participial compound adjectives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-251",
+    "domain": "morphology",
+    "concept": "Distribution of gerund-participial compound adjectives",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Many gerund-participial compound adjectives are gradable and work in attributive and predicative functions. Others are usually ungradable and attributive.",
+    "condition": "A clause expressing the corresponding activity is often more natural than a predicative compound. Self-respecting is given as attributive only.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The final chapter was deeply thought-provoking.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The degree-conferring institution opened a new campus.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.3.2",
+        "pages": [
+          1658
+        ],
+        "pdf_pages": [
+          1678
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Distribution of gerund-participial compound adjectives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-252",
+    "domain": "morphology",
+    "concept": "Adjectival and adverbial dependents in gerund-participial compounds",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "The first base can correspond to a predicative complement or an adverbial dependent in a clause. Predicative distribution can distinguish a compound adjective from an adverb plus participial verb sequence.",
+    "condition": "Lexicalized good-looking is narrower than a free combination of look and good.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The unopened package seemed strange-looking to the clerk.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The new recruits seemed hard-working.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.3.2",
+        "pages": [
+          1658,
+          1659
+        ],
+        "pdf_pages": [
+          1678,
+          1679
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjectival and adverbial dependents in gerund-participial compounds",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-253",
+    "domain": "morphology",
+    "concept": "Noun plus passive past participle compounds",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "A noun followed by a passive past participle productively forms an adjective, with the noun corresponding to an element of a prepositional dependent in a related passive clause.",
+    "condition": "Only some of these compounds are gradable. Self forms often have lexicalized meanings.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A taxpayer-funded project repaired the quay.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They found a very moth-eaten blanket in the attic.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.3.2",
+        "pages": [
+          1659
+        ],
+        "pdf_pages": [
+          1679
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Noun plus passive past participle compounds",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-254",
+    "domain": "morphology",
+    "concept": "Adjectival and adverbial bases with passive participles",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Past-participial compounds with adjectival or adverbial first elements often lack a close syntactic counterpart.",
+    "condition": "Most types have low productivity. Location-based formations can use a readily available adjective or use the place noun itself.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A French-based charity funded the workshop.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A London-based architect drew the plans.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.3.2",
+        "pages": [
+          1659
+        ],
+        "pdf_pages": [
+          1679
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjectival and adverbial bases with passive participles",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-255",
+    "domain": "morphology",
+    "concept": "Active past participles in compound adjectives",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "A small lexicalized group of past-participial compounds has a meaning based on an active use of the verb.",
+    "condition": "The person characterized by the compound performs the action in forms such as plain-spoken and well-travelled.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A plain-spoken guide led the tour.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The librarian was well-travelled and knew the route.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.3.2",
+        "pages": [
+          1659
+        ],
+        "pdf_pages": [
+          1679
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Active past participles in compound adjectives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-256",
+    "domain": "morphology",
+    "concept": "Compounds headed by a deverbal adjective",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "A noun paired with a deverbal adjective can express an argument of the adjective or of the verb underlying it.",
+    "condition": "The corresponding clause can use either a direct object or a prepositional complement. The compound itself need not express the distinction.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The invoice listed tax-deductible expenses.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The lab ordered germ-resistant coatings for the worktops.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.3.2",
+        "pages": [
+          1659,
+          1660
+        ],
+        "pdf_pages": [
+          1679,
+          1680
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Compounds headed by a deverbal adjective",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-257",
+    "domain": "morphology",
+    "concept": "Irregular attributive compounds",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "An expression used as an attributive modifier can have a structure outside the ordinary phrase categories and can be treated as a compound adjective.",
+    "condition": "Many are coined as needed. The boundary between syntax and morphology is uncertain in some cases.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The trainer took a hands-on approach.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The committee tried to avoid a no-win situation.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.3.3",
+        "pages": [
+          1660
+        ],
+        "pdf_pages": [
+          1680
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Irregular attributive compounds",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-258",
+    "domain": "morphology",
+    "concept": "Singular measure bases in attributive compounds",
+    "rule_type": "constraint",
+    "scope": "word",
+    "statement": "A productive attributive compound formed from a numeral and a unit noun uses a singular noun base.",
+    "condition": "A numeral and a unit noun form a measure compound used to modify a following noun, as in a four-night stay.",
+    "violation": "The unit noun bears plural inflection inside the attributive measure compound.",
+    "exceptions": [
+      {
+        "description": "An independent measure nominal may require plural inflection. A converted noun headed by old can inflect at its end while the internal unit remains singular.",
+        "pages": [
+          1660
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We booked a four-night stay.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The crew dug a six-foot trench.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "We booked a four-nights stay.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The crew dug a six-feet trench.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.3.3",
+        "pages": [
+          1660
+        ],
+        "pdf_pages": [
+          1680
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Singular measure bases in attributive compounds",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "spelling_inflection",
+      "error_pattern": "A unit noun inside a numeral-plus-unit attributive compound is incorrectly pluralized.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "We booked a four-nights stay. ||| We booked a four-night stay.",
+        "The crew dug a six-feet trench. ||| The crew dug a six-foot trench."
+      ],
+      "learner_explanation": "Use the singular unit in an attributive measure compound, as in four-night stay. In an independent measure expression, the unit can be plural, as in We stayed four nights.",
+      "corrected_paragraph_template": "Use the singular unit inside the measure compound before the noun it modifies.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "We stayed four nights.",
+        "The trench was six feet deep.",
+        "The instructor supervised two four-year-olds.",
+        "They gave us three weeks' notice."
+      ],
+      "lesson_tags": [
+        "compound-adjectives",
+        "measure-expressions",
+        "inflection"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [
+      "MORPH-259"
+    ],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-259",
+    "domain": "morphology",
+    "concept": "Expanded measure compounds and age nouns",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "An attributive measure compound can combine with a following adjective. Compounds headed by old readily convert to nouns with plural inflection on the converted whole.",
+    "condition": "The unit base stays singular inside the compound.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The architect specified a two-metre-wide doorway.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Two four-year-olds drew a map of the garden.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.3.3",
+        "pages": [
+          1660
+        ],
+        "pdf_pages": [
+          1680
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Expanded measure compounds and age nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [
+      "MORPH-258"
+    ],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-260",
+    "domain": "morphology",
+    "concept": "Processes that create compound verbs",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Many compound verbs arise through back-formation or conversion. Back-formation can draw on er or ing nouns or ed adjectives, while conversion commonly draws on compound nouns.",
+    "condition": "More than one back-formation input can be plausible. Dephrasal fusion is also attested.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She agreed to ghostwrite the memoir.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The team will fast-track the repairs.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.4",
+        "pages": [
+          1660,
+          1661
+        ],
+        "pdf_pages": [
+          1680,
+          1681
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Processes that create compound verbs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-261",
+    "domain": "morphology",
+    "concept": "Direct and coordinative compound verbs",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Directly compounded verbs often start with a preposition. A few are noun-first, and some pair two verbs in coordination.",
+    "condition": "The formation order of some noun-first verbs and their related ing nouns is uncertain.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The vine may outgrow its trellis.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We freeze-dry the samples before storage.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.4",
+        "pages": [
+          1660,
+          1661
+        ],
+        "pdf_pages": [
+          1680,
+          1681
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Direct and coordinative compound verbs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-262",
+    "domain": "morphology",
+    "concept": "Defective gerund-participial compound verbs",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "A marginal group of converted compound verbs has only a gerund-participial form. Distribution after spend in its activity construction supports a verbal analysis.",
+    "condition": "This pattern applies to the particular defective lexemes and does not extend to productive finite verbs such as hand-wash.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The neighbors went deer-hunting before dawn.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They spent the weekend trout-fishing near the bridge.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.4",
+        "pages": [
+          1661
+        ],
+        "pdf_pages": [
+          1681
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Defective gerund-participial compound verbs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-263",
+    "domain": "morphology",
+    "concept": "Neo-classical compounds and combining forms",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Neo-classical compounds contain at least one combining form. The central pattern pairs an initial combining form with a final combining form.",
+    "condition": "Many are modern formations with classical bases. Combining forms are usually bound, though independent words and informal clippings occur.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The student chose psychology as an elective.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "An astronaut answered questions from the class.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.5",
+        "pages": [
+          1661,
+          1662
+        ],
+        "pdf_pages": [
+          1681,
+          1682
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Neo-classical compounds and combining forms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-264",
+    "domain": "morphology",
+    "concept": "Combining forms with ordinary free bases",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Either an initial or a final combining form can compound with an ordinary free base.",
+    "condition": "Initial combining forms with free bases are the more common pattern.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The engineer tested the new microchip.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The volunteer calibrated the speedometer.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.5",
+        "pages": [
+          1662
+        ],
+        "pdf_pages": [
+          1682
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Combining forms with ordinary free bases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-265",
+    "domain": "morphology",
+    "concept": "Medial vowel reduction between combining forms",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Adjacent boundary vowels often reduce to one. Matching o or i can merge, and other vowels can survive beside o or i in the combinations described.",
+    "condition": "The segmentation of a shared vowel may be indeterminate. Some older compounds omit a vowel before a free base, h can pattern like a vowel in rare cases, and newer formations generally retain the initial form's vowel.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The new course introduced anthropology.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The natural history exhibit described the feeding habits of an omnivore.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.5",
+        "pages": [
+          1662
+        ],
+        "pdf_pages": [
+          1682
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Medial vowel reduction between combining forms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-266",
+    "domain": "morphology",
+    "concept": "Boundary vowel analysis in neo-classical compounds",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Cambridge favours treating the medial vowel as part of a combining form. Productive forms keep it with free bases, and some final forms can be identified as units by independent use or repeated attachment.",
+    "condition": "A linking-vowel analysis accounts for some alternations. The vowel can be absent entirely, and certain initial forms vary in their final vowel.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The label identifies the active ingredient as a fungicide.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Her article traced the development of psychoanalysis.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.5",
+        "pages": [
+          1663
+        ],
+        "pdf_pages": [
+          1683
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Boundary vowel analysis in neo-classical compounds",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]

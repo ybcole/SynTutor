@@ -504,3 +504,7 @@ Printed pp. 1640–1647 add 8 substantive pages and 31 inactive records (`MORPH-
 ## Chapter 19 fourth checkpoint
 
 Printed pp. 1648–1655 add 8 substantive pages and 27 inactive records (`MORPH-212`–`MORPH-238`), including one inactive plural-placement specification. Chapter 19 has 66 unprocessed pages. Continue at p. 1656 with the rest of verb-centred compound nouns and the start of compound adjectives.
+
+## Chapter 19 fifth checkpoint
+
+Printed pp. 1656–1663 add 8 substantive pages and 28 inactive records (`MORPH-239`–`MORPH-266`), including one inactive measure-compound specification. Chapter 19 has 58 unprocessed pages. Continue at p. 1664 with the remaining evidence on neo-classical combining forms.
