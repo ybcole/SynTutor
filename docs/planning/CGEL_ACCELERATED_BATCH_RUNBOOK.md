@@ -492,3 +492,7 @@ Chapter 16 source extraction is complete. Printed pp. 1363–1448 comprise 83 ex
 ## Chapter 19 first checkpoint
 
 Printed pp. 1621–1631 account for nine substantive pages and two contents-only pages, adding 18 inactive records (`MORPH-143`–`MORPH-160`). Chapter 19 has 90 unprocessed pages and one previously accounted-for textless page. Continue at p. 1632 with minor word-formation processes.
+
+## Chapter 19 second checkpoint
+
+Printed pp. 1632–1639 add eight substantive pages and 20 inactive records (`MORPH-161`–`MORPH-180`). Chapter 19 has 82 unprocessed pages. Continue at p. 1640 with the close of phonological modification and the start of conversion.

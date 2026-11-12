@@ -10323,5 +10323,1061 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-161",
+    "domain": "morphology",
+    "concept": "Manufacture of simple lexical bases",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Manufacture creates a word from available sounds without combining smaller meaningful units. The result is a simple base with an arbitrary form–meaning relation.",
+    "condition": "Coined names are one application of this rare process.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The jacket is made of nylon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The physicist discussed quarks.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§2.1",
+        "pages": [
+          1632
+        ],
+        "pdf_pages": [
+          1652
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Manufacture of simple lexical bases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-162",
+    "domain": "morphology",
+    "concept": "Letter-by-letter initialisms",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "In the chapter's terminology, an abbreviation is an initialism pronounced as a sequence of letter names. It is commonly written with capitals or periods, and occasionally has a spelling that represents those letter names.",
+    "condition": "The source expression is usually available as an alternant, though speakers may not know it.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The DJ introduced the band.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The lab compared the DNA samples.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§2.2",
+        "pages": [
+          1632,
+          1633
+        ],
+        "pdf_pages": [
+          1652,
+          1653
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Letter-by-letter initialisms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-163",
+    "domain": "morphology",
+    "concept": "Article selection with abbreviated proper names",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Some abbreviated proper names take the definite article as NP heads, while others do not. This varies with the name.",
+    "condition": "Capitalization and pronunciation alone do not determine article choice.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She spoke at the UN.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Her sister studies at MIT.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§2.2",
+        "pages": [
+          1633
+        ],
+        "pdf_pages": [
+          1653
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Article selection with abbreviated proper names",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-164",
+    "domain": "morphology",
+    "concept": "Plural inflection of count-noun initialisms",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "A count-noun initialism can take ordinary plural marking at its end, independently of where plural marking appears in its expanded phrase.",
+    "condition": "Some expanded forms are invariant even though the abbreviation has a distinct plural.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Three MPs attended the meeting.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The two DJs shared a stage.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§2.2",
+        "pages": [
+          1633
+        ],
+        "pdf_pages": [
+          1653
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Plural inflection of count-noun initialisms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-165",
+    "domain": "morphology",
+    "concept": "Abbreviated bases in further word formation",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Abbreviated lexical bases can participate in further formation. In one compound pattern, the first element is shortened and the second remains in full.",
+    "condition": "An abbreviation can also act as a base for a suffix.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Please email the schedule to Nina.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The pilot adjusted her g-suit.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§2.2",
+        "pages": [
+          1633
+        ],
+        "pdf_pages": [
+          1653
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Abbreviated bases in further word formation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-166",
+    "domain": "morphology",
+    "concept": "Acronyms and mixed initialisms",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Acronyms are pronounced as words rather than entirely as letter names. A pronounceable spelling permits an acronym, but convention determines the pronunciation, and some forms combine both modes.",
+    "condition": "Letter sequence and actual pronunciation are relevant to the classification.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The radar detected a second boat.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She stored the files on a CD-ROM.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§2.2",
+        "pages": [
+          1633,
+          1634
+        ],
+        "pdf_pages": [
+          1653,
+          1654
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Acronyms and mixed initialisms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-167",
+    "domain": "morphology",
+    "concept": "Acronym spelling and lexical independence",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Acronyms can be capitalized or lowercase. Capitalized forms often alternate with their expansions, while established lowercase acronyms can behave like ordinary words and lack a practical expanded alternant. Proper-name acronyms such as NATO and UNESCO ordinarily function as full NPs without the definite article.",
+    "condition": "The historical expansion can differ from the meaning of the resulting word.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The archive used a laser scanner.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The divers packed their scuba gear.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§2.2",
+        "pages": [
+          1634
+        ],
+        "pdf_pages": [
+          1654
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Acronym spelling and lexical independence",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-168",
+    "domain": "morphology",
+    "concept": "Departures from strict initial-letter formation",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "An initialism can incorporate a noninitial letter or omit part of the source. An initialism can also be a bound base for subsequent suffixation.",
+    "condition": "Departures can help fit the sound system, and a derivative is distinct from its source initialism.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Please show your ID at the desk.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The clinic offered free TB screening.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§2.2",
+        "pages": [
+          1634
+        ],
+        "pdf_pages": [
+          1654
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Departures from strict initial-letter formation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-169",
+    "domain": "morphology",
+    "concept": "Clipping, residue and lexicalization",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Clipping removes phonological material from a source word or phrase, leaving a residue that becomes a base. A plain clipping consists of the residue, while an embellished clipping adds further material.",
+    "condition": "Clippings may begin as informal forms, develop specialized meanings, or largely replace the original. Their frequency varies by dialect.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The ad ran for a week.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We took the pram to the park.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§2.3",
+        "pages": [
+          1634,
+          1635
+        ],
+        "pdf_pages": [
+          1654,
+          1655
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Clipping, residue and lexicalization",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-170",
+    "domain": "morphology",
+    "concept": "Back-, fore- and ambiclipping",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Plain clippings are classified by where material is removed. Back-clipping removes final material, foreclipping initial material, and ambiclipping both. Back-clipping is much more common than ambiclipping.",
+    "condition": "The labels refer to the discarded material.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We left our phones in the lab.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She missed school because of the flu.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§2.3.1",
+        "pages": [
+          1635
+        ],
+        "pdf_pages": [
+          1655
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Back-, fore- and ambiclipping",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-171",
+    "domain": "morphology",
+    "concept": "Plain clipping sources and output tendencies",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Plain clippings can come from phrases, and both words of a phrase can be clipped to form a compound. Plain clippings usually yield nouns and are usually monosyllabic, with exceptions and occasional sound adjustments.",
+    "condition": "Category and syllable count are tendencies rather than absolute restrictions.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We met at the pub after the exam.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She took a photo of the bike.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§2.3.1",
+        "pages": [
+          1635,
+          1636
+        ],
+        "pdf_pages": [
+          1655,
+          1656
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Plain clipping sources and output tendencies",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-172",
+    "domain": "morphology",
+    "concept": "Suffixes in embellished clippings",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "An embellished clipping adds a suffix to a residue. Suffixes include -s, -er and -ers. Australian English makes extensive informal use of -ie or -y and -o, often with a rhythmic or decorative effect.",
+    "condition": "Forms in -ers can be jocular and are associated with British or Australian English.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The painters cleaned their brushes with turps.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We brought our sunnies to the beach.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§2.3.2",
+        "pages": [
+          1636
+        ],
+        "pdf_pages": [
+          1656
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Suffixes in embellished clippings",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-173",
+    "domain": "morphology",
+    "concept": "Intervocalic voicing in Australian clippings",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "In Australian embellished clippings, a residue-final fricative can voice between vowels after suffixation. This is especially noted with /s/, and sometimes with /f/.",
+    "condition": "The alternation is a phonological tendency in the illustrated variety, not a general spelling rule.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A mozzie landed on my sleeve.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We saw them this arvo.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§2.3.2",
+        "pages": [
+          1636
+        ],
+        "pdf_pages": [
+          1656
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Intervocalic voicing in Australian clippings",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-174",
+    "domain": "morphology",
+    "concept": "Blend structure and overlap",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Blends combine the beginning of one base with the end of another, reducing one or both at the boundary. One source can survive whole, and any overlap can differ between speech and writing.",
+    "condition": "The distinction from clipping or compounding can be unclear where a reduced form also exists independently.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We stopped for brunch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A layer of smog hid the skyline.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§2.4",
+        "pages": [
+          1636,
+          1637
+        ],
+        "pdf_pages": [
+          1656,
+          1657
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Blend structure and overlap",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-175",
+    "domain": "morphology",
+    "concept": "Blend length, source bases and recurring splinters",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "A blend is usually no longer than its longer source and usually uses free bases, with documented exceptions to both tendencies. Repeated models can produce recurrent pieces such as -aholic.",
+    "condition": "These recurrent pieces can fall between affixes and bases.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The motel advertised a new heliport.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "My brother calls himself a chocaholic.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§2.4",
+        "pages": [
+          1637
+        ],
+        "pdf_pages": [
+          1657
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Blend length, source bases and recurring splinters",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-176",
+    "domain": "morphology",
+    "concept": "Back-formation and synchronic structure",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Back-formation creates a morphologically simpler base from an established source, often by removing an apparent affix. It can yield simple, derivative or compound bases, so the historical direction does not determine the result's structure.",
+    "condition": "The removed material need not have been an affix in the historical source.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Please edit the opening paragraph.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They recycle the glass from the workshop.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§2.5",
+        "pages": [
+          1637,
+          1638
+        ],
+        "pdf_pages": [
+          1657,
+          1658
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Back-formation and synchronic structure",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-177",
+    "domain": "morphology",
+    "concept": "Productive back-formation and its limits",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Back-formation remains productive and is an avenue for noun-plus-verb compounds. Such compounds do not always inherit an irregular inflection. Back-formation can also reverse an inflection or yield a more specialized lexical item.",
+    "condition": "The pattern can be used jocularly, and meanings should be checked individually.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She daydreamed through most of the journey.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They spoon-feed the youngest chicks.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§2.5",
+        "pages": [
+          1637,
+          1638
+        ],
+        "pdf_pages": [
+          1657,
+          1658
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Productive back-formation and its limits",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-178",
+    "domain": "morphology",
+    "concept": "Stress contrasts across lexical categories",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Many same-spelled disyllabic verb–noun pairs contrast later verb stress with earlier noun stress, sometimes with a change in vowel quality. A few verb–adjective pairs also contrast in stress.",
+    "condition": "Some words permit both patterns, with dialect, category or sense affecting the choice.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Please record the meeting.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The clerk filed the record.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§2.6",
+        "pages": [
+          1638,
+          1639
+        ],
+        "pdf_pages": [
+          1658,
+          1659
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Stress contrasts across lexical categories",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-179",
+    "domain": "morphology",
+    "concept": "Category-related vowel quality contrasts",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Some same-spelled verbs and nouns or adjectives differ in vowel quality without shifting stress. The verb can retain a full final vowel where the other category has a reduced vowel.",
+    "condition": "The illustrated -ment and -ate contrasts are lexical remnants rather than productive patterns.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Please estimate the repair cost.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The estimate arrived this morning.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§2.6",
+        "pages": [
+          1639
+        ],
+        "pdf_pages": [
+          1659
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Category-related vowel quality contrasts",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-180",
+    "domain": "morphology",
+    "concept": "Final fricative voicing in noun–verb pairs",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "A small set of related nouns and verbs have a voiceless versus voiced final fricative. Spelling reflects the distinction in some pairs and conceals it in others.",
+    "condition": "This lexical pattern is no longer productive and is distinct from plural voicing alternations.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The old house stands empty.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The hall can house fifty people.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§2.6",
+        "pages": [
+          1639
+        ],
+        "pdf_pages": [
+          1659
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Final fricative voicing in noun–verb pairs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]
