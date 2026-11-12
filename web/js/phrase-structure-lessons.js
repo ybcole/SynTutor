@@ -1,4 +1,4 @@
-import { addIntroExample } from './lesson-presentation.js';
+import { addIntroExample, lessonExample } from './lesson-presentation.js';
 import { advancedFoundationsChapters } from './advanced-foundations-lessons.js';
 import { addWorkedExample } from './foundations-lesson.js';
 import { addVisibleContrast, chapterPolishing } from './foundations-polishing.js';
@@ -219,9 +219,11 @@ export const phraseStructureArticles = Object.fromEntries(Object.entries(chapter
       container.append(...items.map(item => el('li', item)));
       body.append(container);
     }
-    function reveal(label, text) {
+    function reveal(label, text, example) {
       const answer = el('details');
-      answer.append(el('summary', label), el('p', text));
+      answer.append(el('summary', label));
+      if (example) answer.append(lessonExample(el, example));
+      answer.append(el('p', text));
       body.append(answer);
     }
     if (page === 0) {
@@ -252,7 +254,7 @@ export const phraseStructureArticles = Object.fromEntries(Object.entries(chapter
         addBranchExercise(body, ui, chapter);
       } else {
         sections([chapter.workedPractice]);
-        reveal('Show the worked answer', chapter.workedAnswer);
+        reveal('Show the worked answer', chapter.workedAnswer, chapter.workedAnswerExample);
       }
     }
     if (page === 3) {

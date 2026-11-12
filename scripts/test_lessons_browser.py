@@ -587,7 +587,7 @@ try:
    expect(view.locator('article > ul:not(.lesson-transfer-context) > li')).to_have_count(2)
    next_button.click()
    worked=lesson['worked_example']
-   expect(view.locator('article .lesson-example-sentence')).to_have_text(worked['sentence'])
+   expect(view.locator('article > .lesson-example-sentence')).to_have_text(worked['sentence'])
    if worked.get('tree'):
     step_controls=view.get_by_role('group',name='Explore the worked tree')
     viewport=view.locator('.canonical-viewport')

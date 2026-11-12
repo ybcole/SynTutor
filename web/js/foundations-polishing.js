@@ -1,3 +1,5 @@
+import { hasExampleBrackets } from './lesson-presentation.js';
+
 // Supplemental, unscored practice for the reviewed launch outcomes.
 function span(sentence, target, question, success, hint) {
   const words = sentence.split(' ');
@@ -184,7 +186,15 @@ export function addVisibleContrast(body, { el }, examples) {
   const list = el('ul', undefined, 'lesson-transfer-context');
   for (const [label, before, focus, after] of examples) {
     const item = el('li', undefined, 'lesson-transfer-example');
-    item.append(el('strong', label), el('br'), before, el('mark', focus), after);
+    const line = [before, el('mark', focus), after];
+    item.append(el('strong', label));
+    if (hasExampleBrackets(before + focus + after)) {
+      const example = el('span', undefined, 'lesson-bracketed-example');
+      example.append(...line);
+      item.append(example);
+    } else {
+      item.append(el('br'), ...line);
+    }
     list.append(item);
   }
   body.append(list);

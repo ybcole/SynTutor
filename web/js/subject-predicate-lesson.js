@@ -1,4 +1,4 @@
-import { addIntroExample, setTreeStepLabel } from './lesson-presentation.js';
+import { addIntroExample, lessonExample, setTreeStepLabel } from './lesson-presentation.js';
 import { addSubjectPredicateBuilder } from './subject-predicate-builder.js';
 
 export const subjectPredicateHeadings = [
@@ -204,7 +204,7 @@ function addClosingWarmup(body, { el }) {
     el('p', 'The children by the window were reading quietly.', 'lesson-example-sentence'),
     el('p', 'Find the full subject and predicate. Which branches go directly under S?'),
     disclosure(el, 'Reveal the analysis',
-      el('p', '[The children by the window] [were reading quietly]', 'lesson-example-sentence'),
+      lessonExample(el, '[The children by the window] [were reading quietly]'),
       el('p', '“By the window” identifies the children, so it belongs in the subject NP. The predicate VP covers “were reading quietly”.')));
 }
 
@@ -345,7 +345,7 @@ export function addSubjectPredicateTeaching(body, page, ui) {
     section('Put it into practice',
       'Read “The lights in the hall were bright”. Try finding the two groups before opening the answer. Check that every word belongs to one of them.');
     body.append(disclosure(el, 'Check your split',
-      el('p', '[The lights in the hall] [were bright]', 'lesson-example-sentence'),
+      lessonExample(el, '[The lights in the hall] [were bright]'),
       el('p', 'Ask “Were the lights in the hall bright?” The entire subject stays together after “Were”. In the statement, the subject NP covers “The lights in the hall”, and the predicate VP covers “were bright”. Both phrases connect directly to S in this pattern.')));
   }
 

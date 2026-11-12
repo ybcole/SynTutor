@@ -249,6 +249,12 @@
 .lesson-feedback.retry { border-color:var(--warn); }
 .lesson-feedback:empty { margin:0; padding:0; border:0; }
 .lesson-example-sentence { font-size:1.25rem; font-weight:650; }
+.lesson-bracketed-example {
+  display:block;
+  padding-block:.4rem;
+  text-align:center;
+  overflow-wrap:anywhere;
+}
 .lesson-tree-wrap { overflow:auto; padding:8px 0; }
 .lesson-tree-wrap svg { display:block; max-width:none; font:15px system-ui,sans-serif; }
 .lesson-tree-wrap svg text { fill:var(--ink); }

@@ -1,3 +1,5 @@
+import { lessonExample } from './lesson-presentation.js';
+
 export function addWordPractice(body, { el, button }, steps) {
   const section = el('section', undefined, 'lesson-transfer');
   const heading = el('h3', 'Try it yourself');
@@ -98,7 +100,7 @@ export function addCombinationPractice(body, { el, button }, basic, incomplete) 
     label.append(input);
     return label;
   });
-  const status = el('p', undefined, 'lesson-feedback');
+  const status = el('div', undefined, 'lesson-feedback');
   status.setAttribute('role', 'status');
   let result = '';
   let reuse = false;
@@ -118,10 +120,10 @@ export function addCombinationPractice(body, { el, button }, basic, incomplete) 
     }
     const joined = parts.map(part => `[${part}]`).join(' and ');
     if (reuse) {
-      feedback(`${joined}. The same rule joined a complete earlier result with another sentence.`, true);
+      feedback('The same rule joined a complete earlier result with another sentence.', true, `${joined}.`);
     } else {
       result = parts.join(' and ');
-      feedback(`${joined}. Both inputs are complete, so their combination can serve as a new input.`, true);
+      feedback('Both inputs are complete, so their combination can serve as a new input.', true, `${joined}.`);
       next.hidden = false;
     }
   });
@@ -146,9 +148,11 @@ export function addCombinationPractice(body, { el, button }, basic, incomplete) 
   fields.append(...labels);
   section.append(heading, prompt, fields, actions, status);
   body.append(section);
-  function feedback(message, correct) {
+  function feedback(message, correct, example) {
     status.className = `lesson-feedback ${correct ? 'correct' : 'retry'}`;
-    status.textContent = message;
+    status.replaceChildren();
+    if (example) status.append(lessonExample(el, example));
+    status.append(message);
     next.hidden = true;
   }
   function fillInputs(options) {

@@ -1,8 +1,19 @@
+export function hasExampleBrackets(text) {
+  return /\[[^\]]+\]/.test(text);
+}
+
+export function lessonExample(el, text) {
+  const style = hasExampleBrackets(text)
+    ? 'lesson-example-sentence lesson-bracketed-example'
+    : 'lesson-example-sentence';
+  return el('p', text, style);
+}
+
 export function addIntroExample(body, el, context, example, explanation) {
   const panel = el('div', undefined, 'lesson-intro-example');
   panel.append(
     el('p', context),
-    el('p', example, 'lesson-example-sentence'),
+    lessonExample(el, example),
     el('p', explanation),
   );
   body.append(panel);

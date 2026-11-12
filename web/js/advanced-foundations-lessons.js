@@ -261,7 +261,8 @@ export const advancedFoundationsChapters = {
     ],
     beforeTree: 'Follow the two starting sentences and the sentence they form. Brackets in the next step show the groups the rule combines.',
     workedPractice: ['Apply the rule again', 'Take “Iris rests and Leo waits” as one input. Use “Iris rests” as the other. Write the result and put brackets around the two inputs you joined.'],
-    workedAnswer: '[Iris rests and Leo waits] and [Iris rests]. The first bracket encloses the output of the earlier step. The rule is the same at both steps.',
+    workedAnswerExample: '[Iris rests and Leo waits] and [Iris rests].',
+    workedAnswer: 'The first bracket encloses the output of the earlier step. The rule is the same at both steps.',
     applyExample: 'Maya smiles. Leo waves.',
     apply: [
       ['Make a longer result in two steps', 'Use these as the two basic sentences of a new toy grammar with the same rule. Join them once, then use that result and one basic sentence to make a longer sentence. Bracket the two inputs at the last step.'],
