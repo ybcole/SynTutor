@@ -11,17 +11,41 @@ SUPPORT_ID = "CLS-1451"
 BE_FORMS = frozenset({"am", "is", "are", "was", "were", "be", "being", "been"})
 
 
+def _passive_modifiers(middle, tail):
+    """Permit only explicit negation and an attached by-phrase."""
+    match middle:
+        case []:
+            pass
+        case [{"pos": "RB", "surface": word}] if word.casefold() == "not":
+            pass
+        case [{"type": "ADVP", "children": [{"pos": "RB", "surface": word}]}] if word.casefold() == "not":
+            pass
+        case _:
+            return False
+    match tail:
+        case []:
+            return True
+        case [{"type": "PP", "children": [{"pos": "IN", "surface": word}, {"type": "NP"}]}] if word.casefold() == "by":
+            return True
+        case _:
+            return False
+
+
 def _passive_relations(node):
-    """Recognize only a direct be-passive and its immediately selected bare VP."""
+    """Recognize a be-passive and its immediately selected bare VP."""
     children = node.get("children", [])
     match node:
         case {
             "type": "VP",
             "children": [
                 {"pos": "VB" | "VBD" | "VBG" | "VBN" | "VBP" | "VBZ", "surface": be} as auxiliary,
-                {"type": "VP", "children": [{"pos": "VBN", "surface": made} as make, complement]},
+                *middle,
+                {"type": "VP", "children": [{"pos": "VBN", "surface": made} as make, complement, *tail]},
             ],
-        } if be.casefold() in BE_FORMS and made.casefold() == "made":
+        } if (
+            be.casefold() in BE_FORMS and made.casefold() == "made"
+            and _passive_modifiers(middle, tail)
+        ):
             if complement["type"] == "S" and len(complement.get("children", [])) == 1:
                 complement = complement["children"][0]
             match complement:
@@ -54,7 +78,7 @@ def probe_passive_make(sentence, tree, *, variety):
     seen = set()
     for auxiliary, make, verb in _passive_relations(tree):
         auxiliary_i, make_i, verb_i = (leaf["span"][0] for leaf in (auxiliary, make, verb))
-        if make_i != auxiliary_i + 1 or verb_i != make_i + 1 or (make_i, verb_i) in seen:
+        if verb_i != make_i + 1 or (make_i, verb_i) in seen:
             continue
         seen.add((make_i, verb_i))
         make_span = tokens[make_i]["char_span"]

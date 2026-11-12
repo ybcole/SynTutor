@@ -44,6 +44,43 @@ class PassiveMakeCandidateTest(unittest.TestCase):
         self.assertEqual(candidate["relation"]["governor_token_index"], 3)
         self.assertEqual(candidate["edit_hint"]["char_span"], [19, 19])
 
+    def test_explicit_negation_and_by_phrase_preserve_their_spans(self):
+        cases = [
+            ("The witness was not made identify the suspect.",
+             "(S (NP (DT The) (NN witness)) (VP (VBD was) (RB not) (VP (VBN made) "
+             "(S (VP (VB identify) (NP (DT the) (NN suspect)))))) (. .))", "identify"),
+            ("The crew was made unload the van by the supervisor.",
+             "(S (NP (DT The) (NN crew)) (VP (VBD was) (VP (VBN made) "
+             "(S (VP (VB unload) (NP (DT the) (NN van)))) "
+             "(PP (IN by) (NP (DT the) (NN supervisor))))) (. .))", "unload"),
+            ("The crew was not made unload the van by the supervisor.",
+             "(S (NP (DT The) (NN crew)) (VP (VBD was) (ADVP (RB not)) (VP (VBN made) "
+             "(S (VP (VB unload) (NP (DT the) (NN van)))) "
+             "(PP (IN by) (NP (DT the) (NN supervisor))))) (. .))", "unload"),
+        ]
+        for sentence, fixture, verb in cases:
+            with self.subTest(sentence=sentence):
+                candidate, = probe(sentence, fixture)["candidates"]
+                edit = candidate["edit_hint"]
+                self.assertEqual(edit["char_span"], [sentence.index(verb)] * 2)
+                self.assertEqual(edit["replacement"], "to ")
+
+    def test_negation_and_by_phrase_do_not_license_other_tree_shapes(self):
+        cases = [
+            ("We were not made to wait.", "(S (NP (PRP We)) (VP (VBD were) (RB not) "
+             "(VP (VBN made) (S (VP (TO to) (VP (VB wait)))))) (. .))"),
+            ("The parts were not made by the vendor.", "(S (NP (DT The) (NNS parts)) "
+             "(VP (VBD were) (RB not) (VP (VBN made) (PP (IN by) (NP (DT the) (NN vendor))))) (. .))"),
+            ("We were made wait and watch by the guard.", "(S (NP (PRP We)) (VP (VBD were) "
+             "(VP (VBN made) (S (VP (VB wait) (CC and) (VB watch))) "
+             "(PP (IN by) (NP (DT the) (NN guard))))) (. .))"),
+            ("We were often made wait.", "(S (NP (PRP We)) (VP (VBD were) (RB often) "
+             "(VP (VBN made) (S (VP (VB wait))))) (. .))"),
+        ]
+        for sentence, fixture in cases:
+            with self.subTest(sentence=sentence):
+                self.assertEqual(probe(sentence, fixture)["candidates"], [])
+
     def test_licensed_and_unresolved_constructions(self):
         controls = [
             ("They made us wait.", "(S (NP (PRP They)) (VP (VBD made) (NP (PRP us)) (S (VP (VB wait)))) (. .))"),

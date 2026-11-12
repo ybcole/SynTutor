@@ -1,0 +1,139 @@
+{
+  "rule_id": "CLS-357",
+  "variety": "standard_english",
+  "provenance": "Original evaluation cases frozen before running the modifier-aware candidate. Prior parser observations were used only for implementation and regression fixtures.",
+  "cases": [
+    {
+      "id": "inspect",
+      "group": "negation",
+      "sentence": "The apprentice was not made inspect the wiring.",
+      "expected_sentence": "The apprentice was not made to inspect the wiring."
+    },
+    {
+      "id": "return",
+      "group": "negation",
+      "sentence": "The hikers were not made return to camp.",
+      "expected_sentence": "The hikers were not made to return to camp."
+    },
+    {
+      "id": "restate",
+      "group": "negation",
+      "sentence": "The panelist was not made restate the objection.",
+      "expected_sentence": "The panelist was not made to restate the objection."
+    },
+    {
+      "id": "translate",
+      "group": "negation",
+      "sentence": "The interpreter was not made translate the announcement.",
+      "expected_sentence": "The interpreter was not made to translate the announcement."
+    },
+    {
+      "id": "stack",
+      "group": "agentive_by",
+      "sentence": "The helpers were made stack the crates by the quartermaster.",
+      "expected_sentence": "The helpers were made to stack the crates by the quartermaster."
+    },
+    {
+      "id": "sing",
+      "group": "agentive_by",
+      "sentence": "The choir was made sing the chorus by the conductor.",
+      "expected_sentence": "The choir was made to sing the chorus by the conductor."
+    },
+    {
+      "id": "climb",
+      "group": "agentive_by",
+      "sentence": "The cadet was made climb the ladder by the instructor.",
+      "expected_sentence": "The cadet was made to climb the ladder by the instructor."
+    },
+    {
+      "id": "polish",
+      "group": "agentive_by",
+      "sentence": "The attendant was made polish the railings by the steward.",
+      "expected_sentence": "The attendant was made to polish the railings by the steward."
+    },
+    {
+      "id": "carry",
+      "group": "both",
+      "sentence": "The runners were not made carry the banners by the organizer.",
+      "expected_sentence": "The runners were not made to carry the banners by the organizer."
+    },
+    {
+      "id": "empty",
+      "group": "both",
+      "sentence": "The campers were not made empty their packs by the guide.",
+      "expected_sentence": "The campers were not made to empty their packs by the guide."
+    },
+    {
+      "id": "active-negative",
+      "group": "valid_control",
+      "sentence": "The foreman did not make the crew lift the panels.",
+      "expected_sentence": null
+    },
+    {
+      "id": "active-by",
+      "group": "valid_control",
+      "sentence": "The curator made the guards stand by the entrance.",
+      "expected_sentence": null
+    },
+    {
+      "id": "active-negative-by",
+      "group": "valid_control",
+      "sentence": "The director did not make the actors wait by the door.",
+      "expected_sentence": null
+    },
+    {
+      "id": "marked-negative",
+      "group": "valid_control",
+      "sentence": "The climbers were not made to leave at dawn.",
+      "expected_sentence": null
+    },
+    {
+      "id": "marked-agent",
+      "group": "valid_control",
+      "sentence": "The escorts were made to cross the courtyard by the captain.",
+      "expected_sentence": null
+    },
+    {
+      "id": "marked-both",
+      "group": "valid_control",
+      "sentence": "The finalists were not made to speak by the moderator.",
+      "expected_sentence": null
+    },
+    {
+      "id": "lexical-negation",
+      "group": "valid_control",
+      "sentence": "The ornaments were not made by the apprentices.",
+      "expected_sentence": null
+    },
+    {
+      "id": "lexical-deadline",
+      "group": "valid_control",
+      "sentence": "The replacement parts were made by noon.",
+      "expected_sentence": null
+    },
+    {
+      "id": "lexical-method",
+      "group": "valid_control",
+      "sentence": "The blankets were made by hand.",
+      "expected_sentence": null
+    },
+    {
+      "id": "predicative",
+      "group": "valid_control",
+      "sentence": "The benches were made level by the carpenters.",
+      "expected_sentence": null
+    },
+    {
+      "id": "purpose",
+      "group": "valid_control",
+      "sentence": "The barrier was not made to block the doorway.",
+      "expected_sentence": null
+    },
+    {
+      "id": "other-passive",
+      "group": "valid_control",
+      "sentence": "The jurors were not allowed to leave by the judge.",
+      "expected_sentence": null
+    }
+  ]
+}

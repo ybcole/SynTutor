@@ -1,5 +1,6 @@
-"""Measure an unchanged offline candidate on original sentences using the configured parser."""
+"""Measure the offline candidate on original sentences using the configured parser."""
 
+import argparse
 import json
 from pathlib import Path
 import sys
@@ -40,7 +41,11 @@ def observe(case, variety):
 
 
 def main():
-    corpus = json.loads((ROOT / "evaluation/cgel_passive_make_evaluation.json").read_text(encoding="utf-8"))
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("corpus", type=Path, nargs="?",
+                        default=ROOT / "evaluation/cgel_passive_make_evaluation.json")
+    args = parser.parse_args()
+    corpus = json.loads(args.corpus.read_text(encoding="utf-8"))
     cases = corpus["cases"]
     assert len({case["id"] for case in cases}) == len(cases), "Duplicate case IDs"
     assert len({case["sentence"] for case in cases}) == len(cases), "Duplicate inputs"
@@ -48,6 +53,7 @@ def main():
     positives = [row for row in observations if row["expected_sentence"] is not None]
     controls = [row for row in observations if row["expected_sentence"] is None]
     report = {
+        "corpus": args.corpus.name,
         "rule_id": corpus["rule_id"],
         "variety": corpus["variety"],
         "summary": {
