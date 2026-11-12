@@ -72,6 +72,38 @@ ENJOY_EVALUATION_CASES = [
 ]
 
 
+AUXILIARY_CASES = [
+    ("modal stack", "The boat might could cross before noon.", "standard_english", ["COMP-031"]),
+    ("modal stack", "The crew will can unload the truck.", "standard_english", ["COMP-031"]),
+    ("modal stack", "The hikers may must turn back.", "standard_english", ["COMP-031"]),
+    ("perfect have", "Did the courier have left already?", "standard_english", ["CLS-100"]),
+    ("progressive be", "Does the engine be running now?", "standard_english", ["CLS-100"]),
+    ("passive be", "Did the package be delivered yesterday?", "standard_english", ["CLS-100"]),
+    ("copular be", "Does the assistant be available today?", "standard_english", ["CLS-100"]),
+    ("modal after do", "Did the mechanic can fix it?", "standard_english", ["CLS-100"]),
+    ("lexical have", "Does the assistant have a spare key?", "standard_english", []),
+    ("causative have", "Did the assistant have the door repaired?", "standard_english", []),
+    ("lexical can", "The crew will can peaches tomorrow.", "standard_english", []),
+    ("coordination", "The boat might or might not cross before noon.", "standard_english", []),
+    ("negative imperative", "Do not be making noise in the hall.", "standard_english", []),
+    ("emphatic imperative", "Do be careful on the stairs.", "standard_english", []),
+    ("separate clauses", "The crew will wait until the driver can help.", "standard_english", []),
+    ("unspecified variety", "The boat might could cross before noon.", None, []),
+]
+
+
+def evaluate_auxiliaries(probe):
+    rows = []
+    for group, sentence, variety, expected in AUXILIARY_CASES:
+        analysis = analyze(sentence)
+        result = probe(sentence, analysis["root"], variety=variety)
+        rows.append({
+            "group": group, "sentence": sentence, "variety": variety,
+            "parse": analysis["parse_string"], "expected_rule_ids": expected, "probe": result,
+        })
+    return rows
+
+
 def evaluate_cases(cases, probe, governor_label, governor_key):
     rows = []
     for group, sentence, expected in cases:
@@ -186,7 +218,18 @@ def main():
                         help="Run the separate modal evaluation on configured parser output")
     parser.add_argument("--enjoy-evaluation", action="store_true",
                         help="Evaluate the inactive enjoy action-complement probe")
+    parser.add_argument("--auxiliary-evaluation", action="store_true",
+                        help="Measure modal stacking and inverted supportive do on configured parser output")
     args = parser.parse_args()
+    if args.auxiliary_evaluation:
+        if any((args.fixtures, args.matrix, args.passive_candidate, args.modal_candidate,
+                args.modal_evaluation, args.enjoy_evaluation)):
+            parser.error("--auxiliary-evaluation runs separately on configured parser output")
+        from cgel_modal_parser_probe import probe_modal_parser
+
+        print(json.dumps({"input": "configured_parser",
+                          "auxiliary_evaluation": evaluate_auxiliaries(probe_modal_parser)}, indent=2))
+        return
     if args.enjoy_evaluation:
         if args.fixtures or args.matrix or args.passive_candidate or args.modal_candidate or args.modal_evaluation:
             parser.error("--enjoy-evaluation runs separately on configured parser output")
