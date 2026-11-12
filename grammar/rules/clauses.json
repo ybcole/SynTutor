@@ -72763,5 +72763,1271 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1152",
+    "domain": "clauses",
+    "concept": "Inflectional less and determinative little",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Inflectional less can be the comparative of determinative little. Analytic less before an adjective is a different construction and does not alternate with plain little.",
+    "condition": "Adjective little meaning small is distinct; its inflections littler and littlest are uncommon.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We have less water than we need.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "This cover is less rigid than the other one.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.1.1",
+        "pages": [
+          1124
+        ],
+        "pdf_pages": [
+          1144
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inflectional less and determinative little",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1153",
+    "domain": "clauses",
+    "concept": "Orientation of degree determinative scales",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Much and little orient the quantity scale in opposite directions. More and inflectional less both mark superiority on their own oriented scales.",
+    "condition": "This differs from analytic less, which marks inferiority on the scale supplied by its head. Much and little do not themselves take analytic less to form a corresponding paradigm.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We collected more rainwater than last year.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We collected less rainwater than last year.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.1.1",
+        "pages": [
+          1124
+        ],
+        "pdf_pages": [
+          1144
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Orientation of degree determinative scales",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1154",
+    "domain": "clauses",
+    "concept": "Reverse comparisons with more and less",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "With opposite-oriented determinatives, X has more than Y and Y has less than X entail one another. Equality comparisons with much and little can convey different background quantities.",
+    "condition": "Much is the more neutral choice in ordinary quantity questions; little can suggest a low quantity already accepted in context.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We have more fuel than they do. They have less fuel than we do.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "How much fuel remains?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "We have as little fuel as they do.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.1.1",
+        "pages": [
+          1124,
+          1125
+        ],
+        "pdf_pages": [
+          1144,
+          1145
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reverse comparisons with more and less",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1155",
+    "domain": "clauses",
+    "concept": "Lexical asymmetries in comparative entailment",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Reversing the arguments and changing to an opposite adjective can preserve meaning, produce a one-way entailment, or change the suggested range of both terms.",
+    "condition": "The source contrasts age, evaluation and temperature. These patterns depend on lexical meaning and context.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo is older than Lee, and Lee is younger than Jo.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "This tool is better than the old one, though both work well.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.1.1",
+        "pages": [
+          1125
+        ],
+        "pdf_pages": [
+          1145
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical asymmetries in comparative entailment",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1156",
+    "domain": "clauses",
+    "concept": "Inferiority paraphrases and short adjectives",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Analytic inferiority competes with negated scalar equality and reversed superiority. A superiority paraphrase may lose the background suggestion that an adjective applies to both terms.",
+    "condition": "Short adjectives with familiar opposites often disfavor analytic less as a usage preference.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The first route is less difficult than the second.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The first route is not as difficult as the second.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "The second route is harder than the first.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.1.1",
+        "pages": [
+          1125
+        ],
+        "pdf_pages": [
+          1145
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inferiority paraphrases and short adjectives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1157",
+    "domain": "clauses",
+    "concept": "Adjectival less and lesser",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Adjectival less can contrast with greater without being the comparative of a single plain adjective. It is mainly predicative, with limited attributive uses.",
+    "condition": "Lesser adds a comparative suffix to an irregular comparative base and is attributive. This established form does not license obsolete double comparatives generally.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The actual cost was less than the estimate.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The change affected each team to a greater or lesser extent.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "We accepted the lesser risk.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.1.1",
+        "pages": [
+          1126
+        ],
+        "pdf_pages": [
+          1146
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjectival less and lesser",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1158",
+    "domain": "clauses",
+    "concept": "Count and non-count degree determinative paradigms",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Much and little quantify non-count nominals; many and few quantify plural count nominals. More serves both quantity types, while negative-oriented comparison has less or fewer according to construction.",
+    "condition": "Do not infer an identical distribution for all uses of less and fewer.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We used as much paper as they did.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We submitted as many forms as they did.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "We used fewer sheets this time.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.1.2",
+        "pages": [
+          1126
+        ],
+        "pdf_pages": [
+          1146
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Count and non-count degree determinative paradigms",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1159",
+    "domain": "clauses",
+    "concept": "Fewer with ordinary non-count singulars",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "Ordinary non-count singular quantity uses less rather than fewer.",
+    "condition": "Plural count nominals can take fewer, while numeral measures of duration, money, age or speed commonly use less.",
+    "violation": "Fewer quantifies an ordinary singular non-count nominal.",
+    "exceptions": [
+      {
+        "description": "Plural count nominals can take fewer, while numeral measures of duration, money, age or speed commonly use less.",
+        "pages": [
+          1127
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We need less equipment than they do.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The recipe uses less flour than mine.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "We need fewer tools than they do.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "She arrived less than ten minutes ago.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "We need fewer equipment than they do.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The recipe uses fewer flour than mine.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.1.2",
+        "pages": [
+          1127
+        ],
+        "pdf_pages": [
+          1147
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fewer with ordinary non-count singulars",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "Fewer quantifies an ordinary singular non-count nominal.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "We need fewer equipment than they do. ||| We need less equipment than they do.",
+        "The recipe uses fewer flour than mine. ||| The recipe uses less flour than mine."
+      ],
+      "learner_explanation": "Ordinary non-count singular quantity uses less rather than fewer. Use less with the non-count nominal.",
+      "corrected_paragraph_template": "Use less with the non-count nominal.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "We need fewer tools than they do.",
+        "She arrived less than ten minutes ago."
+      ],
+      "lesson_tags": [
+        "comparison"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1160",
+    "domain": "clauses",
+    "concept": "Less with measures, thresholds and plural counts",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Less is usual with a numerical amount and in patterns such as a numeral plus or less. Less and fewer can both occur with some thresholds and plural counts.",
+    "condition": "Fewer is often preferred directly before a plural count noun in formal style. A non-count plural such as pains differs from a count plural.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We paid less than twenty dollars.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Fewer than half the voters turned up.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Ten items or less qualifies.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.1.2",
+        "pages": [
+          1127
+        ],
+        "pdf_pages": [
+          1147
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Less with measures, thresholds and plural counts",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1161",
+    "domain": "clauses",
+    "concept": "More and less grading singular heads and verbs",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "More of a and less of a can grade the applicability of a singular count nominal in a predicative NP. Comparative more and less can also modify a verb as degree adjuncts.",
+    "condition": "Plain much and little are available in equality comparisons, with further restrictions on unmodified verb adjuncts.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was less of a setback than we feared.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The injection hurt less than I expected.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "It hurt as much as last time.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.1.2",
+        "pages": [
+          1127,
+          1128
+        ],
+        "pdf_pages": [
+          1147,
+          1148
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "More and less grading singular heads and verbs",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1162",
+    "domain": "clauses",
+    "concept": "Would rather with bare infinitival and finite complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Would rather can take a bare infinitival or a finite complement. The comparison can contrast entire complements or smaller corresponding parts.",
+    "condition": "Would sooner is an alternative, and would as soon supplies a related equality pattern.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I'd rather walk than take the bus.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I'd rather she came on Friday than on Saturday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.2(a)",
+        "pages": [
+          1128
+        ],
+        "pdf_pages": [
+          1148
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Would rather with bare infinitival and finite complements",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1163",
+    "domain": "clauses",
+    "concept": "Preferential and contrastive rather than",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Preferential rather than with a bare infinitival requires the adjacent than complement. Contrastive rather than can behave like a coordinator meaning instead of.",
+    "condition": "In the contrastive construction, a bare infinitival counterpart pairs with another bare infinitival.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Rather than wait in the rain, let's go inside.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The machine would restart rather than shut down.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.2(b–c)",
+        "pages": [
+          1128
+        ],
+        "pdf_pages": [
+          1148
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Preferential and contrastive rather than",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1164",
+    "domain": "clauses",
+    "concept": "Pleonastic rather in an expanded comparative complement",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Rather than can sometimes reinforce an earlier comparison whose governor is separated from the than phrase.",
+    "condition": "It is unavailable as a general replacement for than in a simple comparison or with determinative more in the cited pattern.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It would be easier to work with a partner, rather than with strangers.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "These cases are more likely to be referred to a specialist rather than to a general clinic.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.2(d)",
+        "pages": [
+          1128,
+          1129
+        ],
+        "pdf_pages": [
+          1148,
+          1149
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pleonastic rather in an expanded comparative complement",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1165",
+    "domain": "clauses",
+    "concept": "Comparative complement patterns with prefer",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Prefer commonly contrasts an object NP with a to phrase. Infinitival preference normally uses rather than for an overt secondary term.",
+    "condition": "Than alone is marginal in the cited infinitival pattern. A to phrase can also compare elements within some gerund-participials, and a finite content clause can rarely have an overt comparator.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I prefer tea to coffee.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She prefers to read rather than watch television.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "He prefers taking the train to driving.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.2",
+        "pages": [
+          1129
+        ],
+        "pdf_pages": [
+          1149
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Comparative complement patterns with prefer",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1166",
+    "domain": "clauses",
+    "concept": "To complements of superior and inferior",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "Comparative superior and inferior select to for the secondary term in the cited construction.",
+    "condition": "They also accept degree modifiers and can have plain evaluative readings with very. A recursive comparison with these adjectives is distinct from double-marking an inflectional comparative.",
+    "violation": "Than introduces the secondary term of comparative superior or inferior.",
+    "exceptions": [
+      {
+        "description": "They also accept degree modifiers and can have plain evaluative readings with very. A recursive comparison with these adjectives is distinct from double-marking an inflectional comparative.",
+        "pages": [
+          1129,
+          1130
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This fabric is superior to the original.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The older camera is inferior to this one.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "This fabric is better than the original.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "This is a very inferior design.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "This fabric is superior than the original.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The older camera is inferior than this one.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.2",
+        "pages": [
+          1129,
+          1130
+        ],
+        "pdf_pages": [
+          1149,
+          1150
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "To complements of superior and inferior",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "Than introduces the secondary term of comparative superior or inferior.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "This fabric is superior than the original. ||| This fabric is superior to the original.",
+        "The older camera is inferior than this one. ||| The older camera is inferior to this one."
+      ],
+      "learner_explanation": "Comparative superior and inferior select to for the secondary term in the cited construction. Use to after superior or inferior when introducing the secondary term.",
+      "corrected_paragraph_template": "Use to after superior or inferior when introducing the secondary term.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "This fabric is better than the original.",
+        "This is a very inferior design."
+      ],
+      "lesson_tags": [
+        "comparison"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1167",
+    "domain": "clauses",
+    "concept": "Related Latin-derived adjectives and senior genitives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some Latin-derived adjectives such as senior and prior admit a predicative to complement. Senior and junior can also occur with a genitive secondary term.",
+    "condition": "The structure of the genitive pattern is uncertain; it does not behave as an ordinary NP in all environments.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She is senior to me.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They are two years my junior.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.2",
+        "pages": [
+          1130
+        ],
+        "pdf_pages": [
+          1150
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Related Latin-derived adjectives and senior genitives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1168",
+    "domain": "clauses",
+    "concept": "Scalar equality with as and restricted so and such",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "As is the default scalar equality marker. Comparative so is restricted to non-affirmative contexts in the cited use, and scalar comparative such generally favors those contexts.",
+    "condition": "Non-scalar such and intensifying such without a comparative as phrase have different licensing.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The new rope is as strong as the old one.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It isn't so simple as that.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "It wasn't such a success as we had expected.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "It was such a relief!",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.3",
+        "pages": [
+          1130
+        ],
+        "pdf_pages": [
+          1150
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Scalar equality with as and restricted so and such",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1169",
+    "domain": "clauses",
+    "concept": "Omission of the first as in familiar expressions",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The first as may be absent in familiar as plus NP similes and certain idioms.",
+    "condition": "This is a restricted pattern, not a general deletion rule for all scalar comparisons.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The blanket was soft as silk.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was as clear as day.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.3",
+        "pages": [
+          1130,
+          1131
+        ],
+        "pdf_pages": [
+          1150,
+          1151
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Omission of the first as in familiar expressions",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1170",
+    "domain": "clauses",
+    "concept": "Degree modifiers of scalar equality and inequality",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Equality and inequality admit different sets of degree modifiers with some overlap. Much and far modify inequality; nearly and twice are typical with equality.",
+    "condition": "Very can modify much in very much bigger, but does not directly replace much before the comparative form.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The new bag is far lighter.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The new bag is nearly as light as mine.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "The repair was very much cheaper.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.4.1",
+        "pages": [
+          1131
+        ],
+        "pdf_pages": [
+          1151
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Degree modifiers of scalar equality and inequality",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1171",
+    "domain": "clauses",
+    "concept": "Multiplier and fraction interpretations",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Multipliers and fractions interact differently with equality and inequality. A third as much gives a fraction of the baseline; a third more adds that fraction to the baseline.",
+    "condition": "The source records a multiplier reading of four times more that matches four times as much. The equality phrasing makes the intended ratio explicit.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The new pump uses a third as much power.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The new pump uses a third more power.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "The new pump uses twice as much power.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.4.1",
+        "pages": [
+          1131
+        ],
+        "pdf_pages": [
+          1151
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Multiplier and fraction interpretations",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1172",
+    "domain": "clauses",
+    "concept": "Comparative the as a modifier",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The can modify a comparative expression in several constructions, including correlatives and the more or the less patterns.",
+    "condition": "This modifier function is distinct from the determiner function in NP structure. The source develops the noncorrelative construction on the following page.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The more we rehearse, the easier it becomes.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That made the result no less useful and the explanation all the more valuable.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.4.2",
+        "pages": [
+          1131
+        ],
+        "pdf_pages": [
+          1151
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Comparative the as a modifier",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
   }
 ]

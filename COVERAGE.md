@@ -18,7 +18,7 @@
 | 10. Clause type and illocutionary force | 96 | 93 | 0 | 3 | 0 | Source-extracted |
 | 11. Content clauses and reported speech | 84 | 82 | 0 | 2 | 0 | Source-extracted |
 | 12. Relative constructions | 66 | 64 | 0 | 2 | 0 | Source-extracted |
-| 13. Comparative constructions | 74 | 25 | 47 | 2 | 0 | In progress (pp. 1097–1123) |
+| 13. Comparative constructions | 74 | 33 | 39 | 2 | 0 | In progress (pp. 1097–1131) |
 | 14. Non-finite and verbless clauses | 102 | 99 | 0 | 3 | 0 | Source-extracted |
 | 15. Coordination and supplementation | 90 | 88 | 0 | 2 | 0 | Source-extracted; independent QA pending |
 | 16. Information packaging | 86 | 0 | 85 | 1 | 0 | Incomplete |
@@ -27,7 +27,7 @@
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **1446 extracted**, 275 unprocessed, 41 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **1454 extracted**, 267 unprocessed, 41 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -426,3 +426,7 @@ Printed pp. 1108–1115 add eight substantive pages and 15 inactive records (`CL
 ## Chapter 13 third Phase B checkpoint
 
 Printed pp. 1116–1123 add eight substantive pages and 18 inactive records (`CLS-1134`–`CLS-1151`). Chapter 13 has 47 pages remaining. Continue at p. 1124 with inflectional less and the remainder of §4.1.1. [Report](sources/cambridge/chapter_13/PP1116_1123_REPORT.md) · [Audit](sources/cambridge/chapter_13/PP1116_1123_AUDIT.json).
+
+## Chapter 13 fourth Phase B checkpoint
+
+Printed pp. 1124–1131 add eight substantive pages and 21 inactive records (`CLS-1152`–`CLS-1172`), including two `spec_only` constraints. Chapter 13 has 39 pages remaining. Continue at p. 1132 with comparative the and idioms. [Report](sources/cambridge/chapter_13/PP1124_1131_REPORT.md) · [Audit](sources/cambridge/chapter_13/PP1124_1131_AUDIT.json).

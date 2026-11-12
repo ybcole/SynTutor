@@ -1,0 +1,125 @@
+{
+  "manifest_version": 1,
+  "chapter": 13,
+  "printed_start": 1124,
+  "printed_end": 1131,
+  "report": "sources/cambridge/chapter_13/PP1124_1131_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1124,
+    "pdf_page": 1144
+  },
+  "added_rule_ids": [
+    "CLS-1152",
+    "CLS-1153",
+    "CLS-1154",
+    "CLS-1155",
+    "CLS-1156",
+    "CLS-1157",
+    "CLS-1158",
+    "CLS-1159",
+    "CLS-1160",
+    "CLS-1161",
+    "CLS-1162",
+    "CLS-1163",
+    "CLS-1164",
+    "CLS-1165",
+    "CLS-1166",
+    "CLS-1167",
+    "CLS-1168",
+    "CLS-1169",
+    "CLS-1170",
+    "CLS-1171",
+    "CLS-1172"
+  ],
+  "page_checks": [
+    {
+      "page": 1124,
+      "status": "extracted",
+      "section": "§4.1.1",
+      "summary": "Inflectional less, orientation, paradigms and equivalence contrasts with much and little.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1125,
+      "status": "extracted",
+      "section": "§4.1.1",
+      "summary": "Lexical entailment, reversed superiority, inferiority and style preferences.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1126,
+      "status": "extracted",
+      "section": "§§4.1.1–4.1.2",
+      "summary": "Adjectival less and lesser, and count versus non-count paradigms.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1127,
+      "status": "extracted",
+      "section": "§4.1.2",
+      "summary": "Measure and count patterns, less and fewer, graded count singulars and degree adjuncts.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1128,
+      "status": "extracted",
+      "section": "§§4.1.2–4.2",
+      "summary": "Adjunct restrictions and four constructions with rather.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1129,
+      "status": "extracted",
+      "section": "§4.2",
+      "summary": "Limits on pleonastic rather, prefer complementation and superior or inferior.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1130,
+      "status": "extracted",
+      "section": "§§4.2–4.3",
+      "summary": "Recursive comparison, Latin-derived adjectives, scalar as, so and such, and familiar similes.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1131,
+      "status": "extracted",
+      "section": "§§4.3–4.4.2",
+      "summary": "Omission of first as, degree modifiers, multipliers and fractions, and comparative the.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}
