@@ -1,0 +1,213 @@
+{
+  "manifest_version": 1,
+  "chapter": 15,
+  "printed_start": 1273,
+  "printed_end": 1288,
+  "report": "sources/cambridge/chapter_15/PP1273_1288_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1273,
+    "pdf_page": 1293
+  },
+  "added_rule_ids": [
+    "CLS-931",
+    "CLS-932",
+    "CLS-933",
+    "CLS-934",
+    "CLS-935",
+    "CLS-936",
+    "CLS-937",
+    "CLS-938",
+    "CLS-939",
+    "CLS-940",
+    "CLS-941",
+    "CLS-942",
+    "CLS-943",
+    "CLS-944",
+    "CLS-945",
+    "CLS-946",
+    "CLS-947",
+    "CLS-948",
+    "CLS-949",
+    "CLS-950",
+    "CLS-951"
+  ],
+  "page_checks": [
+    {
+      "page": 1273,
+      "status": "skipped_with_reason",
+      "section": "Contents",
+      "summary": "Chapter title and first contents page.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1274,
+      "status": "skipped_with_reason",
+      "section": "Contents",
+      "summary": "Continuation of the chapter contents.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1275,
+      "status": "extracted",
+      "section": "§1.1",
+      "summary": "Distinguishes coordination and supplementation and introduces non-headed structure.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1276,
+      "status": "extracted",
+      "section": "§1.1",
+      "summary": "Compares binary and multiple, syndetic and asyndetic, and correlative patterns.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1277,
+      "status": "extracted",
+      "section": "§1.1",
+      "summary": "Examines the coordinator's position in constituent structure.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1278,
+      "status": "extracted",
+      "section": "§§1.1–1.2",
+      "summary": "Distinguishes bare and expanded coordinates and introduces layered coordination.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1279,
+      "status": "extracted",
+      "section": "§1.2",
+      "summary": "Compares layered structures, coordinator repetition and scope.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1280,
+      "status": "extracted",
+      "section": "§§1.2–1.3.1",
+      "summary": "Finishes layering and tests clausal versus subclausal equivalence.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1281,
+      "status": "extracted",
+      "section": "§§1.3.1–1.3.2",
+      "summary": "Examines non-equivalence and introduces joint and distributive interpretations.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1282,
+      "status": "extracted",
+      "section": "§1.3.2",
+      "summary": "Compares joint and distributive ambiguity and grammatical diagnostics.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1283,
+      "status": "extracted",
+      "section": "§§1.3.2–1.3.3",
+      "summary": "Covers agreement and non-subject joint cases and introduces discrete sets.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1284,
+      "status": "extracted",
+      "section": "§1.3.3",
+      "summary": "Distinguishes discrete sets from joint and distributive predication.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1285,
+      "status": "extracted",
+      "section": "§§1.3.3–1.3.4",
+      "summary": "Closes discrete-set interpretations and introduces structural scope ambiguity.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1286,
+      "status": "extracted",
+      "section": "§1.3.4",
+      "summary": "Extends scope ambiguities to different modifier and complement configurations.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1287,
+      "status": "extracted",
+      "section": "§1.4",
+      "summary": "Distinguishes reversible and irreversible order and introduces anaphoric constraints.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1288,
+      "status": "extracted",
+      "section": "§1.4",
+      "summary": "Completes fixed-order expressions and describes ordering tendencies.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

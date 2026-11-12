@@ -59415,5 +59415,1280 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-931",
+    "domain": "clauses",
+    "concept": "Coordination and supplementation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Coordination combines coordinates into a larger construction. Supplementation associates a more loosely attached expression with an anchor.",
+    "condition": "Applies to the construction described in §1.1 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A loose semantic connection alone does not establish a coordinate structure.",
+        "pages": [
+          1275
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina left and Dev followed her.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina left, her coat still on the chair.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.1",
+        "pages": [
+          1275
+        ],
+        "pdf_pages": [
+          1295
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Coordination and supplementation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-932",
+    "domain": "clauses",
+    "concept": "Non-headed coordinate structure",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A basic coordination has coordinates of comparable status rather than one coordinate functioning as the head of the whole construction.",
+    "condition": "Applies to the construction described in §1.1 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Individual coordinates can have heads of their own.",
+        "pages": [
+          1275,
+          1276
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina and Dev speak French.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The report was brief but accurate.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.1",
+        "pages": [
+          1275,
+          1276
+        ],
+        "pdf_pages": [
+          1295,
+          1296
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-headed coordinate structure",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-933",
+    "domain": "clauses",
+    "concept": "Binary and multiple coordination",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A coordination can contain two coordinates or more than two.",
+    "condition": "Applies to the construction described in §1.1 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Multiple overt coordinators do not by themselves establish a layered structure.",
+        "pages": [
+          1276
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We can meet Monday or Tuesday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We can meet Monday, Tuesday, or Friday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.1",
+        "pages": [
+          1276
+        ],
+        "pdf_pages": [
+          1296
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Binary and multiple coordination",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-934",
+    "domain": "clauses",
+    "concept": "Syndetic and asyndetic coordination",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A syndetic coordination has an overt coordinator. An asyndetic coordination can express coordinate structure through juxtaposition and prosody or punctuation.",
+    "condition": "Applies to the construction described in §1.1 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Lists vary in punctuation and can use a coordinator before multiple coordinates.",
+        "pages": [
+          1276
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She packed a coat, a scarf, and gloves.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She packed a coat, a scarf, gloves.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.1",
+        "pages": [
+          1276
+        ],
+        "pdf_pages": [
+          1296
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Syndetic and asyndetic coordination",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-935",
+    "domain": "clauses",
+    "concept": "Correlative marking and expanded coordinates",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Correlative constructions use paired markers such as both and or either or. A coordinator normally belongs with the coordinate it introduces.",
+    "condition": "Applies to the construction described in §1.1 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A coordinate can be expanded by a marker without changing the category of its core.",
+        "pages": [
+          1276,
+          1277,
+          1278
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Both the manager and the assistant called.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Either the motor or the cable failed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.1",
+        "pages": [
+          1276,
+          1277,
+          1278
+        ],
+        "pdf_pages": [
+          1296,
+          1297,
+          1298
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Correlative marking and expanded coordinates",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-936",
+    "domain": "clauses",
+    "concept": "Constituency of coordinator and following coordinate",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The coordinator forms a constituent with the coordinate it introduces. The resulting expanded coordinate can contrast with a bare coordinate.",
+    "condition": "Applies to the construction described in §1.1 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Coordination as a whole remains distinct from the internal structure of an expanded coordinate.",
+        "pages": [
+          1277
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They gave the others but not Mina a second chance.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They invited Dev and also Mina.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.1",
+        "pages": [
+          1277
+        ],
+        "pdf_pages": [
+          1297
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Constituency of coordinator and following coordinate",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-937",
+    "domain": "clauses",
+    "concept": "Layered coordination",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A coordination can itself be a coordinate in a larger coordination.",
+    "condition": "Applies to the construction described in §1.2 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Different groupings can make different combinations of participants available.",
+        "pages": [
+          1278,
+          1279
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Invite Mina and either Dev or Jo.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Invite either Mina and Dev or Jo.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.2",
+        "pages": [
+          1278,
+          1279
+        ],
+        "pdf_pages": [
+          1298,
+          1299
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Layered coordination",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-938",
+    "domain": "clauses",
+    "concept": "Layering and scope",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Mixed coordinators and grouping cues can determine which relation takes scope over another.",
+    "condition": "Applies to the construction described in §1.2 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Repetition of the same coordinator can permit structurally different groupings without a corresponding difference in interpretation.",
+        "pages": [
+          1279,
+          1280
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Bring a pencil and either a ruler or a compass.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Bring either a pencil and a ruler or a compass.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.2",
+        "pages": [
+          1279,
+          1280
+        ],
+        "pdf_pages": [
+          1299,
+          1300
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Layering and scope",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-939",
+    "domain": "clauses",
+    "concept": "Equivalent clausal and subclausal coordination",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some subclausal coordinations have approximately equivalent versions with whole clauses coordinated.",
+    "condition": "Applies to the construction described in §1.3.1 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The correspondence depends on how the material outside the coordination applies.",
+        "pages": [
+          1280
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There is a copy on the desk and in the drawer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There is a copy on the desk and there is a copy in the drawer.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.3.1",
+        "pages": [
+          1280
+        ],
+        "pdf_pages": [
+          1300
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Equivalent clausal and subclausal coordination",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-940",
+    "domain": "clauses",
+    "concept": "Scope prevents unrestricted clausal paraphrase",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A quantifier or other expression outside subclausal coordination can take scope over the coordinates jointly, so repeating it in two clauses can change meaning.",
+    "condition": "Applies to the construction described in §1.3.1 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The second sentence can describe different candidates, whereas the first applies both properties to one candidate.",
+        "pages": [
+          1280,
+          1281
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "One candidate was young and energetic.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "One candidate was young and one candidate was energetic.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.3.1",
+        "pages": [
+          1280,
+          1281
+        ],
+        "pdf_pages": [
+          1300,
+          1301
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Scope prevents unrestricted clausal paraphrase",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-941",
+    "domain": "clauses",
+    "concept": "Joint and distributive coordination",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A distributive reading applies a predicate separately to each coordinate. A joint reading applies it to the group or combination.",
+    "condition": "Applies to the construction described in §1.3.2 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some predicates support both readings depending on context.",
+        "pages": [
+          1281,
+          1282
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina and Dev speak Greek.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina and Dev make a good team.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.3.2",
+        "pages": [
+          1281,
+          1282
+        ],
+        "pdf_pages": [
+          1301,
+          1302
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Joint and distributive coordination",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-942",
+    "domain": "clauses",
+    "concept": "Grammatical diagnostics of joint readings",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Correlative marking, coordinate modifiers, reflexive and reciprocal forms can distinguish joint from distributive readings.",
+    "condition": "Applies to the construction described in §1.3.2 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "No one diagnostic determines the interpretation of every coordination.",
+        "pages": [
+          1282,
+          1283
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Both Mina and Dev had injured themselves.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina and Dev helped each other.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.3.2",
+        "pages": [
+          1282,
+          1283
+        ],
+        "pdf_pages": [
+          1302,
+          1303
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Grammatical diagnostics of joint readings",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-943",
+    "domain": "clauses",
+    "concept": "Agreement and joint coordination",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Subject coordination usually supports plural agreement, but a joint interpretation can license singular agreement when the combination is construed as a unit.",
+    "condition": "Applies to the construction described in §1.3.2 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A joint interpretation does not require singular agreement in every construction.",
+        "pages": [
+          1283
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The rolls and the milk were on the counter.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Eggs and bacon is my usual breakfast.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.3.2",
+        "pages": [
+          1283
+        ],
+        "pdf_pages": [
+          1303
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Agreement and joint coordination",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-944",
+    "domain": "clauses",
+    "concept": "Joint coordination beyond subjects",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A joint relation can arise with coordinated objects or other coordinated categories.",
+    "condition": "Applies to the construction described in §1.3.2 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The joint reading can depend on an expression elsewhere in the clause.",
+        "pages": [
+          1283
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I introduced Mina and Dev to each other.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She was reading and eating at the same time.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.3.2",
+        "pages": [
+          1283
+        ],
+        "pdf_pages": [
+          1303
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Joint coordination beyond subjects",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-945",
+    "domain": "clauses",
+    "concept": "Discrete-set interpretations",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Coordinated modifiers or complements inside an NP can describe distinct sets of referents.",
+    "condition": "Applies to the construction described in §1.3.3 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The distinction is between sets associated with the coordinates, and the syntax does not always entail that the sets are disjoint.",
+        "pages": [
+          1283,
+          1284
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They sell new and second-hand books.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The premiers of Ontario and Quebec attended.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.3.3",
+        "pages": [
+          1283,
+          1284
+        ],
+        "pdf_pages": [
+          1303,
+          1304
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Discrete-set interpretations",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-946",
+    "domain": "clauses",
+    "concept": "Discrete sets versus distributivity",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Whether an NP identifies separate sets is distinct from whether the matrix predication distributes over the coordinates.",
+    "condition": "Applies to the construction described in §1.3.3 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A joint predicate can apply to a combination of separately characterized sets.",
+        "pages": [
+          1284,
+          1285
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They sell new and second-hand books.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The new and second-hand books together filled a shelf.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.3.3",
+        "pages": [
+          1284,
+          1285
+        ],
+        "pdf_pages": [
+          1304,
+          1305
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Discrete sets versus distributivity",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-947",
+    "domain": "clauses",
+    "concept": "Modifier scope and constituent grouping",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A modifier preceding a coordination can modify the whole coordination or only the first coordinate, depending on constituent structure.",
+    "condition": "Applies to the construction described in §1.3.4 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Context and prosody can help distinguish the possible groupings.",
+        "pages": [
+          1285,
+          1286
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She collected long poems and essays.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They bought old maps and photographs.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.3.4",
+        "pages": [
+          1285,
+          1286
+        ],
+        "pdf_pages": [
+          1305,
+          1306
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Modifier scope and constituent grouping",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-948",
+    "domain": "clauses",
+    "concept": "Scope ambiguity across categories",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Coordination can interact with degree modifiers, verbal dependents and other material in ways that create alternative constituent structures.",
+    "condition": "Applies to the construction described in §1.3.4 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some theoretically possible groupings are pragmatically unlikely.",
+        "pages": [
+          1286
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The condition is extremely rare or unique.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She photographed old barns and bridges.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.3.4",
+        "pages": [
+          1286
+        ],
+        "pdf_pages": [
+          1306
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Scope ambiguity across categories",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-949",
+    "domain": "clauses",
+    "concept": "Reversible and irreversible coordinate order",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Coordinate order can be reversible when the relation is symmetric. Temporal or other directional relations can make reversing the coordinates change the meaning.",
+    "condition": "Applies to the construction described in §1.4 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Order can also affect acceptability when one coordinate depends anaphorically on another.",
+        "pages": [
+          1287
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She was bright and had a warm personality.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She fell ill and went home.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.4",
+        "pages": [
+          1287
+        ],
+        "pdf_pages": [
+          1307
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reversible and irreversible coordinate order",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-950",
+    "domain": "clauses",
+    "concept": "Anaphora and fixed coordinate order",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Anaphoric links and established expressions can constrain coordinate order.",
+    "condition": "Applies to the construction described in §1.4 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A preferred conventional sequence is distinct from a syntactically required order.",
+        "pages": [
+          1287,
+          1288
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina missed the train and because of this arrived late.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She bought a cup and saucer.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.4",
+        "pages": [
+          1287,
+          1288
+        ],
+        "pdf_pages": [
+          1307,
+          1308
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Anaphora and fixed coordinate order",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-951",
+    "domain": "clauses",
+    "concept": "Tendencies in coordinate order",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Relative length, chronology and familiar ordering conventions can influence the order of coordinates.",
+    "condition": "Applies to the construction described in §1.4 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "These tendencies can compete and do not determine every acceptable order.",
+        "pages": [
+          1288
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We invited Dev and the colleagues who organized the conference.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They opened the package and checked its contents.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§1.4",
+        "pages": [
+          1288
+        ],
+        "pdf_pages": [
+          1308
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Tendencies in coordinate order",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]
