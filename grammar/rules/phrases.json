@@ -45584,5 +45584,1748 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-727",
+    "domain": "phrases",
+    "concept": "Preposed propositional so",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Preposed so can qualify a speaker's commitment in an or-coordinate, occur parenthetically or acknowledge a preceding statement.",
+    "condition": "It admits negative antecedents and has no preposed not counterpart. Some heads such as see and write favor front position; conditional if and afraid do not license the fronting. Subject postposing and rare auxiliary inversion also occur.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The access road is open, or so I thought.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The light is off. So I see.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "So wrote the committee chair.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.7.2(a)",
+        "pages": [
+          1537
+        ],
+        "pdf_pages": [
+          1557
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Preposed propositional so",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-728",
+    "domain": "phrases",
+    "concept": "Preverbal so for nonfinite complements",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Preverbal so can recover a nonfinite complement with a small set of lexical verbs, especially in conditional clauses.",
+    "condition": "Wish, choose and desire are typical. The passive past-participial pattern also occurs.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You can stay until noon if you so wish.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The crew will leave immediately if so instructed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.7.2(b)",
+        "pages": [
+          1537
+        ],
+        "pdf_pages": [
+          1557
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Preverbal so for nonfinite complements",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-729",
+    "domain": "phrases",
+    "concept": "So as a pro-predicative",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "So can stand for a predicative complement, often adjectival but also nominal or prepositional.",
+    "condition": "Ellipsis is usually preferred with be, though so is possible. An or-coordinate can carry a modifying adjunct such as nearly.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The office was a refuge for her and remained so for years.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The instruments are stationary, or nearly so.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.7.2(c)",
+        "pages": [
+          1537
+        ],
+        "pdf_pages": [
+          1557
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "So as a pro-predicative",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-730",
+    "domain": "phrases",
+    "concept": "So as head of a reduced clause",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "So can head a reduced clause with a degree modifier and comparative or resultative complement, or with an evaluative or modal adjunct.",
+    "condition": "The cited modal pattern contrasts probably so with probably not; certainly favors not and does not license so in this response pattern.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We were relieved, and rightly so.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The trail became slippery, so much so that we turned back.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Will it reopen this week? Probably so.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.7.2(d)",
+        "pages": [
+          1537,
+          1538
+        ],
+        "pdf_pages": [
+          1557,
+          1558
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "So as head of a reduced clause",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-731",
+    "domain": "phrases",
+    "concept": "Contrastive subject in not so clauses",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In a reduced clause of the form not so plus NP, a contrasting NP is interpreted as subject of the recovered predication.",
+    "condition": "Quite so and even so are related idioms of agreement and concession.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The first seal was airtight. Not so the second.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I was eager to leave. Not so my brother.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.7.2(d)",
+        "pages": [
+          1538
+        ],
+        "pdf_pages": [
+          1558
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Contrastive subject in not so clauses",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-732",
+    "domain": "phrases",
+    "concept": "Anaphoric manner adjunct so",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Anaphoric manner so can mean in that way or thus and commonly combines with a passive participle.",
+    "condition": "This manner adjunct is an adverb in the source analysis.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Several notices were printed on recycled paper. The notices so printed went to residents first.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The samples were stored under nitrogen. The samples so stored lasted longer.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.7.2(e)",
+        "pages": [
+          1538
+        ],
+        "pdf_pages": [
+          1558
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Anaphoric manner adjunct so",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-733",
+    "domain": "phrases",
+    "concept": "Exclamatory confirmation with so",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Exclamatory confirmation uses so plus subject and auxiliary. With no auxiliary in the antecedent, supportive do supplies it.",
+    "condition": "The construction expresses emphatic confirmation and may convey surprise. Be and have can recover nonclausal material. Repeating the full VP instead gives a different construction, for example consequence so.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The pump has stopped. So it has!",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Nora left the gate open. So she did!",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "The key is under the mat. So it is!",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.7.2(f)",
+        "pages": [
+          1538
+        ],
+        "pdf_pages": [
+          1558
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Exclamatory confirmation with so",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-734",
+    "domain": "phrases",
+    "concept": "Dialectal denial with stressed postauxiliary so",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Some varieties use strongly stressed so after an auxiliary to contradict a negative statement.",
+    "condition": "This is distinct from idiomatic do so and can use auxiliaries besides do. Some dialects use confirming that in a comparable construction.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You didn't sign the form. I did SO!",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She hasn't called. She has SO!",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.7.2(f)",
+        "pages": [
+          1538
+        ],
+        "pdf_pages": [
+          1558
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dialectal denial with stressed postauxiliary so",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-735",
+    "domain": "phrases",
+    "concept": "Category status of anaphoric so",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The source treats most anaphoric uses of so as a pro-form with a distinctive distribution, while classifying the manner adjunct as an adverb.",
+    "condition": "Pro-clause so differs from anaphoric NPs in subject licensing; clause-head so lacks verbal inflection.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They may have moved. I think so.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Was the gate locked? Probably so.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.7.2",
+        "pages": [
+          1538
+        ],
+        "pdf_pages": [
+          1558
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Category status of anaphoric so",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-736",
+    "domain": "phrases",
+    "concept": "Correlative as and so",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Initial so can reinforce the likeness introduced by a subordinate as-clause. Subject–auxiliary inversion in the main clause is optional when so is present.",
+    "condition": "Omitting so also removes the license for that inversion.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Just as the first team needed more time, so the second team did too.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "As demand rose, so did prices.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.7.3(a)",
+        "pages": [
+          1539
+        ],
+        "pdf_pages": [
+          1559
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Correlative as and so",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-737",
+    "domain": "phrases",
+    "concept": "Polarity of additive inverted so",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "The additive construction with initial so and subject–auxiliary inversion is positive. For a corresponding negative addition use neither or nor with inversion.",
+    "condition": "Additive so can combine with too. Consequence so belongs to a separate construction and can introduce a negative clause.",
+    "violation": "Negative polarity appears in an inverted clause with additive so.",
+    "exceptions": [
+      {
+        "description": "Additive so can combine with too. Consequence so belongs to a separate construction and can introduce a negative clause.",
+        "pages": [
+          1539
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Nora can't hear the alarm, and neither can Lee.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Nora can hear the alarm, and so too can Lee.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c3",
+          "text": "Mina won't attend, and neither will Theo.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "The alarm was broken, so Lee couldn't hear it.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Nora can't hear the alarm, and so can't Lee.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Mina won't attend, and so won't Theo.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.7.3(b)",
+        "pages": [
+          1539
+        ],
+        "pdf_pages": [
+          1559
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Polarity of additive inverted so",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "Negative polarity appears in an inverted clause with additive so.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Nora can't hear the alarm, and so can't Lee. ||| Nora can't hear the alarm, and neither can Lee.",
+        "Mina won't attend, and so won't Theo. ||| Mina won't attend, and neither will Theo."
+      ],
+      "learner_explanation": "The additive construction with initial so and subject–auxiliary inversion is positive. For a corresponding negative addition use neither or nor with inversion. Use neither or nor with a positive auxiliary for a negative additive clause.",
+      "corrected_paragraph_template": "Use neither or nor with a positive auxiliary for a negative additive clause.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The alarm was broken, so Lee couldn't hear it.",
+        "Nora can hear the alarm, and so too can Lee."
+      ],
+      "lesson_tags": [
+        "anaphora",
+        "polarity"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-738",
+    "domain": "phrases",
+    "concept": "Subject contrast and VP reduction with additive so",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Additive inverted so requires subject contrast and normally introduces a reduced VP. Neither and nor allow a wider range of contrasts.",
+    "condition": "Some full VPs are attested, supporting the analysis of additive so as connective adjunct rather than the complement found in exclamatory confirmation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Rae will see the crack, and so will Dan.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She didn't sign the form, and neither did she send the email.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.7.3(b)",
+        "pages": [
+          1539
+        ],
+        "pdf_pages": [
+          1559
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subject contrast and VP reduction with additive so",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-739",
+    "domain": "phrases",
+    "concept": "Consequence and reason connective so",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Connective so can introduce a main clause giving a consequence or a conclusion motivated by the preceding discourse.",
+    "condition": "It functions as a clause adjunct with a weak anaphoric component.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The lift was broken, so we took the stairs.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We have enough evidence, so I suggest we vote.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.7.3(c)",
+        "pages": [
+          1539
+        ],
+        "pdf_pages": [
+          1559
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Consequence and reason connective so",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-740",
+    "domain": "phrases",
+    "concept": "Manner so licensing a result clause",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Preverbal manner adverb so can license a following that-clause describing a result.",
+    "condition": "The manner use without this complement can instead be deictic or anaphoric.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The shelves were so positioned that the doorway stayed clear.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The vents were so angled that rain could not enter.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.7.3(d)",
+        "pages": [
+          1540
+        ],
+        "pdf_pages": [
+          1560
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Manner so licensing a result clause",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-741",
+    "domain": "phrases",
+    "concept": "Subordinate purpose and result with so",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The source analyzes purpose and result so as a preposition taking a content clause. Purpose permits optional that or as plus an infinitival; omission of that in the cited result use gives a main-clause connective construction.",
+    "condition": "The ability to insert and before result connective so is evidence for the main-clause analysis.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I opened the gate so you could drive through.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I lowered the screen so as to reduce glare.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "The cable snapped, so that the lift stopped.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.7.3(d)",
+        "pages": [
+          1540
+        ],
+        "pdf_pages": [
+          1560
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subordinate purpose and result with so",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-742",
+    "domain": "phrases",
+    "concept": "Idiomatic approximate and continuative so",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Or so marks an approximate measure or quantity. And so on and and so forth indicate more items of the same kind.",
+    "condition": "The idioms have an evident semantic connection to anaphoric so.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We waited twenty minutes or so.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Bring tape, scissors, a ruler, and so on.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.7.3(e)",
+        "pages": [
+          1540
+        ],
+        "pdf_pages": [
+          1560
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Idiomatic approximate and continuative so",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-743",
+    "domain": "phrases",
+    "concept": "Casual ellipsis of a clause-initial subject",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Casual main clauses can omit a grammaticised subject, especially I or dummy it or there. Other pronouns can be understood from context.",
+    "condition": "Fixed expressions also occur. Imperative you omission is the ordinary imperative pattern and is distinct from casual subject ellipsis.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Hope the train is on time.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Should be a spare chair upstairs.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Looks tired, doesn't she?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.8.1(a)",
+        "pages": [
+          1540
+        ],
+        "pdf_pages": [
+          1560
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Casual ellipsis of a clause-initial subject",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-744",
+    "domain": "phrases",
+    "concept": "Casual omission of subject and auxiliary",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "A casual main clause can omit the initial subject and an auxiliary together. The understood subject is often I or dummy it, and the auxiliary is typically be.",
+    "condition": "A past participle can support perfect have. Standalone apologetic sorry need not be analyzed as ellipsis.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Glad you made it.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Never seen that symbol before.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Strange how quiet the street gets.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.8.1(b)",
+        "pages": [
+          1541
+        ],
+        "pdf_pages": [
+          1561
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Casual omission of subject and auxiliary",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-745",
+    "domain": "phrases",
+    "concept": "Initial omission in casual closed interrogatives",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Casual polar questions can omit their initial auxiliary, sometimes together with the subject pronoun.",
+    "condition": "Plain forms support do, past participles have, and gerund-participles or verbless predicates be. A missing subject is normally you; third-person recovery usually needs an indexing act.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Anyone heard the alarm?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Want another slice?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Feeling better now?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.8.1(c)",
+        "pages": [
+          1541
+        ],
+        "pdf_pages": [
+          1561
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Initial omission in casual closed interrogatives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-746",
+    "domain": "phrases",
+    "concept": "Initial determiner omission in casual style",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "An NP at the beginning of a casual clause can lose its determiner. This can combine with loss of subject or auxiliary material.",
+    "condition": "The omitted determiner may be definite, indefinite or possessive in the relevant reconstruction.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Problem is, the key won't turn.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Friend of mine saw the whole thing.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Car still at the garage?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.8.1(d)",
+        "pages": [
+          1541
+        ],
+        "pdf_pages": [
+          1561
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Initial determiner omission in casual style",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-747",
+    "domain": "phrases",
+    "concept": "Radical reduction of open interrogatives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An open interrogative can reduce to its interrogative phrase, optionally followed by a stranded preposition in licensed cases.",
+    "condition": "An identifying follow-up such as What neighbor? can ask which referent was meant instead of simply repeating the predicate of the antecedent.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I'm leaving early. Why?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I mailed the parcel. Who to?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "That neighbor fixed it. What neighbor?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.8.2",
+        "pages": [
+          1541,
+          1542
+        ],
+        "pdf_pages": [
+          1561,
+          1562
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Radical reduction of open interrogatives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-748",
+    "domain": "phrases",
+    "concept": "Stranding restriction in interrogative fragments with determiners",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "In the cited radical reduction, a preposition cannot follow an interrogative NP when its interrogative word functions as determiner.",
+    "condition": "Full interrogatives permit stranding in the same contexts. A bare interrogative pronoun can also strand a preposition in a fragment.",
+    "violation": "A preposition is stranded after an interrogative determiner phrase in a reduced interrogative.",
+    "exceptions": [
+      {
+        "description": "Full interrogatives permit stranding in the same contexts. A bare interrogative pronoun can also strand a preposition in a fragment.",
+        "pages": [
+          1541
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We're staying overnight. In which cabin?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I spoke to someone. Who to?",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c3",
+          "text": "I left it on one of the shelves. On which shelf?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "Which cabin are we staying in?",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "We're staying overnight. Which cabin in?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "I left it on one of the shelves. Which shelf on?",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.8.2",
+        "pages": [
+          1541
+        ],
+        "pdf_pages": [
+          1561
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Stranding restriction in interrogative fragments with determiners",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "word_order",
+      "error_pattern": "A preposition is stranded after an interrogative determiner phrase in a reduced interrogative.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "We're staying overnight. Which cabin in? ||| We're staying overnight. In which cabin?",
+        "I left it on one of the shelves. Which shelf on? ||| I left it on one of the shelves. On which shelf?"
+      ],
+      "learner_explanation": "In the cited radical reduction, a preposition cannot follow an interrogative NP when its interrogative word functions as determiner. Put the preposition before the interrogative NP in the fragment.",
+      "corrected_paragraph_template": "Put the preposition before the interrogative NP in the fragment.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Which cabin are we staying in?",
+        "I spoke to someone. Who to?"
+      ],
+      "lesson_tags": [
+        "anaphora",
+        "ellipsis"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-749",
+    "domain": "phrases",
+    "concept": "Emotive modifiers in open interrogative fragments",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "The cited emotive modifiers are licensed in reduced interrogatives with a following stranded preposition or else, and with why followed by not.",
+    "condition": "A full interrogative is a different construction.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What on earth else?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Why ever not?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Who the hell to?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.8.2",
+        "pages": [
+          1541
+        ],
+        "pdf_pages": [
+          1561
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Emotive modifiers in open interrogative fragments",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-750",
+    "domain": "phrases",
+    "concept": "Subordinate interrogative fragments",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Subordinate open interrogatives can reduce to the interrogative expression, sometimes retaining a stranded preposition or appearing before the matrix predicate.",
+    "condition": "Some fixed formulas recover their missing material conventionally. The source also notes the term sluicing for the subordinate anaphoric construction.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They got inside, but I don't know how.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Someone called her, but she didn't say who from.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.8.2",
+        "pages": [
+          1542
+        ],
+        "pdf_pages": [
+          1562
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subordinate interrogative fragments",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-751",
+    "domain": "phrases",
+    "concept": "Radically reduced declarative answers",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A response to an open question can retain the phrase that answers it. A polar response can add a reduced contrastive affirmation or negation.",
+    "condition": "A response giving an activity can replace interrogative what plus do. Contrastive not can mark a negative counterpart without repeating the clause.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "When did they arrive? At noon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Did you read all the reports? No, just the first two.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "They invited Tess. Yes, but not her brother.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.8.3",
+        "pages": [
+          1542
+        ],
+        "pdf_pages": [
+          1562
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Radically reduced declarative answers",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-752",
+    "domain": "phrases",
+    "concept": "Gapping and contrastive remnants",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Gapping removes recoverable medial material, usually in coordination, and leaves contrasting material around the gap. The missing material can be discontinuous or fail to form a constituent.",
+    "condition": "Identical subject forms can contrast if they refer to different speakers. Coreferential subject expressions do not supply that contrast.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Rae lives in York, and Dan in Leeds.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I expected the reds to win, and Noah the blues.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.8.4",
+        "pages": [
+          1542,
+          1543
+        ],
+        "pdf_pages": [
+          1562,
+          1563
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Gapping and contrastive remnants",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-753",
+    "domain": "phrases",
+    "concept": "Comparative clause reduction and degree recovery",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A comparative clause can contain gaps unlike ordinary elliptical main clauses. The comparison recovers a degree or quantity without entailing that the compared item has a high degree or quantity.",
+    "condition": "The gap can be an object of a preposition or a subject, as well as verbal material after an auxiliary.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mira can run faster than I can.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The debate lasted longer than was necessary.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "She visited more villages than I went to.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§8",
+        "pages": [
+          1543,
+          1544
+        ],
+        "pdf_pages": [
+          1563,
+          1564
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Comparative clause reduction and degree recovery",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-754",
+    "domain": "phrases",
+    "concept": "Fused comparative and superlative heads",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Comparative and superlative expressions used as fused modifier-heads normally have a partitive interpretation.",
+    "condition": "The set may be overt, recovered from discourse or salient in the situation. Pro-form other has a related reduced construction.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Three coats remained. I chose the warmest.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Take the larger of the two boxes.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§8",
+        "pages": [
+          1544
+        ],
+        "pdf_pages": [
+          1564
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fused comparative and superlative heads",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-755",
+    "domain": "phrases",
+    "concept": "Implicit secondary terms in comparisons",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A secondary term can be inferred from discourse without being overt. Some constructions permit adding a comparative PP and some express the contrast only implicitly.",
+    "condition": "An other NP in a coordination can contrast with an antecedent without licensing a than-PP in the cited construction.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I would ask Ava rather than Bea. Ava is more approachable.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Rae and her other teammates arrived first.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§8",
+        "pages": [
+          1544
+        ],
+        "pdf_pages": [
+          1564
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Implicit secondary terms in comparisons",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-756",
+    "domain": "phrases",
+    "concept": "Contexts for implicit scalar comparisons",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "An implicit scalar standard can be supplied by a preceding measurement, quantity or contrasting description, or recovered from the time or situation under discussion.",
+    "condition": "The source introduces this range of contexts before developing the analysis on the next page.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The shelf is two meters wide, perhaps a little wider.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He had four repairs in as many weeks.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Can you speak any louder?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§8",
+        "pages": [
+          1544
+        ],
+        "pdf_pages": [
+          1564
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Contexts for implicit scalar comparisons",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
   }
 ]
