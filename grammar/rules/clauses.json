@@ -41026,5 +41026,1761 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-627",
+    "domain": "clauses",
+    "concept": "Clause polarity and not-even supplements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A syntactically negative clause can license a detached continuation introduced by not even.",
+    "condition": "Applies to the construction described in §1.1 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A negative word embedded inside an otherwise positive clause does not by itself license the continuation.",
+        "pages": [
+          786
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She did not open the envelope, not even to check the address.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We saw no birds, not even a sparrow.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§1.1",
+        "pages": [
+          786
+        ],
+        "pdf_pages": [
+          806
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Clause polarity and not-even supplements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-628",
+    "domain": "clauses",
+    "concept": "Additive continuations as polarity diagnostics",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Reduced additive clauses with neither or nor and negative clauses with either diagnose a negative antecedent. So and too serve as positive counterparts.",
+    "condition": "Applies to the construction described in §1.1 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The test uses additive continuations with the antecedent's polarity, and the words can have other uses.",
+        "pages": [
+          786,
+          787
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Rae did not object, and neither did Mina.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Rae agreed, and Mina did too.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§1.1",
+        "pages": [
+          786,
+          787
+        ],
+        "pdf_pages": [
+          806,
+          807
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Additive continuations as polarity diagnostics",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-629",
+    "domain": "clauses",
+    "concept": "Reversed confirmation tags",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Neutral confirmation tags normally reverse the polarity of the clause they follow.",
+    "condition": "Applies to the construction described in §1.1 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Same-polarity tags have distinct intonation and pragmatic effects.",
+        "pages": [
+          787
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She did not call, did she?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She called, did she not?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§1.1",
+        "pages": [
+          787
+        ],
+        "pdf_pages": [
+          807
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reversed confirmation tags",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-630",
+    "domain": "clauses",
+    "concept": "Inversion after a prenuclear negative constituent",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A negative prenuclear constituent that gives the clause negative polarity triggers subject–auxiliary inversion.",
+    "condition": "Applies to the construction described in §1.1 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A positive fronted adjunct with negation on the verb does not trigger inversion on that basis. Fronted only can trigger inversion independently.",
+        "pages": [
+          787
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Not once did Mina complain.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "At no point had we agreed to the change.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§1.1",
+        "pages": [
+          787
+        ],
+        "pdf_pages": [
+          807
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inversion after a prenuclear negative constituent",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-631",
+    "domain": "clauses",
+    "concept": "Axes of negation classification",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Negation can be classified by its verbal or non-verbal locus, analytic or synthetic marking, and clausal or subclausal effect.",
+    "condition": "Applies to the construction described in §1.2 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A syntactic classification is separate from whether negation has an ordinary or metalinguistic interpretation.",
+        "pages": [
+          787,
+          788
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We did not call.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Nobody called.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§1.2",
+        "pages": [
+          787,
+          788
+        ],
+        "pdf_pages": [
+          807,
+          808
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Axes of negation classification",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-632",
+    "domain": "clauses",
+    "concept": "Primary, imperative and secondary verbal negation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Primary verbal negation affects a primary verb form. Imperatives and constructions with secondary verb forms have distinct negation patterns.",
+    "condition": "Applies to the construction described in §1.2 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Imperatives have their own distribution of supportive do.",
+        "pages": [
+          788
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Do not touch the latch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They decided not to wait.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§1.2",
+        "pages": [
+          788
+        ],
+        "pdf_pages": [
+          808
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Primary, imperative and secondary verbal negation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-633",
+    "domain": "clauses",
+    "concept": "Absolute, approximate and affixal negators",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Non-verbal marking includes absolute negators, approximate negators and negative affixes. Their effects on clause polarity differ.",
+    "condition": "Applies to the construction described in §1.2 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Approximate negators can pass negative polarity tests while allowing exceptions semantically.",
+        "pages": [
+          788,
+          789
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "None of the lights worked.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Few of the lights worked.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§1.2",
+        "pages": [
+          788,
+          789
+        ],
+        "pdf_pages": [
+          808,
+          809
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Absolute, approximate and affixal negators",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-634",
+    "domain": "clauses",
+    "concept": "Idiomatic negative-looking phrases",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A form containing no can be part of an idiom with a positive clause polarity.",
+    "condition": "Applies to the construction described in §1.2 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "In no time can mean very quickly, whereas at no time denies occurrence at any relevant time.",
+        "pages": [
+          789
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The repair was finished in no time.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The repair was at no time delayed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§1.2",
+        "pages": [
+          789
+        ],
+        "pdf_pages": [
+          809
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Idiomatic negative-looking phrases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-635",
+    "domain": "clauses",
+    "concept": "Subclausal affixal negation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A negative affix can affect a word's meaning while the containing clause remains syntactically positive.",
+    "condition": "Applies to the construction described in §1.2 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Separate verbal negation can make a clause negative even when its complement already contains a negative affix.",
+        "pages": [
+          789,
+          790
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "These fittings are incompatible, are they not?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The documents are unreadable, are they not?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§1.2",
+        "pages": [
+          789,
+          790
+        ],
+        "pdf_pages": [
+          809,
+          810
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subclausal affixal negation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-636",
+    "domain": "clauses",
+    "concept": "Scope and truth conditions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The scope of ordinary negation concerns the content denied. Falsity of the positive counterpart can follow from several distinct failures of its truth conditions.",
+    "condition": "Applies to the construction described in §1.3.1 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The form of the sentence alone may leave open which condition fails.",
+        "pages": [
+          790,
+          791
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina did not file the report.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The courier did not deliver the parcel on Tuesday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§1.3.1",
+        "pages": [
+          790,
+          791
+        ],
+        "pdf_pages": [
+          810,
+          811
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Scope and truth conditions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-637",
+    "domain": "clauses",
+    "concept": "Connectives outside truth-conditional negation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A discourse connective can retain its linking function while negation reverses the truth value of the proposition it accompanies.",
+    "condition": "Applies to the construction described in §1.3.1 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A discourse link need not count as part of the content denied.",
+        "pages": [
+          791,
+          792
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina objected. Dev, however, did not complain.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina objected. Dev, however, complained.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§1.3.1",
+        "pages": [
+          791,
+          792
+        ],
+        "pdf_pages": [
+          811,
+          812
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Connectives outside truth-conditional negation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-638",
+    "domain": "clauses",
+    "concept": "Scope across clauses",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Negating a matrix verb can deny a report, while negating its subordinate clause can make a negative claim part of the report.",
+    "condition": "Applies to the construction described in §1.3.2 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Context can invite further inferences, but matrix negation alone does not entail the subordinate negative claim.",
+        "pages": [
+          792
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She did not say that the gate was open.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She said that the gate was not open.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§1.3.2",
+        "pages": [
+          792
+        ],
+        "pdf_pages": [
+          812
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Scope across clauses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-639",
+    "domain": "clauses",
+    "concept": "Relative scope of negation and adjuncts",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An adjunct can modify a negative situation or fall inside the scope of negation.",
+    "condition": "Applies to the construction described in §1.3.2 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Position often favors a reading, and prosody or context can override positional expectations.",
+        "pages": [
+          793,
+          794
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina deliberately did not sign.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina did not deliberately sign.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§1.3.2",
+        "pages": [
+          793,
+          794
+        ],
+        "pdf_pages": [
+          813,
+          814
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Relative scope of negation and adjuncts",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-640",
+    "domain": "clauses",
+    "concept": "Reason adjuncts and negation scope",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A reason phrase can explain a negative decision or identify a reason that the speaker denies as the basis for a decision.",
+    "condition": "Applies to the construction described in §1.3.2 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An unmarked final because phrase can permit either scope reading.",
+        "pages": [
+          794,
+          795
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Because the price rose, we did not buy it.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We did not buy it just because it was cheap.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§1.3.2",
+        "pages": [
+          794,
+          795
+        ],
+        "pdf_pages": [
+          814,
+          815
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reason adjuncts and negation scope",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-641",
+    "domain": "clauses",
+    "concept": "Negation and quantified complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Negation can deny that a quantity reaches the threshold expressed by many, or it can apply separately to multiple members of a set.",
+    "condition": "Applies to the construction described in §1.3.2 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "In suitable contexts the second pattern can mean that many points were ones we disagreed with.",
+        "pages": [
+          795
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We did not receive many replies.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We did not agree with many of her points.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§1.3.2",
+        "pages": [
+          795
+        ],
+        "pdf_pages": [
+          815
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negation and quantified complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-642",
+    "domain": "clauses",
+    "concept": "Negation and quantified subjects",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A quantified subject can take scope over negation, and some universal subjects also allow a reading in which negation has wider scope.",
+    "condition": "Applies to the construction described in §1.3.2 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The universal example can mean that none came on or that fewer than all came on, depending on context and prosody.",
+        "pages": [
+          796
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Many members did not vote.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "All the lights did not come on.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§1.3.2",
+        "pages": [
+          796
+        ],
+        "pdf_pages": [
+          816
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negation and quantified subjects",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-643",
+    "domain": "clauses",
+    "concept": "Prosodic focus and falsity conditions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Prosodic prominence can identify the alternative on which a negative utterance is centered.",
+    "condition": "Applies to the construction described in §1.3.3 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Negation may retain a broad semantic scope even when the focus is a single constituent.",
+        "pages": [
+          796,
+          797
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina did not order TEA.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "MINA did not order tea.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§1.3.3",
+        "pages": [
+          796,
+          797
+        ],
+        "pdf_pages": [
+          816,
+          817
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Prosodic focus and falsity conditions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-644",
+    "domain": "clauses",
+    "concept": "Narrow and broad focus",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The same stressed word can carry focus on itself or mark a larger focused phrase, depending on the discourse question.",
+    "condition": "Applies to the construction described in §1.3.3 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Stress placement helps but does not determine the size of the focus by itself.",
+        "pages": [
+          797,
+          798
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She did not buy a blue COAT.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She did not buy a BLUE coat.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§1.3.3",
+        "pages": [
+          797,
+          798
+        ],
+        "pdf_pages": [
+          817,
+          818
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Narrow and broad focus",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-645",
+    "domain": "clauses",
+    "concept": "Positive inferences from negative focus",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A narrow focus can invite the inference that a corresponding proposition with a different focused value is true.",
+    "condition": "Applies to the construction described in §1.3.3 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Such inferences can be cancelled and are not generally entailed.",
+        "pages": [
+          798,
+          799
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She did not invite LEE.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She did not invite Lee, and she did not invite anyone else either.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§1.3.3",
+        "pages": [
+          798,
+          799
+        ],
+        "pdf_pages": [
+          818,
+          819
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Positive inferences from negative focus",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-646",
+    "domain": "clauses",
+    "concept": "Primary negation and supportive do",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Primary negation is marked by not or a negative auxiliary. Standard English uses supportive do with ordinary lexical verbs when no suitable auxiliary is present.",
+    "condition": "Applies to the construction described in §2.1 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Auxiliary uses of be and some uses of have follow their own patterns.",
+        "pages": [
+          799
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina did not answer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina will not answer.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§2.1",
+        "pages": [
+          799
+        ],
+        "pdf_pages": [
+          819
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Primary negation and supportive do",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-647",
+    "domain": "clauses",
+    "concept": "Analytic and synthetic primary negation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Analytic primary negation uses separate not. Synthetic primary negation uses a negative inflected auxiliary.",
+    "condition": "Applies to the construction described in §2.1 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Negative inflected forms differ in availability and register across auxiliaries and varieties.",
+        "pages": [
+          800,
+          801
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I do not agree.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I don't agree.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§2.1",
+        "pages": [
+          800,
+          801
+        ],
+        "pdf_pages": [
+          820,
+          821
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Analytic and synthetic primary negation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-648",
+    "domain": "clauses",
+    "concept": "Placement in subject–auxiliary inversion",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In inversion the negative inflected auxiliary precedes the subject, while separate not normally follows it.",
+    "condition": "Applies to the construction described in §2.1 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Formal patterns can put separate not before certain subjects, and negative inflection has lexical restrictions.",
+        "pages": [
+          801
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Didn't Mina call?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Did Mina not call?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§2.1",
+        "pages": [
+          801
+        ],
+        "pdf_pages": [
+          821
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Placement in subject–auxiliary inversion",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-649",
+    "domain": "clauses",
+    "concept": "Subclausal primary negation under an adjunct",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Primary negation can negate a predicate within the scope of a preceding adjunct, while the clause remains syntactically positive.",
+    "condition": "Applies to the construction described in §2.1 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The analysis depends on whether the preceding adjunct has scope over the negative predicate.",
+        "pages": [
+          801
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She often isn't at her desk when I call.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They sometimes don't answer the door.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§2.1",
+        "pages": [
+          801
+        ],
+        "pdf_pages": [
+          821
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subclausal primary negation under an adjunct",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-650",
+    "domain": "clauses",
+    "concept": "Imperative negation and do",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Negative imperatives ordinarily use do not or don't, including with be.",
+    "condition": "Applies to the construction described in §2.2 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An overt imperative subject can occur, and contracted and uncontracted forms differ in placement.",
+        "pages": [
+          802,
+          803
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Do not be late.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Don't open the rear door.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§2.2",
+        "pages": [
+          802,
+          803
+        ],
+        "pdf_pages": [
+          822,
+          823
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Imperative negation and do",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-651",
+    "domain": "clauses",
+    "concept": "Secondary verbal negation with not",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Secondary verbal negation uses separate not with infinitival, gerund-participial and past-participial constructions.",
+    "condition": "Applies to the construction described in §2.3.1 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Secondary negation has no corresponding negative inflection of a nonfinite lexical verb.",
+        "pages": [
+          803
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They decided not to wait.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Any form not signed by Friday will expire.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§2.3.1",
+        "pages": [
+          803
+        ],
+        "pdf_pages": [
+          823
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Secondary verbal negation with not",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-652",
+    "domain": "clauses",
+    "concept": "Negator placement and modal scope",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Not following a modal can take semantic scope below or above that modal even when it marks primary negation syntactically.",
+    "condition": "Applies to the construction described in §2.3.2 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The first normally requires non-opening, while the second removes the requirement to open.",
+        "pages": [
+          803,
+          804
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They must not open the gate.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They need not open the gate.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§2.3.2",
+        "pages": [
+          803,
+          804
+        ],
+        "pdf_pages": [
+          823,
+          824
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negator placement and modal scope",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-653",
+    "domain": "clauses",
+    "concept": "Secondary negation after a positive modal",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In a restricted construction, a separate not following a positive modal can belong to its nonfinite complement.",
+    "condition": "Applies to the construction described in §2.3.2 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The secondary reading is relatively rare and can require explicit contextual or prosodic support.",
+        "pages": [
+          804,
+          805
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You can not reply if you prefer to stay silent.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You may not reply if you would rather leave it unanswered.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§2.3.2",
+        "pages": [
+          804,
+          805
+        ],
+        "pdf_pages": [
+          824,
+          825
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Secondary negation after a positive modal",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-654",
+    "domain": "clauses",
+    "concept": "Primary and secondary negation together",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A negative auxiliary can coexist with separate not marking secondary negation. The matrix clause remains syntactically negative.",
+    "condition": "Applies to the construction described in §2.3.2 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The semantic effect depends on whether the negatives are adjacent in scope or separated by a modal.",
+        "pages": [
+          805
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You can't not tell her.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I didn't not listen.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§2.3.2",
+        "pages": [
+          805
+        ],
+        "pdf_pages": [
+          825
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Primary and secondary negation together",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-655",
+    "domain": "clauses",
+    "concept": "Infinitival to separating an auxiliary from not",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "When infinitival to precedes not, it separates the negator from the higher auxiliary and locates it in the infinitival construction.",
+    "condition": "Applies to the construction described in §2.3.2 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "With not before to, attachment can depend on the surrounding construction.",
+        "pages": [
+          805
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Their aim is to not change the process.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Her choice was to not renew the lease.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§2.3.2",
+        "pages": [
+          805
+        ],
+        "pdf_pages": [
+          825
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Infinitival to separating an auxiliary from not",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]
