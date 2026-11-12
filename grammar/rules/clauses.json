@@ -75177,5 +75177,1518 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1193",
+    "domain": "clauses",
+    "concept": "Informal the same as as a manner adjunct",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Informal the same as can function like just as or like without a matching manner element understood inside its comparative clause.",
+    "condition": "A reduced complement such as usual is also possible.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The formal correlating frame in exactly the same way as … so can likewise lack a matching manner element inside the as clause.",
+        "pages": [
+          1140
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I close the stall at six, the same as my sister does.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We'll meet at the side gate, the same as usual.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.1",
+        "pages": [
+          1140
+        ],
+        "pdf_pages": [
+          1160
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Informal the same as as a manner adjunct",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1194",
+    "domain": "clauses",
+    "concept": "Anaphoric recovery with the same",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The secondary term can be supplied by discourse when no comparative complement is expressed.",
+    "condition": "A noun, a standalone the same, or a phrase with do or happen may recover a previously mentioned time, proposition or event.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I booked the room on Monday and cancelled it the same day.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Ruth called the supplier, and I did the same.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.1",
+        "pages": [
+          1140
+        ],
+        "pdf_pages": [
+          1160
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Anaphoric recovery with the same",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1195",
+    "domain": "clauses",
+    "concept": "Set identity with the same",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A single set expression can supply the members compared for identity.",
+    "condition": "The set construction presents the members on equal terms. A corresponding term comparison gives one member primary status.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Tess and Ray have the same birthday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We handed all six volunteers the same form.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.1",
+        "pages": [
+          1140
+        ],
+        "pdf_pages": [
+          1160
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Set identity with the same",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1196",
+    "domain": "clauses",
+    "concept": "Reinforcement and approximation with the same",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Very within the noun phrase reinforces identity. Modifiers outside the same can mark exactness or approximation.",
+    "condition": "Selfsame also reinforces identity. Much, almost, roughly and exactly can occur before the same.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "That is the very same stamp I saw yesterday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The two plans are roughly the same.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.1",
+        "pages": [
+          1140
+        ],
+        "pdf_pages": [
+          1160
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reinforcement and approximation with the same",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1197",
+    "domain": "clauses",
+    "concept": "Complement selection with similar",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "Adjectival similar selects to in ordinary standard comparative constructions.",
+    "condition": "The secondary term is the complement of to. The ordinary construction does not take an as comparative clause.",
+    "violation": "Ordinary adjectival similar takes as instead of to to introduce a noun phrase denoting the secondary term.",
+    "exceptions": [
+      {
+        "description": "Rare complex examples with as occur by analogy with same. This is not a systematic complement pattern.",
+        "pages": [
+          1141
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This fabric is similar to the green one.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The two instruments are similar to those on the shelf.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "The two instruments are similar, as you can see.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "We chose the same fabric as the costume designer.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "This fabric is similar as the green one.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The two instruments are similar as those on the shelf.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.2",
+        "pages": [
+          1141
+        ],
+        "pdf_pages": [
+          1161
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Complement selection with similar",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "Ordinary adjectival similar takes as instead of to to introduce a noun phrase denoting the secondary term.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "This fabric is similar as the green one. ||| This fabric is similar to the green one.",
+        "The two instruments are similar as those on the shelf. ||| The two instruments are similar to those on the shelf."
+      ],
+      "learner_explanation": "Adjectival similar selects to in ordinary standard comparative constructions. Use similar to before a noun phrase that names the item being compared.",
+      "corrected_paragraph_template": "Use similar to before a noun phrase that names the item being compared.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The two instruments are similar, as you can see.",
+        "We chose the same fabric as the costume designer."
+      ],
+      "lesson_tags": [
+        "comparison"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1198",
+    "domain": "clauses",
+    "concept": "Primary term with similar across adjective positions",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Predicative similar compares its predicand, while postpositive similar compares the entity expressed by the preceding nominal material.",
+    "condition": "Attributive Type i compares what the comparative noun phrase denotes. Type ii compares another entity, often the subject. Type i is more usual.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I found the substitute similar to the original.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "This kettle is of similar capacity to the older model.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.2",
+        "pages": [
+          1141
+        ],
+        "pdf_pages": [
+          1161
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Primary term with similar across adjective positions",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1199",
+    "domain": "clauses",
+    "concept": "Anaphoric omission and adjective position with similar",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A recoverable to complement can be omitted with predicative or attributive similar.",
+    "condition": "For the ordinary postpositive construction, omitting the complement requires placing similar before the head noun.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I checked both lamps and found them similar.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Our office has similar printers.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.2",
+        "pages": [
+          1141
+        ],
+        "pdf_pages": [
+          1161
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Anaphoric omission and adjective position with similar",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1200",
+    "domain": "clauses",
+    "concept": "Set comparisons with similar",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Predicative similar and Type ii attributive similar can express likeness within a set.",
+    "condition": "A plural or coordinated expression supplies the members whose properties are compared.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The canvas and the linen are quite similar.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The two jars are of similar capacity.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.2",
+        "pages": [
+          1141
+        ],
+        "pdf_pages": [
+          1161
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Set comparisons with similar",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1201",
+    "domain": "clauses",
+    "concept": "Gradability and identity with similar",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Similar permits degree modification and scalar comparison. It ordinarily conveys likeness short of identity but can also be used with identity in view.",
+    "condition": "Ordinary degree modifiers include very and rather. Exactly and almost are possible when identity is relevant.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The revised label is more similar to the original than I expected.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The two samples are remarkably similar in shape.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.2",
+        "pages": [
+          1142
+        ],
+        "pdf_pages": [
+          1162
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Gradability and identity with similar",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1202",
+    "domain": "clauses",
+    "concept": "Complement selection in the similar word family",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Similarity admits with or to, similarly takes to, and dissimilar generally takes to but also occurs with from.",
+    "condition": "The governor determines which preposition patterns are attested.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The print has obvious similarities with the sketch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The backup unit operates similarly to the original.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.2",
+        "pages": [
+          1142
+        ],
+        "pdf_pages": [
+          1162
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Complement selection in the similar word family",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1203",
+    "domain": "clauses",
+    "concept": "Clausal complements with non-scalar such",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "In such … as with a comparative clause, the counterpart to the comparative noun phrase is absent within the clause.",
+    "condition": "Such can occur before or after the noun head. The construction admits inversion, passive auxiliary omission and postposed such phrases. It expresses term comparison.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Take such tools as the workshop provides.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They tested a new sealant, such as recommended by the supplier.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.3",
+        "pages": [
+          1142,
+          1143
+        ],
+        "pdf_pages": [
+          1162,
+          1163
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Clausal complements with non-scalar such",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1204",
+    "domain": "clauses",
+    "concept": "Quantificational readings of such as",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Non-scalar such as normally concerns likeness of kind, but some clause patterns have readings close to fused relatives.",
+    "condition": "Instructions can use a whatever-like reading. An existential clause can suggest that the available items are few, and the parenthetical idiom can downplay their significance.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A relative clause in place of the as comparative complement is rare and of uncertain acceptability.",
+        "pages": [
+          1142,
+          1143
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Please submit such receipts as the auditor requests.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Such paths as remained were overgrown.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.3",
+        "pages": [
+          1142,
+          1143
+        ],
+        "pdf_pages": [
+          1162,
+          1163
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Quantificational readings of such as",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1205",
+    "domain": "clauses",
+    "concept": "Headless such with a comparative clause",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A comparative clause can follow such without a following noun head.",
+    "condition": "Predicative such can require the matrix subject to supply the interpretation of the missing element. A nominal such can also function as a fused modifier and head.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The noise was such as I will long remember.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We retain no samples save such as meet the stated criteria.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.3",
+        "pages": [
+          1143
+        ],
+        "pdf_pages": [
+          1163
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Headless such with a comparative clause",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1206",
+    "domain": "clauses",
+    "concept": "Phrasal exemplification with such as",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Non-scalar such as commonly introduces an immediate phrase complement. Following the noun, it often introduces examples.",
+    "condition": "The most common complement is a noun phrase, and most such examples do not naturally expand into clauses. A content clause can also exemplify a defect or similar item.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Existential no such thing as can express identity.",
+        "pages": [
+          1143
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The clinic stocks supplies such as gauze and tape.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The report points out omissions, such as that no dates were listed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.3",
+        "pages": [
+          1143
+        ],
+        "pdf_pages": [
+          1163
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Phrasal exemplification with such as",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1207",
+    "domain": "clauses",
+    "concept": "Different from and the primary comparison term",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Different from supports predicative, postpositive and both attributive comparison patterns.",
+    "condition": "An attributive comparison may compare the entities expressed by the noun phrases or compare bearers of a property named within the phrase. An adjunct can also supply the primary term.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We ordered a different cable from the one on display.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The evening crew uses different tools from the morning crew.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.4",
+        "pages": [
+          1143,
+          1144
+        ],
+        "pdf_pages": [
+          1163,
+          1164
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Different from and the primary comparison term",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1208",
+    "domain": "clauses",
+    "concept": "Complement choice and variety with different",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Different most often takes from. To is also attested, and than is established in American English, especially with clausal complements.",
+    "condition": "Than permits phrases and comparative clauses. From and to normally take noun phrases. A fused relative can supply a nominal complement when the comparison is expressed with from.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Different than is rare in British English and less usual even in American English in simple predicative and postpositive comparisons. The verb differ has from for this comparison.",
+        "pages": [
+          1144
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The readings were different than we had expected.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The readings were different from what we had expected.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.4",
+        "pages": [
+          1144
+        ],
+        "pdf_pages": [
+          1164
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Complement choice and variety with different",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1209",
+    "domain": "clauses",
+    "concept": "Primary comparison term with differently",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Differently takes the prepositions available to different. The comparison can relate participants or ways of acting.",
+    "condition": "The context and comparative complement determine which entity or manner is compared.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The new manager handles returns differently from her predecessor.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "People speak differently on stage than they do at home.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.4",
+        "pages": [
+          1144
+        ],
+        "pdf_pages": [
+          1164
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Primary comparison term with differently",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1210",
+    "domain": "clauses",
+    "concept": "Set comparison with different and differently",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Different compares set members in predicative and attributive use, and differently compares their manners of acting.",
+    "condition": "Repeating different across noun phrases can pair members of one set with distinct members of the other.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Different teams chose different routes.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The two guides reacted differently.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.4",
+        "pages": [
+          1144,
+          1145
+        ],
+        "pdf_pages": [
+          1164,
+          1165
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Set comparison with different and differently",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1211",
+    "domain": "clauses",
+    "concept": "Degree modifiers with different",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Different takes ordinary degree modifiers and modifiers associated with comparative inequality.",
+    "condition": "Very and more are possible, alongside far, no, any and much. Much is generally found in non-affirmative environments.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The replacement is far different from the prototype.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "This draft isn't much different from yesterday's.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.4",
+        "pages": [
+          1145
+        ],
+        "pdf_pages": [
+          1165
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Degree modifiers with different",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1212",
+    "domain": "clauses",
+    "concept": "Position and complementation of comparative other",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Comparative other normally takes than and occurs in term comparison. Predicative and postpositive other require the complement in these patterns.",
+    "condition": "Predicative other allows a comparative clause. Postpositive other permits a nominal complement, including a fused relative. Attributive other can omit the than phrase, and nominal others can also take a than phrase.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "But is occasionally found in a blend. Except can introduce a separate exception with a secondary term understood for other.",
+        "pages": [
+          1145
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The outcome was other than the panel had predicted.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We found no damage other than what the survey documented.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.4",
+        "pages": [
+          1145
+        ],
+        "pdf_pages": [
+          1165
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Position and complementation of comparative other",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1213",
+    "domain": "clauses",
+    "concept": "Reanalysis of other than",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Other than can introduce an exception adjunct or act as a modifier of an expression whose head follows it.",
+    "condition": "Exception adjunct complements include noun phrases, that clauses and infinitivals. In modifier uses, the following noun or adverb can head the larger phrase.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Other than that the lock sticks, everything works.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The consultant defined the term other than operationally.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.4",
+        "pages": [
+          1145,
+          1146
+        ],
+        "pdf_pages": [
+          1165,
+          1166
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reanalysis of other than",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1214",
+    "domain": "clauses",
+    "concept": "Distribution and optional complements of else",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Else combines with interrogatives, compound determinatives, and fused-head much, little and all.",
+    "condition": "A than or but complement is optional. A nominal fused relative is available where a bare comparative clause after than is excluded.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Who else but Mina could verify the date?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What else could explain the outage?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.4",
+        "pages": [
+          1146
+        ],
+        "pdf_pages": [
+          1166
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Distribution and optional complements of else",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1215",
+    "domain": "clauses",
+    "concept": "Standalone comparative as",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Standalone comparative as governs a bare comparative complement and introduces the secondary term.",
+    "condition": "It can form an adjunct of comparison, a manner adjunct, a predicative complement or a nominal dependent. Causal and temporal as have content-clause complements.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Arrange the chairs as the usher showed you.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The entrance as presently designed is too narrow.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.5",
+        "pages": [
+          1146
+        ],
+        "pdf_pages": [
+          1166
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Standalone comparative as",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1216",
+    "domain": "clauses",
+    "concept": "Matrix recovery and position of comparison adjuncts",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "With an adjunct of comparison, the clause after as leaves material implicit that is recoverable from the matrix.",
+    "condition": "The missing material may correspond to a content complement or a clausal subject. The adjunct can occur initially, medially or finally, and may resemble a supplementary relative.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "As the caretaker noted, the side door was open.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The shelves are, as will be obvious, too shallow.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.5",
+        "pages": [
+          1147
+        ],
+        "pdf_pages": [
+          1167
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Matrix recovery and position of comparison adjuncts",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1217",
+    "domain": "clauses",
+    "concept": "Scope and information status of comparison adjuncts",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Comparison adjuncts generally have supplementary prosody and present their own content as backgrounded. They resist it-cleft focus and matrix negation does not negate the as clause.",
+    "condition": "A final adjunct can match the positive or negative outcome where the matrix is negative, depending on the intended reading.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "As I recall and as I remember can hedge the matrix assertion. As I well recall follows the ordinary backgrounded pattern.",
+        "pages": [
+          1147
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "As you predicted, the bus didn't stop.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The gate was locked, as the caretaker had warned.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.5",
+        "pages": [
+          1147
+        ],
+        "pdf_pages": [
+          1167
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Scope and information status of comparison adjuncts",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1218",
+    "domain": "clauses",
+    "concept": "Nominal complement in the postpositive other than pattern",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "Postpositive comparative other does not take a bare comparative clause after than.",
+    "condition": "Where the secondary term is described by a clause, a nominal fused relative can serve as the complement of than.",
+    "violation": "Postpositive comparative other takes than followed directly by a bare comparative clause.",
+    "exceptions": [
+      {
+        "description": "Predicative other may take a bare comparative clause. The reanalysed exception adjunct permits a declarative that clause.",
+        "pages": [
+          1145
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We received no payments other than what the agency sent.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He had no support other than what his neighbors offered.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "The outcome was other than we expected.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "Nothing changed other than that the fee doubled.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "We received no payments other than the agency sent.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "He had no support other than his neighbors offered.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.4",
+        "pages": [
+          1145
+        ],
+        "pdf_pages": [
+          1165
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nominal complement in the postpositive other than pattern",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "Postpositive comparative other takes than followed directly by a bare comparative clause.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "We received no payments other than the agency sent. ||| We received no payments other than what the agency sent.",
+        "He had no support other than his neighbors offered. ||| He had no support other than what his neighbors offered."
+      ],
+      "learner_explanation": "Postpositive comparative other does not take a bare comparative clause after than. In this noun phrase, use a nominal complement such as what the agency sent after other than.",
+      "corrected_paragraph_template": "In this noun phrase, use a nominal complement such as what the agency sent after other than.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The outcome was other than we expected.",
+        "Nothing changed other than that the fee doubled."
+      ],
+      "lesson_tags": [
+        "comparison"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
   }
 ]

@@ -1,0 +1,130 @@
+{
+  "manifest_version": 1,
+  "chapter": 13,
+  "printed_start": 1140,
+  "printed_end": 1147,
+  "report": "sources/cambridge/chapter_13/PP1140_1147_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1140,
+    "pdf_page": 1160
+  },
+  "added_rule_ids": [
+    "CLS-1193",
+    "CLS-1194",
+    "CLS-1195",
+    "CLS-1196",
+    "CLS-1197",
+    "CLS-1198",
+    "CLS-1199",
+    "CLS-1200",
+    "CLS-1201",
+    "CLS-1202",
+    "CLS-1203",
+    "CLS-1204",
+    "CLS-1205",
+    "CLS-1206",
+    "CLS-1207",
+    "CLS-1208",
+    "CLS-1209",
+    "CLS-1210",
+    "CLS-1211",
+    "CLS-1212",
+    "CLS-1213",
+    "CLS-1214",
+    "CLS-1215",
+    "CLS-1216",
+    "CLS-1217",
+    "CLS-1218"
+  ],
+  "page_checks": [
+    {
+      "page": 1140,
+      "status": "extracted",
+      "section": "§5.1",
+      "summary": "Informal manner-like same as, anaphoric recovery, set identity, emphasis and approximation, with the scalar blend and formal analogue in footnotes 26–27.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1141,
+      "status": "extracted",
+      "section": "§5.2",
+      "summary": "Adjective position, both attributive patterns, the secondary term, complement omission and set comparisons, with the rare as analogy in footnote 28.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1142,
+      "status": "extracted",
+      "section": "§§5.2–5.3",
+      "summary": "Gradability and the similar word family, then clausal such as, gaps, inversion, auxiliary omission and postposition in footnote 29.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1143,
+      "status": "extracted",
+      "section": "§§5.3–5.4",
+      "summary": "Relative-like readings, headless such, phrase complements and exemplification, footnotes 30–31, and the different from construction.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1144,
+      "status": "extracted",
+      "section": "§5.4",
+      "summary": "Different to and than, dialect and complement categories, differently, and set comparison, including adjunct comparison and usage variation in footnotes 32–33.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1145,
+      "status": "extracted",
+      "section": "§5.4",
+      "summary": "Set-comparison pairing, modifiers of different, the positions and complements of other, and exception adjuncts, including but and except in footnote 34.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1146,
+      "status": "extracted",
+      "section": "§§5.4–5.5",
+      "summary": "Modifier uses of other than, the distribution of else, and the four functions of standalone comparative as.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1147,
+      "status": "extracted",
+      "section": "§5.5",
+      "summary": "Comparison adjuncts, matrix recovery, supplement status, cleft and negative scope, positioning, the relative parallel and recollection hedges in footnote 35.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

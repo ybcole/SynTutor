@@ -18,7 +18,7 @@
 | 10. Clause type and illocutionary force | 96 | 93 | 0 | 3 | 0 | Source-extracted |
 | 11. Content clauses and reported speech | 84 | 82 | 0 | 2 | 0 | Source-extracted |
 | 12. Relative constructions | 66 | 64 | 0 | 2 | 0 | Source-extracted |
-| 13. Comparative constructions | 74 | 41 | 31 | 2 | 0 | In progress (pp. 1097–1139) |
+| 13. Comparative constructions | 74 | 49 | 23 | 2 | 0 | In progress (pp. 1097–1147) |
 | 14. Non-finite and verbless clauses | 102 | 99 | 0 | 3 | 0 | Source-extracted |
 | 15. Coordination and supplementation | 90 | 88 | 0 | 2 | 0 | Source-extracted; independent QA pending |
 | 16. Information packaging | 86 | 0 | 85 | 1 | 0 | Incomplete |
@@ -27,7 +27,7 @@
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **1462 extracted**, 259 unprocessed, 41 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **1470 extracted**, 251 unprocessed, 41 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -434,3 +434,9 @@ Printed pp. 1124–1131 add eight substantive pages and 21 inactive records (`CL
 ## Chapter 13 fifth Phase B checkpoint
 
 Printed pp. 1132–1139 add eight substantive pages and 20 inactive records (`CLS-1173`–`CLS-1192`), including one `spec_only` constraint. Chapter 13 has 31 pages remaining. Continue at p. 1140 with the rest of the discussion of same. [Report](sources/cambridge/chapter_13/PP1132_1139_REPORT.md) · [Audit](sources/cambridge/chapter_13/PP1132_1139_AUDIT.json).
+
+## Chapter 13 sixth checkpoint
+
+Printed pp. 1140–1147 add eight substantive pages and 26 inactive records (`CLS-1193`–`CLS-1218`), including two `spec_only` constraints. Chapter 13 has 23 pages remaining. Continue at p. 1148 with the comparison between standalone as and supplementary relatives.
+
+Source audit: `sources/cambridge/chapter_13/PP1140_1147_REPORT.md`.
