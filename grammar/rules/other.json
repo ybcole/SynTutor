@@ -507,7 +507,8 @@
     ],
     "related_rules": [
       "OTH-001",
-      "OTH-006"
+      "OTH-006",
+      "PHR-464"
     ],
     "confidence": "high",
     "protocol_version": "1.0",

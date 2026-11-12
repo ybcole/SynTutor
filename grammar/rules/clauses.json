@@ -24629,7 +24629,9 @@
         "explain"
       ]
     },
-    "related_rules": [],
+    "related_rules": [
+      "CLS-1451"
+    ],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
   },
   {
@@ -28841,7 +28843,9 @@
     "protocol_version": "1.1",
     "status": "NEEDS_REVIEW",
     "diagnostic": null,
-    "related_rules": [],
+    "related_rules": [
+      "PHR-095"
+    ],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
   },
   {
@@ -84970,7 +84974,9 @@
     "protocol_version": "1.1",
     "status": "NEEDS_REVIEW",
     "diagnostic": null,
-    "related_rules": [],
+    "related_rules": [
+      "PHR-636"
+    ],
     "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
   },
   {
@@ -89610,7 +89616,9 @@
         "explain"
       ]
     },
-    "related_rules": [],
+    "related_rules": [
+      "CLS-357"
+    ],
     "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
   },
   {

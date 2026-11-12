@@ -6461,7 +6461,9 @@
     "protocol_version": "1.1",
     "status": "NEEDS_REVIEW",
     "diagnostic": null,
-    "related_rules": [],
+    "related_rules": [
+      "CLS-425"
+    ],
     "review_notes": "Checked against printed CGEL text and rendered PDF. Original English examples."
   },
   {
@@ -29510,7 +29512,9 @@
     "protocol_version": "1.1",
     "status": "NEEDS_REVIEW",
     "diagnostic": null,
-    "related_rules": [],
+    "related_rules": [
+      "OTH-007"
+    ],
     "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
   },
   {
@@ -40050,7 +40054,9 @@
     "protocol_version": "1.1",
     "status": "NEEDS_REVIEW",
     "diagnostic": null,
-    "related_rules": [],
+    "related_rules": [
+      "CLS-1367"
+    ],
     "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
   },
   {
