@@ -7,6 +7,7 @@ import re
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "server"))
+from cgel_passive_make_candidate import probe_passive_make
 from parse_engine import NodeBuilder, analyze, parse_parse_string
 from ruleset import collect
 
@@ -61,6 +62,8 @@ def main():
                         help="Use hand-authored trees instead of the configured parser")
     parser.add_argument("--matrix", action="store_true",
                         help="Also observe matrix verdicts, node errors, and attached findings")
+    parser.add_argument("--passive-candidate", action="store_true",
+                        help="Also observe the inactive passive causative candidate")
     args = parser.parse_args()
     if args.matrix:
         from matrix import evaluate
@@ -70,7 +73,8 @@ def main():
             leaf_count = len(re.findall(r"\([^()]+\)", fixture))
             tree = NodeBuilder().build(parse_parse_string(fixture), leaf_count=leaf_count)
         else:
-            tree = analyze(sentence)["root"]
+            analysis = analyze(sentence)
+            tree = analysis["root"]
         errors = [
             {key: finding.get(key) for key in ("rule_id", "constraint", "node_id")}
             for finding in collect(sentence, tree)
@@ -79,6 +83,26 @@ def main():
         observation = {"probe": label, "sentence": sentence, "errors": errors}
         if args.matrix:
             observation["matrix"] = summarize_matrix(evaluate(tree, text=sentence))
+        if args.passive_candidate:
+            probe = probe_passive_make(sentence, tree, variety="standard_english")
+            observation["passive_make_candidate"] = probe
+            if label == "passive causative":
+                observation["passive_make_parse"] = fixture if args.fixtures else analysis["parse_string"]
+            if not args.fixtures:
+                for candidate in probe["candidates"]:
+                    edit = candidate["edit_hint"]
+                    start, end = edit["char_span"]
+                    corrected = sentence[:start] + edit["replacement"] + sentence[end:]
+                    corrected_tree = analyze(corrected)["root"]
+                    recheck = probe_passive_make(corrected, corrected_tree, variety="standard_english")
+                    candidate["reparse_observation"] = {
+                        "sentence": corrected,
+                        "candidate_count": len(recheck["candidates"]),
+                        "candidate_status": recheck["status"],
+                    }
+                    if args.matrix:
+                        candidate["reparse_observation"]["matrix_verdict"] = evaluate(
+                            corrected_tree, text=corrected)["summary"]["verdict"]
         observations.append(observation)
     print(json.dumps({
         "input": "hand_authored_trees" if args.fixtures else "configured_parser",

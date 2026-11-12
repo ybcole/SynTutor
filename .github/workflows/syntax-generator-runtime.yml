@@ -65,7 +65,7 @@ jobs:
       - name: Collect Cambridge overlap probes on parser output
         run: |
           mkdir -p artifacts
-          python scripts/audit_cgel_overlap_probes.py --matrix > artifacts/cgel-overlap-parser.json
+          python scripts/audit_cgel_overlap_probes.py --matrix --passive-candidate > artifacts/cgel-overlap-parser.json
       - name: Upload Cambridge overlap evidence
         uses: actions/upload-artifact@v4
         with:

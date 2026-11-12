@@ -66,3 +66,9 @@ The matrix found four of the five intended errors. The parse API uses its verdic
 - **Page accounting.** The ledger check reports 1,716 extracted pages, 46 documented skips and zero unprocessed pages across 1,764 printed pages. The two pages absent from the split-source set, pp. 70 and 524, render blank at PDF pp. 90 and 544 in the supplied full volume. Their ledger entries preserve the split-source provenance and record the full-volume status.
 
 These targeted source checks leave the independent review, Burton-Roberts crosswalk and held-out evaluation requirements in place. The Cambridge runtime registry still contains zero enabled rules.
+
+### Phase C passive causative candidate
+
+`server/cgel_passive_make_candidate.py` checks a narrow constituency pattern: a form of *be* over a VP headed by participial *made*, followed directly by a bare VP with a plain-form verb. It records the two source citations, governing relation, exact character spans, and an insertion hint. A matching parse is provisional evidence. The probe abstains on unresolved token alignment and quotation scope, and leaves intervening material, coordination and other passive structures for a later pass.
+
+Run `python scripts/audit_cgel_overlap_probes.py --matrix --passive-candidate` with the configured parser. The PR workflow records the parser shape for the known miss, and reparses any proposed correction to record the candidate and matrix outcomes. Fixture tests exercise the intended repair, an embedded passive under a perfect auxiliary, and guards including active causatives, correctly marked passives, purpose infinitivals, predicative adjectives and coordinated complements. A reparse and an empty candidate list alone do not establish grammaticality or safe automatic correction.
