@@ -1,0 +1,142 @@
+{
+  "manifest_version": 1,
+  "chapter": 17,
+  "printed_start": 1545,
+  "printed_end": 1553,
+  "report": "sources/cambridge/chapter_17/PP1545_1553_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1545,
+    "pdf_page": 1565
+  },
+  "added_rule_ids": [
+    "PHR-757",
+    "PHR-758",
+    "PHR-759",
+    "PHR-760",
+    "PHR-761",
+    "PHR-762",
+    "PHR-763",
+    "PHR-764",
+    "PHR-765",
+    "PHR-766",
+    "PHR-767",
+    "PHR-768",
+    "PHR-769",
+    "PHR-770",
+    "PHR-771",
+    "PHR-772",
+    "PHR-773",
+    "PHR-774",
+    "PHR-775",
+    "PHR-776",
+    "PHR-777",
+    "PHR-778",
+    "PHR-779",
+    "PHR-780",
+    "PHR-781",
+    "PHR-782",
+    "PHR-783"
+  ],
+  "page_checks": [
+    {
+      "page": 1545,
+      "status": "extracted",
+      "section": "§8(a–b)",
+      "summary": "Variable and constant scalar standards, situational recovery, attributive and fused same, and idiomatic all the same.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1546,
+      "status": "extracted",
+      "section": "§8(c)",
+      "summary": "Degree and kind such, legal identity and emphatic uses, inverted predicative such and the start of as such.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1547,
+      "status": "extracted",
+      "section": "§8(c–e)",
+      "summary": "Metalinguistic as such, standards for different and differently, and attributive and nominal other.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1548,
+      "status": "extracted",
+      "section": "§8(e–f)",
+      "summary": "Dual recovery and bound variables with other, alternative and additive another, otherwise and post-head else.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1549,
+      "status": "extracted",
+      "section": "§§9–9.1",
+      "summary": "Spatial proximity, contextual construal, precise specification, temporal and discourse uses and the opening of locative anaphora.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1550,
+      "status": "extracted",
+      "section": "§§9.1–9.2",
+      "summary": "Anaphoric here and there, locative relations, modifier antecedents, variable readings and specialized uses.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1551,
+      "status": "extracted",
+      "section": "§9.2",
+      "summary": "Source versus goal, timing interpretation, speaker-centered immediate motion and current, event-time and base locations.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1552,
+      "status": "extracted",
+      "section": "§9.2",
+      "summary": "Addressee and third-person deictic centers with come and parallel recovery of an implicit source with go.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1553,
+      "status": "extracted",
+      "section": "§§9.2–9.3(a)",
+      "summary": "Motion perspective, combinations with here and there, the map-pointing exception and introduction of implicit spatial endpoints.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

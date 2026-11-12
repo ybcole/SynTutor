@@ -388,3 +388,7 @@ Printed pp. 1529–1536 yielded 28 inactive records (`PHR-699–PHR-726`), inclu
 ## Chapter 17 eighth checkpoint
 
 Printed pp. 1537–1544 yielded 30 inactive records (`PHR-727–PHR-756`), including 2 `spec_only` constraints. Chapter 17 has 94 substantive pages extracted, two contents-only skips and 20 unprocessed pages. Continue at p. 1545 with implicit scalar comparisons.
+
+## Chapter 17 ninth checkpoint
+
+Printed pp. 1545–1553 yielded 27 inactive records (`PHR-757–PHR-783`), including one `spec_only` constraint. Chapter 17 has 103 substantive pages extracted, two contents-only skips and 11 unprocessed pages. Continue at p. 1554 with implicit location and orientation.

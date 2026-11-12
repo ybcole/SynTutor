@@ -47327,5 +47327,1522 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-757",
+    "domain": "phrases",
+    "concept": "Anaphoric standards in scalar comparisons",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "An implicit scalar standard can be another variable degree or an explicit constant recovered from the preceding discourse.",
+    "condition": "In the as many pattern a preceding numeral supplies the constant; an overt comparative complement repeating it can be highly unidiomatic.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Leah works late, but Sam works even later.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The board is a meter long, perhaps a little longer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "We logged four calls in as many hours.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§8(a)",
+        "pages": [
+          1545
+        ],
+        "pdf_pages": [
+          1565
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Anaphoric standards in scalar comparisons",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-758",
+    "domain": "phrases",
+    "concept": "Situational standards in scalar comparisons",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "A scalar comparison can recover its standard from the current situation without a linguistic antecedent.",
+    "condition": "The point of comparison may be a present degree such as current age, speed or volume.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I painted more when I was younger.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Could you speak a little louder?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§8(a)",
+        "pages": [
+          1545
+        ],
+        "pdf_pages": [
+          1565
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Situational standards in scalar comparisons",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-759",
+    "domain": "phrases",
+    "concept": "Reference recovery with attributive same",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Same can recover a standard from a preceding NP, event or related entity. The standard can also be supplied by the situation.",
+    "condition": "The associated people of a previously mentioned organization can support quasi-anaphora. The cited coreferential demonstrative NP does not take an overt as expansion.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She arrived at dawn and left later the same day.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The supplier changed its name, but the same people still answer the phones.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "We sold more this month than in the same period last year.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§8(b)",
+        "pages": [
+          1545
+        ],
+        "pdf_pages": [
+          1565
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reference recovery with attributive same",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-760",
+    "domain": "phrases",
+    "concept": "Fused and predicative same",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The same can be a fused modifier-head with an abstract reading comparable to the same thing. Same can also head a predicative adjective phrase.",
+    "condition": "The antecedent can provide the action or proposition. Idiomatic all the same can mean nevertheless.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If we extend Jo's deadline, we'll have to do the same for Sal.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Leah worries about noise, and Ben is just the same.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§8(b)",
+        "pages": [
+          1545
+        ],
+        "pdf_pages": [
+          1565
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fused and predicative same",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-761",
+    "domain": "phrases",
+    "concept": "Degree and kind readings of attributive such",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Attributive such can mark degree or kind. A degree standard can be anaphoric or situational; the degree can also be emphatic without comparison.",
+    "condition": "Kind readings can refer to a similar class or select a member of an antecedent set. A preceding clause can also supply what the noun categorizes. Legal such sometimes expresses identity.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "His first lecture was a triumph, but his second was not such a success.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The archive holds several early maps. I restored one such map.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "It's such a relief to be home.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§8(c)",
+        "pages": [
+          1546
+        ],
+        "pdf_pages": [
+          1566
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Degree and kind readings of attributive such",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-762",
+    "domain": "phrases",
+    "concept": "Inverted predicative such without a noun",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In the independent kind-denoting pattern illustrated by such is life, such is a fronted predicative and the NP following be is subject.",
+    "condition": "The obligatory inversion is specific to this reading and construction. Other predicative patterns with such, including such followed by a result clause, have a different analysis.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Such is the fate of any unprotected seed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Such are the hazards of sailing at night.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "The damage was such that the bridge had to close.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§8(c)",
+        "pages": [
+          1546
+        ],
+        "pdf_pages": [
+          1566
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inverted predicative such without a noun",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-763",
+    "domain": "phrases",
+    "concept": "Anaphoric and metalinguistic as such",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "As such can recover an antecedent category or description without an ordinary comparative reading. It can also mean in the strict sense of the term.",
+    "condition": "The construction uses such as complement of as.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The mixture is hazardous and should be labeled as such.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We have a shared workspace, but no office as such.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§8(c)",
+        "pages": [
+          1546,
+          1547
+        ],
+        "pdf_pages": [
+          1566,
+          1567
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Anaphoric and metalinguistic as such",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-764",
+    "domain": "phrases",
+    "concept": "Implicit standards with different and differently",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Different and differently can recover a standard from discourse or from the situation, including an actual state contrasted with a hypothetical one.",
+    "condition": "Predicative be different can have a special reading of being unlike other people.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We tried it standing up first. This time we'll do it differently.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Things would have been different if the storm had passed sooner.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§8(d)",
+        "pages": [
+          1547
+        ],
+        "pdf_pages": [
+          1567
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Implicit standards with different and differently",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-765",
+    "domain": "phrases",
+    "concept": "Attributive other and categorization of the standard",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The noun modified by other can categorize both the primary term and the implicit standard.",
+    "condition": "The standard can be inferred from a morphologically related expression or supplied by the situation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We visited Elm Island and several other islands nearby.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The report covered smugglers, counterfeiters and people involved in other crimes.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Have you got any other shoes?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§8(e)",
+        "pages": [
+          1547
+        ],
+        "pdf_pages": [
+          1567
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Attributive other and categorization of the standard",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-766",
+    "domain": "phrases",
+    "concept": "Two recovery relations in nominal other",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Nominal other can recover both a head meaning and a comparison standard. With a quantified antecedent, the standard can vary with the bound variable.",
+    "condition": "Both components can also be supplied by a visible set.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She held one glove and put the other in her pocket.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Each drawer is the same size as the others.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§8(e)",
+        "pages": [
+          1547,
+          1548
+        ],
+        "pdf_pages": [
+          1567,
+          1568
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Two recovery relations in nominal other",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-767",
+    "domain": "phrases",
+    "concept": "Alternative and additive another",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Another is a determinative that may precede an overt head or fuse with the head. It can mark an alternative or an additional member.",
+    "condition": "The comparison standard is recovered along the same lines as with other.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Either Mia or another driver took the van.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We have two chairs, but we need another.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§8(e)",
+        "pages": [
+          1548
+        ],
+        "pdf_pages": [
+          1568
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Alternative and additive another",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-768",
+    "domain": "phrases",
+    "concept": "Manner, conditional and pro-form uses of otherwise",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Otherwise can express another manner, a negative condition, an opposing clause or predicative, or the negated alternative in an or-coordinate.",
+    "condition": "A than complement is uncommon or unavailable in many uses.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Leave now; otherwise you'll miss the ferry.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It looked intentional, but the evidence suggested otherwise.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "The accuracy or otherwise of that claim remains unclear.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§8(e)",
+        "pages": [
+          1548
+        ],
+        "pdf_pages": [
+          1568
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Manner, conditional and pro-form uses of otherwise",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-769",
+    "domain": "phrases",
+    "concept": "Post-head else and implicit comparison",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "Comparative else follows certain pronouns and fused determiner-heads and recovers an implicit standard comparable to other.",
+    "condition": "Else also reinforces disjunction with or in a separate use.",
+    "violation": "Comparative else precedes the pronoun or fused head it modifies.",
+    "exceptions": [
+      {
+        "description": "Else also reinforces disjunction with or in a separate use.",
+        "pages": [
+          1548
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If Rae can't help, ask someone else.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "This key opens the front door. What else does it open?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Did you buy anything else?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "Ask for another key, or else call the caretaker.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c5",
+          "text": "Who else can help?",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "If Rae can't help, ask else someone.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Did you buy else anything?",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§8(f)",
+        "pages": [
+          1548
+        ],
+        "pdf_pages": [
+          1568
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Post-head else and implicit comparison",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "word_order",
+      "error_pattern": "Comparative else precedes the pronoun or fused head it modifies.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "If Rae can't help, ask else someone. ||| If Rae can't help, ask someone else.",
+        "Did you buy else anything? ||| Did you buy anything else?"
+      ],
+      "learner_explanation": "Comparative else follows certain pronouns and fused determiner-heads and recovers an implicit standard comparable to other. Put comparative else after the pronoun or fused head it modifies.",
+      "corrected_paragraph_template": "Put comparative else after the pronoun or fused head it modifies.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Ask for another key, or else call the caretaker.",
+        "Who else can help?"
+      ],
+      "lesson_tags": [
+        "comparison",
+        "word_order"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-770",
+    "domain": "phrases",
+    "concept": "Deictic proximity with here and there",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Deictic here and there are proximal and distal intransitive prepositions. Perceived proximity depends partly on how the speaker construes the location.",
+    "condition": "A gesture or a more specific locative can identify the place. Broad regional here can be directly deictic, whereas broad there generally relies on mention of the region.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Leave it here beside the lamp.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Could you place it over there by the stairs?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§9.1",
+        "pages": [
+          1549
+        ],
+        "pdf_pages": [
+          1569
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Deictic proximity with here and there",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-771",
+    "domain": "phrases",
+    "concept": "Institutional, temporal and discourse uses of here and there",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Spatial here and there can refer to an associated institution or activity, a stage in an activity, or a point just made in discourse.",
+    "condition": "A literal physical location is only one possible interpretation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We come here to study pottery.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Let's stop there and finish tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "You have a point there.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§9.1",
+        "pages": [
+          1549
+        ],
+        "pdf_pages": [
+          1569
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Institutional, temporal and discourse uses of here and there",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-772",
+    "domain": "phrases",
+    "concept": "Anaphoric here and there",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "There is the usual locative anaphor and can retain distal force. Here can combine deixis with antecedent-based specificity or occasionally be purely anaphoric.",
+    "condition": "A following locative can specify the reference, but its analysis as an anticipatory antecedent is debatable.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I put the pass in the drawer. It should still be there.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The hall was almost complete. Here the delegates would meet in spring.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§9.1",
+        "pages": [
+          1549,
+          1550
+        ],
+        "pdf_pages": [
+          1569,
+          1570
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Anaphoric here and there",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-773",
+    "domain": "phrases",
+    "concept": "Locative relations with here and there",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Here and there can complement a preposition or independently recover a spatial relation. A goal or neutral locative relation can be supplied without repeating the antecedent preposition.",
+    "condition": "An antecedent NP can name a place without supplying the preposition understood at the anaphor.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Rae lives in Lisbon and wants us to go there.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We walked from here to the gate.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§9.1",
+        "pages": [
+          1550
+        ],
+        "pdf_pages": [
+          1570
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Locative relations with here and there",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-774",
+    "domain": "phrases",
+    "concept": "Modifier antecedents and variable there",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "In casual style a modifier inside an NP can supply the place interpreted by there. In a quantified NP the place may vary with the quantified referent.",
+    "condition": "A nationality adjective can recover the associated country; a venue modifier can recover the associated location.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I spoke with a Canadian traveler. It gets much colder there.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Many a hostel manager recognized us when we stayed there again.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§9.1",
+        "pages": [
+          1550
+        ],
+        "pdf_pages": [
+          1570
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Modifier antecedents and variable there",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-775",
+    "domain": "phrases",
+    "concept": "Specialized here and there",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Here and there can mean in various places, and here's to introduces a toast. Existentially interpreted there can convey that an entity exists as a relevant opportunity or challenge.",
+    "condition": "These uses extend beyond ordinary spatial identification.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There were patches of frost here and there.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Here's to our new neighbors.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§9.1",
+        "pages": [
+          1550
+        ],
+        "pdf_pages": [
+          1570
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Specialized here and there",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-776",
+    "domain": "phrases",
+    "concept": "Source and goal orientation of come and go",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Come is goal-oriented and go source-oriented. In the elementary examples, a time adjunct with come locates arrival, while the corresponding go example locates departure.",
+    "condition": "The source is commonly expressed with from and the goal with to. Either endpoint can be implicit.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She came home at six.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She went to work at seven.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§9.2",
+        "pages": [
+          1550,
+          1551
+        ],
+        "pdf_pages": [
+          1570,
+          1571
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Source and goal orientation of come and go",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-777",
+    "domain": "phrases",
+    "concept": "Immediate come and go relative to the speaker",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In immediate motion directives centered on the speaker's current location, come identifies that location as goal and go as source.",
+    "condition": "An overt goal phrase can still leave the relation to the speaker implicit.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Come to the doorway, said Rae from the doorway.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Go to the window, said Rae from the desk.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§9.2",
+        "pages": [
+          1551
+        ],
+        "pdf_pages": [
+          1571
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Immediate come and go relative to the speaker",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-778",
+    "domain": "phrases",
+    "concept": "Utterance time, event time and base with come",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Come can be licensed by the goal being the speaker's location now, at the motion event, or on typical occasions.",
+    "condition": "A regular base can license come even if the speaker was absent at the time and is still elsewhere.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo came to the coast while I was staying there.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Lee came by my apartment yesterday while I was at work.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§9.2",
+        "pages": [
+          1551
+        ],
+        "pdf_pages": [
+          1571
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Utterance time, event time and base with come",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-779",
+    "domain": "phrases",
+    "concept": "Addressee and third-person centers with come",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The deictic center for come can shift from the speaker to the addressee or a discourse-prominent person.",
+    "condition": "That person's location at utterance time, event time, or typical base can supply the goal.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I'm coming, she called back to the person upstairs.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Nora asked me to come to her office.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Did Jo come by your place while you were out?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§9.2",
+        "pages": [
+          1552
+        ],
+        "pdf_pages": [
+          1572
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Addressee and third-person centers with come",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-780",
+    "domain": "phrases",
+    "concept": "Person and time of the implicit source with go",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Go can take the speaker, addressee or a discourse-prominent person as center. Their present location, event-time location or usual base can supply the source.",
+    "condition": "An addressee-oriented use is natural in a telephone instruction.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Could you go and check the lock?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Will the children go to school by bus while you're away?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§9.2",
+        "pages": [
+          1552
+        ],
+        "pdf_pages": [
+          1572
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Person and time of the implicit source with go",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-781",
+    "domain": "phrases",
+    "concept": "Perspective-dependent choice between come and go",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "The same journey can be presented with come from a goal perspective or with go from a source perspective.",
+    "condition": "Immediate motion and the speaker's current presence at an endpoint can make one choice strongly preferred.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mira came to our studio yesterday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mira went to the studio yesterday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§9.2",
+        "pages": [
+          1553
+        ],
+        "pdf_pages": [
+          1573
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Perspective-dependent choice between come and go",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-782",
+    "domain": "phrases",
+    "concept": "Here and there as motion goals",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Come normally pairs with here and go with there, but come can take there when the two words use different perspectives or there is anaphoric.",
+    "condition": "Go with here as goal is generally disfavored, but here can identify a goal by an indexing act such as pointing to a map.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I'll come over there and help you.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We met in Bristol. She had come there after college.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Pointing to the map, he said, 'We can go here next.'",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§9.2",
+        "pages": [
+          1553
+        ],
+        "pdf_pages": [
+          1573
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Here and there as motion goals",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-783",
+    "domain": "phrases",
+    "concept": "Implicit spatial endpoints beyond come and go",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Source and goal information can be left unexpressed with spatial expressions other than come and go. The section introduces away and back as examples.",
+    "condition": "The interpretation can depend on the spatial context or discourse.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The dog ran away.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Hurry back before dark.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§9.3(a)",
+        "pages": [
+          1553
+        ],
+        "pdf_pages": [
+          1573
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Implicit spatial endpoints beyond come and go",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
   }
 ]
