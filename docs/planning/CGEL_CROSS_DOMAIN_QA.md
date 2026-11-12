@@ -93,3 +93,11 @@ Two be-passive misses had a bare verb in the parse but did not meet the required
 | How is the infinitival contrast represented? | P. 226 uses active causative *make* in example [4] to illustrate the bare form. It represents *to* as a [-tense] auxiliary in [11]. P. 239 provides another active causative in [86] and pp. 240–242 discuss how the intervening NP may relate to the clauses. | The forms are structurally comparable. Cambridge pp. 1234 and 1432 supply the specific requirement for *to* after passive causative *make*. The inspected Burton-Roberts passages supply supporting structural evidence for the crosswalk. |
 
 The Phase C probe currently operates on constituency parser nodes. A production crosswalk still needs an independently checked canonical B-R relation for passive causative *make* and its selected non-finite complement. The catalog mapping stays `unverified` and the registry stays empty. [Burton-Roberts, *Analysing Sentences*, third edition](https://lmsspada.kemdiktisaintek.go.id/pluginfile.php/1032828/mod_resource/content/2/Introduction%20to%20English%20Syntax.pdf)
+
+### Negation and agentive by-phrase follow-up
+
+The candidate now accepts an explicit *not* between the passive auxiliary and its VP and a trailing *by* + NP within the VP headed by *made*. The complement must still be a bare VP headed by a verb in the parse. The proposed insertion remains immediately before that verb, preserving the negation and by-phrase.
+
+On commit a80993c, the original 28-case set now produced 6 exact repairs out of 12 errors, up from 4. Both newly covered cases reparsed without a remaining candidate. The 14 evaluated controls still produced no findings, and the two quotation guards still abstained.
+
+The fresh 22-case set produced 9 exact repairs out of 10 errors, with zero candidates on all 12 evaluated controls. All 9 edits reparsed without a remaining candidate. The one miss was in the combined negation and by-phrase group, where the parser tagged verbal *empty* as an adjective. Keep this miss as a regression and require positive evidence of a verbal complement before attempting to recover it. The new evaluation is focused on the two modifier patterns. Production activation remains disabled. [Parser evidence](https://github.com/ybcole/SynTutor/actions/runs/43227709691/artifacts/13949045993)
