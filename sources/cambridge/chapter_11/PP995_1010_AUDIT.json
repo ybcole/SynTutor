@@ -1,0 +1,213 @@
+{
+  "manifest_version": 1,
+  "chapter": 11,
+  "printed_start": 995,
+  "printed_end": 1010,
+  "report": "sources/cambridge/chapter_11/PP995_1010_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 995,
+    "pdf_page": 1015
+  },
+  "added_rule_ids": [
+    "CLS-799",
+    "CLS-800",
+    "CLS-801",
+    "CLS-802",
+    "CLS-803",
+    "CLS-804",
+    "CLS-805",
+    "CLS-806",
+    "CLS-807",
+    "CLS-808",
+    "CLS-809",
+    "CLS-810",
+    "CLS-811",
+    "CLS-812",
+    "CLS-813",
+    "CLS-814",
+    "CLS-815",
+    "CLS-816",
+    "CLS-817",
+    "CLS-818",
+    "CLS-819"
+  ],
+  "page_checks": [
+    {
+      "page": 995,
+      "status": "extracted",
+      "section": "§§7.1–7.1.1",
+      "summary": "Completes subjunctive diagnostics and introduces the three mandative forms.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 996,
+      "status": "extracted",
+      "section": "§7.1.1",
+      "summary": "Distinguishes mandative and assertive readings and introduces modality.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 997,
+      "status": "extracted",
+      "section": "§7.1.1",
+      "summary": "Examines independent modality in complements and mandative interpretation.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 998,
+      "status": "extracted",
+      "section": "§7.1.1",
+      "summary": "Distinguishes specialized should and introduces the distribution of mandatives.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 999,
+      "status": "extracted",
+      "section": "§7.1.1",
+      "summary": "Surveys nominal, adjectival and verbal licensing and specifying constructions.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1000,
+      "status": "extracted",
+      "section": "§7.1.2",
+      "summary": "Examines adversative, conditional and purposive preposition complements.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1001,
+      "status": "extracted",
+      "section": "§§7.1.3–7.1.4",
+      "summary": "Covers exhaustive adjuncts and introduces specialized attitudinal modals.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1002,
+      "status": "extracted",
+      "section": "§§7.1.4–7.2",
+      "summary": "Surveys attitudinal should, may and the ordinary versus modal preterite contrast.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1003,
+      "status": "extracted",
+      "section": "§7.2",
+      "summary": "Covers remote protases and complements of suppose, wish and would rather.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1004,
+      "status": "extracted",
+      "section": "§§7.2–7.4",
+      "summary": "Finishes modal remoteness and introduces future reference and factivity.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1005,
+      "status": "extracted",
+      "section": "§7.4",
+      "summary": "Defines entailment and presupposition and introduces projection tests.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1006,
+      "status": "extracted",
+      "section": "§7.4",
+      "summary": "Examines embedding and positive-declarative entailment.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1007,
+      "status": "extracted",
+      "section": "§7.4",
+      "summary": "Examines presuppositions without entailment and contextual effects.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1008,
+      "status": "extracted",
+      "section": "§7.4",
+      "summary": "Compares degrees of backgrounding and classes of factive and entailing governors.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1009,
+      "status": "extracted",
+      "section": "§7.4",
+      "summary": "Discusses negative content and correlations with mood and remoteness.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1010,
+      "status": "extracted",
+      "section": "§7.4",
+      "summary": "Closes the discussion with future reference, attitudinal should and extraction.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

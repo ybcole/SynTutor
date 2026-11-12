@@ -294,3 +294,23 @@ Printed pp. 822–838 yielded 25 classification records (`CLS-685`–`CLS-709`).
 ## Chapter 9 source extraction complete
 
 Printed pp. 839–849 yielded 16 records (`CLS-710`–`CLS-725`). Printed p. 850 is blank. Chapter 9 closes with 64 substantive pages and zero unprocessed pages. The next chapter in the priority order is Chapter 11.
+
+## Chapter 11 first checkpoint
+
+Printed pp. 947–966 yielded 30 classification records (`CLS-726`–`CLS-755`). Continue at p. 967.
+
+## Chapter 11 second checkpoint
+
+Printed pp. 967–980 yielded 25 classification records (`CLS-756`–`CLS-780`). Continue at p. 981 with question- and answer-oriented interrogatives.
+
+## Chapter 11 third checkpoint
+
+Printed pp. 981–994 yielded 18 classification records (`CLS-781`–`CLS-798`). Continue at p. 995 with mandatives.
+
+## Chapter 11 fourth checkpoint
+
+Printed pp. 995–1010 yielded 21 classification records (`CLS-799`–`CLS-819`). Continue at p. 1011 with syntactic analysis and reported speech.
+
+## Chapter 11 source extraction complete
+
+Printed pp. 1011–1030 yielded 26 classification records (`CLS-820`–`CLS-845`). Chapter 11 closes source extraction with 82 substantive pages and two contents pages. Chapter 12 is next.
