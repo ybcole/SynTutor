@@ -55,7 +55,6 @@ try:
   page.screenshot(path=str(OUT/'modules-mobile.png'),full_page=True)
   page.set_viewport_size({'width':1440,'height':1050})
   part_heading=view.locator('.lesson-stage-body > h2')
-  part_titles=['Predict','Understand','See it','Build it','Apply it','Exit check']
   chapter_one_titles=['Introduction to Constituents and Hierarchy','Identifying Constituents in a Sentence',
                       'Comparing Flat and Nested Trees', 'Structural Ambiguity',
                       'Chapter Recap','Check what you learned']
@@ -542,47 +541,45 @@ try:
   assert '2 / 12 lessons completed · 30 lesson XP' in view.locator('.lesson-total').inner_text()
   page.set_viewport_size({'width':1440,'height':1050})
   # Complete the rest of Syntax Foundations through the shared article flow.
-  for lesson in COURSE['lessons'][2:11]:
+  for lesson in COURSE['lessons'][2:]:
    ident=lesson['lesson_id']
-   expanded=ident in {'br-03','br-04','br-05'}
    print('Checking',ident,flush=True)
    page.evaluate("id=>import('/js/lessons-ui.js').then(m=>m.openLessons(id))",ident)
    expect(part_heading).to_contain_text('Introduction to')
-   if expanded:
-    expect(view.get_by_role('heading',name='What this chapter covers')).to_be_visible()
-    expect(view.locator('article .lesson-example-sentence')).to_be_visible()
-   expect(view.get_by_role('region',name='Check what you know' if expanded else 'Pre-test')).to_be_visible()
+   if ident=='cgel-clauses':
+    expect(view.locator('.constituent-chapter > p')).to_have_text('Cambridge · Chapter 2')
+   expect(view.get_by_role('heading',name='What this chapter covers')).to_be_visible()
+   expect(view.get_by_role('heading',name='What you’ll see in this chapter')).to_be_visible()
+   expect(view.locator('article .lesson-example-sentence')).to_be_visible()
+   expect(view.get_by_role('region',name='Check what you know')).to_be_visible()
    prediction=view.locator('[data-question="predict"]')
    expect(prediction.locator('legend')).to_have_text(lesson['predict']['prompt'])
    next_button=view.get_by_role('button',name='Next →',exact=True)
    expect(next_button).to_be_disabled()
    prediction.locator('input').first.click()
-   if expanded:
-    for number in [2,3]:
-     view.get_by_role('button',name='Next question →',exact=True).click()
-     expect(view.locator('.lesson-assessment-position')).to_have_text(f'Question {number} of 3')
-     prediction.locator('input').first.click()
-    view.get_by_role('button',name='Finish knowledge check').click()
-   expect(view.locator('.constituent-pre-test-status')).to_have_text('Knowledge check complete.' if expanded else 'Response recorded.')
+   for number in [2,3]:
+    view.get_by_role('button',name='Next question →',exact=True).click()
+    expect(view.locator('.lesson-assessment-position')).to_have_text(f'Question {number} of 3')
+    prediction.locator('input').first.click()
+   view.get_by_role('button',name='Finish knowledge check').click()
+   expect(view.locator('.constituent-pre-test-status')).to_have_text('Knowledge check complete.')
    next_button.click()
-   if expanded:
-    expect(view.locator('article h3')).to_have_count(4)
-    expect(view.locator('article > ul > li')).to_have_count(2)
-   else:
-    for block in lesson['teaching']:
-     expect(view.get_by_text(block['text'],exact=True)).to_be_visible()
+   expect(view.locator('article h3')).to_have_count(4)
+   expect(view.locator('article > ul > li')).to_have_count(2)
    next_button.click()
    worked=lesson['worked_example']
    expect(view.get_by_text(worked['sentence'],exact=True)).to_be_visible()
    if worked.get('tree'):
     step_controls=view.get_by_role('group',name='Explore the worked tree')
     viewport=view.locator('.canonical-viewport')
+    captions=[]
     for i, step in enumerate(worked['steps']):
      step_button=step_controls.get_by_role('button').nth(i)
      step_button.press('Enter')
      expect(step_button).to_have_attribute('aria-pressed','true')
-     expect(view.locator('.constituent-caption')).to_have_text(step['text'])
+     captions.append(view.locator('.constituent-caption').inner_text())
      expect(view.locator('svg .lesson-tree-focus')).to_have_attribute('data-node-id',step['focus_node_id'])
+    assert all(captions) and len(set(captions)) == len(worked['steps'])
     expect(viewport.get_by_role('button',name='Fit B-R tree')).to_be_visible()
     expect(view.get_by_text('Read the tree as text',exact=True)).to_have_count(0)
     outline=view.get_by_role('group',name='Tree structure')
@@ -597,63 +594,68 @@ try:
     if ident=='br-10':
      expect(viewport.locator('svg text').filter(has_text=re.compile(r'^\[-tense\]$'))).to_have_count(1)
      expect(viewport.locator('svg text').filter(has_text=re.compile(r'^AUX$'))).to_have_count(0)
-    if expanded or ident in {'br-06','br-09','br-10'}:
-     page.screenshot(path=str(OUT/f'{ident}-desktop.png'),full_page=True)
-     page.set_viewport_size({'width':390,'height':844})
-     viewport.scroll_into_view_if_needed()
-     steps_box=step_controls.bounding_box()
-     assert 0 <= viewport.bounding_box()['y']-(steps_box['y']+steps_box['height']) <= 16
-     assert view.evaluate('(el) => el.scrollWidth <= el.clientWidth'), ident
-     page.screenshot(path=str(OUT/f'{ident}-mobile-tree.png'),full_page=True)
-     if expanded:
-      editor=view.locator('.first-tree-builder')
-      expect(editor.locator('#builderCanvas')).to_be_visible()
-      editor.get_by_role('button',name='Check construction').click()
-      expect(editor.get_by_role('status')).to_contain_text('Connect every node')
-      page.evaluate("window.beforeBranch=localStorage.getItem('syntutor:lessons:v1:guest')")
-      if ident=='br-03':
-       editor.locator('#builderCanvas').scroll_into_view_if_needed()
-       drag_branch('AP','phrase','A')
-       editor.get_by_role('button',name='Check construction').click()
-       expect(editor.get_by_role('status')).to_contain_text('sisters under AP')
-      editor.get_by_role('button',name='Guide me').click()
-      for step in editor.locator('.first-tree-guide button').all():
-       step.press('Enter')
-      success={'br-03':'sisters under AP','br-04':'shares VP with V','br-05':'sisters under the outer VP'}[ident]
-      expect(editor.get_by_role('status')).to_contain_text(success)
-      assert page.evaluate("localStorage.getItem('syntutor:lessons:v1:guest')===window.beforeBranch")
-     page.set_viewport_size({'width':1440,'height':1050})
+    page.screenshot(path=str(OUT/f'{ident}-desktop.png'),full_page=True)
+    page.set_viewport_size({'width':390,'height':844})
+    viewport.scroll_into_view_if_needed()
+    steps_box=step_controls.bounding_box()
+    assert 0 <= viewport.bounding_box()['y']-(steps_box['y']+steps_box['height']) <= 16
+    assert view.evaluate('(el) => el.scrollWidth <= el.clientWidth'), ident
+    page.screenshot(path=str(OUT/f'{ident}-mobile-tree.png'),full_page=True)
+    editor=view.locator('.first-tree-builder')
+    expect(editor.locator('#builderCanvas')).to_be_visible()
+    editor.get_by_role('button',name='Check construction').click()
+    expect(editor.get_by_role('status')).to_contain_text('Connect every node')
+    page.evaluate("window.beforeBranch=localStorage.getItem('syntutor:lessons:v1:guest')")
+    success={
+     'br-03':'sisters under AP', 'br-04':'shares VP with V',
+     'br-05':'sisters under the outer VP', 'br-06':'share the higher VP',
+     'br-07':'share NP as their parent', 'br-08':'sisters under S′',
+     'br-09':'object-gap NP sits beside V', 'br-10':'shares the higher VP',
+    }[ident]
+    if ident in {'br-03','br-08'}:
+     parent,child={'br-03':('AP','A'),'br-08':('S-bar','C')}[ident]
+     editor.locator('#builderCanvas').scroll_into_view_if_needed()
+     drag_branch(parent,'phrase',child)
+     editor.get_by_role('button',name='Check construction').click()
+     expect(editor.get_by_role('status')).to_contain_text(success)
+    editor.get_by_role('button',name='Guide me').click()
+    for step in editor.locator('.first-tree-guide button').all():
+     step.press('Enter')
+    expect(editor.get_by_role('status')).to_contain_text(success)
+    assert page.evaluate("localStorage.getItem('syntutor:lessons:v1:guest')===window.beforeBranch")
+    page.set_viewport_size({'width':1440,'height':1050})
    else:
     expect(view.locator('article ol li')).to_have_text([step['text'] for step in worked['steps']])
     expect(view.locator('svg')).to_have_count(0)
+    worked_answer=view.get_by_text('Show the worked answer',exact=True)
+    expect(worked_answer.locator('+ p')).to_be_hidden()
+    worked_answer.press('Enter')
+    expect(worked_answer.locator('+ p')).to_be_visible()
    next_button.click()
-   if expanded:
-    expect(view.locator('article .lesson-example-sentence')).to_be_visible()
-    answer=view.get_by_text('Check your analysis',exact=True)
-    expect(answer.locator('+ p')).to_be_hidden()
-    answer.press('Enter')
-    expect(answer.locator('+ p')).to_be_visible()
+   expect(view.locator('article .lesson-example-sentence')).to_be_visible()
+   answer=view.get_by_text('Check your analysis',exact=True)
+   expect(answer.locator('+ p')).to_be_hidden()
+   answer.press('Enter')
+   expect(answer.locator('+ p')).to_be_visible()
+   if worked.get('tree'):
     view.get_by_role('button',name='← Previous',exact=True).click()
     editor.get_by_role('button',name='Check construction').click()
     expect(editor.get_by_role('status')).to_contain_text(success)
     next_button.click()
-   for insight in lesson['cambridge_insights']:
-    expect(view.get_by_text(insight['text'],exact=True)).to_be_visible()
    next_button.click()
    expect(part_heading).to_have_text('Chapter Recap')
-   if expanded:
-    expect(view.get_by_role('heading',name='Try a quick check')).to_be_visible()
-    quick_answer=view.get_by_text('Show the answer',exact=True)
-    expect(quick_answer.locator('+ p')).to_be_hidden()
-    quick_answer.press('Enter')
-    expect(quick_answer.locator('+ p')).to_be_visible()
+   expect(view.get_by_role('heading',name='Try a quick check')).to_be_visible()
+   quick_answer=view.get_by_text('Show the answer',exact=True)
+   expect(quick_answer.locator('+ p')).to_be_hidden()
+   quick_answer.press('Enter')
+   expect(quick_answer.locator('+ p')).to_be_visible()
    references=view.locator('article .lesson-sources')
    references.locator('summary').click()
    expect(references.locator('li').first).to_be_visible()
-   view.get_by_role('button',name='Check what you learned' if expanded else 'Start post-test').click()
-   expect(part_heading).to_have_text('Check what you learned' if expanded else 'Chapter Post-test')
+   view.get_by_role('button',name='Check what you learned').click()
+   expect(part_heading).to_have_text('Check what you learned')
    expect(view.locator('.lesson-sources')).to_have_count(0)
-   post_test=view.get_by_role('region',name='Chapter knowledge check' if expanded else 'Post-test questions')
+   post_test=view.get_by_role('region',name='Chapter knowledge check')
    for key, action_name in [('guided','Next question →'),('transfer','Next question →'),('exit','Complete lesson')]:
     question=post_test.locator(f'[data-question="{key}"]')
     expect(question.locator('legend')).to_have_text(lesson[key]['prompt'])
@@ -676,23 +678,19 @@ try:
      expect(masked.locator('.br-feature-row')).to_have_text(f'[{target["expected"]}]')
     action.click()
    expect(view.locator('.lesson-save-status')).to_contain_text('15 lesson XP awarded')
-   if expanded:
-    expect(post_test.get_by_role('heading',name='Answers overview')).to_be_visible()
-    expect(post_test.locator('.lesson-question')).to_have_count(3)
-   if ident=='br-11':
+   expect(post_test.get_by_role('heading',name='Answers overview')).to_be_visible()
+   expect(post_test.locator('.lesson-question')).to_have_count(3)
+   if not worked.get('tree'):
     expect(view.locator('svg')).to_have_count(0)
-  # The Cambridge companion still follows its original sequence.
-  companion=COURSE['lessons'][-1]
-  page.evaluate("()=>import('/js/lessons-ui.js').then(m=>m.openLessons('cgel-clauses'))")
-  for key, title in zip(['predict','understand','worked','guided','transfer','exit'],part_titles):
-   expect(part_heading).to_have_text(title)
-   if key=='worked':
-    for _ in range(len(companion['worked_example']['steps'])-1):
-     view.get_by_role('button',name='Next →',exact=True).click()
-   if key in companion:
-    view.locator(f'[data-question="{key}"] input[value="{companion[key]["answer"]}"]').check()
-   view.get_by_role('button',name='Complete lesson' if key=='exit' else 'Next →',exact=True).click()
-  expect(view.locator('.lesson-save-status')).to_contain_text('15 lesson XP awarded')
+   if ident in {'br-09','br-11','cgel-clauses'}:
+    page.evaluate("window.beforeRetake=localStorage.getItem('syntutor:lessons:v1:guest')")
+    view.get_by_role('button',name='Try the questions again').click()
+    for number in range(1,4):
+     expect(post_test.locator('.lesson-assessment-position')).to_have_text(f'Question {number} of 3')
+     post_test.locator('input').first.check()
+     post_test.get_by_role('button',name='Finish practice' if number==3 else 'Next question →').click()
+    expect(post_test.get_by_role('heading',name='Answers overview')).to_be_visible()
+    assert page.evaluate("localStorage.getItem('syntutor:lessons:v1:guest')===window.beforeRetake")
   page.evaluate("()=>import('/js/lessons-ui.js').then(m=>m.openLessons('br-01'))")
   expect(part_heading).to_have_text(chapter_one_titles[0])
   expect(view.get_by_text('Completed for this content version. Reviewing cannot award another 15 XP.',exact=True)).to_have_count(0)
@@ -740,12 +738,12 @@ try:
   legacy_card=view.locator('.lesson-module').filter(has=page.get_by_role('heading',name=legacy['title'],exact=True))
   expect(legacy_card.get_by_role('progressbar')).to_have_attribute('value','4')
   legacy_card.get_by_role('button',name='Resume lesson',exact=True).click()
-  expect(part_heading).to_have_text('Chapter Post-test')
+  expect(part_heading).to_have_text('Check what you learned')
   transfer=view.locator('[data-question="transfer"]')
   expect(transfer.locator('input:checked')).to_have_value(saved['responses']['transfer'])
   view.get_by_role('button',name='← Previous',exact=True).click()
   expect(part_heading).to_have_text('Chapter Recap')
-  view.get_by_role('button',name='Start post-test').click()
+  view.get_by_role('button',name='Check what you learned').click()
   expect(transfer.locator('input:checked')).to_have_value(saved['responses']['transfer'])
   assert not parses,parses
   assert not errors,errors

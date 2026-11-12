@@ -1,3 +1,4 @@
+import { advancedFoundationsChapters } from './advanced-foundations-lessons.js';
 import { addWorkedExample } from './foundations-lesson.js';
 import { addEmbeddedTreeExercise } from './lesson-tree-exercise.js';
 import { connect, disconnect, fromCanonicalEnvelope, toCanonicalEnvelope } from './syntax-builder.js';
@@ -116,11 +117,12 @@ const chapters = {
     postTestIntro: 'Trace both levels of VP and check which node is the adjunct’s sister.',
     references: ['Noel Burton-Roberts, Analysing Sentences, 3rd ed., printed p. 91 (the do so replacement test).'],
   },
+  ...advancedFoundationsChapters,
 };
 
 // Compare the visible analysis independently of the IDs assigned to edits.
 function shape(node) {
-  return [node.label, node.word, node.words, node.features || [], node.children?.map(shape)];
+  return [node.label, node.word, node.words, node.features || [], node.gap, node.index, node.children?.map(shape)];
 }
 
 function addBranchExercise(body, ui, chapter) {
@@ -199,13 +201,17 @@ export const phraseStructureArticles = Object.fromEntries(Object.entries(chapter
       list('ul', chapter.contrast[1]);
     }
     if (page === 2) {
-      body.append(el('h3', 'Read the branches'));
-      body.append(el('p', chapter.beforeTree));
-      addWorkedExample(body, ui, chapter.steps, { highlightWords: true });
-      body.append(el('p', chapter.treeTakeaway));
-      sections([[chapter.buildTitle, chapter.build.prompt]]);
-      body.append(el('p', 'Drag a branch from the parent’s connection point to the detached node. Use Guide me for help, then select Check construction.'));
-      addBranchExercise(body, ui, chapter);
+      sections([[chapter.build ? 'Read the branches' : 'Follow the worked example', chapter.beforeTree]]);
+      addWorkedExample(body, ui, chapter.steps, { highlightWords: true, captions: chapter.captions });
+      if (chapter.build) {
+        body.append(el('p', chapter.treeTakeaway));
+        sections([[chapter.buildTitle, chapter.build.prompt]]);
+        body.append(el('p', 'Drag a branch from the parent’s connection point to the detached node. Use Guide me for help, then select Check construction.'));
+        addBranchExercise(body, ui, chapter);
+      } else {
+        sections([chapter.workedPractice]);
+        reveal('Show the worked answer', chapter.workedAnswer);
+      }
     }
     if (page === 3) {
       body.append(el('p', chapter.applyExample, 'lesson-example-sentence'));

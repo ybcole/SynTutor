@@ -6,7 +6,6 @@ import { subscribeAuthState } from './auth.js';
 import { enableCanvasView } from './canvas-view.js';
 import { addConstituentReview, addConstituentTeaching, constituentHeadings, constituentOpeningCheck, constituentReferences } from './constituents-lesson.js';
 import { addSubjectPredicateTeaching, subjectPredicateHeadings, subjectPredicateOpeningCheck, subjectPredicateReferences } from './subject-predicate-lesson.js';
-import { foundationsArticle } from './foundations-lesson.js';
 import { phraseStructureArticles } from './phrase-structure-lessons.js';
 import { lessonNotation } from './lesson-notation.js';
 
@@ -265,7 +264,7 @@ export function renderLessonTree(envelope, {
   }
   const ul=el('ul');ul.append(list(root));text.append(ul);wrap.append(text);return wrap;
 }
-function articleFor(lesson) { return articleLessons[lesson.lesson_id] ?? foundationsArticle(lesson); }
+function articleFor(lesson) { return articleLessons[lesson.lesson_id]; }
 function currentLesson() { return course.lessons.find(l => l.lesson_id===active); }
 function progressFor(lesson) { return store.records[lessonKey(lesson)] || emptyProgress(); }
 async function act(event, afterSave) {
@@ -798,7 +797,9 @@ function lessonScreen() {
   const stage = reviewStage ?? p.stage, key = STAGES[stage];
   const reviewing = reviewStage !== null;
   const article = articleFor(lesson);
-  const chapter = article ? `Chapter ${lesson.chapter}` : lesson.track === 'foundations' ? `B-R · Chapter ${lesson.chapter}` : `Cambridge · Chapter ${lesson.chapter}`;
+  const chapter = lesson.track === 'grammar'
+    ? `Cambridge · Chapter ${lesson.chapter}`
+    : article ? `Chapter ${lesson.chapter}` : `B-R · Chapter ${lesson.chapter}`;
   const header = el('header', undefined, article ? 'lesson-header constituent-header' : 'lesson-header');
   header.append(button('← All lessons', showCatalog));
   const h1 = el('h1', lesson.title);
