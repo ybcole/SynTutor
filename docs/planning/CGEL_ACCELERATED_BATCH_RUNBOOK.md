@@ -302,3 +302,7 @@ Printed pp. 947–966 yielded 30 classification records (`CLS-726`–`CLS-755`).
 ## Chapter 11 second checkpoint
 
 Printed pp. 967–980 yielded 25 classification records (`CLS-756`–`CLS-780`). Continue at p. 981 with question- and answer-oriented interrogatives.
+
+## Chapter 11 third checkpoint
+
+Printed pp. 981–994 yielded 18 classification records (`CLS-781`–`CLS-798`). Continue at p. 995 with mandatives.

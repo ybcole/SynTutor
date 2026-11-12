@@ -1,0 +1,188 @@
+{
+  "manifest_version": 1,
+  "chapter": 11,
+  "printed_start": 981,
+  "printed_end": 994,
+  "report": "sources/cambridge/chapter_11/PP981_994_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 981,
+    "pdf_page": 1001
+  },
+  "added_rule_ids": [
+    "CLS-781",
+    "CLS-782",
+    "CLS-783",
+    "CLS-784",
+    "CLS-785",
+    "CLS-786",
+    "CLS-787",
+    "CLS-788",
+    "CLS-789",
+    "CLS-790",
+    "CLS-791",
+    "CLS-792",
+    "CLS-793",
+    "CLS-794",
+    "CLS-795",
+    "CLS-796",
+    "CLS-797",
+    "CLS-798"
+  ],
+  "page_checks": [
+    {
+      "page": 981,
+      "status": "extracted",
+      "section": "§5.3.2",
+      "summary": "Distinguishes question and answer orientation and introduces emotive and closed-form restrictions.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 982,
+      "status": "extracted",
+      "section": "§5.3.2",
+      "summary": "Compares weak and strong answer orientation and restrictions on closed interrogatives.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 983,
+      "status": "extracted",
+      "section": "§§5.3.2–5.3.3",
+      "summary": "Examines restricted inverted order and introduces dubitative constructions.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 984,
+      "status": "extracted",
+      "section": "§§5.3.3–5.3.4",
+      "summary": "Compares doubt and uncertainty and introduces interrogative quantifier expressions.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 985,
+      "status": "extracted",
+      "section": "§§5.3.4–5.3.6",
+      "summary": "Completes quantifier expressions, describes infinitival interrogatives and introduces exhaustive adjuncts.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 986,
+      "status": "extracted",
+      "section": "§5.3.6",
+      "summary": "Compares governed and ungoverned exhaustive meaning with restrictive conditions.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 987,
+      "status": "extracted",
+      "section": "§5.3.6",
+      "summary": "Examines open exhaustive interrogatives and distinguishes fused relatives.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 988,
+      "status": "extracted",
+      "section": "§5.3.6",
+      "summary": "Continues fused-relative tests and compares governed and ungoverned forms.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 989,
+      "status": "extracted",
+      "section": "§5.3.6",
+      "summary": "Examines multiple interrogatives and emotive modification and introduces closed constructions.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 990,
+      "status": "extracted",
+      "section": "§5.3.6",
+      "summary": "Covers overt alternatives and reduced participial and verbless adjuncts.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 991,
+      "status": "extracted",
+      "section": "§§6–6.1",
+      "summary": "Introduces exclamative content clauses and compares open interrogatives.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 992,
+      "status": "extracted",
+      "section": "§§6.1–6.2",
+      "summary": "Completes the comparison and surveys exclamative functions.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 993,
+      "status": "extracted",
+      "section": "§§6.2–7.1",
+      "summary": "Completes exclamative licensing and introduces the subjunctive and specialized modals.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 994,
+      "status": "extracted",
+      "section": "§7.1",
+      "summary": "Compares subjunctive alternatives and introduces form and negation diagnostics.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

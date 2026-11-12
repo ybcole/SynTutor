@@ -50328,5 +50328,1094 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-781",
+    "domain": "clauses",
+    "concept": "Question-oriented and answer-oriented complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An interrogative complement can identify a question under consideration or characterize an answer supplied by the governing construction.",
+    "condition": "Applies to the construction described in §5.3.2 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The distinction depends on the governor and its sense in context.",
+        "pages": [
+          981
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She wondered who had called.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She knew who had called.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§5.3.2",
+        "pages": [
+          981
+        ],
+        "pdf_pages": [
+          1001
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Question-oriented and answer-oriented complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-782",
+    "domain": "clauses",
+    "concept": "Emotive modifiers in embedded questions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Expressions such as on earth can occur in question-oriented embedded interrogatives.",
+    "condition": "Applies to the construction described in §5.3.2 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "They generally resist a strongly answer-oriented use of the same interrogative.",
+        "pages": [
+          981
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She wondered who on earth had moved the desk.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I want to know what on earth happened.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§5.3.2",
+        "pages": [
+          981
+        ],
+        "pdf_pages": [
+          1001
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Emotive modifiers in embedded questions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-783",
+    "domain": "clauses",
+    "concept": "Closed interrogatives under answer-oriented governors",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some answer-oriented contexts readily admit open interrogatives but resist or exclude closed interrogatives.",
+    "condition": "Applies to the construction described in §5.3.2 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The degree of restriction depends on the predicate and the strength of its answer orientation.",
+        "pages": [
+          981,
+          982
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The inspector identified who had removed the label.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The inspector asked whether anyone had removed the label.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§5.3.2",
+        "pages": [
+          981,
+          982
+        ],
+        "pdf_pages": [
+          1001,
+          1002
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Closed interrogatives under answer-oriented governors",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-784",
+    "domain": "clauses",
+    "concept": "Inverted order in strongly question-oriented contexts",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some strongly question-oriented contexts admit an embedded interrogative with inverted order alongside the usual uninverted pattern.",
+    "condition": "Applies to the construction described in §5.3.2 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The inverted pattern is restricted and should not be generalized to ordinary embedded questions or identified automatically with direct quotation.",
+        "pages": [
+          983
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I wondered what would they say.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I wondered what they would say.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§5.3.2",
+        "pages": [
+          983
+        ],
+        "pdf_pages": [
+          1003
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inverted order in strongly question-oriented contexts",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-785",
+    "domain": "clauses",
+    "concept": "Dubitatives and competing clause types",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Predicates of doubt or uncertainty can license interrogative and declarative clauses with different implications.",
+    "condition": "Applies to the construction described in §5.3.3 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some apparent whether complements can express doubt about one proposition rather than an open choice between two alternatives.",
+        "pages": [
+          983,
+          984
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I am not certain whether she wrote it.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I doubt that she wrote it.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§5.3.3",
+        "pages": [
+          983,
+          984
+        ],
+        "pdf_pages": [
+          1003,
+          1004
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dubitatives and competing clause types",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-786",
+    "domain": "clauses",
+    "concept": "Embedded interrogatives in quantified expressions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An expression such as I don't know how many can combine with a noun to convey an unspecified quantity within a larger construction.",
+    "condition": "Applies to the construction described in §5.3.4 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The expression contributes uncertainty about the quantity and behaves differently from an ordinary separately attached clause.",
+        "pages": [
+          984
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We passed I don't know how many checkpoints.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She bought I don't know how many notebooks.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§5.3.4",
+        "pages": [
+          984
+        ],
+        "pdf_pages": [
+          1004
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Embedded interrogatives in quantified expressions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-787",
+    "domain": "clauses",
+    "concept": "Infinitival interrogative interpretation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An infinitival interrogative commonly concerns a choice or direction about what to do.",
+    "condition": "Applies to the construction described in §5.3.5 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A finite interrogative can also concern information that has no comparable directive infinitival reading.",
+        "pages": [
+          985
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She considered whether to bring a coat.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We discussed where to park.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§5.3.5",
+        "pages": [
+          985
+        ],
+        "pdf_pages": [
+          1005
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Infinitival interrogative interpretation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-788",
+    "domain": "clauses",
+    "concept": "Governed and ungoverned exhaustive adjuncts",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An exhaustive conditional can be a direct interrogative adjunct or a clause embedded under an expression such as regardless of.",
+    "condition": "Applies to the construction described in §5.3.6 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The larger clause holds across the contextually relevant alternatives.",
+        "pages": [
+          985,
+          986
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We will continue whether it rains or not.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We will continue regardless of whether it rains.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§5.3.6",
+        "pages": [
+          985,
+          986
+        ],
+        "pdf_pages": [
+          1005,
+          1006
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Governed and ungoverned exhaustive adjuncts",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-789",
+    "domain": "clauses",
+    "concept": "Exhaustive versus restrictive conditions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An exhaustive conditional presents the outcome as holding across the alternatives, while a restrictive conditional limits it to the stated condition.",
+    "condition": "Applies to the construction described in §5.3.6 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The set of relevant alternatives is supplied by the construction and context.",
+        "pages": [
+          986
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I will finish whether the lights stay on or go out.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I will finish if the lights stay on.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§5.3.6",
+        "pages": [
+          986
+        ],
+        "pdf_pages": [
+          1006
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Exhaustive versus restrictive conditions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-790",
+    "domain": "clauses",
+    "concept": "Open exhaustive clauses and fused relatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An open exhaustive adjunct ranges over possible answers, while a fused relative can refer to the person, thing or other value satisfying its description.",
+    "condition": "Applies to the construction described in §5.3.6 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The words within the subordinate clause can be identical while its function in the larger construction differs.",
+        "pages": [
+          987,
+          988
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Whoever you recommend, we will appoint Mina.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We will appoint whoever you recommend.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§5.3.6",
+        "pages": [
+          987,
+          988
+        ],
+        "pdf_pages": [
+          1007,
+          1008
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Open exhaustive clauses and fused relatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-791",
+    "domain": "clauses",
+    "concept": "Limits on interrogative forms in open exhaustives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Ungoverned open exhaustive clauses favor the interrogative forms ending in ever, with restrictions on the distribution of multiple interrogative phrases.",
+    "condition": "Applies to the construction described in §5.3.6 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An additional interrogative phrase need not carry ever, and a governed counterpart can have a different distribution.",
+        "pages": [
+          988,
+          989
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Whoever said what, we need to move on.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Whatever the delay, we will keep the appointment.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§5.3.6",
+        "pages": [
+          988,
+          989
+        ],
+        "pdf_pages": [
+          1008,
+          1009
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Limits on interrogative forms in open exhaustives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-792",
+    "domain": "clauses",
+    "concept": "Alternative form in closed exhaustives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An ungoverned closed exhaustive typically expresses its alternatives, including with or not or contrasting phrases.",
+    "condition": "Applies to the construction described in §5.3.6 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A governed construction with regardless of can allow a bare polar interrogative without an overt second alternative.",
+        "pages": [
+          989,
+          990
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We will travel whether the weather is good or bad.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She will attend whether or not Dev is there.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§5.3.6",
+        "pages": [
+          989,
+          990
+        ],
+        "pdf_pages": [
+          1009,
+          1010
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Alternative form in closed exhaustives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-793",
+    "domain": "clauses",
+    "concept": "Reduction of exhaustive clauses",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An exhaustive adjunct can have reduced participial or verbless form when its predication is recoverable.",
+    "condition": "Applies to the construction described in §5.3.6 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The relevant subject and alternatives must be recoverable in the larger construction.",
+        "pages": [
+          990
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Whether working or resting, she keeps the radio on.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Whether indoors or out, the dog stays close.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§5.3.6",
+        "pages": [
+          990
+        ],
+        "pdf_pages": [
+          1010
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reduction of exhaustive clauses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-794",
+    "domain": "clauses",
+    "concept": "Exclamative versus interrogative content",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An exclamative content clause presents a salient degree or property, while a similar interrogative clause can concern the value of an open question.",
+    "condition": "Applies to the construction described in §6.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some how and what clauses are structurally ambiguous and their governing context helps identify the reading.",
+        "pages": [
+          991,
+          992
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I realized what a serious mistake I had made.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I asked what mistake I had made.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§6.1",
+        "pages": [
+          991,
+          992
+        ],
+        "pdf_pages": [
+          1011,
+          1012
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Exclamative versus interrogative content",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-795",
+    "domain": "clauses",
+    "concept": "Functions and licensing of exclamative content clauses",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Exclamative clauses can occur as subjects or in selected complement positions, including with predicates of knowing or emotive reaction.",
+    "condition": "Applies to the construction described in §6.2 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A predicate that licenses interrogative content does not automatically license exclamative content.",
+        "pages": [
+          992,
+          993
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What a costly mistake it was only became clear later.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She remembered how exhausted he had been.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§6.2",
+        "pages": [
+          992,
+          993
+        ],
+        "pdf_pages": [
+          1012,
+          1013
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Functions and licensing of exclamative content clauses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-796",
+    "domain": "clauses",
+    "concept": "Subjunctive and specialized modal alternatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Certain content-clause constructions allow a plain-form subjunctive or a specialized modal alternative, including mandative should.",
+    "condition": "Applies to the construction described in §7.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The specialized modal can have a different interpretation from the same auxiliary in an independent clause.",
+        "pages": [
+          993,
+          994
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We insist that she be informed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We insist that she should be informed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§7.1",
+        "pages": [
+          993,
+          994
+        ],
+        "pdf_pages": [
+          1013,
+          1014
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subjunctive and specialized modal alternatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-797",
+    "domain": "clauses",
+    "concept": "Morphological diagnostics for the subjunctive",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Plain-form be and the absence of third-person singular agreement can distinguish a subjunctive from an ordinary present-tense declarative.",
+    "condition": "Applies to the construction described in §7.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "With most other subject and verb combinations the forms can coincide, so morphology alone may be indeterminate.",
+        "pages": [
+          994
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It is vital that they be ready.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It is vital that she keep us informed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§7.1",
+        "pages": [
+          994
+        ],
+        "pdf_pages": [
+          1014
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Morphological diagnostics for the subjunctive",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-798",
+    "domain": "clauses",
+    "concept": "Negation in a subjunctive content clause",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A subjunctive can place not before the plain-form verb without supportive do.",
+    "condition": "Applies to the construction described in §7.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This diagnostic concerns the subjunctive construction, not all clauses introduced by that.",
+        "pages": [
+          994
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It is vital that they not accept the offer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We insist that she not open the door.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§7.1",
+        "pages": [
+          994
+        ],
+        "pdf_pages": [
+          1014
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negation in a subjunctive content clause",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]
