@@ -286,3 +286,7 @@ Printed pp. 785–805 yielded 29 classification records (`CLS-627`–`CLS-655`) 
 ## Chapter 9 second checkpoint
 
 Printed pp. 806–821 yielded 29 classification records (`CLS-656`–`CLS-684`). Continue at p. 822 with polarity-sensitive items.
+
+## Chapter 9 third checkpoint
+
+Printed pp. 822–838 yielded 25 classification records (`CLS-685`–`CLS-709`). Continue at p. 839 with increased specificity of negation.

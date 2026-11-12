@@ -44532,5 +44532,1513 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-685",
+    "domain": "clauses",
+    "concept": "Negative and positive polarity orientation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Polarity-sensitive expressions favor either negative or positive environments, depending on the expression and its meaning.",
+    "condition": "Applies to the construction described in §4 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The orientation describes distribution and does not by itself make the clause negative or positive.",
+        "pages": [
+          822,
+          823
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We do not need it any longer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We already have a replacement.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§4",
+        "pages": [
+          822,
+          823
+        ],
+        "pdf_pages": [
+          842,
+          843
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negative and positive polarity orientation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-686",
+    "domain": "clauses",
+    "concept": "Non-affirmative environments",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A positive clause can be non-affirmative for polarity licensing, as in questions and certain subordinate constructions.",
+    "condition": "Applies to the construction described in §4 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Different non-affirmative environments license different sets of expressions.",
+        "pages": [
+          822,
+          823
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Do you need it any longer?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Have you ever seen this before?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§4",
+        "pages": [
+          822,
+          823
+        ],
+        "pdf_pages": [
+          842,
+          843
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-affirmative environments",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-687",
+    "domain": "clauses",
+    "concept": "Classes of negatively oriented expressions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Negatively oriented expressions include some uses of any and yet, certain auxiliary uses, and idiomatic minimizers.",
+    "condition": "Applies to the construction described in §4.1 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The restrictions apply to particular senses or constructions, and a literal reading can have a different distribution.",
+        "pages": [
+          823,
+          824
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She has not called yet.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They did not lift a finger to help.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§4.1",
+        "pages": [
+          823,
+          824
+        ],
+        "pdf_pages": [
+          843,
+          844
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Classes of negatively oriented expressions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-688",
+    "domain": "clauses",
+    "concept": "Aspect and polarity with until",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Until can freely specify the endpoint of an ongoing situation. With punctual or telic predicates it can occur in a negative construction that denies occurrence before a boundary.",
+    "condition": "Applies to the construction described in §4.1 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Polarity sensitivity depends on the aspectual construction, rather than a general restriction on until.",
+        "pages": [
+          824
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We will stay until dusk.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We will not publish the results until Friday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§4.1",
+        "pages": [
+          824
+        ],
+        "pdf_pages": [
+          844
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Aspect and polarity with until",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-689",
+    "domain": "clauses",
+    "concept": "Negative polarity items versus negative idioms",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An NPI can occur with negation that independently marks its clause. A negative idiom can require a particular negator as part of its conventional wording.",
+    "condition": "Applies to the construction described in §4.1.1 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Tests that vary the position or form of negation can help distinguish a freely licensed item from an idiom.",
+        "pages": [
+          824,
+          825
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They did not stay for long.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The soup was not half bad.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§4.1.1",
+        "pages": [
+          824,
+          825
+        ],
+        "pdf_pages": [
+          844,
+          845
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negative polarity items versus negative idioms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-690",
+    "domain": "clauses",
+    "concept": "Strength and register of negative orientation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some NPIs are strongly restricted to negative contexts. Others have a wider distribution, and an apparently identical form can have a register-specific affirmative use.",
+    "condition": "Applies to the construction described in §4.1.2 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The second much belongs to a different construction and does not establish the same distribution for ordinary clause-final much.",
+        "pages": [
+          825,
+          826,
+          827
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I do not enjoy sailing much.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Her work was much admired.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§4.1.2",
+        "pages": [
+          825,
+          826,
+          827
+        ],
+        "pdf_pages": [
+          845,
+          846,
+          847
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Strength and register of negative orientation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-691",
+    "domain": "clauses",
+    "concept": "Polarity licensing and question bias",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some NPIs occur in neutral questions, while strongly oriented idioms can require an interpretation closer to negation.",
+    "condition": "Applies to the construction described in §4.1.2 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A question can admit a strong item when it conveys a negative expectation or challenges an assumption.",
+        "pages": [
+          827,
+          828
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Did anyone call?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Did she so much as offer to help?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§4.1.2",
+        "pages": [
+          827,
+          828
+        ],
+        "pdf_pages": [
+          847,
+          848
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Polarity licensing and question bias",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-692",
+    "domain": "clauses",
+    "concept": "Positively oriented expressions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some uses of some, already and other expressions favor affirmative environments and resist the scope of ordinary negation.",
+    "condition": "Applies to the construction described in §4.2 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The restriction applies to the intended sense, and negative clauses can accommodate these forms when scope or context supports them.",
+        "pages": [
+          829
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Some customers complained.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They already know the route.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§4.2",
+        "pages": [
+          829
+        ],
+        "pdf_pages": [
+          849
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Positively oriented expressions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-693",
+    "domain": "clauses",
+    "concept": "PPIs outside the scope of negation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A positive-polarity expression can occur in a sentence containing negation when the expression takes wider scope.",
+    "condition": "Applies to the construction described in §4.2 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The negative's presence alone does not determine whether it has scope over the polarity item.",
+        "pages": [
+          829,
+          830
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Some customers did not complain.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I would rather not comment.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§4.2",
+        "pages": [
+          829,
+          830
+        ],
+        "pdf_pages": [
+          849,
+          850
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "PPIs outside the scope of negation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-694",
+    "domain": "clauses",
+    "concept": "Overrides for positive polarity items",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Metalinguistic correction, echoed denial, and certain layered negative contexts can admit expressions that resist ordinary negation.",
+    "condition": "Applies to the construction described in §4.2 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "These uses rely on discourse or scope and do not generalize to all negative sentences.",
+        "pages": [
+          830
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It is not pretty large. It is enormous.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Do not think I would not rather stay home.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§4.2",
+        "pages": [
+          830
+        ],
+        "pdf_pages": [
+          850
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Overrides for positive polarity items",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-695",
+    "domain": "clauses",
+    "concept": "Positive polarity items in questions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Many PPIs occur in questions, including biased negative questions that invite a positive answer.",
+    "condition": "Applies to the construction described in §4.2 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some degree expressions are less natural in neutral positive questions, and certain connective uses are restricted to declaratives.",
+        "pages": [
+          830
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Is something wrong?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Aren't they already here?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§4.2",
+        "pages": [
+          830
+        ],
+        "pdf_pages": [
+          850
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Positive polarity items in questions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-696",
+    "domain": "clauses",
+    "concept": "Existential polarity correspondences",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An affirmative existential with some can correspond to verbal negation with any or to non-verbal negation with no.",
+    "condition": "Applies to the construction described in §4.3 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The equivalent with no depends on the construction. Free-choice any and universal quantifiers are separate cases.",
+        "pages": [
+          831,
+          832
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina found some errors.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina did not find any errors.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§4.3",
+        "pages": [
+          831,
+          832
+        ],
+        "pdf_pages": [
+          851,
+          852
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Existential polarity correspondences",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-697",
+    "domain": "clauses",
+    "concept": "Some and any in polar questions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some and any can both occur in positive polar questions, with some often favoring an expected positive answer.",
+    "condition": "Applies to the construction described in §4.3 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Context can weaken or strengthen the bias, and the licensing concerns the existential reading.",
+        "pages": [
+          832
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Did you speak to someone?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Did you speak to anyone?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§4.3",
+        "pages": [
+          832
+        ],
+        "pdf_pages": [
+          852
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Some and any in polar questions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-698",
+    "domain": "clauses",
+    "concept": "Continuation and additive counterparts",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Positive and negative clauses can express parallel continuation or additive meanings with different polarity-sensitive forms.",
+    "condition": "Applies to the construction described in §4.3 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Similarly, reduced additive clauses can use so after a positive antecedent and neither after a negative one.",
+        "pages": [
+          833
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Dev still lives nearby.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Dev does not live nearby any longer.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§4.3",
+        "pages": [
+          833
+        ],
+        "pdf_pages": [
+          853
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Continuation and additive counterparts",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-699",
+    "domain": "clauses",
+    "concept": "Overt negators and interrogatives as licensers",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An NPI can occur in the scope of a negator or in certain interrogatives without overt negation.",
+    "condition": "Applies to the construction described in §4.4 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The availability of an NPI depends on the type and interpretation of the question.",
+        "pages": [
+          834,
+          835
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Nobody saw anything unusual.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Who did anything to help?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§4.4",
+        "pages": [
+          834,
+          835
+        ],
+        "pdf_pages": [
+          854,
+          855
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Overt negators and interrogatives as licensers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-700",
+    "domain": "clauses",
+    "concept": "Polarity in why and why-not infinitivals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A why infinitival can question the point of an action and admit an NPI. The corresponding why not construction often presents an affirmative suggestion.",
+    "condition": "Applies to the construction described in §4.4 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The pragmatic function can matter more for licensing than the overt presence of not.",
+        "pages": [
+          835
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Why tell them anything?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Why not tell them something?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§4.4",
+        "pages": [
+          835
+        ],
+        "pdf_pages": [
+          855
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Polarity in why and why-not infinitivals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-701",
+    "domain": "clauses",
+    "concept": "Covertly negative predicates and their complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Predicates such as fail, prevent, deny and doubt can license NPIs in suitable clausal or clause-like complements.",
+    "condition": "Applies to the construction described in §4.4 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Licensing is sensitive to the lexical meaning and to which constituent falls within its scope.",
+        "pages": [
+          835,
+          836
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We prevented her from telling anyone.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I doubt that he ever agreed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§4.4",
+        "pages": [
+          835,
+          836
+        ],
+        "pdf_pages": [
+          855,
+          856
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Covertly negative predicates and their complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-702",
+    "domain": "clauses",
+    "concept": "Evaluative and emotive licensing",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some evaluative and emotive predicates can admit NPIs in their complements, even where the embedded situation is understood to have occurred.",
+    "condition": "Applies to the construction described in §4.4 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Licensing is lexical and contextual. Positive truth of the embedded proposition can coexist with a non-affirmative evaluation.",
+        "pages": [
+          836
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It amazes me that she took any notice.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It would be foolish to take any unnecessary risks.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§4.4",
+        "pages": [
+          836
+        ],
+        "pdf_pages": [
+          856
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Evaluative and emotive licensing",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-703",
+    "domain": "clauses",
+    "concept": "Downward-entailing quantified subjects",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Certain downward-entailing quantified subjects can license NPIs in the predicate.",
+    "condition": "Applies to the construction described in §4.4 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Changing few to a few changes the relevant entailment and can remove the licensing.",
+        "pages": [
+          837
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Few of the visitors bought anything.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "At most three visitors bought anything.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§4.4",
+        "pages": [
+          837
+        ],
+        "pdf_pages": [
+          857
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Downward-entailing quantified subjects",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-704",
+    "domain": "clauses",
+    "concept": "Excess degree and polarity licensing",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Too can license a negatively oriented expression in a complement describing what the excess degree prevents.",
+    "condition": "Applies to the construction described in §4.4 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The licensing is tied to the complement and its interpretation.",
+        "pages": [
+          837
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She was too tired to budge.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The room was too dim to see anything clearly.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§4.4",
+        "pages": [
+          837
+        ],
+        "pdf_pages": [
+          857
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Excess degree and polarity licensing",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-705",
+    "domain": "clauses",
+    "concept": "Prepositions as polarity licensers",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Prepositions such as without, before and against can license NPIs in appropriate complement structures.",
+    "condition": "Applies to the construction described in §4.4 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A corresponding positive preposition does not automatically supply the same licensing.",
+        "pages": [
+          837
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We left without saying anything.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Finish before anyone arrives.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§4.4",
+        "pages": [
+          837
+        ],
+        "pdf_pages": [
+          857
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Prepositions as polarity licensers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-706",
+    "domain": "clauses",
+    "concept": "Only and polarity licensing",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Only can license an NPI in the proposition restricted by its focus.",
+    "condition": "Applies to the construction described in §4.4 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The restriction can imply a negative counterpart for the excluded alternatives.",
+        "pages": [
+          838
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Only then did we realize we had any chance of winning.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Only Mina had ever visited the archive.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§4.4",
+        "pages": [
+          838
+        ],
+        "pdf_pages": [
+          858
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Only and polarity licensing",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-707",
+    "domain": "clauses",
+    "concept": "Comparatives and superlatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Comparative and superlative constructions can license NPIs in material that describes the comparison set or standard.",
+    "condition": "Applies to the construction described in §4.4 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The relevant environment is the comparison or superlative construction, rather than all parts of the surrounding clause.",
+        "pages": [
+          838
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She ran faster than she had ever run before.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "This is the quietest room I have ever worked in.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§4.4",
+        "pages": [
+          838
+        ],
+        "pdf_pages": [
+          858
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Comparatives and superlatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-708",
+    "domain": "clauses",
+    "concept": "Overt and implicit conditional licensing",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Open and remote conditions can license NPIs. A condition inferred from another construction can also provide a licensing environment.",
+    "condition": "Applies to the construction described in §4.4 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Strongly negative idioms can be more natural in a remote condition with a negative implication.",
+        "pages": [
+          838
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If you need anything, call me.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Wait any longer and we will miss the train.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§4.4",
+        "pages": [
+          838
+        ],
+        "pdf_pages": [
+          858
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Overt and implicit conditional licensing",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-709",
+    "domain": "clauses",
+    "concept": "Increased specificity and negation focus",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A negative utterance can be interpreted more specifically than its truth conditions require when focus identifies the intended point of denial.",
+    "condition": "Applies to the construction described in §5 of Chapter 9.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The focus can make one failure salient without entailing that all other conditions for the corresponding positive proposition hold.",
+        "pages": [
+          838
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "MINA did not order coffee.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina did not order COFFEE.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 9,
+        "section": "§5",
+        "pages": [
+          838
+        ],
+        "pdf_pages": [
+          858
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Increased specificity and negation focus",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]
