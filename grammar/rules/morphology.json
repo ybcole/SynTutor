@@ -17785,5 +17785,1830 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-299",
+    "domain": "morphology",
+    "concept": "Affix-specific nasal alternation",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Certain prefixes alternate from n to m before a bilabial and lose the nasal before l or r, with doubled letters in the latter spellings.",
+    "condition": "Negative un does not participate. Negative in is semantically transparent in the examples, while con is less so.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The manager called the delay impossible to avoid.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The schedule left the team with an unreasonable deadline.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.2",
+        "pages": [
+          1672
+        ],
+        "pdf_pages": [
+          1692
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Affix-specific nasal alternation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [
+      "MORPH-295"
+    ],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-300",
+    "domain": "morphology",
+    "concept": "Suffix-sensitive velar softening",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Some suffixes beginning with the relevant vowel sounds soften a base-final k or g sound without changing the letter used to spell the consonant.",
+    "condition": "The pattern occurs with suffixes such as ity and ise but does not follow merely from a vowel-initial suffix, as ish and adjectival y illustrate.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Electricity returned to the electric heater after midnight.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The old floor was creaky near the door.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.2",
+        "pages": [
+          1672
+        ],
+        "pdf_pages": [
+          1692
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Suffix-sensitive velar softening",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [
+      "MORPH-296"
+    ],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-301",
+    "domain": "morphology",
+    "concept": "Suffix-sensitive alveolar sibilants",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Suffixes such as ion and ible can replace a base-final alveolar stop with a sibilant. Suffixes such as able and ing can leave the stop intact.",
+    "condition": "Voicing is usually retained, though it can vary in derivatives such as divisive.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The signal kept transmitting after the first transmission ended.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The unusually divisive vote divided the group.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.2",
+        "pages": [
+          1672
+        ],
+        "pdf_pages": [
+          1692
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Suffix-sensitive alveolar sibilants",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [
+      "MORPH-297"
+    ],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-302",
+    "domain": "morphology",
+    "concept": "Stop restoration and suffix choice",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "A written g or b next to a nasal can have a spoken realization before particular suffixes even where it is silent in the base.",
+    "condition": "The contrast depends on the suffix. Longer, stronger and younger and their superlatives exceptionally restore g, while dumber and dumbest retain silent b.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The signer's signature was difficult to read.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The commentary contrasted the noun bomber with the verb bombard.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.2",
+        "pages": [
+          1672
+        ],
+        "pdf_pages": [
+          1692
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Stop restoration and suffix choice",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [
+      "MORPH-298"
+    ],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-303",
+    "domain": "morphology",
+    "concept": "Class I and Class II affixes",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Class I affixes typically attach closer to the base, can take bound bases, and can affect stress or trigger alternation. Class II affixes are usually peripheral, stress-neutral, and restricted to free bases.",
+    "condition": "The properties correlate imperfectly. The Latin or Romance versus Germanic association is a tendency.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "His nervousness was evident before the performance.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We admired her carefulness with the fragile equipment.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.3",
+        "pages": [
+          1672,
+          1673
+        ],
+        "pdf_pages": [
+          1692,
+          1693
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Class I and Class II affixes",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-304",
+    "domain": "morphology",
+    "concept": "Mismatches in affix class properties",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Stress-neutral affixes can precede stress-affecting ones, and some peripheral affixes trigger alternations or survive on historically free bases that are now bound.",
+    "condition": "Privatisation and managerial illustrate the ordering mismatch. Thievish and gormless illustrate the other kinds of exception.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The report assessed the cost of privatisation.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The reviewer called the scheme thievish.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.3",
+        "pages": [
+          1673
+        ],
+        "pdf_pages": [
+          1693
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Mismatches in affix class properties",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-305",
+    "domain": "morphology",
+    "concept": "Affix classes in productive prefixes",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Productive prefixes usually resemble Class II affixes. Older opaque formations can share the spelling of a productive prefix without the same analysis.",
+    "condition": "Prefix order and stress matter less often than for suffixes. Negative in is Class I and does not normally precede productive re, whereas un can.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We had to repaint the unpainted trim.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They marked the sealed panel as unrepaintable.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.3",
+        "pages": [
+          1673
+        ],
+        "pdf_pages": [
+          1693
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Affix classes in productive prefixes",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-306",
+    "domain": "morphology",
+    "concept": "Affix replacement and semantic dependency",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "A noun can be more closely related in meaning to an established affixed verb or noun than to their common internal base. This supports analyzing some derivatives as suffix replacement.",
+    "condition": "The pattern can involve either a bound or a free internal base and extends to some neo-classical word families.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The biologist logged observations for the biology project.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A biographer checked the dates against an earlier biography.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.4",
+        "pages": [
+          1673,
+          1674
+        ],
+        "pdf_pages": [
+          1693,
+          1694
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Affix replacement and semantic dependency",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-307",
+    "domain": "morphology",
+    "concept": "Uncertain boundaries in established derivatives",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "A semantic relationship between words can be clear even when more than one division into base and suffix is plausible.",
+    "condition": "The term ending leaves suffix status open where analyses compete, as in hesitation or accuracy.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Her hesitation surprised the group because she rarely hesitated.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The technician checked the accuracy of the scale before taking an accurate reading.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.4",
+        "pages": [
+          1674
+        ],
+        "pdf_pages": [
+          1694
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Uncertain boundaries in established derivatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-308",
+    "domain": "morphology",
+    "concept": "Paradigmatic associations among ism ist and istic",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "An adjective in istic often belongs to a family that also contains nouns in ist and ism.",
+    "condition": "The family pattern is a tendency. The source gives stylistic and cannibalistic as exceptions.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The critic contrasted naturalism with the author's naturalistic style.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The editor suggested a stylistic change in the final paragraph.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.4",
+        "pages": [
+          1674
+        ],
+        "pdf_pages": [
+          1694
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Paradigmatic associations among ism ist and istic",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-309",
+    "domain": "morphology",
+    "concept": "Consonant doubling in lexical derivation",
+    "rule_type": "constraint",
+    "scope": "word",
+    "statement": "A single final consonant letter after a single vowel letter generally doubles before a vowel-initial suffix when the free base has final stress.",
+    "condition": "The intended derivative is propellant or deterrence, with a vowel-initial suffix on a finally stressed base ending in one vowel letter and one consonant letter.",
+    "violation": "The final consonant is written once instead of twice.",
+    "exceptions": [
+      {
+        "description": "Complex vowel letters and unstressed final syllables can block doubling. The broader pattern has lexical, regional and variant exceptions.",
+        "pages": [
+          1675
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The crew stored the propellant separately.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The council studied deterrence before revising its policy.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The crew stored the propelant separately.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The council studied deterence before revising its policy.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.5",
+        "pages": [
+          1675
+        ],
+        "pdf_pages": [
+          1695
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Consonant doubling in lexical derivation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "spelling_inflection",
+      "error_pattern": "The final consonant is written once instead of twice.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The crew stored the propelant separately. ||| The crew stored the propellant separately.",
+        "The council studied deterence before revising its policy. ||| The council studied deterrence before revising its policy."
+      ],
+      "learner_explanation": "Double the final consonant of propel and deter before adding the suffix in these derivatives.",
+      "corrected_paragraph_template": "Double the final consonant of propel and deter before adding the suffix in these derivatives.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The witness signed her utterance.",
+        "A steamer reached the pier.",
+        "Both transferable and transferrable occur.",
+        "A traveler called the office.",
+        "A traveller called the office."
+      ],
+      "lesson_tags": [
+        "lexical-derivation",
+        "spelling"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [
+      "MORPH-310"
+    ],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-310",
+    "domain": "morphology",
+    "concept": "British l doubling and lexical exceptions",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "British English can double final l before a vowel-initial suffix even after an unstressed vowel. Individual derivatives also depart from the usual conditions for doubling.",
+    "condition": "Traveler and traveller reflect variety. Equality and verbalise lack doubling, while woollen and Johnny have it exceptionally. Some gram derivatives double despite unstressed bases, and inferable and transferable have doubled variants.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A weary traveller waited at the station.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The designer used epigrammatic captions for the exhibit.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.5",
+        "pages": [
+          1675
+        ],
+        "pdf_pages": [
+          1695
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "British l doubling and lexical exceptions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-311",
+    "domain": "morphology",
+    "concept": "Mute e deletion before a vowel-initial suffix",
+    "rule_type": "constraint",
+    "scope": "word",
+    "statement": "Base-final mute e is normally omitted before a vowel-initial suffix. Mute e excludes an e that is itself a vowel symbol or belongs to a composite vowel symbol.",
+    "condition": "The intended derivative is driver or believable, with a vowel-initial suffix attached to a base ending in mute e.",
+    "violation": "The base-final mute e is retained before the suffix.",
+    "exceptions": [
+      {
+        "description": "The broader pattern allows retained e in soft-consonant contexts, certain composite vowels and lexical or regional variants.",
+        "pages": [
+          1675,
+          1676
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The driver checked the map.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The actor gave a believable account of the journey.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The driveer checked the map.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The actor gave a believeable account of the journey.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.5",
+        "pages": [
+          1675
+        ],
+        "pdf_pages": [
+          1695
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Mute e deletion before a vowel-initial suffix",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "spelling_inflection",
+      "error_pattern": "The base-final mute e is retained before the suffix.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The driveer checked the map. ||| The driver checked the map.",
+        "The actor gave a believeable account of the journey. ||| The actor gave a believable account of the journey."
+      ],
+      "learner_explanation": "Drop the final mute e of drive and believe before adding the vowel-initial suffix in these words.",
+      "corrected_paragraph_template": "Drop the final mute e of drive and believe before adding the vowel-initial suffix in these words.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The order was enforceable.",
+        "The room had a bluey tint.",
+        "The canoeist waited at the bank.",
+        "The shop marked the item as saleable."
+      ],
+      "lesson_tags": [
+        "lexical-derivation",
+        "spelling"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [
+      "MORPH-312",
+      "MORPH-313",
+      "MORPH-314",
+      "MORPH-315"
+    ],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-312",
+    "domain": "morphology",
+    "concept": "Exceptional e deletion before consonant-initial suffixes",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "A small group of derivatives omits mute e before a consonant-initial suffix, with deletion obligatory in some words and variable in others.",
+    "condition": "Duly, truly, wholly and awful have established deletion. The acknowledgement and judgment families illustrate variable spellings.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The clerk duly recorded the change.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The panel published its judgment on Tuesday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.5",
+        "pages": [
+          1676
+        ],
+        "pdf_pages": [
+          1696
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Exceptional e deletion before consonant-initial suffixes",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-313",
+    "domain": "morphology",
+    "concept": "Mute e retention after soft c and g",
+    "rule_type": "constraint",
+    "scope": "word",
+    "statement": "In established derivatives with final soft c or g, mute e can be required before a suffix beginning with a or o to preserve the usual consonant reading.",
+    "condition": "The intended derivative is enforceable or manageable, where the base ends in soft c or g followed by mute e and the suffix begins with a.",
+    "violation": "The mute e after soft c or g is removed before the suffix.",
+    "exceptions": [
+      {
+        "description": "Ordinary e deletion still applies in other environments. This spelling check is scoped to the listed forms.",
+        "pages": [
+          1675,
+          1676
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The agreement is enforceable in this district.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The reduced workload seemed manageable.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The agreement is enforcable in this district.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The reduced workload seemed managable.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.5",
+        "pages": [
+          1676
+        ],
+        "pdf_pages": [
+          1696
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Mute e retention after soft c and g",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "spelling_inflection",
+      "error_pattern": "The mute e after soft c or g is removed before the suffix.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The agreement is enforcable in this district. ||| The agreement is enforceable in this district.",
+        "The reduced workload seemed managable. ||| The reduced workload seemed manageable."
+      ],
+      "learner_explanation": "Keep the e in enforceable and manageable. It preserves the usual soft reading of c and g before the a of the suffix.",
+      "corrected_paragraph_template": "Keep the e in enforceable and manageable. It preserves the usual soft reading of c and g before the a of the suffix.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The forecast was believable.",
+        "They measured the lodging costs.",
+        "The guide called the rescue courageous."
+      ],
+      "lesson_tags": [
+        "lexical-derivation",
+        "spelling"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [
+      "MORPH-311",
+      "MORPH-314"
+    ],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-314",
+    "domain": "morphology",
+    "concept": "Other mute e retention in derivatives",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Some able derivatives retain e as a spelling variant, especially in British English. Some denominal adjectives in y likewise allow retention.",
+    "condition": "Holey retains e to distinguish it from holy. Acreage, mileage and ageism illustrate additional lexical patterns, with alternatives attested for the latter two.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The clerk marked the damaged jacket as unsaleable.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The puppy played with a holey sock.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.5",
+        "pages": [
+          1676
+        ],
+        "pdf_pages": [
+          1696
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Other mute e retention in derivatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-315",
+    "domain": "morphology",
+    "concept": "Derivational spelling alternations and compounds",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Consonant doubling, mute e deletion and y replacement normally apply in derivatives rather than at compound boundaries.",
+    "condition": "Wherever and rare whosever illustrate exceptional compound e deletion.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Put the spare chair wherever it fits.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The note did not reveal the key's whereabouts.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.5",
+        "pages": [
+          1676
+        ],
+        "pdf_pages": [
+          1696
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Derivational spelling alternations and compounds",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-316",
+    "domain": "morphology",
+    "concept": "Y replacement before suffixes",
+    "rule_type": "constraint",
+    "scope": "word",
+    "statement": "A final y that represents a vowel by itself normally becomes i before a suffix that does not begin with i.",
+    "condition": "The intended derivative is applicant or likelihood, with a simple final y before a suffix beginning with a letter other than i.",
+    "violation": "The base-final y is retained in the derived spelling.",
+    "exceptions": [
+      {
+        "description": "The broader pattern retains y in composite vowels, before i-initial suffixes and in some lexically fixed forms.",
+        "pages": [
+          1676,
+          1677
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The applicant checked the dates.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The judge considered the likelihood of another delay.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The applyant checked the dates.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The judge considered the likelyhood of another delay.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.5",
+        "pages": [
+          1676,
+          1677
+        ],
+        "pdf_pages": [
+          1696,
+          1697
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Y replacement before suffixes",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "spelling_inflection",
+      "error_pattern": "The base-final y is retained in the derived spelling.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The applyant checked the dates. ||| The applicant checked the dates.",
+        "The judge considered the likelyhood of another delay. ||| The judge considered the likelihood of another delay."
+      ],
+      "learner_explanation": "Change the final y to i in applicant and likelihood before adding the suffix.",
+      "corrected_paragraph_template": "Change the final y to i in applicant and likelihood before adding the suffix.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The invoice is payable next week.",
+        "They found a box from her babyhood.",
+        "The chapter discusses Toryism.",
+        "The busyness of the lobby delayed the interview."
+      ],
+      "lesson_tags": [
+        "lexical-derivation",
+        "spelling"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [
+      "MORPH-317"
+    ],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-317",
+    "domain": "morphology",
+    "concept": "Morphological replacement of final y",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Some derivatives replace a base-final y with a suffix that begins with i. The result is structurally different from merely respelling y as i before an appended suffix.",
+    "condition": "The source distinguishes this process in formations such as prettify and scrutinise.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The committee agreed to scrutinise every invoice.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The designer tried to prettify the entrance.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.5",
+        "pages": [
+          1677
+        ],
+        "pdf_pages": [
+          1697
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Morphological replacement of final y",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-318",
+    "domain": "morphology",
+    "concept": "Diminutive functions and ette",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Diminutive morphology can mark size, offspring, affection, informality or resemblance. The suffix ette can mark size, imitation or female sex in established words.",
+    "condition": "Some meanings are specialized or carry an evaluative tone.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The rental unit has a kitchenette by the door.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We chose a leatherette cover for the binder.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.2.1",
+        "pages": [
+          1677
+        ],
+        "pdf_pages": [
+          1697
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Diminutive functions and ette",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-319",
+    "domain": "morphology",
+    "concept": "Productive diminutive ie and y",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "The suffix ie or y often marks affection in pet names or child-directed speech. It also forms some nouns and can embellish a clipping to give it an informal tone.",
+    "condition": "The chapter highlights Scottish, Australian and New Zealand usage. Smallness can accompany affection, and some informal labels are derogatory.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The child asked whether the doggie could come inside.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She packed her nightie before leaving for camp.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.2.1",
+        "pages": [
+          1677
+        ],
+        "pdf_pages": [
+          1697
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Productive diminutive ie and y",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-320",
+    "domain": "morphology",
+    "concept": "Approximation and resemblance with ish",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ish productively expresses approximation on adjectives or numbers and resemblance when attached to nouns.",
+    "condition": "The approximation can concern time or age. Nationality formations in ish belong to another pattern.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We should be back at tennish.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The witness gave him a sheepish grin.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.2.1",
+        "pages": [
+          1677
+        ],
+        "pdf_pages": [
+          1697
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Approximation and resemblance with ish",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-321",
+    "domain": "morphology",
+    "concept": "Diminutive let and ling",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Let can mark small size or offspring. Ling can mark young or small animals and plants, and often conveys contempt for adult people.",
+    "condition": "Both have limited productivity. The let in anklet is probably distinct, and ling can take a verbal or adjectival base.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The duckling slipped beneath the gate.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A small booklet explained how to grow each seedling.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.2.1",
+        "pages": [
+          1677,
+          1678
+        ],
+        "pdf_pages": [
+          1697,
+          1698
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Diminutive let and ling",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-322",
+    "domain": "morphology",
+    "concept": "Micro and mini as size markers",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Micro and mini both mark small size, with micro suggesting a smaller scale in the source's direct contrast. Micro can form compounds with bound bases and is a combining form, while mini is a prefix.",
+    "condition": "Both also combine with ordinary free bases.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The class hired a minibus for the trip.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She checked the specimen through a microscope.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.2.1",
+        "pages": [
+          1678
+        ],
+        "pdf_pages": [
+          1698
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Micro and mini as size markers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-323",
+    "domain": "morphology",
+    "concept": "Other embellished and irregular diminutives",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Embellished clippings can use o, a, er or s. Some diminutives instead use irregular forms associated with baby talk.",
+    "condition": "O is especially common in Australian English. The a variant is chiefly used with proper names, er can occur with s, and the s in some playground words is of doubtful plural status.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The crew planned to finish the job this arvo.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The toddler called the spill teeny-weeny.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.2.1",
+        "pages": [
+          1678
+        ],
+        "pdf_pages": [
+          1698
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Other embellished and irregular diminutives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-324",
+    "domain": "morphology",
+    "concept": "Historical diminutive suffixes",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Several older diminutive suffixes survive in established words. Some are still segmentable, while other words are opaque in present-day English.",
+    "condition": "Een can express imitation in velveteen or sateen, and other historical endings are separable in selected lexemes.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She stitched a patch of velveteen onto the collar.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The exhibition included a tailor's manikin.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.2.1",
+        "pages": [
+          1678
+        ],
+        "pdf_pages": [
+          1698
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Historical diminutive suffixes",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-325",
+    "domain": "morphology",
+    "concept": "Augmentative arch and archi",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "The prefix arch can indicate the highest rank or intensify a usually negative description. The related combining form archi has a different pronunciation.",
+    "condition": "Augmentative markers in this section occur initially. Archangel illustrates the combining form without the written i.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The archbishop addressed the gathering.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The novel's arch-villain disappeared before dawn.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.2.2",
+        "pages": [
+          1678,
+          1679
+        ],
+        "pdf_pages": [
+          1698,
+          1699
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Augmentative arch and archi",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-326",
+    "domain": "morphology",
+    "concept": "Scale and size with macro and maxi",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Macro is a productive combining form for large size or scale. Maxi is a prefix with a clothing use and extensions to other large objects.",
+    "condition": "Maxi contrasts with mini and was especially associated with changing fashions in the source's account.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The class discussed macroeconomics after lunch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She wore a maxidress to the reception.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.2.2",
+        "pages": [
+          1679
+        ],
+        "pdf_pages": [
+          1699
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Scale and size with macro and maxi",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-327",
+    "domain": "morphology",
+    "concept": "Technical and colloquial meanings of mega",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Mega can mean very large, denote a million in technical uses, or intensify a colloquial description.",
+    "condition": "Some speakers also use mega as a standalone predicative adjective of approval.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The receiver operates at a frequency of ten megahertz.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The documentary followed the construction of a megaschool.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.2.2",
+        "pages": [
+          1679
+        ],
+        "pdf_pages": [
+          1699
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Technical and colloquial meanings of mega",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-328",
+    "domain": "morphology",
+    "concept": "Comparative out compounds",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Out productively forms transitive verbs meaning surpass or exceed. The other base is usually nominal or verbal, and the exact comparison can be lexicalized.",
+    "condition": "Outsmart has an adjectival base. Outsize is an adjective in the source's contrast.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The home team outnumbered the visitors.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The younger runner managed to outrun the defending champion.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.2.2",
+        "pages": [
+          1679
+        ],
+        "pdf_pages": [
+          1699
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Comparative out compounds",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-329",
+    "domain": "morphology",
+    "concept": "Augmentative super",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Augmentative super combines productively with adjectives and nouns to convey high degree, large scale or superiority relative to the base.",
+    "condition": "This record concerns the augmentative sense.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The lab installed a superfast connection.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A supercomputer processed the survey data.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.2.2",
+        "pages": [
+          1679
+        ],
+        "pdf_pages": [
+          1699
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Augmentative super",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]

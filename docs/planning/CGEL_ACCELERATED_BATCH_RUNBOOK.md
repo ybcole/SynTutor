@@ -512,3 +512,7 @@ Printed pp. 1656–1663 add 8 substantive pages and 28 inactive records (`MORPH-
 ## Chapter 19 sixth checkpoint
 
 Printed pp. 1664–1671 add 8 substantive pages and 32 inactive records (`MORPH-267`–`MORPH-298`). Chapter 19 has 50 unprocessed pages. Continue at p. 1672 with the continuation of morphophonological alternation.
+
+## Chapter 19 seventh checkpoint
+
+Printed pp. 1672–1679 add 8 substantive pages and 31 inactive records (`MORPH-299`–`MORPH-329`), including four inactive spelling specifications. Chapter 19 has 42 unprocessed pages. Continue at p. 1680 with the continuation of augmentative morphology.
