@@ -536,3 +536,25 @@ Printed pp. 1704–1711 add 8 substantive pages and 34 inactive records (`MORPH-
 ## Chapter 19 completion checkpoint
 
 Printed pp. 1712–1721 add 10 substantive pages and 32 inactive records (`MORPH-458`–`MORPH-489`), including five inactive numeral specifications. Chapter 19 is source-extraction complete with 99 substantive pages, two contents-only pages, and one verified textless page. Chapter 20 begins at printed p. 1723.
+
+## Chapter 20 first checkpoint
+
+Printed pp. 1723–1730 account for one contents page and 7 substantive pages and add 15 inactive records (`OTH-668`–`OTH-682`). Chapter 20 has 34 unprocessed pages. Continue at p. 1731 with primary terminals.
+
+## Chapter 20 second checkpoint
+
+Printed pp. 1731–1738 add eight substantive pages and 18 inactive records (`OTH-683`–`OTH-700`), including three inactive punctuation specifications. Chapter 20 has 26 unprocessed pages. Continue at p. 1739 with uses of the secondary boundary marks.
+
+## Chapter 20 third checkpoint
+
+Printed pp. 1739–1746 add eight substantive pages and add 20 inactive records (`OTH-701`–`OTH-720`), including five inactive punctuation specifications. Chapter 20 has 18 unprocessed pages. Continue at p. 1747 with further delimiting comma patterns.
+
+## Chapter 20 fourth checkpoint
+
+Printed pp. 1747–1754 add eight substantive pages and add 21 inactive records (`OTH-721`–`OTH-741`), including four inactive punctuation specifications. Chapter 20 has 10 unprocessed pages. Continue at p. 1755 with punctuation around quotations.
+
+## Chapter 20 completion checkpoint
+
+Printed pp. 1755–1764 add ten substantive pages and 25 inactive records (`OTH-742`–`OTH-766`), including four inactive punctuation specifications. Chapter 20 source extraction is complete with 41 substantive pages, one contents page, and no unprocessed pages.
+
+All 20 chapters have zero unprocessed pages on the stacked Phase B branch. The next step is cross-domain QA and overlap resolution before broad Phase C detector integration. Full integration CI remains pending for stacked drafts whose base branches are outside the pull-request workflow filters.
