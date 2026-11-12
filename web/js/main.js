@@ -1,4 +1,7 @@
 import { accountUserId } from './session-scope.js';
+import { matchesHistoryFilter } from './history-status.mjs';
+import { createHistoryCard } from './history-card.mjs';
+import { loadHistoryRows, insertHistoryRow } from './history-store.mjs';
 import { fromCanonicalEnvelope } from './syntax-builder.js';
 import { requestEvidence, renderEvidence } from './explanation-evidence.js';
 import { findCanonicalNode, canonicalNodeFacts } from './canonical-view.js';
@@ -2060,20 +2063,35 @@ async function executePipeline(opts, request) {
     if (shouldPersistHistory({ isNavigation, text, recorded: recordedTexts })
         && historyClient && historyOwner && historyClient === supabase) {
     try {
-      const { error: insertError } = await historyClient.from('analysis_history').insert({
-        user_id: historyOwner,
-        sentence: text,
-        is_valid: payload.summary.verdict === 'grammatical',
-        constraints_fired: payload.summary.constraints_fired,
-      });
+      const result = await insertHistoryRow(
+        historyClient,
+        historyOwner,
+        text,
+        payload.summary
+      );
 
       if (historyClient !== supabase) return;
-      if (insertError) {
-        console.warn('Failed to log history to Supabase:', insertError.message);
-        log(`Warning: Failed to save analysis history \u2014 ${insertError.message}`);
+
+      if (!result.saved) {
+        if (result.reason === 'migration_required') {
+          console.warn(
+            'Analysis history not saved: status migration required.'
+          );
+          log(
+            'Warning: Analysis history not saved — database migration required.'
+          );
+        } else {
+          console.warn(
+            'Analysis history not saved:',
+            result.reason
+          );
+          log('Warning: Analysis history was not saved.');
+        }
       } else {
         recordedTexts.add(text);
-        log('Stage 6b: analysis history recorded in Supabase');
+        log(
+          `Stage 6b: analysis history recorded with status ${result.status}`
+        );
       }
     } catch (dbErr) {
       console.warn('Network error logging history:', dbErr);
@@ -2281,13 +2299,9 @@ async function loadAndRenderHistory() {
   const client = supabase;
   if (!isGuest && client) {
     try {
-      const { data, error } = await client.from('analysis_history')
-        .select('id, sentence, is_valid, constraints_fired, created_at')
-        .order('created_at', { ascending: false })
-        .limit(50);
+      const { rows } = await loadHistoryRows(client);
       if (client !== supabase) return;
-      if (error) throw error;
-      cachedHistory = data || [];
+      cachedHistory = rows;
     } catch {
       if (client !== supabase) return;
       container.textContent = 'History is unavailable. Reopen the drawer to retry.';
@@ -2304,11 +2318,9 @@ function renderHistoryItems() {
   const container = document.querySelector('#historyList');
   if (!container) return;
 
-  const filtered = cachedHistory.filter((entry) => {
-    if (activeHistoryFilter === 'error') return !entry.is_valid;
-    if (activeHistoryFilter === 'valid') return entry.is_valid;
-    return true;
-  });
+  const filtered = cachedHistory.filter((entry) =>
+    matchesHistoryFilter(entry, activeHistoryFilter)
+  );
 
   if (!filtered.length) {
     container.textContent = '';
@@ -2323,66 +2335,36 @@ function renderHistoryItems() {
 
   container.innerHTML = '';
   filtered.forEach((entry) => {
-    const isError = !entry.is_valid;
+    const card = createHistoryCard(entry, {
+      onOpen: () => {
+        closeHistoryDrawer();
+        replayHistoryEntry(entry.sentence);
+      },
 
-    const card = document.createElement('div');
-    card.className = `history-item ${isError ? 'is-invalid' : 'is-valid'}`;
-    card.setAttribute('role', 'button');
-    card.setAttribute('tabindex', '0');
-    card.title = entry.sentence;
-    card.setAttribute('aria-label', `${entry.sentence} — ${entry.is_valid ? 'Valid' : 'Invalid'}`);
+      onDelete: async (_row, delBtn) => {
+        if (isGuest || !supabase || !clerk?.user?.id) return;
 
-    const titleP = document.createElement('p');
-    // `hist-sentence` carries the single-line ellipsis truncation: a long
-    // sentence never widens the card or the drawer.
-    titleP.className = 'hist-title hist-sentence';
-    titleP.textContent = entry.sentence;
+        delBtn.disabled = true;
 
-    const delBtn = document.createElement('button');
-    delBtn.type = 'button';
-    delBtn.title = 'Delete entry';
-    delBtn.className = 'hist-delete-btn';
-    delBtn.innerHTML = `
-      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="3 6 5 6 21 6"></polyline>
-        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-      </svg>
-    `;
+        const client = supabase;
+        const { error } = await client
+          .from('analysis_history')
+          .delete()
+          .eq('id', entry.id);
 
-    card.appendChild(titleP);
-    card.appendChild(delBtn);
+        if (client !== supabase) return;
 
-    const openEntry = () => {
-      closeHistoryDrawer();
-      replayHistoryEntry(entry.sentence);
-    };
+        if (error) {
+          alert('Failed to delete item: ' + error.message);
+          delBtn.disabled = false;
+          return;
+        }
 
-    card.addEventListener('click', openEntry);
-    card.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        openEntry();
-      }
-    });
-
-    delBtn.addEventListener('click', async (e) => {
-      e.stopPropagation();
-      if (isGuest || !supabase || !clerk?.user?.id) return;
-      delBtn.disabled = true;
-
-      const client = supabase;
-      const { error } = await client.from('analysis_history').delete()
-        .eq('id', entry.id);
-      if (client !== supabase) return;
-
-      if (error) {
-        alert('Failed to delete item: ' + error.message);
-        delBtn.disabled = false;
-        return;
-      }
-
-      cachedHistory = cachedHistory.filter((item) => item.id !== entry.id);
-      renderHistoryItems();
+        cachedHistory = cachedHistory.filter(
+          (item) => item.id !== entry.id
+        );
+        renderHistoryItems();
+      },
     });
 
     container.appendChild(card);

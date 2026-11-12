@@ -1033,6 +1033,7 @@ body:has(#newSessionBtn.active) #inputClearBtn:not([hidden]) { display: flex; }
    text: both must be allowed to shrink, and the sentence truncates to a
    single line with an ellipsis. */
 .hist-head {
+  flex: 1 1 auto;
   min-width: 0;
   max-width: 100%;
   box-sizing: border-box;
@@ -3206,5 +3207,15 @@ body.workspace-view-open .app-main { display: none; }
   font-weight: 400;
   margin: 0;
   color: inherit;
+  overflow-wrap: anywhere;
+}
+
+
+/* LREF: distinguish diagnostic status from legacy validity. */
+.history-item .hist-status {
+  margin: 0.25rem 0 0;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  opacity: 0.8;
   overflow-wrap: anywhere;
 }

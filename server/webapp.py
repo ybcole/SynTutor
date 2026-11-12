@@ -13,7 +13,6 @@ Endpoints:
 """
 
 import os
-
 from flask import Flask, Response, jsonify, request, send_from_directory
 
 from api import ParseFailure, build_payload, health_payload, word_info
@@ -38,6 +37,7 @@ PUBLIC_TOP = {'index.html', 'login.html', 'css', 'js', 'content'}
 MIME = {
     '.html': 'text/html',
     '.js': 'text/javascript',
+    '.mjs': 'text/javascript',
     '.css': 'text/css',
     '.json': 'application/json',
     '.svg': 'image/svg+xml',
