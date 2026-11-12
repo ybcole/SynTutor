@@ -61974,5 +61974,1398 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-973",
+    "domain": "clauses",
+    "concept": "Correlative both and either",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Both and either can mark the first coordinate of correlative constructions with and and or respectively.",
+    "condition": "Applies to the construction described in §2.3 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The markers can occur in multiple coordinations, although binary examples are more usual.",
+        "pages": [
+          1305,
+          1306
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She was both patient and thorough.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Use either the front door or the side entrance.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.3",
+        "pages": [
+          1305,
+          1306
+        ],
+        "pdf_pages": [
+          1325,
+          1326
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Correlative both and either",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-974",
+    "domain": "clauses",
+    "concept": "Distribution and interpretation of both",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Correlative both favors distributive coordination and is restricted in some structural positions.",
+    "condition": "Applies to the construction described in §2.3 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A joint predicate such as make a couple does not ordinarily combine with correlative both.",
+        "pages": [
+          1306
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Both Mina and Dev own a bicycle.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The proposal is both practical and affordable.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.3",
+        "pages": [
+          1306
+        ],
+        "pdf_pages": [
+          1326
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Distribution and interpretation of both",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-975",
+    "domain": "clauses",
+    "concept": "Either and the inference of exclusivity",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Either can reinforce the presentation of alternatives without invariably making them mutually exclusive.",
+    "condition": "Applies to the construction described in §2.3 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Context can cancel the inference that exactly one alternative holds.",
+        "pages": [
+          1307
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We can meet either Monday or Tuesday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Either you or Mina can send the file, or both of you can.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.3",
+        "pages": [
+          1307
+        ],
+        "pdf_pages": [
+          1327
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Either and the inference of exclusivity",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-976",
+    "domain": "clauses",
+    "concept": "Placement of correlative markers",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Both and either can stand at a distance from the first core coordinate. Their position does not always mark the exact boundary of the coordination.",
+    "condition": "Applies to the construction described in §2.3 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some placements can produce ambiguity or be disfavored for balance.",
+        "pages": [
+          1307,
+          1308
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We spoke both to Mina and Dev.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She either called on Monday or on Tuesday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.3",
+        "pages": [
+          1307,
+          1308
+        ],
+        "pdf_pages": [
+          1327,
+          1328
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Placement of correlative markers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-977",
+    "domain": "clauses",
+    "concept": "Determinative, adverbial and correlative neither",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Neither can determine a noun, appear in an additive negative continuation, or mark the first coordinate of a correlative construction.",
+    "condition": "Applies to the construction described in §2.4 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The determiner use and the correlative use have different structural relations.",
+        "pages": [
+          1308,
+          1309
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Neither answer was satisfactory.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Neither Mina nor Dev called.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.4",
+        "pages": [
+          1308,
+          1309
+        ],
+        "pdf_pages": [
+          1328,
+          1329
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Determinative, adverbial and correlative neither",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-978",
+    "domain": "clauses",
+    "concept": "Position of neither and coordinator nor",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Correlative neither can be displaced from the boundary of its first core coordinate. Nor can introduce a later coordinate.",
+    "condition": "Applies to the construction described in §2.4 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The markers most often appear in binary patterns but can occur in larger series.",
+        "pages": [
+          1309
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This helps neither the staff nor the customers.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It serves the interests neither of producers nor consumers.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.4",
+        "pages": [
+          1309
+        ],
+        "pdf_pages": [
+          1329
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Position of neither and coordinator nor",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-979",
+    "domain": "clauses",
+    "concept": "Nor with inversion",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Nor can introduce a negative additive clause with subject–auxiliary inversion.",
+    "condition": "Applies to the construction described in §2.4 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This differs from nor joining subclausal coordinates.",
+        "pages": [
+          1309,
+          1310
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina has not replied, nor has Dev.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The first door would not open, nor would the second.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.4",
+        "pages": [
+          1309,
+          1310
+        ],
+        "pdf_pages": [
+          1329,
+          1330
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nor with inversion",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-980",
+    "domain": "clauses",
+    "concept": "Negative concord in neither nor",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Neither and nor can jointly mark a single negation taking scope over disjunctive alternatives.",
+    "condition": "Applies to the construction described in §2.4 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This is a Standard English correlative pattern rather than two independently interpreted negatives.",
+        "pages": [
+          1310
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The result was neither surprising nor alarming.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Neither the light nor the alarm came on.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.4",
+        "pages": [
+          1310
+        ],
+        "pdf_pages": [
+          1330
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negative concord in neither nor",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-981",
+    "domain": "clauses",
+    "concept": "Adversative but and binary structure",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "But normally combines two coordinates and signals a contrast or a thwarted expectation.",
+    "condition": "Applies to the construction described in §2.5 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The contrast can involve alternatives, expectations or polarity. Repeated but can introduce another layer rather than a flat list.",
+        "pages": [
+          1310,
+          1311,
+          1312
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She called but nobody answered.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The room was small but comfortable.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.5",
+        "pages": [
+          1310,
+          1311,
+          1312
+        ],
+        "pdf_pages": [
+          1330,
+          1331,
+          1332
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adversative but and binary structure",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-982",
+    "domain": "clauses",
+    "concept": "Emphatic reaffirmation with but",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A repeated expression introduced by but can emphatically reinforce an earlier expression.",
+    "condition": "Applies to the construction described in §2.5 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The repetition has a specialized emphatic use rather than ordinary contrast.",
+        "pages": [
+          1312
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Nothing, but nothing, will change my mind.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Nobody, but nobody, could persuade him.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.5",
+        "pages": [
+          1312
+        ],
+        "pdf_pages": [
+          1332
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Emphatic reaffirmation with but",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-983",
+    "domain": "clauses",
+    "concept": "Exceptive but",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "But can express an exception to a quantified or similarly suitable expression.",
+    "condition": "Applies to the construction described in §2.5 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Exceptive but has distributional properties that distinguish it from ordinary adversative coordination.",
+        "pages": [
+          1312
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Everyone but Mina was told.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Nothing but the receipt was missing.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.5",
+        "pages": [
+          1312
+        ],
+        "pdf_pages": [
+          1332
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Exceptive but",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-984",
+    "domain": "clauses",
+    "concept": "Contrastive not with and without but",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Not can mark a rejected alternative after an accepted expression or introduce a rejected first coordinate before but.",
+    "condition": "Applies to the construction described in §2.6 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The negative can be restricted to the rejected constituent.",
+        "pages": [
+          1313
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They invited Mina, not Dev.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was evidence not of guilt but of innocence.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.6",
+        "pages": [
+          1313
+        ],
+        "pdf_pages": [
+          1333
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Contrastive not with and without but",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-985",
+    "domain": "clauses",
+    "concept": "Not only as an additive correlative",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Not only presents a first case as insufficient to convey the full extent of a claim. A second coordinate adds another case.",
+    "condition": "Applies to the construction described in §2.7 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The first proposition is normally affirmed despite the presence of not.",
+        "pages": [
+          1314
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They cover not only local news but national news as well.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She not only wrote the report but edited the appendices.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.7",
+        "pages": [
+          1314
+        ],
+        "pdf_pages": [
+          1334
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Not only as an additive correlative",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-986",
+    "domain": "clauses",
+    "concept": "Not only placement and inversion",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Not only can occur away from the core coordinate boundary. Fronted not only with a finite clause can trigger inversion.",
+    "condition": "Applies to the construction described in §2.7 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An overt but is not obligatory in the juxtaposed clause pattern.",
+        "pages": [
+          1314,
+          1315
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Not only did she write the report, she also edited the appendices.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He not only repaired the latch but fixed the frame as well.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.7",
+        "pages": [
+          1314,
+          1315
+        ],
+        "pdf_pages": [
+          1334,
+          1335
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Not only placement and inversion",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-987",
+    "domain": "clauses",
+    "concept": "Comparative linking and as well as",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "As well as can link expressions with additive force, but its syntactic analysis depends on the construction.",
+    "condition": "Applies to the construction described in §2.8 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A supplementary phrase with as well as need not control plural agreement with the subject.",
+        "pages": [
+          1315,
+          1316
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She trains new staff as well as handles complaints.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina, as well as Dev, is attending.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.8",
+        "pages": [
+          1315,
+          1316
+        ],
+        "pdf_pages": [
+          1335,
+          1336
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Comparative linking and as well as",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-988",
+    "domain": "clauses",
+    "concept": "Rather than and corrective comparison",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Rather than can link alternatives that differ in preference or characterization. A related construction uses not so much with a corrective second expression.",
+    "condition": "Applies to the construction described in §2.8 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The linking expression does not behave like an ordinary coordinator in every configuration.",
+        "pages": [
+          1317
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She chose to wait rather than leave.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The delay came not so much from the weather but from staffing problems.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.8",
+        "pages": [
+          1317
+        ],
+        "pdf_pages": [
+          1337
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Rather than and corrective comparison",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-989",
+    "domain": "clauses",
+    "concept": "Scalar additions with much less and still less",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Much less and still less add an alternative lower in likelihood or farther from the relevant threshold.",
+    "condition": "Applies to the construction described in §2.8 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The construction depends on an appropriate scale and typically a negative or otherwise limiting context.",
+        "pages": [
+          1318
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He could not afford the fare, much less a hotel.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She had no time to read the summary, still less the full report.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.8",
+        "pages": [
+          1318
+        ],
+        "pdf_pages": [
+          1338
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Scalar additions with much less and still less",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-990",
+    "domain": "clauses",
+    "concept": "Additive and exceptive expressions outside basic coordination",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Expressions such as in addition to, along with and instead of can contribute meanings related to coordination while retaining phrase structure of their own.",
+    "condition": "Applies to the construction described in §2.9 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The expression need not combine with the anchor to form a plural coordinate subject.",
+        "pages": [
+          1318
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina, along with two assistants, attended.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We used a clamp instead of a nail.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.9",
+        "pages": [
+          1318
+        ],
+        "pdf_pages": [
+          1338
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Additive and exceptive expressions outside basic coordination",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-991",
+    "domain": "clauses",
+    "concept": "Plus as an additive linker",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Plus can introduce additional material and shares some properties with coordinators.",
+    "condition": "Applies to the construction described in §2.9 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Its distribution varies by construction and need not match and in every respect.",
+        "pages": [
+          1318,
+          1319
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The fee covers transport, plus lunch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She brought a coat, plus two spare blankets.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.9",
+        "pages": [
+          1318,
+          1319
+        ],
+        "pdf_pages": [
+          1338,
+          1339
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Plus as an additive linker",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-992",
+    "domain": "clauses",
+    "concept": "Let alone and not to say",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Let alone and not to say add a second expression with a scalar or strengthening relationship to the first.",
+    "condition": "Applies to the construction described in §2.9 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The two expressions differ in the kind of scale and context they favor.",
+        "pages": [
+          1319
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Few people have read the report, let alone checked its figures.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The schedule was ambitious, not to say impossible.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.9",
+        "pages": [
+          1319
+        ],
+        "pdf_pages": [
+          1339
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Let alone and not to say",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-993",
+    "domain": "clauses",
+    "concept": "Connective adverbs versus coordinators",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Connective adverbs can link propositions and can also co-occur with a coordinator or modify certain nonfinite expressions.",
+    "condition": "Applies to the construction described in §2.10 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The ability to connect clauses does not by itself establish coordinator status.",
+        "pages": [
+          1319,
+          1320
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She checked the figures and then sent the report.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The lease could be renewed, thus avoiding a move.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.10",
+        "pages": [
+          1319,
+          1320
+        ],
+        "pdf_pages": [
+          1339,
+          1340
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Connective adverbs versus coordinators",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-994",
+    "domain": "clauses",
+    "concept": "Coordinator-like uses of so and yet",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "So and yet can connect finite clauses or predicates in some configurations resembling coordination.",
+    "condition": "Applies to the construction described in §2.10 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Other uses of the same forms retain distinct adverbial properties.",
+        "pages": [
+          1320,
+          1321
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She wanted to avoid traffic, so took the early train.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The room was small, yet it felt spacious.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.10",
+        "pages": [
+          1320,
+          1321
+        ],
+        "pdf_pages": [
+          1340,
+          1341
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Coordinator-like uses of so and yet",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-995",
+    "domain": "clauses",
+    "concept": "For, only and resultative so that",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "For, preventative only, and resultative so that link a following clause to the preceding material but lack several properties of prototypical coordinators.",
+    "condition": "Applies to the construction described in §2.11 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "These linking patterns are restricted in fronting and in the number and type of linked constituents.",
+        "pages": [
+          1321,
+          1322
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He went home, for he was exhausted.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I would have gone, only I was too busy.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.11",
+        "pages": [
+          1321,
+          1322
+        ],
+        "pdf_pages": [
+          1341,
+          1342
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "For, only and resultative so that",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]
