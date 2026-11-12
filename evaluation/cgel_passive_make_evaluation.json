@@ -1,0 +1,175 @@
+{
+  "rule_id": "CLS-357",
+  "variety": "standard_english",
+  "provenance": "Original examples frozen before running the existing candidate. This is a single-construction evaluation set.",
+  "cases": [
+    {
+      "id": "be-past",
+      "group": "be_passive",
+      "sentence": "The recruits were made repeat the drill.",
+      "expected_sentence": "The recruits were made to repeat the drill."
+    },
+    {
+      "id": "be-present",
+      "group": "be_passive",
+      "sentence": "The intern is made sign each receipt.",
+      "expected_sentence": "The intern is made to sign each receipt."
+    },
+    {
+      "id": "be-perfect",
+      "group": "be_passive",
+      "sentence": "The dancers have been made rehearse alone.",
+      "expected_sentence": "The dancers have been made to rehearse alone."
+    },
+    {
+      "id": "be-modal",
+      "group": "be_passive",
+      "sentence": "The visitors will be made show identification.",
+      "expected_sentence": "The visitors will be made to show identification."
+    },
+    {
+      "id": "embedded",
+      "group": "be_passive",
+      "sentence": "I heard that the players were made clean the locker room.",
+      "expected_sentence": "I heard that the players were made to clean the locker room."
+    },
+    {
+      "id": "bare-be",
+      "group": "be_passive",
+      "sentence": "The trainees may be made recite the pledge.",
+      "expected_sentence": "The trainees may be made to recite the pledge."
+    },
+    {
+      "id": "negative",
+      "group": "be_passive",
+      "sentence": "The witness was not made identify the suspect.",
+      "expected_sentence": "The witness was not made to identify the suspect."
+    },
+    {
+      "id": "with-by-agent",
+      "group": "be_passive",
+      "sentence": "The crew was made unload the van by the supervisor.",
+      "expected_sentence": "The crew was made to unload the van by the supervisor."
+    },
+    {
+      "id": "get-passive",
+      "group": "stress",
+      "sentence": "The children got made redo their homework.",
+      "expected_sentence": "The children got made to redo their homework."
+    },
+    {
+      "id": "inverted",
+      "group": "stress",
+      "sentence": "Were the candidates made rewrite their answers?",
+      "expected_sentence": "Were the candidates made to rewrite their answers?"
+    },
+    {
+      "id": "intervening-adverb",
+      "group": "stress",
+      "sentence": "The workers were made immediately repeat the inspection.",
+      "expected_sentence": "The workers were made immediately to repeat the inspection."
+    },
+    {
+      "id": "coordinated",
+      "group": "stress",
+      "sentence": "The cadets were made march and sing.",
+      "expected_sentence": "The cadets were made to march and sing."
+    },
+    {
+      "id": "active-plain",
+      "group": "valid_control",
+      "sentence": "The coach made the recruits repeat the drill.",
+      "expected_sentence": null
+    },
+    {
+      "id": "active-perfect",
+      "group": "valid_control",
+      "sentence": "The manager has made the staff check the locks.",
+      "expected_sentence": null
+    },
+    {
+      "id": "passive-marked",
+      "group": "valid_control",
+      "sentence": "The intern is made to sign each receipt.",
+      "expected_sentence": null
+    },
+    {
+      "id": "passive-modal-marked",
+      "group": "valid_control",
+      "sentence": "The visitors will be made to show identification.",
+      "expected_sentence": null
+    },
+    {
+      "id": "passive-get-marked",
+      "group": "valid_control",
+      "sentence": "The children got made to redo their homework.",
+      "expected_sentence": null
+    },
+    {
+      "id": "passive-inverted-marked",
+      "group": "valid_control",
+      "sentence": "Were the candidates made to rewrite their answers?",
+      "expected_sentence": null
+    },
+    {
+      "id": "other-passive",
+      "group": "valid_control",
+      "sentence": "The guests were allowed to enter.",
+      "expected_sentence": null
+    },
+    {
+      "id": "let-active",
+      "group": "valid_control",
+      "sentence": "The guard let the visitors enter.",
+      "expected_sentence": null
+    },
+    {
+      "id": "lexical-purpose",
+      "group": "valid_control",
+      "sentence": "The ramp was made to improve access.",
+      "expected_sentence": null
+    },
+    {
+      "id": "lexical-with-pp",
+      "group": "valid_control",
+      "sentence": "The table was made from oak.",
+      "expected_sentence": null
+    },
+    {
+      "id": "lexical-with-adverb",
+      "group": "valid_control",
+      "sentence": "The costumes were made overnight.",
+      "expected_sentence": null
+    },
+    {
+      "id": "lexical-relative",
+      "group": "valid_control",
+      "sentence": "The model we made fits inside the cabinet.",
+      "expected_sentence": null
+    },
+    {
+      "id": "adjective",
+      "group": "valid_control",
+      "sentence": "The surface was made smooth with a hand plane.",
+      "expected_sentence": null
+    },
+    {
+      "id": "participial-adjective",
+      "group": "valid_control",
+      "sentence": "The towels were made damp by the spray.",
+      "expected_sentence": null
+    },
+    {
+      "id": "metalinguistic",
+      "group": "valid_control",
+      "sentence": "The fragment “we were made wait” appeared in a worksheet.",
+      "expected_sentence": null
+    },
+    {
+      "id": "quoted-valid",
+      "group": "valid_control",
+      "sentence": "The teacher wrote “the class was made to wait” on the board.",
+      "expected_sentence": null
+    }
+  ]
+}

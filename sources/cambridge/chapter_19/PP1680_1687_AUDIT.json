@@ -1,0 +1,132 @@
+{
+  "manifest_version": 1,
+  "chapter": 19,
+  "printed_start": 1680,
+  "printed_end": 1687,
+  "report": "sources/cambridge/chapter_19/PP1680_1687_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1680,
+    "pdf_page": 1700
+  },
+  "added_rule_ids": [
+    "MORPH-330",
+    "MORPH-331",
+    "MORPH-332",
+    "MORPH-333",
+    "MORPH-334",
+    "MORPH-335",
+    "MORPH-336",
+    "MORPH-337",
+    "MORPH-338",
+    "MORPH-339",
+    "MORPH-340",
+    "MORPH-341",
+    "MORPH-342",
+    "MORPH-343",
+    "MORPH-344",
+    "MORPH-345",
+    "MORPH-346",
+    "MORPH-347",
+    "MORPH-348",
+    "MORPH-349",
+    "MORPH-350",
+    "MORPH-351",
+    "MORPH-352",
+    "MORPH-353",
+    "MORPH-354",
+    "MORPH-355",
+    "MORPH-356",
+    "MORPH-357"
+  ],
+  "page_checks": [
+    {
+      "page": 1680,
+      "status": "extracted",
+      "section": "§§5.2.2–5.3",
+      "summary": "Hyper and ultra, gender-marking asymmetry, the ess classification, and footnote 39.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1681,
+      "status": "extracted",
+      "section": "§5.3",
+      "summary": "Occupational and contextual variation, specialization, er alternation, and minor feminine markers.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1682,
+      "status": "extracted",
+      "section": "§5.3",
+      "summary": "He and she bases, three man patterns, occupational alternatives, and the compound evidence in footnote 40.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1683,
+      "status": "extracted",
+      "section": "§§5.3–5.4",
+      "summary": "Neutral alternatives, initial gender-marked components, sportsman senses in footnote 41, and ante and fore.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1684,
+      "status": "extracted",
+      "section": "§5.4",
+      "summary": "Pre, after and post, circum and peri, and the start of the above and over group.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1685,
+      "status": "extracted",
+      "section": "§5.4",
+      "summary": "Super, supra and sur, contrasts among below forms, and the opening internal forms.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1686,
+      "status": "extracted",
+      "section": "§5.4",
+      "summary": "Intra and mid, external forms, inter versus intra, and the beginning of meta.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1687,
+      "status": "extracted",
+      "section": "§§5.4–5.5.1",
+      "summary": "Meta and trans, rare cis, negative prefix inventory, the negative in table, and footnotes 42–43.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

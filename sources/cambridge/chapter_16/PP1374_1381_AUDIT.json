@@ -1,0 +1,125 @@
+{
+  "manifest_version": 1,
+  "chapter": 16,
+  "printed_start": 1374,
+  "printed_end": 1381,
+  "report": "sources/cambridge/chapter_16/PP1374_1381_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1374,
+    "pdf_page": 1394
+  },
+  "added_rule_ids": [
+    "CLS-1300",
+    "CLS-1301",
+    "CLS-1302",
+    "CLS-1303",
+    "CLS-1304",
+    "CLS-1305",
+    "CLS-1306",
+    "CLS-1307",
+    "CLS-1308",
+    "CLS-1309",
+    "CLS-1310",
+    "CLS-1311",
+    "CLS-1312",
+    "CLS-1313",
+    "CLS-1314",
+    "CLS-1315",
+    "CLS-1316",
+    "CLS-1317",
+    "CLS-1318",
+    "CLS-1319",
+    "CLS-1320"
+  ],
+  "page_checks": [
+    {
+      "page": 1374,
+      "status": "extracted",
+      "section": "§§3–3.1",
+      "summary": "Nuclear stress, focus versus non-focus, dual familiarity, complement categories, and the terminology qualification in footnote 5.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1375,
+      "status": "extracted",
+      "section": "§3.1",
+      "summary": "Explicit property contrast, paired evaluations, and variations involving NP complements, queries and denials.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1376,
+      "status": "extracted",
+      "section": "§§3.1–3.2",
+      "summary": "Static and dynamic locative readings, the open-proposition condition, and onset of polarity-focused assessment.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1377,
+      "status": "extracted",
+      "section": "§3.2",
+      "summary": "Auxiliary and supportive do, formal antecedent matching, logical dependence, and complement-category qualification in footnote 6.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1378,
+      "status": "extracted",
+      "section": "§3.2",
+      "summary": "Concessive and scalar affirmation, independent versus dependent uses, and reported-speech treatment in footnote 7.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1379,
+      "status": "extracted",
+      "section": "§3.2",
+      "summary": "Simple affirmation, acceptance with it plus be, anaphoric that, and the start of proposition suspension.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1380,
+      "status": "extracted",
+      "section": "§3.2",
+      "summary": "Non-tautological suspension, ironic copular denial, discourse relevance and epitomisation.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1381,
+      "status": "extracted",
+      "section": "§§3.2–3.3",
+      "summary": "Scale of epitomisation, lexical-verb exceptions, perfect-have inflection and the initial focus-preposing examples.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

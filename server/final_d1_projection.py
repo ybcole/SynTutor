@@ -27,6 +27,7 @@ NOUN_TAGS = {"NN", "NNS", "NNP", "NNPS"}
 ADJ_TAGS = {"JJ", "JJR", "JJS"}
 ADV_TAGS = {"RB", "RBR", "RBS"}
 VERB_TAGS = {"VB", "VBP", "VBZ", "VBD", "VBG", "VBN", "MD"}
+CENTRAL_MODALS = {"can", "could", "may", "might", "must", "shall", "should", "will", "would"}
 DETERMINERS = {
     **dict.fromkeys(("a", "an", "the"), "ART"),
     **dict.fromkeys(("this", "that", "these", "those"), "DEM"),
@@ -525,6 +526,45 @@ class Projection:
             return branch("PP", ("Ch3 pp. 56–59",), branch("P", ("Ch3 pp. 56–59",), word_node(kids(node)[0])))
         return self.phrase(node)
 
+    @staticmethod
+    def modal_marked_vp(head, target):
+        """Retain an observed extra infinitival marker in a central-modal VP."""
+        if tag(head) != "MD" or word(head) not in CENTRAL_MODALS or tag(target) != "S":
+            return target
+        clause = kids(target)
+        if len(clause) != 1 or tag(clause[0]) != "VP":
+            return target
+        parts = kids(clause[0])
+        if len(parts) != 2 or tag(parts[0]) != "TO" or word(parts[0]) != "to" or tag(parts[1]) != "VP":
+            return target
+        lower = kids(parts[1])
+        if not lower or tag(lower[0]) != "VB" or any(tag(node) in {"CC", "CONJP"} for node in lower[1:]):
+            return target
+        return clause[0]
+
+    @staticmethod
+    def bare_causative_complement(tail):
+        """Identify an overt bare VP without assigning a role to a marked infinitival."""
+        if len(tail) == 2:
+            agent = kids(tail[1])
+            if (tag(tail[1]) != "PP" or len(agent) != 2
+                    or tag(agent[0]) != "IN" or word(agent[0]) != "by" or tag(agent[1]) != "NP"):
+                return None
+        elif len(tail) != 1:
+            return None
+        lower = tail[0]
+        if tag(lower) == "S":
+            parts = kids(lower)
+            if len(parts) != 1:
+                return None
+            lower = parts[0]
+        if tag(lower) != "VP":
+            return None
+        parts = kids(lower)
+        if not parts or tag(parts[0]) != "VB" or any(tag(part) in {"CC", "CONJP"} for part in parts[1:]):
+            return None
+        return raw("S", [lower])
+
     def vp(self, nodes, mode, subject, incoming=None, passive=None, fronted=None):
         if not nodes:
             raise ProjectionUnavailable("Missing verb phrase")
@@ -559,10 +599,13 @@ class Projection:
         if negation:
             head_words.append(word_node(negation))
         if aux:
-            if len(auxiliary_tail) != 1 or tag(auxiliary_tail[0]) != "VP":
+            if len(auxiliary_tail) != 1:
                 raise ProjectionUnavailable("Auxiliary has no overt VP complement")
             target = auxiliary_tail[0]
             position = tail.index(target)
+            complement_vp = self.modal_marked_vp(head, target) if len(tail) == 1 and not negation else target
+            if tag(complement_vp) != "VP":
+                raise ProjectionUnavailable("Auxiliary has no overt VP complement")
             aux_tense = "-tense" if aux == "AUX" else tense(head, mode)
             lexical_passive = passive
             if aux == "PASS":
@@ -570,7 +613,7 @@ class Projection:
                     raise ProjectionUnavailable("Passive has no unambiguous promoted subject")
                 lexical_passive = self.link_subject(subject)
                 lexical_passive.kind = "object"
-            complement = self.vp(kids(target), "untensed", subject, incoming, lexical_passive)
+            complement = self.vp(kids(complement_vp), "untensed", subject, incoming, lexical_passive)
             complement = self.attach(complement, "VP", tail[:position], tail[position + 1:])
             return branch("VP", AUXILIARY, branch(aux, AUXILIARY, *head_words,
                           features=(aux_tense,) if aux_tense else ()), complement)
@@ -580,6 +623,16 @@ class Projection:
         features = (feature,) if feature else ()
         if negation and base != "be" and not (base == "have" and mode == "finite"):
             raise ProjectionUnavailable("Negation attached directly to a non-auxiliary lexical verb")
+        if passive and not incoming and base == "make" and tag(head) == "VBN":
+            lower = self.bare_causative_complement(tail)
+            if lower is not None:
+                # Preserve the actual bare form. This is structural evidence for
+                # the candidate, and carries no Cambridge verdict or repair.
+                refs = ("Ch6 pp. 125–127", "Ch10 pp. 226, 238–240")
+                complement = self.nonfinite(lower, subject)
+                predicate = branch("VP", refs, branch("V", refs, *head_words),
+                                   branch("NP", refs, passive.take()), complement)
+                return self.attach(predicate, "VP", trailing=tail[1:])
         if passive and not incoming and base in PASSIVE_TYPE_I and tail and tag(tail[0]) == "S":
             lower = kids(tail[0])
             if len(lower) == 1 and tag(lower[0]) == "VP" and kids(lower[0]) and tag(kids(lower[0])[0]) == "TO":

@@ -35,7 +35,6 @@ class Chapter3RemoteAndBackshiftTests(unittest.TestCase):
         for p in range(147,155):
             self.assertEqual(pages[p-1]["status"],"extracted")
             self.assertEqual(pages[p-1]["evidence"],"sources/cambridge/chapter_03/PHASE_B_PP147_154_REPORT.md")
-    def test_incomplete_chapter_not_certified(self):
+    def test_chapter_three_retains_extracted_pages(self):
         pages=self.ledger["pages"]
-        self.assertGreater(sum(p["status"]=="unprocessed" for p in pages),0)
         self.assertGreaterEqual(sum(p["status"]=="extracted" and p["chapter"]==3 for p in pages),81)

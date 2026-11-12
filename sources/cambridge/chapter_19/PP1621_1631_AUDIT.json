@@ -1,0 +1,155 @@
+{
+  "manifest_version": 1,
+  "chapter": 19,
+  "printed_start": 1621,
+  "printed_end": 1631,
+  "report": "sources/cambridge/chapter_19/PP1621_1631_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1621,
+    "pdf_page": 1641
+  },
+  "added_rule_ids": [
+    "MORPH-143",
+    "MORPH-144",
+    "MORPH-145",
+    "MORPH-146",
+    "MORPH-147",
+    "MORPH-148",
+    "MORPH-149",
+    "MORPH-150",
+    "MORPH-151",
+    "MORPH-152",
+    "MORPH-153",
+    "MORPH-154",
+    "MORPH-155",
+    "MORPH-156",
+    "MORPH-157",
+    "MORPH-158",
+    "MORPH-159",
+    "MORPH-160"
+  ],
+  "page_checks": [
+    {
+      "page": 1621,
+      "status": "skipped_with_reason",
+      "section": "Contents",
+      "summary": "Chapter title, authors and contents through §5.1.5.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1622,
+      "status": "skipped_with_reason",
+      "section": "Contents",
+      "summary": "Continued chapter contents covering §§5.2–5.10.3.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1623,
+      "status": "extracted",
+      "section": "§1.1",
+      "summary": "Lexical formation versus inflection, established words, dictionaries and productive coinage.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1624,
+      "status": "extracted",
+      "section": "§§1.1–1.2",
+      "summary": "Potential and nonce words, obsolete patterns, free and bound elements and the qualifications in footnotes 1–3.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1625,
+      "status": "extracted",
+      "section": "§1.2",
+      "summary": "Bound bases, combining forms and the first constituent-structure analysis.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1626,
+      "status": "extracted",
+      "section": "§1.2",
+      "summary": "The two constituent trees, structural base types, word tokens, alternation and footnote 4.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1627,
+      "status": "extracted",
+      "section": "§1.2",
+      "summary": "Semantic opacity, present-day segmentation, historical changes and the pronunciation qualification in footnote 5.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1628,
+      "status": "extracted",
+      "section": "§1.2",
+      "summary": "Gradient evidence, related-form tables and the unresolved analysis of small opaque families.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1629,
+      "status": "extracted",
+      "section": "§1.3",
+      "summary": "Current productivity, obsolete patterns, lexicalisation and alternate terminology in footnote 6.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1630,
+      "status": "extracted",
+      "section": "§§1.3–1.4",
+      "summary": "Specialization without lexicalisation, productivity gradients, dictionary coverage and process versus structure.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1631,
+      "status": "extracted",
+      "section": "§1.4",
+      "summary": "Back-formation, organization by meaning and effect, scope of data and the notation qualification in footnote 7.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

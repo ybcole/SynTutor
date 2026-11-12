@@ -88,6 +88,9 @@ def load_runtime_registry(root: Path | None = None) -> dict[str, Any]:
             check = rule.get("runtime_check")
             if not isinstance(check, dict):
                 reasons.append("deterministic runtime_check is missing")
+            elif check.get("kind") == "passive_make_missing_to":
+                if rule_id != "CLS-357" or set(check) != {"kind"} or rule.get("scope") != "clause":
+                    reasons.append("passive_make_missing_to requires the clause-scoped CLS-357 source")
             elif check.get("kind") != "forbidden_token_sequences":
                 reasons.append("runtime_check kind is not supported by the deterministic evaluator")
             else:

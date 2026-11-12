@@ -105,6 +105,9 @@
               "remediation"
             ]
           },
+          "target": {
+            "const": "finding_nodes"
+          },
           "node_label": {
             "type": "string"
           },

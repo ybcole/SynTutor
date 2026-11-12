@@ -1,0 +1,124 @@
+{
+  "manifest_version": 1,
+  "chapter": 13,
+  "printed_start": 1132,
+  "printed_end": 1139,
+  "report": "sources/cambridge/chapter_13/PP1132_1139_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1132,
+    "pdf_page": 1152
+  },
+  "added_rule_ids": [
+    "CLS-1173",
+    "CLS-1174",
+    "CLS-1175",
+    "CLS-1176",
+    "CLS-1177",
+    "CLS-1178",
+    "CLS-1179",
+    "CLS-1180",
+    "CLS-1181",
+    "CLS-1182",
+    "CLS-1183",
+    "CLS-1184",
+    "CLS-1185",
+    "CLS-1186",
+    "CLS-1187",
+    "CLS-1188",
+    "CLS-1189",
+    "CLS-1190",
+    "CLS-1191",
+    "CLS-1192"
+  ],
+  "page_checks": [
+    {
+      "page": 1132,
+      "status": "extracted",
+      "section": "§§4.4.2–4.5(a)",
+      "summary": "Comparative the distribution and the start of reanalysis as verbal modifiers.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1133,
+      "status": "extracted",
+      "section": "§4.5(a–c)",
+      "summary": "Verbal reanalysis contrasts, adjective and adverb modifiers, negative parallels, and sooner idioms.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1134,
+      "status": "extracted",
+      "section": "§4.5(c–e)",
+      "summary": "Immediate succession, usage judgments on blends, long and far idioms, and as well patterns.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1135,
+      "status": "extracted",
+      "section": "§§4.5(e)–4.6",
+      "summary": "Additive and modal as well, better and best idioms, and basic versus fronted correlatives.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1136,
+      "status": "extracted",
+      "section": "§4.6",
+      "summary": "Directional dependency, matrix diagnostics, embedding, structural reduction and content-clause analysis.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1137,
+      "status": "extracted",
+      "section": "§§4.6–5",
+      "summary": "Correlative variants, ambiguous non-scalar comparisons and reciprocal expansions.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1138,
+      "status": "extracted",
+      "section": "§5.1",
+      "summary": "Definiteness, predicative and adverbial same, comparative clauses and the relative alternative.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1139,
+      "status": "extracted",
+      "section": "§5.1",
+      "summary": "Relative and comparative differences, NP and gerund-participial complements, and identity versus scalar equality.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

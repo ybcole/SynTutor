@@ -1,0 +1,124 @@
+{
+  "manifest_version": 1,
+  "chapter": 20,
+  "printed_start": 1739,
+  "printed_end": 1746,
+  "report": "sources/cambridge/chapter_20/PP1739_1746_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1739,
+    "pdf_page": 1759
+  },
+  "added_rule_ids": [
+    "OTH-701",
+    "OTH-702",
+    "OTH-703",
+    "OTH-704",
+    "OTH-705",
+    "OTH-706",
+    "OTH-707",
+    "OTH-708",
+    "OTH-709",
+    "OTH-710",
+    "OTH-711",
+    "OTH-712",
+    "OTH-713",
+    "OTH-714",
+    "OTH-715",
+    "OTH-716",
+    "OTH-717",
+    "OTH-718",
+    "OTH-719",
+    "OTH-720"
+  ],
+  "page_checks": [
+    {
+      "page": 1739,
+      "status": "extracted",
+      "section": "§§3.2–3.2.1",
+      "summary": "Syndetic and subclausal scope, obligatory boundaries before bare coordinates, and expanded coordinates.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1740,
+      "status": "extracted",
+      "section": "§§3.2.1–3.2.2",
+      "summary": "Serial commas, complexity and layering, semicolons, and the opening of marked supplementation.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1741,
+      "status": "extracted",
+      "section": "§§3.2.2–3.2.3",
+      "summary": "Supplementation markers and footnote 9, descriptive versus identifying supplements, and asyndetic relations.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1742,
+      "status": "extracted",
+      "section": "§3.2.3",
+      "summary": "Spliced commas, connective adjuncts, acceptable comma patterns and footnote 10, and semicolon relations.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1743,
+      "status": "extracted",
+      "section": "§§3.2.3–3.2.4",
+      "summary": "Semicolon continuation, elaborative colons, and punctuation of direct reported speech complements.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1744,
+      "status": "extracted",
+      "section": "§§3.2.4–3.2.5",
+      "summary": "Exceptional complement colons, gapping, subject–verb boundaries and footnote 11, and initial delimiting examples.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1745,
+      "status": "extracted",
+      "section": "§3.2.5",
+      "summary": "Absorption by stronger marks, delimited constituent types, and footnotes 12–14.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1746,
+      "status": "extracted",
+      "section": "§3.2.5",
+      "summary": "Coordinator-led supplements and shared constituents, adjunct versus complement delimitation, and selection factors.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

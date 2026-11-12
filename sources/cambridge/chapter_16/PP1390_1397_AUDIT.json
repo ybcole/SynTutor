@@ -1,0 +1,125 @@
+{
+  "manifest_version": 1,
+  "chapter": 16,
+  "printed_start": 1390,
+  "printed_end": 1397,
+  "report": "sources/cambridge/chapter_16/PP1390_1397_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1390,
+    "pdf_page": 1410
+  },
+  "added_rule_ids": [
+    "CLS-1340",
+    "CLS-1341",
+    "CLS-1342",
+    "CLS-1343",
+    "CLS-1344",
+    "CLS-1345",
+    "CLS-1346",
+    "CLS-1347",
+    "CLS-1348",
+    "CLS-1349",
+    "CLS-1350",
+    "CLS-1351",
+    "CLS-1352",
+    "CLS-1353",
+    "CLS-1354",
+    "CLS-1355",
+    "CLS-1356",
+    "CLS-1357",
+    "CLS-1358",
+    "CLS-1359",
+    "CLS-1360"
+  ],
+  "page_checks": [
+    {
+      "page": 1390,
+      "status": "extracted",
+      "section": "§§5.3–6",
+      "summary": "Narrative and identification pronoun patterns, presentation accompaniment, commentary inversions, and the distinction between existentials and presentationals.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1391,
+      "status": "extracted",
+      "section": "§6.1",
+      "summary": "Dummy versus locative there, stress and tag tests, and the syntactic subject versus displaced subject.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1392,
+      "status": "extracted",
+      "section": "§§6.1–6.2",
+      "summary": "Raised subject and object, displaced-subject positions and gaps, and existential syntax versus semantics.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1393,
+      "status": "extracted",
+      "section": "§6.2.1",
+      "summary": "Bare versus extended patterns, ordinary adjuncts, readings of bare existentials and complementless be in footnote 11.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1394,
+      "status": "extracted",
+      "section": "§6.2.1",
+      "summary": "Hybrid NP, locative and temporal complements, temporary-state predicatives, infinitivals, and participial modifiers.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1395,
+      "status": "extracted",
+      "section": "§6.2.1",
+      "summary": "Participial extension diagnostics, auxiliary be, terminology, and exceptional constructions in footnotes 12–13.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1396,
+      "status": "extracted",
+      "section": "§§6.2.1–6.2.2",
+      "summary": "Postposing in passive existentials, tentative relative extension analysis, novelty and definiteness, and attachment control in footnote 14.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1397,
+      "status": "extracted",
+      "section": "§6.2.2",
+      "summary": "Physical and abstract indefinites, familiar type and temporal context, and the opening qualification for displaced definites.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "manifest_version": 1,
+  "chapter": 20,
+  "printed_start": 1731,
+  "printed_end": 1738,
+  "report": "sources/cambridge/chapter_20/PP1731_1738_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1731,
+    "pdf_page": 1751
+  },
+  "added_rule_ids": [
+    "OTH-683",
+    "OTH-684",
+    "OTH-685",
+    "OTH-686",
+    "OTH-687",
+    "OTH-688",
+    "OTH-689",
+    "OTH-690",
+    "OTH-691",
+    "OTH-692",
+    "OTH-693",
+    "OTH-694",
+    "OTH-695",
+    "OTH-696",
+    "OTH-697",
+    "OTH-698",
+    "OTH-699",
+    "OTH-700"
+  ],
+  "page_checks": [
+    {
+      "page": 1731,
+      "status": "extracted",
+      "section": "§§1.5–2",
+      "summary": "Scope of chapter sections, primary terminals, and medial status marks.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1732,
+      "status": "extracted",
+      "section": "§2",
+      "summary": "Clause-type defaults, direct questions, tags and compound questions.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1733,
+      "status": "extracted",
+      "section": "§2",
+      "summary": "Indirect force, embedded questions and capitalization, parentheticals, and footnote 6.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1734,
+      "status": "extracted",
+      "section": "§2",
+      "summary": "Question-mark uncertainty, exclamatory force, and embedding.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1735,
+      "status": "extracted",
+      "section": "§§2–3",
+      "summary": "Matrix scope, repeated terminals, separate sentences for emphasis, and the boundary hierarchy.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1736,
+      "status": "extracted",
+      "section": "§3.1",
+      "summary": "Non-final colon and asymmetry between left and right boundaries.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1737,
+      "status": "extracted",
+      "section": "§3.1",
+      "summary": "Relative scope and single-level restrictions, with footnote 7.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1738,
+      "status": "extracted",
+      "section": "§§3.1–3.2",
+      "summary": "Single-level continuation, colon constraints and footnote 8, and the start of secondary boundary uses.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

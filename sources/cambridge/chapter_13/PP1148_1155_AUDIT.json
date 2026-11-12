@@ -1,0 +1,128 @@
+{
+  "manifest_version": 1,
+  "chapter": 13,
+  "printed_start": 1148,
+  "printed_end": 1155,
+  "report": "sources/cambridge/chapter_13/PP1148_1155_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1148,
+    "pdf_page": 1168
+  },
+  "added_rule_ids": [
+    "CLS-1219",
+    "CLS-1220",
+    "CLS-1221",
+    "CLS-1222",
+    "CLS-1223",
+    "CLS-1224",
+    "CLS-1225",
+    "CLS-1226",
+    "CLS-1227",
+    "CLS-1228",
+    "CLS-1229",
+    "CLS-1230",
+    "CLS-1231",
+    "CLS-1232",
+    "CLS-1233",
+    "CLS-1234",
+    "CLS-1235",
+    "CLS-1236",
+    "CLS-1237",
+    "CLS-1238",
+    "CLS-1239",
+    "CLS-1240",
+    "CLS-1241",
+    "CLS-1242"
+  ],
+  "page_checks": [
+    {
+      "page": 1148,
+      "status": "extracted",
+      "section": "§5.5",
+      "summary": "Comparative and relative syntax and information status, including inversion, reductions, auxiliary stranding, complete clauses and obligatory gaps.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1149,
+      "status": "extracted",
+      "section": "§5.5",
+      "summary": "Lexical repetition, non-asserted matrix propositions, single-element reductions, and the manner reading.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1150,
+      "status": "extracted",
+      "section": "§5.5",
+      "summary": "Disambiguation by position, predicative and nominal uses of as, and fixed expressions.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1151,
+      "status": "extracted",
+      "section": "§5.5",
+      "summary": "Functions of as if and as though, the compound analysis, coordination evidence, and limits of conditional expansion.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1152,
+      "status": "extracted",
+      "section": "§5.5",
+      "summary": "Appearance predicates, adverse circumstances, standalone exclamations, tense and irrealis, and the entailment in footnote 36.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1153,
+      "status": "extracted",
+      "section": "§5.5",
+      "summary": "Past-matrix readings and extended irrealis, including footnote 37, subjectless complements, and scalar as followed by conditional if.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1154,
+      "status": "extracted",
+      "section": "§§5.5–5.6.1",
+      "summary": "Scalar blend qualification, noun phrase complements of like, capacity as, predicative patterns, and the lexical distinctions in footnote 38.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1155,
+      "status": "extracted",
+      "section": "§5.6.1",
+      "summary": "Predicative adjunct, selected manner complements, participant ambiguity, and likeness of predication versus likeness of manner under unlike.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

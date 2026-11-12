@@ -11,6 +11,9 @@ import unittest
 
 from cambridge_evaluator import evaluate_cambridge
 from cambridge_registry import load_runtime_registry
+from burton_roberts import build_canonical_analysis
+from cgel_ch03_candidate_probe import tokens_with_spans
+from parse_engine import NodeBuilder, parse_parse_string
 
 
 class CambridgeEvaluatorTests(unittest.TestCase):
@@ -64,6 +67,69 @@ class CambridgeEvaluatorTests(unittest.TestCase):
             json.dumps({"registry_version": 1, "enabled_rules": [entry]}),
             encoding="utf-8",
         )
+
+    def passive_registry(self, *, mapping="same", rule_id="CLS-357"):
+        self.add_allowlisted_rule(mapping=mapping)
+        registry_path = self.root / "grammar/runtime_registry.json"
+        source_path = self.root / "grammar/rules/test.json"
+        data = json.loads(registry_path.read_text())
+        data["enabled_rules"][0]["rule_id"] = rule_id
+        registry_path.write_text(json.dumps(data))
+        source = json.loads(source_path.read_text())
+        source[0].update(id=rule_id, scope="clause", runtime_check={"kind": "passive_make_missing_to"})
+        source_path.write_text(json.dumps(source))
+        return load_runtime_registry(self.root)
+
+    @staticmethod
+    def passive_analysis(*, marked=False):
+        sentence = "We were made to wait outside." if marked else "We were made wait outside."
+        vp = "(VP (VB wait) (ADVP (RB outside)))"
+        if marked:
+            vp = f"(VP (TO to) {vp})"
+        parse = f"(S (NP (PRP We)) (VP (VBD were) (VP (VBN made) (S {vp}))) (. .))"
+        tokens = [{"i": token["index"], "t": token["text"], "start": token["char_span"][0],
+                   "end": token["char_span"][1]} for token in tokens_with_spans(sentence)]
+        return build_canonical_analysis({
+            "sentence": sentence, "parse_string": parse, "tokens": tokens,
+            "root": NodeBuilder().build(parse_parse_string(parse), len(tokens)),
+        }, reference_records=[])
+
+    def test_passive_make_runtime_returns_one_structurally_anchored_finding(self):
+        registry = self.passive_registry()
+        self.assertEqual(registry["active_rule_ids"], ["CLS-357"])
+        result = evaluate_cambridge(self.passive_analysis(), registry, variety="standard_english")
+        self.assertEqual(result["evaluated_rule_ids"], ["CLS-357"])
+        finding, = result["findings"]
+        match, = finding["structural_matches"]
+        self.assertEqual(match["char_span"], [8, 17])
+        self.assertNotEqual(match["governor_node_id"], match["dependent_node_id"])
+        self.assertTrue(match["grounding"]["clause_node_id"])
+        self.assertEqual(match["edit_hint"]["replacement"], "to ")
+        self.assertFalse(match["edit_hint"]["safe_to_apply_automatically"])
+
+        valid = evaluate_cambridge(self.passive_analysis(marked=True), registry, variety="standard_english")
+        self.assertEqual(valid["findings"], [])
+        self.assertEqual(valid["evaluations"][0]["status"], "not_applicable")
+
+    def test_passive_make_requires_variety_and_matching_parser_evidence(self):
+        registry = self.passive_registry()
+        analysis = self.passive_analysis()
+        self.assertEqual(evaluate_cambridge(analysis, registry)["findings"], [])
+        analysis["parser_diagnostics"] = self.passive_analysis(marked=True)["parser_diagnostics"]
+        stale = evaluate_cambridge(analysis, registry, variety="standard_english")
+        self.assertEqual(stale["evaluated_rule_ids"], [])
+        self.assertEqual(stale["evaluations"][0]["status"], "evidence_unavailable")
+        analysis.pop("parser_diagnostics")
+        absent = evaluate_cambridge(analysis, registry, variety="standard_english")
+        self.assertEqual(absent["findings"], [])
+
+    def test_passive_make_is_blocked_by_unverified_crosswalk_or_wrong_rule_id(self):
+        for args in ({"mapping": "unverified"}, {"rule_id": "TEST-001"}):
+            with self.subTest(args=args):
+                self.assertEqual(self.passive_registry(**args)["active_rule_ids"], [])
+        actual = evaluate_cambridge(self.passive_analysis(), load_runtime_registry(), variety="standard_english")
+        self.assertEqual(actual["status"], "no_runtime_rules")
+        self.assertEqual(actual["findings"], [])
 
     @staticmethod
     def analysis(sentence):

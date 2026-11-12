@@ -1,0 +1,125 @@
+{
+  "manifest_version": 1,
+  "chapter": 20,
+  "printed_start": 1747,
+  "printed_end": 1754,
+  "report": "sources/cambridge/chapter_20/PP1747_1754_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1747,
+    "pdf_page": 1767
+  },
+  "added_rule_ids": [
+    "OTH-721",
+    "OTH-722",
+    "OTH-723",
+    "OTH-724",
+    "OTH-725",
+    "OTH-726",
+    "OTH-727",
+    "OTH-728",
+    "OTH-729",
+    "OTH-730",
+    "OTH-731",
+    "OTH-732",
+    "OTH-733",
+    "OTH-734",
+    "OTH-735",
+    "OTH-736",
+    "OTH-737",
+    "OTH-738",
+    "OTH-739",
+    "OTH-740",
+    "OTH-741"
+  ],
+  "page_checks": [
+    {
+      "page": 1747,
+      "status": "extracted",
+      "section": "§3.2.5",
+      "summary": "Fronted and final elements, negative scope, adjunct semantics, misparsing and prosody.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1748,
+      "status": "extracted",
+      "section": "§4",
+      "summary": "Parenthesis functions and range, integrability, article choice, and footnotes 15–17.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1749,
+      "status": "extracted",
+      "section": "§4",
+      "summary": "Linear position, punctuation inside and outside, nested levels, and footnote 18.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1750,
+      "status": "extracted",
+      "section": "§§4–5",
+      "summary": "Insulation effects and the start of paired dash interpolations.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1751,
+      "status": "extracted",
+      "section": "§5",
+      "summary": "Functional contrasts with parentheses, single dash uses, and punctuation combinations.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1752,
+      "status": "extracted",
+      "section": "§5",
+      "summary": "Comma absorption limits, relative strength, nesting, and footnote 19.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1753,
+      "status": "extracted",
+      "section": "§6",
+      "summary": "Quotation functions, single versus double marks, nesting, and footnote 20.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1754,
+      "status": "extracted",
+      "section": "§6",
+      "summary": "Continuing multi-paragraph speech, internal and external marks, full stops, and the start of raising.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

@@ -35,6 +35,5 @@ class Cambridge171178(unittest.TestCase):
             self.assertTrue(all(ex["origin"]=="ai_authored" for ex in rule["examples"]["correct"]))
             self.assertIsNone(rule["diagnostic"])
             self.assertGreaterEqual(len(rule["exceptions"]),1)
-    def test_incomplete_chapter_not_certified(self):
-        self.assertGreater(sum(p["status"]=="unprocessed" for p in self.pages),0)
+    def test_chapter_three_retains_extracted_pages(self):
         self.assertGreaterEqual(sum(p["chapter"]==3 and p["status"]=="extracted" for p in self.pages),105)

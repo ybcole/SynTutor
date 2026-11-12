@@ -339,6 +339,17 @@ function renderReadingControls(evidence, panel) {
 // The books and claim checks inform the backend; students see a sentence,
 // not a provenance report. Keep every learning mode on this one renderer.
 // Technical evidence stays in the server JSON for tests and trusted tooling.
+export function learnerFindingParagraph(evidence, nodeId) {
+  if (evidence?.status !== 'EXPLAINED' || !nodeId) return null;
+  for (const channel of ['remediation', 'grammatical']) {
+    const record = evidence.channels?.[channel]?.find(item =>
+      item.node_id === nodeId && item.facts?.target === 'finding_nodes'
+      && typeof item.text === 'string' && item.text.trim());
+    if (record) return record.text.trim();
+  }
+  return null;
+}
+
 export function learnerParagraph(evidence) {
   const result = evidence?.learner_explanation;
   if (result?.schema_version === 'learner-explanation-1.0.0'
@@ -351,7 +362,7 @@ export function learnerParagraph(evidence) {
   // grammar check counts, rule IDs or raw evidence atoms around this rationale.
   for (const channel of ['grammatical', 'structural', 'remediation']) {
     const first = evidence?.channels?.[channel]?.find(item => typeof item.text === 'string'
-      && item.text.trim());
+      && item.text.trim() && item.facts?.target !== 'finding_nodes');
     if (first && evidence?.status === 'EXPLAINED') return first.text.trim();
   }
   if (evidence?.analysis_status === 'quiz_feedback')
@@ -384,7 +395,8 @@ export function renderEvidence(evidence, host = document.querySelector('#explain
   paragraph.dataset.xaiShort = '';
   paragraph.className = 'learner-grammar-paragraph';
   paragraph.textContent = options.feature
-    ? learnerFeatureParagraph(evidence, options.feature) : learnerParagraph(evidence);
+    ? learnerFeatureParagraph(evidence, options.feature)
+    : learnerFindingParagraph(evidence, options.nodeId) ?? learnerParagraph(evidence);
   panel.append(paragraph);
   host.append(panel);
   if (options.treeRoot) applyEvidenceFocus(options.treeRoot, evidence);

@@ -105,10 +105,12 @@ class XAI0BaselineTests(unittest.TestCase):
                     with self.assertRaises(ValueError):
                         audit.load_cases(path)
 
-    def test_real_inventory_has_two_templates_four_sources_zero_runtime_rules(self):
+    def test_real_inventory_distinguishes_reviewed_and_pending_evidence(self):
         inventory = audit.static_inventory()
         self.assertEqual(inventory["reviewed_template_rows"], 2)
         self.assertEqual(inventory["source_records"], 4)
+        self.assertEqual(inventory["templates_pending_review"], 1)
+        self.assertEqual(inventory["sources_pending_eligibility"], 2)
         self.assertEqual(inventory["runtime_enabled_cambridge_rules"], 0)
         self.assertEqual(inventory["template_channels"]["structural"], 1)
         self.assertEqual(inventory["template_channels"]["grammatical"], 1)

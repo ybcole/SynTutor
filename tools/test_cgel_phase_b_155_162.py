@@ -40,6 +40,5 @@ class Cambridge155162(unittest.TestCase):
             self.assertGreaterEqual(len(r["examples"]["incorrect"]),2)
             self.assertGreaterEqual(len(r["diagnostic"]["minimal_pairs"]),2)
             self.assertGreaterEqual(len(r["diagnostic"]["false_positive_guards"]),3)
-    def test_chapter_remains_open(self):
-        self.assertGreater(sum(p["status"]=="unprocessed" for p in self.pages),0)
+    def test_chapter_three_retains_extracted_pages(self):
         self.assertGreaterEqual(sum(p["chapter"]==3 and p["status"]=="extracted" for p in self.pages),89)

@@ -56,6 +56,34 @@
       "independent_review": true,
       "reviewed_by": "Codex — source check of earlier CONVENTIONS paraphrase against supplied B-R page images; no human sign-off claimed",
       "reviewed_on": "2026-11-08"
+    },
+    {
+      "id": "CGEL-2002-CH14-P1234",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "printed_page": 1234,
+      "evidence_status": "TXT",
+      "status": "pending",
+      "crosswalk_status": "unverified",
+      "review_status": "NOT_REVIEWED",
+      "independent_review": false,
+      "reviewed_by": "",
+      "reviewed_on": ""
+    },
+    {
+      "id": "CGEL-2002-CH16-P1432",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "printed_page": 1432,
+      "evidence_status": "TXT",
+      "status": "pending",
+      "crosswalk_status": "unverified",
+      "review_status": "NOT_REVIEWED",
+      "independent_review": false,
+      "reviewed_by": "",
+      "reviewed_on": ""
     }
   ],
   "templates": [
@@ -96,6 +124,26 @@
       "independent_review": true,
       "reviewed_by": "Codex — source check of earlier CONVENTIONS paraphrase against supplied B-R page images; no human sign-off claimed",
       "reviewed_on": "2026-11-08"
+    },
+    {
+      "id": "CGEL-CLS357-PASSIVE-MAKE-V1",
+      "channel": "remediation",
+      "claim_type": "constraint",
+      "target": "finding_nodes",
+      "node_label": "V",
+      "source_ids": [
+        "CGEL-2002-CH14-P1234",
+        "CGEL-2002-CH16-P1432"
+      ],
+      "claim_key": "CGEL-PASSIVE-MAKE-MISSING-TO",
+      "rule_id": "CLS-357",
+      "when": "violation",
+      "text": "Add “to” before the verb that follows passive “made”. For example, “They made us wait” becomes “We were made to wait”.",
+      "deep_text": "In the passive form, the person affected by “made” becomes the subject. The verb that follows “made” needs “to”, as in “were made to wait”.",
+      "review_status": "NOT_REVIEWED",
+      "independent_review": false,
+      "reviewed_by": "",
+      "reviewed_on": ""
     }
   ]
 }

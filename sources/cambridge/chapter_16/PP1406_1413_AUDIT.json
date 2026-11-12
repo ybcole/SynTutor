@@ -1,0 +1,127 @@
+{
+  "manifest_version": 1,
+  "chapter": 16,
+  "printed_start": 1406,
+  "printed_end": 1413,
+  "report": "sources/cambridge/chapter_16/PP1406_1413_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1406,
+    "pdf_page": 1426
+  },
+  "added_rule_ids": [
+    "CLS-1378",
+    "CLS-1379",
+    "CLS-1380",
+    "CLS-1381",
+    "CLS-1382",
+    "CLS-1383",
+    "CLS-1384",
+    "CLS-1385",
+    "CLS-1386",
+    "CLS-1387",
+    "CLS-1388",
+    "CLS-1389",
+    "CLS-1390",
+    "CLS-1391",
+    "CLS-1392",
+    "CLS-1393",
+    "CLS-1394",
+    "CLS-1395",
+    "CLS-1396",
+    "CLS-1397",
+    "CLS-1398",
+    "CLS-1399",
+    "CLS-1400"
+  ],
+  "page_checks": [
+    {
+      "page": 1406,
+      "status": "extracted",
+      "section": "§7.1",
+      "summary": "Repeated subordinators, subject–auxiliary inversion, exclamatives, specifying be, intervening finite clauses and lexical restrictions.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1407,
+      "status": "extracted",
+      "section": "§§7.1–7.2",
+      "summary": "Lexical inventory, gerund-participials, initial NP exceptions, and qualifications for predicatives and worth in footnotes 20–21.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1408,
+      "status": "extracted",
+      "section": "§§7.2–8.1",
+      "summary": "Concealed-question NP extraposition, dummy object it, dislocation structure and the opening left-dislocation pronoun functions.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1409,
+      "status": "extracted",
+      "section": "§8.1",
+      "summary": "Pronoun functions, coordination, overt links versus preposing gaps, and explicitly marked topics.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1410,
+      "status": "extracted",
+      "section": "§8.1",
+      "summary": "Marked topics without coreference, processing effects, optional prior links and the alternative in footnote 22.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1411,
+      "status": "extracted",
+      "section": "§§8.1–8.2",
+      "summary": "No familiar open-proposition requirement for left dislocation, right-dislocation pronoun functions and clarification.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1412,
+      "status": "extracted",
+      "section": "§§8.2–8.3",
+      "summary": "Discourse-old and topical status, nominal links, and the genitive qualification in footnote 23.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1413,
+      "status": "extracted",
+      "section": "§8.3",
+      "summary": "Contrastive links, supplementary epithets, referential it versus dummy it, and boundary cases in footnotes 24–25.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "manifest_version": 1,
+  "chapter": 13,
+  "printed_start": 1108,
+  "printed_end": 1115,
+  "report": "sources/cambridge/chapter_13/PP1108_1115_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1108,
+    "pdf_page": 1128
+  },
+  "added_rule_ids": [
+    "CLS-1119",
+    "CLS-1120",
+    "CLS-1121",
+    "CLS-1122",
+    "CLS-1123",
+    "CLS-1124",
+    "CLS-1125",
+    "CLS-1126",
+    "CLS-1127",
+    "CLS-1128",
+    "CLS-1129",
+    "CLS-1130",
+    "CLS-1131",
+    "CLS-1132",
+    "CLS-1133"
+  ],
+  "page_checks": [
+    {
+      "page": 1108,
+      "status": "extracted",
+      "section": "§2.1(a–b)",
+      "summary": "Obligatory degree-variable gap and ordinary omission of a matching phrase.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1109,
+      "status": "extracted",
+      "section": "§2.1(b–c)",
+      "summary": "Overt contrast, stress exception and optional stranding.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1110,
+      "status": "extracted",
+      "section": "§2.1(c–d)",
+      "summary": "Dialectal do, passive reduction and omitted embedded clauses.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1111,
+      "status": "extracted",
+      "section": "§2.1(d–e)",
+      "summary": "Lexical licensing, factivity, predicative remnants and multiple-element verbless clauses.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1112,
+      "status": "extracted",
+      "section": "§2.1(e–f)",
+      "summary": "Verbless polarity and single-remnant forms, attachment and case introduction.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1113,
+      "status": "extracted",
+      "section": "§§2.1(f–g), 2.2",
+      "summary": "Pronoun case, omitted subject restrictions and two structural trees.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1114,
+      "status": "extracted",
+      "section": "§2.2(a–b)",
+      "summary": "Immediate complements, competing analyses and nominative case evidence.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1115,
+      "status": "extracted",
+      "section": "§2.2(b)",
+      "summary": "Range and indirect licensing of remnant types, coordination contrast and exception prepositions.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

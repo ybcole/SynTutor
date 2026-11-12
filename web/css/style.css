@@ -683,6 +683,31 @@ body.lessons-overlay-open .pane-input { visibility: hidden; }
   min-height: 0;
 }
 
+.generator-variety {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  padding: 7px 16px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 13px;
+}
+.generator-variety[hidden] { display: none; }
+.generator-variety select {
+  max-width: 100%;
+  min-height: 32px;
+  padding: 3px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--panel);
+  color: var(--ink);
+}
+.generator-variety select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 .input-editor {
   position: relative;
   flex: 1 1 auto;
@@ -3131,6 +3156,7 @@ body.workspace-view-open .app-main { display: none; }
 }
 @media (max-width: 760px) {
   .pane-input #tutorSurface { margin-block-start: 36px; }
+  .pane-input:has(.generator-variety:not([hidden])) { min-height: 168px; }
 }
 
 

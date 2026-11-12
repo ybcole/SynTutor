@@ -1,0 +1,131 @@
+{
+  "manifest_version": 1,
+  "chapter": 19,
+  "printed_start": 1648,
+  "printed_end": 1655,
+  "report": "sources/cambridge/chapter_19/PP1648_1655_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1648,
+    "pdf_page": 1668
+  },
+  "added_rule_ids": [
+    "MORPH-212",
+    "MORPH-213",
+    "MORPH-214",
+    "MORPH-215",
+    "MORPH-216",
+    "MORPH-217",
+    "MORPH-218",
+    "MORPH-219",
+    "MORPH-220",
+    "MORPH-221",
+    "MORPH-222",
+    "MORPH-223",
+    "MORPH-224",
+    "MORPH-225",
+    "MORPH-226",
+    "MORPH-227",
+    "MORPH-228",
+    "MORPH-229",
+    "MORPH-230",
+    "MORPH-231",
+    "MORPH-232",
+    "MORPH-233",
+    "MORPH-234",
+    "MORPH-235",
+    "MORPH-236",
+    "MORPH-237",
+    "MORPH-238"
+  ],
+  "page_checks": [
+    {
+      "page": 1648,
+      "status": "extracted",
+      "section": "§4.2.1",
+      "summary": "Non-hyponymic compounds, equal-status bases, joint versus individual entailments, and footnote 21.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1649,
+      "status": "extracted",
+      "section": "§4.2.1",
+      "summary": "Ascriptive boundaries, double plural marking, genitive- and plural-derived s, and footnotes 22–23.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1650,
+      "status": "extracted",
+      "section": "§4.2.1",
+      "summary": "Adjectival base shape, stress and specialized meaning, recursive kinship terms, and verbal dependents.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1651,
+      "status": "extracted",
+      "section": "§4.2.1",
+      "summary": "Verb-dependent role ambiguity, purposive ing forms and variety, other initial categories, and bahuvrihis.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1652,
+      "status": "extracted",
+      "section": "§§4.2.1–4.2.2",
+      "summary": "Bahuvrihi referents, verbal complement relations, the verb-first agentive pattern, and footnotes 24–25.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1653,
+      "status": "extracted",
+      "section": "§4.2.2",
+      "summary": "Unsuffixed verbal heads and subject, object or prepositional roles, contrasted with er-headed compounds.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1654,
+      "status": "extracted",
+      "section": "§4.2.2",
+      "summary": "Constituency and back-formation, ing and other nominalizations, and productive verb plus preposition nouns.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1655,
+      "status": "extracted",
+      "section": "§4.2.2",
+      "summary": "Preposition order and meaning, stress, internal plural placement, nonce formations, and the ing boundary with syntax.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

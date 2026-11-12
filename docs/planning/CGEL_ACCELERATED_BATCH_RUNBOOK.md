@@ -416,3 +416,145 @@ Printed pp. 20–32 add 13 substantive pages and 20 inactive records (`OTH-634`�
 ## Chapter 1 Phase B closure
 
 The final batch adds 14 inactive records (`OTH-654`–`OTH-667`) for printed pp. 33–41 and verifies the existing blank boundary skip at p. 42. Chapter 1 Phase B accounts for all 42 pages: 40 substantive pages and two documented skips. The four batches add 66 records. Continue with Chapter 13, comparative constructions.
+
+## Chapter 13 first checkpoint
+
+Printed pp. 1097–1107 are accounted for, including nine substantive pages and two contents-only pages. The batch adds 15 inactive records (`CLS-1104`–`CLS-1118`), with 63 printed pages remaining. Continue at p. 1108 with comparative clause reduction.
+
+## Chapter 13 second checkpoint
+
+Printed pp. 1108–1115 add eight substantive pages and 15 inactive records (`CLS-1119`–`CLS-1133`), including two `spec_only` constraints. Chapter 13 has 55 pages remaining. Continue at p. 1116.
+
+## Chapter 13 third checkpoint
+
+Printed pp. 1116–1123 add eight substantive pages and 18 inactive records (`CLS-1134`–`CLS-1151`). Chapter 13 has 47 pages remaining. Continue at p. 1124 with inflectional less and the remainder of §4.1.1.
+
+## Chapter 13 fourth checkpoint
+
+Printed pp. 1124–1131 add eight substantive pages and 21 inactive records (`CLS-1152`–`CLS-1172`), including two `spec_only` constraints. Chapter 13 has 39 pages remaining. Continue at p. 1132 with comparative the and idioms.
+
+## Chapter 13 fifth checkpoint
+
+Printed pp. 1132–1139 add eight substantive pages and 20 inactive records (`CLS-1173`–`CLS-1192`), including one `spec_only` constraint. Chapter 13 has 31 pages remaining. Continue at p. 1140 with the rest of the discussion of same.
+
+## Chapter 13 sixth checkpoint
+
+Printed pp. 1140–1147 add eight substantive pages and 26 inactive records (`CLS-1193`–`CLS-1218`), including two `spec_only` constraints. Chapter 13 has 23 pages remaining. Continue at p. 1148 with the comparison between standalone as and supplementary relatives.
+
+## Chapter 13 seventh checkpoint
+
+Printed pp. 1148–1155 add eight substantive pages and 24 inactive records (`CLS-1219`–`CLS-1242`), including two `spec_only` constraints. Chapter 13 has 15 pages remaining. Continue at p. 1156 with the remaining adjunct uses of like.
+
+## Chapter 13 completion checkpoint
+
+Chapter 13 source extraction is complete. Printed pp. 1097–1170 are accounted for as 72 extracted pages and two contents-only pages. The final 15 pages add 36 inactive records (`CLS-1243`–`CLS-1278`), including four `spec_only` constraints. Chapter 13 adds 175 records in total. The next Phase B chapter is Chapter 16, starting at printed p. 1363.
+
+## Chapter 16 first checkpoint
+
+Printed pp. 1363–1373 account for 9 substantive pages and two contents-only pages, adding 21 inactive records (`CLS-1279`–`CLS-1299`). The chapter has 74 unprocessed pages and one previously accounted-for textless page. Continue at p. 1374 with non-focus complement preposing.
+
+## Chapter 16 second checkpoint
+
+Printed pp. 1374–1381 add eight substantive pages and 21 inactive records (`CLS-1300`–`CLS-1320`). Chapter 16 has 66 unprocessed pages. Continue at p. 1382 with the end of focus preposing and the start of postposing.
+
+## Chapter 16 third checkpoint
+
+Printed pp. 1382–1389 add eight substantive pages and 19 inactive records (`CLS-1321`–`CLS-1339`), including two `spec_only` constraints. Chapter 16 has 58 unprocessed pages. Continue at p. 1390 with the specialized here/there patterns and the start of existentials and presentationals.
+
+## Chapter 16 fourth checkpoint
+
+Printed pp. 1390–1397 add eight substantive pages and 21 inactive records (`CLS-1340`–`CLS-1360`). Chapter 16 has 50 unprocessed pages. Continue at p. 1398 with displaced definite NPs and existential pragmatics.
+
+## Chapter 16 fifth checkpoint
+
+Printed pp. 1398–1405 add eight substantive pages and 17 inactive records (`CLS-1361`–`CLS-1377`). Chapter 16 has 42 unprocessed pages. Continue at p. 1406 with processing factors and extraposition.
+
+## Chapter 16 sixth checkpoint
+
+Printed pp. 1406–1413 add eight substantive pages and 23 inactive records (`CLS-1378`–`CLS-1400`), including one `spec_only` constraint. Chapter 16 has 34 unprocessed pages. Continue at p. 1414 with the transition from dislocation to clefts.
+
+## Chapter 16 seventh checkpoint
+
+Printed pp. 1414–1421 add eight substantive pages and 22 inactive records (`CLS-1401`–`CLS-1422`), including one `spec_only` constraint. Chapter 16 has 26 unprocessed pages. Continue at p. 1422 with the remaining pseudo-cleft patterns.
+
+## Chapter 16 eighth checkpoint
+
+Printed pp. 1422–1429 add eight substantive pages and 22 inactive records (`CLS-1423`–`CLS-1444`), including one `spec_only` constraint. Chapter 16 has 18 unprocessed pages. Continue at p. 1430 with the be-, get- and bare-passive distinction.
+
+## Chapter 16 ninth checkpoint
+
+Printed pp. 1430–1437 add eight substantive pages and 20 inactive records (`CLS-1445`–`CLS-1464`), including one `spec_only` constraint. Chapter 16 has 10 unprocessed pages. Continue at p. 1438 with the remaining adjectival-passive diagnostics.
+
+## Chapter 16 completion checkpoint
+
+Chapter 16 source extraction is complete. Printed pp. 1363–1448 comprise 83 extracted pages, two contents-only pages and one blank page. The final batch adds 22 inactive records (`CLS-1465`–`CLS-1486`), including one `spec_only` constraint. Chapter 16 adds 208 records in total. Chapter 19 is next, beginning at printed p. 1621.
+
+## Chapter 19 first checkpoint
+
+Printed pp. 1621–1631 account for nine substantive pages and two contents-only pages, adding 18 inactive records (`MORPH-143`–`MORPH-160`). Chapter 19 has 90 unprocessed pages and one previously accounted-for textless page. Continue at p. 1632 with minor word-formation processes.
+
+## Chapter 19 second checkpoint
+
+Printed pp. 1632–1639 add eight substantive pages and 20 inactive records (`MORPH-161`–`MORPH-180`). Chapter 19 has 82 unprocessed pages. Continue at p. 1640 with the close of phonological modification and the start of conversion.
+
+## Chapter 19 third checkpoint
+
+Printed pp. 1640–1647 add 8 substantive pages and 31 inactive records (`MORPH-181`–`MORPH-211`). Chapter 19 has 74 unprocessed pages. Continue at p. 1648 with non-hyponymic and coordinative noun compounds.
+
+## Chapter 19 fourth checkpoint
+
+Printed pp. 1648–1655 add 8 substantive pages and 27 inactive records (`MORPH-212`–`MORPH-238`), including one inactive plural-placement specification. Chapter 19 has 66 unprocessed pages. Continue at p. 1656 with the rest of verb-centred compound nouns and the start of compound adjectives.
+
+## Chapter 19 fifth checkpoint
+
+Printed pp. 1656–1663 add 8 substantive pages and 28 inactive records (`MORPH-239`–`MORPH-266`), including one inactive measure-compound specification. Chapter 19 has 58 unprocessed pages. Continue at p. 1664 with the remaining evidence on neo-classical combining forms.
+
+## Chapter 19 sixth checkpoint
+
+Printed pp. 1664–1671 add 8 substantive pages and 32 inactive records (`MORPH-267`–`MORPH-298`). Chapter 19 has 50 unprocessed pages. Continue at p. 1672 with the continuation of morphophonological alternation.
+
+## Chapter 19 seventh checkpoint
+
+Printed pp. 1672–1679 add 8 substantive pages and 31 inactive records (`MORPH-299`–`MORPH-329`), including four inactive spelling specifications. Chapter 19 has 42 unprocessed pages. Continue at p. 1680 with the continuation of augmentative morphology.
+
+## Chapter 19 eighth checkpoint
+
+Printed pp. 1680–1687 add 8 substantive pages and 28 inactive records (`MORPH-330`–`MORPH-357`), including one inactive spelling specification. Chapter 19 has 34 unprocessed pages. Continue at p. 1688 with the remaining properties of negative prefixes.
+
+## Chapter 19 ninth checkpoint
+
+Printed pp. 1688–1695 add 8 substantive pages and 33 inactive records (`MORPH-358`–`MORPH-390`), including one inactive plural specification. Chapter 19 has 26 unprocessed pages. Continue at p. 1696 with the remaining nationality patterns.
+
+## Chapter 19 tenth checkpoint
+
+Printed pp. 1696–1703 add 8 substantive pages and 33 inactive records (`MORPH-391`–`MORPH-423`), including one inactive specification for nationality predicates. Chapter 19 has 18 unprocessed pages. Continue at p. 1704 with the rest of action, state and process nominalisations.
+
+## Chapter 19 eleventh checkpoint
+
+Printed pp. 1704–1711 add 8 substantive pages and 34 inactive records (`MORPH-424`–`MORPH-457`), including one inactive possessive-adjective specification. Chapter 19 has 10 unprocessed pages. Continue at p. 1712 with the remaining adjectivalisation patterns.
+
+## Chapter 19 completion checkpoint
+
+Printed pp. 1712–1721 add 10 substantive pages and 32 inactive records (`MORPH-458`–`MORPH-489`), including five inactive numeral specifications. Chapter 19 is source-extraction complete with 99 substantive pages, two contents-only pages, and one verified textless page. Chapter 20 begins at printed p. 1723.
+
+## Chapter 20 first checkpoint
+
+Printed pp. 1723–1730 account for one contents page and 7 substantive pages and add 15 inactive records (`OTH-668`–`OTH-682`). Chapter 20 has 34 unprocessed pages. Continue at p. 1731 with primary terminals.
+
+## Chapter 20 second checkpoint
+
+Printed pp. 1731–1738 add eight substantive pages and 18 inactive records (`OTH-683`–`OTH-700`), including three inactive punctuation specifications. Chapter 20 has 26 unprocessed pages. Continue at p. 1739 with uses of the secondary boundary marks.
+
+## Chapter 20 third checkpoint
+
+Printed pp. 1739–1746 add eight substantive pages and add 20 inactive records (`OTH-701`–`OTH-720`), including five inactive punctuation specifications. Chapter 20 has 18 unprocessed pages. Continue at p. 1747 with further delimiting comma patterns.
+
+## Chapter 20 fourth checkpoint
+
+Printed pp. 1747–1754 add eight substantive pages and add 21 inactive records (`OTH-721`–`OTH-741`), including four inactive punctuation specifications. Chapter 20 has 10 unprocessed pages. Continue at p. 1755 with punctuation around quotations.
+
+## Chapter 20 completion checkpoint
+
+Printed pp. 1755–1764 add ten substantive pages and 25 inactive records (`OTH-742`–`OTH-766`), including four inactive punctuation specifications. Chapter 20 source extraction is complete with 41 substantive pages, one contents page, and no unprocessed pages.
+
+All 20 chapters have zero unprocessed pages on the stacked Phase B branch. The next step is cross-domain QA and overlap resolution before broad Phase C detector integration. Full integration CI remains pending for stacked drafts whose base branches are outside the pull-request workflow filters.

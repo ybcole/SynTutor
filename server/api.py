@@ -283,7 +283,8 @@ def build_payload(text, sentence_index=0, convention_version=None,
     # Token-only candidate context must survive unresolved B-R canonicalization.
     # This sentence is server-derived, never client-supplied approval metadata.
     explanation_analysis = {**br_analysis, 'sentence': analysis['sentence']}
-    shared_explanation_evidence = explain_analysis(explanation_analysis, variety=variety)
+    shared_explanation_evidence = explain_analysis(
+        explanation_analysis, runtime_registry=cambridge_runtime, variety=variety)
 
     return {
         'meta': {

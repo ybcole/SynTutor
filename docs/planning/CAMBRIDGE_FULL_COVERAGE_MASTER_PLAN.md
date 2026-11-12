@@ -36,7 +36,7 @@
 
 1. **Source page ledger complete for all 20 chapters:** every printed page is `extracted`, `skipped_with_reason`, or `absent_from_source` in `grammar/coverage/cgel_ledger.json`, backed by direct page/figure/exception auditing. Zero `unprocessed`. Source extraction is only one gate, not proof of runtime correctness.
 2. **Every error-capable rule** (`rule_type: constraint`) has a `diagnostic` block (section 4) and a detector implementation or an explicit `detector: "none_possible"` with reason.
-3. **Every detector finding** produces an XAI explanation sourced from its rule ID, and a corrected sentence **plus a corrected paragraph**.
+3. **Every detector finding** has an XAI explanation sourced from its rule ID. For the selected sentence, show a corrected sentence when a safe repair exists and identify any unresolved findings.
 4. `scripts/basic_errors.py` and the new coverage corpus (section 7) are run in CI; the coverage table (section 9) is published.
 5. Lessons and quizzes can be generated from rules by rule ID (section 6).
 
@@ -85,7 +85,7 @@ Every `constraint` rule gets a `diagnostic` block (add it to the schema first; t
   "detector_reason_if_none": "",
   "minimal_pairs": ["wrong sentence ||| corrected sentence"],
   "learner_explanation": "ONE paragraph, plain language, no jargon beyond Cambridge terms, says what is wrong, why, and the fix",
-  "corrected_paragraph_template": "how the corrected sentence and a one-line reason are phrased",
+  "corrected_paragraph_template": "legacy field name for the corrected selected sentence and a one-line reason",
   "variety_scope": "standard_english | variety_restricted: <which>",
   "false_positive_guards": ["valid sentences that must NOT be flagged"],
   "lesson_tags": [],
@@ -124,9 +124,10 @@ Do this **after all 20 chapters have source extraction** (except for minimal sha
 4. Register enabled rules through the **fail-closed `grammar/runtime_registry.json` after independent source review, resolved B-R crosswalk, implementation and adversarial/held-out tests**. Passing unit tests or owner-consented autonomous execution does **not** authorise setting an unreviewed rule to `APPROVED`. Keep XAI-4 (`server/xai4_partial.py`, `explanations.py`) subordinate to the registry and actual validated syntactic evidence.
 5. Implement multi-error handling per `docs/planning/XAI_SOURCE_AUDIT_MULTI_ERROR.md`: group interacting findings, re-evaluate each candidate fix, never certify a whole sentence from a partial rule set.
 
-### Phase D: corrected paragraph output
-- For any input text, return: (a) per-error findings, (b) a **corrected paragraph** (the full text with all accepted fixes applied) with a short change list, (c) which findings could not be fixed safely and why.
-- Fixes follow the bounded search in the multi-error doc: generate candidates, re-run all detectors on each, reject candidates that introduce new errors, cap depth and candidates, detect loops, preserve meaning.
+### Phase D: correction of the selected sentence
+- The selected sentence is the unit of analysis and repair. For that sentence, return per-error findings, a corrected sentence with a short change list when safe repairs exist, and the findings that could not be resolved safely.
+- Apply the bounded search in the multi-error plan within that sentence. Group interacting edits, reparse candidate sentences, reject edits that introduce new findings, cap search depth and candidates, detect loops, and preserve meaning.
+- If a learner accepts a correction in multi-sentence input, replace only the selected sentence's exact character range and preserve surrounding text. Validate the selection against the current input before applying the replacement.
 
 ### Phase E: lessons and quizzes
 - Generate lesson skeletons and quiz seeds from rules by `lesson_tags` and `quiz_seeds`. Quizzes use original sentences only. No textbook exercise text.
@@ -187,6 +188,6 @@ checks. Normally one feature branch/PR per chapter, not per 8 pages.
 Run BOTH full existing GitHub workflows on the final PR SHA, fix all
 failures, then merge. Do not auto-approve source rules, invent crosswalks,
 enable unverified detectors or claim measured accuracy.
-Preserve XAI node/group/reparse/corrected-paragraph gates for later phases.
+Preserve XAI node, finding-group, and selected-sentence reparse gates for later phases.
 Report only work actually executed and validated; no approval stops.
 ```
