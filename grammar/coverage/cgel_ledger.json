@@ -8,72 +8,72 @@
     {
       "page": 1,
       "chapter": 1,
-      "status": "unprocessed",
-      "reason": null,
-      "evidence": null
+      "status": "skipped_with_reason",
+      "reason": "Chapter title and contents only in the full-volume PDF.",
+      "evidence": "sources/cambridge/chapter_01/PP1_10_REPORT.md"
     },
     {
       "page": 2,
       "chapter": 1,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_01/PP1_10_REPORT.md"
     },
     {
       "page": 3,
       "chapter": 1,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_01/PP1_10_REPORT.md"
     },
     {
       "page": 4,
       "chapter": 1,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_01/PP1_10_REPORT.md"
     },
     {
       "page": 5,
       "chapter": 1,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_01/PP1_10_REPORT.md"
     },
     {
       "page": 6,
       "chapter": 1,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_01/PP1_10_REPORT.md"
     },
     {
       "page": 7,
       "chapter": 1,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_01/PP1_10_REPORT.md"
     },
     {
       "page": 8,
       "chapter": 1,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_01/PP1_10_REPORT.md"
     },
     {
       "page": 9,
       "chapter": 1,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_01/PP1_10_REPORT.md"
     },
     {
       "page": 10,
       "chapter": 1,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_01/PP1_10_REPORT.md"
     },
     {
       "page": 11,

@@ -34910,5 +34910,874 @@
     "status": "NEEDS_REVIEW",
     "review_notes": "Paraphrased from CGEL printed p. 212; original English illustrations. Non-constraints are intended for explanation, not active correction.",
     "diagnostic": null
+  },
+  {
+    "id": "OTH-602",
+    "domain": "other",
+    "concept": "Synchronic scope of the grammar",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "The book describes a present-day grammatical system at a historical stage, with earlier evidence used selectively when relevant to that system.",
+    "condition": "Use historical examples as comparisons while checking whether the construction survives in current general-purpose usage.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You know the answer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Thou knowest the answer. [historical contrast]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§1",
+        "pages": [
+          2
+        ],
+        "pdf_pages": [
+          22
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Synchronic scope of the grammar",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-603",
+    "domain": "other",
+    "concept": "Descriptive grammar and usage advice",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "A descriptive grammar models the patterns of a language and abstracts away from slips. A usage manual can advise on choices that the grammar permits.",
+    "condition": "Frequency, formality and editorial preference can inform advice without making a construction ill-formed.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Could you tell me who you called?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Could you tell me whom you called?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§1; 2.1",
+        "pages": [
+          2,
+          5
+        ],
+        "pdf_pages": [
+          22,
+          25
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Descriptive grammar and usage advice",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-604",
+    "domain": "other",
+    "concept": "Special-purpose registers and ordinary prose",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "Headlines, signs and other specialized varieties can license abbreviated expressions outside the main scope of this general-purpose grammar.",
+    "condition": "Interpret abbreviated text in its intended genre before applying ordinary sentence-level diagnostics.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The mayor will open the bridge tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Bridge opens tomorrow [headline]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§1",
+        "pages": [
+          3
+        ],
+        "pdf_pages": [
+          23
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Special-purpose registers and ordinary prose",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-605",
+    "domain": "other",
+    "concept": "Grammar and neighboring components",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Grammar includes syntax and morphology. Phonology models speech sounds, graphology models written forms, and the lexicon records individual items and their properties.",
+    "condition": "Semantics covers conventional meaning at lexical and grammatical levels; pragmatics addresses contextual interpretation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The lamps flickered. [noun plural and clause structure]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It's cold here. [can serve as a request to shut a window]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§1",
+        "pages": [
+          3,
+          4
+        ],
+        "pdf_pages": [
+          23,
+          24
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Grammar and neighboring components",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-606",
+    "domain": "other",
+    "concept": "Standard English and international variation",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "The reference variety is general-purpose international Standard English, identified through broad agreement in public usage, with regional variants.",
+    "condition": "Dialect-restricted constructions can belong to a standard variety; the source marks such variation with a percent sign.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I might do, if there's time. [British pro-form do]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She's gotten better at it. [American participle]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§1",
+        "pages": [
+          4,
+          5
+        ],
+        "pdf_pages": [
+          24,
+          25
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Standard English and international variation",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-607",
+    "domain": "other",
+    "concept": "Coverage of usage manuals and descriptive grammars",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Usage manuals discuss contested word forms, wording and other matters. A descriptive grammar also covers routine structural patterns that speakers generally acquire without advice.",
+    "condition": "Individual stress and lexical meanings are primarily lexicon topics, while inflection and clause structure belong to grammatical description.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The package arrived yesterday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I wonder which package arrived.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§2.1",
+        "pages": [
+          5,
+          6
+        ],
+        "pdf_pages": [
+          25,
+          26
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Coverage of usage manuals and descriptive grammars",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-608",
+    "domain": "other",
+    "concept": "Stylistic objections and grammaticality",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "A cliché, redundancy, or semantically odd claim can be grammatically well formed.",
+    "condition": "Classify a wording recommendation separately from the structural judgment.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "At the end of the day, we need a plan.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The silent thunder frightened the village.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§2.1",
+        "pages": [
+          6
+        ],
+        "pdf_pages": [
+          26
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Stylistic objections and grammaticality",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-609",
+    "domain": "other",
+    "concept": "Structural patterns speakers acquire without instruction",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "The discussion illustrates routine grammatical generalizations with article placement, modal distribution and subordinate interrogative structure.",
+    "condition": "Apply the later chapter specifications for detailed constructions and exceptions.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The parcel is on the shelf.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I want to be able to drive.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "She asked what we needed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§2.1",
+        "pages": [
+          6
+        ],
+        "pdf_pages": [
+          26
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Structural patterns speakers acquire without instruction",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-610",
+    "domain": "other",
+    "concept": "Usage evidence and personal preference",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "A writer's preference is insufficient grounds for a grammatical ban. Stable widespread usage can count against a claimed prohibition.",
+    "condition": "Style advice can be useful on its own terms. Observed change may also alter a form's distribution over time.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The discussion centered around the budget.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The discussion centered on the budget.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§2.2(a)",
+        "pages": [
+          7,
+          8
+        ],
+        "pdf_pages": [
+          27,
+          28
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Usage evidence and personal preference",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-611",
+    "domain": "other",
+    "concept": "Fronted who and stranded prepositions",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "In the cited Standard English constructions, fronted who can be interpreted as the complement of a stranded preposition or as an object, while whom is a more formal alternative.",
+    "condition": "Avoid extrapolating from the case of an in-place personal pronoun. Pied-piped prepositions present a different case environment.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Who did you borrow it from?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Whom did you borrow it from?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "From whom did you borrow it?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§2.2(b–c)",
+        "pages": [
+          8,
+          10
+        ],
+        "pdf_pages": [
+          28,
+          30
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fronted who and stranded prepositions",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-612",
+    "domain": "other",
+    "concept": "Register and dialect as separate dimensions",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Standard English includes formal, neutral and informal styles. The source distinguishes an informal standard variant from a pattern licensed by a different dialect grammar.",
+    "condition": "Its exclamation mark labels nonstandard forms that are grammatical in another dialect, rather than treating all informal patterns alike.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Who did they choose?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Whom did they choose?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "My cousin and I found the dog.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§2.2(b)",
+        "pages": [
+          8
+        ],
+        "pdf_pages": [
+          28
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Register and dialect as separate dimensions",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-613",
+    "domain": "other",
+    "concept": "Case in predicative complements after be",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "An identifying predicative complement after be can contain a nominative or accusative personal pronoun in Standard English, with nominative distinctly formal.",
+    "condition": "Object case rules and Latin predicative case do not establish the English analysis.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It is I, said the caller.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It's me, said the caller.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§2.2(c)",
+        "pages": [
+          8,
+          9
+        ],
+        "pdf_pages": [
+          28,
+          29
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Case in predicative complements after be",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-614",
+    "domain": "other",
+    "concept": "Case in coordinated objects",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "A coordinated object with final nominative I occurs among some speakers of Standard English. The object case of an uncoordinated pronoun does not settle the status of that coordinated form.",
+    "condition": "The discussion distinguishes speaker variation here from the nonstandard coordinated subject pattern and the ordinary informal predicative accusative.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They invited my sister and me.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They invited my sister and I. [speaker variant]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§2.2(c)",
+        "pages": [
+          9,
+          10
+        ],
+        "pdf_pages": [
+          29,
+          30
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Case in coordinated objects",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-615",
+    "domain": "other",
+    "concept": "Contraction with coordinated subjects",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "In the cited construction, a subject pronoun in a coordination cannot carry contracted auxiliary be on behalf of the whole coordinated subject.",
+    "condition": "The same pronoun can contract with be as a standalone subject. The scope here is the subject coordination construction illustrated in the source.",
+    "violation": "Contracted be attaches to the final pronoun of a coordinated subject.",
+    "exceptions": [
+      {
+        "description": "The same pronoun can contract with be as a standalone subject. The scope here is the subject coordination construction illustrated in the source.",
+        "pages": [
+          9,
+          10
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I wonder if she and we are ready.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I wonder if Jo and you are ready.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "I wonder if you're ready.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "You're ready, and Jo is too.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "I wonder if she and we're ready.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "I wonder if Jo and you're ready.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§2.2(c)",
+        "pages": [
+          9,
+          10
+        ],
+        "pdf_pages": [
+          29,
+          30
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Contraction with coordinated subjects",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "Contracted be attaches to the final pronoun of a coordinated subject.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "I wonder if she and we're ready. ||| I wonder if she and we are ready.",
+        "I wonder if Jo and you're ready. ||| I wonder if Jo and you are ready."
+      ],
+      "learner_explanation": "In the cited construction, a subject pronoun in a coordination cannot carry contracted auxiliary be on behalf of the whole coordinated subject. Use the full auxiliary after the coordinated subject.",
+      "corrected_paragraph_template": "Use the full auxiliary after the coordinated subject.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "I wonder if you're ready.",
+        "You're ready, and Jo is too."
+      ],
+      "lesson_tags": [
+        "coordination",
+        "contractions"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-616",
+    "domain": "other",
+    "concept": "Limits of external arguments about grammar",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Grammatical judgments require evidence about the construction. Imported Latin rules, unchecked analogies and claims from formal logic do not determine the distribution of English forms.",
+    "condition": "The source points to negative concord as a dialect construction that cannot be dismissed by assuming two negatives always cancel.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I didn't find anything. [standard]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I didn't find nothing. [negative concord reading in dialects that license it]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§2.2(c)",
+        "pages": [
+          10
+        ],
+        "pdf_pages": [
+          30
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Limits of external arguments about grammar",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
   }
 ]

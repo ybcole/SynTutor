@@ -400,3 +400,7 @@ Printed pp. 1554–1564 yielded 31 inactive records (`PHR-784–PHR-814`). Chapt
 ## Chapter 18 Phase B integration
 
 Chapter 18 Phase B accounts for printed pp. 1565–1620 in three audited batches: 53 substantive pages, two contents-only pages and one verified blank boundary page. The 76 source-linked records (`MORPH-067`–`MORPH-142`) include ten inactive constraint specifications. Independent linguistic review, Burton-Roberts crosswalk verification and runtime activation remain separate gates. The audited branch was reconciled with current main while retaining the intervening chapter coverage. Continue with Chapter 1, the first remaining chapter in priority three.
+
+## Chapter 1 first checkpoint
+
+Printed pp. 1–10 are accounted for, with nine substantive pages and one contents-only page. The batch adds 15 inactive records (`OTH-602`–`OTH-616`), including one `spec_only` constraint. Continue at printed p. 11 with speech and writing.

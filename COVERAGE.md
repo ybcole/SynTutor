@@ -6,7 +6,7 @@
 
 | Chapter | Printed pages | Extracted | Unprocessed | Skipped | Absent from split | Status |
 |---|---:|---:|---:|---:|---:|---|
-| 1. Preliminaries | 42 | 0 | 41 | 1 | 0 | Incomplete |
+| 1. Preliminaries | 42 | 9 | 31 | 2 | 0 | In progress (pp. 1–10) |
 | 2. Syntactic overview | 28 | 26 | 0 | 1 | 1 | Source-extracted |
 | 3. The verb | 142 | 139 | 0 | 3 | 0 | Source-extracted; QA pending |
 | 4. The clause: complements | 110 | 107 | 0 | 3 | 0 | Source extracted; QA pending |
@@ -27,7 +27,7 @@
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **1381 extracted**, 343 unprocessed, 38 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **1390 extracted**, 333 unprocessed, 39 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -398,3 +398,7 @@ Printed pp. 1554–1564 yielded 31 inactive records (`PHR-784–PHR-814`). Chapt
 ## Chapter 18 Phase B closure
 
 Chapter 18 Phase B accounts for printed pp. 1565–1620 in three audited batches: 53 substantive pages, two contents-only pages and one verified blank boundary page. The 76 source-linked records (`MORPH-067`–`MORPH-142`) include ten inactive constraint specifications. Independent linguistic review, Burton-Roberts crosswalk verification and runtime activation remain separate gates.
+
+## Chapter 1 Phase B checkpoint
+
+Printed pp. 1–10 are accounted for, with nine substantive pages and one contents-only page. The batch adds 15 inactive records (`OTH-602`–`OTH-616`), including one `spec_only` constraint. Continue at printed p. 11 with speech and writing. [Report](sources/cambridge/chapter_01/PP1_10_REPORT.md) · [Audit](sources/cambridge/chapter_01/PP1_10_AUDIT.json).
