@@ -101,3 +101,9 @@ The candidate now accepts an explicit *not* between the passive auxiliary and it
 On commit a80993c, the original 28-case set now produced 6 exact repairs out of 12 errors, up from 4. Both newly covered cases reparsed without a remaining candidate. The 14 evaluated controls still produced no findings, and the two quotation guards still abstained.
 
 The fresh 22-case set produced 9 exact repairs out of 10 errors, with zero candidates on all 12 evaluated controls. All 9 edits reparsed without a remaining candidate. The one miss was in the combined negation and by-phrase group, where the parser tagged verbal *empty* as an adjective. Keep this miss as a regression and require positive evidence of a verbal complement before attempting to recover it. The new evaluation is focused on the two modifier patterns. Production activation remains disabled. [Parser evidence](https://github.com/ybcole/SynTutor/actions/runs/43227709691/artifacts/13949045993)
+
+### Registry-gated passive make evaluator
+
+The evaluator supports a clause-scoped `passive_make_missing_to` check for CLS-357. It requires explicit standard-English scope, matching parser evidence, and a normalized canonical tree linking the PASS node, both verbs, the subordinate clause, and the promoted subject's index. A finding identifies the original character span and both verb nodes. The insertion remains a hint requiring reparse.
+
+Synthetic allow-list tests exercise the gate and the positive case, the marked passive, stale or missing parser evidence, unresolved crosswalks, and an unrelated rule ID. The actual CLS-357 catalog entry stays spec-only and the production registry stays empty. Independent review of the mapping and a learner-facing explanation are still required before rollout.

@@ -270,13 +270,13 @@
       ],
       "description": "Optional deterministic implementation contract. Only supported checks may execute, and only after the independent-review, source, crosswalk, positive/negative/exception-test, and runtime allow-list gates pass.",
       "additionalProperties": false,
-      "required": [
-        "kind",
-        "forbidden_sequences"
-      ],
+      "required": ["kind"],
+      "if": {"properties": {"kind": {"const": "forbidden_token_sequences"}}},
+      "then": {"required": ["forbidden_sequences"]},
+      "else": {"maxProperties": 1},
       "properties": {
         "kind": {
-          "const": "forbidden_token_sequences"
+          "enum": ["forbidden_token_sequences", "passive_make_missing_to"]
         },
         "forbidden_sequences": {
           "type": "array",

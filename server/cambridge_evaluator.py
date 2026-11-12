@@ -1,8 +1,7 @@
 """Fail-closed deterministic executor for runtime-enabled Cambridge rules.
 
 Only reviewed and allow-listed records are considered. This module implements a
-small, explicit surface-pattern check primitive; it does not infer a rule from
-Cambridge prose. A rule must carry a machine-readable runtime_check and pass
+small set of explicit surface and structural checks. A rule must carry a machine-readable runtime_check and pass
 the registry's source/review/crosswalk/test gates before execution.
 """
 from __future__ import annotations
@@ -12,8 +11,12 @@ from typing import Any
 
 try:
     from .burton_roberts import validate_canonical_tree
+    from .cgel_passive_make_candidate import probe_passive_make
+    from .cgel_passive_make_grounding import ground_passive_make_candidates
 except ImportError:  # direct script-directory imports
     from burton_roberts import validate_canonical_tree
+    from cgel_passive_make_candidate import probe_passive_make
+    from cgel_passive_make_grounding import ground_passive_make_candidates
 
 
 _TOKEN_RE = re.compile(r"\w+(?:['’]\w+)*|[^\w\s]", re.UNICODE)
@@ -91,6 +94,38 @@ def _evaluate_forbidden_sequences(sentence: str,
         "matched_sequences": matched,
         "exception_matches": excepted,
     }
+
+
+def _evaluate_passive_make(analysis, variety):
+    if not variety or variety.casefold() != "standard_english":
+        return {"status": "variety_not_selected"}
+    parser_evidence = analysis.get("parser_diagnostics")
+    if not isinstance(parser_evidence, dict):
+        return {"status": "evidence_unavailable"}
+    raw = parser_evidence.get("raw_candidate_tree")
+    if not isinstance(raw, dict):
+        return {"status": "evidence_unavailable"}
+
+    sentence = analysis["tree"]["sentence"]
+    try:
+        probe = probe_passive_make(sentence, raw, variety="standard_english")
+        candidates = probe["candidates"]
+        evidence = ground_passive_make_candidates(analysis, candidates)
+    except (KeyError, TypeError, ValueError, AttributeError, OSError, RecursionError):
+        return {"status": "evidence_unavailable"}
+    if probe["status"] != "candidate_only":
+        return {"status": "evidence_unavailable"}
+    matches = [
+        {"relation": candidate["relation"], "char_span": candidate["char_span"],
+         "governor_node_id": nodes["governor"]["node_id"],
+         "dependent_node_id": nodes["dependent"]["node_id"],
+         "grounding": nodes["observed_clause_link"], "edit_hint": candidate["edit_hint"]}
+        for candidate, nodes in zip(candidates, evidence)
+        if "observed_clause_link" in nodes
+    ]
+    if matches:
+        return {"status": "violation", "structural_matches": matches}
+    return {"status": "evidence_unavailable" if candidates else "not_applicable"}
 
 
 def evaluate_cambridge(analysis: dict[str, Any] | None,
@@ -186,28 +221,35 @@ def evaluate_cambridge(analysis: dict[str, Any] | None,
             if not required_variety or not variety or variety.casefold() != required_variety.casefold():
                 evaluations.append({"rule_id": rule_id, "status": "variety_not_selected"})
                 continue
-        if rule.get("scope") != "sentence":
+        check = rule.get("runtime_check")
+        kind = check.get("kind") if isinstance(check, dict) else None
+        if kind == "passive_make_missing_to" and rule_id == "CLS-357" and (
+                rule.get("scope") == "clause" and set(check) == {"kind"}):
+            outcome = _evaluate_passive_make(analysis, variety)
+        elif rule.get("scope") != "sentence":
             diagnostics.append({
                 "code": "UNSUPPORTED_RUNTIME_SCOPE",
-                "message": f"{rule_id} has scope {rule.get('scope')!r}; this evaluator currently supports sentence-scope checks only.",
+                "message": f"{rule_id} has no supported check for scope {rule.get('scope')!r}.",
             })
             continue
-        check = rule.get("runtime_check")
-        if not isinstance(check, dict) or check.get("kind") != _SUPPORTED_CHECK:
+        elif kind == _SUPPORTED_CHECK:
+            outcome = _evaluate_forbidden_sequences(sentence, check)
+        else:
             diagnostics.append({
                 "code": "UNSUPPORTED_RUNTIME_CHECK",
                 "message": f"{rule_id} has no supported deterministic runtime_check; it was not executed.",
             })
             continue
-        outcome = _evaluate_forbidden_sequences(sentence, check)
         if outcome["status"] == "invalid_check":
             diagnostics.append({
                 "code": "INVALID_RUNTIME_CHECK",
                 "message": f"{rule_id} has an empty or malformed forbidden_sequences value.",
             })
             continue
-        evaluated_ids.append(rule_id)
         evaluations.append({"rule_id": rule_id, **outcome})
+        if outcome["status"] in {"evidence_unavailable", "variety_not_selected"}:
+            continue
+        evaluated_ids.append(rule_id)
         if outcome["status"] == "violation":
             findings.append({
                 "rule_id": rule_id,
@@ -215,8 +257,9 @@ def evaluate_cambridge(analysis: dict[str, Any] | None,
                 "concept": rule.get("concept"),
                 "violation": rule.get("violation"),
                 "sources": rule.get("sources", []),
-                "matched_sequences": outcome.get("violating_matches", outcome["matched_sequences"]),
+                "matched_sequences": outcome.get("violating_matches", outcome.get("matched_sequences", [])),
                 "excepted_matches": outcome.get("excepted_matches", []),
+                **({"structural_matches": outcome["structural_matches"]} if "structural_matches" in outcome else {}),
             })
     return {
         "status": "evaluated" if evaluated_ids else "no_implemented_rules",

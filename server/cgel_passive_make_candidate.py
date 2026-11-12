@@ -2,8 +2,12 @@
 
 import json
 
-from cgel_ch03_candidate_probe import ROOT, tokens_with_spans
-from parse_engine import _ordered_leaves
+if __package__:
+    from .cgel_ch03_candidate_probe import ROOT, tokens_with_spans
+    from .parse_engine import _ordered_leaves
+else:
+    from cgel_ch03_candidate_probe import ROOT, tokens_with_spans
+    from parse_engine import _ordered_leaves
 
 
 RULE_ID = "CLS-357"
@@ -90,6 +94,7 @@ def probe_passive_make(sentence, tree, *, variety):
             "relation": {
                 "kind": "passive_causative_make_selects",
                 "passive_auxiliary_token_index": auxiliary_i,
+                "passive_auxiliary_char_span": tokens[auxiliary_i]["char_span"],
                 "governor_token_index": make_i,
                 "dependent_token_index": verb_i,
                 "governor_char_span": make_span,
