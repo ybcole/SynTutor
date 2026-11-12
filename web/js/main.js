@@ -230,7 +230,7 @@ async function showCorrected(variant = 'corrected') {
     let cp = null;
     try {
       change = correctionPreview(session.payload, edit, session.inputText);
-      const out = await postParse(change.text);
+      const out = await postParse(change.text, null, session.payload.meta.cambridge_variety);
       if (!out.error) cp = out.payload;
     } catch (_e) { /* handled below */ }
     // The learner may have picked another error while the preview was built.
@@ -352,6 +352,7 @@ function setActiveNav(viewName) {
 // overlay is on top of it.
 function setWorkspaceView(viewName) {
   workspaceView = VIEW_ALIASES[viewName] || viewName;
+  syncGeneratorVarietyVisibility();
   if (!overlayView) setActiveNav(workspaceView);
 }
 
@@ -1274,6 +1275,14 @@ function initProfileMenu() {
 
 function wireEvents() {
   const ta = document.querySelector('#inputText');
+  document.querySelector('#generatorVariety')?.addEventListener('change', () => {
+    const text = ta.value.trim();
+    if (workspaceView !== 'tutor' || quizMode || !text) return;
+    const index = text === session?.inputText ? session.sentence_index : 0;
+    invalidateAnalysis('English variety changed');
+    historySpans = [];
+    runPipeline({ index, isReplay: true });
+  });
   // Single-click editing (empty input / single sentence / active sentence /
   // blank space): this listener is registered before activateSentenceAtCaret,
   // so once readOnly flips false the sentence-nav click short-circuits.
@@ -1537,9 +1546,10 @@ function failPipeline(title, lines) {
   log(`Request failed: ${title} \u2014${lines[0] || ''}`);
 }
 
-async function postParse(text, index = null) {
+async function postParse(text, index = null, variety = null) {
   const body = { text };
   if (index !== undefined && index !== null) body.sentence_index = index;
+  if (variety) body.variety = variety;
   const res = await fetch(`${API_BASE}/api/parse`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -1753,8 +1763,14 @@ function clearTreeAuthorityNotice() {
   notice.textContent = '';
 }
 
+function syncGeneratorVarietyVisibility() {
+  const settings = document.querySelector('#generatorVarietySettings');
+  if (settings) settings.hidden = workspaceView !== 'tutor' || quizMode;
+}
+
 function setQuizMode(active) {
   quizMode = active;
+  syncGeneratorVarietyVisibility();
   if (renderer) renderer.setInteractive(!active);
 }
 
@@ -1973,7 +1989,8 @@ async function executePipeline(opts, request) {
   log(`Stage 2: POST ${API_BASE}/api/parse (target: ${target})`);
   let payload;
   try {
-    const out = await postParse(text, opts.index);
+    const variety = document.querySelector('#generatorVariety')?.value;
+    const out = await postParse(text, opts.index, variety);
     if (request !== analysisRequest) return;
     if (out.error) {
       const { status, error, hint } = out.error;

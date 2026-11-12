@@ -16,10 +16,13 @@ ROOT = Path(__file__).resolve().parents[1]
 TEXT = "The robins sings."
 
 
-def candidate():
+def candidate(body):
+    text = body["text"]
+    selected = body.get("sentence_index", 0)
+    offset = selected * (len(TEXT) + 1)
     rows = [
-        {"index": i, "t": match.group(), "start": match.start(),
-         "end": match.end(), "pos": tag}
+        {"index": i, "t": match.group(), "start": offset + match.start(),
+         "end": offset + match.end(), "pos": tag}
         for i, (match, tag) in enumerate(zip(
             re.finditer(r"\w+|[^\w\s]", TEXT), ("DT", "NNS", "VBZ", ".")
         ))
@@ -37,12 +40,14 @@ def candidate():
         "node_details": {n["id"]: {"status": "valid", "role": "fixture", **n} for n in nodes},
         "summary": {"valid": False, "violations": [], "constraints_fired": [],
                     "verdict": "unverified"},
-        "meta": {"target_sentence": 1, "sentence_count": 1, "backend": "fixture"},
+        "meta": {"target_sentence": selected + 1, "sentence_count": text.count(TEXT),
+                 "backend": "fixture", "cambridge_variety": body.get("variety")},
         "br_analysis": {"status": "unresolved", "reasons": [
             {"code": "PROFILE_MAPPING_NOT_APPROVED", "detail": "Source mapping not reviewed."}
         ]},
         "parse": {"text": TEXT, "tokens": rows, "sentences": [
-            {"start": 0, "end": len(TEXT), "ordinal": 1}
+            {"start": i * (len(TEXT) + 1), "end": i * (len(TEXT) + 1) + len(TEXT), "ordinal": i + 1}
+            for i in range(text.count(TEXT))
         ]},
         "explainers": {},
     }
@@ -64,9 +69,13 @@ try:
         browser = playwright.chromium.launch(
             executable_path=os.getenv("SYNTUTOR_CHROMIUM_BIN")
         )
+        context = browser.new_context()
         for width, height in ((1280, 900), (390, 800)):
-            page = browser.new_page(viewport={"width": width, "height": height})
+            page = context.new_page()
+            page.set_viewport_size({"width": width, "height": height})
             page.add_init_script("localStorage.setItem('syntutor_onboarding_seen', '1')")
+
+            parse_requests = []
 
             def route(request):
                 url = request.request.url
@@ -74,7 +83,9 @@ try:
                     request.fulfill(content_type="application/javascript",
                                     body="export const createClient = () => null;")
                 elif url.endswith("/api/parse"):
-                    request.fulfill(json=candidate())
+                    body = request.request.post_data_json
+                    parse_requests.append(body)
+                    request.fulfill(json=candidate(body))
                 elif url.endswith("/api/explain"):
                     request.fulfill(json={"status": "UNRESOLVED", "channels": {}})
                 elif url.startswith(base):
@@ -86,7 +97,6 @@ try:
             page.goto(base, wait_until="domcontentloaded")
             page.evaluate("async () => { await import('/js/main.js'); }")
             page.locator("#inputText").evaluate("""(el, text) => {
-                el.readOnly = false;
                 el.value = text;
                 el.dispatchEvent(new KeyboardEvent('keydown', {
                   key:'Enter', ctrlKey:true, bubbles:true
@@ -102,9 +112,39 @@ try:
             expect(page.locator("#treeCanvas")).to_be_visible()
             toggle.click()
             expect(page.locator("#treeCanvas")).to_be_hidden()
+            assert "variety" not in parse_requests[0]
+            setting = page.get_by_label("English variety")
+            expect(setting).to_be_visible()
+            expect(setting).to_have_value("")
+            page.locator("#inputText").evaluate("""(el, text) => {
+                el.value = text;
+                el.dispatchEvent(new KeyboardEvent('keydown', {
+                  key:'Enter', ctrlKey:true, bubbles:true
+                }));
+            }""", f"{TEXT} {TEXT}")
+            second = page.locator('.sentence-span[data-sent-idx="1"]')
+            expect(second).to_be_visible()
+
+            with page.expect_request(lambda r: r.url.endswith("/api/parse")) as changed:
+                setting.select_option("standard_english")
+            assert changed.value.post_data_json["variety"] == "standard_english"
+            expect(page.locator("#loadingIndicator")).not_to_have_class(re.compile("visible"))
+            expect(page.locator('.sentence-span[data-sent-idx="0"]')).to_have_class(re.compile("is-active"))
+            with page.expect_request(lambda r: r.url.endswith("/api/parse")) as navigated:
+                second.click()
+            assert navigated.value.post_data_json["sentence_index"] == 1
+            assert navigated.value.post_data_json["variety"] == "standard_english"
+            expect(second).to_have_class(re.compile("is-active"))
+
+            with page.expect_request(lambda r: r.url.endswith("/api/parse")) as cleared:
+                setting.select_option("")
+            assert cleared.value.post_data_json["sentence_index"] == 1
+            assert "variety" not in cleared.value.post_data_json
+            expect(page.locator("#loadingIndicator")).not_to_have_class(re.compile("visible"))
+            expect(second).to_have_class(re.compile("is-active"))
             page.close()
         browser.close()
 finally:
     server.shutdown()
     server.server_close()
-print("PASS: unresolved B-R never defaults to raw Benepar labels; diagnostics are opt-in.")
+print("PASS: raw diagnostics stay opt-in and English variety follows the selected sentence on desktop and mobile.")
