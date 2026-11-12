@@ -468,3 +468,7 @@ Printed pp. 1390–1397 add eight substantive pages and 21 inactive records (`CL
 ## Chapter 16 fifth checkpoint
 
 Printed pp. 1398–1405 add eight substantive pages and 17 inactive records (`CLS-1361`–`CLS-1377`). Chapter 16 has 42 unprocessed pages. Continue at p. 1406 with processing factors and extraposition.
+
+## Chapter 16 sixth checkpoint
+
+Printed pp. 1406–1413 add eight substantive pages and 23 inactive records (`CLS-1378`–`CLS-1400`), including one `spec_only` constraint. Chapter 16 has 34 unprocessed pages. Continue at p. 1414 with the transition from dislocation to clefts.

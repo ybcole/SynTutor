@@ -85500,5 +85500,1273 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1378",
+    "domain": "clauses",
+    "concept": "Nested extraposition and repeated subordinators",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Extraposition can improve processing when a clause in subject position itself begins with a declarative subject clause, yielding adjacent identical subordinators in the basic order.",
+    "condition": "Extraposition in both clauses can remove the difficult initial sequence.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It bothered her that it was apparent that the seal had failed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It surprised us that it was clear that the gate had been forced.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§7.1",
+        "pages": [
+          1406
+        ],
+        "pdf_pages": [
+          1426
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nested extraposition and repeated subordinators",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1379",
+    "domain": "clauses",
+    "concept": "Subject–auxiliary inversion with clausal subjects",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "Declarative content clauses and infinitivals cannot occupy the inverted subject position. If the interrogative requires subject–auxiliary inversion and the predicate licenses extraposition, dummy it occupies the inverted position.",
+    "condition": "Gerund-participial subjects can occur after the inverted auxiliary and are outside this restriction.",
+    "violation": "An infinitival or declarative content clause fills the subject position immediately after an inverted auxiliary.",
+    "exceptions": [
+      {
+        "description": "Gerund-participial subjects can invert with the auxiliary. Ordinary noun phrase subjects can also invert.",
+        "pages": [
+          1406,
+          1407
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Would it help to close the valve?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Is it surprising that the valve failed?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Will replacing the seal take all morning?",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "Would an inspection help?",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Would to close the valve help?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Is that the valve failed surprising?",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§7.1",
+        "pages": [
+          1406,
+          1407
+        ],
+        "pdf_pages": [
+          1426,
+          1427
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subject–auxiliary inversion with clausal subjects",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "An infinitival or declarative content clause fills the subject position immediately after an inverted auxiliary.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Would to close the valve help? ||| Would it help to close the valve?",
+        "Is that the valve failed surprising? ||| Is it surprising that the valve failed?"
+      ],
+      "learner_explanation": "Use dummy it as the subject of the inverted clause and put the associated clause after the predicate where that predicate licenses extraposition.",
+      "corrected_paragraph_template": "Use dummy it as the subject of the inverted clause and put the associated clause after the predicate where that predicate licenses extraposition.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Will replacing the seal take all morning?",
+        "Would an inspection help?"
+      ],
+      "lesson_tags": [
+        "information-packaging",
+        "inversion"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1380",
+    "domain": "clauses",
+    "concept": "Exclamative content clauses and basic subject order",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Exclamative content clauses are generally awkward in non-extraposed subject position, though examples are possible in suitable contexts.",
+    "condition": "The restriction is a matter of pragmatic suitability rather than an absolute syntax ban.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It's incredible what a mess they made.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What a costly mistake it was became apparent only later.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§7.1",
+        "pages": [
+          1406
+        ],
+        "pdf_pages": [
+          1426
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Exclamative content clauses and basic subject order",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1381",
+    "domain": "clauses",
+    "concept": "Specifying be and unavailable subject extraposition",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A clausal subject of specifying be does not have a corresponding extraposed subject construction.",
+    "condition": "The specification identifies a value or question, as distinct from assigning a property with an extraposition-licensing predicate.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "How she reached the ledge is the question we need to answer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Why the bell rang is the real mystery.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§7.1",
+        "pages": [
+          1406
+        ],
+        "pdf_pages": [
+          1426
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Specifying be and unavailable subject extraposition",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1382",
+    "domain": "clauses",
+    "concept": "Finite interveners and extraposition",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Some extraposition patterns fail across an internal finite content clause or a finite relative inside a predicate NP. The full distribution is unresolved because some sequences with an intervening finite clause are attested.",
+    "condition": "Do not treat the presence of any earlier finite clause as sufficient to diagnose an error.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "That she withdrew shows that she had doubts.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It depends on when the shipment arrives whether we can start on Friday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§7.1",
+        "pages": [
+          1406
+        ],
+        "pdf_pages": [
+          1426
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Finite interveners and extraposition",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1383",
+    "domain": "clauses",
+    "concept": "Lexically restricted dummy-it patterns",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Some verbs and idioms license dummy it with a following declarative or infinitival clause and lack a counterpart with that clause in subject position. Some infinitival patterns are passive.",
+    "condition": "Appear, seem and strike can allow a clausal subject with a predicative complement. The classification of all postverbal clauses as extraposed subjects is debatable.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It turned out that the key was missing.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was decided to postpone the vote.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§7.1",
+        "pages": [
+          1406,
+          1407
+        ],
+        "pdf_pages": [
+          1426,
+          1427
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexically restricted dummy-it patterns",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1384",
+    "domain": "clauses",
+    "concept": "Gerund-participial extraposition",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Gerund-participial subjects can extrapose with some predicates, but less readily than infinitivals or content clauses. An overt subject, especially a non-pronominal one, further restricts the construction.",
+    "condition": "Gerund-participial subjects can remain in subject position under inversion. Worth has a special dummy-it pattern without a corresponding clausal subject.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It would be no use calling again.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Will replacing the seal take all morning?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§7.2",
+        "pages": [
+          1407
+        ],
+        "pdf_pages": [
+          1427
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Gerund-participial extraposition",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1385",
+    "domain": "clauses",
+    "concept": "Limited NP extraposition with concealed questions",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A narrow NP extraposition pattern allows a definite noun with a relative clause, interpreted as a concealed question, when the matrix supplies an exclamatory evaluation.",
+    "condition": "A basic version with the NP as subject is also available.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It's extraordinary the number of calls she gets.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The number of calls she gets is extraordinary.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§7.2",
+        "pages": [
+          1407,
+          1408
+        ],
+        "pdf_pages": [
+          1427,
+          1428
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Limited NP extraposition with concealed questions",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1386",
+    "domain": "clauses",
+    "concept": "Extraposition with dummy object it",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Dummy it can serve as object before an object-oriented predicative complement, with the associated content clause appearing after the predicative. The content clause cannot normally replace it in that same position.",
+    "condition": "Preposing the content clause is a separate available construction in the illustrated pattern.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I find it astonishing that the latch held.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That the latch held I find astonishing.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§7.2",
+        "pages": [
+          1408
+        ],
+        "pdf_pages": [
+          1428
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Extraposition with dummy object it",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1387",
+    "domain": "clauses",
+    "concept": "Nucleus and detached phrase in dislocation",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Dislocation places a constituent outside the clause nucleus to the left or right, linked to an overt form inside the nucleus. This is common in oral narratives and informal writing.",
+    "condition": "The nucleus has its own constituent in the relevant syntactic position.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Those hinges, they still squeak.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They still squeak, those hinges.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§8",
+        "pages": [
+          1408
+        ],
+        "pdf_pages": [
+          1428
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nucleus and detached phrase in dislocation",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1388",
+    "domain": "clauses",
+    "concept": "Pronoun functions in left dislocation",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The linked pronoun can be a subject, direct or indirect object, object of a preposition, genitive determiner, or embedded subject.",
+    "condition": "The detached phrase sits outside the nucleus regardless of the pronoun's function.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Those neighbors, I borrowed a ladder from them.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That violinist, I met her brother yesterday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§8.1",
+        "pages": [
+          1408,
+          1409
+        ],
+        "pdf_pages": [
+          1428,
+          1429
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pronoun functions in left dislocation",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1389",
+    "domain": "clauses",
+    "concept": "Left dislocation over clause coordination",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A single detached expression can have one or several linked pronouns within a coordinated clause nucleus.",
+    "condition": "The linkage need not be repeated in every coordinate.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Raw onions, I eat them and my eyes start to water.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That bicycle, I lent it to Jo and she left it at the station.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§8.1",
+        "pages": [
+          1409
+        ],
+        "pdf_pages": [
+          1429
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Left dislocation over clause coordination",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1390",
+    "domain": "clauses",
+    "concept": "Left dislocation versus complement preposing",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Left dislocation links a detached expression to an overt form. Complement preposing has a gap and is more limited in which functions it can target.",
+    "condition": "Unlike a preposed complement, a left-dislocated phrase can introduce discourse-new information.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The red folder, I left it on your desk.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The red folder I left on your desk.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§8.1",
+        "pages": [
+          1409
+        ],
+        "pdf_pages": [
+          1429
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Left dislocation versus complement preposing",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1391",
+    "domain": "clauses",
+    "concept": "Left dislocation versus explicitly marked topic",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "An as for adjunct explicitly assigns topic status and can occur without an anaphoric link in the nucleus. A left-dislocated phrase need not be the topic and has a linked form.",
+    "condition": "The overall discourse can center on an entity introduced inside the nucleus.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "As for the greenhouse, the contractor did excellent work.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "This one customer, she left me a tip I still haven't spent.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§8.1",
+        "pages": [
+          1409,
+          1410
+        ],
+        "pdf_pages": [
+          1429,
+          1430
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Left dislocation versus explicitly marked topic",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1392",
+    "domain": "clauses",
+    "concept": "Processing advantages of left dislocation",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Left dislocation can simplify a complex genitive or introduce a discourse-new referent before a short pronoun presents it as the clause subject.",
+    "condition": "The detached phrase can establish a separate information unit in discourse.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The family at the end of the lane, their dog escaped again.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "This delivery driver, he stopped and offered to help.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§8.1",
+        "pages": [
+          1410
+        ],
+        "pdf_pages": [
+          1430
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Processing advantages of left dislocation",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1393",
+    "domain": "clauses",
+    "concept": "Optional discourse linking in left dislocation",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A left-dislocated phrase can stand in a salient relation to prior discourse, but left dislocation requires no discourse-old open proposition.",
+    "condition": "A set member can link to the prior context while the following predicate supplies independent new information.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I have three boxes to sort. The first one, I'll leave it with Nina.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Two teams reached the final. The younger team, they all took the same bus home.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§8.1",
+        "pages": [
+          1410,
+          1411
+        ],
+        "pdf_pages": [
+          1430,
+          1431
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Optional discourse linking in left dislocation",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1394",
+    "domain": "clauses",
+    "concept": "Pronoun functions in right dislocation",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Right dislocation allows a linked pronoun in multiple nucleus functions, including object, genitive determiner, and embedded subject.",
+    "condition": "The detached expression follows the nucleus regardless of the position of the linked form.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I've never spoken to her, the new manager.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I'm sure they'll arrive early, your cousins.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§8.2",
+        "pages": [
+          1411
+        ],
+        "pdf_pages": [
+          1431
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pronoun functions in right dislocation",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1395",
+    "domain": "clauses",
+    "concept": "Reference clarification in right dislocation",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A right-dislocated phrase can clarify an initially ambiguous pronoun or can accompany an already unambiguous pronoun.",
+    "condition": "The clarification can function as an afterthought when the discourse has several plausible antecedents.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mia lent Ava a bike. She needed it to get to work, Ava.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I borrowed your old atlas. It's surprisingly detailed, that atlas.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§8.2",
+        "pages": [
+          1411,
+          1412
+        ],
+        "pdf_pages": [
+          1431,
+          1432
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reference clarification in right dislocation",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1396",
+    "domain": "clauses",
+    "concept": "Discourse familiarity and topicality in right dislocation",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The right-dislocated phrase must be discourse-old and topical in the illustrated construction. Prior mention or a salient inference can establish familiarity.",
+    "condition": "A genitive link is uncommon because both the referent and the containing NP need discourse familiarity.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I've been fixing my old radio again. It's temperamental, that radio.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Your son's just arrived. What's his name, your son?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§8.2",
+        "pages": [
+          1412
+        ],
+        "pdf_pages": [
+          1432
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Discourse familiarity and topicality in right dislocation",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1397",
+    "domain": "clauses",
+    "concept": "Nominal, demonstrative and contrastive links in left dislocation",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A light nominal or epithet in the nucleus can serve like a pronoun. A stressed demonstrative can mark contrast, and a stressed pronoun in a phrase such as people like them can signal a subset relation instead of coreference with the nucleus subject.",
+    "condition": "An initial topic-like NP without any anaphoric link falls outside the construction.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Your landlord, the guy never answers his phone.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Lena and Pat, volunteers like THEM are hard to find.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§8.3",
+        "pages": [
+          1412,
+          1413
+        ],
+        "pdf_pages": [
+          1432,
+          1433
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nominal, demonstrative and contrastive links in left dislocation",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1398",
+    "domain": "clauses",
+    "concept": "Supplementary epithet versus referential dislocation",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A supplementary epithet expresses an attitude rather than identifying the referent. It can appear before, after, or inside the nucleus and can have its own intonational unit.",
+    "condition": "A referential dislocated NP can itself contain an epithet but still identifies the referent.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Theo, the rascal, hid my keys again.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That rascal next door, he hid my keys again.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§8.3",
+        "pages": [
+          1413
+        ],
+        "pdf_pages": [
+          1433
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Supplementary epithet versus referential dislocation",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1399",
+    "domain": "clauses",
+    "concept": "Right dislocation and extraposition with it",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Right dislocation can contain a referential it linked to a detached clause. In extraposition the invariant it is a dummy subject.",
+    "condition": "Prosodic detachment and anaphoric reference distinguish right dislocation from the ordinary clausal extraposition pattern.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It annoyed us, having to wait outside.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It annoyed us that we had to wait outside.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§8.3",
+        "pages": [
+          1413
+        ],
+        "pdf_pages": [
+          1433
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Right dislocation and extraposition with it",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1400",
+    "domain": "clauses",
+    "concept": "Resumptive relative pronouns versus left dislocation",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A resumptive pronoun within a relative can resemble the overt link in left dislocation. The relative construction itself requires the prenuclear relative expression, which distinguishes the structures.",
+    "condition": "The second example illustrates a marginal resumptive relative with the pronoun inside an embedded question.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "That clerk, I never know what he'll say.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The clerk, who I never know what he'll say, makes every visit unpredictable.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§8.3",
+        "pages": [
+          1413
+        ],
+        "pdf_pages": [
+          1433
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Resumptive relative pronouns versus left dislocation",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
   }
 ]
