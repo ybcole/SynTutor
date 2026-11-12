@@ -294,3 +294,7 @@ Printed pp. 822–838 yielded 25 classification records (`CLS-685`–`CLS-709`).
 ## Chapter 9 source extraction complete
 
 Printed pp. 839–849 yielded 16 records (`CLS-710`–`CLS-725`). Printed p. 850 is blank. Chapter 9 closes with 64 substantive pages and zero unprocessed pages. The next chapter in the priority order is Chapter 11.
+
+## Chapter 11 first checkpoint
+
+Printed pp. 947–966 yielded 30 classification records (`CLS-726`–`CLS-755`). Continue at p. 967.

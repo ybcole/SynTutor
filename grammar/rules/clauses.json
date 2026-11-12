@@ -47014,5 +47014,1814 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-726",
+    "domain": "clauses",
+    "concept": "Dependency and subordinate clause form",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A subordinate clause typically depends on a larger construction, and its status can be signaled by a marker, a structural gap, or the position that licenses it.",
+    "condition": "Applies to the construction described in §1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A subordinate-form clause can occur as an isolated answer or in a special independent use.",
+        "pages": [
+          949,
+          950
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I know that the alarm works.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The alarm she installed works.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§1",
+        "pages": [
+          949,
+          950
+        ],
+        "pdf_pages": [
+          969,
+          970
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dependency and subordinate clause form",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-727",
+    "domain": "clauses",
+    "concept": "Finite and nonfinite subordinate clauses",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Subordinate clauses can be finite or nonfinite. Nonfinite clauses often differ more markedly from main clauses in tense and subject expression.",
+    "condition": "Applies to the construction described in §1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The distinction is independent of whether a subordinate clause is functioning as a complement or modifier.",
+        "pages": [
+          950
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She expects that the crew will arrive.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She expects to arrive early.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§1",
+        "pages": [
+          950
+        ],
+        "pdf_pages": [
+          970
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Finite and nonfinite subordinate clauses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-728",
+    "domain": "clauses",
+    "concept": "Content, relative and comparative clauses",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Content clauses are distinguished from relative and comparative clauses by their construction, including the source and nature of any missing element.",
+    "condition": "Applies to the construction described in §1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A clause with that is not necessarily a content clause.",
+        "pages": [
+          950,
+          951
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I believe that the plan will work.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I found the plan that she recommended.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§1",
+        "pages": [
+          950,
+          951
+        ],
+        "pdf_pages": [
+          970,
+          971
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Content, relative and comparative clauses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-729",
+    "domain": "clauses",
+    "concept": "Clause type in content clauses",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Finite content clauses have declarative, interrogative and exclamative types, with structural differences from their main-clause counterparts.",
+    "condition": "Applies to the construction described in §2 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Imperative clause type does not have the same subordinate content-clause counterpart.",
+        "pages": [
+          951
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I know that she left.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I asked whether she left.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§2",
+        "pages": [
+          951
+        ],
+        "pdf_pages": [
+          971
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Clause type in content clauses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-730",
+    "domain": "clauses",
+    "concept": "Expanded and bare declaratives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An expanded declarative contains the subordinator that. A bare declarative lacks it, and some licensing environments allow only the bare form.",
+    "condition": "Applies to the construction described in §3 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Whether a bare clause is expandable depends on the construction.",
+        "pages": [
+          951
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We know that it works.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We know it works.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§3",
+        "pages": [
+          951
+        ],
+        "pdf_pages": [
+          971
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Expanded and bare declaratives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-731",
+    "domain": "clauses",
+    "concept": "Obligatory that before the matrix predicator",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A declarative content clause functioning as subject or fronted before the matrix predicator normally requires that.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An independent clause followed by a parenthetical can have a superficially similar sequence.",
+        "pages": [
+          952
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "That the switch failed is obvious.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That he knew the code I cannot believe.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§3.1",
+        "pages": [
+          952
+        ],
+        "pdf_pages": [
+          972
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Obligatory that before the matrix predicator",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-732",
+    "domain": "clauses",
+    "concept": "That in a purpose adjunct",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A declarative content clause used as an adjunct in the marked purpose construction is introduced by that.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The construction is formal and is distinct from the more common purpose infinitival.",
+        "pages": [
+          952
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They sought an inquiry that the facts might be known.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She spoke up that others might be heard.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§3.1",
+        "pages": [
+          952
+        ],
+        "pdf_pages": [
+          972
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "That in a purpose adjunct",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-733",
+    "domain": "clauses",
+    "concept": "Content clauses after comparative than or as",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "That marks a declarative content clause after comparative than or as in the relevant construction, distinguishing it from an ordinary comparative clause.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Ordinary comparative clauses do not admit this added marker.",
+        "pages": [
+          952
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I would rather that she stayed than that she left.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She traveled more often than he did.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§3.1",
+        "pages": [
+          952
+        ],
+        "pdf_pages": [
+          972
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Content clauses after comparative than or as",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-734",
+    "domain": "clauses",
+    "concept": "Subject extraction and that omission",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In the Standard English pattern described here, a declarative content clause with an extracted subject gap excludes that.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An object gap does not impose the same restriction, and the governing verb can license that when the subject is overt.",
+        "pages": [
+          953
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Who do you think will win?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She is the person I believe will win.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§3.1",
+        "pages": [
+          953
+        ],
+        "pdf_pages": [
+          973
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subject extraction and that omission",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-735",
+    "domain": "clauses",
+    "concept": "Factors favoring optional that",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Where that is optional, register and constituent structure affect its retention. Separation from the governor can favor the overt marker.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An adjacent complement in informal speech often allows omission, but this is a preference in the relevant environments.",
+        "pages": [
+          953,
+          954
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I think it will work.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I explained to the whole committee that the switch was faulty.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§3.1",
+        "pages": [
+          953,
+          954
+        ],
+        "pdf_pages": [
+          973,
+          974
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Factors favoring optional that",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-736",
+    "domain": "clauses",
+    "concept": "Declarative how in a restricted construction",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In some contexts how can introduce a declarative-like complement recounting a situation.",
+    "condition": "Applies to the construction described in §3.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The same form can introduce an interrogative about manner, so interpretation depends on the context.",
+        "pages": [
+          954
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She told us how she had once lived beside the sea.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He recalled how his parents had moved away years earlier.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§3.1",
+        "pages": [
+          954
+        ],
+        "pdf_pages": [
+          974
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Declarative how in a restricted construction",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-737",
+    "domain": "clauses",
+    "concept": "Subordinator and clause constituency",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "That marks subordination and is separate from the nucleus of the content clause. A single marker can introduce a coordination of clauses.",
+    "condition": "Applies to the construction described in §3.2 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An overt marker can also be repeated with coordinated content clauses where the construction permits it.",
+        "pages": [
+          954,
+          955
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I knew that the tap leaked and the bell was broken.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She concluded that either the sensor was faulty or the cable had come loose.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§3.2",
+        "pages": [
+          954,
+          955
+        ],
+        "pdf_pages": [
+          974,
+          975
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subordinator and clause constituency",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-738",
+    "domain": "clauses",
+    "concept": "That as a marker rather than the head",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The subordinator that marks the clause without determining properties such as the mood or structure licensed by the governing predicate.",
+    "condition": "Applies to the construction described in §3.2 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An adjunct belonging to the embedded clause can precede the marker in certain constructions.",
+        "pages": [
+          955,
+          956
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They insist that the door be locked.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They believe that the door is locked.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§3.2",
+        "pages": [
+          955,
+          956
+        ],
+        "pdf_pages": [
+          975,
+          976
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "That as a marker rather than the head",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-739",
+    "domain": "clauses",
+    "concept": "Whether as an interrogative subordinator",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Whether marks a closed interrogative content clause and can follow an adjunct belonging to that clause.",
+    "condition": "Applies to the construction described in §3.2 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Open interrogatives can use interrogative phrases without whether.",
+        "pages": [
+          956
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She wondered whether the alarm had sounded.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She wondered, if the alarm sounded, whether anyone would hear it.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§3.2",
+        "pages": [
+          956
+        ],
+        "pdf_pages": [
+          976
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Whether as an interrogative subordinator",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-740",
+    "domain": "clauses",
+    "concept": "Declarative content clauses as subjects",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A that clause can occupy subject position and be the antecedent of the subject pronoun in a tag.",
+    "condition": "Applies to the construction described in §4.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Clausal subjects do not undergo subject–auxiliary inversion in the ordinary pattern.",
+        "pages": [
+          957
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "That she stayed late surprised us, didn't it?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That the alarm failed and that nobody noticed are separate issues.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§4.1",
+        "pages": [
+          957
+        ],
+        "pdf_pages": [
+          977
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Declarative content clauses as subjects",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-741",
+    "domain": "clauses",
+    "concept": "Predicate restrictions on clausal subjects",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Clausal subjects occur with predicates that license propositional content, including various evaluative predicatives and passive constructions.",
+    "condition": "Applies to the construction described in §4.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A predicate that admits an NP subject does not necessarily admit a clausal subject.",
+        "pages": [
+          957,
+          958
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "That the figure changed is significant.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That the records were missing was acknowledged.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§4.1",
+        "pages": [
+          957,
+          958
+        ],
+        "pdf_pages": [
+          977,
+          978
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Predicate restrictions on clausal subjects",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-742",
+    "domain": "clauses",
+    "concept": "Postposing a clausal subject",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A clausal subject can follow a fronted predicative complement in a postposed-subject construction.",
+    "condition": "Applies to the construction described in §4.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A corresponding sentence with the fact that contains an NP subject and can have a different structural analysis.",
+        "pages": [
+          958
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "More surprising was that the alarm never sounded.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Most troubling is that nobody checked the latch.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§4.1",
+        "pages": [
+          958
+        ],
+        "pdf_pages": [
+          978
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Postposing a clausal subject",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-743",
+    "domain": "clauses",
+    "concept": "Single internal content-clause complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Many verbs license a declarative content clause as their sole internal complement.",
+    "condition": "Applies to the construction described in §4.2 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Passivization possibilities vary with the governor and construction.",
+        "pages": [
+          958,
+          959
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We expected that the train would be late.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She admitted that she had missed the call.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§4.2",
+        "pages": [
+          958,
+          959
+        ],
+        "pdf_pages": [
+          978,
+          979
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Single internal content-clause complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-744",
+    "domain": "clauses",
+    "concept": "Content clauses alongside NP and PP complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some verbs license a content clause alongside an NP or PP identifying an addressee or other participant.",
+    "condition": "Applies to the construction described in §4.2 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Complement choice is lexical, and some constructions permit the NP to become passive subject.",
+        "pages": [
+          959
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She told me that the door was locked.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She announced to the staff that the door was locked.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§4.2",
+        "pages": [
+          959
+        ],
+        "pdf_pages": [
+          979
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Content clauses alongside NP and PP complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-745",
+    "domain": "clauses",
+    "concept": "Declarative complement of specifying be",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A declarative clause can complement be and specify the value of an expression such as reason or problem.",
+    "condition": "Applies to the construction described in §4.2 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This differs from using the clause itself as the subject.",
+        "pages": [
+          959
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The problem is that the cable is missing.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The reason was that the road had flooded.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§4.2",
+        "pages": [
+          959
+        ],
+        "pdf_pages": [
+          979
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Declarative complement of specifying be",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-746",
+    "domain": "clauses",
+    "concept": "Subject extraposition with it",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A declarative content clause can appear after the predicate while it occupies subject position.",
+    "condition": "Applies to the construction described in §4.3.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Extraposition can be required where a pre-verbal clausal subject cannot occur, such as ordinary subject–auxiliary inversion.",
+        "pages": [
+          960,
+          961
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It is surprising that nobody called.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Isn't it obvious that the switch failed?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§4.3.1",
+        "pages": [
+          960,
+          961
+        ],
+        "pdf_pages": [
+          980,
+          981
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subject extraposition with it",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-747",
+    "domain": "clauses",
+    "concept": "Impersonal it with an internal content complement",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some predicates such as seem license an impersonal construction with it and an internal content clause without a corresponding pre-verbal clausal subject.",
+    "condition": "Applies to the construction described in §4.3.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some other predicates allow both the impersonal arrangement and an ordinary clausal-subject construction.",
+        "pages": [
+          960,
+          961
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It seems that the lights are off.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It happened that the door was open.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§4.3.1",
+        "pages": [
+          960,
+          961
+        ],
+        "pdf_pages": [
+          980,
+          981
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Impersonal it with an internal content complement",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-748",
+    "domain": "clauses",
+    "concept": "Impersonal seem and predicative alternatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Impersonal seem can occur with a that clause and can also occur with an as if expression in a related construction.",
+    "condition": "Applies to the construction described in §4.3.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The as if alternative and manner questioning help diagnose distinctions among complement analyses.",
+        "pages": [
+          961,
+          962
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It seems that the lights are off.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It seems as if the lights are off.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§4.3.1",
+        "pages": [
+          961,
+          962
+        ],
+        "pdf_pages": [
+          981,
+          982
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Impersonal seem and predicative alternatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-749",
+    "domain": "clauses",
+    "concept": "It is not that constructions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The construction it is not that can reject an explanation or interpretation offered by the following clause.",
+    "condition": "Applies to the construction described in §4.3.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The construction need not have a counterpart with the content clause in pre-verbal subject position.",
+        "pages": [
+          962
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It is not that we object to the cost.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It is not that the door is broken.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§4.3.1",
+        "pages": [
+          962
+        ],
+        "pdf_pages": [
+          982
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "It is not that constructions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-750",
+    "domain": "clauses",
+    "concept": "Anticipatory object it",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A complex-transitive construction can place it in object position, followed by a predicative complement and a content clause.",
+    "condition": "Applies to the construction described in §4.3.2 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The content clause cannot ordinarily replace it in the same position before the predicative complement.",
+        "pages": [
+          963
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I find it surprising that nobody called.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We consider it essential that the latch be fixed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§4.3.2",
+        "pages": [
+          963
+        ],
+        "pdf_pages": [
+          983
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Anticipatory object it",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-751",
+    "domain": "clauses",
+    "concept": "Lexically licensed it and clause patterns",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some verb constructions use it with a following content clause in patterns distinct from ordinary subject extraposition.",
+    "condition": "Applies to the construction described in §4.3.3 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The distribution depends on the verb and construction.",
+        "pages": [
+          963
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I take it you are staying.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I take it the gate is locked.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§4.3.3",
+        "pages": [
+          963
+        ],
+        "pdf_pages": [
+          983
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexically licensed it and clause patterns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-752",
+    "domain": "clauses",
+    "concept": "Declarative complements of adjectives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Adjectives such as aware, certain and confident can license a declarative content clause as a complement within the adjective phrase.",
+    "condition": "Applies to the construction described in §4.4 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "In related constructions an it subject and postposed clause can instead have an extraposition analysis.",
+        "pages": [
+          964
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She is aware that the schedule has changed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We are confident that the plan will work.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§4.4",
+        "pages": [
+          964
+        ],
+        "pdf_pages": [
+          984
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Declarative complements of adjectives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-753",
+    "domain": "clauses",
+    "concept": "Noun complements and supplements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A declarative content clause can give the propositional content of a noun or supplement a nominal expression.",
+    "condition": "Applies to the construction described in §4.5 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The range of licensing nouns is lexical and does not follow automatically from morphology.",
+        "pages": [
+          964,
+          965,
+          966
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The possibility that the gate was locked worried us.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Her claim that the figures were wrong was disputed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§4.5",
+        "pages": [
+          964,
+          965,
+          966
+        ],
+        "pdf_pages": [
+          984,
+          985,
+          986
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Noun complements and supplements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-754",
+    "domain": "clauses",
+    "concept": "The fact that construction",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The fact that can form an NP with fact as its head and a clause specifying its content.",
+    "condition": "Applies to the construction described in §4.5 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Modification of fact and coordination of clause complements support the noun-headed analysis.",
+        "pages": [
+          965,
+          966
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The fact that the door was open surprised us.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They acknowledged the unpleasant fact that the file was lost.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§4.5",
+        "pages": [
+          965,
+          966
+        ],
+        "pdf_pages": [
+          985,
+          986
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "The fact that construction",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-755",
+    "domain": "clauses",
+    "concept": "Postposed noun complements and supplements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A content clause associated with a noun can appear later in the clause, separated from that noun by intervening material.",
+    "condition": "Applies to the construction described in §4.5 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The interpretation still depends on a licensing nominal or the relevant larger expression.",
+        "pages": [
+          966
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The possibility cannot be ruled out that the ferry will be cancelled.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The rumor spread quickly that the office would close.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§4.5",
+        "pages": [
+          966
+        ],
+        "pdf_pages": [
+          986
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Postposed noun complements and supplements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]
