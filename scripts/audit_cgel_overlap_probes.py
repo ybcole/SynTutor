@@ -56,6 +56,56 @@ def summarize_matrix(evaluation):
     }
 
 
+def observe_modal(analysis, probe_modal_parser):
+    from burton_roberts import build_canonical_analysis
+    from xai_facts import build_fact_graph
+
+    sentence = analysis["sentence"]
+    probe = probe_modal_parser(sentence, analysis["root"], variety="standard_english")
+    canonical = build_canonical_analysis(analysis)
+    report = {"parse": analysis["parse_string"], "probe": probe,
+              "canonical_status": canonical["status"],
+              "canonical_reason_codes": [row["code"] for row in canonical["reasons"]]}
+    if not probe["candidates"]:
+        return report
+    graph = build_fact_graph(canonical) if canonical["status"] == "normalized" else {}
+    by_id = {node["node_id"]: node for node in graph.get("nodes", []) if graph["status"] == "observed"}
+    by_span = {tuple(token["char_span"]): token for token in graph.get("token_index", [])
+               if graph["status"] == "observed"}
+    for candidate in probe["candidates"]:
+        relation = candidate["relation"]
+        labels = {"governor": {"MOD"}, "dependent": {"V", "AUX"}}
+        nodes = {}
+        for role, expected in labels.items():
+            token = by_span.get(tuple(relation[f"{role}_char_span"]))
+            if token and not token["opaque"]:
+                node = next((by_id[node_id] for node_id in token["node_ids_innermost_first"]
+                             if by_id[node_id]["label"] in expected), None)
+                if node:
+                    nodes[role] = node
+        if len(nodes) == 2:
+            common = set(nodes["governor"]["ancestor_ids"]) & set(nodes["dependent"]["ancestor_ids"])
+            vp = next((node_id for node_id in nodes["governor"]["ancestor_ids"]
+                       if node_id in common and by_id[node_id]["label"] == "VP"), None)
+            if vp:
+                candidate["canonical_observation"] = {
+                    "modal_node_id": nodes["governor"]["node_id"],
+                    "dependent_node_id": nodes["dependent"]["node_id"],
+                    "shared_vp_node_id": vp,
+                }
+        hint = candidate.get("edit_hint")
+        if hint:
+            start, end = hint["char_span"]
+            corrected = sentence[:start] + hint["replacement"] + sentence[end:]
+            reparsed = analyze(corrected)
+            candidate["reparse_observation"] = {
+                "sentence": corrected,
+                "candidate_count": len(probe_modal_parser(
+                    corrected, reparsed["root"], variety="standard_english")["candidates"]),
+            }
+    return report
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--fixtures", action="store_true",
@@ -64,7 +114,13 @@ def main():
                         help="Also observe matrix verdicts, node errors, and attached findings")
     parser.add_argument("--passive-candidate", action="store_true",
                         help="Also observe the inactive passive causative candidate")
+    parser.add_argument("--modal-candidate", action="store_true",
+                        help="Observe parser-backed central modal candidates and canonical node alignment")
     args = parser.parse_args()
+    if args.modal_candidate and args.fixtures:
+        parser.error("--modal-candidate requires configured parser output")
+    if args.modal_candidate:
+        from cgel_modal_parser_probe import probe_modal_parser
     if args.matrix:
         from matrix import evaluate
     observations = []
@@ -103,6 +159,8 @@ def main():
                     if args.matrix:
                         candidate["reparse_observation"]["matrix_verdict"] = evaluate(
                             corrected_tree, text=corrected)["summary"]["verdict"]
+        if args.modal_candidate:
+            observation["modal_candidate"] = observe_modal(analysis, probe_modal_parser)
         observations.append(observation)
     print(json.dumps({
         "input": "hand_authored_trees" if args.fixtures else "configured_parser",

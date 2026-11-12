@@ -67,7 +67,7 @@ jobs:
 
       - name: Validate Cambridge candidate checks (production disabled)
         working-directory: server
-        run: python -m unittest -v test_cgel_ch03_candidate_probe test_cgel_passive_make_candidate
+        run: python -m unittest -v test_cgel_ch03_candidate_probe test_cgel_passive_make_candidate test_cgel_modal_parser_probe
       - name: Validate canonical B-R tree-grounded Chapter 3 candidates (still disabled)
         working-directory: server
         run: python -m unittest -v test_cgel_ch03_fact_bridge
