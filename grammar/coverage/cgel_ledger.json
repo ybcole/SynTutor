@@ -232,72 +232,72 @@
     {
       "page": 33,
       "chapter": 1,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_01/PP33_42_REPORT.md"
     },
     {
       "page": 34,
       "chapter": 1,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_01/PP33_42_REPORT.md"
     },
     {
       "page": 35,
       "chapter": 1,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_01/PP33_42_REPORT.md"
     },
     {
       "page": 36,
       "chapter": 1,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_01/PP33_42_REPORT.md"
     },
     {
       "page": 37,
       "chapter": 1,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_01/PP33_42_REPORT.md"
     },
     {
       "page": 38,
       "chapter": 1,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_01/PP33_42_REPORT.md"
     },
     {
       "page": 39,
       "chapter": 1,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_01/PP33_42_REPORT.md"
     },
     {
       "page": 40,
       "chapter": 1,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_01/PP33_42_REPORT.md"
     },
     {
       "page": 41,
       "chapter": 1,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_01/PP33_42_REPORT.md"
     },
     {
       "page": 42,
       "chapter": 1,
       "status": "skipped_with_reason",
       "reason": "Reported textless by the split-source manifest and independently checked textless in the uploaded full PDF.",
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_01/PP33_42_REPORT.md"
     },
     {
       "page": 43,

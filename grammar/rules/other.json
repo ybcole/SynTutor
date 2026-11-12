@@ -37799,5 +37799,764 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-654",
+    "domain": "other",
+    "concept": "Indirect object without a distinct dative case",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Present-day English recognizes indirect object as a grammatical function. It has no distinct dative inflection for nouns or pronouns.",
+    "condition": "A recipient interpretation alone does not establish a case category. A general category definition requires a distinct language-particular form or construction.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo arrived early. Lee greeted Jo. Lee gave Jo a map.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She gave him a map. She greeted him.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§4.4",
+        "pages": [
+          33
+        ],
+        "pdf_pages": [
+          53
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Indirect object without a distinct dative case",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-655",
+    "domain": "other",
+    "concept": "Semantics and pragmatics",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Semantics describes conventional sentence meaning. Pragmatics describes how context contributes to the interpretation of an utterance.",
+    "condition": "The same sentence can communicate additional messages in different contexts.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It's noisy in here. [a description or a contextually understood request]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Can you reach the shelf? [an ability question or an indirect request]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§5",
+        "pages": [
+          33,
+          34
+        ],
+        "pdf_pages": [
+          53,
+          54
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Semantics and pragmatics",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-656",
+    "domain": "other",
+    "concept": "Sentences, propositions and truth conditions",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "A declarative sentence can assert different propositions on different occasions. Truth conditions state what must hold for the proposition asserted on an occasion to be true.",
+    "condition": "An abstract proposition bears a truth value; the wording alone need not determine speaker, time or referent.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I received the receipt today. [speaker and date depend on the occasion]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The board liked the plan, but it never authorized the plan. [approval in attitude can differ from approval in action]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§5.1",
+        "pages": [
+          34,
+          35
+        ],
+        "pdf_pages": [
+          54,
+          55
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Sentences, propositions and truth conditions",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-657",
+    "domain": "other",
+    "concept": "Entailment and inconsistency",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "A proposition entails another when its truth requires the second to be true. Asserting the first and denying the second creates an inconsistency.",
+    "condition": "A grammatical sentence can be semantically or pragmatically anomalous. The source uses the hash sign for such examples.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo shattered the plate. [entails that the plate shattered]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Jo moved the plate, but it did not break. [moving does not entail breaking]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§5.1",
+        "pages": [
+          35
+        ],
+        "pdf_pages": [
+          55
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Entailment and inconsistency",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-658",
+    "domain": "other",
+    "concept": "Open and closed propositions",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "An open proposition has an unfilled position. Supplying a value yields a closed proposition.",
+    "condition": "An open interrogative can request information that fills the open position.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Which gate did Lee lock?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Lee locked the north gate.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§5.1",
+        "pages": [
+          35,
+          36
+        ],
+        "pdf_pages": [
+          55,
+          56
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Open and closed propositions",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-659",
+    "domain": "other",
+    "concept": "Illocutionary meaning and propositional content",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Declarative and polar interrogative counterparts can express the same propositional content while differing in characteristic illocutionary meaning.",
+    "condition": "The declarative can assert that content; the interrogative can ask about it without itself making a truth-valued assertion.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Nora closed the window.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Did Nora close the window?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§5.2",
+        "pages": [
+          36
+        ],
+        "pdf_pages": [
+          56
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Illocutionary meaning and propositional content",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-660",
+    "domain": "other",
+    "concept": "Conventional implicature and unchanged truth conditions",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Expressions such as but and even can add conventional contrast or unexpectedness without changing the truth conditions of the cited counterparts.",
+    "condition": "Expressive wording can add attitude. Conventional implicatures can also occur in interrogatives.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The room was small but bright.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Did even the chair object?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "I misplaced the damn receipt.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§5.2",
+        "pages": [
+          36,
+          37
+        ],
+        "pdf_pages": [
+          56,
+          57
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Conventional implicature and unchanged truth conditions",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-661",
+    "domain": "other",
+    "concept": "Relevance and indirect requests",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "An interrogative about possibility can be interpreted as a request when contextual relevance supports that inference.",
+    "condition": "The same wording can ask a literal question in a different context. The additional interpretation comes from the utterance in context.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Could I use your phone? [request at a station]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Could I use a phone during the exam? [question about permission]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§5.3",
+        "pages": [
+          37,
+          38
+        ],
+        "pdf_pages": [
+          57,
+          58
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Relevance and indirect requests",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-662",
+    "domain": "other",
+    "concept": "Conditional inference versus entailment",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "If P then Q does not in itself entail that Q fails when P fails. Relevance can nevertheless make the antecedent sound like a necessary condition in context.",
+    "condition": "A conditional offer may suggest exclusivity. An open alternative can block that inference.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If you take the train, I'll meet you at the station. [may suggest that the meeting depends on the route]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If you need another towel, there's one in the cupboard. [its existence does not depend on need]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§5.3",
+        "pages": [
+          38
+        ],
+        "pdf_pages": [
+          58
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Conditional inference versus entailment",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-663",
+    "domain": "other",
+    "concept": "Scalar inference from some",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "Some commonly suggests not all when a stronger all statement would be relevant and the speaker is expected to know whether it is true.",
+    "condition": "The inference is not an entailment. Uncertainty or an explicit qualification can cancel it.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Some reviewers have replied, but I don't know whether all have.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Some, if not all, of the windows need replacing.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§5.3",
+        "pages": [
+          39,
+          40
+        ],
+        "pdf_pages": [
+          59,
+          60
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Scalar inference from some",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-664",
+    "domain": "other",
+    "concept": "Entailment and the two kinds of implicature",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Entailment is semantic and truth-conditional. Conventional implicature is semantic and non-truth-conditional. Conversational implicature arises pragmatically and is also non-truth-conditional.",
+    "condition": "Convey is neutral among these relations. The source normally uses unqualified implicature for the conversational kind.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She emptied the tank. [entails that the tank became empty]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was expensive but useful. [conventionally marks contrast]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Some tickets sold. [can conversationally suggest not all]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§5.3",
+        "pages": [
+          39,
+          40
+        ],
+        "pdf_pages": [
+          59,
+          60
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Entailment and the two kinds of implicature",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-665",
+    "domain": "other",
+    "concept": "Cancellation of conversational implicature",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "A normal conversational inference can disappear when the context or explicit continuation makes it inappropriate.",
+    "condition": "Strength or frequency of an inference is insufficient to treat it as encoded meaning.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Some orders arrived, and possibly all of them did.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Could I borrow the van under the lease? [a question about permission in this context]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§5.3",
+        "pages": [
+          40
+        ],
+        "pdf_pages": [
+          60
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Cancellation of conversational implicature",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-666",
+    "domain": "other",
+    "concept": "Presupposition and information at issue",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "Pragmatic presupposition presents information as backgrounded. It generally persists when the at-issue claim is negated or questioned.",
+    "condition": "With stop, the earlier activity is normally backgrounded, while cessation is at issue.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo has stopped working nights.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Jo hasn't stopped working nights.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Has Jo stopped working nights?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§5.4",
+        "pages": [
+          40,
+          41
+        ],
+        "pdf_pages": [
+          60,
+          61
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Presupposition and information at issue",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-667",
+    "domain": "other",
+    "concept": "Cancellation and polarity with stop presuppositions",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "The earlier-activity presupposition of positive asserted stop coincides with an entailment. Negative and interrogative counterparts normally convey it pragmatically, and context can cancel it.",
+    "condition": "This is a common pattern, not a requirement for every presupposition. The source distinguishes its pragmatic account from theories that assign a truth-value gap.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mira stopped cycling to work. [entails that she used to cycle to work]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Have you stopped cycling to work? No, I've always walked. [cancels the earlier-activity inference]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§5.4",
+        "pages": [
+          41
+        ],
+        "pdf_pages": [
+          61
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Cancellation and polarity with stop presuppositions",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
   }
 ]

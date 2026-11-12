@@ -412,3 +412,7 @@ Printed pp. 11–19 add nine substantive pages and 17 inactive records (`OTH-617
 ## Chapter 1 third checkpoint
 
 Printed pp. 20–32 add 13 substantive pages and 20 inactive records (`OTH-634`–`OTH-653`). Chapter 1 now has 31 substantive pages extracted, two justified skips, and nine unprocessed pages. Continue at printed p. 33 with semantics and pragmatics.
+
+## Chapter 1 Phase B closure
+
+The final batch adds 14 inactive records (`OTH-654`–`OTH-667`) for printed pp. 33–41 and verifies the existing blank boundary skip at p. 42. Chapter 1 Phase B accounts for all 42 pages: 40 substantive pages and two documented skips. The four batches add 66 records. Continue with Chapter 13, comparative constructions.
