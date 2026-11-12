@@ -72,3 +72,24 @@ These targeted source checks leave the independent review, Burton-Roberts crossw
 `server/cgel_passive_make_candidate.py` checks a narrow constituency pattern: a form of *be* over a VP headed by participial *made*, followed directly by a bare VP with a plain-form verb. It records the two source citations, governing relation, exact character spans, and an insertion hint. A matching parse is provisional evidence. The probe abstains on unresolved token alignment and quotation scope, and leaves intervening material, coordination and other passive structures for a later pass.
 
 Run `python scripts/audit_cgel_overlap_probes.py --matrix --passive-candidate` with the configured parser. The PR workflow records the parser shape for the known miss, and reparses any proposed correction to record the candidate and matrix outcomes. Fixture tests exercise the intended repair, an embedded passive under a perfect auxiliary, and guards including active causatives, correctly marked passives, purpose infinitivals, predicative adjectives and coordinated complements. A reparse and an empty candidate list alone do not establish grammaticality or safe automatic correction.
+
+### Held-out evaluation of passive causative make
+
+The unchanged candidate ran on 28 original sentences with the configured parser at commit `12be467`. The corpus and expected edits were frozen before the run. [Per-case parser evidence](https://github.com/ybcole/SynTutor/actions/runs/43226736740/artifacts/13947677657)
+
+| Group | Cases | Observed result |
+|---|---:|---|
+| Be-passive errors | 8 | 4 exact edits. The repaired sentences reparsed with no residual candidate. |
+| Stress cases | 4 | 0 edits for a get-passive, an inverted question, an intervening adverb and a coordinated complement. |
+| Valid controls | 16 | 14 evaluated with no candidates. Two quotation examples were skipped by the quotation guard. |
+
+Two be-passive misses had a bare verb in the parse but did not meet the required tree shape. The negative included a separate negation node and the agentive by-phrase added a sibling after the lexical VP. The other two missed be-passive cases were analysed as nominal or adjectival rather than verbal. Preserve these cases as regressions. For the next iteration, start with the two misses where the parser already supplies verbal evidence, retain abstention for ambiguous analyses, and use a fresh held-out set to measure the revised candidate.
+
+### Burton-Roberts crosswalk source check
+
+| Structural question | Third-edition source | Implication for CLS-357 |
+|---|---|---|
+| What licenses the participle in the passive? | Burton-Roberts pp. 119–120 distinguishes passive *be* (PASS) from progressive *be* and uses participial form as evidence. Pp. 125–126 covers promotion of the active object and an optional agentive by-phrase. | A validated PASS relation can support the passive part of the candidate. A Penn VBN tag alone supplies weaker evidence. |
+| How is the infinitival contrast represented? | P. 226 uses active causative *make* in example [4] to illustrate the bare form. It represents *to* as a [-tense] auxiliary in [11]. P. 239 provides another active causative in [86] and pp. 240–242 discuss how the intervening NP may relate to the clauses. | The forms are structurally comparable. Cambridge pp. 1234 and 1432 supply the specific requirement for *to* after passive causative *make*. The inspected Burton-Roberts passages supply supporting structural evidence for the crosswalk. |
+
+The Phase C probe currently operates on constituency parser nodes. A production crosswalk still needs an independently checked canonical B-R relation for passive causative *make* and its selected non-finite complement. The catalog mapping stays `unverified` and the registry stays empty. [Burton-Roberts, *Analysing Sentences*, third edition](https://lmsspada.kemdiktisaintek.go.id/pluginfile.php/1032828/mod_resource/content/2/Introduction%20to%20English%20Syntax.pdf)
