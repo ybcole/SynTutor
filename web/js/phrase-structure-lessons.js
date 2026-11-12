@@ -12,7 +12,7 @@ const chapters = {
     intro: 'Chapter 2 looked at the jobs that whole phrases do. Here you’ll look inside an adjective phrase. The adjective gives the group its category, and a degree word can tell you how strongly that description applies.',
     exampleContext: 'Read this description of the children. The brackets show the whole description after “seemed”.',
     example: 'The children seemed [very cheerful].',
-    introExample: 'That whole description is an adjective phrase (AP). “Cheerful” supplies the description, and “very” changes its strength. We call “cheerful” the head of the phrase.',
+    introExample: 'That whole description is an adjective phrase (AP). “Cheerful” supplies the description, and “very” changes its strength. “Cheerful” is the head of the phrase.',
     preview: ['Compare an adjective on its own with an adjective plus a degree word.', 'Trace and build the branches in “very cheerful”.', 'Find the same roles in a new description.'],
     concepts: [
       ['Find the head', 'Compare “The children seemed cheerful” with “The children seemed very cheerful”. Both groups fit after “seemed” and describe the children. When you take away “very”, the adjective “cheerful” still supplies the description. That is the head.'],
@@ -98,7 +98,7 @@ const chapters = {
   'br-05': {
     topics: ['Adjuncts and Two Levels of VP', 'Complements and Time Adjuncts', 'Reading and Building the VP Layers', 'Finding an Adjunct in a New Sentence'],
     intro: 'Chapter 4 put the verb and its direct object together in one verb phrase. Now add a time phrase. A phrase that adds information about the event is called an adjunct in this pattern.',
-    exampleContext: 'Read this statement about an inspection. The brackets separate what Nora did from the words that tell us when she did it.',
+    exampleContext: 'Read this statement about an inspection. The brackets separate what Nora did from the words that specify when she did it.',
     example: 'Nora [inspected the bridge] [in June].',
     introExample: 'The time phrase “in June” is an adjunct. In the tree, it joins the whole verb phrase “inspected the bridge” to form a larger VP.',
     preview: ['Find the verb and its object before adding the time phrase.', 'Trace and build the inner and outer VP.', 'Use omission and replacement to check the grouping in a new sentence.'],
@@ -115,7 +115,7 @@ const chapters = {
     steps: ['Trace the inner VP', 'Trace the time PP', 'Read the outer VP'],
     captions: [
       'The inner VP “inspected the bridge” groups the verb with its direct object. This group describes the event.',
-      'The PP “in June” tells us when the event happened. It attaches beside the entire inner VP.',
+      'The PP “in June” specifies when the inspection happened. It attaches beside the entire inner VP.',
       'The outer VP covers both groups. The inner VP and time PP share it as their parent.',
     ],
     beforeTree: 'Trace the verb and object together in the inner VP. Select the time PP, then the outer VP to see both groups. Predict what will remain when you choose Without the time phrase.',

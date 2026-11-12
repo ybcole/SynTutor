@@ -98,7 +98,7 @@ export const advancedFoundationsChapters = {
   'br-08': {
     topics: ['Overt That-clauses', 'Finding the Embedded Clause', 'Reading and Building C and S', 'Recognising Complementiser That'],
     intro: 'A clause can sit inside a larger sentence and express what someone said, thought, or noticed. This chapter follows one pattern where the word “that” introduces the embedded clause.',
-    exampleContext: 'Read this report from Leo. The brackets mark the part of the sentence that tells us what he says.',
+    exampleContext: 'Read this report from Leo. The brackets mark the part of the sentence that gives the content of his report.',
     example: 'Leo says [that Nora is inspecting the bridge].',
     introExample: 'Inside the brackets, “Nora is inspecting the bridge” has its own subject and predicate. The word “that” introduces this embedded clause.',
     preview: ['Find the whole embedded group and the subject–predicate split inside it.', 'Read and build the two branches under S′.', 'Distinguish complementiser “that” from demonstrative “that”.'],
@@ -113,7 +113,7 @@ export const advancedFoundationsChapters = {
     ]],
     opening: [
       ['Who is inspecting the bridge in “Leo says that Nora is inspecting the bridge”?', ['Leo', 'Nora', 'the bridge'], 1],
-      ['What does the whole group “that Nora is inspecting the bridge” tell us?', ['which bridge it is', 'what Leo says', 'when Leo speaks'], 1],
+      ['What information does the whole group “that Nora is inspecting the bridge” provide?', ['which bridge it is', 'what Leo says', 'when Leo speaks'], 1],
     ],
     steps: ['Trace the inner S', 'Find complementiser that', 'Read the full S′'],
     captions: [
@@ -195,7 +195,7 @@ export const advancedFoundationsChapters = {
   'br-10': {
     topics: ['The To-infinitive VP', 'Finding the Untensed Auxiliary and Its Complement', 'Reading and Building the Infinitival VP', 'Distinguishing Two Uses of To'],
     intro: 'Chapter 6 showed a tensed auxiliary followed by a verb phrase. Here you’ll examine a verb phrase with infinitival “to”. The group can sit inside a larger sentence, and it carries no tense of its own.',
-    exampleContext: 'Read this statement about Nora’s plan. The brackets mark the infinitival verb phrase that tells us what she plans to do.',
+    exampleContext: 'Read this statement about Nora’s plan. The brackets mark the infinitival verb phrase that states what she plans to do.',
     example: 'Nora plans [to inspect the bridge].',
     introExample: '“Plans” carries tense in the larger sentence. Inside the brackets, “to” is followed by “inspect”, the basic form of the verb. The chapter focuses on the verb phrase inside the brackets.',
     preview: ['Find where tense is expressed in the full sentence.', 'Trace the auxiliary and its lexical VP complement.', 'Distinguish infinitival “to” from prepositional “to”.'],
@@ -276,7 +276,7 @@ export const advancedFoundationsChapters = {
   'cgel-clauses': {
     topics: ['Sentences and Embedded Clauses', 'Finding Two Subject–Predicate Structures', 'Marking the Sentence and Its Embedded Clause', 'Analysing an Embedded Clause in a New Sentence'],
     intro: 'In the Cambridge companion, you’ll look at the same example in two ways. A sentence is a unit of written text. A clause is a grammatical unit that can have a subject and predicate and can sit inside a larger construction.',
-    exampleContext: 'Read this report as one written sentence. The brackets mark the part that tells us what Nora reports.',
+    exampleContext: 'Read this report as one written sentence. The brackets mark the part that gives the content of Nora’s report.',
     example: 'Nora reports [that the robins sing].',
     introExample: 'Inside the report, “the robins” is the embedded subject and “sing” is its predicate.',
     preview: ['Read the whole sentence as a unit of text.', 'Find the subject and predicate inside the report.', 'Apply the distinction to a fresh example.'],

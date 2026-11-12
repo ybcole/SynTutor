@@ -159,7 +159,8 @@
   border-radius:8px;
 }
 .constituent-page .lesson-answers-heading { margin-top:0; }
-.constituent-pre-test .constituent-pre-test-status { margin-bottom:0; font-weight:600; }
+.constituent-pre-test :is(.constituent-pre-test-status,.lesson-closing-result) { margin-bottom:0; font-weight:600; }
+.constituent-pre-test .lesson-closing-result { margin-top:8px; }
 .lesson-assessment-position { color:var(--accent-strong); font-size:.875rem; font-weight:650; }
 .lesson-assessment-actions { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:8px; margin-top:16px; }
 .lesson-assessment-actions .lesson-primary { margin:0; border-radius:999px; font-weight:600; }

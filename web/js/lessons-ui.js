@@ -650,8 +650,6 @@ function articleScreen(lesson, p, article) {
   layout.append(body);
   host.append(layout);
 
-  if (page === 1) addLessonKeyTerms(body, el, lesson.lesson_id);
-
   article.teach(body, page, {
     el, button, lesson,
     getWorkedExample: id => course.lessons.find(item => item.lesson_id === id).worked_example,
@@ -703,6 +701,7 @@ function articleScreen(lesson, p, article) {
   if (diagram) diagram.after(lessonNotation(lesson, page, el));
 
   if (page === 0) {
+    addLessonKeyTerms(body, el, lesson.lesson_id);
     const preTest = el('section', undefined, 'lesson-assessment constituent-pre-test');
     const title = el('h3', openingCheck ? 'Check what you know' : 'Pre-test');
     title.id = 'lesson-pre-test-title';
@@ -722,6 +721,10 @@ function articleScreen(lesson, p, article) {
     } else {
       const { prompt, options } = lesson.predict;
       preTest.append(question(lesson, 'predict', p, reviewing, undefined, { prompt, options }));
+    }
+    if (reviewing) {
+      const correct = postTestKeys.filter(key => p.responses[key] === lesson[key].answer).length;
+      preTest.append(el('p', `Closing check complete. ${correct} of ${postTestKeys.length} correct.`, 'lesson-closing-result'));
     }
     body.append(preTest);
   }

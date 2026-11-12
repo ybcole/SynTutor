@@ -3,7 +3,7 @@ const keyTerms = {
     ['Constituent', 'A word or group of words that acts as one unit in a sentence.', '“The quiet garden” forms a unit inside “near the quiet garden”.'],
     ['Hierarchy', 'The arrangement of smaller units inside larger ones.', 'The garden group sits inside the whole place phrase.'],
     ['Replacement test', 'A way to check a group by substituting one suitable expression for it.', '“It” replaces “the quiet garden” in “We met near it”.'],
-    ['Structural ambiguity', 'Two possible meanings that come from grouping the same words differently.', '“With a telescope” can describe how I watched or identify which hikers I watched.'],
+    ['Structural ambiguity', 'Two possible meanings that come from grouping the same words differently.', '“With a telescope” can describe how the speaker watched or identify which hikers the speaker watched.'],
   ],
   'br-02': [
     ['Subject', 'The group the predicate says something about in the simple statements studied here.', '“The robins” is the subject in “The robins sing”.'],
@@ -14,7 +14,7 @@ const keyTerms = {
   'br-03': [
     ['Head', 'The word that gives a phrase its basic grammatical character.', '“Cheerful” is the head of “very cheerful”.'],
     ['Adjective phrase (AP)', 'A phrase headed by an adjective (A).', 'Both “cheerful” and “very cheerful” can form an AP.'],
-    ['Degree word (DEG)', 'A word that indicates the strength or degree of a description.', '“Very” tells us how cheerful the children seemed.'],
+    ['Degree word (DEG)', 'A word that indicates the strength or degree of a description.', '“Very” indicates the degree of cheerfulness.'],
   ],
   'br-04': [
     ['Transitive verb (V [trans])', 'In the pattern here, a verb used with a direct object.', '“Inspected” takes the object “the bridge”.'],

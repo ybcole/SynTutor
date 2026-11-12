@@ -7,8 +7,8 @@ in its own terminology.
 
 ## Page sequence
 
-1. **Introduction.** Introduce the example in context and explain the bracketed groups. Use the regular lesson background for the example panel.
-2. **Core concepts.** Open with **Key terms**. Give each term a plain-language meaning and one line labelled **In this chapter** that ties it to the example or notation. Use the same term in the worked analysis, transfer practice, and recap.
+1. **Introduction.** Introduce the example in context and explain the bracketed groups. Use the regular lesson background for the example panel. After **What you’ll see in this chapter**, put **Key terms** in one transparent container. Give each term a plain definition and a chapter-specific example.
+2. **Core concepts.** Build on the terms introduced on the first page. Use the same terms in the worked analysis, transfer practice, and recap.
 3. **Worked analysis.** Let learners trace the structure in numbered steps. Put the visible explanation below the diagram in a neutral, bordered panel.
 4. **Transfer.** Give the learner a new example and explain what makes the selected analysis work.
 5. **Recap.** Summarize what the chapter demonstrated, why its distinction matters, and how the example shows it. Follow with a short procedure and a fresh check where appropriate.
@@ -18,7 +18,7 @@ The opening check displays the number correct out of three after completion.
 It is diagnostic and has no passing threshold or XP effect. The existing
 first response remains the synced completion marker. The full result is
 recorded for new attempts on the current device, under the current learner
-and lesson version. Older completions keep their completion status.
+and lesson version. Older completions keep their completion status. After the closing check, its saved result also appears on the introduction page. When discussing examples, refer to their participants or the speaker in the third person and keep quoted sentences distinct from the explanation.
 
 ## Chapter map
 

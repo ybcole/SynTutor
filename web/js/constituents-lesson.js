@@ -87,9 +87,10 @@ export function addConstituentTeaching(body, page, { el, button, showDiagram, sh
     section('What this chapter covers',
       'A word or group of words that works as one part of a sentence is called a constituent. The way smaller groups fit inside larger ones is called hierarchy.');
     addIntroExample(body, el,
-      'Look at how the words that tell us where we met contain a smaller group.',
+      'The place phrase shows where the meeting took place. It contains a smaller group.',
       'We met [near [the quiet garden]].',
-      'The outer brackets mark the whole place phrase. The inner brackets mark “the quiet garden”, the group that tells us what we were near.');
+      'The outer brackets mark the whole place phrase. The inner brackets mark “the quiet garden”, the group that identifies the nearby landmark.');
+    body.append(el('h3', 'What you’ll see in this chapter'));
     const list = el('ul');
     for (const objective of [
       'Test whether words form a group by replacing them with one word or asking a question.',
@@ -103,9 +104,9 @@ export function addConstituentTeaching(body, page, { el, button, showDiagram, sh
     paragraph('Read “We met near the quiet garden”. Does “the quiet garden” work as a single unit in that sentence? Start by trying to replace it.');
     section('Test a group with replacement',
       'Say “We met near it”. Here, one word takes the place of “the quiet garden”, and the rest of the sentence stays in place. That is evidence that the three words form a constituent.',
-      'Try the same thing with just “the quiet”. You get “We met near it garden”. The word “garden” is left behind, so this replacement gives us no evidence that “the quiet” forms a unit here.');
+      'Try the same thing with just “the quiet”. You get “We met near it garden”. The word “garden” is left behind, so this replacement provides no evidence that “the quiet” forms a unit here.');
     section('Check what answers a question',
-      'Ask “What did we meet near?” The answer is “the quiet garden”. Now ask “Where did we meet?” The answer is “near the quiet garden”. The two answers show how the smaller group fits inside the larger one.');
+      'Ask “What did the people in the example meet near?” The answer is “the quiet garden”. Now ask “Where did they meet?” The answer is “near the quiet garden”. The two answers show how the smaller group fits inside the larger one.');
     section('Read the brackets and the branches',
       'Write the two groups as [near [the quiet garden]]. The inner brackets mark the garden group. The outer brackets mark the whole location phrase, including “near”. The tree shows each group with a node, a point from which you can follow branches down to the words.',
       'Select each group below and trace its branches. The inner node reaches exactly “the quiet garden”. The outer node reaches those words and “near”.');
@@ -148,7 +149,7 @@ export function addConstituentTeaching(body, page, { el, button, showDiagram, sh
     addConstituentTreeBuilder(body, { el, button, mountBuilder });
   }
   if (page === 3) {
-    paragraph('Structural ambiguity occurs when the same sentence can be grouped in two ways and each grouping gives it a different meaning. In “I watched the hikers with a telescope”, the phrase “with a telescope” could tell us how I watched or describe the hikers.');
+    paragraph('Structural ambiguity occurs when the same sentence can be grouped in two ways and each grouping gives it a different meaning. In “I watched the hikers with a telescope”, the phrase “with a telescope” could describe how the speaker watched or identify which hikers the speaker watched.');
     section('Trace the telescope phrase',
       'Switch between the two readings below. In each tree, follow “with a telescope” up to the highlighted group. Look at what else sits under that same node.');
     const alternatives = readings();
@@ -160,10 +161,10 @@ export function addConstituentTeaching(body, page, { el, button, showDiagram, sh
     const diagram = el('div', undefined, 'constituent-diagram');
     diagram.append(tree);
     body.append(diagram);
-    figureControls('Compare meanings', ['I used the telescope', 'The hikers had the telescope'], tree, index => {
+    figureControls('Compare meanings', ['The observer used the telescope', 'The hikers had the telescope'], tree, index => {
       caption.textContent = index
-        ? '“With a telescope” joins “the hikers”. It tells us which hikers I watched.'
-        : '“With a telescope” joins the larger group that includes “watched”. It tells us how I watched.';
+        ? '“With a telescope” joins “the hikers”. It identifies which hikers the speaker watched.'
+        : '“With a telescope” joins the larger group that includes “watched”. It describes how the speaker watched.';
       showDiagram(tree, alternatives[index], { focusId: index ? 'PHRASE-b' : 'PHRASE-a' }).after(observation);
     });
     paragraph('To explain the difference in your own words, ask “Who had the telescope?” In one reading it was the person watching. In the other it was the hikers. The branch shows which reading the tree represents.');
@@ -195,7 +196,7 @@ export function addConstituentReview(body, { el }) {
     ['In “Mia left her blue notebook on the desk”, what evidence supports grouping “her blue notebook”?',
       'Replace the group with “it” to get “Mia left it on the desk”. It also answers “What did Mia leave on the desk?” Both tests support treating the whole group as a unit.'],
     ['In “Lee photographed the artist with a camera”, how can “with a camera” change the meaning?',
-      'If it joins the photographing, Lee used a camera. If it joins “the artist”, the artist had a camera. The second reading tells us which artist Lee photographed.'],
+      'If it joins the photographing, Lee used a camera. If it joins “the artist”, the artist had a camera. The second reading identifies which artist Lee photographed.'],
   ]) {
     const example = el('details');
     example.append(el('summary', prompt), el('p', answer));

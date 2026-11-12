@@ -272,7 +272,7 @@ export function addSubjectPredicateTeaching(body, page, ui) {
   if (page === 2) {
     section('Read the tree from the top',
       'On the previous page, you split “The robins sing” into two groups. A tree shows that same split with two lines. It puts a label above each group so you can see what kind of phrase it is.',
-      'The top label, S, covers the whole sentence. Its left branch leads to NP, the noun phrase “The robins”. Its right branch leads to VP, the verb phrase “sing”. These nodes share the same parent, so we call them sisters.');
+      'The top label, S, covers the whole sentence. Its left branch leads to NP, the noun phrase “The robins”. Its right branch leads to VP, the verb phrase “sing”. These nodes are sisters because they share the same parent.');
     section('What the triangles show',
       'A triangle points to the words in a phrase. It leaves any smaller branches inside that phrase for another drawing. In the short tree, the NP triangle covers two words and the VP triangle covers just “sing”.',
       'Before you look at the longer tree, recall the question from the previous page. It showed that “The robins near the gate” stays together. Use the NP triangle to check whether the tree includes all five words in that group.');
