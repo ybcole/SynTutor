@@ -5874,86 +5874,86 @@
     {
       "page": 839,
       "chapter": 9,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_09/PP839_850_REPORT.md"
     },
     {
       "page": 840,
       "chapter": 9,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_09/PP839_850_REPORT.md"
     },
     {
       "page": 841,
       "chapter": 9,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_09/PP839_850_REPORT.md"
     },
     {
       "page": 842,
       "chapter": 9,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_09/PP839_850_REPORT.md"
     },
     {
       "page": 843,
       "chapter": 9,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_09/PP839_850_REPORT.md"
     },
     {
       "page": 844,
       "chapter": 9,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_09/PP839_850_REPORT.md"
     },
     {
       "page": 845,
       "chapter": 9,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_09/PP839_850_REPORT.md"
     },
     {
       "page": 846,
       "chapter": 9,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_09/PP839_850_REPORT.md"
     },
     {
       "page": 847,
       "chapter": 9,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_09/PP839_850_REPORT.md"
     },
     {
       "page": 848,
       "chapter": 9,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_09/PP839_850_REPORT.md"
     },
     {
       "page": 849,
       "chapter": 9,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_09/PP839_850_REPORT.md"
     },
     {
       "page": 850,
       "chapter": 9,
       "status": "skipped_with_reason",
       "reason": "Reported textless by the split-source manifest and independently checked textless in the uploaded full PDF.",
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_09/PP839_850_REPORT.md"
     },
     {
       "page": 851,

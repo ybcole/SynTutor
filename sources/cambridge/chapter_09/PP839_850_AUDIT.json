@@ -1,0 +1,164 @@
+{
+  "manifest_version": 1,
+  "chapter": 9,
+  "printed_start": 839,
+  "printed_end": 850,
+  "report": "sources/cambridge/chapter_09/PP839_850_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 839,
+    "pdf_page": 859
+  },
+  "added_rule_ids": [
+    "CLS-710",
+    "CLS-711",
+    "CLS-712",
+    "CLS-713",
+    "CLS-714",
+    "CLS-715",
+    "CLS-716",
+    "CLS-717",
+    "CLS-718",
+    "CLS-719",
+    "CLS-720",
+    "CLS-721",
+    "CLS-722",
+    "CLS-723",
+    "CLS-724",
+    "CLS-725"
+  ],
+  "page_checks": [
+    {
+      "page": 839,
+      "status": "extracted",
+      "section": "§5",
+      "summary": "Distinguishes inferred subordinate negation from entailment and compares matrix and embedded placement.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 840,
+      "status": "extracted",
+      "section": "§5",
+      "summary": "Inventories predicates and introduces the role of modal strength.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 841,
+      "status": "extracted",
+      "section": "§5",
+      "summary": "Compares strong, weak and intermediate predicates and their scope interpretations.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 842,
+      "status": "extracted",
+      "section": "§5",
+      "summary": "Examines conventionalization, lexical and variety restrictions, and modal auxiliaries.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 843,
+      "status": "extracted",
+      "section": "§§5–6",
+      "summary": "Describes can't seem to and distinguishes multiple semantic negation from concord.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 844,
+      "status": "extracted",
+      "section": "§6.1",
+      "summary": "Examines multiple negative expressions within one clause and their semantic and rhetorical effects.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 845,
+      "status": "extracted",
+      "section": "§§6.1–6.2",
+      "summary": "Completes semantic negation and introduces coordination and parenthetical concord.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 846,
+      "status": "extracted",
+      "section": "§6.2",
+      "summary": "Examines negative retorts, pleonastic subordinate negation and dialectal concord.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 847,
+      "status": "extracted",
+      "section": "§§6.2–7.1",
+      "summary": "Closes the discussion of dialectal concord and introduces yes and no responses.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 848,
+      "status": "extracted",
+      "section": "§7.1",
+      "summary": "Compares polar and tag answers, expanded polarity concord, and replies to statements and directives.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 849,
+      "status": "extracted",
+      "section": "§§7.1–7.2",
+      "summary": "Covers idiomatic negative replies, anaphoric complements and reduced clauses.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 850,
+      "status": "skipped_with_reason",
+      "section": "Blank",
+      "summary": "Text extraction and rendered full-volume PDF p. 870 confirm a blank page.",
+      "source_checked": true,
+      "nonprose_present": false,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

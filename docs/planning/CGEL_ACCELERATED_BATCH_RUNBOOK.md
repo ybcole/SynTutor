@@ -290,3 +290,7 @@ Printed pp. 806–821 yielded 29 classification records (`CLS-656`–`CLS-684`).
 ## Chapter 9 third checkpoint
 
 Printed pp. 822–838 yielded 25 classification records (`CLS-685`–`CLS-709`). Continue at p. 839 with increased specificity of negation.
+
+## Chapter 9 source extraction complete
+
+Printed pp. 839–849 yielded 16 records (`CLS-710`–`CLS-725`). Printed p. 850 is blank. Chapter 9 closes with 64 substantive pages and zero unprocessed pages. The next chapter in the priority order is Chapter 11.
