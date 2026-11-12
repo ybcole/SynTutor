@@ -4,10 +4,8 @@ import json
 
 if __package__:
     from .cgel_ch03_candidate_probe import ROOT, tokens_with_spans
-    from .parse_engine import _ordered_leaves
 else:
     from cgel_ch03_candidate_probe import ROOT, tokens_with_spans
-    from parse_engine import _ordered_leaves
 
 
 RULE_ID = "CLS-357"
@@ -66,6 +64,10 @@ def probe_passive_make(sentence, tree, *, variety):
     if variety != "standard_english":
         return {**result, "status": "not_evaluated", "reason": "explicit_standard_variety_required"}
 
+    if __package__:
+        from .parse_engine import _ordered_leaves
+    else:
+        from parse_engine import _ordered_leaves
     tokens = tokens_with_spans(sentence)
     leaves = list(_ordered_leaves(tree))
     if len(tokens) != len(leaves) or any(

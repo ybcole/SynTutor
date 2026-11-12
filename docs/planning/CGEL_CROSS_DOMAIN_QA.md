@@ -107,3 +107,15 @@ The fresh 22-case set produced 9 exact repairs out of 10 errors, with zero candi
 The evaluator supports a clause-scoped `passive_make_missing_to` check for CLS-357. It requires explicit standard-English scope, matching parser evidence, and a normalized canonical tree linking the PASS node, both verbs, the subordinate clause, and the promoted subject's index. A finding identifies the original character span and both verb nodes. The insertion remains a hint requiring reparse.
 
 Synthetic allow-list tests exercise the gate and the positive case, the marked passive, stale or missing parser evidence, unresolved crosswalks, and an unrelated rule ID. The actual CLS-357 catalog entry stays spec-only and the production registry stays empty. Independent review of the mapping and a learner-facing explanation are still required before rollout.
+
+### CLS-357 independent review handoff
+
+| Review item | Evidence to inspect |
+|---|---|
+| Source scope | CGEL p. 1234, Ch. 14 §5.4 gives the active bare and passive to-infinitival alternation. Ch. 16 §10.1.2, p. 1432 corroborates the passive. Review the distinction between causative and lexical *make* and the standard-English scope. |
+| Canonical mapping | Burton-Roberts, 3rd ed., pp. 119–120 and 125–127 for PASS and object promotion, and pp. 226 and 238–240 for bare infinitivals and lower-clause structure. Check whether the indexed object and lower subject positions in the proposed projection are justified by those conventions. The Cambridge constraint supplies the repair. |
+| Parser evidence | The canonical audit linked the relevant clause and both verbs for all 15 detected cases across the two sets. Inspect the missed nominal/adjectival parser readings, inversion, coordination, and other stress cases before deciding the allowed scope. [Canonical parser evidence](https://github.com/ybcole/SynTutor/actions/runs/43230525553/artifacts/13949698061) |
+| Learner text | Review template `CGEL-CLS357-PASSIVE-MAKE-V1` and both Cambridge source records. Test-only approval exercises the explanation on *made* and the following verb in the selected sentence, with the two printed-page references. |
+| Activation | Record the independent reviewer and their disposition before changing the catalog, template or runtime allow-list. The API requires explicit `standard_english` for this check. Generator requests currently omit the variety, so the learner-facing flow also needs to supply the intended analysis variety before the pilot can appear there. |
+
+The parser-backed API regression selects the second sentence of a two-sentence passage. Its test-only approval fixtures exercise the same registry snapshot for the evaluator and explanation. The test checks the sentence-local insertion, source pages, matching nodes, valid first sentence, absent variety and disabled production registry.

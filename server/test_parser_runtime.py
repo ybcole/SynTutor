@@ -7,6 +7,7 @@ from jsonschema import Draft202012Validator
 
 import api
 import parse_engine
+import explanations
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -130,6 +131,54 @@ class ParserBackedRuntimeTests(unittest.TestCase):
         self.assertEqual(payload["br_analysis"]["status"], "normalized",
                          payload["br_analysis"])
         self.assertEqual(list(M1_VALIDATOR.iter_errors(payload["br_analysis"]["tree"])), [])
+
+    def test_passive_make_feedback_stays_with_the_selected_sentence_and_nodes(self):
+        passage = "We were made to wait outside. We were made wait outside."
+        runtime = {
+            "active_rule_ids": ["CLS-357"],
+            "active_rules": [{
+                "rule_id": "CLS-357", "rule_type": "constraint", "scope": "clause",
+                "runtime_check": {"kind": "passive_make_missing_to"},
+            }],
+        }
+        template_registry = explanations.load_registry()
+        review = {"review_status": "INDEPENDENTLY_REVIEWED", "independent_review": True,
+                  "reviewed_by": "synthetic-test-reviewer", "reviewed_on": "2026-11-07"}
+        template = next(row for row in template_registry["templates"] if row.get("rule_id") == "CLS-357")
+        template.update(review)
+        for source in template_registry["sources"]:
+            if source["id"] in template["source_ids"]:
+                source.update(status="approved", crosswalk_status="compatible", **review)
+
+        with patch.object(api, "classify", return_value=None), \
+             patch.object(explanations, "load_registry", return_value=template_registry):
+            disabled = api.build_payload(passage, sentence_index=1, variety="standard_english")
+            self.assertEqual(disabled["cambridge_evaluation"]["findings"], [])
+            self.assertEqual(disabled["explanation_evidence"]["channels"]["remediation"], [])
+            with patch.object(api, "load_runtime_registry", return_value=runtime):
+                first = api.build_payload(passage, sentence_index=0, variety="standard_english")
+                self.assertEqual(first["cambridge_evaluation"]["findings"], [])
+                self.assertEqual(first["explanation_evidence"]["channels"]["remediation"], [])
+                selected = api.build_payload(passage, sentence_index=1, variety="standard_english")
+                unselected_variety = api.build_payload(passage, sentence_index=1)
+                self.assertEqual(unselected_variety["cambridge_evaluation"]["findings"], [])
+                self.assertEqual(unselected_variety["explanation_evidence"]["channels"]["remediation"], [])
+
+        sentence = "We were made wait outside."
+        self.assertEqual(selected["meta"]["target_sentence"], 2)
+        self.assertEqual(selected["br_analysis"]["tree"]["sentence"], sentence)
+        finding, = selected["cambridge_evaluation"]["findings"]
+        match, = finding["structural_matches"]
+        start, end = match["edit_hint"]["char_span"]
+        self.assertEqual(sentence[:start] + match["edit_hint"]["replacement"] + sentence[end:],
+                         "We were made to wait outside.")
+        records = selected["explanation_evidence"]["channels"]["remediation"]
+        tree = selected["br_analysis"]["tree"]
+        self.assertEqual({record["facts"]["surface"] for record in records}, {"made", "wait"})
+        self.assertEqual(len(records), 4)
+        self.assertNotIn(tree["root"]["children"][0]["id"], {record["node_id"] for record in records})
+        self.assertTrue(all([source["printed_page"] for source in record["sources"]] == [1234, 1432]
+                            for record in records))
 
     def test_real_generator_api_projects_the_first_final_d1_construction(self):
         with patch.object(api, "classify", return_value=None):
