@@ -360,3 +360,7 @@ Printed pp. 1343–1362 were checked against text, all rendered page layouts and
 ## Chapter 17 first checkpoint — 2026-11-12
 
 Printed pp. 1449–1472 checked consecutively in uploaded full-volume PDF text and page layout. Two contents-only pages (1449–1450) are properly skipped. The 22 substantive pages (1451–1472) yield 62 inert, source-attributed original-example records (PHR-459–PHR-514 and CLS-1096–CLS-1101), one narrow spec-only reflexive constraint with explicit guards. Next begins at p. 1473. No runtime enablement, fabricated B-R crosswalk or independent source approval.
+
+## Chapter 17 second checkpoint — 2026-11-12
+
+Printed pp. 1473–1496 source-checked consecutively in full-volume PDF text and rendered page layouts (including p.1486 reflexive-domain tree, footnotes and unacceptable/minimally variable contrasts). 67 inert new records (PHR-515–PHR-579, CLS-1103–CLS-1103), with one narrowly scoped `pride` lexical reflexive `spec_only` constraint. Distinctions for bound variables, prospective anaphora, optional and override reflexives prevent broad false-positive detectors. Chapter 17 now has 46 substantive pages plus 2 contents-only skips, leaving 68 printed pages; continue at p.1497. No approvals or runtime enablement.

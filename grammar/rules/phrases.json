@@ -32469,5 +32469,3904 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "PHR-515",
+    "domain": "phrases",
+    "concept": "Quantifier-bound singular antecedent pronouns",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A pronoun within the semantic scope of each, every or a negative quantifier can express a variable rather than a fixed individual.",
+    "condition": "An NP headed by a singular quantifier provides a variable interpretation for a following third-person pronoun.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Repeating the quantified NP in place of the pronoun changes the interpretation; separate discourse-linked readings remain possible.",
+        "pages": [
+          1473
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Every violinist checked their tuning.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Each visitor confirmed that they had a ticket.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.3.2(d)",
+        "pages": [
+          1473
+        ],
+        "pdf_pages": [
+          1493
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Quantifier-bound singular antecedent pronouns",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-516",
+    "domain": "phrases",
+    "concept": "Sex-neutral bound-variable singular they",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Singular they can supply a gender-neutral anaphor for anyone, nobody or interrogative who in a variable-reading construction.",
+    "condition": "The intended pronoun denotes a participant varying across a sex-neutral quantified or interrogative set.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The source cross-refers to Ch. 5 §17.2.4 for the variety of possible personal pronouns; they must not be banned.",
+        "pages": [
+          1473
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Does anyone think they lost a glove?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Nobody believed they had been chosen.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.3.2(d)",
+        "pages": [
+          1473
+        ],
+        "pdf_pages": [
+          1493
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Sex-neutral bound-variable singular they",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-517",
+    "domain": "phrases",
+    "concept": "Plural number as distributive quantification",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A plural antecedent can bind a plural pronoun distributively: each participant owns or undergoes the relevant experience.",
+    "condition": "For plural group statements, represent individual-variable readings separately from a collective reference.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A plurality of possessed items need not imply that every member owns more than one item.",
+        "pages": [
+          1473
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The hikers opened their backpacks.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The dancers washed their costumes.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.3.2(d)",
+        "pages": [
+          1473
+        ],
+        "pdf_pages": [
+          1493
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Plural number as distributive quantification",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-518",
+    "domain": "phrases",
+    "concept": "Collective versus distributive plural-pronoun readings",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A plural pronoun can refer to the group jointly instead of standing for a variable bound over each member.",
+    "condition": "Choose between group-level coreference and distributive bound-variable readings from event semantics.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Collective reports need not mean that every member independently made the statement.",
+        "pages": [
+          1474
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The delegates said they would meet together.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The sailors agreed they could share one cabin.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.3.2(d)",
+        "pages": [
+          1474
+        ],
+        "pdf_pages": [
+          1494
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Collective versus distributive plural-pronoun readings",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-519",
+    "domain": "phrases",
+    "concept": "Quantification outside the grammatical antecedent",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A pronoun can vary with a quantifier in a containing relative clause, a repeated conditional event, or an every-time adjunct.",
+    "condition": "A quantificational operator not contained in the immediate antecedent NP licenses a bound-variable interpretation.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The antecedent need not be a definite referential NP.",
+        "pages": [
+          1474
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Every student who rents a locker must keep it locked.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Whenever a tourist buys a ticket, they receive a receipt.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.3.2(e)",
+        "pages": [
+          1474
+        ],
+        "pdf_pages": [
+          1494
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Quantification outside the grammatical antecedent",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-520",
+    "domain": "phrases",
+    "concept": "Donkey anaphora under quantified conditions",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A pronoun linked to an indefinite NP within a quantified relative or conditional can vary across hypothetical or repeated situations.",
+    "condition": "Interpret the pronoun relative to the locally relevant instance rather than as the name of one fixed referent.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The indefinite antecedent can lie inside a relative while the pronoun is outside it.",
+        "pages": [
+          1474
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Anyone who adopts a kitten should vaccinate it.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If a customer finds a damaged item, they may return it.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.3.2(e–f)",
+        "pages": [
+          1474
+        ],
+        "pdf_pages": [
+          1494
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Donkey anaphora under quantified conditions",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-521",
+    "domain": "phrases",
+    "concept": "Nested variables in repeated possessive descriptions",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "In restricted comparison structures an anaphoric pronoun can recover a description containing a possessive variable with a different binder.",
+    "condition": "A second coordinated or compared participant contributes a newly valued possessor to an elided or anaphoric nominal interpretation.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The text explicitly says this pronoun reading is rare, heavily constrained and not available in superficially similar cases.",
+        "pages": [
+          1475
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The runner who gave his medal to a museum was praised more than the one who sold it.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The founder who left her archive to a university was remembered longer than the one who donated it to a library.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.3.2(f)",
+        "pages": [
+          1475
+        ],
+        "pdf_pages": [
+          1495
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nested variables in repeated possessive descriptions",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-522",
+    "domain": "phrases",
+    "concept": "Clausal antecedent of propositional it",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Personal it can nominalise the meaning contributed by one or more preceding clauses, including an event, fact or proposition.",
+    "condition": "The antecedent is a clause rather than a referential NP.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This relation is semantic anaphora, not strict coreference between two referring NPs.",
+        "pages": [
+          1475
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The gallery has closed for repairs. I didn't expect it.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The team qualified for the final, and I could hardly believe it.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.3.2(g)",
+        "pages": [
+          1475
+        ],
+        "pdf_pages": [
+          1495
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Clausal antecedent of propositional it",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-523",
+    "domain": "phrases",
+    "concept": "Retrospective personal anaphora as default",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "With ordinary person-pronoun anaphora, the pronoun typically follows the antecedent and many same-clause or coordinate-order reversals do not license anticipatory reference.",
+    "condition": "Treat forward reference as construction-sensitive rather than merely selecting the nearest later compatible noun.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Later mention can be independently referential, and repeat-mention cataphora has separate allowances.",
+        "pages": [
+          1475
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Rosa checked the calendar before she left.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "After Dana arrived, she called home.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.4",
+        "pages": [
+          1475
+        ],
+        "pdf_pages": [
+          1495
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Retrospective personal anaphora as default",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-524",
+    "domain": "phrases",
+    "concept": "First-mention versus repeat-mention anticipatory anaphora",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Anticipatory reference can be the first introduction of an entity or a further mention of an entity previously established in discourse.",
+    "condition": "When the later full NP identifies a pronoun, track whether the entity was introduced earlier in the text.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Repeat-mention cases occur in a wider range of constructions than novel first-mention ones.",
+        "pages": [
+          1476
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Before he entered, the conductor checked the program.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The conductor greeted the guests. Before he spoke, the conductor adjusted the microphone.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.4",
+        "pages": [
+          1476
+        ],
+        "pdf_pages": [
+          1496
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "First-mention versus repeat-mention anticipatory anaphora",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-525",
+    "domain": "phrases",
+    "concept": "Repeat-mention relaxes discourse restrictions",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "An earlier occurrence of a name or compatible phrase may license an otherwise difficult forward pronominal reference across clauses.",
+    "condition": "When evaluating a pronoun earlier than a name, include prior sentences and contrastive stress in the context.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "For first-mention cataphora the same shapes can be significantly less acceptable.",
+        "pages": [
+          1476
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Everyone had met Talia. Her mentor thought Talia had improved.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I had already discussed Nolan. He agreed, because Nolan knew the schedule.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.4",
+        "pages": [
+          1476
+        ],
+        "pdf_pages": [
+          1496
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Repeat-mention relaxes discourse restrictions",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-526",
+    "domain": "phrases",
+    "concept": "Anaphoric chains through covert subjects",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The understood subject of a non-finite adjunct can be linked anticipatorily to a following NP while a pronoun inside the adjunct is retrospectively linked to that covert subject.",
+    "condition": "Resolve the implicit subject and internal pronouns as distinct links, not as an unmediated pronoun-to-matrix-subject chain.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The same surface positions can yield an inadmissible link if the full name appears inside the subordinate expression instead.",
+        "pages": [
+          1477
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Expecting he would succeed, Nolan entered the competition.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Knowing she was ready, Priya submitted her application.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.4",
+        "pages": [
+          1477
+        ],
+        "pdf_pages": [
+          1497
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Anaphoric chains through covert subjects",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-527",
+    "domain": "phrases",
+    "concept": "Cataphora from subordinate clause to higher clause",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A pronoun inside a subordinate adjunct, relative modifier or complement can anticipate an NP in a syntactically higher clause.",
+    "condition": "The antecedent is in the containing construction, while the pronoun is structurally embedded in a subordinate clause.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Subordinate clauses serving as subject permit first-mention cataphora much less readily.",
+        "pages": [
+          1477
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If he wakes early, Marco will bring coffee.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "When she was sixteen, Elise began composing.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.4.1(a)",
+        "pages": [
+          1477
+        ],
+        "pdf_pages": [
+          1497
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Cataphora from subordinate clause to higher clause",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-528",
+    "domain": "phrases",
+    "concept": "NP-internal cataphoric pronouns",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A personal or genitive pronoun embedded within a complex NP may anticipate a following full NP in the larger clause.",
+    "condition": "The pronoun is dependent within an NP rather than a direct argument of the same verbal head as the later antecedent.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The intended link may depend on whether the antecedent was previously mentioned; partitive NPs behave differently.",
+        "pages": [
+          1478
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "His unexpected retirement surprised the chief engineer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A portrait of her made Mira famous.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.4.1(b)",
+        "pages": [
+          1478
+        ],
+        "pdf_pages": [
+          1498
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "NP-internal cataphoric pronouns",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-529",
+    "domain": "phrases",
+    "concept": "Preposed locative PP and forward anaphora",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A locative preposition phrase preposed before its subject may require the pronoun to precede a later NP antecedent, reversing a basic same-clause order.",
+    "condition": "The pronoun is a complement or genitive within a noncanonically fronted locative PP and the subject NP is the intended referent.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Preposed causal or perspective PPs can allow retrospective order where locative ones often do not.",
+        "pages": [
+          1478
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Behind her, Selena noticed movement.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Beside his desk, the curator found a receipt.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.4.1(c)",
+        "pages": [
+          1478
+        ],
+        "pdf_pages": [
+          1498
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Preposed locative PP and forward anaphora",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-530",
+    "domain": "phrases",
+    "concept": "Genitive anticipatory pronouns",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Possessive pronouns can occur in forward-linking subordinate clauses and within complex subject or preposed-PP NPs.",
+    "condition": "The later name identifies the possessor represented by a prenominal genitive form.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The syntactic category and salience of the containing NP affect licensing.",
+        "pages": [
+          1478
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Before her interview, Rhea checked her notes.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "With his trial nearing, the accused requested counsel.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.4.1",
+        "pages": [
+          1478
+        ],
+        "pdf_pages": [
+          1498
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Genitive anticipatory pronouns",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-531",
+    "domain": "phrases",
+    "concept": "Partitive one-of NP disfavours first-mention cataphora",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A pronoun inside a partitive one-of construction is excluded from ordinary first-mention anticipatory binding by an NP introduced later.",
+    "condition": "Evaluate a proposed one of them ... the participants pattern as a specific forward-reference restriction.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The second example allows them to refer to an established group; do not misidentify this as first-mention forward binding.",
+        "pages": [
+          1479
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "One of the mechanics said that the inspectors should return.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "One of them explained the rules after the visitors arrived.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.4.1",
+        "pages": [
+          1479
+        ],
+        "pdf_pages": [
+          1499
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Partitive one-of NP disfavours first-mention cataphora",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-532",
+    "domain": "phrases",
+    "concept": "Discourse complexity conditions cataphora acceptability",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Greater distance and complexity between an early pronoun and its antecedent can make an anticipatory link more acceptable.",
+    "condition": "For a pronoun inside a large subject NP, consider structural length, preceding discourse and focus.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A short NP with a genitive pronoun before the first mention of its owner is markedly less acceptable.",
+        "pages": [
+          1479
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Several of her oldest colleagues congratulated Maya.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "All his former classmates sent a letter to Idris.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.4.1",
+        "pages": [
+          1479
+        ],
+        "pdf_pages": [
+          1499
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Discourse complexity conditions cataphora acceptability",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "CLS-1102",
+    "domain": [
+      1479,
+      1480
+    ],
+    "concept": "Pragmatically asymmetric coordination licenses cataphora",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Formally coordinated clauses can allow a pronoun in the first clause to anticipate a name later where the first clause functions concessively or conditionally.",
+    "condition": "Interpret the pragmatic relation between coordinates, not just the coordinating conjunction.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Equal-status sequential clauses generally do not show this license.",
+        "pages": [
+          1479
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She had only recently joined the team, but Laila already led the meetings.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Say one critical word about him and Owen will walk away.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.4.1",
+        "pages": [
+          1479
+        ],
+        "pdf_pages": [
+          1499
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pragmatically asymmetric coordination licenses cataphora",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-533",
+    "domain": "phrases",
+    "concept": "Rhetorical cataphora across multiple sentences",
+    "rule_type": "stylistic_or_prescriptive",
+    "scope": "phrase",
+    "statement": "Journalistic or fictional prose can deliberately postpone the full name of a discourse topic after several sentences containing pronouns.",
+    "condition": "An initial he, she or they introduces suspense and is resolved in a later sentence.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This discourse strategy is intentional and not a universal pronoun-antecedent error.",
+        "pages": [
+          1480
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She had transformed the town's library. Most residents still called her a visionary. The person was Clara Reed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He arrived carrying only a battered violin. The stranger was Elias.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.4.2(a)",
+        "pages": [
+          1480
+        ],
+        "pdf_pages": [
+          1500
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Rhetorical cataphora across multiple sentences",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-534",
+    "domain": "phrases",
+    "concept": "Independent following clause interprets evaluative it",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A following main clause can identify the proposition or question presupposition evaluated by a prior it in a separate asserted clause.",
+    "condition": "The first sentence appraises a situation and the second is a free-standing declarative or interrogative explanation.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The later main clause is not a syntactic complement of the earlier it and cannot simply replace it without restructuring.",
+        "pages": [
+          1480
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It is extraordinary! The council approved the project overnight.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I cannot explain it: Why did the lights go out?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.4.2(b)",
+        "pages": [
+          1480
+        ],
+        "pdf_pages": [
+          1500
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Independent following clause interprets evaluative it",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-535",
+    "domain": "phrases",
+    "concept": "Independent-clause cataphora and assertion",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A preliminary evaluative clause using it with a following independent clausal explanation is normally asserted by the speaker, not merely embedded as someone's reported evaluation.",
+    "condition": "Interpret the initial it as anaphoric to a later asserted explanation only when the discourse structure warrants it.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Embedding the evaluation within a higher reporting clause generally blocks this independent-main-clause anaphoric interpretation.",
+        "pages": [
+          1481
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It is unfortunate: the meeting has been cancelled.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I regard it as disappointing: the application was rejected.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.4.2(b)",
+        "pages": [
+          1481
+        ],
+        "pdf_pages": [
+          1501
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Independent-clause cataphora and assertion",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-536",
+    "domain": "phrases",
+    "concept": "Right dislocation with postnuclear antecedent",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In right dislocation, a weak third-person pronoun occurs in a clause whose old-information referent is restated in an attached NP at the end.",
+    "condition": "Recover the peripheral NP as a coreferential antecedent rather than as a new syntactic object.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The right-dislocated NP is attached postnuclearly, unlike the structurally independent following assertion.",
+        "pages": [
+          1481
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They have already left, the auditors.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She has been working late, that new librarian.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.4.2(c)",
+        "pages": [
+          1481
+        ],
+        "pdf_pages": [
+          1501
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Right dislocation with postnuclear antecedent",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-537",
+    "domain": "phrases",
+    "concept": "Extraposition and impersonal dummy it",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In extraposition and certain impersonal clauses, it can fill a grammatical subject or object slot without independently identifying an entity.",
+    "condition": "Distinguish syntactically required dummy it from a pronoun with an NP or clause antecedent.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Extraposed clauses are integrated structures; a following independent main clause is not the same construction.",
+        "pages": [
+          1481
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It is surprising that the vessel survived.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I find it strange for the guests to leave so early.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.5(a)",
+        "pages": [
+          1481
+        ],
+        "pdf_pages": [
+          1501
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Extraposition and impersonal dummy it",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-538",
+    "domain": "phrases",
+    "concept": "It-cleft dummy subject",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The cleft construction employs an invariant it independent of any person or object reference.",
+    "condition": "When an it-cleft focuses an NP or other phrase, treat it as a construction marker rather than searching for a referential antecedent.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The source assigns the constructional syntax to Chapter 16 §9.",
+        "pages": [
+          1482
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was Nina who filed the appeal.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was at sunrise that the team departed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.5(b)",
+        "pages": [
+          1482
+        ],
+        "pdf_pages": [
+          1502
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "It-cleft dummy subject",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-539",
+    "domain": "phrases",
+    "concept": "Dummy it with weather and time",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A finite English clause describing weather, clock time, date or atmospheric condition can use an obligatory dummy it as its subject.",
+    "condition": "When the predicate lacks a semantic participant subject, it satisfies the clause's ordinary subject slot.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some casual and personified weather uses are marginally more contentful; a true notional subject changes the analysis.",
+        "pages": [
+          1482
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It has been snowing all morning.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It is nearly midnight.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.5(c)",
+        "pages": [
+          1482
+        ],
+        "pdf_pages": [
+          1502
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dummy it with weather and time",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-540",
+    "domain": "phrases",
+    "concept": "Impersonal it in spatial, temporal and condition predicates",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Impersonal it may frame elapsed time, distance, ambient conditions, or a proposition introduced by if or when.",
+    "condition": "The first predicate denotes distance, time or general circumstances rather than a referring subject.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The final if/when clauses in these examples are not content-clause replacements for it.",
+        "pages": [
+          1482
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It is three kilometres to the village.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It would be delightful if you could visit.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.5(c)",
+        "pages": [
+          1482
+        ],
+        "pdf_pages": [
+          1502
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Impersonal it in spatial, temporal and condition predicates",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-541",
+    "domain": "phrases",
+    "concept": "Partly referential it and idiomatic it",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Predications about pleasant days or views permit more referential it, while numerous fixed informal idioms contain a largely non-referential it.",
+    "condition": "Use lexical construction and replaceability by this to distinguish weak reference from wholly frozen dummy forms.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Many idiomatic uses resist passivisation or separation of it from the verb.",
+        "pages": [
+          1483
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It's a spectacular view from the ridge.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We will have to wing it during the presentation.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§2.5(d–e)",
+        "pages": [
+          1483
+        ],
+        "pdf_pages": [
+          1503
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Partly referential it and idiomatic it",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-542",
+    "domain": "phrases",
+    "concept": "Complement versus emphatic reflexives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Reflexive forms may serve as verb/preposition complements or as emphatic NP modifiers and clause adjuncts.",
+    "condition": "Classify syntactic function rather than treating every -self occurrence as a complement.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Non-reflexive pronouns have no corresponding emphatic use in these positions.",
+        "pages": [
+          1483
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Diana corrected herself during the rehearsal.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Diana herself corrected the mistake.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3",
+        "pages": [
+          1483
+        ],
+        "pdf_pages": [
+          1503
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Complement versus emphatic reflexives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-543",
+    "domain": "phrases",
+    "concept": "Reflexive pronoun morphology",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "English reflexives combine self or selves with person-marked pronoun forms; the morphological base differs across pronouns.",
+    "condition": "Identify the morphologically reflexive lexeme before applying structural binding tests.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The generic form oneself is built from the plain base one.",
+        "pages": [
+          1483
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I will arrange the chairs myself.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They prepared themselves for the event.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3",
+        "pages": [
+          1483
+        ],
+        "pdf_pages": [
+          1503
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reflexive pronoun morphology",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-544",
+    "domain": "phrases",
+    "concept": "Mandatory, optional and inadmissible complement reflexives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A complement reflexive may be obligatory, an alternant of a nonreflexive, or unavailable, depending on how it relates structurally to the antecedent.",
+    "condition": "Determine the reflexive's status for the specific verb, preposition and anaphoric relationship.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The same pronoun form may be prohibited in a different syntactic construction; do not set a global reflexive preference.",
+        "pages": [
+          1484
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Talia defended herself at the hearing.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Talia set a cushion beside her.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1",
+        "pages": [
+          1484
+        ],
+        "pdf_pages": [
+          1504
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Mandatory, optional and inadmissible complement reflexives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-545",
+    "domain": "phrases",
+    "concept": "Structural relation governs reflexive choice",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Nominal antecedents and reflexive complements usually show a closer syntactic relation than the corresponding non-reflexive forms.",
+    "condition": "Compare same-head and separate-head antecedent relationships for two purportedly coreferential pronouns.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The nonreflexive in a second clause is not restricted to referring to the matrix-clause subject.",
+        "pages": [
+          1484
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Hugo photographed himself at the ceremony.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Hugo discovered that Iris had photographed him.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1",
+        "pages": [
+          1484
+        ],
+        "pdf_pages": [
+          1504
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Structural relation governs reflexive choice",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-546",
+    "domain": "phrases",
+    "concept": "Basic versus override reflexives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Basic reflexives have a close syntactic relation to an antecedent; override reflexives can occur where that local relationship is absent.",
+    "condition": "Preserve different source rules for locally bound reflexives and override forms in certain coordinated or comparative settings.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Override forms are established but vary across speakers and are not automatically grammatical in every position.",
+        "pages": [
+          1485
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The authors thanked themselves in the foreword.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The invitation was sent to the director and myself.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1",
+        "pages": [
+          1485
+        ],
+        "pdf_pages": [
+          1505
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Basic versus override reflexives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-547",
+    "domain": "phrases",
+    "concept": "Contrastive nonreflexive override in informal style",
+    "rule_type": "variety_restricted",
+    "scope": "phrase",
+    "statement": "In emphatic contrast, a nonreflexive personal pronoun can exceptionally appear where a basic reflexive is the usual form.",
+    "condition": "Recognise contrastively stressed nonreflexive forms as limited informal exceptions rather than evidence the basic restriction never applies.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Such overrides are uncommon, largely informal and can often be rephrased with ordinary reflexives.",
+        "pages": [
+          1485
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Save some of the dessert for YOU this time.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He bought flowers for HIM for once, rather than for his colleagues.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1",
+        "pages": [
+          1485
+        ],
+        "pdf_pages": [
+          1505
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Contrastive nonreflexive override in informal style",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation.",
+    "variety": "informal colloquial English, including restricted contrastive nonreflexive or dialectal indirect-object uses"
+  },
+  {
+    "id": "PHR-548",
+    "domain": "phrases",
+    "concept": "Verb-domain reflexives linked via a verbal head",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A basic reflexive may be linked to its antecedent as another complement of one verb or through a PP dependent on that verb.",
+    "condition": "Both antecedent and reflexive are within the grammatical domain of the same head verb.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Clause embedding does not remove a verb-domain relation when the relevant head remains the same.",
+        "pages": [
+          1485
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Eva reassured herself before the interview.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Felix relied on himself to finish the repairs.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1",
+        "pages": [
+          1485
+        ],
+        "pdf_pages": [
+          1505
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Verb-domain reflexives linked via a verbal head",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-549",
+    "domain": "phrases",
+    "concept": "Noun-domain basic reflexives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In a noun-domain construction an antecedent genitive subject-determiner and an oblique reflexive depend on the same nominal head.",
+    "condition": "The genitive is associated with the nominal subject while the reflexive is usually complement of a preposition.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Nouns have no ordinary direct object relation corresponding to a verb's direct object.",
+        "pages": [
+          1486
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mara's opinion of herself changed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Oliver's confidence in himself improved.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1",
+        "pages": [
+          1486
+        ],
+        "pdf_pages": [
+          1506
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Noun-domain basic reflexives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-550",
+    "domain": "phrases",
+    "concept": "Dual-head reflexive domains",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A basic reflexive can have its antecedent under a governing verb while the reflexive is inside an NP headed by a different noun.",
+    "condition": "Analyze the two linked heads separately instead of forcing local subject–object coreference within one verb phrase.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Mandatory versus optional status varies among dual-head constructions and is not exhaustively predictable.",
+        "pages": [
+          1486
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Theo discovered an old portrait of himself.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Rina received a letter about herself.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1",
+        "pages": [
+          1486
+        ],
+        "pdf_pages": [
+          1506
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dual-head reflexive domains",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-551",
+    "domain": "phrases",
+    "concept": "Covert-subject reflexives retain local binding",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In a subjectless nonfinite clause, a reflexive can take the understood subject as antecedent, with an overt matrix antecedent linked through a chain.",
+    "condition": "Recover the silent subject before evaluating the reflexive inside a subjectless complement or imperative.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A hidden imperative subject is the addressee, while a controlled non-finite subject may refer to the matrix argument.",
+        "pages": [
+          1486
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Lia promised to prepare herself.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Please remind yourself to rest.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1",
+        "pages": [
+          1486
+        ],
+        "pdf_pages": [
+          1506
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Covert-subject reflexives retain local binding",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-552",
+    "domain": "phrases",
+    "concept": "Canonical reflexive object and subject order",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In canonical constituent order a basic reflexive complement follows its antecedent and typically cannot itself function as the independent subject.",
+    "condition": "The antecedent serves as clause subject and the reflexive serves as a later complement of the same predicate.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Preposed reflexive complements are special noncanonical structures, not counterexamples to the canonical order.",
+        "pages": [
+          1487
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The librarian introduced herself.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The workers trained themselves.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1.1",
+        "pages": [
+          1487
+        ],
+        "pdf_pages": [
+          1507
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Canonical reflexive object and subject order",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-553",
+    "domain": "phrases",
+    "concept": "Subject-bound direct-object reflexives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "When a direct-object pronoun is intended to refer anaphorically to the subject of the same transitive verb, the central standard-English form is reflexive.",
+    "condition": "Both syntactic positions are directly dependent on the same verb, and the patient is identical to the agent.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A plain accusative may denote another person; the co-referential requirement depends on interpretation.",
+        "pages": [
+          1487
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The captain criticized himself.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The nurse congratulated herself.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1.1(a)",
+        "pages": [
+          1487
+        ],
+        "pdf_pages": [
+          1507
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subject-bound direct-object reflexives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-554",
+    "domain": "phrases",
+    "concept": "Reflexives in complex transitive and raising objects",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Direct-object reflexives can serve as predicands or raised objects, not merely simple patients of a transitive verb.",
+    "condition": "The antecedent is the matrix subject and the reflexive occupies object position with an additional predicative or non-finite complement.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Infinitival complements and raised-object analyses require the independent Chapter 14 crosswalk.",
+        "pages": [
+          1487
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Arun considered himself a beginner.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina believed herself to be ready.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1.1(a)",
+        "pages": [
+          1487
+        ],
+        "pdf_pages": [
+          1507
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reflexives in complex transitive and raising objects",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-555",
+    "domain": "phrases",
+    "concept": "Lexically selected reflexive objects",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Certain verbs in relevant senses select a subject-bound reflexive object, even though a different sense or valency can admit a nonreflexive.",
+    "condition": "Distinguish the lexical sense of pride, acquit, conduct and related predicates before authorizing a reflexive checker.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some listed verbs permit other object constructions under a different meaning; lexical restrictions cannot be generalized to every verb.",
+        "pages": [
+          1488
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Ravi prides himself on his accuracy.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The performers conducted themselves professionally.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1.1(a)",
+        "pages": [
+          1488
+        ],
+        "pdf_pages": [
+          1508
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexically selected reflexive objects",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-556",
+    "domain": "phrases",
+    "concept": "Indirect-object basic reflexives and dialectal alternatives",
+    "rule_type": "variety_restricted",
+    "scope": "phrase",
+    "statement": "An indirect-object pronoun coreferential with the subject is usually reflexive in standard English, with informal chiefly American accusative alternatives.",
+    "condition": "The same subject denotes the beneficiary expressed by the indirect-object pronoun.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Informal US forms such as I got me a ticket are attested and need a separate variety/register guard.",
+        "pages": [
+          1488
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I made myself a sandwich.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The architect drew herself a floor plan.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1.1(b)",
+        "pages": [
+          1488
+        ],
+        "pdf_pages": [
+          1508
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Indirect-object basic reflexives and dialectal alternatives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation.",
+    "variety": "informal colloquial English, including restricted contrastive nonreflexive or dialectal indirect-object uses"
+  },
+  {
+    "id": "PHR-557",
+    "domain": "phrases",
+    "concept": "Predicative reflexive versus identity statement",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Predicative complements such as be oneself can require reflexive reference, but statements about individual identity naturally use the non-reflexive pronoun.",
+    "condition": "Choose the form from the intended predicate meaning rather than a blanket copula prohibition.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Idiomatic well-being and naturalness predicates differ from pure identity propositions.",
+        "pages": [
+          1488
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You should try to be yourself.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If I were you, I would reconsider.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1.1(c)",
+        "pages": [
+          1488
+        ],
+        "pdf_pages": [
+          1508
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Predicative reflexive versus identity statement",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-558",
+    "domain": "phrases",
+    "concept": "Prepositional verb-domain reflexive status varies",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "When the pronoun is object of a preposition linked to the subject through a verb, the reflexive may be mandatory, optional or inadmissible.",
+    "condition": "Inspect the governing preposition, its selection by the verb, and locative or idiomatic interpretation.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The same spatial preposition may prefer a nonreflexive in a different sense.",
+        "pages": [
+          1488
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Nora stood beside herself with worry.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Nora arranged the cushions around her.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1.1(d)",
+        "pages": [
+          1488
+        ],
+        "pdf_pages": [
+          1508
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Prepositional verb-domain reflexive status varies",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-559",
+    "domain": "phrases",
+    "concept": "Selected PP complements often require reflexives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Selected verbal and idiomatic preposition complements commonly take subject-bound reflexives rather than nonreflexive forms.",
+    "condition": "The subject is the intended antecedent and the preposition forms a lexical complement or idiomatic predicate.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "With other antecedents, PPs may be literal rather than reflexive idioms.",
+        "pages": [
+          1489
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Sasha looks after herself.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Aiden believes in himself.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1.1(d)",
+        "pages": [
+          1489
+        ],
+        "pdf_pages": [
+          1509
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Selected PP complements often require reflexives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-560",
+    "domain": "phrases",
+    "concept": "Verb objects as reflexive antecedents",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A non-subject verb complement can in restricted cases antecede a later reflexive in a separate PP.",
+    "condition": "A direct or prepositional object supplies the antecedent for a later related reflexive phrase.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Order of double PPs strongly affects acceptability; contrastive discourse can support less typical orders.",
+        "pages": [
+          1489
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The coach protected Emma from herself.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I spoke to Julian about himself.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1.1(d)",
+        "pages": [
+          1489
+        ],
+        "pdf_pages": [
+          1509
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Verb objects as reflexive antecedents",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-561",
+    "domain": "phrases",
+    "concept": "Optional locative PP reflexives",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Spatial PPs such as beside or near can allow either a reflexive or a plain personal pronoun referring to the subject.",
+    "condition": "For genuinely locative adjuncts and complements, do not impose an obligatory -self form.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Speaker preferences and emphasis affect the relative naturalness of the alternatives.",
+        "pages": [
+          1489
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mila noticed a dog near her.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mila noticed a dog near herself.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1.1(d)",
+        "pages": [
+          1489
+        ],
+        "pdf_pages": [
+          1509
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Optional locative PP reflexives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-562",
+    "domain": "phrases",
+    "concept": "Reflexives barred in selected spatial constructions",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In specific spatial expressions with around, with or before, a local subject link ordinarily requires the plain nonreflexive form rather than a basic reflexive.",
+    "condition": "Distinguish construction-specific nonreflexive requirements from more common mandatory PP reflexives.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The restriction is sense- and construction-specific; around oneself can be acceptable in other contexts.",
+        "pages": [
+          1489
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Theo watched children playing around him.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The interns have a long career before them.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1.1(d)",
+        "pages": [
+          1489
+        ],
+        "pdf_pages": [
+          1509
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reflexives barred in selected spatial constructions",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-563",
+    "domain": "phrases",
+    "concept": "Preposed reflexives remain structurally bound",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Fronting a reflexive complement can put it before its antecedent without reassigning the subject as a reflexive.",
+    "condition": "The preposed phrase retains the antecedent relationship of its canonical postverbal counterpart.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Heavy-object postponement is an additional marginal and often questionable reversal.",
+        "pages": [
+          1490
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "To herself, the director allocated the final task.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Himself, the trainer nominated for the award.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1.1",
+        "pages": [
+          1490
+        ],
+        "pdf_pages": [
+          1510
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Preposed reflexives remain structurally bound",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-564",
+    "domain": "phrases",
+    "concept": "Coreference without anaphoric linking",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Two NPs may designate the same person without a grammatical anaphoric relation, in which case a reflexive need not be used.",
+    "condition": "Interpret contrastive repetition or quotation separately from anaphoric binding by the local subject.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The quantified readings differ; surface identity of real-world reference does not prove a binding relation.",
+        "pages": [
+          1490
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Only Kian voted for himself.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Only Kian voted for Kian.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1.1",
+        "pages": [
+          1490
+        ],
+        "pdf_pages": [
+          1510
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Coreference without anaphoric linking",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-565",
+    "domain": "phrases",
+    "concept": "Genitive subject-determiner and noun-domain reflexives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A genitive NP acting as a nominal subject-determiner commonly licenses a basic reflexive under the head noun.",
+    "condition": "In the NP, the genitive and the PP reflexive are both grammatical dependents of the same head noun.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Noncanonical nominal structures can reverse order, and nouns are not literally transitive verbs.",
+        "pages": [
+          1491
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Farah's description of herself was accurate.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Eli's belief in himself grew.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1.2",
+        "pages": [
+          1491
+        ],
+        "pdf_pages": [
+          1511
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Genitive subject-determiner and noun-domain reflexives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-566",
+    "domain": "phrases",
+    "concept": "Reflexive oblique versus self- compound noun",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An NP containing a PP reflexive and a compound headed by self- are distinct syntactic and morphological constructions.",
+    "condition": "Check whether self is a separate pronoun object of a preposition or a bound lexical element in a noun.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some lexical nouns allow only one form; compounds need not have a syntactically overt antecedent.",
+        "pages": [
+          1491
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Tori's confidence in herself improved.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Tori's self-confidence improved.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1.2",
+        "pages": [
+          1491
+        ],
+        "pdf_pages": [
+          1511
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reflexive oblique versus self- compound noun",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-567",
+    "domain": "phrases",
+    "concept": "Predicative adjective dual-head reflexives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An adjective-complement reflexive may be related to a predicand governed by a separate verb or noun, making a dual-head domain.",
+    "condition": "The predicand is argument of the adjective semantically but dependent on a larger verb or noun syntactically.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The source treats these as mandatory basic reflexives, not optional override uses.",
+        "pages": [
+          1492
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mara was very proud of herself.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Leo found Maya unusually pleased with herself.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1.3(a)",
+        "pages": [
+          1492
+        ],
+        "pdf_pages": [
+          1512
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Predicative adjective dual-head reflexives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-568",
+    "domain": "phrases",
+    "concept": "Picture-noun reflexives can be mandatory or optional",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Reflexives embedded in representation-denoting NPs under a higher verb sometimes alternate with plain personal pronouns, and sometimes do not.",
+    "condition": "The antecedent is under the verb and the reflexive is an oblique dependent of an NP object or subject.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The book does not resolve all semantic or speaker-specific factors dividing mandatory from optional cases.",
+        "pages": [
+          1492
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Caleb found a portrait of himself in the attic.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Caleb found a portrait of him in the attic.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1.3(b)",
+        "pages": [
+          1492
+        ],
+        "pdf_pages": [
+          1512
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Picture-noun reflexives can be mandatory or optional",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-569",
+    "domain": "phrases",
+    "concept": "Reflexive subjects of non-finite clauses",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In certain rare dual-verb configurations, the subject of a non-finite subordinate clause can be a basic reflexive linked to a matrix argument.",
+    "condition": "The nonfinite subject sits within a clause introduced by for or a gerund-participial clause with matrix-linked person reference.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "These constructions are often contrastive; in many alternatives the nonfinite subject would be omitted.",
+        "pages": [
+          1492
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Owen arranged for himself to be interviewed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Ria objected to herself being described as careless.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1.3(c)",
+        "pages": [
+          1492
+        ],
+        "pdf_pages": [
+          1512
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reflexive subjects of non-finite clauses",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-570",
+    "domain": "phrases",
+    "concept": "Cleft focus reflexives and subordinate antecedents",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Cleft and specified-be constructions can contain a reflexive whose antecedent lies inside a subordinate clause, contrary to the simplest structural hierarchy.",
+    "condition": "The focused complement of be is understood through an elementary reflexive-bearing predicate in the relative/cleft clause.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The source permits a stressed nonreflexive in certain non-cleft specifying-be variants.",
+        "pages": [
+          1493
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was for herself that Nia bought the jacket.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The only person Theo could blame was himself.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1.3(c)",
+        "pages": [
+          1493
+        ],
+        "pdf_pages": [
+          1513
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Cleft focus reflexives and subordinate antecedents",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-571",
+    "domain": "phrases",
+    "concept": "Structural hierarchy of basic reflexive antecedents",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Ordinarily the antecedent is related to the governing verb or noun and is structurally at least as high as the reflexive, even in dual-head configurations.",
+    "condition": "Compare the higher verbal or nominal argument with a pronoun buried in a dependent constituent.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Derived preposing, clefts and limited nominal patterns are exceptions to linear-order or hierarchy shortcuts.",
+        "pages": [
+          1493
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The director discovered a drawing of herself.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The tutor knew an account of himself was circulating.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1.3",
+        "pages": [
+          1493
+        ],
+        "pdf_pages": [
+          1513
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Structural hierarchy of basic reflexive antecedents",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-572",
+    "domain": "phrases",
+    "concept": "Whole subject NP rather than embedded possessor",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An ordinary basic reflexive object cannot select a possessive NP inside its clause's subject as its antecedent; the whole subject NP is the binding candidate.",
+    "condition": "A clause subject contains an NP possessor while a later verb object is reflexive.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Override reflexives may refer to an embedded possessor in different constructions, so this structural rule is for basic reflexives.",
+        "pages": [
+          1494
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The architect's son praised himself.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The engineer's sister praised herself.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1.3–3.1.4",
+        "pages": [
+          1494
+        ],
+        "pdf_pages": [
+          1514
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Whole subject NP rather than embedded possessor",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-573",
+    "domain": "phrases",
+    "concept": "Override reflexives in coordination",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A coordinate NP may contain a reflexive that would not be permitted as a single bare subject or simple object in the corresponding noncoordinate context.",
+    "condition": "The reflexive is the speaker or a discourse referent within an NP formed by conjunction with another NP.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "These are legitimate variants with substantial speaker/register variation; not all reflexive coordinates are overrides.",
+        "pages": [
+          1494
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The caretaker and myself met at noon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The judge thanked the witnesses and herself.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1.4(a)",
+        "pages": [
+          1494
+        ],
+        "pdf_pages": [
+          1514
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Override reflexives in coordination",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-574",
+    "domain": "phrases",
+    "concept": "Comparative, inclusion and specifying-be reflexive overrides",
+    "rule_type": "stylistic_or_prescriptive",
+    "scope": "phrase",
+    "statement": "Reflexive forms are possible without local antecedents in comparatives, inclusion/exclusion and some specifying-be or predicative PP positions.",
+    "condition": "An override reflexive appears in an otherwise nonreflexive slot with suitable comparison or specification interpretation.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The source records variability; traditional disapproval is not a grammatical ban.",
+        "pages": [
+          1494
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A researcher such as yourself could verify the data.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Everyone except myself received an invitation.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1.4(b–d)",
+        "pages": [
+          1494
+        ],
+        "pdf_pages": [
+          1514
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Comparative, inclusion and specifying-be reflexive overrides",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-575",
+    "domain": "phrases",
+    "concept": "Override reflexives in picture nouns and marginal object contexts",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "An override reflexive can appear inside a picture noun without a local antecedent; very occasional direct-object overrides are marginal.",
+    "condition": "Distinguish discourse-anchored representations from basic reflexives structurally bound to a local predicate.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Marginal direct-object extensions are not reliable grounds for either a general error rule or a general license.",
+        "pages": [
+          1495
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I disliked that portrait of myself.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The photograph of herself hung on the mayor's office wall.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1.4(e–f)",
+        "pages": [
+          1495
+        ],
+        "pdf_pages": [
+          1515
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Override reflexives in picture nouns and marginal object contexts",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-576",
+    "domain": "phrases",
+    "concept": "First-person and viewpoint conditions on override",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Override use favours first-person myself; third-person override often requires a discourse perspective centred on the antecedent's experience.",
+    "condition": "When a third-person reflexive lies outside a basic domain, test whether discourse focalization supports it.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A third-person override may be rejected when discourse follows another person's perspective; judgments vary.",
+        "pages": [
+          1495
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jamal was proud of the award. The portrait of himself on the wall seemed appropriate.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I reminded the panel that the decision involved myself.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1.4",
+        "pages": [
+          1495
+        ],
+        "pdf_pages": [
+          1515
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "First-person and viewpoint conditions on override",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-577",
+    "domain": "phrases",
+    "concept": "Intervening compatible NPs and contrast affect overrides",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "An intervening nominal that is a plausible antecedent can block a long-distance override reading, while contrastive focus or a cleft can improve a marginal form.",
+    "condition": "Assess whether intervening participants, prosody and focus intervene in a claimed override link.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The source shows degrees of speaker acceptability, not an unconditional linear distance constraint.",
+        "pages": [
+          1496
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jenna knew a picture of herself had been posted.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was herself that Jenna wanted the committee to select.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1.4(c–d)",
+        "pages": [
+          1496
+        ],
+        "pdf_pages": [
+          1516
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Intervening compatible NPs and contrast affect overrides",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-578",
+    "domain": "phrases",
+    "concept": "Emphatic reflexives in four syntactic positions",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An emphatic -self expression can modify the subject NP or function as a clause adjunct in central, final or front position.",
+    "condition": "Differentiate focus emphasis from complement binding when locating the reflexive in a parse tree.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The front-position use is predominantly first-person and shorter clauses have fewer natural placements.",
+        "pages": [
+          1496
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The curator herself checked the entries.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The curator checked the entries herself.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.2",
+        "pages": [
+          1496
+        ],
+        "pdf_pages": [
+          1516
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Emphatic reflexives in four syntactic positions",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-579",
+    "domain": "phrases",
+    "concept": "Emphatic reflexives are not selected complements",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An optional emphatic reflexive can be omitted without removing a required object or PP complement of the main predicate.",
+    "condition": "Treat NP-internal emphasis and peripheral -self adjuncts as distinct from selected verb-domain reflexives.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Non-reflexive personal pronouns cannot simply replace emphatic self in this construction.",
+        "pages": [
+          1496
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I myself completed the questionnaire.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I completed the questionnaire myself.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.2",
+        "pages": [
+          1496
+        ],
+        "pdf_pages": [
+          1516
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Emphatic reflexives are not selected complements",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
   }
 ]

@@ -69838,5 +69838,102 @@
     },
     "related_rules": [],
     "review_notes": "CGEL Chapter 17 Phase B extraction only: original English examples, direct print/PDF source citation, non-activated. No independent linguistic approval or verified B-R mapping."
+  },
+  {
+    "id": "CLS-1103",
+    "domain": "clauses",
+    "concept": "Pride lexically requires the subject-bound reflexive object",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "In its self-esteem use, pride selects a reflexive object coreferential with the subject; a bare accusative object does not supply the ordinary argument pattern.",
+    "condition": "For the lexeme pride in the 'take satisfaction in one's own qualities' meaning, the direct object is a locally subject-bound reflexive.",
+    "violation": "The verb pride in its self-esteem sense is given a simple nonreflexive object, contrary to its lexical requirement for a subject-bound reflexive.",
+    "exceptions": [
+      {
+        "description": "Other verb senses, especially acquit, express and conduct, have distinct complement systems and cannot be diagnosed by substituting a universal lexical list. Source lists pride as allowing almost no non-reflexive objects.",
+        "pages": [
+          1488
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Nadia prides herself on her patience.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The sailors pride themselves on their teamwork.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "w1",
+          "text": "Nadia prides her on her patience.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "w2",
+          "text": "The sailors pride them on their teamwork.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.1.1(a)",
+        "pages": [
+          1488
+        ],
+        "pdf_pages": [
+          1508
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pride lexically requires the subject-bound reflexive object",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "pronoun_case",
+      "error_pattern": "For the lexeme pride in the 'take satisfaction in one's own qualities' meaning, the direct object is a locally subject-bound reflexive.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Nadia prides her on her patience. ||| Nadia prides herself on her patience.",
+        "The sailors pride them on their teamwork. ||| The sailors pride themselves on their teamwork."
+      ],
+      "learner_explanation": "In this sense, the verb requires an object referring back to its subject. Use the matching -self or -selves reflexive form, rather than an ordinary object pronoun.",
+      "corrected_paragraph_template": "Replace the nonreflexive object of this lexical construction with the agreeing reflexive, then recheck the complete sentence and paragraph.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Nadia prides herself on her patience.",
+        "The sailors pride themselves on their teamwork.",
+        "She praised her colleague for being careful."
+      ],
+      "lesson_tags": [
+        "anaphora",
+        "reflexive",
+        "lexical_selection"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
   }
 ]
