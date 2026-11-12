@@ -33,7 +33,7 @@ The matrix's finding merge can choose a displayed remediation and suppress parti
 
 ## Representative overlap probes
 
-Run `python scripts/audit_cgel_overlap_probes.py` in the configured parser environment to collect legacy rule findings from actual parser output. The explicit `--fixtures` option instead runs the same sentences through hand-authored constituency trees. The report contains rule IDs, constraint IDs and node IDs. Its scope is the legacy ruleset collector, so matrix findings and the inactive Cambridge candidate probe are outside this measurement.
+Run `python scripts/audit_cgel_overlap_probes.py --matrix` in the configured parser environment to compare the legacy collector and matrix on the same parser trees. Add `--fixtures` to use hand-authored constituency trees for local development. The report contains legacy findings, matrix verdicts, node errors and attached findings. The inactive Cambridge candidate probe is outside this measurement.
 
 | Fixture probe | Observed legacy errors |
 |---|---|
@@ -44,4 +44,25 @@ Run `python scripts/audit_cgel_overlap_probes.py` in the configured parser envir
 | Passive causative make missing to | Zero |
 | Six controls covering a plain modal complement, ought to, modal coordination, both licensed make forms and a nominal enjoy complement | Zero |
 
-The two misses are specific to the supplied trees and this collector. They justify separate parser and matrix checks before deciding which existing rules can be reused. The six controls only verify the specified trees. This environment lacks torch, spaCy, benepar and the parser models, so the configured-parser observations remain pending.
+### Configured parser and matrix results
+
+GitHub Actions ran the 11 development probes with the configured parser on PR #103 at `f202b013`. [Parser evidence](https://github.com/ybcole/SynTutor/actions/runs/43215151582/artifacts/13942139723) · [Parser-backed CI](https://github.com/ybcole/SynTutor/actions/runs/43215151582) · [Model-free CI](https://github.com/ybcole/SynTutor/actions/runs/43215151598)
+
+| Probe | Legacy collector | Matrix | Phase C follow-up |
+|---|---|---|---|
+| She can goes. | No finding | Ungrammatical. `C-AUX-FORM` at *can* and `C-MODAL-VERB-FORM` at *goes* both propose *go*. | Treat the two nodes as evidence for one modal–complement relation under COMP-034. |
+| She can to go. | `C-MODAL-TO` | Ungrammatical. Node errors at *can* and *to* both propose deleting *to*. | Keep a single relation-level finding with the deletion as its edit. |
+| She made him to wait. | `C-CAUSATIVE-TO` | Ungrammatical. The matrix proposes deleting *to*. | Preserve the active repair and keep it distinct from passive insertion. |
+| We were made wait outside. | No finding | Grammatical verdict, with zero node or attached errors. | Prioritize passive causative *make* as missing matrix coverage. |
+| She enjoys to run. | `C-GERUND-INFINITIVE` | Ungrammatical. Node errors at *enjoys* and *to* propose the same change. | Consolidate at the selecting verb and action complement relation under COMP-062. |
+| Six valid controls | No findings | All six received grammatical verdicts with zero node or attached errors. | Keep all six as development guards and add held-out cases. |
+
+The matrix found four of the five intended errors. The parse API uses its verdict and node details for legacy feedback. The two modal nodes and the two *enjoy* nodes demonstrate overlapping evidence in the payload. This audit did not measure how many cards the interface renders or evaluate the full API, paragraph correction, or held-out accuracy.
+
+### Source checks and next implementation
+
+- **Modal complement form (COMP-034).** CGEL printed p. 106 (PDF p. 126) lists the plain form after a modal and describes central modals as taking bare infinitivals. The source scope supports both modal repairs in the probes. Retain separate edits for inflection and an inserted *to*.
+- **Passive causative *make* (CLS-357, supported by CLS-1451).** CGEL printed p. 1234 (PDF p. 1254) explicitly contrasts the active bare infinitival and the passive to-infinitival. Printed p. 1432 (PDF p. 1452) corroborates the alternation. For the first candidate, require evidence of a verbal passive of causative *make* and its selected bare infinitival. Propose inserting *to* before the complement, then reparse. Guard the active bare form, the correctly marked passive, lexical *make*, and purpose clauses. Use one finding keyed to the governing relation and keep both source citations.
+- **Page accounting.** The ledger check reports 1,716 extracted pages, 46 documented skips and zero unprocessed pages across 1,764 printed pages. The two pages absent from the split-source set, pp. 70 and 524, render blank at PDF pp. 90 and 544 in the supplied full volume. Their ledger entries preserve the split-source provenance and record the full-volume status.
+
+These targeted source checks leave the independent review, Burton-Roberts crosswalk and held-out evaluation requirements in place. The Cambridge runtime registry still contains zero enabled rules.
