@@ -19,6 +19,7 @@ export const constituentHeadings = [
 
 export const constituentOpeningCheck = [{
   prompt: 'In “Mara rested beside the river”, which words could you replace with “there”?',
+  answer: 'b',
   options: [
     { id: 'a', text: 'the river' },
     { id: 'b', text: 'beside the river' },
@@ -26,6 +27,7 @@ export const constituentOpeningCheck = [{
   ],
 }, {
   prompt: 'In “Lina carried a heavy bag”, which words answer “What did Lina carry?”',
+  answer: 'c',
   options: [
     { id: 'a', text: 'Lina carried' },
     { id: 'b', text: 'a heavy' },
@@ -33,6 +35,7 @@ export const constituentOpeningCheck = [{
   ],
 }, {
   prompt: 'In [under [the old bridge]], which words are inside the smaller pair of brackets?',
+  answer: 'a',
   options: [
     { id: 'a', text: 'the old bridge' },
     { id: 'b', text: 'under the old bridge' },

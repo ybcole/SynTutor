@@ -24,9 +24,9 @@ const transferPredicate = 'is open';
 const transferSentence = `${transferSubject} ${transferPredicate}`;
 
 export function subjectPredicateOpeningCheck(lesson) {
-  const { prompt, options } = lesson.predict;
-  return [{ prompt, options }, {
+  return [lesson.predict, {
     prompt: 'In “The robins sing”, which words form the whole group that names the birds?',
+    answer: 'a',
     options: [
       { id: 'a', text: 'The robins' },
       { id: 'b', text: 'robins sing' },
@@ -34,6 +34,7 @@ export function subjectPredicateOpeningCheck(lesson) {
     ],
   }, {
     prompt: 'In “The lanterns glow at night”, which words tell you what the lanterns do and when?',
+    answer: 'c',
     options: [
       { id: 'a', text: 'The lanterns' },
       { id: 'b', text: 'glow' },

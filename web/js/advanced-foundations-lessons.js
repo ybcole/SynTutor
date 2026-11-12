@@ -18,8 +18,8 @@ export const advancedFoundationsChapters = {
       'In “is inspecting the bridge”, “is” is the head of the higher VP. Its complement is the whole group “inspecting the bridge”.',
     ]],
     opening: [
-      ['In “Nora is inspecting the bridge”, what is Nora inspecting?', ['the bridge', 'is', 'Nora']],
-      ['Which word can change to “was” to give the progressive sentence past tense?', ['inspecting', 'is', 'bridge']],
+      ['In “Nora is inspecting the bridge”, what is Nora inspecting?', ['the bridge', 'is', 'Nora'], 0],
+      ['Which word can change to “was” to give the progressive sentence past tense?', ['inspecting', 'is', 'bridge'], 1],
     ],
     steps: ['Trace the lower VP', 'Find PROG and tense', 'Trace the full predicate'],
     captions: [
@@ -43,6 +43,7 @@ export const advancedFoundationsChapters = {
       ['Read the tense separately', 'Compare “The workers are painting the gate” with the example above. Find the word that changes, then name the branch that carries tense in each sentence.'],
     ],
     reveal: ['Check your analysis', 'The lower VP is “painting the gate”. It is the complement of PROG in both sentences. “Were” carries past tense [past] and “are” carries present tense [pres]. The auxiliary and lower VP form the full predicate.'],
+    recapSummary: 'In “Nora is inspecting the bridge”, the verb “inspecting” and its object still form a complete lower VP. The auxiliary “is” heads a higher VP, takes that lower phrase as its complement, and carries present tense. The same two levels stay in place when “is” changes to “was”.',
     recap: ['Separate the subject from the whole predicate.', 'Group the -ing lexical verb with its object. Use “doing so” as a check where it fits.', 'Attach that group beside PROG under the higher VP. Read tense on PROG.'],
     selfCheck: ['In “Sam is repairing the old lamp”, what belongs in the lower VP and what carries tense?', '“Repairing the old lamp” is the lower VP. “Is” is the progressive auxiliary and carries [pres].'],
     postTestIntro: 'Find the progressive auxiliary, then trace its complete VP complement.',
@@ -64,8 +65,8 @@ export const advancedFoundationsChapters = {
       '“Lanterns” reaches NP through N and NOM. DET and NOM meet directly at NP.',
     ]],
     opening: [
-      ['Which words form the complete subject in “Those lanterns flickered”?', ['those', 'lanterns', 'those lanterns']],
-      ['Which word is the noun in “these baskets”?', ['these', 'baskets', 'both words']],
+      ['Which words form the complete subject in “Those lanterns flickered”?', ['those', 'lanterns', 'those lanterns'], 2],
+      ['Which word is the noun in “these baskets”?', ['these', 'baskets', 'both words'], 1],
     ],
     steps: ['Find the noun', 'Trace N through NOM', 'Trace the demonstrative'],
     captions: [
@@ -89,6 +90,7 @@ export const advancedFoundationsChapters = {
       ['Trace the two words', 'Compare “these baskets” with “the baskets”. Say which position “these” fills. Then trace “baskets” up to the whole NP, naming each level on the way.'],
     ],
     reveal: ['Check your analysis', '“These baskets” is the object NP. “These” goes under DEM and DET. “Baskets” goes under N and NOM. The same internal DET–NOM pattern works whether the NP is a subject or an object.'],
+    recapSummary: 'In “those lanterns”, DET and NOM attach directly under NP. “Those” reaches DET through DEM, while “lanterns” reaches NOM through N. N and NOM cover the same word here, but the two labels mark different levels. The same internal structure works when the phrase is a subject or an object.',
     recap: ['Find the complete NP before looking inside it.', 'Put the demonstrative under DEM inside DET.', 'Put the noun under N inside NOM, then attach DET and NOM directly to NP.'],
     selfCheck: ['In “this lantern”, which labels sit directly under NP, and which label is immediately above N?', 'DET and NOM sit directly under NP. NOM sits immediately above N.'],
     postTestIntro: 'Use the core noun phrase pattern to distinguish the full NP, its nominal, and its noun.',
@@ -110,8 +112,8 @@ export const advancedFoundationsChapters = {
       'In “Nora is inspecting that bridge”, “that” helps pick out a bridge and goes under DEM within DET, as in Chapter 7.',
     ]],
     opening: [
-      ['Who is inspecting the bridge in “Leo says that Nora is inspecting the bridge”?', ['Leo', 'Nora', 'the bridge']],
-      ['What does the whole group “that Nora is inspecting the bridge” tell us?', ['which bridge it is', 'what Leo says', 'when Leo speaks']],
+      ['Who is inspecting the bridge in “Leo says that Nora is inspecting the bridge”?', ['Leo', 'Nora', 'the bridge'], 1],
+      ['What does the whole group “that Nora is inspecting the bridge” tell us?', ['which bridge it is', 'what Leo says', 'when Leo speaks'], 1],
     ],
     steps: ['Trace the inner S', 'Find complementiser that', 'Read the full S′'],
     captions: [
@@ -135,6 +137,7 @@ export const advancedFoundationsChapters = {
       ['Explain “that” and “those”', 'Both words come before “lanterns”, but they belong to different groups. Trace “that” to the branch that introduces the clause. Trace “those” to the determiner inside the subject NP.'],
     ],
     reveal: ['Check your analysis', 'C covers “that”. The inner S covers “those lanterns were flickering”, with “those lanterns” as its subject. The full S′ covers “that” and the entire inner S.'],
+    recapSummary: 'In “Leo says that Nora is inspecting the bridge”, the reported content is inside the larger sentence. In the worked fragment, S covers the inner subject and predicate, beginning at “Nora”. C covers the introductory “that”. S′ covers both branches, which is why the two spans start at different words.',
     recap: ['Locate the introductory “that” and the subject–predicate group that follows it.', 'Put “that” under C and the subject–predicate group under S.', 'Attach C and S directly under S′.'],
     selfCheck: ['In “Leo thinks that Maya closed the gate”, where does the inner S begin?', 'The inner S begins at “Maya” and covers “Maya closed the gate”. S′ starts at “that”.'],
     postTestIntro: 'Trace where the inner clause starts and how it joins the complementiser.',
@@ -156,8 +159,8 @@ export const advancedFoundationsChapters = {
       'C2 contains “what”. It shares S″, read “S-double-bar”, with S′.',
     ]],
     opening: [
-      ['In “Nora is inspecting the bridge”, which group could answer “What is Nora inspecting?”', ['Nora', 'is inspecting', 'the bridge']],
-      ['Which word comes before “Nora” in “Is Nora inspecting the bridge?”', ['is', 'what', 'inspecting']],
+      ['In “Nora is inspecting the bridge”, which group could answer “What is Nora inspecting?”', ['Nora', 'is inspecting', 'the bridge'], 2],
+      ['Which word comes before “Nora” in “Is Nora inspecting the bridge?”', ['is', 'what', 'inspecting'], 0],
     ],
     steps: ['Trace what to C2', 'Trace is to C1', null],
     captions: [
@@ -184,6 +187,7 @@ export const advancedFoundationsChapters = {
       ['Recover the two positions', 'Compare the order of “were” and “the workers” in the statement and question. Name the two positions above S and the two empty positions inside S.'],
     ],
     reveal: ['Check your analysis', '“What” occupies C2, and “were” occupies C1. The object gap sits under NP beside V “painting”. The other gap sits under PROG where “were” appears in the statement.'],
+    recapSummary: 'In “What is Nora inspecting?”, “what” occupies C2 and corresponds to the unspoken object of “inspecting”. “Is” occupies C1 and corresponds to the separate gap under PROG. Reading the statement “Nora is inspecting the bridge” helps recover both original positions. Each gap belongs to a different branch.',
     recap: ['Use a possible answer to locate the object next to the lexical verb.', 'Place the wh-expression in C2 and the fronted auxiliary in C1.', 'Keep the object gap under NP and the auxiliary gap under PROG.'],
     selfCheck: ['In “What is Maya packing?”, where would “these baskets” go in the corresponding statement, and what goes there in the question tree?', '“These baskets” goes after “packing” as its object. The question tree keeps an NP with a gap in that position.'],
     postTestIntro: 'Use a possible statement answer to work out what each fronted word and gap represents.',
@@ -205,8 +209,8 @@ export const advancedFoundationsChapters = {
       '“To the bridge” contains the NP “the bridge” after the preposition “to”.',
     ]],
     opening: [
-      ['In “Nora planned to inspect the bridge”, which verb carries past tense?', ['planned', 'inspect', 'to']],
-      ['Which words tell what Nora plans to do in “Nora plans to inspect the bridge”?', ['Nora plans', 'the bridge', 'to inspect the bridge']],
+      ['In “Nora planned to inspect the bridge”, which verb carries past tense?', ['planned', 'inspect', 'to'], 0],
+      ['Which words tell what Nora plans to do in “Nora plans to inspect the bridge”?', ['Nora plans', 'the bridge', 'to inspect the bridge'], 2],
     ],
     steps: ['Trace the lexical VP', 'Find the minus-tense feature', 'Read the whole infinitival VP'],
     captions: [
@@ -230,6 +234,7 @@ export const advancedFoundationsChapters = {
       ['Check where tense goes', 'Change “hopes” to “hoped”. Say which words remain in the infinitival VP and where the tree puts [-tense].'],
     ],
     reveal: ['Check your analysis', '“Visit the museum” is a lexical VP. The “to” before it is an untensed auxiliary and carries [-tense]. In “walks to the museum”, “the museum” is an NP and “to” is a preposition. “Hoped” carries the past tense in the larger sentence.'],
+    recapSummary: 'In “Nora planned to inspect the bridge”, “planned” carries past tense. The infinitival group “to inspect the bridge” has no tense of its own. In this analysis, [-tense] marks the auxiliary “to”, and “inspect the bridge” forms its lexical VP complement. In “to the bridge”, the same word instead introduces a destination NP.',
     recap: ['Locate the verb that carries tense in the larger sentence.', 'In the infinitival fragment, group the stem-form verb with its object.', 'Attach the lexical VP beside “to” and read [-tense] on the auxiliary.'],
     selfCheck: ['In “Leo agreed to repair the lamp”, which words form the lexical VP inside the infinitive?', '“Repair the lamp” is the lexical VP. The higher VP also includes the untensed auxiliary “to”.'],
     postTestIntro: 'Read the [-tense] feature and locate the full VP that “to” takes as its complement.',
@@ -251,8 +256,8 @@ export const advancedFoundationsChapters = {
       'The combination rule tells you how to form a new example and how it is put together.',
     ]],
     opening: [
-      ['Which word joins the two complete sentences in “Iris rests and Leo waits”?', ['rests', 'and', 'waits']],
-      ['Under a rule that joins two complete sentences with “and”, which piece is missing from “Leo waits and”?', ['a subject before “Leo”', 'a complete sentence after “and”', 'a verb before “and”']],
+      ['Which word joins the two complete sentences in “Iris rests and Leo waits”?', ['rests', 'and', 'waits'], 1],
+      ['Under a rule that joins two complete sentences with “and”, which piece is missing from “Leo waits and”?', ['a subject before “Leo”', 'a complete sentence after “and”', 'a verb before “and”'], 1],
     ],
     beforeTree: 'Follow the two starting sentences and the sentence they form. Brackets in the next step show the groups the rule combines.',
     workedPractice: ['Apply the rule again', 'Take “Iris rests and Leo waits” as one input. Use “Iris rests” as the other. Write the result and put brackets around the two inputs you joined.'],
@@ -263,6 +268,7 @@ export const advancedFoundationsChapters = {
       ['Find where the rule stops an incomplete result', 'Try “Maya smiles and Leo waves and”. Which input is missing at the end? Explain why writing down more examples would still leave you needing a way to describe longer ones.'],
     ],
     reveal: ['Check your analysis', 'One possible result is “[Maya smiles and Leo waves] and [Leo waves]”. The incomplete version ends after the second “and” without a following input. Every completed result can feed another step, so there is no fixed longest result in this toy grammar.'],
+    recapSummary: 'The toy grammar can join “Iris rests” and “Leo waits”, then use the result as an input to the same rule. Each application groups two complete sentences, so the rule explains the structure of its output as well as which inputs work. Because the result can be reused again, the toy grammar has no fixed longest result.',
     recap: ['Identify the basic sentences and state the combination rule.', 'Check that both inputs are complete sentences.', 'Reuse the result to explain why the number of possible combinations has no fixed upper limit.'],
     selfCheck: ['Do you need a new rule to make a result with four joined clauses? Explain how to get there from the basic sentences.', 'The same rule works each time. You can join the first two sentences, then use the result twice more, adding a complete sentence at each step.'],
     postTestIntro: 'Use the difference between listing sentences and describing their structure with rules.',
@@ -284,8 +290,8 @@ export const advancedFoundationsChapters = {
       'For the embedded clause, ask which group is inside the larger structure and find its own subject and predicate.',
     ]],
     opening: [
-      ['Who is doing the reporting in “Nora reports that the robins sing”?', ['Nora', 'the robins', 'both']],
-      ['Who is doing the singing in the same sentence?', ['Nora', 'the robins', 'both']],
+      ['Who is doing the reporting in “Nora reports that the robins sing”?', ['Nora', 'the robins', 'both'], 0],
+      ['Who is doing the singing in the same sentence?', ['Nora', 'the robins', 'both'], 1],
     ],
     beforeTree: 'Read the whole example once. Then find the words that tell what Nora reports. Follow the worked steps to locate the smaller subject–predicate group inside that report.',
     workedPractice: ['Mark the two levels', 'Say the whole text sentence aloud, then bracket the words that give the content of the report. Name the predicate at each level. Which predicate includes the report itself?'],

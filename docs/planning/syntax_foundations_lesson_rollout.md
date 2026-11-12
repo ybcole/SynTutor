@@ -16,6 +16,9 @@ visible callout. Number controls that guide an ordered visual trace. Leave
 comparison switches and answer choices unnumbered. Fold repeated visual
 steps into a single control and preserve their explanation in the callout.
 
+Use the [lesson structure map](syntax_foundations_lesson_structure.md) to align
+the key terms, worked analysis, transfer task, and recap.
+
 ## Read before writing
 
 | Source | What to check |
@@ -47,11 +50,11 @@ context.
 
 | Page | What the learner does | What the page needs |
 | --- | --- | --- |
-| 1. Introduction and opening check | Recall an idea from the previous chapter and read one short worked example. | A brief **What this chapter covers**, one visible example with its explanation, and a compact **What you’ll see in this chapter** preview. Save longer contrasts for the teaching pages. End with three unscored questions shown one at a time, with the reviewed prediction as the saved first response. |
-| 2. Core concepts | Work through the book's reasoning using the chapter's example and a contrasting example. Try a diagnostic or decide between two analyses. | Several descriptive subheadings. Under each, explain one idea in short paragraphs, show which words or branches provide evidence, and give feedback on a likely misunderstanding. Keep the essential explanation visible and use disclosures for answers and extra detail. |
+| 1. Introduction and opening check | Recall an idea from the previous chapter and read one short worked example. | A brief **What this chapter covers**, one visible example with its explanation, and a compact **What you’ll see in this chapter** preview. Save longer contrasts for the teaching pages. End with three diagnostic questions shown one at a time. Show the local number correct after completion. Keep the first response as the synced progress marker. |
+| 2. Core concepts | Work through the book's reasoning using the chapter's example and a contrasting example. Try a diagnostic or decide between two analyses. | A **Key terms** section with plain definitions and chapter-specific examples, then descriptive subheadings. Under each, explain one idea in short paragraphs, show which words or branches provide evidence, and give feedback on a likely misunderstanding. Keep the essential explanation visible and use disclosures for answers and extra detail. |
 | 3. Worked analysis and guided construction | Read a tree from a meaningful starting node. Trace the words and compare the same relationship in another example. Build or edit the part that demonstrates the concept. | An authored canvas, a nearby notation guide, and short captions explaining the relation. For tree construction, place the editable canvas with **Guide me** and **Check construction** in the lesson. Match the scope of the construction task to the chapter's outcome. |
 | 4. Apply the concept | Compare a pair of sentences or analyse a new one. Explain which evidence supports the decision, then practise the relationship again. | A new example that requires the same reasoning, feedback that explains the result, and a worked reveal. If the application asks learners to build, provide a second guided editor on this page with its own draft. |
-| 5. Recap and self-check | Use a short procedure to analyse a fresh example, then check the answer. | A reusable procedure, a short explanation of what learners commonly confuse, an example with a reveal, and references. A Cambridge note may go here or beside a relevant example. Pair it with the chapter's own analysis when it helps answer a question. |
+| 5. Recap and self-check | Use a short procedure to analyse a fresh example, then check the answer. | A summary anchored in the worked example, a reusable procedure, a short explanation of what learners commonly confuse, an example with a reveal, and references. A Cambridge note may go here or beside a relevant example. Pair it with the chapter's own analysis when it helps answer a question. |
 | 6. Closing knowledge check | Complete the reviewed questions one at a time, then read the full answers overview. | An optional unscored warm-up where it helps, followed by the existing graded contract. Include question count, feedback, and active question navigation. Completed review shows all answers, and a practice retake uses temporary responses. |
 
 Write for English learners. Use familiar examples, short sentences, and
@@ -173,7 +176,7 @@ will use in the closing check. The reviewed catalog retains its source links.
 
 These three chapters use the same six pages and reviewed closing checks as
 the earlier chapters. The opening check keeps the catalog prediction first
-and adds two unscored questions. The worked page uses the reviewed tree as a
+and adds two diagnostic questions. The worked page uses the reviewed tree as a
 model, then detaches one branch in a separate editable draft. The learner
 can reconnect it manually or use the two-step guide. The introduction
 shows a bracketed example and a short preview. The concept page explains

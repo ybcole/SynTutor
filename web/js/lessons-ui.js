@@ -8,6 +8,7 @@ import { addConstituentReview, addConstituentTeaching, constituentHeadings, cons
 import { addSubjectPredicateTeaching, subjectPredicateHeadings, subjectPredicateOpeningCheck, subjectPredicateReferences } from './subject-predicate-lesson.js';
 import { phraseStructureArticles } from './phrase-structure-lessons.js';
 import { lessonNotation } from './lesson-notation.js';
+import { addLessonKeyTerms } from './lesson-key-terms.js';
 
 const articleLessons = {
   'br-01': {
@@ -21,7 +22,6 @@ const articleLessons = {
   'br-02': {
     headings: subjectPredicateHeadings,
     openingCheck: subjectPredicateOpeningCheck,
-    openingIntro: 'Before you begin, try three short questions about the parts of a sentence. This check is unscored.',
     teach: addSubjectPredicateTeaching,
     references: subjectPredicateReferences,
     postTestIntro: 'Use the NP and VP branches to identify the subject and predicate. Check each answer before continuing.',
@@ -568,6 +568,23 @@ function focusAssessmentPosition() {
   position?.scrollIntoView({ block: 'nearest' });
 }
 
+function openingResultKey(lesson) {
+  return `syntutor:opening-result:v1:${options.userId?.() || 'guest'}:${lessonKey(lesson)}`;
+}
+
+function openingStatus(score, total) {
+  return score === null ? 'Knowledge check complete.' : `Knowledge check complete. ${score} of ${total} correct.`;
+}
+
+function savedOpeningStatus(lesson, total) {
+  let score = null;
+  try {
+    const saved = localStorage.getItem(openingResultKey(lesson));
+    if (saved !== null && /^\d+$/.test(saved) && Number(saved) <= total) score = Number(saved);
+  } catch { /* The score is optional when storage is unavailable. */ }
+  return openingStatus(score, total);
+}
+
 function addOpeningQuestions(panel, lesson, prompts) {
   const draftKey = `syntutor:opening-check:${options.userId?.() || 'guest'}:${lessonKey(lesson)}`;
   let answers = [];
@@ -587,9 +604,18 @@ function addOpeningQuestions(panel, lesson, prompts) {
     const next = button(last ? 'Finish knowledge check' : 'Next question →', () => {
       if (last) {
         // Keep the existing single prediction response as the synced completion marker.
-        act({ type: 'answer', answer: answers[0] }, () => {
+        const submitted = [...answers, selected];
+        const score = submitted.filter((id, i) => id === prompts[i].answer).length;
+        const resultKey = openingResultKey(lesson);
+        act({ type: 'answer', answer: submitted[0] }, saved => {
+          if (!saved.responses.predict) return;
+          try { localStorage.setItem(resultKey, String(score)); } catch { /* The result still appears for this visit. */ }
           try { sessionStorage.removeItem(draftKey); } catch { /* Optional draft storage. */ }
-          host.querySelector('.constituent-pre-test-status')?.focus({ preventScroll: true });
+          const status = host.querySelector('.constituent-pre-test-status');
+          if (status) {
+            status.textContent = openingStatus(score, prompts.length);
+            status.focus({ preventScroll: true });
+          }
         });
         return;
       }
@@ -623,6 +649,8 @@ function articleScreen(lesson, p, article) {
   const layout = el('div', undefined, 'constituent-page');
   layout.append(body);
   host.append(layout);
+
+  if (page === 1) addLessonKeyTerms(body, el, lesson.lesson_id);
 
   article.teach(body, page, {
     el, button, lesson,
@@ -680,12 +708,12 @@ function articleScreen(lesson, p, article) {
     title.id = 'lesson-pre-test-title';
     preTest.setAttribute('aria-labelledby', title.id);
     preTest.append(title, el('p', openingCheck
-      ? article.openingIntro ?? 'Before you begin, try three short questions about how words group together. Choose the answer that makes the most sense to you. This check is unscored.'
+      ? 'Try three short questions to see what you already know. You’ll see how many you got right. Any result lets you continue and has no effect on XP.'
       : 'Answer this short question before you begin. Your answer is unscored, and any choice lets you continue.'));
     if (p.responses.predict) {
       // Earlier versions used a different prompt with the same saved response key.
       // Acknowledge submission without applying an older choice to the new prompt.
-      const recorded = el('p', openingCheck ? 'Knowledge check complete.' : 'Response recorded.', 'constituent-pre-test-status');
+      const recorded = el('p', openingCheck ? savedOpeningStatus(lesson, openingCheck.length) : 'Response recorded.', 'constituent-pre-test-status');
       recorded.setAttribute('role', 'status');
       recorded.tabIndex = -1;
       preTest.append(recorded);

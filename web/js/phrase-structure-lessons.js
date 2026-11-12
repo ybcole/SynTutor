@@ -21,8 +21,8 @@ const chapters = {
     ],
     contrast: ['Compare the two shapes', ['“Very cheerful” has two branches under AP. A covers “cheerful” and DEG covers “very”.', '“Cheerful” can form an AP on its own. The AP still has an adjective head.']],
     opening: [
-      ['In “quite bright”, which word tells you the degree of brightness?', ['quite', 'bright', 'both words']],
-      ['In “very quiet”, which label stands for the whole adjective phrase?', ['A', 'AP', 'DEG']],
+      ['In “quite bright”, which word tells you the degree of brightness?', ['quite', 'bright', 'both words'], 0],
+      ['In “very quiet”, which label stands for the whole adjective phrase?', ['A', 'AP', 'DEG'], 1],
     ],
     steps: ['Find the adjective head', null, 'Read the whole AP'],
     captions: [
@@ -46,6 +46,7 @@ const chapters = {
       ['Try a phrase with one word', 'Now read “The room looked bright”. Decide which branch the shorter tree keeps and which branch it loses. Use the same label for the whole description in both trees.'],
     ],
     reveal: ['Check your analysis', 'In “quite bright”, the whole AP has two branches. A covers “bright”, the head, and DEG covers “quite”. “Bright” on its own still has an AP over A. Only the DEG branch disappears.'],
+    recapSummary: 'In “very cheerful”, “cheerful” supplies the description and “very” adjusts its degree. The adjective remains the head when you remove the degree word. The label A marks that head, while AP marks the full phrase, even when the phrase contains only the adjective.',
     recap: ['Find the adjective that supplies the description.', 'If a word like “very” tells its degree, label that word DEG in this pattern.', 'Use A for the adjective and AP for the whole phrase.'],
     selfCheck: ['Try “rather narrow”. Which label covers both words, and which labels cover each word?', 'AP covers “rather narrow”. DEG covers “rather” and A covers “narrow”.'],
     postTestIntro: 'Use the head and degree word to read each adjective phrase.',
@@ -64,8 +65,8 @@ const chapters = {
     ],
     contrast: ['Compare the two jobs an NP can do', ['The subject NP “Nora” attaches directly to S.', 'The object NP “the bridge” attaches inside VP, beside V [trans].']],
     opening: [
-      ['In “Rina opened the window”, which group names what Rina opened?', ['Rina', 'the window', 'opened the window']],
-      ['In “Rina opened the window”, which words form the whole predicate?', ['opened', 'the window', 'opened the window']],
+      ['In “Rina opened the window”, which group names what Rina opened?', ['Rina', 'the window', 'opened the window'], 1],
+      ['In “Rina opened the window”, which words form the whole predicate?', ['opened', 'the window', 'opened the window'], 2],
     ],
     steps: ['Find the subject', 'Read V [trans]', 'Trace the object NP'],
     captions: [
@@ -89,6 +90,7 @@ const chapters = {
       ['Compare a verb in two sentences', 'Read “Rina opened the window” and “The window opened”. The first has a direct object. In the second, “the window” is the subject, and “opened” has no direct object. Check the verb’s use in the sentence before assigning a feature.'],
     ],
     reveal: ['Check your analysis', '“The children” is the subject NP directly under S. “A heavy box” is the direct-object NP. Attach it beside V [trans] inside “carried a heavy box”.'],
+    recapSummary: 'In “Nora inspected the bridge”, the subject NP and the object NP have the same category and different jobs. “Nora” joins the predicate under S. “The bridge” joins “inspected” inside VP. Replacing “the bridge” with “it” helps check that the whole object belongs on that branch.',
     recap: ['Find the subject and the full VP.', 'Within that VP, locate the verb and ask what or whom it takes as its object in this use.', 'Attach the direct-object NP and V [trans] to the same VP.'],
     selfCheck: ['In “Sam repaired the old lamp”, which words belong inside the object NP?', 'The whole NP is “the old lamp”. It attaches directly to VP beside V [trans].'],
     postTestIntro: 'Check the verb feature, the complete object span, and where the object attaches.',
@@ -107,8 +109,8 @@ const chapters = {
     ],
     contrast: ['Compare the two attachment points', ['“The bridge” is the direct object. Its NP shares a parent with V.', '“In June” is a time adjunct here. Its PP shares a parent with the whole inner VP.']],
     opening: [
-      ['In “Nora inspected the bridge in June”, which words tell when the inspection happened?', ['the bridge', 'inspected the bridge', 'in June']],
-      ['Which group can stand as the predicate after leaving out the time phrase?', ['inspected the bridge', 'the bridge in June', 'inspected in']],
+      ['In “Nora inspected the bridge in June”, which words tell when the inspection happened?', ['the bridge', 'inspected the bridge', 'in June'], 2],
+      ['Which group can stand as the predicate after leaving out the time phrase?', ['inspected the bridge', 'the bridge in June', 'inspected in'], 0],
     ],
     steps: ['Trace the inner VP', 'Trace the time PP', 'Read the outer VP'],
     captions: [
@@ -133,6 +135,7 @@ const chapters = {
       ['Check what “did so” can replace', 'In “The children carried a heavy box before lunch, and their neighbours did so after lunch”, what does “did so” stand for? Use the answer to check which words belong together.'],
     ],
     reveal: ['Check your analysis', '“Carried a heavy box” is the inner VP and is the group replaced by “did so”. “A heavy box” is the object NP beside V. The time PP “before lunch” sits beside the inner VP, and the outer VP covers both.'],
+    recapSummary: 'In “Nora inspected the bridge in June”, the verb and object form an inner VP that describes the inspection. “In June” adds a time to that event, so it joins the inner VP under a larger VP. Removing the time phrase leaves the inner VP intact. A form of “do so” can also stand for that inner group in the examples you practised.',
     recap: ['Group V with its object NP to form the inner VP.', 'Find the final time PP that describes the event.', 'Put the PP beside the inner VP under the outer VP.'],
     selfCheck: ['In “Sam repaired the old lamp after school”, what belongs in each VP?', 'The inner VP is “repaired the old lamp”. The outer VP includes that group and the PP “after school”.'],
     postTestIntro: 'Trace both levels of VP and check which node is the adjunct’s sister.',
@@ -198,10 +201,9 @@ function addBranchExercise(body, ui, chapter) {
 
 export const phraseStructureArticles = Object.fromEntries(Object.entries(chapters).map(([id, chapter]) => [id, {
   headings: [`Introduction to ${chapter.topics[0]}`, ...chapter.topics.slice(1), 'Chapter Recap', 'Check what you learned'],
-  openingIntro: 'Try three short questions to see what you already know. This check is unscored.',
   openingCheck(lesson) {
-    return [lesson.predict, ...chapter.opening.map(([prompt, choices]) => ({
-      prompt, options: choices.map((text, index) => ({ id: String(index), text })),
+    return [lesson.predict, ...chapter.opening.map(([prompt, choices, correct]) => ({
+      prompt, answer: String(correct), options: choices.map((text, index) => ({ id: String(index), text })),
     }))];
   },
   postTestIntro: chapter.postTestIntro,
@@ -264,6 +266,7 @@ export const phraseStructureArticles = Object.fromEntries(Object.entries(chapter
       reveal(...chapter.reveal);
     }
     if (page === 4) {
+      if (chapter.recapSummary) sections([['What this chapter showed', chapter.recapSummary]]);
       body.append(el('h3', 'Steps to use on a new example'));
       list('ol', chapter.recap);
       sections([['Try a quick check', chapter.selfCheck[0]]]);
