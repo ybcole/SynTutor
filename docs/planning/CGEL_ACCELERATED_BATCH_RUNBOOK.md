@@ -376,3 +376,7 @@ Printed pp. 1505–1512 yielded 28 inactive records (`PHR-618–PHR-645`), inclu
 ## Chapter 17 fifth checkpoint
 
 Printed pp. 1513–1520 yielded 29 inactive records (`PHR-646–PHR-674`), including 6 `spec_only` constraints. Chapter 17 has 70 substantive pages extracted, two contents-only skips and 44 unprocessed pages. Continue at p. 1521 with differences between an ellipsis site and its antecedent.
+
+## Chapter 17 sixth checkpoint
+
+Printed pp. 1521–1528 yielded 24 inactive records (`PHR-675–PHR-698`), including 2 `spec_only` constraints. Chapter 17 has 78 substantive pages extracted, two contents-only skips and 36 unprocessed pages. Continue at p. 1529.

@@ -1,0 +1,128 @@
+{
+  "manifest_version": 1,
+  "chapter": 17,
+  "printed_start": 1521,
+  "printed_end": 1528,
+  "report": "sources/cambridge/chapter_17/PP1521_1528_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1521,
+    "pdf_page": 1541
+  },
+  "added_rule_ids": [
+    "PHR-675",
+    "PHR-676",
+    "PHR-677",
+    "PHR-678",
+    "PHR-679",
+    "PHR-680",
+    "PHR-681",
+    "PHR-682",
+    "PHR-683",
+    "PHR-684",
+    "PHR-685",
+    "PHR-686",
+    "PHR-687",
+    "PHR-688",
+    "PHR-689",
+    "PHR-690",
+    "PHR-691",
+    "PHR-692",
+    "PHR-693",
+    "PHR-694",
+    "PHR-695",
+    "PHR-696",
+    "PHR-697",
+    "PHR-698"
+  ],
+  "page_checks": [
+    {
+      "page": 1521,
+      "status": "extracted",
+      "section": "§7.1",
+      "summary": "Inflectional mismatch, participle and aspect judgments, retention of be and have, obligatory tag ellipsis and predicative number.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1522,
+      "status": "extracted",
+      "section": "§7.1",
+      "summary": "Polarity-sensitive recovery, marginal voice mismatches and gerund-participial forms of stranded auxiliaries.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1523,
+      "status": "extracted",
+      "section": "§§7.1–7.2",
+      "summary": "Dialect and recoverability with being or having, anticipatory and situational ellipsis, supplementary relatives and ordinary supportive do.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1524,
+      "status": "extracted",
+      "section": "§7.2",
+      "summary": "Reduction-driven do, primary and secondary inflections, dialect analyses and the ban on auxiliary-headed antecedents.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1525,
+      "status": "extracted",
+      "section": "§7.2",
+      "summary": "Retained dependents with primary do, secondary do in comparatives, ellipsis and do so alternants, and mismatches in recovered content.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1526,
+      "status": "extracted",
+      "section": "§§7.2–7.3",
+      "summary": "Limits on major mismatches, adjacency of infinitival to, retention of be or have and lexical/structural licensing of reduced infinitivals.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1527,
+      "status": "extracted",
+      "section": "§7.4",
+      "summary": "Lexically licensed complement omission, aspectual objects, simple and complex catenatives, and the try versus attempt contrast.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1528,
+      "status": "extracted",
+      "section": "§7.4",
+      "summary": "Supplementary relatives, full-complement omission, voice changes, situational recovery and finite complement types.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

@@ -42551,5 +42551,1378 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-675",
+    "domain": "phrases",
+    "concept": "Inflection at an auxiliary ellipsis site",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "The stranded auxiliary determines the inflection of the understood verb, independently of the antecedent's inflection.",
+    "condition": "Plain-form recovery is generally easy. Recovery of a participle can be marginal, especially when progressive aspect changes; an explicit do so can help.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mae has signed, and Lee soon will.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Are you taking the bus? Don't I usually?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.1",
+        "pages": [
+          1521
+        ],
+        "pdf_pages": [
+          1541
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inflection at an auxiliary ellipsis site",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-676",
+    "domain": "phrases",
+    "concept": "Recovering be and perfect have under inflection mismatch",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Be and perfect have tend to resist omission when the antecedent and the understood verb differ in inflection.",
+    "condition": "This is a tendency. The omitted lexical material can still be recovered after the retained auxiliary.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The fence was painted yesterday, and the gate is being today.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Have they sent the forms? They must have.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.1",
+        "pages": [
+          1521
+        ],
+        "pdf_pages": [
+          1541
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Recovering be and perfect have under inflection mismatch",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-677",
+    "domain": "phrases",
+    "concept": "Predicative number and obligatory gaps in tags",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Auxiliary ellipsis can recover a predicative NP with different number. Interrogative tags can require the gap even when a corresponding independent question permits an overt complement.",
+    "condition": "Use a suitable independent interrogative to assess expansion of an elliptical tag.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They are both members, and I soon will be.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You'll post it, won't you?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.1",
+        "pages": [
+          1521
+        ],
+        "pdf_pages": [
+          1541
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Predicative number and obligatory gaps in tags",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-678",
+    "domain": "phrases",
+    "concept": "Polarity adjustment in auxiliary ellipsis",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "An affirmative reduced VP can recover a positive-polarity counterpart to a negative-polarity antecedent.",
+    "condition": "Any can correspond to some, yet to already, and a negative until expression can yield an affirmative before reading. Any longer has no close positive counterpart, which can make recovery marginal.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They said there wasn't any coffee, but there was.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Ruth won't leave until the guests arrive, but I think Ezra will.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.1",
+        "pages": [
+          1522
+        ],
+        "pdf_pages": [
+          1542
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Polarity adjustment in auxiliary ellipsis",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-679",
+    "domain": "phrases",
+    "concept": "Voice mismatch in auxiliary ellipsis",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "An active/passive change is not generally licensed by auxiliary ellipsis. Marginal attested examples and differing speaker judgments warrant caution.",
+    "condition": "An antecedent clause that conveys the right event may still lack a suitable antecedent VP, for example when the needed object was the passive subject.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Was the board warned? I don't know; I certainly haven't warned it.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The valve must be checked, and the pump must be too.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.1",
+        "pages": [
+          1522
+        ],
+        "pdf_pages": [
+          1542
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Voice mismatch in auxiliary ellipsis",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-680",
+    "domain": "phrases",
+    "concept": "Dialect variation in stranded being and having",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Stranded gerund-participial having is accepted by few speakers. Stranded being is unavailable in American English in the construction described and accepted in some British varieties.",
+    "condition": "Omitting being itself requires a suitable auxiliary and the intended interpretation must remain recoverable.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Most of the team volunteered, but some now regret having.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The old bridge is being repaired, and the new one is being too.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.1",
+        "pages": [
+          1522,
+          1523
+        ],
+        "pdf_pages": [
+          1542,
+          1543
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dialect variation in stranded being and having",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-681",
+    "domain": "phrases",
+    "concept": "Anticipatory and situational auxiliary ellipsis",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Auxiliary ellipsis can precede its linguistic antecedent under the normal conditions on anticipatory anaphora. Situational recovery without linguistic antecedence is unusual and often conventionalized.",
+    "condition": "May I? can ask permission to take an object; Don’t! can warn against an impending action.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If she can, she'll bring the ladder.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Holding out a hand toward the basket, Mira asked, 'May I?'",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.1",
+        "pages": [
+          1523
+        ],
+        "pdf_pages": [
+          1543
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Anticipatory and situational auxiliary ellipsis",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-682",
+    "domain": "phrases",
+    "concept": "Auxiliary stranding in supplementary relatives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In a supplementary relative, relativization can strand an auxiliary before a gap. The corresponding coordination can strand the same auxiliary by ellipsis.",
+    "condition": "The gap in the relative is associated with prenuclear which. Lexical seem cannot occupy the stranded auxiliary slot.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She says the latch is loose, which it is.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She says the latch is loose, and it is.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.1",
+        "pages": [
+          1523
+        ],
+        "pdf_pages": [
+          1543
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Auxiliary stranding in supplementary relatives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-683",
+    "domain": "phrases",
+    "concept": "Ordinary do support versus reduction-driven do",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Do required for negation, inversion or emphatic polarity appears in both full and elliptical versions. In affirmative reduced constructions do may appear solely because of reduction.",
+    "condition": "In primary-only dialects reduction-driven do is analyzed as supportive auxiliary do; dialects with secondary forms analyze the construction with lexical pro-form do.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I admired the sketch, but Jo didn't.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I admired the sketch, and Jo did too.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.2",
+        "pages": [
+          1523,
+          1524
+        ],
+        "pdf_pages": [
+          1543,
+          1544
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ordinary do support versus reduction-driven do",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-684",
+    "domain": "phrases",
+    "concept": "Antecedent head restriction on reduction-driven do",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "Reduction-driven do cannot take a VP headed by an auxiliary as its antecedent.",
+    "condition": "This concerns the VP selected as antecedent. A lexical VP embedded under an auxiliary can be antecedent when it supplies the intended meaning.",
+    "violation": "Reduction-driven do is used to recover an auxiliary-headed VP.",
+    "exceptions": [
+      {
+        "description": "This concerns the VP selected as antecedent. A lexical VP embedded under an auxiliary can be antecedent when it supplies the intended meaning.",
+        "pages": [
+          1524
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Ari will open the store, and Lee will too.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Nina should have called, but her brother did.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Ari will be outside soon, and Lee will too.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "Nina has been ill all week, and her brother has too.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Ari will be outside soon, and Lee does too.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Nina has been ill all week, and her brother does too.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.2",
+        "pages": [
+          1524
+        ],
+        "pdf_pages": [
+          1544
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Antecedent head restriction on reduction-driven do",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "Reduction-driven do is used to recover an auxiliary-headed VP.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Ari will be outside soon, and Lee does too. ||| Ari will be outside soon, and Lee will too.",
+        "Nina has been ill all week, and her brother does too. ||| Nina has been ill all week, and her brother has too."
+      ],
+      "learner_explanation": "Reduction-driven do cannot take a VP headed by an auxiliary as its antecedent. Repeat the appropriate auxiliary before the gap.",
+      "corrected_paragraph_template": "Repeat the appropriate auxiliary before the gap.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Nina should have called, but her brother did.",
+        "Ari will open the store, and Lee will too."
+      ],
+      "lesson_tags": [
+        "ellipsis"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-685",
+    "domain": "phrases",
+    "concept": "Primary and secondary forms of reduction-driven do",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Primary forms occur across dialects. Some British varieties also allow the past participle, gerund-participle and plain forms of lexical pro-form do.",
+    "condition": "Lexical pro-form do can combine with a supportive auxiliary and recover a verb alone or a verb with internal dependents. In varieties that license secondary forms, supportive do can cooccur with a plain lexical pro-form do in negatives.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Rae agreed, and Vic did too.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I haven't ordered it yet, but I will do this afternoon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.2",
+        "pages": [
+          1524
+        ],
+        "pdf_pages": [
+          1544
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Primary and secondary forms of reduction-driven do",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-686",
+    "domain": "phrases",
+    "concept": "Retained dependents and anticipation with primary do",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Primary do permits a retained dependent interpreted with the recovered lexical verb, and it can precede its antecedent.",
+    "condition": "The construction parallels auxiliary stranding.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Did you sample the cheeses? I did most of them.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If Dana does, will you sign the petition too?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.2",
+        "pages": [
+          1525
+        ],
+        "pdf_pages": [
+          1545
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Retained dependents and anticipation with primary do",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-687",
+    "domain": "phrases",
+    "concept": "Distribution of secondary pro-form do",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "The perfect participle done is the most widely accepted secondary form, ordinarily in perfect constructions; doing is more dialectally restricted. Plain do can follow a modal or infinitival to.",
+    "condition": "Secondary forms occur in comparatives. Acceptability after infinitival to varies by the selecting verb. Dropping the pro-form often yields auxiliary ellipsis, while do so alternates only in some environments. Passive done does not supply the ordinary perfect pro-form reading.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I haven't phoned her, but I should have done.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I cycle less than I used to do.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.2",
+        "pages": [
+          1525
+        ],
+        "pdf_pages": [
+          1545
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Distribution of secondary pro-form do",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-688",
+    "domain": "phrases",
+    "concept": "Antecedent mismatch with pro-form do",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Inflection or polarity can differ between an antecedent and the expanded do VP. Voice shifts and NP-to-VP recovery are occasional marginal extensions.",
+    "condition": "Attestation in informal speech does not make major mismatches generally available.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Kira didn't find any errors, but Dan did.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Did you enjoy the lectures? I did most of them.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.2",
+        "pages": [
+          1525,
+          1526
+        ],
+        "pdf_pages": [
+          1545,
+          1546
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Antecedent mismatch with pro-form do",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-689",
+    "domain": "phrases",
+    "concept": "Infinitival to at an ellipsis site",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Infinitival to can be stranded by VP ellipsis or relativization. In the ellipsis construction, to must immediately precede the gap.",
+    "condition": "Cambridge's ellipsis analysis requires adjacency of to and the gap and marks post-to negation in this reduced pattern as inadmissible. With a full VP the placement of negation is a separate issue.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I had planned to apply, but decided not to.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They invited me to lead the walk, which I'd like to.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.3",
+        "pages": [
+          1526
+        ],
+        "pdf_pages": [
+          1546
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Infinitival to at an ellipsis site",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-690",
+    "domain": "phrases",
+    "concept": "Retention of be and perfect have after to",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "When the expanded infinitival VP begins with be or perfect have, that auxiliary is normally retained after to.",
+    "condition": "The result strands the auxiliary at the gap rather than ending with to.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Will Bea be at the station? She's likely to be.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Did they delete the file? They aren't likely to have.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.3",
+        "pages": [
+          1526
+        ],
+        "pdf_pages": [
+          1546
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Retention of be and perfect have after to",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-691",
+    "domain": "phrases",
+    "concept": "Licensing environments for reduced to-infinitivals",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Infinitival reduction normally occurs in internal complements of verbs or adjectives. Plain subject infinitivals and infinitivals dependent on a noun can resist reduction.",
+    "condition": "Negation or an overt for-subject often improves subject infinitivals. The restriction also affects stranded auxiliaries and lexical pro-form do after to. Do so can fill gaps unavailable to ellipsis.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They asked her to appeal, and she intends to.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You have to notify them. Not to would be reckless.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "You should inspect it. For a stranger to would be risky.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.3",
+        "pages": [
+          1526
+        ],
+        "pdf_pages": [
+          1546
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Licensing environments for reduced to-infinitivals",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-692",
+    "domain": "phrases",
+    "concept": "Head licensing of lexical complement ellipsis",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Certain lexical verbs and adjectives allow an understood complement retrievable from context. Direct-object omission is especially restricted, with aspectual begin, start and finish among the clearest cases.",
+    "condition": "The omitted complement may be nonfinite, finite, nominal or prepositional depending on the lexical head.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Has he finished the portrait? He hasn't even started.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They asked Ezra to organize the trip, but he refused.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Do we have to announce it? I don't know.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.4",
+        "pages": [
+          1527
+        ],
+        "pdf_pages": [
+          1547
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Head licensing of lexical complement ellipsis",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-693",
+    "domain": "phrases",
+    "concept": "Simple catenatives and adjective complement ellipsis",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Some simple catenatives and complement-taking adjectives allow omission of a nonfinite complement and may also allow stranded to.",
+    "condition": "Licensing is lexical. Try allows an understood complement where attempt requires a fuller expression on the cited reading. Other licensed verbs illustrated in the source include agree, begin, continue, refuse, stop and volunteer.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Can you restore the file tonight? I'll try.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They asked Vera to present the award, but she wasn't willing.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.4",
+        "pages": [
+          1527
+        ],
+        "pdf_pages": [
+          1547
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Simple catenatives and adjective complement ellipsis",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-694",
+    "domain": "phrases",
+    "concept": "Complex catenatives with omitted nonfinite complement",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Some complex catenatives retain the matrix object while omitting the recoverable nonfinite complement.",
+    "condition": "The overt object belongs to the lexical head's construction. It is distinct from a dependent of the omitted verb. The source also illustrates this pattern with beg, force, hear, see and stop.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I didn't want to apologize, but they made me.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I hoped to watch the rehearsal, but they wouldn't let me.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.4",
+        "pages": [
+          1527
+        ],
+        "pdf_pages": [
+          1547
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Complex catenatives with omitted nonfinite complement",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-695",
+    "domain": "phrases",
+    "concept": "Lexical complement ellipsis and supplementary relatives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Lexical complement ellipsis does not have the supplementary relative counterpart available to auxiliary stranding.",
+    "condition": "A supplementary relative with a fuller construction, such as an overt stranded to, can have a different analysis.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They asked me to fix the hinge, which I can't.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They asked Jo to fix the hinge, but Jo won't even try.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.4",
+        "pages": [
+          1528
+        ],
+        "pdf_pages": [
+          1548
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical complement ellipsis and supplementary relatives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-696",
+    "domain": "phrases",
+    "concept": "Full-complement omission with lexical verbs",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "Lexical complement ellipsis omits the full complement. It cannot retain an argument of the omitted verb in the way auxiliary stranding sometimes can.",
+    "condition": "An apparent remainder may have a separate interpretation if the lexical verb directly licenses it.",
+    "violation": "An argument of the intended omitted verb remains after lexical complement ellipsis.",
+    "exceptions": [
+      {
+        "description": "An apparent remainder may have a separate interpretation if the lexical verb directly licenses it.",
+        "pages": [
+          1528
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I can grade the second set even if I can't the first.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I won't try to grade the first set, but I'll try to grade the second.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "I didn't agree to inspect the east wing, but I'll agree to inspect the west wing.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "They asked Dana to carry the parcel, but she refused.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "I won't try to grade the first set, but I'll try the second.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "I didn't agree to inspect the east wing, but I'll agree the west wing.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.4",
+        "pages": [
+          1528
+        ],
+        "pdf_pages": [
+          1548
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Full-complement omission with lexical verbs",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "An argument of the intended omitted verb remains after lexical complement ellipsis.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "I won't try to grade the first set, but I'll try the second. ||| I won't try to grade the first set, but I'll try to grade the second.",
+        "I didn't agree to inspect the east wing, but I'll agree the west wing. ||| I didn't agree to inspect the east wing, but I'll agree to inspect the west wing."
+      ],
+      "learner_explanation": "Lexical complement ellipsis omits the full complement. It cannot retain an argument of the omitted verb in the way auxiliary stranding sometimes can. Keep the full complement overt if an argument inside it must be expressed.",
+      "corrected_paragraph_template": "Keep the full complement overt if an argument inside it must be expressed.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "They asked Dana to carry the parcel, but she refused.",
+        "I can grade the second set even if I can't the first."
+      ],
+      "lesson_tags": [
+        "ellipsis"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-697",
+    "domain": "phrases",
+    "concept": "Voice and situational recovery in lexical complement ellipsis",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Lexical complement ellipsis can more readily tolerate a voice change and recover the complement from the situation than auxiliary stranding can.",
+    "condition": "The contrast is a matter of licensing and preference. Some auxiliary-stranding voice mismatches are marginally attested.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The strap needs to be replaced. Why won't Dana try?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Seeing Mira struggle with a jar, Jo said, 'Let me try.'",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.4",
+        "pages": [
+          1528
+        ],
+        "pdf_pages": [
+          1548
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Voice and situational recovery in lexical complement ellipsis",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-698",
+    "domain": "phrases",
+    "concept": "Finite complements under lexical ellipsis",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An appropriate lexical head can omit a recoverable declarative, closed interrogative or open interrogative complement.",
+    "condition": "Identify the understood content and clause type from the discourse.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I said the path was unsafe, and she agreed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I asked whether she'd return, but she didn't say.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "How far did they walk? We couldn't tell.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.4",
+        "pages": [
+          1528
+        ],
+        "pdf_pages": [
+          1548
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Finite complements under lexical ellipsis",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
   }
 ]
