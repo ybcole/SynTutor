@@ -12062,58 +12062,58 @@
     {
       "page": 1723,
       "chapter": 20,
-      "status": "unprocessed",
-      "reason": null,
-      "evidence": null
+      "status": "skipped_with_reason",
+      "reason": "Chapter title and contents only in the full-volume PDF.",
+      "evidence": "sources/cambridge/chapter_20/PP1723_1730_REPORT.md"
     },
     {
       "page": 1724,
       "chapter": 20,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_20/PP1723_1730_REPORT.md"
     },
     {
       "page": 1725,
       "chapter": 20,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_20/PP1723_1730_REPORT.md"
     },
     {
       "page": 1726,
       "chapter": 20,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_20/PP1723_1730_REPORT.md"
     },
     {
       "page": 1727,
       "chapter": 20,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_20/PP1723_1730_REPORT.md"
     },
     {
       "page": 1728,
       "chapter": 20,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_20/PP1723_1730_REPORT.md"
     },
     {
       "page": 1729,
       "chapter": 20,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_20/PP1723_1730_REPORT.md"
     },
     {
       "page": 1730,
       "chapter": 20,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_20/PP1723_1730_REPORT.md"
     },
     {
       "page": 1731,

@@ -38558,5 +38558,839 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-668",
+    "domain": "other",
+    "concept": "Segmental and non-segmental punctuation",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Marks and spaces occupy positions in a written sequence. Capitalization and changes of type can signal structure or meaning by modifying the presentation of existing characters.",
+    "condition": "The same function can use either kind of indicator, as with titles set in italics or quotation marks.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The class read *The Tempest* on Friday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The programme listed “The Tempest” after the interval.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.1",
+        "pages": [
+          1724
+        ],
+        "pdf_pages": [
+          1744
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Segmental and non-segmental punctuation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-669",
+    "domain": "other",
+    "concept": "Punctuation at several scales",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Punctuation includes indicators within words and sentences and some devices extending across sentences or marking paragraphs.",
+    "condition": "Diacritics normally belong to spelling, though diaeresis can perform a hyphen-like function. Document-level layout lies outside this treatment.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The editor retained the apostrophe in the owner's note.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The quotation continued into a second sentence before its closing mark.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.1",
+        "pages": [
+          1724,
+          1725
+        ],
+        "pdf_pages": [
+          1744,
+          1745
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Punctuation at several scales",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-670",
+    "domain": "other",
+    "concept": "Indicators and graphic characters",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "An indicator is distinguished by its function, while a character is its written shape. One character can realize multiple indicators.",
+    "condition": "A closing single quotation mark and an apostrophe can share a shape. Straight quotation marks can represent both quotation positions.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "‘We’re ready,’ said the guide.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The baker's sign read 'Closed on Monday'.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.2",
+        "pages": [
+          1725
+        ],
+        "pdf_pages": [
+          1745
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Indicators and graphic characters",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-671",
+    "domain": "other",
+    "concept": "Apostrophe shape in directional typography",
+    "rule_type": "constraint",
+    "scope": "other",
+    "statement": "In typography that distinguishes opening and closing single quotation marks, an apostrophe uses the closing shape even at the beginning of a reduced word.",
+    "condition": "Directional single quotation characters are used, and the mark represents an apostrophe for a reduced word.",
+    "violation": "The opening single quotation character is used as the apostrophe.",
+    "exceptions": [
+      {
+        "description": "Straight apostrophes are available in plain text. Genuine opening quotation marks are a distinct indicator.",
+        "pages": [
+          1725
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They danced to rock ’n’ roll after dinner.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The notice advertised a fish ’n’ chips supper.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "They danced to rock ‘n’ roll after dinner.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The notice advertised a fish ‘n’ chips supper.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.2",
+        "pages": [
+          1725
+        ],
+        "pdf_pages": [
+          1745
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Apostrophe shape in directional typography",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "punctuation",
+      "error_pattern": "The opening single quotation character is used as the apostrophe.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "They danced to rock ‘n’ roll after dinner. ||| They danced to rock ’n’ roll after dinner.",
+        "The notice advertised a fish ‘n’ chips supper. ||| The notice advertised a fish ’n’ chips supper."
+      ],
+      "learner_explanation": "Use the closing-shaped apostrophe to mark the omitted letters, including at the beginning of a reduced word.",
+      "corrected_paragraph_template": "Replace the opening-shaped mark used for omitted letters with a closing-shaped apostrophe.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "We played rock 'n' roll all evening.",
+        "She shouted, ‘Now!’",
+        "The shop’s lights were still on."
+      ],
+      "lesson_tags": [
+        "punctuation",
+        "apostrophe"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-672",
+    "domain": "other",
+    "concept": "Dash and hyphen realizations",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "A dash can use different characters according to typography and style. The ordinary hyphen uses an unspaced hyphen character, while the long hyphen can use an unspaced en rule.",
+    "condition": "A spaced en rule can function as a dash. Styles without a distinct long hyphen can use the ordinary hyphen for its role.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The report was ready – or so we thought.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The editor reviewed the author–publisher agreement.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.2",
+        "pages": [
+          1725,
+          1726
+        ],
+        "pdf_pages": [
+          1745,
+          1746
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dash and hyphen realizations",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-673",
+    "domain": "other",
+    "concept": "Full stops and ellipsis points",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "The full stop can end a sentence or mark an abbreviation. Ellipsis points are a distinct indicator used for omission.",
+    "condition": "Ellipsis points may be written with three dot characters or with one ellipsis character.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Dr. Patel arrived before the lecture began.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The witness recalled, “We waited … until the gates reopened.”",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.2",
+        "pages": [
+          1726
+        ],
+        "pdf_pages": [
+          1746
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Full stops and ellipsis points",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-674",
+    "domain": "other",
+    "concept": "Codified and tacit punctuation conventions",
+    "rule_type": "stylistic_or_prescriptive",
+    "scope": "other",
+    "statement": "Professional publication often follows codified conventions, while competent writers also apply conventions acquired without explicit instruction.",
+    "condition": "Style manuals carry more weight in Cambridge's treatment of punctuation than in its treatment of spontaneous spoken grammar.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Dr Reed introduced the lecture.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Dr. Reed introduced the lecture.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.3",
+        "pages": [
+          1726,
+          1727
+        ],
+        "pdf_pages": [
+          1746,
+          1747
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Codified and tacit punctuation conventions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-675",
+    "domain": "other",
+    "concept": "Regional historical and editorial variation",
+    "rule_type": "stylistic_or_prescriptive",
+    "scope": "other",
+    "statement": "Punctuation can vary by region, publisher and historical period. The placement of marks relative to quotation marks is a prominent regional example.",
+    "condition": "Repeated terminal marks can occur informally but are avoided by many writers and are rare in formal academic or legal prose.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Did you really see it??",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What a relief!",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.3",
+        "pages": [
+          1727
+        ],
+        "pdf_pages": [
+          1747
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Regional historical and editorial variation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-676",
+    "domain": "other",
+    "concept": "Light and heavy punctuation",
+    "rule_type": "stylistic_or_prescriptive",
+    "scope": "other",
+    "statement": "Light and heavy styles differ in how frequently optional marks are used, particularly commas.",
+    "condition": "The distinction concerns optional positions and is independent of publisher and regional variation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "After lunch we returned to the lab.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "After lunch, we returned to the lab.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.3",
+        "pages": [
+          1727
+        ],
+        "pdf_pages": [
+          1747
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Light and heavy punctuation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-677",
+    "domain": "other",
+    "concept": "Orthographic sentence boundaries",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "An orthographic sentence conventionally starts with a capital and ends with a full stop, question mark or exclamation mark. Punctuation helps show which successive clauses belong to one unit of writing.",
+    "condition": "Overt coordination and gapping can show grammatical grouping. Some asyndetic coordination and supplementation lack such markers. Punctuation is distinct from prosody.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The floor shook. Everyone stopped talking.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The floor shook, and everyone stopped talking.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.4",
+        "pages": [
+          1728,
+          1729
+        ],
+        "pdf_pages": [
+          1748,
+          1749
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Orthographic sentence boundaries",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-678",
+    "domain": "other",
+    "concept": "Orthographic word boundaries",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "An orthographic word is normally a minimal unit bounded by spaces, with intervening punctuation possible. Written segmentation and grammatical word structure need not coincide.",
+    "condition": "Meaning and construction can distinguish a compound from a modifier-plus-head nominal.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A blackbird landed on the gate.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A black bird with white wings landed on the gate.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.4",
+        "pages": [
+          1729
+        ],
+        "pdf_pages": [
+          1749
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Orthographic word boundaries",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-679",
+    "domain": "other",
+    "concept": "Boundary and status functions",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "An indicator can identify a boundary and also signal a status such as interrogative, exclamative, proper-name or genitive status.",
+    "condition": "One indicator can perform both functions in the same use.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Where did Elena leave the parcel?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The builders’ tools were still outside!",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.5",
+        "pages": [
+          1729,
+          1730
+        ],
+        "pdf_pages": [
+          1749,
+          1750
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Boundary and status functions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-680",
+    "domain": "other",
+    "concept": "Omission functions",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Ellipsis points can mark omitted material from a quotation, asterisks can suppress letters, and an apostrophe can mark reduction in a clitic form.",
+    "condition": "The indicator chosen depends on the kind of omission.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The note read, “Please return … before closing time.”",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We’ll return before closing time.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.5",
+        "pages": [
+          1730
+        ],
+        "pdf_pages": [
+          1750
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Omission functions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-681",
+    "domain": "other",
+    "concept": "Linkage with slashes and hyphens",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "A slash or hyphen can link adjacent material. The link may present alternatives, form a compound or make a joint modifier.",
+    "condition": "Interpretation depends on the expressions linked.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Select the repair/replacement option on the form.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They took the Bristol–Bath shuttle.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.5",
+        "pages": [
+          1730
+        ],
+        "pdf_pages": [
+          1750
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Linkage with slashes and hyphens",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-682",
+    "domain": "other",
+    "concept": "Commas to prevent an initial misreading",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "An optional comma can clarify attachment. A comma can even occur at a normally disfavoured boundary if it prevents a likely initial misreading.",
+    "condition": "The source illustrates a comma after an elliptical modal within a subject to prevent the following main verb from being read as its complement.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Most of those who could, left early.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Jo recognized the visitor who stepped inside, and smiled.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§1.5",
+        "pages": [
+          1730
+        ],
+        "pdf_pages": [
+          1750
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Commas to prevent an initial misreading",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]

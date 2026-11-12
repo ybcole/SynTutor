@@ -536,3 +536,7 @@ Printed pp. 1704–1711 add 8 substantive pages and 34 inactive records (`MORPH-
 ## Chapter 19 completion checkpoint
 
 Printed pp. 1712–1721 add 10 substantive pages and 32 inactive records (`MORPH-458`–`MORPH-489`), including five inactive numeral specifications. Chapter 19 is source-extraction complete with 99 substantive pages, two contents-only pages, and one verified textless page. Chapter 20 begins at printed p. 1723.
+
+## Chapter 20 first checkpoint
+
+Printed pp. 1723–1730 account for one contents page and 7 substantive pages and add 15 inactive records (`OTH-668`–`OTH-682`). Chapter 20 has 34 unprocessed pages. Continue at p. 1731 with primary terminals.
