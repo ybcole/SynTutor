@@ -440,3 +440,7 @@ Printed pp. 1132–1139 add eight substantive pages and 20 inactive records (`CL
 ## Chapter 13 sixth checkpoint
 
 Printed pp. 1140–1147 add eight substantive pages and 26 inactive records (`CLS-1193`–`CLS-1218`), including two `spec_only` constraints. Chapter 13 has 23 pages remaining. Continue at p. 1148 with the comparison between standalone as and supplementary relatives.
+
+## Chapter 13 seventh checkpoint
+
+Printed pp. 1148–1155 add eight substantive pages and 24 inactive records (`CLS-1219`–`CLS-1242`), including two `spec_only` constraints. Chapter 13 has 15 pages remaining. Continue at p. 1156 with the remaining adjunct uses of like.

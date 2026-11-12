@@ -76690,5 +76690,1373 @@
     },
     "related_rules": [],
     "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1219",
+    "domain": "clauses",
+    "concept": "Comparison adjuncts and supplementary relatives",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A comparative as adjunct typically backgrounds a proposition related to the matrix. A supplementary which relative can use the matrix proposition as the basis for a new assertion.",
+    "condition": "A relative links back to an antecedent, whereas a comparative can equate the content of two predications.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The train arrived early, as the dispatcher had predicted.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The train arrived early, which gave us time to buy coffee.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.5",
+        "pages": [
+          1148
+        ],
+        "pdf_pages": [
+          1168
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Comparison adjuncts and supplementary relatives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1220",
+    "domain": "clauses",
+    "concept": "Comparative inversion and reduction versus relatives",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Supplementary comparative as admits subject postposing, omission of passive be, adjective-only reduction, and stranding of an auxiliary with an overt object after a missing verb.",
+    "condition": "A corresponding supplementary which clause needs its own relative-clause structure and cannot carry over these reductions or inversion.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mae was on the night shift, as were both her cousins.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The forms were submitted electronically, as permitted under the new policy.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.5",
+        "pages": [
+          1148
+        ],
+        "pdf_pages": [
+          1168
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Comparative inversion and reduction versus relatives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1221",
+    "domain": "clauses",
+    "concept": "Optional full clauses in comparison adjuncts",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A standalone as adjunct can contain a complete clause where the whole clause gives the secondary term.",
+    "condition": "A counterpart to the as adjunct itself is not required inside its complement. Some patterns instead involve an embedded obligatory gap.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The dog followed me, as it had followed Marta.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I often borrow his tools, as he often borrows mine.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.5",
+        "pages": [
+          1148
+        ],
+        "pdf_pages": [
+          1168
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Optional full clauses in comparison adjuncts",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1222",
+    "domain": "clauses",
+    "concept": "Anaphoric gap in supplementary reporting as",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "In the reporting or knowledge comparison adjunct, the embedded complement corresponding to the matrix proposition is left implicit.",
+    "condition": "This applies to the supplementary reading where know or report refers to the matrix assertion. A noun-anchored as construction has a distinct structure.",
+    "violation": "A resumptive it fills the gap in a supplementary as clause whose reporting verb refers to the matrix proposition.",
+    "exceptions": [
+      {
+        "description": "An as phrase anchored to a noun can retain a referential it, and ordinary reporting clauses can also have an object.",
+        "pages": [
+          1148
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "As you know, the bridge is closed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "As I mentioned, the clinic is closed on Friday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "The neighborhood, as we know it, grew around the station.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "When I mentioned it, nobody objected.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "As you know it, the bridge is closed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "As I mentioned it, the clinic is closed on Friday.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.5",
+        "pages": [
+          1148
+        ],
+        "pdf_pages": [
+          1168
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Anaphoric gap in supplementary reporting as",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "A resumptive it fills the gap in a supplementary as clause whose reporting verb refers to the matrix proposition.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "As you know it, the bridge is closed. ||| As you know, the bridge is closed.",
+        "As I mentioned it, the clinic is closed on Friday. ||| As I mentioned, the clinic is closed on Friday."
+      ],
+      "learner_explanation": "In the reporting or knowledge comparison adjunct, the embedded complement corresponding to the matrix proposition is left implicit. Omit the pronoun in this supplementary as clause when the verb refers to the proposition in the main clause.",
+      "corrected_paragraph_template": "Omit the pronoun in this supplementary as clause when the verb refers to the proposition in the main clause.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The neighborhood, as we know it, grew around the station.",
+        "When I mentioned it, nobody objected."
+      ],
+      "lesson_tags": [
+        "comparison"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1223",
+    "domain": "clauses",
+    "concept": "Repeated lexical material in comparison adjuncts",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The subordinate comparison can repeat matrix material when it affirms a proposition that the matrix does not itself assert.",
+    "condition": "Conditional antecedents, complements of verbs such as suggest, and non-finite predications can support this pattern.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the permit has expired, as it has, we'll need to renew it.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mara suggested the hinges were loose, as indeed they were.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.5",
+        "pages": [
+          1148,
+          1149
+        ],
+        "pdf_pages": [
+          1168,
+          1169
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Repeated lexical material in comparison adjuncts",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1224",
+    "domain": "clauses",
+    "concept": "Single-element reduction in supplementary as",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A comparison adjunct can reduce to one element such as a preposition phrase or an adverb.",
+    "condition": "A single noun phrase standing for a subject or object is normally unavailable in the corresponding construction. Like can take that noun phrase directly.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "In ceramics, as in glassmaking, timing matters.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We checked the seal twice, as always.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.5",
+        "pages": [
+          1149
+        ],
+        "pdf_pages": [
+          1169
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Single-element reduction in supplementary as",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1225",
+    "domain": "clauses",
+    "concept": "Manner as and comparison adjunct ambiguity",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Manner as supplies a matrix manner element and compares it with a manner understood in its complement.",
+    "condition": "Final position can allow either a manner reading or a comparison adjunct reading. Medial supplementary placement can select the comparison adjunct reading. Passive be may be omitted in a reduced manner clause.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Tighten the bolts as the technician demonstrated.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They don't know, as their coach does, how to pace a climb.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.5",
+        "pages": [
+          1149,
+          1150
+        ],
+        "pdf_pages": [
+          1169,
+          1170
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Manner as and comparison adjunct ambiguity",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1226",
+    "domain": "clauses",
+    "concept": "Predicative comparative as",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A comparative as phrase can supply a subject-oriented or object-oriented predicative complement.",
+    "condition": "Its secondary term may involve a missing predicative complement. Reduced passive examples can also have an implicit subject.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The final color was as we'd expected it to be.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Leave the settings as you found them.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.5",
+        "pages": [
+          1150
+        ],
+        "pdf_pages": [
+          1170
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Predicative comparative as",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1227",
+    "domain": "clauses",
+    "concept": "Nominal modifiers and NP supplements with as",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "An as phrase can modify a nominal or supplement an NP and specify an aspect, condition or name of its referent.",
+    "condition": "The subordinate clause can lack a predicative or manner element even when a referential pronoun remains overt.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This is a sketch of the pier as it was before the storm.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The neighborhood, as we know it, grew around the station.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.5",
+        "pages": [
+          1150
+        ],
+        "pdf_pages": [
+          1170
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nominal modifiers and NP supplements with as",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1228",
+    "domain": "clauses",
+    "concept": "Idiomatic standalone as",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Fixed uses include as it happens, as things stand, and as is. Do can exceptionally combine with as I say or as you like.",
+    "condition": "The syntax of these uses has limited productivity. As is can mean in the present condition.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "As it happens, I still have a spare key.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The auction house sells damaged furniture as is.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.5",
+        "pages": [
+          1150
+        ],
+        "pdf_pages": [
+          1170
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Idiomatic standalone as",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1229",
+    "domain": "clauses",
+    "concept": "Clause functions of as if and as though",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Phrases headed by compound as if or as though can function as manner adjuncts, manner complements, comparison adjuncts or predicative complements.",
+    "condition": "The construction does not have the noun-dependent use available to plain comparative as.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They treated the visitor as though she were a regular.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The result was as if two different teams had drawn the map.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.5",
+        "pages": [
+          1151
+        ],
+        "pdf_pages": [
+          1171
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Clause functions of as if and as though",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1230",
+    "domain": "clauses",
+    "concept": "Compound as if versus expanded conditional comparison",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Non-scalar as if and as though head content-clause complements. Their interchangeability and resistance to coordinated repeated bare if support the compound analysis.",
+    "condition": "Expansion to as plus a separate conditional sometimes gives a comparable meaning. It can fail when resemblance compares distinct activities or the clause describes an appearance.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She packed the box as though it contained glass.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He polishes the counter as if he's sanding a plank.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.5",
+        "pages": [
+          1151
+        ],
+        "pdf_pages": [
+          1171
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Compound as if versus expanded conditional comparison",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1231",
+    "domain": "clauses",
+    "concept": "Appearance and likelihood with as if",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "After seem, look and related predicates, as if can express an inference from appearances and the comparative sense can be weak.",
+    "condition": "Both impersonal it and ordinary subjects occur. In the impersonal seem construction, a that clause can express nearly the same inference.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It seems as though the storm has passed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The seedlings look as if they need more light.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.5",
+        "pages": [
+          1151,
+          1152
+        ],
+        "pdf_pages": [
+          1171,
+          1172
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Appearance and likelihood with as if",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1232",
+    "domain": "clauses",
+    "concept": "Negated be with epistemic as if",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "In the negative it is not as if construction, the speaker rejects the proposition in the content clause.",
+    "condition": "The rejection can explicitly counter an inference invited by the context. An already negative content clause yields the corresponding positive inference.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It's not as if the store is open all night.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It's not as if nobody warned us.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.5",
+        "pages": [
+          1152
+        ],
+        "pdf_pages": [
+          1172
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negated be with epistemic as if",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1233",
+    "domain": "clauses",
+    "concept": "Additional adverse circumstances with as if",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A supplementary as if construction can present a further circumstance as compounding a situation, typically an adverse one.",
+    "condition": "The as if complement is negative in this use, and its content is presented as true.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "As if the delay wasn't inconvenient enough, the station closed its waiting room.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "As though we didn't already have enough forms to fill in, the office sent two more.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.5",
+        "pages": [
+          1152
+        ],
+        "pdf_pages": [
+          1172
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Additional adverse circumstances with as if",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1234",
+    "domain": "clauses",
+    "concept": "Standalone as if exclamations",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "An independent as if or as though phrase can express an exclamation.",
+    "condition": "One use leaves an additional grievance implicit. Another rejects the proposition expressed by the complement.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "As if one lost parcel wasn't enough!",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "As if I'd ever sell your bike without asking!",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.5",
+        "pages": [
+          1152
+        ],
+        "pdf_pages": [
+          1172
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Standalone as if exclamations",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1235",
+    "domain": "clauses",
+    "concept": "Present tense and modal remoteness after as if",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "With a present matrix, present tense in the complement can present an appearance as an open possibility. Irrealis were or a modal preterite can mark remoteness.",
+    "condition": "Irrealis can convey counterfactuality. A modal preterite can also convey weaker commitment without entailing falsity.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She talks as if she knows the answer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She talks as though she knew the answer.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.5",
+        "pages": [
+          1152
+        ],
+        "pdf_pages": [
+          1172
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Present tense and modal remoteness after as if",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1236",
+    "domain": "clauses",
+    "concept": "Irrealis and backshift with past matrix as if",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "After a past matrix, irrealis were can express modal remoteness or occur as an extended formal usage without a counterfactual implication.",
+    "condition": "Was can be a less formal variant in remote contexts. A preterite perfect can mark backshift or past time in relevant remote readings but is less usual there than were or a simple preterite. Extended were can occasionally occur with a present matrix.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They treated the intern as though she were the owner.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He stared at the empty bench as though he were remembering someone.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.5",
+        "pages": [
+          1152,
+          1153
+        ],
+        "pdf_pages": [
+          1172,
+          1173
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Irrealis and backshift with past matrix as if",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1237",
+    "domain": "clauses",
+    "concept": "Infinitival and verbless as if complements",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Compound as if and as though accept subjectless infinitival and verbless complements.",
+    "condition": "The infinitival generally suggests apparent purpose, typically with an agent or personification. The verbless pattern can correspond to omission of subject and be.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Lee leaned closer as if to read the engraving.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The balloon hung in the air as though weightless.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.5",
+        "pages": [
+          1153
+        ],
+        "pdf_pages": [
+          1173
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Infinitival and verbless as if complements",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1238",
+    "domain": "clauses",
+    "concept": "Scalar as followed by a conditional if phrase",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "In scalar as … as if, the second as heads the comparative phrase and takes a conditional if phrase as complement.",
+    "condition": "Occasional though in this scalar construction is analyzed as a blend and has questionable acceptability. The non-scalar as though compound has its own regular uses.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The room was as cold as if the windows had been open all night.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She moved as quietly as if the baby were asleep.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.5",
+        "pages": [
+          1153,
+          1154
+        ],
+        "pdf_pages": [
+          1173,
+          1174
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Scalar as followed by a conditional if phrase",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1239",
+    "domain": "clauses",
+    "concept": "Like with NP for resemblance and as for capacity",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "Non-scalar term comparisons of resemblance use like with a noun phrase. Capacity as with a noun phrase expresses the role in which someone acts.",
+    "condition": "Like a supervisor leaves open whether the person is one. As a supervisor identifies the capacity in which they act.",
+    "violation": "As is used with a bare NP to express resemblance in the ordinary non-scalar term comparison.",
+    "exceptions": [
+      {
+        "description": "As with an NP is valid in the capacity construction. Comparative as can also take a clause.",
+        "pages": [
+          1154
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Nina is like her aunt in temperament.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Like Lena, I prefer the earlier train.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "I signed the form as the project manager.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "As our neighbors do, we support the proposal.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Nina is as her aunt in temperament.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "As Lena, I prefer the earlier train.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.6.1",
+        "pages": [
+          1154
+        ],
+        "pdf_pages": [
+          1174
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Like with NP for resemblance and as for capacity",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "As is used with a bare NP to express resemblance in the ordinary non-scalar term comparison.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Nina is as her aunt in temperament. ||| Nina is like her aunt in temperament.",
+        "As Lena, I prefer the earlier train. ||| Like Lena, I prefer the earlier train."
+      ],
+      "learner_explanation": "Non-scalar term comparisons of resemblance use like with a noun phrase. Capacity as with a noun phrase expresses the role in which someone acts. Use like with a noun phrase when the phrase expresses resemblance.",
+      "corrected_paragraph_template": "Use like with a noun phrase when the phrase expresses resemblance.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "I signed the form as the project manager.",
+        "As our neighbors do, we support the proposal."
+      ],
+      "lesson_tags": [
+        "comparison"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1240",
+    "domain": "clauses",
+    "concept": "Predicative like phrases with NP complements",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Like phrases can function as predicative complements after be and appearance or sense verbs, and in some complex-transitive patterns.",
+    "condition": "The phrase can mark resemblance or characteristic conduct. Like this also occurs as a predicative adjunct. Feel like a rest expresses desire, and looks like a named individual can express probable identification.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The new finish feels like velvet.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The costume made her look more like her aunt.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.6.1",
+        "pages": [
+          1154,
+          1155
+        ],
+        "pdf_pages": [
+          1174,
+          1175
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Predicative like phrases with NP complements",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1241",
+    "domain": "clauses",
+    "concept": "Like phrases as manner complements",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Like with an NP can fill a selected manner complement position. With some verbs either of two participants can supply the primary term.",
+    "condition": "An NP complement stays an NP despite ambiguity. Demonstrative like that can directly specify a manner.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Nora treated Leo like the other apprentices.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Please don't handle the samples like that.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.6.1",
+        "pages": [
+          1155
+        ],
+        "pdf_pages": [
+          1175
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Like phrases as manner complements",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1242",
+    "domain": "clauses",
+    "concept": "Likeness of predication with like and unlike",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A like adjunct can attribute the matrix predicate to the secondary term as backgrounded information. In this reading unlike negates the backgrounded predication.",
+    "condition": "The matrix subject normally gives the primary term. Integrated manner like does not freely alternate with unlike, while supplementary placement can support the predication reading.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Like her neighbor, Jo grows tomatoes.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Unlike her neighbor, Jo grows tomatoes.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.6.1",
+        "pages": [
+          1155
+        ],
+        "pdf_pages": [
+          1175
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Likeness of predication with like and unlike",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
   }
 ]
