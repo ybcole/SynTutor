@@ -13119,5 +13119,1469 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-212",
+    "domain": "morphology",
+    "concept": "Lexicalized noun plus noun compounds",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "In some established noun plus noun compounds, the complete word denotes something outside the class denoted by the final base.",
+    "condition": "Use the conventional meaning of the whole compound when testing head entailment.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I wedged a shoe tree into each boot.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A ladybird crawled across the windowsill.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.2.1",
+        "pages": [
+          1648
+        ],
+        "pdf_pages": [
+          1668
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexicalized noun plus noun compounds",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-213",
+    "domain": "morphology",
+    "concept": "Dvandva compounds",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "A dvandva denotes the union of what the component nouns name. A predicate applied to the union need not apply to each component separately.",
+    "condition": "Most English examples are proper names. Cambridge also applies the term to gerund-participle and notes that some authors use it more broadly.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They toured Alsace-Lorraine by train.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We use the term gerund-participle for the form in Both teams were competing.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.2.1",
+        "pages": [
+          1648
+        ],
+        "pdf_pages": [
+          1668
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dvandva compounds",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-214",
+    "domain": "morphology",
+    "concept": "Distributive readings of coordinative nouns",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "In the non-dvandva coordinative pattern, each component applies independently to the same referent. The construction can combine more than two bases.",
+    "condition": "Compare simultaneous roles or properties with a name for a union.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Our singer-songwriter wrote the final verse.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "As secretary-treasurer, Dev recorded the minutes and presented the accounts.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.2.1",
+        "pages": [
+          1648
+        ],
+        "pdf_pages": [
+          1668
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Distributive readings of coordinative nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-215",
+    "domain": "morphology",
+    "concept": "Ascriptive compounds",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "In an ascriptive compound the initial noun characterizes a subtype of what the final noun denotes, much like an ascriptive modifier.",
+    "condition": "The boundary with coordination is gradable. Girlfriend and boyfriend can apply beyond the usual age range of girl and boy. Appositional compound is another term for this pattern.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "An adult woman introduced her girlfriend at the reunion.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Their houseboat stayed moored through the winter.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.2.1",
+        "pages": [
+          1648,
+          1649
+        ],
+        "pdf_pages": [
+          1668,
+          1669
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ascriptive compounds",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-216",
+    "domain": "morphology",
+    "concept": "Plural marking on both elements of manservant",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "The plural menservants marks both components, whereas comparable maidservants marks only the final head.",
+    "condition": "Comparable double marking also occurs in some syntactic expressions with woman and gentleman.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The two menservants carried a trunk upstairs.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The maidservants left through the courtyard.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.2.1",
+        "pages": [
+          1649
+        ],
+        "pdf_pages": [
+          1669
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Plural marking on both elements of manservant",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-217",
+    "domain": "morphology",
+    "concept": "Genitive-derived s in compound nouns",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Some compound nouns retain an s inherited from a genitive. Closed spellings omit the apostrophe, while hyphenated forms can retain it.",
+    "condition": "The selection of an s and the conventional spelling are lexically specific.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We rubbed beeswax into the drawer runners.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Her first arrow hit the bull’s-eye.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.2.1",
+        "pages": [
+          1649
+        ],
+        "pdf_pages": [
+          1669
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Genitive-derived s in compound nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-218",
+    "domain": "morphology",
+    "concept": "Plural-derived s in compound nouns",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Some compounds retain an s from a plural-only noun. A separate pattern in compounds ending in man has an older plural s that contributes no current plural meaning.",
+    "condition": "Plural-only bases usually lose s in this position. Both shapes of the man pattern occur, even with a shared sense in lineman and linesman.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "One swordsman guarded the entrance.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She hung the scarf up with a clothespin.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.2.1",
+        "pages": [
+          1649
+        ],
+        "pdf_pages": [
+          1669
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Plural-derived s in compound nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-219",
+    "domain": "morphology",
+    "concept": "Adjective plus noun compound meaning",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Adjective plus noun compounds often develop a specialized meaning. The adjective can describe an associated entity instead of the head's referent, and the compound can lack head entailment.",
+    "condition": "The pattern still yields new words, though its productivity is fairly low. Semantic specialization alone also occurs in phrases.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A blackbird with white wing feathers visited the feeder.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The clinic moved a lamp to the child's sickbed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.2.1",
+        "pages": [
+          1649,
+          1650
+        ],
+        "pdf_pages": [
+          1669,
+          1670
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjective plus noun compound meaning",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-220",
+    "domain": "morphology",
+    "concept": "Stress and base type in adjective plus noun compounds",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Main stress usually falls on the adjective. The adjective is typically a short, simple base of Germanic origin.",
+    "condition": "Many speakers stress the second element of black currant. Derived adjectives are rare but occur in compounds such as earthenware.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We put earthenware bowls beside the kettle.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The blackbird flew past the black currant bushes.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.2.1",
+        "pages": [
+          1650
+        ],
+        "pdf_pages": [
+          1670
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Stress and base type in adjective plus noun compounds",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-221",
+    "domain": "morphology",
+    "concept": "Recursive great in kinship compounds",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Grand adds a degree of lineal distance to kin terms. Repeated great adds successive degrees without a fixed grammatical limit.",
+    "condition": "Applies to the specialized kinship sense of grand and great.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Her great-grandfather built the shed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A photograph shows my great-great-grandmother outside the mill.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.2.1",
+        "pages": [
+          1650
+        ],
+        "pdf_pages": [
+          1670
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Recursive great in kinship compounds",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-222",
+    "domain": "morphology",
+    "concept": "Noun-centred compounds with verbal dependents",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "In verb plus noun compounds of this type, the noun heads the structure and can correspond semantically to a subject, object or prepositional complement in a clause.",
+    "condition": "Many are specialized. Some are non-hyponymic, and a base like pay can allow both a nominal and a verbal analysis.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The hovercraft reached the beach at dawn.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She fitted a push-button beside the workbench.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.2.1",
+        "pages": [
+          1650,
+          1651
+        ],
+        "pdf_pages": [
+          1670,
+          1671
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Noun-centred compounds with verbal dependents",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-223",
+    "domain": "morphology",
+    "concept": "Purposive ing dependents in noun compounds",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "An ing-marked verbal dependent commonly identifies the intended use of the object named by the noun head.",
+    "condition": "Whipping-boy has a lexicalized meaning outside this pattern. When suffixed and unsuffixed variants coexist, British English tends toward the suffixed form and American English toward the unsuffixed one.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He packed a walking stick for the ridge trail.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She put a frying pan on the camping stove.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.2.1",
+        "pages": [
+          1651
+        ],
+        "pdf_pages": [
+          1671
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Purposive ing dependents in noun compounds",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-224",
+    "domain": "morphology",
+    "concept": "Other initial categories in noun-centred compounds",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Prepositions can function as initial bases in noun-centred compounds. A few examples begin with a numeral or a gender-specific pronoun.",
+    "condition": "Prepositional bases form the main group among these other categories.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A storm damaged the old outbuilding.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She bought a six-pack of bottled water for the trip.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.2.1",
+        "pages": [
+          1651
+        ],
+        "pdf_pages": [
+          1671
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Other initial categories in noun-centred compounds",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-225",
+    "domain": "morphology",
+    "concept": "Bahuvrihi compounds",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "A bahuvrihi denotes an entity characterized by the property expressed by its component bases, which begin with an adjective or a noun.",
+    "condition": "This small productive group often describes people derogatorily and can occur in vocatives. It also includes animal, plant and inanimate referents.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A redbreast hopped onto the wall.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She packed her groceries into the hatchback.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.2.1",
+        "pages": [
+          1651,
+          1652
+        ],
+        "pdf_pages": [
+          1671,
+          1672
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Bahuvrihi compounds",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-226",
+    "domain": "morphology",
+    "concept": "Syntactic singular in plural-shaped bahuvrihis",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Some person-denoting bahuvrihis contain a plural-shaped internal element yet take singular syntax when referring to one person.",
+    "condition": "Examples are lexical. Internal shape alone cannot diagnose agreement.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "That lazybones is still asleep on the sofa.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A butterfingers has already dropped the parcel twice.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.2.1",
+        "pages": [
+          1651
+        ],
+        "pdf_pages": [
+          1671
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Syntactic singular in plural-shaped bahuvrihis",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-227",
+    "domain": "morphology",
+    "concept": "Complement-like relations in verb-centred nouns",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "The bases of a verb-centred compound noun typically have a semantic relation like that of a verb and its arguments in a clause.",
+    "condition": "A subtype gloss can sound unnatural when the relevant verbal base or derivative seldom appears alone in that sense. The term synthetic compound is also used for the suffixed type.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Their handshake ended the dispute.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The theatre-goer kept the program as a souvenir.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.2.2",
+        "pages": [
+          1652
+        ],
+        "pdf_pages": [
+          1672
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Complement-like relations in verb-centred nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-228",
+    "domain": "morphology",
+    "concept": "Verb-first agentive compound nouns",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "In the pickpocket pattern, the initial verb supplies the action, the following noun corresponds to its object, and the whole denotes the actor or implement.",
+    "condition": "This is an established, nonproductive pattern. It resembles bahuvrihi naming in identifying something by a characteristic property.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A scarecrow stood near the fence.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The harbor built a breakwater across the inlet.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.2.2",
+        "pages": [
+          1652
+        ],
+        "pdf_pages": [
+          1672
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Verb-first agentive compound nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-229",
+    "domain": "morphology",
+    "concept": "Noun plus unsuffixed verbal base",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "The initial noun can correspond to a subject, an object or a prepositional complement in a related clause.",
+    "condition": "A head with both nominal and verbal uses can make the analysis depend on the intended sense, as in dress design.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A cloudburst flooded the path.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We scheduled a haircut after the boat ride.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.2.2",
+        "pages": [
+          1653
+        ],
+        "pdf_pages": [
+          1673
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Noun plus unsuffixed verbal base",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-230",
+    "domain": "morphology",
+    "concept": "Noun plus deverbal noun in er",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "The compound denotes the person, animal or thing filling the subject role. The initial noun typically corresponds to the verb's object or the complement of an understood preposition.",
+    "condition": "The interpretation is generally narrower than for noun plus noun compounds without a verbal centre.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The window cleaner rang the bell.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A factory worker repaired the lawn mower.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.2.2",
+        "pages": [
+          1653,
+          1654
+        ],
+        "pdf_pages": [
+          1673,
+          1674
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Noun plus deverbal noun in er",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-231",
+    "domain": "morphology",
+    "concept": "Constituent structure of er compounds",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "In the noun plus deverbal er pattern, the suffix belongs with the second base. The pattern requires no independent compound verb.",
+    "condition": "Some corresponding verbs exist as back-formations. A derivative like left-hander instead adds the suffix to the full nominal expression.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A shoemaker repaired the strap.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A left-hander sat at the far end of the bench.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.2.2",
+        "pages": [
+          1654
+        ],
+        "pdf_pages": [
+          1674
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Constituent structure of er compounds",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-232",
+    "domain": "morphology",
+    "concept": "Noun plus deverbal noun in ing",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "The first noun generally corresponds to an object or prepositional complement, and the compound typically names an activity.",
+    "condition": "Cockfighting names an organized activity with human instigators. Peace-offering and handwriting illustrate other meanings.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We spent the evening stargazing.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She delivered a peace offering before the meeting.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.2.2",
+        "pages": [
+          1654
+        ],
+        "pdf_pages": [
+          1674
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Noun plus deverbal noun in ing",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-233",
+    "domain": "morphology",
+    "concept": "Compounds with other deverbal nominalizations",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Other nominalizations can form verb-centred compounds with an initial noun, often with an object-like interpretation.",
+    "condition": "The initial noun can instead correspond to a subject, as in heart failure.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Car maintenance took up the morning.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The seminar covered advances in treating heart failure.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.2.2",
+        "pages": [
+          1654
+        ],
+        "pdf_pages": [
+          1674
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Compounds with other deverbal nominalizations",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-234",
+    "domain": "morphology",
+    "concept": "Verb plus preposition compound nouns",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "The productive verb plus preposition pattern can form nouns for people, objects or events. When a related clausal sequence exists, it uses separate words and may contrast in stress.",
+    "condition": "The noun's existence does not require an adjacent verb and preposition with matching sense in a clause.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The protest began with a sit-in.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We built a lean-to behind the shed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.2.2",
+        "pages": [
+          1654,
+          1655
+        ],
+        "pdf_pages": [
+          1674,
+          1675
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Verb plus preposition compound nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-235",
+    "domain": "morphology",
+    "concept": "Preposition plus verb compound nouns",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "A preposition can precede the verbal base, and reversed orders can coexist as distinct lexical items.",
+    "condition": "Some forms correspond to clauses with the opposite order, and some arise through conversion from compound verbs. Neither component alone predicts the order.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The outlook improved after the storm.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The crew posted a lookout on the roof.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.2.2",
+        "pages": [
+          1655
+        ],
+        "pdf_pages": [
+          1675
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Preposition plus verb compound nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-236",
+    "domain": "morphology",
+    "concept": "Preposition with an er-marked verbal base",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "A small class of compound nouns combines an agentive er form with a preposition on either side. In this class the preposition carries main stress.",
+    "condition": "A derivative from a compound verb such as underwriter has a different structure. Some noun meanings have no equivalent clausal expression.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The runner-up thanked the organizers.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "An onlooker pointed to the missing sign.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.2.2",
+        "pages": [
+          1655
+        ],
+        "pdf_pages": [
+          1675
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Preposition with an er-marked verbal base",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-237",
+    "domain": "morphology",
+    "concept": "Plural marking in established er plus preposition compounds",
+    "rule_type": "constraint",
+    "scope": "word",
+    "statement": "In established compounds such as passer-by and runner-up, plural inflection attaches to the er head before the final preposition.",
+    "condition": "The intended noun is the standard compound passer-by or runner-up, and its syntax or meaning requires a plural.",
+    "violation": "The plural ending follows the final preposition instead of the noun head.",
+    "exceptions": [
+      {
+        "description": "The final-s restriction is specific to the listed lexemes. Initial-preposition compounds inflect their final noun head. Nonstandard nonce forms with two er suffixes can also take a final plural ending.",
+        "pages": [
+          1655
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Two passers-by helped push the van.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The runners-up each received a medal.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Two passer-bys helped push the van.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The runner-ups each received a medal.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.2.2",
+        "pages": [
+          1655
+        ],
+        "pdf_pages": [
+          1675
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Plural marking in established er plus preposition compounds",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "spelling_inflection",
+      "error_pattern": "Plural suffix follows by or up in the standard compound noun passer-by or runner-up.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Two passer-bys helped push the van. ||| Two passers-by helped push the van.",
+        "The runner-ups each received a medal. ||| The runners-up each received a medal."
+      ],
+      "learner_explanation": "Passer and runner are the noun heads. Add the plural ending to those words, giving passers-by and runners-up.",
+      "corrected_paragraph_template": "Write passers-by or runners-up for the plural of the established compound.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "A passer-by helped push the van.",
+        "Several bystanders called for help.",
+        "The take-offs were delayed by fog.",
+        "The backup runners warmed up in the corridor."
+      ],
+      "lesson_tags": [
+        "compound-nouns",
+        "plural-inflection"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [
+      "MORPH-236",
+      "MORPH-238"
+    ],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-238",
+    "domain": "morphology",
+    "concept": "Preposition with an ing-marked verbal base",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "A small class of compound nouns combines an ing form with a stressed preposition before or after it.",
+    "condition": "A derivative from an existing verb such as undertaking has a different structure. A nominal phrase may also contain a separate complement after its head.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The judge's summing-up took an hour.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Her upbringing shaped her choice of work.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.2.2",
+        "pages": [
+          1655
+        ],
+        "pdf_pages": [
+          1675
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Preposition with an ing-marked verbal base",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]

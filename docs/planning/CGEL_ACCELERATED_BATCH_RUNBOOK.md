@@ -500,3 +500,7 @@ Printed pp. 1632–1639 add eight substantive pages and 20 inactive records (`MO
 ## Chapter 19 third checkpoint
 
 Printed pp. 1640–1647 add 8 substantive pages and 31 inactive records (`MORPH-181`–`MORPH-211`). Chapter 19 has 74 unprocessed pages. Continue at p. 1648 with non-hyponymic and coordinative noun compounds.
+
+## Chapter 19 fourth checkpoint
+
+Printed pp. 1648–1655 add 8 substantive pages and 27 inactive records (`MORPH-212`–`MORPH-238`), including one inactive plural-placement specification. Chapter 19 has 66 unprocessed pages. Continue at p. 1656 with the rest of verb-centred compound nouns and the start of compound adjectives.
