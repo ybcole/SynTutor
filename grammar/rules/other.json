@@ -40448,5 +40448,1240 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-701",
+    "domain": "other",
+    "concept": "Boundary before non-initial bare coordinates",
+    "rule_type": "constraint",
+    "scope": "other",
+    "statement": "A non-initial coordinate without a coordinator requires a preceding boundary mark in the coordination patterns described here.",
+    "condition": "A simple list contains three noun phrase coordinates, with a coordinator before the final item.",
+    "violation": "The boundary before the middle bare coordinate is unmarked.",
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The basket held apples, pears and plums.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The panel included teachers, librarians and archivists.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The basket held apples pears and plums.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The panel included teachers librarians and archivists.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§3.2.1",
+        "pages": [
+          1739
+        ],
+        "pdf_pages": [
+          1759
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Boundary before non-initial bare coordinates",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "punctuation",
+      "error_pattern": "The boundary before the middle bare coordinate is unmarked.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The basket held apples pears and plums. ||| The basket held apples, pears and plums.",
+        "The panel included teachers librarians and archivists. ||| The panel included teachers, librarians and archivists."
+      ],
+      "learner_explanation": "Put a comma before the middle item, which has no conjunction. The comma before the final conjunction is a separate choice.",
+      "corrected_paragraph_template": "Put a comma before the middle item, which has no conjunction. The comma before the final conjunction is a separate choice.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "We packed socks, gloves, and hats.",
+        "Nora and Sam closed the gate."
+      ],
+      "lesson_tags": [
+        "punctuation",
+        "clause-boundaries"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-702",
+    "domain": "other",
+    "concept": "Coordinate versus stacked modifiers",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "A comma can distinguish two coordinate modifiers from successive layers of modification.",
+    "condition": "The intended reading matters. Stacked modifiers can legitimately appear without a comma.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They rented a small, drafty cabin.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They rented a small mountain cabin.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§3.2.1",
+        "pages": [
+          1739
+        ],
+        "pdf_pages": [
+          1759
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Coordinate versus stacked modifiers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-703",
+    "domain": "other",
+    "concept": "Commas before expanded coordinates",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "A preceding comma is more likely with a long or clausal coordinate, with but, and in a multiple coordination.",
+    "condition": "A short binary subclausal coordination normally has no separating comma. A comma can prevent a misreading.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Nora and Sam closed the gate.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The map was clear, but the trail signs were missing.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§3.2.1",
+        "pages": [
+          1739,
+          1740
+        ],
+        "pdf_pages": [
+          1759,
+          1760
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Commas before expanded coordinates",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-704",
+    "domain": "other",
+    "concept": "Serial comma and house style",
+    "rule_type": "stylistic_or_prescriptive",
+    "scope": "other",
+    "statement": "A comma before the final expanded coordinate in a multiple coordination is the serial comma. House styles differ over its use.",
+    "condition": "Readability can influence punctuation independently of a house preference.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We packed socks, gloves, and hats.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We packed socks, gloves and hats.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§3.2.1",
+        "pages": [
+          1740
+        ],
+        "pdf_pages": [
+          1760
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Serial comma and house style",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-705",
+    "domain": "other",
+    "concept": "Semicolons in layered coordination",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "Semicolons can separate long coordinates or show that a boundary is higher than commas within coordinates. A preceding colon inside a coordinate can require a stronger closing boundary than a comma.",
+    "condition": "With an unambiguous simple series, a semicolon is usually unnecessary.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The team visited Bath, England; Cork, Ireland; and Brest, France.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The lab lacked its most important supply: sterile filters; and testing had to stop.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§3.2.1",
+        "pages": [
+          1740
+        ],
+        "pdf_pages": [
+          1760
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Semicolons in layered coordination",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-706",
+    "domain": "other",
+    "concept": "Punctuation around supplementation markers",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "A marked supplement can follow a comma, semicolon or colon. The marker itself often takes a right comma.",
+    "condition": "The right comma can be absent, and other arrangements can occur. The supplement can be a main clause or a smaller constituent.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The guide named one exception: namely, the upper gallery.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The pass covers local travel, that is, trips within the city.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§3.2.2",
+        "pages": [
+          1740,
+          1741
+        ],
+        "pdf_pages": [
+          1760,
+          1761
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Punctuation around supplementation markers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-707",
+    "domain": "other",
+    "concept": "Colon or comma before an unmarked supplement",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "An asyndetic subclausal supplement can begin with a comma or sometimes a colon. A colon is available only after the clause containing the anchor and favours identifying or elaborative information.",
+    "condition": "A descriptive appositive following a name typically takes a comma. Some final elaborations favour a colon over a comma.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We consulted Lina, the only electrician on duty.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We consulted the only electrician on duty: Lina.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§3.2.2",
+        "pages": [
+          1741
+        ],
+        "pdf_pages": [
+          1761
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Colon or comma before an unmarked supplement",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-708",
+    "domain": "other",
+    "concept": "Boundary before connective adjuncts joining main clauses",
+    "rule_type": "constraint",
+    "scope": "other",
+    "statement": "In ordinary prose a connective adjunct such as however or nevertheless does not by itself license a comma as the only boundary between independent main clauses.",
+    "condition": "However or nevertheless introduces the second of two independent clauses in ordinary prose.",
+    "violation": "Only a comma separates the clauses.",
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The door was locked; however, the side gate was open.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We missed the bus. Nevertheless, we reached the station on time.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The door was locked, however, the side gate was open.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "We missed the bus, nevertheless, we reached the station on time.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§3.2.3",
+        "pages": [
+          1741,
+          1742
+        ],
+        "pdf_pages": [
+          1761,
+          1762
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Boundary before connective adjuncts joining main clauses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "punctuation",
+      "error_pattern": "Only a comma separates the clauses.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The door was locked, however, the side gate was open. ||| The door was locked; however, the side gate was open.",
+        "We missed the bus, nevertheless, we reached the station on time. ||| We missed the bus. Nevertheless, we reached the station on time."
+      ],
+      "learner_explanation": "Use a semicolon or a full stop before the connective adjunct when it introduces a separate main clause.",
+      "corrected_paragraph_template": "Use a semicolon or a full stop before the connective adjunct when it introduces a separate main clause.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The side gate, however, was open.",
+        "The lights went out, so we stopped.",
+        "Some stayed inside, others went out."
+      ],
+      "lesson_tags": [
+        "punctuation",
+        "clause-boundaries"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-709",
+    "domain": "other",
+    "concept": "Commas in closely linked asyndetic clauses",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "A comma can link clauses with close parallelism or a negative-to-positive contrast. A comma is also strongly preferred with linking so and yet in the patterns described.",
+    "condition": "A sequence of imperatives can have a conditional reading with a comma, whereas a semicolon can favour a literal compound directive.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Some volunteers stayed inside, others carried the boxes out.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The lights went out, so we stopped the rehearsal.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§3.2.3",
+        "pages": [
+          1742
+        ],
+        "pdf_pages": [
+          1762
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Commas in closely linked asyndetic clauses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-710",
+    "domain": "other",
+    "concept": "Semicolons in unmarked main-clause combinations",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "A semicolon can separate coordinate clauses or clauses related by elaboration. It can also distinguish an upper-level clause boundary from internal commas.",
+    "condition": "In elaborative cases a colon can sometimes substitute, while a comma can be unsuitable.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The road was closed; the river had flooded overnight.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Some chairs, mostly wooden ones, were repaired; the rest were sold.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§3.2.3",
+        "pages": [
+          1742,
+          1743
+        ],
+        "pdf_pages": [
+          1762,
+          1763
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Semicolons in unmarked main-clause combinations",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-711",
+    "domain": "other",
+    "concept": "Colons introduce elaboration",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "A colon can introduce an explanation, illustration or specification of a clause or a smaller anchor, including more than one anchor.",
+    "condition": "After not only or a related negative expression, the second clause can elaborate the first. A following but would instead explicitly mark coordination.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The decision was easy: the alternative would take twice as long.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She brought more than tools: she brought spare parts for every hinge.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§3.2.3",
+        "pages": [
+          1743
+        ],
+        "pdf_pages": [
+          1763
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Colons introduce elaboration",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-712",
+    "domain": "other",
+    "concept": "Boundary before direct reported speech complements",
+    "rule_type": "constraint",
+    "scope": "other",
+    "statement": "Direct reported speech used as a complement of a reporting verb requires preceding punctuation in the construction described.",
+    "condition": "Direct reported speech follows the reporting verb as its complement in ordinary prose.",
+    "violation": "There is no punctuation at the boundary before the direct speech.",
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mara asked, “When will the gates open?”",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Sam replied, “The keys are on the counter.”",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Mara asked “When will the gates open?”",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Sam replied “The keys are on the counter.”",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§3.2.4",
+        "pages": [
+          1743
+        ],
+        "pdf_pages": [
+          1763
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Boundary before direct reported speech complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "punctuation",
+      "error_pattern": "There is no punctuation at the boundary before the direct speech.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Mara asked “When will the gates open?” ||| Mara asked, “When will the gates open?”",
+        "Sam replied “The keys are on the counter.” ||| Sam replied, “The keys are on the counter.”"
+      ],
+      "learner_explanation": "Put a comma before the direct speech. A colon can introduce a longer or more complex report.",
+      "corrected_paragraph_template": "Put a comma before the direct speech. A colon can introduce a longer or more complex report.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Mara asked when the gates would open.",
+        "“The keys are on the counter,” Sam replied."
+      ],
+      "lesson_tags": [
+        "punctuation",
+        "clause-boundaries"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-713",
+    "domain": "other",
+    "concept": "Punctuation between a verb and an ordinary complement",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "A verb and its ordinary integrated complement are normally adjacent without a separating punctuation mark.",
+    "condition": "Direct speech takes a boundary mark, and a colon can precede some list complements or a specifying complement of be. The source notes exceptional disambiguation around extraposition.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mara said that the gates were open.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Sam noticed that the keys were on the counter.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§3.2.4",
+        "pages": [
+          1743,
+          1744
+        ],
+        "pdf_pages": [
+          1763,
+          1764
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Punctuation between a verb and an ordinary complement",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-714",
+    "domain": "other",
+    "concept": "Optional comma at a verbal gap",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "A comma can mark the site of omitted material in a gapped coordinate.",
+    "condition": "In short cases it is often omitted, especially after a comma already marking the coordinate boundary.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The first group worked in the archive; the second, in the museum.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "One stayed inside, the other outside.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§3.2.4",
+        "pages": [
+          1744
+        ],
+        "pdf_pages": [
+          1764
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Optional comma at a verbal gap",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-715",
+    "domain": "other",
+    "concept": "Comma at the subject–verb boundary",
+    "rule_type": "constraint",
+    "scope": "other",
+    "statement": "An isolated comma between a subject and its verb is normally inadmissible.",
+    "condition": "An unambiguous subject is immediately followed by its finite verb, with no intervening supplement or dislocation.",
+    "violation": "A comma separates the subject from its verb.",
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The repair crew arrived at dawn.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The cost of the new equipment surprised us.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The repair crew, arrived at dawn.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The cost of the new equipment, surprised us.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§3.2.4",
+        "pages": [
+          1744
+        ],
+        "pdf_pages": [
+          1764
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Comma at the subject–verb boundary",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "punctuation",
+      "error_pattern": "A comma separates the subject from its verb.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The repair crew, arrived at dawn. ||| The repair crew arrived at dawn.",
+        "The cost of the new equipment, surprised us. ||| The cost of the new equipment surprised us."
+      ],
+      "learner_explanation": "Keep the subject and verb together. A comma is available exceptionally when it prevents a genuine misreading.",
+      "corrected_paragraph_template": "Keep the subject and verb together. A comma is available exceptionally when it prevents a genuine misreading.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Most of those who could, left early.",
+        "What she thought it was, was unclear.",
+        "The crew, exhausted by the climb, arrived at dawn."
+      ],
+      "lesson_tags": [
+        "punctuation",
+        "clause-boundaries"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-716",
+    "domain": "other",
+    "concept": "Delimiting commas and stronger boundaries",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "An interpolated element can have commas on both boundaries. A coinciding stronger boundary can absorb one of those commas.",
+    "condition": "The beginning of a text itself provides a boundary. Light punctuation can omit a left comma after some coordinators and short connective adjuncts.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The keys, it seems, are still in the drawer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The keys are still in the drawer, it seems.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§3.2.5",
+        "pages": [
+          1744,
+          1745
+        ],
+        "pdf_pages": [
+          1764,
+          1765
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Delimiting commas and stronger boundaries",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-717",
+    "domain": "other",
+    "concept": "Delimitation of vocatives parentheticals and dislocations",
+    "rule_type": "constraint",
+    "scope": "other",
+    "statement": "Vocatives and parentheticals require delimiting punctuation in the constructions described. Peripheral phrases in left or right dislocation also take a boundary comma.",
+    "condition": "A name used to address the listener interrupts a clause or follows a complete directive.",
+    "violation": "The vocative has no delimiting punctuation.",
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Could you, Lina, check the latch?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Bring the keys, Omar.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Could you Lina check the latch?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Bring the keys Omar.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§3.2.5",
+        "pages": [
+          1745
+        ],
+        "pdf_pages": [
+          1765
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Delimitation of vocatives parentheticals and dislocations",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "punctuation",
+      "error_pattern": "The vocative has no delimiting punctuation.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Could you Lina check the latch? ||| Could you, Lina, check the latch?",
+        "Bring the keys Omar. ||| Bring the keys, Omar."
+      ],
+      "learner_explanation": "Use commas to set off the name when it addresses the listener.",
+      "corrected_paragraph_template": "Use commas to set off the name when it addresses the listener.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Lina checked the latch.",
+        "Could you ask Lina to check the latch?",
+        "Omar! Bring the keys."
+      ],
+      "lesson_tags": [
+        "punctuation",
+        "clause-boundaries"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-718",
+    "domain": "other",
+    "concept": "Delimitation of supplementary relatives and participials",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "Supplementary relatives and detached participials are usually set apart by punctuation.",
+    "condition": "Unpunctuated supplementary examples are attested. An interpolated supplementary noun phrase also takes delimiting punctuation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The guide, who had already checked the route, took the first group.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Tired after the climb, Noor stopped at the gate.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§3.2.5",
+        "pages": [
+          1745
+        ],
+        "pdf_pages": [
+          1765
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Delimitation of supplementary relatives and participials",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-719",
+    "domain": "other",
+    "concept": "Delimiting punctuation with coordinators",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Commas around an expression beginning with a coordinator can present it as a supplement or clarify a shared following constituent.",
+    "condition": "A final supplementary coordinate may show only its opening comma. Delimiting commas in delayed right-constituent constructions are optional.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The students, and indeed the staff, welcomed the news.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She was both proud of, and grateful for, the team.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§3.2.5",
+        "pages": [
+          1746
+        ],
+        "pdf_pages": [
+          1766
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Delimiting punctuation with coordinators",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-720",
+    "domain": "other",
+    "concept": "Factors favouring delimiting commas",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "Delimitation is more common with adjuncts than with integrated complements. Length, complexity, position, nearby punctuation, meaning, misreading and prosody can affect the decision.",
+    "condition": "Commas are more likely for internal or fronted adjuncts than for final ones. Multiple close marks can create a heavy style.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The result, in fact, surprised the whole team.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The result surprised the whole team in the end.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§3.2.5",
+        "pages": [
+          1746
+        ],
+        "pdf_pages": [
+          1766
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Factors favouring delimiting commas",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]

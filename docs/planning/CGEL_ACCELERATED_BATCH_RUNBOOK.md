@@ -544,3 +544,7 @@ Printed pp. 1723–1730 account for one contents page and 7 substantive pages an
 ## Chapter 20 second checkpoint
 
 Printed pp. 1731–1738 add eight substantive pages and 18 inactive records (`OTH-683`–`OTH-700`), including three inactive punctuation specifications. Chapter 20 has 26 unprocessed pages. Continue at p. 1739 with uses of the secondary boundary marks.
+
+## Chapter 20 third checkpoint
+
+Printed pp. 1739–1746 add eight substantive pages and add 20 inactive records (`OTH-701`–`OTH-720`), including five inactive punctuation specifications. Chapter 20 has 18 unprocessed pages. Continue at p. 1747 with further delimiting comma patterns.
