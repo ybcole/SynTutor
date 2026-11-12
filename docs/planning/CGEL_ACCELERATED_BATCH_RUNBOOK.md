@@ -3,7 +3,13 @@
 **Binding authority:** `docs/planning/CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md` §0, §§3–9.  
 **Scope:** all 20 Cambridge chapters; **no changes** to B-R syntax-tree authority, XAI proof policy, user English-only policy, source citation quality, independent approval, detector eligibility, or measured performance requirements.
 
-## Quick-start for the next execution
+## Current execution checkpoint — 2026-11-12
+
+Chapter 15 is source-extracted through printed p. 1362: **88 substantive pages, 2 documented contents-only skips, no unprocessed pages**. The next Phase B priority is **Chapter 17, printed pp. 1449–1564**, beginning with its contents pages and the first substantive text. Earlier Chapter 4 through Chapter 15 quick-starts below are historical scaffolding only; do not restart their completed source extraction. Follow the master plan §0 adaptive source-audit requirements, preserve all QA gates, and use the current coverage ledger rather than snapshot counts.
+
+---
+
+## Historical Chapter 4 quick-start (completed)
 
 **Next chapter:** Chapter 4, *The clause: complements*, **printed pp. 213–322**. Chapter 3 printed pp. 71–212 are already fully accounted for as **139 extracted + three contents-only skips**, while **1,610 full-book pages remain unprocessed**. Do not redo Chapter 3 extraction or postpone Chapter 4 for additional speculative Phase C prototypes.
 
