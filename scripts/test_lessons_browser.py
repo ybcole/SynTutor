@@ -588,6 +588,13 @@ try:
    expect(view.locator('.constituent-pre-test-status')).to_have_text(f'Knowledge check complete. {score} of 3 correct.')
    next_button.click()
    expect(view.locator('article h3')).to_have_count(4)
+   reference=view.locator('article > .lesson-example-sentence')
+   if ident.startswith('br-'):
+    expect(reference).to_be_visible()
+    if ident=='br-03':
+     expect(reference).to_have_text('The children seemed [very cheerful].')
+     expect(reference).to_have_css('text-align','center')
+     assert reference.bounding_box()['y'] < view.get_by_role('heading',name='Find the head',exact=True).bounding_box()['y']
    expect(view.locator('.lesson-key-terms')).to_have_count(0)
    expect(view.locator('article > ul:not(.lesson-transfer-context) > li')).to_have_count(2)
    next_button.click()

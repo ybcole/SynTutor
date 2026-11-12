@@ -14,12 +14,13 @@ const chapters = {
     example: 'The children seemed [very cheerful].',
     introExample: 'The adjective “cheerful” describes the children, and “very” makes that description stronger. The whole group is an adjective phrase (AP) because it is built around the adjective.',
     preview: ['Use the contrast between “cheerful” and “very cheerful” to find the head.', 'Show the head and degree word on the tree.', 'Use the same reasoning to analyse a new description.'],
+    conceptLead: 'Use the bracketed description as a reference. Compare what happens when each word is removed.',
     concepts: [
-      ['Find the head', 'Start with “The children seemed very cheerful” and remove “very”. In “The children seemed cheerful”, the adjective still supplies the description. The word that gives the phrase its grammatical character is its head. Here, “cheerful” is the head, so the group is an adjective phrase with or without “very”.'],
-      ['Check what the degree word adds', 'Now try removing the head from the original sentence. “The children seemed very” leaves the description incomplete. In this example, “very” needs an adjective to modify. It is a degree word because it indicates how strongly the description applies. Replacing it with “quite” or “rather” changes the degree while keeping “cheerful” as the head.'],
-      ['Read the labels', 'The tree shows both jobs. A labels the adjective “cheerful”, and DEG labels the degree word “very”. Both branches join under AP, the label for the whole phrase. Removing the degree word removes its branch, while A still heads the AP.'],
+      ['Find the head', 'First remove “very”. In “The children seemed cheerful”, “cheerful” still describes the children. It is the head because it gives the whole group its grammatical category. Both “very cheerful” and “cheerful” on its own are adjective phrases.'],
+      ['Check what the degree word adds', 'Now remove “cheerful” from the reference sentence. “The children seemed very” leaves the description unfinished. In this use, “very” needs a description to modify. It is a degree word because it shows how strongly the description applies. Switching to “quite cheerful” changes the degree while keeping the same head.'],
+      ['Read the labels', 'The labels separate the two words from the phrase they form. A labels the adjective “cheerful”, DEG labels “very”, and AP labels the whole description. In the tree, A and DEG are both directly under AP.'],
     ],
-    contrast: ['Carry the comparison into the tree', ['In “very cheerful”, the AP covers the description and its degree word.', 'In “cheerful”, the AP covers just the adjective. The head stays the same in both trees.']],
+    contrast: ['Carry the comparison into the tree', ['With “very”, AP covers both words and has an A and a DEG branch.', 'Without “very”, AP covers “cheerful” alone and keeps the A branch. Compare those two trees on the next page.']],
     opening: [
       ['In “quite bright”, which word tells you the degree of brightness?', ['quite', 'bright', 'both words'], 0],
       ['In “very quiet”, which label stands for the whole adjective phrase?', ['A', 'AP', 'DEG'], 1],
@@ -233,6 +234,10 @@ export const phraseStructureArticles = Object.fromEntries(Object.entries(chapter
       list('ul', chapter.preview);
     }
     if (page === 1) {
+      if (id.startsWith('br-')) {
+        body.append(el('p', chapter.conceptLead ?? 'Use the opening example as a reference for the explanation below.'));
+        body.append(lessonExample(el, chapter.example));
+      }
       sections(chapter.concepts);
       body.append(el('h3', chapter.contrast[0]));
       list('ul', chapter.contrast[1]);
