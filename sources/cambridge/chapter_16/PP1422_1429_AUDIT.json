@@ -1,0 +1,126 @@
+{
+  "manifest_version": 1,
+  "chapter": 16,
+  "printed_start": 1422,
+  "printed_end": 1429,
+  "report": "sources/cambridge/chapter_16/PP1422_1429_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1422,
+    "pdf_page": 1442
+  },
+  "added_rule_ids": [
+    "CLS-1423",
+    "CLS-1424",
+    "CLS-1425",
+    "CLS-1426",
+    "CLS-1427",
+    "CLS-1428",
+    "CLS-1429",
+    "CLS-1430",
+    "CLS-1431",
+    "CLS-1432",
+    "CLS-1433",
+    "CLS-1434",
+    "CLS-1435",
+    "CLS-1436",
+    "CLS-1437",
+    "CLS-1438",
+    "CLS-1439",
+    "CLS-1440",
+    "CLS-1441",
+    "CLS-1442",
+    "CLS-1443",
+    "CLS-1444"
+  ],
+  "page_checks": [
+    {
+      "page": 1422,
+      "status": "extracted",
+      "section": "§9.3",
+      "summary": "Nonfinite, adjective and PP values, bare who, missing non-cleft counterparts and footnotes 32–33.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1423,
+      "status": "extracted",
+      "section": "§9.3",
+      "summary": "Headed relatives, the pseudo-cleft analysis and the extraposition qualification in footnote 34.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1424,
+      "status": "extracted",
+      "section": "§9.4.1",
+      "summary": "Old and new presuppositions, foregrounding and focus, and footnotes 35–36.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1425,
+      "status": "extracted",
+      "section": "§§9.4.1–9.4.2",
+      "summary": "Polarity and multiple foci, focus within a constituent, familiar referents, and the pseudo-cleft familiarity condition.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1426,
+      "status": "extracted",
+      "section": "§9.4.2",
+      "summary": "Situational salience, contrast, truncated answers, and the preference for pseudo-clefts without contrast.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1427,
+      "status": "extracted",
+      "section": "§§9.4.2–10.1.1",
+      "summary": "Questioning foregrounded values, discourse-old material, the voice system and active/passive alignment.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1428,
+      "status": "extracted",
+      "section": "§10.1.1",
+      "summary": "Four structural changes, long and short passives, means adjuncts and exceptions in footnotes 37–38.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1429,
+      "status": "extracted",
+      "section": "§10.1.1",
+      "summary": "Externalisation, passive and perfect participles, concealed passive morphology and agreement on auxiliary be.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

@@ -21,13 +21,13 @@
 | 13. Comparative constructions | 74 | 72 | 0 | 2 | 0 | Source extraction complete |
 | 14. Non-finite and verbless clauses | 102 | 99 | 0 | 3 | 0 | Source-extracted |
 | 15. Coordination and supplementation | 90 | 88 | 0 | 2 | 0 | Source-extracted; independent QA pending |
-| 16. Information packaging | 86 | 0 | 85 | 1 | 0 | Incomplete |
+| 16. Information packaging | 86 | 83 | 0 | 3 | 0 | Source extraction complete |
 | 17. Deixis and anaphora | 116 | 114 | 0 | 2 | 0 | Source extraction complete |
 | 18. Inflectional morphology | 56 | 53 | 0 | 3 | 0 | Source extraction complete |
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **1493 extracted**, 228 unprocessed, 41 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **1576 extracted**, 143 unprocessed, 43 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -452,3 +452,63 @@ Source audit: `sources/cambridge/chapter_13/PP1148_1155_REPORT.md`.
 Chapter 13 source extraction is complete. Printed pp. 1097–1170 are accounted for as 72 extracted pages and two contents-only pages. The final 15 pages add 36 inactive records (`CLS-1243`–`CLS-1278`), including four `spec_only` constraints. Chapter 13 adds 175 records in total. The next Phase B chapter is Chapter 16, starting at printed p. 1363.
 
 Source audit: `sources/cambridge/chapter_13/PP1156_1170_REPORT.md`.
+
+## Chapter 16 first checkpoint
+
+Printed pp. 1363–1373 account for 9 substantive pages and two contents-only pages, adding 21 inactive records (`CLS-1279`–`CLS-1299`). The chapter has 74 unprocessed pages and one previously accounted-for textless page. Continue at p. 1374 with non-focus complement preposing.
+
+Source audit: `sources/cambridge/chapter_16/PP1363_1373_REPORT.md`.
+
+## Chapter 16 second checkpoint
+
+Printed pp. 1374–1381 add eight substantive pages and 21 inactive records (`CLS-1300`–`CLS-1320`). Chapter 16 has 66 unprocessed pages. Continue at p. 1382 with the end of focus preposing and the start of postposing.
+
+Source audit: `sources/cambridge/chapter_16/PP1374_1381_REPORT.md`.
+
+## Chapter 16 third checkpoint
+
+Printed pp. 1382–1389 add eight substantive pages and 19 inactive records (`CLS-1321`–`CLS-1339`), including two `spec_only` constraints. Chapter 16 has 58 unprocessed pages. Continue at p. 1390 with the specialized here/there patterns and the start of existentials and presentationals.
+
+Source audit: `sources/cambridge/chapter_16/PP1382_1389_REPORT.md`.
+
+## Chapter 16 fourth checkpoint
+
+Printed pp. 1390–1397 add eight substantive pages and 21 inactive records (`CLS-1340`–`CLS-1360`). Chapter 16 has 50 unprocessed pages. Continue at p. 1398 with displaced definite NPs and existential pragmatics.
+
+Source audit: `sources/cambridge/chapter_16/PP1390_1397_REPORT.md`.
+
+## Chapter 16 fifth checkpoint
+
+Printed pp. 1398–1405 add eight substantive pages and 17 inactive records (`CLS-1361`–`CLS-1377`). Chapter 16 has 42 unprocessed pages. Continue at p. 1406 with processing factors and extraposition.
+
+Source audit: `sources/cambridge/chapter_16/PP1398_1405_REPORT.md`.
+
+## Chapter 16 sixth checkpoint
+
+Printed pp. 1406–1413 add eight substantive pages and 23 inactive records (`CLS-1378`–`CLS-1400`), including one `spec_only` constraint. Chapter 16 has 34 unprocessed pages. Continue at p. 1414 with the transition from dislocation to clefts.
+
+Source audit: `sources/cambridge/chapter_16/PP1406_1413_REPORT.md`.
+
+## Chapter 16 seventh checkpoint
+
+Printed pp. 1414–1421 add eight substantive pages and 22 inactive records (`CLS-1401`–`CLS-1422`), including one `spec_only` constraint. Chapter 16 has 26 unprocessed pages. Continue at p. 1422 with the remaining pseudo-cleft patterns.
+
+Source audit: `sources/cambridge/chapter_16/PP1414_1421_REPORT.md`.
+
+## Chapter 16 eighth checkpoint
+
+Printed pp. 1422–1429 add eight substantive pages and 22 inactive records (`CLS-1423`–`CLS-1444`), including one `spec_only` constraint. Chapter 16 has 18 unprocessed pages. Continue at p. 1430 with the be-, get- and bare-passive distinction.
+
+Source audit: `sources/cambridge/chapter_16/PP1422_1429_REPORT.md`.
+
+## Chapter 16 ninth checkpoint
+
+Printed pp. 1430–1437 add eight substantive pages and 20 inactive records (`CLS-1445`–`CLS-1464`), including one `spec_only` constraint. Chapter 16 has 10 unprocessed pages. Continue at p. 1438 with the remaining adjectival-passive diagnostics.
+
+Source audit: `sources/cambridge/chapter_16/PP1430_1437_REPORT.md`.
+
+## Chapter 16 completion checkpoint
+
+Chapter 16 source extraction is complete. Printed pp. 1363–1448 comprise 83 extracted pages, two contents-only pages and one blank page. The final batch adds 22 inactive records (`CLS-1465`–`CLS-1486`), including one `spec_only` constraint. Chapter 16 adds 208 records in total. Chapter 19 is next, beginning at printed p. 1621.
+
+Source audit: `sources/cambridge/chapter_16/PP1438_1448_REPORT.md`.

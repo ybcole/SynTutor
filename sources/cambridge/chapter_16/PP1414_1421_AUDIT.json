@@ -1,0 +1,126 @@
+{
+  "manifest_version": 1,
+  "chapter": 16,
+  "printed_start": 1414,
+  "printed_end": 1421,
+  "report": "sources/cambridge/chapter_16/PP1414_1421_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1414,
+    "pdf_page": 1434
+  },
+  "added_rule_ids": [
+    "CLS-1401",
+    "CLS-1402",
+    "CLS-1403",
+    "CLS-1404",
+    "CLS-1405",
+    "CLS-1406",
+    "CLS-1407",
+    "CLS-1408",
+    "CLS-1409",
+    "CLS-1410",
+    "CLS-1411",
+    "CLS-1412",
+    "CLS-1413",
+    "CLS-1414",
+    "CLS-1415",
+    "CLS-1416",
+    "CLS-1417",
+    "CLS-1418",
+    "CLS-1419",
+    "CLS-1420",
+    "CLS-1421",
+    "CLS-1422"
+  ],
+  "page_checks": [
+    {
+      "page": 1414,
+      "status": "extracted",
+      "section": "§§8.3–9.1",
+      "summary": "Prosody, punctuation and information status of dislocation versus extraposition, then the cleft inventory and terminology in footnote 26.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1415,
+      "status": "extracted",
+      "section": "§9.1",
+      "summary": "Specifying be, foregrounded subject and object, and the status and source of cleft presuppositions in footnotes 27–28.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1416,
+      "status": "extracted",
+      "section": "§§9.1–9.2",
+      "summary": "Variable assignment, exhaustiveness, the it-cleft structure and the ambiguity with an integrated relative.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1417,
+      "status": "extracted",
+      "section": "§9.2",
+      "summary": "Ascriptive look-alikes, discourse-licensed truncation, unbounded dependency and the range of foregrounded elements.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1418,
+      "status": "extracted",
+      "section": "§9.2",
+      "summary": "NP functions, PP and clausal foregrounding, adjunct semantics, and the case cross-reference in footnote 29.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1419,
+      "status": "extracted",
+      "section": "§9.2",
+      "summary": "Nonfinite restrictions, AdvP and AdjP foregrounding, raising, negation and its implicature in footnote 30, and default tense matching.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1420,
+      "status": "extracted",
+      "section": "§§9.2–9.3",
+      "summary": "Mixed tense, foregrounded complement preposing, nonfinite and demonstrative variants, restricted seem in footnote 31, and pseudo-cleft structure.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1421,
+      "status": "extracted",
+      "section": "§9.3",
+      "summary": "Open interrogative and ascriptive look-alikes, value versus variable, and foregrounded NPs and content clauses.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

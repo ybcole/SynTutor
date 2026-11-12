@@ -1,0 +1,124 @@
+{
+  "manifest_version": 1,
+  "chapter": 16,
+  "printed_start": 1430,
+  "printed_end": 1437,
+  "report": "sources/cambridge/chapter_16/PP1430_1437_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1430,
+    "pdf_page": 1450
+  },
+  "added_rule_ids": [
+    "CLS-1445",
+    "CLS-1446",
+    "CLS-1447",
+    "CLS-1448",
+    "CLS-1449",
+    "CLS-1450",
+    "CLS-1451",
+    "CLS-1452",
+    "CLS-1453",
+    "CLS-1454",
+    "CLS-1455",
+    "CLS-1456",
+    "CLS-1457",
+    "CLS-1458",
+    "CLS-1459",
+    "CLS-1460",
+    "CLS-1461",
+    "CLS-1462",
+    "CLS-1463",
+    "CLS-1464"
+  ],
+  "page_checks": [
+    {
+      "page": 1430,
+      "status": "extracted",
+      "section": "§10.1.1",
+      "summary": "Bare and expanded passive forms, long and short combinations, overt and implicit subjects.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1431,
+      "status": "extracted",
+      "section": "§§10.1.1–10.1.2",
+      "summary": "Implicit subjects under embedding, adjectival ambiguity, and monotransitive externalisation.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1432,
+      "status": "extracted",
+      "section": "§10.1.2",
+      "summary": "Lexical and co-complement restrictions, first and second passives, and infinitival marking in footnote 39.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1433,
+      "status": "extracted",
+      "section": "§10.1.2",
+      "summary": "Stranding, selected versus free prepositions, idiomatic readings and intervening objects.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1434,
+      "status": "extracted",
+      "section": "§10.1.2",
+      "summary": "Lexical and locative restrictions, clausal externalisation, extraposition, and the restriction with an NP object.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1435,
+      "status": "extracted",
+      "section": "§10.1.2",
+      "summary": "Declarative and interrogative frames, gerund-participials, infinitivals, and passive-only verbs.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1436,
+      "status": "extracted",
+      "section": "§§10.1.2–10.1.3",
+      "summary": "Passive-only frames and variety qualifications in footnote 40, verbal–adjectival ambiguity, degree modification and footnote 41.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1437,
+      "status": "extracted",
+      "section": "§10.1.3",
+      "summary": "Limitations of degree tests, predicative-verb substitution, negative un-, by phrases and the dynamic–stative contrast.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

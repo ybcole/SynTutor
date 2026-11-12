@@ -1,0 +1,159 @@
+{
+  "manifest_version": 1,
+  "chapter": 16,
+  "printed_start": 1438,
+  "printed_end": 1448,
+  "report": "sources/cambridge/chapter_16/PP1438_1448_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1438,
+    "pdf_page": 1458
+  },
+  "added_rule_ids": [
+    "CLS-1465",
+    "CLS-1466",
+    "CLS-1467",
+    "CLS-1468",
+    "CLS-1469",
+    "CLS-1470",
+    "CLS-1471",
+    "CLS-1472",
+    "CLS-1473",
+    "CLS-1474",
+    "CLS-1475",
+    "CLS-1476",
+    "CLS-1477",
+    "CLS-1478",
+    "CLS-1479",
+    "CLS-1480",
+    "CLS-1481",
+    "CLS-1482",
+    "CLS-1483",
+    "CLS-1484",
+    "CLS-1485",
+    "CLS-1486"
+  ],
+  "page_checks": [
+    {
+      "page": 1438,
+      "status": "extracted",
+      "section": "§10.1.3",
+      "summary": "Stative verbal passives, semantic overlap, aspectual still, and dynamic predicates with adjectival complements.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1439,
+      "status": "extracted",
+      "section": "§10.1.3",
+      "summary": "Complementation diagnostics, by and other prepositions, and the change-of-state and un- qualifications in footnotes 42–43.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1440,
+      "status": "extracted",
+      "section": "§§10.1.3–10.1.4",
+      "summary": "Continuative go, inseparable prepositions, negative adjective productivity, specialized adjectives and footnote 44.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1441,
+      "status": "extracted",
+      "section": "§10.1.4",
+      "summary": "Verbal and predicative get, lexical acceptability, ambiguous cases and the frequency of long passives.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1442,
+      "status": "extracted",
+      "section": "§10.1.4",
+      "summary": "Register, dynamic readings, optional subject responsibility, adversity and benefit, and perception contrasts.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1443,
+      "status": "extracted",
+      "section": "§§10.1.4–10.2",
+      "summary": "Perception frames, complex catenative get, alternative analyses and the start of passive-choice pragmatics.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1444,
+      "status": "extracted",
+      "section": "§10.2",
+      "summary": "Relative discourse familiarity, addressee familiarity and comparison with inversion.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1445,
+      "status": "extracted",
+      "section": "§10.2",
+      "summary": "Differences from inversion, interrogative and preposing combinations, and the introduction of short-passive motivations.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1446,
+      "status": "extracted",
+      "section": "§10.2",
+      "summary": "Unknown, generic and backgrounded participants, diffuse causes and locative significance.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1447,
+      "status": "extracted",
+      "section": "§10.2",
+      "summary": "Material change versus ordinary location and matching active alternatives.",
+      "source_checked": true,
+      "nonprose_present": false,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1448,
+      "status": "skipped_with_reason",
+      "section": "Blank",
+      "summary": "Blank terminal page confirmed visually and in extracted text.",
+      "source_checked": true,
+      "nonprose_present": false,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

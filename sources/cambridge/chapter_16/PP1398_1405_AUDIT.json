@@ -1,0 +1,121 @@
+{
+  "manifest_version": 1,
+  "chapter": 16,
+  "printed_start": 1398,
+  "printed_end": 1405,
+  "report": "sources/cambridge/chapter_16/PP1398_1405_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1398,
+    "pdf_page": 1418
+  },
+  "added_rule_ids": [
+    "CLS-1361",
+    "CLS-1362",
+    "CLS-1363",
+    "CLS-1364",
+    "CLS-1365",
+    "CLS-1366",
+    "CLS-1367",
+    "CLS-1368",
+    "CLS-1369",
+    "CLS-1370",
+    "CLS-1371",
+    "CLS-1372",
+    "CLS-1373",
+    "CLS-1374",
+    "CLS-1375",
+    "CLS-1376",
+    "CLS-1377"
+  ],
+  "page_checks": [
+    {
+      "page": 1398,
+      "status": "extracted",
+      "section": "§6.2.2",
+      "summary": "Reminder definites, echoed reminders, and new tokens of familiar types.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1399,
+      "status": "extracted",
+      "section": "§6.2.2",
+      "summary": "Type and token reference, adjective and demonstrative cues, variable instantiation and the ambiguity in footnote 15.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1400,
+      "status": "extracted",
+      "section": "§6.2.2",
+      "summary": "Lists, cancellable non-exhaustiveness, and uniquely identifying descriptions.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1401,
+      "status": "extracted",
+      "section": "§6.2.2",
+      "summary": "Variety-marked false definite this, existential quantifier restrictions and nonliteral universals in footnote 16.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1402,
+      "status": "extracted",
+      "section": "§6.3",
+      "summary": "Presentational verb inventory, extensions, discourse-new definites, and rare transitive evidence in footnote 17.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1403,
+      "status": "extracted",
+      "section": "§§6.3–7.1",
+      "summary": "Five definite presentational patterns, clausal extraposition, dummy it and the late-adjunct qualification in footnote 18.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1404,
+      "status": "extracted",
+      "section": "§7.1",
+      "summary": "Pragmatic constraints on basic order, assumed familiarity and the NP right-dislocation contrast in footnote 19.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1405,
+      "status": "extracted",
+      "section": "§7.1",
+      "summary": "Familiarity versus presupposition, heavy familiar subjects, and the opening processing observation.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}
