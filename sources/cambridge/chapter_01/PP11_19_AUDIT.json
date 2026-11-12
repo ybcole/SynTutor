@@ -1,0 +1,132 @@
+{
+  "manifest_version": 1,
+  "chapter": 1,
+  "printed_start": 11,
+  "printed_end": 19,
+  "report": "sources/cambridge/chapter_01/PP11_19_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 11,
+    "pdf_page": 31
+  },
+  "added_rule_ids": [
+    "OTH-617",
+    "OTH-618",
+    "OTH-619",
+    "OTH-620",
+    "OTH-621",
+    "OTH-622",
+    "OTH-623",
+    "OTH-624",
+    "OTH-625",
+    "OTH-626",
+    "OTH-627",
+    "OTH-628",
+    "OTH-629",
+    "OTH-630",
+    "OTH-631",
+    "OTH-632",
+    "OTH-633"
+  ],
+  "page_checks": [
+    {
+      "page": 11,
+      "status": "extracted",
+      "section": "§§2.2–3",
+      "summary": "Descriptive evidence and corpus notes, scope across media, and medium-neutral terminology.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 12,
+      "status": "extracted",
+      "section": "§3",
+      "summary": "Citation practice, accessibility of corpora and distinguishing speech disfluencies from grammatical patterns.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 13,
+      "status": "extracted",
+      "section": "§§3–3.1.1",
+      "summary": "Planning and register in speech and writing, accent variation and non-rhotic pronunciation.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 14,
+      "status": "extracted",
+      "section": "§§3.1.1–3.1.2",
+      "summary": "Rhotic pronunciation, accent family exceptions, linking and intrusive r, and motivation for common notation.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 15,
+      "status": "extracted",
+      "section": "§3.1.2",
+      "summary": "Accent-neutral inventory, vowel and consonant categories, underlined alignments, stress and syllabicity.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 16,
+      "status": "extracted",
+      "section": "§3.1.2",
+      "summary": "Superscript r, weak-vowel cover symbol and accent correspondences for LOT, GOAT and other vowel distinctions.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 17,
+      "status": "extracted",
+      "section": "§§3.1.2–3.2",
+      "summary": "STRUT and schwa, yod and medial consonants, simple and composite spelling symbols and speech categories.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 18,
+      "status": "extracted",
+      "section": "§§3.2–4.1",
+      "summary": "Roles of written letters, spelling-conditioned doubling and the opening argument for productive generalizations.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 19,
+      "status": "extracted",
+      "section": "§4.1",
+      "summary": "General statements for novel sentences, evidence-based syntactic analysis and departures from traditional category divisions.",
+      "source_checked": true,
+      "nonprose_present": false,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

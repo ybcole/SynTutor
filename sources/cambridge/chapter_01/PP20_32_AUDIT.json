@@ -1,0 +1,179 @@
+{
+  "manifest_version": 1,
+  "chapter": 1,
+  "printed_start": 20,
+  "printed_end": 32,
+  "report": "sources/cambridge/chapter_01/PP20_32_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 20,
+    "pdf_page": 40
+  },
+  "added_rule_ids": [
+    "OTH-634",
+    "OTH-635",
+    "OTH-636",
+    "OTH-637",
+    "OTH-638",
+    "OTH-639",
+    "OTH-640",
+    "OTH-641",
+    "OTH-642",
+    "OTH-643",
+    "OTH-644",
+    "OTH-645",
+    "OTH-646",
+    "OTH-647",
+    "OTH-648",
+    "OTH-649",
+    "OTH-650",
+    "OTH-651",
+    "OTH-652",
+    "OTH-653"
+  ],
+  "page_checks": [
+    {
+      "page": 20,
+      "status": "extracted",
+      "section": "§§4.1–4.2.1",
+      "summary": "Scope of syntactic analysis, shaded technical notes, three organizing concepts and the unlabelled tree.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 21,
+      "status": "extracted",
+      "section": "§§4.2.1–4.2.2",
+      "summary": "Immediate and ultimate constituents, integrated modal adjunct contrasts and categories.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 22,
+      "status": "extracted",
+      "section": "§4.2.2",
+      "summary": "Lexical inventory, departures from traditional classes, phrasal categories and one-word phrase qualification.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 23,
+      "status": "extracted",
+      "section": "§§4.2.2–4.2.3",
+      "summary": "Phrasal inventory and abbreviations, category-labeled tree and the distinction between function and category.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 24,
+      "status": "extracted",
+      "section": "§4.2.3",
+      "summary": "Heads and dependent distribution, predicate and predicator, and the complement, modifier and determiner distinctions.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 25,
+      "status": "extracted",
+      "section": "§4.2.3",
+      "summary": "Determiner versus determinative, non-headed constructions, supplementary adjunct guard and relational tree labels.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 26,
+      "status": "extracted",
+      "section": "§§4.2.3–4.3",
+      "summary": "Combined labels, singulary versus binary branching, and the syntax–morphology division.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 27,
+      "status": "extracted",
+      "section": "§4.3",
+      "summary": "Word forms, tokens, variable and invariable lexemes, analytic comparison and inflectional categories.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 28,
+      "status": "extracted",
+      "section": "§§4.3–4.4",
+      "summary": "Inflection versus lexical word-formation, three processes and the introduction of notional definitions.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 29,
+      "status": "extracted",
+      "section": "§4.4",
+      "summary": "Traditional definitions, form versus temporal reference, and the opening imperative contrasts.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 30,
+      "status": "extracted",
+      "section": "§4.4",
+      "summary": "Wish and directive contrast, abstract nouns, and distributional diagnostics distinguishing nouns and verbs.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 31,
+      "status": "extracted",
+      "section": "§4.4",
+      "summary": "English diagnostics for preterites and imperatives and distinction between general and language-particular definitions.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 32,
+      "status": "extracted",
+      "section": "§4.4",
+      "summary": "General definitions, prototypical meanings, English-specific classification, backshift and remote uses.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "manifest_version": 1,
+  "chapter": 1,
+  "printed_start": 33,
+  "printed_end": 42,
+  "report": "sources/cambridge/chapter_01/PP33_42_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 33,
+    "pdf_page": 53
+  },
+  "added_rule_ids": [
+    "OTH-654",
+    "OTH-655",
+    "OTH-656",
+    "OTH-657",
+    "OTH-658",
+    "OTH-659",
+    "OTH-660",
+    "OTH-661",
+    "OTH-662",
+    "OTH-663",
+    "OTH-664",
+    "OTH-665",
+    "OTH-666",
+    "OTH-667"
+  ],
+  "page_checks": [
+    {
+      "page": 33,
+      "status": "extracted",
+      "section": "§§4.4–5",
+      "summary": "Language-particular distinctiveness, indirect objects without dative case, and the semantics–pragmatics distinction.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 34,
+      "status": "extracted",
+      "section": "§§5–5.1",
+      "summary": "Truth-conditional meaning, propositions, utterance context and differences in truth conditions.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 35,
+      "status": "extracted",
+      "section": "§5.1",
+      "summary": "Contrasting truth conditions, entailment, inconsistent assertion and denial, anomaly notation and open propositions.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 36,
+      "status": "extracted",
+      "section": "§§5.1–5.2",
+      "summary": "Closing open propositions, illocutionary meaning, and shared propositional content across clause types.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 37,
+      "status": "extracted",
+      "section": "§§5.2–5.3",
+      "summary": "Contrast, unexpectedness and expressive conventional implicatures, including in interrogatives, and the opening of pragmatic inference.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 38,
+      "status": "extracted",
+      "section": "§5.3",
+      "summary": "Relevance-based indirect requests and conditionals whose pragmatic interpretation suggests a necessary condition.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 39,
+      "status": "extracted",
+      "section": "§5.3",
+      "summary": "Scalar some, limits of speaker knowledge and the comparison table for entailment and both implicature types.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 40,
+      "status": "extracted",
+      "section": "§§5.3–5.4",
+      "summary": "Normal and canceled conversational implicatures, presupposition, negation and questioning.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 41,
+      "status": "extracted",
+      "section": "§5.4",
+      "summary": "Backgrounding, cancellation, entailment under affirmative stop and pragmatic inference under negation or questioning.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 42,
+      "status": "skipped_with_reason",
+      "section": "Blank boundary",
+      "summary": "The corresponding PDF page is blank in both text extraction and rendering.",
+      "source_checked": true,
+      "nonprose_present": false,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

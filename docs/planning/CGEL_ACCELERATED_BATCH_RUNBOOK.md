@@ -400,3 +400,19 @@ Printed pp. 1554–1564 yielded 31 inactive records (`PHR-784–PHR-814`). Chapt
 ## Chapter 18 Phase B integration
 
 Chapter 18 Phase B accounts for printed pp. 1565–1620 in three audited batches: 53 substantive pages, two contents-only pages and one verified blank boundary page. The 76 source-linked records (`MORPH-067`–`MORPH-142`) include ten inactive constraint specifications. Independent linguistic review, Burton-Roberts crosswalk verification and runtime activation remain separate gates. The audited branch was reconciled with current main while retaining the intervening chapter coverage. Continue with Chapter 1, the first remaining chapter in priority three.
+
+## Chapter 1 first checkpoint
+
+Printed pp. 1–10 are accounted for, with nine substantive pages and one contents-only page. The batch adds 15 inactive records (`OTH-602`–`OTH-616`), including one `spec_only` constraint. Continue at printed p. 11 with speech and writing.
+
+## Chapter 1 second checkpoint
+
+Printed pp. 11–19 add nine substantive pages and 17 inactive records (`OTH-617`–`OTH-633`). Chapter 1 now has 18 substantive pages extracted, two justified skips (the contents page and the existing boundary skip), and 22 unprocessed pages. Continue at printed p. 20 with the transition to basic syntax.
+
+## Chapter 1 third checkpoint
+
+Printed pp. 20–32 add 13 substantive pages and 20 inactive records (`OTH-634`–`OTH-653`). Chapter 1 now has 31 substantive pages extracted, two justified skips, and nine unprocessed pages. Continue at printed p. 33 with semantics and pragmatics.
+
+## Chapter 1 Phase B closure
+
+The final batch adds 14 inactive records (`OTH-654`–`OTH-667`) for printed pp. 33–41 and verifies the existing blank boundary skip at p. 42. Chapter 1 Phase B accounts for all 42 pages: 40 substantive pages and two documented skips. The four batches add 66 records. Continue with Chapter 13, comparative constructions.

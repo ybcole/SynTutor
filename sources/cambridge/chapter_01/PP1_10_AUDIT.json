@@ -1,0 +1,141 @@
+{
+  "manifest_version": 1,
+  "chapter": 1,
+  "printed_start": 1,
+  "printed_end": 10,
+  "report": "sources/cambridge/chapter_01/PP1_10_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1,
+    "pdf_page": 21
+  },
+  "added_rule_ids": [
+    "OTH-602",
+    "OTH-603",
+    "OTH-604",
+    "OTH-605",
+    "OTH-606",
+    "OTH-607",
+    "OTH-608",
+    "OTH-609",
+    "OTH-610",
+    "OTH-611",
+    "OTH-612",
+    "OTH-613",
+    "OTH-614",
+    "OTH-615",
+    "OTH-616"
+  ],
+  "page_checks": [
+    {
+      "page": 1,
+      "status": "skipped_with_reason",
+      "section": "Contents",
+      "summary": "Chapter title and contents listing only.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 2,
+      "status": "extracted",
+      "section": "§1",
+      "summary": "Synchronic description, historical evidence and the descriptive aim.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 3,
+      "status": "extracted",
+      "section": "§1",
+      "summary": "General-purpose and historical scope, and the interfaces of grammar, sound, writing, vocabulary and meaning.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 4,
+      "status": "extracted",
+      "section": "§1",
+      "summary": "Syntax and morphology, Standard English as shared public usage, and international scope.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 5,
+      "status": "extracted",
+      "section": "§§1–2.1",
+      "summary": "Regional standard variants, annotation of dialect variation, and the goals of descriptive and prescriptive work.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 6,
+      "status": "extracted",
+      "section": "§§2.1–2.2",
+      "summary": "Scope of usage manuals, style versus grammar, acquired structure and grammaticality notation.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 7,
+      "status": "extracted",
+      "section": "§2.2(a)",
+      "summary": "Prescriptive taste, usage evidence, who with stranding, and center around.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 8,
+      "status": "extracted",
+      "section": "§2.2(a–c)",
+      "summary": "Taste, formal and informal standard usage, dialectal case in coordination, and Latin-based arguments.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 9,
+      "status": "extracted",
+      "section": "§2.2(c)",
+      "summary": "Predicative case, coordinated object variation, and the beginning of the contraction contrast.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 10,
+      "status": "extracted",
+      "section": "§2.2(c)",
+      "summary": "Limits of analogy, position and pronoun type, evidence-based usage advice and the negative-concord note.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}
