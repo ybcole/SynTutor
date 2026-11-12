@@ -103,7 +103,7 @@ export function addConstituentTeaching(body, page, { el, button, showDiagram, sh
   if (page === 1) {
     paragraph('Read “We met near the quiet garden”. Does “the quiet garden” work as a single unit in that sentence? Start by trying to replace it.');
     section('Test a group with replacement',
-      'Say “We met near it”. Here, one word takes the place of “the quiet garden”, and the rest of the sentence stays in place. That is evidence that the three words form a constituent.',
+      'A replacement test checks whether a stretch of words acts as one unit. In “We met near it”, the pronoun “it” replaces all of “the quiet garden” while the rest of the sentence stays in place. That gives evidence that the three words form a constituent.',
       'Try the same thing with just “the quiet”. You get “We met near it garden”. The word “garden” is left behind, so this replacement provides no evidence that “the quiet” forms a unit here.');
     section('Check what answers a question',
       'Ask “What did the people in the example meet near?” The answer is “the quiet garden”. Now ask “Where did they meet?” The answer is “near the quiet garden”. The two answers show how the smaller group fits inside the larger one.');

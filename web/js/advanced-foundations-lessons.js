@@ -6,12 +6,12 @@ export const advancedFoundationsChapters = {
     intro: 'Chapter 5 showed that a time adjunct can join a VP to form a larger VP. A progressive auxiliary also creates two VP levels, but the relationship between the two parts is different.',
     exampleContext: 'Look at how “is” fits into this description of Nora’s activity. The outer brackets mark the full predicate, and the inner brackets mark the verb phrase after “is”.',
     example: 'Nora [is [inspecting the bridge]].',
-    introExample: 'The inner group, “inspecting the bridge”, names the activity. The auxiliary “is” presents it as in progress and carries present tense. The next page uses a replacement to show why those words form two VP levels.',
+    introExample: 'A progressive auxiliary is a form of “be” used with an -ing verb to present a situation as ongoing. Here “is” presents the inspection that way and carries present tense. The next page tests whether “inspecting the bridge” still forms a group on its own.',
     preview: ['Find the smaller verb phrase using a replacement.', 'Read the tense feature and attach the auxiliary’s complement.', 'Explain how the two verb phrases work in a new sentence.'],
     concepts: [
       ['Keep the verb and object together', 'Compare “Nora inspected the bridge” with “Nora is inspecting the bridge”. Progressive “be” is followed by the -ing form “inspecting”, and “the bridge” still names what Nora inspects. The next step is to check whether those words still form a group.'],
       ['Use “doing so” to check the group', 'In “Nora is inspecting the bridge, and Leo is doing so too”, “doing so” stands for “inspecting the bridge”. The replacement keeps “is” in place. That is evidence for a smaller VP inside the full predicate.'],
-      ['Find the head of each VP', 'The smaller VP is headed by the lexical verb “inspecting”. The larger VP is headed by “is”, which takes that smaller VP as its complement. In the tree, PROG identifies the auxiliary and [pres] marks the tense it carries.'],
+      ['Find the head of each VP', 'A lexical VP is a phrase headed by the main verb. Here it is “inspecting the bridge”. When a verb phrase fills a complement role, it is a VP complement. “Is” takes that complement and heads the larger VP. It also carries tense, a grammatical feature that distinguishes forms such as present and past. The tree marks present tense with [pres] on the PROG branch.'],
     ],
     contrast: ['Compare two ways of nesting a VP', [
       'In “inspected the bridge in June”, the time phrase is an adjunct that adds information to “inspected the bridge”.',
@@ -53,12 +53,12 @@ export const advancedFoundationsChapters = {
     intro: 'Earlier trees used a triangle to stand for a whole noun phrase. This chapter opens up that triangle to show how the words inside a simple noun phrase fit together.',
     exampleContext: 'Imagine someone pointing to a group of lanterns. The brackets separate the word that points them out from the word that names them.',
     example: '[those] [lanterns]',
-    introExample: '“Those” picks out the group, and “lanterns” names what is being pointed out. The tree gives each part a different route to the full noun phrase.',
+    introExample: 'A determiner helps specify what a noun phrase refers to. Here “those” is a demonstrative, a word that points out which things are meant. “Lanterns” is the head noun because it names the kind of thing being picked out. The tree gives each word a different route to the full noun phrase.',
     preview: ['Find the determiner using a contrast with “the”.', 'Trace the noun through the nominal level and build the missing branch.', 'Use the same pattern with another demonstrative and noun.'],
     concepts: [
       ['Start with the whole group', 'Read “Those lanterns flickered”. Replacing “those lanterns” with “they” picks out the complete subject NP. Once you know its boundaries, you can look at the role of each word inside it.'],
       ['Find the determiner', 'Keep “lanterns” and swap “those” for “the”. Both “those lanterns” and “the lanterns” work, while “the those lanterns” does not fit this pattern because the two words compete for the determiner position. In the tree, DEM identifies the demonstrative and DET marks the position it fills.'],
-      ['Keep a level between NP and N', 'The remaining word is the head noun “lanterns”, labelled N. It sits inside NOM, the nominal layer of the noun phrase. A nominal can contain more material in a fuller phrase. Here it contains just N, and NOM joins DET directly under NP.'],
+      ['Keep a level between NP and N', 'The remaining word is the head noun “lanterns”, labelled N. A nominal is the part of the noun phrase built around its head noun. It is labelled NOM and can also contain modifiers in a fuller phrase. Here it contains just N, and NOM joins DET directly under NP.'],
     ],
     contrast: ['Follow each word to the full NP', [
       '“Those” reaches NP through DEM and DET.',
@@ -100,12 +100,12 @@ export const advancedFoundationsChapters = {
     intro: 'A sentence can contain another clause with its own subject and predicate. This chapter shows how “that” introduces an embedded clause and how the tree separates the introductory word from the clause it introduces.',
     exampleContext: 'Read this report from Leo. The brackets mark the part of the sentence that gives the content of his report.',
     example: 'Leo says [that Nora is inspecting the bridge].',
-    introExample: 'The brackets include both “that” and “Nora is inspecting the bridge”. The second part has its own subject and predicate, so the tree needs a way to show its boundary inside the larger group.',
+    introExample: 'An embedded clause is a clause that forms part of a larger grammatical structure. Here the report contains “Nora is inspecting the bridge”, which has its own subject and predicate. The brackets also include “that”, the word introducing the clause.',
     preview: ['Find the whole embedded group and the subject–predicate split inside it.', 'Read and build the two branches under S′.', 'Distinguish complementiser “that” from demonstrative “that”.'],
     concepts: [
       ['Find the content of what Leo says', 'Ask what Leo says to find the whole reported group, “that Nora is inspecting the bridge”. That answer gives the outer boundary. To find the inner boundary, look for a subject and predicate within the answer.'],
       ['Keep the two boundaries apart', 'Inside the report, “Nora” is the subject and “is inspecting the bridge” is the predicate. These words make up the inner S. “That” comes before them and introduces the clause as part of Leo’s report.'],
-      ['Put the two branches under S′', 'The introductory “that” is a complementiser and sits under C. Put C beside the inner S under S′, read “S-bar”. The new parent covers the whole answer to “What does Leo say?”, while S covers only the subject and predicate.'],
+      ['Put the two branches under S′', 'A complementiser introduces a subordinate clause. Here “that” is the complementiser, and C labels its position in the tree. Put C beside the inner S under S′, read “S-bar”. The new parent covers the whole answer to “What does Leo say?”, while S covers only the subject and predicate.'],
     ],
     contrast: ['Read “that” in two places', [
       'In “Leo says that Nora is inspecting the bridge”, “that” introduces a clause and goes under C.',
@@ -147,12 +147,12 @@ export const advancedFoundationsChapters = {
     intro: 'An object question asks for a piece of information that a statement would give after the verb. To read its tree, start with a possible answer and follow what happens to both the object and the auxiliary.',
     exampleContext: 'Start with a statement that names the object of the inspection. Then read a question that asks for that object.',
     example: 'Nora is inspecting the bridge. → What is Nora inspecting?',
-    introExample: 'The question begins with “what”, which asks for “the bridge”. It also places “is” before “Nora”. The tree marks these two front positions separately and keeps track of where each item belongs in the corresponding statement.',
+    introExample: 'Fronting places a word or phrase earlier in the clause than its position in the corresponding statement. The question starts with “what”, which asks for “the bridge”, and places “is” before “Nora”. The tree distinguishes those front positions and the positions they correspond to.',
     preview: ['Use a statement to identify the object position.', 'Trace C2 and C1, then attach the object-gap branch.', 'Recover both gap positions in a new question.'],
     concepts: [
       ['Start with a possible answer', 'In “Nora is inspecting the bridge”, “the bridge” is the direct object of “inspecting”. That noun phrase (NP) answers “What is Nora inspecting?” The question puts “what” at the front, while the tree keeps a position for the object beside V.'],
-      ['Compare the yes/no and wh-questions', 'To see what happens to the auxiliary, compare “Is Nora inspecting the bridge?” with “What is Nora inspecting?” The yes/no question already has “is” before the subject, in C1. The object question adds “what” even earlier, in the higher position called C2.'],
-      ['Read the gaps in the lower clause', 'Now return to the statement to find the two positions inside S. One dot marks the object gap under NP beside V. The other marks the auxiliary gap under PROG. The [pres] feature on PROG still identifies the tense carried by “is”.'],
+      ['Compare the yes/no and wh-questions', 'To see what happens to the auxiliary, compare “Is Nora inspecting the bridge?” with “What is Nora inspecting?” C1 is the lower front position for a tensed auxiliary in these questions. “Is” fills it in both examples. C2 is the higher front position for a question word or phrase such as “what”. Only the object question uses both positions here.'],
+      ['Read the gaps in the lower clause', 'Now return to the statement to find the two positions inside S. A gap marks a position with no spoken word or phrase. One dot marks the object gap under NP beside V. The other marks the auxiliary gap under PROG. The [pres] feature on PROG still identifies the tense carried by “is”.'],
     ],
     contrast: ['Find the two positions above S', [
       'C1 contains “is” here. It shares S′ with S.',
@@ -197,7 +197,7 @@ export const advancedFoundationsChapters = {
     intro: 'Chapter 6 showed how an auxiliary can take a VP as its complement. This chapter applies that idea to infinitival “to” and asks where tense belongs when the infinitive is part of a larger sentence.',
     exampleContext: 'Read this statement about Nora’s plan. The brackets mark the infinitival verb phrase that states what she plans to do.',
     example: 'Nora plans [to inspect the bridge].',
-    introExample: 'The brackets contain the activity Nora plans to do. “Plans” carries tense in the larger sentence. The bracketed group can stay the same when that tense changes.',
+    introExample: 'Infinitival “to” precedes a base-form verb, as in “to inspect”. The bracketed group is non-finite, meaning it carries no tense of its own. “Plans” carries tense in the larger sentence, so the bracketed group can stay the same when “plans” changes to “planned”.',
     preview: ['Find where tense is expressed in the full sentence.', 'Trace the auxiliary and its lexical VP complement.', 'Distinguish infinitival “to” from prepositional “to”.'],
     concepts: [
       ['Find the verb that changes with tense', 'Read “Nora plans to inspect the bridge” and “Nora planned to inspect the bridge”. Only “plans” changes. The infinitival group stays the same because it has no tense of its own. That is why it is called non-finite.'],
@@ -241,14 +241,14 @@ export const advancedFoundationsChapters = {
   },
   'br-11': {
     topics: ['From Sentence Lists to Grammar Rules', 'How a Rule Covers New Sentences', 'Working Through a Combination Rule', 'Using the Same Rule on a New Example'],
-    intro: 'The earlier chapters used trees to describe the structure of individual examples. This chapter asks how a grammar can describe structures that have yet to be listed. A small invented grammar makes the difference easy to see.',
+    intro: 'The earlier chapters used trees to describe the structure of individual sentences. A grammar describes the patterns that allow words and groups to combine into larger structures. This chapter uses a small invented grammar to show how a rule can account for sentences that have yet to be listed.',
     exampleContext: 'Start with two complete sentences and see what happens when a rule joins them with “and”.',
     example: 'Iris rests. Leo waits. → Iris rests and Leo waits.',
     introExample: 'A list can record the starting sentences and the result. The rule explains how the result was made. Since that result is a sentence too, it can become an input to the same rule.',
     preview: ['Compare a list of examples with a rule for combining them.', 'Reuse a result as input to the same rule.', 'Explain what the rule tells you about the structure it allows.'],
     concepts: [
       ['Start with a small list', 'Suppose “Iris rests” and “Leo waits” are the only sentences in a toy language. Listing them describes the whole language at this point. Now ask what changes if the language allows the two sentences to be joined.'],
-      ['Make the rule explicit', 'The rule takes two complete sentences and joins them with “and”. It produces a sentence, so its output can be used as one of the inputs next time. This reuse of a rule on its own output is a form of recursion.'],
+      ['Make the rule explicit', 'A combination rule specifies which inputs can join and how the result is grouped. This rule joins two complete sentences with “and”. It produces a sentence, so its output can be used as one of the inputs next time. This reuse of a rule on its own output is a form of recursion.'],
       ['Check what the rule licenses', 'To see what the rule allows, check the inputs on each side of “and”. “Iris rests and Leo waits” works because both inputs are complete. “Iris rests and” is missing its second input. Checking the inputs also tells you how to group the result.'],
     ],
     contrast: ['Compare what each description gives you', [
@@ -279,7 +279,7 @@ export const advancedFoundationsChapters = {
     intro: 'In the Cambridge companion, you’ll look at the same example in two ways. A sentence is a unit of written text. A clause is a grammatical unit that can have a subject and predicate and can sit inside a larger construction.',
     exampleContext: 'Read this report as one written sentence. The brackets mark the part that gives the content of Nora’s report.',
     example: 'Nora reports [that the robins sing].',
-    introExample: 'Inside the report, “the robins” is the embedded subject and “sing” is its predicate.',
+    introExample: 'An embedded clause is a clause that sits inside a larger phrase or clause. In Nora’s report, “the robins” is the subject of the embedded clause and “sing” is its predicate.',
     preview: ['Read the whole sentence as a unit of text.', 'Find the subject and predicate inside the report.', 'Apply the distinction to a fresh example.'],
     concepts: [
       ['Read the sentence as a unit of text', 'Read “Nora reports that the robins sing.” from its opening capital to its final full stop. In this example, that entire stretch is one sentence. Ask what the whole sentence says. It presents a report by Nora.'],

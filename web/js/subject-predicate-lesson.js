@@ -222,7 +222,7 @@ export function addSubjectPredicateTeaching(body, page, ui) {
 
   if (page === 0) {
     section('What this chapter covers',
-      'In Chapter 1, you learned how words form groups. Here you’ll see how two groups work together in a simple statement. In the examples here, the subject names who or what the statement is about. The predicate says something about the subject.');
+      'In Chapter 1, you learned how words form groups. Here you’ll see how two groups work together in a simple statement. In these simple statements, the subject is the group that the sentence says something about. The predicate tells what the subject does or what state it is in.');
     addIntroExample(body, el,
       'Read this statement about the robins. The brackets show its subject and predicate as two separate groups.',
       `[${np}] [${vp}].`,
@@ -263,8 +263,8 @@ export function addSubjectPredicateTeaching(body, page, ui) {
     section('What kind of group is it?',
       'A category tells you what kind of phrase it is. A function tells you its job in the sentence.');
     list([
-      'Noun phrase (NP). Both “The robins” and “The robins near the gate” are built around the noun “robins”.',
-      'Verb phrase (VP). Both “sing” and “are singing softly” are built around a verb. A VP can be one word.',
+      'A noun phrase (NP) is built around a noun in these examples. Both subject groups are built around “robins”.',
+      'A verb phrase (VP) is built around a verb. It can consist of one word, as in “sing”, or several, as in “are singing softly”.',
     ]);
     paragraph('A predicate can describe a state. In “The gate is open”, the subject is “The gate” and the whole predicate is “is open”.');
   }

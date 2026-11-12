@@ -556,6 +556,8 @@ try:
    if ident=='cgel-clauses':
     expect(view.locator('.constituent-chapter > p')).to_have_text('Cambridge · Chapter 2')
    expect(view.get_by_role('heading',name='What this chapter covers')).to_be_visible()
+   if ident=='br-03':
+    expect(view.locator('.lesson-intro-example')).to_contain_text('An adjective phrase (AP) is a phrase built around an adjective.')
    expect(view.get_by_role('heading',name='What you’ll see in this chapter')).to_be_visible()
    key_terms=view.locator('article > ul + .lesson-key-terms')
    expect(key_terms.get_by_role('heading',name='Key terms')).to_be_visible()
