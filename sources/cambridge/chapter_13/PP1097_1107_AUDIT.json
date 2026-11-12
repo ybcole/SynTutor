@@ -1,0 +1,152 @@
+{
+  "manifest_version": 1,
+  "chapter": 13,
+  "printed_start": 1097,
+  "printed_end": 1107,
+  "report": "sources/cambridge/chapter_13/PP1097_1107_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1097,
+    "pdf_page": 1117
+  },
+  "added_rule_ids": [
+    "CLS-1104",
+    "CLS-1105",
+    "CLS-1106",
+    "CLS-1107",
+    "CLS-1108",
+    "CLS-1109",
+    "CLS-1110",
+    "CLS-1111",
+    "CLS-1112",
+    "CLS-1113",
+    "CLS-1114",
+    "CLS-1115",
+    "CLS-1116",
+    "CLS-1117",
+    "CLS-1118"
+  ],
+  "page_checks": [
+    {
+      "page": 1097,
+      "status": "skipped_with_reason",
+      "section": "Contents",
+      "summary": "Chapter title and contents only.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1098,
+      "status": "skipped_with_reason",
+      "section": "Contents",
+      "summary": "Continuation of the chapter contents.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1099,
+      "status": "extracted",
+      "section": "§§1–1.1",
+      "summary": "Comparative scope, four comparison types and the status of than as preposition.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1100,
+      "status": "extracted",
+      "section": "§1.1",
+      "summary": "Scalar orientation, equality and inequality markers, superiority, inferiority and the lower-bound interpretation.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1101,
+      "status": "extracted",
+      "section": "§§1.1–1.2",
+      "summary": "Equality, negation, metalinguistic exception, polarity items and the opening of term and set comparison.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1102,
+      "status": "extracted",
+      "section": "§1.2",
+      "summary": "Set membership, omitted secondary terms, paraphrases and repeated-number exactness.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1103,
+      "status": "extracted",
+      "section": "§§1.2–1.3",
+      "summary": "Term versus set syntax, grade and comparative clauses, and introduction of bare and expanded complements.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1104,
+      "status": "extracted",
+      "section": "§1.3",
+      "summary": "Preposition and governor inventories, dual uses of such, and direct licensing of bare complements.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1105,
+      "status": "extracted",
+      "section": "§1.3",
+      "summary": "Comparative phrase scope, complement positions, pre-head restrictions and formal relative preposing.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1106,
+      "status": "extracted",
+      "section": "§§1.3–2",
+      "summary": "Delayed right constituent, optional and obligatory postposing, indirect complementation and the reduced subordinate clause.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1107,
+      "status": "extracted",
+      "section": "§§2–2.1",
+      "summary": "Variable and constant terms, subject inversion and the introduction of obligatory and optional reduction.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}
