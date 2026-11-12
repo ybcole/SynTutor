@@ -63367,5 +63367,2563 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-996",
+    "domain": "clauses",
+    "concept": "Coordination replacement and shared function",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In basic coordination, coordinates can replace constituents in the same syntactic function; category identity is not independently required.",
+    "condition": "For two replaceable expressions in the same construction, test the syntactic relations of each to its surrounding head rather than whether the expressions have identical part-of-speech labels.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Special joint coordinations and idioms cannot be assessed by simple substitution alone.",
+        "pages": [
+          1323
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The caretaker locked the doors and the windows.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We met in July or just after the holiday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§3.1",
+        "pages": [
+          1323
+        ],
+        "pdf_pages": [
+          1343
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Coordination replacement and shared function",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-997",
+    "domain": "clauses",
+    "concept": "Common semantic relation of coordinates",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The shared-function substitution test presupposes that the head keeps the same relevant sense and the coordinates preserve comparable semantic relations.",
+    "condition": "When a verb admits different valency/sense patterns, do not licence coordination merely because both complements can occupy its surface position.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Puns and deliberate zeugma may intentionally exploit a change in sense.",
+        "pages": [
+          1324
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The speech moved the listeners and their guests.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The exhibition interested the students and their teachers.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§3.1",
+        "pages": [
+          1324
+        ],
+        "pdf_pages": [
+          1344
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Common semantic relation of coordinates",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-998",
+    "domain": "clauses",
+    "concept": "Agreement with the complete coordinated NP",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Subject agreement and dependent anaphoric forms can require adjustment when a singular subject is replaced by a coordinated subject.",
+    "condition": "With coordinated subject NPs, check agreement against the coordination as a whole; do not inherit agreement mechanically from its first member.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Agreement of coordinated subjects involves additional semantic and syntactic conditions treated separately in Chapter 5 §18.3.",
+        "pages": [
+          1324
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The director and the editor disagree with themselves.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The pianist and the violinist are rehearsing.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§3.1(a)",
+        "pages": [
+          1324
+        ],
+        "pdf_pages": [
+          1344
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Agreement with the complete coordinated NP",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-999",
+    "domain": "clauses",
+    "concept": "Expanded coordinates and grammaticised words",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Nested expanded coordinates do not normally combine simply by coordinating the expansions themselves; many highly grammaticalised markers have restricted combinability.",
+    "condition": "Distinguish coordination of complete replacements from attempts to coordinate a coordinator-marked remainder or a fixed grammatical marker.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The higher-level alternatives require their own parse; closed-class patterns are not uniformly impossible.",
+        "pages": [
+          1325
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The chair or the secretary may speak.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The chair or the secretary and the treasurer may attend.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§3.1(c–e)",
+        "pages": [
+          1325
+        ],
+        "pdf_pages": [
+          1345
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Expanded coordinates and grammaticised words",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1000",
+    "domain": "clauses",
+    "concept": "Restricted coordination of word parts",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "English sometimes coordinates parallel prefixes, compound parts or bases, though the normal coordinate is a whole word or larger phrase.",
+    "condition": "Recognise special lexical and compound patterns with repeated opposite prefixes or shared final word material.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The pattern is limited and partly lexicalised; it does not licence arbitrary subword coordination.",
+        "pages": [
+          1325
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Pre- and post-launch checks were mandatory.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The company hired full- and part-time staff.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§3.1(f–g)",
+        "pages": [
+          1325
+        ],
+        "pdf_pages": [
+          1345
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Restricted coordination of word parts",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1001",
+    "domain": "clauses",
+    "concept": "Joint and lexicalised coordination",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A joint coordination may denote a group whose members cannot individually occupy the whole coordination's position; fixed expressions also exceed simple substitution.",
+    "condition": "For collective predicates and lexicalised sequences, do not require that each bare coordinate independently satisfy the full predicate.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The ordinary shared-function test does not predict all joint and fixed coordination constructions.",
+        "pages": [
+          1325,
+          1326
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The two founders are an effective team.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The cabin was neat and tidy.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§3.1(h–i)",
+        "pages": [
+          1325,
+          1326
+        ],
+        "pdf_pages": [
+          1345,
+          1346
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Joint and lexicalised coordination",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1002",
+    "domain": "clauses",
+    "concept": "Coordination-specific licensing and adjacency",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some coordinated constructions permit case or determiner patterns unavailable in single NPs, and a coordination can avoid adjacency problems found in uncoordinated replacements.",
+    "condition": "Keep separate the distribution of a lone pronoun or singular-count noun and its distribution as part of a coordinate pair.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Coordinate pronoun case varies by speaker and variety; a pattern unattested alone is not invariably erroneous in coordination.",
+        "pages": [
+          1326
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We need pen and paper for the exercise.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They debated whether and to what extent the rule applied.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§3.1(j–k)",
+        "pages": [
+          1326
+        ],
+        "pdf_pages": [
+          1346
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Coordination-specific licensing and adjacency",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1003",
+    "domain": "clauses",
+    "concept": "Unlike-category predicative complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Predicative complements may coordinate adjective, noun, preposition-phrase and certain non-finite expressions when they have comparable functions.",
+    "condition": "Check the common predicative-complement role, not surface category alone, for coordinated descriptions following be or become.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Non-finite mixed predicates require more restrictive licensing than straightforward AdjP–NP–PP combinations.",
+        "pages": [
+          1326,
+          1327
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The task was difficult and beyond our budget.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The trainee became confident and a leader in her group.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§3.2(a)",
+        "pages": [
+          1326,
+          1327
+        ],
+        "pdf_pages": [
+          1346,
+          1347
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Unlike-category predicative complements",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1004",
+    "domain": "clauses",
+    "concept": "Special be constructions in mixed non-finite coordination",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some surface mixtures of a predicative complement and participial or infinitival forms are licensed by different constructions of be that share the same surface auxiliary.",
+    "condition": "When be governs a sequence of unlike predicates, distinguish predicative be from progressive, passive and quasi-modal be in each coordinate.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Corresponding combinations with get and keep are not automatically licensed; repeating be may be preferred or required; centrally deontic be resists certain sharing.",
+        "pages": [
+          1327
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The response was thoughtful and warmly received.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The visitors were excited and talking loudly.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§3.2(a)",
+        "pages": [
+          1327
+        ],
+        "pdf_pages": [
+          1347
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Special be constructions in mixed non-finite coordination",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1005",
+    "domain": "clauses",
+    "concept": "Unlike-category complements and subjects",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Different categories can coordinate as complements, including subject NPs with content clauses and NP–PP or clause combinations, when the head accepts both with compatible meanings.",
+    "condition": "Verify head selection of both constituents and a common syntactic relation for a proposed heterogeneous complement.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Selectional compatibility of the governing head and comparable interpretation are necessary.",
+        "pages": [
+          1327,
+          1328
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The report lists the invoices and how they were paid.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The principal discussed the timetable and whether it could be changed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§3.2(b)",
+        "pages": [
+          1327,
+          1328
+        ],
+        "pdf_pages": [
+          1347,
+          1348
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Unlike-category complements and subjects",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1006",
+    "domain": "clauses",
+    "concept": "Order restrictions for mixed clausal complements",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "With an infinitival or gerund-participial complement coordinated with a finite content clause, the non-finite coordinate characteristically comes first.",
+    "condition": "Limit this observation to the mixed complement patterns discussed, rather than imposing a word-order ban on all clausal coordination.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The order is obligatory with some gerund-participial combinations and nearly so with infinitivals; other categories permit different sequencing.",
+        "pages": [
+          1328
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They remembered meeting the guide and that she carried a map.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The staff were instructed to wait outside and that further directions would follow.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§3.2(b)",
+        "pages": [
+          1328
+        ],
+        "pdf_pages": [
+          1348
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Order restrictions for mixed clausal complements",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1007",
+    "domain": "clauses",
+    "concept": "Mixed-category adjunct coordination",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Adjuncts realised as adverbs, NPs, PPs and non-finite clauses readily coordinate if they perform comparable adjunct functions.",
+    "condition": "Analyse both coordinated terms as adjuncts even when one is an adverb or NP and the other a preposition phrase.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Different preposition-complement types can also share adjunct function.",
+        "pages": [
+          1328
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The runner finished quickly and without stopping.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We can meet tomorrow or after lunch.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§3.2(c)",
+        "pages": [
+          1328
+        ],
+        "pdf_pages": [
+          1348
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Mixed-category adjunct coordination",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1008",
+    "domain": "clauses",
+    "concept": "Mixed NP modifier coordination",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Post-head noun modifiers of different syntactic forms may coordinate; pre-head mixed modifiers are more restricted and often form a natural semantic class.",
+    "condition": "Distinguish post-head modification from the comparatively unusual mixed attributive and pre-/post-head patterns.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Mixing modifiers from opposite sides of a noun is rare, and ordinary post-head modifier coordination is more productive.",
+        "pages": [
+          1328
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We welcomed applicants with experience or who had completed training.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They revised the city and regional plans.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§3.2(d)",
+        "pages": [
+          1328
+        ],
+        "pdf_pages": [
+          1348
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Mixed NP modifier coordination",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1009",
+    "domain": "clauses",
+    "concept": "Fragment-and-clause sentential coordination",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some sentence-level coordinations combine a full clause with an anaphoric fragment or another non-clausal component.",
+    "condition": "Recognise sentence-level discourse coordination without forcing both pieces to have the same clausal category.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The second example uses a pro-clausal fragment with an anaphoric interpretation.",
+        "pages": [
+          1329
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Another remark like that and I will leave.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I could explain it, and that only after the meeting.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§3.2(e)",
+        "pages": [
+          1329
+        ],
+        "pdf_pages": [
+          1349
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fragment-and-clause sentential coordination",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1010",
+    "domain": "clauses",
+    "concept": "And/or as an inclusive idiomatic link",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The idiom and/or explicitly leaves open the possibility that both alternatives apply, contrasting with a contextually exclusive implication of plain or.",
+    "condition": "Treat and/or as a conventional special linking expression rather than two freely coordinated independent coordinators.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Plain or itself does not always exclude both alternatives; exclusiveness can be a cancellable pragmatic inference.",
+        "pages": [
+          1329
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Applicants may submit a passport and/or a national ID.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Participants may bring a laptop and/or a tablet.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§3.3(a)",
+        "pages": [
+          1329
+        ],
+        "pdf_pages": [
+          1349
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "And/or as an inclusive idiomatic link",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1011",
+    "domain": "clauses",
+    "concept": "Interrogative whether combinations",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Whether or not functions like a fixed subordinator complex, while whether and an interrogative adjunct can appear in a more limited marked coordination.",
+    "condition": "Account for fixed whether-or-not and interrogative marking without assuming ordinary subordinators combine freely.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Whether or not is not freely interchangeable with if or not; in whether-and combinations, the first interrogative has a distinct subordinating role.",
+        "pages": [
+          1329
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They asked whether or not the application had arrived.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The committee examined whether and under what conditions the site could reopen.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§3.3(b)",
+        "pages": [
+          1329
+        ],
+        "pdf_pages": [
+          1349
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Interrogative whether combinations",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1012",
+    "domain": "clauses",
+    "concept": "Coordination of prepositions and determinatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Prepositions with meaningful alternatives and quantificational determinatives are more readily coordinated than tightly selected or uniquely grammatical markers.",
+    "condition": "Separate freely selectable spatial/temporal prepositions and quantifiers from lexically governed prepositions or determiner patterns preferring NP-level coordination.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Fixed expressions such as if and only if and each and every have separate lexicalised uses; most determinatives outside quantification coordinate less freely.",
+        "pages": [
+          1330
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Please return it before or after noon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "One or two volunteers can help.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§3.3(c–d)",
+        "pages": [
+          1330
+        ],
+        "pdf_pages": [
+          1350
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Coordination of prepositions and determinatives",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1013",
+    "domain": "clauses",
+    "concept": "Auxiliary coordination and unique construction markers",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Certain modals coordinate readily, but perfect have and progressive or passive be are specialised markers rather than freely replaceable alternative lexemes.",
+    "condition": "When examining auxiliary coordination, distinguish two modal auxiliaries from mixing distinct perfect, progressive or passive construction markers.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The acceptability of a passive alternative such as get does not itself licence coordination with passive be.",
+        "pages": [
+          1330
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I can and will respond to the invitation.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The forms must and will remain separate in the notice.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§3.3(e)",
+        "pages": [
+          1330
+        ],
+        "pdf_pages": [
+          1350
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Auxiliary coordination and unique construction markers",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1014",
+    "domain": "clauses",
+    "concept": "Three structural types of genitive coordination",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Nominal coordination with genitives distinguishes a genitive on an entire coordinated NP, coordination of separately genitive NPs, and coordination of NPs containing genitive determiners.",
+    "condition": "Identify whether genitive marking applies to the whole coordinate NP, each directly coordinated genitive, or each separately headed possessive NP.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The indirect multiple-genitive type has a different constituent boundary from the direct multiple-genitive type.",
+        "pages": [
+          1330,
+          1331
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mira and Theo's workshop opened today.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mira's and Theo's workshops opened today.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§3.4(a)",
+        "pages": [
+          1330,
+          1331
+        ],
+        "pdf_pages": [
+          1350,
+          1351
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Three structural types of genitive coordination",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1015",
+    "domain": "clauses",
+    "concept": "Joint and distributive genitive readings",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A single genitive on a coordination and multiple direct genitives can both convey joint or distributive relations, while an indirect multiple-genitive coordination is distributive.",
+    "condition": "Do not infer shared possession solely from the position or number of apostrophes in an NP coordination.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Choice may reflect association and style; the book does not endorse a universal correctness preference for suffixes on individual names.",
+        "pages": [
+          1331
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The playwright and director's project has started.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The playwright's and director's projects have started.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§3.4(a)",
+        "pages": [
+          1331
+        ],
+        "pdf_pages": [
+          1351
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Joint and distributive genitive readings",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1016",
+    "domain": "clauses",
+    "concept": "Dependent and independent pronominal genitives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "English distinguishes dependent and independent genitive pronouns in direct and indirect coordination; unlike lexical NPs, standard pronouns resist an ordinary single-genitive coordination.",
+    "condition": "Distinguish my/your/her from mine/yours/hers and determine whether the head noun is expressed or recovered.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Dependent pronoun coordination is often awkward and alternatives are commonly preferred; pronoun genitive coordination is rarely jointly interpreted.",
+        "pages": [
+          1331
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Your and her proposals were accepted.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Your proposal and hers were accepted.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§3.4(b)",
+        "pages": [
+          1331
+        ],
+        "pdf_pages": [
+          1351
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dependent and independent pronominal genitives",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1017",
+    "domain": "clauses",
+    "concept": "Mixed genitive coordination with names and pronouns",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Mixed personal-pronoun/ordinary-NP genitives allow direct and indirect multiple genitives, whereas single-genitive mixed patterns are marginal or unacceptable depending on order and case.",
+    "condition": "Assess mixed genitive constructions with the personal pronoun's form and placement before assigning grammaticality.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The independent form before a final named possessor can occur in informal constructions; nominative or accusative mixed single-genitive patterns carry additional restrictions.",
+        "pages": [
+          1332
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Our and the committee's proposals match.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Our proposals and the committee's match.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§3.4(c)",
+        "pages": [
+          1332
+        ],
+        "pdf_pages": [
+          1352
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Mixed genitive coordination with names and pronouns",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1018",
+    "domain": "clauses",
+    "concept": "Coordination of different clause types",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Declarative, interrogative, imperative and exclamative clauses may coordinate at sentence and subordinate-clause level.",
+    "condition": "Treat clause type as a property of each coordinated clause, not a rule requiring a uniform clause type for an entire sentence.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A mixed main-clause coordination may express successive speech acts rather than a single illocution.",
+        "pages": [
+          1332,
+          1333
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The guests have arrived, but where are the hosts?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Check the schedule, and then we can leave.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§3.5",
+        "pages": [
+          1332,
+          1333
+        ],
+        "pdf_pages": [
+          1352,
+          1353
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Coordination of different clause types",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1019",
+    "domain": "clauses",
+    "concept": "Interrogative coordination and scope",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A coordinated interrogative can be a single alternative or polar question, or an overt coordination of separate questions, depending on scope and pragmatic purpose.",
+    "condition": "When or connects interrogatives, distinguish a choice between alternatives from a single polar question about their union.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Either before two separate questions signals wide-scope coordination, not the ordinary alternative question; but does not normally join two direct questions.",
+        "pages": [
+          1333
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Did you post the letter or did you email it?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Have you called or are you about to call?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§3.5",
+        "pages": [
+          1333
+        ],
+        "pdf_pages": [
+          1353
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Interrogative coordination and scope",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1020",
+    "domain": "clauses",
+    "concept": "Coordination at distinct constituent levels",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Coordination can join clauses, VPs, NPs or nominals; lower-level coordination reduces repetition and commonly suggests tighter conceptual association.",
+    "condition": "Compare levels of constituent coordination without assuming all levels are fully interchangeable in meaning.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A higher-level coordination may purposely distinguish events or referents rather than associate them closely.",
+        "pages": [
+          1334
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I need a jacket and scarf.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I need a notebook and a calculator.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§3.6",
+        "pages": [
+          1334
+        ],
+        "pdf_pages": [
+          1354
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Coordination at distinct constituent levels",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1021",
+    "domain": "clauses",
+    "concept": "Coordination across unlike structural levels",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Some attested strings mix coordinates from different constituent levels, but their acceptability and analysis are uncertain.",
+    "condition": "Keep heterogeneous-level coordinations distinct from uncontroversial unlike-category coordination at a shared structural level.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Such constructions may be marginal or linked to ellipsis, and should not be flagged uniformly as ungrammatical.",
+        "pages": [
+          1335,
+          1336
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She writes reviews, edits articles, and she teaches.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He was tired and out of breath, and he had a headache.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§3.6",
+        "pages": [
+          1335,
+          1336
+        ],
+        "pdf_pages": [
+          1355,
+          1356
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Coordination across unlike structural levels",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1022",
+    "domain": "clauses",
+    "concept": "Basic versus non-basic coordination",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Basic coordination has independently recognisable bare constituents appearing successively, with optional coordinator marking; non-basic types depart from at least one of these properties.",
+    "condition": "Use the structural diagnostics of bare constituenthood, succession and coordinate marking when classifying a construction.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Joint and fixed coordinations already require special treatment under the basic diagnostic.",
+        "pages": [
+          1336
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The painter and the sculptor shared a studio.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The painter and indeed the sculptor too attended.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4",
+        "pages": [
+          1336
+        ],
+        "pdf_pages": [
+          1356
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Basic versus non-basic coordination",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1023",
+    "domain": "clauses",
+    "concept": "Coordinate expansion by modifiers",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Non-clausal coordinates can be expanded by focus or connective modifiers alongside an ordinary coordinator without becoming independent clauses.",
+    "condition": "Identify the bare coordinate separately from its marker and from additives or contrastive modifiers.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "With main-clause coordinations, similar adverbs can be interpreted inside the clauses rather than as special coordinate expansion.",
+        "pages": [
+          1336,
+          1337
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The team invited the captain and perhaps the coach as well.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We bought tea and, in addition, some biscuits.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4.1",
+        "pages": [
+          1336,
+          1337
+        ],
+        "pdf_pages": [
+          1356,
+          1357
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Coordinate expansion by modifiers",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1024",
+    "domain": "clauses",
+    "concept": "Gapped coordination with a medial predicator gap",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Gapped coordination allows a structurally incomplete clause after a fuller one, with a medial omitted predicator interpreted from the first clause and parallel remaining elements.",
+    "condition": "Check the matching subject or other pre-gap element and the complement/adjunct after the gap rather than labelling the later clause a sentence fragment error.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The ellipsis need not correspond to exact repeated inflection; a multi-coordinate series can include multiple gapped clauses.",
+        "pages": [
+          1337,
+          1338
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Nadia is a biologist and Leo a chemist.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Their daughter studies architecture, their son engineering.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4.2",
+        "pages": [
+          1337,
+          1338
+        ],
+        "pdf_pages": [
+          1357,
+          1358
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Gapped coordination with a medial predicator gap",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1025",
+    "domain": "clauses",
+    "concept": "Complex gapping and subjectless gapped clauses",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The omitted material can be a sequence including a catenative verb and part of its complement; certain gapped coordinates also lack an overt subject.",
+    "condition": "Allow parallel gapped coordinate structure with shared subjects or longer omitted predicators where source licensing conditions are met.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The antecedent cannot simply terminate in a stranded preposition or infinitival to; a subjectless gapped coordinate needs the relevant preverbal contrast.",
+        "pages": [
+          1338
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jules hopes to win a scholarship, and Dana a grant.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "On Thursday she worked in York and on Friday in Bath.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4.2(a–b)",
+        "pages": [
+          1338
+        ],
+        "pdf_pages": [
+          1358
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Complex gapping and subjectless gapped clauses",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1026",
+    "domain": "clauses",
+    "concept": "Multiple gaps and exceptional final gapping",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some gapped coordinations contain two gaps, a nonverbal antecedent or an exceptionally final gap rather than the prototypical medial verbal gap.",
+    "condition": "Inspect parallel dependency and discourse scope before reconstructing omitted pieces or treating two blanks as separate sentence errors.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Secondary nonverbal gaps are highly restricted; final gaps depend on fronted material.",
+        "pages": [
+          1339
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "One editor praised the novel, another the poetry.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "In our family the parents choose the menu, but in theirs the children.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4.2(c–f)",
+        "pages": [
+          1339
+        ],
+        "pdf_pages": [
+          1359
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Multiple gaps and exceptional final gapping",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1027",
+    "domain": "clauses",
+    "concept": "Pronoun case in a gapped coordinate",
+    "rule_type": "variety_restricted",
+    "scope": "clause",
+    "statement": "A pronoun subject without an overt finite verb in a gapped clause may appear in nominative or accusative case, subject to stylistic and structural preferences.",
+    "condition": "Distinguish finite overt-verb subject case from an isolated subject pronoun in a predicator-gapped second coordinate.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Where both subject and object are pronouns, the accusative subject is less acceptable; a gapped subject with nominative is more formal.",
+        "pages": [
+          1339
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The teacher chose the upper room, I the lower.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The teacher chose the upper room, me the lower.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4.2 Case",
+        "pages": [
+          1339
+        ],
+        "pdf_pages": [
+          1359
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pronoun case in a gapped coordinate",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation.",
+    "variety": "English informal and formal alternants (case in gapped finite-clause coordination)"
+  },
+  {
+    "id": "CLS-1028",
+    "domain": "clauses",
+    "concept": "Non-equivalence of gapping under negation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The negation in a gapped coordination can take scope over the composite situation, so simply restoring a copy of a negative predicate may change meaning.",
+    "condition": "When interpreting a gapped coordinate governed by a negative antecedent, compare scope of a single negative with two separately negated clauses.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Gapping is not in general a mechanical deletion/repetition transformation.",
+        "pages": [
+          1340
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I cannot give one child a prize and the other only a certificate.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The clerk was not on duty on Friday or the manager on Saturday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4.2",
+        "pages": [
+          1340
+        ],
+        "pdf_pages": [
+          1360
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-equivalence of gapping under negation",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1029",
+    "domain": "clauses",
+    "concept": "Comparatives and the limits of subordination gapping",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Gapping is ordinarily disallowed with subordinate clauses but comparative clauses admit related omissions.",
+    "condition": "Treat comparative ellipsis as a separate exception to the usual restriction on predicator gaps in subordinate clauses.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Comparative gaps do not necessarily reconstruct negation as coordinative gapping does.",
+        "pages": [
+          1340,
+          1341
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Lena respects Arun more than Arun her.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I loved the first act as much as my sister the second.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4.2",
+        "pages": [
+          1340,
+          1341
+        ],
+        "pdf_pages": [
+          1360,
+          1361
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Comparatives and the limits of subordination gapping",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1030",
+    "domain": "clauses",
+    "concept": "Right nonce-constituent coordination",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Right nonce-constituent coordination joins sequences of dependents following a shared head even where those sequences are not constituents outside the coordination.",
+    "condition": "Recognise temporary constituents such as object plus to-PP, rather than rejecting the coordination because the pair is not a conventional phrase.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The construction differs from gapping even when a surface string allows both readings.",
+        "pages": [
+          1341
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We gave a notebook to Rosa and a pen to Malik.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They assigned two rooms to Ava and one room to Ben.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4.3",
+        "pages": [
+          1341
+        ],
+        "pdf_pages": [
+          1361
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Right nonce-constituent coordination",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1031",
+    "domain": "clauses",
+    "concept": "Structural parallelism in right nonce-constituent coordination",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The two coordinated dependent sequences must correspond in structural functions and complement frames, not merely in word count.",
+    "condition": "Compare internal roles of the post-head sequences; syntactic parallelism differs from loose semantic resemblance.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A sequence failing the test may still be grammatical under a distinct gapping analysis; do not treat all such strings as erroneous.",
+        "pages": [
+          1341
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I sent a parcel to Iris and a letter to Tomas.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She bought Rosa a scarf and Amir a hat.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4.3",
+        "pages": [
+          1341
+        ],
+        "pdf_pages": [
+          1361
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Structural parallelism in right nonce-constituent coordination",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1032",
+    "domain": "clauses",
+    "concept": "Right nonce-constituent coordination in NP structure",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The nonce-constituent pattern also occurs in noun phrase structure, coordinating parallel nominal dependents and not just post-verbal sequences.",
+    "condition": "Recognise parallel non-constituent modifiers after an NP head in such structures.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Do not assume that non-basic nonce-constituent coordination is limited to VPs.",
+        "pages": [
+          1342
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I read the essays on Shelley by Nora and on Keats by Sam.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They discussed the chapters on France by Ellis and on Spain by Morgan.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4.3",
+        "pages": [
+          1342
+        ],
+        "pdf_pages": [
+          1362
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Right nonce-constituent coordination in NP structure",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1033",
+    "domain": "clauses",
+    "concept": "Negation scope and nonce-constituent tree analysis",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Negation in a right nonce-constituent coordination may scope over the whole parallel coordination, unlike the corresponding repeated full clauses; the post-head dependency sequence forms a special coordination node.",
+    "condition": "Use the shared-head coordination analysis and represent the coordinator with the second dependent sequence rather than projecting two complete repeated clauses.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The constituent tree in the source is a simplified representation, not evidence of automatic deletion of repeated source material.",
+        "pages": [
+          1342
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I cannot send roses to Maya and only a card to Eli.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The office said nothing to the driver about the delay or to the crew about the route.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4.3",
+        "pages": [
+          1342
+        ],
+        "pdf_pages": [
+          1362
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negation scope and nonce-constituent tree analysis",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1034",
+    "domain": "clauses",
+    "concept": "Basic coordination requires equivalent syntactic functions",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "Outside special joint, lexicalised, rhetorical or minor motivated patterns, two bare coordinates must each stand in the same syntactic relation to the surrounding material.",
+    "condition": "When two dependents share one governor in ordinary basic coordination, each must fulfil the same grammatical function under the relevant sense of that governor.",
+    "violation": "In an ordinary standard-English basic coordination requires equivalent syntactic functions construction, the coordinates violate the stated syntactic licensing condition.",
+    "exceptions": [
+      {
+        "description": "Do not apply this error universally to mixed-category expressions with the same function, joint coordinations, syllepsis or special fixed patterns.",
+        "pages": [
+          1323
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The visitor arrived yesterday and after lunch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The actor admired and praised the leader.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "w1",
+          "text": "The visitor arrived yesterday and the station.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "w2",
+          "text": "The actor became and praised the leader.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§3.1",
+        "pages": [
+          1323
+        ],
+        "pdf_pages": [
+          1343
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Basic coordination requires equivalent syntactic functions",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "When two dependents share one governor in ordinary basic coordination, each must fulfil the same grammatical function under the relevant sense of that governor.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The visitor arrived yesterday and the station. ||| The visitor arrived yesterday and after lunch.",
+        "The actor became and praised the leader. ||| The actor admired and praised the leader."
+      ],
+      "learner_explanation": "Check whether the two expressions are licensed in this specific coordination. Outside special joint, lexicalised, rhetorical or minor motivated patterns, two bare coordinates must each stand in the same syntactic relation to the surrounding material. Rewrite the affected phrase using the parallel alternatives illustrated by the source rule.",
+      "corrected_paragraph_template": "Replace the affected coordinated expression with the corresponding grammatical construction while leaving surrounding sentences unchanged.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The visitor arrived yesterday and after lunch.",
+        "She worked carefully and with enthusiasm."
+      ],
+      "lesson_tags": [
+        "coordination",
+        "syntax"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1035",
+    "domain": "clauses",
+    "concept": "Infinitival and gerund-participial clause coordination restriction",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "A subject coordination cannot ordinarily mix an infinitival clause and a gerund-participial clause as bare coordinates, although either category can individually serve as subject.",
+    "condition": "A single coordination of nonfinite clauses occupying the subject position must not conjoin a to-infinitival with a gerund-participial bare coordinate.",
+    "violation": "In an ordinary standard-English infinitival and gerund-participial clause coordination restriction construction, the coordinates violate the stated syntactic licensing condition.",
+    "exceptions": [
+      {
+        "description": "The broader rule of function sameness does permit many unlike-category coordinations, but this particular category pairing is barred.",
+        "pages": [
+          1324
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "To cycle or to walk is good exercise.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Jogging or swimming would be sufficient.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "w1",
+          "text": "To cycle or walking is good exercise.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "w2",
+          "text": "Jogging or to swim would be sufficient.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§3.1(b)",
+        "pages": [
+          1324
+        ],
+        "pdf_pages": [
+          1344
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Infinitival and gerund-participial clause coordination restriction",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "A single coordination of nonfinite clauses occupying the subject position must not conjoin a to-infinitival with a gerund-participial bare coordinate.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "To cycle or walking is good exercise. ||| To cycle or to walk is good exercise.",
+        "Jogging or to swim would be sufficient. ||| Jogging or swimming would be sufficient."
+      ],
+      "learner_explanation": "Check whether the two expressions are licensed in this specific coordination. A subject coordination cannot ordinarily mix an infinitival clause and a gerund-participial clause as bare coordinates, although either category can individually serve as subject. Rewrite the affected phrase using the parallel alternatives illustrated by the source rule.",
+      "corrected_paragraph_template": "Replace the affected coordinated expression with the corresponding grammatical construction while leaving surrounding sentences unchanged.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "To swim or to jog would be enough.",
+        "Walking or jogging can be enjoyable."
+      ],
+      "lesson_tags": [
+        "coordination",
+        "syntax"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1036",
+    "domain": "clauses",
+    "concept": "Singular-noun coordination cannot satisfy a plural determinative",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "A word-level coordination of singular count nouns remains syntactically singular, so it cannot satisfy a demonstrative or cardinal determiner that selects a plural nominal head.",
+    "condition": "When a plural demonstrative or numeral selecting a plural nominal directly governs a coordination of two singular nouns used together as the nominal head.",
+    "violation": "In an ordinary standard-English singular-noun coordination cannot satisfy a plural determinative construction, the coordinates violate the stated syntactic licensing condition.",
+    "exceptions": [
+      {
+        "description": "Closely associated nouns may form a singular-headed unit with a singular determiner; coordination at full NP level has different number behavior. Semantic anomaly of pairing unrelated nouns is not itself this syntactic violation.",
+        "pages": [
+          1334,
+          1335
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I packed this cup and saucer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She photographed two plates and bowls.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "w1",
+          "text": "I packed these cup and saucer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "w2",
+          "text": "She photographed two plate and bowl.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§3.6",
+        "pages": [
+          1334,
+          1335
+        ],
+        "pdf_pages": [
+          1354,
+          1355
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Singular-noun coordination cannot satisfy a plural determinative",
+        "relation": "unverified",
+        "note": "Burton-Roberts crosswalk requires independent evidence and validation."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "article_determiner",
+      "error_pattern": "When a plural demonstrative or numeral selecting a plural nominal directly governs a coordination of two singular nouns used together as the nominal head.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "I packed these cup and saucer. ||| I packed this cup and saucer.",
+        "She photographed two plate and bowl. ||| She photographed two plates and bowls."
+      ],
+      "learner_explanation": "Check whether the two expressions are licensed in this specific coordination. A word-level coordination of singular count nouns remains syntactically singular, so it cannot satisfy a demonstrative or cardinal determiner that selects a plural nominal head. Rewrite the affected phrase using the parallel alternatives illustrated by the source rule.",
+      "corrected_paragraph_template": "Replace the affected coordinated expression with the corresponding grammatical construction while leaving surrounding sentences unchanged.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "I packed this cup and saucer.",
+        "She photographed two plates and bowls."
+      ],
+      "lesson_tags": [
+        "coordination",
+        "syntax"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
   }
 ]

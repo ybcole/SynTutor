@@ -342,3 +342,7 @@ Printed pp. 1289–1304 yielded 21 classification records (`CLS-952`–`CLS-972`
 ## Chapter 15 third checkpoint
 
 Printed pp. 1305–1322 yielded 23 classification records (`CLS-973`–`CLS-995`). Continue at p. 1323 with conditions on coordination.
+
+## Chapter 15 fourth checkpoint
+
+Printed pp. 1323–1342 audited consecutively in text and rendered layout, including genitive comparison tables, footnote exceptions and the nonce-constituent tree. Added 41 inert English-only records (`CLS-996`–`CLS-1036`); 3 are spec-only constraints, not enabled. Continue at p. 1343; only 20 printed pages remain in Chapter 15. Independent linguistic review and chapter-wide CI remain outstanding.
