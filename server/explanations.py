@@ -93,6 +93,25 @@ def _eligible_source(source):
             and source.get('crosswalk_status') in {'compatible', 'resolved'})
 
 
+def _finding_node_labels(evaluation, tree_nodes):
+    """Collect only overt nodes explicitly tied to a server finding."""
+    labels_by_rule = {}
+    for finding in evaluation.get("findings", []):
+        for match in finding.get("structural_matches", []):
+            targets = labels_by_rule.setdefault(finding["rule_id"], {})
+            for role in ("governor_node_id", "dependent_node_id"):
+                node_id = match.get(role)
+                node = tree_nodes.get(node_id)
+                if not node:
+                    continue
+                label = node.get("label")
+                targets[node_id] = label
+                for child in node.get("children", []):
+                    if child.get("id") and child.get("word") and not child.get("elided"):
+                        targets[child["id"]] = label
+    return labels_by_rule
+
+
 def explain_analysis(analysis, node_id=None, *, registry=None, runtime_registry=None, variety=None):
     if node_id is not None and (not isinstance(node_id, str) or len(node_id) > 200):
         raise ValueError('node_id must be a string of at most 200 characters')
@@ -140,6 +159,7 @@ def explain_analysis(analysis, node_id=None, *, registry=None, runtime_registry=
         return output
     tree = validate_envelope(analysis['tree'])
     nodes = nodes_of(tree)
+    all_nodes = dict(nodes)
     if node_id is not None:
         nodes = [(ident, node) for ident, node in nodes if ident == node_id]
         if not nodes:
@@ -155,6 +175,7 @@ def explain_analysis(analysis, node_id=None, *, registry=None, runtime_registry=
             duplicates.add(ident)
         sources[ident] = row
     evaluation = evaluate_cambridge(analysis, runtime_registry if runtime_registry is not None else load_runtime_registry(), variety=variety)
+    finding_nodes = _finding_node_labels(evaluation, all_nodes)
     evaluated_ids = set(evaluation.get('evaluated_rule_ids', []))
     violations = {row['rule_id'] for row in evaluation.get('findings', [])}
     outcomes = {row['rule_id']: row['status'] for row in evaluation.get('evaluations', [])}
@@ -188,16 +209,25 @@ def explain_analysis(analysis, node_id=None, *, registry=None, runtime_registry=
             continue
         if not isinstance(template.get('node_label'), str):
             continue
+        finding_target = template.get('target') == 'finding_nodes'
+        if finding_target and (channel not in {'grammatical', 'remediation'} or rule_id not in violations):
+            continue
         for ident, node in nodes:
-            if channel != 'structural' and not teaching_only and ident != (tree['root'].get('id') or 'root'):
-                continue
-            if node.get('label') != template['node_label']:
-                continue
+            if finding_target:
+                if finding_nodes.get(rule_id, {}).get(ident) != template['node_label']:
+                    continue
+            else:
+                if channel != 'structural' and not teaching_only and ident != (tree['root'].get('id') or 'root'):
+                    continue
+                if node.get('label') != template['node_label']:
+                    continue
             expected_children = template.get('node_children_labels')
             if expected_children is not None and [child.get('label') for child in node.get('children', [])] != expected_children:
                 continue
             facts = {'label': node.get('label', ''), 'surface': _surface(node),
                      'sentence': tree.get('sentence', ''), 'node_id': ident, 'rule_id': rule_id or ''}
+            if finding_target:
+                facts['target'] = 'finding_nodes'
             try:
                 texts = [template.get('text', ''), template.get('deep_text', '')]
                 if not texts[0] or any(field not in SLOTS for text in texts

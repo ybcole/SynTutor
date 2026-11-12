@@ -8,6 +8,7 @@ from unittest.mock import patch
 from jsonschema import Draft202012Validator
 from burton_roberts import normalize_benepar_candidate, convention_profile
 from explanations import explain_analysis, explain_request, load_registry
+import test_cambridge_evaluator
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -167,14 +168,56 @@ class ExplanationEvidenceTests(unittest.TestCase):
         template.update(channel='remediation')
         self.assertEqual(explain_analysis(analysis(), registry=data)['status'], 'NO_BOOK_BASIS')
 
+    def test_passive_make_explanation_uses_only_the_finding_nodes(self):
+        parsed = test_cambridge_evaluator.CambridgeEvaluatorTests.passive_analysis()
+        runtime = {"active_rules": [{
+            "rule_id": "CLS-357", "rule_type": "constraint", "scope": "clause",
+            "runtime_check": {"kind": "passive_make_missing_to"},
+        }]}
+        review = {
+            "review_status": "INDEPENDENTLY_REVIEWED", "independent_review": True,
+            "reviewed_by": "synthetic-test-reviewer", "reviewed_on": "2026-11-07",
+        }
+        data = load_registry()
+        pending = explain_analysis(parsed, registry=data, runtime_registry=runtime, variety="standard_english")
+        self.assertEqual(pending["channels"]["remediation"], [])
+        for source in data["sources"]:
+            if source["id"] in {"CGEL-2002-CH14-P1234", "CGEL-2002-CH16-P1432"}:
+                source.update(status="approved", crosswalk_status="compatible", **review)
+        template = next(t for t in data["templates"] if t.get("rule_id") == "CLS-357")
+        template.update(review)
+        kwargs = dict(registry=data, runtime_registry=runtime, variety="standard_english")
+        result = explain_analysis(parsed, **kwargs)
+        findings = result["channels"]["remediation"]
+        self.assertEqual({item["facts"]["surface"] for item in findings}, {"made", "wait"})
+        self.assertEqual(len(findings), 4)  # Two verb nodes and their overt word nodes.
+        self.assertTrue(all([source["printed_page"] for source in item["sources"]] == [1234, 1432]
+                            for item in findings))
+        self.assertTrue(all(item["facts"]["target"] == "finding_nodes" for item in findings))
+        target_id = findings[0]["node_id"]
+        self.assertEqual(len(explain_analysis(parsed, target_id, **kwargs)["channels"]["remediation"]), 1)
+        subject_id = parsed["tree"]["root"]["children"][0]["id"]
+        self.assertEqual(explain_analysis(parsed, subject_id, **kwargs)["channels"]["remediation"], [])
+        self.assertEqual(explain_analysis({"status": "normalized", "tree": parsed["tree"]},
+                                          **kwargs)["channels"]["remediation"], [])
+        self.assertEqual(explain_analysis(parsed, registry=data, variety="standard_english")
+                         ["channels"]["remediation"], [])
+
     def test_production_has_no_synthetic_reviewed_sources(self):
         production = load_registry()
         self.assertTrue(production['sources'])
-        self.assertEqual({row['id'] for row in production['templates']}, {'CGEL-CLS001-TEACHING-V1', 'BR-V2-S-NP-VP-V1'})
+        self.assertEqual({row['id'] for row in production['templates'] if row['independent_review']},
+                         {'CGEL-CLS001-TEACHING-V1', 'BR-V2-S-NP-VP-V1'})
+        draft, = [row for row in production['templates'] if not row['independent_review']]
+        self.assertEqual(draft['id'], 'CGEL-CLS357-PASSIVE-MAKE-V1')
+        self.assertEqual(draft['review_status'], 'NOT_REVIEWED')
         for source in production['sources']:
             self.assertTrue(source['id'].startswith(('CGEL-2002-', 'BR-3E-')))
             self.assertNotIn('synthetic', source['title'].casefold())
-            self.assertTrue(source['independent_review'])
+            if source['status'] == 'approved':
+                self.assertTrue(source['independent_review'])
+            else:
+                self.assertFalse(source['independent_review'])
         receipt = json.loads((ROOT / 'sources/cambridge/reviews/2026-11-08-cls-001.json').read_text())
         self.assertEqual(receipt['template_id'], production['templates'][0]['id'])
         self.assertFalse(receipt['crosswalk_resolution']['br_book_comparison_performed'])
@@ -182,7 +225,7 @@ class ExplanationEvidenceTests(unittest.TestCase):
         rows = rules if isinstance(rules, list) else rules['rules']
         original = next(row for row in rows if row['id'] == 'CLS-001')
         self.assertEqual(production['templates'][0]['text'], original['statement'])
-        self.assertEqual({source['printed_page'] for source in production['sources'] if source['book'] == 'Cambridge'}, {44, 45})
+        self.assertEqual({source['printed_page'] for source in production['sources'] if source['book'] == 'Cambridge' and source['status'] == 'approved'}, {44, 45})
         br_receipt = json.loads((ROOT / 'sources/burton_roberts/reviews/2026-11-08-conventions.json').read_text())
         self.assertEqual(br_receipt['content_decision']['template_id'], production['templates'][1]['id'])
         self.assertEqual({source['printed_page'] for source in production['sources'] if source['book'] == 'B-R'}, {29, 30})

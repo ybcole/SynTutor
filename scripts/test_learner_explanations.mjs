@@ -1,7 +1,7 @@
 // Learner-facing renderer must show exactly one plain-English paragraph,
 // never the source registry, implementation status or traceability sidecars.
 import assert from 'node:assert/strict';
-import { learnerParagraph, learnerFeatureParagraph, renderEvidence } from '../web/js/explanation-evidence.js';
+import { learnerParagraph, learnerFeatureParagraph, learnerFindingParagraph, renderEvidence } from '../web/js/explanation-evidence.js';
 
 const original = {
   learner_explanation: {
@@ -17,6 +17,18 @@ const original = {
 };
 assert.match(learnerParagraph(original),/“are”.*“working”/);
 assert.doesNotMatch(learnerParagraph(original),/book|page|XAI-|approved|source|rule|review/i);
+
+const finding = {
+  ...original, status:'EXPLAINED',
+  channels:{remediation:[{node_id:'wait', text:'Add “to” before “wait”.',
+                          facts:{target:'finding_nodes'}}]},
+};
+assert.equal(learnerFindingParagraph(finding, 'wait'), 'Add “to” before “wait”.');
+assert.equal(learnerFindingParagraph(finding, 'subject'), null);
+assert.equal(learnerFindingParagraph(finding), null);
+assert.equal(learnerFindingParagraph({...finding, status:'SOURCE_CONFLICT'}, 'wait'), null);
+assert.equal(learnerParagraph(finding), original.learner_explanation.text);
+assert.doesNotMatch(learnerParagraph({status:'EXPLAINED', channels:finding.channels}), /Add “to”/);
 
 const quiz = {
   status:'EXPLAINED', analysis_status:'quiz_feedback',
@@ -69,6 +81,12 @@ try {
   renderEvidence(quiz,host);
   assert.equal(host.children[0].children.length,1);
   assert.doesNotMatch(host.children[0].children[0].textContent,/Cambridge|printed_page/);
+  host.children.length=0; elements.length=0;
+  renderEvidence(finding,host,{nodeId:'wait'});
+  assert.equal(host.children[0].children[0].textContent,'Add “to” before “wait”.');
+  host.children.length=0; elements.length=0;
+  renderEvidence(finding,host,{nodeId:'subject'});
+  assert.equal(host.children[0].children[0].textContent,original.learner_explanation.text);
   // Hostile user text remains plain text. There is never an innerHTML call.
   host.children.length=0; elements.length=0;
   renderEvidence({status:'EXPLAINED',channels:{

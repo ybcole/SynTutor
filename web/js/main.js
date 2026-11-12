@@ -1,6 +1,6 @@
 import { accountUserId } from './session-scope.js';
 import { fromCanonicalEnvelope } from './syntax-builder.js';
-import { requestEvidence, renderEvidence } from './explanation-evidence.js';
+import { requestEvidence, renderEvidence, learnerFindingParagraph } from './explanation-evidence.js';
 import { findCanonicalNode, canonicalNodeFacts } from './canonical-view.js';
 import { enableCanvasView } from './canvas-view.js';
 import { loadClerk, createSupabaseClient, currentUserEmail, isAccountSession, setAuthState, initAuthModal, openAuthModal } from './auth.js';
@@ -1551,7 +1551,7 @@ async function postParse(text, index = null) {
   }
   const payload = await res.json();
   try {
-    payload.explanation_evidence = await requestEvidence(payload.br_analysis?.tree, null, { variety: payload.meta?.cambridge_variety });
+    payload.explanation_evidence ??= await requestEvidence(payload.br_analysis?.tree, null, { variety: payload.meta?.cambridge_variety });
   } catch (error) {
     payload.explanation_evidence = null;
     log(`Book evidence unavailable: ${error.message}`);
@@ -1656,7 +1656,8 @@ function showCanonicalTree(payload) {
       const evidenceSlot = document.createElement('section');
       pane.append(evidenceSlot);
       try {
-        const evidence = working
+        const finding = learnerFindingParagraph(payload.explanation_evidence, owner.id);
+        const evidence = working || finding
           ? payload.explanation_evidence
           : await requestEvidence(envelope, owner.id, {
               variety: payload.meta?.cambridge_variety,
@@ -1664,7 +1665,7 @@ function showCanonicalTree(payload) {
         // A pending request must not repaint another sentence/account/view.
         if (selectedVersion !== requestVersion || host.hidden || !host.contains(group)
             || (session?.payload !== payload && activePreview()?.payload !== payload)) return;
-        renderEvidence(evidence, evidenceSlot, {treeRoot: group.closest('#canonicalTreeView')});
+        renderEvidence(evidence, evidenceSlot, {treeRoot: group.closest('#canonicalTreeView'), nodeId: owner.id});
       } catch (error) {
         if (host.hidden || !host.contains(group)) return;
         const message = document.createElement('p');
