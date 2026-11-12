@@ -278,3 +278,19 @@ Printed pp. 739–760 yielded 29 classification records (`CLS-569`–`CLS-597`).
 ## Chapter 8 source extraction complete
 
 Printed pp. 761–784 yielded 29 classification records (`CLS-598`–`CLS-626`). Chapter 8 closes source extraction with 120 substantive pages, two contents-only skips and zero unprocessed pages. The next chapter in the priority order is Chapter 9.
+
+## Chapter 9 first checkpoint
+
+Printed pp. 785–805 yielded 29 classification records (`CLS-627`–`CLS-655`) across 20 substantive pages and one contents page. Continue at p. 806 with secondary and non-verbal negation.
+
+## Chapter 9 second checkpoint
+
+Printed pp. 806–821 yielded 29 classification records (`CLS-656`–`CLS-684`). Continue at p. 822 with polarity-sensitive items.
+
+## Chapter 9 third checkpoint
+
+Printed pp. 822–838 yielded 25 classification records (`CLS-685`–`CLS-709`). Continue at p. 839 with increased specificity of negation.
+
+## Chapter 9 source extraction complete
+
+Printed pp. 839–849 yielded 16 records (`CLS-710`–`CLS-725`). Printed p. 850 is blank. Chapter 9 closes with 64 substantive pages and zero unprocessed pages. The next chapter in the priority order is Chapter 11.
