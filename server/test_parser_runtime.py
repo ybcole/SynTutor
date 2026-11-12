@@ -69,6 +69,18 @@ class ParserBackedRuntimeTests(unittest.TestCase):
                     labels = {" ".join(lines) for lines in analysis["display_labels"].values()}
                     self.assertTrue(expected <= labels, (expected, labels))
 
+    def test_real_central_modal_with_extra_to_retains_the_marker_in_final_d1(self):
+        with patch.object(api, "classify", return_value=None):
+            payload = api.build_payload("She can to go.")
+        result = payload["br_analysis"]
+        self.assertEqual(result["status"], "normalized", result["reasons"])
+        self.assertEqual([token["text"] for token in result["tree"]["tokens"]], ["She", "can", "to", "go"])
+        modal, lower = result["tree"]["root"]["children"][1]["children"]
+        self.assertEqual(modal["label"], "MOD")
+        marker = lower["children"][0]
+        self.assertEqual((marker["label"], marker["children"][0]["word"]), ("AUX", "to"))
+        self.assertEqual(payload["cambridge_evaluation"]["findings"], [])
+
     def test_real_parser_selects_second_sentence_without_clamping(self):
         text = "The students laugh. The birds sing."
         analysis = parse_engine.analyze(text, sentence_index=1)

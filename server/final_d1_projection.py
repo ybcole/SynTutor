@@ -27,6 +27,7 @@ NOUN_TAGS = {"NN", "NNS", "NNP", "NNPS"}
 ADJ_TAGS = {"JJ", "JJR", "JJS"}
 ADV_TAGS = {"RB", "RBR", "RBS"}
 VERB_TAGS = {"VB", "VBP", "VBZ", "VBD", "VBG", "VBN", "MD"}
+CENTRAL_MODALS = {"can", "could", "may", "might", "must", "shall", "should", "will", "would"}
 DETERMINERS = {
     **dict.fromkeys(("a", "an", "the"), "ART"),
     **dict.fromkeys(("this", "that", "these", "those"), "DEM"),
@@ -526,6 +527,22 @@ class Projection:
         return self.phrase(node)
 
     @staticmethod
+    def modal_marked_vp(head, target):
+        """Retain an observed extra infinitival marker in a central-modal VP."""
+        if tag(head) != "MD" or word(head) not in CENTRAL_MODALS or tag(target) != "S":
+            return target
+        clause = kids(target)
+        if len(clause) != 1 or tag(clause[0]) != "VP":
+            return target
+        parts = kids(clause[0])
+        if len(parts) != 2 or tag(parts[0]) != "TO" or word(parts[0]) != "to" or tag(parts[1]) != "VP":
+            return target
+        lower = kids(parts[1])
+        if not lower or tag(lower[0]) != "VB" or any(tag(node) in {"CC", "CONJP"} for node in lower[1:]):
+            return target
+        return clause[0]
+
+    @staticmethod
     def bare_causative_complement(tail):
         """Identify an overt bare VP without assigning a role to a marked infinitival."""
         if len(tail) == 2:
@@ -582,10 +599,13 @@ class Projection:
         if negation:
             head_words.append(word_node(negation))
         if aux:
-            if len(auxiliary_tail) != 1 or tag(auxiliary_tail[0]) != "VP":
+            if len(auxiliary_tail) != 1:
                 raise ProjectionUnavailable("Auxiliary has no overt VP complement")
             target = auxiliary_tail[0]
             position = tail.index(target)
+            complement_vp = self.modal_marked_vp(head, target) if len(tail) == 1 and not negation else target
+            if tag(complement_vp) != "VP":
+                raise ProjectionUnavailable("Auxiliary has no overt VP complement")
             aux_tense = "-tense" if aux == "AUX" else tense(head, mode)
             lexical_passive = passive
             if aux == "PASS":
@@ -593,7 +613,7 @@ class Projection:
                     raise ProjectionUnavailable("Passive has no unambiguous promoted subject")
                 lexical_passive = self.link_subject(subject)
                 lexical_passive.kind = "object"
-            complement = self.vp(kids(target), "untensed", subject, incoming, lexical_passive)
+            complement = self.vp(kids(complement_vp), "untensed", subject, incoming, lexical_passive)
             complement = self.attach(complement, "VP", tail[:position], tail[position + 1:])
             return branch("VP", AUXILIARY, branch(aux, AUXILIARY, *head_words,
                           features=(aux_tense,) if aux_tense else ()), complement)

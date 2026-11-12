@@ -246,6 +246,32 @@ class NormalizationTests(unittest.TestCase):
         self.assertEqual([lexical_vp["label"], lower_clause["label"]], ["VP", "S-bar"])
         self.assertEqual(lexical_vp["children"][0]["children"][0]["word"], "made")
 
+    def test_final_central_modal_retains_the_extra_infinitival_marker(self):
+        sentence = "She can to go."
+        analysis = candidate(sentence)
+        parse = "(S (NP (PRP She)) (VP (MD can) (S (VP (TO to) (VP (VB go))))) (. .))"
+        analysis["root"] = NodeBuilder().build(parse_parse_string(parse), len(analysis["tokens"]))
+        result = build_canonical_analysis(analysis, reference_records=[])
+        self.assertEqual(result["status"], "normalized", result["reasons"])
+        tree = result["tree"]
+        self.assertEqual(tree["sentence"], sentence)
+        self.assertEqual([token["text"] for token in tree["tokens"]], ["She", "can", "to", "go"])
+        modal, lower = tree["root"]["children"][1]["children"]
+        marker, lexical_vp = lower["children"]
+        self.assertEqual((modal["label"], marker["label"]), ("MOD", "AUX"))
+        self.assertEqual(marker["children"][0]["word"], "to")
+        self.assertEqual(marker["features"], ["-tense"])
+        self.assertEqual(lexical_vp["children"][0]["children"][0]["word"], "go")
+
+    def test_final_modal_does_not_unwrap_an_overt_subject_clause(self):
+        sentence = "She can he to go."
+        analysis = candidate(sentence)
+        parse = "(S (NP (PRP She)) (VP (MD can) (S (NP (PRP he)) (VP (TO to) (VP (VB go))))) (. .))"
+        analysis["root"] = NodeBuilder().build(parse_parse_string(parse), len(analysis["tokens"]))
+        result = build_canonical_analysis(analysis, reference_records=[])
+        self.assertEqual(result["status"], "unresolved")
+        self.assertIsNone(result["tree"])
+
     def test_sentence_final_punctuation_is_not_fabricated_as_a_phrase_marker_node(self):
         result = normalize_benepar_candidate(candidate("The students laugh."), convention_profile(2))
         self.assertEqual(result["status"], "normalized", result.get("reasons"))
