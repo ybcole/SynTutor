@@ -9542,79 +9542,79 @@
     {
       "page": 1363,
       "chapter": 16,
-      "status": "unprocessed",
-      "reason": null,
-      "evidence": null
+      "status": "skipped_with_reason",
+      "reason": "Contents-only page verified in the uploaded full PDF.",
+      "evidence": "sources/cambridge/chapter_16/PP1363_1373_REPORT.md"
     },
     {
       "page": 1364,
       "chapter": 16,
-      "status": "unprocessed",
-      "reason": null,
-      "evidence": null
+      "status": "skipped_with_reason",
+      "reason": "Contents-only page verified in the uploaded full PDF.",
+      "evidence": "sources/cambridge/chapter_16/PP1363_1373_REPORT.md"
     },
     {
       "page": 1365,
       "chapter": 16,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_16/PP1363_1373_REPORT.md"
     },
     {
       "page": 1366,
       "chapter": 16,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_16/PP1363_1373_REPORT.md"
     },
     {
       "page": 1367,
       "chapter": 16,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_16/PP1363_1373_REPORT.md"
     },
     {
       "page": 1368,
       "chapter": 16,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_16/PP1363_1373_REPORT.md"
     },
     {
       "page": 1369,
       "chapter": 16,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_16/PP1363_1373_REPORT.md"
     },
     {
       "page": 1370,
       "chapter": 16,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_16/PP1363_1373_REPORT.md"
     },
     {
       "page": 1371,
       "chapter": 16,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_16/PP1363_1373_REPORT.md"
     },
     {
       "page": 1372,
       "chapter": 16,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_16/PP1363_1373_REPORT.md"
     },
     {
       "page": 1373,
       "chapter": 16,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_16/PP1363_1373_REPORT.md"
     },
     {
       "page": 1374,

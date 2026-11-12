@@ -80186,5 +80186,1109 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1279",
+    "domain": "clauses",
+    "concept": "Information packaging and canonical counterparts",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A noncanonical information-packaging construction typically has a simpler counterpart with the same truth conditions and illocutionary meaning. The pair presents its content differently.",
+    "condition": "Compare structurally distinct clauses with the same participants and proposition.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The courier delivered the parcel.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The parcel was delivered by the courier.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§1",
+        "pages": [
+          1365,
+          1366
+        ],
+        "pdf_pages": [
+          1385,
+          1386
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Information packaging and canonical counterparts",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1280",
+    "domain": "clauses",
+    "concept": "Counterparts unavailable for syntactic or pragmatic reasons",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A noncanonical construction can be licensed even when a would-be canonical counterpart is ungrammatical or contextually infelicitous.",
+    "condition": "Syntactic licensing and suitability in context must be assessed independently of semantic similarity.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Dara was believed to have found the key.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There was a collision at the crossroads.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§1",
+        "pages": [
+          1365
+        ],
+        "pdf_pages": [
+          1385
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Counterparts unavailable for syntactic or pragmatic reasons",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1281",
+    "domain": "clauses",
+    "concept": "Quantifier and negation scope under repackaging",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Information-packaging alternants can differ in truth conditions when the change affects the relative scope of a quantifier and negation.",
+    "condition": "A large number of absent members can coexist with a large number of present members.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Many delegates weren't in the hall.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There weren't many delegates in the hall.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§1",
+        "pages": [
+          1365,
+          1366
+        ],
+        "pdf_pages": [
+          1385,
+          1386
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Quantifier and negation scope under repackaging",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1282",
+    "domain": "clauses",
+    "concept": "Subject–dependent versus subject–auxiliary inversion",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Subject–dependent inversion places a verbal dependent before the verb and the subject after it. Subject–auxiliary inversion places an auxiliary before the subject.",
+    "condition": "The preposed dependent and the auxiliary perform different syntactic functions.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "At the far end stood two ushers.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Were two ushers at the far end?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§1",
+        "pages": [
+          1366
+        ],
+        "pdf_pages": [
+          1386
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subject–dependent versus subject–auxiliary inversion",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1283",
+    "domain": "clauses",
+    "concept": "Reordering and realignment in information packaging",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Preposing, postposing and subject–dependent inversion reorder clause elements. Existentials, extraposition, dislocation, clefts and passives change how semantic elements align with syntactic functions, generally adding structural material.",
+    "condition": "Process terminology describes relations between constructions and their defaults.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "That proposal I rejected.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was Dana who rejected the proposal.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§1",
+        "pages": [
+          1366,
+          1367
+        ],
+        "pdf_pages": [
+          1386,
+          1387
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reordering and realignment in information packaging",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1284",
+    "domain": "clauses",
+    "concept": "Combinations of information-packaging constructions",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Information-packaging constructions can combine when their licensing conditions are compatible. Existential and extraposition constructions cannot both apply at the same clause level.",
+    "condition": "Identify the clause at which each construction operates.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was assumed by the panel that the witness would return.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "These figures she checked twice, my supervisor.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§1",
+        "pages": [
+          1367
+        ],
+        "pdf_pages": [
+          1387
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Combinations of information-packaging constructions",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1285",
+    "domain": "clauses",
+    "concept": "Informational status across semantic categories",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Information-packaging analysis applies to entities, properties and propositions, and by extension to the expressions that represent them.",
+    "condition": "Different parts of the same utterance may have different informational statuses.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Was Mara annoyed? She was relieved.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I found a scarf. It was soaking wet.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§2",
+        "pages": [
+          1367,
+          1368
+        ],
+        "pdf_pages": [
+          1387,
+          1388
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Informational status across semantic categories",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1286",
+    "domain": "clauses",
+    "concept": "Discourse familiarity by mention and participation",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Earlier mention in the salient stretch of discourse can make a referent discourse-old, as can participation in the discourse. Real-world existence is irrelevant to discourse familiarity.",
+    "condition": "Pronouns can recover an antecedent or refer directly to an interlocutor.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I imagined a fox lived under the stairs. I called it Pepper.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I found your gloves. Do you want them?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§2",
+        "pages": [
+          1368
+        ],
+        "pdf_pages": [
+          1388
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Discourse familiarity by mention and participation",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1287",
+    "domain": "clauses",
+    "concept": "Inferable discourse-old referents",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "An unmentioned referent can count as discourse-old when a salient, relevant relationship connects it to something already evoked.",
+    "condition": "Class membership, part–whole relations and conventional associations can support the inference.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I tried to start the van, but the battery was dead.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I avoid most sweet pastries, but cinnamon rolls are irresistible.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§2",
+        "pages": [
+          1368,
+          1369
+        ],
+        "pdf_pages": [
+          1388,
+          1389
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inferable discourse-old referents",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1288",
+    "domain": "clauses",
+    "concept": "Inferable discourse-old open propositions",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "An open proposition can be discourse-old by inference from a prior utterance or the situation, even without explicit repetition.",
+    "condition": "Recover the relation from the preceding exchange and leave the new value open.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Can I borrow the ladder? No, but the step stool you can borrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Where did you put the spare keys? The front-door key I left on the hook.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§2",
+        "pages": [
+          1369
+        ],
+        "pdf_pages": [
+          1389
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inferable discourse-old open propositions",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1289",
+    "domain": "clauses",
+    "concept": "Discourse familiarity and addressee familiarity",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Discourse-old material is also addressee-old. Material introduced in the current discourse can nevertheless be addressee-old when the speaker assumes relevant shared knowledge.",
+    "condition": "A shared institution or familiar participant can be identifiable on first mention.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The moon is unusually bright tonight.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The principal has cancelled assembly, as you probably heard.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§2",
+        "pages": [
+          1369
+        ],
+        "pdf_pages": [
+          1389
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Discourse familiarity and addressee familiarity",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1290",
+    "domain": "clauses",
+    "concept": "Informational focus and the focus-frame",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The informational focus contains nuclear stress and is presented as prominent. The focus-frame is the backgrounded residue and can be represented as an open proposition.",
+    "condition": "The surrounding question or context identifies which value fills the open position.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What did Lina order? Lina ordered TEA.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Where did Lina order tea? Lina ordered tea at the STATION.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§2",
+        "pages": [
+          1370
+        ],
+        "pdf_pages": [
+          1390
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Informational focus and the focus-frame",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1291",
+    "domain": "clauses",
+    "concept": "Focus size and multiple foci",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Nuclear stress can occur within a larger focus constituent. Context can change the focus size without changing the stressed syllable, and a clause can contain more than one focus.",
+    "condition": "Recover the focus-frame from the question and use stress to locate the focused material.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What did she buy? She bought a tin of BEANS.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Who bought what? DANI bought a tin of BEANS.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§2",
+        "pages": [
+          1370
+        ],
+        "pdf_pages": [
+          1390
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Focus size and multiple foci",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1292",
+    "domain": "clauses",
+    "concept": "Familiar referent as a new focus value",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A referent already familiar to the addressee can supply new information by filling an open position in the focus-frame.",
+    "condition": "Distinguish familiarity with the entity from knowing its role in the assertion.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Did Rosa or Eli win? SHE won.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Was the package for Jo or me? It was for YOU.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§2",
+        "pages": [
+          1370
+        ],
+        "pdf_pages": [
+          1390
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Familiar referent as a new focus value",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1293",
+    "domain": "clauses",
+    "concept": "Focus-frame and semantic presupposition",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A focus-frame represents the background left after removing informational focus. A proposition presupposed by a factive expression can itself contain the focus.",
+    "condition": "Factive presupposition and focus assignment can overlap without having the same boundaries.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It's unfortunate that they called on MONDAY.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I'm glad that you invited MAYA.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§2",
+        "pages": [
+          1370
+        ],
+        "pdf_pages": [
+          1390
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Focus-frame and semantic presupposition",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1294",
+    "domain": "clauses",
+    "concept": "Constituent weight and ordering",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Constituent weight is scalar and reflects length and grammatical complexity. A heavy object can make particle-before-object order much more natural than particle-after-object order.",
+    "condition": "Weight correlates with discourse novelty, while a heavy expression can refer back and a short NP can introduce a new entity.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He folded the sheet up.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He folded up the sheet that had been covering the entire workbench.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§2",
+        "pages": [
+          1371
+        ],
+        "pdf_pages": [
+          1391
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Constituent weight and ordering",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1295",
+    "domain": "clauses",
+    "concept": "Clause topic and explicit topic-shift adjuncts",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Clause topic is what a clause is about and is distinct from discourse topic. Some adjuncts mark an explicit topic or topic change, though most English clauses lack explicit topic marking.",
+    "condition": "As for and related expressions can introduce a topic recoverable from earlier discourse.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "As for the roof, we repaired it last spring.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Speaking of travel, have you booked the ferry?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§2",
+        "pages": [
+          1371
+        ],
+        "pdf_pages": [
+          1391
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Clause topic and explicit topic-shift adjuncts",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1296",
+    "domain": "clauses",
+    "concept": "General information-order tendencies",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Heavy and focused material tends to occur late, subjects tend to be addressee-old, and familiar information tends to precede new information.",
+    "condition": "These are tendencies, and contextual suitability, syntax and stylistic variation can favor a noncanonical alternative.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "In the courtyard stood a statue made from recycled metal.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The statue had attracted a crowd.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§2",
+        "pages": [
+          1372
+        ],
+        "pdf_pages": [
+          1392
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "General information-order tendencies",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1297",
+    "domain": "clauses",
+    "concept": "Complement preposing and clause type",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Complement preposing places a complement in the prenuclear position and leaves its basic VP-internal position unrealized. It is an unbounded dependency and is especially common in main declaratives, with imperative and subordinate uses also possible.",
+    "condition": "The fronted element functions as a complement of the predicate.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The spare keys, leave on the counter.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I think that this one she filed herself.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§3",
+        "pages": [
+          1372
+        ],
+        "pdf_pages": [
+          1392
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Complement preposing and clause type",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1298",
+    "domain": "clauses",
+    "concept": "Discourse link for a preposed complement",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A preposed complement must connect to discourse-old information for felicity. Prior mention, a subset, a fellow member of a salient set, or an inferred scale can supply the connection. Fronted adjuncts do not share this complement-specific condition.",
+    "condition": "Assess the prior discourse before judging a fronted complement.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Do you have any drills? A cordless drill I can lend you.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Can I borrow the red scarf? It's gone, but the blue one you can borrow.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§3",
+        "pages": [
+          1372,
+          1373
+        ],
+        "pdf_pages": [
+          1392,
+          1393
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Discourse link for a preposed complement",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1299",
+    "domain": "clauses",
+    "concept": "Discourse-old open propositions in complement preposing",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Most complement preposing also has a discourse-old open proposition. Its variable may correspond to a constituent other than the preposed complement.",
+    "condition": "The link supplied by the fronted expression and the familiarity of the open proposition are distinct conditions.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Did you give out all the maps? Two of them I gave to the guide.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Where did you buy the tools? Most of them I bought at the market.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§3",
+        "pages": [
+          1373
+        ],
+        "pdf_pages": [
+          1393
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Discourse-old open propositions in complement preposing",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
   }
 ]

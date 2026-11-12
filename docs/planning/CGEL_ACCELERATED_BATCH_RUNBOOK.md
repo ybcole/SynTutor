@@ -448,3 +448,7 @@ Printed pp. 1148–1155 add eight substantive pages and 24 inactive records (`CL
 ## Chapter 13 completion checkpoint
 
 Chapter 13 source extraction is complete. Printed pp. 1097–1170 are accounted for as 72 extracted pages and two contents-only pages. The final 15 pages add 36 inactive records (`CLS-1243`–`CLS-1278`), including four `spec_only` constraints. Chapter 13 adds 175 records in total. The next Phase B chapter is Chapter 16, starting at printed p. 1363.
+
+## Chapter 16 first checkpoint
+
+Printed pp. 1363–1373 account for 9 substantive pages and two contents-only pages, adding 21 inactive records (`CLS-1279`–`CLS-1299`). The chapter has 74 unprocessed pages and one previously accounted-for textless page. Continue at p. 1374 with non-focus complement preposing.

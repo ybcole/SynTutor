@@ -1,0 +1,158 @@
+{
+  "manifest_version": 1,
+  "chapter": 16,
+  "printed_start": 1363,
+  "printed_end": 1373,
+  "report": "sources/cambridge/chapter_16/PP1363_1373_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1363,
+    "pdf_page": 1383
+  },
+  "added_rule_ids": [
+    "CLS-1279",
+    "CLS-1280",
+    "CLS-1281",
+    "CLS-1282",
+    "CLS-1283",
+    "CLS-1284",
+    "CLS-1285",
+    "CLS-1286",
+    "CLS-1287",
+    "CLS-1288",
+    "CLS-1289",
+    "CLS-1290",
+    "CLS-1291",
+    "CLS-1292",
+    "CLS-1293",
+    "CLS-1294",
+    "CLS-1295",
+    "CLS-1296",
+    "CLS-1297",
+    "CLS-1298",
+    "CLS-1299"
+  ],
+  "page_checks": [
+    {
+      "page": 1363,
+      "status": "skipped_with_reason",
+      "section": "Contents",
+      "summary": "Chapter title, contributors and contents for §§1–9; no substantive discussion.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1364,
+      "status": "skipped_with_reason",
+      "section": "Contents",
+      "summary": "Continuation of chapter contents, listing §10 on passive voice; no substantive discussion.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1365,
+      "status": "extracted",
+      "section": "§1",
+      "summary": "Canonical counterparts, comparable truth and illocution, unavailable counterparts and changes in scope.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1366,
+      "status": "extracted",
+      "section": "§1",
+      "summary": "Scope differences, aligned construction inventory, and subject–dependent versus subject–auxiliary inversion.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1367,
+      "status": "extracted",
+      "section": "§§1–2",
+      "summary": "Reordering, realignment, compatible combinations, and the domain of information status.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1368,
+      "status": "extracted",
+      "section": "§2",
+      "summary": "Prior mention, discourse participants, imagined referents and inferable discourse familiarity.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1369,
+      "status": "extracted",
+      "section": "§2",
+      "summary": "Salient discourse links, inversion felicity, inferable open propositions and addressee familiarity.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1370,
+      "status": "extracted",
+      "section": "§2",
+      "summary": "Nuclear stress, focus-frame, variable focus size, multiple foci, and focus versus presupposition in footnotes 1–2.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1371,
+      "status": "extracted",
+      "section": "§2",
+      "summary": "Gradable weight, position, familiarity and explicit topic markers, including the distinction in footnote 3.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1372,
+      "status": "extracted",
+      "section": "§§2–3",
+      "summary": "Information-order tendencies and the syntax of complement preposing, including the unbounded dependency in footnote 4.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1373,
+      "status": "extracted",
+      "section": "§3",
+      "summary": "Direct and inferred discourse links, the separate open proposition, and contextually infelicitous preposing.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}
