@@ -548,3 +548,7 @@ Printed pp. 1731–1738 add eight substantive pages and 18 inactive records (`OT
 ## Chapter 20 third checkpoint
 
 Printed pp. 1739–1746 add eight substantive pages and add 20 inactive records (`OTH-701`–`OTH-720`), including five inactive punctuation specifications. Chapter 20 has 18 unprocessed pages. Continue at p. 1747 with further delimiting comma patterns.
+
+## Chapter 20 fourth checkpoint
+
+Printed pp. 1747–1754 add eight substantive pages and add 21 inactive records (`OTH-721`–`OTH-741`), including four inactive punctuation specifications. Chapter 20 has 10 unprocessed pages. Continue at p. 1755 with punctuation around quotations.

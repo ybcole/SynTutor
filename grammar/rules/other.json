@@ -41683,5 +41683,1250 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-721",
+    "domain": "other",
+    "concept": "Fronted complements and disambiguating commas",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "A fronted complement can be delimited by a comma even though an integrated complement in its usual position normally is not.",
+    "condition": "The comma can prevent the following subject from being read as part of a relative clause modifying the fronted noun phrase.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "That idea, I would never support.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Most of the books, my sister had bought on Saturday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§3.2.5",
+        "pages": [
+          1747
+        ],
+        "pdf_pages": [
+          1767
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fronted complements and disambiguating commas",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-722",
+    "domain": "other",
+    "concept": "Final adjunct delimitation and negative scope",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "A comma can present a final adjunct as a separate piece of information. Before a reason adjunct it can signal that the reason explains a negative outcome.",
+    "condition": "Without delimitation, the negative can instead be read as denying the stated reason for a positive outcome.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She didn't take the shortcut, because the bridge was closed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He saw the same cyclist again, only an hour later.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§3.2.5",
+        "pages": [
+          1747
+        ],
+        "pdf_pages": [
+          1767
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Final adjunct delimitation and negative scope",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-723",
+    "domain": "other",
+    "concept": "Semantic and prosodic factors in adjunct delimitation",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "Peripheral adjuncts, including result, evaluation, speech-act and connective adjuncts, often favour commas.",
+    "condition": "Prosodic detachment correlates with some uses but does not determine punctuation. Initial however is more often delimited than thus.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Frankly, the plan needs more work.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Thus the original route remained our best option.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§3.2.5",
+        "pages": [
+          1747
+        ],
+        "pdf_pages": [
+          1767
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Semantic and prosodic factors in adjunct delimitation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-724",
+    "domain": "other",
+    "concept": "Parentheses and the scope of enclosed material",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Paired parentheses normally present material as ancillary to a minimal reading of the surrounding text. They can enclose anything from part of a word to multiple sentences.",
+    "condition": "Some enclosed material is not a grammatical constituent. Enumeration and bibliographic dates are secondary uses, and list labels can omit an opening parenthesis.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Any file(s) left on the desk will be collected.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The hall reopened on Friday. (The side entrance was still closed.)",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§4",
+        "pages": [
+          1748
+        ],
+        "pdf_pages": [
+          1768
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Parentheses and the scope of enclosed material",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-725",
+    "domain": "other",
+    "concept": "Integrable and non-integrable parentheses",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "An integrable insertion can remain in the construction when the parentheses are removed or replaced by commas. A non-integrable insertion cannot be integrated that way.",
+    "condition": "A medial non-integrable insertion can sometimes use paired dashes. A final one can sometimes follow a colon or semicolon.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The north gate (which faces the harbour) closes at dusk.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The volunteers (there were only four of them) moved the tables outside.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§4",
+        "pages": [
+          1748,
+          1749
+        ],
+        "pdf_pages": [
+          1768,
+          1769
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Integrable and non-integrable parentheses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-726",
+    "domain": "other",
+    "concept": "Article choice before a parenthesised element",
+    "rule_type": "constraint",
+    "scope": "other",
+    "statement": "The form of the indefinite article is selected according to the first sound inside a following parenthesised element if it is read aloud as part of the phrase.",
+    "condition": "An indefinite article immediately precedes an insertion read aloud as part of its noun phrase.",
+    "violation": "The article follows the sound of the word after the parentheses rather than the first sound within them.",
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We saw an (unexpectedly large) owl.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He ordered a (rather unusual) omelette.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "We saw a (unexpectedly large) owl.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "He ordered an (rather unusual) omelette.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§4",
+        "pages": [
+          1748
+        ],
+        "pdf_pages": [
+          1768
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Article choice before a parenthesised element",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "punctuation",
+      "error_pattern": "The article follows the sound of the word after the parentheses rather than the first sound within them.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "We saw a (unexpectedly large) owl. ||| We saw an (unexpectedly large) owl.",
+        "He ordered an (rather unusual) omelette. ||| He ordered a (rather unusual) omelette."
+      ],
+      "learner_explanation": "Choose a or an by the first sound after the article, including the first sound inside the parentheses.",
+      "corrected_paragraph_template": "Choose a or an by the first sound after the article, including the first sound inside the parentheses.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "We saw an (unusually small) bird.",
+        "She bought a (used) umbrella."
+      ],
+      "lesson_tags": [
+        "punctuation",
+        "parentheses"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-727",
+    "domain": "other",
+    "concept": "Position of parenthesised elements",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "A non-integrable insertion follows its anchor. An integrable insertion occupies its ordinary position but is barred from the absolute beginning of its clause in the construction described.",
+    "condition": "An insertion may occur after a coordinator or clause subordinator.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The visitors (there were six) took the last train.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It seems that (rather unexpectedly) the forecast was right.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§4",
+        "pages": [
+          1749
+        ],
+        "pdf_pages": [
+          1769
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Position of parenthesised elements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-728",
+    "domain": "other",
+    "concept": "Internal and external punctuation of parentheses",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "A medial parenthesised question or exclamation can retain its status mark, while an embedded insertion does not take a terminal full stop. Surrounding punctuation normally follows the closing parenthesis.",
+    "condition": "A standalone parenthesised sentence can have its own full stop. A hyphen belonging to an optional word part stays inside the parentheses.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The key (do you remember it?) still fits the door.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She bought the blue folder (the last one), then went home.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§4",
+        "pages": [
+          1749
+        ],
+        "pdf_pages": [
+          1769
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Internal and external punctuation of parentheses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-729",
+    "domain": "other",
+    "concept": "Alternating parentheses and dashes at nested levels",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "Ordinary pairs of parentheses are normally avoided inside another pair. Alternating parentheses and dashes is a common way to distinguish levels.",
+    "condition": "Secondary uses such as list labels differ. Some manuals allow square brackets at the lower level, but Cambridge describes this as a minority convention.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The notice was brief. (The reason – a power failure – was given later.)",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The north gate – our usual entrance (until the repairs) – was closed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§4",
+        "pages": [
+          1749
+        ],
+        "pdf_pages": [
+          1769
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Alternating parentheses and dashes at nested levels",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-730",
+    "domain": "other",
+    "concept": "Insulation of parenthesised content",
+    "rule_type": "constraint",
+    "scope": "other",
+    "statement": "The surrounding text ordinarily cannot depend on a parenthesised insertion for agreement, a pronoun antecedent, a comparison or the interpretation of a later expression.",
+    "condition": "A parenthesised coordinate is appended to an otherwise singular personal subject or singular count antecedent.",
+    "violation": "Agreement or a plural pronoun depends on the parenthesised coordinate.",
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Lina and Omar have arrived.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mara brought a cup and a plate and put them on the table.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Lina (and Omar) have arrived.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Mara brought a cup (and a plate) and put them on the table.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§4",
+        "pages": [
+          1750
+        ],
+        "pdf_pages": [
+          1770
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Insulation of parenthesised content",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "punctuation",
+      "error_pattern": "Agreement or a plural pronoun depends on the parenthesised coordinate.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Lina (and Omar) have arrived. ||| Lina and Omar have arrived.",
+        "Mara brought a cup (and a plate) and put them on the table. ||| Mara brought a cup and a plate and put them on the table."
+      ],
+      "learner_explanation": "Remove the parentheses if both items belong to the subject or antecedent.",
+      "corrected_paragraph_template": "Remove the parentheses if both items belong to the subject or antecedent.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Lina (the only volunteer on duty) has arrived.",
+        "Mara brought a cup (and a plate) and put the cup on the table."
+      ],
+      "lesson_tags": [
+        "punctuation",
+        "parentheses"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-731",
+    "domain": "other",
+    "concept": "Paired dash interpolations",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Paired dashes set off interpolations more strongly than commas and can delimit main-clause material. Unlike parentheses, they can enclose identifying information and need not insulate it from agreement.",
+    "condition": "They cannot enclose a word part or separate whole sentence. Some constructions require equal status for their coordinates.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The hall – all the doors were locked – was empty.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The novel – and the film – were both criticised.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§5",
+        "pages": [
+          1750,
+          1751
+        ],
+        "pdf_pages": [
+          1770,
+          1771
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Paired dash interpolations",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-732",
+    "domain": "other",
+    "concept": "Functions of a single dash",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "A single dash can introduce a final interpolation, link a dislocated list to a resumptive expression, highlight a final complement, or signal abrupt change or interruption.",
+    "condition": "Some of these uses permit a colon instead. Dashes do not separate ordinary open-ended coordinate series.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Patience, precision, stamina – those were the qualities she needed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "“I thought we could –” “It's too late,” he replied.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§5",
+        "pages": [
+          1751
+        ],
+        "pdf_pages": [
+          1771
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Functions of a single dash",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-733",
+    "domain": "other",
+    "concept": "Dash and comma at a coinciding boundary",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "A dash normally absorbs an adjacent comma when the comma marks an internal boundary of the dash interpolation. In some cases it can also absorb a wider-scope comma.",
+    "condition": "A comma essential to a list or supplementary relative boundary may require rewriting with parentheses or stronger separators. Reported interruption has a recognized exception.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Two volunteers – Mina, for example – stayed late.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "As the bus was full – several seats were broken – we took the train.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§5",
+        "pages": [
+          1751,
+          1752
+        ],
+        "pdf_pages": [
+          1771,
+          1772
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dash and comma at a coinciding boundary",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-734",
+    "domain": "other",
+    "concept": "Dash scope and nesting",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "A dash has comparable boundary strength to a colon or semicolon. Either scope order is possible between these marks, but a comma cannot replace the closing dash of an interpolation.",
+    "condition": "Nested dash pairs at different levels within one constituent are avoided. Parentheses can distinguish one level.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The oven failed – the door seal had torn; nevertheless, the kitchen opened on time.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The hall – the floor was wet; the lights were off – remained closed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§5",
+        "pages": [
+          1752
+        ],
+        "pdf_pages": [
+          1772
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dash scope and nesting",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-735",
+    "domain": "other",
+    "concept": "Functions of quotation marks",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Quotation marks assign special status to direct speech, borrowed wording, certain titles, ironic or technical expressions and expressions mentioned as words.",
+    "condition": "The enclosed unit can range from part of a word to several paragraphs.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "“Wait by the gate,” she said.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The editor checked the spelling of “accommodate”.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§6",
+        "pages": [
+          1753
+        ],
+        "pdf_pages": [
+          1773
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Functions of quotation marks",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-736",
+    "domain": "other",
+    "concept": "Regional and editorial choice of quotation marks",
+    "rule_type": "stylistic_or_prescriptive",
+    "scope": "other",
+    "statement": "Double quotation marks predominate in American English, while British usage varies and many British manuals favour singles.",
+    "condition": "Some publications use the two types for distinct purposes.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "“The gate is open,” she said.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "‘The gate is open,’ she said.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§6",
+        "pages": [
+          1753
+        ],
+        "pdf_pages": [
+          1773
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Regional and editorial choice of quotation marks",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-737",
+    "domain": "other",
+    "concept": "Alternation of nested quotation marks",
+    "rule_type": "constraint",
+    "scope": "other",
+    "statement": "Single and double quotation marks alternate at successive quotation levels.",
+    "condition": "A quotation containing another quotation uses an editorial style with both single and double quotation marks.",
+    "violation": "Both levels use the same quotation marks.",
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "“The sign said ‘Closed’,” she explained.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "‘The sign said “Closed”,’ she explained.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "“The sign said “Closed”,” she explained.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "‘The sign said ‘Closed’,’ she explained.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§6",
+        "pages": [
+          1753
+        ],
+        "pdf_pages": [
+          1773
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Alternation of nested quotation marks",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "punctuation",
+      "error_pattern": "Both levels use the same quotation marks.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "“The sign said “Closed”,” she explained. ||| “The sign said ‘Closed’,” she explained.",
+        "‘The sign said ‘Closed’,’ she explained. ||| ‘The sign said “Closed”,’ she explained."
+      ],
+      "learner_explanation": "Alternate the quotation marks at each level. Either singles or doubles can be outermost.",
+      "corrected_paragraph_template": "Alternate the quotation marks at each level. Either singles or doubles can be outermost.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "“The gate is open,” she said.",
+        "‘The gate is open,’ she said."
+      ],
+      "lesson_tags": [
+        "punctuation",
+        "quotation"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-738",
+    "domain": "other",
+    "concept": "Quotation pairing across paragraphs",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Quotations normally have an opening and a closing mark. A speaker's continuing speech can open each paragraph and close only the final paragraph.",
+    "condition": "The source reports this convention in both older and contemporary fiction.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "“First, find the gate,” she said.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "“We walked until dusk. Then we found the gate.”",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§6",
+        "pages": [
+          1753,
+          1754
+        ],
+        "pdf_pages": [
+          1773,
+          1774
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Quotation pairing across paragraphs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-739",
+    "domain": "other",
+    "concept": "Internal and external punctuation of quotations",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "An internal mark can reflect the quoted material's status, and an external mark can reflect the containing sentence's structure.",
+    "condition": "Regional and house conventions affect the formal location of some marks.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She asked, “Is the gate locked?” and waited for an answer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Did she really call the hall “tiny”?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§6",
+        "pages": [
+          1754
+        ],
+        "pdf_pages": [
+          1774
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Internal and external punctuation of quotations",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-740",
+    "domain": "other",
+    "concept": "Quoted terminal full stop inside a continuing matrix sentence",
+    "rule_type": "constraint",
+    "scope": "other",
+    "statement": "A quoted terminal full stop cannot close a quotation midway through a continuing matrix sentence in the construction described.",
+    "condition": "A quotation ends with a declarative clause while the matrix sentence continues.",
+    "violation": "A terminal full stop closes the quotation before the matrix sentence has ended.",
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "“I will wait,” she said.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She said, “I will wait” and sat down.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "“I will wait.” she said.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "She said, “I will wait.” and sat down.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§6(a)",
+        "pages": [
+          1754
+        ],
+        "pdf_pages": [
+          1774
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Quoted terminal full stop inside a continuing matrix sentence",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "punctuation",
+      "error_pattern": "A terminal full stop closes the quotation before the matrix sentence has ended.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "“I will wait.” she said. ||| “I will wait,” she said.",
+        "She said, “I will wait.” and sat down. ||| She said, “I will wait” and sat down."
+      ],
+      "learner_explanation": "Use the punctuation required by the continuing matrix sentence. A reporting tag can require a comma, while a continuing coordination may require no mark at that point.",
+      "corrected_paragraph_template": "Use the punctuation required by the continuing matrix sentence. A reporting tag can require a comma, while a continuing coordination may require no mark at that point.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "She said, “I will wait.”",
+        "She asked, “Can I wait?” and sat down.",
+        "She said, “I will wait. Where should I sit?”"
+      ],
+      "lesson_tags": [
+        "punctuation",
+        "quotation"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-741",
+    "domain": "other",
+    "concept": "Raising a semicolon around a reporting parenthetical",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "A reporting parenthetical can intervene before a semicolon that separates the two portions of reported speech.",
+    "condition": "The parenthetical occupies a position outside the first quotation, and the semicolon follows it.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "“I can wait,” she said; “the shop stays open until six.”",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "“Take the stairs,” he said; “the lift is out of order.”",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§6(b)",
+        "pages": [
+          1754
+        ],
+        "pdf_pages": [
+          1774
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Raising a semicolon around a reporting parenthetical",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]

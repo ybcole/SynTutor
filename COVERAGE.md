@@ -25,9 +25,9 @@
 | 17. Deixis and anaphora | 116 | 114 | 0 | 2 | 0 | Source extraction complete |
 | 18. Inflectional morphology | 56 | 53 | 0 | 3 | 0 | Source extraction complete |
 | 19. Lexical word-formation | 102 | 99 | 0 | 3 | 0 | Source extraction complete |
-| 20. Punctuation | 42 | 23 | 18 | 1 | 0 | In progress (pp. 1723–1746) |
+| 20. Punctuation | 42 | 31 | 10 | 1 | 0 | In progress (pp. 1723–1754) |
 
-**Totals:** 1764 printed pages; **1698 extracted**, 18 unprocessed, 46 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **1706 extracted**, 10 unprocessed, 46 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -602,3 +602,9 @@ Source audit: `sources/cambridge/chapter_20/PP1731_1738_REPORT.md`.
 Printed pp. 1739–1746 add eight substantive pages and add 20 inactive records (`OTH-701`–`OTH-720`), including five inactive punctuation specifications. Chapter 20 has 18 unprocessed pages. Continue at p. 1747 with further delimiting comma patterns.
 
 Source audit: `sources/cambridge/chapter_20/PP1739_1746_REPORT.md`.
+
+## Chapter 20 fourth checkpoint
+
+Printed pp. 1747–1754 add eight substantive pages and add 21 inactive records (`OTH-721`–`OTH-741`), including four inactive punctuation specifications. Chapter 20 has 10 unprocessed pages. Continue at p. 1755 with punctuation around quotations.
+
+Source audit: `sources/cambridge/chapter_20/PP1747_1754_REPORT.md`.
