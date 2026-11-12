@@ -52683,5 +52683,1581 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-820",
+    "domain": "clauses",
+    "concept": "Factivity with a bound variable",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A factive content clause can contain a pronoun bound by a matrix quantifier. Its backgrounded content then varies with the individuals quantified over.",
+    "condition": "Applies to the construction described in §7.4 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Projection with a quantified antecedent is more complex than projection of a single proposition with a fixed referent.",
+        "pages": [
+          1011
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Every candidate knew that she was being recorded.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Each runner regretted that he had missed the briefing.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§7.4",
+        "pages": [
+          1011
+        ],
+        "pdf_pages": [
+          1031
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Factivity with a bound variable",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-821",
+    "domain": "clauses",
+    "concept": "Clause markers and prepositional heads",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Declarative that and interrogative whether or if mark a subordinate clause. Conditional if and temporal before head phrases that take clauses as complements.",
+    "condition": "Applies to the construction described in §8.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The two uses of if have different syntactic functions despite identical form.",
+        "pages": [
+          1011,
+          1012
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I asked if the shop was open.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the shop was open, we would buy bread.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§8.1",
+        "pages": [
+          1011,
+          1012
+        ],
+        "pdf_pages": [
+          1031,
+          1032
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Clause markers and prepositional heads",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-822",
+    "domain": "clauses",
+    "concept": "Prepositions with clausal and nominal complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The same preposition can take a clause or an NP in comparable constructions. Shared distribution and modification support a common head analysis.",
+    "condition": "Applies to the construction described in §8.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some prepositions are restricted to particular complement categories.",
+        "pages": [
+          1012,
+          1013
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We left an hour before the meeting ended.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We left an hour before the end of the meeting.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§8.1",
+        "pages": [
+          1012,
+          1013
+        ],
+        "pdf_pages": [
+          1032,
+          1033
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Prepositions with clausal and nominal complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-823",
+    "domain": "clauses",
+    "concept": "Segmentation of provided that and in order that",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In sequences such as provided that, that can be analyzed as the marker of the content clause following the governing expression.",
+    "condition": "Applies to the construction described in §8.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some governing expressions allow the marker to be omitted, and others require it.",
+        "pages": [
+          1013,
+          1014
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We will proceed provided that the gate is open.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They filed the notice in order that the matter might be heard.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§8.1",
+        "pages": [
+          1013,
+          1014
+        ],
+        "pdf_pages": [
+          1033,
+          1034
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Segmentation of provided that and in order that",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-824",
+    "domain": "clauses",
+    "concept": "Content clauses and traditional nominal clauses",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A content clause can share functions with an NP, including subject, without belonging to the noun phrase category.",
+    "condition": "Applies to the construction described in §8.2 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The substitution illustrates a shared function rather than identical distribution.",
+        "pages": [
+          1014,
+          1015
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "That the latch failed surprised us.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The failure of the latch surprised us.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§8.2",
+        "pages": [
+          1014,
+          1015
+        ],
+        "pdf_pages": [
+          1034,
+          1035
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Content clauses and traditional nominal clauses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-825",
+    "domain": "clauses",
+    "concept": "Category distinctions in other subordinate structures",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A subordinate expression can occur in a function associated with another category. Its internal structure still determines the constructional analysis.",
+    "condition": "Applies to the construction described in §8.2 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The interpretation of a gap and the licensing environment help distinguish comparative, relative and content constructions.",
+        "pages": [
+          1015
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Things are not always as they appear to be.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He is exactly what he appears to be.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§8.2",
+        "pages": [
+          1015
+        ],
+        "pdf_pages": [
+          1035
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Category distinctions in other subordinate structures",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-826",
+    "domain": "clauses",
+    "concept": "Adverbial function and prepositional structure",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A sequence such as because the floor was wet can function as an adjunct while having a preposition as head and a content clause as complement.",
+    "condition": "Applies to the construction described in §8.2 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The function of the whole phrase differs from the function of the embedded clause.",
+        "pages": [
+          1016
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They closed the room because the floor was wet.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They closed the room after the pipe burst.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§8.2",
+        "pages": [
+          1016
+        ],
+        "pdf_pages": [
+          1036
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adverbial function and prepositional structure",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-827",
+    "domain": "clauses",
+    "concept": "Content clauses across governor categories",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Verbs, adjectives, nouns and prepositions can license content clauses in their respective structures.",
+    "condition": "Applies to the construction described in §8.2 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Morphologically related governors need not license the same complements.",
+        "pages": [
+          1016,
+          1017
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She feared that the roof would collapse.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Her fear that the roof would collapse proved justified.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§8.2",
+        "pages": [
+          1016,
+          1017
+        ],
+        "pdf_pages": [
+          1036,
+          1037
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Content clauses across governor categories",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-828",
+    "domain": "clauses",
+    "concept": "Nominal supplementation and category matching",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A content clause can specify a proposition associated with an NP without matching that NP's category.",
+    "condition": "Applies to the construction described in §8.2 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Supplementation and integrated complementation have distinct structural relations.",
+        "pages": [
+          1017
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Her objection, that the doors would be locked, was noted.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "One concern remained: that nobody had checked the alarm.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§8.2",
+        "pages": [
+          1017
+        ],
+        "pdf_pages": [
+          1037
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nominal supplementation and category matching",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-829",
+    "domain": "clauses",
+    "concept": "Content clauses and NP object diagnostics",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A content-clause complement can follow an intervening adjunct where a typical NP object resists that order.",
+    "condition": "Applies to the construction described in §8.3 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Distribution and passive behavior vary across constructions and do not support a blanket object analysis.",
+        "pages": [
+          1017,
+          1018
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She denied categorically that the door had been opened.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She opened the door slowly.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§8.3",
+        "pages": [
+          1017,
+          1018
+        ],
+        "pdf_pages": [
+          1037,
+          1038
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Content clauses and NP object diagnostics",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-830",
+    "domain": "clauses",
+    "concept": "Passive possibilities of content-clause complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some content-clause complements permit a related passive construction, often with it, while other governors resist passive formation.",
+    "condition": "Applies to the construction described in §8.3 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Acceptance of a content clause in active voice does not guarantee an ordinary passive counterpart.",
+        "pages": [
+          1018,
+          1019
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was acknowledged that the gate was open.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We marveled that the gate had stayed open.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§8.3",
+        "pages": [
+          1018,
+          1019
+        ],
+        "pdf_pages": [
+          1038,
+          1039
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Passive possibilities of content-clause complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-831",
+    "domain": "clauses",
+    "concept": "PP counterparts and latent-preposition analysis",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A verb can take a direct content-clause complement and a related PP with an NP. The existence of a PP counterpart does not establish a silent preposition in the clausal construction.",
+    "condition": "Applies to the construction described in §8.3 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Explicit prepositions in stranded or specifying constructions require a separate analysis.",
+        "pages": [
+          1019,
+          1020
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They insisted that the latch be replaced.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They insisted on a replacement.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§8.3",
+        "pages": [
+          1019,
+          1020
+        ],
+        "pdf_pages": [
+          1039,
+          1040
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "PP counterparts and latent-preposition analysis",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-832",
+    "domain": "clauses",
+    "concept": "Specifying clauses and apparent preposition counterparts",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A specifying construction can pair a that clause with a phrase containing a stranded preposition. Its surface correspondence does not prove the that clause is the complement of that preposition elsewhere.",
+    "condition": "Applies to the construction described in §8.3 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Other constructions with fronting and lexical licensing can resist insertion of the putative preposition.",
+        "pages": [
+          1020,
+          1021
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What I like about the key is that it fits both locks.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What I am getting at is that the figures need checking.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§8.3",
+        "pages": [
+          1020,
+          1021
+        ],
+        "pdf_pages": [
+          1040,
+          1041
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Specifying clauses and apparent preposition counterparts",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-833",
+    "domain": "clauses",
+    "concept": "Meaning differences between nominal and clausal complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A content clause can give the content of a claim or objection, while a nominal or prepositional counterpart can identify what the claim or objection concerns.",
+    "condition": "Applies to the construction described in §8.3 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The related constructions need not carry the same commitments about the embedded proposition.",
+        "pages": [
+          1021,
+          1022
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She objected that the room was too small.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She objected to the fact that the room was too small.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§8.3",
+        "pages": [
+          1021,
+          1022
+        ],
+        "pdf_pages": [
+          1041,
+          1042
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Meaning differences between nominal and clausal complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-834",
+    "domain": "clauses",
+    "concept": "Complex-transitive and complex-intransitive clause patterns",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A construction with an object and predicative complement can require anticipatory it with a following content clause, even where a related intransitive construction allows a clausal subject.",
+    "condition": "Applies to the construction described in §8.3 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The content clause and an NP object do not have identical placement options.",
+        "pages": [
+          1022
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "That the latch failed was surprising.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I found it surprising that the latch failed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§8.3",
+        "pages": [
+          1022
+        ],
+        "pdf_pages": [
+          1042
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Complex-transitive and complex-intransitive clause patterns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-835",
+    "domain": "clauses",
+    "concept": "Direct and indirect reporting",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Direct reporting presents wording as quoted, while indirect reporting presents reported content through the reporting speaker's construction.",
+    "condition": "Applies to the construction described in §9 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Direct quotation can present wording as exact without guaranteeing that the original wording was reproduced perfectly.",
+        "pages": [
+          1023
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She said, “I will return.”",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She said that she would return.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§9",
+        "pages": [
+          1023
+        ],
+        "pdf_pages": [
+          1043
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Direct and indirect reporting",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-836",
+    "domain": "clauses",
+    "concept": "Embedded and parenthetical indirect reports",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Indirect reporting can use a complement of a reporting verb or a reported clause with a parenthetical reporting expression.",
+    "condition": "Applies to the construction described in §9.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A parenthetical reporting frame does not make the reported wording a direct quotation.",
+        "pages": [
+          1024
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina told me that the lock needed replacing.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The lock needed replacing, Mina told me.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§9.1",
+        "pages": [
+          1024
+        ],
+        "pdf_pages": [
+          1044
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Embedded and parenthetical indirect reports",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-837",
+    "domain": "clauses",
+    "concept": "Indirect reporting and general complementation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The clause patterns used for indirect reports also occur with predicates that need not report speech.",
+    "condition": "Applies to the construction described in §9.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Reported speech is a use of the construction rather than a distinct clause category.",
+        "pages": [
+          1024
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She said that the meter had failed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "This proves that the meter had failed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§9.1",
+        "pages": [
+          1024
+        ],
+        "pdf_pages": [
+          1044
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Indirect reporting and general complementation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-838",
+    "domain": "clauses",
+    "concept": "Deixis in indirect reports",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Pronouns, time expressions and other deictic forms are interpreted from the relevant reporting context and may change in an indirect report.",
+    "condition": "Applies to the construction described in §9.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The same form can remain appropriate if the relevant referent or temporal viewpoint is shared.",
+        "pages": [
+          1025,
+          1026
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She told me that she loved me.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "On Friday he said the lease had expired the day before.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§9.1",
+        "pages": [
+          1025,
+          1026
+        ],
+        "pdf_pages": [
+          1045,
+          1046
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Deixis in indirect reports",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-839",
+    "domain": "clauses",
+    "concept": "Quoted material and embedding",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A quotation can occur within a larger reporting construction while retaining the form of independent speech.",
+    "condition": "Applies to the construction described in §9.2 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "What is embedded is a quotation, which can contain several sentences or a fragment.",
+        "pages": [
+          1026,
+          1027
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I was surprised when she replied, “I work alone.”",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She replied, “I work alone. I prefer it that way.”",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§9.2",
+        "pages": [
+          1026,
+          1027
+        ],
+        "pdf_pages": [
+          1046,
+          1047
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Quoted material and embedding",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-840",
+    "domain": "clauses",
+    "concept": "Position and inversion of reporting parentheticals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A reporting parenthetical can precede, interrupt or follow portions of quoted speech in the relevant construction. A postposed reporting frame can allow subject–verb inversion.",
+    "condition": "Applies to the construction described in §9.2 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Inversion depends on the construction and the form of the reporting subject.",
+        "pages": [
+          1027
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "“The gate is locked,” said Mina.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "“The gate,” Mina said, “is locked.”",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§9.2",
+        "pages": [
+          1027
+        ],
+        "pdf_pages": [
+          1047
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Position and inversion of reporting parentheticals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-841",
+    "domain": "clauses",
+    "concept": "Reporting verbs and direct versus indirect questions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A reporting verb's direct-quotation use can differ from its complementation with an indirect question.",
+    "condition": "Applies to the construction described in §9.2 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The first can report a question, while the second normally reports an answer or information.",
+        "pages": [
+          1027,
+          1028
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She said, “Where were the keys?”",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She said where the keys were.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§9.2",
+        "pages": [
+          1027,
+          1028
+        ],
+        "pdf_pages": [
+          1047,
+          1048
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reporting verbs and direct versus indirect questions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-842",
+    "domain": "clauses",
+    "concept": "Citation outside ordinary reporting frames",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Quoted material can occur in specifying constructions and as an expression mentioned or cited.",
+    "condition": "Applies to the construction described in §9.2 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The construction can identify wording without reporting a particular utterance.",
+        "pages": [
+          1028
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What she said was “Wait here.”",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Their motto is “Keep going.”",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§9.2",
+        "pages": [
+          1028
+        ],
+        "pdf_pages": [
+          1048
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Citation outside ordinary reporting frames",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-843",
+    "domain": "clauses",
+    "concept": "Mixed direct and indirect reporting",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An indirect report can preserve a particular phrase as a direct quotation while retaining indirect-report syntax around it.",
+    "condition": "Applies to the construction described in §9.2 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Whole-quotation blends after that occur but are less usual.",
+        "pages": [
+          1029
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She said that the result was “entirely unexpected.”",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He said that the route was “a nightmare.”",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§9.2",
+        "pages": [
+          1029
+        ],
+        "pdf_pages": [
+          1049
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Mixed direct and indirect reporting",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-844",
+    "domain": "clauses",
+    "concept": "Free indirect speech",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Free indirect speech presents a character's words or thoughts with indirect-report features while leaving the reporting frame implicit.",
+    "condition": "Applies to the construction described in §9.3 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Narrative context helps distinguish represented thought from the narrator's own assertion.",
+        "pages": [
+          1029
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina gripped the letter. She would have to answer it before morning.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Dev looked at the empty shelf. He should have checked it yesterday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§9.3",
+        "pages": [
+          1029
+        ],
+        "pdf_pages": [
+          1049
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Free indirect speech",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-845",
+    "domain": "clauses",
+    "concept": "Free direct speech",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Free direct speech presents wording or thought from a represented speaker's viewpoint without an overt reporting frame.",
+    "condition": "Applies to the construction described in §9.3 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Narrative context can identify the viewpoint even when person marking changes between adjacent sentences.",
+        "pages": [
+          1029,
+          1030
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina steadied herself at the door. I can do this.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Dev stared at the letter. Why did they send it to me?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§9.3",
+        "pages": [
+          1029,
+          1030
+        ],
+        "pdf_pages": [
+          1049,
+          1050
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Free direct speech",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]

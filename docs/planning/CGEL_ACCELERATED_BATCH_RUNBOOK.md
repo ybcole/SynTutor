@@ -310,3 +310,7 @@ Printed pp. 981–994 yielded 18 classification records (`CLS-781`–`CLS-798`).
 ## Chapter 11 fourth checkpoint
 
 Printed pp. 995–1010 yielded 21 classification records (`CLS-799`–`CLS-819`). Continue at p. 1011 with syntactic analysis and reported speech.
+
+## Chapter 11 source extraction complete
+
+Printed pp. 1011–1030 yielded 26 classification records (`CLS-820`–`CLS-845`). Chapter 11 closes source extraction with 82 substantive pages and two contents pages. Chapter 12 is next.
