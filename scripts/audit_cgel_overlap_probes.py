@@ -1,4 +1,4 @@
-"""Observe legacy punctuation and grammar findings on Cambridge overlap probes."""
+"""Observe legacy and matrix findings on Cambridge overlap probes."""
 
 import argparse
 import json
@@ -26,11 +26,44 @@ CASES = [
 ]
 
 
+def summarize_matrix(evaluation):
+    summary = evaluation["summary"]
+    node_errors = []
+    attached_errors = []
+    for node_id, detail in evaluation["details"].items():
+        if detail["status"] == "error":
+            node_errors.append({
+                "node_id": node_id,
+                "rule_id": detail.get("rule_id"),
+                "constraint": detail.get("constraint"),
+                "surface": detail.get("surface"),
+                "suggested_fix": (detail.get("remediation") or {}).get("suggested_fix"),
+            })
+        for finding in detail.get("findings", []):
+            if finding["status"] == "error":
+                attached_errors.append({
+                    "attached_to": node_id,
+                    "node_id": finding.get("node_id"),
+                    "rule_id": finding.get("rule_id"),
+                    "constraint": finding.get("constraint"),
+                })
+    return {
+        "verdict": summary["verdict"],
+        "checker_errors": summary["checker_errors"],
+        "node_errors": node_errors,
+        "attached_errors": attached_errors,
+    }
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--fixtures", action="store_true",
                         help="Use hand-authored trees instead of the configured parser")
+    parser.add_argument("--matrix", action="store_true",
+                        help="Also observe matrix verdicts, node errors, and attached findings")
     args = parser.parse_args()
+    if args.matrix:
+        from matrix import evaluate
     observations = []
     for label, sentence, fixture in CASES:
         if args.fixtures:
@@ -43,10 +76,14 @@ def main():
             for finding in collect(sentence, tree)
             if finding["status"] == "error"
         ]
-        observations.append({"probe": label, "sentence": sentence, "errors": errors})
+        observation = {"probe": label, "sentence": sentence, "errors": errors}
+        if args.matrix:
+            observation["matrix"] = summarize_matrix(evaluate(tree, text=sentence))
+        observations.append(observation)
     print(json.dumps({
         "input": "hand_authored_trees" if args.fixtures else "configured_parser",
         "checker": "ruleset.collect",
+        "matrix_included": args.matrix,
         "observations": observations,
     }, indent=2))
 
