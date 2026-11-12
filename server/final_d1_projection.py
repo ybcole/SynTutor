@@ -525,6 +525,29 @@ class Projection:
             return branch("PP", ("Ch3 pp. 56–59",), branch("P", ("Ch3 pp. 56–59",), word_node(kids(node)[0])))
         return self.phrase(node)
 
+    @staticmethod
+    def bare_causative_complement(tail):
+        """Identify an overt bare VP without assigning a role to a marked infinitival."""
+        if len(tail) == 2:
+            agent = kids(tail[1])
+            if (tag(tail[1]) != "PP" or len(agent) != 2
+                    or tag(agent[0]) != "IN" or word(agent[0]) != "by" or tag(agent[1]) != "NP"):
+                return None
+        elif len(tail) != 1:
+            return None
+        lower = tail[0]
+        if tag(lower) == "S":
+            parts = kids(lower)
+            if len(parts) != 1:
+                return None
+            lower = parts[0]
+        if tag(lower) != "VP":
+            return None
+        parts = kids(lower)
+        if not parts or tag(parts[0]) != "VB" or any(tag(part) in {"CC", "CONJP"} for part in parts[1:]):
+            return None
+        return raw("S", [lower])
+
     def vp(self, nodes, mode, subject, incoming=None, passive=None, fronted=None):
         if not nodes:
             raise ProjectionUnavailable("Missing verb phrase")
@@ -580,6 +603,16 @@ class Projection:
         features = (feature,) if feature else ()
         if negation and base != "be" and not (base == "have" and mode == "finite"):
             raise ProjectionUnavailable("Negation attached directly to a non-auxiliary lexical verb")
+        if passive and not incoming and base == "make" and tag(head) == "VBN":
+            lower = self.bare_causative_complement(tail)
+            if lower is not None:
+                # Preserve the actual bare form. This is structural evidence for
+                # the candidate, and carries no Cambridge verdict or repair.
+                refs = ("Ch6 pp. 125–127", "Ch10 pp. 226, 238–240")
+                complement = self.nonfinite(lower, subject)
+                predicate = branch("VP", refs, branch("V", refs, *head_words),
+                                   branch("NP", refs, passive.take()), complement)
+                return self.attach(predicate, "VP", trailing=tail[1:])
         if passive and not incoming and base in PASSIVE_TYPE_I and tail and tag(tail[0]) == "S":
             lower = kids(tail[0])
             if len(lower) == 1 and tag(lower[0]) == "VP" and kids(lower[0]) and tag(kids(lower[0])[0]) == "TO":

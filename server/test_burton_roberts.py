@@ -206,6 +206,46 @@ class NormalizationTests(unittest.TestCase):
                 if sentence == "Birds sleep.":
                     self.assertTrue(subject["children"][0]["empty"])
 
+    def test_final_bare_passive_make_keeps_the_selected_clause_and_control(self):
+        sentence = "The interpreter was not made translate the announcement."
+        analysis = candidate(sentence)
+        parse = ("(S (NP (DT The) (NN interpreter)) (VP (VBD was) (RB not) "
+                 "(VP (VBN made) (VP (VB translate) (NP (DT the) (NN announcement))))) (. .))")
+        analysis["root"] = NodeBuilder().build(parse_parse_string(parse), len(analysis["tokens"]))
+        result = build_canonical_analysis(analysis, reference_records=[])
+        self.assertEqual(result["status"], "normalized", result["reasons"])
+        self.assertEqual(result["tree"]["sentence"], sentence)
+        subject, vp = result["tree"]["root"]["children"]
+        auxiliary, predicate = vp["children"]
+        governor, object_np, lower_clause = predicate["children"]
+        self.assertEqual(auxiliary["label"], "PASS")
+        self.assertEqual([node["word"] for node in auxiliary["children"]], ["was", "not"])
+        self.assertEqual(governor["children"][0]["word"], "made")
+        self.assertEqual(lower_clause["label"], "S-bar")
+        _, lower_s = lower_clause["children"]
+        lower_subject, lower_vp = lower_s["children"]
+        object_gap, = object_np["children"]
+        subject_gap, = lower_subject["children"]
+        self.assertTrue(object_gap["gap"])
+        self.assertTrue(subject_gap["gap"])
+        self.assertEqual(object_gap["index"], subject["index"])
+        self.assertEqual(subject_gap["index"], subject["index"])
+        self.assertEqual(lower_vp["children"][0]["children"][0]["word"], "translate")
+
+    def test_final_passive_make_does_not_treat_purpose_to_as_selected_bare_clause(self):
+        sentence = "The barrier was made to block the path."
+        analysis = candidate(sentence)
+        parse = ("(S (NP (DT The) (NN barrier)) (VP (VBD was) (VP (VBN made) "
+                 "(S (VP (TO to) (VP (VB block) (NP (DT the) (NN path))))))) (. .))")
+        analysis["root"] = NodeBuilder().build(parse_parse_string(parse), len(analysis["tokens"]))
+        result = build_canonical_analysis(analysis, reference_records=[])
+        self.assertEqual(result["status"], "normalized", result["reasons"])
+        _, vp = result["tree"]["root"]["children"]
+        _, predicate = vp["children"]
+        lexical_vp, lower_clause = predicate["children"]
+        self.assertEqual([lexical_vp["label"], lower_clause["label"]], ["VP", "S-bar"])
+        self.assertEqual(lexical_vp["children"][0]["children"][0]["word"], "made")
+
     def test_sentence_final_punctuation_is_not_fabricated_as_a_phrase_marker_node(self):
         result = normalize_benepar_candidate(candidate("The students laugh."), convention_profile(2))
         self.assertEqual(result["status"], "normalized", result.get("reasons"))
