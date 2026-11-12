@@ -29,6 +29,18 @@ class ModalParserProbeTests(unittest.TestCase):
                 start, end = edit["char_span"]
                 self.assertEqual(sentence[:start] + edit["replacement"] + sentence[end:], "She can go.")
 
+    def test_mistagged_third_person_forms_require_an_attested_paradigm(self):
+        for surface, plain in [("arrives", "arrive"), ("brings", "bring")]:
+            with self.subTest(surface=surface):
+                tree = INFLECTED.replace("VBZ goes", f"VB {surface}")
+                candidate, = probe(f"She can {surface}.", tree)["candidates"]
+                self.assertEqual(candidate["edit_hint"]["replacement"], plain)
+
+        for plain in ["pass", "focus", "bias", "gas", "axes", "blorps"]:
+            with self.subTest(plain=plain):
+                tree = INFLECTED.replace("VBZ goes", f"VB {plain}")
+                self.assertEqual(probe(f"She can {plain}.", tree)["candidates"], [])
+
     def test_plain_lexical_noncentral_and_coordinated_cases_are_guarded(self):
         cases = [
             ("She can go.", "(S (NP (PRP She)) (VP (MD can) (VP (VB go))) (. .))"),
