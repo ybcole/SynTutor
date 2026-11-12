@@ -305,3 +305,13 @@
 
 .lesson-touch-builder > canvas { touch-action:none; }
 .lesson-builder-link { margin-block-start:12px; }
+
+.lesson-tree-canvas svg .lesson-branch.lesson-branch-traced { stroke:var(--accent-strong); stroke-width:2.5; }
+.lesson-transfer-context mark { color:var(--accent-strong); background:var(--accent-soft); }
+.lesson-transfer-example { margin-block:8px; }
+.constituent-controls[hidden], .lesson-transfer [hidden] { display:none; }
+.lesson-transfer-choices { align-items:center; }
+.curriculum-view .lesson-transfer-choices button { min-height:40px; }
+.lesson-combination-inputs { display:grid; gap:8px; }
+.lesson-combination-inputs label { display:grid; gap:4px; }
+.lesson-combination-inputs select { width:100%; }

@@ -565,10 +565,10 @@ try:
    expect(view.locator('.constituent-pre-test-status')).to_have_text('Knowledge check complete.')
    next_button.click()
    expect(view.locator('article h3')).to_have_count(4)
-   expect(view.locator('article > ul > li')).to_have_count(2)
+   expect(view.locator('article > ul:not(.lesson-transfer-context) > li')).to_have_count(2)
    next_button.click()
    worked=lesson['worked_example']
-   expect(view.get_by_text(worked['sentence'],exact=True)).to_be_visible()
+   expect(view.locator('article .lesson-example-sentence')).to_have_text(worked['sentence'])
    if worked.get('tree'):
     step_controls=view.get_by_role('group',name='Explore the worked tree')
     viewport=view.locator('.canonical-viewport')
@@ -589,8 +589,30 @@ try:
     assert viewport.bounding_box()['y'] < view.locator('.lesson-shared-evidence').bounding_box()['y']
     if ident=='br-08':
      expect(viewport.locator('svg text').filter(has_text=re.compile(r'^S′$'))).to_have_count(1)
+    if ident in {'br-03','br-05','br-06'}:
+     comparison=view.get_by_role('group',name='Compare worked structures')
+     alternative=comparison.get_by_role('button').nth(1)
+     alternative.press('Enter')
+     expect(alternative).to_have_attribute('aria-pressed','true')
+     expect(step_controls).to_be_hidden()
+     expect(view.locator('.constituent-caption')).to_contain_text({
+      'br-03':'DEG branch has disappeared','br-05':'whole predicate','br-06':'adds a time',
+     }[ident])
+     comparison.get_by_role('button').first.press('Enter')
+     expect(step_controls).to_be_visible()
+    if ident=='br-07':
+     step_controls.get_by_role('button',name='Find the noun').press('Enter')
+     expect(viewport.locator('.lesson-branch-traced')).to_have_count(2)
     if ident=='br-09':
      expect(viewport.locator('svg text').filter(has_text=re.compile(r'^•'))).to_have_count(2)
+     for parent, control in [('PROG','Find the PROG gap'),('NP','Trace the NP gap')]:
+      viewport.get_by_role('button',name=f'Inspect B-R gap under {parent}',exact=True).press('Enter')
+      expect(step_controls.get_by_role('button',name=control)).to_have_attribute('aria-pressed','true')
+      expect(view.locator('.constituent-selection')).to_contain_text(f'Gap under {parent}')
+      expect(view.locator('.constituent-caption')).to_contain_text(f'The dot under {parent}')
+     viewport.get_by_role('button',name='Inspect B-R NP for Nora',exact=True).press('Enter')
+     expect(step_controls.locator('[aria-pressed=true]')).to_have_count(0)
+     expect(view.locator('.constituent-caption')).to_have_text('NP is directly under S.')
     if ident=='br-10':
      expect(viewport.locator('svg text').filter(has_text=re.compile(r'^\[-tense\]$'))).to_have_count(1)
      expect(viewport.locator('svg text').filter(has_text=re.compile(r'^AUX$'))).to_have_count(0)
@@ -604,7 +626,7 @@ try:
     editor=view.locator('.first-tree-builder')
     expect(editor.locator('#builderCanvas')).to_be_visible()
     editor.get_by_role('button',name='Check construction').click()
-    expect(editor.get_by_role('status')).to_contain_text('Connect every node')
+    expect(editor.get_by_role('status')).to_contain_text('target branch is still detached')
     page.evaluate("window.beforeBranch=localStorage.getItem('syntutor:lessons:v1:guest')")
     success={
      'br-03':'sisters under AP', 'br-04':'shares VP with V',
@@ -615,12 +637,26 @@ try:
     if ident in {'br-03','br-08'}:
      parent,child={'br-03':('AP','A'),'br-08':('S-bar','C')}[ident]
      editor.locator('#builderCanvas').scroll_into_view_if_needed()
+     if ident=='br-03':
+      drag_branch('DEG','phrase',child)
+      editor.get_by_role('button',name='Check construction').click()
+      expect(editor.get_by_role('status')).to_contain_text('attached to DEG')
+      editor.get_by_role('button',name='Undo',exact=True).click()
+      editor.get_by_role('button',name='Check construction').click()
+      expect(editor.get_by_role('status')).to_contain_text('target branch is still detached')
      drag_branch(parent,'phrase',child)
      editor.get_by_role('button',name='Check construction').click()
      expect(editor.get_by_role('status')).to_contain_text(success)
     editor.get_by_role('button',name='Guide me').click()
     for step in editor.locator('.first-tree-guide button').all():
      step.press('Enter')
+    expect(editor.get_by_role('status')).to_contain_text(success)
+    editor.get_by_role('button',name='Restart exercise').click()
+    expect(editor.get_by_role('status')).to_contain_text('Starting tree restored')
+    editor.get_by_role('button',name='Check construction').click()
+    expect(editor.get_by_role('status')).to_contain_text('target branch is still detached')
+    editor.get_by_role('button',name='Undo',exact=True).click()
+    editor.get_by_role('button',name='Check construction').click()
     expect(editor.get_by_role('status')).to_contain_text(success)
     assert page.evaluate("localStorage.getItem('syntutor:lessons:v1:guest')===window.beforeBranch")
     page.set_viewport_size({'width':1440,'height':1050})
@@ -633,6 +669,52 @@ try:
     expect(worked_answer.locator('+ p')).to_be_visible()
    next_button.click()
    expect(view.locator('article .lesson-example-sentence')).to_be_visible()
+   page.set_viewport_size({'width':390,'height':844})
+   transfer_practice=view.locator('.lesson-transfer')
+   assert view.evaluate('(el) => el.scrollWidth <= el.clientWidth'), ident
+   page.evaluate("window.beforeTransfer=localStorage.getItem('syntutor:lessons:v1:guest')")
+   if ident=='br-11':
+    first_input=transfer_practice.get_by_label('First input')
+    second_input=transfer_practice.get_by_label('Second input')
+    apply_rule=transfer_practice.get_by_role('button',name='Apply the rule')
+    first_input.select_option('Maya smiles')
+    second_input.select_option('Maya smiles and')
+    apply_rule.click()
+    expect(transfer_practice.get_by_role('status')).to_contain_text('complete sentence after it')
+    second_input.select_option('Leo waves')
+    apply_rule.press('Enter')
+    expect(transfer_practice.get_by_role('status')).to_contain_text('[Maya smiles] and [Leo waves]')
+    transfer_practice.get_by_role('button',name='Use this result again').click()
+    first_input.select_option('Maya smiles and Leo waves')
+    second_input.select_option('Maya smiles')
+    apply_rule.press('Enter')
+    expect(transfer_practice.get_by_role('status')).to_contain_text('[Maya smiles and Leo waves] and [Maya smiles]')
+    transfer_practice.get_by_role('button',name='Start again').click()
+    expect(first_input).to_have_value('')
+   else:
+    answers={
+     'br-03': [(4,), (3,4)], 'br-04': [(3,5)], 'br-05': [(2,5)],
+     'br-06': [(3,5), (2,)], 'br-07': [(2,), (3,)], 'br-08': [(2,), (3,)],
+     'br-09': [(0,), (1,), (2,), (3,)], 'br-10': [(3,5), (3,4)],
+     'cgel-clauses': [(0,6), (3,4), (5,6)],
+    }[ident]
+    check_selection=transfer_practice.get_by_role('button',name='Check selection')
+    choices=transfer_practice.get_by_role('group').get_by_role('button')
+    for i, indices in enumerate(answers):
+     expect(check_selection).to_be_disabled()
+     if i==0:
+      wrong=(indices[0]+1) % choices.count()
+      choices.nth(wrong).press('Space')
+      check_selection.click()
+      expect(transfer_practice.locator('.retry')).to_be_visible()
+     for index in indices:
+      choices.nth(index).press('Enter')
+     check_selection.click()
+     expect(transfer_practice.locator('.correct')).to_be_visible()
+     if i<len(answers)-1:
+      transfer_practice.get_by_role('button',name='Next part').click()
+   assert page.evaluate("localStorage.getItem('syntutor:lessons:v1:guest')===window.beforeTransfer")
+   page.set_viewport_size({'width':1440,'height':1050})
    answer=view.get_by_text('Check your analysis',exact=True)
    expect(answer.locator('+ p')).to_be_hidden()
    answer.press('Enter')

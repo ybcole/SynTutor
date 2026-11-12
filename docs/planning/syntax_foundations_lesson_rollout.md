@@ -5,6 +5,10 @@ flow. Chapters 3–10 use partially built trees to teach specific attachments.
 Chapter 11 and the Cambridge companion use worked text and open-response
 practice. Use these implementations when reviewing and polishing the launch lessons.
 
+The [Chapters 3–12 polishing plan](syntax_foundations_lesson_polishing_plan.md)
+tracks the worked comparisons, active transfer practice, selection feedback,
+and embedded Builder recovery for this course.
+
 ## Read before writing
 
 | Source | What to check |

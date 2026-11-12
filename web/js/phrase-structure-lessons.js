@@ -1,5 +1,7 @@
 import { advancedFoundationsChapters } from './advanced-foundations-lessons.js';
 import { addWorkedExample } from './foundations-lesson.js';
+import { addVisibleContrast, chapterPolishing } from './foundations-polishing.js';
+import { addCombinationPractice, addWordPractice } from './foundations-practice.js';
 import { addEmbeddedTreeExercise } from './lesson-tree-exercise.js';
 import { connect, disconnect, fromCanonicalEnvelope, toCanonicalEnvelope } from './syntax-builder.js';
 
@@ -21,7 +23,7 @@ const chapters = {
       ['In “very quiet”, which label stands for the whole adjective phrase?', ['A', 'AP', 'DEG']],
     ],
     steps: ['Find cheerful', 'Read the A label', 'Read the whole AP'],
-    beforeTree: 'Start with “cheerful” and follow it up to A. Select the whole AP and see which words are now highlighted. Then select DEG in the diagram to check which word tells you the degree.',
+    beforeTree: 'Trace “cheerful” to A, then select AP to see the whole description. Which branch would disappear if you left out “very”? Switch to Adjective on its own to check.',
     treeTakeaway: 'A covers one word here. AP covers the whole description. The DEG branch joins the adjective branch at AP.',
     buildTitle: 'Connect the adjective head',
     build: {
@@ -95,7 +97,7 @@ const chapters = {
       ['Which group can stand as the predicate after leaving out the time phrase?', ['inspected the bridge', 'the bridge in June', 'inspected in']],
     ],
     steps: ['Trace the inner VP', 'Trace the time PP', 'Read the outer VP'],
-    beforeTree: 'Start at the inner VP and trace the verb and object together. Select the time PP to see its words. Then select the outer VP and check that the highlight covers both groups.',
+    beforeTree: 'Trace the verb and object together in the inner VP. Select the time PP, then the outer VP to see both groups. Predict what will remain when you choose Without the time phrase.',
     treeTakeaway: 'Follow the PP upward. It meets the inner VP at the outer VP. The object NP meets V one level lower.',
     buildTitle: 'Attach the time adjunct',
     build: {
@@ -109,9 +111,9 @@ const chapters = {
     apply: [
       ['Find the two groups', 'Ask what they carried, then ask when they carried it. Keep both answers in mind. One belongs directly beside the verb, and the other describes the event made up of the verb and object together.'],
       ['Try leaving out the time phrase', 'Read the sentence without “before lunch”. Which words still make up the predicate? Say the full inner VP before you decide where to attach the time phrase.'],
-      ['Check what “did so” can replace', 'In “The children carried a heavy box before lunch, and their neighbours did so after lunch”, “did so” stands for “carried a heavy box”. The two time phrases tell when each event happened. This is another clue that the verb and object form a VP together.'],
+      ['Check what “did so” can replace', 'In “The children carried a heavy box before lunch, and their neighbours did so after lunch”, what does “did so” stand for? Use the answer to check which words belong together.'],
     ],
-    reveal: ['Check your analysis', '“Carried a heavy box” is the inner VP. “A heavy box” is the object NP beside V. The time PP “before lunch” sits beside the inner VP, and the outer VP covers both.'],
+    reveal: ['Check your analysis', '“Carried a heavy box” is the inner VP and is the group replaced by “did so”. “A heavy box” is the object NP beside V. The time PP “before lunch” sits beside the inner VP, and the outer VP covers both.'],
     recap: ['Group V with its object NP to form the inner VP.', 'Find the final time PP that describes the event.', 'Put the PP beside the inner VP under the outer VP.'],
     selfCheck: ['In “Sam repaired the old lamp after school”, what belongs in each VP?', 'The inner VP is “repaired the old lamp”. The outer VP includes that group and the PP “after school”.'],
     postTestIntro: 'Trace both levels of VP and check which node is the adjunct’s sister.',
@@ -130,10 +132,21 @@ function addBranchExercise(body, ui, chapter) {
   const [parent, child] = chapter.build.branch(target.root);
   const profile = target.convention_profile;
   const expected = JSON.stringify(shape(target.root));
+  function branchFeedback(model) {
+    const current = model.nodes[child.id];
+    const intended = model.nodes[parent.id];
+    if (!current || !intended) return 'A starting node is missing. Choose Restart exercise to restore it, or recreate it on the canvas.';
+    if (!current.parent) return `The target branch is still detached. ${chapter.build.hint}`;
+    if (current.parent !== parent.id) {
+      return `The target branch is attached to ${model.nodes[current.parent].type}. ${chapter.build.hint}`;
+    }
+    return null;
+  }
   addEmbeddedTreeExercise(body, ui, {
     id: `${ui.lesson.lesson_id}-branch`,
     label: `${chapter.buildTitle} exercise`,
     profile,
+    recovery: true,
     seed() {
       const model = fromCanonicalEnvelope(target);
       disconnect(model, child.id);
@@ -144,16 +157,16 @@ function addBranchExercise(body, ui, chapter) {
         const built = toCanonicalEnvelope(model, profile);
         if (JSON.stringify(shape(built.root)) === expected) return chapter.build.success;
       } catch (error) {
-        return `${error.message} ${chapter.build.hint}`;
+        return branchFeedback(model) ?? `${error.message} ${chapter.build.hint}`;
       }
-      return chapter.build.hint;
+      return branchFeedback(model) ?? `The branch is attached. Check the rest of the tree against the worked example. ${chapter.build.hint}`;
     },
     guide: [{
       title: chapter.build.action,
       text: chapter.build.hint,
       apply(model) {
         if (!model.nodes[parent.id] || !model.nodes[child.id]) {
-          return 'A starting node is missing. Recreate and connect the branch on the canvas.';
+          return 'A starting node is missing. Choose Restart exercise to restore it, or recreate it on the canvas.';
         }
         return connect(model, parent.id, child.id) ? 'The branch is connected. Check the construction.' : chapter.build.hint;
       },
@@ -175,7 +188,8 @@ export const phraseStructureArticles = Object.fromEntries(Object.entries(chapter
   postTestIntro: chapter.postTestIntro,
   references: chapter.references,
   teach(body, page, ui) {
-    const { el } = ui;
+    const { el, lesson } = ui;
+    const polish = chapterPolishing[id];
     function sections(blocks) {
       for (const [title, text] of blocks) body.append(el('h3', title), el('p', text));
     }
@@ -199,10 +213,17 @@ export const phraseStructureArticles = Object.fromEntries(Object.entries(chapter
       sections(chapter.concepts);
       body.append(el('h3', chapter.contrast[0]));
       list('ul', chapter.contrast[1]);
+      if (polish.examples) addVisibleContrast(body, ui, polish.examples);
     }
     if (page === 2) {
       sections([[chapter.build ? 'Read the branches' : 'Follow the worked example', chapter.beforeTree]]);
-      addWorkedExample(body, ui, chapter.steps, { highlightWords: true, captions: chapter.captions });
+      addWorkedExample(body, ui, chapter.steps, {
+        highlightWords: true,
+        captions: chapter.captions,
+        comparison: polish.comparison?.(ui),
+        extraSteps: polish.extraSteps?.(lesson.worked_example.tree.root),
+        tracePath: polish.tracePath,
+      });
       if (chapter.build) {
         body.append(el('p', chapter.treeTakeaway));
         sections([[chapter.buildTitle, chapter.build.prompt]]);
@@ -216,6 +237,11 @@ export const phraseStructureArticles = Object.fromEntries(Object.entries(chapter
     if (page === 3) {
       body.append(el('p', chapter.applyExample, 'lesson-example-sentence'));
       sections(chapter.apply);
+      if (polish.combination) {
+        addCombinationPractice(body, ui, polish.combination.basic, polish.combination.incomplete);
+      } else {
+        addWordPractice(body, ui, polish.practice);
+      }
       reveal(...chapter.reveal);
     }
     if (page === 4) {

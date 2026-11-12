@@ -26,7 +26,7 @@ export const advancedFoundationsChapters = {
       '“Is” sits below PROG [pres]. The feature marks present tense.',
       'The higher VP covers the whole predicate, including PROG and its VP complement.',
     ],
-    beforeTree: 'Trace “inspecting” up to V. Beside V, find the NP triangle that covers “the bridge”. Then move up to the higher VP and find the PROG branch for “is”.',
+    beforeTree: 'Trace “inspecting” up to V. Beside V, find the NP triangle that covers “the bridge”. Then move up to the higher VP and find PROG. Switch to Time adjunct to compare what joins the lower VP in Chapter 5.',
     treeTakeaway: 'The lower VP covers the activity and its object. The higher VP covers those words plus the auxiliary. PROG [pres] and the lower VP meet at the higher VP.',
     buildTitle: 'Attach the auxiliary’s VP complement',
     build: {
@@ -71,7 +71,7 @@ export const advancedFoundationsChapters = {
       'NOM contains N here, so both nodes cover the same word.',
       '“Those” reaches DET through DEM. DET meets NOM at the whole NP.',
     ],
-    beforeTree: 'Select N and then NOM. Both highlight “lanterns” because the nominal contains only the noun here. Next, follow “those” up through DEM to DET, and see where DET and NOM meet.',
+    beforeTree: 'Select N and then NOM. Both highlight “lanterns” because the nominal contains only the noun here. The highlighted path leads back to NP. Select “those” in the diagram to trace the other path through DEM and DET.',
     treeTakeaway: 'Two nodes can cover the same word and show different levels of structure. The noun N sits inside NOM. The whole NP covers both “those” and “lanterns”.',
     buildTitle: 'Attach the nominal under NP',
     build: {
@@ -116,7 +116,7 @@ export const advancedFoundationsChapters = {
       'The separate C branch contains complementiser “that”.',
       'The full S′ includes “that” and the inner S, in that order.',
     ],
-    beforeTree: 'The diagram zooms in on the part after “Leo says”. Follow the triangle from S to “Nora is inspecting the bridge”. Then find “that” on its own branch and trace both branches up to S′.',
+    beforeTree: 'Start with “Leo says [that Nora is inspecting the bridge]”. The tree zooms in on the words inside the brackets. Follow the triangle from S to “Nora is inspecting the bridge”. Then find “that” on its own branch and trace both branches up to S′.',
     treeTakeaway: 'The triangle abbreviates the structure inside S. Its words start at “Nora”. The full S′ also includes “that”, through the separate C branch.',
     buildTitle: 'Attach the complementiser branch',
     build: {
@@ -155,13 +155,13 @@ export const advancedFoundationsChapters = {
       ['In “Nora is inspecting the bridge”, which group could answer “What is Nora inspecting?”', ['Nora', 'is inspecting', 'the bridge']],
       ['Which word comes before “Nora” in “Is Nora inspecting the bridge?”', ['is', 'what', 'inspecting']],
     ],
-    steps: ['Trace what to C2', 'Trace is to C1', 'Find the object gap'],
+    steps: ['Trace what to C2', 'Trace is to C1', 'Find the object NP'],
     captions: [
       '“What” sits in C2, which shares its parent S″ with S′.',
       '“Is” sits in C1, which shares its parent S′ with S.',
       'The NP beside V contains the object gap. The other dot sits under PROG.',
     ],
-    beforeTree: 'Trace “What” to C2 and “is” to C1. Then start at “inspecting” and look beside its V branch for NP with a dot. Follow the separate PROG branch to see the other dot. The dots occupy positions in the tree and carry no spoken words.',
+    beforeTree: 'Trace “What” to C2 and “is” to C1. Then use the gap controls to trace the two original positions. Each dot shows a different position with no spoken word.',
     treeTakeaway: 'The NP gap shows that “what” asks about the object of “inspecting”. The PROG gap shows where “is” belongs in the corresponding statement.',
     buildTitle: 'Attach the NP that contains the object gap',
     build: {
@@ -283,12 +283,12 @@ export const advancedFoundationsChapters = {
     beforeTree: 'Read the whole example once. Then find the words that tell what Nora reports. Follow the worked steps to locate the smaller subject–predicate group inside that report.',
     workedPractice: ['Mark the two levels', 'Say the whole text sentence aloud, then bracket the words that give the content of the report. Name the predicate at each level. Which predicate includes the report itself?'],
     workedAnswer: 'The full text sentence is “Nora reports that the robins sing.” The larger predicate is “reports [that the robins sing]”. Inside that report, “the robins” is the subject and “sing” is the predicate.',
-    applyExample: 'Maya noticed that those lanterns were flickering.',
+    applyExample: 'Maya noticed that those lanterns were flickering. She closed the door.',
     apply: [
       ['Find both subjects', 'Who noticed something? What was flickering? The two answers identify subjects at different levels of the same sentence.'],
       ['Locate the embedded predicate', 'Say what Maya noticed, then find the words that say what the lanterns were doing. Explain how both ideas fit in one text sentence.'],
     ],
-    reveal: ['Check your analysis', 'The whole example is one text sentence. “Maya” is the subject of the larger clause. Inside “that those lanterns were flickering”, “those lanterns” is the embedded subject and “were flickering” is the embedded predicate.'],
+    reveal: ['Check your analysis', 'The passage contains two text sentences. In the first, “Maya” is the subject of the larger clause. Inside “that those lanterns were flickering”, “those lanterns” is the embedded subject and “were flickering” is the embedded predicate.'],
     recap: ['Read the whole sentence in its text.', 'Find the group that gives the content of the report, thought, or observation.', 'Within that group, identify the subject and predicate.'],
     selfCheck: ['In “Leo thinks that Maya closed the gate”, what is the subject inside the embedded clause?', '“Maya” is the embedded subject. Its predicate is “closed the gate”. The text sentence starts at “Leo” and includes both.'],
     postTestIntro: 'Identify the whole text sentence and the subject–predicate clause embedded within it.',

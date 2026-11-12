@@ -224,6 +224,8 @@ export function mountEmbeddedBuilder(stage, exercise) {
   draw();
   return {
     check: () => exercise.check(state.model),
+    undo: () => tools.undo(),
+    restart: () => tools.restartInline(),
     edit(action) {
       const feedback = action(state.model);
       changed();
