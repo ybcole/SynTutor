@@ -21139,5 +21139,1797 @@
       "MORPH-356"
     ],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-358",
+    "domain": "morphology",
+    "concept": "Productivity of negative prefixes",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Un is the most productive negative prefix in Cambridge's account, followed by non. In is no longer productive and a and dis yield few new forms.",
+    "condition": "Some common bases with unrelated opposites resist negative prefixation, while some negative derivatives lack a corresponding free base.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The unclear instructions delayed the rehearsal.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A non-stick lining made the tray easier to clean.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.5.1",
+        "pages": [
+          1688
+        ],
+        "pdf_pages": [
+          1708
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Productivity of negative prefixes",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-359",
+    "domain": "morphology",
+    "concept": "Negative counterparts of adjectives in ful",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Adjectives in ful often have a negative counterpart in less.",
+    "condition": "Un is established with some ful adjectives, including unhelpful and unfaithful. This is a lexical tendency.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We found the old manual useless during the repair.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The extra comments were unhelpful.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.5.1",
+        "pages": [
+          1688
+        ],
+        "pdf_pages": [
+          1708
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negative counterparts of adjectives in ful",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-360",
+    "domain": "morphology",
+    "concept": "Lexical selection among negative prefixes",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Negative a occurs largely with classical bases. Historically in favoured Latinate bases and un favoured English and many French bases, but established vocabulary does not divide neatly.",
+    "condition": "Some related noun and adjective forms use different prefixes. Some apparent classical a formations are opaque in present-day English.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The result was unexpected and atypical.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They challenged the decision as unjust and documented the resulting injustice.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.5.1",
+        "pages": [
+          1688
+        ],
+        "pdf_pages": [
+          1708
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical selection among negative prefixes",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-361",
+    "domain": "morphology",
+    "concept": "Attributive non derivatives from nouns and verbs",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Non forms adjectives from noun or verb bases that are generally used attributively. Cambridge identifies this as a productive environment favouring non over un.",
+    "condition": "This pattern differs from prefixation of an existing adjective.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We scheduled a non-stop service to the airport.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The mechanic added a non-skid strip to each step.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.5.1",
+        "pages": [
+          1688
+        ],
+        "pdf_pages": [
+          1708
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Attributive non derivatives from nouns and verbs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-362",
+    "domain": "morphology",
+    "concept": "Overlapping negative derivatives",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Two negative prefixes can give the same or overlapping readings on some bases, with lexical preferences between variants.",
+    "condition": "Cambridge gives a versus un, in versus un, and some non versus in or un examples. The choice is specific to the base.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The second result was untypical for this instrument.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The unusually high reading was atypical for this instrument.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.5.1",
+        "pages": [
+          1688
+        ],
+        "pdf_pages": [
+          1708
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Overlapping negative derivatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-363",
+    "domain": "morphology",
+    "concept": "Lexical contrasts among negative derivatives",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Competing negative derivatives can differ in sense or in the kinds of referents they favour.",
+    "condition": "Non-human denotes absence of human status, whereas inhuman can mean cruel. Amoral and immoral and unsatisfied and dissatisfied illustrate other lexical distinctions.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The survey separated human and non-human activity in the images.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The workers called the treatment inhuman.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.5.1",
+        "pages": [
+          1688
+        ],
+        "pdf_pages": [
+          1708
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical contrasts among negative derivatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-364",
+    "domain": "morphology",
+    "concept": "Disinterested and uninterested",
+    "rule_type": "stylistic_or_prescriptive",
+    "scope": "word",
+    "statement": "Disinterested can mean impartial or indifferent. Uninterested has the indifferent reading.",
+    "condition": "Cambridge notes prescriptive criticism of the indifferent reading of disinterested and reports that the reading is common.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The parties asked a disinterested mediator to assess the claim.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He sounded disinterested in continuing the conversation.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.5.1",
+        "pages": [
+          1688
+        ],
+        "pdf_pages": [
+          1708
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Disinterested and uninterested",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-365",
+    "domain": "morphology",
+    "concept": "Neutral non and evaluative un",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "With some paired forms, non expresses a neutral category contrast, while un can also express a gradable evaluation.",
+    "condition": "The wider meanings of un depend on the lexeme. Non-professional and unprofessional need not describe the same property.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The program pairs professional and non-professional performers.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The supervisor called the interruption extremely unprofessional.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.5.1",
+        "pages": [
+          1688,
+          1689
+        ],
+        "pdf_pages": [
+          1708,
+          1709
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Neutral non and evaluative un",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-366",
+    "domain": "morphology",
+    "concept": "Negative prefixation of nouns and verbs",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Non is productive with person nouns and deverbal nouns. Direct nominal attachment of in or negative un is less common, and dis occurs with a small group of negative verbs.",
+    "condition": "Non-event and non-person have specialized meanings. Some nominal forms with in or un derive from a prefixed adjective.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The venue charges non-members a small admission fee.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The two assessors disagreed about the cause.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.5.1",
+        "pages": [
+          1689
+        ],
+        "pdf_pages": [
+          1709
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negative prefixation of nouns and verbs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-367",
+    "domain": "morphology",
+    "concept": "Reversative un dis and de",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Reversative prefixes on verbs often indicate a return to the condition before the action named by the base. The forms have transitive uses and some also occur intransitively.",
+    "condition": "Un is the most productive in the source's account. De is productive with ate, ify and especially ise bases, while dis is generally selected before en. Lexical meanings can depart from simple reversal.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The caretaker unlocked the side gate.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The side gate would not unlock in the cold.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.5.2",
+        "pages": [
+          1689
+        ],
+        "pdf_pages": [
+          1709
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reversative un dis and de",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-368",
+    "domain": "morphology",
+    "concept": "Removal and the choice of object",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Removal formations with un, de or dis often take nominal bases. The object can name the entity that loses something or the entity removed from a position.",
+    "condition": "Removal can overlap with reversal. Some forms have specialized meanings, and dis can intensify an already reversative or removal base.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The baker degreased the tray after lunch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The riders were unhorsed when the animals stumbled.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.5.3",
+        "pages": [
+          1689,
+          1690
+        ],
+        "pdf_pages": [
+          1709,
+          1710
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Removal and the choice of object",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-369",
+    "domain": "morphology",
+    "concept": "Oppositional anti and its extensions",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Anti productively forms nouns and adjectives with meanings including opposition, prevention and departure from expected properties.",
+    "condition": "Many denominal adjectives are mainly attributive. Pro contrasts with anti in the stance sense. Antifreeze has a verbal base, and British anticlockwise corresponds to American counterclockwise.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A pro-reform group met across the street from an anti-reform rally.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The novel follows an antihero who avoids public attention.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.5.4",
+        "pages": [
+          1690
+        ],
+        "pdf_pages": [
+          1710
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Oppositional anti and its extensions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-370",
+    "domain": "morphology",
+    "concept": "Counter in reaction and opposition",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Counter productively forms nouns for reactions or opposing actions. Some also have verbal uses, and the prefix occurs in adjectives.",
+    "condition": "Main stress is often on the prefix but can fall on the base. Countersign does not express opposition.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The buyer submitted a counteroffer before noon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The instructions seemed counterintuitive at first.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.5.4",
+        "pages": [
+          1690
+        ],
+        "pdf_pages": [
+          1710
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Counter in reaction and opposition",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-371",
+    "domain": "morphology",
+    "concept": "Limited contra formations",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Contra expresses opposition in a small set of words and is used in some formations where counter is otherwise more frequent.",
+    "condition": "Some older bound-base words have doubtful present-day segmentation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The highway used a contraflow lane during construction.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The editor inserted a note on the contraindication.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.5.4",
+        "pages": [
+          1690,
+          1691
+        ],
+        "pdf_pages": [
+          1710,
+          1711
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Limited contra formations",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-372",
+    "domain": "morphology",
+    "concept": "An and ian on proper names",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "An and ian form derivatives from personal and geographic names. Ian is more productive with personal names in the source's account.",
+    "condition": "Elizabethan and Lutheran are established exceptions to the usual personal-name preference.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The gallery opened an exhibition of Elizabethan maps.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The director discussed Wagnerian themes in the score.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.6.1(a)",
+        "pages": [
+          1691
+        ],
+        "pdf_pages": [
+          1711
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "An and ian on proper names",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-373",
+    "domain": "morphology",
+    "concept": "Boundary changes in an and ian derivatives",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "A final vowel of the name can merge with or be lost before the suffix. The surface ending sometimes leaves the an versus ian analysis indeterminate.",
+    "condition": "The pattern has exceptions and irregular formations, including retained o in Chicagoan, the onian ending, and the n in Panamanian.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A Kenyan researcher joined the panel by video.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A Chicagoan reviewed the exhibit for a local magazine.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.6.1(a)",
+        "pages": [
+          1691
+        ],
+        "pdf_pages": [
+          1711
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Boundary changes in an and ian derivatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-374",
+    "domain": "morphology",
+    "concept": "Meanings and base types of an and ian derivatives",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "These derivatives can be nouns or adjectives expressing association, origin, authorship, period, inhabitancy, or allegiance.",
+    "condition": "Some common bases also participate, notably in words for practitioners and zoological classes.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The class read a Shakespearean comedy after lunch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The museum interviewed a phonetician for the recording.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.6.1(a)",
+        "pages": [
+          1691,
+          1692
+        ],
+        "pdf_pages": [
+          1711,
+          1712
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Meanings and base types of an and ian derivatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-375",
+    "domain": "morphology",
+    "concept": "Inhabitant nouns in er",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Er can form inhabitant nouns from place names, particularly those ending in land or Island and some American names.",
+    "condition": "Its use with other place names is relatively limited.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A Londoner showed us the quickest way to the station.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Two New Zealanders joined the walking group.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.6.1(b)",
+        "pages": [
+          1692
+        ],
+        "pdf_pages": [
+          1712
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inhabitant nouns in er",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-376",
+    "domain": "morphology",
+    "concept": "Place derivatives and register labels in ese",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ese forms adjectives and corresponding inhabitant or language nouns from some place names. It also forms labels for characteristic styles of expression.",
+    "condition": "The style-label use is often negative and productive with common nouns. Final a can drop, and Portuguese has a special base reduction.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The guide translated the sign from Portuguese.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The editor removed the bureaucratese from the notice.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.6.1(c)",
+        "pages": [
+          1692
+        ],
+        "pdf_pages": [
+          1712
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Place derivatives and register labels in ese",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-377",
+    "domain": "morphology",
+    "concept": "Esque and stylistic resemblance",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Esque productively forms adjectives from personal names to mark resemblance in style.",
+    "condition": "Formation from common nouns is attested but much less widespread.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The reviewer praised the play's Pinteresque pauses.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The garden path led to a picturesque bridge.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.6.1(d)",
+        "pages": [
+          1692
+        ],
+        "pdf_pages": [
+          1712
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Esque and stylistic resemblance",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-378",
+    "domain": "morphology",
+    "concept": "Regional nouns and adjectives in i",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Borrowed formations in i can be adjectives or nouns denoting inhabitants and, in some cases, languages.",
+    "condition": "The source illustrates regional names in and near the Middle East.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A Kuwaiti journalist interviewed the organisers.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The exhibition opened with a reading by a Pakistani poet.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.6.1(e)",
+        "pages": [
+          1692
+        ],
+        "pdf_pages": [
+          1712
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Regional nouns and adjectives in i",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-379",
+    "domain": "morphology",
+    "concept": "Collective nouns in iana",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Iana forms nouns for sayings or objects associated with a person, often using the shape found in the related ian adjective.",
+    "condition": "Victoriana has a specialized period sense and can sound dismissive. Some common bases are also attested.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The archive acquired a small collection of Shakespeariana.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The auction included a box of Victoriana.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.6.1(f)",
+        "pages": [
+          1692,
+          1693
+        ],
+        "pdf_pages": [
+          1712,
+          1713
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Collective nouns in iana",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-380",
+    "domain": "morphology",
+    "concept": "Proper-name derivatives in ic",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ic occurs with some names of places and peoples and a few personal names. Nouns in ic can denote languages or language groupings.",
+    "condition": "This use is less extensive than attachment to common nouns.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The lecture covered a Byronic hero in early fiction.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The instructor compared Arabic writing with another script.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.6.1(g)",
+        "pages": [
+          1693
+        ],
+        "pdf_pages": [
+          1713
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Proper-name derivatives in ic",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-381",
+    "domain": "morphology",
+    "concept": "Nationality and group adjectives in ish",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ish can attach to an inhabitant noun or to a bound base associated with a country name. Where applicable, a corresponding noun can denote the language.",
+    "condition": "Some forms belong to the group on historical grounds despite a different present-day shape.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The group attended a Danish film screening.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Her grandfather taught her to read Swedish.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.6.1(h)",
+        "pages": [
+          1693
+        ],
+        "pdf_pages": [
+          1713
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nationality and group adjectives in ish",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-382",
+    "domain": "morphology",
+    "concept": "Inhabitant and follower terms in ite",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ite forms inhabitant nouns from some place names and follower terms from personal names. Political follower terms can carry a disparaging tone.",
+    "condition": "The tone is not universal. Israelite is distinguished from modern Israeli, and Pre-Raphaelite has a specialized meaning. Common-noun bases also occur.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A Brooklynite recommended the neighborhood bakery.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The museum displayed a Pre-Raphaelite sketch.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.6.1(i)",
+        "pages": [
+          1693
+        ],
+        "pdf_pages": [
+          1713
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inhabitant and follower terms in ite",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-383",
+    "domain": "morphology",
+    "concept": "Inhabitant compounds in man and woman",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "A small group uses adjective bases with man or woman for individual inhabitants. In the definite generic construction, these sets use the nationality adjective.",
+    "condition": "The source also records a historical noun-base form as offensive and nonstandard.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "An Irishwoman gave the opening address.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The lecture discussed how the Irish were portrayed in the novel.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.6.1(j)",
+        "pages": [
+          1693
+        ],
+        "pdf_pages": [
+          1713
+        ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.6.2",
+        "pages": [
+          1694
+        ],
+        "pdf_pages": [
+          1714
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inhabitant compounds in man and woman",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-384",
+    "domain": "morphology",
+    "concept": "Four forms in nationality sets",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "The place name, related adjective, inhabitant noun and definite generic form may differ. Class 1 shares an adjective and inhabitant form, while Class 2 has a distinct inhabitant noun.",
+    "condition": "Class 1 subclasses differ in plural inflection. Class 2 subclasses differ mainly in the generic form selected.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "An Australian helped run the workshop.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A Swede introduced the Swedish documentary.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.6.2",
+        "pages": [
+          1694
+        ],
+        "pdf_pages": [
+          1714
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Four forms in nationality sets",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-385",
+    "domain": "morphology",
+    "concept": "Invariant inhabitant nouns in Class 1a",
+    "rule_type": "constraint",
+    "scope": "word",
+    "statement": "In Class 1a, the inhabitant noun has the same singular and plural shape. Forms in ese and Swiss belong here.",
+    "condition": "Taiwanese or Swiss is used as a plural inhabitant noun referring to people.",
+    "violation": "An added plural s or es changes the invariant inhabitant form.",
+    "exceptions": [
+      {
+        "description": "Some speakers prefer a person phrase in singular reference, especially for Swiss. Other nationality nouns, including Class 1b forms, can take an overt plural suffix.",
+        "pages": [
+          1694,
+          1695
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Two Taiwanese volunteered to translate the notice.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Several Swiss joined the walking party.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Two Taiwaneses volunteered to translate the notice.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Several Swisses joined the walking party.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.6.2",
+        "pages": [
+          1694,
+          1695
+        ],
+        "pdf_pages": [
+          1714,
+          1715
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Invariant inhabitant nouns in Class 1a",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "spelling_inflection",
+      "error_pattern": "An added plural s or es changes the invariant inhabitant form.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Two Taiwaneses volunteered to translate the notice. ||| Two Taiwanese volunteered to translate the notice.",
+        "Several Swisses joined the walking party. ||| Several Swiss joined the walking party."
+      ],
+      "learner_explanation": "The inhabitant nouns Taiwanese and Swiss have the same form in the singular and plural. Use Taiwanese or Swiss after a plural quantifier.",
+      "corrected_paragraph_template": "Use the invariant inhabitant form Taiwanese or Swiss.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Two Canadians volunteered.",
+        "Several Swiss residents joined the walking party.",
+        "Two Taiwanese volunteers arrived early.",
+        "The Swiss committee submitted its report."
+      ],
+      "lesson_tags": [
+        "inhabitant-nouns",
+        "plural-inflection"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [
+      "MORPH-384",
+      "MORPH-386"
+    ],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-386",
+    "domain": "morphology",
+    "concept": "Inflecting inhabitant nouns in Class 1b",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Class 1b uses the same shape for the adjective and singular inhabitant noun and adds plural inflection to the noun.",
+    "condition": "It includes many forms in an, ean, ian and i as well as forms with no suffix, such as Greek and Thai.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Two Canadians registered for the seminar.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Three Greeks spoke at the event.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.6.2",
+        "pages": [
+          1694,
+          1695
+        ],
+        "pdf_pages": [
+          1714,
+          1715
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inflecting inhabitant nouns in Class 1b",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-387",
+    "domain": "morphology",
+    "concept": "Adjective generics in Class 2a",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Class 2a generally uses the adjective for a definite plural generic and a distinct form for an individual inhabitant.",
+    "condition": "The British is the modern generic in the source, while the Britons can denote a historical population. Brit is colloquial and can be pejorative.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The exhibit considered how the British adapted the recipe.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "An Englishwoman contributed to the oral history project.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.6.2",
+        "pages": [
+          1694
+        ],
+        "pdf_pages": [
+          1714
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjective generics in Class 2a",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-388",
+    "domain": "morphology",
+    "concept": "Inhabitant-noun generics in Class 2b",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Class 2b generally uses the plural inhabitant noun in the definite generic. The adjective may be a less favoured alternative.",
+    "condition": "The inhabitant noun is usually the base of the adjective in ish. Spaniard is exceptional, and the class also includes forms in ic.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The article contrasted the Swedes and the Danes.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Two Spaniards helped organize the exhibition.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.6.2",
+        "pages": [
+          1694,
+          1695
+        ],
+        "pdf_pages": [
+          1714,
+          1715
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inhabitant-noun generics in Class 2b",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-389",
+    "domain": "morphology",
+    "concept": "Saudi Arabian Arab and Arabic",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Saudi can serve as an adjective or an inhabitant noun with plural Saudis. Arab is widely used as an inhabitant noun and attributive modifier, while Arabic primarily names the language or relates to it.",
+    "condition": "Arabic can sometimes describe people. The source treats bare predicative Arab as uncommon and distinguishes the broader referent of Arab from Arabian.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Several Saudis took part in the exchange.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The guide explained the Arabic lettering on the vase.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.6.2",
+        "pages": [
+          1695
+        ],
+        "pdf_pages": [
+          1715
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Saudi Arabian Arab and Arabic",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-390",
+    "domain": "morphology",
+    "concept": "Lexical variants in nationality adjectives",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Nationality derivatives can have alternative forms or specialized historical uses alongside a default form.",
+    "condition": "The source lists Argentinian and Argentinean, plus Argentine with the country name the Argentine. Grecian is largely associated with ancient Greece.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The Argentinian delegation arrived on Tuesday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The museum added a Grecian vase to the display.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.6.2",
+        "pages": [
+          1695
+        ],
+        "pdf_pages": [
+          1715
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical variants in nationality adjectives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]

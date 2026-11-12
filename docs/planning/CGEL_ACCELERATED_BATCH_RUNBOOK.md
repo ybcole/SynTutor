@@ -520,3 +520,7 @@ Printed pp. 1672–1679 add 8 substantive pages and 31 inactive records (`MORPH-
 ## Chapter 19 eighth checkpoint
 
 Printed pp. 1680–1687 add 8 substantive pages and 28 inactive records (`MORPH-330`–`MORPH-357`), including one inactive spelling specification. Chapter 19 has 34 unprocessed pages. Continue at p. 1688 with the remaining properties of negative prefixes.
+
+## Chapter 19 ninth checkpoint
+
+Printed pp. 1688–1695 add 8 substantive pages and 33 inactive records (`MORPH-358`–`MORPH-390`), including one inactive plural specification. Chapter 19 has 26 unprocessed pages. Continue at p. 1696 with the remaining nationality patterns.
