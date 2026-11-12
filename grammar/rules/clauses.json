@@ -86768,5 +86768,1214 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1401",
+    "domain": "clauses",
+    "concept": "Prosody and information status in dislocation and extraposition",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Right dislocation normally sets off the detached phrase prosodically and in writing, and requires discourse-old content. Extraposition can introduce new content. NPs favor dislocation, content clauses and infinitivals favor extraposition, and gerund-participials occur in both.",
+    "condition": "The constructions can contrast even with the same words when intonation or punctuation changes.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was exhausting, carrying those crates.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was exhausting carrying those crates.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§8.3",
+        "pages": [
+          1414
+        ],
+        "pdf_pages": [
+          1434
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Prosody and information status in dislocation and extraposition",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1402",
+    "domain": "clauses",
+    "concept": "Basic alignment in it-clefts and pseudo-clefts",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Clefts foreground a value and background a relative construction. Specifying be takes the foregrounded value as internal complement in it-clefts and basic pseudo-clefts, and as subject in reversed pseudo-clefts.",
+    "condition": "The foregrounded constituent's counterpart within the relative can be subject or object.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was the spare key that I found.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The spare key was what I found.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.1",
+        "pages": [
+          1414,
+          1415
+        ],
+        "pdf_pages": [
+          1434,
+          1435
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Basic alignment in it-clefts and pseudo-clefts",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1403",
+    "domain": "clauses",
+    "concept": "Cleft presupposition under negation",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The cleft backgrounds a proposition whose truth is typically taken for granted even under matrix negation. Similar inferences in non-clefts can arise independently, for example from a definite NP.",
+    "condition": "The positive example can entail the backgrounded proposition, while its negative counterpart conveys it as a conversational implicature.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was Lina who called.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It wasn't Lina who called.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.1",
+        "pages": [
+          1415
+        ],
+        "pdf_pages": [
+          1435
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Cleft presupposition under negation",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1404",
+    "domain": "clauses",
+    "concept": "Foregrounded value and the cleft variable",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The backgrounded relative supplies an open proposition, and specifying be identifies the foregrounded constituent as the value of its variable.",
+    "condition": "The relevant variable is determined by the relative dependency.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What I misplaced was my parking pass.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was my parking pass that I misplaced.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.1",
+        "pages": [
+          1416
+        ],
+        "pdf_pages": [
+          1436
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Foregrounded value and the cleft variable",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1405",
+    "domain": "clauses",
+    "concept": "Exhaustiveness and exclusiveness in clefts",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A positive cleft typically implicates that the foregrounded value is exhaustive and exclusive. Only can reinforce that implication, and negating only can cancel it.",
+    "condition": "Compare with a non-cleft assertion, which can leave other values open.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was only on Friday that the shop closed early.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It wasn't only Jo who noticed the crack.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.1",
+        "pages": [
+          1416
+        ],
+        "pdf_pages": [
+          1436
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Exhaustiveness and exclusiveness in clefts",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1406",
+    "domain": "clauses",
+    "concept": "Extranuclear it-cleft relative versus integrated NP modifier",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "An it-cleft has placeholder it and a final relative that is separate from its antecedent. A superficially identical clause can instead have referential it and a relative internal to the complement NP.",
+    "condition": "Context and nuclear stress can disambiguate. It-clefts allow antecedents that do not readily take integrated relatives, including proper names.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Who called the electrician? It was the MANAGER who called.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Who's at the gate? It's the manager who CALLED.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.2",
+        "pages": [
+          1416,
+          1417
+        ],
+        "pdf_pages": [
+          1436,
+          1437
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Extranuclear it-cleft relative versus integrated NP modifier",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1407",
+    "domain": "clauses",
+    "concept": "Proverb-like ascriptive construction",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Some proverb-like clauses resemble it-clefts but use ascriptive be and assign a property to a referent characterized by the relative clause.",
+    "condition": "The interpretation is evaluative rather than identification of a value in a presupposed event.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It's a careless cyclist who rides without lights.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It's a patient teacher who can explain that twice without sighing.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.2",
+        "pages": [
+          1417
+        ],
+        "pdf_pages": [
+          1437
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Proverb-like ascriptive construction",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1408",
+    "domain": "clauses",
+    "concept": "Truncated it-clefts",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The final relative can be left unexpressed when it is recoverable from the preceding discourse.",
+    "condition": "The answer can retain the foregrounded value or deny a proposed value.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Who broke the latch? It wasn't me.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Which switch failed? It was the green one.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.2",
+        "pages": [
+          1417
+        ],
+        "pdf_pages": [
+          1437
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Truncated it-clefts",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1409",
+    "domain": "clauses",
+    "concept": "Unbounded dependencies in it-clefts",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The foregrounded element is linked to a gap or pro-form in the cleft relative, potentially inside recursively embedded clauses.",
+    "condition": "The relative dependency can cross complement-clause boundaries in the same way as other unbounded dependencies.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was the red mug she wanted.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was the red mug he thought she said she wanted.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.2",
+        "pages": [
+          1417
+        ],
+        "pdf_pages": [
+          1437
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Unbounded dependencies in it-clefts",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1410",
+    "domain": "clauses",
+    "concept": "Foregrounded NP functions in it-clefts",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A foregrounded NP can correspond to a subject, direct object, preposition complement, temporal adjunct, predicative complement or genitive determiner. Predicative clefts are rare, and indirect-object relativization is marginal.",
+    "condition": "A preposition may be stranded or pied-piped. Foregrounding the larger NP is often more natural than relativizing its genitive determiner.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It's the architect I'm referring to.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was last spring that they moved.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.2",
+        "pages": [
+          1418
+        ],
+        "pdf_pages": [
+          1438
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Foregrounded NP functions in it-clefts",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1411",
+    "domain": "clauses",
+    "concept": "Foregrounded PPs and adjunct semantics",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "PPs with NP or clausal complements, and intransitive prepositions, can be foregrounded. Adjunct cleftability depends on the semantic relation, with reason readily available and concession infelicitous in the illustrated comparison.",
+    "condition": "A reason clause introduced by because can occur as the complement of the foregrounded preposition.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was because the road flooded that we turned back.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It's upstairs that they want to rehearse.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.2",
+        "pages": [
+          1418
+        ],
+        "pdf_pages": [
+          1438
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Foregrounded PPs and adjunct semantics",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1412",
+    "domain": "clauses",
+    "concept": "Content clauses in it-clefts",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Declarative and interrogative content clauses are generally less natural as foregrounded it-cleft values than in pseudo-clefts, but attested patterns license both categories.",
+    "condition": "Some evaluations and explicit alternatives support a foregrounded content clause.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It's that he keeps interrupting that I find annoying.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It's not whether the door locks that matters, but how easily it opens.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.2",
+        "pages": [
+          1418
+        ],
+        "pdf_pages": [
+          1438
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Content clauses in it-clefts",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1413",
+    "domain": "clauses",
+    "concept": "Nonfinite foregrounded elements in it-clefts",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Infinitival purpose adjuncts readily foreground. Other infinitivals are strongly restricted, and gerund-participials are possible but uncommon. The gerund-participial complement of catenative begin resists both cleft types.",
+    "condition": "The begin restriction correlates with the inability to question that complement with what in the relevant reading.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was to save fuel that we slowed down.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was listening to the recording that changed my mind.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.2",
+        "pages": [
+          1418,
+          1419
+        ],
+        "pdf_pages": [
+          1438,
+          1439
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nonfinite foregrounded elements in it-clefts",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1414",
+    "domain": "clauses",
+    "concept": "Adverbial and adjectival foregrounding",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Adverb phrases can be foregrounded, including in truncated clefts. Predicative adjective foregrounding is rare in most varieties but relatively ordinary in informal Irish English.",
+    "condition": "Do not generalize the rarity of adjectival clefts into a ban.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was only gradually that we saw the outline.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It wasn't blue I told you to paint it.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.2",
+        "pages": [
+          1419
+        ],
+        "pdf_pages": [
+          1439
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adverbial and adjectival foregrounding",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1415",
+    "domain": "clauses",
+    "concept": "Raised it in clefts and the need for be",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "Cleft it can be a raised subject or raised object in a construction containing be. The corresponding complex-transitive pattern without be is unavailable for cleft it.",
+    "condition": "Object extraposition with dummy it and an adjectival predicative belongs to a separate construction.",
+    "violation": "Cleft it occurs as object in a complex-transitive clause without the lower be construction.",
+    "exceptions": [
+      {
+        "description": "Object extraposition and raising to subject both have separately licensed structures.",
+        "pages": [
+          1419
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I consider it to be Maya who should speak first.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I believe it to be the latch that is stuck.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "I find it surprising that Maya spoke first.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "It seems to be Maya who should speak first.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "I consider it Maya who should speak first.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "I believe it the latch that is stuck.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.2",
+        "pages": [
+          1419
+        ],
+        "pdf_pages": [
+          1439
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Raised it in clefts and the need for be",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "Cleft it occurs as object in a complex-transitive clause without the lower be construction.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "I consider it Maya who should speak first. ||| I consider it to be Maya who should speak first.",
+        "I believe it the latch that is stuck. ||| I believe it to be the latch that is stuck."
+      ],
+      "learner_explanation": "Use a construction with be, such as consider it to be Maya who should speak first.",
+      "corrected_paragraph_template": "Use a construction with be, such as consider it to be Maya who should speak first.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "I find it surprising that Maya spoke first.",
+        "It seems to be Maya who should speak first."
+      ],
+      "lesson_tags": [
+        "information-packaging",
+        "clefts"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1416",
+    "domain": "clauses",
+    "concept": "Scope of matrix and relative negation in it-clefts",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Negation in the cleft relative is part of the presupposition. Matrix negation instead denies the identification of the foregrounded value. Both clauses can contain negation.",
+    "condition": "A negated relative can also suggest that other participants satisfied the positive predicate.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was Jo who didn't sign.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It wasn't Jo who signed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.2",
+        "pages": [
+          1419
+        ],
+        "pdf_pages": [
+          1439
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Scope of matrix and relative negation in it-clefts",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1417",
+    "domain": "clauses",
+    "concept": "Tense matching and mixed tense in it-clefts",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The matrix and relative tenses match by default, but differing tenses can be grammatical when the interpretation supports them.",
+    "condition": "Whether a mixed tense sounds natural depends on the event and context.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was Noor who booked the room.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It's Noor I saw at the station yesterday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.2",
+        "pages": [
+          1419,
+          1420
+        ],
+        "pdf_pages": [
+          1439,
+          1440
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Tense matching and mixed tense in it-clefts",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1418",
+    "domain": "clauses",
+    "concept": "Preposing the foregrounded cleft value",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The foregrounded value can itself be preposed from its position as internal complement of be.",
+    "condition": "A correction provides a context for the resulting fronted order.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Was it Alex who left the note? No, Jules it was who left it.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Was it the door that rattled? No, the window it was that rattled.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.2",
+        "pages": [
+          1420
+        ],
+        "pdf_pages": [
+          1440
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Preposing the foregrounded cleft value",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1419",
+    "domain": "clauses",
+    "concept": "Nonfinite and demonstrative extensions of it-clefts",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A gerund-participial or a variety-marked infinitival can express the background in place of a relative. A deictic demonstrative can occupy the matrix subject position instead of it.",
+    "condition": "The nonfinite patterns correspond to relatives with be. A restricted seem variant is attested with past-time expressions.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Is it Noor knocking at the door?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Those are my notes you're reading.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.2",
+        "pages": [
+          1420
+        ],
+        "pdf_pages": [
+          1440
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nonfinite and demonstrative extensions of it-clefts",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1420",
+    "domain": "clauses",
+    "concept": "Fused relatives and specifying be in pseudo-clefts",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A pseudo-cleft uses a fused relative to define the variable and specifying be to identify its value. The fused relative is subject in the basic order and internal complement in the reversed order.",
+    "condition": "A fused relative can itself be the foregrounded NP when the other constituent defines the variable.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What I need is a ladder.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A ladder is what I need.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.3",
+        "pages": [
+          1420,
+          1421
+        ],
+        "pdf_pages": [
+          1440,
+          1441
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fused relatives and specifying be in pseudo-clefts",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1421",
+    "domain": "clauses",
+    "concept": "Look-alikes excluded from pseudo-clefts",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Open interrogative clauses, ascriptive be, and specifying clauses in which the fused relative supplies the value instead of defining the relevant variable can resemble pseudo-clefts.",
+    "condition": "Check the clause type, the sense of be, and the implicit question being answered.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What they'll do next is a mystery.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What they did was outrageous.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.3",
+        "pages": [
+          1421
+        ],
+        "pdf_pages": [
+          1441
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Look-alikes excluded from pseudo-clefts",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1422",
+    "domain": "clauses",
+    "concept": "Foregrounded NP and content-clause values in pseudo-clefts",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A basic pseudo-cleft can foreground an ordinary or fused-relative NP and commonly foregrounds declarative or interrogative content clauses.",
+    "condition": "Content-clause foregrounding is more readily available here than in it-clefts.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What I meant was that you could leave early.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What puzzles me is why the lock jammed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.3",
+        "pages": [
+          1421
+        ],
+        "pdf_pages": [
+          1441
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Foregrounded NP and content-clause values in pseudo-clefts",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
   }
 ]
