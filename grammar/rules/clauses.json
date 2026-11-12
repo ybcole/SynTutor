@@ -87977,5 +87977,1217 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1423",
+    "domain": "clauses",
+    "concept": "Nonfinite values in pseudo-clefts",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Infinitival and gerund-participial values occur more readily in pseudo-clefts than it-clefts. Infinitival to is optional with do in the fused relative in the illustrated construction, and obligatory in the illustrated pattern without do.",
+    "condition": "The do construction also permits a declarative content clause as the value in relatively informal style.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What you should do is tighten the clamp.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What would help is to tighten the clamp.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.3",
+        "pages": [
+          1422
+        ],
+        "pdf_pages": [
+          1442
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nonfinite values in pseudo-clefts",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1424",
+    "domain": "clauses",
+    "concept": "Adjectival and prepositional pseudo-cleft values",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Adjective phrase values are rare but generally easier in pseudo-clefts than in it-clefts. Locative and temporal PPs are possible even though PPs occur predominantly in it-clefts.",
+    "condition": "The fused relative can specify a property, place or time.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Too cautious is how I'd describe her.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "After lunch is when I work best.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.3",
+        "pages": [
+          1422
+        ],
+        "pdf_pages": [
+          1442
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjectival and prepositional pseudo-cleft values",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1425",
+    "domain": "clauses",
+    "concept": "Bare who unavailable as a fused-relative pseudo-cleft head",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "Bare who cannot introduce the fused relative that defines the person variable in this pseudo-cleft. An explicit nominal head or an it-cleft can express the identification.",
+    "condition": "The restriction concerns bare who in a fused relative. Ordinary relatives with an overt antecedent and interrogative who are separate.",
+    "violation": "Bare who introduces the fused relative defining the person variable in a pseudo-cleft.",
+    "exceptions": [
+      {
+        "description": "The restriction concerns bare who in a fused relative. Ordinary relatives with an overt antecedent and interrogative who are separate.",
+        "pages": [
+          1422,
+          1423
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The one who found the key was Lena.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The one who designed the bridge was Jo.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Who found the key is still unclear.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "It was Jo who designed the bridge.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Who found the key was Lena.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Who designed the bridge was Jo.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.3",
+        "pages": [
+          1422,
+          1423
+        ],
+        "pdf_pages": [
+          1442,
+          1443
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Bare who unavailable as a fused-relative pseudo-cleft head",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "Bare who introduces the fused relative defining the person variable in a pseudo-cleft.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Who found the key was Lena. ||| The one who found the key was Lena.",
+        "Who designed the bridge was Jo. ||| The one who designed the bridge was Jo."
+      ],
+      "learner_explanation": "Use an explicit head such as the one who, or use an it-cleft.",
+      "corrected_paragraph_template": "Use an explicit head such as the one who, or use an it-cleft.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Who found the key is still unclear.",
+        "It was Jo who designed the bridge."
+      ],
+      "lesson_tags": [
+        "information-packaging",
+        "clefts"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1426",
+    "domain": "clauses",
+    "concept": "Pseudo-clefts without non-cleft counterparts",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A pseudo-cleft can license a value that the verb in its fused relative could not take directly in a corresponding non-cleft. Licensing depends on the semantic relation in the specifying clause.",
+    "condition": "Most varieties disallow finite want complements, though some American dialects allow them.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What I like about the desk is that it folds flat.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What I object to is that nobody was consulted.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.3",
+        "pages": [
+          1422,
+          1423
+        ],
+        "pdf_pages": [
+          1442,
+          1443
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pseudo-clefts without non-cleft counterparts",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1427",
+    "domain": "clauses",
+    "concept": "Specifying clauses with headed relatives",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "An NP with an overt general noun or a fused determiner-head and an integrated relative can define a variable much like the fused relative of a pseudo-cleft.",
+    "condition": "The headed nominal allows ordinary expansion by numerals and modifiers.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The two things that impressed me were her wit and her patience.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "All I need is a clean towel.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.3",
+        "pages": [
+          1423
+        ],
+        "pdf_pages": [
+          1443
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Specifying clauses with headed relatives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1428",
+    "domain": "clauses",
+    "concept": "Pseudo-clefts as specifying constructions",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Pseudo-clefts instantiate specifying be with a fused relative defining the variable. They share backgrounding and value specification with it-clefts even where no non-cleft counterpart is available.",
+    "condition": "It-clefts have a more systematic relation to non-clefts, with occasional exceptions resolved by extraposition.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What went wrong was that the pump jammed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was the pump that jammed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.3",
+        "pages": [
+          1423
+        ],
+        "pdf_pages": [
+          1443
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pseudo-clefts as specifying constructions",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1429",
+    "domain": "clauses",
+    "concept": "Discourse-old presuppositions in it-clefts",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A cleft presupposition can be discourse-old by direct evocation or inference. A recoverable discourse-old relative can be omitted in a truncated it-cleft.",
+    "condition": "A prior question or a salient association can supply the open proposition.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Did you close the shutters? No, it was Mina.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Ben only painted the cover. It was Lara who wrote the story.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.4.1",
+        "pages": [
+          1424
+        ],
+        "pdf_pages": [
+          1444
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Discourse-old presuppositions in it-clefts",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1430",
+    "domain": "clauses",
+    "concept": "Discourse-new presuppositions in it-clefts",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "An it-cleft can present substantial new information in the relative while treating it as shared or uncontroversial. The foregrounded element can be an adjunct or a complement and tends to be old when it is a complement.",
+    "condition": "A subordinate clause in this construction can be performative.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was ten years ago that the first ferry crossed this channel.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It is with great pleasure that I declare the exhibition open.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.4.1",
+        "pages": [
+          1424
+        ],
+        "pdf_pages": [
+          1444
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Discourse-new presuppositions in it-clefts",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1431",
+    "domain": "clauses",
+    "concept": "Prosodic focus versus syntactic cleft foregrounding",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The foregrounded element often bears nuclear stress, but focus can instead lie inside the relative or on an emphatic polarity marker. New-presupposition clefts generally have focus in the relative.",
+    "condition": "Even with an old presupposition, contrast or polarity can override the default focus.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It CAN'T have been Noor who opened the gate.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was Noor who opened THIS gate too.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.4.1",
+        "pages": [
+          1424,
+          1425
+        ],
+        "pdf_pages": [
+          1444,
+          1445
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Prosodic focus versus syntactic cleft foregrounding",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1432",
+    "domain": "clauses",
+    "concept": "Single cleft variable and multiple prosodic foci",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "An it-cleft foregrounds one constituent linked to one relativized variable. Another value can be supplied by prosodic focus inside the relative.",
+    "condition": "Multiple foci do not require multiple cleft gaps.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You blamed me. It was YOU who blamed ME.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was NORA who gave the keys to SAM.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.4.1",
+        "pages": [
+          1425
+        ],
+        "pdf_pages": [
+          1445
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Single cleft variable and multiple prosodic foci",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1433",
+    "domain": "clauses",
+    "concept": "Focus within a foregrounded noun phrase",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Focus can fall on just a determiner or modifier inside the foregrounded NP. The cleft can place an entire NP in the foreground even when only one of its subparts is new.",
+    "condition": "The adjective or genitive need not be independently foregroundable in the intended structure.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was MAYA'S bike they borrowed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was the REAR wheel they replaced, not the FRONT one.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.4.1",
+        "pages": [
+          1425
+        ],
+        "pdf_pages": [
+          1445
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Focus within a foregrounded noun phrase",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1434",
+    "domain": "clauses",
+    "concept": "Property focus with a familiar cleft referent",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "In an unusual it-cleft pattern, the referent is treated as familiar and the informative part of the foregrounded expression characterizes that referent.",
+    "condition": "The sentence is naturally understood as describing the known person’s state rather than answering who was involved.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was a very RELIEVED father who opened the door that evening.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was an EXHAUSTED captain who welcomed us aboard.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.4.1",
+        "pages": [
+          1425
+        ],
+        "pdf_pages": [
+          1445
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Property focus with a familiar cleft referent",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1435",
+    "domain": "clauses",
+    "concept": "Discourse-old presupposition in pseudo-clefts",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The fused relative of a felicitous pseudo-cleft expresses a discourse-old presupposition. Prior mention, contrast, inference, or a salient situation can supply it, even at a discourse opening.",
+    "condition": "The situation must evoke the relevant open proposition rather than merely make the referent identifiable.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "No, what I promised was that I'd call on Friday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What I want to explain today is why the river floods in spring.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.4.2",
+        "pages": [
+          1425,
+          1426
+        ],
+        "pdf_pages": [
+          1445,
+          1446
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Discourse-old presupposition in pseudo-clefts",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1436",
+    "domain": "clauses",
+    "concept": "Choosing between it-clefts and pseudo-clefts",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "It-clefts favor contrastive foregrounding and are often more natural when the foregrounded value is questioned. Pseudo-clefts can be natural without contrast when the presupposition is salient, and readily foreground clauses.",
+    "condition": "With an NP value both can be felicitous, but final position can be awkward for discourse-old material in a basic pseudo-cleft.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What is it you teach?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That was hard work. What I need now is a cold drink.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§9.4.2",
+        "pages": [
+          1426,
+          1427
+        ],
+        "pdf_pages": [
+          1446,
+          1447
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Choosing between it-clefts and pseudo-clefts",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1437",
+    "domain": "clauses",
+    "concept": "Voice and the alignment of syntactic functions",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Active and passive voice differ in how semantic roles align with syntactic functions. Agent and patient illustrate the contrast in action clauses, while syntax also identifies voice with other roles.",
+    "condition": "An experiencer and stimulus can participate in the same syntactic alternation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Many neighbors admired the gardener.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The gardener was admired by many neighbors.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§10",
+        "pages": [
+          1427
+        ],
+        "pdf_pages": [
+          1447
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Voice and the alignment of syntactic functions",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1438",
+    "domain": "clauses",
+    "concept": "Structural changes in the central be-passive",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "In a central be-passive, the active object corresponds to the passive subject, the active subject to the complement of by, and the lexical verb takes past-participle form after auxiliary be.",
+    "condition": "The by phrase is a PP internal to the passive VP.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The committee approved the budget.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The budget was approved by the committee.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§10.1.1",
+        "pages": [
+          1427,
+          1428
+        ],
+        "pdf_pages": [
+          1447,
+          1448
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Structural changes in the central be-passive",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1439",
+    "domain": "clauses",
+    "concept": "Long and short passives",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Long passives contain the internalised by complement and short passives omit it. A short passive has no exact active counterpart because a corresponding active would encode some information about the subject.",
+    "condition": "The understood participant may be more specific than an active someone. Temporal precede and follow are among the verbs for which omission can be unavailable.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The application was rejected by the board.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The application was rejected.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§10.1.1",
+        "pages": [
+          1428
+        ],
+        "pdf_pages": [
+          1448
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Long and short passives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1440",
+    "domain": "clauses",
+    "concept": "Internalised by complement versus means adjunct",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A passive by phrase can express the participant corresponding to the active subject or can be an independent means adjunct. Only the former makes the passive long.",
+    "condition": "The means adjunct can occur in an active counterpart without a change of function.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The lock was opened by the caretaker.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The lock was opened by force.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§10.1.1",
+        "pages": [
+          1428
+        ],
+        "pdf_pages": [
+          1448
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Internalised by complement versus means adjunct",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1441",
+    "domain": "clauses",
+    "concept": "Externalisation of complements other than direct objects",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A passive VP lacks a complement present in the active, but the externalised element can be an indirect object or a preposition complement rather than a direct object.",
+    "condition": "An indirect-object passive can retain the direct object. A prepositional passive retains the preposition.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Nora was given a spare ticket.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The proposal was referred to by several speakers.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§10.1.1",
+        "pages": [
+          1429
+        ],
+        "pdf_pages": [
+          1449
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Externalisation of complements other than direct objects",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1442",
+    "domain": "clauses",
+    "concept": "Passive versus perfect past participles",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Past-participle morphology can mark passive or perfect constructions. The missing active complement and an internalised by phrase can diagnose passive, while a bare perfect participle may paraphrase a construction with have.",
+    "condition": "An auxiliary have normally makes the perfect reading overt.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Praised by the panel, she returned to her seat.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Now fallen behind schedule, the team cancelled the trial.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§10.1.1",
+        "pages": [
+          1429
+        ],
+        "pdf_pages": [
+          1449
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Passive versus perfect past participles",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1443",
+    "domain": "clauses",
+    "concept": "Concealed passive with a gerund-participle",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A concealed passive can use a gerund-participle instead of the ordinary past participle. An internalised by phrase supports the passive analysis.",
+    "condition": "The construction can paraphrase an infinitival be-passive under need.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The draft needs checking by the editor.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The hinges need tightening by a technician.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§10.1.1",
+        "pages": [
+          1429
+        ],
+        "pdf_pages": [
+          1449
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Concealed passive with a gerund-participle",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1444",
+    "domain": "clauses",
+    "concept": "Inflection and agreement in the be-passive",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Passive be carries the inflection corresponding to the active lexical verb, apart from person and number, which follow the passive subject. In the progressive, passive be takes the gerund-participle form being.",
+    "condition": "Identify the passive subject before selecting the agreement form.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The panels are inspected every morning.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The panels were being inspected when we arrived.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§10.1.1",
+        "pages": [
+          1429
+        ],
+        "pdf_pages": [
+          1449
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inflection and agreement in the be-passive",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
   }
 ]

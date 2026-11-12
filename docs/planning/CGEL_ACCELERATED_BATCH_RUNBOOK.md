@@ -476,3 +476,7 @@ Printed pp. 1406–1413 add eight substantive pages and 23 inactive records (`CL
 ## Chapter 16 seventh checkpoint
 
 Printed pp. 1414–1421 add eight substantive pages and 22 inactive records (`CLS-1401`–`CLS-1422`), including one `spec_only` constraint. Chapter 16 has 26 unprocessed pages. Continue at p. 1422 with the remaining pseudo-cleft patterns.
+
+## Chapter 16 eighth checkpoint
+
+Printed pp. 1422–1429 add eight substantive pages and 22 inactive records (`CLS-1423`–`CLS-1444`), including one `spec_only` constraint. Chapter 16 has 18 unprocessed pages. Continue at p. 1430 with the be-, get- and bare-passive distinction.
