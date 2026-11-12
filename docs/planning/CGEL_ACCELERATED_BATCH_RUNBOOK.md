@@ -254,3 +254,27 @@ Printed pp. 563–582 yielded 22 records (`WCAT-081`–`WCAT-102`). Continue at 
 ## Chapter 6 source extraction complete (2026-11-12)
 
 Printed pp. 583–595 yielded 18 records (`WCAT-103`–`WCAT-120`). Printed p. 596 is blank. Chapter 6 closes with 70 substantive pages and zero unprocessed pages. Chapter 8 is next in the master plan priority order.
+
+## Chapter 8 first checkpoint
+
+Printed pp. 663–683 yielded 29 classification records (`CLS-450`–`CLS-478`). Continue at p. 684 with locative realization and change of location.
+
+## Chapter 8 second checkpoint
+
+Printed pp. 684–702 yielded 32 classification records (`CLS-479`–`CLS-510`). Continue at p. 703 with bounding and non-bounding duration.
+
+## Chapter 8 third checkpoint
+
+Printed pp. 703–724 yielded 34 classification records (`CLS-511`–`CLS-544`). Continue at p. 725 with degree under negation and then cause and result.
+
+## Chapter 8 fourth checkpoint
+
+Printed pp. 725–738 yielded 24 classification records (`CLS-545`–`CLS-568`). Continue at p. 739 with open conditional constructions.
+
+## Chapter 8 fifth checkpoint
+
+Printed pp. 739–760 yielded 29 classification records (`CLS-569`–`CLS-597`). Continue at p. 761 with exhaustive conditionals.
+
+## Chapter 8 source extraction complete
+
+Printed pp. 761–784 yielded 29 classification records (`CLS-598`–`CLS-626`). Chapter 8 closes source extraction with 120 substantive pages, two contents-only skips and zero unprocessed pages. The next chapter in the priority order is Chapter 9.
