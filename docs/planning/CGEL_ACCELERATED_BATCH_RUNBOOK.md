@@ -3,7 +3,13 @@
 **Binding authority:** `docs/planning/CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md` §0, §§3–9.  
 **Scope:** all 20 Cambridge chapters; **no changes** to B-R syntax-tree authority, XAI proof policy, user English-only policy, source citation quality, independent approval, detector eligibility, or measured performance requirements.
 
-## Quick-start for the next execution
+## Current execution checkpoint — 2026-11-12
+
+Chapter 15 is source-extracted through printed p. 1362: **88 substantive pages, 2 documented contents-only skips, no unprocessed pages**. The next Phase B priority is **Chapter 17, printed pp. 1449–1564**, beginning with its contents pages and the first substantive text. Earlier Chapter 4 through Chapter 15 quick-starts below are historical scaffolding only; do not restart their completed source extraction. Follow the master plan §0 adaptive source-audit requirements, preserve all QA gates, and use the current coverage ledger rather than snapshot counts.
+
+---
+
+## Historical Chapter 4 quick-start (completed)
 
 **Next chapter:** Chapter 4, *The clause: complements*, **printed pp. 213–322**. Chapter 3 printed pp. 71–212 are already fully accounted for as **139 extracted + three contents-only skips**, while **1,610 full-book pages remain unprocessed**. Do not redo Chapter 3 extraction or postpone Chapter 4 for additional speculative Phase C prototypes.
 
@@ -330,3 +336,23 @@ Printed pp. 1067–1078 yielded 19 classification records (`CLS-891`–`CLS-909`
 ## Chapter 12 source extraction complete
 
 Printed pp. 1079–1096 yielded 21 classification records (`CLS-910`–`CLS-930`). Chapter 12 closes source extraction with 64 substantive pages and two contents pages. Chapter 15 is next in the priority order.
+
+## Chapter 15 first checkpoint
+
+Printed pp. 1273–1288 yielded 21 classification records (`CLS-931`–`CLS-951`). Continue at p. 1289 with coordinators and related linking items.
+
+## Chapter 15 second checkpoint
+
+Printed pp. 1289–1304 yielded 21 classification records (`CLS-952`–`CLS-972`). Continue at p. 1305 with both and either.
+
+## Chapter 15 third checkpoint
+
+Printed pp. 1305–1322 yielded 23 classification records (`CLS-973`–`CLS-995`). Continue at p. 1323 with conditions on coordination.
+
+## Chapter 15 fourth checkpoint
+
+Printed pp. 1323–1342 audited consecutively in text and rendered layout, including genitive comparison tables, footnote exceptions and the nonce-constituent tree. Added 41 inert English-only records (`CLS-996`–`CLS-1036`); 3 are spec-only constraints, not enabled. Continue at p. 1343; only 20 printed pages remain in Chapter 15. Independent linguistic review and chapter-wide CI remain outstanding.
+
+## Chapter 15 Phase B source closure
+
+Printed pp. 1343–1362 were checked against text, all rendered page layouts and the two syntax-tree diagrams; the batch adds 59 inert records (`CLS-1037`–`CLS-1095`). Chapter 15 printed pp. 1273–1362 are fully accounted for (88 substantive and 2 contents-only skips; zero unprocessed). The Chapter 15 draft PR remains subject to complete local/CI gates and independent source QA, with no newly enabled runtime rules. Next chapter in priority order: Chapter 17.

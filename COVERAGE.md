@@ -2,7 +2,7 @@
 
 **Chapter 5 Phase B source extraction complete (2026-11-11).** Printed pp.326–523 contain 198 extracted pages. Pages 323–325 are contents-only, and p.524 is blank in the full volume.
 
-**Phase B extraction status: 2026-11-11.** Pages are counted as extracted when a page-specific source audit report is recorded. This is not a claim of full-chapter audit, new live diagnostic detection, or completion of the 20-chapter reference.
+**Phase B extraction status: 2026-11-12.** Pages are counted as extracted when a page-specific source audit report is recorded. This is not a claim of full-chapter audit, new live diagnostic detection, or completion of the 20-chapter reference.
 
 | Chapter | Printed pages | Extracted | Unprocessed | Skipped | Absent from split | Status |
 |---|---:|---:|---:|---:|---:|---|
@@ -20,14 +20,14 @@
 | 12. Relative constructions | 66 | 64 | 0 | 2 | 0 | Source-extracted |
 | 13. Comparative constructions | 74 | 0 | 74 | 0 | 0 | Incomplete |
 | 14. Non-finite and verbless clauses | 102 | 99 | 0 | 3 | 0 | Source-extracted |
-| 15. Coordination and supplementation | 90 | 0 | 90 | 0 | 0 | Incomplete |
+| 15. Coordination and supplementation | 90 | 88 | 0 | 2 | 0 | Source-extracted; independent QA pending |
 | 16. Information packaging | 86 | 0 | 85 | 1 | 0 | Incomplete |
 | 17. Deixis and anaphora | 116 | 0 | 116 | 0 | 0 | Incomplete |
 | 18. Inflectional morphology | 56 | 0 | 55 | 1 | 0 | Incomplete |
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **1126 extracted**, 604 unprocessed, 32 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **1214 extracted**, 514 unprocessed, 34 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -334,3 +334,23 @@ This batch adds 19 records (`CLS-891`–`CLS-909`) across 12 substantive pages. 
 ## Chapter 12 pp. 1079–1096
 
 The final batch adds 21 records (`CLS-910`–`CLS-930`) across 18 substantive pages. Chapter 12 has 64 substantive pages, two contents pages and zero unprocessed pages. See the [source report](sources/cambridge/chapter_12/PP1079_1096_REPORT.md) and [audit manifest](sources/cambridge/chapter_12/PP1079_1096_AUDIT.json).
+
+## Chapter 15 pp. 1273–1288
+
+The first batch adds 21 records (`CLS-931`–`CLS-951`) across 14 substantive pages and accounts for two contents pages. See the [source report](sources/cambridge/chapter_15/PP1273_1288_REPORT.md) and [audit manifest](sources/cambridge/chapter_15/PP1273_1288_AUDIT.json). Continue at p. 1289.
+
+## Chapter 15 pp. 1289–1304
+
+This batch adds 21 records (`CLS-952`–`CLS-972`) across 16 substantive pages. See the [source report](sources/cambridge/chapter_15/PP1289_1304_REPORT.md) and [audit manifest](sources/cambridge/chapter_15/PP1289_1304_AUDIT.json). Continue at p. 1305.
+
+## Chapter 15 pp. 1305–1322
+
+This batch adds 23 records (`CLS-973`–`CLS-995`) across 18 substantive pages. See the [source report](sources/cambridge/chapter_15/PP1305_1322_REPORT.md) and [audit manifest](sources/cambridge/chapter_15/PP1305_1322_AUDIT.json). Continue at p. 1323.
+
+## Chapter 15 Phase B checkpoint — printed pp. 1323–1342
+
+Checked 20 consecutive substantive pages and added 41 original-example inactive records (`CLS-996`–`CLS-1036`), including 3 `spec_only` constraints. [Source report](sources/cambridge/chapter_15/PP1323_1342_REPORT.md) · [Machine audit](sources/cambridge/chapter_15/PP1323_1342_AUDIT.json). Chapter 15 now has 68 substantive pages extracted and two contents-only skips through p. 1342; 20 printed pages remain. Book-wide ledger: 1194 extracted, 534 unprocessed, 34 justified skips, 2 absent from split source. No runtime enablement or independent QA approval.
+
+## Chapter 15 Phase B source extraction complete — printed pp. 1273–1362
+
+The final consecutively source-checked batch accounts for pp. 1343–1362 and adds 59 inactive records (`CLS-1037`–`CLS-1095`) including 1 `spec_only` constraint. [Audit report](sources/cambridge/chapter_15/PP1343_1362_REPORT.md) · [Audit manifest](sources/cambridge/chapter_15/PP1343_1362_AUDIT.json). Chapter 15 ledger: 88 substantive pages extracted, 2 contents-only skips, zero unprocessed pages. Book-wide ledger: 1214 extracted, 514 unprocessed, 34 justified skips, 2 absent from split source. Source complete ≠ independent review ≠ B-R crosswalk verified ≠ detector activation. Both GitHub CI workflows and chapter QA are required before PR merge. Next: Chapter 17.
