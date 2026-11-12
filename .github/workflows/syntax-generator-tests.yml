@@ -41,19 +41,11 @@ jobs:
           python tools/validate_cgel_rules.py
           python tools/ledger.py check --allow-unprocessed
           python -m unittest -v tools.test_cgel_infrastructure
-          python -m unittest -v tools.test_cgel_phase_b
-          python -m unittest -v tools.test_cgel_phase_b_91_114
-          python -m unittest -v tools.test_cgel_phase_b_115_122
-          python -m unittest -v tools.test_cgel_phase_b_139_146
-          python -m unittest -v tools.test_cgel_phase_b_147_154
-          python -m unittest -v tools.test_cgel_phase_b_155_162
-          python -m unittest -v tools.test_cgel_phase_b_163_170
-          python -m unittest -v tools.test_cgel_phase_b_171_178
-          python -m unittest -v tools.test_cgel_phase_b_179_186
-          python -m unittest -v tools.test_cgel_phase_b_187_194
-          python -m unittest -v tools.test_cgel_phase_b_195_202
-          python -m unittest -v tools.test_cgel_phase_b_203_210
-          python -m unittest -v tools.test_cgel_phase_b_211_212
+          # Discover all historical and future Cambridge Phase B tests automatically.
+          python -m unittest discover -v -s tools -p 'test_cgel_phase_b*.py' -t .
+          # Batch audits are required for every newly extracted non-Chapter-3 page.
+          python tools/cgel_batch_gate.py --all
+          python -m unittest -v tools.test_cgel_batch_gate
           python tools/audit_cgel_ch03.py --check --output /tmp/cgel-ch03-audit.json
           python -m unittest -v tools.test_cgel_ch03_qa
 
@@ -71,6 +63,13 @@ jobs:
       - name: Run isolated Syntax Generator tests
         working-directory: server
         run: python -m unittest -v test_br_tree test_cambridge_registry test_cambridge_evaluator test_grammar_schema test_br_tree_fixtures test_br_tree_schema test_api_contract test_webapp_contract test_stdlib_transport_contract test_detector test_explanations test_explanation_transports test_br_source_extensions test_source_readiness test_quiz_evidence test_builder_evaluation
+
+      - name: Validate Cambridge Chapter 3 typed candidate checks (production disabled)
+        working-directory: server
+        run: python -m unittest -v test_cgel_ch03_candidate_probe
+      - name: Validate canonical B-R tree-grounded Chapter 3 candidates (still disabled)
+        working-directory: server
+        run: python -m unittest -v test_cgel_ch03_fact_bridge
 
       - name: Validate XAI-PRE source and multi-error correction contracts
         run: |
