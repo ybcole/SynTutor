@@ -48823,5 +48823,1510 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-756",
+    "domain": "clauses",
+    "concept": "Content clauses licensed by multi-word expressions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An expression such as have no idea can license a declarative content clause through the combination as a whole.",
+    "condition": "Applies to the construction described in §4.5 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The availability of the clause need not follow from the noun considered in isolation.",
+        "pages": [
+          967
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I had no idea the office was closed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They had no idea the bridge had reopened.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§4.5",
+        "pages": [
+          967
+        ],
+        "pdf_pages": [
+          987
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Content clauses licensed by multi-word expressions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-757",
+    "domain": "clauses",
+    "concept": "Delayed result complements licensed by so and such",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Degree or manner so and degree such can license a result clause at the end of a larger clause, even when the licensing item is embedded in a subject or another dependent.",
+    "condition": "Applies to the construction described in §4.6 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The complement can be licensed by more than one degree expression in the same clause.",
+        "pages": [
+          967,
+          968
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "So many people applied that we opened a second session.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was such a cold night that the pipes froze.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§4.6",
+        "pages": [
+          967,
+          968
+        ],
+        "pdf_pages": [
+          987,
+          988
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Delayed result complements licensed by so and such",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-758",
+    "domain": "clauses",
+    "concept": "That and coordination in delayed result complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "That can be omitted in suitable so-result constructions. A single marker can introduce coordinated result nuclei.",
+    "condition": "Applies to the construction described in §4.6 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "In this construction the subordinator cannot normally be repeated before the second coordinated result clause.",
+        "pages": [
+          968
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The box was so heavy I could not lift it.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The flood was so severe that the road closed and the buses stopped running.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§4.6",
+        "pages": [
+          968
+        ],
+        "pdf_pages": [
+          988
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "That and coordination in delayed result complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-759",
+    "domain": "clauses",
+    "concept": "Predicative and postpositive such that",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Predicative such can license a following that clause, and postpositive such can occur with an obligatory content clause.",
+    "condition": "Applies to the construction described in §4.6 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "That is retained in the predicative pattern, even when intervening material separates such from its complement.",
+        "pages": [
+          968
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The damage was such that the bridge had to close.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Choose a value such that the expression is positive.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§4.6",
+        "pages": [
+          968
+        ],
+        "pdf_pages": [
+          988
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Predicative and postpositive such that",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-760",
+    "domain": "clauses",
+    "concept": "Manner, result and purpose with so that",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "So that can introduce a specification of manner, a result, or a purpose. The analysis depends on the relation between the clauses.",
+    "condition": "Applies to the construction described in §4.6 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A context can allow both a manner reading and a result reading, and a purpose does not entail realization.",
+        "pages": [
+          968,
+          969
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Place the boards so that their ends line up.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I muted the phone so that we could talk.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§4.6",
+        "pages": [
+          968,
+          969
+        ],
+        "pdf_pages": [
+          988,
+          989
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Manner, result and purpose with so that",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-761",
+    "domain": "clauses",
+    "concept": "Degree result clauses after enough and sufficient",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Certain American English usages allow a resultative declarative content clause licensed by enough, sufficient or sufficiently.",
+    "condition": "Applies to the construction described in §4.6 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Other varieties may favor a so construction or a different complement.",
+        "pages": [
+          969
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The screen is far enough away that its pixels are hard to see.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The evidence is sufficiently clear that we can act immediately.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§4.6",
+        "pages": [
+          969
+        ],
+        "pdf_pages": [
+          989
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Degree result clauses after enough and sufficient",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-762",
+    "domain": "clauses",
+    "concept": "Declarative adjuncts and inverted conditionals",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A declarative content clause can function as an adjunct in restricted constructions, including some clauses introduced by that and inverted conditional clauses.",
+    "condition": "Applies to the construction described in §4.7 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The marked constructions differ in both clause form and semantic relation.",
+        "pages": [
+          969,
+          970
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What has happened, that you look so worried?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Had the latch failed, the gate would have opened.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§4.7",
+        "pages": [
+          969,
+          970
+        ],
+        "pdf_pages": [
+          989,
+          990
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Declarative adjuncts and inverted conditionals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-763",
+    "domain": "clauses",
+    "concept": "Then as a conditional correlate",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Then can link a consequent to a stated or contextually recoverable condition.",
+    "condition": "Applies to the construction described in §4.7 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The conditional link can arise across sentences and need not indicate a literal time sequence.",
+        "pages": [
+          970
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the key fits, then we can open the door.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Are you ready? Then I will begin.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§4.7",
+        "pages": [
+          970
+        ],
+        "pdf_pages": [
+          990
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Then as a conditional correlate",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-764",
+    "domain": "clauses",
+    "concept": "Expandable and non-expandable complements after prepositions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some prepositions license only a bare declarative complement. Others license expanded complements with that.",
+    "condition": "Applies to the construction described in §4.8 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The availability and omissibility of that depend on the individual licensing expression.",
+        "pages": [
+          971
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They left before the meeting ended.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Given that the shop is closed, we should return tomorrow.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§4.8",
+        "pages": [
+          971
+        ],
+        "pdf_pages": [
+          991
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Expandable and non-expandable complements after prepositions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-765",
+    "domain": "clauses",
+    "concept": "No ordinary inversion in subordinate interrogatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A subordinate interrogative ordinarily has uninverted order, even where its main-clause counterpart has subject–auxiliary inversion.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "When the interrogative phrase is itself the subject, the main and subordinate orders can look alike.",
+        "pages": [
+          972
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I asked whether the gate was open.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I asked where the keys were.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§5.1",
+        "pages": [
+          972
+        ],
+        "pdf_pages": [
+          992
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "No ordinary inversion in subordinate interrogatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-766",
+    "domain": "clauses",
+    "concept": "Open interrogatives and relatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An open interrogative asks about the value of an interrogative expression, while a relative clause has a distinct modifying or fused-relative function.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Surface similarity does not establish that the larger constructions have the same function.",
+        "pages": [
+          972,
+          973
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I wondered what she had ordered.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I ate what she had ordered.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§5.1",
+        "pages": [
+          972,
+          973
+        ],
+        "pdf_pages": [
+          992,
+          993
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Open interrogatives and relatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-767",
+    "domain": "clauses",
+    "concept": "Multiple interrogative elements and infinitival interrogatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Subordinate interrogatives can contain more than one interrogative expression and can be infinitival in suitable constructions.",
+    "condition": "Applies to the construction described in §5.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The infinitival option depends on the governing construction and the intended interpretation.",
+        "pages": [
+          973
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They explained who should report to whom.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She asked what to bring.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§5.1",
+        "pages": [
+          973
+        ],
+        "pdf_pages": [
+          993
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Multiple interrogative elements and infinitival interrogatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-768",
+    "domain": "clauses",
+    "concept": "Whether required in infinitival and exhaustive constructions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Whether, rather than interrogative if, introduces a closed infinitival interrogative and the ungoverned exhaustive construction.",
+    "condition": "Applies to the construction described in §5.2 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Ordinary finite internal complements often allow either subordinator.",
+        "pages": [
+          973,
+          974
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We cannot decide whether to wait.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I will leave whether they agree or not.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§5.2",
+        "pages": [
+          973,
+          974
+        ],
+        "pdf_pages": [
+          993,
+          994
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Whether required in infinitival and exhaustive constructions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-769",
+    "domain": "clauses",
+    "concept": "Whether in subjects, predicatives and PP complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Whether occurs in interrogative subjects, in the relevant specifying predicatives, and after prepositions where interrogative if is excluded.",
+    "condition": "Applies to the construction described in §5.2 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A postverbal clause licensed directly by a verb can have a different distribution.",
+        "pages": [
+          973,
+          974
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Whether the gate is locked remains unclear.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It depends on whether the gate is locked.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§5.2",
+        "pages": [
+          973,
+          974
+        ],
+        "pdf_pages": [
+          993,
+          994
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Whether in subjects, predicatives and PP complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-770",
+    "domain": "clauses",
+    "concept": "Placement of or not",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An explicit or not immediately after the subordinator requires whether. A final or not can occur in other finite interrogative patterns.",
+    "condition": "Applies to the construction described in §5.2 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The availability of final or not still depends on the wider construction.",
+        "pages": [
+          974
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I asked whether or not the shop was open.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I asked if the shop was open or not.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§5.2",
+        "pages": [
+          974
+        ],
+        "pdf_pages": [
+          994
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Placement of or not",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-771",
+    "domain": "clauses",
+    "concept": "Factors favoring whether or if",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Whether and if can alternate in some finite complements, with formality and explicit alternatives among the factors influencing choice.",
+    "condition": "Applies to the construction described in §5.2 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "In environments that exclude if, the distinction is grammatical rather than a stylistic preference.",
+        "pages": [
+          974,
+          975
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I asked if they wanted to stay.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Please state whether you want tea or coffee.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§5.2",
+        "pages": [
+          974,
+          975
+        ],
+        "pdf_pages": [
+          994,
+          995
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Factors favoring whether or if",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-772",
+    "domain": "clauses",
+    "concept": "Interrogative versus conditional if",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An if clause can supply the content of an embedded yes-or-no question or give a condition on the matrix situation.",
+    "condition": "Applies to the construction described in §5.2 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some strings allow both readings. Whether can make the interrogative reading explicit.",
+        "pages": [
+          975
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Tell me if the gate is open.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I will wait here if the gate is locked.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§5.2",
+        "pages": [
+          975
+        ],
+        "pdf_pages": [
+          995
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Interrogative versus conditional if",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-773",
+    "domain": "clauses",
+    "concept": "Types and licensing of embedded questions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Embedded questions can be open or closed and concern information or direction. Complement use depends on the selecting expression.",
+    "condition": "Applies to the construction described in §5.3 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A predicate that selects a declarative complement does not necessarily license an interrogative one.",
+        "pages": [
+          975,
+          976
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We wondered who had called.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We discussed whether to leave.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§5.3",
+        "pages": [
+          975,
+          976
+        ],
+        "pdf_pages": [
+          995,
+          996
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Types and licensing of embedded questions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-774",
+    "domain": "clauses",
+    "concept": "Concealed questions in NP form",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A noun phrase can be interpreted as an embedded question in a construction that calls for an answer.",
+    "condition": "Applies to the construction described in §5.3 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The same NP can have an ordinary referential interpretation with a different governor.",
+        "pages": [
+          976
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I cannot remember the time of the meeting.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She asked the price of the ticket.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§5.3",
+        "pages": [
+          976
+        ],
+        "pdf_pages": [
+          996
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Concealed questions in NP form",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-775",
+    "domain": "clauses",
+    "concept": "Interrogative subjects and predicative complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A subordinate interrogative can function as a subject or as a predicative complement in the appropriate clause.",
+    "condition": "Applies to the construction described in §5.3.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A separate quoted question can have a superficially similar position with different clause structure.",
+        "pages": [
+          977,
+          978
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Whether we leave now matters.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The question is whether we have enough time.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§5.3.1",
+        "pages": [
+          977,
+          978
+        ],
+        "pdf_pages": [
+          997,
+          998
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Interrogative subjects and predicative complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-776",
+    "domain": "clauses",
+    "concept": "Interrogative complements of verbs and multi-word expressions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some verbs take interrogative complements directly, and some multi-word expressions license them as a unit.",
+    "condition": "Applies to the construction described in §5.3.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A governor can restrict which interrogative forms and meanings it permits.",
+        "pages": [
+          978
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We established what caused the fault.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I have no idea who called.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§5.3.1",
+        "pages": [
+          978
+        ],
+        "pdf_pages": [
+          998
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Interrogative complements of verbs and multi-word expressions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-777",
+    "domain": "clauses",
+    "concept": "Interrogatives governed by prepositions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An interrogative can be the complement of a preposition, and some governors allow a direct complement as an alternative.",
+    "condition": "Applies to the construction described in §5.3.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Omitting the preposition is construction-specific and can affect the interpretation.",
+        "pages": [
+          978,
+          979
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They argued over who should chair the meeting.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We agreed on where to meet.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§5.3.1",
+        "pages": [
+          978,
+          979
+        ],
+        "pdf_pages": [
+          998,
+          999
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Interrogatives governed by prepositions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-778",
+    "domain": "clauses",
+    "concept": "Interrogative complements of adjectives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Certain adjectives license a direct interrogative complement or an interrogative inside a PP.",
+    "condition": "Applies to the construction described in §5.3.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The acceptable preposition and any possibility of omission depend on the adjective.",
+        "pages": [
+          979
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I am not sure why she left.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We were uncertain about whether we should wait.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§5.3.1",
+        "pages": [
+          979
+        ],
+        "pdf_pages": [
+          999
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Interrogative complements of adjectives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-779",
+    "domain": "clauses",
+    "concept": "Interrogative complements and supplements of nouns",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An interrogative can specify the content of a noun directly or supplement an NP in a looser construction.",
+    "condition": "Applies to the construction described in §5.3.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Nouns differ in whether they license a direct clause, a PP, or a postposed construction.",
+        "pages": [
+          980
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The question whether to leave remained open.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "One issue remained unresolved: whether we could afford the trip.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§5.3.1",
+        "pages": [
+          980
+        ],
+        "pdf_pages": [
+          1000
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Interrogative complements and supplements of nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-780",
+    "domain": "clauses",
+    "concept": "Direct citation versus interrogative supplementation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A quoted question can supplement a reporting construction and retain main-clause syntax. A subordinate interrogative can instead supply the question's content.",
+    "condition": "Applies to the construction described in §5.3.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The presence of a punctuation break alone does not determine whether the following question is quoted.",
+        "pages": [
+          980
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "One question remained: Where were the keys?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "One question remained: where the keys were.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§5.3.1",
+        "pages": [
+          980
+        ],
+        "pdf_pages": [
+          1000
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Direct citation versus interrogative supplementation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]

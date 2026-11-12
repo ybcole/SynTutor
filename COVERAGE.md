@@ -16,7 +16,7 @@
 | 8. The clause: adjuncts | 122 | 120 | 0 | 2 | 0 | Source-extracted |
 | 9. Negation | 66 | 64 | 0 | 2 | 0 | Source-extracted |
 | 10. Clause type and illocutionary force | 96 | 93 | 0 | 3 | 0 | Source-extracted |
-| 11. Content clauses and reported speech | 84 | 18 | 64 | 2 | 0 | In progress (pp. 947–966) |
+| 11. Content clauses and reported speech | 84 | 32 | 50 | 2 | 0 | In progress (pp. 947–980) |
 | 12. Relative constructions | 66 | 0 | 66 | 0 | 0 | Incomplete |
 | 13. Comparative constructions | 74 | 0 | 74 | 0 | 0 | Incomplete |
 | 14. Non-finite and verbless clauses | 102 | 99 | 0 | 3 | 0 | Source-extracted |
@@ -27,7 +27,7 @@
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **998 extracted**, 734 unprocessed, 30 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **1012 extracted**, 720 unprocessed, 30 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -302,3 +302,7 @@ The final batch adds 16 records (`CLS-710`–`CLS-725`) across 11 substantive pa
 ## Chapter 11 pp. 947–966
 
 The first batch adds 30 records (`CLS-726`–`CLS-755`) across 18 substantive pages and accounts for the contents on pp. 947–948. See the [source report](sources/cambridge/chapter_11/PP947_966_REPORT.md) and [audit manifest](sources/cambridge/chapter_11/PP947_966_AUDIT.json). Continue at p. 967.
+
+## Chapter 11 pp. 967–980
+
+This batch adds 25 records (`CLS-756`–`CLS-780`) across 14 substantive pages. See the [source report](sources/cambridge/chapter_11/PP967_980_REPORT.md) and [audit manifest](sources/cambridge/chapter_11/PP967_980_AUDIT.json). Continue at p. 981.
