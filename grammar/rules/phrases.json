@@ -35030,7 +35030,7 @@
       "correct": [
         {
           "id": "c1",
-          "text": "Nora stood beside herself with worry.",
+          "text": "Nora was beside herself with worry.",
           "origin": "ai_authored"
         },
         {
@@ -36038,7 +36038,7 @@
         },
         {
           "id": "c2",
-          "text": "The photograph of herself hung on the mayor's office wall.",
+          "text": "The mayor was delighted. The portrait of herself would be unveiled tomorrow.",
           "origin": "ai_authored"
         }
       ],
