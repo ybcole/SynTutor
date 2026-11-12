@@ -1,4 +1,4 @@
-export function addEmbeddedTreeExercise(body, { el, button, mountBuilder }, { label, guide, ...exercise }) {
+export function addEmbeddedTreeExercise(body, { el, button, mountBuilder }, { label, guide, recovery = false, ...exercise }) {
   const workspace = el('section', undefined, 'first-tree-builder');
   workspace.setAttribute('aria-label', label);
   const guidance = el('ol', undefined, 'first-tree-guide');
@@ -33,6 +33,14 @@ export function addEmbeddedTreeExercise(body, { el, button, mountBuilder }, { la
   const checkButton = button('Check construction', checkTree);
   const toolbar = el('div', undefined, 'first-tree-toolbar');
   toolbar.append(toggle, checkButton);
+  if (recovery) {
+    toolbar.append(button('Undo', () => {
+      status.textContent = editor.undo() ? 'Last edit undone.' : 'There is no edit to undo in this visit.';
+    }), button('Restart exercise', () => {
+      editor.restart();
+      status.textContent = 'Starting tree restored. Use Undo to return to your previous tree.';
+    }));
+  }
   workspace.append(toolbar, guidance, status, stage);
   body.append(workspace);
   const editor = mountBuilder(stage, exercise);

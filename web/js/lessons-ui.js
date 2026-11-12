@@ -6,7 +6,6 @@ import { subscribeAuthState } from './auth.js';
 import { enableCanvasView } from './canvas-view.js';
 import { addConstituentReview, addConstituentTeaching, constituentHeadings, constituentOpeningCheck, constituentReferences } from './constituents-lesson.js';
 import { addSubjectPredicateTeaching, subjectPredicateHeadings, subjectPredicateOpeningCheck, subjectPredicateReferences } from './subject-predicate-lesson.js';
-import { foundationsArticle } from './foundations-lesson.js';
 import { phraseStructureArticles } from './phrase-structure-lessons.js';
 import { lessonNotation } from './lesson-notation.js';
 
@@ -59,7 +58,7 @@ function svgNode(name, attrs = {}) { const n = document.createElementNS(SVG_NS,n
 export function renderLessonTree(envelope, {
   focusId = null, blank = null, stackFeatures = false, displayLabels = null,
   interactive = false, onSelectNode = null, zoomControls = false, wordBaseline = 0,
-  textDisclosure = true, highlightWords = false,
+  textDisclosure = true, highlightWords = false, tracePath = false,
 } = {}) {
   const wrap = el('div',undefined,'lesson-tree-wrap');
   const root = envelope.root;
@@ -134,8 +133,21 @@ export function renderLessonTree(envelope, {
   const height=Math.max(...positions.map(p=>p.y + featureRows(p.node).length * 18 + (p.node.triangle ? 80 : 35)));
   const role = !textDisclosure && typeof onSelectNode === 'function' ? 'group' : 'img';
   const svg=svgNode('svg',{viewBox:`0 0 ${width} ${height}`,width,height,role,'aria-label':`B-R tree for ${envelope.sentence}`});
+  const branches = new Map();
+  const parents = new Map();
   for (const [a,b] of edges) {
-    svg.append(svgNode('line',{x1:a.x,y1:a.y+12+featureRows(a.node).length*18,x2:b.x,y2:b.y-18,class:'lesson-branch'}));
+    const line = svgNode('line',{x1:a.x,y1:a.y+12+featureRows(a.node).length*18,x2:b.x,y2:b.y-18,class:'lesson-branch'});
+    if (tracePath) branches.set(b.node.id, line);
+    if (tracePath || b.node.gap) parents.set(b.node.id, a.node);
+    svg.append(line);
+  }
+  function highlightPath(id) {
+    if (!tracePath) return;
+    for (const line of branches.values()) line.classList.remove('lesson-branch-traced');
+    while (branches.has(id)) {
+      branches.get(id).classList.add('lesson-branch-traced');
+      id = parents.get(id)?.id;
+    }
   }
   const wordLabels = new Map();
   function highlightCoveredWords(nodeId) {
@@ -177,13 +189,19 @@ export function renderLessonTree(envelope, {
     if (typeof onSelectNode === 'function' && node.id) {
       g.setAttribute('role','button');
       g.setAttribute('tabindex','0');
-      g.setAttribute('aria-label','Inspect B-R ' + (node.label || 'tree position')
-        + ' for ' + (node.word || node.words?.join(' ') || node.label || 'this position'));
-      const choose = () => {
+      g.setAttribute('aria-pressed', String(node.id === focusId));
+      const parentLabel = parents.get(node.id)?.label;
+      g.setAttribute('aria-label', node.gap && parentLabel ? `Inspect B-R gap under ${parentLabel}`
+        : 'Inspect B-R ' + (node.label || 'tree position')
+          + ' for ' + (node.word || node.words?.join(' ') || node.label || 'this position'));
+      const choose = (feature = null) => {
+        svg.querySelector('g[aria-pressed=true]')?.setAttribute('aria-pressed', 'false');
+        g.setAttribute('aria-pressed', 'true');
         if (highlightWords) highlightCoveredWords(node.id);
-        onSelectNode(node.id, null);
+        highlightPath(node.id);
+        onSelectNode(node.id, feature);
       };
-      g.addEventListener('click', choose);
+      g.addEventListener('click', () => choose());
       g.addEventListener('keydown', event => {
         if (event.target !== g) return;
         if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); choose(); }
@@ -196,12 +214,12 @@ export function renderLessonTree(envelope, {
           + ' for ' + (node.word || node.label));
         const featureName=()=>{const text=row.textContent.trim();return text.startsWith('[') && text.endsWith(']') ? text.slice(1,-1) : text;};
         row.addEventListener('click', event => {
-          event.stopPropagation(); onSelectNode(node.id,featureName());
+          event.stopPropagation(); choose(featureName());
         });
         row.addEventListener('keydown', event => {
           if (event.key === 'Enter' || event.key === ' ') {
             event.stopPropagation(); event.preventDefault();
-            onSelectNode(node.id,featureName());
+            choose(featureName());
           }
         });
       }
@@ -209,6 +227,7 @@ export function renderLessonTree(envelope, {
     svg.append(g);
   }
   if (highlightWords) highlightCoveredWords(focusId);
+  highlightPath(focusId);
   if (zoomControls) {
     const toolbar=el('div',undefined,'xai7-tree-zoom');
     toolbar.dataset.xai7Zoom = '';
@@ -265,7 +284,7 @@ export function renderLessonTree(envelope, {
   }
   const ul=el('ul');ul.append(list(root));text.append(ul);wrap.append(text);return wrap;
 }
-function articleFor(lesson) { return articleLessons[lesson.lesson_id] ?? foundationsArticle(lesson); }
+function articleFor(lesson) { return articleLessons[lesson.lesson_id]; }
 function currentLesson() { return course.lessons.find(l => l.lesson_id===active); }
 function progressFor(lesson) { return store.records[lessonKey(lesson)] || emptyProgress(); }
 async function act(event, afterSave) {
@@ -443,7 +462,7 @@ function clearLessonCanvases() {
   lessonCanvases.clear();
 }
 
-function appendWorkedTree(aside, worked, { focusId, blank = null, comparisonTree = null, inline = false, highlightWords = false, onSelect = null }) {
+function appendWorkedTree(aside, worked, { focusId, blank = null, comparisonTree = null, inline = false, highlightWords = false, tracePath = false, observation = null, onSelect = null }) {
   const evidence=el('details',undefined,'lesson-shared-evidence');
   evidence.dataset.xai7Lesson = '';
   const title=el('summary','Explanation');
@@ -453,32 +472,42 @@ function appendWorkedTree(aside, worked, { focusId, blank = null, comparisonTree
   let selected = focusId;
   const selectedWords = el('p', undefined, 'constituent-selection');
   selectedWords.setAttribute('aria-live', 'polite');
-  function describeSelection(node, id) {
-    if (node.id === id) {
-      const [start, end] = node.token_span || [];
-      if (Number.isInteger(start) && Number.isInteger(end)) {
-        selectedWords.replaceChildren('Selected words: ');
-        worked.tree.tokens.forEach((token, index) => {
-          if (index) selectedWords.append(' ');
-          selectedWords.append(index >= start && index < end ? el('mark', token.text) : token.text);
-        });
-      }
-    } else {
-      for (const child of node.children || []) describeSelection(child, id);
+  const positions = new Map();
+  function indexPositions(node, parent) {
+    if (node.id) positions.set(node.id, { node, parent });
+    for (const child of node.children || []) indexPositions(child, node);
+  }
+  indexPositions(worked.tree.root);
+  function describeSelection(id) {
+    const position = positions.get(id);
+    if (!position) return;
+    const { node, parent } = position;
+    const [start, end] = node.token_span || [];
+    if (node.gap || start === end && Number.isInteger(start)) {
+      const label = parent?.label;
+      selectedWords.textContent = node.gap
+        ? `Gap under ${label || 'the parent node'}. No word is spoken here.`
+        : 'This position has no spoken words.';
+    } else if (Number.isInteger(start) && Number.isInteger(end)) {
+      selectedWords.replaceChildren('Selected words: ');
+      worked.tree.tokens.forEach((token, index) => {
+        if (index) selectedWords.append(' ');
+        selectedWords.append(index >= start && index < end ? el('mark', token.text) : token.text);
+      });
     }
   }
   const inspect=async (nodeId, feature=null) => {
     selected=nodeId;
     if (inline) {
       selectedWords.replaceChildren();
-      describeSelection(worked.tree.root, nodeId);
+      describeSelection(nodeId);
       for (const item of canvas.querySelectorAll('svg [data-node-id]')) {
         const isSelected = item.dataset.nodeId === nodeId;
         item.toggleAttribute('data-constituent-selected', isSelected);
         if (!isSelected) item.classList.remove('lesson-tree-focus');
       }
     }
-    onSelect?.(nodeId);
+    onSelect?.(nodeId, positions.get(nodeId));
     evidence.open=true;
     const version=++requestVersion;
     slot.replaceChildren(el('p','Explaining this word or phrase…'));
@@ -500,10 +529,17 @@ function appendWorkedTree(aside, worked, { focusId, blank = null, comparisonTree
     stackFeatures: true,
     wordBaseline: comparisonTree ? 2 : 0,
     highlightWords: highlightWords || Boolean(comparisonTree),
+    tracePath,
   });
   if (inline) {
-    if (selected) describeSelection(worked.tree.root, selected);
-    canvas.append(selectedWords);
+    if (selected) describeSelection(selected);
+    if (observation) {
+      observation.querySelector('.constituent-selection')?.remove();
+      observation.prepend(selectedWords);
+      canvas.after(observation);
+    } else {
+      canvas.append(selectedWords);
+    }
   } else {
     aside.append(el('p', worked.origin, 'lesson-origin'));
     if (selected) aside.append(button('Inspect highlighted tree position', () => inspect(selected)));
@@ -590,6 +626,7 @@ function articleScreen(lesson, p, article) {
 
   article.teach(body, page, {
     el, button, lesson,
+    getWorkedExample: id => course.lessons.find(item => item.lesson_id === id).worked_example,
     showClosingWarmup: page === 5 && !reviewing && !p.responses.guided && STAGES[p.stage] === 'guided',
     practiceQuestion: (key, prompt, choices, onAnswer) => question(
       lesson, key, { responses: {} }, false, onAnswer,
@@ -608,11 +645,16 @@ function articleScreen(lesson, p, article) {
       clearLessonDiagram(figure);
       return appendWorkedTree(figure, lesson.worked_example, { focusId, inline: true, ...options });
     },
-    showComparisonTree: (figure, flatTree) => {
+    showComparisonTree: (figure, flatTree, observation) => {
       clearLessonDiagram(figure);
-      if (flatTree) return mountLessonCanvas(figure, flatTree, {
-        focusId: flatTree.root.id, wordBaseline: 2, highlightWords: true,
-      });
+      if (flatTree) {
+        const canvas = mountLessonCanvas(figure, flatTree, {
+          focusId: flatTree.root.id, wordBaseline: 2, highlightWords: true,
+        });
+        observation.querySelector('.constituent-selection')?.remove();
+        canvas.after(observation);
+        return canvas;
+      }
       const worked = lesson.worked_example;
       const focusId = worked.steps.at(-1).focus_node_id;
       // Expand the teaching diagram only. Explanations still use the canonical tree and node IDs.
@@ -625,7 +667,7 @@ function articleScreen(lesson, p, article) {
           children: node.words.map(word => ({ word })),
         } : node),
       };
-      return appendWorkedTree(figure, worked, { focusId, comparisonTree: { ...worked.tree, root }, inline: true });
+      return appendWorkedTree(figure, worked, { focusId, comparisonTree: { ...worked.tree, root }, inline: true, observation });
     },
   });
 
@@ -798,7 +840,9 @@ function lessonScreen() {
   const stage = reviewStage ?? p.stage, key = STAGES[stage];
   const reviewing = reviewStage !== null;
   const article = articleFor(lesson);
-  const chapter = article ? `Chapter ${lesson.chapter}` : lesson.track === 'foundations' ? `B-R · Chapter ${lesson.chapter}` : `Cambridge · Chapter ${lesson.chapter}`;
+  const chapter = lesson.track === 'grammar'
+    ? `Cambridge · Chapter ${lesson.chapter}`
+    : article ? `Chapter ${lesson.chapter}` : `B-R · Chapter ${lesson.chapter}`;
   const header = el('header', undefined, article ? 'lesson-header constituent-header' : 'lesson-header');
   header.append(button('← All lessons', showCatalog));
   const h1 = el('h1', lesson.title);

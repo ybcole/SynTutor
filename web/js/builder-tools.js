@@ -179,5 +179,13 @@ export function createBuilderTools(config){
   previousDraft=null;lessonPractice=null;inline=null;if(host)host.hidden=true;
  },
  record,render,select(id){selected=id;render();},
- undo(){if(session)apply(session.undo());},redo(){if(session)apply(session.redo());}};
+ restartInline(){
+  if(!inline||!session)return;
+  const draft={...snapshot(),model:inline.seed(),view:{ox:24,oy:20,scale:1}};
+  session.record(draft);
+  apply(draft);
+  config.fit();
+ },
+ undo(){if(!session?.canUndo)return false;apply(session.undo());return true;},
+ redo(){if(session)apply(session.redo());}};
 }

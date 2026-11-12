@@ -1,9 +1,20 @@
 # Syntax Foundations lesson implementation plan
 
-Use Chapters 1–5 on `explore/foundations-lesson-rollout-plan` as the reference
-for revising the remaining chapters. Chapters 1 and 2 establish the flow.
-Chapters 3–5 show how to use the same flow to teach a specific attachment
-with a partially built tree.
+Chapters 1–2 on `explore/foundations-lesson-rollout-plan` establish the six-page
+flow. Chapters 3–10 use partially built trees to teach specific attachments.
+Chapter 11 and the Cambridge companion use worked text and open-response
+practice. Use these implementations when reviewing and polishing the launch lessons.
+
+The [Chapters 3–12 polishing plan](syntax_foundations_lesson_polishing_plan.md)
+tracks the worked comparisons, active transfer practice, selection feedback,
+and embedded Builder recovery for this course.
+
+On introduction pages, lead into each example with what it demonstrates.
+Explain the brackets or other notation the first time they appear. Under each
+interactive teaching diagram, group the selected words and explanation in a
+visible callout. Number controls that guide an ordered visual trace. Leave
+comparison switches and answer choices unnumbered. Fold repeated visual
+steps into a single control and preserve their explanation in the callout.
 
 ## Read before writing
 
@@ -155,8 +166,8 @@ will use in the closing check. The reviewed catalog retains its source links.
 5. Use the read-only authored diagram for tracing and inspection. Reuse the
    word highlighting, keyboard selection, accessible outline, and neutral
    branch styling. Keep feedback and notation beside the diagram. For a
-   text-only outcome, such as Chapter 11's use of rules, use an application
-   activity that fits that objective.
+   text-only outcome, use a worked sequence followed by an open-response
+   prompt and a short answer reveal.
 
 ## Chapters 3–5 reference implementation
 
@@ -183,6 +194,40 @@ frames, and moved adverbials need their own source and scope review when
 they are taught. A branch exercise checks the intended shape for its
 particular sentence. It gives local construction feedback and leaves
 formal grading to the reviewed knowledge check.
+
+## Chapters 6–12 implementation
+
+The launch course ends with Burton-Roberts Chapter 11 and the Cambridge
+companion (`cgel-clauses`), the twelfth published lesson. Start from the M4
+scope and use the printed sections to decide the order of explanation. The
+tree records verify the analysis, and SynTutor supplies the teaching examples.
+
+| Lesson | Printed source and teaching sequence | Practice and scope |
+| --- | --- | --- |
+| 6 · Progressive auxiliaries | B-R pp. 121–122 and [52]. Compare a simple transitive predicate with the progressive. Use *doing so* to find the lexical VP, then contrast an auxiliary head with a time adjunct. | Reconnect *inspecting the bridge* beside PROG. Transfer to *were painting the gate* and locate tense on the auxiliary. |
+| 7 · Core noun phrases | B-R pp. 141–142 and [5]. Find the whole NP first, compare *the lanterns* with *those lanterns*, then explain why N and NOM can cover the same word. | Connect NOM beside DET in *those lanterns*. Transfer to *these baskets* as an object. Use V7-CORE and keep the extra NOM layer from the appendix for later study. |
+| 8 · Overt that-clauses | B-R p. 174 and [11a]. Find what was said, locate the subject and predicate inside it, then distinguish complementiser *that* from demonstrative *that*. | Connect C beside S under S′. The inner S triangle begins after *that*. Transfer to a report containing the subject NP *those lanterns*. |
+| 9 · Object wh-questions | B-R pp. 198–200 and [11b]. Compare a statement, a yes/no question, and an object wh-question to isolate the two front positions. Trace the object and auxiliary gaps separately. | Reconnect the NP containing the object gap beside V. The seed keeps C2, C1, and the PROG gap in place. Practice uses the main-clause object questions of the reviewed V9 outcome. |
+| 10 · The to-infinitive VP | B-R p. 226 and [11]. Compare *plans* with *planned* while the infinitival fragment stays the same. Then contrast infinitival *to* before a lexical VP with prepositional *to* before an NP. | Reconnect the lexical VP beside the untensed auxiliary. The worked tree shows only the VP fragment. Use [-tense] in the display, with AUX stored in the canonical tree. |
+| 11 · From lists to grammar rules | B-R pp. 260, 263, 265–266. Begin with a finite list, show what the combination rule adds, then reuse its output to explain why there is no longest result. | Bracket the two inputs to the rule and use it on a fresh pair. Check why an incomplete input fails. Keep the worked page text-only and describe the combination rule as part of a toy grammar. |
+| 12 · Cambridge companion | CGEL pp. 44–45. Read the whole example as a text sentence, then find a subject and predicate inside its embedded report. Compare the same clause in isolation and in context. | Mark both levels in text and transfer to an example from Chapter 8. Keep the existing Cambridge track, prerequisite, and text-only assessment. |
+
+The bridge example carries the same lexical verb and object through Chapters
+4–6, 8–10. The lantern example links Chapters 7 and 8 and returns in the
+companion. The concept pages put the evidence before the tree labels, with
+the main contrasts visible. The worked figure appears before the editable
+canvas. The application and recap keep the prompt visible and reveal only
+the answer. These seven lessons add no multiple-choice questions on the
+teaching pages. The reviewed prediction remains the first opening item,
+and the reviewed guided, transfer, and exit items still form the scored check.
+
+When reviewing a tree lesson, compare the diagram’s word spans and notation
+with the exact relation the builder asks the learner to repair. In Chapter 9,
+check both gap positions and their labels. In Chapter 10, check that the
+feature appears on the auxiliary branch and that the application example
+makes the preposition contrast clear. For the final two lessons, try the
+worked and transfer prompts before revealing the answer, then check whether
+the reasoning prepares the learner for the assessed outcome.
 
 ## Catalog and progress boundaries
 
@@ -217,7 +262,7 @@ new practice and draft edits leave assessment progress intact.
 - Report what changed, which source pages were consulted, the commit and
   verification results, and what requires learner, hosted, or signed-in review.
 
-## Prompt to paste for the next chapter
+## Prompt to paste when polishing a chapter
 
 > On `explore/foundations-lesson-rollout-plan`, revise Syntax Foundations
 > Chapter [number] using `docs/planning/syntax_foundations_lesson_rollout.md`.
@@ -245,7 +290,6 @@ branch, complete the construction manually and with the guide, and try the
 closing check and a retake. Check that the explanation, diagram, and feedback
 use the same words and notation. Send the chapter and page heading, the
 expected learner action, what happened, and a screenshot for layout issues.
-Use feedback from Chapters 3–5 to settle the shared pattern before starting
-Chapter 6. For each remaining batch, agree on the target outcome and one
-fresh example per chapter, then review a worked page and closing check
-before carrying the pattern forward.
+Use the source and practice table above to check each chapter against its
+launch outcome. For a new scope or assessment, review the source example
+and one transfer example before changing the catalog.

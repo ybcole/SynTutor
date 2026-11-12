@@ -198,7 +198,40 @@
 .constituent-page .lesson-shared-evidence,
 .constituent-page .constituent-caption,.constituent-page .constituent-selection { font-size:.9rem; }
 .constituent-page .lesson-shared-evidence { margin:0 0 12px; }
-.constituent-page .lesson-tree-canvas + .constituent-caption { margin:12px 0 0; color:var(--muted); }
+.constituent-page :is(.lesson-tree-observation,.lesson-intro-example) {
+  margin-block:12px 18px;
+  padding:14px 16px;
+  border:1px solid var(--accent-border);
+  border-inline-start:3px solid var(--accent);
+  border-radius:12px;
+  background:var(--accent-soft);
+  color:var(--ink);
+  overflow-wrap:anywhere;
+}
+.constituent-page :is(.lesson-tree-observation,.lesson-intro-example) > p { margin:0; }
+.constituent-page :is(.lesson-tree-observation,.lesson-intro-example) > p:not(:empty) + p:not(:empty) { margin-block-start:8px; }
+.lesson-tree-observation:not(:has(> p:not(:empty))) { display:none; }
+.lesson-tree-observation > p:empty { display:none; }
+.constituent-page .lesson-tree-observation .constituent-caption { font-size:1rem; }
+.lesson-tree-observation .constituent-selection mark { background:var(--panel); }
+.curriculum-view .lesson-tree-steps button:has(.lesson-tree-step-number) {
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+}
+.lesson-tree-step-number {
+  display:inline-grid;
+  place-items:center;
+  flex:none;
+  width:1.45rem;
+  height:1.45rem;
+  border:1px solid var(--accent-border);
+  border-radius:50%;
+  background:var(--bg);
+  color:var(--accent-strong);
+  font-size:.8rem;
+  font-weight:700;
+}
 .constituent-selection:empty { display:none; }
 .constituent-selection mark { background:var(--accent-soft); color:var(--accent-strong); font-weight:650; }
 .lesson-tree-canvas [data-constituent-selected] > text { fill:var(--accent-strong); font-weight:750; }
@@ -305,3 +338,13 @@
 
 .lesson-touch-builder > canvas { touch-action:none; }
 .lesson-builder-link { margin-block-start:12px; }
+
+.lesson-tree-canvas svg .lesson-branch.lesson-branch-traced { stroke:var(--accent-strong); stroke-width:2.5; }
+.lesson-transfer-context mark { color:var(--accent-strong); background:var(--accent-soft); }
+.lesson-transfer-example { margin-block:8px; }
+.constituent-controls[hidden], .lesson-transfer [hidden] { display:none; }
+.lesson-transfer-choices { align-items:center; }
+.curriculum-view .lesson-transfer-choices button { min-height:40px; }
+.lesson-combination-inputs { display:grid; gap:8px; }
+.lesson-combination-inputs label { display:grid; gap:4px; }
+.lesson-combination-inputs select { width:100%; }

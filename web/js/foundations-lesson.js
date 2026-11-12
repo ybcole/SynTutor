@@ -1,103 +1,93 @@
-// Presentation copy for the existing M4 lessons. The catalog owns the reviewed
-// explanations, examples, worked steps, assessments and source references.
-const chapterPages = {
-  'br-06': {
-    topics: ['Progressive Auxiliaries', 'Auxiliaries and VP Complements', 'Reading the Progressive VP', 'Finding the Lower VP'],
-    steps: ['Lexical VP', 'Progressive auxiliary', 'Higher VP'],
-    context: 'Follow “inspecting the bridge” to the lower VP. That whole VP is the complement of “is”, the progressive auxiliary.',
-    recap: ['The higher VP contains PROG and its VP complement.', 'The lexical verb and its object form the lower VP.'],
-  },
-  'br-07': {
-    topics: ['The Core Noun Phrase', 'DET, NOM and N', 'Reading the Noun Phrase', 'Following DET and NOM'],
-    steps: ['Noun', 'NOM', 'DET and NOM'],
-    context: 'Trace “lanterns” from N through NOM to NP. The demonstrative “those” reaches the same NP through DET.',
-    recap: ['DET and NOM are sisters under NP in this pattern.', 'NOM is the intermediate level between NP and N.'],
-  },
-  'br-08': {
-    topics: ['Overt That-clauses', 'Complementiser and Clause', 'Reading C and S', 'Sentence and Clause in Context'],
-    steps: ['Clause boundary', 'Complementiser C', 'C and S under S′'],
-    context: 'Trace “that” to C and the following clause to S. Both branches are directly under S′ in the display.',
-    recap: ['C and S are sisters under S′ in the overt that-clause.', 'The tree stores S′ as S-bar.'],
-  },
-  'br-09': {
-    topics: ['Wh-fronting and Gaps', 'C2, C1 and Typed Gaps', 'Reading an Object Wh-question', 'Following the Object Gap'],
-    steps: ['Wh position', 'Auxiliary position', 'Typed gaps'],
-    context: 'Compare the fronted “What” in C2 with the NP gap inside the lower VP. Locate “is” in C1 and the separate PROG gap.',
-    recap: ['C2 is the wh position above C1 in this tree.', 'The NP object gap and the PROG gap stay in their respective positions.'],
-  },
-  'br-10': {
-    topics: ['The To-infinitive VP', 'Untensed To and Its VP Complement', 'Reading the Infinitival VP', 'Locating the Tense Feature'],
-    steps: ['Lower VP', 'Untensed auxiliary', 'Higher VP'],
-    context: 'Find “to” under the [-tense] feature, then follow its sister branch down to the lexical VP. The example shows the non-finite VP fragment.',
-    recap: ['Infinitival “to” carries [-tense] in this analysis.', 'The lexical VP is its complement.'],
-  },
-  'br-11': {
-    topics: ['From Examples to Grammar Rules', 'Finite Rules and Open-ended Combinations', 'Reading the Sentence Examples', 'Applying the Rule Again'],
-    context: 'Compare the two short sentences with the example joined by “and”. Consider what the same combination rule could take as input the next time.',
-    recap: ['A finite rule can be applied repeatedly.', 'A grammar describes structure as well as which sentences its rules admit.'],
-  },
-};
+import { setTreeStepLabel } from './lesson-presentation.js';
 
-export function foundationsArticle(lesson) {
-  const chapter = chapterPages[lesson.lesson_id];
-  if (!chapter) return null;
-  return {
-    headings: [`Introduction to ${chapter.topics[0]}`, ...chapter.topics.slice(1), 'Chapter Recap', 'Chapter Post-test'],
-    teach(body, page, ui) {
-      const { el } = ui;
-      if (page === 0) body.append(el('p', lesson.outcomes[0].text));
-      if (page === 1) {
-        for (const block of lesson.teaching) body.append(el('p', block.text));
-      }
-      if (page === 2) addWorkedExample(body, ui, chapter.steps);
-      if (page === 3) {
-        body.append(el('p', chapter.context));
-        for (const insight of lesson.cambridge_insights) {
-          body.append(el('h3', 'Cambridge insight'), el('p', insight.text));
-        }
-      }
-      if (page === 4) {
-        const list = el('ul', undefined, 'constituent-recap');
-        for (const text of chapter.recap) list.append(el('li', text));
-        body.append(list);
-      }
-    },
-    postTestIntro: 'Apply the chapter’s example and explanation to the questions below. Check each answer before continuing.',
-  };
-}
-
-export function addWorkedExample(body, { el, button, lesson, showWorkedTree }, labels, { highlightWords = false } = {}) {
+export function addWorkedExample(body, ui, labels, {
+  highlightWords = false, captions, comparison, extraSteps = [], tracePath = false,
+} = {}) {
+  const { el, button, lesson, showWorkedTree, showDiagram } = ui;
   const worked = lesson.worked_example;
-  body.append(el('p', worked.sentence, 'lesson-example-sentence'));
+  const sentence = el('p', worked.sentence, 'lesson-example-sentence');
   if (!worked.tree) {
     const steps = el('ol');
     for (const step of worked.steps) steps.append(el('li', step.text));
-    body.append(steps);
+    body.append(sentence, steps);
     return;
   }
+
   const controls = el('div', undefined, 'constituent-controls lesson-tree-steps');
   controls.setAttribute('role', 'group');
   controls.setAttribute('aria-label', 'Explore the worked tree');
   const diagram = el('div', undefined, 'constituent-diagram');
+  const observation = el('div', undefined, 'lesson-tree-observation');
   const caption = el('p', undefined, 'constituent-caption');
   caption.setAttribute('aria-live', 'polite');
-  const choices = worked.steps.map((step, index) => button(labels[index], () => select(index)));
-  function describe(index) {
-    choices.forEach((choice, position) => choice.setAttribute('aria-pressed', String(position === index)));
-    const step = worked.steps[index];
-    caption.textContent = step.text;
+  observation.append(caption);
+  const steps = worked.steps.map((step, index) => ({
+    id: step.focus_node_id, label: labels[index], caption: captions?.[index] ?? step.text,
+  })).filter(step => step.label).concat(extraSteps);
+  const choices = steps.map((step, index) => {
+    const control = button(step.label, () => select(index));
+    setTreeStepLabel(control, el, step.label, index + 1);
+    return control;
+  });
+
+  function describe(index, position) {
+    choices.forEach((choice, i) => choice.setAttribute('aria-pressed', String(i === index)));
+    if (index !== -1) {
+      caption.textContent = steps[index].caption;
+    } else if (position) {
+      const { node, parent } = position;
+      const label = name => ({ 'S-bar': 'S′', 'S-dbar': 'S″' })[name] ?? name;
+      if (node.gap) {
+        caption.textContent = `The dot under ${label(parent?.label)} marks a position with no spoken word.`;
+      } else {
+        const name = node.word ? `“${node.word}”` : label(node.label) || 'This node';
+        caption.textContent = parent?.label
+          ? `${name} is directly under ${label(parent.label)}.`
+          : `${name} is at the top of this tree.`;
+      }
+    } else {
+      caption.textContent = '';
+    }
   }
+
   function select(index) {
     describe(index);
-    showWorkedTree(diagram, worked.steps[index].focus_node_id, {
+    showWorkedTree(diagram, steps[index].id, {
       highlightWords,
-      onSelect: highlightWords ? nodeId => {
-        const selected = worked.steps.findIndex(step => step.focus_node_id === nodeId);
-        if (selected !== -1) describe(selected);
-      } : null,
-    }).after(caption);
+      tracePath,
+      observation,
+      onSelect: (nodeId, position) => describe(steps.findIndex(step => step.id === nodeId), position),
+    });
   }
+
+  if (comparison) {
+    const switcher = el('div', undefined, 'constituent-controls');
+    switcher.setAttribute('role', 'group');
+    switcher.setAttribute('aria-label', 'Compare worked structures');
+    const primary = button(comparison.original, () => show(false));
+    const alternate = button(comparison.alternate, () => show(true));
+    function show(compare) {
+      primary.setAttribute('aria-pressed', String(!compare));
+      alternate.setAttribute('aria-pressed', String(compare));
+      controls.hidden = compare;
+      sentence.textContent = compare ? comparison.tree.sentence : worked.sentence;
+      if (compare) {
+        observation.querySelector('.constituent-selection')?.remove();
+        showDiagram(diagram, comparison.tree, {
+          focusId: comparison.focusId, highlightWords: true, stackFeatures: true,
+        }).after(observation);
+        caption.textContent = comparison.caption;
+      } else {
+        select(0);
+      }
+    }
+    primary.setAttribute('aria-pressed', 'true');
+    alternate.setAttribute('aria-pressed', 'false');
+    switcher.append(primary, alternate);
+    body.append(switcher);
+  }
+
   controls.append(...choices);
-  body.append(controls, diagram);
+  body.append(sentence, controls, diagram);
   select(0);
 }
