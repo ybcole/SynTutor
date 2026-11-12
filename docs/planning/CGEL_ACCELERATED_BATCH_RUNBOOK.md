@@ -392,3 +392,7 @@ Printed pp. 1537–1544 yielded 30 inactive records (`PHR-727–PHR-756`), inclu
 ## Chapter 17 ninth checkpoint
 
 Printed pp. 1545–1553 yielded 27 inactive records (`PHR-757–PHR-783`), including one `spec_only` constraint. Chapter 17 has 103 substantive pages extracted, two contents-only skips and 11 unprocessed pages. Continue at p. 1554 with implicit location and orientation.
+
+## Chapter 17 Phase B closure
+
+Printed pp. 1554–1564 yielded 31 inactive records (`PHR-784–PHR-814`). Chapter 17 Phase B source extraction accounts for all 116 printed pages: 114 substantive pages and 2 contents-only skips. The ledger still lists Chapter 18 as incomplete, and the master plan puts it ahead of the remaining priority-three chapters.

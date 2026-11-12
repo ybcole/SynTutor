@@ -48844,5 +48844,1671 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-784",
+    "domain": "phrases",
+    "concept": "Implicit source with away",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Away can recover its source from a deictic center, an antecedent location, or a relevant person's usual base.",
+    "condition": "A third-person base reading can be analyzed through anaphora or a shift of perspective.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Don't walk away.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The gull landed on the rail and then flew away.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Nora missed her brother while he was away.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§9.3(a)",
+        "pages": [
+          1554
+        ],
+        "pdf_pages": [
+          1574
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Implicit source with away",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-785",
+    "domain": "phrases",
+    "concept": "Implicit goal or location with back",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Back can denote return to a deictic location, an antecedent source, or a relevant person's usual base.",
+    "condition": "The base may belong to the person whose perspective is taken rather than exclusively to the moving participant.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Hurry back before lunch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mira took the train from York to Leeds and drove back the next day.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§9.3(a)",
+        "pages": [
+          1554
+        ],
+        "pdf_pages": [
+          1574
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Implicit goal or location with back",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-786",
+    "domain": "phrases",
+    "concept": "Intrinsic and observer-based spatial orientation",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Behind and in front of can use either the landmark's intrinsic orientation or an observer's perspective.",
+    "condition": "An observer can be the speaker or a participant in the discourse. The landmark can be left implicit, and its own orientation can still determine the reading.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The van is behind the library.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I could see a bicycle behind that boulder.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "We slowed down when a truck appeared behind.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§9.3(b)",
+        "pages": [
+          1554,
+          1555
+        ],
+        "pdf_pages": [
+          1574,
+          1575
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Intrinsic and observer-based spatial orientation",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-787",
+    "domain": "phrases",
+    "concept": "Discourse deixis versus antecedent location",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Spatial or temporal vocabulary can locate either a referent displayed in a discourse or an antecedent that merely mentions the referent.",
+    "condition": "Spatial terms are chiefly associated with writing; temporal terms work across media. Anaphoric this and that do not measure antecedent distance, though discourse-deictic this can point ahead.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The above diagram is out of scale.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The previously mentioned valves will need replacing.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§9.4",
+        "pages": [
+          1555
+        ],
+        "pdf_pages": [
+          1575
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Discourse deixis versus antecedent location",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-788",
+    "domain": "phrases",
+    "concept": "Prepositional and adjectival above",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Above can be a post-head preposition or a discourse-location adjective, the latter used before a noun or as a fused modifier-head.",
+    "condition": "Adjectival above is commonly discourse-deictic but can mean previously mentioned. Above-mentioned and aforementioned explicitly signal prior mention, with the latter associated with legal register.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Please read the note above.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The above figures include shipping.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "The result matches the above.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§9.4",
+        "pages": [
+          1555,
+          1556
+        ],
+        "pdf_pages": [
+          1575,
+          1576
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Prepositional and adjectival above",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-789",
+    "domain": "phrases",
+    "concept": "Post-head below and formal under-mentioned",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "In the source analysis below is prepositional in both spatial and discourse-location uses and follows the noun in the cited modification pattern.",
+    "condition": "Formal under-mentioned is available as a counterpart to above-mentioned.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The discussion below addresses cost.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The room below is empty.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§9.4",
+        "pages": [
+          1556
+        ],
+        "pdf_pages": [
+          1576
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Post-head below and formal under-mentioned",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-790",
+    "domain": "phrases",
+    "concept": "Attributive and fused former and latter",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Former and latter can be attributive or fused modifier-heads. In discourse reference, former selects the first candidate and latter the last.",
+    "condition": "Fused uses are anaphoric. Attributive uses can instead refer to periods or prior status; the latter word can locate a word token by discourse deixis.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We tested glass and steel; the former cracked and the latter bent.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mira called it a bargain or a mistake. The latter word surprised us.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§9.4",
+        "pages": [
+          1556
+        ],
+        "pdf_pages": [
+          1576
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Attributive and fused former and latter",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-791",
+    "domain": "phrases",
+    "concept": "Candidate sets and ordering with former and latter",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "The relevant set typically has two members, but latter can select the last of a larger set. The pair one and the other does not itself encode that order.",
+    "condition": "Ordinals can also identify discourse items but have wider uses.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We tried copper, brass and steel. The latter worked best.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Jo and Lee both won prizes, one for drawing and the other for singing.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§9.4",
+        "pages": [
+          1556
+        ],
+        "pdf_pages": [
+          1576
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Candidate sets and ordering with former and latter",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-792",
+    "domain": "phrases",
+    "concept": "Ordered distribution with respective and respectively",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Respective and respectively can pair ordered terms in distributive interpretation.",
+    "condition": "The pairings identify how a plural or coordination distributes rather than establishing an antecedent–anaphor relation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mira and Lee ordered soup and salad, respectively.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The red and blue routes terminate at their respective stations, Elm and Ash.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§9.4",
+        "pages": [
+          1557
+        ],
+        "pdf_pages": [
+          1577
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ordered distribution with respective and respectively",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-793",
+    "domain": "phrases",
+    "concept": "Respective distribution without two explicit lists",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Respective can simply distinguish separate occasions; respectively may distribute properties over a group whose members are not named separately.",
+    "condition": "Respective is attributive within a plural NP. Respectively is associated with a coordination and can occur before, after, or structurally above it.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The two coaches stopped by on their respective visits to town.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Over the next two days, the temperatures will reach 20 and 24 degrees, respectively.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§9.4",
+        "pages": [
+          1557
+        ],
+        "pdf_pages": [
+          1577
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Respective distribution without two explicit lists",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-794",
+    "domain": "phrases",
+    "concept": "Primary tense and temporal deixis",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In elementary uses, the preterite locates a time before utterance and the present locates a time at utterance.",
+    "condition": "A past imperfective state can continue to hold in the present. The preterite alone need not entail that it ended.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I promise to call tonight.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She already lived in Leeds when I met her, and she still lives there.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§10",
+        "pages": [
+          1558
+        ],
+        "pdf_pages": [
+          1578
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Primary tense and temporal deixis",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-795",
+    "domain": "phrases",
+    "concept": "Deictic now and proximal time",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Now primarily refers to an interval including utterance time, often contrasting it with an earlier or later period.",
+    "condition": "Just now can refer to the immediate past, and now can extend into the near future. Now that can introduce a clause identifying the changed circumstances.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I understand now.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She called just now.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Now that the gate is open, we can leave.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§10.1.1",
+        "pages": [
+          1558,
+          1559
+        ],
+        "pdf_pages": [
+          1578,
+          1579
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Deictic now and proximal time",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-796",
+    "domain": "phrases",
+    "concept": "Deictic then",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Usually anaphoric temporal then can also point to a moment in the very recent past or a time represented in a visual record.",
+    "condition": "The time in a photograph or video can be identified without a temporal antecedent expression.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Did you hear that click just then?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Looking at the old photo, Mira said, 'We lived by the sea then.'",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§10.1.1",
+        "pages": [
+          1559
+        ],
+        "pdf_pages": [
+          1579
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Deictic then",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-797",
+    "domain": "phrases",
+    "concept": "Anaphoric then and temporal succession",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Then can recover a time from a temporal phrase, an event, an indirectly temporal expression or the time of a preceding clause.",
+    "condition": "Then may refer to a closely subsequent time. In pre-head position it can modify a noun or an attributive adjective, with reference tied to the containing clause's situation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We moved in 2011. I was ten then.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She opened the window and then turned off the fan.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "The proposal came from the then director.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§10.1.1",
+        "pages": [
+          1559
+        ],
+        "pdf_pages": [
+          1579
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Anaphoric then and temporal succession",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-798",
+    "domain": "phrases",
+    "concept": "Idiomatic and connective now and then",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Now and then can express occasional frequency. Then can mean in that case, and now or now then can organize discourse.",
+    "condition": "These uses do not require ordinary temporal reference.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We go hiking now and then.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the train is full, then we'll take the bus.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Now, where were we?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§10.1.1",
+        "pages": [
+          1559
+        ],
+        "pdf_pages": [
+          1579
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Idiomatic and connective now and then",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-799",
+    "domain": "phrases",
+    "concept": "Three-way deictic contrast for days",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Yesterday, today and tomorrow normally identify the day before utterance, its day, and the following day.",
+    "condition": "They can also evoke the past, present and future more broadly. This day can occasionally substitute for today, especially as a complement.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She left yesterday and returns tomorrow.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Today's tools would have surprised yesterday's engineers.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§10.1.2",
+        "pages": [
+          1559,
+          1560
+        ],
+        "pdf_pages": [
+          1579,
+          1580
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Three-way deictic contrast for days",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-800",
+    "domain": "phrases",
+    "concept": "Positional and non-positional temporal units",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Non-positional units of the same type follow one another directly, while positional units occupy a fixed place in a cycle.",
+    "condition": "Day and week have distinct positional readings when contrasted with night and weekend. Weekday does not participate in the cited deictic series.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We met last week and will meet next week.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The office closes at night and opens during the day.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§10.1.2",
+        "pages": [
+          1560
+        ],
+        "pdf_pages": [
+          1580
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Positional and non-positional temporal units",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-801",
+    "domain": "phrases",
+    "concept": "Regular and irregular temporal series",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Last, this and next form the regular three-way series. Day and parts of the day have irregular expressions such as yesterday morning, last night and tonight.",
+    "condition": "This second and this minute are possible without a full series. Fortnight and decade rarely form the whole series but permit proximal forms.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We'll meet this morning and again tomorrow evening.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The alarm rang last night, and it may ring again tonight.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§10.1.2",
+        "pages": [
+          1560
+        ],
+        "pdf_pages": [
+          1580
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Regular and irregular temporal series",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-802",
+    "domain": "phrases",
+    "concept": "Non-positional intervals and week boundaries",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A proximal non-positional expression normally identifies the unit containing utterance time, with last and next identifying neighboring units.",
+    "condition": "Week may be calendrical, with variable week-start conventions, or non-calendrical, as a seven-day interval beginning today.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I learned about it this week.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I'll finish next week.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§10.1.2",
+        "pages": [
+          1561
+        ],
+        "pdf_pages": [
+          1581
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-positional intervals and week boundaries",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-803",
+    "domain": "phrases",
+    "concept": "Parts of the day and date anchoring",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "This morning refers to the morning of the utterance day even after the morning has ended. Yesterday and tomorrow can select neighboring days for the same part-of-day noun.",
+    "condition": "The corresponding irregular forms apply to other parts of the day.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I sent the form this morning, said Mira at dusk.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They'll collect it tomorrow afternoon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§10.1.2",
+        "pages": [
+          1561
+        ],
+        "pdf_pages": [
+          1581
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Parts of the day and date anchoring",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-804",
+    "domain": "phrases",
+    "concept": "Month names and flexible proximity",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "This plus a month name can identify the current month or a nearby month in the past or future, including across a year boundary.",
+    "condition": "Last and next can overlap with this at intermediate distances or select a different yearly cycle. In plus a bare month usually does not identify the current month.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This February should be warmer, said in December.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They got married in April.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§10.1.2",
+        "pages": [
+          1561
+        ],
+        "pdf_pages": [
+          1581
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Month names and flexible proximity",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-805",
+    "domain": "phrases",
+    "concept": "Seasons and weekend expressions",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Seasons and weekend broadly follow positional temporal reference. Deictic prepositional constructions with seasons are less common.",
+    "condition": "Weekend commonly takes at in British English and on in American and Australian English.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We moved here last autumn.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What did you do at the weekend?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "We're leaving on the weekend.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§10.1.2",
+        "pages": [
+          1561
+        ],
+        "pdf_pages": [
+          1581
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Seasons and weekend expressions",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-806",
+    "domain": "phrases",
+    "concept": "Weekday names and near-day reference",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "This, last and next with a weekday usually avoid days readily identified by today, yesterday or tomorrow. Some speakers also avoid them for the days just beyond those.",
+    "condition": "Some restrict this plus weekday to the future. On plus weekday is possible, and bare weekday adjuncts are particularly available in American English.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They left on Tuesday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We're leaving Friday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§10.1.2",
+        "pages": [
+          1561,
+          1562
+        ],
+        "pdf_pages": [
+          1581,
+          1582
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Weekday names and near-day reference",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-807",
+    "domain": "phrases",
+    "concept": "Compositional temporal expressions with two nouns",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Many complex time expressions have predictable readings from their embedding structure.",
+    "condition": "In the Sunday before last or the Sunday after next, last and next recover a matching day-name.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The day after tomorrow will be busy.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We met the Sunday before last.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§10.1.2",
+        "pages": [
+          1562
+        ],
+        "pdf_pages": [
+          1582
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Compositional temporal expressions with two nouns",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-808",
+    "domain": "phrases",
+    "concept": "Specialized multi-unit temporal patterns",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Today week and a week today can both mean a week from today. Their permitted substitutions differ.",
+    "condition": "The first pattern can use a weekday and, mainly in British English, fortnight. The second can use quantified units or tomorrow. A week Tuesday is speaker-dependent.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The repairs begin a week today.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The exhibition closes two weeks tomorrow.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§10.1.2",
+        "pages": [
+          1562
+        ],
+        "pdf_pages": [
+          1582
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Specialized multi-unit temporal patterns",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-809",
+    "domain": "phrases",
+    "concept": "Deictic temporal measures and motion metaphors",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Ago measures backward from now, while in plus a duration can measure forward. Coming marks future reference and gone can evoke the past.",
+    "condition": "The source contrasts time moving past a reference point with movement along a temporal path, as in the weeks ahead.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We met two months ago and will meet again in two months.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The hearing is this coming Tuesday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "The weeks ahead will be demanding.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§10.1.2",
+        "pages": [
+          1562
+        ],
+        "pdf_pages": [
+          1582
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Deictic temporal measures and motion metaphors",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-810",
+    "domain": "phrases",
+    "concept": "Deictic and anaphoric orientation with soon",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Soon and similar expressions can orient to utterance time or a time made salient in discourse.",
+    "condition": "The same form can also be available with later, previously, or in plus a month, though explicit anaphoric month reference can be clearer.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We'll soon reach the station.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He turned the corner and was soon out of sight.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§10.1.2",
+        "pages": [
+          1562,
+          1563
+        ],
+        "pdf_pages": [
+          1582,
+          1583
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Deictic and anaphoric orientation with soon",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-811",
+    "domain": "phrases",
+    "concept": "Distinct deictic and anaphoric temporal counterparts",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Utterance-centered yesterday, today, tomorrow, next week and ago have counterparts such as the previous day, that day, the following day or week, and earlier.",
+    "condition": "A bare on-Friday expression in the cited dated sequence is deictic; the following Friday supplies the intended anaphoric orientation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She arrived on 5 May and left the following week.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He had submitted the form a day earlier.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§10.1.2",
+        "pages": [
+          1563
+        ],
+        "pdf_pages": [
+          1583
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Distinct deictic and anaphoric temporal counterparts",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-812",
+    "domain": "phrases",
+    "concept": "Temporal demonstratives and anaphoric orientation",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Temporal that is predominantly anaphoric. This can also be anaphoric in some expressions, but a this week adjunct normally stays utterance-centered.",
+    "condition": "A represented situation in a video can license deictic that plus a temporal expression.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The winter of 2012 was unusually cold. That February the lake froze.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She resigned soon after the merger. At this time she was still on the board.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§10.1.2",
+        "pages": [
+          1563
+        ],
+        "pdf_pages": [
+          1583
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Temporal demonstratives and anaphoric orientation",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-813",
+    "domain": "phrases",
+    "concept": "Decoding-time temporal deixis",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In notices and similar writing, now can orient to the reader's time of decoding rather than the writer's time of encoding.",
+    "condition": "The intended action or location is evaluated at the point when the reader encounters the message.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You are now entering the quiet zone.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Now rinse the filter, says the instruction card.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§10.2",
+        "pages": [
+          1563
+        ],
+        "pdf_pages": [
+          1583
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Decoding-time temporal deixis",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-814",
+    "domain": "phrases",
+    "concept": "Shifted temporal deixis in free indirect style",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Free indirect style can center now and ago on the character's experienced time while retaining third-person reference.",
+    "condition": "Motion come can reflect the same perspective. An explicit anaphoric expression such as years earlier need not signal the character-centered temporal viewpoint in the same way.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mira looked at the empty platform. Only a week ago the station had been crowded.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They had locked the front door, and now they were closing the shutters.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§10.2",
+        "pages": [
+          1563,
+          1564
+        ],
+        "pdf_pages": [
+          1583,
+          1584
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Shifted temporal deixis in free indirect style",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
   }
 ]
