@@ -364,3 +364,7 @@ Printed pp. 1449–1472 checked consecutively in uploaded full-volume PDF text a
 ## Chapter 17 second checkpoint — 2026-11-12
 
 Printed pp. 1473–1496 source-checked consecutively in full-volume PDF text and rendered page layouts (including p.1486 reflexive-domain tree, footnotes and unacceptable/minimally variable contrasts). 67 inert new records (PHR-515–PHR-579, CLS-1102–CLS-1103), with one narrowly scoped `pride` lexical reflexive `spec_only` constraint. Distinctions for bound variables, prospective anaphora, optional and override reflexives prevent broad false-positive detectors. Chapter 17 now has 46 substantive pages plus 2 contents-only skips, leaving 68 printed pages; continue at p.1497. No approvals or runtime enablement.
+
+## Chapter 17 third checkpoint
+
+Printed pp. 1497–1504 yielded 38 inactive records (`PHR-580–PHR-617`), including 9 `spec_only` constraints. The batch closes reciprocal constructions and begins demonstratives. Chapter 17 has 54 substantive pages extracted, two contents-only skips and 60 unprocessed pages. Continue at p. 1505 with animate demonstratives and central deictic use.

@@ -22,12 +22,12 @@
 | 14. Non-finite and verbless clauses | 102 | 99 | 0 | 3 | 0 | Source-extracted |
 | 15. Coordination and supplementation | 90 | 88 | 0 | 2 | 0 | Source-extracted; independent QA pending |
 | 16. Information packaging | 86 | 0 | 85 | 1 | 0 | Incomplete |
-| 17. Deixis and anaphora | 116 | 46 | 68 | 2 | 0 | In progress (pp. 1449–1496) |
+| 17. Deixis and anaphora | 116 | 54 | 60 | 2 | 0 | In progress (pp. 1449–1504) |
 | 18. Inflectional morphology | 56 | 0 | 55 | 1 | 0 | Incomplete |
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **1260 extracted**, 466 unprocessed, 36 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **1268 extracted**, 458 unprocessed, 36 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -362,3 +362,7 @@ Checked all 24 page layouts and source text; pp.1449–1450 are chapter contents
 ## Chapter 17 Phase B checkpoint — printed pp. 1473–1496
 
 Source-checked all 24 substantive pages (full-volume PDF pp. 1493–1516) with source text, rendered layouts, bracketed judgments and footnotes. Added 67 inactive original-English example records (PHR-515–PHR-579, CLS-1102–CLS-1103), including a narrowly scoped lexical reflexive `spec_only` constraint. [Report](sources/cambridge/chapter_17/PP1473_1496_REPORT.md) · [Machine audit](sources/cambridge/chapter_17/PP1473_1496_AUDIT.json). Chapter 17 now has 46 substantive extracted pages, 2 contents-only skips and 68 unprocessed pages; continue at p.1497. Linguistic review and production licensing remain pending.
+
+## Chapter 17 Phase B checkpoint for printed pp. 1497–1504
+
+Printed pp. 1497–1504 yielded 38 inactive records (`PHR-580–PHR-617`), including 9 `spec_only` constraints. The batch closes reciprocal constructions and begins demonstratives. Chapter 17 has 54 substantive pages extracted, two contents-only skips and 60 unprocessed pages. Continue at p. 1505 with animate demonstratives and central deictic use. [Report](sources/cambridge/chapter_17/PP1497_1504_REPORT.md) · [Audit](sources/cambridge/chapter_17/PP1497_1504_AUDIT.json).

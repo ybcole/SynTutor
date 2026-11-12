@@ -36306,5 +36306,2554 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Phase B source-grounded extraction only; printed and rendered source checked. Original English examples, no human or independent linguistic approval, no production activation."
+  },
+  {
+    "id": "PHR-580",
+    "domain": "phrases",
+    "concept": "Subject antecedent of an emphatic clause adjunct",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "A clause-level emphatic reflexive takes the subject of its clause as antecedent, including an understood subject.",
+    "condition": "Distinguish detached clause adjuncts from a reflexive inside a nonsubject NP.",
+    "violation": "An emphatic clause adjunct is linked to a nonsubject NP.",
+    "exceptions": [
+      {
+        "description": "Distinguish detached clause adjuncts from a reflexive inside a nonsubject NP.",
+        "pages": [
+          1497
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Having booked the venue herself, Ava sent us the address.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c2",
+          "text": "The inspectors photographed the damage themselves.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "They sent Ava herself the invoice.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "We handed Leo himself the receipt.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "They sent Ava the invoice herself.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "We handed Leo the receipt himself.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.2",
+        "pages": [
+          1497
+        ],
+        "pdf_pages": [
+          1517
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subject antecedent of an emphatic clause adjunct",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "pronoun_case",
+      "error_pattern": "An emphatic clause adjunct is linked to a nonsubject NP.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "They sent Ava the invoice herself. ||| They sent Ava herself the invoice.",
+        "We handed Leo the receipt himself. ||| We handed Leo himself the receipt."
+      ],
+      "learner_explanation": "A clause-level emphatic reflexive takes the subject of its clause as antecedent, including an understood subject. Place the emphatic reflexive inside the intended antecedent NP when emphasizing a nonsubject.",
+      "corrected_paragraph_template": "Place the emphatic reflexive inside the intended antecedent NP when emphasizing a nonsubject.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "We handed Leo himself the receipt.",
+        "Having booked the venue herself, Ava sent us the address."
+      ],
+      "lesson_tags": [
+        "anaphora",
+        "reflexives"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-581",
+    "domain": "phrases",
+    "concept": "NP-internal emphatic reflexives across NP functions",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An NP modified by an emphatic reflexive can function as subject, verb object or preposition complement.",
+    "condition": "Predicative complement use is restricted. Person differences can distinguish internal modification from a clause adjunct.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The pilot herself answered the call.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We spoke to the pilot herself.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "At rehearsal, you will be the admiral himself.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.2",
+        "pages": [
+          1497
+        ],
+        "pdf_pages": [
+          1517
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "NP-internal emphatic reflexives across NP functions",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-582",
+    "domain": "phrases",
+    "concept": "Genitive exclusion with NP-internal emphatic reflexives",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "An NP-internal emphatic reflexive can neither attach to a genitive antecedent nor form a genitive NP with its antecedent.",
+    "condition": "A postposed emphatic clause adjunct is compatible with a genitive gerund-participial subject.",
+    "violation": "A genitive is combined with an NP-internal emphatic reflexive.",
+    "exceptions": [
+      {
+        "description": "A postposed emphatic clause adjunct is compatible with a genitive gerund-participial subject.",
+        "pages": [
+          1497
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The niece of the captain herself called.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We objected to Clara herself directing the ceremony.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "We objected to Clara's directing the ceremony herself.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "I spoke to the captain herself.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The captain herself's niece called.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "We objected to Clara's herself directing the ceremony.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.2",
+        "pages": [
+          1497
+        ],
+        "pdf_pages": [
+          1517
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Genitive exclusion with NP-internal emphatic reflexives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "pronoun_case",
+      "error_pattern": "A genitive is combined with an NP-internal emphatic reflexive.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The captain herself's niece called. ||| The niece of the captain herself called.",
+        "We objected to Clara's herself directing the ceremony. ||| We objected to Clara herself directing the ceremony."
+      ],
+      "learner_explanation": "An NP-internal emphatic reflexive can neither attach to a genitive antecedent nor form a genitive NP with its antecedent. Use an of phrase for the possessive relation or a plain-case subject with the NP modifier.",
+      "corrected_paragraph_template": "Use an of phrase for the possessive relation or a plain-case subject with the NP modifier.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "We objected to Clara's directing the ceremony herself.",
+        "I spoke to the captain herself."
+      ],
+      "lesson_tags": [
+        "anaphora",
+        "reflexives"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-583",
+    "domain": "phrases",
+    "concept": "Emphatic reflexives and contrast",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Emphatic reflexives highlight an entity relative to salient alternatives, whether or not the predicate also applies to the alternatives.",
+    "condition": "Explicit contrast often places the reflexive on the contextually more important entity.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We catalogued both the paintings themselves and their frames.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The fee covers the frame but excludes the painting itself.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.2",
+        "pages": [
+          1497
+        ],
+        "pdf_pages": [
+          1517
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Emphatic reflexives and contrast",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-584",
+    "domain": "phrases",
+    "concept": "Emphatic reflexives and direct involvement",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A subject-oriented emphatic reflexive can indicate personal involvement or action without assistance or delegation.",
+    "condition": "This interpretation strongly favors final position. Context separates it from ordinary personal emphasis.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The director edited the audio herself; nobody assisted.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We collected the parcels ourselves instead of hiring a courier.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.2",
+        "pages": [
+          1498
+        ],
+        "pdf_pages": [
+          1518
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Emphatic reflexives and direct involvement",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-585",
+    "domain": "phrases",
+    "concept": "Emphatic reflexives and the scope of negation",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Ordinary emphasis falls outside negation, while direct-involvement emphasis can fall inside it.",
+    "condition": "On the direct-involvement reading, another person's participation is often implied.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I don't mind the delay myself.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I didn't tune the piano myself; a technician did.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.2",
+        "pages": [
+          1498
+        ],
+        "pdf_pages": [
+          1518
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Emphatic reflexives and the scope of negation",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-586",
+    "domain": "phrases",
+    "concept": "Antecedent reference in ordinary and direct-involvement emphasis",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Ordinary emphatic reflexives normally have a referential antecedent, usually definite. Direct-involvement emphasis also allows nonreferential antecedents.",
+    "condition": "Interpret the emphasis before assessing its antecedent.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The electrician herself agreed that it was safe.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Any licensed electrician should be able to install this herself.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.2",
+        "pages": [
+          1498
+        ],
+        "pdf_pages": [
+          1518
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Antecedent reference in ordinary and direct-involvement emphasis",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-587",
+    "domain": "phrases",
+    "concept": "Emphatic reflexives in ascriptive supplements",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An ordinary emphatic reflexive may precede or follow the predicative element inside an ascriptive supplement.",
+    "condition": "The supplement itself can precede or follow the overt antecedent. A covert supplement subject is an alternative analysis.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Herself an experienced diver, Leah spotted the problem.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Leah, an experienced diver herself, spotted the problem.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.2",
+        "pages": [
+          1498
+        ],
+        "pdf_pages": [
+          1518
+        ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§3.2",
+        "pages": [
+          1499
+        ],
+        "pdf_pages": [
+          1519
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Emphatic reflexives in ascriptive supplements",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-588",
+    "domain": "phrases",
+    "concept": "Compound and split reciprocal constructions",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Each other and one another are compound reciprocal pronouns. Split reciprocals use the determinative each or one separately from the noun other.",
+    "condition": "The independent parts in a split construction retain their own syntactic functions.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The finalists congratulated one another.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Each finalist shook hands with the others.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "The mats lay one beneath the other.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§4.1",
+        "pages": [
+          1499
+        ],
+        "pdf_pages": [
+          1519
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Compound and split reciprocal constructions",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-589",
+    "domain": "phrases",
+    "concept": "Traditional set-size prescription for compound reciprocals",
+    "rule_type": "stylistic_or_prescriptive",
+    "scope": "phrase",
+    "statement": "The compound pronouns each other and one another can both apply to groups of two or larger groups. Each other is more frequent.",
+    "condition": "The traditional two-versus-many prescription lacks empirical support.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The two neighbors lent tools to one another.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The five volunteers sent each other reminders.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§4.1",
+        "pages": [
+          1499
+        ],
+        "pdf_pages": [
+          1519
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Traditional set-size prescription for compound reciprocals",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-590",
+    "domain": "phrases",
+    "concept": "Distribution of each in split reciprocals",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "Split each appears inside the subject NP as a determiner or fused determiner-head, or as a subject-oriented adjunct, including after an auxiliary.",
+    "condition": "Use the compound form in object position when each and other jointly form the object pronoun.",
+    "violation": "Split each is inserted before the reciprocal object or object PP after the lexical verb.",
+    "exceptions": [
+      {
+        "description": "Use the compound form in object position when each and other jointly form the object pronoun.",
+        "pages": [
+          1499
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Each of the twins thanked the other.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The twins had each thanked the other.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "The twins thanked each other.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "The runners nodded to each other.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c5",
+          "text": "The twins each thanked the other.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c6",
+          "text": "Each runner nodded to the others.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The twins thanked each the other.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The runners nodded each to the others.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§4.1",
+        "pages": [
+          1499
+        ],
+        "pdf_pages": [
+          1519
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Distribution of each in split reciprocals",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "word_order",
+      "error_pattern": "Split each is inserted before the reciprocal object or object PP after the lexical verb.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The twins thanked each the other. ||| The twins thanked each other.",
+        "The runners nodded each to the others. ||| The runners nodded to each other."
+      ],
+      "learner_explanation": "Split each appears inside the subject NP as a determiner or fused determiner-head, or as a subject-oriented adjunct, including after an auxiliary. Use a licensed position for split each or use a compound reciprocal as the complement.",
+      "corrected_paragraph_template": "Use a licensed position for split each or use a compound reciprocal as the complement.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The twins each thanked the other.",
+        "Each runner nodded to the others."
+      ],
+      "lesson_tags": [
+        "anaphora",
+        "reciprocals"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-591",
+    "domain": "phrases",
+    "concept": "Quantifying the other participants in a split reciprocal",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The split each construction can quantify the other participants explicitly. A compound reciprocal with a large group can describe relations to the rest collectively without requiring every distinct pairing.",
+    "condition": "A set of two takes singular the other in the split pattern. Plural the others is available for a larger set.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Each runner checked in with most of the others.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Each of the two cyclists called the other.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§4.1",
+        "pages": [
+          1500
+        ],
+        "pdf_pages": [
+          1520
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Quantifying the other participants in a split reciprocal",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-592",
+    "domain": "phrases",
+    "concept": "Position of adjunct one in split reciprocals",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The adjunct one in the split pattern ordinarily follows the verb and precedes a PP containing other.",
+    "condition": "This adjunct pattern differs from preverbal adjunct each and from subject-NP one.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The speakers stood one behind the other.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The crates were stacked one above the other.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§4.1",
+        "pages": [
+          1500
+        ],
+        "pdf_pages": [
+          1520
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Position of adjunct one in split reciprocals",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-593",
+    "domain": "phrases",
+    "concept": "Adjunct one and direct-object other",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "The split reciprocal with adjunct one does not take the other as the verb's direct object.",
+    "condition": "Distinguish subject-determiner one and the separate adjunct each pattern.",
+    "violation": "Split adjunct one is inserted before a direct object headed by other.",
+    "exceptions": [
+      {
+        "description": "Distinguish subject-determiner one and the separate adjunct each pattern.",
+        "pages": [
+          1500
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The escorts followed one another along the trail.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The delegates questioned one another after the meeting.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "One delay followed another.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "The escorts walked one behind the other.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The escorts followed one the other along the trail.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The delegates questioned one the other after the meeting.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§4.1",
+        "pages": [
+          1500
+        ],
+        "pdf_pages": [
+          1520
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjunct one and direct-object other",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "word_order",
+      "error_pattern": "Split adjunct one is inserted before a direct object headed by other.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The escorts followed one the other along the trail. ||| The escorts followed one another along the trail.",
+        "The delegates questioned one the other after the meeting. ||| The delegates questioned one another after the meeting."
+      ],
+      "learner_explanation": "The split reciprocal with adjunct one does not take the other as the verb's direct object. Use the compound object pronoun or choose a supported split construction.",
+      "corrected_paragraph_template": "Use the compound object pronoun or choose a supported split construction.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "One delay followed another.",
+        "The escorts walked one behind the other."
+      ],
+      "lesson_tags": [
+        "anaphora",
+        "reciprocals"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-594",
+    "domain": "phrases",
+    "concept": "Linear asymmetric reciprocity",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An ordered chain can be asymmetric when reversing the relation between adjacent members changes its truth.",
+    "condition": "Compound reciprocals and split one can describe the chain. Split each applies to the nonlinear type.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The hikers walked one behind the other in a line.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The trays were stacked on top of one another.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§4.1",
+        "pages": [
+          1500
+        ],
+        "pdf_pages": [
+          1520
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Linear asymmetric reciprocity",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-595",
+    "domain": "phrases",
+    "concept": "Linear symmetric reciprocity",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In a symmetric linear arrangement, adjacent members stand in the same relation in either direction.",
+    "condition": "Symmetry within an adjacent pair does not imply that the relation holds between nonadjacent members.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The seedlings grew one next to the other in a row.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The choir members stood beside one another along the wall.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§4.1",
+        "pages": [
+          1500
+        ],
+        "pdf_pages": [
+          1520
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Linear symmetric reciprocity",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-596",
+    "domain": "phrases",
+    "concept": "Nonlinear reciprocity",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Nonlinear reciprocity relates participants without imposing an order on them.",
+    "condition": "Both compound and split constructions can express it. The split each pattern is limited to nonlinear relations.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The three partners conferred with one another before voting.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Each of the three partners called both of the others.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§4.1",
+        "pages": [
+          1500
+        ],
+        "pdf_pages": [
+          1520
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nonlinear reciprocity",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-597",
+    "domain": "phrases",
+    "concept": "Nonreciprocal readings of split one",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Split one can express a one-way arrangement with no participant occupying both relational roles. A compound reciprocal is inappropriate on that reading.",
+    "condition": "This distinction also applies to several disjoint one-way pairings. Even genuinely asymmetric sequences favor split forms in some contexts.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The two bowls were packed one inside the other.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The samples arrived one after another.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§4.1",
+        "pages": [
+          1500,
+          1501
+        ],
+        "pdf_pages": [
+          1520,
+          1521
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nonreciprocal readings of split one",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-598",
+    "domain": "phrases",
+    "concept": "Nonreferential subject one in split reciprocals",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "One can appear within the subject NP and contribute to a recurring or serial reciprocal interpretation when that NP is nonreferential.",
+    "condition": "A referential subject NP headed or determined by one can give an ordinary one-way reading.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "One storm followed another throughout the winter.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "One cancellation followed another until the hall was empty.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "One applicant interviewed the others; she had already been hired.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§4.1",
+        "pages": [
+          1501
+        ],
+        "pdf_pages": [
+          1521
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nonreferential subject one in split reciprocals",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-599",
+    "domain": "phrases",
+    "concept": "Semantic plurality of reciprocal antecedents",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A reciprocal antecedent denotes at least two entities. A plural NP or an and-coordination is typical.",
+    "condition": "Some syntactically singular forms qualify, including everyone and some collective nouns. Acceptability varies across collectives and speakers.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Everyone recognized one another at the reunion.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The couple still exchanged each other's letters.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Nora and June called each other after class.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§4.1",
+        "pages": [
+          1501
+        ],
+        "pdf_pages": [
+          1521
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Semantic plurality of reciprocal antecedents",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-600",
+    "domain": "phrases",
+    "concept": "Every plus singular noun as a reciprocal antecedent",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "A subject consisting of every plus a singular common noun cannot license a compound reciprocal as its direct object on the intended reciprocal reading.",
+    "condition": "Distinguish singular everyone and plural all plus noun.",
+    "violation": "Every plus singular common noun is treated as a direct-object reciprocal antecedent.",
+    "exceptions": [
+      {
+        "description": "Distinguish singular everyone and plural all plus noun.",
+        "pages": [
+          1501
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "All the chefs greeted each other.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "All the dancers recognized one another.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Everyone recognized one another.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "Every chef greeted the others.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Every chef greeted each other.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Every dancer recognized one another.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§4.1",
+        "pages": [
+          1501
+        ],
+        "pdf_pages": [
+          1521
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Every plus singular noun as a reciprocal antecedent",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "Every plus singular common noun is treated as a direct-object reciprocal antecedent.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Every chef greeted each other. ||| All the chefs greeted each other.",
+        "Every dancer recognized one another. ||| All the dancers recognized one another."
+      ],
+      "learner_explanation": "A subject consisting of every plus a singular common noun cannot license a compound reciprocal as its direct object on the intended reciprocal reading. Use a plural antecedent for the compound reciprocal, or use a split construction.",
+      "corrected_paragraph_template": "Use a plural antecedent for the compound reciprocal, or use a split construction.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Everyone recognized one another.",
+        "Every chef greeted the others."
+      ],
+      "lesson_tags": [
+        "anaphora",
+        "reciprocals"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-601",
+    "domain": "phrases",
+    "concept": "Local structural licensing of compound reciprocals",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "A compound reciprocal requires a close structural link to its antecedent. An unrelated embedded finite subject can block the intended link to the matrix subject.",
+    "condition": "The split reciprocal can express the intended distributed meaning across the finite clause boundary.",
+    "violation": "A compound reciprocal is linked to a matrix antecedent across an embedded finite clause with its own unrelated subject.",
+    "exceptions": [
+      {
+        "description": "The split reciprocal can express the intended distributed meaning across the finite clause boundary.",
+        "pages": [
+          1502
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The two finalists said they admired each other.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The finalists each said I favored the other.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "The finalists each said I admired the other.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "The rivals each claimed she had criticized the other.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c5",
+          "text": "The finalists said they admired each other.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c6",
+          "text": "The partners arranged for each other to be interviewed.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The finalists said I admired each other.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The rivals claimed she had criticized one another.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§4.2",
+        "pages": [
+          1502
+        ],
+        "pdf_pages": [
+          1522
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Local structural licensing of compound reciprocals",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "A compound reciprocal is linked to a matrix antecedent across an embedded finite clause with its own unrelated subject.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The finalists said I admired each other. ||| The finalists each said I admired the other.",
+        "The rivals claimed she had criticized one another. ||| The rivals each claimed she had criticized the other."
+      ],
+      "learner_explanation": "A compound reciprocal requires a close structural link to its antecedent. An unrelated embedded finite subject can block the intended link to the matrix subject. Use a split construction to express the reciprocal meaning across that boundary.",
+      "corrected_paragraph_template": "Use a split construction to express the reciprocal meaning across that boundary.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The finalists said they admired each other.",
+        "The partners arranged for each other to be interviewed."
+      ],
+      "lesson_tags": [
+        "anaphora",
+        "reciprocals"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-602",
+    "domain": "phrases",
+    "concept": "Compound reciprocals lack an emphatic adjunct use",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "A compound reciprocal cannot act as an optional clause adjunct of the kind available to an emphatic reflexive.",
+    "condition": "Distinguish a genitive reciprocal inside an NP and an ordinary complement inside a PP.",
+    "violation": "A compound reciprocal is used as an optional emphatic adjunct.",
+    "exceptions": [
+      {
+        "description": "Distinguish a genitive reciprocal inside an NP and an ordinary complement inside a PP.",
+        "pages": [
+          1502
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The swimmers coached each other.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The swimmers improved their strokes themselves.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "The swimmers themselves improved their strokes.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "The climbers packed the equipment themselves.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c5",
+          "text": "The swimmers looked after each other's gear.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c6",
+          "text": "The climbers spoke to one another.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The swimmers each other improved their strokes.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The climbers packed the equipment one another.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§4.2",
+        "pages": [
+          1502
+        ],
+        "pdf_pages": [
+          1522
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Compound reciprocals lack an emphatic adjunct use",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "A compound reciprocal is used as an optional emphatic adjunct.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The swimmers each other improved their strokes. ||| The swimmers themselves improved their strokes.",
+        "The climbers packed the equipment one another. ||| The climbers packed the equipment themselves."
+      ],
+      "learner_explanation": "A compound reciprocal cannot act as an optional clause adjunct of the kind available to an emphatic reflexive. Use an emphatic reflexive for personal involvement, or express reciprocity in a complement.",
+      "corrected_paragraph_template": "Use an emphatic reflexive for personal involvement, or express reciprocity in a complement.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The swimmers looked after each other's gear.",
+        "The climbers spoke to one another."
+      ],
+      "lesson_tags": [
+        "anaphora",
+        "reciprocals"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-603",
+    "domain": "phrases",
+    "concept": "Genitive forms of compound reciprocals",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Each other and one another have genitive forms used as dependents in NP structure.",
+    "condition": "Reflexive pronouns have no equivalent genitive form.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The rivals mocked each other's logos.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The editors checked one another's citations.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§4.2",
+        "pages": [
+          1502
+        ],
+        "pdf_pages": [
+          1522
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Genitive forms of compound reciprocals",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-604",
+    "domain": "phrases",
+    "concept": "Compound reciprocals as independent pronouns",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A compound reciprocal is an independent pronoun, while reflexive forms belong to the inflectional paradigm of personal pronouns.",
+    "condition": "The reflexive choice between mandatory, optional and inadmissible forms has no reciprocal counterpart. A split paraphrase can preserve reciprocity where the compound is structurally barred.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The drivers adjusted their own mirrors themselves.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The drivers adjusted each other's mirrors.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§4.2",
+        "pages": [
+          1502
+        ],
+        "pdf_pages": [
+          1522
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Compound reciprocals as independent pronouns",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-605",
+    "domain": "phrases",
+    "concept": "Verb-domain reciprocal complements",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Verb-domain reciprocals occur as direct objects, indirect objects and preposition complements. The antecedent can be a subject, an object or a complement of a different preposition.",
+    "condition": "When both are PP complements, placing the antecedent PP first can be preferred.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The siblings lent one another jackets.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We shielded the contestants from each other.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "I spoke to the partners about each other.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§4.2",
+        "pages": [
+          1503
+        ],
+        "pdf_pages": [
+          1523
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Verb-domain reciprocal complements",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-606",
+    "domain": "phrases",
+    "concept": "Subject restriction on verb-domain reciprocals",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "A compound reciprocal cannot be the subject in a verb-domain clause where its intended antecedent is an object of the same verb.",
+    "condition": "Distinguish a reciprocal subject in a nonfinite complement and a genitive reciprocal within a larger NP.",
+    "violation": "A subject reciprocal is linked to a verbal object in the same clause.",
+    "exceptions": [
+      {
+        "description": "Distinguish a reciprocal subject in a nonfinite complement and a genitive reciprocal within a larger NP.",
+        "pages": [
+          1503
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The two pilots trusted each other.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The two apprentices trained one another.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "The pilots arranged for each other to testify.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "The apprentices repaired each other's tools.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Each other trusted the two pilots.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "One another trained the two apprentices.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§4.2",
+        "pages": [
+          1503
+        ],
+        "pdf_pages": [
+          1523
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subject restriction on verb-domain reciprocals",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "A subject reciprocal is linked to a verbal object in the same clause.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Each other trusted the two pilots. ||| The two pilots trusted each other.",
+        "One another trained the two apprentices. ||| The two apprentices trained one another."
+      ],
+      "learner_explanation": "A compound reciprocal cannot be the subject in a verb-domain clause where its intended antecedent is an object of the same verb. Place the antecedent in subject position and the reciprocal in the licensed complement position.",
+      "corrected_paragraph_template": "Place the antecedent in subject position and the reciprocal in the licensed complement position.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The pilots arranged for each other to testify.",
+        "The apprentices repaired each other's tools."
+      ],
+      "lesson_tags": [
+        "anaphora",
+        "reciprocals"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-607",
+    "domain": "phrases",
+    "concept": "Noun-domain reciprocal antecedents",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A noun-domain reciprocal can occur in a PP dependent of a noun whose other dependent supplies the antecedent.",
+    "condition": "The antecedent can be genitive or prepositional. A prepositional antecedent can follow the reciprocal.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We were struck by their contempt for each other.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The film explores the affection for one another of two estranged sisters.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§4.2",
+        "pages": [
+          1503
+        ],
+        "pdf_pages": [
+          1523
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Noun-domain reciprocal antecedents",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-608",
+    "domain": "phrases",
+    "concept": "Reciprocals with predicative adjectives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A reciprocal can occur as an oblique complement of a predicative adjective and take the predicand as its antecedent.",
+    "condition": "The predicand can be a subject or an object.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The hikers were dependent on one another.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The workshop made the interns more sympathetic to each other.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§4.2",
+        "pages": [
+          1503
+        ],
+        "pdf_pages": [
+          1523
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reciprocals with predicative adjectives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-609",
+    "domain": "phrases",
+    "concept": "Reciprocal subject in a nonfinite complement",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A compound reciprocal can be the overt subject of a nonfinite complement selected by a verb.",
+    "condition": "Distinguish this embedded construction from the same-clause verb-domain subject restriction.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The tenants arranged for each other to receive the notices.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The delegates arranged for one another to speak first.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§4.2",
+        "pages": [
+          1503
+        ],
+        "pdf_pages": [
+          1523
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reciprocal subject in a nonfinite complement",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-610",
+    "domain": "phrases",
+    "concept": "Mixed verb–noun reciprocal domain",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A reciprocal inside a noun phrase can take a verbal argument outside that phrase as its antecedent. The reciprocal can occur in a PP or as a genitive subject-determiner.",
+    "condition": "Genitive reciprocals have no reflexive counterpart. In this mixed domain the antecedent itself cannot be genitive.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The singers exchanged sketches of one another.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The drivers borrowed each other's maps.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§4.2",
+        "pages": [
+          1503
+        ],
+        "pdf_pages": [
+          1523
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Mixed verb–noun reciprocal domain",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-611",
+    "domain": "phrases",
+    "concept": "Marginal reciprocals in it-clefts",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Compound reciprocals are strongly disfavored as the foregrounded complement of an it-cleft.",
+    "condition": "The source treats the pattern as marginal. Ordinary clause complements are available.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The finalists challenged each other most fiercely.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was their coaches that the finalists challenged most fiercely.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§4.2",
+        "pages": [
+          1503
+        ],
+        "pdf_pages": [
+          1523
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Marginal reciprocals in it-clefts",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-612",
+    "domain": "phrases",
+    "concept": "Genitive antecedent exclusion in the mixed verb–noun reciprocal domain",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "A reciprocal in a verbal clause cannot take a genitive inside a separate NP as its antecedent in the mixed verb–noun domain.",
+    "condition": "A genitive antecedent is possible when the genitive and the reciprocal are both dependents of the same noun.",
+    "violation": "A genitive inside an independent NP is the intended antecedent of a reciprocal in the verbal domain.",
+    "exceptions": [
+      {
+        "description": "A genitive antecedent is possible when the genitive and the reciprocal are both dependents of the same noun.",
+        "pages": [
+          1503
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The roommates graded each other's essays.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The tenants repaired each other's bikes.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c3",
+          "text": "The tenants repaired one another's bikes.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "Their dislike for each other surprised the committee.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The roommates' essays were graded by each other.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The tenants' bikes were repaired by one another.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§4.2",
+        "pages": [
+          1503
+        ],
+        "pdf_pages": [
+          1523
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Genitive antecedent exclusion in the mixed verb–noun reciprocal domain",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "A genitive inside an independent NP is the intended antecedent of a reciprocal in the verbal domain.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The roommates' essays were graded by each other. ||| The roommates graded each other's essays.",
+        "The tenants' bikes were repaired by one another. ||| The tenants repaired one another's bikes."
+      ],
+      "learner_explanation": "A reciprocal in a verbal clause cannot take a genitive inside a separate NP as its antecedent in the mixed verb–noun domain. Make the participant group a verbal argument and put the genitive reciprocal inside the other participant's possessed NP.",
+      "corrected_paragraph_template": "Make the participant group a verbal argument and put the genitive reciprocal inside the other participant's possessed NP.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Their dislike for each other surprised the committee.",
+        "The tenants repaired each other's bikes."
+      ],
+      "lesson_tags": [
+        "anaphora",
+        "reciprocals"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-613",
+    "domain": "phrases",
+    "concept": "Understood subjects as reciprocal antecedents",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An understood subject can serve as the local antecedent of a reciprocal.",
+    "condition": "This includes imperative addressees and the covert subject of a subordinate clause linked to a matrix NP.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Listen to each other before you vote.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Watching one another carefully, the dancers crossed the stage.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§4.2",
+        "pages": [
+          1504
+        ],
+        "pdf_pages": [
+          1524
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Understood subjects as reciprocal antecedents",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-614",
+    "domain": "phrases",
+    "concept": "Coordination with reciprocal pronouns",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A compound reciprocal can coordinate with another NP, including a reflexive.",
+    "condition": "The coordinate phrase as a whole occupies the relevant complement position.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The climbers photographed themselves and each other.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They introduced not only one another but also their guests.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§4.2",
+        "pages": [
+          1504
+        ],
+        "pdf_pages": [
+          1524
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Coordination with reciprocal pronouns",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-615",
+    "domain": "phrases",
+    "concept": "Proximal and distal demonstrative forms",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Proximal this has the plural these. Distal that has the plural those.",
+    "condition": "The number contrast applies in both dependent and independent nominal uses.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This parcel is mine, and these parcels are yours.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That lantern is dimmer than those lanterns.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§5.1",
+        "pages": [
+          1504
+        ],
+        "pdf_pages": [
+          1524
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Proximal and distal demonstrative forms",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-616",
+    "domain": "phrases",
+    "concept": "Dependent and independent demonstratives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Dependent demonstratives function as pre-head determiners or degree modifiers. Independent demonstratives function as fused determiner-heads.",
+    "condition": "Use the construction and its dependents to distinguish the functions.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Those tulips are already wilting.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I didn't expect the stream to be this deep.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Those near the gate are for sale.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§5.1",
+        "pages": [
+          1504
+        ],
+        "pdf_pages": [
+          1524
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dependent and independent demonstratives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-617",
+    "domain": "phrases",
+    "concept": "Animacy in independent demonstrative anaphora",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Independent singular demonstratives generally favor inanimate reference. Plural those can refer to people, including when modified by a relative clause.",
+    "condition": "The restriction concerns the independent singular uses illustrated here. A dependent singular demonstrative can modify an animate nominal, and the following page discusses animate identification.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Those who arrive before noon can use the side entrance.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The height of the east tower exceeds that of the west tower.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "That cyclist helped us reach the station.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§5.1",
+        "pages": [
+          1504
+        ],
+        "pdf_pages": [
+          1524
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Animacy in independent demonstrative anaphora",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
   }
 ]
