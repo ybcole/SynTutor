@@ -51417,5 +51417,1271 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-799",
+    "domain": "clauses",
+    "concept": "Three forms of mandative content clause",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A mandative can have plain-form subjunctive syntax, specialized should, or ordinary declarative syntax with a mandative interpretation.",
+    "condition": "Applies to the construction described in §7.1.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The covert mandative uses ordinary declarative morphology where that option is available.",
+        "pages": [
+          995
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They demand that the park remain open.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They demand that the park should remain open.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§7.1.1",
+        "pages": [
+          995
+        ],
+        "pdf_pages": [
+          1015
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Three forms of mandative content clause",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-800",
+    "domain": "clauses",
+    "concept": "Mandative versus assertive insist",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Insist can introduce a demand or an assertion. The embedded proposition has a different role in each use.",
+    "condition": "Applies to the construction described in §7.1.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An ordinary declarative may be ambiguous where the tense and context are compatible with both readings.",
+        "pages": [
+          995,
+          996
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She insisted that he tell the truth.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She insisted that he had told the truth.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§7.1.1",
+        "pages": [
+          995,
+          996
+        ],
+        "pdf_pages": [
+          1015,
+          1016
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Mandative versus assertive insist",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-801",
+    "domain": "clauses",
+    "concept": "Mandatives and independent modality",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A clause expressing obligation is not automatically mandative. Its modal can belong to the proposition being reported.",
+    "condition": "Applies to the construction described in §7.1.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The governing predicate and context determine whether the clause conveys a demand, a reported obligation, or both.",
+        "pages": [
+          996,
+          997
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She insisted that he had to wear a helmet.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The rules stipulate that visitors must wear helmets.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§7.1.1",
+        "pages": [
+          996,
+          997
+        ],
+        "pdf_pages": [
+          1016,
+          1017
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Mandatives and independent modality",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-802",
+    "domain": "clauses",
+    "concept": "Specialized should in mandatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Mandative should can express the content of a demand or recommendation, rather than a separate assessment that the action is advisable.",
+    "condition": "Applies to the construction described in §7.1.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Availability and preference among mandative forms vary with variety and register.",
+        "pages": [
+          998
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They demanded that the gate should be opened.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The panel recommended that she should be reinstated.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§7.1.1",
+        "pages": [
+          998
+        ],
+        "pdf_pages": [
+          1018
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Specialized should in mandatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-803",
+    "domain": "clauses",
+    "concept": "Distribution of mandative content clauses",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Mandatives can occur with suitable verbs, nouns and adjectives, including in extraposed and specifying constructions.",
+    "condition": "Applies to the construction described in §7.1.1 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Licensing is lexical and can depend on the sense of the governor.",
+        "pages": [
+          998,
+          999
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It is essential that the form be signed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Our recommendation is that a new meter be installed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§7.1.1",
+        "pages": [
+          998,
+          999
+        ],
+        "pdf_pages": [
+          1018,
+          1019
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Distribution of mandative content clauses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-804",
+    "domain": "clauses",
+    "concept": "Subjunctives after adversative prepositions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Lest can introduce a subjunctive clause describing an outcome to be avoided or feared.",
+    "condition": "Applies to the construction described in §7.1.2 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The adversative marker supplies the negative orientation without requiring an overt not in the embedded clause.",
+        "pages": [
+          1000
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She hid the letter lest it be discovered.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He spoke quietly lest the child wake.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§7.1.2",
+        "pages": [
+          1000
+        ],
+        "pdf_pages": [
+          1020
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subjunctives after adversative prepositions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-805",
+    "domain": "clauses",
+    "concept": "Subjunctives in formal conditional and purpose clauses",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Formal uses can allow a subjunctive after a conditional or purposive preposition.",
+    "condition": "Applies to the construction described in §7.1.2 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "These uses are restricted and ordinary declarative or modal alternatives are more usual.",
+        "pages": [
+          1000
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If the claim be true, the record must be corrected.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They secured the entrance so that no stranger be admitted.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§7.1.2",
+        "pages": [
+          1000
+        ],
+        "pdf_pages": [
+          1020
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subjunctives in formal conditional and purpose clauses",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-806",
+    "domain": "clauses",
+    "concept": "Subjunctive and may in exhaustive adjuncts",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An exhaustive adjunct can use formal plain-form patterns or specialized may while ranging over the relevant alternatives.",
+    "condition": "Applies to the construction described in §7.1.3 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The modal need not express ordinary independent permission or epistemic possibility.",
+        "pages": [
+          1001
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Be that as it may, we must decide today.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Whatever they may call it, the device serves the same purpose.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§7.1.3",
+        "pages": [
+          1001
+        ],
+        "pdf_pages": [
+          1021
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subjunctive and may in exhaustive adjuncts",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-807",
+    "domain": "clauses",
+    "concept": "Attitudinal should",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Specialized should can occur in clauses governed by an expression of surprise, regret or another attitude.",
+    "condition": "Applies to the construction described in §7.1.4 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The construction can evaluate an event understood to have happened, rather than prescribe an action.",
+        "pages": [
+          1001,
+          1002
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It is astonishing that she should have missed the signal.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We were annoyed that he should have been treated so unfairly.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§7.1.4",
+        "pages": [
+          1001,
+          1002
+        ],
+        "pdf_pages": [
+          1021,
+          1022
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Attitudinal should",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-808",
+    "domain": "clauses",
+    "concept": "Specialized may with hope",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "May can occur in a content clause expressing a hoped-for outcome.",
+    "condition": "Applies to the construction described in §7.1.4 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The interpretation depends on the governing construction and differs from ordinary permission.",
+        "pages": [
+          1002
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We hope that she may recover fully.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I hope that they may find shelter.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§7.1.4",
+        "pages": [
+          1002
+        ],
+        "pdf_pages": [
+          1022
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Specialized may with hope",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-809",
+    "domain": "clauses",
+    "concept": "Ordinary and modal preterites",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A preterite in a subordinate clause can locate an event in the past or mark modal remoteness with present or future reference.",
+    "condition": "Applies to the construction described in §7.2 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Time adjuncts and the governing construction help distinguish the readings.",
+        "pages": [
+          1002,
+          1003
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Suppose they were in London last week.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Suppose they were in London next week.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§7.2",
+        "pages": [
+          1002,
+          1003
+        ],
+        "pdf_pages": [
+          1022,
+          1023
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ordinary and modal preterites",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-810",
+    "domain": "clauses",
+    "concept": "Irrealis were and remote complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Irrealis were can occur with singular subjects in remote conditions and complements of wish.",
+    "condition": "Applies to the construction described in §7.2 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Modal preterite was is also possible in many of these contexts, subject to construction and register.",
+        "pages": [
+          1003
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I wish she were here.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If he were still in town, we would call him.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§7.2",
+        "pages": [
+          1003
+        ],
+        "pdf_pages": [
+          1023
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Irrealis were and remote complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-811",
+    "domain": "clauses",
+    "concept": "Modal remoteness after wish, rather and time",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Wish, would rather and it is time license modal preterites in characteristic constructions.",
+    "condition": "Applies to the construction described in §7.2 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The preterite does not in itself place the desired action or state before speech time.",
+        "pages": [
+          1003,
+          1004
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I would rather you stayed here.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It is time you went home.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§7.2",
+        "pages": [
+          1003,
+          1004
+        ],
+        "pdf_pages": [
+          1023,
+          1024
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Modal remoteness after wish, rather and time",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-812",
+    "domain": "clauses",
+    "concept": "Present tense with future reference",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Present tense can refer to a future situation in certain subordinate environments, including temporal and conditional complements.",
+    "condition": "Applies to the construction described in §7.3 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This use is licensed by the construction and need not match the distribution of futurate presents in main clauses.",
+        "pages": [
+          1004
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We will leave before it starts raining.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the gate opens tomorrow, we will inspect it.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§7.3",
+        "pages": [
+          1004
+        ],
+        "pdf_pages": [
+          1024
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Present tense with future reference",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-813",
+    "domain": "clauses",
+    "concept": "Entailment and presupposition",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An entailment follows when its containing proposition is true. A presupposition can persist under negation, questioning, or embedding.",
+    "condition": "Applies to the construction described in §7.4 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Projection is a default tendency and can depend on context and the embedding construction.",
+        "pages": [
+          1005,
+          1006
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina knows that the key is missing.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Does Mina know that the key is missing?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§7.4",
+        "pages": [
+          1005,
+          1006
+        ],
+        "pdf_pages": [
+          1025,
+          1026
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Entailment and presupposition",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-814",
+    "domain": "clauses",
+    "concept": "Projection and cancellation",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Presupposed information often projects beyond the clause in which it is triggered, but contextual conditions can prevent that inference.",
+    "condition": "Applies to the construction described in §7.4 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A presupposition projected in one environment need not project in another.",
+        "pages": [
+          1006,
+          1007
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina does not know that the office moved.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If the office moved, Mina does not know that it moved.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§7.4",
+        "pages": [
+          1006,
+          1007
+        ],
+        "pdf_pages": [
+          1026,
+          1027
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Projection and cancellation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-815",
+    "domain": "clauses",
+    "concept": "Presupposition without positive entailment",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A background assumption associated with a content clause need not be entailed by the truth of the containing sentence in every construction.",
+    "condition": "Applies to the construction described in §7.4 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Temporal before can be used even where the later event does not occur, depending on the context.",
+        "pages": [
+          1007
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He went out before his parents came home.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He died before his daughter graduated.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§7.4",
+        "pages": [
+          1007
+        ],
+        "pdf_pages": [
+          1027
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Presupposition without positive entailment",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-816",
+    "domain": "clauses",
+    "concept": "Backgrounding and governor classes",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Content-clause governors differ in whether they entail or presuppose the embedded proposition and in how strongly that proposition is backgrounded.",
+    "condition": "Applies to the construction described in §7.4 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The semantic property is associated with a construction and sense, rather than with every use of a word.",
+        "pages": [
+          1008
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She knows that the schedule changed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She believes that the schedule changed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§7.4",
+        "pages": [
+          1008
+        ],
+        "pdf_pages": [
+          1028
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Backgrounding and governor classes",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-817",
+    "domain": "clauses",
+    "concept": "Negative entailments and presuppositions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A governor can commit the speaker to the falsity rather than the truth of the embedded proposition.",
+    "condition": "Applies to the construction described in §7.4 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Whether falsity is asserted or backgrounded depends on the governing construction.",
+        "pages": [
+          1009
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "That we hid the records is false.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It is untrue that the gate was unlocked.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§7.4",
+        "pages": [
+          1009
+        ],
+        "pdf_pages": [
+          1029
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negative entailments and presuppositions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-818",
+    "domain": "clauses",
+    "concept": "Factivity and specialized mood patterns",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Mandative and remote readings typically do not present their subordinate content as actual, while attitudinal should can occur with factive content.",
+    "condition": "Applies to the construction described in §7.4 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Factivity cannot be diagnosed from the presence of a modal alone.",
+        "pages": [
+          1009,
+          1010
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It is important that the gate be repaired.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It is remarkable that she should have finished so quickly.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§7.4",
+        "pages": [
+          1009,
+          1010
+        ],
+        "pdf_pages": [
+          1029,
+          1030
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Factivity and specialized mood patterns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-819",
+    "domain": "clauses",
+    "concept": "Factivity and extraction restrictions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some factive complements resist extraction more strongly than comparable complements of predicates such as think.",
+    "condition": "Applies to the construction described in §7.4 of Chapter 11.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Extraction behavior is sensitive to the construction and is not a categorical test for all factive governors.",
+        "pages": [
+          1010
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Those are the errors I think I saw.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I regret that I overlooked those errors.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 11,
+        "section": "§7.4",
+        "pages": [
+          1010
+        ],
+        "pdf_pages": [
+          1030
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Factivity and extraction restrictions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]

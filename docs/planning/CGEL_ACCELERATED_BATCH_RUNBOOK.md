@@ -306,3 +306,7 @@ Printed pp. 967–980 yielded 25 classification records (`CLS-756`–`CLS-780`).
 ## Chapter 11 third checkpoint
 
 Printed pp. 981–994 yielded 18 classification records (`CLS-781`–`CLS-798`). Continue at p. 995 with mandatives.
+
+## Chapter 11 fourth checkpoint
+
+Printed pp. 995–1010 yielded 21 classification records (`CLS-799`–`CLS-819`). Continue at p. 1011 with syntactic analysis and reported speech.
