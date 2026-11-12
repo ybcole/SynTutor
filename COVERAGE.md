@@ -23,11 +23,11 @@
 | 15. Coordination and supplementation | 90 | 88 | 0 | 2 | 0 | Source-extracted; independent QA pending |
 | 16. Information packaging | 86 | 0 | 85 | 1 | 0 | Incomplete |
 | 17. Deixis and anaphora | 116 | 114 | 0 | 2 | 0 | Source extraction complete |
-| 18. Inflectional morphology | 56 | 0 | 55 | 1 | 0 | Incomplete |
+| 18. Inflectional morphology | 56 | 53 | 0 | 3 | 0 | Source extraction complete |
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **1328 extracted**, 398 unprocessed, 36 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **1381 extracted**, 343 unprocessed, 38 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -394,3 +394,7 @@ Printed pp. 1545–1553 yielded 27 inactive records (`PHR-757–PHR-783`), inclu
 ## Chapter 17 Phase B closure
 
 Printed pp. 1554–1564 yielded 31 inactive records (`PHR-784–PHR-814`). Chapter 17 Phase B source extraction accounts for all 116 printed pages: 114 substantive pages and 2 contents-only skips. [Report](sources/cambridge/chapter_17/PP1554_1564_REPORT.md) · [Audit](sources/cambridge/chapter_17/PP1554_1564_AUDIT.json).
+
+## Chapter 18 Phase B closure
+
+Chapter 18 Phase B accounts for printed pp. 1565–1620 in three audited batches: 53 substantive pages, two contents-only pages and one verified blank boundary page. The 76 source-linked records (`MORPH-067`–`MORPH-142`) include ten inactive constraint specifications. Independent linguistic review, Burton-Roberts crosswalk verification and runtime activation remain separate gates.
