@@ -78,65 +78,65 @@
     {
       "page": 11,
       "chapter": 1,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_01/PP11_19_REPORT.md"
     },
     {
       "page": 12,
       "chapter": 1,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_01/PP11_19_REPORT.md"
     },
     {
       "page": 13,
       "chapter": 1,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_01/PP11_19_REPORT.md"
     },
     {
       "page": 14,
       "chapter": 1,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_01/PP11_19_REPORT.md"
     },
     {
       "page": 15,
       "chapter": 1,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_01/PP11_19_REPORT.md"
     },
     {
       "page": 16,
       "chapter": 1,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_01/PP11_19_REPORT.md"
     },
     {
       "page": 17,
       "chapter": 1,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_01/PP11_19_REPORT.md"
     },
     {
       "page": 18,
       "chapter": 1,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_01/PP11_19_REPORT.md"
     },
     {
       "page": 19,
       "chapter": 1,
-      "status": "unprocessed",
+      "status": "extracted",
       "reason": null,
-      "evidence": null
+      "evidence": "sources/cambridge/chapter_01/PP11_19_REPORT.md"
     },
     {
       "page": 20,

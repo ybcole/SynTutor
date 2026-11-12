@@ -35779,5 +35779,912 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-617",
+    "domain": "other",
+    "concept": "Evidence for descriptive grammatical judgments",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Descriptive claims are checked across speaker judgments, consulted speakers, corpora, dictionaries and scholarly analyses.",
+    "condition": "An isolated attestation may be a production error and an isolated intuition can be unreliable. The source combines evidence rather than treating one observation as conclusive.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The team has finished. [candidate for cross-checking in edited usage]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I wonder who they chose. [candidate for speaker judgments]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§2.2",
+        "pages": [
+          11
+        ],
+        "pdf_pages": [
+          31
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Evidence for descriptive grammatical judgments",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-618",
+    "domain": "other",
+    "concept": "Speech and writing in a shared grammar",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "The description covers standard speech and writing and uses speaker and utterance as medium-neutral terms.",
+    "condition": "Written examples are convenient to cite and search. Longer planned sentences are a tendency of writing, with register distinctions cutting across both media.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I left the keys upstairs. [spoken or written]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "When you reach the gate, call the number on the sign. [spoken or written]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§3",
+        "pages": [
+          11,
+          12,
+          13
+        ],
+        "pdf_pages": [
+          31,
+          32,
+          33
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Speech and writing in a shared grammar",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-619",
+    "domain": "other",
+    "concept": "Production disfluency in grammatical evidence",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "False starts, repairs, hesitation and unintended repetitions in spontaneous speech need to be distinguished from systematic spoken constructions.",
+    "condition": "Transcripts may need interpretation, since edited writing and spontaneous speech offer different opportunities for planning and repair.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I saw the blue—the green van. [self-repair]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Well, I thought we could wait. [ordinary spoken discourse marker]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§3",
+        "pages": [
+          12
+        ],
+        "pdf_pages": [
+          32
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Production disfluency in grammatical evidence",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-620",
+    "domain": "other",
+    "concept": "Written and phonological citation conventions",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "The source normally cites written forms in italics and uses slashes around phonological representations where pronunciation matters.",
+    "condition": "A written example does not imply that the construction is limited to writing.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "ship /ʃip/",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "thin /θin/",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§3",
+        "pages": [
+          12
+        ],
+        "pdf_pages": [
+          32
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Written and phonological citation conventions",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-621",
+    "domain": "other",
+    "concept": "Accent and dialect as distinct dimensions",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Accent distinguishes varieties by pronunciation. Dialect distinguishes varieties by grammar or vocabulary.",
+    "condition": "Rhoticity and the source's British and American dialect families correlate imperfectly, with exceptions in both directions.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "park [may retain post-vocalic r in a rhotic accent]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I'm not sure I will go, but I might do. [regional grammatical variant]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§3.1.1",
+        "pages": [
+          13,
+          14
+        ],
+        "pdf_pages": [
+          33,
+          34
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Accent and dialect as distinct dimensions",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-622",
+    "domain": "other",
+    "concept": "Distribution of r in rhotic and non-rhotic accents",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "Non-rhotic accents realize r before a vowel but generally lack post-vocalic r in isolated words. Rhotic accents can retain it as a consonant or r-colored vowel.",
+    "condition": "Identical spelling may correspond to different pronunciations. The source's spelling discussion relates retained written r to earlier pronunciation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The car is parked by the curb.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Turn the card over.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§3.1.1",
+        "pages": [
+          13,
+          14
+        ],
+        "pdf_pages": [
+          33,
+          34
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Distribution of r in rhotic and non-rhotic accents",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-623",
+    "domain": "other",
+    "concept": "Linking r before a vowel",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "In non-rhotic accents, an r absent from the isolated base can be realized before a vowel-initial suffix or following word.",
+    "condition": "Linking is obligatory within the word in the cited pattern and often preferred but optional across a word boundary. Rhotic accents already pronounce the r of the base.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The scar is healing.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The new treatment reduced scarring.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§3.1.1",
+        "pages": [
+          14
+        ],
+        "pdf_pages": [
+          34
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Linking r before a vowel",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-624",
+    "domain": "other",
+    "concept": "Intrusive r in non-rhotic accents",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "Some non-rhotic accents insert r between eligible vowels where there is no written r.",
+    "condition": "The source distinguishes common word-boundary insertion from less common and often criticized word-internal insertion. Its accent-neutral transcription leaves intrusive r unmarked.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The drama opened last night.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The sofa is new.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§3.1.1–3.1.2",
+        "pages": [
+          14,
+          16
+        ],
+        "pdf_pages": [
+          34,
+          36
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Intrusive r in non-rhotic accents",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-625",
+    "domain": "other",
+    "concept": "Accent-neutral phonological transcription",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "The book's transcription preserves distinctions needed across major accents, including distinctions a particular accent may merge.",
+    "condition": "The inventory separates short vowels, long vowels, diphthongs, triphthongs and consonants and marks stress and syllabicity. Superscript r represents an accent-dependent post-vocalic sound.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "court and caught [a distinction can depend on accent]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "button [the final consonant can be syllabic]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§3.1.2",
+        "pages": [
+          14,
+          15,
+          16
+        ],
+        "pdf_pages": [
+          34,
+          35,
+          36
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Accent-neutral phonological transcription",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-626",
+    "domain": "other",
+    "concept": "Accent-dependent weak vowel transcription",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "The book uses a cover symbol for an unstressed vowel realized like KIT in some accents and like schwa in others.",
+    "condition": "The cover symbol has no single prescribed phonetic value. The vowel of -ing and the schwa of examples such as the written participle ending -en are distinguished in the source analysis.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The gates were painted.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The boxes were locked.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§3.1.2",
+        "pages": [
+          16
+        ],
+        "pdf_pages": [
+          36
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Accent-dependent weak vowel transcription",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-627",
+    "domain": "other",
+    "concept": "Accent correspondences for LOT, GOAT and long vowels",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "The source uses a common representation for LOT and GOAT across accents, and preserves long-vowel contrasts needed for particular varieties.",
+    "condition": "Some LOT realizations are closer to /ɑ/ and many British GOAT realizations begin nearer schwa. The source notes mergers among long vowels and gives separate forms for the BATH-type split when needed.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The boat stopped at the dock.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The glass was in the bath.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§3.1.2",
+        "pages": [
+          16
+        ],
+        "pdf_pages": [
+          36
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Accent correspondences for LOT, GOAT and long vowels",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-628",
+    "domain": "other",
+    "concept": "Transcription choices for vowel contrasts and medial consonants",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "The transcription keeps the STRUT–schwa distinction where useful, represents a yod in certain words that often lack it in American English, and keeps medial t and d distinct in its phonological notation.",
+    "condition": "Some accents neutralize the vowel difference, omit the yod after an alveolar consonant, or use similar medial consonants in words with t and d.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She bought a new flute.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They carried a metal medal.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§3.1.2",
+        "pages": [
+          17
+        ],
+        "pdf_pages": [
+          37
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Transcription choices for vowel contrasts and medial consonants",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-629",
+    "domain": "other",
+    "concept": "Simple, composite and discontinuous spelling symbols",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "A spelling symbol in this analysis represents a phoneme and can contain one or multiple letters. Some vowel symbols consist of separated letters.",
+    "condition": "A digraph is one type of composite symbol. The source treats final e as participating in discontinuous vowel symbols in the cited patterns.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The ship was late. [sh as a composite consonant symbol]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The kite flew high. [i and final e as a discontinuous vowel symbol]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§3.2",
+        "pages": [
+          17
+        ],
+        "pdf_pages": [
+          37
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Simple, composite and discontinuous spelling symbols",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-630",
+    "domain": "other",
+    "concept": "Vowel and consonant symbols versus letters",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Vowel and consonant are primarily speech categories. A written symbol is classified by what it represents, and a letter can have different roles across words.",
+    "condition": "A letter forming only part of a composite symbol is not independently classified as the whole symbol. Alphabet membership alone does not determine its function in the word.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The young puppy slept. [different uses of y]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The boy can run. [y as part of a composite vowel symbol]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§3.2",
+        "pages": [
+          17,
+          18
+        ],
+        "pdf_pages": [
+          37,
+          38
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Vowel and consonant symbols versus letters",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-631",
+    "domain": "other",
+    "concept": "Spelling-conditioned doubling across pronunciations",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "Written r can count as a consonant letter for doubling even when the base-final sound is absent in a non-rhotic accent. The written e of -ed can count for spelling purposes even when the suffix is nonsyllabic.",
+    "condition": "Spelling alternations therefore require analysis of written symbols as well as sounds. Detailed doubling conditions belong to Chapter 18.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The seam was narrow, and the cloth tore while we were hemming it.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The polished surface was marred, and the door slammed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§3.2",
+        "pages": [
+          18
+        ],
+        "pdf_pages": [
+          38
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Spelling-conditioned doubling across pronunciations",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-632",
+    "domain": "other",
+    "concept": "Productivity and grammatical generalization",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "There is no fixed grammatical sentence-length limit. Speakers can extend structures through modification, embedding and coordination.",
+    "condition": "A grammar states principles that apply to unfamiliar sentences and support forming new ones.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The lamp flickered.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I think the old lamp flickered when the door opened, and Jo noticed it too.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§4.1",
+        "pages": [
+          18,
+          19
+        ],
+        "pdf_pages": [
+          38,
+          39
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Productivity and grammatical generalization",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "OTH-633",
+    "domain": "other",
+    "concept": "Evidence and theoretical classification",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "The source uses theory to organize generalizations and argues for particular analyses using English evidence. It departs from traditional labels when they obscure structural distinctions.",
+    "condition": "The source rejects the traditional noun, adjective and adverb clause grouping and analyzes temporal since as a preposition across different complement patterns.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We have waited since Monday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We have waited since you called.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "We have been waiting ever since.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 1,
+        "section": "§4.1",
+        "pages": [
+          19
+        ],
+        "pdf_pages": [
+          39
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Evidence and theoretical classification",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
   }
 ]
