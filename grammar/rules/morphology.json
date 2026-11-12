@@ -19610,5 +19610,1534 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-330",
+    "domain": "morphology",
+    "concept": "Augmentative hyper",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Hyper is a combining form that can mark excess or unusually large scale. Its role contrasts with the prefix status of super.",
+    "condition": "The source gives specialized senses in hypercorrect and hypertext. Hyper lacks the spatial meaning found with some other augmentatives.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The reviewer was hypercritical of the first draft.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The new bus route stops at the hypermarket.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.2.2",
+        "pages": [
+          1680
+        ],
+        "pdf_pages": [
+          1700
+        ]
+      },
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.4",
+        "pages": [
+          1685
+        ],
+        "pdf_pages": [
+          1705
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Augmentative hyper",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-331",
+    "domain": "morphology",
+    "concept": "Beyond and extreme senses of ultra",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ultra marks a point beyond a threshold in technical uses and a high or extreme degree in general uses.",
+    "condition": "The general-use pattern is productive mainly with adjectival bases, with other bases also attested.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The museum installed an ultraviolet filter.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They renovated the hall in an ultramodern style.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.2.2",
+        "pages": [
+          1680
+        ],
+        "pdf_pages": [
+          1700
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Beyond and extreme senses of ultra",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-332",
+    "domain": "morphology",
+    "concept": "Asymmetry in gender marking",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Gender is morphologically marked more often in nouns for female people and animals than in their male counterparts.",
+    "condition": "The source describes a historical shift toward gender-neutral occupational terms.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The author signed copies after the reading.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A flight attendant checked the overhead compartments.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.3",
+        "pages": [
+          1680
+        ],
+        "pdf_pages": [
+          1700
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Asymmetry in gender marking",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-333",
+    "domain": "morphology",
+    "concept": "Ess and the meaning of the corresponding noun",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Some nouns in ess pair with a male-specific base, while others pair with a noun that can refer to women or men.",
+    "condition": "Lioness and tigress are established animal terms. The relation between governess and governor is lexically specialized.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The countess greeted the duke in the courtyard.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The author read a passage from her latest novel.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.3",
+        "pages": [
+          1680,
+          1681
+        ],
+        "pdf_pages": [
+          1700,
+          1701
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ess and the meaning of the corresponding noun",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-334",
+    "domain": "morphology",
+    "concept": "Gender-marked occupational usage",
+    "rule_type": "stylistic_or_prescriptive",
+    "scope": "word",
+    "statement": "The acceptability and implications of occupational nouns in ess vary by lexeme and context. The source describes some as disparaging or rare.",
+    "condition": "Cambridge describes actor as readily usable predicatively or with a name appositive for a woman, with less frequent singular referential use in its account. Waitress has a different usage profile.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Dana is an actor at the local theatre.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The actor Naomi Reed introduced the cast.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.3",
+        "pages": [
+          1681
+        ],
+        "pdf_pages": [
+          1701
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Gender-marked occupational usage",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-335",
+    "domain": "morphology",
+    "concept": "Context and specialization in ess nouns",
+    "rule_type": "stylistic_or_prescriptive",
+    "scope": "word",
+    "statement": "A feminine marking can be relevant to interpretation in particular contexts, and a derivative can acquire a meaning distinct from its base.",
+    "condition": "Heir can refer to a woman. The source also notes that some historical labels carry both racial and gender bias and tend to be avoided.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Maya became the sole heir to the estate.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The governess helped the children prepare for their lessons.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.3",
+        "pages": [
+          1681
+        ],
+        "pdf_pages": [
+          1701
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Context and specialization in ess nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-336",
+    "domain": "morphology",
+    "concept": "Morphological changes before ess",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Bases with an er ending can lose or retain its vowel before ess. With a repeated er sequence, the final er may be replaced by ess.",
+    "condition": "The choice is lexical. Actress illustrates vowel loss, manageress retention, and sorceress replacement.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The actress rehearsed the final scene alone.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "In the story, the sorceress protected the town.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.3",
+        "pages": [
+          1681
+        ],
+        "pdf_pages": [
+          1701
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Morphological changes before ess",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-337",
+    "domain": "morphology",
+    "concept": "Minor feminine markers ette ine and trix",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ette and ine appear as feminine markers in some established words. Trix is found in a small set of loans with neutral tor counterparts.",
+    "condition": "Ette also has diminutive and pejorative uses. Cambridge tentatively analyzes trix as ix added to tor with vowel loss.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The heroine crossed the river before sunrise.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The executor filed the documents at the courthouse.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.3",
+        "pages": [
+          1681
+        ],
+        "pdf_pages": [
+          1701
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Minor feminine markers ette ine and trix",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-338",
+    "domain": "morphology",
+    "concept": "He and she as compound bases",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "He and she can mark gender as first components of animal compounds. New compounds of this kind are possible but rarely become established.",
+    "condition": "Human compounds in this pattern are lexicalized and can carry unequal evaluative associations.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A he-goat wandered onto the path.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A she-wolf watched the pups from the ridge.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.3",
+        "pages": [
+          1682
+        ],
+        "pdf_pages": [
+          1702
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "He and she as compound bases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-339",
+    "domain": "morphology",
+    "concept": "Gender readings of compounds in man",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Cambridge distinguishes male-specific compounds with feminine counterparts, historically male occupational terms without established counterparts, and titles used more broadly by some speakers.",
+    "condition": "A broad use can retain a male bias. The irregular plural in men and contrasts with woman support compound structure despite vowel reduction.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A businesswoman presented the proposal.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The committee chose a new chair after the vote.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.3",
+        "pages": [
+          1682,
+          1683
+        ],
+        "pdf_pages": [
+          1702,
+          1703
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Gender readings of compounds in man",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-340",
+    "domain": "morphology",
+    "concept": "Neutral alternatives and lexical persistence",
+    "rule_type": "stylistic_or_prescriptive",
+    "scope": "word",
+    "statement": "Compounds in person and forms such as chair can avoid gender marking. Some derivatives of compounds in man retain a broader interpretation in the source's account.",
+    "condition": "Freshman often has a broader reading, with British fresher as an alternative. Sportsman has both a male-specific sense and a sportsmanship sense in the source.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The spokesperson answered questions outside the hall.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The new chairperson opened the meeting at noon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.3",
+        "pages": [
+          1683
+        ],
+        "pdf_pages": [
+          1703
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Neutral alternatives and lexical persistence",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-341",
+    "domain": "morphology",
+    "concept": "Initial man woman and lady",
+    "rule_type": "stylistic_or_prescriptive",
+    "scope": "word",
+    "statement": "Initial man can have a male-specific sense or a broader sense with possible bias. Woman and lady can occur as less tightly integrated first elements.",
+    "condition": "Lexicalization can make substitution impractical. Lady has a narrower collocational range and can carry objectionable connotations.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The firefighter checked the manhole cover before leaving.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The woman doctor examined the patient after lunch.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.3",
+        "pages": [
+          1683
+        ],
+        "pdf_pages": [
+          1703
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Initial man woman and lady",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-342",
+    "domain": "morphology",
+    "concept": "Spatial and temporal ante and fore",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ante has a spatial sense in architectural nouns and a temporal sense mainly in adjectives. Fore has spatial uses with nouns and temporal uses with nouns and verbs.",
+    "condition": "Fore occurs mainly with English bases, rarely with French ones, and is probably no longer productive in the source's account.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We waited in an anteroom before the hearing.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The crew gathered on the foredeck at dawn.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.4",
+        "pages": [
+          1683
+        ],
+        "pdf_pages": [
+          1703
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Spatial and temporal ante and fore",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-343",
+    "domain": "morphology",
+    "concept": "Temporal and extended meanings of pre",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Pre productively forms temporal derivatives from verbs, adjectives and nouns. It can also mark a spatial position in technical terms or precedence in a ranking.",
+    "condition": "Some historical words are opaque and some pronunciation variants belong to unproductive patterns.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They prerecorded the announcement the night before.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The dentist examined a cracked premolar.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.4",
+        "pages": [
+          1684
+        ],
+        "pdf_pages": [
+          1704
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Temporal and extended meanings of pre",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-344",
+    "domain": "morphology",
+    "concept": "After and post in word formation",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "The prepositional base after usually combines with nouns, while the prefix post forms nouns, adjectives and verbs. Temporal uses predominate for both.",
+    "condition": "Afternoon denotes the period following noon rather than a kind of noon. Spatial uses occur in limited terms such as afterdeck and post-ocular.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The clinic arranged aftercare for each patient.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The archivist dated the photograph to the postwar period.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.4",
+        "pages": [
+          1684
+        ],
+        "pdf_pages": [
+          1704
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "After and post in word formation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-345",
+    "domain": "morphology",
+    "concept": "Spatial circum and peri",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Circum has spatial meaning and occurs with Latin-origin bases. Peri is a spatial combining form in scientific and learned vocabulary.",
+    "condition": "A number of circum formations have bound bases and uncertain present-day segmentation. Peri typically combines with classical bases.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The pilot planned to circumnavigate the island.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They marked the perimeter of the proposed garden.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.4",
+        "pages": [
+          1684
+        ],
+        "pdf_pages": [
+          1704
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Spatial circum and peri",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-346",
+    "domain": "morphology",
+    "concept": "Spatial and excessive meanings of over",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Over is a prepositional base with spatial uses and a particularly common excess sense on adjectives and verbs.",
+    "condition": "The excess reading is more consistent with over than with super in the contrast described by Cambridge.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He wore an overcoat to the station.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The fan prevents the motor from overheating.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.4",
+        "pages": [
+          1684,
+          1685
+        ],
+        "pdf_pages": [
+          1704,
+          1705
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Spatial and excessive meanings of over",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-347",
+    "domain": "morphology",
+    "concept": "Spatial and extended super supra and sur",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Super has technical spatial uses as well as high-degree and size uses. Supra can mean spatially above or beyond a domain. Sur has spatial, excess and additive uses in a small stock of words.",
+    "condition": "Supra is less common than super and typically attaches to adjectives. Many sur words are French loans.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The proposal called for a supranational panel.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The bill included a weekend surcharge.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.4",
+        "pages": [
+          1684,
+          1685
+        ],
+        "pdf_pages": [
+          1704,
+          1705
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Spatial and extended super supra and sur",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-348",
+    "domain": "morphology",
+    "concept": "Hypo and infra in below terms",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Hypo is a scientific combining form with a common spatial sense. Infra is an uncommon prefix that can contrast with supra spatially or with ultra in particular technical terms.",
+    "condition": "Common loans such as hypocrisy do not transparently express the spatial meaning. Infrared and infrastructure have lexicalized meanings.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The historian catalogued a nineteenth-century hypodermic syringe.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The exhibit used an infrared camera to show the mural.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.4",
+        "pages": [
+          1685
+        ],
+        "pdf_pages": [
+          1705
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Hypo and infra in below terms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-349",
+    "domain": "morphology",
+    "concept": "Spatial and extended sub and under",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Sub and the prepositional base under both have spatial and lower-rank uses. Sub also forms hierarchy terms, and under commonly indicates insufficiency on verbs.",
+    "condition": "Sub tends to prefer Latinate bases. The two patterns overlap without being freely interchangeable.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She added a subheading above the appendix.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We underestimated the time needed to move the shelves.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.4",
+        "pages": [
+          1685
+        ],
+        "pdf_pages": [
+          1705
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Spatial and extended sub and under",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-350",
+    "domain": "morphology",
+    "concept": "Internal endo and prepositional in",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Endo is a technical combining form meaning internal. Prepositional in productively forms compounds, often with short bases or participles of short verbal bases.",
+    "condition": "In compounds can also reflect the fashionable sense of the independent word.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The model showed the animal's endoskeleton.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The article examined how an in-crowd shaped campus fashion.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.4",
+        "pages": [
+          1685,
+          1686
+        ],
+        "pdf_pages": [
+          1705,
+          1706
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Internal endo and prepositional in",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-351",
+    "domain": "morphology",
+    "concept": "Internal intra and midpoint mid",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Intra has an internal sense and is used in adjective formation in the source's account. Mid attaches chiefly to nouns and locates something at a spatial or temporal midpoint.",
+    "condition": "Intra often contrasts with inter. Mid can also combine with an adjective and appears in semantically specialized words.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They discussed intrastate transport policy.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A rain shower interrupted the midmorning walk.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.4",
+        "pages": [
+          1686
+        ],
+        "pdf_pages": [
+          1706
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Internal intra and midpoint mid",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-352",
+    "domain": "morphology",
+    "concept": "External exo ex extra and out",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Exo is a technical combining form for external location. Ex has rare spatial uses and a productive former sense. Extra and prepositional out can mark location outside a domain.",
+    "condition": "Former ex can convert to a noun. Out also has a separate productive comparative use.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The model showed an insect's exoskeleton.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The ex-president spoke at the outdoor event.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.4",
+        "pages": [
+          1686
+        ],
+        "pdf_pages": [
+          1706
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "External exo ex extra and out",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-353",
+    "domain": "morphology",
+    "concept": "Location movement and reciprocity with inter",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Inter can mark a spatial or temporal interval, movement between locations, or reciprocal involvement.",
+    "condition": "It contrasts with intra and can be coordinated with it.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The gallery arranged an intercity exchange.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They reviewed inter- and intra-departmental communication.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.4",
+        "pages": [
+          1686
+        ],
+        "pdf_pages": [
+          1706
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Location movement and reciprocity with inter",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-354",
+    "domain": "morphology",
+    "concept": "Beyond and change with meta and trans",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Meta can mark a position beyond or behind, a change, or a higher level of analysis. Trans can mean across, beyond, through, or change in particular formations.",
+    "condition": "The higher-level use is productive. The historical relation of metaphysics to physics differs from the newer science formations.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The teacher used grammatical terms as a metalanguage.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The crew planned a transatlantic crossing.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.4",
+        "pages": [
+          1686,
+          1687
+        ],
+        "pdf_pages": [
+          1706,
+          1707
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Beyond and change with meta and trans",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-355",
+    "domain": "morphology",
+    "concept": "Spatial and temporal cis",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Cis is a rare prefix indicating the near side of a spatial reference point. The source also illustrates a rare temporal use.",
+    "condition": "Post is usually preferred in the temporal use discussed, and the source gives no established examples anchored to a future point.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The reading group compared cisalpine and transalpine trade routes.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The article contrasted cislunar space with regions beyond the Moon.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.4",
+        "pages": [
+          1687
+        ],
+        "pdf_pages": [
+          1707
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Spatial and temporal cis",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-356",
+    "domain": "morphology",
+    "concept": "Negative prefixes and related operations",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "The source distinguishes negation, reversal, removal and opposition. It lists a, dis, in, non and un as negative prefixes in adjectival examples.",
+    "condition": "One form can have more than one function across derivatives.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The new entrance is inaccessible after dark.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Please unfasten the strap before lifting the lid.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.5.1",
+        "pages": [
+          1687
+        ],
+        "pdf_pages": [
+          1707
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negative prefixes and related operations",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-357",
+    "domain": "morphology",
+    "concept": "Negative in alternants in spelling and speech",
+    "rule_type": "constraint",
+    "scope": "word",
+    "statement": "Before p or b negative in has im. Before m, n, r and l, the written prefix matches the initial consonant of the base, while the spoken prefix loses its nasal.",
+    "condition": "The intended word is the established negative-in derivative irregular or imbalance.",
+    "violation": "The default written prefix in is used instead of the established ir or im alternant.",
+    "exceptions": [
+      {
+        "description": "The alternant is specific to negative in. Optional assimilation in speech does not change the spelling of formations such as incomplete and unpopular. The productive negative prefix un keeps its written form.",
+        "pages": [
+          1687
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The clerk marked the payment as irregular.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The inspector found an imbalance in the accounts.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The clerk marked the payment as inregular.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The inspector found an inbalance in the accounts.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.5.1",
+        "pages": [
+          1687
+        ],
+        "pdf_pages": [
+          1707
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negative in alternants in spelling and speech",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "spelling_inflection",
+      "error_pattern": "The default spelling of the negative prefix is retained in an established derivative with an assimilated written form.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The clerk marked the payment as inregular. ||| The clerk marked the payment as irregular.",
+        "The inspector found an inbalance in the accounts. ||| The inspector found an imbalance in the accounts."
+      ],
+      "learner_explanation": "In these established words the negative prefix is spelled ir before regular and im before balance. Write irregular and imbalance.",
+      "corrected_paragraph_template": "Use the established negative prefix spelling in irregular or imbalance.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The form was incomplete.",
+        "The ruling was unpopular.",
+        "The route was unmarked.",
+        "The gymnast was in balance before she stepped forward."
+      ],
+      "lesson_tags": [
+        "lexical-derivation",
+        "negative-prefixes",
+        "spelling"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [
+      "MORPH-299",
+      "MORPH-305",
+      "MORPH-356"
+    ],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]
