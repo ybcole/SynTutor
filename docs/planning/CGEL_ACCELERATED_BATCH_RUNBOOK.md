@@ -540,3 +540,7 @@ Printed pp. 1712–1721 add 10 substantive pages and 32 inactive records (`MORPH
 ## Chapter 20 first checkpoint
 
 Printed pp. 1723–1730 account for one contents page and 7 substantive pages and add 15 inactive records (`OTH-668`–`OTH-682`). Chapter 20 has 34 unprocessed pages. Continue at p. 1731 with primary terminals.
+
+## Chapter 20 second checkpoint
+
+Printed pp. 1731–1738 add eight substantive pages and 18 inactive records (`OTH-683`–`OTH-700`), including three inactive punctuation specifications. Chapter 20 has 26 unprocessed pages. Continue at p. 1739 with uses of the secondary boundary marks.

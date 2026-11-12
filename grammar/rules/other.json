@@ -39392,5 +39392,1061 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-683",
+    "domain": "other",
+    "concept": "Primary terminals and medial status marks",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "A full stop ends a sentence in its terminal use. Question and exclamation marks also signal the status of a unit and can occur medially.",
+    "condition": "A medial insertion usually starts lower-case unless it is a quotation. Abbreviation full stops have a separate function.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The plan – how could we refuse? – was approved by noon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Her dog – what a climber it is! – had reached the roof.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§2",
+        "pages": [
+          1731
+        ],
+        "pdf_pages": [
+          1751
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Primary terminals and medial status marks",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-684",
+    "domain": "other",
+    "concept": "Clause type and default terminals",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Declaratives and imperatives usually take a full stop, interrogatives a question mark, and exclamatives an exclamation mark.",
+    "condition": "Force and meaning can override the default associated with syntax.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Send the receipt before Friday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "How quiet the station is!",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§2",
+        "pages": [
+          1732
+        ],
+        "pdf_pages": [
+          1752
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Clause type and default terminals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-685",
+    "domain": "other",
+    "concept": "Questions with interrogative and other clause types",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "A question mark can signal an open or closed interrogative or make a noninterrogative clause function as a question.",
+    "condition": "Imperative and exclamative questions are usually echoes.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You found the spare key?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Leave the keys here?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§2",
+        "pages": [
+          1732
+        ],
+        "pdf_pages": [
+          1752
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Questions with interrogative and other clause types",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-686",
+    "domain": "other",
+    "concept": "Question scope in tags and coordination",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "An interrogative tag can make the whole sentence a question. Coordinated interrogatives can share one final question mark, and a final question mark can have semantic scope over only the last clause.",
+    "condition": "The sentence boundary and semantic scope need not coincide.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The room is booked already, isn't it?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Where did you leave it and when will you collect it?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§2",
+        "pages": [
+          1732
+        ],
+        "pdf_pages": [
+          1752
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Question scope in tags and coordination",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-687",
+    "domain": "other",
+    "concept": "Non-question terminals with interrogative syntax",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "An interrogative used as an indirect directive can take a full stop, and an interrogative used as an exclamatory statement can take an exclamation mark.",
+    "condition": "Acceptance depends on the construction and the intended force. The source reports variation for some open exclamatory interrogatives.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Would you send the revised plan to Alex by Friday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Isn't that wonderful!",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§2",
+        "pages": [
+          1732,
+          1733
+        ],
+        "pdf_pages": [
+          1752,
+          1753
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-question terminals with interrogative syntax",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-688",
+    "domain": "other",
+    "concept": "Main-clause and subordinate embedded questions",
+    "rule_type": "constraint",
+    "scope": "other",
+    "statement": "An embedded question with main-clause syntax normally has a question mark. A subordinate interrogative does not independently take one.",
+    "condition": "A subordinate interrogative is the final complement in a declarative sentence reporting a question.",
+    "violation": "A question mark is added solely because the complement expresses a question.",
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She asked when the library closed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The guide wondered whether the gates were open.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "She asked when the library closed?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The guide wondered whether the gates were open?",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§2",
+        "pages": [
+          1733
+        ],
+        "pdf_pages": [
+          1753
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Main-clause and subordinate embedded questions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "punctuation",
+      "error_pattern": "A question mark is added solely because the complement expresses a question.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "She asked when the library closed? ||| She asked when the library closed.",
+        "The guide wondered whether the gates were open? ||| The guide wondered whether the gates were open."
+      ],
+      "learner_explanation": "Use a full stop for the declarative report. A direct quotation or a matrix question can take a question mark.",
+      "corrected_paragraph_template": "Use a full stop for the declarative report. A direct quotation or a matrix question can take a question mark.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "She asked, “When does the library close?”",
+        "Do you know when the library closes?"
+      ],
+      "lesson_tags": [
+        "punctuation",
+        "sentence-boundaries"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-689",
+    "domain": "other",
+    "concept": "Question marks with interrogative parentheticals",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "An interrogative-shaped parenthetical without inquiry force need not take a question mark. A question followed by a parenthetical can have its question mark at the question boundary or at the sentence end, depending on scope.",
+    "condition": "Two interrogative forms expressing one question can take one final mark.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The result was, dare I say, predictable.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Will the package arrive tomorrow, do you think?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§2",
+        "pages": [
+          1733,
+          1734
+        ],
+        "pdf_pages": [
+          1753,
+          1754
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Question marks with interrogative parentheticals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-690",
+    "domain": "other",
+    "concept": "Question mark indicating uncertainty",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "A question mark can express uncertainty about a name, date, place or description rather than terminate a question.",
+    "condition": "It can precede or follow the uncertain item. A parenthesized mark can convey informal doubt.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The catalogue gives the date as ?1827.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The box contained an early draft (?) of the introduction.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§2",
+        "pages": [
+          1734
+        ],
+        "pdf_pages": [
+          1754
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Question mark indicating uncertainty",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-691",
+    "domain": "other",
+    "concept": "Exclamation marks across construction types",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "An exclamation mark can end a phrase, a minor sentence, an exclamative, an urgent imperative, or another clause with exclamatory force.",
+    "condition": "An exclamative strongly favours the mark. An imperative can take a full stop when a less emphatic reading is intended.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mind the step!",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What a narrow escape that was!",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§2",
+        "pages": [
+          1734
+        ],
+        "pdf_pages": [
+          1754
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Exclamation marks across construction types",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-692",
+    "domain": "other",
+    "concept": "Embedded exclamations and matrix scope",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "An independent exclamation can appear within a larger written sentence. A subordinate exclamative does not take its own exclamation mark.",
+    "condition": "A final exclamation mark can belong to the matrix sentence despite an embedded exclamative.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She recalled how difficult the climb had been.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It's remarkable how quickly the path dried!",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§2",
+        "pages": [
+          1734,
+          1735
+        ],
+        "pdf_pages": [
+          1754,
+          1755
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Embedded exclamations and matrix scope",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-693",
+    "domain": "other",
+    "concept": "Emphatic multiple terminals",
+    "rule_type": "stylistic_or_prescriptive",
+    "scope": "other",
+    "statement": "Informal writing can repeat question or exclamation marks or place an exclamation mark after a question mark.",
+    "condition": "Style manuals often disfavor these forms. Repeating a terminal full stop does not have the same status function.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Did you really finish the whole mural?!",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The tickets have finally arrived!!",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§2",
+        "pages": [
+          1735
+        ],
+        "pdf_pages": [
+          1755
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Emphatic multiple terminals",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-694",
+    "domain": "other",
+    "concept": "Orthographic separation for emphasis or length",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "An adjunct or a coordinated clause can form a separate orthographic sentence for emphasis or to keep units shorter.",
+    "condition": "A separated unit can still relate grammatically or semantically to the preceding material.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He put the file back. Quietly.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The printer needs ink. And the paper tray is empty.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§2",
+        "pages": [
+          1735
+        ],
+        "pdf_pages": [
+          1755
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Orthographic separation for emphasis or length",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-695",
+    "domain": "other",
+    "concept": "Strength of secondary boundary marks",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "The terminal full stop marks a stronger boundary than the colon or semicolon, and either is stronger than the comma.",
+    "condition": "The colon can exceptionally mark a non-final orthographic sentence, including before a sequence of separate questions.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The forecast changed. We stayed inside.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Two questions remained: When would the gates open? Who would check the tickets?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§3",
+        "pages": [
+          1735,
+          1736
+        ],
+        "pdf_pages": [
+          1755,
+          1756
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Strength of secondary boundary marks",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-696",
+    "domain": "other",
+    "concept": "Asymmetric left and right boundary marking",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "A right boundary often has a mark without an opening mark. A marked left boundary usually calls for a right boundary at least as strong.",
+    "condition": "Some right commas also require a corresponding opening comma. Coordination is the main systematic exception to the left-to-right requirement.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We can leave now if the gate is open, provided the guard agrees.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Nina, Omar, and Eli set up the projector.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§3.1",
+        "pages": [
+          1736,
+          1737
+        ],
+        "pdf_pages": [
+          1756,
+          1757
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Asymmetric left and right boundary marking",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-697",
+    "domain": "other",
+    "concept": "Relative scope of colon and semicolon",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "A colon and a semicolon have no fixed strength ranking relative to each other. Either can take wider scope over an earlier constituent containing the other.",
+    "condition": "A semicolon with wider scope over a colon is more usual in the source's account.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The switch had failed: the contacts were corroded; but the fuse was still intact.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The school needed paint; the library, shelves; the hall, lights: every building needed work.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§3.1",
+        "pages": [
+          1737
+        ],
+        "pdf_pages": [
+          1757
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Relative scope of colon and semicolon",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-698",
+    "domain": "other",
+    "concept": "Single-level constraint for repeated colons and semicolons",
+    "rule_type": "constraint",
+    "scope": "other",
+    "statement": "In the same construction, repeated colons or repeated semicolons cannot delimit nested levels under the analysis described by Cambridge.",
+    "condition": "A colon introduces a clause that itself contains an elaboration introduced by a second colon at a lower level.",
+    "violation": "The two colons delimit nested levels of one construction.",
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "One problem remained: the lift was broken, leaving only one option, the stairs.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The caretaker gave an update: the gate would remain locked for one reason, the damaged hinge.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "One problem remained: the lift was broken, leaving only one option: the stairs.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The caretaker gave an update: the gate would remain locked for one reason: the damaged hinge.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§3.1",
+        "pages": [
+          1737,
+          1738
+        ],
+        "pdf_pages": [
+          1757,
+          1758
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Single-level constraint for repeated colons and semicolons",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "punctuation",
+      "error_pattern": "The two colons delimit nested levels of one construction.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "One problem remained: the lift was broken, leaving only one option: the stairs. ||| One problem remained: the lift was broken, leaving only one option, the stairs.",
+        "The caretaker gave an update: the gate would remain locked for one reason: the damaged hinge. ||| The caretaker gave an update: the gate would remain locked for one reason, the damaged hinge."
+      ],
+      "learner_explanation": "Use another appropriate boundary mark for the inner elaboration, or divide the material into separate sentences.",
+      "corrected_paragraph_template": "Use another appropriate boundary mark for the inner elaboration, or divide the material into separate sentences.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "One team had two choices: stay or leave; the other had two tasks: pack and clean.",
+        "The office opened at eight; the shop opened at nine; the hall opened at ten."
+      ],
+      "lesson_tags": [
+        "punctuation",
+        "sentence-boundaries"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-699",
+    "domain": "other",
+    "concept": "Colons and coordinate series",
+    "rule_type": "constraint",
+    "scope": "other",
+    "statement": "A colon links two terms in this use. It does not serve as a repeated separator between peer coordinates.",
+    "condition": "Three parallel main clauses form a coordinate series with no elaborative relation between them.",
+    "violation": "Colons are used as the separators between the peer coordinates.",
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The school opened at eight; the clinic opened at nine; the shop opened at ten.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The pots were empty; the trays were clean; the shelves were dry.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The school opened at eight: the clinic opened at nine: the shop opened at ten.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The pots were empty: the trays were clean: the shelves were dry.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§3.1",
+        "pages": [
+          1738
+        ],
+        "pdf_pages": [
+          1758
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Colons and coordinate series",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "punctuation",
+      "error_pattern": "Colons are used as the separators between the peer coordinates.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The school opened at eight: the clinic opened at nine: the shop opened at ten. ||| The school opened at eight; the clinic opened at nine; the shop opened at ten.",
+        "The pots were empty: the trays were clean: the shelves were dry. ||| The pots were empty; the trays were clean; the shelves were dry."
+      ],
+      "learner_explanation": "Use semicolons for this coordinate series. A colon can introduce an explanation or list rather than separate the items within it.",
+      "corrected_paragraph_template": "Use semicolons for this coordinate series. A colon can introduce an explanation or list rather than separate the items within it.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The office needed two supplies: paper and ink.",
+        "The shop sold two items: pens and folders; the stall sold two others: maps and cards."
+      ],
+      "lesson_tags": [
+        "punctuation",
+        "sentence-boundaries"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-700",
+    "domain": "other",
+    "concept": "Colon-delimited material and later clause material",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "A constituent opened by a colon cannot be followed by more material belonging to the same clause in the construction described.",
+    "condition": "A comma or dash can delimit a supplement inside a non-final subclausal coordinate.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We studied the local archive, especially its early maps, and the city registers.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The guide pointed out two landmarks: the clock tower and the old bridge.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§3.1",
+        "pages": [
+          1738
+        ],
+        "pdf_pages": [
+          1758
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Colon-delimited material and later clause material",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]
