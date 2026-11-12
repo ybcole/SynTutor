@@ -71796,5 +71796,972 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1134",
+    "domain": "clauses",
+    "concept": "Expansion as evidence for comparative clause structure",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A single remnant may admit a full clausal paraphrase that makes the comparative variables or competing subject and object readings explicit.",
+    "condition": "Familiarity and idioms can discourage expansion. Before plus NP can allow analogous paraphrases without establishing that the NP is a reduced clause.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Jo is as patient as Lee is.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I enjoyed the play more than I enjoyed the film.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "She was busy as a bee.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§2.2(c)",
+        "pages": [
+          1116,
+          1117
+        ],
+        "pdf_pages": [
+          1136,
+          1137
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Expansion as evidence for comparative clause structure",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1135",
+    "domain": "clauses",
+    "concept": "Fronting and stranding with comparative than",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Formal relative pied-piping and marginal interrogative stranding show that some than complements behave directly as phrases.",
+    "condition": "These rare constructions do not settle the analysis of ordinary single-element comparisons.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The panel chose Mira, than whom no one could be more careful.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "How many of them do you think you are better than? [marginal stranding]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§2.2",
+        "pages": [
+          1117
+        ],
+        "pdf_pages": [
+          1137
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Fronting and stranding with comparative than",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1136",
+    "domain": "clauses",
+    "concept": "Reflexives as evidence about single comparative complements",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A bare reflexive after than can be acceptable in the cited construction even where inserting a following verb would be unacceptable.",
+    "condition": "A reduced analysis is still possible if the omitted verb licenses the reflexive indirectly, as comparable coordination suggests.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He dated someone younger than himself.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She hired an assistant more experienced than herself.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§2.2",
+        "pages": [
+          1117
+        ],
+        "pdf_pages": [
+          1137
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reflexives as evidence about single comparative complements",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1137",
+    "domain": "clauses",
+    "concept": "Referential fused relatives versus than what clause substitutes",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A what fused relative can be an ordinary referential NP after than. In a different construction, some speakers use what before material that could instead serve as the comparative clause without it.",
+    "condition": "The clause-substitute pattern is common in speech but has doubtful standard status in the source. Its distribution does not invalidate referential fused relatives.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I liked her sketch more than what he submitted. [referential]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I liked the sketch more than he did. [comparative clause]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§2.2",
+        "pages": [
+          1117,
+          1118
+        ],
+        "pdf_pages": [
+          1137,
+          1138
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Referential fused relatives versus than what clause substitutes",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1138",
+    "domain": "clauses",
+    "concept": "Degrees of shared material in variable comparison",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The matrix and comparative clause may share almost everything except the implicit variables, or share only the semantic counterpart of the comparative phrase.",
+    "condition": "A highly similar clause can be used with a pragmatic suggestion that the degree is high.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She's as calm as she is because she has practiced.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "More visitors arrived than we had chairs for.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§2.3",
+        "pages": [
+          1118
+        ],
+        "pdf_pages": [
+          1138
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Degrees of shared material in variable comparison",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1139",
+    "domain": "clauses",
+    "concept": "Multiple points of contrast in a comparative clause",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Comparative clauses can contrast with the matrix in several places at once.",
+    "condition": "Shared material may be repeated, expressed by a pro-form, or left understood.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "More parents came on Monday than teachers came on Friday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mira earns more at the clinic in a week than I earn at the shop in a month.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§2.3",
+        "pages": [
+          1118
+        ],
+        "pdf_pages": [
+          1138
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Multiple points of contrast in a comparative clause",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1140",
+    "domain": "clauses",
+    "concept": "Implicit matrix and temporal contrasts",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "An overt contrasting expression in the comparative clause can match matrix material inferred from discourse or the situation. Tense may also supply the main contrast.",
+    "condition": "A contrasting present-time comparative clause commonly reinforces the tense with a time modifier.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It tastes better than it does with lemon in it.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The garden wasn't as colorful as it is now.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§2.3",
+        "pages": [
+          1118,
+          1119
+        ],
+        "pdf_pages": [
+          1138,
+          1139
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Implicit matrix and temporal contrasts",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1141",
+    "domain": "clauses",
+    "concept": "Narrow and wide scope of embedded comparisons",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A comparative inside a content clause can compare two terms within the reported attitude, or compare the reported degree with a degree outside it.",
+    "condition": "Context guides scope. The wide reading in the cited pattern resists reducing the comparative clause to a bare pronoun.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Lee thinks Jo is taller than she is. [possible comparison within Lee's belief]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Lee thinks Jo is taller than she actually is. [comparison with Jo's actual height]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§2.3",
+        "pages": [
+          1119
+        ],
+        "pdf_pages": [
+          1139
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Narrow and wide scope of embedded comparisons",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1142",
+    "domain": "clauses",
+    "concept": "Predicative and attributive comparative phrase scope",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A predicative comparative AdjP can supply the counterpart directly. An attributive comparative AdjP can extend the comparative feature to its containing NP, requiring a suitable NP counterpart.",
+    "condition": "The choice can change the interpretation and acceptability of the same secondary clause.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Her truck was heavier than my car had been.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She bought a heavier truck than I had owned.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§2.4",
+        "pages": [
+          1119,
+          1120
+        ],
+        "pdf_pages": [
+          1139,
+          1140
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Predicative and attributive comparative phrase scope",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1143",
+    "domain": "clauses",
+    "concept": "Comparative scope with adverbial governors",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The comparative feature of an AdvP can remain in that phrase or extend to a larger AdjP or NP.",
+    "condition": "A degree comparison embedded in a description can require recovery of the containing phrase rather than only the manner adverb.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She argued more clearly than I did.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "This is a more carefully edited report than we had expected to receive.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§2.4",
+        "pages": [
+          1120
+        ],
+        "pdf_pages": [
+          1140
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Comparative scope with adverbial governors",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1144",
+    "domain": "clauses",
+    "concept": "Postpositive modifiers and comparative scope",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A postpositive comparative AdjP normally retains its own comparative scope, unlike the cited attributive counterpart. Its complement ordinarily cannot be postposed out of it.",
+    "condition": "Attested examples with wider scope exist, but the extension is not freely available.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She bought a van more powerful than her old car had been.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Anyone less patient than Jo would have left.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§2.4",
+        "pages": [
+          1120,
+          1121
+        ],
+        "pdf_pages": [
+          1140,
+          1141
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Postpositive modifiers and comparative scope",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1145",
+    "domain": "clauses",
+    "concept": "NP and PP boundaries in comparative scope",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A comparative NP within a PP does not generally pass the comparative feature to the containing PP. Some constructions instead compare the whole PP.",
+    "condition": "Under NP scope, a preposition needed by the secondary predicate remains overt unless a separate stranding reduction removes more material.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She worked on more projects than I had worked on.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She left in a better mood than she had arrived.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§2.4",
+        "pages": [
+          1120,
+          1121
+        ],
+        "pdf_pages": [
+          1140,
+          1141
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "NP and PP boundaries in comparative scope",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1146",
+    "domain": "clauses",
+    "concept": "Exceptional upward scope from comparative adjectives",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Some attested comparisons recover an NP counterpart from a matrix comparative adjective that is postpositive or predicative.",
+    "condition": "The source questions how systematic some cases are and rejects unrestricted extension.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They accepted risks greater than we would have accepted.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The price was higher than I wanted to pay.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§2.4",
+        "pages": [
+          1121
+        ],
+        "pdf_pages": [
+          1141
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Exceptional upward scope from comparative adjectives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1147",
+    "domain": "clauses",
+    "concept": "Metalinguistic comparison of descriptions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A metalinguistic comparison compares the applicability of descriptions, rather than degrees on a single lexical scale.",
+    "condition": "The core construction uses analytic marking and can compare non-gradable adjectives, NPs and PPs. The cited construction excludes comparative clauses and direct comparison of verbs.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The label was more green than blue.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was more a warning than a promise.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "She spoke more out of concern than out of anger.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§3",
+        "pages": [
+          1121,
+          1122
+        ],
+        "pdf_pages": [
+          1141,
+          1142
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Metalinguistic comparison of descriptions",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1148",
+    "domain": "clauses",
+    "concept": "Related metalinguistic reformulations",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Rather than and not so much X as Y can present a contrast in how something is best described.",
+    "condition": "Both patterns also have ordinary non-metalinguistic uses, depending on context.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was an inconvenience rather than a disaster.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He was not so much angry as embarrassed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§3",
+        "pages": [
+          1122
+        ],
+        "pdf_pages": [
+          1142
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Related metalinguistic reformulations",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1149",
+    "domain": "clauses",
+    "concept": "Analytic more and comparative inflection",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Analytic degree more expresses superiority where the separate marker is available. Other lexemes prefer or require an inflectional comparative, and some permit both.",
+    "condition": "The metalinguistic construction can license analytic more with adjectives that ordinarily inflect.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This beam is shorter than that one.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "This fabric is more durable than that one.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "This form is simpler or more simple, depending on the intended phrasing.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.1.1",
+        "pages": [
+          1122,
+          1123
+        ],
+        "pdf_pages": [
+          1142,
+          1143
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Analytic more and comparative inflection",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1150",
+    "domain": "clauses",
+    "concept": "Inflectional more and most of much and many",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Determinative more is the irregular comparative of much and many; most is the corresponding superlative. Analytic adverb more has a different function.",
+    "condition": "Plain much readily occurs in non-affirmative contexts. The noun-quantifying more can apply to mass and plural-count nominals.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Did the repair cause much trouble? Did it cause more trouble this time?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Many people applied; more people applied this year.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.1.1",
+        "pages": [
+          1123
+        ],
+        "pdf_pages": [
+          1143
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inflectional more and most of much and many",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1151",
+    "domain": "clauses",
+    "concept": "Analytic less and scalar inferiority",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Analytic less expresses scalar inferiority with a separate marker, including with adjectives that use an inflectional superiority form.",
+    "condition": "The source distinguishes analytic less from inflectional less, which it develops on the following page.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This beam is less long than the other one.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The new coating is less porous than the old one.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§4.1.1",
+        "pages": [
+          1123
+        ],
+        "pdf_pages": [
+          1143
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Analytic less and scalar inferiority",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
   }
 ]

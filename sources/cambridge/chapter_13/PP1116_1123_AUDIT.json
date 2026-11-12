@@ -1,0 +1,122 @@
+{
+  "manifest_version": 1,
+  "chapter": 13,
+  "printed_start": 1116,
+  "printed_end": 1123,
+  "report": "sources/cambridge/chapter_13/PP1116_1123_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1116,
+    "pdf_page": 1136
+  },
+  "added_rule_ids": [
+    "CLS-1134",
+    "CLS-1135",
+    "CLS-1136",
+    "CLS-1137",
+    "CLS-1138",
+    "CLS-1139",
+    "CLS-1140",
+    "CLS-1141",
+    "CLS-1142",
+    "CLS-1143",
+    "CLS-1144",
+    "CLS-1145",
+    "CLS-1146",
+    "CLS-1147",
+    "CLS-1148",
+    "CLS-1149",
+    "CLS-1150",
+    "CLS-1151"
+  ],
+  "page_checks": [
+    {
+      "page": 1116,
+      "status": "extracted",
+      "section": "§2.2(c)",
+      "summary": "Expansion, variable interpretation, idiomatic resistance and the start of the before/after counterargument.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1117,
+      "status": "extracted",
+      "section": "§2.2",
+      "summary": "Limits of expansion, fronting and stranding, reflexives and two what patterns.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1118,
+      "status": "extracted",
+      "section": "§§2.2–2.3",
+      "summary": "Referential fused relatives, variety-sensitive what, maximum and minimum likeness, and multiple contrasts.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1119,
+      "status": "extracted",
+      "section": "§§2.3–2.4",
+      "summary": "Contextual and temporal contrasts, narrow and wide scope, and introduction of predicative versus attributive scope.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1120,
+      "status": "extracted",
+      "section": "§2.4",
+      "summary": "Adjectival and adverbial projection, postpositive restrictions, and the NP–PP boundary.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1121,
+      "status": "extracted",
+      "section": "§§2.4–3",
+      "summary": "Preposition retention, exceptional upward scope and the beginning of metalinguistic comparison.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1122,
+      "status": "extracted",
+      "section": "§§3–4.1.1",
+      "summary": "Metalinguistic interpretation, analytic syntax, category range, related reformulations and the opening of scalar inequality.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1123,
+      "status": "extracted",
+      "section": "§4.1.1",
+      "summary": "Grade paradigms, analytic more, inflectional more and most, and analytic inferiority with less.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

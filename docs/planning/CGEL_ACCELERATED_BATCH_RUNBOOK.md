@@ -424,3 +424,7 @@ Printed pp. 1097–1107 are accounted for, including nine substantive pages and 
 ## Chapter 13 second checkpoint
 
 Printed pp. 1108–1115 add eight substantive pages and 15 inactive records (`CLS-1119`–`CLS-1133`), including two `spec_only` constraints. Chapter 13 has 55 pages remaining. Continue at p. 1116.
+
+## Chapter 13 third checkpoint
+
+Printed pp. 1116–1123 add eight substantive pages and 18 inactive records (`CLS-1134`–`CLS-1151`). Chapter 13 has 47 pages remaining. Continue at p. 1124 with inflectional less and the remainder of §4.1.1.
