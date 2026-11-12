@@ -326,3 +326,7 @@ Printed pp. 1048–1066 yielded 23 classification records (`CLS-868`–`CLS-890`
 ## Chapter 12 third checkpoint
 
 Printed pp. 1067–1078 yielded 19 classification records (`CLS-891`–`CLS-909`). Continue at p. 1079 with unbounded dependencies.
+
+## Chapter 12 source extraction complete
+
+Printed pp. 1079–1096 yielded 21 classification records (`CLS-910`–`CLS-930`). Chapter 12 closes source extraction with 64 substantive pages and two contents pages. Chapter 15 is next in the priority order.

@@ -58137,5 +58137,1283 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-910",
+    "domain": "clauses",
+    "concept": "Definition of an unbounded dependency",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An unbounded dependency licenses an anaphoric gap whose clause can be embedded to an arbitrarily deep level in principle.",
+    "condition": "Applies to the construction described in §7.1 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Unbounded depth does not remove restrictions on the structures that can contain the gap.",
+        "pages": [
+          1079,
+          1080
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This is the book she recommended.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "This is the book Mina said Dev believed Jo had recommended.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§7.1",
+        "pages": [
+          1079,
+          1080
+        ],
+        "pdf_pages": [
+          1099,
+          1100
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Definition of an unbounded dependency",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-911",
+    "domain": "clauses",
+    "concept": "Dependencies with and without overt wh words",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An unbounded dependency can have an overt wh phrase or arise in a construction without a wh word.",
+    "condition": "Applies to the construction described in §7.1 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Non-wh constructions can have an independently licensed antecedent and gap.",
+        "pages": [
+          1080,
+          1081
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What did she buy?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The other chapters she wrote herself.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§7.1",
+        "pages": [
+          1080,
+          1081
+        ],
+        "pdf_pages": [
+          1100,
+          1101
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dependencies with and without overt wh words",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-912",
+    "domain": "clauses",
+    "concept": "Prenuclear and external antecedents",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The antecedent can occur prenuclearly in the relevant clause or outside it in a larger construction.",
+    "condition": "Applies to the construction described in §7.1 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A comparative or a hollow-clause construction can also have an external antecedent.",
+        "pages": [
+          1081,
+          1082
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Which book did she buy?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I kept the book she bought.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§7.1",
+        "pages": [
+          1081,
+          1082
+        ],
+        "pdf_pages": [
+          1101,
+          1102
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Prenuclear and external antecedents",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-913",
+    "domain": "clauses",
+    "concept": "Hollow clauses and other minor constructions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A hollow clause can contain a gap associated with an external antecedent, as in some infinitival degree constructions.",
+    "condition": "Applies to the construction described in §7.1 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Hollow clauses restrict which functions the gap can have.",
+        "pages": [
+          1081,
+          1082
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The machine was too heavy to move.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The lock was difficult to repair.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§7.1",
+        "pages": [
+          1081,
+          1082
+        ],
+        "pdf_pages": [
+          1101,
+          1102
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Hollow clauses and other minor constructions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-914",
+    "domain": "clauses",
+    "concept": "Functions available to gaps",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An unbounded dependency gap can occupy subject function or a post-head dependent function such as a complement or adjunct.",
+    "condition": "Applies to the construction described in §7.2 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A gap corresponds to a constituent, which can be larger than the wh word it contains.",
+        "pages": [
+          1082,
+          1083
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Who called?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What did you buy?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§7.2",
+        "pages": [
+          1082,
+          1083
+        ],
+        "pdf_pages": [
+          1102,
+          1103
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Functions available to gaps",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-915",
+    "domain": "clauses",
+    "concept": "Indirect-object gap restrictions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An indirect object in a double-object construction normally resists relativisation. A corresponding preposition complement can support a gap.",
+    "condition": "Applies to the construction described in §7.2 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The restriction concerns the indirect-object construction and does not apply to ordinary direct objects.",
+        "pages": [
+          1083
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "That's the friend I sent the parcel to.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That's the friend to whom I sent the parcel.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§7.2",
+        "pages": [
+          1083
+        ],
+        "pdf_pages": [
+          1103
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Indirect-object gap restrictions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-916",
+    "domain": "clauses",
+    "concept": "Immediate and embedded subject gaps",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A subject gap can occur in the immediate clause or in an embedded clause. The two configurations differ in whether they permit particular markers.",
+    "condition": "Applies to the construction described in §7.2 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An embedded subject gap generally excludes declarative that immediately before it in the relevant Standard English construction.",
+        "pages": [
+          1083,
+          1084
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This is the copy that is defective.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "This is the copy they think is defective.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§7.2",
+        "pages": [
+          1083,
+          1084
+        ],
+        "pdf_pages": [
+          1103,
+          1104
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Immediate and embedded subject gaps",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-917",
+    "domain": "clauses",
+    "concept": "Gap and antecedent functions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A prenuclear antecedent can inherit the gap's function, while an external antecedent has a separate function in the larger construction.",
+    "condition": "Applies to the construction described in §7.2 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An external antecedent can be a matrix subject even when the gap is an object.",
+        "pages": [
+          1084,
+          1085
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Which book did she recommend?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The book she recommended is on the shelf.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§7.2",
+        "pages": [
+          1084,
+          1085
+        ],
+        "pdf_pages": [
+          1104,
+          1105
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Gap and antecedent functions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-918",
+    "domain": "clauses",
+    "concept": "Category and meaning match",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The antecedent normally matches a possible realization of the gap in category and relevant semantic properties.",
+    "condition": "Applies to the construction described in §7.2 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A paraphrase that preserves the participant may still use a different constituent structure.",
+        "pages": [
+          1085,
+          1086
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "To Mina they gave a bicycle.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was that jar that she put the key in.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§7.2",
+        "pages": [
+          1085,
+          1086
+        ],
+        "pdf_pages": [
+          1105,
+          1106
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Category and meaning match",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-919",
+    "domain": "clauses",
+    "concept": "Case and mismatch in dependency constructions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Case in a prenuclear phrase can reflect the gap's syntactic environment, while an external antecedent can get its case independently.",
+    "condition": "Applies to the construction described in §7.2 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Case alternants are sensitive to register, construction and whether the preposition is fronted.",
+        "pages": [
+          1087
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Whom did you give it to?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Who did you give it to?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§7.2",
+        "pages": [
+          1087
+        ],
+        "pdf_pages": [
+          1107
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Case and mismatch in dependency constructions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-920",
+    "domain": "clauses",
+    "concept": "Combined dependencies in cleft interrogatives",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A question can combine interrogative fronting with a cleft dependency, creating distinct positions that must each satisfy the relevant syntactic requirements.",
+    "condition": "Applies to the construction described in §7.2 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A missing preposition cannot be recovered merely because the antecedent is understood as a location.",
+        "pages": [
+          1088
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Which jar was it that she put the key in?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Which jar was it in that she put the key?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§7.2",
+        "pages": [
+          1088
+        ],
+        "pdf_pages": [
+          1108
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Combined dependencies in cleft interrogatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-921",
+    "domain": "clauses",
+    "concept": "Embedding depth and structural restrictions",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The gap can be embedded inside successive clauses, but its path depends on the categories and functions of the containing constituents.",
+    "condition": "Applies to the construction described in §7.3 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An intervening constituent may permit a gap in some functions and block it in others.",
+        "pages": [
+          1088,
+          1089
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I found what you said we needed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That is the subject she said he wrote about.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§7.3",
+        "pages": [
+          1088,
+          1089
+        ],
+        "pdf_pages": [
+          1108,
+          1109
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Embedding depth and structural restrictions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-922",
+    "domain": "clauses",
+    "concept": "Gaps inside predicates and declarative complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A gap can occur inside a VP predicate, an adjectival predicative phrase, or an embedded declarative complement in suitable constructions.",
+    "condition": "Applies to the construction described in §7.3 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A locative expression can sometimes relate to different clauses, yielding different gap interpretations.",
+        "pages": [
+          1090
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Most of the criticisms he accepted with good grace.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was here she said she found the key.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§7.3",
+        "pages": [
+          1090
+        ],
+        "pdf_pages": [
+          1110
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Gaps inside predicates and declarative complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-923",
+    "domain": "clauses",
+    "concept": "Extraction through interrogative complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A gap can occur inside some subordinate interrogatives, with acceptability varying by interrogative type and gap function.",
+    "condition": "Applies to the construction described in §7.3 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The possibility is limited and does not imply that all questions are equally transparent.",
+        "pages": [
+          1091
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There are several books that I am not sure if you have read.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "These are the dishes that she showed me how to cook.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§7.3",
+        "pages": [
+          1091
+        ],
+        "pdf_pages": [
+          1111
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Extraction through interrogative complements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-924",
+    "domain": "clauses",
+    "concept": "Gaps in nonfinite complements and PPs",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A gap can occur in a nonfinite clause selected as complement or as the complement of a preposition.",
+    "condition": "Applies to the construction described in §7.3 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Licensing depends on the intervening structure, not merely the distance from the antecedent.",
+        "pages": [
+          1091,
+          1092
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It's Mina I want to invite.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Some of us he would not even speak to.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§7.3",
+        "pages": [
+          1091,
+          1092
+        ],
+        "pdf_pages": [
+          1111,
+          1112
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Gaps in nonfinite complements and PPs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-925",
+    "domain": "clauses",
+    "concept": "Extraction from complements inside NPs",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some PP complements inside NPs can contain a gap. Clausal complements inside NPs show stronger restrictions.",
+    "condition": "Applies to the construction described in §7.3 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Acceptability can vary with construction and context, and a preposed content clause may require moving the entire NP.",
+        "pages": [
+          1092,
+          1093
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Of which institute did they make her director?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What did they devise a plan to steal?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§7.3",
+        "pages": [
+          1092,
+          1093
+        ],
+        "pdf_pages": [
+          1112,
+          1113
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Extraction from complements inside NPs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-926",
+    "domain": "clauses",
+    "concept": "Gaps in modifiers and subjects",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A gap inside a modifier or subject is more restricted than a gap inside a typical complement, but particular constructions can license it.",
+    "condition": "Applies to the construction described in §7.3 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The constructional relation matters, including quantificational links with a subject.",
+        "pages": [
+          1093
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "That is the car I am saving up to buy.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They have eight children, of whom five live at home.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§7.3",
+        "pages": [
+          1093
+        ],
+        "pdf_pages": [
+          1113
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Gaps in modifiers and subjects",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-927",
+    "domain": "clauses",
+    "concept": "Across-the-board dependencies in coordination",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A dependency can link an antecedent to corresponding gaps in more than one coordinate.",
+    "condition": "Applies to the construction described in §7.3 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some asymmetrical coordinations allow a gap in only one coordinate when the semantic relation supports it.",
+        "pages": [
+          1094
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She was the candidate that Mina interviewed and Dev hired.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That was the proposal that Mina supported but Dev opposed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§7.3",
+        "pages": [
+          1094
+        ],
+        "pdf_pages": [
+          1114
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Across-the-board dependencies in coordination",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-928",
+    "domain": "clauses",
+    "concept": "Nested dependencies",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A larger dependency can contain a smaller dependency whose antecedent and gap both fall within its span.",
+    "condition": "Applies to the construction described in §7.4 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Nested dependencies differ in how their links combine, and nesting alone does not establish acceptability.",
+        "pages": [
+          1094,
+          1095
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This is the book that Mina said was hard to read.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "This is the proposal that Mina said was too risky to approve.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§7.4",
+        "pages": [
+          1094,
+          1095
+        ],
+        "pdf_pages": [
+          1114,
+          1115
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nested dependencies",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-929",
+    "domain": "clauses",
+    "concept": "Parasitic gaps",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A parasitic gap can occur where an overt pronoun would normally be required when its antecedent is itself an independently licensed gap.",
+    "condition": "Applies to the construction described in §7.5 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The clearest cases occur in nonfinite adjuncts, and an overt nominal antecedent alone does not license the same omission.",
+        "pages": [
+          1095
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Which report did she file without reading?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "This is the letter I discarded without opening.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§7.5",
+        "pages": [
+          1095
+        ],
+        "pdf_pages": [
+          1115
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Parasitic gaps",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-930",
+    "domain": "clauses",
+    "concept": "Parasitic versus coordinated gaps",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Ordinary gaps in across-the-board coordination differ from parasitic gaps. A parasitic gap can often be replaced by a pronoun while coordinated gaps cannot be freely replaced.",
+    "condition": "Applies to the construction described in §7.5 of Chapter 12.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Both patterns can occur together, with ordinary gaps in the coordinates and a parasitic gap in an adjunct.",
+        "pages": [
+          1095,
+          1096
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was the plan that Mina drafted and Dev approved.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was the plan that Mina drafted without discussing it.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 12,
+        "section": "§7.5",
+        "pages": [
+          1095,
+          1096
+        ],
+        "pdf_pages": [
+          1115,
+          1116
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Parasitic versus coordinated gaps",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]
