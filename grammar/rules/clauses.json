@@ -90296,5 +90296,1221 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1465",
+    "domain": "clauses",
+    "concept": "Stative verbal passives",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A verbal passive can be stative when its active counterpart is stative. A stative interpretation alone cannot distinguish verbal and adjectival passives.",
+    "condition": "Compare the active and apply independent syntactic tests.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Most of the staff admire Jo.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Jo is admired by most of the staff.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§10.1.3",
+        "pages": [
+          1438
+        ],
+        "pdf_pages": [
+          1458
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Stative verbal passives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1466",
+    "domain": "clauses",
+    "concept": "Overlapping stative interpretations",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Verbal and adjectival analyses can yield essentially the same stative meaning. A verb such as surround can also have a dynamic reading, while still selects a stative reading.",
+    "condition": "Predicative substitution can establish an adjective even when very is unavailable.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The garden was surrounded by tall hedges.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The garden remained surrounded by tall hedges.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§10.1.3",
+        "pages": [
+          1438
+        ],
+        "pdf_pages": [
+          1458
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Overlapping stative interpretations",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1467",
+    "domain": "clauses",
+    "concept": "Stative adjectives under dynamic predicates",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "An adjectival passive denotes a state even when become makes the whole clause describe a change. The change is contributed by the higher predicate.",
+    "condition": "A verbal be-passive need not construe the event as a transition in the same way.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The rod became magnetised.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The rod was magnetised by a technician.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§10.1.3",
+        "pages": [
+          1438,
+          1439
+        ],
+        "pdf_pages": [
+          1458,
+          1459
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Stative adjectives under dynamic predicates",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1468",
+    "domain": "clauses",
+    "concept": "Complementation as a passive category diagnostic",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "An internal predicative complement diagnoses a verbal passive in these examples. An infinitival complement can also diagnose it when the corresponding adjective does not license that frame.",
+    "condition": "Test the relevant lexeme and complement type rather than the participial ending alone.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The spare pump was considered a liability.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The pump was known to be unreliable.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§10.1.3",
+        "pages": [
+          1439
+        ],
+        "pdf_pages": [
+          1459
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Complementation as a passive category diagnostic",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1469",
+    "domain": "clauses",
+    "concept": "By complements and alternative prepositions in adjectival passives",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Adjectival passives can license by with a stative corresponding verb, and some license other prepositions. An agentive by phrase with dynamic break selects the verbal reading. Negative un- adjectives allow by more freely.",
+    "condition": "By is not by itself a verbal diagnostic.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She remained worried by the delay.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The caretaker is known to the local police.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§10.1.3",
+        "pages": [
+          1439,
+          1440
+        ],
+        "pdf_pages": [
+          1459,
+          1460
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "By complements and alternative prepositions in adjectival passives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1470",
+    "domain": "clauses",
+    "concept": "Negative participial adjectives with continuative go",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Go meaning remain takes negative participial adjectives in the illustrated pattern. Go with other adjectives can instead express a transition.",
+    "condition": "The adjective may lack a positive adjectival counterpart.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The leak went undetected for weeks.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The complaint went unanswered.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§10.1.3",
+        "pages": [
+          1440
+        ],
+        "pdf_pages": [
+          1460
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negative participial adjectives with continuative go",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1471",
+    "domain": "clauses",
+    "concept": "Inseparable prepositions in negative compound adjectives",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A negative participial adjective can incorporate a preposition, as in unaccounted for. Its parts are inseparable, unlike a corresponding verb and preposition in an active clause.",
+    "condition": "Do not insert an adverb between the adjective and its incorporated preposition.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Two payments were still unaccounted for.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We have accounted already for both payments.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§10.1.3",
+        "pages": [
+          1440
+        ],
+        "pdf_pages": [
+          1460
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inseparable prepositions in negative compound adjectives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1472",
+    "domain": "clauses",
+    "concept": "Specialized participial adjectives",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Some adjectives retain participial morphology but have specialized meanings with only a historical connection to a corresponding verbal passive.",
+    "condition": "The intended sense determines whether a passive alternation is available.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We're engaged to be married.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She's bound to win.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§10.1.3",
+        "pages": [
+          1440
+        ],
+        "pdf_pages": [
+          1460
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Specialized participial adjectives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1473",
+    "domain": "clauses",
+    "concept": "Verbal get-passive versus predicative get",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Get can take a bare verbal passive or an adjectival predicative. Direct degree modification can identify the adjectival reading. Ambiguity is less frequent than with be.",
+    "condition": "The category depends on the participle and interpretation rather than the presence of get alone.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The window got broken during the move.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The children got very frightened.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§10.1.4",
+        "pages": [
+          1440,
+          1441
+        ],
+        "pdf_pages": [
+          1460,
+          1461
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Verbal get-passive versus predicative get",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1474",
+    "domain": "clauses",
+    "concept": "Lexical contrasts with get and participles",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Get accepts some ungradable adjectival forms and some forms that resist become. Forms such as married and finished can contrast an adjectival reading with a verbal passive involving a distinct implicit or explicit agent.",
+    "condition": "Compare the intended state or subject activity with an action performed by another participant.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Let's get started.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The job got finished by the night crew.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§10.1.4",
+        "pages": [
+          1441
+        ],
+        "pdf_pages": [
+          1461
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical contrasts with get and participles",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1475",
+    "domain": "clauses",
+    "concept": "Register and frequency of get-passives",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Be is more frequent than get in expanded passives, especially long passives. Get-passives tend to be avoided in formal style.",
+    "condition": "This is a usage tendency, and both auxiliaries can express the same proposition in a suitable dynamic frame.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Both drivers were stopped by the police.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Both drivers got stopped by the police.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§10.1.4",
+        "pages": [
+          1441,
+          1442
+        ],
+        "pdf_pages": [
+          1461,
+          1462
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Register and frequency of get-passives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1476",
+    "domain": "clauses",
+    "concept": "Dynamic interpretation in verbal get-passives",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Verbal get-passives select dynamic readings. Replacing be with get can remove a stative reading when the verb also has a dynamic sense.",
+    "condition": "The restriction concerns verbal get-passives rather than all combinations of get with a participial-looking form.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The house was surrounded by reporters all day.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The house got surrounded by reporters within minutes.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§10.1.4",
+        "pages": [
+          1442
+        ],
+        "pdf_pages": [
+          1462
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dynamic interpretation in verbal get-passives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1477",
+    "domain": "clauses",
+    "concept": "Subject responsibility in get-passives",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Get can suggest that the subject referent acted deliberately or bore some responsibility, but it also allows a purely affected subject.",
+    "condition": "Agentivity is a possible inference, not a requirement.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She managed to get transferred to another branch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "My bicycle got stolen overnight.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§10.1.4",
+        "pages": [
+          1442
+        ],
+        "pdf_pages": [
+          1462
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subject responsibility in get-passives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1478",
+    "domain": "clauses",
+    "concept": "Adversity and benefit with get-passives",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Get-passives favor adverse or beneficial effects for the subject referent or someone associated with it. Neutral contexts commonly favor be.",
+    "condition": "The affected party may be the owner or creator of the subject referent.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "My application got approved.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "My coat got ruined in the wash.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§10.1.4",
+        "pages": [
+          1442
+        ],
+        "pdf_pages": [
+          1462
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adversity and benefit with get-passives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1479",
+    "domain": "clauses",
+    "concept": "Be and get in the two perception-verb frames",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "The illustrated passive of see with an infinitival complement uses be. In the active perception construction with a passivised lower event, get or a bare passive is available in the illustrated frame.",
+    "condition": "Keep the level of passivisation distinct when choosing the construction.",
+    "violation": "Get marks the passive of perception verb see with a to-infinitival complement.",
+    "exceptions": [
+      {
+        "description": "With active see, the embedded event can instead be passivised using get or a bare passive in the illustrated construction.",
+        "pages": [
+          1442,
+          1443
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina was seen to leave the hall.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Two visitors were seen to enter the garden.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "We saw Mina get knocked down.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "We saw Mina knocked down.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Mina got seen to leave the hall.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Two visitors got seen to enter the garden.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§10.1.4",
+        "pages": [
+          1442,
+          1443
+        ],
+        "pdf_pages": [
+          1462,
+          1463
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Be and get in the two perception-verb frames",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "Get marks the passive of perception verb see with a to-infinitival complement.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Mina got seen to leave the hall. ||| Mina was seen to leave the hall.",
+        "Two visitors got seen to enter the garden. ||| Two visitors were seen to enter the garden."
+      ],
+      "learner_explanation": "Use be when see itself is passivised in this perception construction.",
+      "corrected_paragraph_template": "Use be when see itself is passivised in this perception construction.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "We saw Mina get knocked down.",
+        "We saw Mina knocked down."
+      ],
+      "lesson_tags": [
+        "information-packaging",
+        "passive"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1480",
+    "domain": "clauses",
+    "concept": "Complex catenative get with an intervening NP",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A get-passive is simple catenative, with no intervening NP. Complex get can contain an intervening NP and an embedded passive while the get clause itself remains active.",
+    "condition": "A reflexive intervening NP explicitly favors initiative or responsibility, unlike the optional inference in simple get-passives.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I got my coat repaired.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I got myself transferred to another shift.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§10.1.4",
+        "pages": [
+          1443
+        ],
+        "pdf_pages": [
+          1463
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Complex catenative get with an intervening NP",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1481",
+    "domain": "clauses",
+    "concept": "Catenative status of passive be and get",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The preferred analysis treats simple passive be and get as catenatives taking a bare passive, marking voice and carrying inflection. Get poses a greater analytical difficulty because of its affinity with complex causative get.",
+    "condition": "The distinction is supported by the different status of agentivity in the two get patterns.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She got transferred to another office.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She got herself transferred to another office.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§10.1.4",
+        "pages": [
+          1443
+        ],
+        "pdf_pages": [
+          1463
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Catenative status of passive be and get",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1482",
+    "domain": "clauses",
+    "concept": "Relative discourse familiarity in long passives",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A long-passive subject must not be less discourse-familiar than the NP in the internalised by complement. Old–new, old–old, and new–new can be felicitous.",
+    "condition": "Discourse familiarity differs from general familiarity to the addressee. Speaker and addressee count as discourse-old.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Our director is retiring. She will be succeeded by Maya Chen.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A new exhibition will be opened by the mayor tomorrow.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§10.2",
+        "pages": [
+          1444
+        ],
+        "pdf_pages": [
+          1464
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Relative discourse familiarity in long passives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1483",
+    "domain": "clauses",
+    "concept": "Long passive versus subject–dependent inversion",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Both constructions respect relative discourse familiarity. Passive realigns roles and functions and has no independent requirement for a discourse-old open proposition. Inversion reorders constituents without the same realignment.",
+    "condition": "Passive can combine with interrogative fronting or preposing, each of which retains its own conditions.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Which curator was the exhibition opened by?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "By none of them was the question answered satisfactorily.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§10.2",
+        "pages": [
+          1444,
+          1445
+        ],
+        "pdf_pages": [
+          1464,
+          1465
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Long passive versus subject–dependent inversion",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1484",
+    "domain": "clauses",
+    "concept": "Omission of participant information in short passives",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A short passive can have an old or new subject without a familiarity comparison to an internalised NP. It can omit an unknown, generic, deliberately unmentioned or institutionally backgrounded participant.",
+    "condition": "The construction can also foreground procedure in reports without naming the writer.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The building was completed in 1918.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The samples were rinsed and dried before weighing.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§10.2",
+        "pages": [
+          1445,
+          1446
+        ],
+        "pdf_pages": [
+          1465,
+          1466
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Omission of participant information in short passives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1485",
+    "domain": "clauses",
+    "concept": "Diffuse causes and intransitive active alternants",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A short passive can be natural when the cause is too diffuse to name. Some such clauses have a near-equivalent intransitive active rather than a natural transitive active or long passive.",
+    "condition": "Availability of the intransitive can depend on the verb and speaker.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Several passengers were drowned after the boat capsized.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Several passengers drowned after the boat capsized.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§10.2",
+        "pages": [
+          1446
+        ],
+        "pdf_pages": [
+          1466
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Diffuse causes and intransitive active alternants",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1486",
+    "domain": "clauses",
+    "concept": "Significant properties in freely chosen locative passives",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A locative prepositional passive with a freely chosen preposition requires the VP to convey a significant property or significant change of the subject referent.",
+    "condition": "Historical relevance, an informative spatial property, or a material effect can support the construction. An ordinary location alone need not do so.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This trail can be walked in under an hour.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "My clean towel has been sat on.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§10.2",
+        "pages": [
+          1446,
+          1447
+        ],
+        "pdf_pages": [
+          1466,
+          1467
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Significant properties in freely chosen locative passives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
   }
 ]
