@@ -350,3 +350,7 @@ This batch adds 23 records (`CLS-973`–`CLS-995`) across 18 substantive pages. 
 ## Chapter 15 Phase B checkpoint — printed pp. 1323–1342
 
 Checked 20 consecutive substantive pages and added 41 original-example inactive records (`CLS-996`–`CLS-1036`), including 3 `spec_only` constraints. [Source report](sources/cambridge/chapter_15/PP1323_1342_REPORT.md) · [Machine audit](sources/cambridge/chapter_15/PP1323_1342_AUDIT.json). Chapter 15 now has 68 substantive pages extracted and two contents-only skips through p. 1342; 20 printed pages remain. Book-wide ledger: 1194 extracted, 534 unprocessed, 34 justified skips, 2 absent from split source. No runtime enablement or independent QA approval.
+
+## Chapter 15 Phase B source extraction complete — printed pp. 1273–1362
+
+The final consecutively source-checked batch accounts for pp. 1343–1362 and adds 59 inactive records (`CLS-1037`–`CLS-1095`) including 1 `spec_only` constraint. [Audit report](sources/cambridge/chapter_15/PP1343_1362_REPORT.md) · [Audit manifest](sources/cambridge/chapter_15/PP1343_1362_AUDIT.json). Chapter 15 ledger: 88 substantive pages extracted, 2 contents-only skips, zero unprocessed pages. Book-wide ledger: 1214 extracted, 514 unprocessed, 34 justified skips, 2 absent from split source. Source complete ≠ independent review ≠ B-R crosswalk verified ≠ detector activation. Both GitHub CI workflows and chapter QA are required before PR merge. Next: Chapter 17.

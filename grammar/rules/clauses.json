@@ -65925,5 +65925,3526 @@
     },
     "related_rules": [],
     "review_notes": "Source-checked against printed CGEL text and page layouts; author-created English examples. No independent linguistic approval or runtime activation."
+  },
+  {
+    "id": "CLS-1037",
+    "domain": "clauses",
+    "concept": "Nonce-constituent sequences receive no shared clause function",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "In right nonce-constituent coordination, the sequence of an object NP and a PP can form a coordinate without the combined string functioning as one clause-level dependent.",
+    "condition": "Distinguish clause-level functions assigned separately to the object and PP from the construction that pairs them.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The analysis should not invent a single object function for the full NP-plus-PP sequence.",
+        "pages": [
+          1343
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Lena lent a novel to Kim and a dictionary to Sasha.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They sent two parcels to Tara and one envelope to Ravi.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§§4.3–4.4",
+        "pages": [
+          1343
+        ],
+        "pdf_pages": [
+          1363
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nonce-constituent sequences receive no shared clause function",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1038",
+    "domain": "clauses",
+    "concept": "Delayed right constituent coordination",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "A phrase that would appear with each basic coordinate can occur once after the complete coordination, understood as completing both earlier coordinates.",
+    "condition": "Recognise a shared postnuclear element after verb or predicate coordinates rather than attaching it only to the final one.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Each coordinate must normally permit completion by the delayed phrase; naturally occurring marginal departures are discussed in a footnote.",
+        "pages": [
+          1343
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I welcomed but did not expect the criticism.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They had planned and carefully prepared their response.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4.4",
+        "pages": [
+          1343
+        ],
+        "pdf_pages": [
+          1363
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Delayed right constituent coordination",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1039",
+    "domain": "clauses",
+    "concept": "Marginal delayed right completion failures",
+    "rule_type": "descriptive_generalization",
+    "scope": "coordination and supplementation",
+    "statement": "Shared-right constructions are less acceptable when the last element does not supply the grammatical form or complement expected by an earlier coordinate.",
+    "condition": "Treat hybrid auxiliary and comparison patterns as source-marked questionable, not an unconditional grammar error.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A form such as have and will followed by a plain verb can be encountered but is judged less than fully grammatical.",
+        "pages": [
+          1343,
+          1344
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We have read and will discuss the findings.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The test is as reliable as or more reliable than the earlier one.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4.4 n.66",
+        "pages": [
+          1343,
+          1344
+        ],
+        "pdf_pages": [
+          1363,
+          1364
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Marginal delayed right completion failures",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1040",
+    "domain": "clauses",
+    "concept": "Distinct complementation with delayed right element",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "A delayed common phrase can complete different complements licensed by the coordinate heads, such as a PP after one adjective and an NP after another verb.",
+    "condition": "Check how the rightmost phrase is syntactically completed under each predicate rather than insisting that both heads assign the same function.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The same string can have different internal functions under the two heads.",
+        "pages": [
+          1344
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We listened to but did not interrupt the speaker.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She is enthusiastic about but uneasy with the new arrangement.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4.4(a)",
+        "pages": [
+          1344
+        ],
+        "pdf_pages": [
+          1364
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Distinct complementation with delayed right element",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1041",
+    "domain": "clauses",
+    "concept": "Delayed constituent with tense and modality contrasts",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "A repeated predicate can share a delayed right constituent even when auxiliary tense, time or modal marking differs across earlier coordinates.",
+    "condition": "Identify contrasts between modal or tense expressions and their shared later complement.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A suitable later phrase must license the earlier predicate heads.",
+        "pages": [
+          1344
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She was, is, and will remain, a dedicated volunteer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They valued and still value the community garden.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4.4(b)",
+        "pages": [
+          1344
+        ],
+        "pdf_pages": [
+          1364
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Delayed constituent with tense and modality contrasts",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1042",
+    "domain": "clauses",
+    "concept": "Simple verbs and complex verb phrases with common right element",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "The construction can coordinate a lexical verb and a longer idiomatic verb phrase, both completed by the later constituent.",
+    "condition": "Identify the different internal structures of the coordinates before the rightmost common phrase.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Unlike right nonce-constituent coordination, delayed-right coordination does not require parallel internal structures.",
+        "pages": [
+          1344
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He had either visited or written a detailed account of the museum.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The team accepted but took no pleasure in the compromise.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4.4(c)",
+        "pages": [
+          1344
+        ],
+        "pdf_pages": [
+          1364
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Simple verbs and complex verb phrases with common right element",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1043",
+    "domain": "clauses",
+    "concept": "Pre-head NP sequences and subject–verb sequences in delayed-right coordination",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "Prenominal determiner/modifier sequences or subject–verb sequences can be contrasted before a single shared NP or postverbal complement.",
+    "condition": "The delayed material supplies the common head or complement to both earlier sequences.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Repeated determiners and mixed premodifiers have special ordering restrictions; reanalysis as simple NP-level coordination may be inappropriate.",
+        "pages": [
+          1344
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The shop displayed three blue and two green jackets.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Eli may approve, but Nora will oppose, the amendment.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4.4(d–e)",
+        "pages": [
+          1344
+        ],
+        "pdf_pages": [
+          1364
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pre-head NP sequences and subject–verb sequences in delayed-right coordination",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1044",
+    "domain": "clauses",
+    "concept": "Delayed right constituents also occur in subordination",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "Although most frequent in coordination, a shared-right element may occur after contrasting subordinate and matrix predicates.",
+    "condition": "Do not classify every delayed-right construction as a coordinate relation when a genuine subordinating expression occurs.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "This construction does not require the strict parallelism found in right nonce-constituent coordination.",
+        "pages": [
+          1344
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I admired, although my colleagues disliked, the installation.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The employees who supported greatly outnumbered those who opposed the proposal.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4.4",
+        "pages": [
+          1344
+        ],
+        "pdf_pages": [
+          1364
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Delayed right constituents also occur in subordination",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1045",
+    "domain": "clauses",
+    "concept": "Co-indexed gaps and postnuclear constituent analysis",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "A proposed tree for delayed right coordination contains gaps in at least two coordinate nuclei, each connected to a single later postnuclear constituent.",
+    "condition": "Represent the postnuclear phrase outside the completed nuclei and connect it to both missing positions.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The book explicitly leaves open whether this exact structural analysis applies to every delayed-right construction.",
+        "pages": [
+          1345
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They had either phoned or sent a message to the coordinator.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She looked at and then carefully examined the sculpture.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4.4",
+        "pages": [
+          1345
+        ],
+        "pdf_pages": [
+          1365
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Co-indexed gaps and postnuclear constituent analysis",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1046",
+    "domain": "clauses",
+    "concept": "Different syntactic roles of one delayed expression",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "The later phrase can function semantically as a different type of complement in each earlier coordinate.",
+    "condition": "Keep the dual interpretation rather than assigning the final expression a single function inherited from only one coordinate.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some unaccented pronoun patterns may not show the expected prosodic break, and the analysis is not claimed to be universal.",
+        "pages": [
+          1345
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I listened to and then questioned the witness.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He was interested in but did not buy the sculpture.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4.4",
+        "pages": [
+          1345
+        ],
+        "pdf_pages": [
+          1365
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Different syntactic roles of one delayed expression",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1047",
+    "domain": "clauses",
+    "concept": "Two end-attachment coordination subtypes",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "End-attached material can be a postposed coordinate of a nonadjacent phrase or an additional constituent attached to the preceding clause.",
+    "condition": "Test whether the final element contrasts with an earlier internal constituent or instead elaborates the preceding proposition.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An appended element can, but need not, be a genuine afterthought.",
+        "pages": [
+          1345
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The reviewers praised the introduction, but not the conclusion.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The walkers reached the summit, and just before sunset too.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4.5",
+        "pages": [
+          1345
+        ],
+        "pdf_pages": [
+          1365
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Two end-attachment coordination subtypes",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1048",
+    "domain": "clauses",
+    "concept": "Postposing of a coordinate rather than clause coordination",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "A late coordinate can relate to a phrase inside the preceding clause, with the usual adjacent-coordinate counterpart available.",
+    "condition": "Locate the internal antecedent of a postposed coordinate and distinguish it from an independent second clause.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Late coordination need not form a constituent with the earlier element in the syntactic tree.",
+        "pages": [
+          1346
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We invited Dr Finch, but not Professor Rao.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I gave the children pencils, and notebooks too.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4.5",
+        "pages": [
+          1346
+        ],
+        "pdf_pages": [
+          1366
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Postposing of a coordinate rather than clause coordination",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1049",
+    "domain": "clauses",
+    "concept": "Subject agreement under postposed coordination",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "When a coordinate of the subject is postposed after the clause, a finite verb generally agrees with the subject already inside the clause, not with a plural subject formed by the late addition.",
+    "condition": "Distinguish a genuinely postposed subject addition from an adjacent pre-verbal coordinated subject.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The construction's agreement differs from that of basic coordinated subjects.",
+        "pages": [
+          1346
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Nora has been selected, and her sister too.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Nora and her sister have been selected.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4.5",
+        "pages": [
+          1346
+        ],
+        "pdf_pages": [
+          1366
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subject agreement under postposed coordination",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1050",
+    "domain": "clauses",
+    "concept": "Or-scope and alternative-question readings in postposing",
+    "rule_type": "descriptive_generalization",
+    "scope": "coordination and supplementation",
+    "statement": "Or in an attached coordinate can participate in a genuine alternative question or a polar question, while negation scope may differ from adjacent basic coordination.",
+    "condition": "Use question intonation and negative scope to distinguish the alternatives rather than a blanket coordination diagnostic.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Neither interpretation should be treated as a grammatical error in isolation.",
+        "pages": [
+          1346
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Did Felix sign the letter, or his deputy?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mira did not attend the conference—or her assistant.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4.5",
+        "pages": [
+          1346
+        ],
+        "pdf_pages": [
+          1366
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Or-scope and alternative-question readings in postposing",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1051",
+    "domain": "clauses",
+    "concept": "Narrow scope of postposed coordinate",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "End-attached elements can fall under an earlier negation or interrogative phrase rather than serving as the second of two full clauses.",
+    "condition": "Preserve the dependency between a late coordinate and a particular constituent of the earlier clause.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Expanding these forms into full repeated clauses can change truth conditions.",
+        "pages": [
+          1347
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They did not send invitations to the staff—or reminders.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "How many of the visitors received badges, but not maps?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4.5",
+        "pages": [
+          1347
+        ],
+        "pdf_pages": [
+          1367
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Narrow scope of postposed coordinate",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1052",
+    "domain": "clauses",
+    "concept": "Addition of a new coordinate element",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "An appended and/but fragment can add an adjunct or an optional complement to the preceding clause and give the addition distinct information status.",
+    "condition": "For the addition subtype, removing the linking item can leave a single clause with the added material integrated.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Optional complements require a head that also admits the intransitive use; or is not a regular marker of this subtype.",
+        "pages": [
+          1347
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The swimmer finished the course, and easily too.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She was reading, but nothing particularly difficult.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4.5",
+        "pages": [
+          1347
+        ],
+        "pdf_pages": [
+          1367
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Addition of a new coordinate element",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1053",
+    "domain": "clauses",
+    "concept": "Conditional qualification with but only if",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "An appended but only if clause can restrict the truth of the preceding assertion rather than entail the unqualified first proposition.",
+    "condition": "Treat this as a conditional qualification whose first clause is not asserted unconditionally.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The scalar restrictor only is essential to the intended construction; a negative qualification with but not if follows a related pattern.",
+        "pages": [
+          1347
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I will help you, but only if the plans are legal.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We can begin, but only if everyone is ready.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4.5",
+        "pages": [
+          1347
+        ],
+        "pdf_pages": [
+          1367
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Conditional qualification with but only if",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1054",
+    "domain": "clauses",
+    "concept": "Contrast and refinement in end-attachment",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "A but-appendage may refine a previously stated description rather than negate or coordinate exclusive alternatives.",
+    "condition": "Examine whether the later element is an inclusion or specification of what precedes.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A superficial parallel pair of preposition phrases does not always form basic coordination.",
+        "pages": [
+          1348
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The painter grew up in France, but in the south near the coast.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The author lived in Canada, but in a remote northern town.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4.5",
+        "pages": [
+          1348
+        ],
+        "pdf_pages": [
+          1368
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Contrast and refinement in end-attachment",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1055",
+    "domain": "clauses",
+    "concept": "Coordination as evidence for constituent status",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "In the default basic case, a sequence that coordinates with a peer is evidence that it is an ordinary syntactic constituent.",
+    "condition": "Use the coordination diagnostic as a preference among plausible phrase-structure analyses, not as an absolute biconditional.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Non-basic coordinate types are documented counterexamples to an unrestricted constituenthood test.",
+        "pages": [
+          1348
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The pianist [opened the case] and [tuned the instrument].",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The gardener [watered the roses] and [trimmed the hedge].",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4.6",
+        "pages": [
+          1348
+        ],
+        "pdf_pages": [
+          1368
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Coordination as evidence for constituent status",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1056",
+    "domain": "clauses",
+    "concept": "VP coordination is not uniformly equivalent to elided clause coordination",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "A shared subject and two predicates can form VP coordination without having the truth conditions of two separate finite clauses.",
+    "condition": "When negation or quantification takes scope over both predicates, do not analyse the second predicate as a full clause with a copied subject.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The bare coordination of two full clauses may give a different quantifier scope and interpretation.",
+        "pages": [
+          1349
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Nobody entered the room and escaped the camera.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "No visitor complained and left without notice.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4.6",
+        "pages": [
+          1349
+        ],
+        "pdf_pages": [
+          1369
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "VP coordination is not uniformly equivalent to elided clause coordination",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1057",
+    "domain": "clauses",
+    "concept": "Nonce-constituent requirements versus head–dependent VP relation",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "The special right nonce-constituent analysis requires structural parallelism and the absence of a normal head–dependent relation inside the temporary sequence.",
+    "condition": "Do not invoke nonce-constituents when the earlier verb and its object already form an ordinary VP constituent.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An NP-plus-PP object/recipient sequence is different because neither of its parts heads the other.",
+        "pages": [
+          1349
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Kim copied the report and left.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Lena repaired the bicycle and cleaned the garage.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4.6",
+        "pages": [
+          1349
+        ],
+        "pdf_pages": [
+          1369
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nonce-constituent requirements versus head–dependent VP relation",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1058",
+    "domain": "clauses",
+    "concept": "Delayed right cases are not basic constituency counterproof",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "A delayed right element produces superficially competing groupings but carries additional prosodic, weight or structural evidence of non-basic syntax.",
+    "condition": "Apply basic coordination before invoking a special delayed-right account of constituenthood.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Very light postnuclear elements often reduce naturalness in delayed-right constructions.",
+        "pages": [
+          1349
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Eli opened the drawer and found the key.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The guards locked the doors and left the building.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4.6",
+        "pages": [
+          1349
+        ],
+        "pdf_pages": [
+          1369
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Delayed right cases are not basic constituency counterproof",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1059",
+    "domain": "clauses",
+    "concept": "Coordination diagnostic is explicitly defeasible",
+    "rule_type": "descriptive_generalization",
+    "scope": "coordination and supplementation",
+    "statement": "The textbook retains coordination as a useful constituent test only where no independent evidence motivates a more complex construction.",
+    "condition": "Treat constituency inferred from coordination as a hypothesis subject to non-basic exceptions.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A detectable coordination does not guarantee that each string is a constituent outside that particular coordination.",
+        "pages": [
+          1350
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He delivered the letters and stored the receipts.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The chef cleaned the kitchen and washed the dishes.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§4.6",
+        "pages": [
+          1350
+        ],
+        "pdf_pages": [
+          1370
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Coordination diagnostic is explicitly defeasible",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1060",
+    "domain": "clauses",
+    "concept": "Supplementation versus dependency and coordination",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "Supplementation is unintegrated and non-headed; ordinary dependency is integrated and headed, while ordinary coordination is integrated but non-headed.",
+    "condition": "Classify syntactic integration and headedness independently before deciding whether an interpolation is a dependent, coordinate or supplement.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A supplement can be introduced by and without becoming an integrated coordinate.",
+        "pages": [
+          1350
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina, a committed volunteer, organised the drive.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The proposal—frankly, I doubt it—was withdrawn.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.1",
+        "pages": [
+          1350
+        ],
+        "pdf_pages": [
+          1370
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Supplementation versus dependency and coordination",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1061",
+    "domain": "clauses",
+    "concept": "Supplement placement and phonological punctuation cues",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "Central supplements occur as clause interruptions or loose clause-edge appendages, normally cued by prosodic separation or punctuation.",
+    "condition": "Separate supplemental material from the host sentence's integrated construction by intonation or commas, dashes, parentheses or suitable stronger punctuation.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Punctuation strength signals degrees of separation; the details belong to Chapter 20.",
+        "pages": [
+          1350
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The project, as you know, has been postponed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They approved the renovation—a wise decision.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.1",
+        "pages": [
+          1350
+        ],
+        "pdf_pages": [
+          1370
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Supplement placement and phonological punctuation cues",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1062",
+    "domain": "clauses",
+    "concept": "And-initial interpolations can be supplements",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "An interpolated and-clause may be secondary commentary rather than the second half of an integrated clause coordination.",
+    "condition": "Check whether the inserted clause is equal in syntactic status to the main clause or instead parenthetical.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The mere presence of and is not sufficient to prove a coordination node.",
+        "pages": [
+          1351
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mira—and I agree with her—recommended a postponement.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The accountant—and she had checked the numbers—raised no objections.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.1",
+        "pages": [
+          1351
+        ],
+        "pdf_pages": [
+          1371
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "And-initial interpolations can be supplements",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1063",
+    "domain": "clauses",
+    "concept": "Anchors may be NPs, clauses, adjectives or VPs",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "A supplement is semantically related to an anchor, which need not be a nominal head and may extend over a complete clause or VP.",
+    "condition": "Record which syntactic constituent supplies the interpretation of the supplement without making it the syntactic head of that supplement.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Anchor–supplement semantic compatibility is weaker than complementation licensing.",
+        "pages": [
+          1351
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This proposal—a remarkably ambitious one—passed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The term provisional, that is temporary, was used throughout the report.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.1",
+        "pages": [
+          1351
+        ],
+        "pdf_pages": [
+          1371
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Anchors may be NPs, clauses, adjectives or VPs",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1064",
+    "domain": "clauses",
+    "concept": "Semantic compatibility versus head licensing",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "A content-clause supplement is constrained by coherence with its anchor, whereas an integrated complement must be licensed by a head.",
+    "condition": "Distinguish a free-standing explanatory comment about the anchor from a selected subordinate complement.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A question-type supplement can be semantically incongruous in a context without being a syntactic valency violation.",
+        "pages": [
+          1351
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The amendment—that all leases remain valid—was adopted.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The decision—whether the site would reopen—was delayed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.1",
+        "pages": [
+          1351
+        ],
+        "pdf_pages": [
+          1371
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Semantic compatibility versus head licensing",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1065",
+    "domain": "clauses",
+    "concept": "Supplementation tolerates content clauses not selected by the anchor head",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "Unlike an integrated NP complement, a supplementary content clause can specify an anchor NP's content even if its head noun does not license that clause as a complement.",
+    "condition": "When a dash-separated content clause supplies a parenthetical specification, test semantic content rather than the lexical selection of the anchor noun.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An integrated NP headed by memo or topic can have different licensing conditions.",
+        "pages": [
+          1352
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The memo—that the library would close early—surprised everyone.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The topic of discussion—how the network failed—remained unresolved.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.1",
+        "pages": [
+          1352
+        ],
+        "pdf_pages": [
+          1372
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Supplementation tolerates content clauses not selected by the anchor head",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1066",
+    "domain": "clauses",
+    "concept": "Main-clause supplements retain independent illocutionary force",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "Interrogatives and other main clauses can appear as supplements with their main-clause form and pragmatic force intact.",
+    "condition": "Do not reconstruct every main-clause interpolation as a subordinate clause just because it appears inside another clause.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Dependent clauses generally have different form and illocutionary restrictions.",
+        "pages": [
+          1352
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The offer—can you believe it?—was withdrawn.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I decided—why would I not?—to take the course.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.1",
+        "pages": [
+          1352
+        ],
+        "pdf_pages": [
+          1372
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Main-clause supplements retain independent illocutionary force",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1067",
+    "domain": "clauses",
+    "concept": "Supplementation is non-restrictive",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "Supplementary material comments on an independently established anchor rather than selecting one member from a larger reference class.",
+    "condition": "For relative and appositive supplements, separate added information from the head's identifying restrictive content.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An integrated dependent is not always semantically restrictive, so semantic non-restrictiveness alone does not prove supplementation.",
+        "pages": [
+          1352
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The library, which opened in June, is nearby.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "My supervisor, an experienced researcher, agreed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.1",
+        "pages": [
+          1352
+        ],
+        "pdf_pages": [
+          1372
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Supplementation is non-restrictive",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1068",
+    "domain": "clauses",
+    "concept": "Integrated relative and appositive modifiers can be semantically non-restrictive",
+    "rule_type": "descriptive_generalization",
+    "scope": "coordination and supplementation",
+    "statement": "Even an integrated NP modifier may identify no narrower subset; the integrated/supplementary distinction is syntactic and prosodic, not reducible to restrictive versus non-restrictive semantics.",
+    "condition": "Keep integrated modifiers with a unique referent distinct from separated supplements.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The traditional restrictive/nonrestrictive dichotomy does not map one-to-one onto the two grammatical constructions.",
+        "pages": [
+          1353
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "My sister who lives abroad called me yesterday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "This is my colleague Dana.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.1",
+        "pages": [
+          1353
+        ],
+        "pdf_pages": [
+          1373
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Integrated relative and appositive modifiers can be semantically non-restrictive",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1069",
+    "domain": "clauses",
+    "concept": "A supplement needs an interpretable anchor",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "A relative-clause supplement cannot by itself replace its anchor: the anchor is necessary to license the relative interpretation.",
+    "condition": "Check for a nonrestrictive supplementary relative lacking the NP or clause it modifies.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An omitted anchor can sometimes leave a grammatical different construction with an NP as new subject, but not a free-standing relative-clause supplement.",
+        "pages": [
+          1353
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The sculpture, which arrived last week, was damaged.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The architect, whose plans were approved, celebrated.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.1",
+        "pages": [
+          1353
+        ],
+        "pdf_pages": [
+          1373
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "A supplement needs an interpretable anchor",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1070",
+    "domain": "clauses",
+    "concept": "Supplements are represented outside the integrated constituent tree",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "The Cambridge analysis relates a supplement to its anchor by an external link, rather than treating the two as a single integrated syntactic constituent.",
+    "condition": "Use a separate supplement node and an anchor link when constructing syntax tree explanations.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The source's diagram specifically distinguishes a clausal anchor from an NP anchor.",
+        "pages": [
+          1354
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The collection sold out overnight—a remarkable outcome.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The letter, which had no signature, was returned.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.1",
+        "pages": [
+          1354
+        ],
+        "pdf_pages": [
+          1374
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Supplements are represented outside the integrated constituent tree",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1071",
+    "domain": "clauses",
+    "concept": "Supplement indicators specify or explain an anchor",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "Indicators including namely, that is, that is to say, for example and especially signal the intended relation of a supplement to its anchor.",
+    "condition": "Distinguish specification, explanation, exemplification and highlighting from ordinary coordinator semantics.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The same indicator can link different syntactic categories, and some can qualify rather than simply restate.",
+        "pages": [
+          1354
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We need one document—namely, the original certificate.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Several instruments, for example violins and clarinets, were stored upstairs.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.1",
+        "pages": [
+          1354
+        ],
+        "pdf_pages": [
+          1374
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Supplement indicators specify or explain an anchor",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1072",
+    "domain": "clauses",
+    "concept": "Syndetic supplements and movable indicators",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "Supplements with an overt indicator are syndetic and those without one are asyndetic; unlike ordinary coordinators, some indicators can occur within the supplement.",
+    "condition": "Do not require a supplement indicator to occupy the first position of every supplement.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The location of an indicator is constrained by its particular lexical construction.",
+        "pages": [
+          1355
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The laboratory needs new equipment; a centrifuge, for example, would help.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The outcome—that is, the final tally—was published.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.1",
+        "pages": [
+          1355
+        ],
+        "pdf_pages": [
+          1375
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Syndetic supplements and movable indicators",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1073",
+    "domain": "clauses",
+    "concept": "Clause-anchored supplements may be interpolations or appendages",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "A clause-anchored supplement may appear within the clause or near either edge, with its syntactic unintegration retained.",
+    "condition": "Record whether supplement placement interrupts the clause or appends material without making it an integrated clause adjunct.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Initial non-finite supplements have their own subject-reference constraints, which are treated separately.",
+        "pages": [
+          1355
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "After considering the alternatives, they chose the smaller hall.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We completed the project—an unexpectedly costly effort.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.1",
+        "pages": [
+          1355
+        ],
+        "pdf_pages": [
+          1375
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Clause-anchored supplements may be interpolations or appendages",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1074",
+    "domain": "clauses",
+    "concept": "Subclausal supplement anchoring and distance",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "A supplement linked semantically to a phrase can appear adjacent, separated from the anchor, or even inside a longer NP anchor.",
+    "condition": "Track anchor identity separately from the clause-relative location of the supplement.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Nonadjacency does not, by itself, establish ungrammaticality.",
+        "pages": [
+          1355
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The vase, a gift from her aunt, stood on the mantel.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There remained one issue: whether the tests would succeed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.1",
+        "pages": [
+          1355
+        ],
+        "pdf_pages": [
+          1375
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subclausal supplement anchoring and distance",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1075",
+    "domain": "clauses",
+    "concept": "Multiple and nested supplements",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "Several supplements can occur in one sentence, and one supplement can itself provide the anchor for another.",
+    "condition": "Allow multiple separate supplement links rather than collapsing the entire sequence into one modifier node.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The hierarchy of links may differ from linear order, especially with nested parenthetical indicators.",
+        "pages": [
+          1356
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The gathering—a family reunion, in other words, a celebration—lasted all day.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The estimate, about eight percent, which surprised everyone, was revised.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.1",
+        "pages": [
+          1356
+        ],
+        "pdf_pages": [
+          1376
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Multiple and nested supplements",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1076",
+    "domain": "clauses",
+    "concept": "Supplementary relative clauses and anchor variability",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "Supplementary relatives form a subordinate-clause subtype but their anchor can be a clause or a phrase, including a quantified NP.",
+    "condition": "Distinguish a relative commenting on a whole event from one linked to a nominal anchor.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The detailed contrast with integrated relatives is specified in Chapter 12 §4.",
+        "pages": [
+          1356
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The train was delayed, which annoyed the passengers.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The team prepared four charts, two of which were later revised.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.2(a)",
+        "pages": [
+          1356
+        ],
+        "pdf_pages": [
+          1376
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Supplementary relative clauses and anchor variability",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1077",
+    "domain": "clauses",
+    "concept": "Specifying and ascriptive NP supplements",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "A specifying NP supplement establishes the identity of its anchor; an ascriptive NP supplement attributes a property to the anchor's referent.",
+    "condition": "Distinguish identity-giving nominal appositions from descriptions when linking an NP supplement.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Both resemble predicative complements but do not have identical substitution properties.",
+        "pages": [
+          1357
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The opening speaker, Professor Vale, thanked the audience.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The opening speaker, a talented pianist, thanked the audience.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.2(b)",
+        "pages": [
+          1357
+        ],
+        "pdf_pages": [
+          1377
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Specifying and ascriptive NP supplements",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1078",
+    "domain": "clauses",
+    "concept": "Supplementary apposition and substitution entailment",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "A specifying NP supplement qualifies as supplementary apposition when substitution of the appositive for the whole anchor-plus-supplement yields an entailed proposition.",
+    "condition": "Use the substitution entailment as a diagnostic for true specifying apposition, not for all loosely attached NPs.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Indefinite anchor NPs may occur naturally in apposition even when their corresponding specifying be clause sounds anomalous.",
+        "pages": [
+          1357
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The newest student, Amir, gave the speech.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A colleague, Dr Malik, sent the instructions.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.2(b)",
+        "pages": [
+          1357
+        ],
+        "pdf_pages": [
+          1377
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Supplementary apposition and substitution entailment",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1079",
+    "domain": "clauses",
+    "concept": "Referential and generic appositive NPs",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "The appositive can identify an actual individual, a generic type or a definition; the anchor need not be a uniquely referential NP.",
+    "condition": "Test whether the appositive specifies the anchor category or reference without making referentiality a blanket requirement.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The book treats the anchor NP as nonreferential in its technical sense; examples include both definite and indefinite phrases.",
+        "pages": [
+          1357
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A flowering shrub, the camellia, grows here.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A percussion instrument—a drum—is usually played by striking it.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.2(b)",
+        "pages": [
+          1357
+        ],
+        "pdf_pages": [
+          1377
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Referential and generic appositive NPs",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1080",
+    "domain": "clauses",
+    "concept": "Separated supplementary apposition",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "An NP appositive may appear after material intervenes between it and its anchor, especially with an indefinite anchor.",
+    "condition": "Link the appended specifying name back to its NP anchor rather than to the immediately preceding adjunct.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Separation is not confined exclusively to indefinite anchors.",
+        "pages": [
+          1358
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I met an old friend at the concert—Julian.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Only two options remain—repair and replacement.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.2(b)",
+        "pages": [
+          1358
+        ],
+        "pdf_pages": [
+          1378
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Separated supplementary apposition",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1081",
+    "domain": "clauses",
+    "concept": "Ascriptive NP supplements are not necessarily apposition",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "An NP that ascribes a property may not substitute for the anchor while preserving grammatical form or entailment.",
+    "condition": "Do not label all comma-delimited noun phrases as specifying appositives.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Bare role NPs and negative evaluations illustrate the failure of the appositional substitution test.",
+        "pages": [
+          1358
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The chairperson, a practical organiser, introduced the meeting.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "My uncle, no expert, advised caution.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.2(b)",
+        "pages": [
+          1358
+        ],
+        "pdf_pages": [
+          1378
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ascriptive NP supplements are not necessarily apposition",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1082",
+    "domain": "clauses",
+    "concept": "Content-specifying clause supplements versus apposition",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "A finite content clause can specify the content of an NP anchor without being an NP appositive.",
+    "condition": "Recognise semantic content specification without applying the NP-substitution entailment criterion.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The anchor may also be another content clause rather than an NP.",
+        "pages": [
+          1358
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The promise—that the work would be finished—reassured us.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The issue—whether to postpone the launch—divided the committee.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.2(c)",
+        "pages": [
+          1358
+        ],
+        "pdf_pages": [
+          1378
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Content-specifying clause supplements versus apposition",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1083",
+    "domain": "clauses",
+    "concept": "Main clause supplements and content-supplying explanation",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "A main-clause supplement may specify or explain an NP or prior clause, retaining main-clause syntax and sometimes appearing after a colon.",
+    "condition": "Separate content-specifying main clauses from integrated NP complements and from independent orthographic sentences.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Terminal main-clause supplements without indicators can be hard to distinguish syntactically from following sentences.",
+        "pages": [
+          1359
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A complication arose: the materials had not arrived.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The results were unexpected—that is, the sample was much smaller.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.2(c–d)",
+        "pages": [
+          1359
+        ],
+        "pdf_pages": [
+          1379
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Main clause supplements and content-supplying explanation",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1084",
+    "domain": "clauses",
+    "concept": "Parenthetical and tag main clauses",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "Parentheticals and interrogative tags are structurally incomplete main-clause expressions usable as supplementary elements.",
+    "condition": "Identify a parenthetical comment or confirming tag, rather than classifying its truncated syntax as an accidental fragment.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Detailed internal form and interpretation belongs to Chapter 10 §5.",
+        "pages": [
+          1359
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The task is, I believe, feasible.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You have seen the draft, haven't you?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.2(d)",
+        "pages": [
+          1359
+        ],
+        "pdf_pages": [
+          1379
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Parenthetical and tag main clauses",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1085",
+    "domain": "clauses",
+    "concept": "Adjective phrase and verbless supplements",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "Adjective phrases and verbless clause structures can serve as supplements; they may be predicated of a nominal participant or of a whole proposition.",
+    "condition": "Distinguish an attributive adjective from a detached adjective phrase and a subject-containing verbless clause.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Not all unattached adjective phrases have a referential NP predicand; worse can assess a clause.",
+        "pages": [
+          1359
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The director, worried by the delay, called a meeting.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The hikers returned, their boots covered in mud.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.2(e–f)",
+        "pages": [
+          1359
+        ],
+        "pdf_pages": [
+          1379
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjective phrase and verbless supplements",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1086",
+    "domain": "clauses",
+    "concept": "Verbless clauses versus simple nominal supplements",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "A supplemental sequence with an internal subject–predicative structure can be a verbless clause, even when one isolated NP would be an ascriptive supplement.",
+    "condition": "Look for clause-internal subject and predicative relations in the detached expression.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some fragmentary main clauses used parenthetically have independent directive force instead.",
+        "pages": [
+          1360
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The team stood quietly, their hands raised.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The pupils waited outside, many of them impatient.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.2(f)",
+        "pages": [
+          1360
+        ],
+        "pdf_pages": [
+          1380
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Verbless clauses versus simple nominal supplements",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1087",
+    "domain": "clauses",
+    "concept": "Overt and understood subjects in non-finite supplements",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "A non-finite supplement may have its own subject or an implicit subject inferred from its anchor or context.",
+    "condition": "Do not impose a universal equation between the main-clause subject and the non-finite supplement's understood subject.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some speaker-oriented framing clauses have contextual understood subjects; subject-reference details cross-reference Chapter 14 §9.",
+        "pages": [
+          1360
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Having reviewed the minutes, Elena approved the motion.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "To be perfectly frank, I disagree.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.2(g)",
+        "pages": [
+          1360
+        ],
+        "pdf_pages": [
+          1380
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Overt and understood subjects in non-finite supplements",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1088",
+    "domain": "clauses",
+    "concept": "PP and AdvP supplementation versus integrated adjuncts",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "Preposition and adverb phrases can supplement an NP or whole clause, including parenthetical speaker assessments.",
+    "condition": "Differentiate clausal-scope detached adjuncts from embedded NP complements and normal integrated adverb positions.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The Cambridge grammar treats many clausal supplements and adjuncts together where the boundary is small.",
+        "pages": [
+          1360
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The report—in my opinion—needs revision.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The speakers travelled—probably—by train.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.2(h)",
+        "pages": [
+          1360
+        ],
+        "pdf_pages": [
+          1380
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "PP and AdvP supplementation versus integrated adjuncts",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1089",
+    "domain": "clauses",
+    "concept": "Negation scope and it-cleft limitations for clausal supplements",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "Clausal supplements are outside the scope of a negative in the anchor and cannot ordinarily be foregrounded in the it-cleft construction.",
+    "condition": "When diagnosing scope, place a separate detached supplement at clause level rather than inside the proposition's negation.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A parallel integrated adverb might differ in scope and permitted focus position.",
+        "pages": [
+          1360
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "From my perspective, the proposal is not ready.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The plan, as you know, was delayed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.2(h)",
+        "pages": [
+          1360
+        ],
+        "pdf_pages": [
+          1380
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negation scope and it-cleft limitations for clausal supplements",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1090",
+    "domain": "clauses",
+    "concept": "Interjections as expressive unintegrated items",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "Interjections have expressive rather than ordinary propositional meaning, and central interjections do not enter the normal integrated syntactic combinations of major word classes.",
+    "condition": "Recognise interjections used alone or as supplements to a clause.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Words historically used as verbs can be reanalysed as interjections in suitable contexts.",
+        "pages": [
+          1361
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Oops, I forgot the notebook.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Wow, the auditorium is enormous.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.2(i)",
+        "pages": [
+          1361
+        ],
+        "pdf_pages": [
+          1381
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Interjections as expressive unintegrated items",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1091",
+    "domain": "clauses",
+    "concept": "Coordinator-introduced material can be supplementary",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "Clauses and phrases introduced by a coordinator may be separated prosodically or typographically from the integrated host and interpreted as a supplement.",
+    "condition": "Determine integration by the scope and grammatical function of the inserted material, not simply by and/or marking.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Some analogous strings admit both a basic coordination and a supplemental analysis depending on intonation.",
+        "pages": [
+          1361
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "If she reads the letter—and she probably will—she will reply.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The proposal—and, frankly, its timing—worries me.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.2(j)",
+        "pages": [
+          1361
+        ],
+        "pdf_pages": [
+          1381
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Coordinator-introduced material can be supplementary",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1092",
+    "domain": "clauses",
+    "concept": "Exceptional agreement sensitivity of coordinated supplements",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "Although supplements are ordinarily omissible without structural changes, an and-introduced detached subject expression can affect plural agreement in a marginal kind of supplementation.",
+    "condition": "If a detached and-phrase jointly determines the finite verb's number, retain this exceptional relation rather than automatically discarding the supplement.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Such an agreement-sensitive supplement cannot automatically be replaced by an ordinary parenthetical without changing the construction.",
+        "pages": [
+          1361
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The manager—and her assistant—have signed the agreement.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The manager has signed the agreement.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.2(j)",
+        "pages": [
+          1361
+        ],
+        "pdf_pages": [
+          1381
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Exceptional agreement sensitivity of coordinated supplements",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1093",
+    "domain": "clauses",
+    "concept": "Dashes versus parentheses in agreement-sensitive supplements",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "A dash-delimited and-phrase affecting subject–verb agreement need not allow the same analysis when surrounded by parentheses.",
+    "condition": "When an added subject influences plural agreement, do not treat punctuation changes as uniformly harmless.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "For the agreement-sensitive construction the textbook explicitly rules out replacing the dashes with parentheses; details cross-reference Chapter 20 §5.",
+        "pages": [
+          1362
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The director—and her deputy—were present.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The director (and this surprised everyone) was present.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.2(j)",
+        "pages": [
+          1362
+        ],
+        "pdf_pages": [
+          1382
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dashes versus parentheses in agreement-sensitive supplements",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1094",
+    "domain": "clauses",
+    "concept": "Or-introduced supplementary reformulation",
+    "rule_type": "classification",
+    "scope": "coordination and supplementation",
+    "statement": "Or can introduce an appended supplement that renames, corrects or qualifies the way an earlier expression was stated.",
+    "condition": "Treat corrective or as a supplementary discourse marker in the relevant contexts rather than ordinary exclusive choice between integrated coordinates.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Not every or-phrase is supplementary; regular inclusive/exclusive coordination remains a separate analysis.",
+        "pages": [
+          1362
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I spoke with Mr Alvarez—or Mateo, as his friends call him.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The meeting starts on Thursday—or at least that is the current schedule.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.2(j)",
+        "pages": [
+          1362
+        ],
+        "pdf_pages": [
+          1382
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Or-introduced supplementary reformulation",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
+  },
+  {
+    "id": "CLS-1095",
+    "domain": "clauses",
+    "concept": "Supplementary relative clause requires an antecedent anchor",
+    "rule_type": "constraint",
+    "scope": "coordination and supplementation",
+    "statement": "A detached supplementary relative clause cannot independently fill the missing anchor NP; the relative clause's interpretation depends on a present antecedent or suitable clausal anchor.",
+    "condition": "When a nonrestrictive relative clause introduced by which or whose is presented as a supplement, an appropriate nominal or clausal anchor must be present.",
+    "violation": "A nonrestrictive supplementary relative clause is used without any interpretable anchor.",
+    "exceptions": [
+      {
+        "description": "An expression that becomes a normal independent NP or a licensed interrogative is a different construction; do not flag that merely because an original version had a supplement.",
+        "pages": [
+          1353
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The entrance, which the architect had redesigned, was finally approved.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The shed, whose roof had collapsed, was demolished.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "w1",
+          "text": "Which the architect had redesigned, was finally approved.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "w2",
+          "text": "Whose roof had collapsed, was demolished.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§5.1",
+        "pages": [
+          1353
+        ],
+        "pdf_pages": [
+          1373
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Supplementary relative clause requires an antecedent anchor",
+        "relation": "unverified",
+        "note": "Requires independent comparison with Burton-Roberts source and a justified crosswalk."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "missing_word",
+      "error_pattern": "When a nonrestrictive relative clause introduced by which or whose is presented as a supplement, an appropriate nominal or clausal anchor must be present.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Which the architect had redesigned, was finally approved. ||| The entrance, which the architect had redesigned, was finally approved.",
+        "Whose roof had collapsed, was demolished. ||| The shed, whose roof had collapsed, was demolished."
+      ],
+      "learner_explanation": "This is a supplementary relative clause, so the description needs an anchor that identifies what it describes. Add the missing noun phrase or change the sentence into a different complete construction.",
+      "corrected_paragraph_template": "Restore the missing relative-clause anchor while preserving the meaning and all surrounding sentences.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The entrance, which the architect had redesigned, was finally approved.",
+        "The shed, whose roof had collapsed, was demolished."
+      ],
+      "lesson_tags": [
+        "supplementation",
+        "relative_clauses",
+        "anchors"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B source extraction only. Checked printed text, example layout and qualification notes in uploaded full-volume PDF; original English examples. Independent linguistic QA and crosswalk remain outstanding."
   }
 ]

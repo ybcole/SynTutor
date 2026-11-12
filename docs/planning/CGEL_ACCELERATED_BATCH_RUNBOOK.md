@@ -346,3 +346,7 @@ Printed pp. 1305–1322 yielded 23 classification records (`CLS-973`–`CLS-995`
 ## Chapter 15 fourth checkpoint
 
 Printed pp. 1323–1342 audited consecutively in text and rendered layout, including genitive comparison tables, footnote exceptions and the nonce-constituent tree. Added 41 inert English-only records (`CLS-996`–`CLS-1036`); 3 are spec-only constraints, not enabled. Continue at p. 1343; only 20 printed pages remain in Chapter 15. Independent linguistic review and chapter-wide CI remain outstanding.
+
+## Chapter 15 Phase B source closure
+
+Printed pp. 1343–1362 were checked against text, all rendered page layouts and the two syntax-tree diagrams; the batch adds 59 inert records (`CLS-1037`–`CLS-1095`). Chapter 15 printed pp. 1273–1362 are fully accounted for (88 substantive and 2 contents-only skips; zero unprocessed). The Chapter 15 draft PR remains subject to complete local/CI gates and independent source QA, with no newly enabled runtime rules. Next chapter in priority order: Chapter 17.
