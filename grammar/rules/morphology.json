@@ -22931,5 +22931,1776 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-391",
+    "domain": "morphology",
+    "concept": "Place names without derived nationality adjectives",
+    "rule_type": "constraint",
+    "scope": "word",
+    "statement": "New Zealand can modify a noun directly, but the place-name nominal does not itself function as a predicative adjective expressing a person's origin.",
+    "condition": "The place name New Zealand follows copular be as the sole complement, and the intended meaning is a person's national origin.",
+    "violation": "The bare place name is used as a nationality predicate of a person.",
+    "exceptions": [
+      {
+        "description": "The place name can function attributively as a nominal, or as the complement of from. An inhabitant noun can be used as the predicate.",
+        "pages": [
+          1696
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Her cousins are New Zealanders.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The new curator is from New Zealand.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Her cousins are New Zealand.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The new curator is New Zealand.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.6.2",
+        "pages": [
+          1696
+        ],
+        "pdf_pages": [
+          1716
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Place names without derived nationality adjectives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "The bare place name is used as a nationality predicate of a person.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Her cousins are New Zealand. ||| Her cousins are New Zealanders.",
+        "The new curator is New Zealand. ||| The new curator is from New Zealand."
+      ],
+      "learner_explanation": "New Zealand names the place. To describe a person's origin, use a form such as New Zealander or from New Zealand.",
+      "corrected_paragraph_template": "Use an inhabitant noun or a phrase with from to describe the person's origin.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "A New Zealand artist opened the show.",
+        "Our next destination is New Zealand.",
+        "The curator is from New Zealand.",
+        "The winning team is New Zealand."
+      ],
+      "lesson_tags": [
+        "nationality-forms",
+        "predicative-complements"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-392",
+    "domain": "morphology",
+    "concept": "Scotland adjective inhabitant and generic forms",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Scottish is the usual adjective in the source's account. Scot is an inhabitant noun and the Scots is the preferred generic. Scots also names a language.",
+    "condition": "Scotch survives in established collocations and in some usage outside Scotland. Scots appears as an adjective in some institutional names.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The archive received a collection of Scottish photographs.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The restaurant served Scotch broth with fresh bread.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.6.2",
+        "pages": [
+          1696
+        ],
+        "pdf_pages": [
+          1716
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Scotland adjective inhabitant and generic forms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-393",
+    "domain": "morphology",
+    "concept": "Geographic initial combining forms",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Established forms such as Anglo, Franco and Sino can enter neo-classical compounds that function as adjectives or nouns.",
+    "condition": "A superficially similar term can instead be a blend. Cambridge analyzes Amerindian as a blend of American and Indian.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The exhibit traced Anglo-American cultural exchanges.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The archive opened a collection on Franco-German relations.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.6.2",
+        "pages": [
+          1696
+        ],
+        "pdf_pages": [
+          1716
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Geographic initial combining forms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-394",
+    "domain": "morphology",
+    "concept": "Scope of nominalisation",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Nominalisation includes formation of nouns by affixation, conversion and phonological change, and some compound formations. It can also form a different kind of noun from an existing noun.",
+    "condition": "Cambridge groups the outputs by typical denotation, including persons and instruments or actions, states and processes.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Their friendship survived the move.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The passengers waited two hours for takeoff.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7",
+        "pages": [
+          1696,
+          1697
+        ],
+        "pdf_pages": [
+          1716,
+          1717
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Scope of nominalisation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-395",
+    "domain": "morphology",
+    "concept": "Person and instrument nominalisations",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Some processes form nouns for both persons and instruments. Others in the source's inventory are person-only.",
+    "condition": "The productive suffix er illustrates the shared pattern, and the referent depends on the word and context.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A bottle washer worked the evening shift.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The dishwasher stopped halfway through the cycle.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.1",
+        "pages": [
+          1697
+        ],
+        "pdf_pages": [
+          1717
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Person and instrument nominalisations",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-396",
+    "domain": "morphology",
+    "concept": "Deverbal ant and ent",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ant and ent occur in nouns denoting people who perform an action or instruments or substances used to perform it.",
+    "condition": "Both are described as unproductive. Ate can be lost from the verb base, and débutant is a loan with an apparent noun base.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The complainant submitted the paperwork before noon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The crew spread an absorbent over the spill.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.1(a)",
+        "pages": [
+          1697
+        ],
+        "pdf_pages": [
+          1717
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Deverbal ant and ent",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-397",
+    "domain": "morphology",
+    "concept": "Deprecatory ard nouns",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "The suffix ard survives in a small stock of typically deprecatory person nouns.",
+    "condition": "Cambridge treats it as no longer productive.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The play depicts the landlord as a drunkard.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The narrator first dismisses the apprentice as a dullard.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.1(b)",
+        "pages": [
+          1697
+        ],
+        "pdf_pages": [
+          1717
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Deprecatory ard nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-398",
+    "domain": "morphology",
+    "concept": "Person nouns in arian",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Arian can form person nouns from abstract nouns and often replaces a final y or another ending. The person often holds a doctrine or position associated with the base.",
+    "condition": "The pattern has limited but continuing productivity. Parliamentarian has a lexicalized sense.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The school hired a strict disciplinarian.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A vegetarian brought her own lunch.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.1(c)",
+        "pages": [
+          1697
+        ],
+        "pdf_pages": [
+          1717
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Person nouns in arian",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-399",
+    "domain": "morphology",
+    "concept": "Passive and active roles of ee nouns",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "An ee noun commonly denotes the person affected by a verb, including a person corresponding to a prepositional passive. Some denote the subject of an active perfect.",
+    "condition": "Escapee and retiree illustrate the active group. Patentee and absentee have exceptional nonverbal bases.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The interviewee asked to see a copy of the transcript.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A retiree volunteered to guide the walking group.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.1(d)",
+        "pages": [
+          1697
+        ],
+        "pdf_pages": [
+          1717
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Passive and active roles of ee nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-400",
+    "domain": "morphology",
+    "concept": "Ee counterparts and productivity",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ee derivatives often have an established er or or counterpart denoting a different participant in the same event.",
+    "condition": "The source reports productivity especially in American English, though relatively few coinages become established. Some formations replace an ending of the base.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The examiner handed the examinee a spare pencil.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The interviewer arranged a second meeting with the interviewee.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.1(d)",
+        "pages": [
+          1697
+        ],
+        "pdf_pages": [
+          1717
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ee counterparts and productivity",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-401",
+    "domain": "morphology",
+    "concept": "Person nouns in eer",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Eer usually forms a noun for a person associated with what a nominal base denotes, sometimes with a derogatory tone.",
+    "condition": "Gazetteer has a non-person sense. The source gives privateer as an exceptional adjective-based ship term and notes some older ier spellings.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The auctioneer paused before accepting the final bid.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The mountaineer checked the weather before leaving.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.1(e)",
+        "pages": [
+          1698
+        ],
+        "pdf_pages": [
+          1718
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Person nouns in eer",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-402",
+    "domain": "morphology",
+    "concept": "Variants er or and ar",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Er is the default variant. Or occurs in many Latin-derived, technical or bound-base words and often follows ate. Ar appears in relatively few words.",
+    "condition": "Some bases permit both er and or. Stress behaviour can differ, as in the legal sense of executor. Other spellings include ier and yer.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The instructor explained the marking scheme.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The bursar checked the amount on the receipt.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.1(f)",
+        "pages": [
+          1698
+        ],
+        "pdf_pages": [
+          1718
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Variants er or and ar",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-403",
+    "domain": "morphology",
+    "concept": "Range of bases for productive er",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Er attaches to verbs and also to nouns, proper names, adjectives, numerals, adverbs and dephrasal compound bases.",
+    "condition": "Apparent attachment to a bound base in some neo-classical derivatives can be analyzed as replacement of y.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A golfer retrieved the ball from the hedge.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A nine-to-fiver stopped by the shop after work.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.1(f)",
+        "pages": [
+          1698
+        ],
+        "pdf_pages": [
+          1718
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Range of bases for productive er",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-404",
+    "domain": "morphology",
+    "concept": "Semantic roles of er nouns",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Deverbal er nouns often denote agents, but can name non-agentive participants, animals, instruments or other causes.",
+    "condition": "Some lexicalized nouns correspond to a prepositional complement. The source records processual readings of some words in Australian and New Zealand English.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The baker left a tray on the counter.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The sleeper had two narrow berths and a window.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.1(f)",
+        "pages": [
+          1698
+        ],
+        "pdf_pages": [
+          1718
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Semantic roles of er nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-405",
+    "domain": "morphology",
+    "concept": "Complements of deverbal er and or nouns",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "An er or or noun can take a dependent corresponding to the object of the source verb.",
+    "condition": "An of phrase or a genitive can express the relevant participant. This pattern depends on the lexical noun.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The writer of the review agreed to make a correction.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The governor of the province spoke after the vote.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.1(f)",
+        "pages": [
+          1698
+        ],
+        "pdf_pages": [
+          1718
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Complements of deverbal er and or nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-406",
+    "domain": "morphology",
+    "concept": "Ist and related nominal suffixes",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ist productively denotes holders of beliefs, people exhibiting a prejudice, and specialists. Such nouns often have counterparts in ism, y or ics.",
+    "condition": "Some bound-base families are analyzed by affix replacement. Typist has a verbal semantic relation but lacks the ordinary writer-type of complement in the source's example.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A geologist led the hike across the valley.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The panel invited a physicist to explain the results.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.1(g)",
+        "pages": [
+          1699
+        ],
+        "pdf_pages": [
+          1719
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ist and related nominal suffixes",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-407",
+    "domain": "morphology",
+    "concept": "Musical performer nouns in ist",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ist is a common way to form nouns for players of named instruments. The final o is lost in forms based on piano and cello.",
+    "condition": "Drummer and trumpeter illustrate established alternatives in er.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A cellist played during the reception.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The drummer waited for the pianist to finish.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.1(g)",
+        "pages": [
+          1699
+        ],
+        "pdf_pages": [
+          1719
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Musical performer nouns in ist",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-408",
+    "domain": "morphology",
+    "concept": "Associative nik nouns",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Nik can form person nouns associated with a group or interest, often in jocular usage.",
+    "condition": "The source describes a short period of high productivity beginning in the mid-twentieth century.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A beatnik character appears in the first scene.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The article described the protesters as peaceniks.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.1(h)",
+        "pages": [
+          1699
+        ],
+        "pdf_pages": [
+          1719
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Associative nik nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-409",
+    "domain": "morphology",
+    "concept": "Person nouns in ster",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ster forms person nouns from mainly nominal bases and can carry derogatory or shady associations.",
+    "condition": "Adjectival bases also occur. Cambridge reports continued productivity especially in American English, with neutral uses also possible.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The gangster fled through the kitchen.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A youngster carried the team's equipment to the bus.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.1(i)",
+        "pages": [
+          1699
+        ],
+        "pdf_pages": [
+          1719
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Person nouns in ster",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-410",
+    "domain": "morphology",
+    "concept": "Conversion to person and instrument nouns",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Verbs can yield person or instrument nouns through conversion. Adjectives also provide a number of person nouns.",
+    "condition": "The source treats the two verb-to-noun patterns here as relatively limited.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The spy waited by the station entrance.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A professional reviewed the final plans.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.1(j)",
+        "pages": [
+          1699,
+          1700
+        ],
+        "pdf_pages": [
+          1719,
+          1720
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Conversion to person and instrument nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-411",
+    "domain": "morphology",
+    "concept": "Meanings and bases of age nouns",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Age occurs mainly on nominal or verbal bases and can express collectivity, condition, result, place, measure or charge.",
+    "condition": "A word can have more than one of these senses. Shortage has an adjective base, and the suffix is described as unproductive.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The invoice included a charge for postage.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A shortage of spare parts delayed the repairs.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.2(a)",
+        "pages": [
+          1700
+        ],
+        "pdf_pages": [
+          1720
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Meanings and bases of age nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-412",
+    "domain": "morphology",
+    "concept": "Deverbal al nouns and base stress",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "The al nominalisation pattern selects disyllabic verbal bases with final stress in the source's account.",
+    "condition": "Burial has a distinct origin. Few recent formations are cited and current productivity is uncertain.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The arrival of the ferry delayed the crossing.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Their refusal surprised the committee.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.2(b)",
+        "pages": [
+          1700
+        ],
+        "pdf_pages": [
+          1720
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Deverbal al nouns and base stress",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-413",
+    "domain": "morphology",
+    "concept": "Attachment and replacement in ance and ence nouns",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ance and ence can attach to a verb or replace an adjective ending. An ate ending can be lost, and prepositional verb complements can reappear with the noun.",
+    "condition": "The patterns are described as unproductive. Some related forms provide spelling evidence, but there is no fully general choice rule.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Their compliance with the policy simplified the inspection.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The relevance of the evidence became clearer after the interview.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.2(c)",
+        "pages": [
+          1700,
+          1701
+        ],
+        "pdf_pages": [
+          1720,
+          1721
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Attachment and replacement in ance and ence nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-414",
+    "domain": "morphology",
+    "concept": "Productive ation and related nominal endings",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ation is the productive member of a set of nominal suffix variants that includes ion and sion. It productively combines with verbs in ise, ate and ify.",
+    "condition": "Ate is dropped and ify formations add c before the suffix. Many other variants are found mainly in loans. Ing remains a separate nominalisation option.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The team completed the purification of the sample.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The moderation of the debate took careful planning.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.2(d)",
+        "pages": [
+          1701
+        ],
+        "pdf_pages": [
+          1721
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Productive ation and related nominal endings",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-415",
+    "domain": "morphology",
+    "concept": "State territory and collective nouns in dom",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Dom usually attaches to nouns and can denote a state, a territory or a collectivity.",
+    "condition": "Freedom and wisdom have adjectival bases in the source's analysis. Some collective uses are jocular or deprecatory.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The young athlete struggled with sudden stardom.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The map showed the boundaries of the earldom.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.2(e)",
+        "pages": [
+          1701
+        ],
+        "pdf_pages": [
+          1721
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "State territory and collective nouns in dom",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-416",
+    "domain": "morphology",
+    "concept": "State and collective nouns in hood",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Hood generally attaches to nouns to denote a state or a collectivity. Some derivatives have developed other readings.",
+    "condition": "Falsehood and likelihood are adjectival-base exceptions. Livelihood is not an example of derivation from lively by this suffix.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The museum collected objects from her childhood.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The council consulted people from the whole neighbourhood.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.2(f)",
+        "pages": [
+          1701
+        ],
+        "pdf_pages": [
+          1721
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "State and collective nouns in hood",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-417",
+    "domain": "morphology",
+    "concept": "Lexical ing nouns and verbal gerund-participles",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Lexical ing forms gerundial nouns, while inflectional ing forms gerund-participial verbs. The noun can take adjectival modification and an of dependent where the verb can take adverbial modification and a direct object.",
+    "condition": "The same spelling can appear in either construction.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The committee questioned the sudden closing of the bridge.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The report mentioned workers suddenly closing the bridge.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.2(g)",
+        "pages": [
+          1702
+        ],
+        "pdf_pages": [
+          1722
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical ing nouns and verbal gerund-participles",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-418",
+    "domain": "morphology",
+    "concept": "Lexical ing and competing nouns",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "An ing noun may be the only deverbal noun, may differ from another derivative in meaning or complementation, or may be interchangeable with it in some contexts.",
+    "condition": "A less idiomatic choice need not be ungrammatical. Ing nouns can also denote concrete results and can occasionally have noun or preposition bases.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The caretaker noticed a knocking at the back door.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The gallery bought a drawing from a local artist.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.2(g)",
+        "pages": [
+          1702
+        ],
+        "pdf_pages": [
+          1722
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical ing and competing nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-419",
+    "domain": "morphology",
+    "concept": "Semantic groups of ism nouns",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ism forms nouns for doctrines, movements, attitudes and prejudice, and also occurs in terms for linguistic usages and medical conditions.",
+    "condition": "The doctrine-related pattern is productive and often has an ist counterpart. Some adjectives form straightforward state nouns in ism.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The essay compares federalism with other political systems.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The editor removed a colloquialism from the preface.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.2(h)",
+        "pages": [
+          1702
+        ],
+        "pdf_pages": [
+          1722
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Semantic groups of ism nouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-420",
+    "domain": "morphology",
+    "concept": "Class I ity and variant ety",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ity forms quality or state nouns and normally assigns stress before the suffix, often changing the base pronunciation. Ety is a limited variant.",
+    "condition": "Ity generally avoids bases ending in Class II suffixes. It remains particularly productive with able bases, though some able adjectives favour ness.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The team tested the compatibility of the two devices.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The panel discussed the sustainability of the scheme.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.2(i)",
+        "pages": [
+          1702,
+          1703
+        ],
+        "pdf_pages": [
+          1722,
+          1723
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Class I ity and variant ety",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-421",
+    "domain": "morphology",
+    "concept": "Ness as the default quality nominaliser",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ness generally preserves base stress and readily attaches to adjectives, including compounds. Some forms use bases from other categories.",
+    "condition": "Lexicalized words such as business and wilderness depart from the usual transparent meaning. Ness can coexist with a competing suffix or mark a new sense.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The host admired the straightforwardness of her reply.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The teacher commented on the clearness of the explanation.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.2(i)",
+        "pages": [
+          1702,
+          1703
+        ],
+        "pdf_pages": [
+          1722,
+          1723
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ness as the default quality nominaliser",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-422",
+    "domain": "morphology",
+    "concept": "Verbal nominalisations in ment",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ment forms nouns from verbs and is especially common with verbs prefixed with en, em or be. It can denote an abstraction, concrete object or location.",
+    "condition": "The source treats modern productivity as marginal. Oddment is an exceptional survivor with an adjective base.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The new embankment protected the trail.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Their bewilderment gave way to laughter.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.2(j)",
+        "pages": [
+          1703
+        ],
+        "pdf_pages": [
+          1723
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Verbal nominalisations in ment",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-423",
+    "domain": "morphology",
+    "concept": "State and relation nouns in ship",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Ship usually attaches to a person noun to form a noun for an associated state, role or relationship.",
+    "condition": "Hardship has an adjective base and is exceptional.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She finished her apprenticeship in May.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Their friendship began during rehearsals.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.7.2(k)",
+        "pages": [
+          1703
+        ],
+        "pdf_pages": [
+          1723
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "State and relation nouns in ship",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]

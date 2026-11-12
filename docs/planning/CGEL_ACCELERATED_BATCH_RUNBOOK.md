@@ -524,3 +524,7 @@ Printed pp. 1680–1687 add 8 substantive pages and 28 inactive records (`MORPH-
 ## Chapter 19 ninth checkpoint
 
 Printed pp. 1688–1695 add 8 substantive pages and 33 inactive records (`MORPH-358`–`MORPH-390`), including one inactive plural specification. Chapter 19 has 26 unprocessed pages. Continue at p. 1696 with the remaining nationality patterns.
+
+## Chapter 19 tenth checkpoint
+
+Printed pp. 1696–1703 add 8 substantive pages and 33 inactive records (`MORPH-391`–`MORPH-423`), including one inactive specification for nationality predicates. Chapter 19 has 18 unprocessed pages. Continue at p. 1704 with the rest of action, state and process nominalisations.
