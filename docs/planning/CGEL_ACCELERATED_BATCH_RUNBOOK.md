@@ -480,3 +480,7 @@ Printed pp. 1414–1421 add eight substantive pages and 22 inactive records (`CL
 ## Chapter 16 eighth checkpoint
 
 Printed pp. 1422–1429 add eight substantive pages and 22 inactive records (`CLS-1423`–`CLS-1444`), including one `spec_only` constraint. Chapter 16 has 18 unprocessed pages. Continue at p. 1430 with the be-, get- and bare-passive distinction.
+
+## Chapter 16 ninth checkpoint
+
+Printed pp. 1430–1437 add eight substantive pages and 20 inactive records (`CLS-1445`–`CLS-1464`), including one `spec_only` constraint. Chapter 16 has 10 unprocessed pages. Continue at p. 1438 with the remaining adjectival-passive diagnostics.

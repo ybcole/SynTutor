@@ -21,13 +21,13 @@
 | 13. Comparative constructions | 74 | 72 | 0 | 2 | 0 | Source extraction complete |
 | 14. Non-finite and verbless clauses | 102 | 99 | 0 | 3 | 0 | Source-extracted |
 | 15. Coordination and supplementation | 90 | 88 | 0 | 2 | 0 | Source-extracted; independent QA pending |
-| 16. Information packaging | 86 | 65 | 18 | 3 | 0 | In progress (pp. 1363–1429) |
+| 16. Information packaging | 86 | 73 | 10 | 3 | 0 | In progress (pp. 1363–1437) |
 | 17. Deixis and anaphora | 116 | 114 | 0 | 2 | 0 | Source extraction complete |
 | 18. Inflectional morphology | 56 | 53 | 0 | 3 | 0 | Source extraction complete |
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **1558 extracted**, 161 unprocessed, 43 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **1566 extracted**, 153 unprocessed, 43 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -500,3 +500,9 @@ Source audit: `sources/cambridge/chapter_16/PP1414_1421_REPORT.md`.
 Printed pp. 1422–1429 add eight substantive pages and 22 inactive records (`CLS-1423`–`CLS-1444`), including one `spec_only` constraint. Chapter 16 has 18 unprocessed pages. Continue at p. 1430 with the be-, get- and bare-passive distinction.
 
 Source audit: `sources/cambridge/chapter_16/PP1422_1429_REPORT.md`.
+
+## Chapter 16 ninth checkpoint
+
+Printed pp. 1430–1437 add eight substantive pages and 20 inactive records (`CLS-1445`–`CLS-1464`), including one `spec_only` constraint. Chapter 16 has 10 unprocessed pages. Continue at p. 1438 with the remaining adjectival-passive diagnostics.
+
+Source audit: `sources/cambridge/chapter_16/PP1430_1437_REPORT.md`.
