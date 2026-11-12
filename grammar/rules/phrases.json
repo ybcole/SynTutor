@@ -40650,5 +40650,1906 @@
     },
     "related_rules": [],
     "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-646",
+    "domain": "phrases",
+    "concept": "Genitive determiners with pro-nominal one",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "A genitive determiner directly before pro-nominal one is attested but often marginal; a fused independent genitive is normally preferred.",
+    "condition": "This is a usage preference, and it does not exclude genitives followed by an intervening modifier.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Your first draft is ready, but mine still needs work.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I'll bring my spare one.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§6.1",
+        "pages": [
+          1513
+        ],
+        "pdf_pages": [
+          1533
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Genitive determiners with pro-nominal one",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-647",
+    "domain": "phrases",
+    "concept": "Identification with bare the one",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Without another dependent, the one is chiefly available as an identifying predicative complement. An identifying use after know is a narrower exception.",
+    "condition": "In ordinary coreferential object use, a personal pronoun is generally appropriate; an added dependent licenses the one.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You mentioned a missing key. Is this the one?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Which caller do you mean? Oh, I know the one.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "I found the one with the chipped handle.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§6.1",
+        "pages": [
+          1513
+        ],
+        "pdf_pages": [
+          1533
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Identification with bare the one",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-648",
+    "domain": "phrases",
+    "concept": "Informal and idiomatic a one",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Bare a one generally occurs in nonaffirmative informal contexts, including such a one. The form not a single one is usually preferred to not a one.",
+    "condition": "Separate non-anaphoric personal characterizations and colloquial exclamations are also possible.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We tested every lamp and not a one failed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I doubt we'll ever see such a one again.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "I'm not much of a one for camping.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§6.1",
+        "pages": [
+          1513
+        ],
+        "pdf_pages": [
+          1533
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Informal and idiomatic a one",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-649",
+    "domain": "phrases",
+    "concept": "Category diagnostics for the homonyms one",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Pro-nominal one is a common count noun that heads an NP, has a plural ones and requires a determiner in the singular. Determinative one can determine or modify a nominal or fuse with its head.",
+    "condition": "Determinative one does not inflect for number and does not normally follow an NP modifier. The generic personal pronoun one is a separate homonym.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She packed only one blanket.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I packed the thick ones.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Can I borrow a warmer one?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "One can learn from mistakes.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§6.1",
+        "pages": [
+          1513
+        ],
+        "pdf_pages": [
+          1533
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Category diagnostics for the homonyms one",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-650",
+    "domain": "phrases",
+    "concept": "Expansion of pro-nominal and fused one",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Expansion replaces a count pro-form with a contentful noun head. Expansion of a fused determiner-head yields separate determiner and head functions.",
+    "condition": "Use the expansion to distinguish a one-headed NP from one with a fused head.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I need a larger one. I need a larger bowl.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I need one with a lid. I need a bowl with a lid.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§6.1",
+        "pages": [
+          1514
+        ],
+        "pdf_pages": [
+          1534
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Expansion of pro-nominal and fused one",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-651",
+    "domain": "phrases",
+    "concept": "Numerical and singulative fused determiner-head one",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Numerical fused one contrasts with larger cardinals, while singulative fused one corresponds to the indefinite article in the expanded NP.",
+    "condition": "The indefinite article itself cannot supply a fused determiner-head. This resembles definite fused that filling the corresponding gap for the definite article.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We need four blankets but packed only one.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I forgot my ruler. Could you lend me one?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§6.1",
+        "pages": [
+          1514
+        ],
+        "pdf_pages": [
+          1534
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Numerical and singulative fused determiner-head one",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-652",
+    "domain": "phrases",
+    "concept": "Cardinal one as fused modifier-head",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "One after a determiner can be a stressed fused cardinal modifier-head if a higher numeral can replace it. Its expansion retains cardinal one as a modifier.",
+    "condition": "Without numerical contrast, the likelier analysis is the pro-nominal count noun, even after every or any. Coordination with or more supports the cardinal analysis.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We set aside three tickets for every one we sold.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You can choose any one or more of these patches.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "It was a minor improvement, but we welcomed every one we could get.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§6.1",
+        "pages": [
+          1514,
+          1515
+        ],
+        "pdf_pages": [
+          1534,
+          1535
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Cardinal one as fused modifier-head",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-653",
+    "domain": "phrases",
+    "concept": "Count antecedent restriction on pro-nominal one",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "Pro-nominal one takes a count noun or count nominal as antecedent.",
+    "condition": "Fused that can recover a non-count nominal, often formally. A genitive or repeated lexical noun can also preserve the intended reading.",
+    "violation": "A pro-nominal one stands for a non-count nominal in the intended interpretation.",
+    "exceptions": [
+      {
+        "description": "Fused that can recover a non-count nominal, often formally. A genitive or repeated lexical noun can also preserve the intended reading.",
+        "pages": [
+          1515
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Your feedback was more detailed than the tutor's.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The equipment in the studio is older than that in the hall.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "The studio has a new scanner. The one in the hall is older.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "Their suggestion was more detailed than the one from the tutor.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Your feedback was more detailed than the one from the tutor.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The equipment in the studio is older than the one in the hall.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§6.1(a)",
+        "pages": [
+          1515
+        ],
+        "pdf_pages": [
+          1535
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Count antecedent restriction on pro-nominal one",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "A pro-nominal one stands for a non-count nominal in the intended interpretation.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Your feedback was more detailed than the one from the tutor. ||| Your feedback was more detailed than the tutor's.",
+        "The equipment in the studio is older than the one in the hall. ||| The equipment in the studio is older than that in the hall."
+      ],
+      "learner_explanation": "Pro-nominal one takes a count noun or count nominal as antecedent. Use fused that, a genitive, or the lexical noun for a non-count antecedent.",
+      "corrected_paragraph_template": "Use fused that, a genitive, or the lexical noun for a non-count antecedent.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The studio has a new scanner. The one in the hall is older.",
+        "Their suggestion was more detailed than the one from the tutor."
+      ],
+      "lesson_tags": [
+        "reduced_nps"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [
+      "PHR-632"
+    ],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-654",
+    "domain": "phrases",
+    "concept": "Dependents of plural pro-nominal ones",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "Plural pro-nominal ones cannot form an NP on its own despite having no obligatory determiner.",
+    "condition": "A substantive dependent licenses ones. A personal pronoun, fused determinative or repeated lexical noun can be used where the bare form is unavailable.",
+    "violation": "Plural pro-nominal ones appears without a dependent.",
+    "exceptions": [
+      {
+        "description": "A substantive dependent licenses ones. A personal pronoun, fused determinative or repeated lexical noun can be used where the bare form is unavailable.",
+        "pages": [
+          1515
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We still need extension cords. Do you stock them?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Rae had concerns about the schedule, and Ben had some too.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Do you stock longer ones?",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "Ones with rubber grips were available.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "We still need extension cords. Do you stock ones?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Rae had concerns about the schedule, and Ben had ones too.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§6.1(b)",
+        "pages": [
+          1515
+        ],
+        "pdf_pages": [
+          1535
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dependents of plural pro-nominal ones",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "Plural pro-nominal ones appears without a dependent.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "We still need extension cords. Do you stock ones? ||| We still need extension cords. Do you stock them?",
+        "Rae had concerns about the schedule, and Ben had ones too. ||| Rae had concerns about the schedule, and Ben had some too."
+      ],
+      "learner_explanation": "Plural pro-nominal ones cannot form an NP on its own despite having no obligatory determiner. Add a descriptive dependent, or use an available pronoun or fused determiner.",
+      "corrected_paragraph_template": "Add a descriptive dependent, or use an available pronoun or fused determiner.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Do you stock longer ones?",
+        "Ones with rubber grips were available."
+      ],
+      "lesson_tags": [
+        "reduced_nps"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-655",
+    "domain": "phrases",
+    "concept": "Content-clause complements of pro-nominal one",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "Pro-nominal one generally excludes the content-clause complement of the noun it recovers.",
+    "condition": "A relative clause can modify one. In an apparent that-clause example, check whether it supplies the content of the noun or describes a referent through a relative gap.",
+    "violation": "A declarative content clause is retained as complement of pro-nominal one.",
+    "exceptions": [
+      {
+        "description": "A relative clause can modify one. In an apparent that-clause example, check whether it supplies the content of the noun or describes a referent through a relative gap.",
+        "pages": [
+          1515,
+          1516
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I prefer the proposal that we reduce the fee.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They rejected the suggestion that we close early.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "I prefer the one that reduces the fee.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "They rejected the one that we submitted yesterday.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "I prefer the one that we reduce the fee.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "They rejected the one that we close early.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§6.1(c)",
+        "pages": [
+          1515,
+          1516
+        ],
+        "pdf_pages": [
+          1535,
+          1536
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Content-clause complements of pro-nominal one",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "A declarative content clause is retained as complement of pro-nominal one.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "I prefer the one that we reduce the fee. ||| I prefer the proposal that we reduce the fee.",
+        "They rejected the one that we close early. ||| They rejected the suggestion that we close early."
+      ],
+      "learner_explanation": "Pro-nominal one generally excludes the content-clause complement of the noun it recovers. Retain the lexical noun when its content complement follows.",
+      "corrected_paragraph_template": "Retain the lexical noun when its content complement follows.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "I prefer the one that reduces the fee.",
+        "They rejected the one that we submitted yesterday."
+      ],
+      "lesson_tags": [
+        "reduced_nps"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-656",
+    "domain": "phrases",
+    "concept": "Relational PP complements of pro-nominal one",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "Pro-nominal one does not inherit certain PP complements of role, kinship, part–whole or agent nouns.",
+    "condition": "Some PP complements are licensed with other antecedent classes, including some proofs and productions. Ordinary PP and relative modifiers are also available.",
+    "violation": "A pro-nominal one retains an excluded relational PP complement.",
+    "exceptions": [
+      {
+        "description": "Some PP complements are licensed with other antecedent classes, including some proofs and productions. Ordinary PP and relative modifiers are also available.",
+        "pages": [
+          1515,
+          1516
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Which sleeve did you sew? The sleeve of the coat.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Whose sister did you meet? The sister of the conductor.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "This proof of the lemma is shorter than the one of the theorem.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "Which house did you choose? The one beside the lake.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Which sleeve did you sew? The one of the coat.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Whose sister did you meet? The one of the conductor.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§6.1(c)",
+        "pages": [
+          1515,
+          1516
+        ],
+        "pdf_pages": [
+          1535,
+          1536
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Relational PP complements of pro-nominal one",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "A pro-nominal one retains an excluded relational PP complement.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Which sleeve did you sew? The one of the coat. ||| Which sleeve did you sew? The sleeve of the coat.",
+        "Whose sister did you meet? The one of the conductor. ||| Whose sister did you meet? The sister of the conductor."
+      ],
+      "learner_explanation": "Pro-nominal one does not inherit certain PP complements of role, kinship, part–whole or agent nouns. Retain the lexical relational noun or rephrase the relation.",
+      "corrected_paragraph_template": "Retain the lexical relational noun or rephrase the relation.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "This proof of the lemma is shorter than the one of the theorem.",
+        "Which house did you choose? The one beside the lake."
+      ],
+      "lesson_tags": [
+        "reduced_nps"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-657",
+    "domain": "phrases",
+    "concept": "Simple anaphora in fused and one-headed NPs",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In the simple use, a nominal supplies the head interpretation without imposing a subset relation between two sets.",
+    "condition": "A fused head or an overt pro-nominal head can implement the reduction.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "How many hooks do we need? Will twelve do?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That brush is worn, but this one will work.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§6.1",
+        "pages": [
+          1516
+        ],
+        "pdf_pages": [
+          1536
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Simple anaphora in fused and one-headed NPs",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-658",
+    "domain": "phrases",
+    "concept": "Implicit partitives in reduced NPs",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In an implicit partitive, a full antecedent NP supplies the interpretation of the unexpressed partitive oblique. The reduced NP denotes a subset of that antecedent set.",
+    "condition": "Compare the reduced NP with an expansion using of them.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We unpacked eight bowls, but two were cracked.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Five peaches were left, and Ava chose the ripest one.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§6.1",
+        "pages": [
+          1516,
+          1517
+        ],
+        "pdf_pages": [
+          1536,
+          1537
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Implicit partitives in reduced NPs",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-659",
+    "domain": "phrases",
+    "concept": "Explicit partitives with pro-nominal one",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Pro-nominal one is possible in explicit partitives, though the construction is uncommon and plural ones is often marginal.",
+    "condition": "A fused determiner-head often expresses the partitive more naturally.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Every single one of those bulbs burned out.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Which of the lanterns should we hang?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§6.1",
+        "pages": [
+          1516
+        ],
+        "pdf_pages": [
+          1536
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Explicit partitives with pro-nominal one",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-660",
+    "domain": "phrases",
+    "concept": "Special personal interpretation of pro-nominal one",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A special use of one can mean person independently of an antecedent nominal.",
+    "condition": "Fused determinatives also have special readings, which vary by determinative.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Nina is the one in charge of the bookings.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Who was the one responsible for the mix-up?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§6.1",
+        "pages": [
+          1516
+        ],
+        "pdf_pages": [
+          1536
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Special personal interpretation of pro-nominal one",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-661",
+    "domain": "phrases",
+    "concept": "Situational interpretation of reduced noun phrases",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A contextually salient object or set can supply the recovered nominal without an earlier linguistic antecedent.",
+    "condition": "The simple and implicit-partitive interpretations may converge in that setting.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Pointing at the spare helmets, she asked, 'May I take another?'",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He picked up a spare mug and said, 'This one has a crack.'",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§6.1",
+        "pages": [
+          1517
+        ],
+        "pdf_pages": [
+          1537
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Situational interpretation of reduced noun phrases",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-662",
+    "domain": "phrases",
+    "concept": "Extent of a simple nominal antecedent",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The preferred antecedent is the largest continuous nominal that leaves out material contrasted by the reduced NP.",
+    "condition": "Contrastive stress can favor a smaller interpretation. Discontinuous strings do not supply a nominal antecedent.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Ava's first piano recital was longer than her second one.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mira's first lecture on mosses was longer than Jonah's.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§6.1",
+        "pages": [
+          1517
+        ],
+        "pdf_pages": [
+          1537
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Extent of a simple nominal antecedent",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-663",
+    "domain": "phrases",
+    "concept": "Simple and partitive uses of pro-nominal other",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Pro-nominal other has simple and implicit-partitive uses as well as a rarer explicit partitive. Its nominal can be supplied anaphorically or situationally.",
+    "condition": "In the implicit partitive a full NP identifies the set. In the simple use a nominal identifies the kind; the same relational complementation limits described for one apply.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "These towels are drier than the others.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "One of the two valves leaked, and the other jammed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Some of her neighbors evacuated; others of them stayed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§6.2",
+        "pages": [
+          1517,
+          1518
+        ],
+        "pdf_pages": [
+          1537,
+          1538
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Simple and partitive uses of pro-nominal other",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-664",
+    "domain": "phrases",
+    "concept": "Special human reading of others",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Others can mean other people without an explicit antecedent nominal. A proper name does not generally supply its class noun for an analogous reading.",
+    "condition": "Other ones does not substitute for others on this special human reading.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Please leave enough space for others.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Ari tries to be considerate of others.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§6.2",
+        "pages": [
+          1518
+        ],
+        "pdf_pages": [
+          1538
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Special human reading of others",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-665",
+    "domain": "phrases",
+    "concept": "Head noun other and attributive adjective other",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Pro-nominal other inflects for number and functions as head. Expansion retains the lexical base as an attributive adjective before an overt head.",
+    "condition": "The plural others establishes its nominal status; there is no fusion in the others.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "These reports are more detailed than the others.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "These reports are more detailed than the other reports.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§6.2",
+        "pages": [
+          1518
+        ],
+        "pdf_pages": [
+          1538
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Head noun other and attributive adjective other",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-666",
+    "domain": "phrases",
+    "concept": "Position of other relative to attributive adjectives",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "Attributive other cannot follow an adjective. Pro-nominal other retains this restriction, so use adjective other followed by the adjective and pro-nominal one.",
+    "condition": "Ordinary the others remains possible without the preceding adjective.",
+    "violation": "A color or size adjective precedes pro-nominal other in this attributive ordering.",
+    "exceptions": [
+      {
+        "description": "Ordinary the others remains possible without the preceding adjective.",
+        "pages": [
+          1518
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We chose the other blue ones.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Please set aside the other small ones.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "We chose the others.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "We chose the other blue folders.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "We chose the blue others.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Please set aside the small others.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§6.2",
+        "pages": [
+          1518
+        ],
+        "pdf_pages": [
+          1538
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Position of other relative to attributive adjectives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "A color or size adjective precedes pro-nominal other in this attributive ordering.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "We chose the blue others. ||| We chose the other blue ones.",
+        "Please set aside the small others. ||| Please set aside the other small ones."
+      ],
+      "learner_explanation": "Attributive other cannot follow an adjective. Pro-nominal other retains this restriction, so use adjective other followed by the adjective and pro-nominal one. Put other before the adjective and use pro-nominal one or an overt noun as head.",
+      "corrected_paragraph_template": "Put other before the adjective and use pro-nominal one or an overt noun as head.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "We chose the others.",
+        "We chose the other blue folders."
+      ],
+      "lesson_tags": [
+        "reduced_nps"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-667",
+    "domain": "phrases",
+    "concept": "Competition between other and other one",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Pro-nominal other and adjectival other plus one are both common after the and cardinal one. Elsewhere the construction with one is often preferred in the singular.",
+    "condition": "Plural alternants are generally available outside the special personal reading. The indefinite compound another can fuse or determine one, unlike a separate indefinite article before other.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I'll use the other. You can take the other one.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Could you try your other one?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "We need another. Could you fetch another one?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§6.2",
+        "pages": [
+          1518
+        ],
+        "pdf_pages": [
+          1538
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Competition between other and other one",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-668",
+    "domain": "phrases",
+    "concept": "Ellipsis and pro-forms beyond noun phrases",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Reduction extends chiefly to VPs and clauses and to a lesser extent to adjective, adverb and determinative phrases.",
+    "condition": "Some uses of do and so make the ellipsis versus pro-form distinction less clear.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I haven't checked the lock, but I will.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The meeting might run late. I hope not.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7",
+        "pages": [
+          1519
+        ],
+        "pdf_pages": [
+          1539
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ellipsis and pro-forms beyond noun phrases",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-669",
+    "domain": "phrases",
+    "concept": "Auxiliary stranding at a structural gap",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A stranded auxiliary occurs at the edge of a structural gap, sometimes separated by an inverted subject or not.",
+    "condition": "Without inversion the auxiliary can occupy the head of the reduced VP. With subject–auxiliary inversion the VP can be entirely empty.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I can lift the smaller box, but Lina can't.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You can find the station, can't you?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Owen is ready, but Vera is not.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.1",
+        "pages": [
+          1519
+        ],
+        "pdf_pages": [
+          1539
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Auxiliary stranding at a structural gap",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-670",
+    "domain": "phrases",
+    "concept": "Old and new auxiliary stranding",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The auxiliary that licenses a reduced VP need not appear with the antecedent in the preceding expression.",
+    "condition": "New-verb stranding allows a somewhat narrower range of stranded items than repetition of the same auxiliary.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I couldn't unlock the side door, but Tessa could.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They expect Jonah to resign, and I think he will.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.1",
+        "pages": [
+          1519
+        ],
+        "pdf_pages": [
+          1539
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Old and new auxiliary stranding",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-671",
+    "domain": "phrases",
+    "concept": "Auxiliary stranding with non-VP ellipsis",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Stranded be can leave a gap for a locative or for sequences of complements; would can leave a gap spanning rather and an infinitival complement.",
+    "condition": "The ellipted sequence need not be a single syntactic constituent.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mina is on the balcony, but Joel is not.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It is helpful to label the jars, isn't it?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "She'd rather stay indoors, and I would too.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.1",
+        "pages": [
+          1519
+        ],
+        "pdf_pages": [
+          1539
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Auxiliary stranding with non-VP ellipsis",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-672",
+    "domain": "phrases",
+    "concept": "Retained dependents under auxiliary stranding",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A reduced VP can retain a dependent, including repeated material for contrast, a newly supplied adjunct or a contrastive object licensed by the understood lexical verb.",
+    "condition": "In had better, better must be retained when it cannot be recovered. The ordinary adjunct or object depends on the understood lexical verb.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Could you sand the bench? I will after dinner.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Have you invited Maya? No, but I have her sister.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "I haven't backed up the files, but I'd better.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.1",
+        "pages": [
+          1520
+        ],
+        "pdf_pages": [
+          1540
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Retained dependents under auxiliary stranding",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-673",
+    "domain": "phrases",
+    "concept": "Limits on contrasting complements after auxiliary stranding",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "The reduced VP generally allows a contrasting PP adjunct, but the cited pattern does not allow retaining a predicative complement or a selected locative PP while eliding its licensing verb.",
+    "condition": "Some object complements are possible in this pattern. Distinguish a selected locative from a freely added time or instrument adjunct.",
+    "violation": "Ellipsis strands an auxiliary with an unsupported retained predicative or selected locative complement.",
+    "exceptions": [
+      {
+        "description": "Some object complements are possible in this pattern. Distinguish a selected locative from a freely added time or instrument adjunct.",
+        "pages": [
+          1520
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Rae had seemed cheerful, but Sam had seemed extremely worried.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I haven't put the lamp in the study; I have put it in the hall.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "She can't open it with a spoon, but she could with a screwdriver.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "Have you invited Dana? No, but I have her brother.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Rae had seemed cheerful, but Sam had extremely worried.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "I haven't put the lamp in the study; I have in the hall.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.1",
+        "pages": [
+          1520
+        ],
+        "pdf_pages": [
+          1540
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Limits on contrasting complements after auxiliary stranding",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "Ellipsis strands an auxiliary with an unsupported retained predicative or selected locative complement.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Rae had seemed cheerful, but Sam had extremely worried. ||| Rae had seemed cheerful, but Sam had seemed extremely worried.",
+        "I haven't put the lamp in the study; I have in the hall. ||| I haven't put the lamp in the study; I have put it in the hall."
+      ],
+      "learner_explanation": "The reduced VP generally allows a contrasting PP adjunct, but the cited pattern does not allow retaining a predicative complement or a selected locative PP while eliding its licensing verb. Retain the lexical verb and its required complements.",
+      "corrected_paragraph_template": "Retain the lexical verb and its required complements.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "She can't open it with a spoon, but she could with a screwdriver.",
+        "Have you invited Dana? No, but I have her brother."
+      ],
+      "lesson_tags": [
+        "auxiliary_stranding"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-674",
+    "domain": "phrases",
+    "concept": "Stranding within auxiliary sequences",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In a chain of auxiliaries, the ellipsis can in principle begin after any of the auxiliaries, retaining the earlier auxiliaries in sequence.",
+    "condition": "Determine the gap boundary from the last overt auxiliary.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They must have missed the exit. Yes, they must.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They must have missed the exit. Yes, they must have.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "It should have been inspected. Yes, it should have been.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§7.1",
+        "pages": [
+          1520
+        ],
+        "pdf_pages": [
+          1540
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Stranding within auxiliary sequences",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
   }
 ]
