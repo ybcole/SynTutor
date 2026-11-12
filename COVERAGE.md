@@ -20,14 +20,14 @@
 | 12. Relative constructions | 66 | 64 | 0 | 2 | 0 | Source-extracted |
 | 13. Comparative constructions | 74 | 0 | 74 | 0 | 0 | Incomplete |
 | 14. Non-finite and verbless clauses | 102 | 99 | 0 | 3 | 0 | Source-extracted |
-| 15. Coordination and supplementation | 90 | 14 | 74 | 2 | 0 | In progress (pp. 1273–1288) |
+| 15. Coordination and supplementation | 90 | 30 | 58 | 2 | 0 | In progress (pp. 1273–1304) |
 | 16. Information packaging | 86 | 0 | 85 | 1 | 0 | Incomplete |
 | 17. Deixis and anaphora | 116 | 0 | 116 | 0 | 0 | Incomplete |
 | 18. Inflectional morphology | 56 | 0 | 55 | 1 | 0 | Incomplete |
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **1140 extracted**, 588 unprocessed, 34 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **1156 extracted**, 572 unprocessed, 34 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -338,3 +338,7 @@ The final batch adds 21 records (`CLS-910`–`CLS-930`) across 18 substantive pa
 ## Chapter 15 pp. 1273–1288
 
 The first batch adds 21 records (`CLS-931`–`CLS-951`) across 14 substantive pages and accounts for two contents pages. See the [source report](sources/cambridge/chapter_15/PP1273_1288_REPORT.md) and [audit manifest](sources/cambridge/chapter_15/PP1273_1288_AUDIT.json). Continue at p. 1289.
+
+## Chapter 15 pp. 1289–1304
+
+This batch adds 21 records (`CLS-952`–`CLS-972`) across 16 substantive pages. See the [source report](sources/cambridge/chapter_15/PP1289_1304_REPORT.md) and [audit manifest](sources/cambridge/chapter_15/PP1289_1304_AUDIT.json). Continue at p. 1305.

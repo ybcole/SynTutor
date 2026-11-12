@@ -1,0 +1,213 @@
+{
+  "manifest_version": 1,
+  "chapter": 15,
+  "printed_start": 1289,
+  "printed_end": 1304,
+  "report": "sources/cambridge/chapter_15/PP1289_1304_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1289,
+    "pdf_page": 1309
+  },
+  "added_rule_ids": [
+    "CLS-952",
+    "CLS-953",
+    "CLS-954",
+    "CLS-955",
+    "CLS-956",
+    "CLS-957",
+    "CLS-958",
+    "CLS-959",
+    "CLS-960",
+    "CLS-961",
+    "CLS-962",
+    "CLS-963",
+    "CLS-964",
+    "CLS-965",
+    "CLS-966",
+    "CLS-967",
+    "CLS-968",
+    "CLS-969",
+    "CLS-970",
+    "CLS-971",
+    "CLS-972"
+  ],
+  "page_checks": [
+    {
+      "page": 1289,
+      "status": "extracted",
+      "section": "§§1.4–2.1",
+      "summary": "Closes ordering tendencies and introduces the prototypical coordinator diagnostics.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1290,
+      "status": "extracted",
+      "section": "§2.1",
+      "summary": "Illustrates unlimited coordinate count and compares structures with subordinators and prepositions.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1291,
+      "status": "extracted",
+      "section": "§2.1",
+      "summary": "Covers subclausal coordination, linear order and across-the-board application.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1292,
+      "status": "extracted",
+      "section": "§2.1",
+      "summary": "Tests relativisation across coordinates and contrasts coordinator combinations.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1293,
+      "status": "extracted",
+      "section": "§§2.1–2.2.1",
+      "summary": "Finishes comparison with adverbs and introduces logical conjunction and disjunction.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1294,
+      "status": "extracted",
+      "section": "§2.2.1",
+      "summary": "Defines conjunction and inclusive and exclusive disjunction.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1295,
+      "status": "extracted",
+      "section": "§2.2.1",
+      "summary": "Presents truth tables and introduces exclusiveness as an implicature.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1296,
+      "status": "extracted",
+      "section": "§2.2.1",
+      "summary": "Tests the implicature with context, negation and more than two alternatives.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1297,
+      "status": "extracted",
+      "section": "§2.2.1",
+      "summary": "Examines contexts in which or can support a conjunctive implication.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1298,
+      "status": "extracted",
+      "section": "§§2.2.1–2.2.2",
+      "summary": "Compares question types and introduces scope with negation.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1299,
+      "status": "extracted",
+      "section": "§§2.2.2–2.2.3",
+      "summary": "Continues negation and conditional equivalences and introduces asymmetry.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1300,
+      "status": "extracted",
+      "section": "§2.2.3",
+      "summary": "Examines temporal sequence and consequence inferences with and.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1301,
+      "status": "extracted",
+      "section": "§2.2.3",
+      "summary": "Covers conditional, concessive and temporal-inclusion interpretations.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1302,
+      "status": "extracted",
+      "section": "§2.2.3",
+      "summary": "Introduces formulaic frames and their morphosyntactic restrictions.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1303,
+      "status": "extracted",
+      "section": "§§2.2.3–2.2.4",
+      "summary": "Finishes formulaic frames and introduces conditional or.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1304,
+      "status": "extracted",
+      "section": "§§2.2.4–2.2.5",
+      "summary": "Completes asymmetric or, numerical approximation and reduplication.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

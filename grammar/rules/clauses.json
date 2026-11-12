@@ -60690,5 +60690,1289 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-952",
+    "domain": "clauses",
+    "concept": "No fixed limit on coordinate count",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Prototypical coordinators can join an open-ended series of coordinates at one structural level.",
+    "condition": "Applies to the construction described in §2.1 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Readability can limit a list even where grammar places no fixed upper bound.",
+        "pages": [
+          1289,
+          1290
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She packed socks, gloves, scarves, and hats.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She packed socks and gloves and scarves and hats.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.1",
+        "pages": [
+          1289,
+          1290
+        ],
+        "pdf_pages": [
+          1309,
+          1310
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "No fixed limit on coordinate count",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-953",
+    "domain": "clauses",
+    "concept": "Coordination of subclausal constituents",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Prototypical coordinators can combine finite VPs and other subclausal constituents as well as whole clauses.",
+    "condition": "Applies to the construction described in §2.1 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A similar-looking preposition or subordinator can have different complement requirements.",
+        "pages": [
+          1290,
+          1291
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She checked the latch and went upstairs.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We found her son and younger daughter.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.1",
+        "pages": [
+          1290,
+          1291
+        ],
+        "pdf_pages": [
+          1310,
+          1311
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Coordination of subclausal constituents",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-954",
+    "domain": "clauses",
+    "concept": "Position of expanded coordinates",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A coordinate introduced by a coordinator cannot generally be preposed independently of its partner in the way a subordinate adjunct can.",
+    "condition": "Applies to the construction described in §2.1 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Reversing the bare coordinates and reattaching the coordinator produces a new ordering rather than moving the expanded coordinate as a unit.",
+        "pages": [
+          1291
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He joined the club but had little spare time.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Although he had little spare time, he joined the club.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.1",
+        "pages": [
+          1291
+        ],
+        "pdf_pages": [
+          1311
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Position of expanded coordinates",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-955",
+    "domain": "clauses",
+    "concept": "Across-the-board application",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some syntactic operations, including relativisation, normally apply to each coordinate in a coordination.",
+    "condition": "Applies to the construction described in §2.1 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A subordinate clause can retain its own subject while the higher clause participates in the dependency.",
+        "pages": [
+          1291,
+          1292
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They thanked those who attended and who helped.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They thanked those who attended although they had little time.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.1",
+        "pages": [
+          1291,
+          1292
+        ],
+        "pdf_pages": [
+          1311,
+          1312
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Across-the-board application",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-956",
+    "domain": "clauses",
+    "concept": "Coordinator combinations and connective adverbs",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Two prototypical coordinators do not normally accumulate on one coordinate. A coordinator can occur with a connective adverb.",
+    "condition": "Applies to the construction described in §2.1 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "A connective adverb differs from a coordinator in distribution and constituency.",
+        "pages": [
+          1292,
+          1293
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She was bright but nevertheless modest.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He called and then sent a message.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.1",
+        "pages": [
+          1292,
+          1293
+        ],
+        "pdf_pages": [
+          1312,
+          1313
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Coordinator combinations and connective adverbs",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-957",
+    "domain": "clauses",
+    "concept": "Conjunction with and",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "In the basic conjunctive reading, and combines two assertions and commits the speaker to both.",
+    "condition": "Applies to the construction described in §2.2.1 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "And can also join subclausal expressions or invite a more specific discourse inference.",
+        "pages": [
+          1293,
+          1294
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The gate was locked and the alarm was on.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mina called and Dev sent a message.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.2.1",
+        "pages": [
+          1293,
+          1294
+        ],
+        "pdf_pages": [
+          1313,
+          1314
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Conjunction with and",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-958",
+    "domain": "clauses",
+    "concept": "Inclusive and exclusive disjunction",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Inclusive disjunction allows both alternatives to hold. An exclusive interpretation rules out the case where both hold.",
+    "condition": "Applies to the construction described in §2.2.1 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "World knowledge can make the alternatives mutually exclusive without a separate exclusive meaning for or.",
+        "pages": [
+          1294,
+          1295
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A copy is in the office or in the library, or both.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She was born in 1998 or 1999.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.2.1",
+        "pages": [
+          1294,
+          1295
+        ],
+        "pdf_pages": [
+          1314,
+          1315
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inclusive and exclusive disjunction",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-959",
+    "domain": "clauses",
+    "concept": "Exclusiveness inferred from context",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Or often suggests that only one alternative holds, particularly when the alternatives or the decision context favor a single choice.",
+    "condition": "Applies to the construction described in §2.2.1 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The suggestion can be cancelled when both alternatives remain possible.",
+        "pages": [
+          1295,
+          1296,
+          1297
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We will appoint Mina, Dev, or Jo to chair the meeting.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The parcel is in the lobby or at reception.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.2.1",
+        "pages": [
+          1295,
+          1296,
+          1297
+        ],
+        "pdf_pages": [
+          1315,
+          1316,
+          1317
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Exclusiveness inferred from context",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-960",
+    "domain": "clauses",
+    "concept": "Or with multiple alternatives and conjunctive implications",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Or can coordinate more than two alternatives and can invite a reading that effectively applies to each alternative in some comparison contexts.",
+    "condition": "Applies to the construction described in §2.2.1 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The apparent conjunctive implication depends on the larger construction.",
+        "pages": [
+          1296,
+          1297,
+          1298
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Choose a pencil, a pen, or a marker.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Rents are lower here than in London or Paris.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.2.1",
+        "pages": [
+          1296,
+          1297,
+          1298
+        ],
+        "pdf_pages": [
+          1316,
+          1317,
+          1318
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Or with multiple alternatives and conjunctive implications",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-961",
+    "domain": "clauses",
+    "concept": "Polar and alternative questions with or",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A question with or can ask whether a disjunction holds or ask which of the offered alternatives applies.",
+    "condition": "Applies to the construction described in §2.2.1 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Prosody and context help distinguish a yes-or-no question from a choice among alternatives.",
+        "pages": [
+          1298
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Did she call or write?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Would you like tea or coffee?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.2.1",
+        "pages": [
+          1298
+        ],
+        "pdf_pages": [
+          1318
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Polar and alternative questions with or",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-962",
+    "domain": "clauses",
+    "concept": "Negation over disjunction",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "When negation has scope over an inclusive disjunction, the ordinary reading denies each alternative.",
+    "condition": "Applies to the construction described in §2.2.2 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Different constituent structure or scope can yield a different reading in a superficially similar string.",
+        "pages": [
+          1298,
+          1299
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I did not call Mina or Dev.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There is not a copy on the desk or in the drawer.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.2.2",
+        "pages": [
+          1298,
+          1299
+        ],
+        "pdf_pages": [
+          1318,
+          1319
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negation over disjunction",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-963",
+    "domain": "clauses",
+    "concept": "Negation over conjunction",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Negating a conjunction denies that both alternatives hold together. It need not deny each one independently.",
+    "condition": "Applies to the construction described in §2.2.2 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Conjoined noun phrases can also allow a reading that distributes the negative across the coordinates.",
+        "pages": [
+          1298,
+          1299
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She is not both treasurer and secretary.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I do not like both options.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.2.2",
+        "pages": [
+          1298,
+          1299
+        ],
+        "pdf_pages": [
+          1318,
+          1319
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negation over conjunction",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-964",
+    "domain": "clauses",
+    "concept": "Disjunction in a conditional antecedent",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A conditional with a disjunctive antecedent can support separate conditionals for the individual alternatives.",
+    "condition": "Applies to the construction described in §2.2.2 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The comparison depends on the same consequent and the relevant interpretation of the condition.",
+        "pages": [
+          1299
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You will see more if you walk or cycle.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "If you walk, you will see more, and if you cycle, you will see more.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.2.2",
+        "pages": [
+          1299
+        ],
+        "pdf_pages": [
+          1319
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Disjunction in a conditional antecedent",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-965",
+    "domain": "clauses",
+    "concept": "Temporal and causal inferences with and",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Coordinate order can invite the inference that the second event followed or resulted from the first.",
+    "condition": "Applies to the construction described in §2.2.3 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The sequence or causal relation is typically inferred from context and event order.",
+        "pages": [
+          1299,
+          1300
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She opened the package and read the note.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The alarm rang and everyone left the room.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.2.3",
+        "pages": [
+          1299,
+          1300
+        ],
+        "pdf_pages": [
+          1319,
+          1320
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Temporal and causal inferences with and",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-966",
+    "domain": "clauses",
+    "concept": "Conditional interpretations with and",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some asymmetric coordinations with and present the first coordinate as a condition for the second.",
+    "condition": "Applies to the construction described in §2.2.3 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The construction need not assert that the first event has already happened.",
+        "pages": [
+          1301
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Press this button and the screen will light up.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I make one suggestion and they accuse me of interfering.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.2.3",
+        "pages": [
+          1301
+        ],
+        "pdf_pages": [
+          1321
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Conditional interpretations with and",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-967",
+    "domain": "clauses",
+    "concept": "Concession and temporal inclusion with and",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "And can support a concessive reading or indicate that one event occurs while the other situation holds.",
+    "condition": "Applies to the construction described in §2.2.3 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The particular relation depends on the predicates and the discourse context.",
+        "pages": [
+          1301
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You can eat this and still stay within your budget.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She came in and I was still asleep.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.2.3",
+        "pages": [
+          1301
+        ],
+        "pdf_pages": [
+          1321
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Concession and temporal inclusion with and",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-968",
+    "domain": "clauses",
+    "concept": "Formulaic coordination frames",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Some asymmetric constructions have conventional readings, including degree-like nice and and informal verb frames such as go and or try and.",
+    "condition": "Applies to the construction described in §2.2.3 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The frames have lexical or morphological restrictions, and a to-infinitival paraphrase does not establish identical syntax.",
+        "pages": [
+          1302,
+          1303
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The room was nice and warm.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Try and finish before dark.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.2.3",
+        "pages": [
+          1302,
+          1303
+        ],
+        "pdf_pages": [
+          1322,
+          1323
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Formulaic coordination frames",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-969",
+    "domain": "clauses",
+    "concept": "Activity and directive frames with and",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Coordination can combine a posture or activity verb with a simultaneous activity, or pair a polite directive frame with a requested action.",
+    "condition": "Applies to the construction described in §2.2.3 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The relationship can be less symmetrical than in ordinary additive coordination.",
+        "pages": [
+          1303
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They sat and talked until noon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Be a sport and pass me the wrench.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.2.3",
+        "pages": [
+          1303
+        ],
+        "pdf_pages": [
+          1323
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Activity and directive frames with and",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-970",
+    "domain": "clauses",
+    "concept": "Conditional interpretations with or",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "An asymmetric or coordination can present the second coordinate as a consequence of failing to satisfy the first.",
+    "condition": "Applies to the construction described in §2.2.4 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The first coordinate can be directive or declarative.",
+        "pages": [
+          1303,
+          1304
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Hurry up or we will miss the train.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I need to leave now or I will miss my ride.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.2.4",
+        "pages": [
+          1303,
+          1304
+        ],
+        "pdf_pages": [
+          1323,
+          1324
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Conditional interpretations with or",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-971",
+    "domain": "clauses",
+    "concept": "Numerical approximation with or",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A disjunction of nearby numbers can give an approximate quantity rather than set up a strict choice between exact alternatives.",
+    "condition": "Applies to the construction described in §2.2.4 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The interval or uncertainty conveyed depends on the numbers and context.",
+        "pages": [
+          1304
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Two or three people called.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We waited ten or fifteen minutes.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.2.4",
+        "pages": [
+          1304
+        ],
+        "pdf_pages": [
+          1324
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Numerical approximation with or",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "CLS-972",
+    "domain": "clauses",
+    "concept": "Coordinator-marked reduplication",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Repeating an expression with a coordinator can convey increase, large quantity, or recurrence.",
+    "condition": "Applies to the construction described in §2.2.5 of Chapter 15.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "The interpretation depends on the repeated expression and construction.",
+        "pages": [
+          1304
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The noise grew louder and louder.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They received dozens and dozens of letters.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 15,
+        "section": "§2.2.5",
+        "pages": [
+          1304
+        ],
+        "pdf_pages": [
+          1324
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Coordinator-marked reduplication",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]

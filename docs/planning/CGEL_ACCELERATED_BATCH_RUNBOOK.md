@@ -334,3 +334,7 @@ Printed pp. 1079–1096 yielded 21 classification records (`CLS-910`–`CLS-930`
 ## Chapter 15 first checkpoint
 
 Printed pp. 1273–1288 yielded 21 classification records (`CLS-931`–`CLS-951`). Continue at p. 1289 with coordinators and related linking items.
+
+## Chapter 15 second checkpoint
+
+Printed pp. 1289–1304 yielded 21 classification records (`CLS-952`–`CLS-972`). Continue at p. 1305 with both and either.
