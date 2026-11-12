@@ -70835,5 +70835,966 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1119",
+    "domain": "clauses",
+    "concept": "Obligatory gap for the comparative governor counterpart",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "A scalar comparative clause leaves the degree position corresponding to the matrix governor syntactically empty. The position supplies an understood degree variable.",
+    "condition": "This concerns a degree expression filling that position. An adjunct elsewhere in the clause or an overt contrasting adjective can remain.",
+    "violation": "An overt degree modifier fills the degree position needed for the comparative variable.",
+    "exceptions": [
+      {
+        "description": "This concerns a degree expression filling that position. An adjunct elsewhere in the clause or an overt contrasting adjective can remain.",
+        "pages": [
+          1108
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The shelf is as deep as it is wide.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The arch is taller than it is wide.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "The shelf is as deep as it was yesterday.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "The arch is taller than two meters.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The shelf is as deep as it is very wide.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The arch is taller than it is quite wide.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§2.1(a)",
+        "pages": [
+          1108
+        ],
+        "pdf_pages": [
+          1128
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Obligatory gap for the comparative governor counterpart",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "An overt degree modifier fills the degree position needed for the comparative variable.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The shelf is as deep as it is very wide. ||| The shelf is as deep as it is wide.",
+        "The arch is taller than it is quite wide. ||| The arch is taller than it is wide."
+      ],
+      "learner_explanation": "A scalar comparative clause leaves the degree position corresponding to the matrix governor syntactically empty. The position supplies an understood degree variable. Leave the counterpart degree position empty.",
+      "corrected_paragraph_template": "Leave the counterpart degree position empty.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The shelf is as deep as it was yesterday.",
+        "The arch is taller than two meters."
+      ],
+      "lesson_tags": [
+        "comparison",
+        "ellipsis"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1120",
+    "domain": "clauses",
+    "concept": "Omission of a matching comparative phrase",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The comparative clause normally omits an identical counterpart of the matrix comparative phrase. An overt counterpart is available when it supplies a contrast.",
+    "condition": "The contrast can be in the head or in a dependent. In a correction, contrastive stress can license a repeated head even without a contrasting dependent.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Lee is taller than I am.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She wrote more essays than he wrote reviews.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "He is more worried about the exam than she is worried about the interview.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§2.1(b)",
+        "pages": [
+          1108,
+          1109
+        ],
+        "pdf_pages": [
+          1128,
+          1129
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Omission of a matching comparative phrase",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1121",
+    "domain": "clauses",
+    "concept": "Optional auxiliary and infinitival stranding",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "Comparative clauses can optionally strand an auxiliary or infinitival to. Contrastive material can follow the gap.",
+    "condition": "Expansion remains subject to obligatory comparative gaps. An ordinary lexical verb cannot be stranded just as an auxiliary can.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I visit less often than I used to.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She can proofread more pages in an hour than I can in a day.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§2.1(c)",
+        "pages": [
+          1109,
+          1110
+        ],
+        "pdf_pages": [
+          1129,
+          1130
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Optional auxiliary and infinitival stranding",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1122",
+    "domain": "clauses",
+    "concept": "Do in comparative reduction",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Reduced comparative clauses commonly use do, analyzed as a stranded auxiliary or as a pro-form depending on variety.",
+    "condition": "Varieties with lexical pro-form do can retain it after an auxiliary or to. Some subjectless passive examples resist simple substitution of the antecedent verb.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mira calls more often than Jo does.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I didn't enjoy the concert as much as Jo had done. [British pro-form do]",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§2.1(c)",
+        "pages": [
+          1110
+        ],
+        "pdf_pages": [
+          1130
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Do in comparative reduction",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1123",
+    "domain": "clauses",
+    "concept": "Embedded-clause omission and extraposition",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A comparative clause can omit a recoverable embedded clause. In the cited subject-gap pattern, an expansion with extraposition requires the clause as well as dummy it.",
+    "condition": "Certain passive predicates also permit auxiliary omission, yielding forms such as than anticipated.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We finished earlier than had been expected.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We finished earlier than anticipated.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "It was harder than we had thought it would be.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§2.1(d)",
+        "pages": [
+          1110,
+          1111
+        ],
+        "pdf_pages": [
+          1130,
+          1131
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Embedded-clause omission and extraposition",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1124",
+    "domain": "clauses",
+    "concept": "Lexical range of embedded-clause reduction",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Lexical heads such as expect, believe and realize allow missing-clause comparisons. Some predicative adjectives and expressions also allow this pattern.",
+    "condition": "Dream can retain of. Necessary, normal, possible and usual can appear without copular be in the cited pattern. Not all passive heads allow auxiliary omission.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was harder than I'd ever dreamed of.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Don't stay longer than necessary.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "The repair cost more than would have been the case without the leak.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§2.1(d)",
+        "pages": [
+          1111
+        ],
+        "pdf_pages": [
+          1131
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical range of embedded-clause reduction",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1125",
+    "domain": "clauses",
+    "concept": "Factive realize and lower-bound awareness",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A factive verb such as realize can head a comparative clause. Knowing that at least a certain number is present is compatible with the actual number being higher.",
+    "condition": "The apparent contradiction arises if the embedded quantity is incorrectly treated as exact.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The bill contained more errors than we had realized.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I knew that there were five leaks; the plumber later found two more.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§2.1(d)",
+        "pages": [
+          1111
+        ],
+        "pdf_pages": [
+          1131
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Factive realize and lower-bound awareness",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1126",
+    "domain": "clauses",
+    "concept": "Multiple remnants and comparative polarity",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A verbless comparative clause may retain two or more elements. The omitted material can include the verb alone or the subject and verb.",
+    "condition": "Matrix negation does not force a negative reading of the comparative clause. The possible expansion differs from the parallel coordination.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He didn't praise Ava as much as she him.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We didn't send as many invitations to neighbors as reminders to staff.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§2.1(e)",
+        "pages": [
+          1111,
+          1112
+        ],
+        "pdf_pages": [
+          1131,
+          1132
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Multiple remnants and comparative polarity",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1127",
+    "domain": "clauses",
+    "concept": "Single comparative remnants and attachment",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A comparative clause can reduce to one remnant of several types, including PP, adjunct AdjP, clause, NP or nominal.",
+    "condition": "A predicative AdjP does not undergo the cited single-remnant reduction. An NP remnant can admit subject and object readings, and the nominal in more X than Y cannot freely take its own determiner.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We spend more time in Leeds than in York.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She paints better relaxed than tense.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Jo called Rae more often than Sam.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "She has more receipts than invoices.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§2.1(f)",
+        "pages": [
+          1112
+        ],
+        "pdf_pages": [
+          1132
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Single comparative remnants and attachment",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1128",
+    "domain": "clauses",
+    "concept": "Case of a single personal pronoun remnant",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A single pronoun understood as an object or preposition complement takes accusative. For an understood subject, formal style allows nominative and informal style allows accusative.",
+    "condition": "Retaining a finite verb allows an overt nominative subject and avoids the register contrast of the bare forms.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She is taller than I. [formal]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She is taller than me. [informal]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "The noise bothered Lee more than me. [object reading]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "She is taller than I am.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§2.1(f)",
+        "pages": [
+          1112,
+          1113
+        ],
+        "pdf_pages": [
+          1132,
+          1133
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Case of a single personal pronoun remnant",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1129",
+    "domain": "clauses",
+    "concept": "Subject omission with a retained comparative verb",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "With the verb retained, the comparative subject can be absent when it corresponds to the comparative phrase or is understood as an embedded clause.",
+    "condition": "An ordinary recoverable referential subject cannot be dropped in this pattern. Restore the subject or reduce the secondary term further.",
+    "violation": "A retained comparative verb lacks an ordinary referential subject that the construction requires.",
+    "exceptions": [
+      {
+        "description": "An ordinary recoverable referential subject cannot be dropped in this pattern. Restore the subject or reduce the secondary term further.",
+        "pages": [
+          1113
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mira works harder than she did last year.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Jo trains more often than he did last summer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "More guests arrived than were invited.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "She stayed longer than seemed necessary.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c5",
+          "text": "Mira works harder than last year.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Mira works harder than did last year.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Jo trains more often than did last summer.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§2.1(g)",
+        "pages": [
+          1113
+        ],
+        "pdf_pages": [
+          1133
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subject omission with a retained comparative verb",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "A retained comparative verb lacks an ordinary referential subject that the construction requires.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Mira works harder than did last year. ||| Mira works harder than she did last year.",
+        "Jo trains more often than did last summer. ||| Jo trains more often than he did last summer."
+      ],
+      "learner_explanation": "With the verb retained, the comparative subject can be absent when it corresponds to the comparative phrase or is understood as an embedded clause. Restore the referential subject or omit the verb as part of a licensed further reduction.",
+      "corrected_paragraph_template": "Restore the referential subject or omit the verb as part of a licensed further reduction.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "More guests arrived than were invited.",
+        "She stayed longer than seemed necessary.",
+        "Mira works harder than last year."
+      ],
+      "lesson_tags": [
+        "comparison",
+        "ellipsis"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1130",
+    "domain": "clauses",
+    "concept": "Two analyses of than or as plus a single element",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "A single element after comparative than or as may be analyzed as the remnant of a reduced clause or as an immediate complement of the preposition.",
+    "condition": "The source allows competing analyses for relevant examples and recognizes clearly immediate complements where a clausal expansion is unavailable.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Lee is as patient as Jo.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The board is longer than a foot.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "I spoke to no one other than Jo.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§2.2",
+        "pages": [
+          1113,
+          1114
+        ],
+        "pdf_pages": [
+          1133,
+          1134
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Two analyses of than or as plus a single element",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1131",
+    "domain": "clauses",
+    "concept": "Pronoun case as evidence for a reduced clause",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A formal nominative after comparative as or than supports a reduced-clause analysis, unlike ordinary after plus a pronoun.",
+    "condition": "Informal accusative can be consistent with either analysis. Formal nominatives can occur in some nonclausal constructions associated with the matrix subject, so case is not decisive.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Lee is as patient as she. [formal]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Lee is as patient as her. [informal]",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Lee left after her.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§2.2(a)",
+        "pages": [
+          1114
+        ],
+        "pdf_pages": [
+          1134
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pronoun case as evidence for a reduced clause",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1132",
+    "domain": "clauses",
+    "concept": "Range and licensing of single comparative complements",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A content or infinitival clause following than can parallel material licensed by an understood predicate. This supports a reduced-clause analysis.",
+    "condition": "Than is licensed by the comparative governor and is prepositional, despite similarities to coordination. Exception prepositions also accept a wide range of complements, weakening the argument from range alone.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I am more certain that Jo will agree than that Lee will.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It is more useful to check twice than to guess.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "I am not certain of anything except that Lee will agree.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§2.2(b)",
+        "pages": [
+          1114,
+          1115
+        ],
+        "pdf_pages": [
+          1134,
+          1135
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Range and licensing of single comparative complements",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1133",
+    "domain": "clauses",
+    "concept": "Nominal remnant restriction versus exception complements",
+    "rule_type": "classification",
+    "scope": "clause",
+    "statement": "The noun remnant in the cited more X than Y comparison cannot freely take a determiner, unlike a comparable exception complement.",
+    "condition": "The reduced-clause analysis relates this restriction to the obligatory governor gap. An immediate-complement account needs a separate restriction.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She has more notebooks than folders.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She brought nothing except her folders.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§2.2(b)",
+        "pages": [
+          1115
+        ],
+        "pdf_pages": [
+          1135
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nominal remnant restriction versus exception complements",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
   }
 ]

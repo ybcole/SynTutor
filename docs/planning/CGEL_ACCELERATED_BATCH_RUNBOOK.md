@@ -420,3 +420,7 @@ The final batch adds 14 inactive records (`OTH-654`–`OTH-667`) for printed pp.
 ## Chapter 13 first checkpoint
 
 Printed pp. 1097–1107 are accounted for, including nine substantive pages and two contents-only pages. The batch adds 15 inactive records (`CLS-1104`–`CLS-1118`), with 63 printed pages remaining. Continue at p. 1108 with comparative clause reduction.
+
+## Chapter 13 second checkpoint
+
+Printed pp. 1108–1115 add eight substantive pages and 15 inactive records (`CLS-1119`–`CLS-1133`), including two `spec_only` constraints. Chapter 13 has 55 pages remaining. Continue at p. 1116.
