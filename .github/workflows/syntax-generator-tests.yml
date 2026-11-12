@@ -10,6 +10,7 @@ on:
       - feature/milestone-07-*
       - feature/milestone-08-*
       - feature/milestone-10-*
+      - feature/cgel-ch20-phase-b
   workflow_dispatch:
 
 jobs:

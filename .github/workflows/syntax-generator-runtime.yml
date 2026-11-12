@@ -10,6 +10,7 @@ on:
       - feature/milestone-07-*
       - feature/milestone-08-*
       - feature/milestone-10-*
+      - feature/cgel-ch20-phase-b
   workflow_dispatch:
 
 jobs:
@@ -61,6 +62,16 @@ jobs:
           assert sentences[0]._.parse_string
           print("spaCy and Benepar models loaded and parsed a sentence.")
           PY
+      - name: Collect Cambridge overlap probes on parser output
+        run: |
+          mkdir -p artifacts
+          python scripts/audit_cgel_overlap_probes.py > artifacts/cgel-overlap-parser.json
+      - name: Upload Cambridge overlap evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: cgel-overlap-parser
+          path: artifacts/cgel-overlap-parser.json
+          if-no-files-found: error
       - name: Run parser-backed Syntax Generator tests
         working-directory: server
         run: python -m unittest -v test_parser_runtime
