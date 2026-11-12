@@ -508,3 +508,7 @@ Printed pp. 1648–1655 add 8 substantive pages and 27 inactive records (`MORPH-
 ## Chapter 19 fifth checkpoint
 
 Printed pp. 1656–1663 add 8 substantive pages and 28 inactive records (`MORPH-239`–`MORPH-266`), including one inactive measure-compound specification. Chapter 19 has 58 unprocessed pages. Continue at p. 1664 with the remaining evidence on neo-classical combining forms.
+
+## Chapter 19 sixth checkpoint
+
+Printed pp. 1664–1671 add 8 substantive pages and 32 inactive records (`MORPH-267`–`MORPH-298`). Chapter 19 has 50 unprocessed pages. Continue at p. 1672 with the continuation of morphophonological alternation.

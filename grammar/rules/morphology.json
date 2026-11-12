@@ -16109,5 +16109,1681 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-267",
+    "domain": "morphology",
+    "concept": "Assigning a marginal vowel to a combining form",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "A single boundary vowel is normally assigned to the initial combining form. A vowel retained with a free base or selected by a final combining form can support a final assignment.",
+    "condition": "This is a segmentation criterion, not a rule for spelling new words. A consonant-final initial form, such as syn, supplies an additional diagnostic.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The textbook introduces the history of biogeography.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The crew checked the concentration of insecticide.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.5",
+        "pages": [
+          1664
+        ],
+        "pdf_pages": [
+          1684
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Assigning a marginal vowel to a combining form",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-268",
+    "domain": "morphology",
+    "concept": "Evidence from syn in synonym and sympathy",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "The vowel in synonym is part of the final combining form onym. In sympathy the initial form appears as sym before the bilabial consonant and no linking vowel is needed.",
+    "condition": "The analysis uses the contrasting behaviour of final onym and pathy after consonant-final syn.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The editor suggested a synonym for lucid.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The director sent a note of sympathy to the family.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.5",
+        "pages": [
+          1664
+        ],
+        "pdf_pages": [
+          1684
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Evidence from syn in synonym and sympathy",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-269",
+    "domain": "morphology",
+    "concept": "Distinct final combining forms with similar shapes",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "The study-denoting form ology can be distinguished from logy in words with other meanings. A comparable distinction between chemical-denoting icide and cide is proposed tentatively.",
+    "condition": "The latter distinction is a possible analysis of established words and their senses.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The students took a course in geology before beginning the fieldwork.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Her eulogy recalled the winters they spent by the sea.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.5",
+        "pages": [
+          1664
+        ],
+        "pdf_pages": [
+          1684
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Distinct final combining forms with similar shapes",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-270",
+    "domain": "morphology",
+    "concept": "Combining forms as bases",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Bound combining forms can combine with each other and can serve as bases for affixes. These distributional properties support a base analysis.",
+    "condition": "Combining forms often have more specific meanings than affixes, though similar meanings occur across the two classes.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The group examined the slide through a microscope.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She recorded the aquatic plants growing along the bank.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.5",
+        "pages": [
+          1664,
+          1665
+        ],
+        "pdf_pages": [
+          1684,
+          1685
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Combining forms as bases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-271",
+    "domain": "morphology",
+    "concept": "Distinguishing combining forms from similar prefixes",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "A combining form can attach to ordinary free bases and still retain the capacity to combine with bound bases. That capacity is stronger evidence than the usual presence of a boundary vowel.",
+    "condition": "The source contrasts arch and archi. Syn shows that an initial combining form need not end in a vowel.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We installed a new microchip beside the sensor.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The class borrowed a microscope for the demonstration.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.5",
+        "pages": [
+          1665
+        ],
+        "pdf_pages": [
+          1685
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Distinguishing combining forms from similar prefixes",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-272",
+    "domain": "morphology",
+    "concept": "Clipping and blending of neo-classical words",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "A clipped base can enter ordinary compounding, and a neo-classical word can contribute material to a blend. Similar-looking components may have different sources.",
+    "condition": "A single spelling can have distinct analyses in distinct senses, as Cambridge illustrates with autocide.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She found the postcard in an old photo album.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The TV producer chose a telegenic presenter.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.5",
+        "pages": [
+          1665
+        ],
+        "pdf_pages": [
+          1685
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Clipping and blending of neo-classical words",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-273",
+    "domain": "morphology",
+    "concept": "Affix replacement in neo-classical word families",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Cambridge treats some words in neo-classical families as derivatives of a semantically central compound, with one suffix replacing another.",
+    "condition": "The available derivatives are lexically specific. Alternative immediate-constituent analyses remain possible, especially for final combining forms.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The theologian addressed the audience after the service.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A biologist documented the insects along the river.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.5",
+        "pages": [
+          1665,
+          1666
+        ],
+        "pdf_pages": [
+          1685,
+          1686
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Affix replacement in neo-classical word families",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-274",
+    "domain": "morphology",
+    "concept": "Free final base in xenophobia and derivative xenophobic",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "The independent word phobia supports a compound analysis of xenophobia. Cambridge treats xenophobic as a derivative related to xenophobe or xenophobia.",
+    "condition": "These are preferred analyses. Related forms need not have a uniquely determined immediate-constituent structure.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The lesson discussed efforts to address xenophobia.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The moderator removed a xenophobic comment.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.5",
+        "pages": [
+          1665,
+          1666
+        ],
+        "pdf_pages": [
+          1685,
+          1686
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Free final base in xenophobia and derivative xenophobic",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-275",
+    "domain": "morphology",
+    "concept": "Rhyming compounds with two meaningful bases",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Two independently meaningful words can form a rhyming compound. In some cases the rhyme contributes a playful or trivializing effect.",
+    "condition": "The individual words still function as bases. Register and meaning vary across lexemes.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The instructor passed a walkie-talkie to each group.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The columnist dismissed the claim as claptrap.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.6",
+        "pages": [
+          1666
+        ],
+        "pdf_pages": [
+          1686
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Rhyming compounds with two meaningful bases",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-276",
+    "domain": "morphology",
+    "concept": "Rhyme formations with semantically empty parts",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "In some rhyming formations only the first part contributes independent meaning. In others neither part is independently meaningful in present-day English.",
+    "condition": "The onset of the echo element is not predictable, though labial consonants are favoured.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The puppy squeezed through a teeny-weeny gap.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The hikers scrambled helter-skelter down the bank.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.6",
+        "pages": [
+          1666
+        ],
+        "pdf_pages": [
+          1686
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Rhyme formations with semantically empty parts",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-277",
+    "domain": "morphology",
+    "concept": "Vowel contrast in phonologically motivated compounds",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Some compound-like formations use vowel alternation instead of rhyme. The meaningful source may occur on either side or be absent.",
+    "condition": "The illustrated patterns include short i followed by the vowel in trap or the vowel in lot in Cambridge's pronunciation model. Similar alternation occurs in some fixed phrases.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A crack ran in a zigzag across the pavement.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We listened to the ticktock of the kitchen clock.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§4.6",
+        "pages": [
+          1666
+        ],
+        "pdf_pages": [
+          1686
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Vowel contrast in phonologically motivated compounds",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-278",
+    "domain": "morphology",
+    "concept": "Affixation and lexical derivation",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Affixation adds an affix to form a new base. Derivation is the use of affixation to form lexical bases rather than inflectional forms.",
+    "condition": "Some lexical relationships are better analyzed as replacement of one affix by another.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He chose a readable typeface for the poster.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The hall was booked for a baptism on Sunday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1",
+        "pages": [
+          1667
+        ],
+        "pdf_pages": [
+          1687
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Affixation and lexical derivation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-279",
+    "domain": "morphology",
+    "concept": "Primary-category change in derivation",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "Affixation can form a noun, adjective or verb from a base of another primary category. These output-oriented processes are nominalisation, adjectivalisation and verbalisation.",
+    "condition": "Suffixes often have this function. Dephrasal forms can also result, including adjectives in ed.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Her kindness calmed the new arrivals.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The crew modernised the control room.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.1",
+        "pages": [
+          1667
+        ],
+        "pdf_pages": [
+          1687
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Primary-category change in derivation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-280",
+    "domain": "morphology",
+    "concept": "Subclass change without primary-category change",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "An affix can change a verb's complementation pattern or a noun's countability while preserving its primary category.",
+    "condition": "Examples include moan versus bemoan and star versus stardom.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Several neighbors moaned about the noise.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A tenant bemoaned the loss of parking.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.1",
+        "pages": [
+          1667
+        ],
+        "pdf_pages": [
+          1687
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subclass change without primary-category change",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-281",
+    "domain": "morphology",
+    "concept": "Affixation that preserves syntactic distribution",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Some affixes preserve both primary category and subclass. Prefixes are common in this group.",
+    "condition": "The same affix can have different effects with different inputs. Pre can preserve the category in preheat but form an adjective from a noun in pre-war.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We preheated the oven before lunch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A pre-war map showed a lane behind the mill.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.1",
+        "pages": [
+          1667,
+          1668
+        ],
+        "pdf_pages": [
+          1687,
+          1688
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Affixation that preserves syntactic distribution",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-282",
+    "domain": "morphology",
+    "concept": "Base-category restrictions in derivation",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Productive affix uses usually select one or two primary categories of free base. Some affixes combine across all three major categories.",
+    "condition": "The verb-forming en normally selects an adjective but has lexicalized nominal inputs such as strength and length.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The dimmer can lighten the display.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They added braces to strengthen the shelf.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.1",
+        "pages": [
+          1668
+        ],
+        "pdf_pages": [
+          1688
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Base-category restrictions in derivation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-283",
+    "domain": "morphology",
+    "concept": "Category selection as a constituency diagnostic",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "The usual selection of an adjective by negative un supports analyzing unfairness as unfair plus ness, even when the meaning does not decide the bracketing.",
+    "condition": "Negative un has a few nominal exceptions and differs from reversative un. Negative in attaches to nouns more readily.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The panel discussed the unfairness of the rule.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A sense of unease spread through the audience.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.1",
+        "pages": [
+          1668
+        ],
+        "pdf_pages": [
+          1688
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Category selection as a constituency diagnostic",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-284",
+    "domain": "morphology",
+    "concept": "Free and bound bases in derivation",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Most affixes take free bases, but some also occur with bound bases. The presence of a historically segmentable loan does not guarantee a transparent present-day structure.",
+    "condition": "A few colloquial formations use prepositional bases. Many established bound-base formations are loans.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She picked a durable fabric for the cover.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A creamy sauce came with the vegetables.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.1",
+        "pages": [
+          1668,
+          1669
+        ],
+        "pdf_pages": [
+          1688,
+          1689
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Free and bound bases in derivation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-285",
+    "domain": "morphology",
+    "concept": "Position of denominal adjectival ly",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "The source illustrates denominal adjectival ly closest to the base, with another suffix able to follow it. Its business example shows that the suffix is not freely interchangeable with like.",
+    "condition": "This description concerns adjective formation from nouns, not the homonymous adverb-forming ly.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The host offered a friendly greeting.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The friendliness of the volunteers put him at ease.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.1",
+        "pages": [
+          1669
+        ],
+        "pdf_pages": [
+          1689
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Position of denominal adjectival ly",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-286",
+    "domain": "morphology",
+    "concept": "Outer derivational position of hood",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "The suffix hood can follow another suffix. Cambridge places it at the outside of the derivational sequence in this pattern.",
+    "condition": "The restriction concerns derivational ordering rather than ordinary syntactic dependents of the noun.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The exhibits explored early childhood.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She entered an apprenticeship that eventually led to magicianhood.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.1",
+        "pages": [
+          1669
+        ],
+        "pdf_pages": [
+          1689
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Outer derivational position of hood",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-287",
+    "domain": "morphology",
+    "concept": "Relative order of Germanic and Romance suffixes",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Germanic suffixes generally occur farther from the base than Latin or Romance suffixes. Native suffixes can also follow other native suffixes.",
+    "condition": "This ordering generalization describes a tendency and does not by itself license or reject a new derivative.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "His nervousness eased after the rehearsal.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We admired her hopefulness during the delay.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.1",
+        "pages": [
+          1669
+        ],
+        "pdf_pages": [
+          1689
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Relative order of Germanic and Romance suffixes",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-288",
+    "domain": "morphology",
+    "concept": "Morphophonological alternants",
+    "rule_type": "classification",
+    "scope": "word",
+    "statement": "A morphological environment can select a phonologically distinct form of a base or affix. The difference can involve stress, a vowel, or a consonant.",
+    "condition": "The written base can remain recognizable even when the spoken form changes.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She tried to persuade the committee.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "His powers of persuasion impressed the committee.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.2",
+        "pages": [
+          1669
+        ],
+        "pdf_pages": [
+          1689
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Morphophonological alternants",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-289",
+    "domain": "morphology",
+    "concept": "Stress assigned by the shape of the derivative",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Some suffixed words follow stress patterns comparable to simple words. The suffix may shift stress if it changes the relevant syllable structure.",
+    "condition": "This group includes uses of al, ive and ous, with both shifting and nonshifting examples.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The researcher collected the parent forms before coding the parental responses.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The new process changed which products the team considered productive.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.2",
+        "pages": [
+          1669,
+          1670
+        ],
+        "pdf_pages": [
+          1689,
+          1690
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Stress assigned by the shape of the derivative",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-290",
+    "domain": "morphology",
+    "concept": "Stress immediately before a suffix",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Adjectival ic typically places stress on the preceding syllable. The preceding syllable is also stressed in derivatives in ify and ity.",
+    "condition": "Some adjectives in ic are exceptions. The ify and ity patterns can also be related to their phonological shape.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A photographer lent us photographic equipment.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The designers aimed for both tranquil lighting and a sense of tranquillity.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.2",
+        "pages": [
+          1670
+        ],
+        "pdf_pages": [
+          1690
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Stress immediately before a suffix",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-291",
+    "domain": "morphology",
+    "concept": "Suffixes that carry stress",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Some suffixes themselves attract stress, including the long-vowel types ee and ese and the short-vowel types esque and ette.",
+    "condition": "The short-vowel suffixes illustrate lexical stress behaviour without the long-vowel explanation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The employee filed the report after lunch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The studio has a kitchenette behind the screen.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.2",
+        "pages": [
+          1670
+        ],
+        "pdf_pages": [
+          1690
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Suffixes that carry stress",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-292",
+    "domain": "morphology",
+    "concept": "Stress-neutral suffixes and exceptions",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Many suffixes normally preserve the location of stress in the base, including ness and hood.",
+    "condition": "Stress varies in some ess words. Canalise and immunise depart from the usual ise pattern, and photographer is treated as suffix replacement.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Their pedanticness irritated the editor.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The archive holds photographs from her childhood.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.2",
+        "pages": [
+          1670
+        ],
+        "pdf_pages": [
+          1690
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Stress-neutral suffixes and exceptions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-293",
+    "domain": "morphology",
+    "concept": "Inherited vowel-quality alternations",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Some related words have contrasting vowel qualities inherited from earlier vowel-length distinctions and subsequent sound changes.",
+    "condition": "These are established lexical relationships. Similar spellings can preserve a relationship that is less obvious in speech.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The historian traced changes in criminal law and the reporting of crime.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The critic called the first remark profane and objected to the repeated profanity.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.2",
+        "pages": [
+          1671
+        ],
+        "pdf_pages": [
+          1691
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inherited vowel-quality alternations",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-294",
+    "domain": "morphology",
+    "concept": "Reduction and loss of unstressed vowels",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "When stress shifts, a full vowel may alternate with an unstressed reduced vowel, often schwa. Less systematically, the unstressed vowel can be absent.",
+    "condition": "The pattern concerns pronunciation and should not be turned into a general spelling rule.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A parent asked to see the parental consent form.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The hungry travelers paused when their hunger became distracting.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.2",
+        "pages": [
+          1671
+        ],
+        "pdf_pages": [
+          1691
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reduction and loss of unstressed vowels",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-295",
+    "domain": "morphology",
+    "concept": "Nasal assimilation and omission",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Related prefix forms can have a nasal whose place changes or whose consonant is absent, depending on the following base.",
+    "condition": "The examples include the negative in and related con forms. The pattern is tied to the particular prefix and environment.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "An inaudible announcement caused an impossible delay.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The auditor flagged an illegal deduction and an irrelevant charge.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.2",
+        "pages": [
+          1671
+        ],
+        "pdf_pages": [
+          1691
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nasal assimilation and omission",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-296",
+    "domain": "morphology",
+    "concept": "Velar softening in derived forms",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "A morphological alternation can pair a velar stop in one form with a fricative or affricate in another.",
+    "condition": "This is a lexical morphophonological pattern. It does not predict the pronunciation of every spelling with c or g.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The electric heater used more electricity than expected.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The author tried to analogise the result to an analogous case.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.2",
+        "pages": [
+          1671
+        ],
+        "pdf_pages": [
+          1691
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Velar softening in derived forms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-297",
+    "domain": "morphology",
+    "concept": "Alveolar stops and fricatives in derivation",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "Related forms can alternate between an alveolar stop and a fricative, with different outcomes in different word families.",
+    "condition": "Compare the pronunciation of the base with the established derivative.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The station will transmit the next transmission at noon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A diplomat explained how diplomacy had resolved the dispute.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.2",
+        "pages": [
+          1671
+        ],
+        "pdf_pages": [
+          1691
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Alveolar stops and fricatives in derivation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "MORPH-298",
+    "domain": "morphology",
+    "concept": "Stop presence beside a nasal in related forms",
+    "rule_type": "descriptive_generalization",
+    "scope": "word",
+    "statement": "A stop next to a nasal can be absent in one form and pronounced in a related form.",
+    "condition": "The illustrated families include alternations involving g and b.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She marked the sign used to signify a rest.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The poet used an iamb in an otherwise iambic line.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 19,
+        "section": "§5.1.2",
+        "pages": [
+          1671
+        ],
+        "pdf_pages": [
+          1691
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Stop presence beside a nasal in related forms",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]
