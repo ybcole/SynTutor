@@ -1,0 +1,124 @@
+{
+  "manifest_version": 1,
+  "chapter": 19,
+  "printed_start": 1632,
+  "printed_end": 1639,
+  "report": "sources/cambridge/chapter_19/PP1632_1639_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1632,
+    "pdf_page": 1652
+  },
+  "added_rule_ids": [
+    "MORPH-161",
+    "MORPH-162",
+    "MORPH-163",
+    "MORPH-164",
+    "MORPH-165",
+    "MORPH-166",
+    "MORPH-167",
+    "MORPH-168",
+    "MORPH-169",
+    "MORPH-170",
+    "MORPH-171",
+    "MORPH-172",
+    "MORPH-173",
+    "MORPH-174",
+    "MORPH-175",
+    "MORPH-176",
+    "MORPH-177",
+    "MORPH-178",
+    "MORPH-179",
+    "MORPH-180"
+  ],
+  "page_checks": [
+    {
+      "page": 1632,
+      "status": "extracted",
+      "section": "§§2–2.2",
+      "summary": "Minor processes, manufacture, the initialism distinction and the abbreviation inventory.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1633,
+      "status": "extracted",
+      "section": "§2.2",
+      "summary": "Article choice, capitalization, inflection, further formation, acronym phonology and footnotes 8–9.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1634,
+      "status": "extracted",
+      "section": "§§2.2–2.3",
+      "summary": "Proper-name and lowercase acronyms, noninitial letters, bound initialism derivatives, clipping terminology and footnote 10.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1635,
+      "status": "extracted",
+      "section": "§§2.3–2.3.1",
+      "summary": "Clipping register and meaning, back-, fore- and ambiclipping, phrase sources and sporadic phonological change.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1636,
+      "status": "extracted",
+      "section": "§§2.3.1–2.4",
+      "summary": "Plain clipping tendencies, embellished clipping suffixes, Australian fricative voicing, blend patterns and footnotes 11–12.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1637,
+      "status": "extracted",
+      "section": "§§2.4–2.5",
+      "summary": "Blend overlap, length, ambiguous analysis and recurrent pieces, plus back-formation structure and footnotes 13–14.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1638,
+      "status": "extracted",
+      "section": "§§2.5–2.6",
+      "summary": "Compound back-formation, inflection, reversal and semantic specialization, stress tables and footnote 15.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1639,
+      "status": "extracted",
+      "section": "§2.6",
+      "summary": "Stress variation, category-related vowel quality, lexical fricative voicing and footnotes 16–17.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

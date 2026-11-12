@@ -24,10 +24,10 @@
 | 16. Information packaging | 86 | 83 | 0 | 3 | 0 | Source extraction complete |
 | 17. Deixis and anaphora | 116 | 114 | 0 | 2 | 0 | Source extraction complete |
 | 18. Inflectional morphology | 56 | 53 | 0 | 3 | 0 | Source extraction complete |
-| 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
+| 19. Lexical word-formation | 102 | 99 | 0 | 3 | 0 | Source extraction complete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **1576 extracted**, 143 unprocessed, 43 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **1675 extracted**, 42 unprocessed, 45 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -512,3 +512,75 @@ Source audit: `sources/cambridge/chapter_16/PP1430_1437_REPORT.md`.
 Chapter 16 source extraction is complete. Printed pp. 1363–1448 comprise 83 extracted pages, two contents-only pages and one blank page. The final batch adds 22 inactive records (`CLS-1465`–`CLS-1486`), including one `spec_only` constraint. Chapter 16 adds 208 records in total. Chapter 19 is next, beginning at printed p. 1621.
 
 Source audit: `sources/cambridge/chapter_16/PP1438_1448_REPORT.md`.
+
+## Chapter 19 first checkpoint
+
+Printed pp. 1621–1631 account for nine substantive pages and two contents-only pages, adding 18 inactive records (`MORPH-143`–`MORPH-160`). Chapter 19 has 90 unprocessed pages and one previously accounted-for textless page. Continue at p. 1632 with minor word-formation processes.
+
+Source audit: `sources/cambridge/chapter_19/PP1621_1631_REPORT.md`.
+
+## Chapter 19 second checkpoint
+
+Printed pp. 1632–1639 add eight substantive pages and 20 inactive records (`MORPH-161`–`MORPH-180`). Chapter 19 has 82 unprocessed pages. Continue at p. 1640 with the close of phonological modification and the start of conversion.
+
+Source audit: `sources/cambridge/chapter_19/PP1632_1639_REPORT.md`.
+
+## Chapter 19 third checkpoint
+
+Printed pp. 1640–1647 add 8 substantive pages and 31 inactive records (`MORPH-181`–`MORPH-211`). Chapter 19 has 74 unprocessed pages. Continue at p. 1648 with non-hyponymic and coordinative noun compounds.
+
+Source audit: `sources/cambridge/chapter_19/PP1640_1647_REPORT.md`.
+
+## Chapter 19 fourth checkpoint
+
+Printed pp. 1648–1655 add 8 substantive pages and 27 inactive records (`MORPH-212`–`MORPH-238`), including one inactive plural-placement specification. Chapter 19 has 66 unprocessed pages. Continue at p. 1656 with the rest of verb-centred compound nouns and the start of compound adjectives.
+
+Source audit: `sources/cambridge/chapter_19/PP1648_1655_REPORT.md`.
+
+## Chapter 19 fifth checkpoint
+
+Printed pp. 1656–1663 add 8 substantive pages and 28 inactive records (`MORPH-239`–`MORPH-266`), including one inactive measure-compound specification. Chapter 19 has 58 unprocessed pages. Continue at p. 1664 with the remaining evidence on neo-classical combining forms.
+
+Source audit: `sources/cambridge/chapter_19/PP1656_1663_REPORT.md`.
+
+## Chapter 19 sixth checkpoint
+
+Printed pp. 1664–1671 add 8 substantive pages and 32 inactive records (`MORPH-267`–`MORPH-298`). Chapter 19 has 50 unprocessed pages. Continue at p. 1672 with the continuation of morphophonological alternation.
+
+Source audit: `sources/cambridge/chapter_19/PP1664_1671_REPORT.md`.
+
+## Chapter 19 seventh checkpoint
+
+Printed pp. 1672–1679 add 8 substantive pages and 31 inactive records (`MORPH-299`–`MORPH-329`), including four inactive spelling specifications. Chapter 19 has 42 unprocessed pages. Continue at p. 1680 with the continuation of augmentative morphology.
+
+Source audit: `sources/cambridge/chapter_19/PP1672_1679_REPORT.md`.
+
+## Chapter 19 eighth checkpoint
+
+Printed pp. 1680–1687 add 8 substantive pages and 28 inactive records (`MORPH-330`–`MORPH-357`), including one inactive spelling specification. Chapter 19 has 34 unprocessed pages. Continue at p. 1688 with the remaining properties of negative prefixes.
+
+Source audit: `sources/cambridge/chapter_19/PP1680_1687_REPORT.md`.
+
+## Chapter 19 ninth checkpoint
+
+Printed pp. 1688–1695 add 8 substantive pages and 33 inactive records (`MORPH-358`–`MORPH-390`), including one inactive plural specification. Chapter 19 has 26 unprocessed pages. Continue at p. 1696 with the remaining nationality patterns.
+
+Source audit: `sources/cambridge/chapter_19/PP1688_1695_REPORT.md`.
+
+## Chapter 19 tenth checkpoint
+
+Printed pp. 1696–1703 add 8 substantive pages and 33 inactive records (`MORPH-391`–`MORPH-423`), including one inactive specification for nationality predicates. Chapter 19 has 18 unprocessed pages. Continue at p. 1704 with the rest of action, state and process nominalisations.
+
+Source audit: `sources/cambridge/chapter_19/PP1696_1703_REPORT.md`.
+
+## Chapter 19 eleventh checkpoint
+
+Printed pp. 1704–1711 add 8 substantive pages and 34 inactive records (`MORPH-424`–`MORPH-457`), including one inactive possessive-adjective specification. Chapter 19 has 10 unprocessed pages. Continue at p. 1712 with the remaining adjectivalisation patterns.
+
+Source audit: `sources/cambridge/chapter_19/PP1704_1711_REPORT.md`.
+
+## Chapter 19 completion checkpoint
+
+Printed pp. 1712–1721 add 10 substantive pages and 32 inactive records (`MORPH-458`–`MORPH-489`), including five inactive numeral specifications. Chapter 19 is source-extraction complete with 99 substantive pages, two contents-only pages, and one verified textless page. Chapter 20 begins at printed p. 1723.
+
+Source audit: `sources/cambridge/chapter_19/PP1712_1721_REPORT.md`.

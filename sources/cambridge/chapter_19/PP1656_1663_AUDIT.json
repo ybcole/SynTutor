@@ -1,0 +1,132 @@
+{
+  "manifest_version": 1,
+  "chapter": 19,
+  "printed_start": 1656,
+  "printed_end": 1663,
+  "report": "sources/cambridge/chapter_19/PP1656_1663_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1656,
+    "pdf_page": 1676
+  },
+  "added_rule_ids": [
+    "MORPH-239",
+    "MORPH-240",
+    "MORPH-241",
+    "MORPH-242",
+    "MORPH-243",
+    "MORPH-244",
+    "MORPH-245",
+    "MORPH-246",
+    "MORPH-247",
+    "MORPH-248",
+    "MORPH-249",
+    "MORPH-250",
+    "MORPH-251",
+    "MORPH-252",
+    "MORPH-253",
+    "MORPH-254",
+    "MORPH-255",
+    "MORPH-256",
+    "MORPH-257",
+    "MORPH-258",
+    "MORPH-259",
+    "MORPH-260",
+    "MORPH-261",
+    "MORPH-262",
+    "MORPH-263",
+    "MORPH-264",
+    "MORPH-265",
+    "MORPH-266"
+  ],
+  "page_checks": [
+    {
+      "page": 1656,
+      "status": "extracted",
+      "section": "§§4.2.2–4.3.1",
+      "summary": "Plural reluctance in ing compounds, adjectival dependents of verbal nouns, and comparison and intensification.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1657,
+      "status": "extracted",
+      "section": "§4.3.1",
+      "summary": "Measure scales, incorporated dependents and lexical gaps, self compounds, and footnote 26.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1658,
+      "status": "extracted",
+      "section": "§§4.3.1–4.3.2",
+      "summary": "Coordination versus subordination, gerund-participial arguments and distribution, and footnote 27.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1659,
+      "status": "extracted",
+      "section": "§4.3.2",
+      "summary": "Adjective versus participial sequence, passive and active past participles, location forms, and deverbal adjective heads.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1660,
+      "status": "extracted",
+      "section": "§§4.3.2–4.4",
+      "summary": "Semantic arguments, irregular attributive modifiers, singular measure bases, age nouns, and compound verb origins.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1661,
+      "status": "extracted",
+      "section": "§§4.4–4.5",
+      "summary": "Compound verb classes and their formation labels, defective gerund-participial verbs, and the combining form inventory.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1662,
+      "status": "extracted",
+      "section": "§4.5",
+      "summary": "Free-base combinations, vowel reduction and retention, uncertain segmentation, and footnotes 28–29.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1663,
+      "status": "extracted",
+      "section": "§4.5",
+      "summary": "Boundary vowel alternants, competing analyses, evidence from productive forms, absent vowels, and footnote 30.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}
