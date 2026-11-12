@@ -1,0 +1,151 @@
+{
+  "manifest_version": 1,
+  "chapter": 20,
+  "printed_start": 1755,
+  "printed_end": 1764,
+  "report": "sources/cambridge/chapter_20/PP1755_1764_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1755,
+    "pdf_page": 1775
+  },
+  "added_rule_ids": [
+    "OTH-742",
+    "OTH-743",
+    "OTH-744",
+    "OTH-745",
+    "OTH-746",
+    "OTH-747",
+    "OTH-748",
+    "OTH-749",
+    "OTH-750",
+    "OTH-751",
+    "OTH-752",
+    "OTH-753",
+    "OTH-754",
+    "OTH-755",
+    "OTH-756",
+    "OTH-757",
+    "OTH-758",
+    "OTH-759",
+    "OTH-760",
+    "OTH-761",
+    "OTH-762",
+    "OTH-763",
+    "OTH-764",
+    "OTH-765",
+    "OTH-766"
+  ],
+  "page_checks": [
+    {
+      "page": 1755,
+      "status": "extracted",
+      "section": "§6",
+      "summary": "Raised colons and dashes, terminal suppression, and regional placement of commas and stops.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1756,
+      "status": "extracted",
+      "section": "§6",
+      "summary": "British house-style variation, editorial interventions, block quotations, and typographic alternatives.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1757,
+      "status": "extracted",
+      "section": "§§6–7",
+      "summary": "Typographic alternatives, unmarked speech and thought, capitalization functions, and footnotes 21–23.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1758,
+      "status": "extracted",
+      "section": "§7",
+      "summary": "Grammatical and semantic capitalization categories, articles, and institutional perspective.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1759,
+      "status": "extracted",
+      "section": "§§7–8.2.1",
+      "summary": "Institutional continuation, word spacing and internal punctuation, and three ordinary hyphen uses.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1760,
+      "status": "extracted",
+      "section": "§§8.2.1–8.2.2",
+      "summary": "Line-breaking variation, lexical and syntactic hard hyphens, and compound spellings.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1761,
+      "status": "extracted",
+      "section": "§8.2.2",
+      "summary": "Compound type table, numeral and fraction spelling, prefix hyphens, and scope conflicts.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1762,
+      "status": "extracted",
+      "section": "§8.2.2",
+      "summary": "Scope continuation, syntactic hyphens, en-rule relations and spans, and footnotes 25–26.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1763,
+      "status": "extracted",
+      "section": "§§8.3–8.4",
+      "summary": "Genitive, reduction and separation apostrophes, and the abbreviation full-stop inventory.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1764,
+      "status": "extracted",
+      "section": "§§8.4–8.5",
+      "summary": "Abbreviation variants, terminal suppression, minor reduction markers, and slash uses.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

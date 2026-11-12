@@ -552,3 +552,9 @@ Printed pp. 1739–1746 add eight substantive pages and add 20 inactive records 
 ## Chapter 20 fourth checkpoint
 
 Printed pp. 1747–1754 add eight substantive pages and add 21 inactive records (`OTH-721`–`OTH-741`), including four inactive punctuation specifications. Chapter 20 has 10 unprocessed pages. Continue at p. 1755 with punctuation around quotations.
+
+## Chapter 20 completion checkpoint
+
+Printed pp. 1755–1764 add ten substantive pages and 25 inactive records (`OTH-742`–`OTH-766`), including four inactive punctuation specifications. Chapter 20 source extraction is complete with 41 substantive pages, one contents page, and no unprocessed pages.
+
+All 20 chapters have zero unprocessed pages on the stacked Phase B branch. The next step is cross-domain QA and overlap resolution before broad Phase C detector integration. Full integration CI remains pending for stacked drafts whose base branches are outside the pull-request workflow filters.

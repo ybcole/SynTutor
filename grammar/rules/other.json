@@ -42928,5 +42928,1466 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-742",
+    "domain": "other",
+    "concept": "Raised colons and dashes in interrupted quotation",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "A colon at a split in quoted speech can follow the reporting frame, with a comma inside the first quotation. A dash may also be raised but more often begins the second quoted portion.",
+    "condition": "The pattern concerns a reporting frame that interrupts quoted wording at a punctuation boundary.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "“Only one issue remains,” she said: “the cost is too high.”",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "“I was about to leave,” he said “– then the phone rang.”",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§6(b)",
+        "pages": [
+          1755
+        ],
+        "pdf_pages": [
+          1775
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Raised colons and dashes in interrupted quotation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-743",
+    "domain": "other",
+    "concept": "Terminal suppression at the end of a quotation",
+    "rule_type": "constraint",
+    "scope": "other",
+    "statement": "A final quotation and its containing sentence usually share one terminal. A full stop is suppressed when it coincides with a question or exclamation mark, or with another full stop.",
+    "condition": "A final quotation and its matrix share a boundary at which a question or exclamation mark already occurs.",
+    "violation": "A competing full stop is added.",
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Mara asked, “Where are the keys?”",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Did he actually say “I quit”?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Mara asked, “Where are the keys?”.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Did he actually say “I quit.”?",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§6(c)",
+        "pages": [
+          1755
+        ],
+        "pdf_pages": [
+          1775
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Terminal suppression at the end of a quotation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "punctuation",
+      "error_pattern": "A competing full stop is added.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Mara asked, “Where are the keys?”. ||| Mara asked, “Where are the keys?”",
+        "Did he actually say “I quit.”? ||| Did he actually say “I quit”?"
+      ],
+      "learner_explanation": "Keep the question or exclamation mark and omit the competing full stop.",
+      "corrected_paragraph_template": "Keep the question or exclamation mark and omit the competing full stop.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Mara asked, “Where are the keys?” and walked away.",
+        "Did he really ask, “Where are the keys?”?"
+      ],
+      "lesson_tags": [
+        "punctuation",
+        "word-and-sentence-boundaries"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-744",
+    "domain": "other",
+    "concept": "Placement of commas and full stops at quotation boundaries",
+    "rule_type": "stylistic_or_prescriptive",
+    "scope": "other",
+    "statement": "American practice puts an adjacent comma or full stop inside the closing quotation mark. British practice tends to consider which text the mark belongs to, with house-style variation.",
+    "condition": "An independent quoted sentence can end in an internal full stop in both traditions. Scope can be ambiguous when speech is interrupted or the matrix continues.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She described the climb as “easy,” but we disagreed.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She described the climb as ‘easy’, but we disagreed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§6(d)",
+        "pages": [
+          1755,
+          1756
+        ],
+        "pdf_pages": [
+          1775,
+          1776
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Placement of commas and full stops at quotation boundaries",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-745",
+    "domain": "other",
+    "concept": "Omissions and editorial interventions in quotations",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "Ellipsis points mark omissions, while square brackets can mark added wording, substitutions, changed capitalization or an editorial comment.",
+    "condition": "Sic indicates fidelity to the source despite a possibly surprising form. A main-clause quotation generally starts with a capital, with a different possibility after a subordinator.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The memo said that “the first [proposal] had been withdrawn”.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The notice read, “The west entrance … will reopen on Monday.”",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§6",
+        "pages": [
+          1756
+        ],
+        "pdf_pages": [
+          1776
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Omissions and editorial interventions in quotations",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-746",
+    "domain": "other",
+    "concept": "Block quotation and typographic alternatives",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "An indented block can identify a long quotation without quotation marks. Italics can mark titles, cited forms, foreign expressions and emphasis.",
+    "condition": "A common publication convention distinguishes articles or chapters in quotes from whole books or journals in italics. Bold and small capitals can identify technical terms.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We discussed “The Final Crossing” from *Stories by the River*.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She said she wanted the *blue* folder.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§6",
+        "pages": [
+          1756,
+          1757
+        ],
+        "pdf_pages": [
+          1776,
+          1777
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Block quotation and typographic alternatives",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-747",
+    "domain": "other",
+    "concept": "Speech and thought without quotation marks",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "Direct thought or interior monologue can appear without quotation marks. Dialogue can use a speaker label and a colon or dash.",
+    "condition": "The reporting frame and layout can identify the speech or thought.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The last bus must be gone, she thought.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Mara: We can take the train instead.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§6",
+        "pages": [
+          1757
+        ],
+        "pdf_pages": [
+          1777
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Speech and thought without quotation marks",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-748",
+    "domain": "other",
+    "concept": "Capitalization for boundaries and status",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Capitalization can mark the beginning of a sentence or line of verse and can identify names or other special-status expressions.",
+    "condition": "Status uses include some initialisms, personification, emphasis, technical roles and the nominative pronoun I.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I asked whether NASA had released the photograph.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The agreement defines the Tenant's responsibilities.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§7",
+        "pages": [
+          1757
+        ],
+        "pdf_pages": [
+          1777
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Capitalization for boundaries and status",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-749",
+    "domain": "other",
+    "concept": "Grammatical range of capitalized expressions",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Capitalization can apply to a noun phrase, a noun or nominal within one, a derived adjective, or a clause functioning as a title.",
+    "condition": "Capitalized bases can survive inside complex words. Business and product names sometimes use internal capitals.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A French publisher contacted us in mid-October.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We watched “Who Framed Roger Rabbit?” last weekend.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§7",
+        "pages": [
+          1757,
+          1758
+        ],
+        "pdf_pages": [
+          1777,
+          1778
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Grammatical range of capitalized expressions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-750",
+    "domain": "other",
+    "concept": "Capitalization within names and titles",
+    "rule_type": "stylistic_or_prescriptive",
+    "scope": "other",
+    "statement": "A common style capitalizes major words in names and titles and leaves some short prepositions, coordinators and articles lowercase.",
+    "condition": "An article may be capitalized when it is part of an official name or title. Particular practices vary.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The programme listed the Bishop of York as a speaker.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The class visited the Museum of London.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§7",
+        "pages": [
+          1758
+        ],
+        "pdf_pages": [
+          1778
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Capitalization within names and titles",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-751",
+    "domain": "other",
+    "concept": "Named categories and institutional perspective",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "Capitalized names include people, places, organizations, languages, calendar terms, historical events and trademarks. Definite descriptions of particular officeholders or institutions can also take capitals.",
+    "condition": "Capitalizing an institutional role can reflect an insider or official perspective. The same expression can be lowercase in a general reference.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The University announced the appointment in September.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The town hopes to establish a university.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§7",
+        "pages": [
+          1758,
+          1759
+        ],
+        "pdf_pages": [
+          1778,
+          1779
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Named categories and institutional perspective",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-752",
+    "domain": "other",
+    "concept": "Spaces and word-edge punctuation",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "Spaces usually distinguish orthographic words, with opening marks before a word and closing or following marks after it. Dashes can be spaced on both sides or unspaced on both sides.",
+    "condition": "Parentheses or quotation marks enclosing a word part can be internal to an orthographic word. Sentence-initial capitalization differs from capitalization inherent to a word.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The vice-chair (who took notes) arrived early.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The key—our only spare—had vanished.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§8.1",
+        "pages": [
+          1759
+        ],
+        "pdf_pages": [
+          1779
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Spaces and word-edge punctuation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-753",
+    "domain": "other",
+    "concept": "Hard hyphens soft hyphens and speech spelling",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "A hard hyphen joins elements in a written expression. A soft hyphen marks a line break inside a word. Hyphens can also represent stuttering or unusually deliberate pronunciation.",
+    "condition": "An ordinary hyphen can take over functions of the long hyphen where the en rule is unavailable.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The clerk filed a follow-up report.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "“C-c-can I come too?” asked the child.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§8.2.1",
+        "pages": [
+          1759,
+          1760
+        ],
+        "pdf_pages": [
+          1779,
+          1780
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Hard hyphens soft hyphens and speech spelling",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-754",
+    "domain": "other",
+    "concept": "Line-break hyphenation",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "Line-breaking can use morphological, phonological and visual cues, with some regional and editorial preferences.",
+    "condition": "Breaks are usually avoided in monosyllables, within certain hard-hyphen components, and at points likely to suggest an unrelated word.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "At a line break, school-master preserves the component boundary.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The typesetter kept the one-syllable word strength intact.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§8.2.1",
+        "pages": [
+          1760
+        ],
+        "pdf_pages": [
+          1780
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Line-break hyphenation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-755",
+    "domain": "other",
+    "concept": "Lexical compound spellings",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "A grammatical compound can be closed, hyphenated or spaced. Established compounds tend toward closed forms and American practice tends to use fewer hyphens than British practice.",
+    "condition": "Many decisions are lexical. Hyphenation is common in several compound types, and an internal hyphen need not mark the highest morphological division.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The dishwasher needed a new pump.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Her sister-in-law lent us a stage-manager's notebook.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§8.2.2",
+        "pages": [
+          1760,
+          1761
+        ],
+        "pdf_pages": [
+          1780,
+          1781
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical compound spellings",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-756",
+    "domain": "other",
+    "concept": "Hyphens in numerals fractions and established formations",
+    "rule_type": "constraint",
+    "scope": "other",
+    "statement": "Compound numerals from twenty-one to ninety-nine use a hyphen. Fractions may be hyphenated or spaced, and the source avoids a joining hyphen if either part already has one.",
+    "condition": "A compound cardinal below one hundred has a written tens form followed by a unit.",
+    "violation": "The tens and unit lack a joining hyphen.",
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Twenty-seven people signed the letter.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The workshop provided forty-two chairs.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Twenty seven people signed the letter.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The workshop provided forty two chairs.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§8.2.2",
+        "pages": [
+          1761
+        ],
+        "pdf_pages": [
+          1781
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Hyphens in numerals fractions and established formations",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "punctuation",
+      "error_pattern": "The tens and unit lack a joining hyphen.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Twenty seven people signed the letter. ||| Twenty-seven people signed the letter.",
+        "The workshop provided forty two chairs. ||| The workshop provided forty-two chairs."
+      ],
+      "learner_explanation": "Join the tens and unit with a hyphen.",
+      "corrected_paragraph_template": "Join the tens and unit with a hyphen.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Twenty people signed the letter.",
+        "They measured thirteen twenty-eighths of the original volume."
+      ],
+      "lesson_tags": [
+        "punctuation",
+        "word-and-sentence-boundaries"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-757",
+    "domain": "other",
+    "concept": "Prefix hyphenation and disambiguation",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "Prefixes often take hyphens before capitals or where letter sequences and lexical ambiguity could cause misreading.",
+    "condition": "Some prefixes are more often hyphenated in British usage. Lexicalized forms can close up, and suffixes normally attach without hyphens.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They agreed to re-cover the chair.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The committee voted to re-elect the chair.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§8.2.2",
+        "pages": [
+          1761
+        ],
+        "pdf_pages": [
+          1781
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Prefix hyphenation and disambiguation",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-758",
+    "domain": "other",
+    "concept": "Hyphen scope and suspended elements",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "Spaces usually separate larger constituents than hyphens do, but coordinated prefixes or bases can share material. A hyphen can mark the suspended portion.",
+    "condition": "The second suspended hyphen is sometimes absent. Other scope conflicts can lead to extra hyphens or closed spelling.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The council compared pre- and post-industrial maps.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The team interviewed Canadian-born and -educated applicants.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§8.2.2",
+        "pages": [
+          1761,
+          1762
+        ],
+        "pdf_pages": [
+          1781,
+          1782
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Hyphen scope and suspended elements",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-759",
+    "domain": "other",
+    "concept": "Syntactic hyphens in attributive modifiers",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "Hyphens can group several words that function together as a prenominal modifier. Some combinations are written without hyphens in other syntactic positions.",
+    "condition": "Ordinary adjective phrases, proper names and participles with ly adverbs generally remain open. Noun-headed cases vary, and some lexical hyphens remain predicatively.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They filed a well-argued reply.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The reply was well argued.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§8.2.2",
+        "pages": [
+          1762
+        ],
+        "pdf_pages": [
+          1782
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Syntactic hyphens in attributive modifiers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-760",
+    "domain": "other",
+    "concept": "Long hyphens for relations and ranges",
+    "rule_type": "classification",
+    "scope": "other",
+    "statement": "An unspaced en rule can mark a relation between names or nouns, a route, or a span of pages or dates.",
+    "condition": "More than two components can be linked. An ordinary hyphen can instead identify parts of a single name in the source's contrast.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We attended a parent–teacher meeting.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The notes refer to pages 41–46.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§8.2.2",
+        "pages": [
+          1762
+        ],
+        "pdf_pages": [
+          1782
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Long hyphens for relations and ranges",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-761",
+    "domain": "other",
+    "concept": "Genitive apostrophes and personal pronouns",
+    "rule_type": "constraint",
+    "scope": "other",
+    "statement": "A genitive noun phrase can mark its final word with apostrophe-s or a bare apostrophe. Core personal pronoun genitives are written without an apostrophe.",
+    "condition": "Its or yours functions as a genitive personal pronoun.",
+    "violation": "The pronoun contains an apostrophe.",
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The dog lifted its head.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The spare key is yours.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The dog lifted it’s head.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The spare key is your’s.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§8.3",
+        "pages": [
+          1763
+        ],
+        "pdf_pages": [
+          1783
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Genitive apostrophes and personal pronouns",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "punctuation",
+      "error_pattern": "The pronoun contains an apostrophe.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The dog lifted it’s head. ||| The dog lifted its head.",
+        "The spare key is your’s. ||| The spare key is yours."
+      ],
+      "learner_explanation": "Write its and yours without an apostrophe when they mark possession.",
+      "corrected_paragraph_template": "Write its and yours without an apostrophe when they mark possession.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "It’s raining again.",
+        "The dog’s collar was wet.",
+        "The dogs’ bowls were empty."
+      ],
+      "lesson_tags": [
+        "punctuation",
+        "word-and-sentence-boundaries"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-762",
+    "domain": "other",
+    "concept": "Reduction and separation apostrophes",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "Apostrophes can mark reduced or cliticized forms and can separate a plural ending in some expressions involving letters, abbreviations or cited forms.",
+    "condition": "Word-edge reduction is unusual in established spellings outside a few fixed expressions and speech representation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We can't stay past six.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The student earned three A's.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§8.3",
+        "pages": [
+          1763
+        ],
+        "pdf_pages": [
+          1783
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reduction and separation apostrophes",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-763",
+    "domain": "other",
+    "concept": "Abbreviation stops and variety",
+    "rule_type": "stylistic_or_prescriptive",
+    "scope": "other",
+    "statement": "Use of full stops in abbreviations, contractions and initials varies by region, style and abbreviation type.",
+    "condition": "Stops are generally absent in lowercase acronyms and ordinary clippings. Initials before a surname and familiar full initials can differ in practice.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Dr Reed signed the letter.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Dr. Reed signed the letter.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§8.4",
+        "pages": [
+          1763,
+          1764
+        ],
+        "pdf_pages": [
+          1783,
+          1784
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Abbreviation stops and variety",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-764",
+    "domain": "other",
+    "concept": "Sentence-final abbreviation full stop",
+    "rule_type": "constraint",
+    "scope": "other",
+    "statement": "When a sentence ends with an abbreviation full stop, a second terminal full stop is suppressed.",
+    "condition": "A declarative sentence ends in an abbreviation with a full stop.",
+    "violation": "Another full stop follows the abbreviation stop.",
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The letter came from Washington, D.C.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The crate contained maps, pens, paper, etc.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The letter came from Washington, D.C..",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The crate contained maps, pens, paper, etc..",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§8.4",
+        "pages": [
+          1764
+        ],
+        "pdf_pages": [
+          1784
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Sentence-final abbreviation full stop",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "punctuation",
+      "error_pattern": "Another full stop follows the abbreviation stop.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The letter came from Washington, D.C.. ||| The letter came from Washington, D.C.",
+        "The crate contained maps, pens, paper, etc.. ||| The crate contained maps, pens, paper, etc."
+      ],
+      "learner_explanation": "Use the existing abbreviation full stop to end the sentence.",
+      "corrected_paragraph_template": "Use the existing abbreviation full stop to end the sentence.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Did the letter come from Washington, D.C.?",
+        "The crate contained maps, pens, paper, etc."
+      ],
+      "lesson_tags": [
+        "punctuation",
+        "word-and-sentence-boundaries"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-765",
+    "domain": "other",
+    "concept": "Asterisk and dash as reduction markers",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "Asterisks and dashes can conceal letters in taboo words, and a dash can abbreviate a name.",
+    "condition": "The source treats these as minor uses rather than general spelling conventions.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The diary named the guest only as Mrs B–.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The transcript printed the swear word as d***.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§8.4",
+        "pages": [
+          1764
+        ],
+        "pdf_pages": [
+          1784
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Asterisk and dash as reduction markers",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
+  },
+  {
+    "id": "OTH-766",
+    "domain": "other",
+    "concept": "Slash for alternatives and linked expressions",
+    "rule_type": "descriptive_generalization",
+    "scope": "other",
+    "statement": "The normally unspaced slash can indicate alternatives, sometimes inclusively. It can also stand in for a long hyphen or occur in an abbreviation.",
+    "condition": "In s/he the initial letter is optional. Some editorial styles use a slash for paired groups or periods.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Select the repair/replacement box.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The report discusses staff/student relations.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 20,
+        "section": "§8.5",
+        "pages": [
+          1764
+        ],
+        "pdf_pages": [
+          1784
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Slash for alternatives and linked expressions",
+        "relation": "unverified",
+        "note": "An independent B-R crosswalk is required."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Checked against printed text and rendered layout. Original English examples."
   }
 ]
