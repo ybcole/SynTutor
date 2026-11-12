@@ -3,7 +3,13 @@
 **Binding authority:** `docs/planning/CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md` §0, §§3–9.  
 **Scope:** all 20 Cambridge chapters; **no changes** to B-R syntax-tree authority, XAI proof policy, user English-only policy, source citation quality, independent approval, detector eligibility, or measured performance requirements.
 
-## Quick-start for the next execution
+## Current execution checkpoint — 2026-11-12
+
+Chapter 15 is source-extracted through printed p. 1362: **88 substantive pages, 2 documented contents-only skips, no unprocessed pages**. The next Phase B priority is **Chapter 17, printed pp. 1449–1564**, beginning with its contents pages and the first substantive text. Earlier Chapter 4 through Chapter 15 quick-starts below are historical scaffolding only; do not restart their completed source extraction. Follow the master plan §0 adaptive source-audit requirements, preserve all QA gates, and use the current coverage ledger rather than snapshot counts.
+
+---
+
+## Historical Chapter 4 quick-start (completed)
 
 **Next chapter:** Chapter 4, *The clause: complements*, **printed pp. 213–322**. Chapter 3 printed pp. 71–212 are already fully accounted for as **139 extracted + three contents-only skips**, while **1,610 full-book pages remain unprocessed**. Do not redo Chapter 3 extraction or postpone Chapter 4 for additional speculative Phase C prototypes.
 
@@ -231,14 +237,166 @@ Printed pp. 1227–1245 yielded 29 records (`CLS-345`–`CLS-373`), including on
 
 Printed pp. 1246–1271 yielded 36 records (`CLS-374`–`CLS-409`), including two inactive constraint specifications. The final batch verifies that p. 1272 is blank. Chapter 14 closes with 99 substantive pages, three justified skips and zero unprocessed pages. Chapter 18 is next in the master plan priority order.
 
-## Chapter 18 first checkpoint (2026-11-11)
+## Chapter 2 first checkpoint (2026-11-12)
 
-Printed pp. 1565–1585 account for two contents pages and 19 substantive pages and yield 26 records (`MORPH-067`–`MORPH-092`), including four inactive constraint specifications. Continue at p. 1586 with regular plural suffix spelling.
+Printed pp. 43–56 account for one contents page and 13 substantive pages. The batch adds 19 records (`CLS-410`–`CLS-428`). Continue at p. 57 with countability and adjective and adverb phrases.
 
-## Chapter 18 second checkpoint (2026-11-11)
+## Chapter 2 source extraction complete (2026-11-12)
 
-Printed pp. 1586–1609 yielded 32 records (`MORPH-093`–`MORPH-124`), including four inactive constraint specifications. Continue at p. 1610.
+Printed pp. 57–69 yielded 21 records (`CLS-429`–`CLS-449`). The matching full-volume page for p. 70 is blank. Chapter 2 closes with 26 substantive pages and zero unprocessed pages. Chapter 6 is next in the master plan priority order.
 
-## Chapter 18 source extraction complete (2026-11-11)
+## Chapter 6 first checkpoint (2026-11-12)
 
-Printed pp. 1610–1619 yielded 18 records (`MORPH-125`–`MORPH-142`), including two inactive constraint specifications. The final batch verifies blank p. 1620. Chapter 18 closes with 53 substantive pages, three justified skips and zero unprocessed pages. Chapter 2 is next in the master plan priority order.
+Printed pp. 525–542 yielded 21 records (`WCAT-036`–`WCAT-056`), including one inactive constraint specification. Continue at p. 543 with adjective complementation.
+
+## Chapter 6 second checkpoint (2026-11-12)
+
+Printed pp. 543–562 yielded 24 records (`WCAT-057`–`WCAT-080`), including one inactive constraint specification. Continue at p. 563 with the distribution of adverb modifiers.
+
+## Chapter 6 third checkpoint (2026-11-12)
+
+Printed pp. 563–582 yielded 22 records (`WCAT-081`–`WCAT-102`). Continue at p. 583 with adverbial modification of adjectives and adverbs.
+
+## Chapter 6 source extraction complete (2026-11-12)
+
+Printed pp. 583–595 yielded 18 records (`WCAT-103`–`WCAT-120`). Printed p. 596 is blank. Chapter 6 closes with 70 substantive pages and zero unprocessed pages. Chapter 8 is next in the master plan priority order.
+
+## Chapter 8 first checkpoint
+
+Printed pp. 663–683 yielded 29 classification records (`CLS-450`–`CLS-478`). Continue at p. 684 with locative realization and change of location.
+
+## Chapter 8 second checkpoint
+
+Printed pp. 684–702 yielded 32 classification records (`CLS-479`–`CLS-510`). Continue at p. 703 with bounding and non-bounding duration.
+
+## Chapter 8 third checkpoint
+
+Printed pp. 703–724 yielded 34 classification records (`CLS-511`–`CLS-544`). Continue at p. 725 with degree under negation and then cause and result.
+
+## Chapter 8 fourth checkpoint
+
+Printed pp. 725–738 yielded 24 classification records (`CLS-545`–`CLS-568`). Continue at p. 739 with open conditional constructions.
+
+## Chapter 8 fifth checkpoint
+
+Printed pp. 739–760 yielded 29 classification records (`CLS-569`–`CLS-597`). Continue at p. 761 with exhaustive conditionals.
+
+## Chapter 8 source extraction complete
+
+Printed pp. 761–784 yielded 29 classification records (`CLS-598`–`CLS-626`). Chapter 8 closes source extraction with 120 substantive pages, two contents-only skips and zero unprocessed pages. The next chapter in the priority order is Chapter 9.
+
+## Chapter 9 first checkpoint
+
+Printed pp. 785–805 yielded 29 classification records (`CLS-627`–`CLS-655`) across 20 substantive pages and one contents page. Continue at p. 806 with secondary and non-verbal negation.
+
+## Chapter 9 second checkpoint
+
+Printed pp. 806–821 yielded 29 classification records (`CLS-656`–`CLS-684`). Continue at p. 822 with polarity-sensitive items.
+
+## Chapter 9 third checkpoint
+
+Printed pp. 822–838 yielded 25 classification records (`CLS-685`–`CLS-709`). Continue at p. 839 with increased specificity of negation.
+
+## Chapter 9 source extraction complete
+
+Printed pp. 839–849 yielded 16 records (`CLS-710`–`CLS-725`). Printed p. 850 is blank. Chapter 9 closes with 64 substantive pages and zero unprocessed pages. The next chapter in the priority order is Chapter 11.
+
+## Chapter 11 first checkpoint
+
+Printed pp. 947–966 yielded 30 classification records (`CLS-726`–`CLS-755`). Continue at p. 967.
+
+## Chapter 11 second checkpoint
+
+Printed pp. 967–980 yielded 25 classification records (`CLS-756`–`CLS-780`). Continue at p. 981 with question- and answer-oriented interrogatives.
+
+## Chapter 11 third checkpoint
+
+Printed pp. 981–994 yielded 18 classification records (`CLS-781`–`CLS-798`). Continue at p. 995 with mandatives.
+
+## Chapter 11 fourth checkpoint
+
+Printed pp. 995–1010 yielded 21 classification records (`CLS-799`–`CLS-819`). Continue at p. 1011 with syntactic analysis and reported speech.
+
+## Chapter 11 source extraction complete
+
+Printed pp. 1011–1030 yielded 26 classification records (`CLS-820`–`CLS-845`). Chapter 11 closes source extraction with 82 substantive pages and two contents pages. Chapter 12 is next.
+
+## Chapter 12 first checkpoint
+
+Printed pp. 1031–1047 yielded 22 classification records (`CLS-846`–`CLS-867`). Continue at p. 1048 with who and which.
+
+## Chapter 12 second checkpoint
+
+Printed pp. 1048–1066 yielded 23 classification records (`CLS-868`–`CLS-890`). Continue at p. 1067 with infinitival relatives.
+
+## Chapter 12 third checkpoint
+
+Printed pp. 1067–1078 yielded 19 classification records (`CLS-891`–`CLS-909`). Continue at p. 1079 with unbounded dependencies.
+
+## Chapter 12 source extraction complete
+
+Printed pp. 1079–1096 yielded 21 classification records (`CLS-910`–`CLS-930`). Chapter 12 closes source extraction with 64 substantive pages and two contents pages. Chapter 15 is next in the priority order.
+
+## Chapter 15 first checkpoint
+
+Printed pp. 1273–1288 yielded 21 classification records (`CLS-931`–`CLS-951`). Continue at p. 1289 with coordinators and related linking items.
+
+## Chapter 15 second checkpoint
+
+Printed pp. 1289–1304 yielded 21 classification records (`CLS-952`–`CLS-972`). Continue at p. 1305 with both and either.
+
+## Chapter 15 third checkpoint
+
+Printed pp. 1305–1322 yielded 23 classification records (`CLS-973`–`CLS-995`). Continue at p. 1323 with conditions on coordination.
+
+## Chapter 15 fourth checkpoint
+
+Printed pp. 1323–1342 audited consecutively in text and rendered layout, including genitive comparison tables, footnote exceptions and the nonce-constituent tree. Added 41 inert English-only records (`CLS-996`–`CLS-1036`); 3 are spec-only constraints, not enabled. Continue at p. 1343; only 20 printed pages remain in Chapter 15. Independent linguistic review and chapter-wide CI remain outstanding.
+
+## Chapter 15 Phase B source closure
+
+Printed pp. 1343–1362 were checked against text, all rendered page layouts and the two syntax-tree diagrams; the batch adds 59 inert records (`CLS-1037`–`CLS-1095`). Chapter 15 printed pp. 1273–1362 are fully accounted for (88 substantive and 2 contents-only skips; zero unprocessed). The Chapter 15 draft PR remains subject to complete local/CI gates and independent source QA, with no newly enabled runtime rules. Next chapter in priority order: Chapter 17.
+
+## Chapter 17 first checkpoint — 2026-11-12
+
+Printed pp. 1449–1472 checked consecutively in uploaded full-volume PDF text and page layout. Two contents-only pages (1449–1450) are properly skipped. The 22 substantive pages (1451–1472) yield 62 inert, source-attributed original-example records (PHR-459–PHR-514 and CLS-1096–CLS-1101), one narrow spec-only reflexive constraint with explicit guards. Next begins at p. 1473. No runtime enablement, fabricated B-R crosswalk or independent source approval.
+
+## Chapter 17 second checkpoint — 2026-11-12
+
+Printed pp. 1473–1496 source-checked consecutively in full-volume PDF text and rendered page layouts (including p.1486 reflexive-domain tree, footnotes and unacceptable/minimally variable contrasts). 67 inert new records (PHR-515–PHR-579, CLS-1102–CLS-1103), with one narrowly scoped `pride` lexical reflexive `spec_only` constraint. Distinctions for bound variables, prospective anaphora, optional and override reflexives prevent broad false-positive detectors. Chapter 17 now has 46 substantive pages plus 2 contents-only skips, leaving 68 printed pages; continue at p.1497. No approvals or runtime enablement.
+
+## Chapter 17 third checkpoint
+
+Printed pp. 1497–1504 yielded 38 inactive records (`PHR-580–PHR-617`), including 9 `spec_only` constraints. The batch closes reciprocal constructions and begins demonstratives. Chapter 17 has 54 substantive pages extracted, two contents-only skips and 60 unprocessed pages. Continue at p. 1505 with animate demonstratives and central deictic use.
+
+## Chapter 17 fourth checkpoint
+
+Printed pp. 1505–1512 yielded 28 inactive records (`PHR-618–PHR-645`), including 5 `spec_only` constraints. Chapter 17 has 62 substantive pages extracted, two contents-only skips and 52 unprocessed pages. Continue at p. 1513 with the distribution of pro-nominal one and fused heads.
+
+## Chapter 17 fifth checkpoint
+
+Printed pp. 1513–1520 yielded 29 inactive records (`PHR-646–PHR-674`), including 6 `spec_only` constraints. Chapter 17 has 70 substantive pages extracted, two contents-only skips and 44 unprocessed pages. Continue at p. 1521 with differences between an ellipsis site and its antecedent.
+
+## Chapter 17 sixth checkpoint
+
+Printed pp. 1521–1528 yielded 24 inactive records (`PHR-675–PHR-698`), including 2 `spec_only` constraints. Chapter 17 has 78 substantive pages extracted, two contents-only skips and 36 unprocessed pages. Continue at p. 1529.
+
+## Chapter 17 seventh checkpoint
+
+Printed pp. 1529–1536 yielded 28 inactive records (`PHR-699–PHR-726`), including 3 `spec_only` constraints. Chapter 17 has 86 substantive pages extracted, two contents-only skips and 28 unprocessed pages. Continue at p. 1537 with further polarity contrasts for pro-clause so.
+
+## Chapter 17 eighth checkpoint
+
+Printed pp. 1537–1544 yielded 30 inactive records (`PHR-727–PHR-756`), including 2 `spec_only` constraints. Chapter 17 has 94 substantive pages extracted, two contents-only skips and 20 unprocessed pages. Continue at p. 1545 with implicit scalar comparisons.
+
+## Chapter 17 ninth checkpoint
+
+Printed pp. 1545–1553 yielded 27 inactive records (`PHR-757–PHR-783`), including one `spec_only` constraint. Chapter 17 has 103 substantive pages extracted, two contents-only skips and 11 unprocessed pages. Continue at p. 1554 with implicit location and orientation.
+
+## Chapter 17 Phase B closure
+
+Printed pp. 1554–1564 yielded 31 inactive records (`PHR-784–PHR-814`). Chapter 17 Phase B source extraction accounts for all 116 printed pages: 114 substantive pages and 2 contents-only skips. The ledger still lists Chapter 18 as incomplete, and the master plan puts it ahead of the remaining priority-three chapters.
+
+## Chapter 18 Phase B integration
+
+Chapter 18 Phase B accounts for printed pp. 1565–1620 in three audited batches: 53 substantive pages, two contents-only pages and one verified blank boundary page. The 76 source-linked records (`MORPH-067`–`MORPH-142`) include ten inactive constraint specifications. Independent linguistic review, Burton-Roberts crosswalk verification and runtime activation remain separate gates. The audited branch was reconciled with current main while retaining the intervening chapter coverage. Continue with Chapter 1, the first remaining chapter in priority three.

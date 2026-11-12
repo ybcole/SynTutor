@@ -1,0 +1,132 @@
+{
+  "manifest_version": 1,
+  "chapter": 17,
+  "printed_start": 1505,
+  "printed_end": 1512,
+  "report": "sources/cambridge/chapter_17/PP1505_1512_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1505,
+    "pdf_page": 1525
+  },
+  "added_rule_ids": [
+    "PHR-618",
+    "PHR-619",
+    "PHR-620",
+    "PHR-621",
+    "PHR-622",
+    "PHR-623",
+    "PHR-624",
+    "PHR-625",
+    "PHR-626",
+    "PHR-627",
+    "PHR-628",
+    "PHR-629",
+    "PHR-630",
+    "PHR-631",
+    "PHR-632",
+    "PHR-633",
+    "PHR-634",
+    "PHR-635",
+    "PHR-636",
+    "PHR-637",
+    "PHR-638",
+    "PHR-639",
+    "PHR-640",
+    "PHR-641",
+    "PHR-642",
+    "PHR-643",
+    "PHR-644",
+    "PHR-645"
+  ],
+  "page_checks": [
+    {
+      "page": 1505,
+      "status": "extracted",
+      "section": "§§5.1–5.2",
+      "summary": "Animate identification with specifying be and restricted ascription; spatial agreement, speaker viewpoint and deixis of degrees, properties and actions.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1506,
+      "status": "extracted",
+      "section": "§§5.2–5.3(a)",
+      "summary": "Discourse deixis, coreference to NP antecedents, recovered nominals, demonstrative choice and overlapping deictic and anaphoric uses.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1507,
+      "status": "extracted",
+      "section": "§5.3(b–d)",
+      "summary": "Clausal, adjective and adverb phrase antecedents, nominalization, degree recovery and deictic fused heads with nominal antecedents.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1508,
+      "status": "extracted",
+      "section": "§5.3(d)",
+      "summary": "Nondeictic fused that and those, definite interpretation, reference and subset readings, partitives and the comparison with pro-nominal one.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1509,
+      "status": "extracted",
+      "section": "§5.3",
+      "summary": "Post-head and countability contrasts with one; proximal anticipatory anaphora and the distinction between identification and optional clarification.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1510,
+      "status": "extracted",
+      "section": "§5.4",
+      "summary": "Shared-knowledge recognition, informal false definites, dependents that establish definiteness and nondeictic degree that.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1511,
+      "status": "extracted",
+      "section": "§§5.4(d), 6, 6.1",
+      "summary": "Informal degree interpretations, predominantly British resultative that, reduced NP classification and ellipsis of post-head dependents.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1512,
+      "status": "extracted",
+      "section": "§6.1",
+      "summary": "Number marking on one, parallel fused constructions, modifier eligibility, determiner inventory and the effect of an intervening modifier.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

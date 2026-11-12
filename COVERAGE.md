@@ -2,32 +2,32 @@
 
 **Chapter 5 Phase B source extraction complete (2026-11-11).** Printed pp.326–523 contain 198 extracted pages. Pages 323–325 are contents-only, and p.524 is blank in the full volume.
 
-**Phase B extraction status: 2026-11-11.** Pages are counted as extracted when a page-specific source audit report is recorded. This is not a claim of full-chapter audit, new live diagnostic detection, or completion of the 20-chapter reference.
+**Phase B extraction status: 2026-11-12.** Pages are counted as extracted when a page-specific source audit report is recorded. This is not a claim of full-chapter audit, new live diagnostic detection, or completion of the 20-chapter reference.
 
 | Chapter | Printed pages | Extracted | Unprocessed | Skipped | Absent from split | Status |
 |---|---:|---:|---:|---:|---:|---|
 | 1. Preliminaries | 42 | 0 | 41 | 1 | 0 | Incomplete |
-| 2. Syntactic overview | 28 | 0 | 27 | 0 | 1 | Incomplete |
+| 2. Syntactic overview | 28 | 26 | 0 | 1 | 1 | Source-extracted |
 | 3. The verb | 142 | 139 | 0 | 3 | 0 | Source-extracted; QA pending |
 | 4. The clause: complements | 110 | 107 | 0 | 3 | 0 | Source extracted; QA pending |
 | 5. Nouns and noun phrases | 202 | 198 | 0 | 3 | 1 | Source-extracted |
-| 6. Adjectives and adverbs | 72 | 0 | 71 | 1 | 0 | Incomplete |
+| 6. Adjectives and adverbs | 72 | 70 | 0 | 2 | 0 | Source-extracted |
 | 7. Prepositions and preposition phrases | 66 | 64 | 0 | 2 | 0 | Source-extracted |
-| 8. The clause: adjuncts | 122 | 0 | 122 | 0 | 0 | Incomplete |
-| 9. Negation | 66 | 0 | 65 | 1 | 0 | Incomplete |
+| 8. The clause: adjuncts | 122 | 120 | 0 | 2 | 0 | Source-extracted |
+| 9. Negation | 66 | 64 | 0 | 2 | 0 | Source-extracted |
 | 10. Clause type and illocutionary force | 96 | 93 | 0 | 3 | 0 | Source-extracted |
-| 11. Content clauses and reported speech | 84 | 0 | 84 | 0 | 0 | Incomplete |
-| 12. Relative constructions | 66 | 0 | 66 | 0 | 0 | Incomplete |
+| 11. Content clauses and reported speech | 84 | 82 | 0 | 2 | 0 | Source-extracted |
+| 12. Relative constructions | 66 | 64 | 0 | 2 | 0 | Source-extracted |
 | 13. Comparative constructions | 74 | 0 | 74 | 0 | 0 | Incomplete |
 | 14. Non-finite and verbless clauses | 102 | 99 | 0 | 3 | 0 | Source-extracted |
-| 15. Coordination and supplementation | 90 | 0 | 90 | 0 | 0 | Incomplete |
+| 15. Coordination and supplementation | 90 | 88 | 0 | 2 | 0 | Source-extracted; independent QA pending |
 | 16. Information packaging | 86 | 0 | 85 | 1 | 0 | Incomplete |
-| 17. Deixis and anaphora | 116 | 0 | 116 | 0 | 0 | Incomplete |
-| 18. Inflectional morphology | 56 | 53 | 0 | 3 | 0 | Source-extracted |
-| 19. Lexical word-formation | 102 | 99 | 0 | 3 | 0 | Source-extracted |
+| 17. Deixis and anaphora | 116 | 114 | 0 | 2 | 0 | Source extraction complete |
+| 18. Inflectional morphology | 56 | 53 | 0 | 3 | 0 | Source extraction complete |
+| 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **753 extracted**, 984 unprocessed, 25 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **1381 extracted**, 343 unprocessed, 38 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -231,16 +231,170 @@ The final batch covers printed pp. 1246–1271 and verifies blank p. 1272. It ad
 
 Chapter 14 has 99 substantive pages, three justified skips and zero unprocessed pages. Its 139 source-linked records remain outside the live detector registry.
 
-## Chapter 18 pp. 1565–1585
+## Chapter 2 pp. 43–56
 
-The opening batch covers 19 substantive pages and two contents pages. It adds 26 records (`MORPH-067`–`MORPH-092`) on inflectional operations, phonological and spelling alternations, grade and the start of noun plurals. See the [source report](sources/cambridge/chapter_18/PP1565_1585_REPORT.md) and [audit manifest](sources/cambridge/chapter_18/PP1565_1585_AUDIT.json). Continue at p. 1586.
+The opening batch covers 13 substantive pages and one contents page. It adds 19 source-linked classifications (`CLS-410`–`CLS-428`). See the [source report](sources/cambridge/chapter_02/PP43_56_REPORT.md) and [audit manifest](sources/cambridge/chapter_02/PP43_56_AUDIT.json). Continue at p. 57.
 
-## Chapter 18 pp. 1586–1609
+## Chapter 2 source extraction complete
 
-The second batch covers 24 substantive pages and adds 32 records (`MORPH-093`–`MORPH-124`) on noun plurals, genitives, regular and irregular verb inflection, and complex bases. See the [source report](sources/cambridge/chapter_18/PP1586_1609_REPORT.md) and [audit manifest](sources/cambridge/chapter_18/PP1586_1609_AUDIT.json). Continue at p. 1610.
+The final batch covers 13 substantive pages (pp. 57–69) and verifies the blank boundary at p. 70. It adds 21 classifications (`CLS-429`–`CLS-449`). See the [source report](sources/cambridge/chapter_02/PP57_70_REPORT.md) and [audit manifest](sources/cambridge/chapter_02/PP57_70_AUDIT.json).
 
-## Chapter 18 source extraction complete
+Chapter 2 has 26 substantive pages, one contents-only page, one verified split-source exclusion and zero unprocessed pages.
 
-The final batch covers printed pp. 1610–1619 and verifies blank p. 1620. It adds 18 records (`MORPH-125`–`MORPH-142`) on complex verb forms, auxiliary negatives, reduction, clitics and liaison. See the [source report](sources/cambridge/chapter_18/PP1610_1620_REPORT.md) and [audit manifest](sources/cambridge/chapter_18/PP1610_1620_AUDIT.json).
+## Chapter 6 pp. 525–542
 
-Chapter 18 has 53 substantive pages, three justified skips and zero unprocessed pages. Its 76 records remain outside the live detector registry.
+The opening batch accounts for 17 substantive pages and one contents page and adds 21 records (`WCAT-036`–`WCAT-056`). See the [source report](sources/cambridge/chapter_06/PP525_542_REPORT.md) and [audit manifest](sources/cambridge/chapter_06/PP525_542_AUDIT.json). Continue at p. 543.
+
+## Chapter 6 pp. 543–562
+
+The second batch covers 20 substantive pages and adds 24 records (`WCAT-057`–`WCAT-080`) on adjective complementation, modification, position and restricted functions. See the [source report](sources/cambridge/chapter_06/PP543_562_REPORT.md) and [audit manifest](sources/cambridge/chapter_06/PP543_562_AUDIT.json). Continue at p. 563.
+
+## Chapter 6 pp. 563–582
+
+The third batch covers 20 substantive pages and adds 22 classifications (`WCAT-081`–`WCAT-102`) on adverb categories, form, phrase structure and adjunct placement. See the [source report](sources/cambridge/chapter_06/PP563_582_REPORT.md) and [audit manifest](sources/cambridge/chapter_06/PP563_582_AUDIT.json). Continue at p. 583.
+
+## Chapter 6 source extraction complete
+
+The final batch covers 13 substantive pages (pp. 583–595) and verifies that p. 596 is blank. It adds 18 classifications (`WCAT-103`–`WCAT-120`). See the [source report](sources/cambridge/chapter_06/PP583_596_REPORT.md) and [audit manifest](sources/cambridge/chapter_06/PP583_596_AUDIT.json).
+
+Chapter 6 has 70 substantive pages, one contents page, one blank boundary and zero unprocessed pages.
+
+## Chapter 8 pp. 663–683
+
+The opening batch accounts for 19 substantive pages and two contents pages and adds 29 records (`CLS-450`–`CLS-478`). See the [source report](sources/cambridge/chapter_08/PP663_683_REPORT.md) and [audit manifest](sources/cambridge/chapter_08/PP663_683_AUDIT.json). Continue at p. 684.
+
+## Chapter 8 pp. 684–702
+
+This batch accounts for 19 substantive pages and adds 32 records (`CLS-479`–`CLS-510`). See the [source report](sources/cambridge/chapter_08/PP684_702_REPORT.md) and [audit manifest](sources/cambridge/chapter_08/PP684_702_AUDIT.json). Continue at p. 703.
+
+## Chapter 8 pp. 703–724
+
+This batch adds 34 records (`CLS-511`–`CLS-544`) across 22 substantive pages. See the [source report](sources/cambridge/chapter_08/PP703_724_REPORT.md) and [audit manifest](sources/cambridge/chapter_08/PP703_724_AUDIT.json). Continue at p. 725.
+
+## Chapter 8 pp. 725–738
+
+This batch adds 24 records (`CLS-545`–`CLS-568`) across 14 substantive pages. See the [source report](sources/cambridge/chapter_08/PP725_738_REPORT.md) and [audit manifest](sources/cambridge/chapter_08/PP725_738_AUDIT.json). Continue at p. 739.
+
+## Chapter 8 pp. 739–760
+
+This batch adds 29 records (`CLS-569`–`CLS-597`) across 22 substantive pages. See the [source report](sources/cambridge/chapter_08/PP739_760_REPORT.md) and [audit manifest](sources/cambridge/chapter_08/PP739_760_AUDIT.json). Continue at p. 761.
+
+## Chapter 8 pp. 761–784
+
+The final batch adds 29 records (`CLS-598`–`CLS-626`) across 24 substantive pages. Chapter 8 has 120 substantive pages and two contents pages accounted for, with zero unprocessed pages. See the [source report](sources/cambridge/chapter_08/PP761_784_REPORT.md) and [audit manifest](sources/cambridge/chapter_08/PP761_784_AUDIT.json).
+
+## Chapter 9 pp. 785–805
+
+The first batch adds 29 records (`CLS-627`–`CLS-655`) across 20 substantive pages and accounts for the contents on p. 785. See the [source report](sources/cambridge/chapter_09/PP785_805_REPORT.md) and [audit manifest](sources/cambridge/chapter_09/PP785_805_AUDIT.json). Continue at p. 806.
+
+## Chapter 9 pp. 806–821
+
+This batch adds 29 records (`CLS-656`–`CLS-684`) across 16 substantive pages. See the [source report](sources/cambridge/chapter_09/PP806_821_REPORT.md) and [audit manifest](sources/cambridge/chapter_09/PP806_821_AUDIT.json). Continue at p. 822.
+
+## Chapter 9 pp. 822–838
+
+This batch adds 25 records (`CLS-685`–`CLS-709`) across 17 substantive pages. See the [source report](sources/cambridge/chapter_09/PP822_838_REPORT.md) and [audit manifest](sources/cambridge/chapter_09/PP822_838_AUDIT.json). Continue at p. 839.
+
+## Chapter 9 pp. 839–850
+
+The final batch adds 16 records (`CLS-710`–`CLS-725`) across 11 substantive pages and confirms blank p. 850. Chapter 9 has 64 substantive pages, two justified skips and zero unprocessed pages. See the [source report](sources/cambridge/chapter_09/PP839_850_REPORT.md) and [audit manifest](sources/cambridge/chapter_09/PP839_850_AUDIT.json).
+
+## Chapter 11 pp. 947–966
+
+The first batch adds 30 records (`CLS-726`–`CLS-755`) across 18 substantive pages and accounts for the contents on pp. 947–948. See the [source report](sources/cambridge/chapter_11/PP947_966_REPORT.md) and [audit manifest](sources/cambridge/chapter_11/PP947_966_AUDIT.json). Continue at p. 967.
+
+## Chapter 11 pp. 967–980
+
+This batch adds 25 records (`CLS-756`–`CLS-780`) across 14 substantive pages. See the [source report](sources/cambridge/chapter_11/PP967_980_REPORT.md) and [audit manifest](sources/cambridge/chapter_11/PP967_980_AUDIT.json). Continue at p. 981.
+
+## Chapter 11 pp. 981–994
+
+This batch adds 18 records (`CLS-781`–`CLS-798`) across 14 substantive pages. See the [source report](sources/cambridge/chapter_11/PP981_994_REPORT.md) and [audit manifest](sources/cambridge/chapter_11/PP981_994_AUDIT.json). Continue at p. 995.
+
+## Chapter 11 pp. 995–1010
+
+This batch adds 21 records (`CLS-799`–`CLS-819`) across 16 substantive pages. See the [source report](sources/cambridge/chapter_11/PP995_1010_REPORT.md) and [audit manifest](sources/cambridge/chapter_11/PP995_1010_AUDIT.json). Continue at p. 1011.
+
+## Chapter 11 pp. 1011–1030
+
+The final batch adds 26 records (`CLS-820`–`CLS-845`) across 20 substantive pages. Chapter 11 has 82 substantive pages, two contents pages and zero unprocessed pages. See the [source report](sources/cambridge/chapter_11/PP1011_1030_REPORT.md) and [audit manifest](sources/cambridge/chapter_11/PP1011_1030_AUDIT.json).
+
+## Chapter 12 pp. 1031–1047
+
+The first batch adds 22 records (`CLS-846`–`CLS-867`) across 15 substantive pages and accounts for two contents pages. See the [source report](sources/cambridge/chapter_12/PP1031_1047_REPORT.md) and [audit manifest](sources/cambridge/chapter_12/PP1031_1047_AUDIT.json). Continue at p. 1048.
+
+## Chapter 12 pp. 1048–1066
+
+This batch adds 23 records (`CLS-868`–`CLS-890`) across 19 substantive pages. See the [source report](sources/cambridge/chapter_12/PP1048_1066_REPORT.md) and [audit manifest](sources/cambridge/chapter_12/PP1048_1066_AUDIT.json). Continue at p. 1067.
+
+## Chapter 12 pp. 1067–1078
+
+This batch adds 19 records (`CLS-891`–`CLS-909`) across 12 substantive pages. See the [source report](sources/cambridge/chapter_12/PP1067_1078_REPORT.md) and [audit manifest](sources/cambridge/chapter_12/PP1067_1078_AUDIT.json). Continue at p. 1079.
+
+## Chapter 12 pp. 1079–1096
+
+The final batch adds 21 records (`CLS-910`–`CLS-930`) across 18 substantive pages. Chapter 12 has 64 substantive pages, two contents pages and zero unprocessed pages. See the [source report](sources/cambridge/chapter_12/PP1079_1096_REPORT.md) and [audit manifest](sources/cambridge/chapter_12/PP1079_1096_AUDIT.json).
+
+## Chapter 15 pp. 1273–1288
+
+The first batch adds 21 records (`CLS-931`–`CLS-951`) across 14 substantive pages and accounts for two contents pages. See the [source report](sources/cambridge/chapter_15/PP1273_1288_REPORT.md) and [audit manifest](sources/cambridge/chapter_15/PP1273_1288_AUDIT.json). Continue at p. 1289.
+
+## Chapter 15 pp. 1289–1304
+
+This batch adds 21 records (`CLS-952`–`CLS-972`) across 16 substantive pages. See the [source report](sources/cambridge/chapter_15/PP1289_1304_REPORT.md) and [audit manifest](sources/cambridge/chapter_15/PP1289_1304_AUDIT.json). Continue at p. 1305.
+
+## Chapter 15 pp. 1305–1322
+
+This batch adds 23 records (`CLS-973`–`CLS-995`) across 18 substantive pages. See the [source report](sources/cambridge/chapter_15/PP1305_1322_REPORT.md) and [audit manifest](sources/cambridge/chapter_15/PP1305_1322_AUDIT.json). Continue at p. 1323.
+
+## Chapter 15 Phase B checkpoint — printed pp. 1323–1342
+
+Checked 20 consecutive substantive pages and added 41 original-example inactive records (`CLS-996`–`CLS-1036`), including 3 `spec_only` constraints. [Source report](sources/cambridge/chapter_15/PP1323_1342_REPORT.md) · [Machine audit](sources/cambridge/chapter_15/PP1323_1342_AUDIT.json). Chapter 15 now has 68 substantive pages extracted and two contents-only skips through p. 1342; 20 printed pages remain. Book-wide ledger: 1194 extracted, 534 unprocessed, 34 justified skips, 2 absent from split source. No runtime enablement or independent QA approval.
+
+## Chapter 15 Phase B source extraction complete — printed pp. 1273–1362
+
+The final consecutively source-checked batch accounts for pp. 1343–1362 and adds 59 inactive records (`CLS-1037`–`CLS-1095`) including 1 `spec_only` constraint. [Audit report](sources/cambridge/chapter_15/PP1343_1362_REPORT.md) · [Audit manifest](sources/cambridge/chapter_15/PP1343_1362_AUDIT.json). Chapter 15 ledger: 88 substantive pages extracted, 2 contents-only skips, zero unprocessed pages. Book-wide ledger: 1214 extracted, 514 unprocessed, 34 justified skips, 2 absent from split source. Source complete ≠ independent review ≠ B-R crosswalk verified ≠ detector activation. Both GitHub CI workflows and chapter QA are required before PR merge. Next: Chapter 17.
+
+## Chapter 17 Phase B checkpoint — printed pp. 1449–1472
+
+Checked all 24 page layouts and source text; pp.1449–1450 are chapter contents only. Extracted pp.1451–1472 with 62 English-only inactive source records (PHR-459–PHR-514; CLS-1096–CLS-1101); see [source report](sources/cambridge/chapter_17/PP1449_1472_REPORT.md) and [machine audit](sources/cambridge/chapter_17/PP1449_1472_AUDIT.json). Chapter 17 has 22 substantive extracted, 2 justified skips, 92 unprocessed. B-R crosswalks and independent linguistic QA remain pending; Cambridge registry unchanged. Continue at p.1473.
+
+## Chapter 17 Phase B checkpoint — printed pp. 1473–1496
+
+Source-checked all 24 substantive pages (full-volume PDF pp. 1493–1516) with source text, rendered layouts, bracketed judgments and footnotes. Added 67 inactive original-English example records (PHR-515–PHR-579, CLS-1102–CLS-1103), including a narrowly scoped lexical reflexive `spec_only` constraint. [Report](sources/cambridge/chapter_17/PP1473_1496_REPORT.md) · [Machine audit](sources/cambridge/chapter_17/PP1473_1496_AUDIT.json). Chapter 17 now has 46 substantive extracted pages, 2 contents-only skips and 68 unprocessed pages; continue at p.1497. Linguistic review and production licensing remain pending.
+
+## Chapter 17 Phase B checkpoint for printed pp. 1497–1504
+
+Printed pp. 1497–1504 yielded 38 inactive records (`PHR-580–PHR-617`), including 9 `spec_only` constraints. The batch closes reciprocal constructions and begins demonstratives. Chapter 17 has 54 substantive pages extracted, two contents-only skips and 60 unprocessed pages. Continue at p. 1505 with animate demonstratives and central deictic use. [Report](sources/cambridge/chapter_17/PP1497_1504_REPORT.md) · [Audit](sources/cambridge/chapter_17/PP1497_1504_AUDIT.json).
+
+## Chapter 17 Phase B checkpoint for printed pp. 1505–1512
+
+Printed pp. 1505–1512 yielded 28 inactive records (`PHR-618–PHR-645`), including 5 `spec_only` constraints. Chapter 17 has 62 substantive pages extracted, two contents-only skips and 52 unprocessed pages. Continue at p. 1513 with the distribution of pro-nominal one and fused heads. [Report](sources/cambridge/chapter_17/PP1505_1512_REPORT.md) · [Audit](sources/cambridge/chapter_17/PP1505_1512_AUDIT.json).
+
+## Chapter 17 Phase B checkpoint for printed pp. 1513–1520
+
+Printed pp. 1513–1520 yielded 29 inactive records (`PHR-646–PHR-674`), including 6 `spec_only` constraints. Chapter 17 has 70 substantive pages extracted, two contents-only skips and 44 unprocessed pages. Continue at p. 1521 with differences between an ellipsis site and its antecedent. [Report](sources/cambridge/chapter_17/PP1513_1520_REPORT.md) · [Audit](sources/cambridge/chapter_17/PP1513_1520_AUDIT.json).
+
+## Chapter 17 Phase B checkpoint for printed pp. 1521–1528
+
+Printed pp. 1521–1528 yielded 24 inactive records (`PHR-675–PHR-698`), including 2 `spec_only` constraints. Chapter 17 has 78 substantive pages extracted, two contents-only skips and 36 unprocessed pages. Continue at p. 1529. [Report](sources/cambridge/chapter_17/PP1521_1528_REPORT.md) · [Audit](sources/cambridge/chapter_17/PP1521_1528_AUDIT.json).
+
+## Chapter 17 Phase B checkpoint for printed pp. 1529–1536
+
+Printed pp. 1529–1536 yielded 28 inactive records (`PHR-699–PHR-726`), including 3 `spec_only` constraints. Chapter 17 has 86 substantive pages extracted, two contents-only skips and 28 unprocessed pages. Continue at p. 1537 with further polarity contrasts for pro-clause so. [Report](sources/cambridge/chapter_17/PP1529_1536_REPORT.md) · [Audit](sources/cambridge/chapter_17/PP1529_1536_AUDIT.json).
+
+## Chapter 17 Phase B checkpoint for printed pp. 1537–1544
+
+Printed pp. 1537–1544 yielded 30 inactive records (`PHR-727–PHR-756`), including 2 `spec_only` constraints. Chapter 17 has 94 substantive pages extracted, two contents-only skips and 20 unprocessed pages. Continue at p. 1545 with implicit scalar comparisons. [Report](sources/cambridge/chapter_17/PP1537_1544_REPORT.md) · [Audit](sources/cambridge/chapter_17/PP1537_1544_AUDIT.json).
+
+## Chapter 17 Phase B checkpoint for printed pp. 1545–1553
+
+Printed pp. 1545–1553 yielded 27 inactive records (`PHR-757–PHR-783`), including one `spec_only` constraint. Chapter 17 has 103 substantive pages extracted, two contents-only skips and 11 unprocessed pages. Continue at p. 1554 with implicit location and orientation. [Report](sources/cambridge/chapter_17/PP1545_1553_REPORT.md) · [Audit](sources/cambridge/chapter_17/PP1545_1553_AUDIT.json).
+
+## Chapter 17 Phase B closure
+
+Printed pp. 1554–1564 yielded 31 inactive records (`PHR-784–PHR-814`). Chapter 17 Phase B source extraction accounts for all 116 printed pages: 114 substantive pages and 2 contents-only skips. [Report](sources/cambridge/chapter_17/PP1554_1564_REPORT.md) · [Audit](sources/cambridge/chapter_17/PP1554_1564_AUDIT.json).
+
+## Chapter 18 Phase B closure
+
+Chapter 18 Phase B accounts for printed pp. 1565–1620 in three audited batches: 53 substantive pages, two contents-only pages and one verified blank boundary page. The 76 source-linked records (`MORPH-067`–`MORPH-142`) include ten inactive constraint specifications. Independent linguistic review, Burton-Roberts crosswalk verification and runtime activation remain separate gates.

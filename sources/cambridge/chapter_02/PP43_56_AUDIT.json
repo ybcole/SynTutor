@@ -1,0 +1,189 @@
+{
+  "manifest_version": 1,
+  "chapter": 2,
+  "printed_start": 43,
+  "printed_end": 56,
+  "report": "sources/cambridge/chapter_02/PP43_56_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 43,
+    "pdf_page": 63
+  },
+  "added_rule_ids": [
+    "CLS-410",
+    "CLS-411",
+    "CLS-412",
+    "CLS-413",
+    "CLS-414",
+    "CLS-415",
+    "CLS-416",
+    "CLS-417",
+    "CLS-418",
+    "CLS-419",
+    "CLS-420",
+    "CLS-421",
+    "CLS-422",
+    "CLS-423",
+    "CLS-424",
+    "CLS-425",
+    "CLS-426",
+    "CLS-427",
+    "CLS-428"
+  ],
+  "page_checks": [
+    {
+      "page": 43,
+      "status": "skipped_with_reason",
+      "section": "Contents",
+      "summary": "Chapter title and contents with no expository text.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 44,
+      "status": "extracted",
+      "section": "§1",
+      "summary": "Explains the purpose of the overview and distinguishes sentences, embedded clauses, and clause coordination.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 45,
+      "status": "extracted",
+      "section": "§1",
+      "summary": "Treats clauses as basic units and compares sentence forms and coordinations of unlike categories.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 46,
+      "status": "extracted",
+      "section": "§2",
+      "summary": "Introduces canonical clauses and compares polarity, clause type, voice, subordination and coordination.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 47,
+      "status": "extracted",
+      "section": "§2",
+      "summary": "Explains matrix clauses and compares counterparts that differ on only one syntactic dimension.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 48,
+      "status": "extracted",
+      "section": "§2",
+      "summary": "Explains the status of syntactic process terminology and begins the diagrammatic analysis of non-canonical clauses.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 49,
+      "status": "extracted",
+      "section": "§2",
+      "summary": "Uses diagrams to relate fronting, gaps and grammatical functions and introduces the analysis of inversion.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 50,
+      "status": "extracted",
+      "section": "§§2–3",
+      "summary": "Diagrams the inverted auxiliary, describes the organization of the grammar and introduces verb forms.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 51,
+      "status": "extracted",
+      "section": "§3",
+      "summary": "Distinguishes plain-form constructions, finite and non-finite clauses, auxiliaries and tense.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 52,
+      "status": "extracted",
+      "section": "§§3–4",
+      "summary": "Distinguishes tense from time, aspect from aspectuality and mood from modality, then introduces complements.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 53,
+      "status": "extracted",
+      "section": "§4",
+      "summary": "Compares semantic roles, subjects and objects, transitivity patterns and predicative complements.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 54,
+      "status": "extracted",
+      "section": "§§4–5",
+      "summary": "Completes specifying be, compares PP complements and particles, and introduces NP structure.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 55,
+      "status": "extracted",
+      "section": "§5",
+      "summary": "Distinguishes determinatives from determiner function, explains nominals, and compares direct and indirect complements.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 56,
+      "status": "extracted",
+      "section": "§5",
+      "summary": "Analyzes fused heads and head versus phrasal genitives, then introduces NP number and exceptions in agreement.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

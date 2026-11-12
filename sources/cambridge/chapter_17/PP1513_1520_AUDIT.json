@@ -1,0 +1,133 @@
+{
+  "manifest_version": 1,
+  "chapter": 17,
+  "printed_start": 1513,
+  "printed_end": 1520,
+  "report": "sources/cambridge/chapter_17/PP1513_1520_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1513,
+    "pdf_page": 1533
+  },
+  "added_rule_ids": [
+    "PHR-646",
+    "PHR-647",
+    "PHR-648",
+    "PHR-649",
+    "PHR-650",
+    "PHR-651",
+    "PHR-652",
+    "PHR-653",
+    "PHR-654",
+    "PHR-655",
+    "PHR-656",
+    "PHR-657",
+    "PHR-658",
+    "PHR-659",
+    "PHR-660",
+    "PHR-661",
+    "PHR-662",
+    "PHR-663",
+    "PHR-664",
+    "PHR-665",
+    "PHR-666",
+    "PHR-667",
+    "PHR-668",
+    "PHR-669",
+    "PHR-670",
+    "PHR-671",
+    "PHR-672",
+    "PHR-673",
+    "PHR-674"
+  ],
+  "page_checks": [
+    {
+      "page": 1513,
+      "status": "extracted",
+      "section": "§6.1",
+      "summary": "Genitive determiners, bare the one in identifying contexts, informal and idiomatic a one, and diagnostics distinguishing noun and determinative.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1514,
+      "status": "extracted",
+      "section": "§6.1",
+      "summary": "Expansion of reduced constructions, numerical and singulative readings, and fused cardinal modifier-heads following a determiner.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1515,
+      "status": "extracted",
+      "section": "§6.1",
+      "summary": "Higher-cardinal substitution, count antecedents, obligatory dependents of one and restrictions on inherited complements.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1516,
+      "status": "extracted",
+      "section": "§6.1",
+      "summary": "Relational complement classes and exceptions; simple, explicit and implicit partitive, and special readings.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1517,
+      "status": "extracted",
+      "section": "§§6.1–6.2",
+      "summary": "Subset relation, situational interpretation, antecedent size and continuity, and the uses of pro-nominal other.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1518,
+      "status": "extracted",
+      "section": "§6.2",
+      "summary": "Noun versus adjective other, number, adjective order, other one, the special human interpretation and compound another.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1519,
+      "status": "extracted",
+      "section": "§§7–7.1",
+      "summary": "Reduction outside NPs, placement of a stranded auxiliary, old and new stranding, nonconstituent ellipsis and inversion.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1520,
+      "status": "extracted",
+      "section": "§7.1",
+      "summary": "Retained and contrastive dependents, limits on retained complements and alternative boundaries in an auxiliary chain.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}
