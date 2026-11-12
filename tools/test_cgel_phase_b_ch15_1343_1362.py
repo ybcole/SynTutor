@@ -63,7 +63,7 @@ class Chapter15FinalSourceBatch(unittest.TestCase):
             "Narrow scope of postposed coordinate",
             "Supplementation versus dependency and coordination",
             "Supplementary apposition and substitution entailment",
-            "Main-clause supplements and content-supplying explanation",
+            "Main clause supplements and content-supplying explanation",
             "Coordinator-introduced material can be supplementary",
             "Exceptional agreement sensitivity of coordinated supplements",
             "Or-introduced supplementary reformulation",
