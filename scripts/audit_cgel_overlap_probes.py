@@ -52,14 +52,35 @@ MODAL_EVALUATION_CASES = [
 ]
 
 
-def evaluate_modal_cases(probe_modal_parser):
+ENJOY_EVALUATION_CASES = [
+    ("direct", "The twins enjoy to swim before breakfast.", "The twins enjoy swimming before breakfast."),
+    ("direct", "Mira enjoys to write short stories.", "Mira enjoys writing short stories."),
+    ("direct", "Leo enjoyed to read on the porch.", "Leo enjoyed reading on the porch."),
+    ("direct", "They are enjoying to learn a new language.", "They are enjoying learning a new language."),
+    ("direct", "Nora enjoys to be alone on Sundays.", "Nora enjoys being alone on Sundays."),
+    ("direct", "The children enjoy to play in the rain.", "The children enjoy playing in the rain."),
+    ("stress: split infinitive", "Nora enjoys to quietly read at night.", "Nora enjoys quietly reading at night."),
+    ("stress: coordination", "They enjoy to sing and dance.", "They enjoy singing and dancing."),
+    ("control: nominal", "Nora enjoys the quiet.", None),
+    ("control: purpose", "Leo enjoyed the break to clear his head.", None),
+    ("control: gerund-participial", "Mira enjoys writing short stories.", None),
+    ("control: overt lower subject", "They enjoy their children singing together.", None),
+    ("control: embedded infinitive", "Nora enjoys learning to sail.", None),
+    ("control: different verb", "The twins like to swim before breakfast.", None),
+    ("control: independent clauses", "They enjoy the music, and I hope to dance.", None),
+    ("control: quotation", "She wrote, “They enjoy to sing.”", None),
+]
+
+
+def evaluate_cases(cases, probe, governor_label, governor_key):
     rows = []
-    for group, sentence, expected in MODAL_EVALUATION_CASES:
-        observation = observe_modal(analyze(sentence), probe_modal_parser)
+    for group, sentence, expected in cases:
+        observation = observe_candidate(analyze(sentence), probe, governor_label, governor_key)
         candidates = observation["probe"]["candidates"]
         exact_reparse = len(candidates) == 1 and (
             candidates[0].get("reparse_observation", {}).get("sentence") == expected
             and candidates[0].get("reparse_observation", {}).get("candidate_count") == 0
+            and candidates[0].get("reparse_observation", {}).get("candidate_status") != "not_evaluated"
         )
         rows.append({
             "group": group,
@@ -100,12 +121,12 @@ def summarize_matrix(evaluation):
     }
 
 
-def observe_modal(analysis, probe_modal_parser):
+def observe_candidate(analysis, candidate_probe, governor_label, governor_key):
     from burton_roberts import build_canonical_analysis
     from xai_facts import build_fact_graph
 
     sentence = analysis["sentence"]
-    probe = probe_modal_parser(sentence, analysis["root"], variety="standard_english")
+    probe = candidate_probe(sentence, analysis["root"], variety="standard_english")
     canonical = build_canonical_analysis(analysis)
     report = {"parse": analysis["parse_string"], "probe": probe,
               "canonical_status": canonical["status"],
@@ -118,7 +139,7 @@ def observe_modal(analysis, probe_modal_parser):
                if graph["status"] == "observed"}
     for candidate in probe["candidates"]:
         relation = candidate["relation"]
-        labels = {"governor": {"MOD"}, "dependent": {"V", "AUX"}}
+        labels = {"governor": {governor_label}, "dependent": {"V", "AUX"}}
         nodes = {}
         for role, expected in labels.items():
             token = by_span.get(tuple(relation[f"{role}_char_span"]))
@@ -133,7 +154,7 @@ def observe_modal(analysis, probe_modal_parser):
                        if node_id in common and by_id[node_id]["label"] == "VP"), None)
             if vp:
                 candidate["canonical_observation"] = {
-                    "modal_node_id": nodes["governor"]["node_id"],
+                    governor_key: nodes["governor"]["node_id"],
                     "dependent_node_id": nodes["dependent"]["node_id"],
                     "shared_vp_node_id": vp,
                 }
@@ -142,10 +163,11 @@ def observe_modal(analysis, probe_modal_parser):
             start, end = hint["char_span"]
             corrected = sentence[:start] + hint["replacement"] + sentence[end:]
             reparsed = analyze(corrected)
+            recheck = candidate_probe(corrected, reparsed["root"], variety="standard_english")
             candidate["reparse_observation"] = {
                 "sentence": corrected,
-                "candidate_count": len(probe_modal_parser(
-                    corrected, reparsed["root"], variety="standard_english")["candidates"]),
+                "candidate_count": len(recheck["candidates"]),
+                "candidate_status": recheck["status"],
             }
     return report
 
@@ -162,14 +184,24 @@ def main():
                         help="Observe parser-backed central modal candidates and canonical node alignment")
     parser.add_argument("--modal-evaluation", action="store_true",
                         help="Run the separate modal evaluation on configured parser output")
+    parser.add_argument("--enjoy-evaluation", action="store_true",
+                        help="Evaluate the inactive enjoy action-complement probe")
     args = parser.parse_args()
+    if args.enjoy_evaluation:
+        if args.fixtures or args.matrix or args.passive_candidate or args.modal_candidate or args.modal_evaluation:
+            parser.error("--enjoy-evaluation runs separately on configured parser output")
+        from cgel_enjoy_parser_probe import probe_enjoy_parser
+
+        print(json.dumps({"input": "configured_parser",
+                          "enjoy_evaluation": evaluate_cases(ENJOY_EVALUATION_CASES, probe_enjoy_parser, "V", "governor_node_id")}, indent=2))
+        return
     if args.modal_evaluation:
         if args.fixtures or args.matrix or args.passive_candidate or args.modal_candidate:
             parser.error("--modal-evaluation runs separately on configured parser output")
         from cgel_modal_parser_probe import probe_modal_parser
 
         print(json.dumps({"input": "configured_parser",
-                          "modal_evaluation": evaluate_modal_cases(probe_modal_parser)}, indent=2))
+                          "modal_evaluation": evaluate_cases(MODAL_EVALUATION_CASES, probe_modal_parser, "MOD", "modal_node_id")}, indent=2))
         return
     if args.modal_candidate and args.fixtures:
         parser.error("--modal-candidate requires configured parser output")
@@ -214,7 +246,7 @@ def main():
                         candidate["reparse_observation"]["matrix_verdict"] = evaluate(
                             corrected_tree, text=corrected)["summary"]["verdict"]
         if args.modal_candidate:
-            observation["modal_candidate"] = observe_modal(analysis, probe_modal_parser)
+            observation["modal_candidate"] = observe_candidate(analysis, probe_modal_parser, "MOD", "modal_node_id")
         observations.append(observation)
     print(json.dumps({
         "input": "hand_authored_trees" if args.fixtures else "configured_parser",

@@ -119,3 +119,14 @@ Synthetic allow-list tests exercise the gate and the positive case, the marked p
 | Activation | Record the independent reviewer and their disposition before changing the catalog, template or runtime allow-list. The API requires explicit `standard_english` for this check. The Generator sends this value when a learner selects Standard English under English variety. Unspecified leaves the variety unset. Switching sentences keeps the selection. |
 
 The parser-backed API regression selects the second sentence of a two-sentence passage. Its test-only approval fixtures exercise the same registry snapshot for the evaluator and explanation. The test checks the sentence-local insertion, source pages, matching nodes, valid first sentence, absent variety and disabled production registry.
+
+
+### Adjacent modal follow-up
+
+The configured parser evaluation at `2f0339d6` produced six exact repairs across six adjacent COMP-034 cases, with canonical node alignment and zero remaining modal candidates after reparse. The two recovered cases had been tagged as plain verbs. The revised candidate requires a single attested third-person paradigm and excludes an independently attested plain form. Ten valid controls ran without a flag and the quotation control abstained. Negation, inversion, and intervening adjuncts remain outside the adjacent relation. [Parser evidence](https://github.com/ybcole/SynTutor/actions/runs/43330321727/artifacts/13993474759)
+
+### Enjoy action-complement evaluation
+
+Printed p. 221 (PDF p. 241) uses an unlicensed to-infinitival after *enjoy* to illustrate complement selection. The inactive COMP-062 probe requires a direct subjectless infinitival in the constituency tree, adjacent source spans, and an attested gerund-participial replacement. A candidate covers the selecting verb and the lower verb as one relation. Nominal complements, purpose clauses accompanying an object, and embedded infinitivals inside an otherwise licensed complement serve as controls.
+
+Run `python scripts/audit_cgel_overlap_probes.py --enjoy-evaluation` to measure the 16 frozen cases with the configured parser. The report records exact edits, reparse results, and canonical alignment where available. The split infinitive and coordination stress cases are outside the first implementation. Production licensing and the canonical crosswalk remain pending.
