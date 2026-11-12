@@ -22,12 +22,12 @@
 | 14. Non-finite and verbless clauses | 102 | 99 | 0 | 3 | 0 | Source-extracted |
 | 15. Coordination and supplementation | 90 | 88 | 0 | 2 | 0 | Source-extracted; independent QA pending |
 | 16. Information packaging | 86 | 0 | 85 | 1 | 0 | Incomplete |
-| 17. Deixis and anaphora | 116 | 54 | 60 | 2 | 0 | In progress (pp. 1449–1504) |
+| 17. Deixis and anaphora | 116 | 62 | 52 | 2 | 0 | In progress (pp. 1449–1512) |
 | 18. Inflectional morphology | 56 | 0 | 55 | 1 | 0 | Incomplete |
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **1268 extracted**, 458 unprocessed, 36 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **1276 extracted**, 450 unprocessed, 36 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -366,3 +366,7 @@ Source-checked all 24 substantive pages (full-volume PDF pp. 1493–1516) with s
 ## Chapter 17 Phase B checkpoint for printed pp. 1497–1504
 
 Printed pp. 1497–1504 yielded 38 inactive records (`PHR-580–PHR-617`), including 9 `spec_only` constraints. The batch closes reciprocal constructions and begins demonstratives. Chapter 17 has 54 substantive pages extracted, two contents-only skips and 60 unprocessed pages. Continue at p. 1505 with animate demonstratives and central deictic use. [Report](sources/cambridge/chapter_17/PP1497_1504_REPORT.md) · [Audit](sources/cambridge/chapter_17/PP1497_1504_AUDIT.json).
+
+## Chapter 17 Phase B checkpoint for printed pp. 1505–1512
+
+Printed pp. 1505–1512 yielded 28 inactive records (`PHR-618–PHR-645`), including 5 `spec_only` constraints. Chapter 17 has 62 substantive pages extracted, two contents-only skips and 52 unprocessed pages. Continue at p. 1513 with the distribution of pro-nominal one and fused heads. [Report](sources/cambridge/chapter_17/PP1505_1512_REPORT.md) · [Audit](sources/cambridge/chapter_17/PP1505_1512_AUDIT.json).

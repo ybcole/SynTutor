@@ -368,3 +368,7 @@ Printed pp. 1473–1496 source-checked consecutively in full-volume PDF text and
 ## Chapter 17 third checkpoint
 
 Printed pp. 1497–1504 yielded 38 inactive records (`PHR-580–PHR-617`), including 9 `spec_only` constraints. The batch closes reciprocal constructions and begins demonstratives. Chapter 17 has 54 substantive pages extracted, two contents-only skips and 60 unprocessed pages. Continue at p. 1505 with animate demonstratives and central deictic use.
+
+## Chapter 17 fourth checkpoint
+
+Printed pp. 1505–1512 yielded 28 inactive records (`PHR-618–PHR-645`), including 5 `spec_only` constraints. Chapter 17 has 62 substantive pages extracted, two contents-only skips and 52 unprocessed pages. Continue at p. 1513 with the distribution of pro-nominal one and fused heads.

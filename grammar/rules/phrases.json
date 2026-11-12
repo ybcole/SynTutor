@@ -38855,5 +38855,1800 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Phase B extraction from the printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-618",
+    "domain": "phrases",
+    "concept": "Animate identification with independent demonstratives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Independent singular this and that can identify people or animals as subjects of specifying be, even when the complement identifies several individuals.",
+    "condition": "The footnote also permits some ascriptive clauses with an NP predicative complement; distinguish these from ordinary adjective predication.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This is our new editor.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That's Mira and her brother by the kiosk.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "That's a very patient dog by the gate.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§5.1",
+        "pages": [
+          1505
+        ],
+        "pdf_pages": [
+          1525
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Animate identification with independent demonstratives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [
+      "PHR-617"
+    ],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-619",
+    "domain": "phrases",
+    "concept": "Spatial demonstrative deixis",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "In central spatial deixis, proximal this and distal that locate a referent relative to the speaker.",
+    "condition": "Proximity is partly a matter of viewpoint; disapproval or the addressee's interest can favor that even nearby.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This cup by my elbow is cracked.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Could you pass me that cup beside you?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§5.2",
+        "pages": [
+          1505
+        ],
+        "pdf_pages": [
+          1525
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Spatial demonstrative deixis",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-620",
+    "domain": "phrases",
+    "concept": "Spatial agreement inside a demonstrative NP",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "A deictic demonstrative and a deictic locative postmodifier within the same NP must match in proximity.",
+    "condition": "The rule concerns here or there used to locate the referent as an NP postmodifier. A separate clause adjunct can specify the location of an action.",
+    "violation": "The demonstrative and a locative postmodifier in its NP mark opposite distances.",
+    "exceptions": [
+      {
+        "description": "The rule concerns here or there used to locate the referent as an NP postmodifier. A separate clause adjunct can specify the location of an action.",
+        "pages": [
+          1505
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This envelope here is for Lee.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Those crates over there belong to us.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "That envelope over there is for Lee.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c4",
+          "text": "These crates right here beside me belong to us.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c5",
+          "text": "Put this envelope over there.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c6",
+          "text": "Bring those crates over here.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "This envelope over there is for Lee.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Those crates right here beside me belong to us.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§5.2",
+        "pages": [
+          1505
+        ],
+        "pdf_pages": [
+          1525
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Spatial agreement inside a demonstrative NP",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "The demonstrative and a locative postmodifier in its NP mark opposite distances.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "This envelope over there is for Lee. ||| That envelope over there is for Lee.",
+        "Those crates right here beside me belong to us. ||| These crates right here beside me belong to us."
+      ],
+      "learner_explanation": "A deictic demonstrative and a deictic locative postmodifier within the same NP must match in proximity. Match the demonstrative to the postmodifier's proximity.",
+      "corrected_paragraph_template": "Match the demonstrative to the postmodifier's proximity.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Put this envelope over there.",
+        "Bring those crates over here."
+      ],
+      "lesson_tags": [
+        "demonstratives"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-621",
+    "domain": "phrases",
+    "concept": "Deixis of properties, degree and actions",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A situational demonstrative can pick out a manner, action or property or indicate a degree as well as identifying a physical object.",
+    "condition": "A gesture can supply the standard or identify the relevant action.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Can you bend the wire like this?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I didn't expect the crack to be this wide.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Please stop that.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§5.2",
+        "pages": [
+          1505
+        ],
+        "pdf_pages": [
+          1525
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Deixis of properties, degree and actions",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-622",
+    "domain": "phrases",
+    "concept": "Discourse deixis with demonstratives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A demonstrative can point to the ongoing conversation, a preceding utterance or an ordering supplied by the discourse.",
+    "condition": "The relevant referent may be a feature of the discourse rather than a mentioned object.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Could we keep this discussion private?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Was that supposed to reassure me?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Use the soap, rinse, then dry it. Follow that order.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§5.2",
+        "pages": [
+          1506
+        ],
+        "pdf_pages": [
+          1526
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Discourse deixis with demonstratives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-623",
+    "domain": "phrases",
+    "concept": "Demonstrative anaphora to an NP",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A demonstrative NP commonly shares the referent of a preceding NP. Its nominal may repeat the antecedent wording or describe the referent anew.",
+    "condition": "An earlier nonreferential NP can support an actual referent if the discourse establishes realization, as with an adopted proposal.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Inez solved it first. That student always spots a shortcut.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They proposed a footbridge. This footbridge now carries hundreds of commuters a day.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§5.3(a)",
+        "pages": [
+          1506
+        ],
+        "pdf_pages": [
+          1526
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Demonstrative anaphora to an NP",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-624",
+    "domain": "phrases",
+    "concept": "Two levels of anaphora in demonstrative plus one",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "When that one is coreferential with an antecedent NP, one can independently recover the antecedent nominal.",
+    "condition": "Keep the relation between the two NPs separate from the relation between their heads.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I ordered a replacement cable, but that one was too short.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She tried another helmet, and that one fit perfectly.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§5.3(a)",
+        "pages": [
+          1506
+        ],
+        "pdf_pages": [
+          1526
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Two levels of anaphora in demonstrative plus one",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-625",
+    "domain": "phrases",
+    "concept": "Demonstrative choice in retrospective NP anaphora",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Pure NP anaphora generally permits either proximal or distal forms without a marked change in meaning; personal pronouns are more frequent.",
+    "condition": "The proximal–distal contrast does not assign separate antecedents merely by their order of mention. A visible referent can support both NP anaphora and spatial deixis.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "A glass panel had cracked. Through this we could see the wiring.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "A glass panel had cracked. Through that we could see the wiring.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Look at the ribbon on her jacket. That's the one I knitted.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§5.3(a)",
+        "pages": [
+          1506
+        ],
+        "pdf_pages": [
+          1526
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Demonstrative choice in retrospective NP anaphora",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-626",
+    "domain": "phrases",
+    "concept": "Anaphora to clausal content",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A demonstrative NP can give preceding clausal content nominal form. A demonstrative may also recover a degree from that content.",
+    "condition": "Independent demonstratives are favored over personal pronouns for clausal antecedents; a following it can take the demonstrative as its antecedent.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The ferry had been canceled. That delayed us, and we only heard about it at noon.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She walked halfway up the hill. I never expected her to get that far.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§5.3(b)",
+        "pages": [
+          1507
+        ],
+        "pdf_pages": [
+          1527
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Anaphora to clausal content",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-627",
+    "domain": "phrases",
+    "concept": "Adjective and adverb phrases as demonstrative antecedents",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A demonstrative can recover a property or manner introduced by an AdjP or AdvP, nominalizing it in an NP or taking it up as a degree modifier.",
+    "condition": "The antecedent can be an adjective inside an NP.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The shutters were pale green. That is the color I want for the door.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The boat was moving unusually slowly. At that speed it would arrive after dark.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "The first loaf was very crisp. I wish mine were that crisp.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§5.3(c)",
+        "pages": [
+          1507
+        ],
+        "pdf_pages": [
+          1527
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjective and adverb phrases as demonstrative antecedents",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-628",
+    "domain": "phrases",
+    "concept": "Deictic fused heads with nominal antecedents",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "An independent deictic demonstrative can recover the nominal through its fused head function while retaining its proximal or distal determination.",
+    "condition": "The entire demonstrative NP can identify an object distinct from that identified by the NP containing the antecedent nominal.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This flashlight is brighter than that.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The tea we tasted yesterday was bitter, but this is delicious.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§5.3(d)",
+        "pages": [
+          1507
+        ],
+        "pdf_pages": [
+          1527
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Deictic fused heads with nominal antecedents",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-629",
+    "domain": "phrases",
+    "concept": "Nondeictic that as a fused definite determiner-head",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "Nondeictic that or those can recover a nominal while supplying definiteness. Its expanded NP has the definite article.",
+    "condition": "The ordinary definite article cannot function as the fused head. Proximal this cannot replace this use of distal morphology.",
+    "violation": "A proximal demonstrative replaces the nondeictic fused definite that or those.",
+    "exceptions": [
+      {
+        "description": "The ordinary definite article cannot function as the fused head. Proximal this cannot replace this use of distal morphology.",
+        "pages": [
+          1508
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The width of the kitchen exceeds that of the hallway.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The duties of the new staff resemble those of their predecessors.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "This is wider than the doorway.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "This path is shorter than that over there.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The width of the kitchen exceeds this of the hallway.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The duties of the new staff resemble these of their predecessors.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§5.3(d)",
+        "pages": [
+          1508
+        ],
+        "pdf_pages": [
+          1528
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nondeictic that as a fused definite determiner-head",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "A proximal demonstrative replaces the nondeictic fused definite that or those.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The width of the kitchen exceeds this of the hallway. ||| The width of the kitchen exceeds that of the hallway.",
+        "The duties of the new staff resemble these of their predecessors. ||| The duties of the new staff resemble those of their predecessors."
+      ],
+      "learner_explanation": "Nondeictic that or those can recover a nominal while supplying definiteness. Its expanded NP has the definite article. Use that or those for this nondeictic fused-head construction.",
+      "corrected_paragraph_template": "Use that or those for this nondeictic fused-head construction.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "This is wider than the doorway.",
+        "This path is shorter than that over there."
+      ],
+      "lesson_tags": [
+        "demonstratives"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-630",
+    "domain": "phrases",
+    "concept": "Reference relations in nondeictic fused demonstratives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Two NPs linked through nominal anaphora can identify distinct entities, describe the same referent predicatively or stand in a subset relation.",
+    "condition": "An explicit or implicit partitive can instead recover the antecedent NP in full as the complement of of.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The cost of cement exceeds that of gravel.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "His voice was that of a trained singer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "The runners were soaked, but those of them who had packed spares changed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§5.3(d)",
+        "pages": [
+          1508
+        ],
+        "pdf_pages": [
+          1528
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reference relations in nondeictic fused demonstratives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-631",
+    "domain": "phrases",
+    "concept": "Post-head dependence in nondeictic fused that",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Nondeictic that with a nominal antecedent requires a post-head dependent; pro-nominal one also admits pre-head modification.",
+    "condition": "That permits some post-head dependents that do not transfer to the one construction.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The timetable for winter differs from that for summer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The later one is usually less crowded.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§5.3(d)",
+        "pages": [
+          1508,
+          1509
+        ],
+        "pdf_pages": [
+          1528,
+          1529
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Post-head dependence in nondeictic fused that",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-632",
+    "domain": "phrases",
+    "concept": "Countability in fused that and pro-nominal one",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "Nondeictic fused that can recover a singular non-count nominal. Pro-nominal one requires a count interpretation.",
+    "condition": "Retain ordinary count senses of nouns that also have mass uses.",
+    "violation": "Pro-nominal one is used for a non-count nominal in the intended sense.",
+    "exceptions": [
+      {
+        "description": "Retain ordinary count senses of nouns that also have mass uses.",
+        "pages": [
+          1508,
+          1509
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The equipment in this lab is older than that in the new wing.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The furniture here is older than that in the annex.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "I tried a chair here. The one in the annex was bigger.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "This drill is lighter than the one in the shed.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The equipment in this lab is older than the one in the new wing.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The furniture here is older than the one in the annex.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§5.3(d)",
+        "pages": [
+          1508,
+          1509
+        ],
+        "pdf_pages": [
+          1528,
+          1529
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Countability in fused that and pro-nominal one",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "Pro-nominal one is used for a non-count nominal in the intended sense.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The equipment in this lab is older than the one in the new wing. ||| The equipment in this lab is older than that in the new wing.",
+        "The furniture here is older than the one in the annex. ||| The furniture here is older than that in the annex."
+      ],
+      "learner_explanation": "Nondeictic fused that can recover a singular non-count nominal. Pro-nominal one requires a count interpretation. Use fused that with a post-head dependent for a singular non-count antecedent.",
+      "corrected_paragraph_template": "Use fused that with a post-head dependent for a singular non-count antecedent.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "I tried a chair here. The one in the annex was bigger.",
+        "This drill is lighter than the one in the shed."
+      ],
+      "lesson_tags": [
+        "demonstratives"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-633",
+    "domain": "phrases",
+    "concept": "Anticipatory proximal demonstratives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Proximal demonstratives can obtain a definite referent from a separate following list or instruction.",
+    "condition": "An indefinite introduction can stand without an identifying list. An anticipatory definite relies on identification, and a short antecedent can sometimes replace the entire demonstrative expression.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Please reserve these two rooms: Cedar and Maple.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "This is what I need you to do: switch off the lights.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§5.3",
+        "pages": [
+          1509
+        ],
+        "pdf_pages": [
+          1529
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Anticipatory proximal demonstratives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-634",
+    "domain": "phrases",
+    "concept": "Following clarification and demonstrative antecedence",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "A following explanation can clarify an already available retrospective or situational demonstrative without supplying an antecedent.",
+    "condition": "The discussion finds genuine anticipatory examples with proximal forms and treats apparently anticipatory distal that cautiously.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Lena returned the wallet. That was her best habit: she always returned what she found.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That's odd. I was sure I locked the gate.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§5.3",
+        "pages": [
+          1509
+        ],
+        "pdf_pages": [
+          1529
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Following clarification and demonstrative antecedence",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-635",
+    "domain": "phrases",
+    "concept": "Recognitional demonstratives",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Recognitional demonstratives identify a referent from assumed shared experience or knowledge, without relying on its presence or prior mention.",
+    "condition": "Distal forms are common for past experience; proximal forms are possible when the shared basis is current. The recognitional demonstrative needs elaboration by a nominal or a postmodifier.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Did you ever repair that radio we found in the attic?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "These interruptions we've been having are exhausting.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§5.4(a)",
+        "pages": [
+          1510
+        ],
+        "pdf_pages": [
+          1530
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Recognitional demonstratives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-636",
+    "domain": "phrases",
+    "concept": "Informal false-definite this",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Very informal narrative can use dependent this or these to introduce a referent the addressee cannot yet identify.",
+    "condition": "Some speakers prefer an indefinite determiner in the same context. This difference is register and speaker variation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I was waiting for the bus when this stranger walked up and offered me a map.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There were these huge footprints across the patio when I woke up.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§5.4(b)",
+        "pages": [
+          1510
+        ],
+        "pdf_pages": [
+          1530
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Informal false-definite this",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-637",
+    "domain": "phrases",
+    "concept": "Nondeictic demonstratives with identifying dependents",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "The identifying dependent of a that or those NP can establish definiteness without deixis or anaphora. Both dependent and fused demonstratives occur.",
+    "condition": "Independent singular that is inanimate in this use; plural those can refer to people. That which is relatively formal, with a fused relative often more usual.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Those who finish early may leave.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The permit covers only that portion of the site which lies below the road.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "We protect that which we cannot replace.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§5.4(c)",
+        "pages": [
+          1510
+        ],
+        "pdf_pages": [
+          1530
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nondeictic demonstratives with identifying dependents",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-638",
+    "domain": "phrases",
+    "concept": "Informal degree that without an antecedent",
+    "rule_type": "descriptive_generalization",
+    "scope": "phrase",
+    "statement": "Informal degree that can mean particularly, often with negation. In a resultative pattern it can be a counterpart of so.",
+    "condition": "The resultative pattern is predominantly British and speaker-dependent.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I'm not all that keen on the proposal.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The stairwell was that dark we had to use our phones.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§5.4(d)",
+        "pages": [
+          1510,
+          1511
+        ],
+        "pdf_pages": [
+          1530,
+          1531
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Informal degree that without an antecedent",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-639",
+    "domain": "phrases",
+    "concept": "Types of reduced noun phrases",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Reduced NPs can contain a pro-nominal head or fuse a determiner or modifier with the head function.",
+    "condition": "Context typically supplies the missing lexical content. This analysis distinguishes head fusion from ellipsis and pro-forms from pronouns.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We needed a spare charger but couldn't find one.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We ordered some flour but they didn't have any.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "The first train was packed, so we caught the next.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§6",
+        "pages": [
+          1511
+        ],
+        "pdf_pages": [
+          1531
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Types of reduced noun phrases",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-640",
+    "domain": "phrases",
+    "concept": "Ellipsis of NP post-head dependents",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "NP ellipsis can omit post-head material such as a relative clause or a partitive complement.",
+    "condition": "A partitive of them can be implicit. Keep this analysis distinct from fusion of the head with a determiner or modifier.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The lamps she repaired sold faster than the radios.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We interviewed twelve applicants, and the majority had field experience.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§6",
+        "pages": [
+          1511
+        ],
+        "pdf_pages": [
+          1531
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ellipsis of NP post-head dependents",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-641",
+    "domain": "phrases",
+    "concept": "Anaphoric one and fused-head alternants",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Pro-nominal one can supply the NP head where a corresponding fused determiner-head or modifier-head construction is also available.",
+    "condition": "One and ones mark number overtly; the fused form need not express the contrast morphologically.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Which ones do you recommend? Which do you recommend?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I'll buy the cheapest one available. I'll buy the cheapest available.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§6.1",
+        "pages": [
+          1512
+        ],
+        "pdf_pages": [
+          1532
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Anaphoric one and fused-head alternants",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-642",
+    "domain": "phrases",
+    "concept": "Lexical and determiner restrictions on fused modifiers",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Fused modifiers are restricted to eligible expressions such as ordinals, comparatives, superlatives and some physical-property adjectives.",
+    "condition": "The definite article and cardinals favor this construction. The indefinite article and other determinatives are less permissive; retain one when fusion is unavailable.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We tried two solutions and kept the second.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It was a proposal, and a sensible one.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Several smaller ones were left on the shelf.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§6.1",
+        "pages": [
+          1512
+        ],
+        "pdf_pages": [
+          1532
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical and determiner restrictions on fused modifiers",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-643",
+    "domain": "phrases",
+    "concept": "Determiners permitting fusion or pro-nominal one",
+    "rule_type": "classification",
+    "scope": "phrase",
+    "statement": "Demonstratives, which, another, each, any, either and neither can occur in the fused-head construction and with pro-nominal one, subject to the individual form's number and distribution.",
+    "condition": "The choice depends on which item directly precedes one and on the construction.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "May I borrow another? May I borrow another one?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Either will work. Either one will work.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§6.1",
+        "pages": [
+          1512
+        ],
+        "pdf_pages": [
+          1532
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Determiners permitting fusion or pro-nominal one",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-644",
+    "domain": "phrases",
+    "concept": "Immediate cardinal or no before bare pro-nominal ones",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "A cardinal numeral or no directly followed by bare pro-nominal ones is unavailable in the construction described. Use the fused cardinal or independent none.",
+    "condition": "An intervening modifier licenses ones. The fused-only inventory also includes all, both, many, some, several and the few quantifiers.",
+    "violation": "A cardinal or no immediately precedes bare pro-nominal ones.",
+    "exceptions": [
+      {
+        "description": "An intervening modifier licenses ones. The fused-only inventory also includes all, both, many, some, several and the few quantifiers.",
+        "pages": [
+          1512
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I need four more clamps, but we only have two.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We looked for pegs but found none.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "We found two wooden ones.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "We found no loose ones.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "I need four more clamps, but we only have two ones.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "We looked for pegs but found no ones.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§6.1",
+        "pages": [
+          1512
+        ],
+        "pdf_pages": [
+          1532
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Immediate cardinal or no before bare pro-nominal ones",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "A cardinal or no immediately precedes bare pro-nominal ones.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "I need four more clamps, but we only have two ones. ||| I need four more clamps, but we only have two.",
+        "We looked for pegs but found no ones. ||| We looked for pegs but found none."
+      ],
+      "learner_explanation": "A cardinal numeral or no directly followed by bare pro-nominal ones is unavailable in the construction described. Use the fused cardinal or independent none. Use the fused numeral or none, or keep an intervening modifier if one is needed.",
+      "corrected_paragraph_template": "Use the fused numeral or none, or keep an intervening modifier if one is needed.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "We found two wooden ones.",
+        "We found no loose ones."
+      ],
+      "lesson_tags": [
+        "reduced_nps"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "PHR-645",
+    "domain": "phrases",
+    "concept": "Determiners requiring pro-nominal one in the immediate construction",
+    "rule_type": "constraint",
+    "scope": "phrase",
+    "statement": "Every, the and a do not supply a fused determiner-head in this inventory. Pro-nominal one can supply the head.",
+    "condition": "A separate modifier may instead function as the fused head after the definite article.",
+    "violation": "Every is used alone as a fused determiner-head.",
+    "exceptions": [
+      {
+        "description": "A separate modifier may instead function as the fused head after the definite article.",
+        "pages": [
+          1512
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We checked the seals, and every one was intact.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The ring from the display was a fake, but the one in the vault was genuine.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "The larger of the two rings was genuine.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "I tested the bulbs, and every one lit up.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c5",
+          "text": "Every bulb lit up.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "We checked the seals, and every was intact.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "I tested the bulbs, and every lit up.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 17,
+        "section": "§6.1",
+        "pages": [
+          1512
+        ],
+        "pdf_pages": [
+          1532
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Determiners requiring pro-nominal one in the immediate construction",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "Every is used alone as a fused determiner-head.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "We checked the seals, and every was intact. ||| We checked the seals, and every one was intact.",
+        "I tested the bulbs, and every lit up. ||| I tested the bulbs, and every one lit up."
+      ],
+      "learner_explanation": "Every, the and a do not supply a fused determiner-head in this inventory. Pro-nominal one can supply the head. Add one after every when the antecedent supplies the nominal.",
+      "corrected_paragraph_template": "Add one after every when the antecedent supplies the nominal.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Every bulb lit up.",
+        "The larger of the two rings was genuine."
+      ],
+      "lesson_tags": [
+        "reduced_nps"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
   }
 ]
