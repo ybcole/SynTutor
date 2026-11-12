@@ -1,0 +1,167 @@
+{
+  "manifest_version": 1,
+  "chapter": 12,
+  "printed_start": 1067,
+  "printed_end": 1078,
+  "report": "sources/cambridge/chapter_12/PP1067_1078_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1067,
+    "pdf_page": 1087
+  },
+  "added_rule_ids": [
+    "CLS-891",
+    "CLS-892",
+    "CLS-893",
+    "CLS-894",
+    "CLS-895",
+    "CLS-896",
+    "CLS-897",
+    "CLS-898",
+    "CLS-899",
+    "CLS-900",
+    "CLS-901",
+    "CLS-902",
+    "CLS-903",
+    "CLS-904",
+    "CLS-905",
+    "CLS-906",
+    "CLS-907",
+    "CLS-908",
+    "CLS-909"
+  ],
+  "page_checks": [
+    {
+      "page": 1067,
+      "status": "extracted",
+      "section": "§5",
+      "summary": "Distinguishes wh and non-wh infinitival structures, overt subjects and purpose attachment.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1068,
+      "status": "extracted",
+      "section": "§§5–6.1",
+      "summary": "Completes the modal contrast and introduces fused types and phrase analysis.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1069,
+      "status": "extracted",
+      "section": "§6.1",
+      "summary": "Tests phrase status with denotation, agreement, inversion and extraposition.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1070,
+      "status": "extracted",
+      "section": "§§6.1–6.2",
+      "summary": "Surveys phrase functions and additional relatives and introduces the interrogative contrast.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1071,
+      "status": "extracted",
+      "section": "§6.2",
+      "summary": "Compares entity and question readings and tests contextual ambiguity.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1072,
+      "status": "extracted",
+      "section": "§6.2",
+      "summary": "Compares agreement, inversion, preposition complementation and ever forms.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1073,
+      "status": "extracted",
+      "section": "§§6.2–6.3",
+      "summary": "Completes the interrogative fragment test and introduces fused structure and case.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1074,
+      "status": "extracted",
+      "section": "§§6.3–6.4",
+      "summary": "Finishes case analysis and surveys relative forms and antecedent contrasts.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1075,
+      "status": "extracted",
+      "section": "§6.4",
+      "summary": "Examines selection and introduces free-choice fused relatives.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1076,
+      "status": "extracted",
+      "section": "§6.4",
+      "summary": "Describes other uses of ever forms and introduces simple forms.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1077,
+      "status": "extracted",
+      "section": "§6.4",
+      "summary": "Examines nonspecific readings, restricted quantities and temporal and manner forms.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1078,
+      "status": "extracted",
+      "section": "§6.4",
+      "summary": "Completes the analysis of temporal and spatial fused relatives.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

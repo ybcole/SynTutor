@@ -314,3 +314,19 @@ Printed pp. 995–1010 yielded 21 classification records (`CLS-799`–`CLS-819`)
 ## Chapter 11 source extraction complete
 
 Printed pp. 1011–1030 yielded 26 classification records (`CLS-820`–`CLS-845`). Chapter 11 closes source extraction with 82 substantive pages and two contents pages. Chapter 12 is next.
+
+## Chapter 12 first checkpoint
+
+Printed pp. 1031–1047 yielded 22 classification records (`CLS-846`–`CLS-867`). Continue at p. 1048 with who and which.
+
+## Chapter 12 second checkpoint
+
+Printed pp. 1048–1066 yielded 23 classification records (`CLS-868`–`CLS-890`). Continue at p. 1067 with infinitival relatives.
+
+## Chapter 12 third checkpoint
+
+Printed pp. 1067–1078 yielded 19 classification records (`CLS-891`–`CLS-909`). Continue at p. 1079 with unbounded dependencies.
+
+## Chapter 12 source extraction complete
+
+Printed pp. 1079–1096 yielded 21 classification records (`CLS-910`–`CLS-930`). Chapter 12 closes source extraction with 64 substantive pages and two contents pages. Chapter 15 is next in the priority order.
