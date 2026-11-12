@@ -179,14 +179,20 @@ def status_counters(records):
 
 def static_inventory(root=ROOT):
     from cambridge_registry import load_runtime_registry
-    from explanations import load_registry
+    from explanations import _eligible_source, _reviewed, load_registry
     templates = load_registry()
     runtime = load_runtime_registry()
-    channels = Counter(row.get("channel") for row in templates.get("templates", []))
+    rows = templates.get("templates", [])
+    sources = templates.get("sources", [])
+    reviewed = [row for row in rows if _reviewed(row)]
+    approved_sources = [source for source in sources if _eligible_source(source)]
+    channels = Counter(row.get("channel") for row in reviewed)
     return {
-        "reviewed_template_rows": len(templates.get("templates", [])),
+        "reviewed_template_rows": len(reviewed),
+        "templates_pending_review": len(rows) - len(reviewed),
         "template_channels": dict(channels),
-        "source_records": len(templates.get("sources", [])),
+        "source_records": len(approved_sources),
+        "sources_pending_eligibility": len(sources) - len(approved_sources),
         "runtime_enabled_cambridge_rules": len(runtime.get("active_rules", [])),
         "runtime_diagnostic_codes": [
             x.get("code") for x in runtime.get("diagnostics", [])
