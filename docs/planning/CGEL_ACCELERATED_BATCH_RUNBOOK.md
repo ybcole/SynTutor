@@ -464,3 +464,7 @@ Printed pp. 1382–1389 add eight substantive pages and 19 inactive records (`CL
 ## Chapter 16 fourth checkpoint
 
 Printed pp. 1390–1397 add eight substantive pages and 21 inactive records (`CLS-1340`–`CLS-1360`). Chapter 16 has 50 unprocessed pages. Continue at p. 1398 with displaced definite NPs and existential pragmatics.
+
+## Chapter 16 fifth checkpoint
+
+Printed pp. 1398–1405 add eight substantive pages and 17 inactive records (`CLS-1361`–`CLS-1377`). Chapter 16 has 42 unprocessed pages. Continue at p. 1406 with processing factors and extraposition.

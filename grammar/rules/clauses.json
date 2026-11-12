@@ -84602,5 +84602,903 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1361",
+    "domain": "clauses",
+    "concept": "Reminder definites in existentials",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A definite displaced NP can reintroduce a familiar entity as a reminder when it is treated as temporarily out of mind.",
+    "condition": "A reminder can echo one just offered by another speaker. An indefinite can wrongly suggest an entirely new referent.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What can we eat? Well, there's that soup from yesterday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You promised to call your sister. Oh yes, there is that.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§6.2.2",
+        "pages": [
+          1398
+        ],
+        "pdf_pages": [
+          1418
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reminder definites in existentials",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1362",
+    "domain": "clauses",
+    "concept": "New tokens of familiar types in existentials",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A definite NP can introduce a new instance of a familiar or inferable type. The known type licenses definiteness and the new token licenses the existential.",
+    "condition": "Same, usual and necessary can mark the type, and a demonstrative can also pick it out.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The weekday crew needs a permit, and there's the same requirement for the weekend crew.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There aren't the necessary funds to repair this bridge.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§6.2.2",
+        "pages": [
+          1398,
+          1399
+        ],
+        "pdf_pages": [
+          1418,
+          1419
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "New tokens of familiar types in existentials",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1363",
+    "domain": "clauses",
+    "concept": "Type and token anaphora after existentials",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A definite displaced NP that simultaneously denotes a familiar type and a new token can support subsequent reference to either.",
+    "condition": "Distinguish the recurring type from the members or realization on this occasion. Usual can separately describe the recurrence of the whole situation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There was the usual crowd by the stage. They were there on Friday too.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There was the usual crowd by the stage, but this time they had to move indoors.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§6.2.2",
+        "pages": [
+          1399
+        ],
+        "pdf_pages": [
+          1419
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Type and token anaphora after existentials",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1364",
+    "domain": "clauses",
+    "concept": "Familiar entities as new existential variable values",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A familiar definite NP can supply a new value for a variable in a discourse-old open proposition.",
+    "condition": "An explicit question or another salient context can supply the open proposition. A list can provide multiple values.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Who could drive us? There's the neighbor we met yesterday.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Who was on duty? There was Ada, Ben and Lina.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§6.2.2",
+        "pages": [
+          1399,
+          1400
+        ],
+        "pdf_pages": [
+          1419,
+          1420
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Familiar entities as new existential variable values",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1365",
+    "domain": "clauses",
+    "concept": "Non-exhaustiveness in variable-instantiating existentials",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "An existential giving a single definite value often suggests other values are available. The implication can be reinforced or explicitly cancelled.",
+    "condition": "The issue arises when the answer otherwise seems to be intended as exhaustive.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "What's in the drawer? Well, there's the key, for a start.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "What's in the drawer? There's the key, but nothing else.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§6.2.2",
+        "pages": [
+          1400
+        ],
+        "pdf_pages": [
+          1420
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-exhaustiveness in variable-instantiating existentials",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1366",
+    "domain": "clauses",
+    "concept": "Identifying descriptions for new existential referents",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A definite displaced NP can introduce an addressee-new entity when the description itself sufficiently identifies it.",
+    "condition": "Content clauses, unique superlatives, deictic indexing, and descriptions with uniquely associated referents can provide identification.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There is the risk that the tank could overflow overnight.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There was the sound of a door slamming, then footsteps.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§6.2.2",
+        "pages": [
+          1400,
+          1401
+        ],
+        "pdf_pages": [
+          1420,
+          1421
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Identifying descriptions for new existential referents",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1367",
+    "domain": "clauses",
+    "concept": "Informal false definite this",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Some speakers use this with an indefinite-like meaning to introduce a new entity in informal discourse. Ordinary definite this still requires an independently appropriate context.",
+    "condition": "This use allows a or some without the familiar-reference reading that would accompany the.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There was this enormous spider on the ceiling.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There was this old record I used to play every morning.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§6.2.2",
+        "pages": [
+          1401
+        ],
+        "pdf_pages": [
+          1421
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Informal false definite this",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1368",
+    "domain": "clauses",
+    "concept": "Quantifier restrictions on existential displaced subjects",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Most, all, each and every can be infelicitous as determiners of displaced subjects in ordinary contexts where some or many are natural. Their distribution is context-sensitive and the exceptional conditions are not fully understood.",
+    "condition": "Some attested cases involve restricted sets or particular constructions. All kinds of and every reason can also have nonliteral readings.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There are several applications on the desk.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There's still every form in that batch to check.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§6.2.2",
+        "pages": [
+          1401
+        ],
+        "pdf_pages": [
+          1421
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Quantifier restrictions on existential displaced subjects",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1369",
+    "domain": "clauses",
+    "concept": "Nonliteral universals in existential clauses",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "All kinds of can convey many different kinds, and every reason can convey good reason. Such readings help explain some apparent exceptions to existential quantifier preferences.",
+    "condition": "The same nonliteral interpretation is unavailable with each in the examples at issue.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There are all kinds of ways to fix this.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There's every reason to expect a reply today.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§6.2.2",
+        "pages": [
+          1401
+        ],
+        "pdf_pages": [
+          1421
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nonliteral universals in existential clauses",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1370",
+    "domain": "clauses",
+    "concept": "Lexical verb classes in presentationals",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Presentational there commonly combines with verbs of position, emergence or coming into view. Verbs describing disappearance can be infelicitous in otherwise similar contexts.",
+    "condition": "The construction is generally intransitive, with rare attested transitive cases.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Beyond the gate there stood an old stone tower.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "As the fog lifted, there appeared a narrow strip of shoreline.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§6.3",
+        "pages": [
+          1402
+        ],
+        "pdf_pages": [
+          1422
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Lexical verb classes in presentationals",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1371",
+    "domain": "clauses",
+    "concept": "Extensions in presentational clauses",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Most presentational clauses are bare or have a locative extension. Remain also admits infinitival and predicative extensions.",
+    "condition": "The extension can predicate a state of the displaced subject or give an action still to be completed.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There remain three forms to sign.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There remained only two seedlings alive.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§6.3",
+        "pages": [
+          1402
+        ],
+        "pdf_pages": [
+          1422
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Extensions in presentational clauses",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1372",
+    "domain": "clauses",
+    "concept": "Discourse novelty in definite presentationals",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A definite displaced NP can occur more readily in a presentational than an existential. A referent already familiar to the addressee can be introduced by a presentational when discourse-new.",
+    "condition": "Presentationals also allow the five contextual patterns documented for definite existential NPs, including reminders and informal false definite this.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "As the doors opened, there stood the mayor.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There still remains that first objection we set aside.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§6.3",
+        "pages": [
+          1402,
+          1403
+        ],
+        "pdf_pages": [
+          1422,
+          1423
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Discourse novelty in definite presentationals",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1373",
+    "domain": "clauses",
+    "concept": "Dummy it and the extraposed subject",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "In the central extraposition construction, dummy it fills the matrix subject position and a subordinate clause occurs late. The subordinate clause retains its semantic relation to the predicate while dummy it carries the syntactic subject properties.",
+    "condition": "Declarative content clauses, interrogative content clauses and infinitivals can occur. A sufficiently heavy adjunct can follow the extraposed clause.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It surprised me that the lights were still on.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It remains unclear why the lights were still on.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§7.1",
+        "pages": [
+          1403
+        ],
+        "pdf_pages": [
+          1423
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dummy it and the extraposed subject",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1374",
+    "domain": "clauses",
+    "concept": "Clausal extraposition versus NP right dislocation",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Ordinary subject extraposition in the central construction applies to a clause, including an infinitival, while a detached NP after a coreferential it can form right dislocation.",
+    "condition": "A detached NP has a different constructional analysis from a clause associated with dummy it.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It would be pointless to restart the timer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It worries me, that ticking sound.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§7.1",
+        "pages": [
+          1403,
+          1404
+        ],
+        "pdf_pages": [
+          1423,
+          1424
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Clausal extraposition versus NP right dislocation",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1375",
+    "domain": "clauses",
+    "concept": "Background knowledge and non-extraposed content clauses",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A content clause in ordinary subject position is typically presented as shared background. Prior mention is one source of familiarity, but assumed common knowledge or information treated as already established can also license the basic order.",
+    "condition": "An extraposed content clause is more frequent and can also introduce information as new.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The inspector did return after all. That she returned is a relief.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "It's remarkable that the inspector found a second leak under the floor.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§7.1",
+        "pages": [
+          1404,
+          1405
+        ],
+        "pdf_pages": [
+          1424,
+          1425
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Background knowledge and non-extraposed content clauses",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1376",
+    "domain": "clauses",
+    "concept": "Presupposition and familiarity in extraposition",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Factive presupposition alone does not license the basic order in a context introducing new information. A non-extraposed content clause can also express a proposition whose truth the matrix asserts or denies.",
+    "condition": "Distinguish shared background presentation from whether the proposition is semantically presupposed.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It's astonishing that the meter had been unplugged all week.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That the meter was defective is a complete myth.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§7.1",
+        "pages": [
+          1405
+        ],
+        "pdf_pages": [
+          1425
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Presupposition and familiarity in extraposition",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1377",
+    "domain": "clauses",
+    "concept": "Weight and processing in extraposition",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Late placement can ease processing and is favored for heavy clauses when both orders are available. A very heavy subject clause can nevertheless remain in initial position if its content summarizes familiar material.",
+    "condition": "Weight and discourse status can favor different placements.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It is troubling that the records from every branch office were deleted without a backup.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We have already reviewed the missing records and failed backups. That the records from every branch office were deleted without a backup is troubling.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§7.1",
+        "pages": [
+          1403,
+          1405
+        ],
+        "pdf_pages": [
+          1423,
+          1425
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Weight and processing in extraposition",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
   }
 ]
