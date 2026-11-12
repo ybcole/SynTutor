@@ -21,13 +21,13 @@
 | 13. Comparative constructions | 74 | 72 | 0 | 2 | 0 | Source extraction complete |
 | 14. Non-finite and verbless clauses | 102 | 99 | 0 | 3 | 0 | Source-extracted |
 | 15. Coordination and supplementation | 90 | 88 | 0 | 2 | 0 | Source-extracted; independent QA pending |
-| 16. Information packaging | 86 | 25 | 58 | 3 | 0 | In progress (pp. 1363–1389) |
+| 16. Information packaging | 86 | 33 | 50 | 3 | 0 | In progress (pp. 1363–1397) |
 | 17. Deixis and anaphora | 116 | 114 | 0 | 2 | 0 | Source extraction complete |
 | 18. Inflectional morphology | 56 | 53 | 0 | 3 | 0 | Source extraction complete |
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **1518 extracted**, 201 unprocessed, 43 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **1526 extracted**, 193 unprocessed, 43 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -470,3 +470,9 @@ Source audit: `sources/cambridge/chapter_16/PP1374_1381_REPORT.md`.
 Printed pp. 1382–1389 add eight substantive pages and 19 inactive records (`CLS-1321`–`CLS-1339`), including two `spec_only` constraints. Chapter 16 has 58 unprocessed pages. Continue at p. 1390 with the specialized here/there patterns and the start of existentials and presentationals.
 
 Source audit: `sources/cambridge/chapter_16/PP1382_1389_REPORT.md`.
+
+## Chapter 16 fourth checkpoint
+
+Printed pp. 1390–1397 add eight substantive pages and 21 inactive records (`CLS-1340`–`CLS-1360`). Chapter 16 has 50 unprocessed pages. Continue at p. 1398 with displaced definite NPs and existential pragmatics.
+
+Source audit: `sources/cambridge/chapter_16/PP1390_1397_REPORT.md`.

@@ -460,3 +460,7 @@ Printed pp. 1374–1381 add eight substantive pages and 21 inactive records (`CL
 ## Chapter 16 third checkpoint
 
 Printed pp. 1382–1389 add eight substantive pages and 19 inactive records (`CLS-1321`–`CLS-1339`), including two `spec_only` constraints. Chapter 16 has 58 unprocessed pages. Continue at p. 1390 with the specialized here/there patterns and the start of existentials and presentationals.
+
+## Chapter 16 fourth checkpoint
+
+Printed pp. 1390–1397 add eight substantive pages and 21 inactive records (`CLS-1340`–`CLS-1360`). Chapter 16 has 50 unprocessed pages. Continue at p. 1398 with displaced definite NPs and existential pragmatics.

@@ -83500,5 +83500,1107 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1340",
+    "domain": "clauses",
+    "concept": "Narrative here or there with be and a pronoun",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Vivid first-person narrative can place a nominative pronoun after be with initial here or there whose spatial force is weakened.",
+    "condition": "The pronoun can also precede be in the narrative pattern.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There was I, trying to carry three trays at once.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There I was, trying to carry three trays at once.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§5.3",
+        "pages": [
+          1390
+        ],
+        "pdf_pages": [
+          1410
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Narrative here or there with be and a pronoun",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1341",
+    "domain": "clauses",
+    "concept": "Demonstrative-like here and there in identification",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "In a pointing or indexing construction such as Here's me, here or there behaves like a demonstrative subject and the accusative pronoun is a predicative complement.",
+    "condition": "The construction identifies an image or other indexed referent.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Here's me in the school play.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There's him at the far end of the photograph.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§5.3",
+        "pages": [
+          1390
+        ],
+        "pdf_pages": [
+          1410
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Demonstrative-like here and there in identification",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1342",
+    "domain": "clauses",
+    "concept": "Here or there accompanying presentation",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Here or there plus be can accompany handing over an object or presenting information. The postverbal lexical NP remains the subject and controls agreement.",
+    "condition": "A personal pronoun subject appears before the verb in the nominative. Some examples also allow a literal locative reading.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Here are the receipts you asked for.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Here they are.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§5.3",
+        "pages": [
+          1390
+        ],
+        "pdf_pages": [
+          1410
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Here or there accompanying presentation",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1343",
+    "domain": "clauses",
+    "concept": "Commentary inversions with here or there and come or go",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Here or there with come or go can announce a contemporaneous event in the simple present. A lexical NP subject can follow the verb, while a personal pronoun subject precedes it.",
+    "condition": "This commentary interpretation differs from ordinary motion to a specified place.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Here comes the last ferry.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There she goes.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§5.3",
+        "pages": [
+          1390
+        ],
+        "pdf_pages": [
+          1410
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Commentary inversions with here or there and come or go",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1344",
+    "domain": "clauses",
+    "concept": "Existentials and presentationals by verb type",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "An existential contains dummy there with be. A presentational contains dummy there with a verb other than be. Existential syntax and the semantic assertion of existence are distinct.",
+    "condition": "Be may occur in an embedded clause while there occupies a higher position.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There is also the cost to consider.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There remain two objections.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§6",
+        "pages": [
+          1390,
+          1392
+        ],
+        "pdf_pages": [
+          1410,
+          1412
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Existentials and presentationals by verb type",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1345",
+    "domain": "clauses",
+    "concept": "Dummy and locative there",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Dummy there is an unstressed pronoun without locative meaning, while locative there has spatial meaning and can receive focus. Both can occur in the same clause.",
+    "condition": "Dummy there functions as subject or raised object, and appears as subject in interrogative tags.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There are no seats there.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There is a spare key here, isn't there?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§6.1",
+        "pages": [
+          1391
+        ],
+        "pdf_pages": [
+          1411
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dummy and locative there",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1346",
+    "domain": "clauses",
+    "concept": "Dummy subject and displaced subject",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Dummy there fills the syntactic subject position. The displaced subject is an internal complement corresponding to the subject of a non-existential counterpart when one exists.",
+    "condition": "A predicative can apply to the displaced subject, and the analysis also applies when no acceptable counterpart exists.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There were three windows open.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There was a power cut.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§6.1",
+        "pages": [
+          1391
+        ],
+        "pdf_pages": [
+          1411
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dummy subject and displaced subject",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1347",
+    "domain": "clauses",
+    "concept": "Raised dummy there in catenative clauses",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Dummy there can occupy the matrix raised-subject or raised-object position, while the displaced subject remains a complement of embedded be.",
+    "condition": "The lower clause is existential even without an overt there in its own subject position.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There seems to be a leak.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We expected there to be a delay.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§6.1",
+        "pages": [
+          1392
+        ],
+        "pdf_pages": [
+          1412
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Raised dummy there in catenative clauses",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1348",
+    "domain": "clauses",
+    "concept": "Displaced subject position and extraction",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The displaced subject normally follows the verb. As an internal complement it can occur farther right, be fronted, or correspond to a gap in relativization.",
+    "condition": "An interrogative displaced subject can occur in initial position.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "How many are there in the cupboard?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Take everything there is in the bottom drawer.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§6.1",
+        "pages": [
+          1392
+        ],
+        "pdf_pages": [
+          1412
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Displaced subject position and extraction",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1349",
+    "domain": "clauses",
+    "concept": "Bare versus extended existential structure",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A bare existential has there, be and the displaced subject, optionally with ordinary adjuncts. An extended existential has an additional complement or construction-sensitive adjunct.",
+    "condition": "An ordinary recurrence or reason adjunct does not itself make the existential extended.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There was a delay again.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There were three copies on the desk.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§6.2.1",
+        "pages": [
+          1393
+        ],
+        "pdf_pages": [
+          1413
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Bare versus extended existential structure",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1350",
+    "domain": "clauses",
+    "concept": "Readings of bare existentials",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Bare existentials can express existence, availability at an understood location, event occurrence, service availability or modality. Ordinary bare counterparts are unavailable because be generally requires an internal complement.",
+    "condition": "Philosophical and fixed-frame uses can license be without that complement.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There was an interruption.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There is no doubt that the deadline has passed.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§6.2.1",
+        "pages": [
+          1393,
+          1394
+        ],
+        "pdf_pages": [
+          1413,
+          1414
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Readings of bare existentials",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1351",
+    "domain": "clauses",
+    "concept": "Hybrid NP as existential displaced subject",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Some existential displaced subjects are hybrid noun phrases whose head has VP structure.",
+    "condition": "These irregular NPs occur predominantly in existential clauses.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There can be no looking back now.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There was no getting past the locked gate.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§6.2.1",
+        "pages": [
+          1394
+        ],
+        "pdf_pages": [
+          1414
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Hybrid NP as existential displaced subject",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1352",
+    "domain": "clauses",
+    "concept": "Locative and temporal existential extensions",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Locative and temporal complements can extend an existential and also occur in the corresponding non-existential clause.",
+    "condition": "Both versions can be structurally possible while differing in discourse felicity.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There's a parcel by the entrance.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There is one rehearsal on Thursday.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§6.2.1",
+        "pages": [
+          1394
+        ],
+        "pdf_pages": [
+          1414
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Locative and temporal existential extensions",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1353",
+    "domain": "clauses",
+    "concept": "Temporary-state predicative extensions",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "An existential predicative extension characteristically expresses a temporary state. Predicative NPs are normally excluded, with the idiom the matter as an exception.",
+    "condition": "The restriction concerns a separate clause-level predicative, not an adjectival or nominal modifier within the displaced NP.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There are three chairs available.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Is there anything the matter?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§6.2.1",
+        "pages": [
+          1394
+        ],
+        "pdf_pages": [
+          1414
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Temporary-state predicative extensions",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1354",
+    "domain": "clauses",
+    "concept": "Subject and object readings in infinitival extensions",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The existential displaced subject can be interpreted as the subject or as the object of an infinitival extension.",
+    "condition": "An overt for-phrase can identify the subject of an infinitival whose object is understood from the displaced NP.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There are several guests still to arrive.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There's one application for you to sign.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§6.2.1",
+        "pages": [
+          1394
+        ],
+        "pdf_pages": [
+          1414
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subject and object readings in infinitival extensions",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1355",
+    "domain": "clauses",
+    "concept": "Participial NP modifier versus existential extension",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A participial clause after the displaced noun can modify that noun within the NP or form a separate existential extension.",
+    "condition": "Independent NP distribution supports modification. A construction-specific participial form, postposing across the participle, or extraction from it can support an extension analysis.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There were [documents signed by the director] in the cabinet.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There were [two children] playing outside.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§6.2.1",
+        "pages": [
+          1394,
+          1395
+        ],
+        "pdf_pages": [
+          1414,
+          1415
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Participial NP modifier versus existential extension",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1356",
+    "domain": "clauses",
+    "concept": "Progressive and passive auxiliaries in extended existentials",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Be can serve as the progressive or passive auxiliary in a participial existential. A heavy displaced subject can follow a passive participle by postposing, an order superficially similar to a presentational.",
+    "condition": "In the corresponding lighter passive case the displaced subject can precede the participle. A patient NP can be the displaced subject.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There were several people injured in the collision.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There were recovered several crates that had been missing since spring.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§6.2.1",
+        "pages": [
+          1395,
+          1396
+        ],
+        "pdf_pages": [
+          1415,
+          1416
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Progressive and passive auxiliaries in extended existentials",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1357",
+    "domain": "clauses",
+    "concept": "Special participial patterns with existential there",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "There be no use or no point plus a gerund-participial is distinct from the two regular participial patterns. A variety-marked perfect construction also permits clitic has before the displaced subject with a following perfect participle.",
+    "condition": "The perfect example is variety-marked and does not allow replacing the clitic with full has.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There's no point arguing about the receipt.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There's a cyclist been injured.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§6.2.1",
+        "pages": [
+          1395
+        ],
+        "pdf_pages": [
+          1415
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Special participial patterns with existential there",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1358",
+    "domain": "clauses",
+    "concept": "Possible relative-clause extensions",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A relative after an existential displaced noun can clearly modify the NP in some cases. A clause-level extension analysis is possible in others, but the structural case is weaker than for participial extensions.",
+    "condition": "A proper name followed by a restrictive-looking relative provides evidence for the proposed extension analysis.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There are [people who specialize in glass repair].",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Well, there's Priya you could ask.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§6.2.1",
+        "pages": [
+          1396
+        ],
+        "pdf_pages": [
+          1416
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Possible relative-clause extensions",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1359",
+    "domain": "clauses",
+    "concept": "Addressee novelty and definiteness in existentials",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The existential typically introduces addressee-new entities, so its displaced NP is usually indefinite. A definite displaced NP is admissible when it conveys addressee-new information in context.",
+    "condition": "Definiteness is a tendency tied to information status, not a categorical syntactic prohibition.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "There was a stranger at the door.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Who might lend us a ladder? Well, there's the neighbor who just moved in.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§6.2.2",
+        "pages": [
+          1396,
+          1397
+        ],
+        "pdf_pages": [
+          1416,
+          1417
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Addressee novelty and definiteness in existentials",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1360",
+    "domain": "clauses",
+    "concept": "Indefinite subjects in existential and non-existential alternants",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Physical entities readily allow either order. Abstract entities and events often favor existential order when introduced as new, while a known type or an established event context can license an indefinite subject in the non-existential.",
+    "condition": "A definite expression inside the indefinite NP can help establish the familiar type.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Two copies of your report are on the desk.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There was a power failure in the studio.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§6.2.2",
+        "pages": [
+          1397
+        ],
+        "pdf_pages": [
+          1417
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Indefinite subjects in existential and non-existential alternants",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
   }
 ]
