@@ -318,3 +318,7 @@ Printed pp. 1011–1030 yielded 26 classification records (`CLS-820`–`CLS-845`
 ## Chapter 12 first checkpoint
 
 Printed pp. 1031–1047 yielded 22 classification records (`CLS-846`–`CLS-867`). Continue at p. 1048 with who and which.
+
+## Chapter 12 second checkpoint
+
+Printed pp. 1048–1066 yielded 23 classification records (`CLS-868`–`CLS-890`). Continue at p. 1067 with infinitival relatives.
