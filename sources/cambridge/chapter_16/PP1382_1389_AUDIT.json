@@ -1,0 +1,123 @@
+{
+  "manifest_version": 1,
+  "chapter": 16,
+  "printed_start": 1382,
+  "printed_end": 1389,
+  "report": "sources/cambridge/chapter_16/PP1382_1389_REPORT.md",
+  "source_pdf_page_offset": 20,
+  "source_anchor": {
+    "printed_page": 1382,
+    "pdf_page": 1402
+  },
+  "added_rule_ids": [
+    "CLS-1321",
+    "CLS-1322",
+    "CLS-1323",
+    "CLS-1324",
+    "CLS-1325",
+    "CLS-1326",
+    "CLS-1327",
+    "CLS-1328",
+    "CLS-1329",
+    "CLS-1330",
+    "CLS-1331",
+    "CLS-1332",
+    "CLS-1333",
+    "CLS-1334",
+    "CLS-1335",
+    "CLS-1336",
+    "CLS-1337",
+    "CLS-1338",
+    "CLS-1339"
+  ],
+  "page_checks": [
+    {
+      "page": 1382,
+      "status": "extracted",
+      "section": "§§3.3–4",
+      "summary": "Focus domains and echoing, followed by the definition and main syntactic functions of postposing.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1383,
+      "status": "extracted",
+      "section": "§4",
+      "summary": "Aligned order contrasts, relative weight, the particle-pronoun constraint and discourse-new objects.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1384,
+      "status": "extracted",
+      "section": "§4",
+      "summary": "Novelty independent of weight, reporting subjects, direct object postposing and the indirect object restriction.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1385,
+      "status": "extracted",
+      "section": "§5.1",
+      "summary": "Inverting dependents, rare ascriptive NP fronting, subject diagnostics, and specifying be in footnote 8.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1386,
+      "status": "extracted",
+      "section": "§§5.1–5.2",
+      "summary": "Progressive interpretation, inversion as a distinct construction, the three pragmatic conditions and footnotes 9–10.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1387,
+      "status": "extracted",
+      "section": "§5.2",
+      "summary": "New–new and old–old inversion, salience and narrative continuation.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1388,
+      "status": "extracted",
+      "section": "§5.2",
+      "summary": "Narrative register, open-proposition recoverability, and the static versus dynamic locative contrast.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    },
+    {
+      "page": 1389,
+      "status": "extracted",
+      "section": "§§5.2–5.3",
+      "summary": "Familiar or inferable verbs, lexical-verb restrictions, and the ordinary locative and specialized here/there patterns.",
+      "source_checked": true,
+      "nonprose_present": true,
+      "layout_checked": true,
+      "exceptions_checked": true,
+      "unresolved_items": []
+    }
+  ]
+}

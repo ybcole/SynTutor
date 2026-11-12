@@ -82392,5 +82392,1113 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1321",
+    "domain": "clauses",
+    "concept": "Salient variable domains in focus preposing",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A focused preposed complement can supply a quantity, name, time or corrected alternative in an open proposition. Mention of an entity or event can make its name or time inferable as a domain.",
+    "condition": "The prior context evokes the domain even if it does not supply its particular value.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We adopted a kitten. PEPPER we called her.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Did you order soup? SALAD I ordered.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§3.3",
+        "pages": [
+          1382
+        ],
+        "pdf_pages": [
+          1402
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Salient variable domains in focus preposing",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1322",
+    "domain": "clauses",
+    "concept": "Echoing in focus preposing",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Echoing fronts a focused value and questions whether it correctly fills the variable in an already available open proposition. It can express uncertainty or disbelief.",
+    "condition": "The value usually repeats an expression, but it may be inferred from what was said.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I'd like two seats in the balcony. The BALCONY you wanted?",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Nora trusts everyone on the committee. BEN she trusts?",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§3.3",
+        "pages": [
+          1382
+        ],
+        "pdf_pages": [
+          1402
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Echoing in focus preposing",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1323",
+    "domain": "clauses",
+    "concept": "Clause-final postposing and its syntactic functions",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A postposed constituent occurs to the right of its basic position, generally at the end of the clause apart from possible adjuncts. Subjects, predicatives, displaced existential subjects and direct objects can occur there.",
+    "condition": "Identify the constituent's default position from its clause function.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The newer device was more reliable than had been the prototype we tested last year.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She put on the counter a box containing all the spare cables.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§4",
+        "pages": [
+          1382
+        ],
+        "pdf_pages": [
+          1402
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Clause-final postposing and its syntactic functions",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1324",
+    "domain": "clauses",
+    "concept": "Relative constituent weight in postposing",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The weight of a constituent relative to what it follows helps determine how natural postposing is. A long object after a short dependent can improve clarity, while a short object after a long dependent can sound awkward.",
+    "condition": "Treat weight as a gradable preference across otherwise available orders.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You'll find on your desk the report we commissioned after the second inspection.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You'll find the report in the locked cabinet at the far end of the upstairs corridor.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§4",
+        "pages": [
+          1382,
+          1383
+        ],
+        "pdf_pages": [
+          1402,
+          1403
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Relative constituent weight in postposing",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1325",
+    "domain": "clauses",
+    "concept": "Unstressed personal pronoun before a verbal particle",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "An unstressed personal pronoun serving as the object of a separable verb-particle construction precedes the particle. A full object NP usually permits both orders.",
+    "condition": "This applies to separable particles and a weak pronoun object, rather than to a pronoun governed by a preposition.",
+    "violation": "An unstressed personal pronoun object follows the separable verbal particle.",
+    "exceptions": [
+      {
+        "description": "A full object NP normally allows both orders. A pronoun governed by a preposition follows that preposition.",
+        "pages": [
+          1383
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She brought them back.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He put it away.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "She brought back the boxes.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "He looked after them.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "She brought back them.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "He put away it.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§4",
+        "pages": [
+          1383
+        ],
+        "pdf_pages": [
+          1403
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Unstressed personal pronoun before a verbal particle",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "An unstressed personal pronoun object follows the separable verbal particle.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "She brought back them. ||| She brought them back.",
+        "He put away it. ||| He put it away."
+      ],
+      "learner_explanation": "Put the unstressed pronoun before the particle.",
+      "corrected_paragraph_template": "Put the unstressed pronoun before the particle.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "She brought back the boxes.",
+        "He looked after them."
+      ],
+      "lesson_tags": [
+        "information-packaging",
+        "word-order"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1326",
+    "domain": "clauses",
+    "concept": "Discourse novelty as a motivation for object postposing",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A discourse-new object can occur after a familiar locative even when the object is short. This comparatively infrequent order can make the newly introduced entity seem unexpected.",
+    "condition": "The locative may be discourse-old through a salient relation to a previously mentioned place.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She entered the workshop and saw on the bench a note.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He pushed open the shed door and saw beneath the window a fox.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§4",
+        "pages": [
+          1383,
+          1384
+        ],
+        "pdf_pages": [
+          1403,
+          1404
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Discourse novelty as a motivation for object postposing",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1327",
+    "domain": "clauses",
+    "concept": "Subject postposing outside subject–dependent inversion",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Subject postposing without an accompanying fronted dependent occurs in comparatives and reporting clauses. Comparative postposing is weight-sensitive, while reporting postposing occurs mostly in parentheticals and also initially in journalistic style.",
+    "condition": "In a reporting parenthetical, the order is not evidently driven by weight.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The boiler, explained Mira, would need another inspection.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Said the coach: ‘We can still qualify.’",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§4",
+        "pages": [
+          1384
+        ],
+        "pdf_pages": [
+          1404
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subject postposing outside subject–dependent inversion",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1328",
+    "domain": "clauses",
+    "concept": "Intervening expressions in direct object postposing",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A direct object may occur after a PP, an adverbial or nominal adjunct, or a predicative AdjP. A predicative NP is less readily crossed, and complex catenative structures strongly resist postposing of the intervening NP.",
+    "condition": "Consider the type of intervening expression alongside the object’s weight.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I've read very carefully the reports that came in last week.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I found surprisingly useful the sketches that the architect made on site.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§4",
+        "pages": [
+          1384
+        ],
+        "pdf_pages": [
+          1404
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Intervening expressions in direct object postposing",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1329",
+    "domain": "clauses",
+    "concept": "Indirect object cannot follow direct object in the double-object alternant",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "The recipient indirect object cannot be postposed across the direct object within an ordinary double-object construction. A licensed prepositional alternant can put the recipient after the direct object.",
+    "condition": "The distinction applies to two objects in the same verb phrase and depends on the recipient function.",
+    "violation": "A recipient indirect object is placed after the direct object without a preposition in the double-object construction.",
+    "exceptions": [
+      {
+        "description": "In the prepositional alternant, the recipient can follow the direct object as the complement of to.",
+        "pages": [
+          1384
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We sent everyone on the waiting list a reminder.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They gave each student who stayed late a voucher.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "We sent a reminder to everyone on the waiting list.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "They gave a voucher to each student who stayed late.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "We sent a reminder everyone on the waiting list.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "They gave a voucher each student who stayed late.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§4",
+        "pages": [
+          1384
+        ],
+        "pdf_pages": [
+          1404
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Indirect object cannot follow direct object in the double-object alternant",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "A recipient indirect object is placed after the direct object without a preposition in the double-object construction.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "We sent a reminder everyone on the waiting list. ||| We sent everyone on the waiting list a reminder.",
+        "They gave a voucher each student who stayed late. ||| They gave each student who stayed late a voucher."
+      ],
+      "learner_explanation": "Put the recipient before the direct object, or use the licensed to-phrase after the direct object.",
+      "corrected_paragraph_template": "Put the recipient before the direct object, or use the licensed to-phrase after the direct object.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "We sent a reminder to everyone on the waiting list.",
+        "They gave a voucher to each student who stayed late."
+      ],
+      "lesson_tags": [
+        "information-packaging",
+        "word-order"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1330",
+    "domain": "clauses",
+    "concept": "Dependents that participate in subject–dependent inversion",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "In subject–dependent inversion, a dependent precedes the verb and the subject follows it. Most fronted dependents are complements of be, but another verb can invert with an adjunct. The fronted expression can be a PP, AdjP, NP or nonfinite VP.",
+    "condition": "The fronted expression must be a dependent in the construction.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Near the gate stood a pair of brass lanterns.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Three weeks later came a second invitation.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§5.1",
+        "pages": [
+          1385
+        ],
+        "pdf_pages": [
+          1405
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Dependents that participate in subject–dependent inversion",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1331",
+    "domain": "clauses",
+    "concept": "Ascriptive inversion and specifying be",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "In rare NP–be–NP inversion the initial NP can be an ascriptive predicative complement. Its inability to behave as the subject in auxiliary inversion helps identify it. In reversed specifying clauses the first NP is still the subject.",
+    "condition": "Use meaning and subject diagnostics together because both structures have the same surface sequence.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Also a trained paramedic is our new volunteer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The winner was Rosa. Rosa was the winner.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§5.1",
+        "pages": [
+          1385
+        ],
+        "pdf_pages": [
+          1405
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Ascriptive inversion and specifying be",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1332",
+    "domain": "clauses",
+    "concept": "Progressive morphology and inversion",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A progressive VP can front as a dependent of be where a nonprogressive lexical VP cannot front in the same inversion. When there is no competing inverted nonprogressive form, the progressive shape can lack the usual progressive interpretation.",
+    "condition": "An inverted passive can retain the progressive interpretation when a nonprogressive counterpart exists.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Supporting the roof are two steel beams.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Being carried out of the building were the last two crates.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§5.1",
+        "pages": [
+          1385,
+          1386
+        ],
+        "pdf_pages": [
+          1405,
+          1406
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Progressive morphology and inversion",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1333",
+    "domain": "clauses",
+    "concept": "Subject–dependent inversion as a distinct construction",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The fronting and subject placement form a distinct construction. In many examples, either operation in isolation is unavailable in context, and the combined pattern has its own pragmatic conditions.",
+    "condition": "Independent complement preposing is still possible in an appropriate discourse, including emphatic affirmation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Selected for the final were the two youngest competitors.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They said the two youngest would be selected, and selected they were.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§5.1",
+        "pages": [
+          1386
+        ],
+        "pdf_pages": [
+          1406
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Subject–dependent inversion as a distinct construction",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1334",
+    "domain": "clauses",
+    "concept": "Relative discourse familiarity in inversion",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The fronted dependent must be at least as discourse-familiar as the postposed subject. Old–new is usual; new–new and old–old are possible in suitable contexts. Old–old favors the more salient or recently evoked material first.",
+    "condition": "Assess familiarity in the current discourse. General familiarity to the addressee does not establish discourse-old status.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The hall had an alcove. In the alcove stood a grandfather clock.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "You wouldn't believe who was at the station. Beside a cluster of photographers stood Mayor Chen.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§5.2",
+        "pages": [
+          1386,
+          1387
+        ],
+        "pdf_pages": [
+          1406,
+          1407
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Relative discourse familiarity in inversion",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1335",
+    "domain": "clauses",
+    "concept": "Scene-setting inversion at narrative openings",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Narrative inversion can establish a setting and introduce the postposed subject as the entity the story then develops. A storytelling context can evoke a set of possible settings before one is named.",
+    "condition": "The construction has a literary flavor; the same order can be awkward in casual reporting.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "At the end of an unmarked lane lived an elderly clockmaker. He repaired only wooden clocks.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "On a narrow island stood a lighthouse. It guided fishing boats through the winter fog.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§5.2",
+        "pages": [
+          1387,
+          1388
+        ],
+        "pdf_pages": [
+          1407,
+          1408
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Scene-setting inversion at narrative openings",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1336",
+    "domain": "clauses",
+    "concept": "Discourse-old open proposition in nonlocative inversion",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "An appropriate open proposition must normally be recoverable for inversion, with the postposed subject providing the variable value. The prior discourse can evoke it directly or make it inferable.",
+    "condition": "Static locative inversions have a separate relaxation of this requirement.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Two climbers were injured in the fall. Injured were Nina and Luis.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Several essays won awards this morning. Awarded first prize was the essay on coastal erosion.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§5.2",
+        "pages": [
+          1388
+        ],
+        "pdf_pages": [
+          1408
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Discourse-old open proposition in nonlocative inversion",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1337",
+    "domain": "clauses",
+    "concept": "Static locative relaxation in inversion",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A fronted static locative in inversion does not require a discourse-old open proposition. A dynamic path reading does not get the same relaxation.",
+    "condition": "A motion verb can describe a fixed route or spatial configuration, so classify the reading rather than the verb alone.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The estate has an orchard. Through it runs a gravel path.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The town is ringed by steep hills. To its west flows a narrow river.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§5.2",
+        "pages": [
+          1388
+        ],
+        "pdf_pages": [
+          1408
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Static locative relaxation in inversion",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1338",
+    "domain": "clauses",
+    "concept": "Discourse status and distribution of verbs in inversion",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The verb must be evoked or inferable from the context or the inversion itself. Ascriptive be is most frequent. Lexical verbs favor locative dependents, often PPs, and some allow temporal expressions more readily than adjective or noun predicatives.",
+    "condition": "An expected posture, occurrence or continuation can license a lexical verb.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "On the counter sat a sealed envelope.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The first parcel came on Friday. A week later came two more.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§5.2",
+        "pages": [
+          1389
+        ],
+        "pdf_pages": [
+          1409
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Discourse status and distribution of verbs in inversion",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1339",
+    "domain": "clauses",
+    "concept": "Locative here and there in ordinary inversion",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Here and there can be fronted locative dependents in ordinary subject–dependent inversion. The surface sequence also occurs in specialized constructions with distinct properties.",
+    "condition": "Check whether the fronted expression actually identifies a place, rather than deciding from the word sequence alone.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We reached the river bend. Here stood the old mill.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We crossed to the far bank. There lay two abandoned boats.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 16,
+        "section": "§5.3",
+        "pages": [
+          1389
+        ],
+        "pdf_pages": [
+          1409
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Locative here and there in ordinary inversion",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
   }
 ]
