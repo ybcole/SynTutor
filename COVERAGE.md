@@ -22,12 +22,12 @@
 | 14. Non-finite and verbless clauses | 102 | 99 | 0 | 3 | 0 | Source-extracted |
 | 15. Coordination and supplementation | 90 | 88 | 0 | 2 | 0 | Source-extracted; independent QA pending |
 | 16. Information packaging | 86 | 0 | 85 | 1 | 0 | Incomplete |
-| 17. Deixis and anaphora | 116 | 0 | 116 | 0 | 0 | Incomplete |
+| 17. Deixis and anaphora | 116 | 114 | 0 | 2 | 0 | Source extraction complete |
 | 18. Inflectional morphology | 56 | 0 | 55 | 1 | 0 | Incomplete |
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **1214 extracted**, 514 unprocessed, 34 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **1328 extracted**, 398 unprocessed, 36 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -354,3 +354,43 @@ Checked 20 consecutive substantive pages and added 41 original-example inactive 
 ## Chapter 15 Phase B source extraction complete — printed pp. 1273–1362
 
 The final consecutively source-checked batch accounts for pp. 1343–1362 and adds 59 inactive records (`CLS-1037`–`CLS-1095`) including 1 `spec_only` constraint. [Audit report](sources/cambridge/chapter_15/PP1343_1362_REPORT.md) · [Audit manifest](sources/cambridge/chapter_15/PP1343_1362_AUDIT.json). Chapter 15 ledger: 88 substantive pages extracted, 2 contents-only skips, zero unprocessed pages. Book-wide ledger: 1214 extracted, 514 unprocessed, 34 justified skips, 2 absent from split source. Source complete ≠ independent review ≠ B-R crosswalk verified ≠ detector activation. Both GitHub CI workflows and chapter QA are required before PR merge. Next: Chapter 17.
+
+## Chapter 17 Phase B checkpoint — printed pp. 1449–1472
+
+Checked all 24 page layouts and source text; pp.1449–1450 are chapter contents only. Extracted pp.1451–1472 with 62 English-only inactive source records (PHR-459–PHR-514; CLS-1096–CLS-1101); see [source report](sources/cambridge/chapter_17/PP1449_1472_REPORT.md) and [machine audit](sources/cambridge/chapter_17/PP1449_1472_AUDIT.json). Chapter 17 has 22 substantive extracted, 2 justified skips, 92 unprocessed. B-R crosswalks and independent linguistic QA remain pending; Cambridge registry unchanged. Continue at p.1473.
+
+## Chapter 17 Phase B checkpoint — printed pp. 1473–1496
+
+Source-checked all 24 substantive pages (full-volume PDF pp. 1493–1516) with source text, rendered layouts, bracketed judgments and footnotes. Added 67 inactive original-English example records (PHR-515–PHR-579, CLS-1102–CLS-1103), including a narrowly scoped lexical reflexive `spec_only` constraint. [Report](sources/cambridge/chapter_17/PP1473_1496_REPORT.md) · [Machine audit](sources/cambridge/chapter_17/PP1473_1496_AUDIT.json). Chapter 17 now has 46 substantive extracted pages, 2 contents-only skips and 68 unprocessed pages; continue at p.1497. Linguistic review and production licensing remain pending.
+
+## Chapter 17 Phase B checkpoint for printed pp. 1497–1504
+
+Printed pp. 1497–1504 yielded 38 inactive records (`PHR-580–PHR-617`), including 9 `spec_only` constraints. The batch closes reciprocal constructions and begins demonstratives. Chapter 17 has 54 substantive pages extracted, two contents-only skips and 60 unprocessed pages. Continue at p. 1505 with animate demonstratives and central deictic use. [Report](sources/cambridge/chapter_17/PP1497_1504_REPORT.md) · [Audit](sources/cambridge/chapter_17/PP1497_1504_AUDIT.json).
+
+## Chapter 17 Phase B checkpoint for printed pp. 1505–1512
+
+Printed pp. 1505–1512 yielded 28 inactive records (`PHR-618–PHR-645`), including 5 `spec_only` constraints. Chapter 17 has 62 substantive pages extracted, two contents-only skips and 52 unprocessed pages. Continue at p. 1513 with the distribution of pro-nominal one and fused heads. [Report](sources/cambridge/chapter_17/PP1505_1512_REPORT.md) · [Audit](sources/cambridge/chapter_17/PP1505_1512_AUDIT.json).
+
+## Chapter 17 Phase B checkpoint for printed pp. 1513–1520
+
+Printed pp. 1513–1520 yielded 29 inactive records (`PHR-646–PHR-674`), including 6 `spec_only` constraints. Chapter 17 has 70 substantive pages extracted, two contents-only skips and 44 unprocessed pages. Continue at p. 1521 with differences between an ellipsis site and its antecedent. [Report](sources/cambridge/chapter_17/PP1513_1520_REPORT.md) · [Audit](sources/cambridge/chapter_17/PP1513_1520_AUDIT.json).
+
+## Chapter 17 Phase B checkpoint for printed pp. 1521–1528
+
+Printed pp. 1521–1528 yielded 24 inactive records (`PHR-675–PHR-698`), including 2 `spec_only` constraints. Chapter 17 has 78 substantive pages extracted, two contents-only skips and 36 unprocessed pages. Continue at p. 1529. [Report](sources/cambridge/chapter_17/PP1521_1528_REPORT.md) · [Audit](sources/cambridge/chapter_17/PP1521_1528_AUDIT.json).
+
+## Chapter 17 Phase B checkpoint for printed pp. 1529–1536
+
+Printed pp. 1529–1536 yielded 28 inactive records (`PHR-699–PHR-726`), including 3 `spec_only` constraints. Chapter 17 has 86 substantive pages extracted, two contents-only skips and 28 unprocessed pages. Continue at p. 1537 with further polarity contrasts for pro-clause so. [Report](sources/cambridge/chapter_17/PP1529_1536_REPORT.md) · [Audit](sources/cambridge/chapter_17/PP1529_1536_AUDIT.json).
+
+## Chapter 17 Phase B checkpoint for printed pp. 1537–1544
+
+Printed pp. 1537–1544 yielded 30 inactive records (`PHR-727–PHR-756`), including 2 `spec_only` constraints. Chapter 17 has 94 substantive pages extracted, two contents-only skips and 20 unprocessed pages. Continue at p. 1545 with implicit scalar comparisons. [Report](sources/cambridge/chapter_17/PP1537_1544_REPORT.md) · [Audit](sources/cambridge/chapter_17/PP1537_1544_AUDIT.json).
+
+## Chapter 17 Phase B checkpoint for printed pp. 1545–1553
+
+Printed pp. 1545–1553 yielded 27 inactive records (`PHR-757–PHR-783`), including one `spec_only` constraint. Chapter 17 has 103 substantive pages extracted, two contents-only skips and 11 unprocessed pages. Continue at p. 1554 with implicit location and orientation. [Report](sources/cambridge/chapter_17/PP1545_1553_REPORT.md) · [Audit](sources/cambridge/chapter_17/PP1545_1553_AUDIT.json).
+
+## Chapter 17 Phase B closure
+
+Printed pp. 1554–1564 yielded 31 inactive records (`PHR-784–PHR-814`). Chapter 17 Phase B source extraction accounts for all 116 printed pages: 114 substantive pages and 2 contents-only skips. [Report](sources/cambridge/chapter_17/PP1554_1564_REPORT.md) · [Audit](sources/cambridge/chapter_17/PP1554_1564_AUDIT.json).

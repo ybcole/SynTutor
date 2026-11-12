@@ -356,3 +356,43 @@ Printed pp. 1323–1342 audited consecutively in text and rendered layout, inclu
 ## Chapter 15 Phase B source closure
 
 Printed pp. 1343–1362 were checked against text, all rendered page layouts and the two syntax-tree diagrams; the batch adds 59 inert records (`CLS-1037`–`CLS-1095`). Chapter 15 printed pp. 1273–1362 are fully accounted for (88 substantive and 2 contents-only skips; zero unprocessed). The Chapter 15 draft PR remains subject to complete local/CI gates and independent source QA, with no newly enabled runtime rules. Next chapter in priority order: Chapter 17.
+
+## Chapter 17 first checkpoint — 2026-11-12
+
+Printed pp. 1449–1472 checked consecutively in uploaded full-volume PDF text and page layout. Two contents-only pages (1449–1450) are properly skipped. The 22 substantive pages (1451–1472) yield 62 inert, source-attributed original-example records (PHR-459–PHR-514 and CLS-1096–CLS-1101), one narrow spec-only reflexive constraint with explicit guards. Next begins at p. 1473. No runtime enablement, fabricated B-R crosswalk or independent source approval.
+
+## Chapter 17 second checkpoint — 2026-11-12
+
+Printed pp. 1473–1496 source-checked consecutively in full-volume PDF text and rendered page layouts (including p.1486 reflexive-domain tree, footnotes and unacceptable/minimally variable contrasts). 67 inert new records (PHR-515–PHR-579, CLS-1102–CLS-1103), with one narrowly scoped `pride` lexical reflexive `spec_only` constraint. Distinctions for bound variables, prospective anaphora, optional and override reflexives prevent broad false-positive detectors. Chapter 17 now has 46 substantive pages plus 2 contents-only skips, leaving 68 printed pages; continue at p.1497. No approvals or runtime enablement.
+
+## Chapter 17 third checkpoint
+
+Printed pp. 1497–1504 yielded 38 inactive records (`PHR-580–PHR-617`), including 9 `spec_only` constraints. The batch closes reciprocal constructions and begins demonstratives. Chapter 17 has 54 substantive pages extracted, two contents-only skips and 60 unprocessed pages. Continue at p. 1505 with animate demonstratives and central deictic use.
+
+## Chapter 17 fourth checkpoint
+
+Printed pp. 1505–1512 yielded 28 inactive records (`PHR-618–PHR-645`), including 5 `spec_only` constraints. Chapter 17 has 62 substantive pages extracted, two contents-only skips and 52 unprocessed pages. Continue at p. 1513 with the distribution of pro-nominal one and fused heads.
+
+## Chapter 17 fifth checkpoint
+
+Printed pp. 1513–1520 yielded 29 inactive records (`PHR-646–PHR-674`), including 6 `spec_only` constraints. Chapter 17 has 70 substantive pages extracted, two contents-only skips and 44 unprocessed pages. Continue at p. 1521 with differences between an ellipsis site and its antecedent.
+
+## Chapter 17 sixth checkpoint
+
+Printed pp. 1521–1528 yielded 24 inactive records (`PHR-675–PHR-698`), including 2 `spec_only` constraints. Chapter 17 has 78 substantive pages extracted, two contents-only skips and 36 unprocessed pages. Continue at p. 1529.
+
+## Chapter 17 seventh checkpoint
+
+Printed pp. 1529–1536 yielded 28 inactive records (`PHR-699–PHR-726`), including 3 `spec_only` constraints. Chapter 17 has 86 substantive pages extracted, two contents-only skips and 28 unprocessed pages. Continue at p. 1537 with further polarity contrasts for pro-clause so.
+
+## Chapter 17 eighth checkpoint
+
+Printed pp. 1537–1544 yielded 30 inactive records (`PHR-727–PHR-756`), including 2 `spec_only` constraints. Chapter 17 has 94 substantive pages extracted, two contents-only skips and 20 unprocessed pages. Continue at p. 1545 with implicit scalar comparisons.
+
+## Chapter 17 ninth checkpoint
+
+Printed pp. 1545–1553 yielded 27 inactive records (`PHR-757–PHR-783`), including one `spec_only` constraint. Chapter 17 has 103 substantive pages extracted, two contents-only skips and 11 unprocessed pages. Continue at p. 1554 with implicit location and orientation.
+
+## Chapter 17 Phase B closure
+
+Printed pp. 1554–1564 yielded 31 inactive records (`PHR-784–PHR-814`). Chapter 17 Phase B source extraction accounts for all 116 printed pages: 114 substantive pages and 2 contents-only skips. The ledger still lists Chapter 18 as incomplete, and the master plan puts it ahead of the remaining priority-three chapters.
