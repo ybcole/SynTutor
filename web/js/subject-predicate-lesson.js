@@ -1,3 +1,4 @@
+import { addIntroExample, setTreeStepLabel } from './lesson-presentation.js';
 import { addSubjectPredicateBuilder } from './subject-predicate-builder.js';
 
 export const subjectPredicateHeadings = [
@@ -97,8 +98,10 @@ function addTreeComparison(body, ui) {
   branches.setAttribute('role', 'group');
   branches.setAttribute('aria-label', 'Choose a tree branch');
   const diagram = el('div', undefined, 'constituent-diagram');
+  const observation = el('div', undefined, 'lesson-tree-observation');
   const caption = el('p', undefined, 'constituent-caption');
   caption.setAttribute('role', 'status');
+  observation.append(caption, feedback);
   const picker = ['Short sentence', 'Try the longer sentence'].map((label, index) =>
     button(label, () => chooseExample(index)));
   const branchLabels = [['Whole sentence', 'Subject', 'Predicate'], ['S', 'NP', 'VP']];
@@ -137,16 +140,20 @@ function addTreeComparison(body, ui) {
       describe(selected, true);
     };
     const focusId = nodes[index]?.id;
-    const canvas = current === 0
-      ? showWorkedTree(diagram, focusId, { highlightWords: true, onSelect })
-      : showDiagram(diagram, tree, { focusId, highlightWords: true, onSelectNode: onSelect });
-    canvas.after(caption);
+    if (current === 0) {
+      showWorkedTree(diagram, focusId, { highlightWords: true, onSelect, observation });
+    } else {
+      observation.querySelector('.constituent-selection')?.remove();
+      showDiagram(diagram, tree, { focusId, highlightWords: true, onSelectNode: onSelect }).after(observation);
+    }
     describe(index, answer);
   }
   function chooseExample(index) {
     current = index;
     picker.forEach((control, i) => control.setAttribute('aria-pressed', String(i === index)));
-    branchButtons.forEach((control, i) => { control.textContent = branchLabels[index][i]; });
+    branchButtons.forEach((control, i) => {
+      setTreeStepLabel(control, el, branchLabels[index][i], index === 0 ? i + 1 : undefined);
+    });
     sentence.textContent = examples[index].sentence;
     prompt.hidden = index === 0;
     feedback.textContent = '';
@@ -155,7 +162,7 @@ function addTreeComparison(body, ui) {
 
   switches.append(...picker);
   branches.append(...branchButtons);
-  body.append(switches, sentence, prompt, branches, diagram, feedback);
+  body.append(switches, sentence, prompt, branches, diagram);
   chooseExample(0);
 }
 
@@ -215,8 +222,10 @@ export function addSubjectPredicateTeaching(body, page, ui) {
   if (page === 0) {
     section('What this chapter covers',
       'In Chapter 1, you learned how words form groups. Here you’ll see how two groups work together in a simple statement. In the examples here, the subject names who or what the statement is about. The predicate says something about the subject.');
-    body.append(el('p', `[${np}] [${vp}]`, 'lesson-example-sentence'));
-    paragraph(`“${np}” is a noun phrase that serves as the subject. “${vp}” is a verb phrase that serves as the predicate. Noun phrase and verb phrase name the kinds of groups. Subject and predicate name their jobs in this sentence.`);
+    addIntroExample(body, el,
+      'Read this statement about the robins. The brackets show its subject and predicate as two separate groups.',
+      `[${np}] [${vp}].`,
+      `“${np}” is a noun phrase that serves as the subject. “${vp}” is a verb phrase that serves as the predicate. Noun phrase and verb phrase name the kinds of groups. Subject and predicate name their jobs in this sentence.`);
     section('What you’ll see in this chapter');
     const preview = el('ol');
     for (const [topic, example] of [

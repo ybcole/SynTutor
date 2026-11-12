@@ -1,3 +1,5 @@
+import { setTreeStepLabel } from './lesson-presentation.js';
+
 export function addWorkedExample(body, ui, labels, {
   highlightWords = false, captions, comparison, extraSteps = [], tracePath = false,
 } = {}) {
@@ -15,12 +17,18 @@ export function addWorkedExample(body, ui, labels, {
   controls.setAttribute('role', 'group');
   controls.setAttribute('aria-label', 'Explore the worked tree');
   const diagram = el('div', undefined, 'constituent-diagram');
+  const observation = el('div', undefined, 'lesson-tree-observation');
   const caption = el('p', undefined, 'constituent-caption');
   caption.setAttribute('aria-live', 'polite');
+  observation.append(caption);
   const steps = worked.steps.map((step, index) => ({
     id: step.focus_node_id, label: labels[index], caption: captions?.[index] ?? step.text,
-  })).concat(extraSteps);
-  const choices = steps.map((step, index) => button(step.label, () => select(index)));
+  })).filter(step => step.label).concat(extraSteps);
+  const choices = steps.map((step, index) => {
+    const control = button(step.label, () => select(index));
+    setTreeStepLabel(control, el, step.label, index + 1);
+    return control;
+  });
 
   function describe(index, position) {
     choices.forEach((choice, i) => choice.setAttribute('aria-pressed', String(i === index)));
@@ -47,8 +55,9 @@ export function addWorkedExample(body, ui, labels, {
     showWorkedTree(diagram, steps[index].id, {
       highlightWords,
       tracePath,
+      observation,
       onSelect: (nodeId, position) => describe(steps.findIndex(step => step.id === nodeId), position),
-    }).after(caption);
+    });
   }
 
   if (comparison) {
@@ -63,9 +72,10 @@ export function addWorkedExample(body, ui, labels, {
       controls.hidden = compare;
       sentence.textContent = compare ? comparison.tree.sentence : worked.sentence;
       if (compare) {
+        observation.querySelector('.constituent-selection')?.remove();
         showDiagram(diagram, comparison.tree, {
           focusId: comparison.focusId, highlightWords: true, stackFeatures: true,
-        }).after(caption);
+        }).after(observation);
         caption.textContent = comparison.caption;
       } else {
         select(0);

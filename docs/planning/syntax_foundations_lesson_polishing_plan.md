@@ -23,6 +23,19 @@ Use the [rollout plan](syntax_foundations_lesson_rollout.md), [M4 launch curricu
 | 11 · From lists to grammar rules | Show how the result of joining two complete sentences becomes an input again. | Build a combination in two steps and see why an incomplete input fails. |
 | 12 · Cambridge companion | Compare the same clause on its own and inside a report. | Mark the written sentence in a short passage, then find the embedded subject and predicate. |
 
+## Introduction and canvas presentation
+
+- Introduce each chapter’s example with a sentence that tells learners why
+  they are reading it. Explain bracketed groups in the context of that
+  example. Chapters 11 and 12 use the same pattern for text examples.
+- Place the selected words and teaching explanation together in a callout
+  under the diagram. Keep the callout visible when a learner changes steps,
+  and update it for comparisons and gap selections.
+- Number the worked-tree trace steps and leave comparison switches and
+  practice answers unnumbered. Chapter 3 merges its two identical adjective
+  highlights. Chapter 9 describes the object NP in its gap step and keeps
+  separate visual steps for the two gap positions.
+
 ## Verification
 
 - Keep the original catalog, reviewed trees, answer keys, assessment progression, and XP contract. Use supplemental diagrams only in teaching.

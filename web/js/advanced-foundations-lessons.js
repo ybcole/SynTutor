@@ -4,6 +4,7 @@ export const advancedFoundationsChapters = {
   'br-06': {
     topics: ['Progressive Auxiliaries', 'Finding the Two Verb Phrases', 'Reading and Building a Progressive VP', 'Finding a VP Complement in a New Sentence'],
     intro: 'Chapter 5 showed how a time phrase can join a verb phrase. Here you’ll see another way to get two verb phrases, one inside the other. A progressive auxiliary heads the larger phrase and takes the smaller phrase as its complement.',
+    exampleContext: 'Look at how “is” fits into this description of Nora’s activity. The outer brackets mark the full predicate, and the inner brackets mark the verb phrase after “is”.',
     example: 'Nora [is [inspecting the bridge]].',
     introExample: '“Inspecting the bridge” tells you what Nora is doing. “Is” helps present the inspection as in progress and carries present tense. Together they form the whole predicate.',
     preview: ['Find the smaller verb phrase using a replacement.', 'Read the tense feature and attach the auxiliary’s complement.', 'Explain how the two verb phrases work in a new sentence.'],
@@ -49,8 +50,9 @@ export const advancedFoundationsChapters = {
   'br-07': {
     topics: ['The Core Noun Phrase', 'Determiners, Nominals and Nouns', 'Reading and Building DET and NOM', 'Finding the Pattern in a New Noun Phrase'],
     intro: 'Earlier trees used triangles to show whole noun phrases. This chapter opens up a simple noun phrase and shows how a determiner and a noun fit inside it.',
+    exampleContext: 'Imagine someone pointing to a group of lanterns. The brackets separate the word that points them out from the word that names them.',
     example: '[those] [lanterns]',
-    introExample: '“Lanterns” names the things. “Those” helps pick out which lanterns the speaker means. The whole noun phrase (NP) has two main parts. One is the determiner. The other is the nominal (NOM), which contains the noun.',
+    introExample: '“Those” is the determiner. “Lanterns” is the noun inside the nominal (NOM). The determiner and nominal are the two main parts of this noun phrase (NP).',
     preview: ['Find the determiner using a contrast with “the”.', 'Trace the noun through the nominal level and build the missing branch.', 'Use the same pattern with another demonstrative and noun.'],
     concepts: [
       ['Start with the whole group', 'Read “Those lanterns flickered”. In this sentence, “those lanterns” is the complete subject NP. You can replace it with “they”. Now look inside the NP to find the separate jobs of its parts.'],
@@ -94,8 +96,9 @@ export const advancedFoundationsChapters = {
   'br-08': {
     topics: ['Overt That-clauses', 'Finding the Embedded Clause', 'Reading and Building C and S', 'Recognising Complementiser That'],
     intro: 'A clause can sit inside a larger sentence and express what someone said, thought, or noticed. This chapter follows one pattern where the word “that” introduces the embedded clause.',
+    exampleContext: 'Read this report from Leo. The brackets mark the part of the sentence that tells us what he says.',
     example: 'Leo says [that Nora is inspecting the bridge].',
-    introExample: 'The bracketed group gives the content of what Leo says. Inside it, “Nora is inspecting the bridge” has its own subject and predicate.',
+    introExample: 'Inside the brackets, “Nora is inspecting the bridge” has its own subject and predicate. The word “that” introduces this embedded clause.',
     preview: ['Find the whole embedded group and the subject–predicate split inside it.', 'Read and build the two branches under S′.', 'Distinguish complementiser “that” from demonstrative “that”.'],
     concepts: [
       ['Find the content of what Leo says', 'Ask “What does Leo say?” The answer can be “that Nora is inspecting the bridge”. This whole group belongs inside the larger sentence. It contains a smaller subject–predicate structure that you can analyse using Chapter 2.'],
@@ -139,6 +142,7 @@ export const advancedFoundationsChapters = {
   'br-09': {
     topics: ['Object Wh-questions', 'Two Fronted Positions and Two Gaps', 'Reading and Building an Object Wh-question', 'Tracing an Object Gap in a New Question'],
     intro: 'In this chapter’s object questions, “what” asks for the noun phrase that would fill the object position in a statement. You’ll track where “what” and the auxiliary appear, and where each has left a gap.',
+    exampleContext: 'Start with a statement that names the object of the inspection. Then read a question that asks for that object.',
     example: 'Nora is inspecting the bridge. → What is Nora inspecting?',
     introExample: '“What” asks for “the bridge”, the object of “inspecting”. “Is” appears before the subject “Nora”. The tree labels the position for “what” C2 and the lower position for “is” C1.',
     preview: ['Use a statement to identify the object position.', 'Trace C2 and C1, then attach the object-gap branch.', 'Recover both gap positions in a new question.'],
@@ -155,11 +159,11 @@ export const advancedFoundationsChapters = {
       ['In “Nora is inspecting the bridge”, which group could answer “What is Nora inspecting?”', ['Nora', 'is inspecting', 'the bridge']],
       ['Which word comes before “Nora” in “Is Nora inspecting the bridge?”', ['is', 'what', 'inspecting']],
     ],
-    steps: ['Trace what to C2', 'Trace is to C1', 'Find the object NP'],
+    steps: ['Trace what to C2', 'Trace is to C1', null],
     captions: [
       '“What” sits in C2, which shares its parent S″ with S′.',
       '“Is” sits in C1, which shares its parent S′ with S.',
-      'The NP beside V contains the object gap. The other dot sits under PROG.',
+      null,
     ],
     beforeTree: 'Trace “What” to C2 and “is” to C1. Then use the gap controls to trace the two original positions. Each dot shows a different position with no spoken word.',
     treeTakeaway: 'The NP gap shows that “what” asks about the object of “inspecting”. The PROG gap shows where “is” belongs in the corresponding statement.',
@@ -187,6 +191,7 @@ export const advancedFoundationsChapters = {
   'br-10': {
     topics: ['The To-infinitive VP', 'Finding the Untensed Auxiliary and Its Complement', 'Reading and Building the Infinitival VP', 'Distinguishing Two Uses of To'],
     intro: 'Chapter 6 showed a tensed auxiliary followed by a verb phrase. Here you’ll examine a verb phrase with infinitival “to”. The group can sit inside a larger sentence, and it carries no tense of its own.',
+    exampleContext: 'Read this statement about Nora’s plan. The brackets mark the infinitival verb phrase that tells us what she plans to do.',
     example: 'Nora plans [to inspect the bridge].',
     introExample: '“Plans” carries tense in the larger sentence. Inside the brackets, “to” is followed by “inspect”, the basic form of the verb. The chapter focuses on the verb phrase inside the brackets.',
     preview: ['Find where tense is expressed in the full sentence.', 'Trace the auxiliary and its lexical VP complement.', 'Distinguish infinitival “to” from prepositional “to”.'],
@@ -232,6 +237,7 @@ export const advancedFoundationsChapters = {
   'br-11': {
     topics: ['From Sentence Lists to Grammar Rules', 'How a Rule Covers New Sentences', 'Working Through a Combination Rule', 'Using the Same Rule on a New Example'],
     intro: 'A tree describes the structure of one example. A grammar also says which structures are possible. This chapter uses a small invented grammar to show how a short description can cover longer and longer sentences without a fixed limit.',
+    exampleContext: 'Take two short sentences. Joining them with “and” gives you a third sentence.',
     example: 'Iris rests. Leo waits. → Iris rests and Leo waits.',
     introExample: 'A list can record these three examples. A rule can explain how the third is made from the first two and how to keep making new combinations.',
     preview: ['Compare a list of examples with a rule for combining them.', 'Reuse a result as input to the same rule.', 'Explain what the rule tells you about the structure it allows.'],
@@ -264,8 +270,9 @@ export const advancedFoundationsChapters = {
   'cgel-clauses': {
     topics: ['Sentences and Embedded Clauses', 'Finding Two Subject–Predicate Structures', 'Marking the Sentence and Its Embedded Clause', 'Analysing an Embedded Clause in a New Sentence'],
     intro: 'In the Cambridge companion, you’ll look at the same example in two ways. A sentence is a unit of written text. A clause is a grammatical unit that can have a subject and predicate and can sit inside a larger construction.',
+    exampleContext: 'Read this report as one written sentence. The brackets mark the part that tells us what Nora reports.',
     example: 'Nora reports [that the robins sing].',
-    introExample: 'The example is one sentence in the text. The bracketed group includes the embedded subject “the robins” and its predicate “sing”.',
+    introExample: 'Inside the report, “the robins” is the embedded subject and “sing” is its predicate.',
     preview: ['Read the whole sentence as a unit of text.', 'Find the subject and predicate inside the report.', 'Apply the distinction to a fresh example.'],
     concepts: [
       ['Read the sentence as a unit of text', 'Read “Nora reports that the robins sing.” from its opening capital to its final full stop. In this example, that entire stretch is one sentence. Ask what the whole sentence says. It presents a report by Nora.'],

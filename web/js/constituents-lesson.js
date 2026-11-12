@@ -1,3 +1,4 @@
+import { addIntroExample } from './lesson-presentation.js';
 import { addConstituentTreeBuilder } from './constituent-tree-builder.js';
 
 // Original examples following Analysing Sentences, 3rd ed., Chapter 1.
@@ -81,9 +82,11 @@ export function addConstituentTeaching(body, page, { el, button, showDiagram, sh
     paragraph('Think about a bicycle. The spokes are part of a wheel, and the wheel is part of the bicycle. Words fit together in groups in a similar way.');
     paragraph('Syntax is the study of how words fit together in a sentence. In this chapter, you’ll look for small groups of words and see how they fit inside larger groups.');
     section('What this chapter covers',
-      'Read “We met near the quiet garden”. Which words tell you where we met?',
-      '“Near the quiet garden” tells us where we met. Inside that group, “the quiet garden” tells us what we were near.',
       'A word or group of words that works as one part of a sentence is called a constituent. The way smaller groups fit inside larger ones is called hierarchy.');
+    addIntroExample(body, el,
+      'Look at how the words that tell us where we met contain a smaller group.',
+      'We met [near [the quiet garden]].',
+      'The outer brackets mark the whole place phrase. The inner brackets mark “the quiet garden”, the group that tells us what we were near.');
     const list = el('ul');
     for (const objective of [
       'Test whether words form a group by replacing them with one word or asking a question.',
@@ -107,7 +110,9 @@ export function addConstituentTeaching(body, page, { el, button, showDiagram, sh
     const sentence = el('p', undefined, 'constituent-selection');
     sentence.setAttribute('aria-live', 'polite');
     const tree = el('div');
-    diagram.append(sentence, tree);
+    const observation = el('div', undefined, 'lesson-tree-observation');
+    observation.append(sentence);
+    diagram.append(tree, observation);
     body.append(diagram);
     const nested = drawings(['near', 'the', 'quiet', 'garden'])[1];
     figureControls('Highlight a group', ['the quiet garden', 'near the quiet garden'], tree, index => {
@@ -122,8 +127,10 @@ export function addConstituentTeaching(body, page, { el, button, showDiagram, sh
       'Follow the branches in each drawing. Is there one node that reaches exactly “the quiet garden”? In the nested drawing, select PHRASE-a or PHRASE-b to highlight the words each node reaches.');
     const [flat] = drawings(['near', 'the', 'quiet', 'garden']);
     const tree = el('div');
+    const observation = el('div', undefined, 'lesson-tree-observation');
     const caption = el('p', undefined, 'constituent-caption');
     caption.setAttribute('aria-live', 'polite');
+    observation.append(caption);
     const example = el('div', undefined, 'constituent-diagram');
     example.append(tree);
     body.append(example);
@@ -131,7 +138,7 @@ export function addConstituentTeaching(body, page, { el, button, showDiagram, sh
       caption.textContent = index
         ? 'PHRASE-b reaches exactly “the quiet garden”. PHRASE-a reaches all four words.'
         : 'The three garden words meet at PHRASE-a, which also reaches “near”.';
-      showComparisonTree(tree, index ? null : flat).after(caption);
+      showComparisonTree(tree, index ? null : flat, observation);
     }, 1);
     section('Build your first tree',
       'Try the same idea with “beside the red gate”. Give the gate words a node of their own, then check which words it covers. Use Guide me if you want help with a step.');
@@ -142,8 +149,10 @@ export function addConstituentTeaching(body, page, { el, button, showDiagram, sh
     section('Trace the telescope phrase',
       'Switch between the two readings below. In each tree, follow “with a telescope” up to the highlighted group. Look at what else sits under that same node.');
     const alternatives = readings();
+    const observation = el('div', undefined, 'lesson-tree-observation');
     const caption = el('p', undefined, 'constituent-caption');
     caption.setAttribute('aria-live', 'polite');
+    observation.append(caption);
     const tree = el('div');
     const diagram = el('div', undefined, 'constituent-diagram');
     diagram.append(tree);
@@ -152,7 +161,7 @@ export function addConstituentTeaching(body, page, { el, button, showDiagram, sh
       caption.textContent = index
         ? '“With a telescope” joins “the hikers”. It tells us which hikers I watched.'
         : '“With a telescope” joins the larger group that includes “watched”. It tells us how I watched.';
-      showDiagram(tree, alternatives[index], { focusId: index ? 'PHRASE-b' : 'PHRASE-a' }).after(caption);
+      showDiagram(tree, alternatives[index], { focusId: index ? 'PHRASE-b' : 'PHRASE-a' }).after(observation);
     });
     paragraph('To explain the difference in your own words, ask “Who had the telescope?” In one reading it was the person watching. In the other it was the hikers. The branch shows which reading the tree represents.');
   }

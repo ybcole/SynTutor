@@ -462,7 +462,7 @@ function clearLessonCanvases() {
   lessonCanvases.clear();
 }
 
-function appendWorkedTree(aside, worked, { focusId, blank = null, comparisonTree = null, inline = false, highlightWords = false, tracePath = false, onSelect = null }) {
+function appendWorkedTree(aside, worked, { focusId, blank = null, comparisonTree = null, inline = false, highlightWords = false, tracePath = false, observation = null, onSelect = null }) {
   const evidence=el('details',undefined,'lesson-shared-evidence');
   evidence.dataset.xai7Lesson = '';
   const title=el('summary','Explanation');
@@ -533,7 +533,13 @@ function appendWorkedTree(aside, worked, { focusId, blank = null, comparisonTree
   });
   if (inline) {
     if (selected) describeSelection(selected);
-    canvas.append(selectedWords);
+    if (observation) {
+      observation.querySelector('.constituent-selection')?.remove();
+      observation.prepend(selectedWords);
+      canvas.after(observation);
+    } else {
+      canvas.append(selectedWords);
+    }
   } else {
     aside.append(el('p', worked.origin, 'lesson-origin'));
     if (selected) aside.append(button('Inspect highlighted tree position', () => inspect(selected)));
@@ -639,11 +645,16 @@ function articleScreen(lesson, p, article) {
       clearLessonDiagram(figure);
       return appendWorkedTree(figure, lesson.worked_example, { focusId, inline: true, ...options });
     },
-    showComparisonTree: (figure, flatTree) => {
+    showComparisonTree: (figure, flatTree, observation) => {
       clearLessonDiagram(figure);
-      if (flatTree) return mountLessonCanvas(figure, flatTree, {
-        focusId: flatTree.root.id, wordBaseline: 2, highlightWords: true,
-      });
+      if (flatTree) {
+        const canvas = mountLessonCanvas(figure, flatTree, {
+          focusId: flatTree.root.id, wordBaseline: 2, highlightWords: true,
+        });
+        observation.querySelector('.constituent-selection')?.remove();
+        canvas.after(observation);
+        return canvas;
+      }
       const worked = lesson.worked_example;
       const focusId = worked.steps.at(-1).focus_node_id;
       // Expand the teaching diagram only. Explanations still use the canonical tree and node IDs.
@@ -656,7 +667,7 @@ function articleScreen(lesson, p, article) {
           children: node.words.map(word => ({ word })),
         } : node),
       };
-      return appendWorkedTree(figure, worked, { focusId, comparisonTree: { ...worked.tree, root }, inline: true });
+      return appendWorkedTree(figure, worked, { focusId, comparisonTree: { ...worked.tree, root }, inline: true, observation });
     },
   });
 

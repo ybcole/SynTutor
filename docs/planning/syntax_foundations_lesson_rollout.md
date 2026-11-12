@@ -9,6 +9,13 @@ The [Chapters 3–12 polishing plan](syntax_foundations_lesson_polishing_plan.md
 tracks the worked comparisons, active transfer practice, selection feedback,
 and embedded Builder recovery for this course.
 
+On introduction pages, lead into each example with what it demonstrates.
+Explain the brackets or other notation the first time they appear. Under each
+interactive teaching diagram, group the selected words and explanation in a
+visible callout. Number controls that guide an ordered visual trace. Leave
+comparison switches and answer choices unnumbered. Fold repeated visual
+steps into a single control and preserve their explanation in the callout.
+
 ## Read before writing
 
 | Source | What to check |
