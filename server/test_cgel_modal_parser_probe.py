@@ -53,6 +53,38 @@ class ModalParserProbeTests(unittest.TestCase):
             with self.subTest(sentence=sentence):
                 self.assertEqual(probe(sentence, tree)["candidates"], [])
 
+    def test_modal_stack_requires_two_modal_tags_and_explicit_variety(self):
+        tree = "(S (NP (PRP They)) (VP (MD might) (VP (MD can) (VP (VB fish)))) (. .))"
+        sentence = "They might can fish."
+        candidate, = probe(sentence, tree)["candidates"]
+        self.assertEqual(candidate["rule_id"], "COMP-031")
+        self.assertIsNone(candidate["edit_hint"])
+        self.assertEqual(probe(sentence, tree, variety=None)["candidates"], [])
+        lexical = tree.replace("(MD can) (VP (VB fish))", "(VB can) (NP (NN fish))")
+        self.assertEqual(probe(sentence, lexical)["candidates"], [])
+
+    def test_inverted_supportive_do_requires_an_auxiliary_complement(self):
+        cases = [
+            ("Did she have left?", "(VB have) (VP (VBN left))", ["CLS-100"]),
+            ("Did she be working?", "(VB be) (VP (VBG working))", ["CLS-100"]),
+            ("Did she be ready?", "(VB be) (ADJP (JJ ready))", ["CLS-100"]),
+            ("Did she can leave?", "(MD can) (VP (VB leave))", ["CLS-100"]),
+            ("Did she have time?", "(VB have) (NP (NN time))", []),
+            ("Did she have it fixed?", "(VB have) (S (NP (PRP it)) (VP (VBN fixed)))", []),
+        ]
+        for sentence, predicate, expected in cases:
+            with self.subTest(sentence=sentence):
+                tree = f"(SQ (VBD Did) (NP (PRP she)) (VP {predicate}) (. ?))"
+                candidates = probe(sentence, tree)["candidates"]
+                self.assertEqual([c["rule_id"] for c in candidates], expected)
+                for candidate in candidates:
+                    self.assertEqual(candidate["supporting_rule_ids"], ["COMP-030"])
+                    self.assertIsNone(candidate["edit_hint"])
+
+    def test_imperative_do_is_out_of_scope(self):
+        tree = "(S (VP (VBP Do) (VP (VB be) (ADJP (JJ careful)))) (. !))"
+        self.assertEqual(probe("Do be careful!", tree)["candidates"], [])
+
     def test_alignment_and_variety_fail_closed(self):
         self.assertEqual(probe("She can walks.", INFLECTED)["blocked"], ["parser_token_alignment_unavailable"])
         self.assertEqual(probe("She can goes.", INFLECTED, variety=None)["candidates"], [])
