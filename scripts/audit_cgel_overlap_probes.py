@@ -39,6 +39,8 @@ MODAL_EVALUATION_CASES = [
     ("stress: inversion", "Could the courier arrives before noon?", "Could the courier arrive before noon?"),
     ("stress: intervening adjunct", "The courier might soon arrives.", "The courier might soon arrive."),
     ("control: plain", "The courier might arrive before noon.", None),
+    ("control: plain ending in s", "The committee might focus on the budget.", None),
+    ("control: plain ending in ss", "The cyclist can pass on the left.", None),
     ("control: perfect", "The courier might have arrived already.", None),
     ("control: passive", "The side gate must be locked.", None),
     ("control: noncentral modal", "The caretaker ought to lock the gate.", None),
