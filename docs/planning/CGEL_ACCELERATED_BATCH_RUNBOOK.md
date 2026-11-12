@@ -444,3 +444,7 @@ Printed pp. 1140–1147 add eight substantive pages and 26 inactive records (`CL
 ## Chapter 13 seventh checkpoint
 
 Printed pp. 1148–1155 add eight substantive pages and 24 inactive records (`CLS-1219`–`CLS-1242`), including two `spec_only` constraints. Chapter 13 has 15 pages remaining. Continue at p. 1156 with the remaining adjunct uses of like.
+
+## Chapter 13 completion checkpoint
+
+Chapter 13 source extraction is complete. Printed pp. 1097–1170 are accounted for as 72 extracted pages and two contents-only pages. The final 15 pages add 36 inactive records (`CLS-1243`–`CLS-1278`), including four `spec_only` constraints. Chapter 13 adds 175 records in total. The next Phase B chapter is Chapter 16, starting at printed p. 1363.

@@ -78058,5 +78058,2133 @@
     "diagnostic": null,
     "related_rules": [],
     "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1243",
+    "domain": "clauses",
+    "concept": "Negation and likeness of predication",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A fronted like adjunct normally lies outside clausal negation. Medial and final placement can allow either scope, with prosodic detachment favoring wide scope.",
+    "condition": "A like phrase compares the predication applied to two participants.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Like his sister, Arun hadn't heard the announcement.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Arun hadn't heard the announcement, like his sister.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.6.1",
+        "pages": [
+          1156
+        ],
+        "pdf_pages": [
+          1176
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Negation and likeness of predication",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1244",
+    "domain": "clauses",
+    "concept": "Personal pronoun case after comparative like",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "Accusative is standard for a personal pronoun serving as the bare NP complement in the predication adjunct. Clause-initial and post-VP positions require it in this construction.",
+    "condition": "The pronoun is the entire complement of like in a clause-initial or post-VP adjunct.",
+    "violation": "The form does not satisfy the requirements of this bare pronoun complement.",
+    "exceptions": [
+      {
+        "description": "Occasional medial nominatives are attested and analyzed as likely hypercorrections. A pronoun subject of a finite clause after like is a different construction.",
+        "pages": [
+          1156
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Like them, Ruth commutes by train.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Ruth commutes by train, like us.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Like we do, Ruth commutes by train.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "Ruth, like us, commutes by train.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "Like they, Ruth commutes by train.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "Ruth commutes by train, like we.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.6.1",
+        "pages": [
+          1156
+        ],
+        "pdf_pages": [
+          1176
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Personal pronoun case after comparative like",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "The form does not satisfy the requirements of this bare pronoun complement.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "Like they, Ruth commutes by train. ||| Like them, Ruth commutes by train.",
+        "Ruth commutes by train, like we. ||| Ruth commutes by train, like us."
+      ],
+      "learner_explanation": "Use the object form for a bare personal pronoun after comparative like in this position.",
+      "corrected_paragraph_template": "Use the object form for a bare personal pronoun after comparative like in this position.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Like we do, Ruth commutes by train.",
+        "Ruth, like us, commutes by train."
+      ],
+      "lesson_tags": [
+        "comparison"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1245",
+    "domain": "clauses",
+    "concept": "Non-subject primary terms with predication like",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "The subject usually supplies the primary term. A possessor, embedded complement, locative, or understood entity can supply it in attested examples, which careful prose often reformulates.",
+    "condition": "The intended comparison is between entities identified by the discourse.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Like the old library, the new library has narrow aisles.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "As with the old library, the aisles are narrow.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.6.1",
+        "pages": [
+          1156
+        ],
+        "pdf_pages": [
+          1176
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Non-subject primary terms with predication like",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1246",
+    "domain": "clauses",
+    "concept": "Integrated manner like and negation",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "An integrated manner adjunct under negation denies similarity of manner, often suggesting that the activity still occurs. A demonstrative can specify the manner, and the primary term need not be the subject.",
+    "condition": "The like phrase is integrated into the VP or directly supplies a manner.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "These wheels don't turn like the older ones.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Fold the paper like this.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.6.1",
+        "pages": [
+          1156,
+          1157
+        ],
+        "pdf_pages": [
+          1176,
+          1177
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Integrated manner like and negation",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1247",
+    "domain": "clauses",
+    "concept": "Contextual resemblance with like",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Some like adjuncts compare a participant or its appearance during an event without attributing the same action to the secondary term. Others evaluate conduct as characteristic of a type of person.",
+    "condition": "The resemblance is evaluated in the circumstances described by the matrix.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The beam spread through the fog like a fan.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "I agreed without checking, like a fool.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.6.1",
+        "pages": [
+          1157
+        ],
+        "pdf_pages": [
+          1177
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Contextual resemblance with like",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1248",
+    "domain": "clauses",
+    "concept": "Nominal like modifiers and supplements",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Like can modify a nominal or supplement an NP. It can express resemblance, exemplification, or likeness that includes identity; exemplifying like is not confined to informal style.",
+    "condition": "The like phrase is attached within the nominal or to an NP anchor.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "An apparent comparison between mismatched entities can be stylistically doubtful; a nominal substitute such as that of can clarify the intended comparison.",
+        "pages": [
+          1157
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We ordered a lamp like this.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The shop sells unusual spices, like dried lime.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.6.1",
+        "pages": [
+          1157
+        ],
+        "pdf_pages": [
+          1177
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nominal like modifiers and supplements",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1249",
+    "domain": "clauses",
+    "concept": "Comparative finite clauses after like",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Like can head a phrase containing a finite comparative clause with a missing predicative, manner, or complement element. It competes with as and, in nominal examples, such as.",
+    "condition": "A missing element can be understood from the construction and context.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "You organize files like I do.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She brought a folding stool like you see at campsites.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.6.2",
+        "pages": [
+          1158
+        ],
+        "pdf_pages": [
+          1178
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Comparative finite clauses after like",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1250",
+    "domain": "clauses",
+    "concept": "Finite content clauses after like",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Like also licenses a structurally complete finite content clause in patterns comparable to as if or as though. Both finite-clause uses are established, more widely distributed in American English and especially informal in British English.",
+    "condition": "The finite clause expresses an appearance or hypothetical situation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It looks like the floor is wet.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She guarded the bag like it held her savings.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.6.2",
+        "pages": [
+          1158
+        ],
+        "pdf_pages": [
+          1178
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Finite content clauses after like",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1251",
+    "domain": "clauses",
+    "concept": "Adjunct-like complements after like",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Like can precede a PP or a time NP functioning like an adjunct. A reduced-clause analysis is possible, and formal style generally favors as with the corresponding PP.",
+    "condition": "The complement expresses a location or time of a comparable situation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The roads freeze early here, like in the mountains.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We're closing in August, like last year.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.6.3",
+        "pages": [
+          1158
+        ],
+        "pdf_pages": [
+          1178
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjunct-like complements after like",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1252",
+    "domain": "clauses",
+    "concept": "NP plus PP ambiguity after like",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "A sequence after like can be a single NP with a nominal PP modifier or a verbless clause with a separate PP. Whether the noun independently licenses the PP and whether it contributes to the comparison help distinguish them.",
+    "condition": "The PP either restricts the NP referent or contributes a separate element to the comparison.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "He looks like a student in my class.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She rushed toward the porch like a moth toward a lamp.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.6.3",
+        "pages": [
+          1159
+        ],
+        "pdf_pages": [
+          1179
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "NP plus PP ambiguity after like",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1253",
+    "domain": "clauses",
+    "concept": "Gerund-participials after like",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Like can take gerund-participial complements. An overt NP followed by an -ing clause can allow NP-modifier and nonfinite-clause analyses. Look like with a gerund-participial can express an apparent future outcome.",
+    "condition": "The -ing form may head a complement or modify a noun inside it.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Solving this puzzle is like sorting beads by touch.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The rain looks like continuing through the night.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.6.3",
+        "pages": [
+          1159
+        ],
+        "pdf_pages": [
+          1179
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Gerund-participials after like",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1254",
+    "domain": "clauses",
+    "concept": "Reanalyzed modifiers containing like",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Nothing like can modify a participle, anything like can modify a scalar as phrase, and something like can approximate a number. The like sequence in an ordinary nothing-headed NP has a different structure.",
+    "condition": "The containing phrase has a participial, adjectival, scalar, or numeral head.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We've nothing like finished.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "There were something like forty names on the list.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.6.3",
+        "pages": [
+          1159,
+          1160
+        ],
+        "pdf_pages": [
+          1179,
+          1180
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Reanalyzed modifiers containing like",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1255",
+    "domain": "clauses",
+    "concept": "Nominal and attributive adjectival like",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Nominal like occurs with of or with an anaphorically understood term. Attributive adjectival like can express a similar quantity or type. The likes of is an informal plural pattern.",
+    "condition": "The secondary term can be expressed with of or recovered from discourse.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I'd never seen the like of that display.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The second project received a like amount.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.6.3",
+        "pages": [
+          1160
+        ],
+        "pdf_pages": [
+          1180
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Nominal and attributive adjectival like",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1256",
+    "domain": "clauses",
+    "concept": "Like and alike in set comparison",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Attributive adjectival like can express likeness within a set. Alike serves as a predicative adjective, manner adverb, or distributive adjunct associated with coordination.",
+    "condition": "A plural or coordinated expression supplies the members compared.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The twins dress alike.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The decision surprised coaches and players alike.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.6.3",
+        "pages": [
+          1160
+        ],
+        "pdf_pages": [
+          1180
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Like and alike in set comparison",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1257",
+    "domain": "clauses",
+    "concept": "Distribution of unlike",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Unlike occurs as an adjective or preposition. Prepositional unlike can contrast predications or occur with a PP, but does not license the finite-clause complement found with like.",
+    "condition": "The negative form contrasts with one of the available like constructions.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The two proposals were unlike any we'd received before.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Unlike in the valley, it snowed before noon on the ridge.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§5.6.4",
+        "pages": [
+          1160,
+          1161
+        ],
+        "pdf_pages": [
+          1180,
+          1181
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Distribution of unlike",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1258",
+    "domain": "clauses",
+    "concept": "Grade and comparison type",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Plain grade can invoke a contextual standard without marking a comparison. Comparative grade usually expresses term comparison, and superlative grade expresses ranking within a set in its comparative use. Better does not entail good.",
+    "condition": "The interpretation distinguishes contextual standards, two terms, and ranking within a set.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This is a small oak.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "This route is worse than the other two, so it's the worst of the three.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§6.1",
+        "pages": [
+          1161,
+          1162
+        ],
+        "pdf_pages": [
+          1181,
+          1182
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Grade and comparison type",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1259",
+    "domain": "clauses",
+    "concept": "Comparative grade in two-member set comparisons",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "Comparative grade is available for the central two-member construction. In this construction a larger set requires superlative grade. Superlatives also occur with two members, particularly when dual membership is implicit or in informal style.",
+    "condition": "The of phrase explicitly identifies the members of the comparison set.",
+    "violation": "The form does not satisfy the requirements of this larger-set ranking construction.",
+    "exceptions": [
+      {
+        "description": "Two-member sets allow comparative grade and also admit superlatives, especially in informal contexts.",
+        "pages": [
+          1162
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This is the sturdiest of the four frames.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That is the warmest of the three rooms.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "This is the sturdier of the two frames.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "This is the best of the two options.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "This is the sturdier of the four frames.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "That is the warmer of the three rooms.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§6.2",
+        "pages": [
+          1162
+        ],
+        "pdf_pages": [
+          1182
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Comparative grade in two-member set comparisons",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "The form does not satisfy the requirements of this larger-set ranking construction.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "This is the sturdier of the four frames. ||| This is the sturdiest of the four frames.",
+        "That is the warmer of the three rooms. ||| That is the warmest of the three rooms."
+      ],
+      "learner_explanation": "Use the superlative when selecting the highest-ranked member of an explicitly larger set in this construction.",
+      "corrected_paragraph_template": "Use the superlative when selecting the highest-ranked member of an explicitly larger set in this construction.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "This is the sturdier of the two frames.",
+        "This is the best of the two options."
+      ],
+      "lesson_tags": [
+        "comparison"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1260",
+    "domain": "clauses",
+    "concept": "Contextual subsets with attributive comparatives",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Attributive comparatives can identify a subset toward one end of a scale. An added than phrase changes the interpretation; a comparative subset need not meet the threshold associated with the plain adjective.",
+    "condition": "The noun identifies a comparison class that supplies the relevant contextual scale.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Shorter students can use the low bench.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That was one of her better sketches.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§6.2",
+        "pages": [
+          1162,
+          1163
+        ],
+        "pdf_pages": [
+          1182,
+          1183
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Contextual subsets with attributive comparatives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1261",
+    "domain": "clauses",
+    "concept": "Derivational comparatives upper inner and outer",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Upper, inner and outer are attributive lexical forms and do not license comparative than phrases. They can contrast parts of two-member sets and form corresponding derivatives in -most.",
+    "condition": "The words describe a position relative to a reference region or opposing part.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The inner cover is removable.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Tighten the uppermost screw first.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§6.2",
+        "pages": [
+          1163
+        ],
+        "pdf_pages": [
+          1183
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Derivational comparatives upper inner and outer",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1262",
+    "domain": "clauses",
+    "concept": "Temporal and anaphoric former and latter",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Former and latter are derivational forms without comparative than complements. Non-anaphoric former relates to an earlier reference time; non-anaphoric latter selects the later subdivision. Anaphoric former and latter select first and last, with latter sometimes used in larger sets.",
+    "condition": "Prior discourse or the reference time identifies the comparison domain.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Her former studio is now a bakery.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "We could use copper or aluminum; the latter weighs less.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§6.2",
+        "pages": [
+          1163,
+          1164
+        ],
+        "pdf_pages": [
+          1183,
+          1184
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Temporal and anaphoric former and latter",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1263",
+    "domain": "clauses",
+    "concept": "Inflectional and analytic superlative markers",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Superlative superiority can use -est or analytic most; analytic least marks inferiority. The construction ranks members at the relevant end of a scale.",
+    "condition": "The comparison orders members along a gradable property.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This is the shallowest pool.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "This is the least expensive model.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§6.3.1",
+        "pages": [
+          1164
+        ],
+        "pdf_pages": [
+          1184
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Inflectional and analytic superlative markers",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1264",
+    "domain": "clauses",
+    "concept": "Superlative degree determinatives and countability",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Determiner most occurs with mass and count nouns. Least is regular with mass nouns and alternates with fewest for count plurals; the traditional preference for fewest is stronger with an overt count head than with a fused head.",
+    "condition": "The noun phrase measures an amount or counts members.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Rina used the least paint.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Rina made the fewest cuts; Jo made the least.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§6.3.1",
+        "pages": [
+          1164,
+          1165
+        ],
+        "pdf_pages": [
+          1184,
+          1185
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Superlative degree determinatives and countability",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1265",
+    "domain": "clauses",
+    "concept": "Clause degree adjuncts and singular nominal grading",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Superlative most and least can function as clause degree adjuncts. They do not parallel comparative more and less in the grading construction with of and a count singular nominal.",
+    "condition": "The adjunct measures the degree of an activity or response.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Of all of us, Tia enjoyed the exhibit most.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Tia was more of a collector than her brother.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§6.3.1",
+        "pages": [
+          1165
+        ],
+        "pdf_pages": [
+          1185
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Clause degree adjuncts and singular nominal grading",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1266",
+    "domain": "clauses",
+    "concept": "Adjectival least",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Adjectival least means smallest or slightest and occurs predicatively or as an attributive modifier, including fused uses.",
+    "condition": "Least contributes the meaning smallest or slightest in adjectival function.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The risk is least in spring.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Even the least delay could matter.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§6.3.1",
+        "pages": [
+          1165
+        ],
+        "pdf_pages": [
+          1185
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Adjectival least",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1267",
+    "domain": "clauses",
+    "concept": "Intensifying most and superlative most",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Formal intensifying most means very. An indefinite singular article selects that reading, while adding the to an ambiguous predicative most phrase selects the superlative. Least lacks the parallel intensifier use.",
+    "condition": "The surrounding determiner and predicate help determine the reading.",
+    "violation": null,
+    "exceptions": [
+      {
+        "description": "Inflectional -est does not normally carry the intensifying reading, with conventional endearments as an exception; some formal titles use intensifying most.",
+        "pages": [
+          1165,
+          1166
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "It was a most generous offer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "That was the most generous offer in the auction.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§6.3.2",
+        "pages": [
+          1165,
+          1166
+        ],
+        "pdf_pages": [
+          1185,
+          1186
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Intensifying most and superlative most",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1268",
+    "domain": "clauses",
+    "concept": "Proportional most versus set-ranking most",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Proportional most means a majority. Superlative most compares quantities across a set and need not reach a majority. In an ambiguous context, the most or replacement by least or fewest selects set ranking.",
+    "condition": "A context with multiple agents or totals can support the ranking interpretation.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Most of the windows were open.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Kai opened the most windows.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§6.3.2",
+        "pages": [
+          1166
+        ],
+        "pdf_pages": [
+          1186
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Proportional most versus set-ranking most",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1269",
+    "domain": "clauses",
+    "concept": "Most as an informal reduction of almost",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Mostly in informal American English, reduced most can modify all, any, every, related compounds, or always.",
+    "condition": "The form directly modifies the relevant quantificational or temporal expression.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Most everyone recognized the tune.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She most always takes the early bus.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§6.3.2",
+        "pages": [
+          1166
+        ],
+        "pdf_pages": [
+          1186
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Most as an informal reduction of almost",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1270",
+    "domain": "clauses",
+    "concept": "Absolute and relative nominal superlatives",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Absolute readings rank members of the set denoted within the NP. Relative readings depend on an external comparison set, such as people associated with the entities in the NP. Determinative most is overwhelmingly relative.",
+    "condition": "The interpretation depends on where the comparison set is supplied.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "They rented the smallest flat in town.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Of the four cooks, Jo used the most oil.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§6.3.3",
+        "pages": [
+          1166,
+          1167
+        ],
+        "pdf_pages": [
+          1186,
+          1187
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Absolute and relative nominal superlatives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1271",
+    "domain": "clauses",
+    "concept": "Absolute extrema and minimizer least",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Absolute superlatives can express possible maxima or minima. In negative environments a minimizer such as the least can mean at all. The least is a constituent with obligatory the in this minimizer use, unlike relative ranking least.",
+    "condition": "The negative minimizer and relative-ranking constructions have different constituent boundaries.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "I wasn't the least worried by the warning.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Of the three hikers, I was least worried about the rain.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§6.3.3",
+        "pages": [
+          1167
+        ],
+        "pdf_pages": [
+          1187
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Absolute extrema and minimizer least",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1272",
+    "domain": "clauses",
+    "concept": "Incorporated and free superlative phrases",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Incorporated superlatives occur before an NP head or are fused with it. Free superlatives occur postpositively or outside NP structure. In free superlatives the is part of the superlative phrase.",
+    "condition": "The position of the superlative relative to a noun head determines its structural type.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "She chose the two cheapest lamps.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "She packed the boxes most carefully.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§6.3.4",
+        "pages": [
+          1167,
+          1168
+        ],
+        "pdf_pages": [
+          1187,
+          1188
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Incorporated and free superlative phrases",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1273",
+    "domain": "clauses",
+    "concept": "NP determiner versus determiner-internal the",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "In a modifier construction, the can be an NP determiner separate from the superlative, with a genitive or demonstrative possible. In quantity most, optional the belongs to the determiner phrase, while amount-denoting fused the most can require the.",
+    "condition": "Distinguish a superlative modifying the noun from a superlative functioning as determiner.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This is Jo's best photograph.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The most we can spend is fifty dollars.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§6.3.4",
+        "pages": [
+          1168
+        ],
+        "pdf_pages": [
+          1188
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "NP determiner versus determiner-internal the",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1274",
+    "domain": "clauses",
+    "concept": "Definiteness in incorporated ranking superlatives",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "An ordinary incorporated set-ranking superlative generally requires a definite NP interpretation. A singular count head needs a determiner, and an overt numeral cannot itself be the indefinite determiner in the corresponding definite pattern. Some plural, mass and quantity examples allow omission of the without losing definiteness.",
+    "condition": "The superlative is incorporated into an ordinary NP and ranks members of a set.",
+    "violation": "The form does not satisfy the requirements of this incorporated ranking superlative.",
+    "exceptions": [
+      {
+        "description": "Lexicalized collocations can occur in indefinite NPs, and intensifying most is a distinct use.",
+        "pages": [
+          1168,
+          1169
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We chose the quietest room in the hotel.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "They surveyed the two tallest buildings in town.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "Several runners set personal best times.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "It was a most satisfying result.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "We chose a quietest room in the hotel.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "They surveyed two tallest buildings in town.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§6.3.4",
+        "pages": [
+          1168,
+          1169
+        ],
+        "pdf_pages": [
+          1188,
+          1189
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Definiteness in incorporated ranking superlatives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "The form does not satisfy the requirements of this incorporated ranking superlative.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "We chose a quietest room in the hotel. ||| We chose the quietest room in the hotel.",
+        "They surveyed two tallest buildings in town. ||| They surveyed the two tallest buildings in town."
+      ],
+      "learner_explanation": "Use a definite determiner in the ordinary set-ranking noun phrase.",
+      "corrected_paragraph_template": "Use a definite determiner in the ordinary set-ranking noun phrase.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "Several runners set personal best times.",
+        "It was a most satisfying result."
+      ],
+      "lesson_tags": [
+        "comparison"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1275",
+    "domain": "clauses",
+    "concept": "Article choice in free superlative phrases",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Free superlatives generally allow optional the. Postpositive adjectival superlatives favor omission, and clause-level supplements such as most important of all exclude the in the illustrated construction.",
+    "condition": "The superlative heads a free adjective or adverb phrase.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "Choose the route least likely to flood.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Most important of all, the well stayed clean.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§6.3.4",
+        "pages": [
+          1168
+        ],
+        "pdf_pages": [
+          1188
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Article choice in free superlative phrases",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1276",
+    "domain": "clauses",
+    "concept": "Integrated relatives after free superlatives",
+    "rule_type": "constraint",
+    "scope": "clause",
+    "statement": "A free adjectival or adverbial superlative can take an integrated relative with that or a bare relative. The is obligatory in this construction, and wh relatives are excluded in the illustrated patterns.",
+    "condition": "The relative depends on a free adjective or adverb superlative.",
+    "violation": "The form does not satisfy the requirements of this free superlative with an integrated relative.",
+    "exceptions": [
+      {
+        "description": "Free superlatives without the integrated relative often allow the to be omitted. A supplementary which relative can modify a noun phrase.",
+        "pages": [
+          1169
+        ]
+      }
+    ],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "The river is the lowest it has been all summer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "The engine is running the most smoothly that it ever has.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c3",
+          "text": "The river is lowest in late summer.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        },
+        {
+          "id": "c4",
+          "text": "They inspected the bridge, which was the oldest in town.",
+          "origin": "ai_authored",
+          "tests_exception": true
+        }
+      ],
+      "incorrect": [
+        {
+          "id": "i1",
+          "text": "The river is lowest it has been all summer.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "i2",
+          "text": "The engine is running the most smoothly which it ever has.",
+          "origin": "ai_authored"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§6.3.4",
+        "pages": [
+          1169
+        ],
+        "pdf_pages": [
+          1189
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Integrated relatives after free superlatives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": {
+      "error_family": "other",
+      "error_pattern": "The form does not satisfy the requirements of this free superlative with an integrated relative.",
+      "detector": "spec_only",
+      "detector_reason_if_none": "",
+      "minimal_pairs": [
+        "The river is lowest it has been all summer. ||| The river is the lowest it has been all summer.",
+        "The engine is running the most smoothly which it ever has. ||| The engine is running the most smoothly that it ever has."
+      ],
+      "learner_explanation": "Keep the and use a bare or that relative after the free superlative in this pattern.",
+      "corrected_paragraph_template": "Keep the and use a bare or that relative after the free superlative in this pattern.",
+      "variety_scope": "standard_english",
+      "false_positive_guards": [
+        "The river is lowest in late summer.",
+        "They inspected the bridge, which was the oldest in town."
+      ],
+      "lesson_tags": [
+        "comparison"
+      ],
+      "quiz_seeds": [
+        "identify",
+        "correct",
+        "explain"
+      ]
+    },
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1277",
+    "domain": "clauses",
+    "concept": "Post-head dependents of superlatives",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Possible, imaginable and related one-word dependents can precede or follow the noun in incorporated structures. A set-denoting of phrase follows the noun in that pattern and may identify entities or their associated participants.",
+    "condition": "The dependent specifies an attainable extreme or gives the comparison set.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "We picked the shortest possible route.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "Jo delivered the clearest speech of them all.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§6.3.4",
+        "pages": [
+          1169
+        ],
+        "pdf_pages": [
+          1189
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Post-head dependents of superlatives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
+  },
+  {
+    "id": "CLS-1278",
+    "domain": "clauses",
+    "concept": "Pre-head modifiers and rank in superlatives",
+    "rule_type": "descriptive_generalization",
+    "scope": "clause",
+    "statement": "Very and ordinal modifiers other than first follow the in the described patterns. By far, almost, easily and similar modifiers precede it; with incorporated superlatives they are peripheral NP modifiers. Very intensifies inflectional superlatives, and ordinal ranks count from the relevant end of the scale.",
+    "condition": "The placement depends on which class the pre-head modifier belongs to.",
+    "violation": null,
+    "exceptions": [],
+    "examples": {
+      "correct": [
+        {
+          "id": "c1",
+          "text": "This is the third least expensive lamp.",
+          "origin": "ai_authored"
+        },
+        {
+          "id": "c2",
+          "text": "He made by far the fewest mistakes.",
+          "origin": "ai_authored"
+        }
+      ],
+      "incorrect": []
+    },
+    "sources": [
+      {
+        "book": "Cambridge Grammar",
+        "chapter": 13,
+        "section": "§6.3.4",
+        "pages": [
+          1169,
+          1170
+        ],
+        "pdf_pages": [
+          1189,
+          1190
+        ]
+      }
+    ],
+    "burton_roberts_mapping": [
+      {
+        "br_concept": "Pre-head modifiers and rank in superlatives",
+        "relation": "unverified",
+        "note": "Requires independent comparison with the Burton-Roberts structural source."
+      }
+    ],
+    "confidence": "high",
+    "protocol_version": "1.1",
+    "status": "NEEDS_REVIEW",
+    "diagnostic": null,
+    "related_rules": [],
+    "review_notes": "Phase B extraction from printed text and rendered layout. Examples are original."
   }
 ]

@@ -18,7 +18,7 @@
 | 10. Clause type and illocutionary force | 96 | 93 | 0 | 3 | 0 | Source-extracted |
 | 11. Content clauses and reported speech | 84 | 82 | 0 | 2 | 0 | Source-extracted |
 | 12. Relative constructions | 66 | 64 | 0 | 2 | 0 | Source-extracted |
-| 13. Comparative constructions | 74 | 57 | 15 | 2 | 0 | In progress (pp. 1097–1155) |
+| 13. Comparative constructions | 74 | 72 | 0 | 2 | 0 | Source extraction complete |
 | 14. Non-finite and verbless clauses | 102 | 99 | 0 | 3 | 0 | Source-extracted |
 | 15. Coordination and supplementation | 90 | 88 | 0 | 2 | 0 | Source-extracted; independent QA pending |
 | 16. Information packaging | 86 | 0 | 85 | 1 | 0 | Incomplete |
@@ -27,7 +27,7 @@
 | 19. Lexical word-formation | 102 | 0 | 101 | 1 | 0 | Incomplete |
 | 20. Punctuation | 42 | 0 | 42 | 0 | 0 | Incomplete |
 
-**Totals:** 1764 printed pages; **1478 extracted**, 243 unprocessed, 41 justified skips and 2 absent from the split sources.
+**Totals:** 1764 printed pages; **1493 extracted**, 228 unprocessed, 41 justified skips and 2 absent from the split sources.
 
 ## Chapter 3 implementation
 
@@ -446,3 +446,9 @@ Source audit: `sources/cambridge/chapter_13/PP1140_1147_REPORT.md`.
 Printed pp. 1148–1155 add eight substantive pages and 24 inactive records (`CLS-1219`–`CLS-1242`), including two `spec_only` constraints. Chapter 13 has 15 pages remaining. Continue at p. 1156 with the remaining adjunct uses of like.
 
 Source audit: `sources/cambridge/chapter_13/PP1148_1155_REPORT.md`.
+
+## Chapter 13 completion checkpoint
+
+Chapter 13 source extraction is complete. Printed pp. 1097–1170 are accounted for as 72 extracted pages and two contents-only pages. The final 15 pages add 36 inactive records (`CLS-1243`–`CLS-1278`), including four `spec_only` constraints. Chapter 13 adds 175 records in total. The next Phase B chapter is Chapter 16, starting at printed p. 1363.
+
+Source audit: `sources/cambridge/chapter_13/PP1156_1170_REPORT.md`.
