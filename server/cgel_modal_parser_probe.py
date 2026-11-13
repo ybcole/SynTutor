@@ -89,14 +89,23 @@ def _inverted_do_relation(tree):
             or subject["type"] != "NP" or predicate["type"] != "VP"):
         return None
     parts = predicate.get("children", [])
-    if len(parts) != 2:
+    if len(parts) < 2:
         return None
-    dependent, complement = parts
+    dependent, complement, *trailing = parts
     surface = dependent.get("surface", "").casefold()
-    if dependent.get("pos") == "MD" and surface in MODALS and complement["type"] == "VP":
-        role = "central_modal"
-    elif dependent.get("pos") == "VB" and surface == "be" and complement["type"] == "ADJP":
+    copular = dependent.get("pos") == "VB" and surface == "be" and complement["type"] == "ADJP"
+    if copular and all(
+        part["type"] == "ADVP" or (
+            part["type"] == "NP" and [leaf["surface"].casefold() for leaf in _ordered_leaves(part)]
+            in (["today"], ["tonight"], ["tomorrow"], ["yesterday"])
+        )
+        for part in trailing
+    ):
         role = "copular_be"
+    elif trailing:
+        return None
+    elif dependent.get("pos") == "MD" and surface in MODALS and complement["type"] == "VP":
+        role = "central_modal"
     elif dependent.get("pos") == "VB" and complement["type"] == "VP":
         lower = complement.get("children", [])
         if not lower:
