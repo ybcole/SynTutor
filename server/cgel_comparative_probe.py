@@ -74,3 +74,51 @@ def probe_comparative_gap(sentence, tree, *, variety):
             "edit_hint": None,
         })
     return result
+
+
+def _subjectless_did_comparisons(node):
+    parts = node.get("children", [])
+    if node["type"] == "ADVP" and len(parts) == 2:
+        governor, comparison = parts
+        if governor["type"] == "ADVP" and len(governor.get("children", [])) == 1:
+            governor = governor["children"][0]
+        tail = comparison.get("children", [])
+        if (governor.get("pos") == "RBR" and comparison["type"] in {"SBAR", "PP"}
+                and len(tail) == 2 and tail[0].get("pos") == "IN"
+                and tail[0]["surface"].casefold() == "than" and tail[1]["type"] == "S"):
+            body = tail[1].get("children", [])
+            if len(body) == 1 and body[0]["type"] == "VP":
+                predicate = body[0].get("children", [])
+                if len(predicate) == 2:
+                    verb, time = predicate
+                    if (verb.get("pos") == "VBD" and verb["surface"].casefold() == "did"
+                            and time["type"] in {"NP", "ADVP"}
+                            and tuple(leaf["surface"].casefold() for leaf in _ordered_leaves(time))
+                            in {("last", "year"), ("last", "summer"), ("yesterday",)}):
+                        yield tail[0], verb
+    for child in parts:
+        yield from _subjectless_did_comparisons(child)
+
+
+def probe_comparative_subject(sentence, tree, *, variety):
+    """Check retained did in narrow subjectless adverbial comparisons."""
+    result = {"status": "not_evaluated", "production_enabled": False, "candidates": []}
+    if variety != "standard_english":
+        return result
+    tokens = tokens_with_spans(sentence)
+    leaves = list(_ordered_leaves(tree))
+    if len(tokens) != len(leaves) or any(
+        leaf["span"] != [token["index"], token["index"] + 1] or leaf["surface"] != token["text"]
+        for leaf, token in zip(leaves, tokens)
+    ) or any(token["text"] in {'"', '“', '”', "'", "‘", "’"} for token in tokens):
+        return result
+    result["status"] = "candidate_only"
+    for marker, verb in _subjectless_did_comparisons(tree):
+        result["candidates"].append({
+            "rule_id": "CLS-1129", "source_chapter": 13, "source_pages": [1113],
+            "relation": {"kind": "retained_verb_without_comparative_subject",
+                         "marker_char_span": tokens[marker["span"][0]]["char_span"],
+                         "verb_char_span": tokens[verb["span"][0]]["char_span"]},
+            "edit_hint": None,
+        })
+    return result
