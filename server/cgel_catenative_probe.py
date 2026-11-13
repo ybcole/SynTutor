@@ -62,3 +62,51 @@ def probe_catenative_perfect(sentence, tree, *, variety, bound_reading_confirmed
         "edit_hint": None,
     })
     return result
+
+
+def _objectless_believe(node):
+    parts = node.get("children", [])
+    if node["type"] == "VP" and len(parts) == 2:
+        governor, clause = parts
+        if (governor.get("pos") in {"VBD", "VBP", "VBZ"}
+                and governor["surface"].casefold() in {"believe", "believes", "believed"}
+                and clause["type"] == "S"):
+            body = clause.get("children", [])
+            if len(body) == 1 and body[0]["type"] == "VP":
+                infinitive = body[0].get("children", [])
+                if (len(infinitive) == 2 and infinitive[0].get("pos") == "TO"
+                        and infinitive[0]["surface"].casefold() == "to" and infinitive[1]["type"] == "VP"):
+                    lower = infinitive[1].get("children", [])
+                    if lower and lower[0].get("pos") == "VB":
+                        return governor, infinitive[0]
+    return None
+
+
+def probe_believe_object(sentence, tree, *, variety, complement_confirmed=False):
+    """Check a confirmed infinitival complement of simple active believe."""
+    result = {"status": "not_evaluated", "production_enabled": False, "candidates": []}
+    if variety != "standard_english" or complement_confirmed is not True:
+        return result
+    tokens = tokens_with_spans(sentence)
+    leaves = list(_ordered_leaves(tree))
+    if len(tokens) != len(leaves) or any(
+        leaf["span"] != [token["index"], token["index"] + 1] or leaf["surface"] != token["text"]
+        for leaf, token in zip(leaves, tokens)
+    ) or any(token["text"] in {'"', '“', '”', "'", "‘", "’"} for token in tokens):
+        return result
+    result["status"] = "candidate_only"
+    parts = tree.get("children", [])
+    if tree["type"] != "S" or [part["type"] for part in parts] != ["NP", "VP", "."]:
+        return result
+    match = _objectless_believe(parts[1])
+    if match is None:
+        return result
+    governor, marker = match
+    result["candidates"].append({
+        "rule_id": "CLS-320", "source_chapter": 14, "source_pages": [1203],
+        "relation": {"kind": "active_believe_infinitive_missing_object",
+                     "governor_char_span": tokens[governor["span"][0]]["char_span"],
+                     "marker_char_span": tokens[marker["span"][0]]["char_span"]},
+        "edit_hint": None,
+    })
+    return result
