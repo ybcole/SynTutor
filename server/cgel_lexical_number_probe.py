@@ -155,3 +155,38 @@ def probe_total_number(sentence, tree, *, variety):
             "expected_verb": FORMS[form][0], "edit_hint": None,
         })
     return result
+
+
+def probe_singular_they_agreement(sentence, tree, *, variety, singular_reference_confirmed=False):
+    """Check finite be/have forms where singular reference is supplied externally."""
+    result = {"status": "not_evaluated", "production_enabled": False, "candidates": []}
+    if variety != "standard_english" or singular_reference_confirmed is not True:
+        return result
+    tokens = tokens_with_spans(sentence)
+    leaves = list(_ordered_leaves(tree))
+    if len(tokens) != len(leaves) or any(
+        leaf["span"] != [token["index"], token["index"] + 1] or leaf["surface"] != token["text"]
+        for leaf, token in zip(leaves, tokens)
+    ) or any(token["text"] in {'"', '“', '”', "'", '‘', '’'} for token in tokens):
+        return result
+    result["status"] = "candidate_only"
+    children = tree.get("children", [])
+    if tree["type"] != "S" or [node["type"] for node in children] != ["NP", "VP", "."]:
+        return result
+    subject = list(_ordered_leaves(children[0]))
+    predicate = children[1].get("children", [])
+    if (len(subject) != 1 or subject[0].get("pos") != "PRP"
+            or subject[0]["surface"].casefold() != "they" or not predicate):
+        return result
+    verb = predicate[0]
+    form = verb.get("surface", "").casefold()
+    if verb.get("pos") not in {"VBD", "VBP", "VBZ"} or form not in {"is", "was", "has"}:
+        return result
+    result["candidates"].append({
+        "rule_id": "PHR-334", "source_chapter": 5, "source_pages": [493, 494],
+        "relation": {"kind": "finite_agreement_with_singular_they",
+                     "subject_char_span": tokens[subject[0]["span"][0]]["char_span"],
+                     "verb_char_span": tokens[verb["span"][0]]["char_span"]},
+        "expected_verb": FORMS[form][1], "edit_hint": None,
+    })
+    return result
