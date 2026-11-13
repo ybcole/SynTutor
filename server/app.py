@@ -228,11 +228,18 @@ class Handler(BaseHTTPRequestHandler):
         except ValueError as exc:
             self._json(400, {'error': str(exc), 'input': text})
             return
-        except Exception as exc:  # model not available
-            hint = _model_status().get('error') or (
-                'Run:  pip install spacy benepar transformers==4.46.3  &&  python -m spacy download en_core_web_md  &&  python -c "import benepar; benepar.download(\'benepar_en3\')"'
+        except Exception as exc:  # noqa: BLE001 - distinguish models from analysis failure
+            model_state = _model_status()
+            missing_models = not model_state.get('ready')
+            hint = (model_state.get('error') or
+                    'Install dependencies and models into the Python environment running SynTutor.') if missing_models else (
+                    'NLP models loaded successfully. Inspect the backend analysis error; reinstalling models will not solve it.'
             )
-            self._json(503, {'error': str(exc), 'hint': hint})
+            self._json(503, {
+                'error': str(exc),
+                'error_code': 'MODEL_UNAVAILABLE' if missing_models else 'ANALYSIS_FAILURE',
+                'hint': hint,
+            })
             return
         self._json(200, payload)
 

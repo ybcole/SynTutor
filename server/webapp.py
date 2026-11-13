@@ -161,12 +161,18 @@ def parse():
         return jsonify({'error': str(exc), 'input': text}), 422
     except ValueError as exc:
         return jsonify({'error': str(exc), 'input': text}), 400
-    except Exception as exc:  # noqa: BLE001 - model/back-end unavailable
-        hint = (health_payload().get('error') or
-                'Run:  pip install spacy benepar transformers==4.46.3  &&  '
-                'python -m spacy download en_core_web_md  &&  '
-                'python -c "import benepar; benepar.download(\'benepar_en3\')"')
-        return jsonify({'error': str(exc), 'hint': hint}), 503
+    except Exception as exc:  # noqa: BLE001 - distinguish model load from analysis failure
+        health = health_payload()
+        missing_models = not health.get('ready')
+        hint = (health.get('error') or
+                'Install the required spaCy and Benepar models into the active Python environment.') if missing_models else (
+                'NLP models are ready. This is a backend analysis exception; inspect the server error instead of reinstalling models.'
+        )
+        return jsonify({
+            'error': str(exc),
+            'error_code': 'MODEL_UNAVAILABLE' if missing_models else 'ANALYSIS_FAILURE',
+            'hint': hint,
+        }), 503
     return jsonify(payload)
 
 

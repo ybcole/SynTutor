@@ -21,7 +21,14 @@ api.classify = lambda text: None
 # records into the production registry.
 fixture_mode = '--reviewed-fixture' in sys.argv
 working_mode = '--working-tree' in sys.argv
-final_mode = '--final-declarative' in sys.argv or working_mode
+missing_labels_mode = '--missing-label-master' in sys.argv
+final_mode = '--final-declarative' in sys.argv or working_mode or missing_labels_mode
+if missing_labels_mode:
+    # A workbook mapping failure must never make the learner's tree disappear.
+    import burton_roberts
+    def unavailable_workbook_labels(root):
+        raise ValueError('synthetic missing master row')
+    burton_roberts.final_d1_display_labels = unavailable_workbook_labels
 if fixture_mode:
     import explanations
     from test_explanations import registry
@@ -62,6 +69,23 @@ try:
                 el.value = text;
                 el.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', ctrlKey: true, bubbles: true }));
             }""", text)
+        if missing_labels_mode:
+            parsed = response.value.json()
+            br = parsed['br_analysis']
+            assert br['status'] == 'unresolved' and br['tree'] is None, br.get('reasons')
+            assert br.get('working_tree', {}).get('sentence') == text
+            assert br.get('working_display_labels')
+            canonical = page.locator('#canonicalTreeView')
+            canonical.wait_for(state='visible', timeout=60000)
+            assert not page.locator('#treeCanvas').is_visible()
+            assert 'working tree' in page.locator('#treeAuthorityNotice').inner_text()
+            labels = canonical.locator('svg text').all_text_contents()
+            assert all(category in labels for category in ('S', 'NP', 'VP', 'V', 'sleeps')), labels
+            assert all(penn not in labels for penn in ('DT', 'NN', 'VBZ', 'ADJP', 'SBAR')), labels
+            assert not errors, errors
+            print('PASS: missing strict labels retain a visible provisional B-R tree.')
+            browser.close()
+            raise SystemExit(0)
         if working_mode:
             parsed = response.value.json()
             br = parsed['br_analysis']

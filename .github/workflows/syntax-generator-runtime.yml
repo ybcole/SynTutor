@@ -123,6 +123,7 @@ jobs:
           python scripts/test_explanation_browser.py --reviewed-fixture
           python scripts/test_explanation_browser.py --final-declarative
           python scripts/test_explanation_browser.py --working-tree
+          python scripts/test_explanation_browser.py --missing-label-master
           python scripts/test_lessons_browser.py
           python scripts/test_quizzes_browser.py
           python scripts/test_xai7_browser.py

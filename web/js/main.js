@@ -1557,7 +1557,7 @@ async function postParse(text, index = null, variety = null) {
   });
   if (!res.ok) {
     const data = await res.json().catch(() => ({}));
-    return { error: { status: res.status, error: data.error, hint: data.hint } };
+    return { error: { status: res.status, error: data.error, hint: data.hint, error_code: data.error_code } };
   }
   const payload = await res.json();
   try {
@@ -1578,6 +1578,36 @@ async function postParse(text, index = null, variety = null) {
 const visibleParserDiagnostics = new WeakSet();
 let canonicalCanvas = null;
 
+// Provisional visualization only: valid B-R working categories may be shown
+// even when the strict FINAL-D1 label workbook has no matching feature stack.
+// Unknown categories remain visibly unanalyzed, never substituted from Penn.
+const BR_WORKING_CATEGORIES = new Set([
+  'S','NP','VP','NOM','N','V','AP','A','AdvP','Adv','PP','P',
+  'name','pronoun','DET','ART','DEM','POSS','PRE-DET','Q','QA','DEG',
+  'PartP','V-part','Prt','S-bar','S-dbar','C','C1','C2',
+  'MOD','PERF','PROG','PASS','TENSE','AUX','V(I)','V(II)'
+]);
+function provisionalBrDisplayLabels(root) {
+  const labels = {};
+  const walk = (node) => {
+    if (!node || typeof node !== 'object') return;
+    if (node.id) {
+      if (node.gap) labels[node.id] = ['•' + (node.index == null ? '' : String(node.index).replace(/[0-9]/g, digit => '₀₁₂₃₄₅₆₇₈₉'[Number(digit)]))];
+      else if ('word' in node) labels[node.id] = [node.elided ? 'E' : node.word];
+      else if (node.unlabelled && node.triangle) labels[node.id] = [];
+      else {
+        const category = node.label;
+        labels[node.id] = [BR_WORKING_CATEGORIES.has(category)
+          ? category === 'S-bar' ? 'S′' : category === 'S-dbar' ? 'S″' : category
+          : '△'];
+      }
+    }
+    for (const child of node.children || []) walk(child);
+  };
+  walk(root);
+  return labels;
+}
+
 function clearCanonicalTree() {
   const host = document.querySelector('#canonicalTreeView');
   if (host && !host.hidden) {
@@ -1593,12 +1623,14 @@ function clearCanonicalTree() {
 function showCanonicalTree(payload) {
   const host = document.querySelector('#canonicalTreeView');
   const analysis = payload?.br_analysis;
-  const working = !analysis?.tree && Boolean(analysis?.working_tree);
+  const working = Boolean(analysis?.working_tree)
+    || (Boolean(analysis?.tree) && !analysis?.display_labels);
   const envelope = analysis?.tree || analysis?.working_tree;
-  const displayLabels = working ? analysis?.working_display_labels : analysis?.display_labels;
+  const displayLabels = working
+    ? (analysis?.working_display_labels || (envelope?.root && provisionalBrDisplayLabels(envelope.root)))
+    : analysis?.display_labels;
   if (!host || workspaceView !== 'tutor' || quizMode
-      || (!working && analysis?.status !== 'normalized') || !envelope?.root
-      || (envelope.convention_profile?.version === 'FINAL' && !displayLabels)) {
+      || (!working && analysis?.status !== 'normalized') || !envelope?.root) {
     clearCanonicalTree();
     return false;
   }
@@ -1608,7 +1640,7 @@ function showCanonicalTree(payload) {
   const help = document.createElement('p');
   help.className = 'canonical-tree-help';
   help.textContent = working
-    ? 'B-R working tree. Triangles preserve spans that need further analysis. Select a node to see its status. Drag to pan, scroll to zoom.'
+    ? 'Provisional B-R tree: unresolved parts are shown as triangles. Drag to pan, scroll to zoom, or select a node.'
     : 'Select a node to inspect its Burton-Roberts structure and available book evidence. Drag to pan, scroll to zoom.';
   host.append(help);
   const visual = renderLessonTree(envelope, {stackFeatures: true, displayLabels, interactive: true});
@@ -1993,9 +2025,9 @@ async function executePipeline(opts, request) {
     const out = await postParse(text, opts.index, variety);
     if (request !== analysisRequest) return;
     if (out.error) {
-      const { status, error, hint } = out.error;
+      const { status, error, hint, error_code } = out.error;
       const title = status === 503
-        ? 'NLP models unavailable'
+        ? error_code === 'MODEL_UNAVAILABLE' ? 'NLP models unavailable' : 'Backend analysis error'
         : status === 422 ? 'Unable to produce a parse' : `Backend error (HTTP ${status})`;
       failPipeline(title, [error || 'The backend rejected the request.', hint || ''].filter(Boolean));
       return;
