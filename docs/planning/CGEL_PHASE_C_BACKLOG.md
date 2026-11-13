@@ -1,14 +1,14 @@
 # Cambridge Phase C backlog
 
-Snapshot through PR #115. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
+Snapshot through the fronted-inversion prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
 
 | Diagnostic specifications | Primary pilot | Supporting pilot | Outside pilot | Production-enabled |
 |---:|---:|---:|---:|---:|
-| 204 | 12 | 4 | 188 | 0 |
+| 204 | 16 | 4 | 184 | 0 |
 
 ## Next implementation batch
 
-**Main-clause question inversion** groups CLS-103 (yes/no questions) and CLS-104 (non-subject wh-questions). Use CLS-105 as a subject-question control. It is a descriptive record outside the diagnostic count. Check Cambridge pp. 94–95, compare existing question logic and the CLS-100/CLS-126 probes, and include embedded questions and lexical *do* as controls.
+**Primary finite negation (CLS-099)** follows the inversion work. Compare missing supportive do with the existing CLS-100 extra-do probe, and guard negation inside adjuncts and imperative clauses.
 
 After that batch, triage adjacent diagnostics by governing relation and compatible edits. Use the source and diagnostic family below to find related rules. A catalog entry can share a detector or receive a documented no-detector disposition.
 
@@ -24,11 +24,13 @@ After that batch, triage adjacent diagnostics by governing relation and compatib
 | Action complement of enjoy | COMP-062 | — | [#106](https://github.com/ybcole/SynTutor/pull/106) | Resolve copular tree grounding and test fresh controls. |
 | Determiners on role objects | COMP-087 | PHR-197 | [#114](https://github.com/ybcole/SynTutor/pull/114) | Validate referential object function and broaden role and title controls. |
 | Article pronunciation | MORPH-141 | OTH-726 | [#112](https://github.com/ybcole/SynTutor/pull/112) | Validate pronunciation evidence and the read-aloud condition. |
+| Main-clause question inversion | CLS-103, CLS-104 | — | [#117](https://github.com/ybcole/SynTutor/pull/117) | Validate question context and canonical grounding. |
+| Fronted negative and only inversion | CLS-106, CLS-107 | — | This batch | Validate scope independently and broaden parser coverage, including subordinate clauses. |
 | Imperative verb form | CLS-130 | — | [#115](https://github.com/ybcole/SynTutor/pull/115) | Establish the source of directive intent and validate the resulting finding. |
 
 ## Rule-by-rule inventory
 
-**Pilot** means a primary offline implementation exists. **Support** means the entry corroborates a pilot. **Next** identifies the next two diagnostics. **Queued** means source and overlap triage is pending in this tracker.
+**Pilot** means a primary offline implementation exists. **Support** means the entry corroborates a pilot. **Next** identifies the next diagnostic. **Queued** means source and overlap triage is pending in this tracker.
 
 When a batch lands, update the rows and link its evidence. Record canonical grounding, held-out results, independent review, learner explanations and registry activation separately from prototype status.
 
@@ -267,11 +269,11 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | Rule | Construction | Cambridge source | Status |
 |---|---|---|---|
 | `MORPH-056` | Negative imperative differs from negative infinitival | Ch. 3, pp. 89, 90 | Queued |
-| `CLS-099` | Do-support in primary finite negation | Ch. 3, pp. 93, 94 | Queued |
-| `CLS-103` | Inversion of auxiliary and subject in closed interrogatives | Ch. 3, pp. 94, 95 | Next |
-| `CLS-104` | Main-clause non-subject wh-inversion | Ch. 3, pp. 95 | Next |
-| `CLS-106` | Clause-scoped initial negative triggering inversion | Ch. 3, pp. 95, 96 | Queued |
-| `CLS-107` | Initial only with clause scope triggering inversion | Ch. 3, pp. 95, 96 | Queued |
+| `CLS-099` | Do-support in primary finite negation | Ch. 3, pp. 93, 94 | Next |
+| `CLS-103` | Inversion of auxiliary and subject in closed interrogatives | Ch. 3, pp. 94, 95 | Pilot |
+| `CLS-104` | Main-clause non-subject wh-inversion | Ch. 3, pp. 95 | Pilot |
+| `CLS-106` | Clause-scoped initial negative triggering inversion | Ch. 3, pp. 95, 96 | Pilot |
+| `CLS-107` | Initial only with clause scope triggering inversion | Ch. 3, pp. 95, 96 | Pilot |
 | `CLS-108` | Fronted so and such in result constructions | Ch. 3, pp. 96 | Queued |
 | `CLS-114` | One prenuclear auxiliary in subject–auxiliary inversion | Ch. 3, pp. 97 | Queued |
 | `CLS-117` | Integrated frequency and modal adverbs after lexical verbs | Ch. 3, pp. 102 | Queued |

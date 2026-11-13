@@ -65,3 +65,50 @@ def probe_inversion(sentence, tree, *, variety, question_kind=None):
             "edit_hint": None,
         })
     return result
+
+
+def probe_fronted_inversion(sentence, tree, *, variety, clause_scope_confirmed=False):
+    """Check a narrow root pattern after clause-wide scope has been established."""
+    result = {"status": "not_evaluated", "production_enabled": False, "candidates": [], "blocked": []}
+    if variety != "standard_english" or clause_scope_confirmed is not True:
+        return {**result, "blocked": ["explicit_clause_scope_required"]}
+    tokens = tokens_with_spans(sentence)
+    leaves = list(_ordered_leaves(tree))
+    if len(tokens) != len(leaves) or any(
+        leaf["span"] != [token["index"], token["index"] + 1] or leaf["surface"] != token["text"]
+        for leaf, token in zip(leaves, tokens)
+    ):
+        return {**result, "blocked": ["parser_token_alignment_unavailable"]}
+    if any(token["text"] in {'"', '“', '”', "'", "‘", "’"} for token in tokens):
+        return {**result, "blocked": ["quotation_scope_unresolved"]}
+
+    result["status"] = "candidate_only"
+    parts = tree.get("children", [])
+    if tree["type"] != "S" or len(parts) != 4:
+        return result
+    adjunct, subject, predicate, punctuation = parts
+    if (adjunct["type"] != "ADVP" or subject["type"] != "NP" or predicate["type"] != "VP"
+            or punctuation.get("surface") not in {".", "!"}):
+        return result
+    start, end = adjunct["span"]
+    trigger = tuple(token["lower"] for token in tokens[start:end])
+    if trigger not in {("never",), ("nowhere",), ("not", "once"), ("only", "once"), ("only", "then")}:
+        return result
+    vp = predicate.get("children", [])
+    if (not vp or vp[0].get("pos") not in {"VBD", "VBP", "VBZ", "MD"}
+            or any(part["type"] in {"CC", "CONJP"} for part in vp)):
+        return result
+    only = trigger[0] == "only"
+    result["candidates"].append({
+        "rule_id": "CLS-107" if only else "CLS-106",
+        "source_chapter": 3, "source_pages": [95, 96],
+        "relation": {
+            "kind": "subject_precedes_finite_verb_after_fronted_adjunct",
+            "adjunct_char_span": [tokens[start]["char_span"][0], tokens[end - 1]["char_span"][1]],
+            "subject_char_span": [tokens[subject["span"][0]]["char_span"][0],
+                                  tokens[subject["span"][1] - 1]["char_span"][1]],
+            "verb_char_span": tokens[vp[0]["span"][0]]["char_span"],
+        },
+        "edit_hint": None,
+    })
+    return result

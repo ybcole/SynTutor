@@ -2,7 +2,7 @@ import os
 import re
 import unittest
 
-from cgel_inversion_probe import probe_inversion
+from cgel_inversion_probe import probe_fronted_inversion, probe_inversion
 from parse_engine import NodeBuilder, analyze, parse_parse_string
 
 
@@ -36,3 +36,42 @@ class InversionTests(unittest.TestCase):
         for sentence, _, kind, expected in CASES:
             with self.subTest(sentence=sentence, kind=kind):
                 self.check_case(sentence, analyze(sentence)["root"], kind, expected)
+
+
+FRONTED_CASES = [
+    ("Never she complained.", "(S (ADVP (RB Never)) (NP (PRP she)) (VP (VBD complained)) (. .))",
+     True, ["CLS-106"]),
+    ("Only then she understood.", "(S (ADVP (RB Only) (RB then)) (NP (PRP she)) (VP (VBD understood)) (. .))",
+     True, ["CLS-107"]),
+    ("Never she complained.", "(S (ADVP (RB Never)) (NP (PRP she)) (VP (VBD complained)) (. .))",
+     False, []),
+    ("Never did she complain.", "(S (ADVP (RB Never)) (VBD did) (NP (PRP she)) (VP (VB complain)) (. .))",
+     True, []),
+    ("Only Maya complained.", "(S (NP (RB Only) (NNP Maya)) (VP (VBD complained)) (. .))",
+     True, []),
+    ("Not long afterwards she left.", "(S (ADVP (RB Not) (RB long) (RB afterwards)) (NP (PRP she)) (VP (VBD left)) (. .))",
+     True, []),
+]
+
+
+class FrontedInversionTests(unittest.TestCase):
+    def check_case(self, sentence, tree, scope, expected):
+        result = probe_fronted_inversion(sentence, tree, variety="standard_english", clause_scope_confirmed=scope)
+        self.assertEqual([row["rule_id"] for row in result["candidates"]], expected)
+        self.assertFalse(result["production_enabled"])
+
+    def test_fronted_adjunct_scope(self):
+        for sentence, parse, scope, expected in FRONTED_CASES:
+            with self.subTest(sentence=sentence, scope=scope):
+                tree = NodeBuilder().build(parse_parse_string(parse), len(re.findall(r"\([^()]+\)", parse)))
+                self.check_case(sentence, tree, scope, expected)
+
+    @unittest.skipUnless(os.environ.get("CGEL_REQUIRE_PARSER") == "1", "configured parser required")
+    def test_configured_fronted_controls(self):
+        for sentence, _, scope, expected in FRONTED_CASES:
+            with self.subTest(sentence=sentence, scope=scope):
+                result = probe_fronted_inversion(sentence, analyze(sentence)["root"],
+                                                 variety="standard_english", clause_scope_confirmed=scope)
+                observed = [row["rule_id"] for row in result["candidates"]]
+                self.assertTrue(not observed or observed == expected)
+                print(f"fronted inversion {sentence!r} scope={scope}: {observed} (expected {expected})")
