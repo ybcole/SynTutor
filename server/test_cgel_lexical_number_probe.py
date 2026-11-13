@@ -17,6 +17,17 @@ CASES = [
     ("The shingles are loose.", "(DT The) (NNS shingles)", "VBP are", "loose", False, []),
 ]
 
+CASES += [
+    ("The furniture have arrived.", "(DT The) (NN furniture)", "VBP have", "arrived", False, [("PHR-347", "has")]),
+    ("The luggage were outside.", "(DT The) (NN luggage)", "VBD were", "outside", False, [("PHR-347", "was")]),
+    ("The crockery are fragile.", "(DT The) (NN crockery)", "VBP are", "fragile", False, [("PHR-347", "is")]),
+    ("The equipment is ready.", "(DT The) (NN equipment)", "VBZ is", "ready", False, []),
+    ("The luggage racks are empty.", "(DT The) (NN luggage) (NNS racks)", "VBP are", "empty", False, []),
+    ("The staff are ready.", "(DT The) (NN staff)", "VBP are", "ready", False, []),
+    ("Two pieces of furniture are missing.", "(CD Two) (NNS pieces) (PP (IN of) (NP (NN furniture)))",
+     "VBP are", "missing", False, []),
+]
+
 
 class LexicalNumberTests(unittest.TestCase):
     def check_case(self, sentence, tree, disease, expected):

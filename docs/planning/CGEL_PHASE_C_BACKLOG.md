@@ -1,14 +1,14 @@
 # Cambridge Phase C backlog
 
-Snapshot through the singular they agreement prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
+Snapshot through the mass aggregate agreement prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
 
 | Diagnostic specifications | Primary pilot | Supporting pilot | Outside pilot | Production-enabled |
 |---:|---:|---:|---:|---:|
-| 204 | 34 | 6 | 164 | 0 |
+| 204 | 35 | 6 | 163 | 0 |
 
 ## Next implementation batch
 
-**Mass aggregate agreement (PHR-347)** is next. Compare simple mass heads with quantifying expressions and other uses of the same vocabulary.
+**Spatial agreement inside a demonstrative NP (PHR-620)** is next. Compare spatial contrasts with ordinary demonstrative number agreement.
 
 After that batch, triage adjacent diagnostics by governing relation and compatible edits. Use the source and diagnostic family below to find related rules. A catalog entry can share a detector or receive a documented no-detector disposition.
 
@@ -43,6 +43,7 @@ After that batch, triage adjacent diagnostics by governing relation and compatib
 | Demonstrative number agreement | PHR-087 | — | This batch | Broaden lexical and NP coverage while preserving number exceptions. |
 | Agreement with the number as a total | PHR-079 | — | This batch | Broaden finite verb coverage and validate canonical subject-head grounding. |
 | Finite agreement with singular they | PHR-334 | — | This batch | Validate antecedent grounding and extend beyond simple main-clause be/have. |
+| Mass aggregate agreement | PHR-347 | — | This batch | Validate additional subject shapes and preserve count collective readings. |
 | Imperative verb form | CLS-130 | — | [#115](https://github.com/ybcole/SynTutor/pull/115) | Establish the source of directive intent and validate the resulting finding. |
 
 ## Rule-by-rule inventory
@@ -62,7 +63,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | `PHR-240` | Singular selection with more than one and one more | Ch. 5, pp. 432 | Queued |
 | `PHR-334` | Singular they and finite agreement | Ch. 5, pp. 493, 494 | Pilot |
 | `PHR-343` | Agreement attraction versus grammatical overrides | Ch. 5, pp. 500, 501 | Queued |
-| `PHR-347` | Mass aggregates and agreement | Ch. 5, pp. 504 | Next |
+| `PHR-347` | Mass aggregates and agreement | Ch. 5, pp. 504 | Pilot |
 | `CLS-183` | Agreement with the pronoun in canonical tags | Ch. 10, pp. 893 | Pilot |
 
 ### Article determiner (19)
@@ -151,7 +152,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | `PHR-602` | Compound reciprocals lack an emphatic adjunct use | Ch. 17, pp. 1502 | Queued |
 | `PHR-606` | Subject restriction on verb-domain reciprocals | Ch. 17, pp. 1503 | Queued |
 | `PHR-612` | Genitive antecedent exclusion in the mixed verb–noun reciprocal domain | Ch. 17, pp. 1503 | Queued |
-| `PHR-620` | Spatial agreement inside a demonstrative NP | Ch. 17, pp. 1505 | Queued |
+| `PHR-620` | Spatial agreement inside a demonstrative NP | Ch. 17, pp. 1505 | Next |
 | `PHR-629` | Nondeictic that as a fused definite determiner-head | Ch. 17, pp. 1508 | Queued |
 | `PHR-632` | Countability in fused that and pro-nominal one | Ch. 17, pp. 1508, 1509 | Queued |
 | `PHR-644` | Immediate cardinal or no before bare pro-nominal ones | Ch. 17, pp. 1512 | Queued |
