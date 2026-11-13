@@ -84,7 +84,7 @@ try:
   page.locator('.sidebar-item[data-view="lessons"]').click()
   lesson.locator('.lesson-module').nth(1).get_by_role('button',name='Resume lesson').click()
   expect(lesson.get_by_role('heading',name='Reading and Building the NP/VP Tree')).to_be_visible()
-  inline.get_by_role('button',name='Check construction').click()
+  inline.get_by_role('button',name='Check my tree',exact=True).click()
   expect(inline.get_by_role('status')).to_contain_text('Your tree matches')
   assert page.evaluate("JSON.parse(localStorage.getItem('syntutor:lessons:v1:guest'))['br-02@1.0.0'].stage")==2
   assert not parses,parses

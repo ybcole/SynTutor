@@ -17,7 +17,7 @@ base=f'http://127.0.0.1:{server.server_port}'
 try:
  with sync_playwright() as p:
   browser=p.chromium.launch(headless=True,args=['--no-sandbox'])
-  page=browser.new_page(viewport={'width':1440,'height':1050})
+  page=browser.new_page(viewport={'width':1440,'height':1050},has_touch=True)
   errors=[];parses=[]
   page.add_init_script("localStorage.setItem('syntutor_onboarding_seen','1')")
   page.on('pageerror',lambda e:errors.append(str(e)))
@@ -890,6 +890,68 @@ try:
   expect(part_heading).to_have_text('Chapter Recap')
   view.get_by_role('button',name='Check what you learned').click()
   expect(transfer.locator('input:checked')).to_have_value(saved['responses']['transfer'])
+  # Reading links preserve the earlier assessment contract and track visits separately.
+  page.goto(base+'/#lesson/br-01/application',wait_until='domcontentloaded')
+  expect(part_heading).to_have_text(chapter_one_titles[3])
+  desktop_nav=view.locator('.lesson-section-sidebar').get_by_role('navigation',name='Chapter contents')
+  expect(desktop_nav.locator('[aria-current="location"]')).to_contain_text(chapter_one_titles[3])
+  desktop_nav.get_by_role('link',name=re.compile('Comparing Flat')).press('Enter')
+  expect(part_heading).to_have_text(chapter_one_titles[2])
+  expect(part_heading).to_be_focused()
+  expect(page).to_have_url(re.compile(r'/worked-example$'))
+  page.go_back(wait_until='commit')
+  expect(part_heading).to_have_text(chapter_one_titles[3])
+  page.go_forward(wait_until='commit')
+  expect(part_heading).to_have_text(chapter_one_titles[2])
+  page.reload(wait_until='domcontentloaded')
+  expect(part_heading).to_have_text(chapter_one_titles[2])
+  page.set_viewport_size({'width':390,'height':844})
+  mobile_contents=view.locator('.lesson-section-mobile')
+  mobile_contents.locator('summary').press('Enter')
+  expect(mobile_contents).to_have_attribute('open','')
+  mobile_contents.get_by_role('link',name=re.compile('Chapter Recap')).focus()
+  page.keyboard.press('Escape')
+  expect(mobile_contents).not_to_have_attribute('open','')
+  expect(mobile_contents.locator('summary')).to_be_focused()
+  mobile_contents.locator('summary').tap()
+  page.screenshot(path=str(OUT/'br-01-contents-mobile.png'))
+  mobile_contents.get_by_role('link',name=re.compile('Chapter Recap')).tap()
+  expect(part_heading).to_have_text(chapter_one_titles[4])
+  expect(part_heading).to_be_focused()
+  assert view.evaluate('(el) => el.scrollWidth <= el.clientWidth')
+  page.set_viewport_size({'width':1440,'height':1050})
+
+  # A stale version's bookmark is ignored, and previewing does not complete a stage.
+  page.evaluate("""() => {
+    localStorage.removeItem('syntutor:lessons:v1:guest');
+    localStorage.removeItem('syntutor:lesson-reading:v1:guest:br-03@1.0.0');
+    localStorage.setItem('syntutor:lesson-reading:v1:guest:br-03@0.9.0',
+      JSON.stringify({last:'recap',visited:['recap']}));
+  }""")
+  page.goto(base+'/?fresh-reading-history#lesson/br-03/retired-page',wait_until='domcontentloaded')
+  expect(part_heading).to_contain_text('Introduction')
+  expect(desktop_nav.locator('[aria-disabled="true"]')).to_contain_text('Check what you learned')
+  preview=desktop_nav.locator('a[href$="/worked-example"]')
+  preview.click()
+  expect(part_heading).not_to_contain_text('Introduction')
+  expect(desktop_nav.locator('[aria-current]')).to_contain_text('Visited')
+  view.get_by_role('button',name='← All lessons',exact=True).click()
+  fresh=view.locator('.lesson-module').filter(has=page.get_by_role('heading',name='Heads and adjective phrases',exact=True))
+  expect(fresh.get_by_role('progressbar')).to_have_attribute('value','0')
+  fresh.get_by_role('button',name='Resume lesson').click()
+  expect(desktop_nav.locator('[aria-current]')).to_have_attribute('href','#lesson/br-03/worked-example')
+  desktop_nav.locator('a[href$="/introduction"]').click()
+  draft_answer=view.locator('[data-question="predict"] input').first
+  draft_answer.check()
+  preview.click()
+  page.go_back(wait_until='commit')
+  expect(draft_answer).to_be_checked()
+  page.reload(wait_until='domcontentloaded')
+  expect(draft_answer).to_be_checked()
+  # The chapter link normalizes a closing-check deep link while the test is locked.
+  page.goto(base+'/?fresh-reading-history#lesson/br-03/closing-check',wait_until='domcontentloaded')
+  expect(part_heading).to_contain_text('Introduction')
+  expect(page).to_have_url(re.compile(r'/introduction$'))
   assert not parses,parses
   assert not errors,errors
   browser.close()

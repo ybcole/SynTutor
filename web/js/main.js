@@ -352,6 +352,9 @@ function setActiveNav(viewName) {
 // overlay is on top of it.
 function setWorkspaceView(viewName) {
   workspaceView = VIEW_ALIASES[viewName] || viewName;
+  if (workspaceView !== 'lessons' && /^#lesson\//.test(location.hash)) {
+    history.replaceState(history.state, '', location.pathname + location.search);
+  }
   if (!overlayView) setActiveNav(workspaceView);
 }
 

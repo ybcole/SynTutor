@@ -32,6 +32,15 @@ const articleLessons = {
 let options = {}, course, store, host, active = null, step = 0, track = 'foundations', busy = false, notice = '', generation = 0, lastFocus = null;
 let reviewStage = null;
 let articlePage = 0, practiceResponses = null, assessmentIndex = 0;
+const legacyArticleSections = [
+  { id: 'introduction', advances: 'predict' },
+  { id: 'concepts', advances: 'understand' },
+  { id: 'worked-example' },
+  { id: 'application' },
+  { id: 'recap', advances: 'worked', references: true },
+  { id: 'closing-check', assessment: true },
+];
+const legacyLessonLinks = { NP: 'br-07', ADJP: 'br-03', VP: 'br-04', S: 'br-02', SBAR: 'br-08', SBARQ: 'br-09' };
 const postTestKeys = ['guided', 'transfer', 'exit'];
 const lessonCanvases = new Map();
 let embeddedBuilderCleanup = null;
@@ -289,14 +298,109 @@ export function renderLessonTree(envelope, {
   const ul=el('ul');ul.append(list(root));text.append(ul);wrap.append(text);return wrap;
 }
 function articleFor(lesson) { return articleLessons[lesson.lesson_id]; }
+function articleSections(article) {
+  return article.sections ?? article.headings.map((title, index) => ({ ...legacyArticleSections[index], title }));
+}
+function sectionRoute(lesson, section) {
+  return `#lesson/${lesson.lesson_id}/${section.id}`;
+}
+function readLessonRoute() {
+  const match = /^#lesson\/([a-z0-9-]+)(?:\/([a-z0-9-]+))?$/i.exec(location.hash);
+  if (!match) return null;
+  const [, id, section] = match;
+  return { id: id === 'catalog' ? null : legacyLessonLinks[id] || id.toLowerCase(), section };
+}
+function updateLessonRoute(hash, replace = false) {
+  if (location.hash === hash) return;
+  if (replace) history.replaceState(history.state, '', hash);
+  else history.pushState(null, '', hash);
+}
+function readingKey(lesson) {
+  return `syntutor:lesson-reading:v1:${options.userId?.() || 'guest'}:${lessonKey(lesson)}`;
+}
+function readingState(lesson) {
+  try {
+    const saved = JSON.parse(localStorage.getItem(readingKey(lesson)));
+    if (Array.isArray(saved?.visited)) return saved;
+  } catch { /* Reading navigation works without device storage. */ }
+  return { visited: [], last: null };
+}
+function rememberSection(lesson, section) {
+  const state = readingState(lesson);
+  state.last = section.id;
+  if (!state.visited.includes(section.id)) state.visited.push(section.id);
+  try { localStorage.setItem(readingKey(lesson), JSON.stringify(state)); }
+  catch { /* The section remains in the current URL. */ }
+}
+function articlePageFor(lesson, progress, sections, requested, workedExample) {
+  const available = section => !section.assessment || progress.completed_at || progress.stage >= STAGES.indexOf('guided');
+  const indexOf = id => sections.findIndex(section => section.id === id && available(section));
+  const explicit = indexOf(requested ?? (workedExample ? 'worked-example' : null));
+  if (explicit >= 0) return explicit;
+  if (progress.completed_at) return 0;
+  const last = indexOf(readingState(lesson).last);
+  if (last >= 0) return last;
+  const checkpoint = sections.findIndex(section => available(section) &&
+    (section.advances === STAGES[progress.stage] || section.assessment));
+  if (STAGES[progress.stage] === 'worked') {
+    const worked = indexOf('worked-example');
+    if (worked >= 0) return worked;
+  }
+  return Math.max(0, checkpoint);
+}
+function articleSectionNav(lesson, progress, sections, mobile = false) {
+  const nav = el('nav', undefined, 'lesson-section-nav');
+  nav.setAttribute('aria-label', 'Chapter contents');
+  const list = el('ol');
+  const { visited } = readingState(lesson);
+  for (const [index, section] of sections.entries()) {
+    const locked = section.assessment && !progress.completed_at && progress.stage < STAGES.indexOf('guided');
+    const done = section.assessment ? Boolean(progress.completed_at) :
+      Boolean(section.advances && progress.visited.includes(section.advances));
+    const link = el(locked ? 'span' : 'a');
+    link.className = 'lesson-section-link';
+    link.append(el('span', section.title));
+    if (locked) link.setAttribute('aria-disabled', 'true');
+    else {
+      link.href = sectionRoute(lesson, section);
+      link.addEventListener('click', event => {
+        if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        if (!busy && index !== articlePage) showArticlePage(index);
+      });
+    }
+    if (index === articlePage) link.setAttribute('aria-current', 'location');
+    const status = locked ? 'Finish earlier stages first' : done ? 'Finished' : visited.includes(section.id) ? 'Visited' : '';
+    if (status) link.append(el('small', status));
+    const item = el('li');
+    item.append(link);
+    list.append(item);
+  }
+  nav.append(list);
+  if (!mobile) {
+    const sidebar = el('aside', undefined, 'lesson-section-sidebar');
+    sidebar.append(el('p', 'Chapter contents'), nav);
+    return sidebar;
+  }
+  const details = el('details', undefined, 'lesson-section-mobile');
+  const summary = el('summary', 'Chapter contents');
+  details.append(summary, nav);
+  details.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && details.open) {
+      details.open = false;
+      summary.focus();
+    }
+  });
+  return details;
+}
 function currentLesson() { return course.lessons.find(l => l.lesson_id===active); }
 function progressFor(lesson) { return store.records[lessonKey(lesson)] || emptyProgress(); }
 async function act(event, afterSave) {
   if (busy) return;const token=generation;const focused=document.activeElement;const focusName=focused?.name,focusValue=focused?.value;let saved;busy=true;render();
-  try { const result=await store.act(currentLesson(),event);if(token!==generation){busy=false;return;}saved=progressFor(currentLesson());notice=result.earned ? (store.status === 'Synced to your account'
+  try { const result=await store.act(currentLesson(),event);if(token!==generation)return;saved=progressFor(currentLesson());notice=result.earned ? (store.status === 'Synced to your account'
       ? 'Lesson complete. 15 lesson XP awarded for this content version.'
       : 'Lesson complete. 15 lesson XP awarded on this device. Verified account XP requires account sync.') : ''; }
-  catch(error) { if(token!==generation){busy=false;return;}notice=error.message; }
+  catch(error) { if(token!==generation)return;notice=error.message; }
   busy=false;render();
   if (saved && afterSave) { afterSave(saved); return; }
   if(event.type==='answer' && focusName) {
@@ -305,23 +409,34 @@ async function act(event, afterSave) {
   }
   else { const h=host.querySelector('.lesson-stage-body h2');if(h){h.tabIndex=-1;h.focus();} }
 }
-function selectLesson(id) {
+function selectLesson(id, { section, workedExample } = {}) {
   active = id;
   step = 0;
   notice = '';
   reviewStage = id && progressFor(currentLesson()).completed_at ? 0 : null;
   practiceResponses = null;
   assessmentIndex = 0;
-  if (id && articleFor(currentLesson())) {
-    const progress = progressFor(currentLesson());
-    articlePage = progress.completed_at ? 0 : progress.stage >= 3 ? 5 : progress.stage;
+  const lesson = currentLesson();
+  const article = lesson && articleFor(lesson);
+  if (article) {
+    const sections = articleSections(article);
+    articlePage = articlePageFor(lesson, progressFor(lesson), sections, section, workedExample);
+    rememberSection(lesson, sections[articlePage]);
   }
 }
-function openLesson(id) {
-  selectLesson(id);
+function openLesson(id, routeOptions, replace = false) {
+  generation++;
+  busy = false;
+  selectLesson(id, routeOptions);
+  const lesson = currentLesson();
+  const article = lesson && articleFor(lesson);
+  if (article) updateLessonRoute(sectionRoute(lesson, articleSections(article)[articlePage]), replace);
+  else updateLessonRoute(lesson ? `#lesson/${id}` : '#lesson/catalog', replace);
   render();
   host.scrollTop = 0;
-  host.querySelector('h1')?.focus({ preventScroll: true });
+  const heading = routeOptions?.section || routeOptions?.workedExample
+    ? host.querySelector('.lesson-stage-body h2') : host.querySelector('h1');
+  heading?.focus({ preventScroll: true });
 }
 function showCatalog() {
   openLesson(null);
@@ -387,7 +502,8 @@ function catalog() {
   for (const lesson of course.lessons.filter(l => l.track === track)) {
     const progress = progressFor(lesson);
     const completedStages = STAGES.filter(stage => progress.visited.includes(stage)).length;
-    const started = completedStages > 0 || Object.keys(progress.responses).length > 0;
+    const started = completedStages > 0 || Object.keys(progress.responses).length > 0 ||
+      readingState(lesson).visited.some(id => id !== 'introduction');
     const chapter = lesson.track === 'foundations' ? `Chapter ${lesson.chapter}` : `Cambridge · Chapter ${lesson.chapter}`;
     const card = el('article', undefined, 'curriculum-card lesson-module');
     card.append(
@@ -553,8 +669,12 @@ function appendWorkedTree(aside, worked, { focusId, blank = null, comparisonTree
   return canvas;
 }
 
-function showArticlePage(page) {
+function showArticlePage(page, { fromHistory = false } = {}) {
+  const lesson = currentLesson();
+  const section = articleSections(articleFor(lesson))[page];
   articlePage = page;
+  rememberSection(lesson, section);
+  if (!fromHistory) updateLessonRoute(sectionRoute(lesson, section));
   render();
   host.scrollTop = 0;
   host.querySelector('.lesson-stage-body h2')?.focus({ preventScroll: true });
@@ -592,19 +712,27 @@ function savedOpeningStatus(lesson, total) {
 function addOpeningQuestions(panel, lesson, prompts) {
   const draftKey = `syntutor:opening-check:${options.userId?.() || 'guest'}:${lessonKey(lesson)}`;
   let answers = [];
+  let selected;
   try {
     const saved = JSON.parse(sessionStorage.getItem(draftKey));
-    if (Array.isArray(saved) && saved.length < prompts.length &&
-        saved.every((id, index) => prompts[index].options.some(option => option.id === id))) answers = saved;
+    const submitted = Array.isArray(saved) ? saved : saved?.answers;
+    if (Array.isArray(submitted) && submitted.length < prompts.length &&
+        submitted.every((id, index) => prompts[index].options.some(option => option.id === id))) {
+      answers = submitted;
+      if (prompts[answers.length].options.some(option => option.id === saved.selected)) selected = saved.selected;
+    }
   } catch {
     // The check can still be completed when session storage is unavailable.
   }
   const current = el('div');
   panel.append(current);
+  function saveDraft() {
+    try { sessionStorage.setItem(draftKey, JSON.stringify({ answers, selected })); }
+    catch { /* The draft still works on this page. */ }
+  }
   function showQuestion() {
     const index = answers.length;
     const last = index === prompts.length - 1;
-    let selected;
     const next = button(last ? 'Finish knowledge check' : 'Next question →', () => {
       if (last) {
         // Keep the existing single prediction response as the synced completion marker.
@@ -624,13 +752,15 @@ function addOpeningQuestions(panel, lesson, prompts) {
         return;
       }
       answers.push(selected);
-      try { sessionStorage.setItem(draftKey, JSON.stringify(answers)); } catch { /* Optional draft storage. */ }
+      selected = undefined;
+      saveDraft();
       showQuestion();
       focusAssessmentPosition();
     }, 'lesson-primary');
-    next.disabled = true;
-    const item = question(lesson, 'predict', { responses: {} }, false, answer => {
+    next.disabled = selected === undefined;
+    const item = question(lesson, 'predict', { responses: { predict: selected } }, false, answer => {
       selected = answer;
+      saveDraft();
       next.disabled = false;
     }, prompts[index]);
     const actions = el('div', undefined, 'lesson-assessment-actions');
@@ -642,28 +772,36 @@ function addOpeningQuestions(panel, lesson, prompts) {
 
 function articleScreen(lesson, p, article) {
   const page = articlePage;
+  const sections = articleSections(article);
+  const section = sections[page];
   const reviewing = Boolean(p.completed_at);
   const openingCheck = typeof article.openingCheck === 'function' ? article.openingCheck(lesson) : article.openingCheck;
   const body = el('article', undefined, 'lesson-stage-body');
-  const heading = el('h2', article.headings[page]);
+  const heading = el('h2', section.title);
   heading.id = 'constituent-page-title';
   body.setAttribute('aria-labelledby', heading.id);
   heading.tabIndex = -1;
   body.append(heading);
   const layout = el('div', undefined, 'constituent-page');
-  layout.append(body);
-  host.append(layout);
+  layout.append(articleSectionNav(lesson, p, sections, true), body);
+  const frame = el('div', undefined, 'lesson-reader');
+  frame.append(articleSectionNav(lesson, p, sections), layout);
+  host.append(frame);
 
   article.teach(body, page, {
     el, button, lesson,
     getWorkedExample: id => course.lessons.find(item => item.lesson_id === id).worked_example,
-    showClosingWarmup: page === 5 && !reviewing && !p.responses.guided && STAGES[p.stage] === 'guided',
+    showClosingWarmup: section.assessment && !reviewing && !p.responses.guided && STAGES[p.stage] === 'guided',
     practiceQuestion: (key, prompt, choices, onAnswer) => question(
       lesson, key, { responses: {} }, false, onAnswer,
       { prompt, options: choices.map((text, index) => ({ id: String(index), text })) },
     ),
     mountBuilder: (stage, exercise) => {
-      const editor = options.mountBuilder(stage, exercise);
+      const editor = options.mountBuilder(stage, {
+        ...exercise,
+        // Preserve existing 1.0.0 drafts. New content versions start in their own namespace.
+        id: lesson.content_version === '1.0.0' ? exercise.id : `${lessonKey(lesson)}:${section.id}:${exercise.id}`,
+      });
       embeddedBuilderCleanup = editor.destroy;
       return editor;
     },
@@ -704,7 +842,7 @@ function articleScreen(lesson, p, article) {
   const diagram = body.querySelector('.constituent-diagram');
   if (diagram) diagram.after(lessonNotation(lesson, page, el));
 
-  if (page === 0) {
+  if (section.id === 'introduction') {
     addLessonKeyTerms(body, el, lesson.lesson_id);
     const preTest = el('section', undefined, 'lesson-assessment constituent-pre-test');
     const title = el('h3', openingCheck ? 'Check what you know' : 'Pre-test');
@@ -733,7 +871,7 @@ function articleScreen(lesson, p, article) {
     body.append(preTest);
   }
 
-  if (page === 4) body.append(lessonReferences(lesson));
+  if (section.references) body.append(lessonReferences(lesson));
 
   const actions = el('div', undefined, 'lesson-page-actions constituent-actions');
   if (page > 0) {
@@ -742,22 +880,27 @@ function articleScreen(lesson, p, article) {
     actions.append(previous);
   }
 
-  if (page < 5) {
-    const next = button(page === 4 ? (openingCheck ? 'Check what you learned' : 'Start post-test') : 'Next →', () => {
-      // The worked example and remaining reading pages share the existing worked stage.
-      // The three saved answer stages begin together at the post-test.
-      const checkpoint = page === 4 ? 2 : page < 2 ? page : null;
-      const advancesProgress = !reviewing && p.stage === checkpoint;
-      if (advancesProgress) {
-        act({ type: 'advance' }, result => {
-          if (result.stage !== p.stage) showArticlePage(page + 1);
-        });
-      } else {
-        showArticlePage(page + 1);
-      }
-    }, 'lesson-primary');
-    next.disabled = busy || (page === 0 && !p.responses.predict && !reviewing);
-    actions.append(next);
+  if (!section.assessment) {
+    const following = sections[page + 1];
+    if (following) {
+      const entersAssessment = Boolean(following.assessment);
+      const advancesProgress = !reviewing && STAGES[p.stage] === section.advances;
+      const next = button(entersAssessment ? (openingCheck ? 'Check what you learned' : 'Start post-test') : 'Next →', () => {
+        if (advancesProgress) {
+          act({ type: 'advance' }, result => {
+            if (result.stage !== p.stage) showArticlePage(page + 1);
+          });
+        } else {
+          showArticlePage(page + 1);
+        }
+      }, 'lesson-primary');
+      const waitingForEarlierSections = entersAssessment && !reviewing &&
+        p.stage < STAGES.indexOf('guided') && !advancesProgress;
+      next.disabled = busy || waitingForEarlierSections || (advancesProgress && !canAdvance(lesson, p));
+      if (waitingForEarlierSections) body.append(el('p',
+        'Finish the opening check and continue through the concepts before starting the closing check.', 'lesson-guide-note'));
+      actions.append(next);
+    }
   } else {
     const practice = practiceResponses !== null;
     const key = STAGES[p.stage];
@@ -836,13 +979,13 @@ function articleScreen(lesson, p, article) {
       if (!practice) {
         actions.append(button('Retake post-test', () => {
           practiceResponses = {};
-          showArticlePage(5);
+          showArticlePage(page);
         }));
       }
       actions.append(button(practice ? 'Finish practice' : 'Finish review', () => {
         if (!practice) { showCatalog(); return; }
         practiceResponses = null;
-        showArticlePage(5);
+        showArticlePage(page);
       }, 'lesson-primary'));
       if (practice) {
         actions.lastElementChild.disabled = !postTestKeys.every(item => practiceResponses[item]);
@@ -850,7 +993,7 @@ function articleScreen(lesson, p, article) {
     } else {
       const next = button(busy ? 'Saving…' : key === 'exit' ? 'Complete lesson' : 'Next question →', () => {
         act({ type: 'advance' }, result => {
-          if (result.completed_at) showArticlePage(5);
+          if (result.completed_at) showArticlePage(page);
           else if (openingCheck) focusAssessmentPosition();
           else {
             const prompt = host.querySelector('.lesson-question legend');
@@ -950,45 +1093,70 @@ export function initLessons(config = {}) {
   options=config;
   host=document.getElementById('curriculumView');
   if(!host) {host=el('section',undefined,'curriculum-view');host.id='curriculumView';host.hidden=true;host.setAttribute('aria-label','Lessons and curriculum');document.body.append(host);}
-  subscribeAuthState(()=>{generation+=1;store=null;active=null;busy=false;if(!host.hidden)openLessons();});
-  const route = () => {
-    const match=/^#lesson\/([A-Za-z0-9-]+)$/.exec(location.hash);
-    const legacy={NP:'br-07',ADJP:'br-03',VP:'br-04',S:'br-02',SBAR:'br-08',SBARQ:'br-09'};
-    if(match)options.onNavigate?.(legacy[match[1]] || match[1].toLowerCase());
+  subscribeAuthState(() => {
+    generation++;
+    store = null;
+    active = null;
+    busy = false;
+    if (!host.hidden) {
+      const route = readLessonRoute();
+      openLessons(route?.id ?? null, { section: route?.section, fromHistory: true });
+    }
+  });
+  const route = event => {
+    const target = readLessonRoute();
+    if (!target) {
+      if (!host.hidden && event && !location.hash) options.onExit?.();
+      return;
+    }
+    if (!host.hidden && store) {
+      const lesson = currentLesson();
+      const article = lesson && articleFor(lesson);
+      if (active === target.id && article) {
+        const sections = articleSections(article);
+        const page = articlePageFor(lesson, progressFor(lesson), sections, target.section);
+        generation++;
+        busy = false;
+        showArticlePage(page, { fromHistory: true });
+        updateLessonRoute(sectionRoute(lesson, sections[page]), true);
+      } else {
+        const id = course.lessons.some(item => item.lesson_id === target.id) ? target.id : null;
+        openLesson(id, target, true);
+      }
+    } else {
+      options.onNavigate?.(target.id, { section: target.section, fromHistory: true });
+    }
   };
-  window.addEventListener('hashchange',route);
-  if(/^#lesson\//.test(location.hash))queueMicrotask(route);
+  window.addEventListener('hashchange', route);
+  if (readLessonRoute()) queueMicrotask(() => route());
 }
-export async function openLessons(id=null, { workedExample = false } = {}) {
-  lastFocus=document.activeElement;host.hidden=false;document.body.classList.add('curriculum-open');
+export async function openLessons(id = null, { workedExample = false, section, fromHistory = false } = {}) {
+  lastFocus = document.activeElement;
+  host.hidden = false;
+  document.body.classList.add('curriculum-open');
   clearLessonCanvases();
   showCurriculumState(host, { message: 'Loading reviewed lessons…' });
-  const token=++generation;
+  const token = ++generation;
   try {
-    course ||= validateCourse(await (await fetch('/content/lessons/course.json',{cache:'no-cache'})).json());
-    if(!store) {
-      let storage;try{storage=localStorage;}catch{storage=null;}
-      const next=createLessonStore(course,{storage,userId:options.userId?.() || 'guest',client:options.client?.()});
-      await next.load();if(token!==generation)return;store=next;
+    course ||= validateCourse(await (await fetch('/content/lessons/course.json', { cache: 'no-cache' })).json());
+    if (!store) {
+      let storage;
+      try { storage = localStorage; } catch { storage = null; }
+      const next = createLessonStore(course, { storage, userId: options.userId?.() || 'guest', client: options.client?.() });
+      await next.load();
+      if (token !== generation) return;
+      store = next;
     }
-    if(token!==generation)return;
-    host.setAttribute('aria-busy','false');
-    selectLesson(course.lessons.some(l=>l.lesson_id===id) ? id : null);
+    if (token !== generation) return;
+    host.setAttribute('aria-busy', 'false');
     document.querySelector('#appSidebarBackdrop')?.classList.remove('active');
-    if (workedExample && active && articleFor(currentLesson())) {
-      const progress = progressFor(currentLesson());
-      if (progress.completed_at || progress.stage >= 2) {
-        showArticlePage(2);
-        return;
-      }
-    }
-    render();
-    const heading=host.querySelector('h1');if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});host.scrollTop=0;}
+    openLesson(course.lessons.some(lesson => lesson.lesson_id === id) ? id : null,
+      { section, workedExample }, fromHistory);
   } catch {
     if (token === generation) showCurriculumState(host, {
       title: 'Lessons unavailable',
       message: 'The lesson catalog could not be loaded or its source review is incomplete.',
-      retry: () => openLessons(id, { workedExample }), back: options.onExit,
+      retry: () => openLessons(id, { workedExample, section, fromHistory }), back: options.onExit,
     });
   }
 }
