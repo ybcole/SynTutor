@@ -90,6 +90,9 @@ jobs:
       - name: Run parser-backed Syntax Generator tests
         working-directory: server
         run: python -m unittest -v test_parser_runtime test_correction_offsets test_parser_whitespace
+      - name: Verify Cambridge imperative intent
+        working-directory: server
+        run: CGEL_REQUIRE_PARSER=1 python -m unittest -v test_cgel_imperative_probe
       - name: Run existing LF/CRLF multiline parser regression
         run: python server/test_multiline_parse.py
       - name: Audit FINAL-D1 sentence coverage
