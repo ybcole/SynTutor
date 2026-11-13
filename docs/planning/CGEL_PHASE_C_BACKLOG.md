@@ -1,14 +1,14 @@
 # Cambridge Phase C backlog
 
-Snapshot through the mass aggregate agreement prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
+Snapshot through the spatial demonstrative prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
 
 | Diagnostic specifications | Primary pilot | Supporting pilot | Outside pilot | Production-enabled |
 |---:|---:|---:|---:|---:|
-| 204 | 35 | 6 | 163 | 0 |
+| 204 | 36 | 6 | 162 | 0 |
 
 ## Next implementation batch
 
-**Spatial agreement inside a demonstrative NP (PHR-620)** is next. Compare spatial contrasts with ordinary demonstrative number agreement.
+**Basic coordination and syntactic function (CLS-1034)** is next. Distinguish coordination of unlike categories in the same function from genuinely incompatible functions.
 
 After that batch, triage adjacent diagnostics by governing relation and compatible edits. Use the source and diagnostic family below to find related rules. A catalog entry can share a detector or receive a documented no-detector disposition.
 
@@ -44,6 +44,7 @@ After that batch, triage adjacent diagnostics by governing relation and compatib
 | Agreement with the number as a total | PHR-079 | — | This batch | Broaden finite verb coverage and validate canonical subject-head grounding. |
 | Finite agreement with singular they | PHR-334 | — | This batch | Validate antecedent grounding and extend beyond simple main-clause be/have. |
 | Mass aggregate agreement | PHR-347 | — | This batch | Validate additional subject shapes and preserve count collective readings. |
+| Spatial demonstrative agreement | PHR-620 | — | This batch | Validate locative attachment and shared deictic context before any rewrite. |
 | Imperative verb form | CLS-130 | — | [#115](https://github.com/ybcole/SynTutor/pull/115) | Establish the source of directive intent and validate the resulting finding. |
 
 ## Rule-by-rule inventory
@@ -138,7 +139,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | `CLS-1259` | Comparative grade in two-member set comparisons | Ch. 13, pp. 1162 | Queued |
 | `CLS-1274` | Definiteness in incorporated ranking superlatives | Ch. 13, pp. 1168, 1169 | Queued |
 | `CLS-1276` | Integrated relatives after free superlatives | Ch. 13, pp. 1169 | Queued |
-| `CLS-1034` | Basic coordination requires equivalent syntactic functions | Ch. 15, pp. 1323 | Queued |
+| `CLS-1034` | Basic coordination requires equivalent syntactic functions | Ch. 15, pp. 1323 | Next |
 | `CLS-1035` | Infinitival and gerund-participial clause coordination restriction | Ch. 15, pp. 1324 | Queued |
 | `CLS-1325` | Unstressed personal pronoun before a verbal particle | Ch. 16, pp. 1383 | Queued |
 | `CLS-1329` | Indirect object cannot follow direct object in the double-object alternant | Ch. 16, pp. 1384 | Queued |
@@ -152,7 +153,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | `PHR-602` | Compound reciprocals lack an emphatic adjunct use | Ch. 17, pp. 1502 | Queued |
 | `PHR-606` | Subject restriction on verb-domain reciprocals | Ch. 17, pp. 1503 | Queued |
 | `PHR-612` | Genitive antecedent exclusion in the mixed verb–noun reciprocal domain | Ch. 17, pp. 1503 | Queued |
-| `PHR-620` | Spatial agreement inside a demonstrative NP | Ch. 17, pp. 1505 | Next |
+| `PHR-620` | Spatial agreement inside a demonstrative NP | Ch. 17, pp. 1505 | Pilot |
 | `PHR-629` | Nondeictic that as a fused definite determiner-head | Ch. 17, pp. 1508 | Queued |
 | `PHR-632` | Countability in fused that and pro-nominal one | Ch. 17, pp. 1508, 1509 | Queued |
 | `PHR-644` | Immediate cardinal or no before bare pro-nominal ones | Ch. 17, pp. 1512 | Queued |

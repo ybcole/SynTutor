@@ -191,3 +191,49 @@ def probe_singular_they_agreement(sentence, tree, *, variety, singular_reference
         "expected_verb": FORMS[form][1], "edit_hint": None,
     })
     return result
+
+
+def probe_spatial_demonstrative(sentence, tree, *, variety, shared_deictic_context=False):
+    """Check a locative postmodifier of a demonstrative subject NP."""
+    result = {"status": "not_evaluated", "production_enabled": False, "candidates": []}
+    if variety != "standard_english" or shared_deictic_context is not True:
+        return result
+    tokens = tokens_with_spans(sentence)
+    leaves = list(_ordered_leaves(tree))
+    if len(tokens) != len(leaves) or any(
+        leaf["span"] != [token["index"], token["index"] + 1] or leaf["surface"] != token["text"]
+        for leaf, token in zip(leaves, tokens)
+    ) or any(token["text"] in {'"', '“', '”', "'", '‘', '’'} for token in tokens):
+        return result
+    result["status"] = "candidate_only"
+    parts = tree.get("children", [])
+    if tree["type"] != "S" or [part["type"] for part in parts] != ["NP", "VP", "."]:
+        return result
+    nominal = parts[0].get("children", [])
+    if len(nominal) == 2 and nominal[0]["type"] == "NP":
+        nominal = [*nominal[0].get("children", []), nominal[1]]
+    if len(nominal) != 3:
+        return result
+    determiner, noun, locative = nominal
+    if (determiner.get("pos") != "DT" or noun.get("pos") not in {"NN", "NNS"}
+            or locative["type"] not in {"ADVP", "RB", "PP"}):
+        return result
+    demonstrative = determiner["surface"].casefold()
+    if demonstrative not in DEMONSTRATIVE_NUMBER:
+        return result
+    words = tuple(leaf["surface"].casefold() for leaf in _ordered_leaves(locative))
+    if words not in {("here",), ("there",), ("over", "there"), ("over", "here"),
+                     ("right", "here"), ("right", "there")}:
+        return result
+    if (demonstrative in {"this", "these"}) != (words[-1] == "here"):
+        start, end = locative["span"]
+        result["candidates"].append({
+            "rule_id": "PHR-620", "source_chapter": 17, "source_pages": [1505],
+            "relation": {
+                "kind": "demonstrative_locative_proximity_mismatch",
+                "demonstrative_char_span": tokens[determiner["span"][0]]["char_span"],
+                "locative_char_span": [tokens[start]["char_span"][0], tokens[end - 1]["char_span"][1]],
+            },
+            "edit_hint": None,
+        })
+    return result
