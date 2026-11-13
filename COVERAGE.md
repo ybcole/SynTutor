@@ -29,6 +29,18 @@
 
 **Totals:** 1764 printed pages; **1716 extracted**, 0 unprocessed, 46 justified skips and 2 absent from the split sources.
 
+## Remaining Cambridge work
+
+| Milestone | Current status | Remaining work |
+|---|---|---|
+| Phase B source extraction | All 20 chapters accounted for. Zero unprocessed pages. | Independent source QA can still revise catalog entries. |
+| Phase C detection and XAI | 3,914 catalog records, including 204 diagnostic specifications marked `spec_only`. Zero Cambridge rules are enabled in the runtime registry. | Group the specifications by construction, reconcile overlaps, and give each a tested implementation or documented no-detector disposition. Complete independent source and Burton-Roberts crosswalk review, held-out evaluation, and source-linked learner explanations before activation. |
+| Coverage evaluation | Construction-specific development and held-out reports exist. | Build the cross-family Cambridge corpus and publish per-family results. The plan calls for at least ten error and ten valid examples per family. |
+| Phase D corrections | The project has existing correction infrastructure and individual Cambridge repair probes. | Integrate licensed Cambridge findings into selected-sentence repair, including interacting errors, reparse checks, and unresolved findings. |
+| Phase E lessons and quizzes | Existing lesson and quiz features are available. | Generate and validate Cambridge-derived lessons and original quiz items with rule IDs and printed-page references. |
+
+The 204 specifications are catalog entries. Related entries can support the same finding, so the number of implementation batches and distinct detectors is still open. See [the master plan](docs/planning/CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) and [construction-by-construction QA](docs/planning/CGEL_CROSS_DOMAIN_QA.md).
+
 ## Chapter 3 implementation
 
 **Catalog:** 196 earlier approved records + 35 rules from pp. 76–90 + 70 rules from pp. 91–114 + 31 from pp. 115–122 + 20 from pp. 123–130 + 21 from pp. 131–138 + 30 from pp. 139–146 + 35 from pp. 147–154 + 35 from pp. 155–162 + 48 from pp. 163–170 + 51 from pp. 171–178 + 57 from pp. 179–186 + 70 from pp. 187–194 + 70 from pp. 195–202 + 86 from pp. 203–210 + 32 from pp. 211–212 = **887 rules**. The error-capable records added during Phase B remain specifications rather than newly integrated runtime detectors; **implemented new detectors: zero**. No new detection precision/recall claim is made.
