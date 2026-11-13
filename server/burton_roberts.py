@@ -879,6 +879,10 @@ def _build_canonical_node(raw: dict[str, Any], tokens: list[dict[str, Any]], cur
     children_raw = raw.get("children")
     if not isinstance(label, str) or not label:
         raise ValueError("gold branch node is missing a label")
+    # Chapter 10 source fixtures encode the printed V(I)/V(II) labels as
+    # V plus verb_type. Preserve that source metadata in notes as well.
+    if label == "V" and raw.get("verb_type") in ("I", "II"):
+        label = f"V({raw['verb_type']})"
     if children_raw == [] and label in {"DET", "C1"}:
         return _preserve_source_node_metadata({
             "id": node_id, "empty": True, "label": label,
