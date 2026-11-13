@@ -2,6 +2,7 @@ import os
 import unittest
 
 from cgel_catenative_probe import probe_believe_object, probe_catenative_perfect
+from cgel_catenative_probe import probe_interrogative_infinitival_subject
 from parse_engine import NodeBuilder, analyze, parse_parse_string
 
 
@@ -70,3 +71,39 @@ class BelieveObjectTests(unittest.TestCase):
         ]:
             with self.subTest(sentence=sentence, context=context):
                 self.check_case(sentence, analyze(sentence)["root"], context, expected)
+
+
+class InterrogativeInfinitivalSubjectTests(unittest.TestCase):
+    def test_selected_wh_infinitival(self):
+        sentence = "She explained how for us to start the pump."
+        tree = NodeBuilder().build(parse_parse_string(
+            "(S (NP (PRP She)) (VP (VBD explained) (SBAR (WHADVP (WRB how)) "
+            "(SBAR (IN for) (S (NP (PRP us)) (VP (TO to) (VP (VB start) (NP (DT the) (NN pump)))))))) (. .))"
+        ), 10)
+        candidate, = probe_interrogative_infinitival_subject(
+            sentence, tree, variety="standard_english"
+        )["candidates"]
+        self.assertEqual(candidate["rule_id"], "CLS-407")
+        a, b = candidate["relation"]["subject_char_span"]
+        self.assertEqual(sentence[a:b], "us")
+        self.assertIsNone(candidate["edit_hint"])
+
+    @unittest.skipUnless(os.environ.get("CGEL_REQUIRE_PARSER") == "1", "configured parser required")
+    def test_configured_interrogative_infinitivals(self):
+        for sentence, target in [
+            ("She explained how for us to start the pump.", True),
+            ("They discussed which route for them to take.", True),
+            ("She explained how to start the pump.", False),
+            ("She explained how we should start the pump.", False),
+            ("They arranged for us to start the pump.", False),
+            ("They discussed a route for us to take.", False),
+            ("They discussed which route we should take.", False),
+        ]:
+            with self.subTest(sentence=sentence):
+                analysis = analyze(sentence)
+                result = probe_interrogative_infinitival_subject(
+                    sentence, analysis["root"], variety="standard_english"
+                )
+                found = [row["rule_id"] for row in result["candidates"]]
+                self.assertIn(found, ([], ["CLS-407"]) if target else ([],))
+                print(f"Cambridge wh-infinitival {sentence!r}: {found}; target={target}; parse={analysis['parse_string']}")

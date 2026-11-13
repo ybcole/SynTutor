@@ -110,3 +110,54 @@ def probe_believe_object(sentence, tree, *, variety, complement_confirmed=False)
         "edit_hint": None,
     })
     return result
+
+
+def probe_interrogative_infinitival_subject(sentence, tree, *, variety):
+    """Identify a for-subject inside a selected wh-infinitival."""
+    result = {"status": "not_evaluated", "production_enabled": False, "candidates": []}
+    if variety != "standard_english":
+        return result
+    tokens = tokens_with_spans(sentence)
+    leaves = list(_ordered_leaves(tree))
+    if len(tokens) != len(leaves) or any(
+        leaf["span"] != [token["index"], token["index"] + 1] or leaf["surface"] != token["text"]
+        for leaf, token in zip(leaves, tokens)
+    ) or any(token["text"] in {'"', '“', '”', "'", '‘', '’'} for token in tokens):
+        return result
+    result["status"] = "candidate_only"
+    root = tree.get("children", [])
+    if tree["type"] != "S" or [part["type"] for part in root] != ["NP", "VP", "."]:
+        return result
+    matrix = root[1].get("children", [])
+    if len(matrix) != 2 or matrix[0].get("pos") not in {"VBD", "VBP", "VBZ"}:
+        return result
+    verb, complement = matrix
+    if verb["surface"].casefold() not in {"discussed", "explained", "decided"} or complement["type"] != "SBAR":
+        return result
+    parts = complement.get("children", [])
+    if len(parts) != 2 or parts[0]["type"] not in {"WHNP", "WHADVP"} or parts[1]["type"] != "SBAR":
+        return result
+    wh, for_clause = parts
+    body = for_clause.get("children", [])
+    if len(body) != 2 or body[0].get("pos") != "IN" or body[0]["surface"].casefold() != "for" or body[1]["type"] != "S":
+        return result
+    clause = body[1].get("children", [])
+    if [part["type"] for part in clause] != ["NP", "VP"]:
+        return result
+    subject, predicate = clause
+    vp = predicate.get("children", [])
+    if len(vp) != 2 or vp[0].get("pos") != "TO" or vp[0]["surface"].casefold() != "to" or vp[1]["type"] != "VP":
+        return result
+    lower = vp[1].get("children", [])
+    if not lower or lower[0].get("pos") != "VB":
+        return result
+    start, end = subject["span"]
+    result["candidates"].append({
+        "rule_id": "CLS-407", "source_chapter": 14, "source_pages": [1264],
+        "relation": {"kind": "overt_subject_in_infinitival_interrogative",
+                     "wh_char_span": [tokens[wh["span"][0]]["char_span"][0],
+                                      tokens[wh["span"][1] - 1]["char_span"][1]],
+                     "subject_char_span": [tokens[start]["char_span"][0], tokens[end - 1]["char_span"][1]]},
+        "edit_hint": None,
+    })
+    return result
