@@ -3,7 +3,7 @@ import re
 import unittest
 
 from cgel_inversion_probe import probe_fronted_inversion, probe_inversion
-from cgel_inversion_probe import probe_declarative_polarity
+from cgel_inversion_probe import probe_declarative_polarity, probe_which_partitive
 from parse_engine import NodeBuilder, analyze, parse_parse_string
 
 
@@ -115,3 +115,32 @@ class DeclarativePolarityTests(unittest.TestCase):
                 ids = [c["rule_id"] for c in result["candidates"]]
                 print(f"Cambridge declarative polarity {sentence!r} context={context}: {ids}; parse={analysis['parse_string']}")
                 self.assertEqual(ids, expected)
+
+
+class WhichPartitiveTests(unittest.TestCase):
+    def test_indefinite_set_and_definite_control(self):
+        for det, expected in [("some", ["CLS-201"]), ("these", [])]:
+            with self.subTest(det=det):
+                sentence = f"Which of {det} books would you use?"
+                parse = (f"(SBARQ (WHNP (WDT Which) (PP (IN of) (NP (DT {det}) (NNS books)))) "
+                         "(SQ (MD would) (NP (PRP you)) (VP (VB use))) (. ?))")
+                tree = NodeBuilder().build(parse_parse_string(parse), 8)
+                rows = probe_which_partitive(sentence, tree, variety="standard_english")["candidates"]
+                self.assertEqual([row["rule_id"] for row in rows], expected)
+
+    @unittest.skipUnless(os.environ.get("CGEL_REQUIRE_PARSER") == "1", "configured parser required")
+    def test_configured_which_partitives(self):
+        for sentence, target in [
+            ("Which of some books would you use?", True),
+            ("Which two of some switches are faulty?", True),
+            ("Which of these books would you use?", False),
+            ("Which two of these switches are faulty?", False),
+            ("Which of quiche, pizza, and lasagna would you prefer?", False),
+            ("Which books did you buy from some shops?", False),
+        ]:
+            with self.subTest(sentence=sentence):
+                analysis = analyze(sentence)
+                rows = probe_which_partitive(sentence, analysis["root"], variety="standard_english")["candidates"]
+                found = [row["rule_id"] for row in rows]
+                self.assertIn(found, ([], ["CLS-201"]) if target else ([],))
+                print(f"Cambridge which partitive {sentence!r}: {found}; target={target}; parse={analysis['parse_string']}")
