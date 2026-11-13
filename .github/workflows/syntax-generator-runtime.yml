@@ -96,12 +96,17 @@ jobs:
       - name: Run existing LF/CRLF multiline parser regression
         run: python server/test_multiline_parse.py
       - name: Audit FINAL-D1 sentence coverage
-        run: python scripts/audit_final_d1_sentence_coverage.py --output artifacts/final-d1-coverage.json
+        run: |
+          python scripts/audit_final_d1_sentence_coverage.py --output artifacts/final-d1-coverage.json
+          python scripts/audit_final_d1_sentence_coverage.py --heldout evaluation/final_d1_heldout_sentences.json --output artifacts/final-d1-heldout-coverage.json
       - name: Upload FINAL-D1 coverage report
         uses: actions/upload-artifact@v4
         with:
           name: final-d1-sentence-coverage
-          path: artifacts/final-d1-coverage.json
+          path: |
+            artifacts/final-d1-coverage.json
+            artifacts/final-d1-heldout-coverage.json
+          if-no-files-found: error
 
       - name: Measure XAI-0 real-parser baseline on 116 development cases
         run: |

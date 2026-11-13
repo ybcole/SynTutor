@@ -54,6 +54,10 @@ def audit_case(text, validator):
         try:
             analysis = first if index == 0 else analyze(text, sentence_index=index)
             result = audit_sentence(analysis, validator)
+            if not result["covered"]:
+                # Keep the parser hypothesis in the artifact so a failed
+                # projection can be reproduced and assessed by construction.
+                result["parser_parse_string"] = analysis.get("parse_string")
         except Exception as exc:
             result = {"covered": False, "reasons": [
                 {"code": "AUDIT_FAILURE", "detail": str(exc)}
@@ -65,6 +69,8 @@ def audit_case(text, validator):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--heldout", type=Path,
+                        help="Audit an independent list of sentence objects instead of the existing evaluation corpora.")
     parser.add_argument("--require-complete", action="store_true",
                         help="Exit with failure if any corpus case lacks a canonical tree.")
     args = parser.parse_args()
@@ -74,19 +80,21 @@ def main():
 
     cases = []
     summary = {}
-    for corpus in ("grammatical", "ungrammatical"):
-        path = ROOT / f"evaluation/{corpus}_sentences.json"
+    inputs = ([("heldout", args.heldout)] if args.heldout else
+              [(corpus, ROOT / f"evaluation/{corpus}_sentences.json")
+               for corpus in ("grammatical", "ungrammatical")])
+    for corpus, path in inputs:
         rows = json.loads(path.read_text(encoding="utf-8"))
         records = []
         for index, row in enumerate(rows):
-            if row["unit"] != "sentence":
+            if row.get("unit", "sentence") != "sentence":
                 continue
             outcomes = audit_case(row["text"], validator)
             records.append({
                 "corpus": corpus,
                 "row_index": index,
                 "text": row["text"],
-                "rule_id": row["rule_id"],
+                "rule_id": row.get("rule_id"),
                 "covered": bool(outcomes) and all(item["covered"] for item in outcomes),
                 "sentences": outcomes,
             })
@@ -99,8 +107,11 @@ def main():
                       for s in row["sentences"]) for row in cases)
     complete = bool(cases) and covered == len(cases)
     report = {
-        "scope": "Availability of canonical FINAL-D1 trees on existing sentence cases. "
-                 "A passage case is covered only when all its sentences are covered.",
+        "scope": ("Availability of canonical FINAL-D1 trees on an independent sentence probe set. "
+                  if args.heldout else "Availability of canonical FINAL-D1 trees on existing sentence cases. ")
+                 + "A passage case is covered only when all its sentences are covered. "
+                   "Availability and schema validity do not establish linguistic accuracy.",
+        "dataset": "heldout" if args.heldout else "existing_evaluation",
         "canonical_cases": covered,
         "tree_view_cases": visible,
         "working_tree_cases": visible - covered,
