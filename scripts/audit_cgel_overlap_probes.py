@@ -97,6 +97,15 @@ AUXILIARY_CASES = [
     ("invariant verb", "Did the chef cut the bread?", "standard_english", []),
     ("subject question", "Who trims the hedge?", "standard_english", []),
     ("lexical do", "Did the intern do the filing?", "standard_english", []),
+    ("perfect form", "The courier has went home.", "standard_english", ["MORPH-026"]),
+    ("perfect form", "The guests have already ate dinner.", "standard_english", ["MORPH-026"]),
+    ("perfect form", "The pilot had took the wrong route.", "standard_english", ["MORPH-026"]),
+    ("perfect form", "The volunteers have wrote a report.", "standard_english", ["MORPH-026"]),
+    ("perfect control", "The courier has gone home.", "standard_english", []),
+    ("regular perfect control", "The pilot had checked the route.", "standard_english", []),
+    ("invariant perfect control", "The crew has cut the cable.", "standard_english", []),
+    ("causative perfect control", "They have the technician check the cable.", "standard_english", []),
+    ("possession control", "The volunteers have a report.", "standard_english", []),
     ("unspecified variety", "The boat might could cross before noon.", None, []),
 ]
 
