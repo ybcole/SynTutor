@@ -1,14 +1,14 @@
 # Cambridge Phase C backlog
 
-Snapshot through the determined participle prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
+Snapshot through the consonant doubling prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
 
 | Diagnostic specifications | Primary pilot | Supporting pilot | Outside pilot | Production-enabled |
 |---:|---:|---:|---:|---:|
-| 204 | 54 | 6 | 144 | 0 |
+| 204 | 55 | 6 | 143 | 0 |
 
 ## Next implementation batch
 
-**Consonant doubling before vowel-initial suffixes (MORPH-078)** is next. Check stress, spelling variants and established exceptions.
+**Mute e deletion before ing (MORPH-080)** is next.
 
 After that batch, triage adjacent diagnostics by governing relation and compatible edits. Use the source and diagnostic family below to find related rules. A catalog entry can share a detector or receive a documented no-detector disposition.
 
@@ -62,6 +62,7 @@ After that batch, triage adjacent diagnostics by governing relation and compatib
 | Set expressions in which partitives | CLS-201 | — | This batch | Validate partitive attachment and extend beyond explicit some and any. |
 | Exclamative what and articles | CLS-229 | — | This batch | Validate exclamative context and broaden count-head coverage. |
 | Determiners before object-taking participles | MORPH-041 | — | This batch | Validate verbal object attachment and preserve nominal and genitive constructions. |
+| Omitted consonant doubling | MORPH-078 | — | This batch | Extend beyond selected verb bases and validate ambiguous real-word spellings. |
 | Imperative verb form | CLS-130 | — | [#115](https://github.com/ybcole/SynTutor/pull/115) | Establish the source of directive intent and validate the resulting finding. |
 
 ## Rule-by-rule inventory
@@ -242,8 +243,8 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | Rule | Construction | Cambridge source | Status |
 |---|---|---|---|
 | `PHR-164` | Single-word another in ordinary indefinite noun phrases | Ch. 5, pp. 391 | Queued |
-| `MORPH-078` | Consonant doubling before vowel-initial suffixes | Ch. 18, pp. 1575, 1576 | Next |
-| `MORPH-080` | Mute e deletion before ing | Ch. 18, pp. 1576, 1577 | Queued |
+| `MORPH-078` | Consonant doubling before vowel-initial suffixes | Ch. 18, pp. 1575, 1576 | Pilot |
+| `MORPH-080` | Mute e deletion before ing | Ch. 18, pp. 1576, 1577 | Next |
 | `MORPH-083` | Ie bases and ing spelling | Ch. 18, pp. 1579 | Queued |
 | `MORPH-092` | Regular noun plurals with final y | Ch. 18, pp. 1585 | Queued |
 | `MORPH-104` | Plural spelling of personal names | Ch. 18, pp. 1595 | Queued |
