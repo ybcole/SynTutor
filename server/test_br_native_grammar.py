@@ -49,7 +49,13 @@ class RegistryTests(unittest.TestCase):
         book = Path(__file__).resolve().parents[1] / "web/content/book"
         for chapter, record_id, rule_id in (
             (5, "ch5-46", "BR05-NP-ELLIPSIS-E"),
+            (7, "ch7-67", "BR07-NOM-POSTPOSED-AP"),
+            (7, "ch7-67", "BR07-AP-PP-COMPLEMENT"),
+            (9, "ch9-60", "BR09-NP-NONRESTRICTIVE-RELATIVE"),
             (9, "ch9-d1a", "BR09-C2-UNLABELLED-TRIANGLE"),
+            (9, "ch9-d1bii", "BR09-PP-WH-GAP"),
+            (9, "ch9-d1c", "BR09-ADVP-WH-GAP"),
+            (9, "ch9-d1d", "BR09-AP-WH-GAP"),
             (10, "ch10-101b", "BR10-VP-TYPE-I"),
             (10, "ch10-102b", "BR10-VP-TYPE-II"),
         ):

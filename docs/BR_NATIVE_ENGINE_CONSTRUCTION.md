@@ -125,6 +125,8 @@ A read-only comparison of the **100 draft signatures** against all 252 stored ch
 
 **13 November 2026 audit update:** the catalog now recognizes the raw book's unlabelled C2 wh triangle, NP-over-E ellipsis, and Chapter 10 V(I)/V(II) encoding without confusing these with other nodes. It matches 1,390 of 1,558 branch instances (89.2%). The audit lists all 168 remaining instances with their source record and provisional triage group. No semantic condition or independent source adjudication was inferred from that increase.
 
+**14 November source-image batch:** printed pp. 155, 210–212 support narrowly described postmodifying AP, non-restrictive relative, and PP/AdvP/AP wh-gap shapes. Six catalog signatures now cover 12 additional stored branch instances. Shape coverage is 1,402 of 1,558 (90.0%). The other 156 instances remain individually reported, and movement/attachment conditions are still unchecked.
+
 | Chapter | Matched / examined branch shapes | Recognition |
 | --- | ---: | ---: |
 | 1 | 0 / 38 | 0.0% |
