@@ -2,6 +2,7 @@ import os
 import unittest
 
 from cgel_lexical_number_probe import probe_demonstrative_number, probe_lexical_number, probe_total_number
+from cgel_lexical_number_probe import probe_singular_they_agreement
 from parse_engine import NodeBuilder, analyze, parse_parse_string
 
 
@@ -102,3 +103,43 @@ class TotalNumberTests(unittest.TestCase):
         ]:
             with self.subTest(sentence=sentence):
                 self.check_case(sentence, analyze(sentence)["root"], expected)
+
+
+THEY_CASES = [
+    ("They is ready.", "VBZ is", "ready", True, ["are"]),
+    ("They was ready.", "VBD was", "ready", True, ["were"]),
+    ("They are ready.", "VBP are", "ready", True, []),
+    ("They were ready.", "VBD were", "ready", True, []),
+    ("They is ready.", "VBZ is", "ready", False, []),
+]
+
+
+class SingularTheyTests(unittest.TestCase):
+    def check_case(self, sentence, tree, context, expected):
+        result = probe_singular_they_agreement(
+            sentence, tree, variety="standard_english", singular_reference_confirmed=context
+        )
+        self.assertFalse(result["production_enabled"])
+        rows = result["candidates"]
+        self.assertEqual([row["expected_verb"] for row in rows], expected)
+        for row in rows:
+            self.assertEqual(row["rule_id"], "PHR-334")
+            self.assertIsNone(row["edit_hint"])
+
+    def test_confirmed_singular_reference(self):
+        for sentence, verb, complement, context, expected in THEY_CASES:
+            with self.subTest(sentence=sentence, context=context):
+                parse = f"(S (NP (PRP They)) (VP ({verb}) (ADJP (JJ {complement}))) (. .))"
+                self.check_case(sentence, NodeBuilder().build(parse_parse_string(parse), 4), context, expected)
+
+    @unittest.skipUnless(os.environ.get("CGEL_REQUIRE_PARSER") == "1", "configured parser required")
+    def test_configured_singular_they(self):
+        for sentence, context, expected in [
+            *((sentence, context, expected) for sentence, _, _, context, expected in THEY_CASES),
+            ("They has finished.", True, ["have"]),
+            ("They have finished.", True, []),
+            ("She is ready.", False, []),
+            ("They themselves are ready.", True, []),
+        ]:
+            with self.subTest(sentence=sentence, context=context):
+                self.check_case(sentence, analyze(sentence)["root"], context, expected)
