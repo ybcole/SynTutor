@@ -86,6 +86,8 @@ def _nonplain_lexical_form(parts):
         return None
     if tag == "VB" and surface.endswith("s"):
         return _plain_form_for_mistagged_3sg(surface)
+    if tag == "VBN":
+        tag = "VBD"  # Accept only an independently attested preterite below.
     if tag not in {"VBZ", "VBD"}:
         return None
     lemmas = getLemma(surface, upos="VERB", lemmatize_oov=False)

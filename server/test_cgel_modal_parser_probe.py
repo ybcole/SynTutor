@@ -89,6 +89,7 @@ class ModalParserProbeTests(unittest.TestCase):
     def test_closed_question_lexical_form(self):
         for surface, tag, replacement in [
             ("works", "VBZ", "work"), ("went", "VBD", "go"), ("works", "VB", "work"),
+            ("went", "VBN", "go"), ("parked", "VBN", "park"), ("gone", "VBN", None),
             ("cut", "VBD", None), ("work", "VB", None),
         ]:
             with self.subTest(surface=surface, tag=tag):
