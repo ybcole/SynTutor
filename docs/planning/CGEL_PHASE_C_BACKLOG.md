@@ -1,14 +1,14 @@
 # Cambridge Phase C backlog
 
-Snapshot through the reported-directive prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
+Snapshot through the question-tag auxiliary prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
 
 | Diagnostic specifications | Primary pilot | Supporting pilot | Outside pilot | Production-enabled |
 |---:|---:|---:|---:|---:|
-| 204 | 20 | 5 | 179 | 0 |
+| 204 | 21 | 5 | 178 | 0 |
 
 ## Next implementation batch
 
-**Auxiliary choice in canonical tags (CLS-182)** is next. Check how tags reuse a matrix auxiliary or require supportive do, with agreement handled separately.
+**Question-tag agreement (CLS-183)** is next. Check agreement with the tag pronoun, including singular antecedents that license plural-form *they*.
 
 After that batch, triage adjacent diagnostics by governing relation and compatible edits. Use the source and diagnostic family below to find related rules. A catalog entry can share a detector or receive a documented no-detector disposition.
 
@@ -30,6 +30,7 @@ After that batch, triage adjacent diagnostics by governing relation and compatib
 | Negative imperative be | CLS-102 | CLS-131 | This batch | Validate ordinary verbal directive context and broaden parser coverage. |
 | Inclusive let’s | CLS-268 | — | This batch | Verify broader subject and parser coverage, including vocatives. |
 | Reported negative directives | CLS-270 | — | This batch | Broaden reporting-verb and parser coverage. |
+| Auxiliary choice in canonical tags | CLS-182 | — | This batch | Broaden anchor and tag shapes and validate canonical grounding. |
 | Imperative verb form | CLS-130 | — | [#115](https://github.com/ybcole/SynTutor/pull/115) | Establish the source of directive intent and validate the resulting finding. |
 
 ## Rule-by-rule inventory
@@ -50,7 +51,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | `PHR-334` | Singular they and finite agreement | Ch. 5, pp. 493, 494 | Queued |
 | `PHR-343` | Agreement attraction versus grammatical overrides | Ch. 5, pp. 500, 501 | Queued |
 | `PHR-347` | Mass aggregates and agreement | Ch. 5, pp. 504 | Queued |
-| `CLS-183` | Agreement with the pronoun in canonical tags | Ch. 10, pp. 893 | Queued |
+| `CLS-183` | Agreement with the pronoun in canonical tags | Ch. 10, pp. 893 | Next |
 
 ### Article determiner (19)
 
@@ -263,7 +264,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | `WCAT-059` | Prepositional to after adjectives | Ch. 6, pp. 545 | Queued |
 | `CLS-126` | Plain form after supportive do in questions | Ch. 10, pp. 856 | Pilot |
 | `CLS-130` | Plain form in ordinary imperatives | Ch. 10, pp. 857 | Pilot |
-| `CLS-182` | Auxiliary choice and tense in canonical tags | Ch. 10, pp. 892, 893 | Next |
+| `CLS-182` | Auxiliary choice and tense in canonical tags | Ch. 10, pp. 892, 893 | Pilot |
 | `CLS-357` | Infinitival marker in passive causative make | Ch. 14, pp. 1234 | Pilot |
 | `MORPH-114` | Three-way vowel alternation | Ch. 18, pp. 1603 | Queued |
 | `MORPH-130` | Negative am and inversion | Ch. 18, pp. 1612 | Queued |
