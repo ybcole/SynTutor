@@ -31,7 +31,32 @@ def _doubling_replacement(word, tag):
     return None
 
 
+MUTE_E_BASES = {"hope", "bake", "make", "take", "write", "move", "save", "close"}
+
+
+def _mute_e_replacement(word, tag):
+    if tag != "VBG" or not word.endswith("eing"):
+        return None
+    base = word[:-3]
+    if base not in MUTE_E_BASES or getAllLemmas(word):
+        return None
+    expected = base[:-1] + "ing"
+    if expected in getInflection(base, tag=tag, inflect_oov=False):
+        return expected
+    return None
+
+
 def probe_consonant_doubling(sentence, tree, *, variety):
+    return _probe_spelling(sentence, tree, variety, _doubling_replacement,
+                           "MORPH-078", [1575, 1576], "omitted_final_consonant_doubling")
+
+
+def probe_mute_e(sentence, tree, *, variety):
+    return _probe_spelling(sentence, tree, variety, _mute_e_replacement,
+                           "MORPH-080", [1576, 1577], "retained_mute_e_before_ing")
+
+
+def _probe_spelling(sentence, tree, variety, replacement_for, rule_id, pages, relation_kind):
     result = {"status": "not_evaluated", "production_enabled": False, "candidates": []}
     if variety != "standard_english":
         return result
@@ -46,11 +71,11 @@ def probe_consonant_doubling(sentence, tree, *, variety):
     for leaf, token in zip(leaves, tokens):
         if not token["text"].islower():
             continue
-        replacement = _doubling_replacement(token["lower"], leaf.get("pos"))
+        replacement = replacement_for(token["lower"], leaf.get("pos"))
         if replacement:
             result["candidates"].append({
-                "rule_id": "MORPH-078", "source_chapter": 18, "source_pages": [1575, 1576],
-                "relation": {"kind": "omitted_final_consonant_doubling",
+                "rule_id": rule_id, "source_chapter": 18, "source_pages": pages,
+                "relation": {"kind": relation_kind,
                              "word_char_span": token["char_span"]},
                 "edit_hint": {"char_span": token["char_span"], "replacement": replacement,
                               "requires_reparse": True, "safe_to_apply_automatically": False},
