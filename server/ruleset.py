@@ -581,6 +581,15 @@ def _person_of(leaf):
     return None
 
 
+def _is_central_modal(leaf):
+    """Require category evidence: can/will/may also have lexical uses.
+
+    MD is parser evidence, not independent verification of auxiliary function.
+    Uncertain or nonmodal tags must not trigger these modal-only diagnostics.
+    """
+    return leaf.get('type') == 'MD' and _lower(leaf) in MODAL_SURFACES
+
+
 def _verb_key(leaf):
     t = leaf.get('type')
     s = _lower(leaf)
@@ -1521,7 +1530,7 @@ def _check_tree(root, clauses, leaves, text=None, quoted=None):
             nxt = leaves[i + 1]
             finite = nxt.get('type') in ('VBD', 'VBZ', 'VBP') \
                 or nxt.get('ftag') in ('VBD', 'VBZ', 'VBP') \
-                or _lower(nxt) in MODAL_SURFACES \
+                or _is_central_modal(nxt) \
                 or _lower(nxt).endswith(('ies', 'es'))
             if finite:
                 base = {'is': 'be', 'are': 'be', 'was': 'be', 'were': 'be',
@@ -1539,7 +1548,7 @@ def _check_tree(root, clauses, leaves, text=None, quoted=None):
                                          f"Write '{base}' after 'to' instead of "
                                          f"'{nxt['surface']}'.")))
         # 6.12 modal + to
-        if (_lower(lf) in MODAL_SURFACES or lf.get('type') == 'MD') \
+        if _is_central_modal(lf) \
                 and _lower(lf) != 'ought' \
                 and i + 1 < len(leaves) and leaves[i + 1].get('type') == 'TO':
             out.append(_finding('6.12', 'error', 'C-MODAL-TO', 'modal',
@@ -2945,7 +2954,7 @@ def _check_basic(root, clauses, leaves):
     # --- 6.1 / 6.12 modals --------------------------------------------------- #
     for i, lf in enumerate(leaves):
         low = lows[i]
-        if low not in MODAL_SURFACES or i + 1 >= len(leaves):
+        if not _is_central_modal(lf) or i + 1 >= len(leaves):
             continue
         nxt = leaves[i + 1]
         nt = nxt.get('type')
@@ -3002,7 +3011,7 @@ def _check_basic(root, clauses, leaves):
                 f"the verb, without 'to': write '{lf['surface']} {n2}', not "
                 f"'to {n2}'.",
                 _tree_evidence(nxt['id'], 'MD + to', [{'node': nxt['id']}])))
-        elif nlow in MODAL_SURFACES:
+        elif _is_central_modal(nxt):
             out.append(_finding(
                 '6.12', 'error', 'C-MODAL-STACK', 'verb form', nxt['id'],
                 f"This sentence has two modals in a row, "
