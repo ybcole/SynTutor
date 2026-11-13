@@ -1,7 +1,7 @@
 import os
 import unittest
 
-from cgel_case_probe import probe_infinitival_case, probe_pronoun_case
+from cgel_case_probe import probe_infinitival_case, probe_local_reflexive, probe_pronoun_case
 from parse_engine import NodeBuilder, analyze, parse_parse_string
 
 
@@ -69,3 +69,38 @@ class InfinitivalCaseTests(unittest.TestCase):
                 found = [row["expected_pronoun"] for row in rows]
                 self.assertIn(found, (expected, []))
                 print(f"Cambridge infinitival case {sentence!r}: {found}; expected={expected}; parse={analysis['parse_string']}")
+
+
+class LocalReflexiveTests(unittest.TestCase):
+    def test_local_controller(self):
+        for pronoun, reflexive, expected in [
+            ("he", "myself", ["CLS-1101"]), ("she", "herself", []),
+            ("they", "themself", []), ("you", "yourselves", []),
+        ]:
+            with self.subTest(pronoun=pronoun, reflexive=reflexive):
+                sentence = f"If {pronoun} hurt {reflexive}, I would leave."
+                parse = (
+                    f"(S (SBAR (IN If) (S (NP (PRP {pronoun})) "
+                    f"(VP (VBD hurt) (NP (PRP {reflexive}))))) (, ,) "
+                    "(NP (PRP I)) (VP (MD would) (VP (VB leave))) (. .))"
+                )
+                tree = NodeBuilder().build(parse_parse_string(parse), 9)
+                rows = probe_local_reflexive(sentence, tree, variety="standard_english")["candidates"]
+                self.assertEqual([row["rule_id"] for row in rows], expected)
+
+    @unittest.skipUnless(os.environ.get("CGEL_REQUIRE_PARSER") == "1", "configured parser required")
+    def test_configured_local_reflexive(self):
+        for sentence, expected in [
+            ("If she blames myself, I will apologize.", ["CLS-1101"]),
+            ("If we injure himself, Kiran will seek treatment.", ["CLS-1101"]),
+            ("If she blames herself, Mira will apologize.", []),
+            ("If they injure themselves, Kiran will seek treatment.", []),
+            ("If she admires a portrait of myself, I will thank her.", []),
+            ("I blamed myself.", []),
+        ]:
+            with self.subTest(sentence=sentence):
+                analysis = analyze(sentence)
+                rows = probe_local_reflexive(sentence, analysis["root"], variety="standard_english")["candidates"]
+                found = [row["rule_id"] for row in rows]
+                self.assertIn(found, (expected, []))
+                print(f"Cambridge local reflexive {sentence!r}: {found}; expected={expected}")
