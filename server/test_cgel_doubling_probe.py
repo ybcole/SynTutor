@@ -3,6 +3,7 @@ import unittest
 
 from cgel_doubling_probe import _doubling_replacement, _mute_e_replacement, probe_consonant_doubling, probe_mute_e
 from cgel_doubling_probe import _final_ie_replacement, _final_y_plural_replacement, probe_final_ie, probe_final_y_plural
+from cgel_doubling_probe import probe_personal_name_plural
 from parse_engine import NodeBuilder, analyze, parse_parse_string
 
 
@@ -180,3 +181,55 @@ class FinalYPluralTests(unittest.TestCase):
                     self.assertEqual(recheck["candidates"], [])
                 self.assertIn(repaired, ([], [expected]) if expected else ([],))
                 print(f"Cambridge final y plural {sentence!r}: {repaired}; expected={expected}; parse={analysis['parse_string']}")
+
+
+class PersonalNamePluralTests(unittest.TestCase):
+    cases = [
+        ("Three Maries arrived.", "Mary", "Three Marys arrived."),
+        ("The Wolves moved next door.", "Wolf", "The Wolfs moved next door."),
+        ("Three Maries arrived.", None, None),
+        ("The Wolves moved next door.", None, None),
+        ("Three Marys arrived.", "Mary", None),
+        ("The Wolfs moved next door.", "Wolf", None),
+        ("Mary's bag was here.", "Mary", None),
+    ]
+
+    def check_case(self, sentence, tree, name, expected, *, configured=False):
+        result = probe_personal_name_plural(
+            sentence, tree, variety="standard_english", confirmed_name=name
+        )
+        repairs = []
+        for row in result["candidates"]:
+            self.assertEqual(row["rule_id"], "MORPH-104")
+            edit = row["edit_hint"]
+            start, end = edit["char_span"]
+            corrected = sentence[:start] + edit["replacement"] + sentence[end:]
+            repairs.append(corrected)
+            if configured:
+                recheck = probe_personal_name_plural(
+                    corrected, analyze(corrected)["root"], variety="standard_english", confirmed_name=name
+                )
+                self.assertEqual(recheck["candidates"], [])
+        if configured:
+            print(f"Cambridge name plurals {sentence!r}: {repairs}; expected={expected}")
+            self.assertIn(repairs, ([], [expected]) if expected else ([],))
+        else:
+            self.assertEqual(repairs, [expected] if expected else [])
+
+    def test_confirmed_base_and_unconfirmed_control(self):
+        tree = NodeBuilder().build(parse_parse_string(
+            "(S (NP (CD Three) (NNPS Maries)) (VP (VBD arrived)) (. .))"
+        ), 4)
+        self.check_case("Three Maries arrived.", tree, "Mary", "Three Marys arrived.")
+        self.check_case("Three Maries arrived.", tree, None, None)
+        wolves = NodeBuilder().build(parse_parse_string(
+            "(S (NP (DT The) (NNS Wolves)) (VP (VBD moved)) (. .))"
+        ), 4)
+        self.check_case("The Wolves moved.", wolves, "Wolf", "The Wolfs moved.")
+        self.check_case("The Wolves moved.", wolves, None, None)
+
+    @unittest.skipUnless(os.environ.get("CGEL_REQUIRE_PARSER") == "1", "configured parser required")
+    def test_configured_name_plurals(self):
+        for sentence, name, expected in self.cases:
+            with self.subTest(sentence=sentence, name=name):
+                self.check_case(sentence, analyze(sentence)["root"], name, expected, configured=True)
