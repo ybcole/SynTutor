@@ -109,3 +109,49 @@ def probe_demonstrative_number(sentence, tree, *, variety):
             "edit_hint": None,
         })
     return result
+
+
+def probe_total_number(sentence, tree, *, variety):
+    """Check finite agreement with a simple subject headed by the number."""
+    result = {"status": "not_evaluated", "production_enabled": False, "candidates": []}
+    if variety != "standard_english":
+        return result
+    tokens = tokens_with_spans(sentence)
+    leaves = list(_ordered_leaves(tree))
+    if len(tokens) != len(leaves) or any(
+        leaf["span"] != [token["index"], token["index"] + 1] or leaf["surface"] != token["text"]
+        for leaf, token in zip(leaves, tokens)
+    ) or any(token["text"] in {'"', '“', '”', "'", "‘", "’"} for token in tokens):
+        return result
+    result["status"] = "candidate_only"
+    children = tree.get("children", [])
+    if tree["type"] != "S" or [node["type"] for node in children] != ["NP", "VP", "."]:
+        return result
+    parts = children[0].get("children", [])
+    if len(parts) == 2 and parts[0]["type"] == "NP":
+        parts = [*parts[0].get("children", []), parts[1]]
+    if len(parts) != 3:
+        return result
+    det, noun, phrase = parts
+    if (det.get("pos") != "DT" or det["surface"].casefold() != "the"
+            or noun.get("pos") != "NN" or noun["surface"].casefold() != "number"
+            or phrase["type"] != "PP"):
+        return result
+    pp = phrase.get("children", [])
+    if (len(pp) != 2 or pp[0].get("pos") != "IN" or pp[0]["surface"].casefold() != "of"
+            or pp[1]["type"] != "NP"):
+        return result
+    vp = children[1].get("children", [])
+    if not vp or vp[0].get("pos") not in {"VBP", "VBZ", "VBD"}:
+        return result
+    verb = vp[0]
+    form = verb["surface"].casefold()
+    if form in {"are", "were", "have"}:
+        result["candidates"].append({
+            "rule_id": "PHR-079", "source_chapter": 5, "source_pages": [350],
+            "relation": {"kind": "total_number_subject_agreement",
+                         "subject_head_char_span": tokens[noun["span"][0]]["char_span"],
+                         "verb_char_span": tokens[verb["span"][0]]["char_span"]},
+            "expected_verb": FORMS[form][0], "edit_hint": None,
+        })
+    return result
