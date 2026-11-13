@@ -647,7 +647,7 @@ class CanonicalHardeningTests(unittest.TestCase):
             "tree": {"label": "S", "children": [
                 {"label": "NP", "triangle": True, "words": ["Alice"]},
                 {"label": "VP", "children": [
-                    {"label": "V", "features": ["intrans"], "verb_type": "I",
+                    {"label": "V", "features": ["past"], "verb_type": "I",
                      "children": [{"word": "walks"}]},
                 ]},
             ]},
@@ -655,6 +655,7 @@ class CanonicalHardeningTests(unittest.TestCase):
         verb_result = canonicalize_gold_record(verb_record, {"chapter": 10})
         self.assertEqual(verb_result["status"], "normalized", verb_result.get("errors"))
         verb = verb_result["tree"]["root"]["children"][1]["children"][0]
+        self.assertEqual(verb["label"], "V(I)")
         self.assertTrue(any("source_node_metadata:verb_type=" in note
                             for note in verb.get("notes", [])))
 

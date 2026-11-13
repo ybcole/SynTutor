@@ -143,7 +143,7 @@ Movement arrows and dotted lines (Ch6 p.127; Ch9 p.199: "not part of the phrase 
 | `[phrasal]` | V5 | stacks: `V[trans,phrasal]` (Ch5 [35], [39] `[IMG]`) |
 | `[pres]` `[past]` | V6 | tense. Only the **first** verb in a sequence is tensed. Stacks with sub-cat: `V[ditrans,past]` |
 | `[-tense]` | V10 | non-finite |
-| `V(I)` / `V(II)` | V10 | Clause-complement verb-type labels, distinct from the six Ch4 subcategory features (Ch10 p.243 `[IMG]`). |
+| `V(I)` / `V(II)` | V10 | Clause-complement verb-type labels, distinct from the six Ch4 subcategory features (Ch10 p.243 `[IMG]`). Older source JSON stores `V` plus `verb_type: I/II`; canonical import displays the printed V(I)/V(II) while retaining the source metadata. |
 
 ### 3.3 Functions (read from positions; §6)
 `S` (subject), `P` (predicate), `H` (head), `M` (modifier), `C` (complement), `dO`, `iO`, `sP` (subject-predicative), `oP` (object-predicative), `PC` (prepositional complement), `aA` (adjunct adverbial, Ch5), `sA` (S-adverbial, Ch5).

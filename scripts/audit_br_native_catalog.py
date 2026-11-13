@@ -27,6 +27,7 @@ def audit_book_corpus(expected_count: int | None = None) -> dict:
     examined = 0
     matched = 0
     hard_leaks = []
+    uncovered_instances = []
 
     for chapter in range(1, 11):
         path = BOOK / f"ch{chapter:02d}.trees.json"
@@ -50,6 +51,27 @@ def audit_book_corpus(expected_count: int | None = None) -> dict:
             for unknown in result["uncovered_patterns"]:
                 key = unknown["parent"] + " -> " + " ".join(unknown["children"])
                 all_unknown[key] += 1
+                if chapter <= 2 or unknown["parent"].startswith("PHRASE"):
+                    disposition = "PEDAGOGICAL_SCHEMATIC_PROFILE"
+                elif chapter == 8 and unknown["parent"] == "S" and all(
+                    child == "S" for child in unknown["children"]
+                ):
+                    disposition = "ACA_SOURCE_SPECIFIC_SCAFFOLD"
+                elif record.get("status") == "IMG_ANOMALY":
+                    disposition = "PRINTED_ANOMALY_REQUIRES_ADJUDICATION"
+                else:
+                    disposition = "CONSTRUCTION_REQUIRES_SOURCE_REVIEW"
+                uncovered_instances.append({
+                    "chapter": chapter,
+                    "record_id": record.get("id"),
+                    "printed_page": record.get("page"),
+                    "figure": record.get("fig"),
+                    "source_status": record.get("status"),
+                    "path": unknown["path"],
+                    "signature": key,
+                    "triage_group": disposition,
+                    "independently_verified": False,
+                })
             for leak in result["violations"]:
                 hard_leaks.append({"record_id": record.get("id"), **leak})
         examined += chapter_examined
@@ -73,6 +95,8 @@ def audit_book_corpus(expected_count: int | None = None) -> dict:
         "overall_coverage": round(matched / examined, 4) if examined else None,
         "chapter_summary": chapters,
         "most_common_uncovered_signatures": all_unknown.most_common(40),
+        "uncovered_instances": uncovered_instances,
+        "uncovered_triage_counts": dict(Counter(row["triage_group"] for row in uncovered_instances)),
         "parser_label_leaks": hard_leaks,
         "semantic_conditions_checked": False,
         "independently_verified_trees": 0,

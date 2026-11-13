@@ -123,6 +123,8 @@ All results retain matched/examined counts, source rule IDs/pages, uncovered pat
 
 A read-only comparison of the **100 draft signatures** against all 252 stored chapter-tree records identified **1,382 of 1,558 existing branch shapes (88.7%)** using chapter introduction gates. This is a match of local parent/child label signatures only: **it is not 88.7% grammar accuracy, full B-R compatibility, or successful on-the-fly parsing**.
 
+**13 November 2026 audit update:** the catalog now recognizes the raw book's unlabelled C2 wh triangle, NP-over-E ellipsis, and Chapter 10 V(I)/V(II) encoding without confusing these with other nodes. It matches 1,390 of 1,558 branch instances (89.2%). The audit lists all 168 remaining instances with their source record and provisional triage group. No semantic condition or independent source adjudication was inferred from that increase.
+
 | Chapter | Matched / examined branch shapes | Recognition |
 | --- | ---: | ---: |
 | 1 | 0 / 38 | 0.0% |

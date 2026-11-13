@@ -6,7 +6,9 @@ No spaCy, Benepar model, network, or database is required.
 from __future__ import annotations
 
 import copy
+import json
 import unittest
+from pathlib import Path
 
 from server.br_native_grammar import (
     _validated_registry,
@@ -43,6 +45,37 @@ def simple_root():
 
 
 class RegistryTests(unittest.TestCase):
+    def test_book_figures_preserve_distinct_source_shapes(self):
+        book = Path(__file__).resolve().parents[1] / "web/content/book"
+        for chapter, record_id, rule_id in (
+            (5, "ch5-46", "BR05-NP-ELLIPSIS-E"),
+            (9, "ch9-d1a", "BR09-C2-UNLABELLED-TRIANGLE"),
+            (10, "ch10-101b", "BR10-VP-TYPE-I"),
+            (10, "ch10-102b", "BR10-VP-TYPE-II"),
+        ):
+            with self.subTest(record_id=record_id):
+                records = json.loads((book / f"ch{chapter:02d}.trees.json").read_text())["trees"]
+                source = next(record for record in records if record["id"] == record_id)
+                result = audit_br_constructions(envelope(source["tree"], chapter, f"V{chapter}"))
+                self.assertTrue(any(rule_id in row["rule_ids"]
+                                    for row in result["covered_patterns"]))
+                self.assertFalse(result["independent_linguistic_review"])
+
+    def test_source_unlabelled_wh_and_elided_np_are_distinct(self):
+        unlabelled = {"label": "C2", "children": [
+            {"triangle": True, "words": ["which", "books"]}
+        ]}
+        wh = audit_br_constructions(envelope(unlabelled, chapter=9, version="V9"))
+        self.assertEqual(wh["pattern_coverage"]["matched"], 1)
+        self.assertFalse(wh["may_certify_grammaticality"])
+
+        elided = {"label": "NP", "children": [{"symbol": "E", "elided": True}]}
+        ellipsis = audit_br_constructions(envelope(elided, chapter=5, version="V5"))
+        self.assertEqual(ellipsis["pattern_coverage"]["matched"], 1)
+        gap = {"label": "NP", "children": [{"gap": True}]}
+        gap_audit = audit_br_constructions(envelope(gap, chapter=5, version="V5"))
+        self.assertEqual(gap_audit["pattern_coverage"]["matched"], 0)
+
     def test_registry_is_loaded_and_all_chapters_are_covered(self):
         catalog = load_br_construction_registry()
         self.assertEqual(catalog["schema_version"], "0.1.0")

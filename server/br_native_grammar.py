@@ -76,14 +76,18 @@ def _chapter(profile: dict[str, Any]) -> int:
 def _child_type(node: dict[str, Any]) -> str:
     if "word" in node:
         return "@word"
+    if node.get("symbol") == "E" and node.get("elided") is True:
+        return "@ellipsis"
     if node.get("gap"):
         return "@gap"
     if node.get("empty"):
         return "@empty"
     # A triangle suppresses internal analysis, not its known category.
     # An unlabelled triangle is never silently assigned a category.
-    if node.get("unlabelled"):
+    if node.get("unlabelled") or (node.get("triangle") and node.get("label") is None):
         return "@unlabelled"
+    if node.get("label") == "V" and node.get("verb_type") in ("I", "II"):
+        return f"V({node['verb_type']})"
     return str(node.get("label", "@unknown"))
 
 

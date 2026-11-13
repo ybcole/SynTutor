@@ -1943,6 +1943,20 @@
       ],
       "condition": "Wh triangle intentionally lacks a category label in printed model.",
       "level": "structural"
+    },
+    {
+      "id": "BR05-NP-ELLIPSIS-E",
+      "chapter_introduced": 5,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [97],
+        "evidence": "BOOK_FIGURE_46_PAGE_IMAGE",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "NP",
+      "children": ["@ellipsis"],
+      "condition": "Figure 46 uses an NP over zero-word E for a contextually elided indirect object; E is not a movement gap.",
+      "level": "structural"
     }
   ],
   "obligations": [
