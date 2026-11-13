@@ -1,14 +1,14 @@
 # Cambridge Phase C backlog
 
-Snapshot through the basic coordination prototypes. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
+Snapshot through the coordinated determiner prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
 
 | Diagnostic specifications | Primary pilot | Supporting pilot | Outside pilot | Production-enabled |
 |---:|---:|---:|---:|---:|
-| 204 | 38 | 6 | 160 | 0 |
+| 204 | 39 | 6 | 159 | 0 |
 
 ## Next implementation batch
 
-**Plural determinatives with coordinated singular nouns (CLS-1036)** are next. Distinguish number selection inside the NP from agreement of the whole coordination with the verb.
+**Comparative gaps (CLS-1119)** are next. Check the gap required by the comparative governor and preserve ordinary ellipsis.
 
 After that batch, triage adjacent diagnostics by governing relation and compatible edits. Use the source and diagnostic family below to find related rules. A catalog entry can share a detector or receive a documented no-detector disposition.
 
@@ -46,6 +46,7 @@ After that batch, triage adjacent diagnostics by governing relation and compatib
 | Mass aggregate agreement | PHR-347 | — | This batch | Validate additional subject shapes and preserve count collective readings. |
 | Spatial demonstrative agreement | PHR-620 | — | This batch | Validate locative attachment and shared deictic context before any rewrite. |
 | Basic coordination | CLS-1034, CLS-1035 | — | This batch | Broaden evidence for shared function and nonfinite subject coordination. |
+| Plural determiners and noun coordination | CLS-1036 | — | This batch | Validate word-level scope and preserve full NP coordination. |
 | Imperative verb form | CLS-130 | — | [#115](https://github.com/ybcole/SynTutor/pull/115) | Establish the source of directive intent and validate the resulting finding. |
 
 ## Rule-by-rule inventory
@@ -89,7 +90,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | `PHR-197` | Bare role nouns in ordinary object position | Ch. 5, pp. 409 | Support |
 | `CLS-201` | Set expressions in which partitives | Ch. 10, pp. 903 | Queued |
 | `CLS-229` | Exclamative what and singular count NPs | Ch. 10, pp. 919, 920 | Queued |
-| `CLS-1036` | Singular-noun coordination cannot satisfy a plural determinative | Ch. 15, pp. 1334, 1335 | Next |
+| `CLS-1036` | Singular-noun coordination cannot satisfy a plural determinative | Ch. 15, pp. 1334, 1335 | Pilot |
 | `MORPH-141` | Liaison and article choice by sound | Ch. 18, pp. 1618 | Pilot |
 
 ### Extra word (7)
@@ -127,7 +128,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | `PHR-054` | Partitive selection with aggregate plurals | Ch. 5, pp. 343 | Queued |
 | `PHR-110` | Both as a binary coordination marker | Ch. 5, pp. 361 | Queued |
 | `CLS-171` | Negative polarity items in simple positive declarative questions | Ch. 10, pp. 885 | Queued |
-| `CLS-1119` | Obligatory gap for the comparative governor counterpart | Ch. 13, pp. 1108 | Queued |
+| `CLS-1119` | Obligatory gap for the comparative governor counterpart | Ch. 13, pp. 1108 | Next |
 | `CLS-1129` | Subject omission with a retained comparative verb | Ch. 13, pp. 1113 | Queued |
 | `CLS-1159` | Fewer with ordinary non-count singulars | Ch. 13, pp. 1127 | Queued |
 | `CLS-1166` | To complements of superior and inferior | Ch. 13, pp. 1129, 1130 | Queued |

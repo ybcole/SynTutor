@@ -86,3 +86,53 @@ def probe_coordination(sentence, tree, *, variety):
         "edit_hint": None,
     })
     return result
+
+
+# Distinct count forms protect against parser number guesses and invariant nouns.
+SINGULAR_COUNT_NOUNS = {"cup", "saucer", "plate", "bowl", "shirt", "tie", "fork", "spoon"}
+PLURAL_CARDINALS = {"two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"}
+
+
+def _shared_plural_determiner(node):
+    parts = node.get("children", [])
+    if node["type"] == "NP" and len(parts) in {2, 4}:
+        determiner = parts[0]
+        surface = determiner.get("surface", "").casefold()
+        plural = ((determiner.get("pos") == "DT" and surface in {"these", "those"})
+                  or (determiner.get("pos") == "CD" and surface in PLURAL_CARDINALS))
+        if plural:
+            nominal = parts[1]
+            pair = None
+            if len(parts) == 4:
+                pair = _pair({"children": parts[1:]})
+            elif nominal["type"] in {"NP", "NML", "NX"}:
+                pair = _pair(nominal)
+            if pair and all(noun.get("pos") == "NN"
+                            and noun["surface"].casefold() in SINGULAR_COUNT_NOUNS for noun in pair):
+                yield determiner, pair
+    for child in parts:
+        yield from _shared_plural_determiner(child)
+
+
+def probe_coordinated_determiner(sentence, tree, *, variety):
+    """Require an explicit shared determiner over a word-level coordination."""
+    result = {"status": "not_evaluated", "production_enabled": False, "candidates": []}
+    if variety != "standard_english":
+        return result
+    tokens = tokens_with_spans(sentence)
+    leaves = list(_ordered_leaves(tree))
+    if len(tokens) != len(leaves) or any(
+        leaf["span"] != [token["index"], token["index"] + 1] or leaf["surface"] != token["text"]
+        for leaf, token in zip(leaves, tokens)
+    ) or any(token["text"] in {'"', '“', '”', "'", "‘", "’"} for token in tokens):
+        return result
+    result["status"] = "candidate_only"
+    for determiner, pair in _shared_plural_determiner(tree):
+        result["candidates"].append({
+            "rule_id": "CLS-1036", "source_chapter": 15, "source_pages": [1334, 1335],
+            "relation": {"kind": "plural_determiner_with_singular_noun_coordinates",
+                         "determiner_char_span": tokens[determiner["span"][0]]["char_span"],
+                         "coordinate_char_spans": [tokens[noun["span"][0]]["char_span"] for noun in pair]},
+            "edit_hint": None,
+        })
+    return result
