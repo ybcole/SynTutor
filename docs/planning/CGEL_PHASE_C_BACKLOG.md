@@ -1,14 +1,14 @@
 # Cambridge Phase C backlog
 
-Snapshot through the which-partitive prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
+Snapshot through the exclamative article prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
 
 | Diagnostic specifications | Primary pilot | Supporting pilot | Outside pilot | Production-enabled |
 |---:|---:|---:|---:|---:|
-| 204 | 52 | 6 | 146 | 0 |
+| 204 | 53 | 6 | 145 | 0 |
 
 ## Next implementation batch
 
-**Exclamative what and singular count NPs (CLS-229)** are next.
+**Determiners before gerund-participials (MORPH-041)** are next. Distinguish verbal clauses from gerundial nouns.
 
 After that batch, triage adjacent diagnostics by governing relation and compatible edits. Use the source and diagnostic family below to find related rules. A catalog entry can share a detector or receive a documented no-detector disposition.
 
@@ -60,6 +60,7 @@ After that batch, triage adjacent diagnostics by governing relation and compatib
 | Overt subjects in wh-infinitivals | CLS-407 | — | This batch | Validate interrogative attachment and assess wh-subject cases separately. |
 | Participial NP modifiers | CLS-408 | — | This batch | Validate NP attachment and preserve finite relatives. |
 | Set expressions in which partitives | CLS-201 | — | This batch | Validate partitive attachment and extend beyond explicit some and any. |
+| Exclamative what and articles | CLS-229 | — | This batch | Validate exclamative context and broaden count-head coverage. |
 | Imperative verb form | CLS-130 | — | [#115](https://github.com/ybcole/SynTutor/pull/115) | Establish the source of directive intent and validate the resulting finding. |
 
 ## Rule-by-rule inventory
@@ -86,7 +87,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 
 | Rule | Construction | Cambridge source | Status |
 |---|---|---|---|
-| `MORPH-041` | Determiners cannot directly govern gerund-participial verbs | Ch. 3, pp. 81, 82 | Queued |
+| `MORPH-041` | Determiners cannot directly govern gerund-participial verbs | Ch. 3, pp. 81, 82 | Next |
 | `COMP-087` | Bare role NP requires determiner in ordinary object position | Ch. 4, pp. 253 | Pilot |
 | `PHR-028` | Bare nominal cannot occupy ordinary singular count subject | Ch. 5, pp. 329 | Queued |
 | `PHR-043` | Noncount selectors much and a little | Ch. 5, pp. 339 | Queued |
@@ -102,7 +103,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | `PHR-161` | No and none in dependent and fused-head functions | Ch. 5, pp. 390 | Queued |
 | `PHR-197` | Bare role nouns in ordinary object position | Ch. 5, pp. 409 | Support |
 | `CLS-201` | Set expressions in which partitives | Ch. 10, pp. 903 | Pilot |
-| `CLS-229` | Exclamative what and singular count NPs | Ch. 10, pp. 919, 920 | Next |
+| `CLS-229` | Exclamative what and singular count NPs | Ch. 10, pp. 919, 920 | Pilot |
 | `CLS-1036` | Singular-noun coordination cannot satisfy a plural determinative | Ch. 15, pp. 1334, 1335 | Pilot |
 | `MORPH-141` | Liaison and article choice by sound | Ch. 18, pp. 1618 | Pilot |
 
