@@ -69,6 +69,7 @@ jobs:
           python scripts/audit_cgel_overlap_probes.py --modal-evaluation > artifacts/cgel-modal-evaluation.json
           python scripts/audit_cgel_overlap_probes.py --enjoy-evaluation > artifacts/cgel-enjoy-evaluation.json
           python scripts/audit_cgel_overlap_probes.py --auxiliary-evaluation > artifacts/cgel-auxiliary-evaluation.json
+          python scripts/audit_cgel_overlap_probes.py --article-evaluation > artifacts/cgel-article-evaluation.json
           python scripts/evaluate_cgel_passive_make.py > artifacts/cgel-passive-make-evaluation.json
           python scripts/evaluate_cgel_passive_make.py evaluation/cgel_passive_make_modifiers_heldout.json > artifacts/cgel-passive-make-modifiers-heldout.json
       - name: Upload Cambridge overlap evidence
@@ -80,6 +81,7 @@ jobs:
             artifacts/cgel-modal-evaluation.json
             artifacts/cgel-enjoy-evaluation.json
             artifacts/cgel-auxiliary-evaluation.json
+            artifacts/cgel-article-evaluation.json
             artifacts/cgel-passive-make-evaluation.json
             artifacts/cgel-passive-make-modifiers-heldout.json
           if-no-files-found: error

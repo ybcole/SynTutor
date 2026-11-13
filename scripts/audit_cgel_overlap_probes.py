@@ -140,6 +140,38 @@ def evaluate_auxiliaries(probe):
     return rows
 
 
+ARTICLE_CASES = [
+    ("An university opened nearby.", "A university opened nearby."),
+    ("We waited a hour.", "We waited an hour."),
+    ("She bought a unusual book.", "She bought an unusual book."),
+    ("She bought a (old) book.", "She bought an (old) book."),
+    ("They saw an (small) owl.", "They saw a (small) owl."),
+    ("A university opened nearby.", None),
+    ("She bought an unusual book.", None),
+    ("She bought an (old) book.", None),
+    ("They saw a (small) owl.", None),
+    ("She grew a herb.", None),
+    ("They saw a UFO.", None),
+]
+
+
+def evaluate_articles(probe):
+    for sentence, expected in ARTICLE_CASES:
+        analysis = analyze(sentence)
+        result = probe(sentence, analysis["root"], variety="standard_english")
+        for candidate in result["candidates"]:
+            edit = candidate["edit_hint"]
+            start, end = edit["char_span"]
+            repaired = sentence[:start] + edit["replacement"] + sentence[end:]
+            recheck = probe(repaired, analyze(repaired)["root"], variety="standard_english")
+            candidate["reparse_observation"] = {
+                "sentence": repaired, "candidate_count": len(recheck["candidates"]),
+                "status": recheck["status"],
+            }
+        yield {"sentence": sentence, "expected_repair": expected,
+               "parse": analysis["parse_string"], "probe": result}
+
+
 def evaluate_cases(cases, probe, governor_label, governor_key):
     rows = []
     for group, sentence, expected in cases:
@@ -256,7 +288,17 @@ def main():
                         help="Evaluate the inactive enjoy action-complement probe")
     parser.add_argument("--auxiliary-evaluation", action="store_true",
                         help="Measure modal stacking and inverted supportive do on configured parser output")
+    parser.add_argument("--article-evaluation", action="store_true",
+                        help="Measure the inactive article onset probe")
     args = parser.parse_args()
+    if args.article_evaluation:
+        if any(value for name, value in vars(args).items() if name != "article_evaluation"):
+            parser.error("--article-evaluation runs separately on configured parser output")
+        from cgel_article_parser_probe import probe_article_parser
+
+        print(json.dumps({"input": "configured_parser",
+                          "article_evaluation": list(evaluate_articles(probe_article_parser))}, indent=2))
+        return
     if args.auxiliary_evaluation:
         if any((args.fixtures, args.matrix, args.passive_candidate, args.modal_candidate,
                 args.modal_evaluation, args.enjoy_evaluation)):
