@@ -1,14 +1,14 @@
 # Cambridge Phase C backlog
 
-Snapshot through the spatial demonstrative prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
+Snapshot through the basic coordination prototypes. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
 
 | Diagnostic specifications | Primary pilot | Supporting pilot | Outside pilot | Production-enabled |
 |---:|---:|---:|---:|---:|
-| 204 | 36 | 6 | 162 | 0 |
+| 204 | 38 | 6 | 160 | 0 |
 
 ## Next implementation batch
 
-**Basic coordination and syntactic function (CLS-1034)** is next. Distinguish coordination of unlike categories in the same function from genuinely incompatible functions.
+**Plural determinatives with coordinated singular nouns (CLS-1036)** are next. Distinguish number selection inside the NP from agreement of the whole coordination with the verb.
 
 After that batch, triage adjacent diagnostics by governing relation and compatible edits. Use the source and diagnostic family below to find related rules. A catalog entry can share a detector or receive a documented no-detector disposition.
 
@@ -45,6 +45,7 @@ After that batch, triage adjacent diagnostics by governing relation and compatib
 | Finite agreement with singular they | PHR-334 | — | This batch | Validate antecedent grounding and extend beyond simple main-clause be/have. |
 | Mass aggregate agreement | PHR-347 | — | This batch | Validate additional subject shapes and preserve count collective readings. |
 | Spatial demonstrative agreement | PHR-620 | — | This batch | Validate locative attachment and shared deictic context before any rewrite. |
+| Basic coordination | CLS-1034, CLS-1035 | — | This batch | Broaden evidence for shared function and nonfinite subject coordination. |
 | Imperative verb form | CLS-130 | — | [#115](https://github.com/ybcole/SynTutor/pull/115) | Establish the source of directive intent and validate the resulting finding. |
 
 ## Rule-by-rule inventory
@@ -88,7 +89,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | `PHR-197` | Bare role nouns in ordinary object position | Ch. 5, pp. 409 | Support |
 | `CLS-201` | Set expressions in which partitives | Ch. 10, pp. 903 | Queued |
 | `CLS-229` | Exclamative what and singular count NPs | Ch. 10, pp. 919, 920 | Queued |
-| `CLS-1036` | Singular-noun coordination cannot satisfy a plural determinative | Ch. 15, pp. 1334, 1335 | Queued |
+| `CLS-1036` | Singular-noun coordination cannot satisfy a plural determinative | Ch. 15, pp. 1334, 1335 | Next |
 | `MORPH-141` | Liaison and article choice by sound | Ch. 18, pp. 1618 | Pilot |
 
 ### Extra word (7)
@@ -139,8 +140,8 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | `CLS-1259` | Comparative grade in two-member set comparisons | Ch. 13, pp. 1162 | Queued |
 | `CLS-1274` | Definiteness in incorporated ranking superlatives | Ch. 13, pp. 1168, 1169 | Queued |
 | `CLS-1276` | Integrated relatives after free superlatives | Ch. 13, pp. 1169 | Queued |
-| `CLS-1034` | Basic coordination requires equivalent syntactic functions | Ch. 15, pp. 1323 | Next |
-| `CLS-1035` | Infinitival and gerund-participial clause coordination restriction | Ch. 15, pp. 1324 | Queued |
+| `CLS-1034` | Basic coordination requires equivalent syntactic functions | Ch. 15, pp. 1323 | Pilot |
+| `CLS-1035` | Infinitival and gerund-participial clause coordination restriction | Ch. 15, pp. 1324 | Pilot |
 | `CLS-1325` | Unstressed personal pronoun before a verbal particle | Ch. 16, pp. 1383 | Queued |
 | `CLS-1329` | Indirect object cannot follow direct object in the double-object alternant | Ch. 16, pp. 1384 | Queued |
 | `CLS-1379` | Subject–auxiliary inversion with clausal subjects | Ch. 16, pp. 1406, 1407 | Queued |
