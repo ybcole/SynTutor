@@ -22,12 +22,13 @@ MODALS = frozenset({"can", "could", "may", "might", "must",
                     "shall", "should", "will", "would"})
 SUPPORT_DO = frozenset({"do", "does", "did", "don't", "doesn't", "didn't",
                         "don’t", "doesn’t", "didn’t"})
-SUPPORTED = ("COMP-034", "COMP-031", "CLS-100", "CLS-126", "MORPH-026")
+SUPPORTED = ("COMP-034", "COMP-031", "CLS-100", "CLS-126", "MORPH-026", "COMP-035", "COMP-036")
 SUPPORTING = {"CLS-100": ("COMP-030",)}
 RULE_FILES = {"COMP-034": "complementation", "COMP-031": "complementation",
-              "CLS-100": "clauses", "CLS-126": "clauses", "MORPH-026": "morphology"}
+              "CLS-100": "clauses", "CLS-126": "clauses", "MORPH-026": "morphology",
+              "COMP-035": "complementation", "COMP-036": "complementation"}
 SOURCE_CHAPTERS = {"CLS-126": 10}
-KINDS = {"modal_selects", "supportive_do_selects", "perfect_selects"}
+KINDS = {"modal_selects", "supportive_do_selects", "perfect_selects", "be_selects"}
 CLAUSES = {"declarative", "closed_interrogative", "emphatic_declarative",
            "imperative", "other"}
 
@@ -120,6 +121,12 @@ def _rule_for(relation: dict[str, Any], tokens: list[dict[str, Any]]) -> str | N
                     and tokens[j]["lower"].isalpha()):
                 return "COMP-034"
         return None
+    if kind == "be_selects" and relation.get("dependent_role") == "lexical_verb":
+        if relation.get("governor_role") == "progressive_be" and d == "been":
+            return "COMP-035"
+        if (relation.get("governor_role") == "passive_be" and g == "being"
+                and relation.get("dependent_form") == "nonparticipial"):
+            return "COMP-036"
     if kind == "perfect_selects":
         if (g in {"have", "has", "had"} and relation.get("governor_role") == "perfect_have"
                 and relation.get("dependent_role") == "lexical_verb"
@@ -146,7 +153,11 @@ def _rule_for(relation: dict[str, Any], tokens: list[dict[str, Any]]) -> str | N
 def _candidate_edit(relation: dict[str, Any], tokens: list[dict[str, Any]],
                     rule_id: str, sentence: str) -> dict[str, Any] | None:
     """Hints only: edits are never applied or asserted to preserve meaning."""
-    if rule_id not in {"COMP-034", "CLS-126", "MORPH-026"}:
+    if rule_id == "COMP-035":
+        start, end = tokens[relation["dependent"]]["char_span"]
+        return {"char_span": [start, end], "replacement": "being",
+                "requires_reparse": True, "safe_to_apply_automatically": False}
+    if rule_id not in {"COMP-034", "CLS-126", "MORPH-026", "COMP-036"}:
         return None
     dependent = tokens[relation["dependent"]]
     if relation.get("dependent_form") == "infinitival_to":
@@ -155,7 +166,7 @@ def _candidate_edit(relation: dict[str, Any], tokens: list[dict[str, Any]],
             start -= 1
         return {"char_span": [start, end], "replacement": "",
                 "requires_reparse": True, "safe_to_apply_automatically": False}
-    base = relation.get("candidate_participle" if rule_id == "MORPH-026" else "candidate_plain_form")
+    base = relation.get("candidate_participle" if rule_id in {"MORPH-026", "COMP-036"} else "candidate_plain_form")
     if (relation.get("dependent_form") in {"present_3sg", "finite_nonplain", "nonparticipial"}
             and isinstance(base, str)
             and re.fullmatch(r"[A-Za-z]+", base)

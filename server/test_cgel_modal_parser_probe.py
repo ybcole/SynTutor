@@ -123,6 +123,21 @@ class ModalParserProbeTests(unittest.TestCase):
         tree = "(S (NP (PRP They)) (VP (VBP have) (NP (PRP him)) (VP (VB go))) (. .))"
         self.assertEqual(probe("They have him go.", tree)["candidates"], [])
 
+    def test_progressive_and_passive_be_chains(self):
+        for inner, verb, expected in [
+            ("VBN been", "VBN taken", [("COMP-035", "being")]),
+            ("VBG being", "VBD took", [("COMP-036", "taken")]),
+            ("VBG being", "VBN taken", []),
+            ("VBG being", "VBN painted", []),
+        ]:
+            with self.subTest(inner=inner, verb=verb):
+                sentence = f"They were {inner.split()[1]} {verb.split()[1]}."
+                tree = f"(S (NP (PRP They)) (VP (VBD were) (VP ({inner}) (VP ({verb})))) (. .))"
+                self.assertEqual([
+                    (c["rule_id"], c["edit_hint"]["replacement"])
+                    for c in probe(sentence, tree)["candidates"]
+                ], expected)
+
     def test_imperative_do_is_out_of_scope(self):
         tree = "(S (VP (VBP Do) (VP (VB be) (ADJP (JJ careful)))) (. !))"
         self.assertEqual(probe("Do be careful!", tree)["candidates"], [])
