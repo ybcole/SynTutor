@@ -17,7 +17,7 @@ class TagProbeTests(unittest.TestCase):
     def test_auxiliary_and_tense(self):
         for sentence, head, tail, tag, expected in CASES:
             with self.subTest(sentence=sentence):
-                parse = f"(S (S (NP (PRP She)) (VP ({head}) {tail})) (, ,) ({tag}) (RB n't) (NP (PRP she)) (. ?))"
+                parse = f"(SQ (S (NP (PRP She)) (VP ({head}) {tail})) (, ,) ({tag}) (RB n't) (NP (PRP she)) (. ?))"
                 tree = NodeBuilder().build(parse_parse_string(parse), 8)
                 result = probe_tag_auxiliary(sentence, tree, variety="standard_english")
                 self.assertEqual([c["expected_auxiliary"] for c in result["candidates"]], [expected] if expected else [])
@@ -34,5 +34,5 @@ class TagProbeTests(unittest.TestCase):
                 analysis = analyze(sentence)
                 result = probe_tag_auxiliary(sentence, analysis["root"], variety="standard_english")
                 found = [c["expected_auxiliary"] for c in result["candidates"]]
-                self.assertIn(found, ([], [expected]) if expected else ([],))
+                self.assertEqual(found, [expected] if expected else [])
                 print(f"Cambridge tag {sentence!r}: {found}; expected={expected}; parse={analysis['parse_string']}")

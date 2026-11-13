@@ -18,7 +18,7 @@ def probe_tag_auxiliary(sentence, tree, *, variety):
     if variety != "standard_english":
         return {**result, "status": "not_evaluated"}
     parts = tree.get("children", [])
-    if (tree["type"] != "S" or len(parts) != 6 or parts[0]["type"] != "S"
+    if (tree["type"] not in {"S", "SQ"} or len(parts) != 6 or parts[0]["type"] != "S"
             or parts[1].get("surface") != "," or parts[-1].get("surface") != "?"):
         return result
     anchor, _, tag, negation, tag_subject, _ = parts
