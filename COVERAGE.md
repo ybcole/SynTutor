@@ -39,7 +39,7 @@
 | Phase D corrections | The project has existing correction infrastructure and individual Cambridge repair probes. | Integrate licensed Cambridge findings into selected-sentence repair, including interacting errors, reparse checks, and unresolved findings. |
 | Phase E lessons and quizzes | Existing lesson and quiz features are available. | Generate and validate Cambridge-derived lessons and original quiz items with rule IDs and printed-page references. |
 
-The 204 specifications are catalog entries. Related entries can support the same finding, so the number of implementation batches and distinct detectors is still open. See [the master plan](docs/planning/CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) and [construction-by-construction QA](docs/planning/CGEL_CROSS_DOMAIN_QA.md).
+The 204 specifications are catalog entries. Related entries can support the same finding, so the number of implementation batches and distinct detectors is still open. See [the rule-by-rule Phase C backlog](docs/planning/CGEL_PHASE_C_BACKLOG.md), [the master plan](docs/planning/CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) and [construction-by-construction QA](docs/planning/CGEL_CROSS_DOMAIN_QA.md).
 
 ## Chapter 3 implementation
 
