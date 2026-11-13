@@ -36,5 +36,5 @@ class ComparativeGapTests(unittest.TestCase):
                 rows = probe_comparative_gap(sentence, analysis["root"],
                                              variety="standard_english")["candidates"]
                 found = [row["rule_id"] for row in rows]
-                self.assertIn(found, ([], ["CLS-1119"]) if target else ([],))
+                self.assertEqual(found, ["CLS-1119"] if target else [])
                 print(f"Cambridge comparative gap {sentence!r}: {found}; target={target}; parse={analysis['parse_string']}")

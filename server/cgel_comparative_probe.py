@@ -12,6 +12,8 @@ def _degree_conflict(node):
     if node["type"] != "ADJP":
         return None
     parts = node.get("children", [])
+    if len(parts) == 2 and parts[0]["type"] == "ADJP":
+        parts = [*parts[0].get("children", []), parts[1]]
     if len(parts) == 3 and parts[0].get("surface", "").casefold() == "as" and parts[1].get("pos") == "JJ":
         governor, _, comparison = parts
         marker = "as"
