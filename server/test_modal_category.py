@@ -21,6 +21,19 @@ class ModalCategoryTests(unittest.TestCase):
                     found = self.constraints((tag, word), following)
                     self.assertFalse(any(c.startswith('C-MODAL-') for c in found), found)
 
+    def test_missing_or_conflicting_category_evidence_does_not_become_a_modal(self):
+        # A true modal may be mistagged. Abstention here is deliberate; this
+        # gate cannot reconstruct grammatical function from spelling or ftag.
+        for tag in [None, 'VB', 'VBP', 'NN', 'NNP']:
+            with self.subTest(tag=tag):
+                modal, complement = leaves((tag, 'can'), ('VBZ', 'goes'))
+                modal['ftag'] = 'MD'
+                found = ruleset._check_basic(None, [], [modal, complement])
+                self.assertFalse(any(f['constraint'].startswith('C-MODAL-') for f in found))
+        missing, complement = leaves(('MD', 'can'), ('VBZ', 'goes'))
+        del missing['type']
+        self.assertFalse(ruleset._is_central_modal(missing))
+
     def test_genuine_modal_diagnostics_are_retained(self):
         for following, expected in [(('VBZ', 'goes'), 'C-MODAL-VERB-FORM'),
                                      (('IN', 'of'), 'C-MODAL-OF'),

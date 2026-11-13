@@ -11,7 +11,9 @@ class ModalCategoryRuntimeTests(unittest.TestCase):
                  ('May rains often.', 'May', 'NNP'),
                  ('They want to can peaches.', 'can', 'VB'),
                  ('The can to the left rusts.', 'can', 'NN'),
-                 ('She cans the peaches.', 'cans', 'VBZ')]
+                 ('She cans the peaches.', 'cans', 'VBZ'),
+                 ('They canned peaches.', 'canned', 'VBD'),
+                 ('They are canning peaches.', 'canning', 'VBG')]
         with patch.object(api, 'classify', return_value=None):
             for sentence, word, tag in cases:
                 with self.subTest(sentence=sentence):
@@ -31,7 +33,8 @@ class ModalCategoryRuntimeTests(unittest.TestCase):
 
     def test_valid_modal_plain_form_controls(self):
         with patch.object(api, 'classify', return_value=None):
-            for sentence in ['She can swim.', 'They could leave.', 'He will work.']:
+            for sentence in ['She can swim.', 'They could leave.', 'He will work.',
+                             'Can she swim?', 'They can and will work.', 'They cannot swim.']:
                 with self.subTest(sentence=sentence):
                     payload = api.build_payload(sentence)
                     self.assertFalse(payload['summary']['constraints_fired'])
@@ -43,7 +46,8 @@ class ModalCategoryRuntimeTests(unittest.TestCase):
                  ('They could of left.', 'C-MODAL-OF'),
                  ('They can able to swim.', 'C-MODAL-ABLE'),
                  ('They can to preserve peaches.', 'C-MODAL-TO'),
-                 ('They will can swim.', 'C-MODAL-STACK')]
+                 ('They will can swim.', 'C-MODAL-STACK'),
+                 ('They want to can swim.', 'C-TO-BASE')]
         with patch.object(api, 'classify', return_value=None):
             for sentence, constraint in cases:
                 with self.subTest(sentence=sentence):
