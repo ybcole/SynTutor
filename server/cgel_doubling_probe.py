@@ -67,6 +67,31 @@ def probe_final_ie(sentence, tree, *, variety):
                            "MORPH-083", [1579], "retained_ie_before_ing")
 
 
+Y_PLURAL_BASES = {"baby", "city", "country", "lady", "party", "story",
+                  "boy", "day", "donkey", "key", "toy", "tray"}
+
+
+def _final_y_plural_replacement(word, tag):
+    if tag not in {"NN", "NNS"} or getAllLemmas(word):
+        return None
+    if word.endswith("ys"):
+        base = word[:-1]
+        expected = base[:-1] + "ies"
+    elif word.endswith("ies"):
+        base = word[:-3] + "y"
+        expected = base + "s"
+    else:
+        return None
+    if base in Y_PLURAL_BASES and expected in getInflection(base, tag="NNS", inflect_oov=False):
+        return expected
+    return None
+
+
+def probe_final_y_plural(sentence, tree, *, variety):
+    return _probe_spelling(sentence, tree, variety, _final_y_plural_replacement,
+                           "MORPH-092", [1585], "incorrect_final_y_plural")
+
+
 def _probe_spelling(sentence, tree, variety, replacement_for, rule_id, pages, relation_kind):
     result = {"status": "not_evaluated", "production_enabled": False, "candidates": []}
     if variety != "standard_english":

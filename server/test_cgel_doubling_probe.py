@@ -2,7 +2,7 @@ import os
 import unittest
 
 from cgel_doubling_probe import _doubling_replacement, _mute_e_replacement, probe_consonant_doubling, probe_mute_e
-from cgel_doubling_probe import _final_ie_replacement, probe_final_ie
+from cgel_doubling_probe import _final_ie_replacement, _final_y_plural_replacement, probe_final_ie, probe_final_y_plural
 from parse_engine import NodeBuilder, analyze, parse_parse_string
 
 
@@ -133,3 +133,50 @@ class FinalIETests(unittest.TestCase):
                     self.assertEqual(recheck["candidates"], [])
                 self.assertIn(repairs, ([], [expected]) if expected else ([],))
                 print(f"Cambridge final ie {sentence!r}: {repairs}; expected={expected}; parse={analysis['parse_string']}")
+
+class FinalYPluralTests(unittest.TestCase):
+    def test_known_noun_paradigms(self):
+        for word, expected in [
+            ("citys", "cities"), ("donkeies", "donkeys"), ("babys", "babies"),
+            ("toies", "toys"), ("cities", None), ("donkeys", None),
+            ("trolleys", None), ("trollies", None), ("monies", None), ("moneys", None),
+            ("bys", None),
+        ]:
+            with self.subTest(word=word):
+                self.assertEqual(_final_y_plural_replacement(word, "NNS"), expected)
+                self.assertIsNone(_final_y_plural_replacement(word, "NNP"))
+
+    def test_common_noun_span(self):
+        sentence = "Several citys joined."
+        tree = NodeBuilder().build(parse_parse_string(
+            "(S (NP (JJ Several) (NN citys)) (VP (VBD joined)) (. .))"
+        ), 4)
+        candidate, = probe_final_y_plural(sentence, tree, variety="standard_english")["candidates"]
+        self.assertEqual(candidate["rule_id"], "MORPH-092")
+        start, end = candidate["edit_hint"]["char_span"]
+        self.assertEqual(sentence[start:end], "citys")
+
+    @unittest.skipUnless(os.environ.get("CGEL_REQUIRE_PARSER") == "1", "configured parser required")
+    def test_configured_final_y_plurals(self):
+        for sentence, expected in [
+            ("Several citys joined the program.", "Several cities joined the program."),
+            ("Two donkeies stood beside the gate.", "Two donkeys stood beside the gate."),
+            ("Several cities joined the program.", None),
+            ("Two donkeys stood beside the gate.", None),
+            ("The Kennedys arrived early.", None),
+            ("Several trolleys waited outside.", None),
+        ]:
+            with self.subTest(sentence=sentence):
+                analysis = analyze(sentence)
+                rows = probe_final_y_plural(sentence, analysis["root"], variety="standard_english")["candidates"]
+                repaired = []
+                for row in rows:
+                    edit = row["edit_hint"]
+                    start, end = edit["char_span"]
+                    corrected = sentence[:start] + edit["replacement"] + sentence[end:]
+                    repaired.append(corrected)
+                    recheck = probe_final_y_plural(corrected, analyze(corrected)["root"], variety="standard_english")
+                    self.assertEqual(recheck["status"], "candidate_only")
+                    self.assertEqual(recheck["candidates"], [])
+                self.assertIn(repaired, ([], [expected]) if expected else ([],))
+                print(f"Cambridge final y plural {sentence!r}: {repaired}; expected={expected}; parse={analysis['parse_string']}")

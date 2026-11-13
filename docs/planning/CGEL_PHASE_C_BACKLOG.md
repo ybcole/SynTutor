@@ -1,14 +1,14 @@
 # Cambridge Phase C backlog
 
-Snapshot through the final ie prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
+Snapshot through the final y plural prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
 
 | Diagnostic specifications | Primary pilot | Supporting pilot | Outside pilot | Production-enabled |
 |---:|---:|---:|---:|---:|
-| 204 | 57 | 6 | 141 | 0 |
+| 204 | 58 | 6 | 140 | 0 |
 
 ## Next implementation batch
 
-**Regular noun plurals ending in y (MORPH-092)** are next.
+**Plural spelling of personal names (MORPH-104)** is next.
 
 After that batch, triage adjacent diagnostics by governing relation and compatible edits. Use the source and diagnostic family below to find related rules. A catalog entry can share a detector or receive a documented no-detector disposition.
 
@@ -65,6 +65,7 @@ After that batch, triage adjacent diagnostics by governing relation and compatib
 | Omitted consonant doubling | MORPH-078 | — | This batch | Extend beyond selected verb bases and validate ambiguous real-word spellings. |
 | Mute e before ing | MORPH-080 | — | This batch | Broaden established verb coverage and preserve retention variants. |
 | Final ie before ing | MORPH-083 | — | This batch | Validate tagging and preserve distinct bases such as dye. |
+| Regular final-y plurals | MORPH-092 | — | This batch | Broaden common-noun coverage and preserve lexical variants. |
 | Imperative verb form | CLS-130 | — | [#115](https://github.com/ybcole/SynTutor/pull/115) | Establish the source of directive intent and validate the resulting finding. |
 
 ## Rule-by-rule inventory
@@ -248,8 +249,8 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | `MORPH-078` | Consonant doubling before vowel-initial suffixes | Ch. 18, pp. 1575, 1576 | Pilot |
 | `MORPH-080` | Mute e deletion before ing | Ch. 18, pp. 1576, 1577 | Pilot |
 | `MORPH-083` | Ie bases and ing spelling | Ch. 18, pp. 1579 | Pilot |
-| `MORPH-092` | Regular noun plurals with final y | Ch. 18, pp. 1585 | Next |
-| `MORPH-104` | Plural spelling of personal names | Ch. 18, pp. 1595 | Queued |
+| `MORPH-092` | Regular noun plurals with final y | Ch. 18, pp. 1585 | Pilot |
+| `MORPH-104` | Plural spelling of personal names | Ch. 18, pp. 1595 | Next |
 | `MORPH-105` | Bare and marked genitives | Ch. 18, pp. 1595, 1596 | Queued |
 | `MORPH-109` | Adding k after final c | Ch. 18, pp. 1598 | Queued |
 | `MORPH-237` | Plural marking in established er plus preposition compounds | Ch. 19, pp. 1655 | Queued |
