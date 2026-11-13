@@ -1,14 +1,14 @@
 # Cambridge Phase C backlog
 
-Snapshot through the consist preposition prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
+Snapshot through the come across fronting prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
 
 | Diagnostic specifications | Primary pilot | Supporting pilot | Outside pilot | Production-enabled |
 |---:|---:|---:|---:|---:|
-| 204 | 28 | 6 | 170 | 0 |
+| 204 | 29 | 6 | 169 | 0 |
 
 ## Next implementation batch
 
-**Preposition fronting with come across (COMP-128)** is next. Distinguish the fixed encounter sense from literal movement.
+**Lexical number agreement (PHR-062 and PHR-065)** is next. Compare plural agreement with cattle and police against singular agreement with news and shingles.
 
 After that batch, triage adjacent diagnostics by governing relation and compatible edits. Use the source and diagnostic family below to find related rules. A catalog entry can share a detector or receive a documented no-detector disposition.
 
@@ -38,11 +38,12 @@ After that batch, triage adjacent diagnostics by governing relation and compatib
 | Reflexive objects of pride | CLS-1103 | — | This batch | Validate the self-esteem construction and canonical object grounding. |
 | Comparative like pronoun case | CLS-1244 | — | This batch | Validate detached initial and final adjuncts and retain medial and finite-clause controls. |
 | Preposition selection with consist | COMP-060 | — | This batch | Validate composition sense and broaden complement coverage. |
+| Fronting with come across | COMP-128 | — | This batch | Validate lexical sense and extend beyond direct questions to relatives and clefts. |
 | Imperative verb form | CLS-130 | — | [#115](https://github.com/ybcole/SynTutor/pull/115) | Establish the source of directive intent and validate the resulting finding. |
 
 ## Rule-by-rule inventory
 
-**Pilot** means a primary offline implementation exists. **Support** means the entry corroborates a pilot. **Next** identifies the next diagnostic. **Queued** means source and overlap triage is pending in this tracker.
+**Pilot** means a primary offline implementation exists. **Support** means the entry corroborates a pilot. **Next** identifies the next batch. **Queued** means source and overlap triage is pending in this tracker.
 
 When a batch lands, update the rows and link its evidence. Record canonical grounding, held-out results, independent review, learner explanations and registry activation separately from prototype status.
 
@@ -50,8 +51,8 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 
 | Rule | Construction | Cambridge source | Status |
 |---|---|---|---|
-| `PHR-062` | Plural agreement with cattle and police | Ch. 5, pp. 345 | Queued |
-| `PHR-065` | Singular agreement with news and shingles | Ch. 5, pp. 346 | Queued |
+| `PHR-062` | Plural agreement with cattle and police | Ch. 5, pp. 345 | Next |
+| `PHR-065` | Singular agreement with news and shingles | Ch. 5, pp. 346 | Next |
 | `PHR-079` | Agreement with the number as a total | Ch. 5, pp. 350 | Queued |
 | `PHR-087` | Demonstrative number agreement | Ch. 5, pp. 352, 353 | Queued |
 | `PHR-240` | Singular selection with more than one and one more | Ch. 5, pp. 432 | Queued |
@@ -172,7 +173,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | Rule | Construction | Cambridge source | Status |
 |---|---|---|---|
 | `COMP-060` | Consist selects of | Ch. 4, pp. 220 | Pilot |
-| `COMP-128` | Fixed come across cannot undergo ordinary PP-fronting | Ch. 4, pp. 275 | Next |
+| `COMP-128` | Fixed come across cannot undergo ordinary PP-fronting | Ch. 4, pp. 275 | Pilot |
 
 ### Pronoun case (12)
 
