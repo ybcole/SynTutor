@@ -1,7 +1,7 @@
 import os
 import unittest
 
-from cgel_lexical_number_probe import probe_demonstrative_number, probe_lexical_number
+from cgel_lexical_number_probe import probe_demonstrative_number, probe_lexical_number, probe_total_number
 from parse_engine import NodeBuilder, analyze, parse_parse_string
 
 
@@ -67,6 +67,38 @@ class DemonstrativeNumberTests(unittest.TestCase):
             ("This ten miles is the hardest stretch.", []),
             ("These are books.", []),
             ("This book and that folder are mine.", []),
+        ]:
+            with self.subTest(sentence=sentence):
+                self.check_case(sentence, analyze(sentence)["root"], expected)
+
+
+class TotalNumberTests(unittest.TestCase):
+    def check_case(self, sentence, tree, expected):
+        rows = probe_total_number(sentence, tree, variety="standard_english")["candidates"]
+        self.assertEqual([row["expected_verb"] for row in rows], expected)
+        for row in rows:
+            self.assertEqual(row["rule_id"], "PHR-079")
+            self.assertIsNone(row["edit_hint"])
+
+    def test_total_subject_shape(self):
+        for det, expected in [("The", ["has"]), ("A", [])]:
+            sentence = f"{det} number of deliveries have doubled."
+            parse = (
+                f"(S (NP (NP (DT {det}) (NN number)) (PP (IN of) (NP (NNS deliveries)))) "
+                "(VP (VBP have) (VP (VBN doubled))) (. .))"
+            )
+            self.check_case(sentence, NodeBuilder().build(parse_parse_string(parse), 7), expected)
+
+    @unittest.skipUnless(os.environ.get("CGEL_REQUIRE_PARSER") == "1", "configured parser required")
+    def test_configured_total_number(self):
+        for sentence, expected in [
+            ("The number of deliveries have doubled.", ["has"]),
+            ("The number of available seats are uncertain.", ["is"]),
+            ("The number of deliveries has doubled.", []),
+            ("A number of deliveries have arrived.", []),
+            ("The numbers of arrivals and departures are similar.", []),
+            ("The estimates of the number of deliveries are uncertain.", []),
+            ("The number of deliveries and the number of returns are equal.", []),
         ]:
             with self.subTest(sentence=sentence):
                 self.check_case(sentence, analyze(sentence)["root"], expected)

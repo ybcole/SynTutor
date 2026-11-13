@@ -1,14 +1,14 @@
 # Cambridge Phase C backlog
 
-Snapshot through the demonstrative number agreement prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
+Snapshot through the total number agreement prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
 
 | Diagnostic specifications | Primary pilot | Supporting pilot | Outside pilot | Production-enabled |
 |---:|---:|---:|---:|---:|
-| 204 | 32 | 6 | 166 | 0 |
+| 204 | 33 | 6 | 165 | 0 |
 
 ## Next implementation batch
 
-**Agreement with the number as a total (PHR-079)** is next. Distinguish the total reading from quantificational *a number of* before assessing verb number.
+**Finite agreement with singular they (PHR-334)** is next. Compare ordinary finite agreement with the existing question-tag agreement evidence.
 
 After that batch, triage adjacent diagnostics by governing relation and compatible edits. Use the source and diagnostic family below to find related rules. A catalog entry can share a detector or receive a documented no-detector disposition.
 
@@ -41,6 +41,7 @@ After that batch, triage adjacent diagnostics by governing relation and compatib
 | Fronting with come across | COMP-128 | — | This batch | Validate lexical sense and extend beyond direct questions to relatives and clefts. |
 | Lexical number agreement | PHR-062, PHR-065 | — | This batch | Validate canonical subject heads and extend beyond the simple finite forms. |
 | Demonstrative number agreement | PHR-087 | — | This batch | Broaden lexical and NP coverage while preserving number exceptions. |
+| Agreement with the number as a total | PHR-079 | — | This batch | Broaden finite verb coverage and validate canonical subject-head grounding. |
 | Imperative verb form | CLS-130 | — | [#115](https://github.com/ybcole/SynTutor/pull/115) | Establish the source of directive intent and validate the resulting finding. |
 
 ## Rule-by-rule inventory
@@ -55,10 +56,10 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 |---|---|---|---|
 | `PHR-062` | Plural agreement with cattle and police | Ch. 5, pp. 345 | Pilot |
 | `PHR-065` | Singular agreement with news and shingles | Ch. 5, pp. 346 | Pilot |
-| `PHR-079` | Agreement with the number as a total | Ch. 5, pp. 350 | Next |
+| `PHR-079` | Agreement with the number as a total | Ch. 5, pp. 350 | Pilot |
 | `PHR-087` | Demonstrative number agreement | Ch. 5, pp. 352, 353 | Pilot |
 | `PHR-240` | Singular selection with more than one and one more | Ch. 5, pp. 432 | Queued |
-| `PHR-334` | Singular they and finite agreement | Ch. 5, pp. 493, 494 | Queued |
+| `PHR-334` | Singular they and finite agreement | Ch. 5, pp. 493, 494 | Next |
 | `PHR-343` | Agreement attraction versus grammatical overrides | Ch. 5, pp. 500, 501 | Queued |
 | `PHR-347` | Mass aggregates and agreement | Ch. 5, pp. 504 | Queued |
 | `CLS-183` | Agreement with the pronoun in canonical tags | Ch. 10, pp. 893 | Pilot |
