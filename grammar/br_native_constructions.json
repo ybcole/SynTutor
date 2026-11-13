@@ -1949,13 +1949,128 @@
       "chapter_introduced": 5,
       "source": {
         "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
-        "printed_pages": [97],
+        "printed_pages": [
+          97
+        ],
         "evidence": "BOOK_FIGURE_46_PAGE_IMAGE",
         "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
       },
       "parent": "NP",
-      "children": ["@ellipsis"],
+      "children": [
+        "@ellipsis"
+      ],
       "condition": "Figure 46 uses an NP over zero-word E for a contextually elided indirect object; E is not a movement gap.",
+      "level": "structural"
+    },
+    {
+      "id": "BR07-NOM-POSTPOSED-AP",
+      "chapter_introduced": 7,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          155
+        ],
+        "evidence": "BOOK_PAGE_IMAGE_AND_TREE_CORPUS",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "NOM",
+      "children": [
+        "N",
+        "AP"
+      ],
+      "condition": "Postmodifying AP with its own complement follows N as in figure 67; require the noun and adjective selection and attachment context.",
+      "level": "structural"
+    },
+    {
+      "id": "BR07-AP-PP-COMPLEMENT",
+      "chapter_introduced": 7,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          155
+        ],
+        "evidence": "BOOK_PAGE_IMAGE_AND_TREE_CORPUS",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "AP",
+      "children": [
+        "A",
+        "PP"
+      ],
+      "condition": "The postmodifying AP in figure 67 contains an adjective with its PP complement; require selected adjective complementation.",
+      "level": "structural"
+    },
+    {
+      "id": "BR09-NP-NONRESTRICTIVE-RELATIVE",
+      "chapter_introduced": 9,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          210
+        ],
+        "evidence": "BOOK_PAGE_IMAGE_AND_TREE_CORPUS",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "NP",
+      "children": [
+        "NP",
+        "S-dbar"
+      ],
+      "condition": "Figure 60 attaches a non-restrictive relative to the complete NP; punctuation, interpretation, and relative dependency must be checked separately.",
+      "level": "structural"
+    },
+    {
+      "id": "BR09-PP-WH-GAP",
+      "chapter_introduced": 9,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          212
+        ],
+        "evidence": "BOOK_PAGE_IMAGE_AND_TREE_CORPUS",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "PP",
+      "children": [
+        "@gap"
+      ],
+      "condition": "Discussion 1(b)(ii) leaves a PP gap linked to a fronted wh-PP in C2; check category and movement chain.",
+      "level": "structural"
+    },
+    {
+      "id": "BR09-ADVP-WH-GAP",
+      "chapter_introduced": 9,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          212
+        ],
+        "evidence": "BOOK_PAGE_IMAGE_AND_TREE_CORPUS",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "AdvP",
+      "children": [
+        "@gap"
+      ],
+      "condition": "Discussion 1(c) leaves an AdvP gap linked to a fronted wh-adverbial in C2; check category and movement chain.",
+      "level": "structural"
+    },
+    {
+      "id": "BR09-AP-WH-GAP",
+      "chapter_introduced": 9,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          212
+        ],
+        "evidence": "BOOK_PAGE_IMAGE_AND_TREE_CORPUS",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "AP",
+      "children": [
+        "@gap"
+      ],
+      "condition": "Discussion 1(d) leaves an AP gap linked to a fronted wh-AP in C2; check category and movement chain.",
       "level": "structural"
     }
   ],
