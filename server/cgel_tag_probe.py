@@ -69,3 +69,60 @@ def probe_tag_auxiliary(sentence, tree, *, variety):
         "expected_auxiliary": expected, "edit_hint": None,
     })
     return result
+
+
+def probe_tag_agreement(sentence, tree, *, variety):
+    """Check agreement with the tag's own pronoun in contracted negative tags."""
+    result = {"status": "candidate_only", "production_enabled": False, "candidates": []}
+    if variety != "standard_english":
+        return {**result, "status": "not_evaluated"}
+    parts = tree.get("children", [])
+    if (tree["type"] not in {"S", "SQ", "SBARQ"} or len(parts) not in {4, 6}
+            or parts[0]["type"] != "S" or parts[1].get("surface") != ","
+            or parts[-1].get("surface") != "?"):
+        return result
+    body = parts[0].get("children", [])
+    if [part["type"] for part in body] != ["NP", "VP"]:
+        return result
+    tag = parts[2:-1] if len(parts) == 6 else parts[2].get("children", [])
+    if len(tag) != 3 or (len(parts) == 4 and parts[2]["type"] != "SQ"):
+        return result
+    auxiliary, negative, subject = tag
+    pronouns = list(_ordered_leaves(subject))
+    if (subject["type"] != "NP" or len(pronouns) != 1 or pronouns[0].get("pos") != "PRP"
+            or auxiliary.get("pos") not in {"VBZ", "VBP", "VBD"}
+            or negative.get("surface", "").replace("’", "'") != "n't"):
+        return result
+    pronoun = pronouns[0]["surface"].casefold()
+    if pronoun not in {"you", "we", "they", "he", "she", "it"}:
+        return result  # I has the special negative tag aren't I.
+    form = auxiliary["surface"].casefold()
+    singular = pronoun in {"he", "she", "it"}
+    if form in {"is", "are"}:
+        expected = "is" if singular else "are"
+    elif form in {"was", "were"}:
+        expected = "was" if singular else "were"
+    elif form in {"has", "have", "does", "do"}:
+        expected = {"have": "has", "do": "does"} if singular else {"has": "have", "does": "do"}
+        expected = expected.get(form, form)
+    else:
+        return result
+    if form == expected:
+        return result
+    tokens = tokens_with_spans(sentence)
+    if any(token["text"] in {'"', '“', '”', "'", "‘", "’"} for token in tokens):
+        return result
+    surfaces = [leaf["surface"] for leaf in _ordered_leaves(tree)]
+    index = auxiliary["span"][0]
+    if surfaces[:index] + ["".join(surfaces[index:index + 2])] + surfaces[index + 2:] != [
+        token["text"] for token in tokens
+    ]:
+        return result
+    result["candidates"].append({
+        "rule_id": "CLS-183", "source_chapter": 10, "source_pages": [893],
+        "relation": {"kind": "tag_auxiliary_agrees_with_tag_subject",
+                     "tag_char_span": tokens[index]["char_span"],
+                     "subject_char_span": tokens[index + 1]["char_span"]},
+        "expected_auxiliary": expected, "edit_hint": None,
+    })
+    return result
