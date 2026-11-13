@@ -77,5 +77,5 @@ class CoordinatedDeterminerTests(unittest.TestCase):
                     sentence, analysis["root"], variety="standard_english"
                 )["candidates"]
                 found = [row["rule_id"] for row in rows]
-                self.assertIn(found, ([], ["CLS-1036"]) if target else ([],))
+                self.assertEqual(found, ["CLS-1036"] if target else [])
                 print(f"Cambridge coordinated determiner {sentence!r}: {found}; target={target}; parse={analysis['parse_string']}")

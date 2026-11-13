@@ -95,13 +95,18 @@ PLURAL_CARDINALS = {"two", "three", "four", "five", "six", "seven", "eight", "ni
 
 def _shared_plural_determiner(node):
     parts = node.get("children", [])
-    if node["type"] == "NP" and len(parts) == 2:
-        determiner, nominal = parts
+    if node["type"] == "NP" and len(parts) in {2, 4}:
+        determiner = parts[0]
         surface = determiner.get("surface", "").casefold()
         plural = ((determiner.get("pos") == "DT" and surface in {"these", "those"})
                   or (determiner.get("pos") == "CD" and surface in PLURAL_CARDINALS))
-        if plural and nominal["type"] in {"NP", "NML", "NX"}:
-            pair = _pair(nominal)
+        if plural:
+            nominal = parts[1]
+            pair = None
+            if len(parts) == 4:
+                pair = _pair({"children": parts[1:]})
+            elif nominal["type"] in {"NP", "NML", "NX"}:
+                pair = _pair(nominal)
             if pair and all(noun.get("pos") == "NN"
                             and noun["surface"].casefold() in SINGULAR_COUNT_NOUNS for noun in pair):
                 yield determiner, pair
