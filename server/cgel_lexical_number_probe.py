@@ -13,6 +13,7 @@ LEXICAL_NUMBER = {
     "police": ("PHR-062", 345, False),
     "news": ("PHR-065", 346, True),
     "shingles": ("PHR-065", 346, True),
+    **{noun: ("PHR-347", 504, True) for noun in ("crockery", "furniture", "luggage", "equipment")},
 }
 FORMS = {"is": ("is", "are"), "are": ("is", "are"),
          "was": ("was", "were"), "were": ("was", "were"),
