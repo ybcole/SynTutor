@@ -1,14 +1,14 @@
 # Cambridge Phase C backlog
 
-Snapshot through the nested backshift prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
+Snapshot through the fixed-composition progressive prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
 
 | Diagnostic specifications | Primary pilot | Supporting pilot | Outside pilot | Production-enabled |
 |---:|---:|---:|---:|---:|
-| 204 | 46 | 6 | 152 | 0 |
+| 204 | 47 | 6 | 151 | 0 |
 
 ## Next implementation batch
 
-**Progressive aspect with fixed composition (OTH-216)** is next.
+**Perfect auxiliaries under catenative verbs (OTH-182)** are next. Check whether the selecting verb licenses a perfect complement.
 
 After that batch, triage adjacent diagnostics by governing relation and compatible edits. Use the source and diagnostic family below to find related rules. A catalog entry can share a detector or receive a documented no-detector disposition.
 
@@ -54,6 +54,7 @@ After that batch, triage adjacent diagnostics by governing relation and compatib
 | Present-inclusive ever since | OTH-098 | — | This batch | Validate continuation context and extend beyond the narrow lexical and adjunct patterns. |
 | Present perfect with completed-past adjuncts | OTH-102 | — | This batch | Validate single-event context and adjunct attachment. |
 | Nested backshift | OTH-158 | — | This batch | Establish shared time reference and broaden reporting constructions. |
+| Progressive aspect and fixed composition | OTH-216 | — | This batch | Validate static versus dynamic readings before considering a repair. |
 | Imperative verb form | CLS-130 | — | [#115](https://github.com/ybcole/SynTutor/pull/115) | Establish the source of directive intent and validate the resulting finding. |
 
 ## Rule-by-rule inventory
@@ -262,7 +263,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | `OTH-098` | Bare preterite incompatible with present-inclusive ever since | Ch. 3, pp. 141 | Pilot |
 | `OTH-102` | Definite completed-past adjunct with present perfect | Ch. 3, pp. 143, 144, 146 | Pilot |
 | `OTH-158` | Backshift choices form a prefix through embedded clauses | Ch. 3, pp. 156 | Pilot |
-| `OTH-216` | Fixed-composition state rejects ordinary progressive | Ch. 3, pp. 167, 168 | Next |
+| `OTH-216` | Fixed-composition state rejects ordinary progressive | Ch. 3, pp. 167, 168 | Pilot |
 | `OTH-377` | Temporal adjuncts disallow ordinary futurity will | Ch. 3, pp. 191 | Queued |
 | `OTH-439` | Affirmative could and single-event perfective restriction | Ch. 3, pp. 197 | Queued |
 | `OTH-458` | Finite wish complements require preterite for unreal situation | Ch. 3, pp. 200 | Queued |
@@ -279,7 +280,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | `COMP-035` | Progressive be selects a gerund-participle | Ch. 3, pp. 106 | Pilot |
 | `COMP-036` | Passive be selects a past participle | Ch. 3, pp. 106 | Pilot |
 | `COMP-042` | Bare infinitival complement of had better | Ch. 3, pp. 113 | Queued |
-| `OTH-182` | Perfect auxiliaries are not selectable by all catenatives | Ch. 3, pp. 161 | Queued |
+| `OTH-182` | Perfect auxiliaries are not selectable by all catenatives | Ch. 3, pp. 161 | Next |
 | `COMP-061` | Tend selects a to-infinitival action clause | Ch. 4, pp. 220 | Queued |
 | `COMP-062` | Enjoy excludes a to-infinitival action complement | Ch. 4, pp. 221 | Pilot |
 | `COMP-116` | Do pseudocleft aspect connectedness | Ch. 4, pp. 270 | Queued |

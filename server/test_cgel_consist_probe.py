@@ -1,7 +1,7 @@
 import os
 import unittest
 
-from cgel_consist_probe import probe_come_across, probe_consist
+from cgel_consist_probe import probe_come_across, probe_consist, probe_fixed_composition
 from parse_engine import NodeBuilder, analyze, parse_parse_string
 
 
@@ -76,3 +76,36 @@ class ComeAcrossProbeTests(unittest.TestCase):
                 found = [row["rule_id"] for row in rows]
                 print(f"Cambridge come across {sentence!r} sense={confirmed}: {found}; expected={expected}; parse={analysis['parse_string']}")
                 self.assertEqual(found, expected)
+
+
+class FixedCompositionTests(unittest.TestCase):
+    def check_case(self, sentence, tree, static, expected):
+        rows = probe_fixed_composition(
+            sentence, tree, variety="standard_english", static_state_confirmed=static
+        )["candidates"]
+        self.assertEqual([row["rule_id"] for row in rows], ["OTH-216"] if expected else [])
+        for row in rows:
+            self.assertIsNone(row["edit_hint"])
+
+    def test_fixed_state_context_is_required(self):
+        sentence = "The parcel is containing four books."
+        tree = NodeBuilder().build(parse_parse_string(
+            "(S (NP (DT The) (NN parcel)) (VP (VBZ is) "
+            "(VP (VBG containing) (NP (CD four) (NNS books)))) (. .))"
+        ), 7)
+        for static in (True, False):
+            self.check_case(sentence, tree, static, static)
+
+    @unittest.skipUnless(os.environ.get("CGEL_REQUIRE_PARSER") == "1", "configured parser required")
+    def test_configured_fixed_composition(self):
+        for sentence, static, expected in [
+            ("The parcel is containing four books.", True, True),
+            ("The compound is consisting of two minerals.", True, True),
+            ("The parcel is containing four books.", False, False),
+            ("The parcel contains four books.", True, False),
+            ("The compound consists of two minerals.", True, False),
+            ("The crew is containing the fire.", False, False),
+            ("The firefighters are putting out the fire.", True, False),
+        ]:
+            with self.subTest(sentence=sentence, static=static):
+                self.check_case(sentence, analyze(sentence)["root"], static, expected)
