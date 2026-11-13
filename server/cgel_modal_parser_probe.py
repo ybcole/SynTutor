@@ -189,6 +189,41 @@ def _perfect_relations(node):
         yield from _perfect_relations(child)
 
 
+def _be_chain_relations(node):
+    parts = node.get("children", [])
+    if node["type"] == "VP" and len(parts) == 2 and parts[1]["type"] == "VP":
+        outer, nested = parts
+        lower = nested.get("children", [])
+        if (outer.get("pos") in {"VB", "VBP", "VBZ", "VBD", "VBN"}
+                and outer["surface"].casefold() in {"be", "am", "is", "are", "was", "were", "been"}
+                and len(lower) == 2 and lower[1]["type"] == "VP"):
+            inner, complement = lower
+            verbs = complement.get("children", [])
+            if verbs and all(part["type"] not in {"CC", "CONJP"} for part in verbs):
+                relation = {
+                    "kind": "be_selects", "direct_selection": True, "same_clause": True,
+                    "coordinated": False, "clause_kind": "other", "dependent_role": "lexical_verb",
+                }
+                surface = inner.get("surface", "").casefold()
+                if surface == "been" and inner.get("pos") == "VBN" and verbs[0].get("pos") == "VBN":
+                    yield {**relation, "governor": outer["span"][0], "dependent": inner["span"][0],
+                           "governor_role": "progressive_be"}
+                elif surface == "being" and inner.get("pos") == "VBG":
+                    verb = verbs[0]
+                    if verb.get("pos") in {"VBD", "VBN"}:
+                        word = verb["surface"].casefold()
+                        lemmas = getLemma(word, upos="VERB", lemmatize_oov=False)
+                        if len(lemmas) == 1:
+                            past = getInflection(lemmas[0], tag="VBD", inflect_oov=False)
+                            participles = getInflection(lemmas[0], tag="VBN", inflect_oov=False)
+                            if word in past and len(participles) == 1 and word != participles[0]:
+                                yield {**relation, "governor": inner["span"][0], "dependent": verb["span"][0],
+                                       "governor_role": "passive_be", "dependent_form": "nonparticipial",
+                                       "candidate_participle": participles[0]}
+    for child in parts:
+        yield from _be_chain_relations(child)
+
+
 def probe_modal_parser(sentence, tree, *, variety):
     """Require aligned parser evidence and keep the existing Chapter 3 output contract."""
     tokens = tokens_with_spans(sentence)
@@ -205,6 +240,7 @@ def probe_modal_parser(sentence, tree, *, variety):
         if (relation := _relation(modal, parts)) is not None
     ]
     relations.extend(_perfect_relations(tree))
+    relations.extend(_be_chain_relations(tree))
     if (relation := _inverted_do_relation(tree)) is not None:
         relations.append(relation)
     result = probe_ch03(sentence, {"status": "typed_candidate", "sentence": sentence, "relations": relations},

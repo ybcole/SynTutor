@@ -106,6 +106,15 @@ AUXILIARY_CASES = [
     ("invariant perfect control", "The crew has cut the cable.", "standard_english", []),
     ("causative perfect control", "They have the technician check the cable.", "standard_english", []),
     ("possession control", "The volunteers have a report.", "standard_english", []),
+    ("progressive chain", "The files were been reviewed by the auditors.", "standard_english", ["COMP-035"]),
+    ("progressive chain", "The fence was been painted yesterday.", "standard_english", ["COMP-035"]),
+    ("passive chain", "The photos were being took by the visitors.", "standard_english", ["COMP-036"]),
+    ("passive chain", "The invitations are being wrote by hand.", "standard_english", ["COMP-036"]),
+    ("progressive passive control", "The photos were being taken by the visitors.", "standard_english", []),
+    ("copular control", "The visitors were being quiet.", "standard_english", []),
+    ("simple progressive control", "The visitors were taking photos.", "standard_english", []),
+    ("simple passive control", "The photos were taken yesterday.", "standard_english", []),
+    ("ambiguous be", "The crew was paint.", "standard_english", []),
     ("unspecified variety", "The boat might could cross before noon.", None, []),
 ]
 
