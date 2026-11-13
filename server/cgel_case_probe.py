@@ -206,3 +206,51 @@ def probe_pride_reflexive(sentence, tree, *, variety):
         "edit_hint": None,
     })
     return result
+
+
+def probe_comparative_like_case(sentence, tree, *, variety):
+    """Check detached initial and final like phrases with a bare pronoun."""
+    result = {"status": "not_evaluated", "production_enabled": False, "candidates": []}
+    if variety != "standard_english":
+        return result
+    tokens = tokens_with_spans(sentence)
+    leaves = list(_ordered_leaves(tree))
+    if len(tokens) != len(leaves) or any(
+        leaf["span"] != [token["index"], token["index"] + 1] or leaf["surface"] != token["text"]
+        for leaf, token in zip(leaves, tokens)
+    ) or any(token["text"] in {'"', '“', '”', "'", "‘", "’"} for token in tokens):
+        return result
+    result["status"] = "candidate_only"
+    parts = tree.get("children", [])
+    if tree["type"] != "S" or not parts or parts[-1].get("surface") != ".":
+        return result
+    types = [node["type"] for node in parts]
+    if types == ["PP", ",", "NP", "VP", "."]:
+        phrase = parts[0]
+    elif types == ["NP", "VP", ",", "PP", "."]:
+        phrase = parts[-2]
+    elif types == ["NP", "VP", "."]:
+        vp = parts[1].get("children", [])
+        if len(vp) < 3 or vp[-2].get("surface") != "," or vp[-1]["type"] != "PP":
+            return result
+        phrase = vp[-1]
+    else:
+        return result
+    pp = phrase.get("children", [])
+    if (len(pp) != 2 or pp[0].get("pos") != "IN"
+            or pp[0]["surface"].casefold() != "like" or pp[1]["type"] != "NP"):
+        return result
+    pronouns = list(_ordered_leaves(pp[1]))
+    if len(pronouns) != 1 or pronouns[0].get("pos") != "PRP":
+        return result
+    pronoun = pronouns[0]
+    expected = OBJECT_FORMS.get(pronoun["surface"].casefold())
+    if expected:
+        result["candidates"].append({
+            "rule_id": "CLS-1244", "source_chapter": 13, "source_pages": [1156],
+            "relation": {"kind": "bare_pronoun_complement_of_comparative_like",
+                         "marker_char_span": tokens[pp[0]["span"][0]]["char_span"],
+                         "pronoun_char_span": tokens[pronoun["span"][0]]["char_span"]},
+            "expected_pronoun": expected, "edit_hint": None,
+        })
+    return result

@@ -2,6 +2,7 @@ import os
 import unittest
 
 from cgel_case_probe import probe_infinitival_case, probe_local_reflexive, probe_pride_reflexive, probe_pronoun_case
+from cgel_case_probe import probe_comparative_like_case
 from parse_engine import NodeBuilder, analyze, parse_parse_string
 
 
@@ -141,3 +142,37 @@ class PrideReflexiveTests(unittest.TestCase):
                 found = [row["rule_id"] for row in rows]
                 self.assertIn(found, ([], ["CLS-1103"]) if expected else ([],))
                 print(f"Cambridge pride reflexive {sentence!r}: {found}; expected={expected}")
+
+
+class ComparativeLikeTests(unittest.TestCase):
+    def test_initial_and_final_complements(self):
+        initial = "(S (PP (IN Like) (NP (PRP they))) (, ,) (NP (NNP Ruth)) (VP (VBZ jogs)) (. .))"
+        final = "(S (NP (NNP Ruth)) (VP (VBZ jogs) (, ,) (PP (IN like) (NP (PRP we)))) (. .))"
+        medial = "(S (NP (NNP Ruth)) (, ,) (PP (IN like) (NP (PRP we))) (, ,) (VP (VBZ jogs)) (. .))"
+        for sentence, parse, size, expected in [
+            ("Like they, Ruth jogs.", initial, 6, ["them"]),
+            ("Ruth jogs, like we.", final, 6, ["us"]),
+            ("Ruth, like we, jogs.", medial, 7, []),
+        ]:
+            with self.subTest(sentence=sentence):
+                tree = NodeBuilder().build(parse_parse_string(parse), size)
+                rows = probe_comparative_like_case(sentence, tree, variety="standard_english")["candidates"]
+                self.assertEqual([row["expected_pronoun"] for row in rows], expected)
+
+    @unittest.skipUnless(os.environ.get("CGEL_REQUIRE_PARSER") == "1", "configured parser required")
+    def test_configured_comparative_like(self):
+        for sentence, expected in [
+            ("Like they, Ruth commutes by train.", ["them"]),
+            ("Ruth commutes by train, like we.", ["us"]),
+            ("Like them, Ruth commutes by train.", []),
+            ("Ruth commutes by train, like us.", []),
+            ("Like we do, Ruth commutes by train.", []),
+            ("Ruth, like we, commutes by train.", []),
+            ("Ruth looks like her.", []),
+        ]:
+            with self.subTest(sentence=sentence):
+                analysis = analyze(sentence)
+                rows = probe_comparative_like_case(sentence, analysis["root"], variety="standard_english")["candidates"]
+                found = [row["expected_pronoun"] for row in rows]
+                self.assertIn(found, (expected, []))
+                print(f"Cambridge comparative like {sentence!r}: {found}; expected={expected}; parse={analysis['parse_string']}")

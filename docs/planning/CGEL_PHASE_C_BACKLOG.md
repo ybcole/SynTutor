@@ -1,14 +1,14 @@
 # Cambridge Phase C backlog
 
-Snapshot through the pride reflexive prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
+Snapshot through the comparative like prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
 
 | Diagnostic specifications | Primary pilot | Supporting pilot | Outside pilot | Production-enabled |
 |---:|---:|---:|---:|---:|
-| 204 | 26 | 6 | 172 | 0 |
+| 204 | 27 | 6 | 171 | 0 |
 
 ## Next implementation batch
 
-**Pronoun case after comparative like (CLS-1244)** is next. Check the difference between a pronoun complement and the subject of a finite comparative clause.
+**Preposition selection with consist (COMP-060)** is next. Check the composition sense against other licensed uses before proposing a repair.
 
 After that batch, triage adjacent diagnostics by governing relation and compatible edits. Use the source and diagnostic family below to find related rules. A catalog entry can share a detector or receive a documented no-detector disposition.
 
@@ -36,6 +36,7 @@ After that batch, triage adjacent diagnostics by governing relation and compatib
 | Infinitival pronoun case | CLS-285 | — | This batch | Validate canonical subject grounding and broaden parser coverage. |
 | Local reflexive antecedents | CLS-1101 | — | This batch | Validate conditional-clause grounding and assess additional argument frames. |
 | Reflexive objects of pride | CLS-1103 | — | This batch | Validate the self-esteem construction and canonical object grounding. |
+| Comparative like pronoun case | CLS-1244 | — | This batch | Validate detached initial and final adjuncts and retain medial and finite-clause controls. |
 | Imperative verb form | CLS-130 | — | [#115](https://github.com/ybcole/SynTutor/pull/115) | Establish the source of directive intent and validate the resulting finding. |
 
 ## Rule-by-rule inventory
@@ -126,7 +127,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | `CLS-1218` | Nominal complement in the postpositive other than pattern | Ch. 13, pp. 1145 | Queued |
 | `CLS-1222` | Anaphoric gap in supplementary reporting as | Ch. 13, pp. 1148 | Queued |
 | `CLS-1239` | Like with NP for resemblance and as for capacity | Ch. 13, pp. 1154 | Queued |
-| `CLS-1244` | Personal pronoun case after comparative like | Ch. 13, pp. 1156 | Next |
+| `CLS-1244` | Personal pronoun case after comparative like | Ch. 13, pp. 1156 | Pilot |
 | `CLS-1259` | Comparative grade in two-member set comparisons | Ch. 13, pp. 1162 | Queued |
 | `CLS-1274` | Definiteness in incorporated ranking superlatives | Ch. 13, pp. 1168, 1169 | Queued |
 | `CLS-1276` | Integrated relatives after free superlatives | Ch. 13, pp. 1169 | Queued |
@@ -169,7 +170,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 
 | Rule | Construction | Cambridge source | Status |
 |---|---|---|---|
-| `COMP-060` | Consist selects of | Ch. 4, pp. 220 | Queued |
+| `COMP-060` | Consist selects of | Ch. 4, pp. 220 | Next |
 | `COMP-128` | Fixed come across cannot undergo ordinary PP-fronting | Ch. 4, pp. 275 | Queued |
 
 ### Pronoun case (12)
