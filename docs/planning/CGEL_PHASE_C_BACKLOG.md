@@ -1,14 +1,14 @@
 # Cambridge Phase C backlog
 
-Snapshot through the active believe infinitival prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
+Snapshot through the interrogative infinitival subject prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
 
 | Diagnostic specifications | Primary pilot | Supporting pilot | Outside pilot | Production-enabled |
 |---:|---:|---:|---:|---:|
-| 204 | 49 | 6 | 149 | 0 |
+| 204 | 50 | 6 | 148 | 0 |
 
 ## Next implementation batch
 
-**Overt subjects in infinitival interrogatives (CLS-407)** are next. Contrast subjectless wh-infinitivals with finite interrogatives and licensed for-infinitivals.
+**Participial NP modifiers (CLS-408)** are next. Distinguish direct participial modifiers from finite relatives.
 
 After that batch, triage adjacent diagnostics by governing relation and compatible edits. Use the source and diagnostic family below to find related rules. A catalog entry can share a detector or receive a documented no-detector disposition.
 
@@ -57,6 +57,7 @@ After that batch, triage adjacent diagnostics by governing relation and compatib
 | Progressive aspect and fixed composition | OTH-216 | — | This batch | Validate static versus dynamic readings before considering a repair. |
 | Perfect auxiliaries under catenatives | OTH-182 | — | This batch | Validate the temporally bound reading and additional complement shapes. |
 | Overt object with active believe | CLS-320 | — | This batch | Validate complement attachment and broaden active frame coverage. |
+| Overt subjects in wh-infinitivals | CLS-407 | — | This batch | Validate interrogative attachment and assess wh-subject cases separately. |
 | Imperative verb form | CLS-130 | — | [#115](https://github.com/ybcole/SynTutor/pull/115) | Establish the source of directive intent and validate the resulting finding. |
 
 ## Rule-by-rule inventory
@@ -113,7 +114,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | `PHR-381` | Non-expandable declarative complements | Ch. 7, pp. 604 | Queued |
 | `CLS-268` | No overt matrix subject before inclusive let's | Ch. 10, pp. 934, 935 | Pilot |
 | `CLS-270` | Negating a to-infinitival report of a directive | Ch. 10, pp. 943, 944 | Pilot |
-| `CLS-407` | No overt subject in infinitival interrogative complements | Ch. 14, pp. 1264 | Next |
+| `CLS-407` | No overt subject in infinitival interrogative complements | Ch. 14, pp. 1264 | Pilot |
 
 ### Missing word (10)
 
@@ -127,7 +128,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | `PHR-083` | Of with plural approximate number nouns | Ch. 5, pp. 351 | Queued |
 | `CLS-131` | Supportive do with be in ordinary negative imperatives | Ch. 10, pp. 857 | Support |
 | `CLS-320` | Overt object with active believe plus an infinitival | Ch. 14, pp. 1203 | Pilot |
-| `CLS-408` | Participial NP modifiers without relative markers | Ch. 14, pp. 1265 | Queued |
+| `CLS-408` | Participial NP modifiers without relative markers | Ch. 14, pp. 1265 | Next |
 | `CLS-1095` | Supplementary relative clause requires an antecedent anchor | Ch. 15, pp. 1353 | Queued |
 
 ### Other (51)
