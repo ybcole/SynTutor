@@ -192,6 +192,11 @@ def _normalize_parser_text(text):
             start = index
             while index < len(text) and text[index].isspace():
                 index += 1
+            # Boundary whitespace must not become a spaCy SPACE token:
+            # Benepar has no corresponding lexical leaf for it. Keep internal
+            # whitespace and its source map so document offsets stay exact.
+            if start == 0 or index == len(text):
+                continue
             chars.append(' ')
             starts.append(start)
             ends.append(index)
