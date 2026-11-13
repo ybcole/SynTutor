@@ -1,7 +1,7 @@
 import os
 import unittest
 
-from cgel_imperative_probe import probe_imperative
+from cgel_imperative_probe import probe_imperative, probe_negative_imperative
 from parse_engine import NodeBuilder, analyze, parse_parse_string
 
 
@@ -48,3 +48,49 @@ class ImperativeProbeTests(unittest.TestCase):
         recheck = probe_imperative(repaired, analyze(repaired)["root"],
                                    variety="standard_english", directive_confirmed=True)
         self.assertEqual(recheck["candidates"], [])
+
+
+NEGATIVE_CASES = [
+    ("Be not late.", "(S (VP (VB Be) (RB not) (ADJP (JJ late))) (. .))", True, "Do not be late."),
+    ("Not be late!", "(S (VP (RB Not) (VP (VB be) (ADJP (JJ late)))) (. !))", True, "Do not be late!"),
+    ("Be not late.", "(S (VP (VB Be) (RB not) (ADJP (JJ late))) (. .))", False, None),
+    ("Do not be late.", "(S (VP (VBP Do) (RB not) (VP (VB be) (ADJP (JJ late)))) (. .))", True, None),
+    ("She is not late.", "(S (NP (PRP She)) (VP (VBZ is) (RB not) (ADJP (JJ late))) (. .))", False, None),
+]
+
+
+class NegativeImperativeTests(unittest.TestCase):
+    def check(self, sentence, tree, context, expected, *, configured=False):
+        result = probe_negative_imperative(
+            sentence, tree, variety="standard_english", ordinary_verbal_directive_confirmed=context
+        )
+        if configured:
+            print(f"Negative imperative {sentence!r} context={context}: {len(result['candidates'])} candidate(s)")
+        if expected is None or configured and not result["candidates"]:
+            self.assertEqual(result["candidates"], [])
+            return
+        candidate, = result["candidates"]
+        self.assertEqual(candidate["rule_id"], "CLS-102")
+        self.assertEqual(candidate["supporting_rule_ids"], ["CLS-131"])
+        edit = candidate["edit_hint"]
+        start, end = edit["char_span"]
+        repaired = sentence[:start] + edit["replacement"] + sentence[end:]
+        self.assertEqual(repaired, expected)
+        if configured:
+            recheck = probe_negative_imperative(
+                repaired, analyze(repaired)["root"], variety="standard_english",
+                ordinary_verbal_directive_confirmed=True
+            )
+            self.assertEqual(recheck["candidates"], [])
+
+    def test_negative_imperative_fixtures(self):
+        for sentence, parse, context, expected in NEGATIVE_CASES:
+            with self.subTest(sentence=sentence, context=context):
+                tree = NodeBuilder().build(parse_parse_string(parse), len(sentence.rstrip(".!").split()) + 1)
+                self.check(sentence, tree, context, expected)
+
+    @unittest.skipUnless(os.environ.get("CGEL_REQUIRE_PARSER") == "1", "configured parser required")
+    def test_configured_negative_imperatives(self):
+        for sentence, _, context, expected in NEGATIVE_CASES:
+            with self.subTest(sentence=sentence, context=context):
+                self.check(sentence, analyze(sentence)["root"], context, expected, configured=True)
