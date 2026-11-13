@@ -1,14 +1,14 @@
 # Cambridge Phase C backlog
 
-Snapshot through the comparative like prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
+Snapshot through the consist preposition prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
 
 | Diagnostic specifications | Primary pilot | Supporting pilot | Outside pilot | Production-enabled |
 |---:|---:|---:|---:|---:|
-| 204 | 27 | 6 | 171 | 0 |
+| 204 | 28 | 6 | 170 | 0 |
 
 ## Next implementation batch
 
-**Preposition selection with consist (COMP-060)** is next. Check the composition sense against other licensed uses before proposing a repair.
+**Preposition fronting with come across (COMP-128)** is next. Distinguish the fixed encounter sense from literal movement.
 
 After that batch, triage adjacent diagnostics by governing relation and compatible edits. Use the source and diagnostic family below to find related rules. A catalog entry can share a detector or receive a documented no-detector disposition.
 
@@ -37,6 +37,7 @@ After that batch, triage adjacent diagnostics by governing relation and compatib
 | Local reflexive antecedents | CLS-1101 | — | This batch | Validate conditional-clause grounding and assess additional argument frames. |
 | Reflexive objects of pride | CLS-1103 | — | This batch | Validate the self-esteem construction and canonical object grounding. |
 | Comparative like pronoun case | CLS-1244 | — | This batch | Validate detached initial and final adjuncts and retain medial and finite-clause controls. |
+| Preposition selection with consist | COMP-060 | — | This batch | Validate composition sense and broaden complement coverage. |
 | Imperative verb form | CLS-130 | — | [#115](https://github.com/ybcole/SynTutor/pull/115) | Establish the source of directive intent and validate the resulting finding. |
 
 ## Rule-by-rule inventory
@@ -170,8 +171,8 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 
 | Rule | Construction | Cambridge source | Status |
 |---|---|---|---|
-| `COMP-060` | Consist selects of | Ch. 4, pp. 220 | Next |
-| `COMP-128` | Fixed come across cannot undergo ordinary PP-fronting | Ch. 4, pp. 275 | Queued |
+| `COMP-060` | Consist selects of | Ch. 4, pp. 220 | Pilot |
+| `COMP-128` | Fixed come across cannot undergo ordinary PP-fronting | Ch. 4, pp. 275 | Next |
 
 ### Pronoun case (12)
 
