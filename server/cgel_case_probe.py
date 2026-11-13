@@ -165,3 +165,44 @@ def probe_local_reflexive(sentence, tree, *, variety):
             "edit_hint": None,
         })
     return result
+
+
+def probe_pride_reflexive(sentence, tree, *, variety):
+    """Recognize the simple finite pride + personal object + on frame."""
+    result = {"status": "not_evaluated", "production_enabled": False, "candidates": []}
+    if variety != "standard_english":
+        return result
+    tokens = tokens_with_spans(sentence)
+    leaves = list(_ordered_leaves(tree))
+    if len(tokens) != len(leaves) or any(
+        leaf["span"] != [token["index"], token["index"] + 1] or leaf["surface"] != token["text"]
+        for leaf, token in zip(leaves, tokens)
+    ):
+        return result
+    result["status"] = "candidate_only"
+    parts = tree.get("children", [])
+    if tree["type"] != "S" or [part["type"] for part in parts] != ["NP", "VP", "."]:
+        return result
+    predicate = parts[1].get("children", [])
+    if len(predicate) != 3:
+        return result
+    verb, obj, phrase = predicate
+    if (verb.get("pos") not in {"VBD", "VBP", "VBZ"}
+            or verb["surface"].casefold() not in {"pride", "prides", "prided"}
+            or obj["type"] != "NP" or phrase["type"] != "PP"):
+        return result
+    obj_leaves = list(_ordered_leaves(obj))
+    pp = phrase.get("children", [])
+    if (len(obj_leaves) != 1 or obj_leaves[0].get("pos") != "PRP"
+            or obj_leaves[0]["surface"].casefold() not in SUBJECT_FORMS.keys() | {"it", "you"}
+            or len(pp) != 2 or pp[0].get("pos") != "IN"
+            or pp[0]["surface"].casefold() != "on" or pp[1]["type"] not in {"NP", "S"}):
+        return result
+    result["candidates"].append({
+        "rule_id": "CLS-1103", "source_chapter": 17, "source_pages": [1488],
+        "relation": {"kind": "pride_requires_reflexive_object",
+                     "verb_char_span": tokens[verb["span"][0]]["char_span"],
+                     "object_char_span": tokens[obj_leaves[0]["span"][0]]["char_span"]},
+        "edit_hint": None,
+    })
+    return result

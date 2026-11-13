@@ -1,14 +1,14 @@
 # Cambridge Phase C backlog
 
-Snapshot through the local reflexive prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
+Snapshot through the pride reflexive prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
 
 | Diagnostic specifications | Primary pilot | Supporting pilot | Outside pilot | Production-enabled |
 |---:|---:|---:|---:|---:|
-| 204 | 25 | 6 | 173 | 0 |
+| 204 | 26 | 6 | 172 | 0 |
 
 ## Next implementation batch
 
-**Reflexive objects of pride (CLS-1103)** are next. Distinguish the lexical requirement in the self-esteem sense from broader local binding and other uses.
+**Pronoun case after comparative like (CLS-1244)** is next. Check the difference between a pronoun complement and the subject of a finite comparative clause.
 
 After that batch, triage adjacent diagnostics by governing relation and compatible edits. Use the source and diagnostic family below to find related rules. A catalog entry can share a detector or receive a documented no-detector disposition.
 
@@ -35,6 +35,7 @@ After that batch, triage adjacent diagnostics by governing relation and compatib
 | Canonical pronoun case | COMP-084 | PHR-283 | This batch | Validate canonical relations and broaden finite clause coverage. |
 | Infinitival pronoun case | CLS-285 | — | This batch | Validate canonical subject grounding and broaden parser coverage. |
 | Local reflexive antecedents | CLS-1101 | — | This batch | Validate conditional-clause grounding and assess additional argument frames. |
+| Reflexive objects of pride | CLS-1103 | — | This batch | Validate the self-esteem construction and canonical object grounding. |
 | Imperative verb form | CLS-130 | — | [#115](https://github.com/ybcole/SynTutor/pull/115) | Establish the source of directive intent and validate the resulting finding. |
 
 ## Rule-by-rule inventory
@@ -125,7 +126,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | `CLS-1218` | Nominal complement in the postpositive other than pattern | Ch. 13, pp. 1145 | Queued |
 | `CLS-1222` | Anaphoric gap in supplementary reporting as | Ch. 13, pp. 1148 | Queued |
 | `CLS-1239` | Like with NP for resemblance and as for capacity | Ch. 13, pp. 1154 | Queued |
-| `CLS-1244` | Personal pronoun case after comparative like | Ch. 13, pp. 1156 | Queued |
+| `CLS-1244` | Personal pronoun case after comparative like | Ch. 13, pp. 1156 | Next |
 | `CLS-1259` | Comparative grade in two-member set comparisons | Ch. 13, pp. 1162 | Queued |
 | `CLS-1274` | Definiteness in incorporated ranking superlatives | Ch. 13, pp. 1168, 1169 | Queued |
 | `CLS-1276` | Integrated relatives after free superlatives | Ch. 13, pp. 1169 | Queued |
@@ -184,7 +185,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | `PHR-321` | Own as fused modifier-head | Ch. 5, pp. 483 | Queued |
 | `CLS-285` | Accusative pronouns after infinitival for | Ch. 14, pp. 1182 | Pilot |
 | `CLS-1101` | Reflexive anaphor requires the appropriate local antecedent in a chain | Ch. 17, pp. 1457 | Pilot |
-| `CLS-1103` | Pride lexically requires the subject-bound reflexive object | Ch. 17, pp. 1488 | Next |
+| `CLS-1103` | Pride lexically requires the subject-bound reflexive object | Ch. 17, pp. 1488 | Pilot |
 | `PHR-580` | Subject antecedent of an emphatic clause adjunct | Ch. 17, pp. 1497 | Queued |
 | `PHR-582` | Genitive exclusion with NP-internal emphatic reflexives | Ch. 17, pp. 1497 | Queued |
 

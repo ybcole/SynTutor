@@ -1,7 +1,7 @@
 import os
 import unittest
 
-from cgel_case_probe import probe_infinitival_case, probe_local_reflexive, probe_pronoun_case
+from cgel_case_probe import probe_infinitival_case, probe_local_reflexive, probe_pride_reflexive, probe_pronoun_case
 from parse_engine import NodeBuilder, analyze, parse_parse_string
 
 
@@ -104,3 +104,40 @@ class LocalReflexiveTests(unittest.TestCase):
                 found = [row["rule_id"] for row in rows]
                 self.assertIn(found, (expected, []))
                 print(f"Cambridge local reflexive {sentence!r}: {found}; expected={expected}")
+
+
+PRIDE_CASES = [
+    ("Nadia prides her on her patience.", True),
+    ("They pride them on their teamwork.", True),
+    ("Nadia prides herself on her patience.", False),
+    ("They pride themselves on their teamwork.", False),
+    ("Nadia takes pride in her patience.", False),
+    ("They congratulated her on her patience.", False),
+]
+
+
+class PrideReflexiveTests(unittest.TestCase):
+    def test_plain_object_and_reflexive_control(self):
+        for word, expected in [("her", ["CLS-1103"]), ("herself", [])]:
+            with self.subTest(word=word):
+                sentence = f"Nadia prides {word} on her patience."
+                parse = (
+                    f"(S (NP (NNP Nadia)) (VP (VBZ prides) (NP (PRP {word})) "
+                    "(PP (IN on) (NP (PRP$ her) (NN patience)))) (. .))"
+                )
+                tree = NodeBuilder().build(parse_parse_string(parse), 7)
+                rows = probe_pride_reflexive(sentence, tree, variety="standard_english")["candidates"]
+                self.assertEqual([row["rule_id"] for row in rows], expected)
+                if rows:
+                    self.assertEqual(rows[0]["relation"]["object_char_span"], [13, 16])
+                    self.assertIsNone(rows[0]["edit_hint"])
+
+    @unittest.skipUnless(os.environ.get("CGEL_REQUIRE_PARSER") == "1", "configured parser required")
+    def test_configured_pride_reflexive(self):
+        for sentence, expected in PRIDE_CASES:
+            with self.subTest(sentence=sentence):
+                analysis = analyze(sentence)
+                rows = probe_pride_reflexive(sentence, analysis["root"], variety="standard_english")["candidates"]
+                found = [row["rule_id"] for row in rows]
+                self.assertIn(found, ([], ["CLS-1103"]) if expected else ([],))
+                print(f"Cambridge pride reflexive {sentence!r}: {found}; expected={expected}")
