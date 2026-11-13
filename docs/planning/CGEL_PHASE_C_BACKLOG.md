@@ -1,14 +1,14 @@
 # Cambridge Phase C backlog
 
-Snapshot through the exclamative article prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
+Snapshot through the determined participle prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
 
 | Diagnostic specifications | Primary pilot | Supporting pilot | Outside pilot | Production-enabled |
 |---:|---:|---:|---:|---:|
-| 204 | 53 | 6 | 145 | 0 |
+| 204 | 54 | 6 | 144 | 0 |
 
 ## Next implementation batch
 
-**Determiners before gerund-participials (MORPH-041)** are next. Distinguish verbal clauses from gerundial nouns.
+**Consonant doubling before vowel-initial suffixes (MORPH-078)** is next. Check stress, spelling variants and established exceptions.
 
 After that batch, triage adjacent diagnostics by governing relation and compatible edits. Use the source and diagnostic family below to find related rules. A catalog entry can share a detector or receive a documented no-detector disposition.
 
@@ -61,6 +61,7 @@ After that batch, triage adjacent diagnostics by governing relation and compatib
 | Participial NP modifiers | CLS-408 | — | This batch | Validate NP attachment and preserve finite relatives. |
 | Set expressions in which partitives | CLS-201 | — | This batch | Validate partitive attachment and extend beyond explicit some and any. |
 | Exclamative what and articles | CLS-229 | — | This batch | Validate exclamative context and broaden count-head coverage. |
+| Determiners before object-taking participles | MORPH-041 | — | This batch | Validate verbal object attachment and preserve nominal and genitive constructions. |
 | Imperative verb form | CLS-130 | — | [#115](https://github.com/ybcole/SynTutor/pull/115) | Establish the source of directive intent and validate the resulting finding. |
 
 ## Rule-by-rule inventory
@@ -87,7 +88,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 
 | Rule | Construction | Cambridge source | Status |
 |---|---|---|---|
-| `MORPH-041` | Determiners cannot directly govern gerund-participial verbs | Ch. 3, pp. 81, 82 | Next |
+| `MORPH-041` | Determiners cannot directly govern gerund-participial verbs | Ch. 3, pp. 81, 82 | Pilot |
 | `COMP-087` | Bare role NP requires determiner in ordinary object position | Ch. 4, pp. 253 | Pilot |
 | `PHR-028` | Bare nominal cannot occupy ordinary singular count subject | Ch. 5, pp. 329 | Queued |
 | `PHR-043` | Noncount selectors much and a little | Ch. 5, pp. 339 | Queued |
@@ -241,7 +242,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | Rule | Construction | Cambridge source | Status |
 |---|---|---|---|
 | `PHR-164` | Single-word another in ordinary indefinite noun phrases | Ch. 5, pp. 391 | Queued |
-| `MORPH-078` | Consonant doubling before vowel-initial suffixes | Ch. 18, pp. 1575, 1576 | Queued |
+| `MORPH-078` | Consonant doubling before vowel-initial suffixes | Ch. 18, pp. 1575, 1576 | Next |
 | `MORPH-080` | Mute e deletion before ing | Ch. 18, pp. 1576, 1577 | Queued |
 | `MORPH-083` | Ie bases and ing spelling | Ch. 18, pp. 1579 | Queued |
 | `MORPH-092` | Regular noun plurals with final y | Ch. 18, pp. 1585 | Queued |
