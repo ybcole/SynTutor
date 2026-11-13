@@ -4,11 +4,11 @@ Snapshot through the coordinated determiner prototype. The [master plan](CAMBRID
 
 | Diagnostic specifications | Primary pilot | Supporting pilot | Outside pilot | Production-enabled |
 |---:|---:|---:|---:|---:|
-| 204 | 39 | 6 | 159 | 0 |
+| 204 | 40 | 6 | 158 | 0 |
 
 ## Next implementation batch
 
-**Comparative gaps (CLS-1119)** are next. Check the gap required by the comparative governor and preserve ordinary ellipsis.
+**Comparative subject omission (CLS-1129)** is next.
 
 After that batch, triage adjacent diagnostics by governing relation and compatible edits. Use the source and diagnostic family below to find related rules. A catalog entry can share a detector or receive a documented no-detector disposition.
 
@@ -47,6 +47,7 @@ After that batch, triage adjacent diagnostics by governing relation and compatib
 | Spatial demonstrative agreement | PHR-620 | — | This batch | Validate locative attachment and shared deictic context before any rewrite. |
 | Basic coordination | CLS-1034, CLS-1035 | — | This batch | Broaden evidence for shared function and nonfinite subject coordination. |
 | Plural determiners and noun coordination | CLS-1036 | — | This batch | Validate word-level scope and preserve full NP coordination. |
+| Comparative degree gaps | CLS-1119 | — | This batch | Validate scalar comparative attachment and extend to other degree modifiers. |
 | Imperative verb form | CLS-130 | — | [#115](https://github.com/ybcole/SynTutor/pull/115) | Establish the source of directive intent and validate the resulting finding. |
 
 ## Rule-by-rule inventory
@@ -128,8 +129,8 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | `PHR-054` | Partitive selection with aggregate plurals | Ch. 5, pp. 343 | Queued |
 | `PHR-110` | Both as a binary coordination marker | Ch. 5, pp. 361 | Queued |
 | `CLS-171` | Negative polarity items in simple positive declarative questions | Ch. 10, pp. 885 | Queued |
-| `CLS-1119` | Obligatory gap for the comparative governor counterpart | Ch. 13, pp. 1108 | Next |
-| `CLS-1129` | Subject omission with a retained comparative verb | Ch. 13, pp. 1113 | Queued |
+| `CLS-1119` | Obligatory gap for the comparative governor counterpart | Ch. 13, pp. 1108 | Pilot |
+| `CLS-1129` | Subject omission with a retained comparative verb | Ch. 13, pp. 1113 | Next |
 | `CLS-1159` | Fewer with ordinary non-count singulars | Ch. 13, pp. 1127 | Queued |
 | `CLS-1166` | To complements of superior and inferior | Ch. 13, pp. 1129, 1130 | Queued |
 | `CLS-1188` | Definiteness with attributive same | Ch. 13, pp. 1138 | Queued |

@@ -92,7 +92,7 @@ jobs:
         run: python -m unittest -v test_parser_runtime test_correction_offsets test_parser_whitespace test_modal_category_runtime
       - name: Verify Cambridge directive and question context
         working-directory: server
-        run: CGEL_REQUIRE_PARSER=1 python -m unittest -v test_cgel_imperative_probe test_cgel_inversion_probe test_cgel_negation_probe test_cgel_tag_probe test_cgel_case_probe test_cgel_consist_probe test_cgel_lexical_number_probe test_cgel_coordination_probe
+        run: CGEL_REQUIRE_PARSER=1 python -m unittest -v test_cgel_imperative_probe test_cgel_inversion_probe test_cgel_negation_probe test_cgel_tag_probe test_cgel_case_probe test_cgel_consist_probe test_cgel_lexical_number_probe test_cgel_coordination_probe test_cgel_comparative_probe
       - name: Run existing LF/CRLF multiline parser regression
         run: python server/test_multiline_parse.py
       - name: Audit FINAL-D1 sentence coverage
