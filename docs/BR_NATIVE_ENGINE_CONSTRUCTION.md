@@ -127,6 +127,8 @@ A read-only comparison of the **100 draft signatures** against all 252 stored ch
 
 **14 November source-image batch:** printed pp. 155, 210–212 support narrowly described postmodifying AP, non-restrictive relative, and PP/AdvP/AP wh-gap shapes. Six catalog signatures now cover 12 additional stored branch instances. Shape coverage is 1,402 of 1,558 (90.0%). The other 156 instances remain individually reported, and movement/attachment conditions are still unchecked.
 
+**Metric scope clarification:** the 1,558 denominator includes chapter teaching diagrams V1–V10, not a representative set of new FINAL-D1 sentences. The 156 unmatched instances comprise 115 chapter-example branches (including the source's early schematic notation, abbreviated clause scaffolds, and anomalies) and 41 construction instances needing source review. The audit now publishes these separately and explicitly reports that FINAL-D1 parser coverage has not been measured.
+
 | Chapter | Matched / examined branch shapes | Recognition |
 | --- | ---: | ---: |
 | 1 | 0 / 38 | 0.0% |
