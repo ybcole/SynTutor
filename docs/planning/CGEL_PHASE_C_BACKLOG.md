@@ -1,14 +1,14 @@
 # Cambridge Phase C backlog
 
-Snapshot through the declarative polarity prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
+Snapshot through the remote conditional prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
 
 | Diagnostic specifications | Primary pilot | Supporting pilot | Outside pilot | Production-enabled |
 |---:|---:|---:|---:|---:|
-| 204 | 42 | 6 | 156 | 0 |
+| 204 | 43 | 6 | 155 | 0 |
 
 ## Next implementation batch
 
-**Remote conditional auxiliary selection (CLS-119)** is next. Verify remote versus open readings before considering a finding.
+**Present-inclusive ever since (OTH-098)** is next. Check tense against the time span and distinguish temporal from causal readings.
 
 After that batch, triage adjacent diagnostics by governing relation and compatible edits. Use the source and diagnostic family below to find related rules. A catalog entry can share a detector or receive a documented no-detector disposition.
 
@@ -50,6 +50,7 @@ After that batch, triage adjacent diagnostics by governing relation and compatib
 | Comparative degree gaps | CLS-1119 | — | This batch | Validate scalar comparative attachment and extend to other degree modifiers. |
 | Comparative subject omission | CLS-1129 | — | This batch | Broaden retained-verb coverage and validate comparative attachment. |
 | Polarity in declarative questions | CLS-171 | — | This batch | Validate question context and other licensors of temporal ever. |
+| Remote conditional auxiliary selection | CLS-119 | — | This batch | Validate remoteness and expand beyond fronted if-clauses and preterite consequences. |
 | Imperative verb form | CLS-130 | — | [#115](https://github.com/ybcole/SynTutor/pull/115) | Establish the source of directive intent and validate the resulting finding. |
 
 ## Rule-by-rule inventory
@@ -254,8 +255,8 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 
 | Rule | Construction | Cambridge source | Status |
 |---|---|---|---|
-| `CLS-119` | Remote conditional apodosis requires modal auxiliary | Ch. 3, pp. 107 | Next |
-| `OTH-098` | Bare preterite incompatible with present-inclusive ever since | Ch. 3, pp. 141 | Queued |
+| `CLS-119` | Remote conditional apodosis requires modal auxiliary | Ch. 3, pp. 107 | Pilot |
+| `OTH-098` | Bare preterite incompatible with present-inclusive ever since | Ch. 3, pp. 141 | Next |
 | `OTH-102` | Definite completed-past adjunct with present perfect | Ch. 3, pp. 143, 144, 146 | Queued |
 | `OTH-158` | Backshift choices form a prefix through embedded clauses | Ch. 3, pp. 156 | Queued |
 | `OTH-216` | Fixed-composition state rejects ordinary progressive | Ch. 3, pp. 167, 168 | Queued |
