@@ -1,14 +1,14 @@
 # Cambridge Phase C backlog
 
-Snapshot through the question-tag agreement prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
+Snapshot through the canonical pronoun case prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
 
 | Diagnostic specifications | Primary pilot | Supporting pilot | Outside pilot | Production-enabled |
 |---:|---:|---:|---:|---:|
-| 204 | 22 | 5 | 177 | 0 |
+| 204 | 23 | 6 | 175 | 0 |
 
 ## Next implementation batch
 
-**Canonical pronominal case (COMP-084)** is next. Compare subject and object evidence against the more specific case rules before selecting a shared finding.
+**Accusative pronouns after infinitival for (CLS-285)** are next. Confirm the infinitival subject relation and guard prepositional for and finite subordinate clauses.
 
 After that batch, triage adjacent diagnostics by governing relation and compatible edits. Use the source and diagnostic family below to find related rules. A catalog entry can share a detector or receive a documented no-detector disposition.
 
@@ -32,6 +32,7 @@ After that batch, triage adjacent diagnostics by governing relation and compatib
 | Reported negative directives | CLS-270 | — | This batch | Broaden reporting-verb and parser coverage. |
 | Auxiliary choice in canonical tags | CLS-182 | — | This batch | Broaden anchor and tag shapes and validate canonical grounding. |
 | Question-tag agreement | CLS-183 | — | This batch | Broaden coverage of tag shapes and validate canonical grounding. |
+| Canonical pronoun case | COMP-084 | PHR-283 | This batch | Validate canonical relations and broaden finite clause coverage. |
 | Imperative verb form | CLS-130 | — | [#115](https://github.com/ybcole/SynTutor/pull/115) | Establish the source of directive intent and validate the resulting finding. |
 
 ## Rule-by-rule inventory
@@ -172,14 +173,14 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 
 | Rule | Construction | Cambridge source | Status |
 |---|---|---|---|
-| `COMP-084` | Canonical pronominal subject and object case | Ch. 4, pp. 237 | Next |
-| `PHR-283` | Finite clause subjects and nominative case | Ch. 5, pp. 459 | Queued |
+| `COMP-084` | Canonical pronominal subject and object case | Ch. 4, pp. 237 | Pilot |
+| `PHR-283` | Finite clause subjects and nominative case | Ch. 5, pp. 459 | Support |
 | `PHR-289` | Accusative in ordinary noncoordinate object positions | Ch. 5, pp. 461 | Queued |
 | `PHR-290` | Accusative subject of a for-infinitival | Ch. 5, pp. 461 | Queued |
 | `PHR-295` | Who as local subject or subjective predicative | Ch. 5, pp. 464, 465 | Queued |
 | `PHR-305` | Dependent and independent genitive pronouns | Ch. 5, pp. 470, 471 | Queued |
 | `PHR-321` | Own as fused modifier-head | Ch. 5, pp. 483 | Queued |
-| `CLS-285` | Accusative pronouns after infinitival for | Ch. 14, pp. 1182 | Queued |
+| `CLS-285` | Accusative pronouns after infinitival for | Ch. 14, pp. 1182 | Next |
 | `CLS-1101` | Reflexive anaphor requires the appropriate local antecedent in a chain | Ch. 17, pp. 1457 | Queued |
 | `CLS-1103` | Pride lexically requires the subject-bound reflexive object | Ch. 17, pp. 1488 | Queued |
 | `PHR-580` | Subject antecedent of an emphatic clause adjunct | Ch. 17, pp. 1497 | Queued |
