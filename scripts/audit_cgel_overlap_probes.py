@@ -172,6 +172,29 @@ def evaluate_articles(probe):
                "parse": analysis["parse_string"], "probe": result}
 
 
+ROLE_OBJECT_CASES = [
+    ("The board questioned treasurer.", True),
+    ("The panel interviewed director.", True),
+    ("The board dismissed chairperson.", True),
+    ("The board questioned the treasurer.", False),
+    ("The panel interviewed directors.", False),
+    ("They appointed her treasurer.", False),
+    ("She became president.", False),
+    ("They contacted President Silva.", False),
+    ("The role of secretary is vacant.", False),
+]
+
+
+def evaluate_role_objects(probe):
+    for sentence, expected in ROLE_OBJECT_CASES:
+        analysis = analyze(sentence)
+        yield {
+            "sentence": sentence, "expected_candidate": expected,
+            "parse": analysis["parse_string"],
+            "probe": probe(sentence, analysis["root"], variety="standard_english"),
+        }
+
+
 def evaluate_cases(cases, probe, governor_label, governor_key):
     rows = []
     for group, sentence, expected in cases:
@@ -290,7 +313,17 @@ def main():
                         help="Measure modal stacking and inverted supportive do on configured parser output")
     parser.add_argument("--article-evaluation", action="store_true",
                         help="Measure the inactive article onset probe")
+    parser.add_argument("--role-object-evaluation", action="store_true",
+                        help="Measure the inactive bare role-object probe")
     args = parser.parse_args()
+    if args.role_object_evaluation:
+        if any(value for name, value in vars(args).items() if name != "role_object_evaluation"):
+            parser.error("--role-object-evaluation runs separately on configured parser output")
+        from cgel_role_object_probe import probe_role_object
+
+        print(json.dumps({"input": "configured_parser",
+                          "role_object_evaluation": list(evaluate_role_objects(probe_role_object))}, indent=2))
+        return
     if args.article_evaluation:
         if any(value for name, value in vars(args).items() if name != "article_evaluation"):
             parser.error("--article-evaluation runs separately on configured parser output")
