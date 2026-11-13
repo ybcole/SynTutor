@@ -1,6 +1,6 @@
 """Offline adapter from a narrow parser modal pattern to the Chapter 3 probe."""
 
-from lemminflect import getAllInflections, getLemma
+from lemminflect import getAllInflections, getInflection, getLemma
 
 if __package__:
     from .cgel_ch03_candidate_probe import MODALS, SUPPORT_DO, probe_ch03, tokens_with_spans
@@ -161,6 +161,34 @@ def _inverted_do_relation(tree):
     }
 
 
+def _perfect_relations(node):
+    parts = node.get("children", [])
+    if node["type"] == "VP" and len(parts) >= 2:
+        governor, *modifiers, complement = parts
+        if (governor.get("pos") in {"VB", "VBP", "VBZ", "VBD", "VBG"}
+                and governor["surface"].casefold() in {"have", "has", "had"}
+                and all(part["type"] in {"RB", "ADVP"} for part in modifiers)
+                and complement["type"] == "VP"):
+            lower = complement.get("children", [])
+            if lower and not any(part["type"] in {"CC", "CONJP"} for part in lower):
+                verb = lower[0]
+                if verb.get("pos") in {"VB", "VBP", "VBZ", "VBD", "VBN"}:
+                    surface = verb["surface"].casefold()
+                    lemmas = getLemma(surface, upos="VERB", lemmatize_oov=False)
+                    if len(lemmas) == 1:
+                        forms = getInflection(lemmas[0], tag="VBN", inflect_oov=False)
+                        if len(forms) == 1 and surface != forms[0]:
+                            yield {
+                                "kind": "perfect_selects", "governor": governor["span"][0],
+                                "dependent": verb["span"][0], "governor_role": "perfect_have",
+                                "dependent_role": "lexical_verb", "dependent_form": "nonparticipial",
+                                "candidate_participle": forms[0], "direct_selection": True,
+                                "same_clause": True, "coordinated": False, "clause_kind": "other",
+                            }
+    for child in parts:
+        yield from _perfect_relations(child)
+
+
 def probe_modal_parser(sentence, tree, *, variety):
     """Require aligned parser evidence and keep the existing Chapter 3 output contract."""
     tokens = tokens_with_spans(sentence)
@@ -176,6 +204,7 @@ def probe_modal_parser(sentence, tree, *, variety):
         relation for modal, parts in _modal_relations(tree)
         if (relation := _relation(modal, parts)) is not None
     ]
+    relations.extend(_perfect_relations(tree))
     if (relation := _inverted_do_relation(tree)) is not None:
         relations.append(relation)
     result = probe_ch03(sentence, {"status": "typed_candidate", "sentence": sentence, "relations": relations},

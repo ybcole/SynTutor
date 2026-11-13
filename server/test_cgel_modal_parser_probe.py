@@ -103,6 +103,26 @@ class ModalParserProbeTests(unittest.TestCase):
                 else:
                     self.assertEqual(candidates, [])
 
+    def test_perfect_have_uses_the_attested_participle(self):
+        for surface, tag, replacement in [
+            ("went", "VBN", "gone"), ("ate", "VBD", "eaten"), ("gone", "VBN", None),
+            ("walked", "VBD", None), ("cut", "VB", None),
+        ]:
+            with self.subTest(surface=surface):
+                tree = f"(S (NP (PRP They)) (VP (VBP have) (ADVP (RB already)) (VP ({tag} {surface}))) (. .))"
+                candidates = probe(f"They have already {surface}.", tree)["candidates"]
+                if replacement:
+                    candidate, = candidates
+                    self.assertEqual(candidate["rule_id"], "MORPH-026")
+                    self.assertEqual(candidate["source_pages"], [76, 77])
+                    self.assertEqual(candidate["edit_hint"]["replacement"], replacement)
+                else:
+                    self.assertEqual(candidates, [])
+
+    def test_perfect_have_excludes_causatives(self):
+        tree = "(S (NP (PRP They)) (VP (VBP have) (NP (PRP him)) (VP (VB go))) (. .))"
+        self.assertEqual(probe("They have him go.", tree)["candidates"], [])
+
     def test_imperative_do_is_out_of_scope(self):
         tree = "(S (VP (VBP Do) (VP (VB be) (ADJP (JJ careful)))) (. !))"
         self.assertEqual(probe("Do be careful!", tree)["candidates"], [])
