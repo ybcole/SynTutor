@@ -4,6 +4,7 @@ import unittest
 from cgel_doubling_probe import _doubling_replacement, _mute_e_replacement, probe_consonant_doubling, probe_mute_e
 from cgel_doubling_probe import _final_ie_replacement, _final_y_plural_replacement, probe_final_ie, probe_final_y_plural
 from cgel_doubling_probe import probe_personal_name_plural
+from cgel_genitive_probe import probe_plural_genitives
 from parse_engine import NodeBuilder, analyze, parse_parse_string
 
 
@@ -233,3 +234,61 @@ class PersonalNamePluralTests(unittest.TestCase):
         for sentence, name, expected in self.cases:
             with self.subTest(sentence=sentence, name=name):
                 self.check_case(sentence, analyze(sentence)["root"], name, expected, configured=True)
+
+
+class PluralGenitiveTests(unittest.TestCase):
+    def check_case(self, sentence, tree, expected, *, variety="standard_english", configured=False):
+        result = probe_plural_genitives(sentence, tree, variety=variety)
+        self.assertFalse(result["production_enabled"])
+        repairs = []
+        for row in result["candidates"]:
+            self.assertEqual(row["rule_id"], "MORPH-105")
+            edit = row["edit_hint"]
+            start, end = edit["char_span"]
+            repaired = sentence[:start] + edit["replacement"] + sentence[end:]
+            repairs.append(repaired)
+            if configured:
+                self.assertEqual(probe_plural_genitives(repaired, analyze(repaired)["root"],
+                                                       variety=variety)["candidates"], [])
+        if configured:
+            print(f"Cambridge plural genitive {sentence!r}: {repairs}; expected={expected}")
+            self.assertIn(repairs, ([], [expected]) if expected else ([],))
+        else:
+            self.assertEqual(repairs, [expected] if expected else [])
+
+    def test_exact_span_with_split_and_unsplit_possessives(self):
+        for spelling, possessive, expected in [
+            ("teachers's", "(NNS teachers) (POS 's)", "teachers'"),
+            ("childrens’", "(NNS childrens’)", "children’s"),
+            ("teachers'", "(NNS teachers) (POS ')", None),
+            ("children's", "(NNS children) (POS 's)", None),
+        ]:
+            with self.subTest(spelling=spelling):
+                tree = NodeBuilder().build(parse_parse_string(
+                    f"(S (NP (NP (DT The) {possessive}) (NNS coats)) (VP (VBD dried)) (. .))"
+                ), 6 if "(POS" in possessive else 5)
+                self.check_case(f"The {spelling} coats dried.", tree,
+                                f"The {expected} coats dried." if expected else None)
+                self.check_case(f"The {spelling} coats dried.", tree, None, variety="unspecified")
+                self.check_case(f"Those {spelling} coats dried.", tree, None)
+
+    def test_independent_genitive(self):
+        tree = NodeBuilder().build(parse_parse_string(
+            "(S (NP (DT The) (NNS coats)) (VP (VBD were) (NP (NNS teachers) (POS 's))) (. .))"
+        ), 6)
+        self.check_case("The coats were teachers's.", tree, None)
+
+    @unittest.skipUnless(os.environ.get("CGEL_REQUIRE_PARSER") == "1", "configured parser required")
+    def test_configured_plural_genitives(self):
+        for sentence, expected in [
+            ("The teachers's coats dried.", "The teachers' coats dried."),
+            ("The childrens’ coats dried.", "The children’s coats dried."),
+            ("The teachers' coats dried.", None),
+            ("The children's coats dried.", None),
+            ("James' coat dried.", None),
+            ("James's coat dried.", None),
+            ("They sell ladies wear.", None),
+            ('"The teachers\'s coats dried."', None),
+        ]:
+            with self.subTest(sentence=sentence):
+                self.check_case(sentence, analyze(sentence)["root"], expected, configured=True)

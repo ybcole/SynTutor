@@ -1,14 +1,14 @@
 # Cambridge Phase C backlog
 
-Snapshot through the personal name plural prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
+Snapshot through the plural genitive prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
 
 | Diagnostic specifications | Primary pilot | Supporting pilot | Outside pilot | Production-enabled |
 |---:|---:|---:|---:|---:|
-| 204 | 59 | 6 | 139 | 0 |
+| 204 | 60 | 6 | 138 | 0 |
 
 ## Next implementation batch
 
-**Bare and marked genitives (MORPH-105)** are next.
+**Genitive apostrophes and personal pronouns (OTH-761)** are next.
 
 After that batch, triage adjacent diagnostics by governing relation and compatible edits. Use the source and diagnostic family below to find related rules. A catalog entry can share a detector or receive a documented no-detector disposition.
 
@@ -67,6 +67,7 @@ After that batch, triage adjacent diagnostics by governing relation and compatib
 | Final ie before ing | MORPH-083 | — | This batch | Validate tagging and preserve distinct bases such as dye. |
 | Regular final-y plurals | MORPH-092 | — | This batch | Broaden common-noun coverage and preserve lexical variants. |
 | Personal name plurals | MORPH-104 | — | This batch | Validate name identity and expand beyond the source examples. |
+| Bare and marked genitives | MORPH-105 | — | This batch | Validate dependent plural genitives, parser segmentation, and legitimate apostrophe variants. |
 | Imperative verb form | CLS-130 | — | [#115](https://github.com/ybcole/SynTutor/pull/115) | Establish the source of directive intent and validate the resulting finding. |
 
 ## Rule-by-rule inventory
@@ -239,7 +240,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | `OTH-740` | Quoted terminal full stop inside a continuing matrix sentence | Ch. 20, pp. 1754 | Queued |
 | `OTH-743` | Terminal suppression at the end of a quotation | Ch. 20, pp. 1755 | Queued |
 | `OTH-756` | Hyphens in numerals fractions and established formations | Ch. 20, pp. 1761 | Queued |
-| `OTH-761` | Genitive apostrophes and personal pronouns | Ch. 20, pp. 1763 | Queued |
+| `OTH-761` | Genitive apostrophes and personal pronouns | Ch. 20, pp. 1763 | Next |
 | `OTH-764` | Sentence-final abbreviation full stop | Ch. 20, pp. 1764 | Queued |
 
 ### Spelling inflection (20)
@@ -252,7 +253,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | `MORPH-083` | Ie bases and ing spelling | Ch. 18, pp. 1579 | Pilot |
 | `MORPH-092` | Regular noun plurals with final y | Ch. 18, pp. 1585 | Pilot |
 | `MORPH-104` | Plural spelling of personal names | Ch. 18, pp. 1595 | Pilot |
-| `MORPH-105` | Bare and marked genitives | Ch. 18, pp. 1595, 1596 | Next |
+| `MORPH-105` | Bare and marked genitives | Ch. 18, pp. 1595, 1596 | Pilot |
 | `MORPH-109` | Adding k after final c | Ch. 18, pp. 1598 | Queued |
 | `MORPH-237` | Plural marking in established er plus preposition compounds | Ch. 19, pp. 1655 | Queued |
 | `MORPH-258` | Singular measure bases in attributive compounds | Ch. 19, pp. 1660 | Queued |
