@@ -56,6 +56,17 @@ def probe_mute_e(sentence, tree, *, variety):
                            "MORPH-080", [1576, 1577], "retained_mute_e_before_ing")
 
 
+def _final_ie_replacement(word, tag):
+    if tag != "VBG" or word not in {"dieing", "lieing", "tieing", "vieing"}:
+        return None
+    return word[:-5] + "ying"
+
+
+def probe_final_ie(sentence, tree, *, variety):
+    return _probe_spelling(sentence, tree, variety, _final_ie_replacement,
+                           "MORPH-083", [1579], "retained_ie_before_ing")
+
+
 def _probe_spelling(sentence, tree, variety, replacement_for, rule_id, pages, relation_kind):
     result = {"status": "not_evaluated", "production_enabled": False, "candidates": []}
     if variety != "standard_english":
