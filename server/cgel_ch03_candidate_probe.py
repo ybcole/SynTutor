@@ -22,10 +22,11 @@ MODALS = frozenset({"can", "could", "may", "might", "must",
                     "shall", "should", "will", "would"})
 SUPPORT_DO = frozenset({"do", "does", "did", "don't", "doesn't", "didn't",
                         "don’t", "doesn’t", "didn’t"})
-SUPPORTED = ("COMP-034", "COMP-031", "CLS-100")
+SUPPORTED = ("COMP-034", "COMP-031", "CLS-100", "CLS-126")
 SUPPORTING = {"CLS-100": ("COMP-030",)}
 RULE_FILES = {"COMP-034": "complementation", "COMP-031": "complementation",
-              "CLS-100": "clauses"}
+              "CLS-100": "clauses", "CLS-126": "clauses"}
+SOURCE_CHAPTERS = {"CLS-126": 10}
 KINDS = {"modal_selects", "supportive_do_selects"}
 CLAUSES = {"declarative", "closed_interrogative", "emphatic_declarative",
            "imperative", "other"}
@@ -62,10 +63,10 @@ def _source_rules(root: Path) -> dict[str, dict[str, Any]]:
         if not diagnostic.get("false_positive_guards"):
             raise ValueError(f"{rid}: missing false-positive guards")
         sources = [source for source in rule.get("sources", [])
-                   if source.get("chapter") == 3
+                   if source.get("chapter") == SOURCE_CHAPTERS.get(rid, 3)
                    and "cambridge" in str(source.get("book", "")).lower()]
         if not sources or not all(source.get("pages") for source in sources):
-            raise ValueError(f"{rid}: Chapter 3 source evidence missing")
+            raise ValueError(f"{rid}: Cambridge source evidence missing")
         if rule.get("status") != "NEEDS_REVIEW":
             raise ValueError(f"{rid}: unexpected approval lifecycle change")
         chosen[rid] = rule
@@ -124,6 +125,10 @@ def _rule_for(relation: dict[str, Any], tokens: list[dict[str, Any]]) -> str | N
             return None
         if relation.get("clause_kind") == "imperative":
             return None
+        if (relation.get("dependent_role") == "lexical_verb"
+                and relation["clause_kind"] == "closed_interrogative"
+                and relation.get("dependent_form") == "finite_nonplain"):
+            return "CLS-126"
         if relation.get("dependent_role") == "perfect_have":
             return "CLS-100" if d in {"have", "has", "had"} else None
         if relation.get("dependent_role") in {"progressive_be", "passive_be", "copular_be"}:
@@ -136,7 +141,7 @@ def _rule_for(relation: dict[str, Any], tokens: list[dict[str, Any]]) -> str | N
 def _candidate_edit(relation: dict[str, Any], tokens: list[dict[str, Any]],
                     rule_id: str, sentence: str) -> dict[str, Any] | None:
     """Hints only: edits are never applied or asserted to preserve meaning."""
-    if rule_id != "COMP-034":
+    if rule_id not in {"COMP-034", "CLS-126"}:
         return None
     dependent = tokens[relation["dependent"]]
     if relation.get("dependent_form") == "infinitival_to":
@@ -146,7 +151,7 @@ def _candidate_edit(relation: dict[str, Any], tokens: list[dict[str, Any]],
         return {"char_span": [start, end], "replacement": "",
                 "requires_reparse": True, "safe_to_apply_automatically": False}
     base = relation.get("candidate_plain_form")
-    if (relation.get("dependent_form") == "present_3sg"
+    if (relation.get("dependent_form") in {"present_3sg", "finite_nonplain"}
             and isinstance(base, str)
             and re.fullmatch(r"[A-Za-z]+", base)
             and base.casefold() != dependent["lower"]):
@@ -197,7 +202,7 @@ def probe_ch03(sentence: Any, typed_facts: Any, *,
             continue
         seen.add(key)
         source = rules[rid]
-        pages = sorted({p for s in source["sources"] if s.get("chapter") == 3
+        pages = sorted({p for s in source["sources"] if s.get("chapter") == SOURCE_CHAPTERS.get(rid, 3)
                         for p in s.get("pages", [])})
         char_start = min(gov["char_span"][0], dep["char_span"][0])
         char_end = max(gov["char_span"][1], dep["char_span"][1])
@@ -218,7 +223,7 @@ def probe_ch03(sentence: Any, typed_facts: Any, *,
             "char_span": [char_start, char_end],
             "evidence_tokens": [gov["text"], dep["text"]],
             "source_pages": pages,
-            "source_chapter": 3,
+            "source_chapter": SOURCE_CHAPTERS.get(rid, 3),
             "variety_scope": source["diagnostic"]["variety_scope"],
             "provisional_explanation": source["diagnostic"]["learner_explanation"],
             "edit_hint": _candidate_edit(relation, tokens, rid, sentence),

@@ -91,6 +91,12 @@ AUXILIARY_CASES = [
     ("negative imperative", "Do not be making noise in the hall.", "standard_english", []),
     ("emphatic imperative", "Do be careful on the stairs.", "standard_english", []),
     ("separate clauses", "The crew will wait until the driver can help.", "standard_english", []),
+    ("lexical finite", "Did the driver parked near the library?", "standard_english", ["CLS-126"]),
+    ("lexical finite", "Did the courier went home?", "standard_english", ["CLS-126"]),
+    ("lexical finite", "Does the gardener trims the hedge?", "standard_english", ["CLS-126"]),
+    ("invariant verb", "Did the chef cut the bread?", "standard_english", []),
+    ("subject question", "Who trims the hedge?", "standard_english", []),
+    ("lexical do", "Did the intern do the filing?", "standard_english", []),
     ("unspecified variety", "The boat might could cross before noon.", None, []),
 ]
 
@@ -100,6 +106,15 @@ def evaluate_auxiliaries(probe):
     for group, sentence, variety, expected in AUXILIARY_CASES:
         analysis = analyze(sentence)
         result = probe(sentence, analysis["root"], variety=variety)
+        for candidate in result["candidates"]:
+            if edit := candidate["edit_hint"]:
+                start, end = edit["char_span"]
+                corrected = sentence[:start] + edit["replacement"] + sentence[end:]
+                recheck = probe(corrected, analyze(corrected)["root"], variety=variety)
+                candidate["reparse_observation"] = {
+                    "sentence": corrected, "candidate_count": len(recheck["candidates"]),
+                    "status": recheck["status"],
+                }
         rows.append({
             "group": group, "sentence": sentence, "variety": variety,
             "parse": analysis["parse_string"], "expected_rule_ids": expected, "probe": result,

@@ -86,6 +86,23 @@ class ModalParserProbeTests(unittest.TestCase):
                     self.assertEqual(candidate["supporting_rule_ids"], ["COMP-030"])
                     self.assertIsNone(candidate["edit_hint"])
 
+    def test_closed_question_lexical_form(self):
+        for surface, tag, replacement in [
+            ("works", "VBZ", "work"), ("went", "VBD", "go"), ("works", "VB", "work"),
+            ("went", "VBN", "go"), ("parked", "VBN", "park"), ("gone", "VBN", None),
+            ("cut", "VBD", None), ("work", "VB", None),
+        ]:
+            with self.subTest(surface=surface, tag=tag):
+                tree = f"(SQ (VBD Did) (NP (PRP she)) (VP ({tag} {surface})) (. ?))"
+                candidates = probe(f"Did she {surface}?", tree)["candidates"]
+                if replacement:
+                    candidate, = candidates
+                    self.assertEqual(candidate["rule_id"], "CLS-126")
+                    self.assertEqual(candidate["source_pages"], [856])
+                    self.assertEqual(candidate["edit_hint"]["replacement"], replacement)
+                else:
+                    self.assertEqual(candidates, [])
+
     def test_imperative_do_is_out_of_scope(self):
         tree = "(S (VP (VBP Do) (VP (VB be) (ADJP (JJ careful)))) (. !))"
         self.assertEqual(probe("Do be careful!", tree)["candidates"], [])

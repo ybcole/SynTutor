@@ -76,6 +76,32 @@ def _relation(modal, parts):
     return None
 
 
+def _nonplain_lexical_form(parts):
+    if not parts or any(part["type"] in {"CC", "CONJP", "VP", "S", "SBAR", "ADJP"} for part in parts[1:]):
+        return None
+    verb = parts[0]
+    surface = verb.get("surface", "").casefold()
+    tag = verb.get("pos")
+    if surface in MODALS | SUPPORT_DO | {"be", "am", "is", "are", "was", "were", "has", "had"}:
+        return None
+    if tag == "VB" and surface.endswith("s"):
+        return _plain_form_for_mistagged_3sg(surface)
+    if tag == "VBN":
+        tag = "VBD"  # Accept only an independently attested preterite below.
+    if tag not in {"VBZ", "VBD"}:
+        return None
+    lemmas = getLemma(surface, upos="VERB", lemmatize_oov=False)
+    if len(lemmas) != 1:
+        return None
+    lemma = lemmas[0]
+    forms = getAllInflections(lemma, upos="VERB")
+    if surface in forms.get(tag, ()) and lemma in forms.get("VB", ()) and (
+        surface not in getAllInflections(surface, upos="VERB").get("VB", ())
+    ):
+        return lemma
+    return None
+
+
 def _inverted_do_relation(tree):
     """Recognize root polar questions with explicit auxiliary evidence."""
     children = tree.get("children", [])
@@ -89,6 +115,14 @@ def _inverted_do_relation(tree):
             or subject["type"] != "NP" or predicate["type"] != "VP"):
         return None
     parts = predicate.get("children", [])
+    if (plain := _nonplain_lexical_form(parts)) is not None:
+        return {
+            "kind": "supportive_do_selects", "governor": governor["span"][0],
+            "dependent": parts[0]["span"][0], "governor_role": "supportive_do",
+            "dependent_role": "lexical_verb", "direct_selection": True, "same_clause": True,
+            "coordinated": False, "clause_kind": "closed_interrogative",
+            "dependent_form": "finite_nonplain", "candidate_plain_form": plain,
+        }
     if len(parts) < 2:
         return None
     dependent, complement, *trailing = parts
