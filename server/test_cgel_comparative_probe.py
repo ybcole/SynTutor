@@ -2,7 +2,7 @@ import os
 import re
 import unittest
 
-from cgel_comparative_probe import probe_comparative_gap
+from cgel_comparative_probe import probe_comparative_gap, probe_comparative_subject
 from parse_engine import NodeBuilder, analyze, parse_parse_string
 
 
@@ -38,3 +38,40 @@ class ComparativeGapTests(unittest.TestCase):
                 found = [row["rule_id"] for row in rows]
                 self.assertEqual(found, ["CLS-1119"] if target else [])
                 print(f"Cambridge comparative gap {sentence!r}: {found}; target={target}; parse={analysis['parse_string']}")
+
+
+class ComparativeSubjectTests(unittest.TestCase):
+    def test_retained_verb_requires_ordinary_subject(self):
+        for tail, text, expected in [
+            ("(SBAR (IN than) (S (VP (VBD did) (NP (JJ last) (NN year)))))",
+             "than did last year", ["CLS-1129"]),
+            ("(SBAR (IN than) (S (NP (PRP she)) (VP (VBD did) (NP (JJ last) (NN year)))))",
+             "than she did last year", []),
+            ("(PP (IN than) (NP (JJ last) (NN year)))", "than last year", []),
+        ]:
+            with self.subTest(text=text):
+                parse = f"(S (NP (NNP Mira)) (VP (VBZ works) (ADVP (RBR harder) {tail})) (. .))"
+                tree = NodeBuilder().build(parse_parse_string(parse), len(re.findall(r"\([^()]+\)", parse)))
+                rows = probe_comparative_subject(
+                    f"Mira works harder {text}.", tree, variety="standard_english"
+                )["candidates"]
+                self.assertEqual([row["rule_id"] for row in rows], expected)
+
+    @unittest.skipUnless(os.environ.get("CGEL_REQUIRE_PARSER") == "1", "configured parser required")
+    def test_configured_comparative_subjects(self):
+        for sentence, target in [
+            ("Mira works harder than did last year.", True),
+            ("Lee runs faster than did yesterday.", True),
+            ("Mira works harder than she did last year.", False),
+            ("Mira works harder than last year.", False),
+            ("More guests arrived than were invited.", False),
+            ("She stayed longer than seemed necessary.", False),
+            ("Mira works harder than did her predecessor.", False),
+        ]:
+            with self.subTest(sentence=sentence):
+                analysis = analyze(sentence)
+                rows = probe_comparative_subject(sentence, analysis["root"],
+                                                 variety="standard_english")["candidates"]
+                found = [row["rule_id"] for row in rows]
+                self.assertIn(found, ([], ["CLS-1129"]) if target else ([],))
+                print(f"Cambridge comparative subject {sentence!r}: {found}; target={target}; parse={analysis['parse_string']}")
