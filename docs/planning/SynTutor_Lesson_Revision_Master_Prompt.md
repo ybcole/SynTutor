@@ -205,6 +205,8 @@ For each revised chapter, output the following before coding:
 - Update validators and tests in lockstep, using fresh content versions and source receipts when assessment items change.
 - Test idempotent awards, concurrency, better/worse/equal score, advisory prerequisites, post-reveal improvement, guest/offline behavior, hostile client input, RLS and rollback. Verify that the Cambridge companion can still use the existing Chapter 2 prerequisite when old Foundations versions are retired. Keep its assessment and scoring path intact.
 
+Phase 2 implementation and local walkthrough are recorded in [the Phase 2 review](../reports/syntax-foundations-revision-phase-2.md).
+
 **Gate 2:** Owner approves actual examples of XP progression and review states; local SQL tests and browser regressions pass. Hosted migration remains separately approval-gated.
 
 ## Phase 3 — Chapter 1 pilot: content, interaction and evaluation

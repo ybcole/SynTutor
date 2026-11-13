@@ -8,6 +8,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'server'))
 from burton_roberts import validate_canonical_tree
 from seed_lessons import render as seed_sql
+from seed_foundations import render as foundations_sql, TARGET as FOUNDATIONS_SEED
 
 def digest(lesson):
     return hashlib.sha256(json.dumps(lesson,sort_keys=True,ensure_ascii=False,separators=(',',':')).encode()).hexdigest()
@@ -43,7 +44,24 @@ def validate(course=None):
         assert receipt['lesson_sha256'][ident]==digest(lesson),f'{ident}: content changed after source review'
         assert set(lesson['concept_ids'])<=set(concepts)
         assert set(lesson['rule_ids'])<=rules
-        assert all(p['lesson_id'] in lessons and lessons[p['lesson_id']]['content_version']==p['content_version'] for p in lesson['prerequisites'])
+        for prereq in lesson['prerequisites']:
+            prior = lessons[prereq['lesson_id']]
+            assert prior['content_version'] == prereq['content_version'] or (
+                prior.get('revised_assessment') and prereq['content_version'] == '1.0.0')
+        if assessment := lesson.get('revised_assessment'):
+            assert lesson['track'] == 'foundations' and ident == f"br-{lesson['chapter']:02d}"
+            assert lesson['content_version'] != '1.0.0'
+            questions = assessment['opening'] + assessment['closing']
+            assert len({q['id'] for q in questions}) == len(questions)
+            assert len({q['prompt'].strip().casefold() for q in questions}) == len(questions)
+            outcomes = {o['id'] for o in lesson['outcomes']}
+            for question in questions:
+                cited(question['source_ids'])
+                assert set(question['outcome_ids']) <= outcomes
+                options = {o['id'] for o in question['options']}
+                assert question['answer'] in options and len(options) == len(question['options'])
+                assert question['prompt'].strip() and all(o['text'].strip() and o['feedback'].strip() for o in question['options'])
+            assert outcomes <= {o for q in assessment['closing'] for o in q['outcome_ids']}
         for tree_id in lesson['tree_ids']:
             assert tree_id in fixtures and fixtures[tree_id].get('correct') is not False
             assert fixtures[tree_id]['status']=='IMG',f'{ident}: reference anomaly/uncertainty must be reviewed separately'
@@ -73,7 +91,16 @@ def validate(course=None):
             target=lesson['guided']['build_target'];node=nodes[target['node_id']]
             actual=node.get('label') if target['field']=='label' else node.get('features',[None])[0]
             assert actual==target['expected'],f'{ident}: guided target does not match its reviewed tree'
-    assert (ROOT/'supabase/migrations/20261108000001_lesson_catalog.sql').read_text()==seed_sql(),'Database answer contract drift; version and review changes before regenerating seed.'
+    old_seed = (ROOT/'supabase/migrations/20261108000001_lesson_catalog.sql').read_text()
+    retired = {lesson['lesson_id'] for lesson in lessons.values() if lesson.get('revised_assessment')}
+    if retired:
+        old_seed = '\n'.join(line for line in old_seed.splitlines()
+                             if not line.startswith(tuple(f"('{ident}','" for ident in retired)))
+        current = dict(course, lessons=[lesson for lesson in course['lessons'] if lesson['lesson_id'] not in retired])
+        assert old_seed + '\n' == seed_sql(current), 'Legacy database answer contract drift.'
+    else:
+        assert old_seed == seed_sql(course), 'Legacy database answer contract drift.'
+    assert FOUNDATIONS_SEED.read_text() == foundations_sql(course), 'Revised database answer contract drift.'
     print(f'PASS: {len(lessons)} reviewed versioned lessons, {len(sources)} page sources, 10 canonical authored trees, outcomes/answers/receipts/reference IDs and SQL seed integrity.')
     return course
 

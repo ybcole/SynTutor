@@ -36,10 +36,38 @@ export function validateCourse(course) {
           || new Set(q.options.map(o => o.id)).size !== q.options.length || !q.options.some(o => o.id === q.answer)
           || !q.outcome_ids?.length || q.outcome_ids.some(id => !lesson.outcomes.some(o => o.id === id))) throw new Error('Invalid lesson question.');
     }
+    if (lesson.revised_assessment) {
+      const assessment = lesson.revised_assessment;
+      const required = assessment.required_sections;
+      if (lesson.track !== 'foundations' || !/^br-(0[1-9]|1[01])$/.test(lesson.lesson_id) ||
+          lesson.content_version === '1.0.0' || !Array.isArray(required) || !required.length ||
+          new Set(required).size !== required.length ||
+          required.some(id => !/^[a-z0-9-]+$/.test(id) || id === 'closing-check')) {
+        throw new Error('Invalid revised Foundations contract.');
+      }
+      const questionIds = new Set(), prompts = new Set(), closingOutcomes = new Set();
+      for (const kind of ['opening', 'closing']) {
+        if (!Array.isArray(assessment[kind]) || assessment[kind].length < 5) throw new Error('Too few assessment questions.');
+        for (const q of assessment[kind]) {
+          cited(q.source_ids);
+          const prompt = q.prompt?.trim().toLowerCase();
+          if (!/^[a-z0-9-]+$/.test(q.id) || !prompt || questionIds.has(q.id) || prompts.has(prompt) ||
+              !Array.isArray(q.options) || q.options.length < 2 || new Set(q.options.map(o => o.id)).size !== q.options.length ||
+              !q.options.every(o => /^[a-z0-9-]+$/.test(o.id) && o.text?.trim() && o.feedback?.trim()) ||
+              !q.options.some(o => o.id === q.answer) || !q.outcome_ids?.length ||
+              q.outcome_ids.some(id => !lesson.outcomes.some(o => o.id === id))) throw new Error('Invalid revised assessment question.');
+          questionIds.add(q.id);
+          prompts.add(prompt);
+          if (kind === 'closing') q.outcome_ids.forEach(id => closingOutcomes.add(id));
+        }
+      }
+      if (lesson.outcomes.some(o => !closingOutcomes.has(o.id))) throw new Error('Closing check must cover every outcome.');
+    }
     if (lesson.worked_example.tree && !lesson.convention_profile) throw new Error('Tree without convention profile.');
   }
   for (const lesson of course.lessons) for (const p of lesson.prerequisites) {
-    if (!course.lessons.some(l => l.lesson_id === p.lesson_id && l.content_version === p.content_version)) throw new Error('Unknown prerequisite/version.');
+    if (!course.lessons.some(l => l.lesson_id === p.lesson_id && (l.content_version === p.content_version ||
+      (l.revised_assessment && p.content_version === '1.0.0')))) throw new Error('Unknown prerequisite/version.');
   }
   const visiting = new Set(), done = new Set();
   function visit(id) {

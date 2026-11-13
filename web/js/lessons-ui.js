@@ -1,6 +1,8 @@
 import { showCurriculumState } from './curriculum-state.js';
 import { STAGES, STAGE_TITLES, validateCourse, lessonKey, emptyProgress, canAdvance, lessonXp } from './lesson-core.js';
 import { createLessonStore } from './lesson-progress.js';
+import { createFoundationStore } from './foundation-progress.js';
+import { renderFoundationCheck } from './foundation-check.js';
 import { requestEvidence, renderEvidence } from './explanation-evidence.js';
 import { subscribeAuthState } from './auth.js';
 import { enableCanvasView } from './canvas-view.js';
@@ -29,7 +31,7 @@ const articleLessons = {
   ...phraseStructureArticles,
 };
 
-let options = {}, course, store, host, active = null, step = 0, track = 'foundations', busy = false, notice = '', generation = 0, lastFocus = null;
+let options = {}, course, store, foundations, host, active = null, step = 0, track = 'foundations', busy = false, notice = '', generation = 0, lastFocus = null;
 let reviewStage = null;
 let articlePage = 0, practiceResponses = null, assessmentIndex = 0;
 const legacyArticleSections = [
@@ -48,7 +50,8 @@ const el = (tag, text, cls) => { const node = document.createElement(tag); if (t
 function button(text, run, cls = '') { const b = el('button',text,cls); b.type = 'button'; b.addEventListener('click',run); return b; }
 function lessonReferences(lesson) {
   const blocks = [lesson, ...lesson.teaching, ...lesson.cambridge_insights, lesson.worked_example,
-    ...lesson.worked_example.steps, lesson.predict, lesson.guided, lesson.transfer, lesson.exit];
+    ...lesson.worked_example.steps, lesson.predict, lesson.guided, lesson.transfer, lesson.exit,
+    ...(lesson.revised_assessment?.opening ?? []), ...(lesson.revised_assessment?.closing ?? [])];
   const ids = new Set(blocks.flatMap(block => block.source_ids || []));
   const details = el('details', undefined, 'lesson-sources');
   details.append(el('summary', 'References and source review'));
@@ -333,11 +336,11 @@ function rememberSection(lesson, section) {
   catch { /* The section remains in the current URL. */ }
 }
 function articlePageFor(lesson, progress, sections, requested, workedExample) {
-  const available = section => !section.assessment || progress.completed_at || progress.stage >= STAGES.indexOf('guided');
+  const available = section => lesson.revised_assessment || !section.assessment || progress.completed_at || progress.stage >= STAGES.indexOf('guided');
   const indexOf = id => sections.findIndex(section => section.id === id && available(section));
   const explicit = indexOf(requested ?? (workedExample ? 'worked-example' : null));
   if (explicit >= 0) return explicit;
-  if (progress.completed_at) return 0;
+  if (progress.completed_at && !lesson.revised_assessment) return 0;
   const last = indexOf(readingState(lesson).last);
   if (last >= 0) return last;
   const checkpoint = sections.findIndex(section => available(section) &&
@@ -353,10 +356,11 @@ function articleSectionNav(lesson, progress, sections, mobile = false) {
   nav.setAttribute('aria-label', 'Chapter contents');
   const list = el('ol');
   const { visited } = readingState(lesson);
+  const revised = lesson.revised_assessment && foundations.progress(lesson);
   for (const [index, section] of sections.entries()) {
-    const locked = section.assessment && !progress.completed_at && progress.stage < STAGES.indexOf('guided');
-    const done = section.assessment ? Boolean(progress.completed_at) :
-      Boolean(section.advances && progress.visited.includes(section.advances));
+    const locked = !revised && section.assessment && !progress.completed_at && progress.stage < STAGES.indexOf('guided');
+    const done = revised ? (section.assessment ? revised.last_correct != null : revised.visited.includes(section.id)) :
+      section.assessment ? Boolean(progress.completed_at) : Boolean(section.advances && progress.visited.includes(section.advances));
     const link = el(locked ? 'span' : 'a');
     link.className = 'lesson-section-link';
     link.append(el('span', section.title));
@@ -394,7 +398,26 @@ function articleSectionNav(lesson, progress, sections, mobile = false) {
   return details;
 }
 function currentLesson() { return course.lessons.find(l => l.lesson_id===active); }
-function progressFor(lesson) { return store.records[lessonKey(lesson)] || emptyProgress(); }
+function progressFor(lesson) {
+  const legacy = store.records[lessonKey(lesson)] || emptyProgress();
+  return lesson.revised_assessment ? { ...legacy, ...foundations.progress(lesson) } : legacy;
+}
+
+function recordFoundationVisit(lesson, section) {
+  if (!lesson.revised_assessment?.required_sections.includes(section.id)) return;
+  const token = generation;
+  const page = articlePage;
+  foundations.act(lesson, { kind: 'visit', section: section.id }).then(() => {
+    if (token !== generation || page !== articlePage || host.hidden) return;
+    const article = articleFor(lesson);
+    const progress = progressFor(lesson);
+    const sections = articleSections(article);
+    const sidebar = host.querySelector('.lesson-section-sidebar');
+    const mobile = host.querySelector('.lesson-section-mobile');
+    if (sidebar && !sidebar.contains(document.activeElement)) sidebar.replaceWith(articleSectionNav(lesson, progress, sections));
+    if (mobile && !mobile.open) mobile.replaceWith(articleSectionNav(lesson, progress, sections, true));
+  });
+}
 async function act(event, afterSave) {
   if (busy) return;const token=generation;const focused=document.activeElement;const focusName=focused?.name,focusValue=focused?.value;let saved;busy=true;render();
   try { const result=await store.act(currentLesson(),event);if(token!==generation)return;saved=progressFor(currentLesson());notice=result.earned ? (store.status === 'Synced to your account'
@@ -420,8 +443,12 @@ function selectLesson(id, { section, workedExample } = {}) {
   const article = lesson && articleFor(lesson);
   if (article) {
     const sections = articleSections(article);
+    if (lesson.revised_assessment?.required_sections.some(id => !sections.some(section => section.id === id && !section.assessment))) {
+      throw new Error('A required Foundations section is missing from the chapter.');
+    }
     articlePage = articlePageFor(lesson, progressFor(lesson), sections, section, workedExample);
     rememberSection(lesson, sections[articlePage]);
+    recordFoundationVisit(lesson, sections[articlePage]);
   }
 }
 function openLesson(id, routeOptions, replace = false) {
@@ -453,9 +480,13 @@ function progressSummary() {
   summary.setAttribute('aria-label', 'Course progress');
   const overview = el('section', undefined, 'lesson-summary-card');
   const completed = course.lessons.filter(lesson => progressFor(lesson).completed_at).length;
+  const revised = course.lessons.filter(lesson => lesson.revised_assessment);
+  const retired = new Set(revised.map(lesson => lesson.lesson_id));
+  const legacy = Object.fromEntries(Object.entries(store.records).filter(([key]) => !retired.has(key.split('@')[0])));
+  const xp = lessonXp(legacy) + revised.reduce((total, lesson) => total + foundations.progress(lesson).verified_xp, 0);
   overview.append(
     el('h2', 'Overall progress'),
-    el('p', `${completed} / ${course.lessons.length} lessons completed · ${lessonXp(store.records)} lesson XP`, 'lesson-total'),
+    el('p', `${completed} / ${course.lessons.length} lessons completed · ${xp} lesson XP`, 'lesson-total'),
     progressBar(completed, course.lessons.length, 'Overall lesson progress'),
   );
   for (const group of course.tracks) {
@@ -476,7 +507,8 @@ function progressSummary() {
     const format = new Intl.DateTimeFormat(undefined, { dateStyle: 'medium' });
     for (const { lesson, progress, date } of recent) {
       const entry = el('li');
-      const status = progress.completed_at ? 'Completed' : `Part ${progress.stage + 1} of ${STAGES.length}`;
+      const status = progress.completed_at ? 'Completed' :
+        lesson.revised_assessment ? 'In progress' : `Part ${progress.stage + 1} of ${STAGES.length}`;
       const time = el('time', format.format(new Date(date)));
       time.dateTime = date;
       entry.append(button(lesson.title, () => openLesson(lesson.lesson_id), 'lesson-activity-link'), el('span', `${status} · `), time);
@@ -501,7 +533,9 @@ function catalog() {
   const modules = el('div', undefined, 'lesson-modules');
   for (const lesson of course.lessons.filter(l => l.track === track)) {
     const progress = progressFor(lesson);
-    const completedStages = STAGES.filter(stage => progress.visited.includes(stage)).length;
+    const revised = lesson.revised_assessment;
+    const completedStages = revised ? progress.visited.length : STAGES.filter(stage => progress.visited.includes(stage)).length;
+    const totalStages = revised?.required_sections.length ?? STAGES.length;
     const started = completedStages > 0 || Object.keys(progress.responses).length > 0 ||
       readingState(lesson).visited.some(id => id !== 'introduction');
     const chapter = lesson.track === 'foundations' ? `Chapter ${lesson.chapter}` : `Cambridge · Chapter ${lesson.chapter}`;
@@ -515,16 +549,22 @@ function catalog() {
     const objective = el('p', undefined, 'lesson-module-objective');
     objective.append(el('strong', 'Learning objective'), ' ', lesson.outcomes[0].text);
     card.append(objective);
-    const prerequisites = lesson.prerequisites.filter(pr => !store.records[lessonKey(pr)]?.completed_at);
+    const prerequisites = lesson.prerequisites.filter(pr => {
+      const previous = course.lessons.find(candidate => candidate.lesson_id === pr.lesson_id);
+      if (previous?.revised_assessment && revised) return !progressFor(previous).completed_at;
+      return !store.records[lessonKey(pr)]?.completed_at &&
+        !(previous?.revised_assessment && progressFor(previous).completed_at);
+    });
     if (prerequisites.length) {
       const names = prerequisites.map(pr => course.lessons.find(l => l.lesson_id === pr.lesson_id).title);
-      card.append(el('p', `Complete ${names.join(', ')} before finishing this lesson. You can start reading now.`, 'lesson-prerequisite'));
+      card.append(el('p', revised ? `Recommended first: ${names.join(', ')}. You can work through this chapter now.`
+        : `Complete ${names.join(', ')} before finishing this lesson. You can start reading now.`, 'lesson-prerequisite'));
     }
 
     const footer = el('div', undefined, 'lesson-module-footer');
     const meter = el('div', undefined, 'lesson-module-progress');
-    meter.append(el('p', `${completedStages} of ${STAGES.length} stages completed`),
-      progressBar(completedStages, STAGES.length, `${lesson.title} progress`));
+    meter.append(el('p', `${completedStages} of ${totalStages} ${revised ? 'required sections visited' : 'stages completed'}`),
+      progressBar(completedStages, totalStages, `${lesson.title} progress`));
     const action = progress.completed_at ? 'Review lesson' : started ? 'Resume lesson' : 'Start lesson';
     const actionStyle = action === 'Resume lesson' ? 'lesson-open lesson-resume lesson-primary' : 'lesson-open';
     footer.append(meter, button(action, () => openLesson(lesson.lesson_id), actionStyle));
@@ -674,6 +714,7 @@ function showArticlePage(page, { fromHistory = false } = {}) {
   const section = articleSections(articleFor(lesson))[page];
   articlePage = page;
   rememberSection(lesson, section);
+  recordFoundationVisit(lesson, section);
   if (!fromHistory) updateLessonRoute(sectionRoute(lesson, section));
   render();
   host.scrollTop = 0;
@@ -775,6 +816,7 @@ function articleScreen(lesson, p, article) {
   const sections = articleSections(article);
   const section = sections[page];
   const reviewing = Boolean(p.completed_at);
+  const revised = lesson.revised_assessment;
   const openingCheck = typeof article.openingCheck === 'function' ? article.openingCheck(lesson) : article.openingCheck;
   const body = el('article', undefined, 'lesson-stage-body');
   const heading = el('h2', section.title);
@@ -791,7 +833,7 @@ function articleScreen(lesson, p, article) {
   article.teach(body, page, {
     el, button, lesson,
     getWorkedExample: id => course.lessons.find(item => item.lesson_id === id).worked_example,
-    showClosingWarmup: section.assessment && !reviewing && !p.responses.guided && STAGES[p.stage] === 'guided',
+    showClosingWarmup: !revised && section.assessment && !reviewing && !p.responses.guided && STAGES[p.stage] === 'guided',
     practiceQuestion: (key, prompt, choices, onAnswer) => question(
       lesson, key, { responses: {} }, false, onAnswer,
       { prompt, options: choices.map((text, index) => ({ id: String(index), text })) },
@@ -844,6 +886,35 @@ function articleScreen(lesson, p, article) {
 
   if (section.id === 'introduction') {
     addLessonKeyTerms(body, el, lesson.lesson_id);
+  }
+
+  if (revised) {
+    if (section.references) body.append(lessonReferences(lesson));
+    const userId = options.userId?.() || 'guest';
+    const kind = section.assessment ? 'closing' : section.id === 'introduction' ? 'opening' : null;
+    if (kind) body.append(renderFoundationCheck({
+      lesson, progress: p, kind, el, button, userId, account: userId !== 'guest',
+      async submit(event, clearDraft) {
+        const token = generation;
+        const result = await foundations.act(lesson, event);
+        clearDraft();
+        if (token !== generation || articlePage !== page || host.hidden) return;
+        notice = result.earned > 0 ? `+${result.earned} lesson XP` : '';
+        render();
+        host.querySelector('.lesson-assessment [role="status"]')?.focus();
+      },
+    }));
+    const actions = el('div', undefined, 'lesson-page-actions constituent-actions');
+    if (page > 0) actions.append(button('← Previous', () => showArticlePage(page - 1)));
+    const next = sections[page + 1];
+    actions.append(next
+      ? button(next.assessment ? 'Check what you learned' : 'Next →', () => showArticlePage(page + 1), 'lesson-primary')
+      : button('All lessons', showCatalog, 'lesson-primary'));
+    layout.append(actions);
+    return;
+  }
+
+  if (section.id === 'introduction') {
     const preTest = el('section', undefined, 'lesson-assessment constituent-pre-test');
     const title = el('h3', openingCheck ? 'Check what you know' : 'Pre-test');
     title.id = 'lesson-pre-test-title';
@@ -1085,8 +1156,18 @@ function render() {
   clearLessonCanvases();
   const scroll=host.scrollTop;host.replaceChildren();
   if(active)lessonScreen();else catalog();
-  const footer=el('footer',undefined,'lesson-save-status');footer.setAttribute('aria-live','polite');if(notice)footer.append(el('p',notice));footer.append(el('p',store.status));
-  if(options.userId?.()) footer.append(button('Retry account sync',async()=>{await store.retry();render();}));
+  const footer = el('footer', undefined, 'lesson-save-status');
+  footer.setAttribute('aria-live', 'polite');
+  if (notice) footer.append(el('p', notice));
+  const syncStatus = foundations.pending ? 'Saved on this device. Account sync is pending.' : store.status;
+  footer.append(el('p', syncStatus));
+  if (options.userId?.()) footer.append(button('Retry account sync', async () => {
+    const token = generation;
+    const legacy = store;
+    await foundations.load();
+    await legacy.retry();
+    if (token === generation) render();
+  }));
   host.append(footer);host.scrollTop=scroll;
 }
 export function initLessons(config = {}) {
@@ -1096,6 +1177,7 @@ export function initLessons(config = {}) {
   subscribeAuthState(() => {
     generation++;
     store = null;
+    foundations = null;
     active = null;
     busy = false;
     if (!host.hidden) {
@@ -1142,10 +1224,14 @@ export async function openLessons(id = null, { workedExample = false, section, f
     if (!store) {
       let storage;
       try { storage = localStorage; } catch { storage = null; }
-      const next = createLessonStore(course, { storage, userId: options.userId?.() || 'guest', client: options.client?.() });
+      const config = { storage, userId: options.userId?.() || 'guest', client: options.client?.() };
+      const revised = createFoundationStore(course, config);
+      const next = createLessonStore(course, { ...config, revisedProgress: revised.progress });
+      await revised.load();
       await next.load();
       if (token !== generation) return;
       store = next;
+      foundations = revised;
     }
     if (token !== generation) return;
     host.setAttribute('aria-busy', 'false');

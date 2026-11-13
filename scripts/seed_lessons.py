@@ -4,8 +4,8 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 TARGET=ROOT/'supabase/migrations/20261108000001_lesson_catalog.sql'
 
-def render():
-    course=json.loads((ROOT/'web/content/lessons/course.json').read_text())
+def render(course=None):
+    course=course or json.loads((ROOT/'web/content/lessons/course.json').read_text())
     rows=[]
     for lesson in course['lessons']:
         ident=lesson['lesson_id'];version=lesson['content_version']

@@ -58,6 +58,7 @@ jobs:
           python scripts/test_achievements_database.py
           python scripts/test_leaderboard_database.py
           python scripts/test_account_integration_database.py
+          python scripts/test_foundation_database.py --after-account-tests
       - name: Compile backend modules and tests
         run: python -m compileall -q server
       - name: Run isolated Syntax Generator tests
