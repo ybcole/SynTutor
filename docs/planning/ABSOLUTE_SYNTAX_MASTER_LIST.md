@@ -2,13 +2,15 @@
 
 **Audit dated 13 November 2026.** This is the implementation register for Burton-Roberts tree fidelity and SynTutor's versioned tree contract. The source is Noel Burton-Roberts, *Analysing Sentences: An Introduction to English Syntax*, third edition (2011), including the attached complete PDF. The cited printed pages refer to the book, not PDF offsets. This document records findings and required work. It does not certify universal parser accuracy.
 
+**Product decision:** Benepar remains the general English parser. SynTutor translates its proposed analyses into the B-R teaching convention and validates those translations. The goal is broad practical coverage comparable to Benepar's, with correct B-R labels and structures for supported inputs. Building a second unrestricted native parser is optional research, not a prerequisite. A source-tree corpus is a test and teaching resource, not the only set of sentences the adapter may handle.
+
 ## The meaning of one-to-one
 
 For a specified interpretation and convention profile, a supported analysis must serialize into one lossless, ordered SynTutor tree with exact token alignment. Decoding that tree must recover its nodes, labels, features, spans, dependencies, profile, and source. A sentence can have several legitimate analyses. Chapter teaching versions can represent the same words differently. SynTutor must retain accepted alternatives or return unresolved when an interpretation cannot be chosen. A single sentence cannot always have one objectively unique tree.
 
 ## Audit verdict and authority
 
-The chapter-aware convention is coherent as a design, but it is **not yet complete or fully coherent across runtime contracts and documentation**. The main convention is [CONVENTIONS.md](../../CONVENTIONS.md), with versions V1–V10 and free-analysis FINAL-D1. The public envelope is [canonical-burton-roberts-tree.schema.json](../canonical-burton-roberts-tree.schema.json). The actual importer and adapter are in [burton_roberts.py](../../server/burton_roberts.py). An older [br_tree.py](../../server/br_tree.py) and [br_tree.schema.json](../../grammar/br_tree.schema.json) use a different internal shape. The [construction catalog](../../grammar/br_native_constructions.json) checks shapes, while [br_native_chart.py](../../server/br_native_chart.py) generates limited diagnostic candidates. None of these alone proves the analysis of novel unrestricted English.
+The chapter-aware convention is coherent as a design, but it is **not yet complete or fully coherent across runtime contracts and documentation**. The main convention is [CONVENTIONS.md](../../CONVENTIONS.md), with versions V1–V10 and free-analysis FINAL-D1. The public envelope is [canonical-burton-roberts-tree.schema.json](../canonical-burton-roberts-tree.schema.json). The actual importer and Benepar adapter are in [burton_roberts.py](../../server/burton_roberts.py) and [final_d1_projection.py](../../server/final_d1_projection.py). An older [br_tree.py](../../server/br_tree.py) and [br_tree.schema.json](../../grammar/br_tree.schema.json) use a different internal shape. The [construction catalog](../../grammar/br_native_constructions.json) checks shapes, while [br_native_chart.py](../../server/br_native_chart.py) generates limited diagnostic candidates. None of these alone proves the analysis of novel unrestricted English.
 
 | Evidence | Current result | Meaning |
 |---|---:|---|
@@ -19,7 +21,7 @@ The chapter-aware convention is coherent as a design, but it is **not yet comple
 
 Reproduce the catalog numbers with **python scripts/audit_br_native_catalog.py --expected-count 252 --fail-on-penn**. Its semantic_conditions_checked value is false. Do not boost that percentage with indiscriminate shape rules.
 
-Burton-Roberts third edition governs canonical tree structure. A reviewed source diagram governs its particular exercise, including visible anomalies. The chapter prose governs constructions beyond those figures after the reading is adjudicated. Benepar, spaCy, and learned models provide candidates, not structural authority. Cambridge supplies independently attributed grammar constraints, not B-R edges. A schema-valid tree, a catalog-recognized shape, a source-image transcription, and an independently verified linguistic interpretation are different claims.
+Burton-Roberts third edition governs canonical tree structure. A reviewed source diagram governs its particular exercise, including visible anomalies. The chapter prose governs constructions beyond those figures after the reading is adjudicated. Benepar supplies general sentence analyses and likely attachments; the adapter may reuse these as evidence while building B-R structures. B-R conventions determine what is shown and taught. Cambridge supplies independently attributed grammar constraints, not B-R edges. A schema-valid tree, a catalog-recognized shape, a source-image transcription, and an independently verified linguistic interpretation are different claims.
 
 ## Complete profile inventory
 
@@ -64,21 +66,21 @@ The examples, source citations, inventories, tests and chapter-specific simplifi
 | S09 | Separate IMG transcription, AI source pass, independent linguistic review, anomaly and release approval. | Enforced provenance fields and review trail, without bulk self-approval. |
 | S10 | Reconcile PDF pagination and edition manifests. The attached volume has 297 PDF pages, while an older engine document calls its source 294 pages. | Checked edition/page offset for preface and Chapters 1–11; correct stale page counts. |
 
-## Native parser and proof work
+## Benepar adapter and validation work
 
 | ID | Work to complete | Acceptance evidence |
 |---|---|---|
-| P01 | Compile catalog entries into typed constructive rules with conditions, exclusions and chapter gates. | Positive, negative, exception and ambiguity cases for each enabled rule. |
-| P02 | Build lexical frames for all Ch4 classes, auxiliary selection, particles, prepositions, sense ambiguity and Ch10 Type I/II. | Unseen verb/sense contrasts and explicit unresolved unknowns. |
-| P03 | Compose recursive NP/NOM, VP/auxiliary, PP, AP/AdvP, coordination, subordinate and nonfinite clauses. | Source and held-out complete-tree matches under the correct profile. |
+| P01 | Build an explicit Benepar-to-B-R transformation table by construction and chapter profile. Reuse reliable token spans and phrase attachments, and reconstruct B-R-specific layers. | Positive, negative, exception and ambiguity cases for each transformation. |
+| P02 | Add lexical frame evidence where Benepar's categories cannot decide Ch4 complement type, auxiliary role, particles, prepositions, sense ambiguity or Ch10 Type I/II. | Unseen verb/sense contrasts and explicit unresolved unknowns. |
+| P03 | Transform parsed NP into DET/NOM, VP into B-R auxiliary and adjunct layers, and clauses into S-bar/S-dbar, covering coordination and nonfinite structures. | Source and held-out complete-tree matches under the correct profile, with comparable general-input coverage measured. |
 | P04 | License wh, passive, fronted auxiliary, gap, empty C, ellipsis, controlled subject and co-index. | Every non-overt position has a tested controller or dependency and adversarial negatives. |
-| P05 | Check full derivations, lexical selection, scope, agreement and semantic attachment. | Reject deliberately wrong but schema-valid trees with precise failed obligations. |
-| P06 | Generate bounded alternative analyses independently of Benepar's top hierarchy, and report truncation. | Held-out cases where Benepar's first parse is wrong plus ambiguity recall. |
+| P05 | Validate the adapter's local transformations, lexical selection, scope, agreement and attachments. | Reject deliberately wrong but schema-valid trees with precise failed obligations. |
+| P06 | Preserve and evaluate alternatives when Benepar or the B-R mapping is ambiguous. Add a second candidate only where evidence supports one. A native chart is optional research. | Held-out parser-disagreement cases, ambiguity recall and explicit unresolved outcomes. |
 | P07 | Keep Penn POS, model scores and Cambridge claims from becoming B-R proof. | Negative integration tests across normalizer, API, and frontend. |
 | P08 | Separate structural validation, grammaticality findings, corrections and explanation evidence. | Distinct statuses and rule IDs, including a structurally valid tree for an unacceptable sentence. |
 | P09 | Version analysis identity by source/profile, derivation and tokenizer. | Stable reload and invalidation after rule/profile changes. |
 
-The current chart has a small hard-coded lexical inventory and limited S/NP/VP/PP/AdvP composition. It is diagnostic. The FINAL-D1 projection covers more constructions, yet successful projection alone does not prove lexical or semantic licensing. The catalog's shape conditions are descriptions and are not currently executable checks.
+The existing FINAL-D1 projection is the starting point. Expand its construction mappings and measured coverage before investing in an independent full parser. The small hard-coded chart can remain a diagnostic or supply alternate hypotheses where it helps. Successful projection still needs rule-specific checks. The catalog's shape conditions are descriptions and are not currently executable checks.
 
 ## Product, removal and migration list
 
@@ -98,9 +100,9 @@ Retain source records, anomalies, raw diagnostics and accepted alternatives. Rem
 
 1. **Source fidelity:** adjudicate all source records and alternatives; dispose of every unmatched branch and ambiguous transcription.
 2. **One contract:** make public schema, importer, validator, Builder and display agree; round-trip all representable source records and old saved workspaces.
-3. **Constructive grammar:** prove typed rule conditions, lexical selection, attachments and dependencies, with explicit unknown outcomes.
+3. **Broad Benepar adapter:** transform its analyses under the selected B-R profile, checking lexical selection, attachments and dependencies with explicit unknown outcomes.
 4. **Independent measurement:** use separate development and held-out source/new-sentence sets. Report exact complete-tree agreement against alternatives, verified coverage, false certification rate, ambiguity recall, calibration, latency and unsupported cases with denominators and uncertainty. No finite zero-failure suite guarantees every English sentence.
 5. **Integration:** test Generator, Builder, lessons, quizzes, XAI, corrections, API transports, browser and parser-backed CI through their normal entry points.
 6. **Release:** activate only reviewed, measured construction families and publish their supported coverage and limitations.
 
-**Current gate state:** source fidelity is incomplete; contract, grammar, parser and product integration are partial; unrestricted one-to-one syntax generation is not established. Start with S01–S04 and S09–S10, then S05–S08 and P01–P05, then P06 and held-out evaluation, followed by U01–U07 and release checks. Cambridge Phase C diagnostic pilots have a separate registry and review path.
+**Current gate state:** source fidelity is incomplete; contract, adapter and product integration are partial; broad B-R presentation at Benepar's coverage has not yet been measured. Start with the P01 construction map and representative held-out sentences alongside S01 and the source fixtures, expand P02–P05 by construction, then evaluate P06 and U01–U07. Finish the source review and contract tasks before claiming independently certified fidelity. Cambridge Phase C diagnostic pilots have a separate registry and review path.
