@@ -185,8 +185,17 @@ def build_payload(text, sentence_index=0, convention_version=None,
     correction = None
     if (summary.get('verdict') != 'grammatical'
             or corrections.has_actionable(details)):
+        # Parser tokens retain document offsets for API consumers. Structured
+        # remediation edits slice the selected sentence, so use a local copy.
+        sentence_offset = (analysis['sentences'][analysis['sentence_index']]['start']
+                           if analysis['sentences'] else 0)
+        correction_tokens = [
+            {**token, 'start': token['start'] - sentence_offset,
+             'end': token['end'] - sentence_offset}
+            for token in tokens
+        ]
         correction = corrections.assemble(
-            analysis['sentence'], details, tokens,
+            analysis['sentence'], details, correction_tokens,
             validate=_validate_correction)
         if correction is not None:
             sentence_offset = (analysis['sentences'][analysis['sentence_index']]['start']
