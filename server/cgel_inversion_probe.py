@@ -205,3 +205,44 @@ def probe_which_partitive(sentence, tree, *, variety):
             "edit_hint": None,
         })
     return result
+
+
+def probe_exclamative_article(sentence, tree, *, variety, exclamative_confirmed=False):
+    """Check a fronted exclamative NP with a known singular count head."""
+    result = {"status": "not_evaluated", "production_enabled": False, "candidates": []}
+    if variety != "standard_english" or exclamative_confirmed is not True:
+        return result
+    tokens = tokens_with_spans(sentence)
+    leaves = list(_ordered_leaves(tree))
+    if len(tokens) != len(leaves) or any(
+        leaf["span"] != [token["index"], token["index"] + 1] or leaf["surface"] != token["text"]
+        for leaf, token in zip(leaves, tokens)
+    ) or any(token["text"] in {'"', '“', '”', "'", '‘', '’'} for token in tokens):
+        return result
+    result["status"] = "candidate_only"
+    parts = tree.get("children", [])
+    if (tree["type"] not in {"S", "SBAR", "SBARQ"}
+            or [part["type"] for part in parts] != ["WHNP", "S", "."]
+            or parts[-1].get("surface") != "!"):
+        return result
+    if [part["type"] for part in parts[1].get("children", [])] != ["NP", "VP"]:
+        return result
+    phrase = parts[0].get("children", [])
+    if not phrase or phrase[0].get("pos") not in {"WDT", "WP"} or phrase[0]["surface"].casefold() != "what":
+        return result
+    nominal = phrase[1:]
+    if len(nominal) == 1 and nominal[0]["type"] == "NP":
+        nominal = nominal[0].get("children", [])
+    if not nominal or any(part.get("pos") != "JJ" for part in nominal[:-1]):
+        return result
+    head = nominal[-1]
+    if head.get("pos") != "NN" or head["surface"].casefold() not in {"instrument", "bicycle", "mistake", "disaster"}:
+        return result
+    result["candidates"].append({
+        "rule_id": "CLS-229", "source_chapter": 10, "source_pages": [919, 920],
+        "relation": {"kind": "singular_count_exclamative_missing_article",
+                     "what_char_span": tokens[phrase[0]["span"][0]]["char_span"],
+                     "head_char_span": tokens[head["span"][0]]["char_span"]},
+        "edit_hint": None,
+    })
+    return result

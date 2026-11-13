@@ -3,7 +3,7 @@ import re
 import unittest
 
 from cgel_inversion_probe import probe_fronted_inversion, probe_inversion
-from cgel_inversion_probe import probe_declarative_polarity, probe_which_partitive
+from cgel_inversion_probe import probe_declarative_polarity, probe_exclamative_article, probe_which_partitive
 from parse_engine import NodeBuilder, analyze, parse_parse_string
 
 
@@ -144,3 +144,35 @@ class WhichPartitiveTests(unittest.TestCase):
                 found = [row["rule_id"] for row in rows]
                 self.assertIn(found, ([], ["CLS-201"]) if target else ([],))
                 print(f"Cambridge which partitive {sentence!r}: {found}; target={target}; parse={analysis['parse_string']}")
+
+
+class ExclamativeArticleTests(unittest.TestCase):
+    def test_confirmed_exclamative(self):
+        sentence = "What unusual instrument she found!"
+        tree = NodeBuilder().build(parse_parse_string(
+            "(SBARQ (WHNP (WDT What) (JJ unusual) (NN instrument)) "
+            "(S (NP (PRP she)) (VP (VBD found))) (. !))"
+        ), 6)
+        for confirmed, expected in [(True, ["CLS-229"]), (False, [])]:
+            rows = probe_exclamative_article(sentence, tree, variety="standard_english",
+                                             exclamative_confirmed=confirmed)["candidates"]
+            self.assertEqual([row["rule_id"] for row in rows], expected)
+
+    @unittest.skipUnless(os.environ.get("CGEL_REQUIRE_PARSER") == "1", "configured parser required")
+    def test_configured_exclamatives(self):
+        for sentence, confirmed, target in [
+            ("What unusual instrument she found!", True, True),
+            ("What serious mistake he made!", True, True),
+            ("What an unusual instrument she found!", True, False),
+            ("What strange instruments she found!", True, False),
+            ("What terrible weather we had!", True, False),
+            ("What instrument did she find?", False, False),
+            ("What unusual instrument she found!", False, False),
+        ]:
+            with self.subTest(sentence=sentence, confirmed=confirmed):
+                analysis = analyze(sentence)
+                rows = probe_exclamative_article(sentence, analysis["root"], variety="standard_english",
+                                                 exclamative_confirmed=confirmed)["candidates"]
+                found = [row["rule_id"] for row in rows]
+                print(f"Cambridge exclamative article {sentence!r}: {found}; target={target}; parse={analysis['parse_string']}")
+                self.assertIn(found, ([], ["CLS-229"]) if target else ([],))
