@@ -1,14 +1,14 @@
 # Cambridge Phase C backlog
 
-Snapshot through the fronted-inversion prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
+Snapshot through the primary-negation prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
 
 | Diagnostic specifications | Primary pilot | Supporting pilot | Outside pilot | Production-enabled |
 |---:|---:|---:|---:|---:|
-| 204 | 16 | 4 | 184 | 0 |
+| 204 | 17 | 4 | 183 | 0 |
 
 ## Next implementation batch
 
-**Primary finite negation (CLS-099)** follows the inversion work. Compare missing supportive do with the existing CLS-100 extra-do probe, and guard negation inside adjuncts and imperative clauses.
+**Negative imperatives (CLS-102 and CLS-131)** are the next overlap to triage. Compare the general requirement for supportive do with its application to imperative be. Preserve ordinary finite negation and licensed imperative forms as controls.
 
 After that batch, triage adjacent diagnostics by governing relation and compatible edits. Use the source and diagnostic family below to find related rules. A catalog entry can share a detector or receive a documented no-detector disposition.
 
@@ -26,11 +26,12 @@ After that batch, triage adjacent diagnostics by governing relation and compatib
 | Article pronunciation | MORPH-141 | OTH-726 | [#112](https://github.com/ybcole/SynTutor/pull/112) | Validate pronunciation evidence and the read-aloud condition. |
 | Main-clause question inversion | CLS-103, CLS-104 | — | [#117](https://github.com/ybcole/SynTutor/pull/117) | Validate question context and canonical grounding. |
 | Fronted negative and only inversion | CLS-106, CLS-107 | — | This batch | Validate scope independently and broaden parser coverage, including subordinate clauses. |
+| Primary finite negation | CLS-099 | — | This batch | Validate the source of primary scope and extend coverage beyond clause-final not. |
 | Imperative verb form | CLS-130 | — | [#115](https://github.com/ybcole/SynTutor/pull/115) | Establish the source of directive intent and validate the resulting finding. |
 
 ## Rule-by-rule inventory
 
-**Pilot** means a primary offline implementation exists. **Support** means the entry corroborates a pilot. **Next** identifies the next diagnostic. **Queued** means source and overlap triage is pending in this tracker.
+**Pilot** means a primary offline implementation exists. **Support** means the entry corroborates a pilot. **Next** identifies the next diagnostics. **Queued** means source and overlap triage is pending in this tracker.
 
 When a batch lands, update the rows and link its evidence. Record canonical grounding, held-out results, independent review, learner explanations and registry activation separately from prototype status.
 
@@ -88,13 +89,13 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 
 | Rule | Construction | Cambridge source | Status |
 |---|---|---|---|
-| `CLS-102` | Negative imperatives use supportive do | Ch. 3, pp. 94 | Queued |
+| `CLS-102` | Negative imperatives use supportive do | Ch. 3, pp. 94 | Next |
 | `CLS-120` | Aspectual used to requires do or to under code ellipsis | Ch. 3, pp. 115 | Queued |
 | `OTH-453` | Remote conditional apodosis requires a modal auxiliary | Ch. 3, pp. 199 | Queued |
 | `COMP-063` | Peruse normally requires an object | Ch. 4, pp. 221 | Queued |
 | `COMP-189` | Unlicensed implicit object for peruse | Ch. 4, pp. 304 | Queued |
 | `PHR-083` | Of with plural approximate number nouns | Ch. 5, pp. 351 | Queued |
-| `CLS-131` | Supportive do with be in ordinary negative imperatives | Ch. 10, pp. 857 | Queued |
+| `CLS-131` | Supportive do with be in ordinary negative imperatives | Ch. 10, pp. 857 | Next |
 | `CLS-320` | Overt object with active believe plus an infinitival | Ch. 14, pp. 1203 | Queued |
 | `CLS-408` | Participial NP modifiers without relative markers | Ch. 14, pp. 1265 | Queued |
 | `CLS-1095` | Supplementary relative clause requires an antecedent anchor | Ch. 15, pp. 1353 | Queued |
@@ -269,7 +270,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | Rule | Construction | Cambridge source | Status |
 |---|---|---|---|
 | `MORPH-056` | Negative imperative differs from negative infinitival | Ch. 3, pp. 89, 90 | Queued |
-| `CLS-099` | Do-support in primary finite negation | Ch. 3, pp. 93, 94 | Next |
+| `CLS-099` | Do-support in primary finite negation | Ch. 3, pp. 93, 94 | Pilot |
 | `CLS-103` | Inversion of auxiliary and subject in closed interrogatives | Ch. 3, pp. 94, 95 | Pilot |
 | `CLS-104` | Main-clause non-subject wh-inversion | Ch. 3, pp. 95 | Pilot |
 | `CLS-106` | Clause-scoped initial negative triggering inversion | Ch. 3, pp. 95, 96 | Pilot |
