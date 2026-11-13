@@ -1,7 +1,7 @@
 import os
 import unittest
 
-from cgel_lexical_number_probe import probe_lexical_number
+from cgel_lexical_number_probe import probe_demonstrative_number, probe_lexical_number
 from parse_engine import NodeBuilder, analyze, parse_parse_string
 
 
@@ -36,3 +36,37 @@ class LexicalNumberTests(unittest.TestCase):
         for sentence, _, _, _, disease, expected in CASES:
             with self.subTest(sentence=sentence, disease=disease):
                 self.check_case(sentence, analyze(sentence)["root"], disease, expected)
+
+
+class DemonstrativeNumberTests(unittest.TestCase):
+    def check_case(self, sentence, tree, expected):
+        result = probe_demonstrative_number(sentence, tree, variety="standard_english")
+        self.assertEqual([row["rule_id"] for row in result["candidates"]], expected)
+        for row in result["candidates"]:
+            self.assertIsNone(row["edit_hint"])
+
+    def test_number_mismatch_in_both_directions(self):
+        for phrase, expected in [
+            ("These book", ["PHR-087"]), ("This books", ["PHR-087"]),
+            ("Those children", []), ("That child", []), ("These sheep", []),
+        ]:
+            det, noun = phrase.split()
+            # The noun's lexical form matters even when the parser mistags its number.
+            tree = NodeBuilder().build(parse_parse_string(f"(NP (DT {det}) (NN {noun}))"), 2)
+            self.check_case(phrase, tree, expected)
+
+    @unittest.skipUnless(os.environ.get("CGEL_REQUIRE_PARSER") == "1", "configured parser required")
+    def test_configured_demonstratives(self):
+        for sentence, expected in [
+            ("I borrowed these book yesterday.", ["PHR-087"]),
+            ("She packed that folders first.", ["PHR-087"]),
+            ("I borrowed these books yesterday.", []),
+            ("She packed that folder first.", []),
+            ("These sheep are grazing.", []),
+            ("These kind of books are expensive.", []),
+            ("This ten miles is the hardest stretch.", []),
+            ("These are books.", []),
+            ("This book and that folder are mine.", []),
+        ]:
+            with self.subTest(sentence=sentence):
+                self.check_case(sentence, analyze(sentence)["root"], expected)

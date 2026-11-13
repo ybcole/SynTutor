@@ -60,3 +60,52 @@ def probe_lexical_number(sentence, tree, *, variety, disease_confirmed=False):
             "expected_verb": expected, "edit_hint": None,
         })
     return result
+
+
+# Restrict the pilot to ordinary count nouns with distinct number forms.
+COUNT_NUMBER = {
+    "book": True, "books": False, "folder": True, "folders": False,
+    "chair": True, "chairs": False, "bottle": True, "bottles": False,
+    "child": True, "children": False,
+}
+DEMONSTRATIVE_NUMBER = {"this": True, "that": True, "these": False, "those": False}
+
+
+def _demonstrative_pairs(node):
+    children = node.get("children", [])
+    if node["type"] == "NP" and len(children) == 2:
+        determiner, noun = children
+        if determiner.get("pos") == "DT" and noun.get("pos") in {"NN", "NNS"}:
+            yield determiner, noun
+    for child in children:
+        yield from _demonstrative_pairs(child)
+
+
+def probe_demonstrative_number(sentence, tree, *, variety):
+    """Report an NP-internal mismatch without assuming the intended number."""
+    result = {"status": "not_evaluated", "production_enabled": False, "candidates": []}
+    if variety != "standard_english":
+        return result
+    tokens = tokens_with_spans(sentence)
+    leaves = list(_ordered_leaves(tree))
+    if len(tokens) != len(leaves) or any(
+        leaf["span"] != [token["index"], token["index"] + 1] or leaf["surface"] != token["text"]
+        for leaf, token in zip(leaves, tokens)
+    ) or any(token["text"] in {'"', '“', '”', "'", "‘", "’"} for token in tokens):
+        return result
+    result["status"] = "candidate_only"
+    for determiner, noun in _demonstrative_pairs(tree):
+        det_number = DEMONSTRATIVE_NUMBER.get(determiner["surface"].casefold())
+        noun_number = COUNT_NUMBER.get(noun["surface"].casefold())
+        if det_number is None or noun_number is None or det_number == noun_number:
+            continue
+        result["candidates"].append({
+            "rule_id": "PHR-087", "source_chapter": 5, "source_pages": [352, 353],
+            "relation": {
+                "kind": "demonstrative_head_number_mismatch",
+                "determiner_char_span": tokens[determiner["span"][0]]["char_span"],
+                "head_char_span": tokens[noun["span"][0]]["char_span"],
+            },
+            "edit_hint": None,
+        })
+    return result
