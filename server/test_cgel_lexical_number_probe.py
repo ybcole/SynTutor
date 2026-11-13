@@ -3,6 +3,7 @@ import unittest
 
 from cgel_lexical_number_probe import probe_demonstrative_number, probe_lexical_number, probe_total_number
 from cgel_lexical_number_probe import probe_singular_they_agreement
+from cgel_lexical_number_probe import probe_spatial_demonstrative
 from parse_engine import NodeBuilder, analyze, parse_parse_string
 
 
@@ -154,3 +155,47 @@ class SingularTheyTests(unittest.TestCase):
         ]:
             with self.subTest(sentence=sentence, context=context):
                 self.check_case(sentence, analyze(sentence)["root"], context, expected)
+
+
+class SpatialDemonstrativeTests(unittest.TestCase):
+    def test_np_attachment_and_context(self):
+        for det, place, context, expected in [
+            ("This", "there", True, ["PHR-620"]),
+            ("That", "here", True, ["PHR-620"]),
+            ("That", "there", True, []),
+            ("This", "there", False, []),
+        ]:
+            with self.subTest(det=det, place=place, context=context):
+                tree = NodeBuilder().build(parse_parse_string(
+                    f"(S (NP (NP (DT {det}) (NN book)) (ADVP (RB {place}))) "
+                    "(VP (VBZ belongs) (ADVP (RB upstairs))) (. .))"
+                ), 6)
+                self.check_case(f"{det} book {place} belongs upstairs.", tree, context, expected)
+
+    def check_case(self, sentence, tree, context, expected):
+        result = probe_spatial_demonstrative(
+            sentence, tree, variety="standard_english", shared_deictic_context=context
+        )
+        self.assertEqual([row["rule_id"] for row in result["candidates"]], expected)
+        for row in result["candidates"]:
+            self.assertIsNone(row["edit_hint"])
+
+    @unittest.skipUnless(os.environ.get("CGEL_REQUIRE_PARSER") == "1", "configured parser required")
+    def test_configured_spatial_demonstratives(self):
+        for sentence, context, target in [
+            ("This envelope over there is for Lee.", True, True),
+            ("Those crates here belong to us.", True, True),
+            ("This envelope over there is for Lee.", False, False),
+            ("That envelope over there is for Lee.", True, False),
+            ("These crates here belong to us.", True, False),
+            ("Put this envelope over there.", True, False),
+            ("We placed those crates here.", True, False),
+        ]:
+            with self.subTest(sentence=sentence, context=context):
+                analysis = analyze(sentence)
+                result = probe_spatial_demonstrative(
+                    sentence, analysis["root"], variety="standard_english", shared_deictic_context=context
+                )
+                ids = [row["rule_id"] for row in result["candidates"]]
+                self.assertIn(ids, ([], ["PHR-620"]) if target else ([],))
+                print(f"Cambridge spatial demonstrative {sentence!r}: {ids}; target={target}; parse={analysis['parse_string']}")
