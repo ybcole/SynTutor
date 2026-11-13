@@ -1,7 +1,7 @@
 import os
 import unittest
 
-from cgel_consist_probe import probe_consist
+from cgel_consist_probe import probe_come_across, probe_consist
 from parse_engine import NodeBuilder, analyze, parse_parse_string
 
 
@@ -41,3 +41,38 @@ class ConsistProbeTests(unittest.TestCase):
                                             variety="standard_english", composition_confirmed=True)
                     self.assertEqual(recheck["status"], "candidate_only")
                     self.assertEqual(recheck["candidates"], [])
+
+
+class ComeAcrossProbeTests(unittest.TestCase):
+    def test_fronted_preposition_requires_encounter_reading(self):
+        sentence = "Across which papers did she come?"
+        tree = NodeBuilder().build(parse_parse_string(
+            "(SBARQ (WHPP (IN Across) (WHNP (WDT which) (NNS papers))) "
+            "(SQ (VBD did) (NP (PRP she)) (VP (VB come))) (. ?))"
+        ), 7)
+        for confirmed, expected in [(True, ["COMP-128"]), (False, [])]:
+            with self.subTest(confirmed=confirmed):
+                rows = probe_come_across(sentence, tree, variety="standard_english",
+                                         encounter_confirmed=confirmed)["candidates"]
+                self.assertEqual([row["rule_id"] for row in rows], expected)
+                if rows:
+                    self.assertEqual(rows[0]["relation"]["preposition_char_span"], [0, 6])
+                    self.assertIsNone(rows[0]["edit_hint"])
+
+    @unittest.skipUnless(os.environ.get("CGEL_REQUIRE_PARSER") == "1", "configured parser required")
+    def test_configured_come_across(self):
+        for sentence, confirmed, expected in [
+            ("Across which papers did she come?", True, ["COMP-128"]),
+            ("Across which papers did she come?", False, []),
+            ("Across which river did she come?", False, []),
+            ("Which papers did she come across?", True, []),
+            ("Across which river did she swim?", True, []),
+            ("To which report did she refer?", True, []),
+        ]:
+            with self.subTest(sentence=sentence, confirmed=confirmed):
+                analysis = analyze(sentence)
+                rows = probe_come_across(sentence, analysis["root"], variety="standard_english",
+                                         encounter_confirmed=confirmed)["candidates"]
+                found = [row["rule_id"] for row in rows]
+                print(f"Cambridge come across {sentence!r} sense={confirmed}: {found}; expected={expected}; parse={analysis['parse_string']}")
+                self.assertEqual(found, expected)

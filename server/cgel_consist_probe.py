@@ -49,3 +49,44 @@ def probe_consist(sentence, tree, *, variety, composition_confirmed=False):
                       "requires_reparse": True, "safe_to_apply_automatically": False},
     })
     return result
+
+
+def probe_come_across(sentence, tree, *, variety, encounter_confirmed=False):
+    """Check fronted across in a simple direct question with confirmed encounter sense."""
+    result = {"status": "not_evaluated", "production_enabled": False, "candidates": []}
+    if variety != "standard_english" or encounter_confirmed is not True:
+        return result
+    tokens = tokens_with_spans(sentence)
+    leaves = list(_ordered_leaves(tree))
+    if len(tokens) != len(leaves) or any(
+        leaf["span"] != [token["index"], token["index"] + 1] or leaf["surface"] != token["text"]
+        for leaf, token in zip(leaves, tokens)
+    ) or any(token["text"] in {'"', '“', '”', "'", '‘', '’'} for token in tokens):
+        return result
+    result["status"] = "candidate_only"
+    parts = tree.get("children", [])
+    if (tree["type"] != "SBARQ" or [part["type"] for part in parts] != ["WHPP", "SQ", "."]
+            or parts[-1].get("surface") != "?"):
+        return result
+    fronted, question, _ = parts
+    pp = fronted.get("children", [])
+    if (len(pp) != 2 or pp[0].get("pos") != "IN"
+            or pp[0]["surface"].casefold() != "across" or pp[1]["type"] != "WHNP"):
+        return result
+    body = question.get("children", [])
+    if (len(body) != 3 or body[0].get("pos") not in {"VBD", "VBP", "VBZ", "MD"}
+            or body[0]["surface"].casefold() not in {"did", "do", "does", "can", "could", "will", "would"}
+            or [part["type"] for part in body[1:]] != ["NP", "VP"]):
+        return result
+    predicate = body[-1].get("children", [])
+    if (len(predicate) != 1 or predicate[0].get("pos") != "VB"
+            or predicate[0]["surface"].casefold() != "come"):
+        return result
+    result["candidates"].append({
+        "rule_id": "COMP-128", "source_chapter": 4, "source_pages": [275],
+        "relation": {"kind": "fronted_preposition_in_encounter_construction",
+                     "preposition_char_span": tokens[pp[0]["span"][0]]["char_span"],
+                     "verb_char_span": tokens[predicate[0]["span"][0]]["char_span"]},
+        "edit_hint": None,
+    })
+    return result
