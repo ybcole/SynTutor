@@ -1,14 +1,14 @@
 # Cambridge Phase C backlog
 
-Snapshot through the plural genitive prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
+Snapshot through the possessive pronoun apostrophe prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
 
 | Diagnostic specifications | Primary pilot | Supporting pilot | Outside pilot | Production-enabled |
 |---:|---:|---:|---:|---:|
-| 204 | 60 | 6 | 138 | 0 |
+| 204 | 61 | 6 | 137 | 0 |
 
 ## Next implementation batch
 
-**Genitive apostrophes and personal pronouns (OTH-761)** are next.
+**Sentence-final abbreviation full stop (OTH-764)** is next.
 
 After that batch, triage adjacent diagnostics by governing relation and compatible edits. Use the source and diagnostic family below to find related rules. A catalog entry can share a detector or receive a documented no-detector disposition.
 
@@ -68,6 +68,7 @@ After that batch, triage adjacent diagnostics by governing relation and compatib
 | Regular final-y plurals | MORPH-092 | — | This batch | Broaden common-noun coverage and preserve lexical variants. |
 | Personal name plurals | MORPH-104 | — | This batch | Validate name identity and expand beyond the source examples. |
 | Bare and marked genitives | MORPH-105 | — | This batch | Validate dependent plural genitives, parser segmentation, and legitimate apostrophe variants. |
+| Apostrophes in possessive pronouns | OTH-761 | — | This batch | Validate ambiguous contractions and broaden possessive contexts. |
 | Imperative verb form | CLS-130 | — | [#115](https://github.com/ybcole/SynTutor/pull/115) | Establish the source of directive intent and validate the resulting finding. |
 
 ## Rule-by-rule inventory
@@ -240,8 +241,8 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | `OTH-740` | Quoted terminal full stop inside a continuing matrix sentence | Ch. 20, pp. 1754 | Queued |
 | `OTH-743` | Terminal suppression at the end of a quotation | Ch. 20, pp. 1755 | Queued |
 | `OTH-756` | Hyphens in numerals fractions and established formations | Ch. 20, pp. 1761 | Queued |
-| `OTH-761` | Genitive apostrophes and personal pronouns | Ch. 20, pp. 1763 | Next |
-| `OTH-764` | Sentence-final abbreviation full stop | Ch. 20, pp. 1764 | Queued |
+| `OTH-761` | Genitive apostrophes and personal pronouns | Ch. 20, pp. 1763 | Pilot |
+| `OTH-764` | Sentence-final abbreviation full stop | Ch. 20, pp. 1764 | Next |
 
 ### Spelling inflection (20)
 

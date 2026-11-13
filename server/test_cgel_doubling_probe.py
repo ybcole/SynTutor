@@ -4,7 +4,7 @@ import unittest
 from cgel_doubling_probe import _doubling_replacement, _mute_e_replacement, probe_consonant_doubling, probe_mute_e
 from cgel_doubling_probe import _final_ie_replacement, _final_y_plural_replacement, probe_final_ie, probe_final_y_plural
 from cgel_doubling_probe import probe_personal_name_plural
-from cgel_genitive_probe import probe_plural_genitives
+from cgel_genitive_probe import probe_personal_genitives, probe_plural_genitives
 from parse_engine import NodeBuilder, analyze, parse_parse_string
 
 
@@ -292,3 +292,58 @@ class PluralGenitiveTests(unittest.TestCase):
         ]:
             with self.subTest(sentence=sentence):
                 self.check_case(sentence, analyze(sentence)["root"], expected, configured=True)
+
+
+class PersonalGenitiveTests(unittest.TestCase):
+    def repairs(self, sentence, tree, variety="standard_english"):
+        result = probe_personal_genitives(sentence, tree, variety=variety)
+        self.assertFalse(result["production_enabled"])
+        repairs = []
+        for row in result["candidates"]:
+            self.assertEqual(row["rule_id"], "OTH-761")
+            edit = row["edit_hint"]
+            start, end = edit["char_span"]
+            repairs.append(sentence[:start] + edit["replacement"] + sentence[end:])
+        return repairs
+
+    def test_possessive_context_and_contraction(self):
+        for sentence, parse, count, expected in [
+            ("The dog lifted it’s head.",
+             "(S (NP (DT The) (NN dog)) (VP (VBD lifted) (NP (PRP it) (POS ’s) (NN head))) (. .))",
+             7, ["The dog lifted its head."]),
+            ("The key is your's.",
+             "(S (NP (DT The) (NN key)) (VP (VBZ is) (NP (PRP$ your) (POS 's))) (. .))",
+             6, ["The key is yours."]),
+            ("It's time.",
+             "(S (NP (PRP It)) (VP (VBZ 's) (NP (NN time))) (. .))",
+             4, []),
+            ("She knows it's trouble.",
+             "(S (NP (PRP She)) (VP (VBZ knows) (S (NP (PRP it)) (VP (VBZ 's) (NP (NN trouble))))) (. .))",
+             6, []),
+        ]:
+            with self.subTest(sentence=sentence):
+                tree = NodeBuilder().build(parse_parse_string(parse), count)
+                self.assertEqual(self.repairs(sentence, tree), expected)
+                self.assertEqual(self.repairs(sentence, tree, "unspecified"), [])
+
+    @unittest.skipUnless(os.environ.get("CGEL_REQUIRE_PARSER") == "1", "configured parser required")
+    def test_configured_personal_genitives(self):
+        for sentence, expected in [
+            ("The dog lifted it’s head.", "The dog lifted its head."),
+            ("The spare key is your's.", "The spare key is yours."),
+            ("It’s raining again.", None),
+            ("I think it's time.", None),
+            ("She says it’s trouble.", None),
+            ("It's been years.", None),
+            ("The dog’s collar was wet.", None),
+            ("The dogs’ bowls were empty.", None),
+            ("The dog lifted its head.", None),
+            ("The spare key is yours.", None),
+        ]:
+            with self.subTest(sentence=sentence):
+                analysis = analyze(sentence)
+                repairs = self.repairs(sentence, analysis["root"])
+                print(f"Cambridge personal genitive {sentence!r}: {repairs}; parse={analysis['parse_string']}")
+                self.assertIn(repairs, ([], [expected]) if expected else ([],))
+                for repaired in repairs:
+                    self.assertEqual(self.repairs(repaired, analyze(repaired)["root"]), [])
