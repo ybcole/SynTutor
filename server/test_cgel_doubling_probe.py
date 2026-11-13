@@ -2,6 +2,7 @@ import os
 import unittest
 
 from cgel_doubling_probe import _doubling_replacement, _mute_e_replacement, probe_consonant_doubling, probe_mute_e
+from cgel_doubling_probe import _final_ie_replacement, probe_final_ie
 from parse_engine import NodeBuilder, analyze, parse_parse_string
 
 
@@ -87,3 +88,48 @@ class MuteETests(unittest.TestCase):
                                                  variety="standard_english")["candidates"], [])
                 self.assertIn(repaired, ([], [expected]) if expected else ([],))
                 print(f"Cambridge mute e {sentence!r}: {repaired}; expected={expected}; parse={analysis['parse_string']}")
+
+class FinalIETests(unittest.TestCase):
+    def test_closed_set_and_controls(self):
+        for word, expected in [
+            ("dieing", "dying"), ("lieing", "lying"), ("tieing", "tying"), ("vieing", "vying"),
+            ("dyeing", None), ("skiing", None), ("singeing", None), ("tying", None),
+        ]:
+            with self.subTest(word=word):
+                self.assertEqual(_final_ie_replacement(word, "VBG"), expected)
+                self.assertIsNone(_final_ie_replacement(word, "NN"))
+
+    def test_span_and_candidate(self):
+        sentence = "She is tieing it."
+        tree = NodeBuilder().build(parse_parse_string(
+            "(S (NP (PRP She)) (VP (VBZ is) (VP (VBG tieing) (NP (PRP it)))) (. .))"
+        ), 5)
+        candidate, = probe_final_ie(sentence, tree, variety="standard_english")["candidates"]
+        self.assertEqual(candidate["rule_id"], "MORPH-083")
+        edit = candidate["edit_hint"]
+        start, end = edit["char_span"]
+        self.assertEqual(sentence[:start] + edit["replacement"] + sentence[end:], "She is tying it.")
+
+    @unittest.skipUnless(os.environ.get("CGEL_REQUIRE_PARSER") == "1", "configured parser required")
+    def test_configured_final_ie(self):
+        for sentence, expected in [
+            ("She is tieing the parcel.", "She is tying the parcel."),
+            ("The dog is lieing on the rug.", "The dog is lying on the rug."),
+            ("She is dyeing cloth.", None),
+            ("They are skiing today.", None),
+            ("She is tying the parcel.", None),
+        ]:
+            with self.subTest(sentence=sentence):
+                analysis = analyze(sentence)
+                rows = probe_final_ie(sentence, analysis["root"], variety="standard_english")["candidates"]
+                repairs = []
+                for row in rows:
+                    edit = row["edit_hint"]
+                    start, end = edit["char_span"]
+                    repaired = sentence[:start] + edit["replacement"] + sentence[end:]
+                    repairs.append(repaired)
+                    recheck = probe_final_ie(repaired, analyze(repaired)["root"], variety="standard_english")
+                    self.assertEqual(recheck["status"], "candidate_only")
+                    self.assertEqual(recheck["candidates"], [])
+                self.assertIn(repairs, ([], [expected]) if expected else ([],))
+                print(f"Cambridge final ie {sentence!r}: {repairs}; expected={expected}; parse={analysis['parse_string']}")
