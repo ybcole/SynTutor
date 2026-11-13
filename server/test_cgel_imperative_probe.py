@@ -1,7 +1,7 @@
 import os
 import unittest
 
-from cgel_imperative_probe import probe_imperative, probe_negative_imperative
+from cgel_imperative_probe import probe_imperative, probe_inclusive_lets, probe_negative_imperative
 from parse_engine import NodeBuilder, analyze, parse_parse_string
 
 
@@ -94,3 +94,35 @@ class NegativeImperativeTests(unittest.TestCase):
         for sentence, _, context, expected in NEGATIVE_CASES:
             with self.subTest(sentence=sentence, context=context):
                 self.check(sentence, analyze(sentence)["root"], context, expected, configured=True)
+
+
+class InclusiveLetsTests(unittest.TestCase):
+    def test_contraction_alignment(self):
+        for marker in ["(VB let's)", "(VB let) (PRP 's)"]:
+            with self.subTest(marker=marker):
+                tree = NodeBuilder().build(parse_parse_string(
+                    f"(S (NP (PRP We)) (VP {marker} (VP (VB wait))) (. .))"
+                ), 4 if marker == "(VB let's)" else 5)
+                candidate, = probe_inclusive_lets(
+                    "We let's wait.", tree, variety="standard_english"
+                )["candidates"]
+                self.assertEqual(candidate["rule_id"], "CLS-268")
+                self.assertEqual(candidate["relation"]["marker_char_span"], [3, 8])
+
+    @unittest.skipUnless(os.environ.get("CGEL_REQUIRE_PARSER") == "1", "configured parser required")
+    def test_configured_inclusive_lets(self):
+        cases = [
+            ("We let's wait here.", True),
+            ("You let’s check the figures.", True),
+            ("Let's wait here.", False),
+            ("You, let's wait here.", False),
+            ("You let us wait here.", False),
+            ('She said, “Let’s wait here.”', False),
+        ]
+        for sentence, target in cases:
+            with self.subTest(sentence=sentence):
+                analysis = analyze(sentence)
+                result = probe_inclusive_lets(sentence, analysis["root"], variety="standard_english")
+                ids = [row["rule_id"] for row in result["candidates"]]
+                self.assertIn(ids, ([], ["CLS-268"]) if target else ([],))
+                print(f"Inclusive lets {sentence!r}: {ids}, target={target}, parse={analysis['parse_string']}")

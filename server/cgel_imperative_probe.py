@@ -101,3 +101,45 @@ def probe_negative_imperative(sentence, tree, *, variety, ordinary_verbal_direct
                       "requires_reparse": True, "safe_to_apply_automatically": False},
     })
     return result
+
+
+def probe_inclusive_lets(sentence, tree, *, variety):
+    """Require a parsed matrix pronoun before the contracted inclusive marker."""
+    result = {"status": "candidate_only", "production_enabled": False, "candidates": [], "blocked": []}
+    if variety != "standard_english":
+        return {**result, "status": "not_evaluated", "blocked": ["explicit_standard_english_required"]}
+    tokens = tokens_with_spans(sentence)
+    if any(token["text"] in {'"', '“', '”', "'", "‘", "’"} for token in tokens):
+        return {**result, "status": "not_evaluated", "blocked": ["quotation_scope_unresolved"]}
+    if len(tokens) < 4 or tokens[0]["lower"] not in {"you", "we"} or tokens[1]["lower"] != "let's":
+        return result
+    parts = tree.get("children", [])
+    if tree["type"] != "S" or [part["type"] for part in parts[:2]] != ["NP", "VP"]:
+        return result
+    subject = list(_ordered_leaves(parts[0]))
+    predicate = list(_ordered_leaves(parts[1]))
+    if (len(subject) != 1 or subject[0].get("pos") != "PRP"
+            or subject[0]["surface"] != tokens[0]["text"] or subject[0]["span"] != [0, 1]
+            or not predicate):
+        return result
+    if predicate[0]["surface"] == tokens[1]["text"]:
+        marker_size = 1
+    elif len(predicate) >= 2 and predicate[0]["surface"] + predicate[1]["surface"] == tokens[1]["text"]:
+        marker_size = 2
+    else:
+        return result
+    if len(predicate) <= marker_size or predicate[marker_size].get("pos") != "VB":
+        return result
+    # The contraction may occupy one source token and two parser leaves.
+    expected = [token["text"] for token in tokens]
+    surfaces = [leaf["surface"] for leaf in _ordered_leaves(tree)]
+    if surfaces[:1] + ["".join(surfaces[1:1 + marker_size])] + surfaces[1 + marker_size:] != expected:
+        return result
+    result["candidates"].append({
+        "rule_id": "CLS-268", "source_chapter": 10, "source_pages": [934, 935],
+        "relation": {"kind": "overt_subject_before_inclusive_lets",
+                     "subject_char_span": tokens[0]["char_span"],
+                     "marker_char_span": tokens[1]["char_span"]},
+        "edit_hint": None,
+    })
+    return result

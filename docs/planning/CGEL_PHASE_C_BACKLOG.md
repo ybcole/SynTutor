@@ -1,14 +1,14 @@
 # Cambridge Phase C backlog
 
-Snapshot through the negative-imperative prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
+Snapshot through the inclusive-let’s prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
 
 | Diagnostic specifications | Primary pilot | Supporting pilot | Outside pilot | Production-enabled |
 |---:|---:|---:|---:|---:|
-| 204 | 18 | 5 | 181 | 0 |
+| 204 | 19 | 5 | 180 | 0 |
 
 ## Next implementation batch
 
-**Inclusive let’s (CLS-268)** is next. Distinguish inclusive directives from lexical *let* and quotations before evaluating the overt-subject restriction.
+**Reported negative directives (CLS-270)** are next. Check ordinary to-infinitival reports against direct quotations and finite subordinate clauses.
 
 After that batch, triage adjacent diagnostics by governing relation and compatible edits. Use the source and diagnostic family below to find related rules. A catalog entry can share a detector or receive a documented no-detector disposition.
 
@@ -28,6 +28,7 @@ After that batch, triage adjacent diagnostics by governing relation and compatib
 | Fronted negative and only inversion | CLS-106, CLS-107 | — | This batch | Validate scope independently and broaden parser coverage, including subordinate clauses. |
 | Primary finite negation | CLS-099 | — | This batch | Validate the source of primary scope and extend coverage beyond clause-final not. |
 | Negative imperative be | CLS-102 | CLS-131 | This batch | Validate ordinary verbal directive context and broaden parser coverage. |
+| Inclusive let’s | CLS-268 | — | This batch | Verify broader subject and parser coverage, including vocatives. |
 | Imperative verb form | CLS-130 | — | [#115](https://github.com/ybcole/SynTutor/pull/115) | Establish the source of directive intent and validate the resulting finding. |
 
 ## Rule-by-rule inventory
@@ -82,8 +83,8 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | `COMP-030` | Supportive do is incompatible with other auxiliaries in one chain | Ch. 3, pp. 105 | Support |
 | `COMP-041` | Supportive do excluded in idiomatic have got | Ch. 3, pp. 112 | Queued |
 | `PHR-381` | Non-expandable declarative complements | Ch. 7, pp. 604 | Queued |
-| `CLS-268` | No overt matrix subject before inclusive let's | Ch. 10, pp. 934, 935 | Next |
-| `CLS-270` | Negating a to-infinitival report of a directive | Ch. 10, pp. 943, 944 | Queued |
+| `CLS-268` | No overt matrix subject before inclusive let's | Ch. 10, pp. 934, 935 | Pilot |
+| `CLS-270` | Negating a to-infinitival report of a directive | Ch. 10, pp. 943, 944 | Next |
 | `CLS-407` | No overt subject in infinitival interrogative complements | Ch. 14, pp. 1264 | Queued |
 
 ### Missing word (10)
