@@ -101,3 +101,67 @@ def probe_infinitival_case(sentence, tree, *, variety):
                 "expected_pronoun": expected, "edit_hint": None,
             })
     return result
+
+
+REFLEXIVE_SUBJECTS = {
+    "myself": {"i"}, "yourself": {"you"}, "yourselves": {"you"},
+    "himself": {"he", "they"}, "herself": {"she", "they"}, "itself": {"it"},
+    "ourselves": {"we"}, "themselves": {"they"}, "themself": {"they"},
+}
+
+
+def _conditional_clauses(tree):
+    if tree["type"] != "S":
+        return
+    for node in tree.get("children", []):
+        parts = node.get("children", [])
+        if (node["type"] == "SBAR" and len(parts) == 2 and parts[0].get("pos") == "IN"
+                and parts[0]["surface"].casefold() == "if" and parts[1]["type"] == "S"):
+            yield parts[1]
+
+
+def probe_local_reflexive(sentence, tree, *, variety):
+    """Use local subject evidence in a simple finite conditional adjunct."""
+    result = {"status": "not_evaluated", "production_enabled": False, "candidates": []}
+    if variety != "standard_english":
+        return result
+    tokens = tokens_with_spans(sentence)
+    leaves = list(_ordered_leaves(tree))
+    if len(tokens) != len(leaves) or any(
+        leaf["span"] != [token["index"], token["index"] + 1] or leaf["surface"] != token["text"]
+        for leaf, token in zip(leaves, tokens)
+    ) or any(token["text"] in {'"', '“', '”', "'", "‘", "’"} for token in tokens):
+        return result
+    result["status"] = "candidate_only"
+    for clause in _conditional_clauses(tree):
+        body = clause.get("children", [])
+        if [part["type"] for part in body] != ["NP", "VP"]:
+            continue
+        subject, predicate = body
+        vp = predicate.get("children", [])
+        if len(vp) != 2 or vp[1]["type"] != "NP" or vp[0].get("pos") not in {"VBD", "VBP", "VBZ"}:
+            continue
+        # A small set of ordinary transitive verbs excludes predicative readings.
+        if vp[0]["surface"].casefold() not in TRANSITIVE_FORMS | {
+            "blame", "blames", "blamed", "injure", "injures", "injured", "hurt", "hurts",
+        }:
+            continue
+        subjects = list(_ordered_leaves(subject))
+        objects = list(_ordered_leaves(vp[1]))
+        if len(subjects) != 1 or len(objects) != 1 or any(
+            leaf.get("pos") != "PRP" for leaf in subjects + objects
+        ):
+            continue
+        local, reflexive = subjects[0], objects[0]
+        controller = local["surface"].casefold()
+        allowed = REFLEXIVE_SUBJECTS.get(reflexive["surface"].casefold())
+        if controller not in OBJECT_FORMS.keys() | {"it", "you"} or not allowed or controller in allowed:
+            continue
+        result["candidates"].append({
+            "rule_id": "CLS-1101", "source_chapter": 17, "source_pages": [1457],
+            "relation": {"kind": "reflexive_local_subject_mismatch",
+                         "subject_char_span": tokens[local["span"][0]]["char_span"],
+                         "reflexive_char_span": tokens[reflexive["span"][0]]["char_span"]},
+            "edit_hint": None,
+        })
+    return result

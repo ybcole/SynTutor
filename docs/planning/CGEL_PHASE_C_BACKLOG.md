@@ -1,14 +1,14 @@
 # Cambridge Phase C backlog
 
-Snapshot through the infinitival pronoun case prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
+Snapshot through the local reflexive prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
 
 | Diagnostic specifications | Primary pilot | Supporting pilot | Outside pilot | Production-enabled |
 |---:|---:|---:|---:|---:|
-| 204 | 24 | 6 | 174 | 0 |
+| 204 | 25 | 6 | 173 | 0 |
 
 ## Next implementation batch
 
-**Local reflexive antecedents (CLS-1101)** are next. Check local binding and distinguish exempt reflexives from clause-internal arguments.
+**Reflexive objects of pride (CLS-1103)** are next. Distinguish the lexical requirement in the self-esteem sense from broader local binding and other uses.
 
 After that batch, triage adjacent diagnostics by governing relation and compatible edits. Use the source and diagnostic family below to find related rules. A catalog entry can share a detector or receive a documented no-detector disposition.
 
@@ -34,6 +34,7 @@ After that batch, triage adjacent diagnostics by governing relation and compatib
 | Question-tag agreement | CLS-183 | — | This batch | Broaden coverage of tag shapes and validate canonical grounding. |
 | Canonical pronoun case | COMP-084 | PHR-283 | This batch | Validate canonical relations and broaden finite clause coverage. |
 | Infinitival pronoun case | CLS-285 | — | This batch | Validate canonical subject grounding and broaden parser coverage. |
+| Local reflexive antecedents | CLS-1101 | — | This batch | Validate conditional-clause grounding and assess additional argument frames. |
 | Imperative verb form | CLS-130 | — | [#115](https://github.com/ybcole/SynTutor/pull/115) | Establish the source of directive intent and validate the resulting finding. |
 
 ## Rule-by-rule inventory
@@ -182,8 +183,8 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | `PHR-305` | Dependent and independent genitive pronouns | Ch. 5, pp. 470, 471 | Queued |
 | `PHR-321` | Own as fused modifier-head | Ch. 5, pp. 483 | Queued |
 | `CLS-285` | Accusative pronouns after infinitival for | Ch. 14, pp. 1182 | Pilot |
-| `CLS-1101` | Reflexive anaphor requires the appropriate local antecedent in a chain | Ch. 17, pp. 1457 | Next |
-| `CLS-1103` | Pride lexically requires the subject-bound reflexive object | Ch. 17, pp. 1488 | Queued |
+| `CLS-1101` | Reflexive anaphor requires the appropriate local antecedent in a chain | Ch. 17, pp. 1457 | Pilot |
+| `CLS-1103` | Pride lexically requires the subject-bound reflexive object | Ch. 17, pp. 1488 | Next |
 | `PHR-580` | Subject antecedent of an emphatic clause adjunct | Ch. 17, pp. 1497 | Queued |
 | `PHR-582` | Genitive exclusion with NP-internal emphatic reflexives | Ch. 17, pp. 1497 | Queued |
 
