@@ -208,3 +208,44 @@ def probe_participial_relative_marker(sentence, tree, *, variety):
             "edit_hint": None,
         })
     return result
+
+
+def _determined_participles(node):
+    parts = node.get("children", [])
+    if node["type"] == "NP" and len(parts) == 2:
+        determiner, predicate = parts
+        vp = predicate.get("children", [])
+        if (determiner.get("pos") == "DT" and determiner["surface"].casefold() == "the"
+                and predicate["type"] == "VP" and len(vp) == 2
+                and vp[0].get("pos") == "VBG" and vp[1]["type"] == "NP"):
+            yield determiner, vp[0], vp[1]
+    for child in parts:
+        yield from _determined_participles(child)
+
+
+def probe_determined_participle(sentence, tree, *, variety):
+    """Report a nominal determiner attached to an object-taking participial VP."""
+    result = {"status": "not_evaluated", "production_enabled": False, "candidates": []}
+    if variety != "standard_english":
+        return result
+    tokens = tokens_with_spans(sentence)
+    leaves = list(_ordered_leaves(tree))
+    if len(tokens) != len(leaves) or any(
+        leaf["span"] != [token["index"], token["index"] + 1] or leaf["surface"] != token["text"]
+        for leaf, token in zip(leaves, tokens)
+    ) or any(token["text"] in {'"', '“', '”', "'", '‘', '’'} for token in tokens):
+        return result
+    result["status"] = "candidate_only"
+    for determiner, verb, obj in _determined_participles(tree):
+        start, end = obj["span"]
+        result["candidates"].append({
+            "rule_id": "MORPH-041", "source_chapter": 3, "source_pages": [81, 82],
+            "relation": {
+                "kind": "determiner_with_object_taking_participle",
+                "determiner_char_span": tokens[determiner["span"][0]]["char_span"],
+                "verb_char_span": tokens[verb["span"][0]]["char_span"],
+                "object_char_span": [tokens[start]["char_span"][0], tokens[end - 1]["char_span"][1]],
+            },
+            "edit_hint": None,
+        })
+    return result

@@ -1,7 +1,9 @@
 import os
+import re
 import unittest
 
 from cgel_catenative_probe import probe_believe_object, probe_catenative_perfect
+from cgel_catenative_probe import probe_determined_participle
 from cgel_catenative_probe import probe_interrogative_infinitival_subject
 from cgel_catenative_probe import probe_participial_relative_marker
 from parse_engine import NodeBuilder, analyze, parse_parse_string
@@ -149,3 +151,42 @@ class ParticipialRelativeMarkerTests(unittest.TestCase):
                 found = [row["rule_id"] for row in rows]
                 self.assertIn(found, ([], ["CLS-408"]) if target else ([],))
                 print(f"Cambridge participial modifier {sentence!r}: {found}; target={target}; parse={analysis['parse_string']}")
+
+
+class DeterminedParticipleTests(unittest.TestCase):
+    def test_verbal_object_and_nominal_of_phrase(self):
+        for phrase, text, expected in [
+            ("(NP (DT The) (VP (VBG painting) (NP (DT the) (NN fence))))",
+             "The painting the fence", ["MORPH-041"]),
+            ("(NP (DT The) (NN painting) (PP (IN of) (NP (DT the) (NN fence))))",
+             "The painting of the fence", []),
+            ("(S (VP (VBG Painting) (NP (DT the) (NN fence))))",
+             "Painting the fence", []),
+        ]:
+            with self.subTest(text=text):
+                parse = f"(S {phrase} (VP (VBD took) (NP (NNS hours))) (. .))"
+                tree = NodeBuilder().build(parse_parse_string(parse), len(re.findall(r"\([^()]+\)", parse)))
+                rows = probe_determined_participle(f"{text} took hours.", tree,
+                                                   variety="standard_english")["candidates"]
+                self.assertEqual([row["rule_id"] for row in rows], expected)
+                for row in rows:
+                    self.assertIsNone(row["edit_hint"])
+
+    @unittest.skipUnless(os.environ.get("CGEL_REQUIRE_PARSER") == "1", "configured parser required")
+    def test_configured_determined_participles(self):
+        for sentence, target in [
+            ("The painting the fence took hours.", True),
+            ("The repairing the roof delayed the workers.", True),
+            ("Painting the fence took hours.", False),
+            ("The painting of the fence took hours.", False),
+            ("The sleeping child woke up.", False),
+            ("The painting the curator bought was expensive.", False),
+            ("Their repairing the roof took hours.", False),
+        ]:
+            with self.subTest(sentence=sentence):
+                analysis = analyze(sentence)
+                rows = probe_determined_participle(sentence, analysis["root"],
+                                                   variety="standard_english")["candidates"]
+                found = [row["rule_id"] for row in rows]
+                print(f"Cambridge determined participle {sentence!r}: {found}; target={target}; parse={analysis['parse_string']}")
+                self.assertIn(found, ([], ["MORPH-041"]) if target else ([],))
