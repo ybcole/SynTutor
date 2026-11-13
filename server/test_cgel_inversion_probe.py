@@ -3,6 +3,7 @@ import re
 import unittest
 
 from cgel_inversion_probe import probe_fronted_inversion, probe_inversion
+from cgel_inversion_probe import probe_declarative_polarity
 from parse_engine import NodeBuilder, analyze, parse_parse_string
 
 
@@ -75,3 +76,42 @@ class FrontedInversionTests(unittest.TestCase):
                 observed = [row["rule_id"] for row in result["candidates"]]
                 self.assertTrue(not observed or observed == expected)
                 print(f"fronted inversion {sentence!r} scope={scope}: {observed} (expected {expected})")
+
+
+class DeclarativePolarityTests(unittest.TestCase):
+    def test_context_and_contraction(self):
+        for auxiliary, surface in [("(VBP have)", "You have"), ("(VBP 've)", "You've")]:
+            parse = f"(S (NP (PRP You)) (VP {auxiliary} (ADVP (RB ever)) (VP (VBN visited) (NP (NNP Paris)))) (. ?))"
+            tree = NodeBuilder().build(parse_parse_string(parse), 6)
+            sentence = f"{surface} ever visited Paris?"
+            for context in (True, False):
+                with self.subTest(sentence=sentence, context=context):
+                    result = probe_declarative_polarity(
+                        sentence, tree, variety="standard_english",
+                        simple_positive_question_confirmed=context
+                    )
+                    self.assertEqual([c["rule_id"] for c in result["candidates"]], ["CLS-171"] if context else [])
+                    if context:
+                        start, end = result["candidates"][0]["relation"]["item_char_span"]
+                        self.assertEqual(sentence[start:end], "ever")
+
+    @unittest.skipUnless(os.environ.get("CGEL_REQUIRE_PARSER") == "1", "configured parser required")
+    def test_configured_declarative_polarity(self):
+        for sentence, context, expected in [
+            ("You have ever visited Paris?", True, ["CLS-171"]),
+            ("You've ever visited the gallery?", True, ["CLS-171"]),
+            ("You've ever visited the gallery?", False, []),
+            ("Have you ever visited Paris?", True, []),
+            ("You've already visited Paris?", True, []),
+            ("You've never visited Paris?", True, []),
+            ("This is the best meal you've ever had?", True, []),
+        ]:
+            with self.subTest(sentence=sentence, context=context):
+                analysis = analyze(sentence)
+                result = probe_declarative_polarity(
+                    sentence, analysis["root"], variety="standard_english",
+                    simple_positive_question_confirmed=context
+                )
+                ids = [c["rule_id"] for c in result["candidates"]]
+                print(f"Cambridge declarative polarity {sentence!r} context={context}: {ids}; parse={analysis['parse_string']}")
+                self.assertEqual(ids, expected)

@@ -112,3 +112,46 @@ def probe_fronted_inversion(sentence, tree, *, variety, clause_scope_confirmed=F
         "edit_hint": None,
     })
     return result
+
+
+def probe_declarative_polarity(sentence, tree, *, variety, simple_positive_question_confirmed=False):
+    """Check temporal ever in a confirmed simple positive declarative question."""
+    result = {"status": "not_evaluated", "production_enabled": False, "candidates": [], "blocked": []}
+    if variety != "standard_english" or simple_positive_question_confirmed is not True:
+        return result
+    parts = tree.get("children", [])
+    if (tree["type"] != "S" or [p["type"] for p in parts] != ["NP", "VP", "."]
+            or parts[-1].get("surface") != "?"):
+        return result
+    subject = list(_ordered_leaves(parts[0]))
+    if len(subject) != 1 or subject[0].get("pos") != "PRP":
+        return result
+    tokens = tokens_with_spans(sentence)
+    words = [token["lower"] for token in tokens]
+    leaves = list(_ordered_leaves(tree))
+    surfaces = [leaf["surface"].casefold().replace("’", "'") for leaf in leaves]
+    if len(surfaces) > 2 and surfaces[1] in {"'ve", "'s"}:
+        surfaces[:2] = ["".join(surfaces[:2])]
+    if surfaces != words or not words or any(
+        word in {"'", '"', "“", "”", "‘", "’"} for word in words
+    ):
+        return result
+    result["status"] = "candidate_only"
+    # Require an attested perfect head, and an immediate preverbal temporal ever.
+    predicate = list(_ordered_leaves(parts[1]))
+    if (len(predicate) < 3 or predicate[0].get("pos") not in {"VBP", "VBZ", "VBD"}
+            or predicate[0]["surface"].casefold().replace("’", "'") not in {"have", "has", "had", "'ve", "'s"}
+            or predicate[1].get("pos") != "RB" or predicate[1]["surface"].casefold() != "ever"
+            or predicate[2].get("pos") != "VBN"):
+        return result
+    if any(leaf.get("pos") in {"CC", "JJS", "RBS"} or leaf["surface"].casefold() in
+           {"not", "only", "never", "first", "last", "few", "hardly"} for leaf in predicate[2:]):
+        return result
+    item = tokens[words.index("ever")]
+    result["candidates"].append({
+        "rule_id": "CLS-171", "source_chapter": 10, "source_pages": [885],
+        "relation": {"kind": "temporal_ever_in_positive_declarative_question",
+                     "item_char_span": item["char_span"]},
+        "edit_hint": None,
+    })
+    return result

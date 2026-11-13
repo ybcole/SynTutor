@@ -1,14 +1,14 @@
 # Cambridge Phase C backlog
 
-Snapshot through the coordinated determiner prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
+Snapshot through the declarative polarity prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
 
 | Diagnostic specifications | Primary pilot | Supporting pilot | Outside pilot | Production-enabled |
 |---:|---:|---:|---:|---:|
-| 204 | 41 | 6 | 157 | 0 |
+| 204 | 42 | 6 | 156 | 0 |
 
 ## Next implementation batch
 
-**Polarity items in declarative questions (CLS-171)** are next. Verify the role of question bias and licensing context before considering a finding.
+**Remote conditional auxiliary selection (CLS-119)** is next. Verify remote versus open readings before considering a finding.
 
 After that batch, triage adjacent diagnostics by governing relation and compatible edits. Use the source and diagnostic family below to find related rules. A catalog entry can share a detector or receive a documented no-detector disposition.
 
@@ -49,6 +49,7 @@ After that batch, triage adjacent diagnostics by governing relation and compatib
 | Plural determiners and noun coordination | CLS-1036 | — | This batch | Validate word-level scope and preserve full NP coordination. |
 | Comparative degree gaps | CLS-1119 | — | This batch | Validate scalar comparative attachment and extend to other degree modifiers. |
 | Comparative subject omission | CLS-1129 | — | This batch | Broaden retained-verb coverage and validate comparative attachment. |
+| Polarity in declarative questions | CLS-171 | — | This batch | Validate question context and other licensors of temporal ever. |
 | Imperative verb form | CLS-130 | — | [#115](https://github.com/ybcole/SynTutor/pull/115) | Establish the source of directive intent and validate the resulting finding. |
 
 ## Rule-by-rule inventory
@@ -129,7 +130,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | `OTH-615` | Contraction with coordinated subjects | Ch. 1, pp. 9, 10 | Queued |
 | `PHR-054` | Partitive selection with aggregate plurals | Ch. 5, pp. 343 | Queued |
 | `PHR-110` | Both as a binary coordination marker | Ch. 5, pp. 361 | Queued |
-| `CLS-171` | Negative polarity items in simple positive declarative questions | Ch. 10, pp. 885 | Next |
+| `CLS-171` | Negative polarity items in simple positive declarative questions | Ch. 10, pp. 885 | Pilot |
 | `CLS-1119` | Obligatory gap for the comparative governor counterpart | Ch. 13, pp. 1108 | Pilot |
 | `CLS-1129` | Subject omission with a retained comparative verb | Ch. 13, pp. 1113 | Pilot |
 | `CLS-1159` | Fewer with ordinary non-count singulars | Ch. 13, pp. 1127 | Queued |
@@ -253,7 +254,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 
 | Rule | Construction | Cambridge source | Status |
 |---|---|---|---|
-| `CLS-119` | Remote conditional apodosis requires modal auxiliary | Ch. 3, pp. 107 | Queued |
+| `CLS-119` | Remote conditional apodosis requires modal auxiliary | Ch. 3, pp. 107 | Next |
 | `OTH-098` | Bare preterite incompatible with present-inclusive ever since | Ch. 3, pp. 141 | Queued |
 | `OTH-102` | Definite completed-past adjunct with present perfect | Ch. 3, pp. 143, 144, 146 | Queued |
 | `OTH-158` | Backshift choices form a prefix through embedded clauses | Ch. 3, pp. 156 | Queued |
