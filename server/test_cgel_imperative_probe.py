@@ -1,7 +1,8 @@
+import os
 import unittest
 
 from cgel_imperative_probe import probe_imperative
-from parse_engine import NodeBuilder, parse_parse_string
+from parse_engine import NodeBuilder, analyze, parse_parse_string
 
 
 class ImperativeProbeTests(unittest.TestCase):
@@ -32,3 +33,18 @@ class ImperativeProbeTests(unittest.TestCase):
             self.assertEqual(probe_imperative(
                 sentence, tree, variety="standard_english", directive_confirmed=True
             )["candidates"], [])
+
+    @unittest.skipUnless(os.environ.get("CGEL_REQUIRE_PARSER") == "1", "configured parser required")
+    def test_configured_parser_respects_confirmed_intent(self):
+        sentence = "Everybody brings a pencil."
+        tree = analyze(sentence)["root"]
+        for intent, count in [(False, 0), (True, 1)]:
+            result = probe_imperative(sentence, tree, variety="standard_english", directive_confirmed=intent)
+            self.assertEqual(len(result["candidates"]), count)
+        edit = result["candidates"][0]["edit_hint"]
+        start, end = edit["char_span"]
+        repaired = sentence[:start] + edit["replacement"] + sentence[end:]
+        self.assertEqual(repaired, "Everybody bring a pencil.")
+        recheck = probe_imperative(repaired, analyze(repaired)["root"],
+                                   variety="standard_english", directive_confirmed=True)
+        self.assertEqual(recheck["candidates"], [])
