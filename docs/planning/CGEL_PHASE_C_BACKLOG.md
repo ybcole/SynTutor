@@ -1,14 +1,14 @@
 # Cambridge Phase C backlog
 
-Snapshot through the fixed-composition progressive prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
+Snapshot through the catenative perfect prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
 
 | Diagnostic specifications | Primary pilot | Supporting pilot | Outside pilot | Production-enabled |
 |---:|---:|---:|---:|---:|
-| 204 | 47 | 6 | 151 | 0 |
+| 204 | 48 | 6 | 150 | 0 |
 
 ## Next implementation batch
 
-**Perfect auxiliaries under catenative verbs (OTH-182)** are next. Check whether the selecting verb licenses a perfect complement.
+**Overt object with active believe (CLS-320)** is next. Check the subject of the infinitival against the verb’s licensed complement patterns.
 
 After that batch, triage adjacent diagnostics by governing relation and compatible edits. Use the source and diagnostic family below to find related rules. A catalog entry can share a detector or receive a documented no-detector disposition.
 
@@ -55,6 +55,7 @@ After that batch, triage adjacent diagnostics by governing relation and compatib
 | Present perfect with completed-past adjuncts | OTH-102 | — | This batch | Validate single-event context and adjunct attachment. |
 | Nested backshift | OTH-158 | — | This batch | Establish shared time reference and broaden reporting constructions. |
 | Progressive aspect and fixed composition | OTH-216 | — | This batch | Validate static versus dynamic readings before considering a repair. |
+| Perfect auxiliaries under catenatives | OTH-182 | — | This batch | Validate the temporally bound reading and additional complement shapes. |
 | Imperative verb form | CLS-130 | — | [#115](https://github.com/ybcole/SynTutor/pull/115) | Establish the source of directive intent and validate the resulting finding. |
 
 ## Rule-by-rule inventory
@@ -124,7 +125,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | `COMP-189` | Unlicensed implicit object for peruse | Ch. 4, pp. 304 | Queued |
 | `PHR-083` | Of with plural approximate number nouns | Ch. 5, pp. 351 | Queued |
 | `CLS-131` | Supportive do with be in ordinary negative imperatives | Ch. 10, pp. 857 | Support |
-| `CLS-320` | Overt object with active believe plus an infinitival | Ch. 14, pp. 1203 | Queued |
+| `CLS-320` | Overt object with active believe plus an infinitival | Ch. 14, pp. 1203 | Next |
 | `CLS-408` | Participial NP modifiers without relative markers | Ch. 14, pp. 1265 | Queued |
 | `CLS-1095` | Supplementary relative clause requires an antecedent anchor | Ch. 15, pp. 1353 | Queued |
 
@@ -280,7 +281,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | `COMP-035` | Progressive be selects a gerund-participle | Ch. 3, pp. 106 | Pilot |
 | `COMP-036` | Passive be selects a past participle | Ch. 3, pp. 106 | Pilot |
 | `COMP-042` | Bare infinitival complement of had better | Ch. 3, pp. 113 | Queued |
-| `OTH-182` | Perfect auxiliaries are not selectable by all catenatives | Ch. 3, pp. 161 | Next |
+| `OTH-182` | Perfect auxiliaries are not selectable by all catenatives | Ch. 3, pp. 161 | Pilot |
 | `COMP-061` | Tend selects a to-infinitival action clause | Ch. 4, pp. 220 | Queued |
 | `COMP-062` | Enjoy excludes a to-infinitival action complement | Ch. 4, pp. 221 | Pilot |
 | `COMP-116` | Do pseudocleft aspect connectedness | Ch. 4, pp. 270 | Queued |
