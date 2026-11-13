@@ -2,7 +2,7 @@
 
 **Revision:** 9 November 2026. **Implementation branch:** feature/br-native-grammar-2026-11-09.  
 **Book authority:** Noel Burton-Roberts, *Analysing Sentences: An Introduction to English Syntax*, Third Edition, Pearson Education, copyright 2011, ISBN 9781408233740.  
-**Source:** uploaded complete 294-page PDF; existing CONVENTIONS.md; source manifest and Chapter 1–10 tree records.
+**Source:** attached complete 297-page third-edition PDF; existing CONVENTIONS.md; source manifest and Chapter 1–10 tree records. Printed page numbers differ from PDF page indices.
 
 > **Audit status:** This is the source-grounded construction specification and first runtime increment, NOT certification of full native B-R parsing on unrestricted English. All generated labels, edges, features, empty positions and movement relationships must be justified. Ambiguity may require multiple analyses or an unresolved response.
 

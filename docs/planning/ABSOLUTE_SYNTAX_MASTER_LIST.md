@@ -55,7 +55,7 @@ The examples, source citations, inventories, tests and chapter-specific simplifi
 
 | ID | Work to complete | Proof of completion |
 |---|---|---|
-| S01 | Reconcile the “open D1 decision” in CONVENTIONS.md §9 with its already adopted FINAL-D1 setting. | One explicit free-profile setting and distinct V7 core/Appendix fixtures. |
+| S01 | Resolved: FINAL-D1 uses the Appendix NOM distinction; V7 core figures and Appendix exercises retain distinct profiles. | CONVENTIONS.md §9 now states the choice, supported by the book's pp. 167–168 contrast. Runtime already selects these profiles. |
 | S02 | Adjudicate all 252 source records against PDF images and prose, including 14 derived and 4 anomalies. | Per-record figure/page, reviewer, outcome, alternatives and disputed readings. |
 | S03 | Triage all 176 unmatched branch instances. Early PHRASE and S scaffolds may be pedagogical rather than productive grammar. | Figure-level disposition for each unmatched signature, without a global catch-all. |
 | S04 | Examine later missing signatures: C2 to unknown, VP to VP NP, PP/AP/AdvP gaps, NOM to N AP or PartP N, VP to V S-bar, NP to NP S-dbar. | Exact source examples, narrow construction rules or explicit unsupported status. |
@@ -64,7 +64,7 @@ The examples, source citations, inventories, tests and chapter-specific simplifi
 | S07 | Specify punctuation and tokenization for source lookup and arbitrary input. | Offset round trips and adversarial punctuation/contraction cases. |
 | S08 | Define ambiguity, chapter simplification, source alternatives, interpretation and target grading. | Gold alternative sets and graded examples that depend on meaning. |
 | S09 | Separate IMG transcription, AI source pass, independent linguistic review, anomaly and release approval. | Enforced provenance fields and review trail, without bulk self-approval. |
-| S10 | Reconcile PDF pagination and edition manifests. The attached volume has 297 PDF pages, while an older engine document calls its source 294 pages. | Checked edition/page offset for preface and Chapters 1–11; correct stale page counts. |
+| S10 | Reconcile PDF pagination and edition manifests. The attached volume has 297 PDF pages; the older 294-page claim is corrected. | Confirm page offsets and edition for every source fixture before marking the full corpus reviewed. |
 
 ## Benepar adapter and validation work
 
@@ -105,4 +105,4 @@ Retain source records, anomalies, raw diagnostics and accepted alternatives. Rem
 5. **Integration:** test Generator, Builder, lessons, quizzes, XAI, corrections, API transports, browser and parser-backed CI through their normal entry points.
 6. **Release:** activate only reviewed, measured construction families and publish their supported coverage and limitations.
 
-**Current gate state:** source fidelity is incomplete; contract, adapter and product integration are partial; broad B-R presentation at Benepar's coverage has not yet been measured. Start with the P01 construction map and representative held-out sentences alongside S01 and the source fixtures, expand P02–P05 by construction, then evaluate P06 and U01–U07. Finish the source review and contract tasks before claiming independently certified fidelity. Cambridge Phase C diagnostic pilots have a separate registry and review path.
+**Current gate state:** the D1 profile decision and the known PDF-page-count mismatch are resolved in the convention documents. Source fidelity across all records remains incomplete; contract, adapter and product integration are partial; broad B-R presentation at Benepar's coverage has not yet been measured. Start with the P01 construction map and representative held-out sentences alongside S02–S04 and the source fixtures, expand P02–P05 by construction, then evaluate P06 and U01–U07. Finish the source review and contract tasks before claiming independently certified fidelity. Cambridge Phase C diagnostic pilots have a separate registry and review path.

@@ -21,7 +21,7 @@
 3. **Functions are not nodes.** Subject, direct object, adjunct, etc. are *read off* tree positions (§6). They are never drawn as labels in a phrase marker (Ch2 p.30; Ch5 p.88).
 4. **Triangles are legitimate.** A triangle means "internal structure not analysed here." Use triangles exactly where the book does (the exercise text usually says which constituents to triangle). A triangle normally carries its category label; Chapter 9 explicitly permits an unlabelled wh triangle under C2. Preserve that omission rather than inferring a label.
 5. **Gradable analyses vs. alternatives:** some exercises have more than one accepted analysis (§9). Store them in `accepted_alternatives`, don't pick one silently.
-6. **Evidence grading:** every convention below is tagged `[IMG]` (checked against the book's page images) or `[TXT]` (taken from the book's text only; shape of the tree not yet visually checked). For `[TXT]` items, transcribe from the page image before using them as gold trees.
+6. **Evidence grading:** `[IMG]` identifies a checked page image and `[TXT]` identifies text evidence awaiting image verification. These are evidence for the cited example, not universal source approval. Source records also distinguish `DERIVED_FROM_INSTRUCTIONS` and `IMG_ANOMALY`; use their per-record provenance. Do not promote a text-only reconstruction to a printed gold diagram.
 7. **Every explanation shown to a learner must be source-grounded (see §14).**
    Structural claims about a B-R tree must use B-R definitions, tests, worked
    answers, and conventions with chapter+printed-page citations. Broader
@@ -43,13 +43,13 @@
 | **V4** | Ch4 (p.67) | `V` appears, with **sub-categorisation features**: `[trans] [intrans] [ditrans] [intens] [complex] [prep]`. Complements are sisters of V inside VP. |
 | **V5** | Ch5 (p.87) | **Two levels of VP**: adjunct adverbials are sisters of VP inside a higher VP. S-adverbials are sisters of S inside a higher S. `Prt`, `[phrasal]`, ellipsis `E`. |
 | **V6** | Ch6 (p.111) | Auxiliaries `MOD PERF PROG PASS TENSE` as heads taking VP complements; tense features `[pres]/[past]`; **gaps `•`**; question fronting to `C` under `S′`. |
-| **V7** | Ch7 (p.141) | **NP rebuilt**: `NP → DET NOM` (except pronoun/name NPs). `NOM` is recursive. Also `PRE-DET`, `PartP`, compound `N`. (Appendix = optional refinement, see D1.) |
+| **V7** | Ch7 (p.141) | **NP rebuilt**: `NP → DET NOM` (except pronoun/name NPs). `NOM` is recursive. Also `PRE-DET`, `PartP`, compound `N`. The Appendix refinement is selected explicitly for its own exercises. |
 | **V8** | Ch8 (p.171) | Subordinate clauses: `S′ → C S`. Clauses as subject/object sit under `NP`. Clause complements of V/A/N/P. Extraposition. Abbreviated clausal analysis (ACA). |
 | **V9** | Ch9 (p.196) | `S″ → C2 S′`, with `S′ → C1 S`. Wh-fronting to C2 leaving a gap. Relative clauses (restrictive = sister of NOM; non-restrictive = sister of NP). |
 | **V10** | Ch10 (p.224) | Non-finite clauses: `[-tense]` auxiliary (`to`), **indices / control**, covert subjects `•`, verb types `V(I)` / `V(II)`. Clause complements of V **drop the old 6-way features and the NP node.** |
 | — | Ch11 (p.254) | Theory chapter. No new trees (see §10). |
 
-**Free analysis uses `FINAL-D1`**, one cumulative notation across the book with the Chapter 7 Appendix NOM refinement. The [labeling master](grammar/SynTutor_FINAL-D1_Labeling_Master.xlsx) controls the exact labels and feature order displayed by the Generator. The construction determines which rules apply. Chapter numbers on rules and nodes identify their source evidence. A guarded adapter can produce a canonical tree for a supported construction and otherwise leaves the candidate unresolved. For a past-tense intransitive verb, a lexical V carries `[intrans]` then `[past]` as feature rows under the same V and above the word (Ch4 p.72 [22], Ch6 p.113 [8]–[9]).
+**Free analysis uses `FINAL-D1`**, one cumulative notation across the book with the Chapter 7 Appendix NOM refinement. Chapter 7 core lessons use `V7-CORE`; Appendix exercises use `V7-APPENDIX-D1`. Later chapter lessons retain their own printed analyses, including any locally used Appendix refinement. Do not rewrite an earlier source figure to match FINAL-D1. The [labeling master](grammar/SynTutor_FINAL-D1_Labeling_Master.xlsx) controls the exact labels and feature order displayed by the Generator. The construction determines which rules apply. Chapter numbers on rules and nodes identify their source evidence. A guarded adapter can produce a canonical tree for a supported construction and otherwise leaves the candidate unresolved. For a past-tense intransitive verb, a lexical V carries `[intrans]` then `[past]` as feature rows under the same V and above the word (Ch4 p.72 [22], Ch6 p.113 [8]–[9]).
 
 ---
 
@@ -95,7 +95,7 @@ Terminals: `{"word":"spotted"}`. Gap: `{"gap":true,"index":1}`. Elided: `{"word"
 | `AdvP` | AdvP | Book says "AdvP". Never `ADVP`. |
 | `AP` | AP | Never `ADJP`. |
 | `DEG` | DEG | Ch3 text says "deg"; figures use DEG. Use `DEG`. |
-| `C` (V6–V8), `C1` / `C2` (V9+) | same | `C` = `C1`. Ch8 [61] figure prints `Comp`; treat as `C`. |
+| `C` (V6–V8), `C1` / `C2` (V9+) | same | Earlier `C` corresponds to the later lower complementiser position `C1`; preserve the figure's chapter-specific label. Ch8 [61] prints `Comp`; store that figure as `C` with an anomaly/source note. |
 | `[-tense]` | [-tense] | In Ch10 the node for `to` carries just this label (no letter). Store as label `"AUX"` with feature `-tense`. |
 
 ### 2.4 Things that are **not** part of a phrase marker
@@ -143,7 +143,7 @@ Movement arrows and dotted lines (Ch6 p.127; Ch9 p.199: "not part of the phrase 
 | `[phrasal]` | V5 | stacks: `V[trans,phrasal]` (Ch5 [35], [39] `[IMG]`) |
 | `[pres]` `[past]` | V6 | tense. Only the **first** verb in a sequence is tensed. Stacks with sub-cat: `V[ditrans,past]` |
 | `[-tense]` | V10 | non-finite |
-| `V(I)` / `V(II)` | V10 | verb type for clause complements, shown in parentheses (Ch10 p.243 `[IMG]`) |
+| `V(I)` / `V(II)` | V10 | Clause-complement verb-type labels, distinct from the six Ch4 subcategory features (Ch10 p.243 `[IMG]`). |
 
 ### 3.3 Functions (read from positions; §6)
 `S` (subject), `P` (predicate), `H` (head), `M` (modifier), `C` (complement), `dO`, `iO`, `sP` (subject-predicative), `oP` (object-predicative), `PC` (prepositional complement), `aA` (adjunct adverbial, Ch5), `sA` (S-adverbial, Ch5).
@@ -256,7 +256,7 @@ Each entry: **new vocabulary → drawing rules → tests → traps → lesson un
 - **Pro-form test:** *one(s)* = pro-**NOM** (never N alone in the base analysis).
 - **Friendly Head Principle:** a modifier whose own head wants to be near the head noun appears post-nominally if it has a complement (*the chef responsible for the sauces*).
 - **Pronoun modification:** indefinite pronouns (*something outrageous*) = coalesced DET+N; *some of the animals* uses an **elliptical head** analysis (DET/PRE-DET stays a determiner, the N is ellipted).
-- **Appendix refinement (optional; see D1) `[IMG via Ch9]`:** a modifier that is a **sister of NOM** (adjunct) always needs an extra, possibly non-branching, NOM above N: `(NOM (NOM (N clowns)))` under `sad`. **Complements** are sisters of **N** and don't trigger the extra NOM. Parallel: sister-of-N = complement, sister-of-NOM = adjunct (cf. sister-of-V vs sister-of-VP).
+- **Appendix refinement (selected by profile) `[IMG via Ch9; TXT on Ch7 pp. 166–168]`:** an adjunct is sister of NOM, while a noun complement is sister of N. Even without a complement, a noun modified by an adjunct has a non-branching NOM above N. Thus in *sad clowns*, *sad* is sister of the lower NOM containing *clowns*; *summary of the argument* has its PP sister of N. The book's pro-NOM *one* test and the ordering contrasts on pp. 167–168 support this distinction. Keep a core Ch7 figure in its original shape.
 - **Lesson units:** (1) Non-branching NPs (2) DET + NOM (3) Determiners, empty DET (4) Possessives (5) Pre-determiners (6) Pre-modifiers (AP, QA, PartP, N) (7) Recursive NOM (8) Post-modifiers PP/AP (9) Meaning decides NOM nesting (10) Pro-form *one* (11) Pronouns with modifiers (12) Appendix.
 - **Gradable:** all trees "complete, no triangles"; Ex (c) is ambiguous (two trees); Ex (f) has co-ordination (state its level: N, NOM or NP); Further Ex2 Sets I–III; Ex2 revision of simple sentences.
 
@@ -319,17 +319,17 @@ No tree conventions. See §10.
 Derived from the book's descriptions, not stated by the book as a rule list.
 
 ```
-S      → (S-adverbial) NP VP                    S-adverbial = sister of S inside S
-S′     → C1 S                                    (every subordinate clause; main clauses only for fronted aux)
+S      → NP VP | S S-adverbial | S-adverbial S    S-adverbial = sister of S inside higher S
+S′     → C S (V6–V8) | C1 S (V9+)                chapter/figure selects C or C1
 S″     → C2 S′                                   (wh-clauses)
 VP     → AUX VP                                  AUX ∈ {MOD, PERF, PROG, PASS, TENSE, [-tense] to}
 VP     → V (complements per V's features)        complements are sisters of V
-VP     → VP adjunct | adjunct VP                 adjunct adverbial: AdvP / PP / NP / S′
-NP     → pronoun | name | DET NOM | NP PP-less…   (see below)
+VP     → VP adjunct                              represented VP-adjunct pattern in Ch5; other placements need source-specific analysis
+NP     → pronoun | name | DET NOM                 plus the separately listed pre-determiner and relative constructions
 NP     → PRE-DET NP
 NP     → NP S″                                   non-restrictive relative
 NP     → DET NOM
-NOM    → N | AP NOM | NOM PP | N complement | NOM S″
+NOM    → N | adjunct NOM | NOM adjunct | N complement | NOM S″  adjunct-versus-complement attachment follows the selected profile
 DET    → ART | DEM | Q | POSS | ∅
 AP     → (DEG|AdvP) A (complement)
 AdvP   → (DEG) Adv
@@ -398,7 +398,7 @@ Complement slots on V by feature: see §4 Ch4 table. Clause complements (Ch10): 
 | V4 | + features on V | allowed for NP/AP/PP/AdvP | feature must match sub-category |
 | V5 | + VP level structure | | `aA` = sister of VP is **structural** — check it |
 | V6 | + auxiliary nodes, tense features, gaps | triangles on NP/AP/AdvP/PP (not VP) | gap position must match; movement arrows ignored |
-| V7 | + `DET/NOM/N/PRE-DET` | **no triangles** in NP exercises | NOM count = modifier count; allow appendix extra-NOM if D1 says so |
+| V7 | + `DET/NOM/N/PRE-DET` | **no triangles** in NP exercises | Preserve the printed core figure or explicitly choose Appendix D1; adjuncts in the latter may require an extra non-branching NOM. |
 | V8 | + `S′`, `C`, NP-over-clause rules | clause triangles | check C position and that PP-S has no `S′` |
 | V9 | + `S″`, `C1/C2`, gaps by category | | wh-phrase category in C2 optional |
 | V10 | + indices/control, `[-tense]`, `V(I)/V(II)` | | indices must co-refer correctly |
@@ -426,14 +426,14 @@ Store these as `accepted_alternatives` or `book_simplification` fields.
 | J11 | Ch10 | Type I vs Type II | The book says analyses are contested; use the Type I/II decisions the book lists (Disc.7). |
 | J12 | Ch7 | Pronoun-like determiners (*some of the animals*) | Elliptical-head analysis is the book's chosen one. |
 
-### Open decisions for the project owner
+### Adopted SynTutor representation decisions
 
-| ID | Decision | Recommendation |
+| ID | Decision | Source and scope |
 |---|---|---|
-| **D1** | Adopt the Ch7 **Appendix** (extra non-branching NOM) as the default in V7+? | **Yes from Ch9/final profile** — Ch8 Disc.6 and Ch9 figures [39], [59] already draw it. Offer a flag `appendix_nom: true/false` so Ch7 lessons can stay "core". |
-| D2 | S′ naming | Store `S-bar`, display S′ (§2.3). |
-| D3 | Do trees in the app show functions? | No — compute and show them as an overlay (§6). |
-| D4 | Do you keep the old Penn-style lessons? | Keep them under "Parser view"; book lessons are separate. |
+| D1 | FINAL-D1 uses the Ch7 Appendix NOM distinction. V7 core and Appendix exercises remain separate profiles. | Ch7 Appendix pp. 165–168 and later source figures; a project-wide free-analysis choice, not a rewrite of earlier diagrams. |
+| D2 | Store `S-bar` and `S-dbar`, display S′ and S″. | The book's prime notation, §2.3. |
+| D3 | Derive functions from structure; show optional overlays without adding nodes. | Ch2 pp. 29–38, §6. |
+| D4 | Keep any Penn display explicitly labelled as parser diagnostics. | SynTutor product boundary, not a B-R phrase marker. |
 
 ---
 
@@ -463,6 +463,8 @@ Conclusion: **lesson gold trees must be authored from the book**; the parser can
 
 ## 12. Verification status
 
+The table below records the original manual convention pass. Its item-level `[TXT]` marks are historical, not a current inventory of chapter records. Consult the 252 source records and their per-record statuses for the current transcription evidence. An IMG record alone does not establish independent review.
+
 | Item | Status |
 |---|---|
 | Ch5 [12], [35], [39], [55a/b], [58] | `[IMG]` |
@@ -477,7 +479,7 @@ Conclusion: **lesson gold trees must be authored from the book**; the parser can
 | Ch7 possessive `'s`, `PartP`, compound `N`, pronoun modification, `PRE-DET` | `[TXT]` |
 | **Ch1: all figures [2], [3a/b], [5], [25a-c], [34], [35], Ex1, Ex3, Ex6(a-c)** | `[IMG]` **done** — `book/ch01.trees.json`, checked by `book/validate_ch01.py` against the book's own Ex1/Ex2/Ex6 answers (all pass). Note: [35]'s top node is printed starred in the book. |
 | Ch1 Further Ex2, Ex3 | No book answer; trees are fully fixed by the exercise wording → stored as `DERIVED_FROM_INSTRUCTIONS` |
-| Chapters 2–10 figures, exercise answers and all "Discussion of exercises" trees | **Not yet transcribed — repeat the Ch1 page-image pass chapter by chapter, in book order.** |
+| Chapters 2–10 stored figures and exercise trees | The repository now holds 237 records from these chapters; the older “not yet transcribed” claim is obsolete. Record-level source status and independent adjudication remain separate. Run the corpus import and construction audits for current counts. |
 
 ---
 
@@ -490,7 +492,7 @@ Conclusion: **lesson gold trees must be authored from the book**; the parser can
 - [ ] Triangles only where the book (or the exercise instruction) uses them; each has a label except the source-permitted unlabelled wh triangle under C2 (V9+).
 - [ ] Ch5+: adjuncts are sisters of VP, complements are sisters of V.
 - [ ] Ch6+: auxiliaries head a VP and take a VP complement; tense feature only on the first verb.
-- [ ] Ch7+: NP is `DET NOM` unless pronoun/name; NOM count = modifier count.
+- [ ] Ch7+: ordinary NP uses `DET NOM` unless pronoun/name or another source-licensed construction. NOM nesting follows the selected core/Appendix analysis, complement attachment and adjunct count, including a non-branching NOM where Appendix D1 requires one.
 - [ ] Ch8+: every subordinate clause is `S′ → C S` (except S directly under PP for *after/until/before/since*).
 - [ ] Ch9+: wh-phrases in C2 with a correctly categorised gap.
 - [ ] Ch10+: indices present on controlled gaps; no 6-way feature on V with clause complements; Type I/II used.
