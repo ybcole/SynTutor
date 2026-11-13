@@ -56,3 +56,48 @@ def probe_pronoun_case(sentence, tree, *, variety):
             "expected_pronoun": expected, "edit_hint": None,
         })
     return result
+
+
+def _for_subjects(node):
+    parts = node.get("children", [])
+    if (node["type"] == "SBAR" and len(parts) == 2 and parts[0].get("pos") == "IN"
+            and parts[0]["surface"].casefold() == "for" and parts[1]["type"] == "S"):
+        clause = parts[1].get("children", [])
+        if [child["type"] for child in clause] == ["NP", "VP"]:
+            subject, predicate = clause
+            pronouns = list(_ordered_leaves(subject))
+            vp = predicate.get("children", [])
+            if (len(pronouns) == 1 and pronouns[0].get("pos") == "PRP" and len(vp) == 2
+                    and vp[0].get("pos") == "TO" and vp[0]["surface"].casefold() == "to"
+                    and vp[1]["type"] == "VP"):
+                lower = vp[1].get("children", [])
+                if lower and lower[0].get("pos") == "VB":
+                    yield parts[0], pronouns[0]
+    for child in parts:
+        yield from _for_subjects(child)
+
+
+def probe_infinitival_case(sentence, tree, *, variety):
+    """Recognize an explicit for-clause with a single personal-pronoun subject."""
+    result = {"status": "not_evaluated", "production_enabled": False, "candidates": []}
+    if variety != "standard_english":
+        return result
+    tokens = tokens_with_spans(sentence)
+    leaves = list(_ordered_leaves(tree))
+    if len(tokens) != len(leaves) or any(
+        leaf["span"] != [token["index"], token["index"] + 1] or leaf["surface"] != token["text"]
+        for leaf, token in zip(leaves, tokens)
+    ) or any(token["text"] in {'"', '“', '”', "'", "‘", "’"} for token in tokens):
+        return result
+    result["status"] = "candidate_only"
+    for marker, pronoun in _for_subjects(tree):
+        expected = OBJECT_FORMS.get(pronoun["surface"].casefold())
+        if expected:
+            result["candidates"].append({
+                "rule_id": "CLS-285", "source_chapter": 14, "source_pages": [1182],
+                "relation": {"kind": "for_infinitival_subject",
+                             "marker_char_span": tokens[marker["span"][0]]["char_span"],
+                             "pronoun_char_span": tokens[pronoun["span"][0]]["char_span"]},
+                "expected_pronoun": expected, "edit_hint": None,
+            })
+    return result
