@@ -1,14 +1,14 @@
 # Cambridge Phase C backlog
 
-Snapshot through the interrogative infinitival subject prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
+Snapshot through the participial NP modifier prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
 
 | Diagnostic specifications | Primary pilot | Supporting pilot | Outside pilot | Production-enabled |
 |---:|---:|---:|---:|---:|
-| 204 | 50 | 6 | 148 | 0 |
+| 204 | 51 | 6 | 147 | 0 |
 
 ## Next implementation batch
 
-**Participial NP modifiers (CLS-408)** are next. Distinguish direct participial modifiers from finite relatives.
+**Set expressions with partitives (CLS-201)** are next.
 
 After that batch, triage adjacent diagnostics by governing relation and compatible edits. Use the source and diagnostic family below to find related rules. A catalog entry can share a detector or receive a documented no-detector disposition.
 
@@ -58,6 +58,7 @@ After that batch, triage adjacent diagnostics by governing relation and compatib
 | Perfect auxiliaries under catenatives | OTH-182 | — | This batch | Validate the temporally bound reading and additional complement shapes. |
 | Overt object with active believe | CLS-320 | — | This batch | Validate complement attachment and broaden active frame coverage. |
 | Overt subjects in wh-infinitivals | CLS-407 | — | This batch | Validate interrogative attachment and assess wh-subject cases separately. |
+| Participial NP modifiers | CLS-408 | — | This batch | Validate NP attachment and preserve finite relatives. |
 | Imperative verb form | CLS-130 | — | [#115](https://github.com/ybcole/SynTutor/pull/115) | Establish the source of directive intent and validate the resulting finding. |
 
 ## Rule-by-rule inventory
@@ -99,7 +100,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | `PHR-157` | Either selects a singular count nominal | Ch. 5, pp. 387, 388 | Queued |
 | `PHR-161` | No and none in dependent and fused-head functions | Ch. 5, pp. 390 | Queued |
 | `PHR-197` | Bare role nouns in ordinary object position | Ch. 5, pp. 409 | Support |
-| `CLS-201` | Set expressions in which partitives | Ch. 10, pp. 903 | Queued |
+| `CLS-201` | Set expressions in which partitives | Ch. 10, pp. 903 | Next |
 | `CLS-229` | Exclamative what and singular count NPs | Ch. 10, pp. 919, 920 | Queued |
 | `CLS-1036` | Singular-noun coordination cannot satisfy a plural determinative | Ch. 15, pp. 1334, 1335 | Pilot |
 | `MORPH-141` | Liaison and article choice by sound | Ch. 18, pp. 1618 | Pilot |
@@ -128,7 +129,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | `PHR-083` | Of with plural approximate number nouns | Ch. 5, pp. 351 | Queued |
 | `CLS-131` | Supportive do with be in ordinary negative imperatives | Ch. 10, pp. 857 | Support |
 | `CLS-320` | Overt object with active believe plus an infinitival | Ch. 14, pp. 1203 | Pilot |
-| `CLS-408` | Participial NP modifiers without relative markers | Ch. 14, pp. 1265 | Next |
+| `CLS-408` | Participial NP modifiers without relative markers | Ch. 14, pp. 1265 | Pilot |
 | `CLS-1095` | Supplementary relative clause requires an antecedent anchor | Ch. 15, pp. 1353 | Queued |
 
 ### Other (51)

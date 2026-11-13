@@ -161,3 +161,50 @@ def probe_interrogative_infinitival_subject(sentence, tree, *, variety):
         "edit_hint": None,
     })
     return result
+
+
+def _participial_relatives(node):
+    parts = node.get("children", [])
+    if node["type"] == "NP" and len(parts) >= 2 and parts[-1]["type"] == "SBAR":
+        antecedent = parts[:-1]
+        relative = parts[-1].get("children", [])
+        if (any(part["type"] in {"NP", "NN", "NNS", "NNP", "NNPS"} for part in antecedent)
+                and not any(part["type"] == "CC" for part in antecedent)
+                and [part["type"] for part in relative] == ["WHNP", "S"]):
+            wh, clause = relative
+            markers = list(_ordered_leaves(wh))
+            body = clause.get("children", [])
+            if len(markers) == 1 and markers[0].get("pos") == "WP" and (
+                markers[0]["surface"].casefold() == "who" and [part["type"] for part in body] == ["VP"]
+            ):
+                predicate = body[0].get("children", [])
+                if predicate and predicate[0].get("pos") == "VBG":
+                    yield markers[0], predicate[0]
+    for child in parts:
+        yield from _participial_relatives(child)
+
+
+def probe_participial_relative_marker(sentence, tree, *, variety):
+    """Report who before a bare gerund-participial NP modifier."""
+    result = {"status": "not_evaluated", "production_enabled": False, "candidates": []}
+    if variety != "standard_english":
+        return result
+    tokens = tokens_with_spans(sentence)
+    leaves = list(_ordered_leaves(tree))
+    if len(tokens) != len(leaves) or any(
+        leaf["span"] != [token["index"], token["index"] + 1] or leaf["surface"] != token["text"]
+        for leaf, token in zip(leaves, tokens)
+    ) or any(token["text"] in {'"', '“', '”', "'", '‘', '’'} for token in tokens):
+        return result
+    result["status"] = "candidate_only"
+    for marker, verb in _participial_relatives(tree):
+        result["candidates"].append({
+            "rule_id": "CLS-408", "source_chapter": 14, "source_pages": [1265],
+            "relation": {
+                "kind": "relative_marker_with_bare_participial_modifier",
+                "marker_char_span": tokens[marker["span"][0]]["char_span"],
+                "verb_char_span": tokens[verb["span"][0]]["char_span"],
+            },
+            "edit_hint": None,
+        })
+    return result
