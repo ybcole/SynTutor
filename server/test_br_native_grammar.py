@@ -16,6 +16,7 @@ from server.br_native_grammar import (
     load_br_construction_registry,
 )
 from server.final_d1_labels import final_d1_display_labels
+from scripts.audit_br_native_catalog import audit_book_corpus
 
 
 def envelope(root, chapter=10, version="FINAL"):
@@ -45,6 +46,15 @@ def simple_root():
 
 
 class RegistryTests(unittest.TestCase):
+    def test_figure_audit_does_not_report_final_profile_coverage(self):
+        report = audit_book_corpus()
+        self.assertFalse(report["final_d1_coverage_measured"])
+        self.assertEqual(report["coverage_scope"],
+                         "ALL_CHAPTER_SOURCE_FIGURES_NOT_FINAL_D1_PARSER_COVERAGE")
+        self.assertEqual(report["unmatched_construction_instances_for_review"]
+                         + report["unmatched_chapter_example_instances"],
+                         report["total_branches"] - report["matched_branches"])
+
     def test_book_figures_preserve_distinct_source_shapes(self):
         book = Path(__file__).resolve().parents[1] / "web/content/book"
         for chapter, record_id, rule_id in (

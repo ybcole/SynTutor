@@ -86,6 +86,7 @@ def audit_book_corpus(expected_count: int | None = None) -> dict:
 
     if expected_count is not None and total != expected_count:
         raise ValueError(f"Expected {expected_count} source trees, received {total}")
+    triage_counts = Counter(row["triage_group"] for row in uncovered_instances)
     return {
         "registry_state": "DRAFT_SHAPE_COVERAGE_NOT_LINGUISTIC_CERTIFICATION",
         "source_tree_records": total,
@@ -93,10 +94,14 @@ def audit_book_corpus(expected_count: int | None = None) -> dict:
         "matched_branches": matched,
         "total_branches": examined,
         "overall_coverage": round(matched / examined, 4) if examined else None,
+        "coverage_scope": "ALL_CHAPTER_SOURCE_FIGURES_NOT_FINAL_D1_PARSER_COVERAGE",
+        "final_d1_coverage_measured": False,
         "chapter_summary": chapters,
         "most_common_uncovered_signatures": all_unknown.most_common(40),
         "uncovered_instances": uncovered_instances,
-        "uncovered_triage_counts": dict(Counter(row["triage_group"] for row in uncovered_instances)),
+        "uncovered_triage_counts": dict(triage_counts),
+        "unmatched_construction_instances_for_review": triage_counts["CONSTRUCTION_REQUIRES_SOURCE_REVIEW"],
+        "unmatched_chapter_example_instances": len(uncovered_instances) - triage_counts["CONSTRUCTION_REQUIRES_SOURCE_REVIEW"],
         "parser_label_leaks": hard_leaks,
         "semantic_conditions_checked": False,
         "independently_verified_trees": 0,
