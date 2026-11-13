@@ -155,3 +155,53 @@ def probe_declarative_polarity(sentence, tree, *, variety, simple_positive_quest
         "edit_hint": None,
     })
     return result
+
+
+def _indefinite_partitives(node):
+    parts = node.get("children", [])
+    if node["type"] == "WHNP" and len(parts) in {2, 3}:
+        lead = list(_ordered_leaves(parts[0]))
+        phrase = parts[-1]
+        if (len(lead) == 1 and lead[0].get("pos") == "WDT"
+                and lead[0]["surface"].casefold() == "which"
+                and (len(parts) == 2 or parts[1].get("pos") == "CD")
+                and phrase["type"] == "PP"):
+            pp = phrase.get("children", [])
+            if (len(pp) == 2 and pp[0].get("pos") == "IN"
+                    and pp[0]["surface"].casefold() == "of" and pp[1]["type"] == "NP"):
+                nominal = pp[1].get("children", [])
+                if (len(nominal) == 2 and nominal[0].get("pos") == "DT"
+                        and nominal[0]["surface"].casefold() in {"some", "any"}
+                        and nominal[1].get("pos") in {"NN", "NNS"}):
+                    yield lead[0], pp[1]
+    for part in parts:
+        yield from _indefinite_partitives(part)
+
+
+def probe_which_partitive(sentence, tree, *, variety):
+    """Find explicitly indefinite set complements inside a direct which-question."""
+    result = {"status": "not_evaluated", "production_enabled": False, "candidates": []}
+    if variety != "standard_english":
+        return result
+    tokens = tokens_with_spans(sentence)
+    leaves = list(_ordered_leaves(tree))
+    if len(tokens) != len(leaves) or any(
+        leaf["span"] != [token["index"], token["index"] + 1] or leaf["surface"] != token["text"]
+        for leaf, token in zip(leaves, tokens)
+    ) or any(token["text"] in {'"', '“', '”', "'", '‘', '’'} for token in tokens):
+        return result
+    result["status"] = "candidate_only"
+    parts = tree.get("children", [])
+    if (tree["type"] != "SBARQ" or [part["type"] for part in parts] != ["WHNP", "SQ", "."]
+            or parts[-1].get("surface") != "?"):
+        return result
+    for marker, nominal in _indefinite_partitives(parts[0]):
+        start, end = nominal["span"]
+        result["candidates"].append({
+            "rule_id": "CLS-201", "source_chapter": 10, "source_pages": [903],
+            "relation": {"kind": "indefinite_set_in_which_partitive",
+                         "which_char_span": tokens[marker["span"][0]]["char_span"],
+                         "set_char_span": [tokens[start]["char_span"][0], tokens[end - 1]["char_span"][1]]},
+            "edit_hint": None,
+        })
+    return result
