@@ -1,7 +1,7 @@
 import os
 import unittest
 
-from cgel_since_probe import probe_completed_past_perfect, probe_ever_since
+from cgel_since_probe import probe_completed_past_perfect, probe_ever_since, probe_nested_backshift
 from parse_engine import NodeBuilder, analyze, parse_parse_string
 
 
@@ -69,3 +69,42 @@ class CompletedPastPerfectTests(unittest.TestCase):
                 found = [row["rule_id"] for row in result["candidates"]]
                 print(f"Cambridge completed past {sentence!r}: {found}; target={target}; parse={analysis['parse_string']}")
                 self.assertIn(found, ([], ["OTH-102"]) if target else ([],))
+
+
+BACKSHIFT_CASES = [
+    ("is", "returned", True, ["OTH-158"]),
+    ("is", "returned", False, []),
+    ("was", "returned", True, []),
+    ("was", "return", True, []),
+    ("is", "return", True, []),
+]
+
+
+class NestedBackshiftTests(unittest.TestCase):
+    def test_shift_combinations(self):
+        for higher, lower, context, expected in BACKSHIFT_CASES:
+            with self.subTest(higher=higher, lower=lower, context=context):
+                sentence = f"Ari said that she {higher} packing before the guests {lower}."
+                upper_tag = "VBZ" if higher == "is" else "VBD"
+                lower_tag = "VBD" if lower == "returned" else "VBP"
+                parse = (
+                    "(S (NP (NNP Ari)) (VP (VBD said) (SBAR (IN that) "
+                    f"(S (NP (PRP she)) (VP ({upper_tag} {higher}) (VP (VBG packing) "
+                    f"(SBAR (IN before) (S (NP (DT the) (NNS guests)) (VP ({lower_tag} {lower}))))))))) (. .))"
+                )
+                tree = NodeBuilder().build(parse_parse_string(parse), 11)
+                self.check_case(sentence, tree, context, expected)
+
+    def check_case(self, sentence, tree, context, expected):
+        result = probe_nested_backshift(sentence, tree, variety="standard_english",
+                                         shared_report_time_confirmed=context)
+        self.assertEqual([row["rule_id"] for row in result["candidates"]], expected)
+        for row in result["candidates"]:
+            self.assertIsNone(row["edit_hint"])
+
+    @unittest.skipUnless(os.environ.get("CGEL_REQUIRE_PARSER") == "1", "configured parser required")
+    def test_configured_nested_backshift(self):
+        for higher, lower, context, expected in BACKSHIFT_CASES:
+            sentence = f"Ari said that she {higher} packing before the guests {lower}."
+            with self.subTest(sentence=sentence, context=context):
+                self.check_case(sentence, analyze(sentence)["root"], context, expected)

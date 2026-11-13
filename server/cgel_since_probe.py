@@ -88,3 +88,61 @@ def probe_completed_past_perfect(sentence, tree, *, variety, single_event_confir
         "edit_hint": None,
     })
     return result
+
+
+def probe_nested_backshift(sentence, tree, *, variety, shared_report_time_confirmed=False):
+    """Check a present progressive report with a backshifted before-clause."""
+    result = {"status": "not_evaluated", "production_enabled": False, "candidates": []}
+    if variety != "standard_english" or shared_report_time_confirmed is not True:
+        return result
+    tokens = tokens_with_spans(sentence)
+    leaves = list(_ordered_leaves(tree))
+    if len(tokens) != len(leaves) or any(
+        leaf["span"] != [token["index"], token["index"] + 1] or leaf["surface"] != token["text"]
+        for leaf, token in zip(leaves, tokens)
+    ) or any(token["text"] in {'"', '“', '”', "'", '‘', '’'} for token in tokens):
+        return result
+    result["status"] = "candidate_only"
+    root = tree.get("children", [])
+    if tree["type"] != "S" or [part["type"] for part in root] != ["NP", "VP", "."]:
+        return result
+    reporting = root[1].get("children", [])
+    if (len(reporting) != 2 or reporting[0].get("pos") != "VBD"
+            or reporting[0]["surface"].casefold() != "said" or reporting[1]["type"] != "SBAR"):
+        return result
+    complement = reporting[1].get("children", [])
+    if (len(complement) != 2 or complement[0].get("surface", "").casefold() != "that"
+            or complement[1]["type"] != "S"):
+        return result
+    clause = complement[1].get("children", [])
+    if [part["type"] for part in clause] != ["NP", "VP"]:
+        return result
+    predicate = clause[1].get("children", [])
+    if len(predicate) not in {2, 3}:
+        return result
+    auxiliary, progressive, *outer_adjunct = predicate
+    if (auxiliary.get("pos") not in {"VBP", "VBZ"}
+            or auxiliary["surface"].casefold() not in {"am", "is", "are"} or progressive["type"] != "VP"):
+        return result
+    progressive_parts = progressive.get("children", [])
+    if not progressive_parts or progressive_parts[0].get("pos") != "VBG":
+        return result
+    temporal = outer_adjunct[0] if outer_adjunct else progressive_parts[-1]
+    temporal_parts = temporal.get("children", [])
+    if (temporal["type"] != "SBAR" or len(temporal_parts) != 2
+            or temporal_parts[0].get("surface", "").casefold() != "before" or temporal_parts[1]["type"] != "S"):
+        return result
+    embedded = temporal_parts[1].get("children", [])
+    if [part["type"] for part in embedded] != ["NP", "VP"]:
+        return result
+    lower = embedded[1].get("children", [])
+    if len(lower) != 1 or lower[0].get("pos") != "VBD":
+        return result
+    result["candidates"].append({
+        "rule_id": "OTH-158", "source_chapter": 3, "source_pages": [156],
+        "relation": {"kind": "backshift_below_unshifted_report",
+                     "higher_verb_char_span": tokens[auxiliary["span"][0]]["char_span"],
+                     "lower_verb_char_span": tokens[lower[0]["span"][0]]["char_span"]},
+        "edit_hint": None,
+    })
+    return result
