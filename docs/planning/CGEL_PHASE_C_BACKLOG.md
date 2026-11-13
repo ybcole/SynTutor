@@ -1,14 +1,14 @@
 # Cambridge Phase C backlog
 
-Snapshot through the inclusive-let’s prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
+Snapshot through the reported-directive prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
 
 | Diagnostic specifications | Primary pilot | Supporting pilot | Outside pilot | Production-enabled |
 |---:|---:|---:|---:|---:|
-| 204 | 19 | 5 | 180 | 0 |
+| 204 | 20 | 5 | 179 | 0 |
 
 ## Next implementation batch
 
-**Reported negative directives (CLS-270)** are next. Check ordinary to-infinitival reports against direct quotations and finite subordinate clauses.
+**Auxiliary choice in canonical tags (CLS-182)** is next. Check how tags reuse a matrix auxiliary or require supportive do, with agreement handled separately.
 
 After that batch, triage adjacent diagnostics by governing relation and compatible edits. Use the source and diagnostic family below to find related rules. A catalog entry can share a detector or receive a documented no-detector disposition.
 
@@ -29,6 +29,7 @@ After that batch, triage adjacent diagnostics by governing relation and compatib
 | Primary finite negation | CLS-099 | — | This batch | Validate the source of primary scope and extend coverage beyond clause-final not. |
 | Negative imperative be | CLS-102 | CLS-131 | This batch | Validate ordinary verbal directive context and broaden parser coverage. |
 | Inclusive let’s | CLS-268 | — | This batch | Verify broader subject and parser coverage, including vocatives. |
+| Reported negative directives | CLS-270 | — | This batch | Broaden reporting-verb and parser coverage. |
 | Imperative verb form | CLS-130 | — | [#115](https://github.com/ybcole/SynTutor/pull/115) | Establish the source of directive intent and validate the resulting finding. |
 
 ## Rule-by-rule inventory
@@ -84,7 +85,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | `COMP-041` | Supportive do excluded in idiomatic have got | Ch. 3, pp. 112 | Queued |
 | `PHR-381` | Non-expandable declarative complements | Ch. 7, pp. 604 | Queued |
 | `CLS-268` | No overt matrix subject before inclusive let's | Ch. 10, pp. 934, 935 | Pilot |
-| `CLS-270` | Negating a to-infinitival report of a directive | Ch. 10, pp. 943, 944 | Next |
+| `CLS-270` | Negating a to-infinitival report of a directive | Ch. 10, pp. 943, 944 | Pilot |
 | `CLS-407` | No overt subject in infinitival interrogative complements | Ch. 14, pp. 1264 | Queued |
 
 ### Missing word (10)
@@ -262,7 +263,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | `WCAT-059` | Prepositional to after adjectives | Ch. 6, pp. 545 | Queued |
 | `CLS-126` | Plain form after supportive do in questions | Ch. 10, pp. 856 | Pilot |
 | `CLS-130` | Plain form in ordinary imperatives | Ch. 10, pp. 857 | Pilot |
-| `CLS-182` | Auxiliary choice and tense in canonical tags | Ch. 10, pp. 892, 893 | Queued |
+| `CLS-182` | Auxiliary choice and tense in canonical tags | Ch. 10, pp. 892, 893 | Next |
 | `CLS-357` | Infinitival marker in passive causative make | Ch. 14, pp. 1234 | Pilot |
 | `MORPH-114` | Three-way vowel alternation | Ch. 18, pp. 1603 | Queued |
 | `MORPH-130` | Negative am and inversion | Ch. 18, pp. 1612 | Queued |

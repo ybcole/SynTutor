@@ -2,6 +2,7 @@ import os
 import unittest
 
 from cgel_imperative_probe import probe_imperative, probe_inclusive_lets, probe_negative_imperative
+from cgel_imperative_probe import probe_reported_negative_directive
 from parse_engine import NodeBuilder, analyze, parse_parse_string
 
 
@@ -126,3 +127,54 @@ class InclusiveLetsTests(unittest.TestCase):
                 ids = [row["rule_id"] for row in result["candidates"]]
                 self.assertIn(ids, ([], ["CLS-268"]) if target else ([],))
                 print(f"Inclusive lets {sentence!r}: {ids}, target={target}, parse={analysis['parse_string']}")
+
+
+class ReportedDirectiveTests(unittest.TestCase):
+    def test_reported_negation_and_controls(self):
+        cases = [
+            ("Mina told us to do not touch it.", "(S (NP (NNP Mina)) (VP (VBD told) (NP (PRP us)) (S (VP (TO to) (VP (VB do) (RB not) (VP (VB touch) (NP (PRP it))))))) (. .))", "Mina told us not to touch it."),
+            ("Mina told us not to touch it.", "(S (NP (NNP Mina)) (VP (VBD told) (NP (PRP us)) (S (RB not) (VP (TO to) (VP (VB touch) (NP (PRP it)))))) (. .))", None),
+            ("Mina told us to do nothing.", "(S (NP (NNP Mina)) (VP (VBD told) (NP (PRP us)) (S (VP (TO to) (VP (VB do) (NP (NN nothing)))))) (. .))", None),
+        ]
+        for sentence, parse, expected in cases:
+            with self.subTest(sentence=sentence):
+                tree = NodeBuilder().build(parse_parse_string(parse), len(sentence.split()) + 1)
+                result = probe_reported_negative_directive(sentence, tree, variety="standard_english")
+                if expected is None:
+                    self.assertEqual(result["candidates"], [])
+                    continue
+                candidate, = result["candidates"]
+                self.assertEqual(candidate["rule_id"], "CLS-270")
+                edit = candidate["edit_hint"]
+                start, end = edit["char_span"]
+                self.assertEqual(sentence[:start] + edit["replacement"] + sentence[end:], expected)
+
+    @unittest.skipUnless(os.environ.get("CGEL_REQUIRE_PARSER") == "1", "configured parser required")
+    def test_configured_reported_directives(self):
+        cases = [
+            ("Mina told us to do not touch it.", "Mina told us not to touch it."),
+            ("Mina told us not to touch it.", None),
+            ("Mina told us to do nothing.", None),
+            ("Mina said that we did not touch it.", None),
+            ('Mina said, “Do not touch it.”', None),
+        ]
+        for sentence, expected in cases:
+            with self.subTest(sentence=sentence):
+                result = probe_reported_negative_directive(
+                    sentence, analyze(sentence)["root"], variety="standard_english"
+                )
+                candidates = result["candidates"]
+                print(f"Reported directive {sentence!r}: {len(candidates)} candidate(s)")
+                if expected is None:
+                    self.assertEqual(candidates, [])
+                elif candidates:
+                    candidate, = candidates
+                    edit = candidate["edit_hint"]
+                    start, end = edit["char_span"]
+                    repaired = sentence[:start] + edit["replacement"] + sentence[end:]
+                    self.assertEqual(repaired, expected)
+                    recheck = probe_reported_negative_directive(
+                        repaired, analyze(repaired)["root"], variety="standard_english"
+                    )
+                    self.assertEqual(recheck["status"], "candidate_only")
+                    self.assertEqual(recheck["candidates"], [])
