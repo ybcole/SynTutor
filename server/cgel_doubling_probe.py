@@ -117,3 +117,34 @@ def _probe_spelling(sentence, tree, variety, replacement_for, rule_id, pages, re
                               "requires_reparse": True, "safe_to_apply_automatically": False},
             })
     return result
+
+
+def probe_personal_name_plural(sentence, tree, *, variety, confirmed_name=None):
+    """Check the two source examples when the intended name is known."""
+    forms = {"Mary": ("Maries", "Marys"), "Wolf": ("Wolves", "Wolfs")}
+    pair = forms.get(confirmed_name)
+    result = {"status": "not_evaluated", "production_enabled": False, "candidates": []}
+    if variety != "standard_english" or pair is None:
+        return result
+    tokens = tokens_with_spans(sentence)
+    leaves = list(_ordered_leaves(tree))
+    if len(tokens) != len(leaves) or any(
+        leaf["span"] != [token["index"], token["index"] + 1] or leaf["surface"] != token["text"]
+        for leaf, token in zip(leaves, tokens)
+    ) or any(token["text"] in {'"', '“', '”', "'", '‘', '’'} for token in tokens):
+        return result
+    result["status"] = "candidate_only"
+    wrong, expected = pair
+    if sum(token["text"] == wrong for token in tokens) != 1:
+        return result
+    for leaf, token in zip(leaves, tokens):
+        if leaf.get("pos") not in {"NNPS", "NNS"} or token["text"] != wrong:
+            continue
+        span = token["char_span"]
+        result["candidates"].append({
+            "rule_id": "MORPH-104", "source_chapter": 18, "source_pages": [1595],
+            "relation": {"kind": "personal_name_plural_changes_base", "word_char_span": span},
+            "edit_hint": {"char_span": span, "replacement": expected,
+                          "requires_reparse": True, "safe_to_apply_automatically": False},
+        })
+    return result
