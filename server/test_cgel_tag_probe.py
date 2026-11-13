@@ -1,7 +1,7 @@
 import os
 import unittest
 
-from cgel_tag_probe import probe_tag_auxiliary
+from cgel_tag_probe import probe_tag_agreement, probe_tag_auxiliary
 from parse_engine import NodeBuilder, analyze, parse_parse_string
 
 
@@ -36,3 +36,37 @@ class TagProbeTests(unittest.TestCase):
                 found = [c["expected_auxiliary"] for c in result["candidates"]]
                 self.assertEqual(found, [expected] if expected else [])
                 print(f"Cambridge tag {sentence!r}: {found}; expected={expected}; parse={analysis['parse_string']}")
+
+
+AGREEMENT_CASES = [
+    ("The windows are open, isn't they?", "are", "is", "they", "are"),
+    ("The windows are open, aren't they?", "are", "are", "they", None),
+    ("The lamp is on, aren't it?", "is", "are", "it", "is"),
+    ("Everybody is ready, aren't they?", "is", "are", "they", None),
+]
+
+
+class TagAgreementTests(unittest.TestCase):
+    def test_tag_pronoun_controls_agreement(self):
+        for sentence, anchor, tag, pronoun, expected in AGREEMENT_CASES:
+            with self.subTest(sentence=sentence):
+                first = {
+                    "The windows": "(DT The) (NNS windows)",
+                    "The lamp": "(DT The) (NN lamp)",
+                    "Everybody": "(NN Everybody)",
+                }[sentence.split(f" {anchor} ")[0]]
+                adjective = sentence.split(f" {anchor} ")[1].split(",")[0]
+                shape = f"(SQ (S (NP {first}) (VP (VBZ {anchor}) (ADJP (JJ {adjective})))) (, ,) (VBZ {tag}) (RB n't) (NP (PRP {pronoun})) (. ?))"
+                tree = NodeBuilder().build(parse_parse_string(shape), len(sentence.split()) + 3)
+                found = probe_tag_agreement(sentence, tree, variety="standard_english")["candidates"]
+                self.assertEqual([c["expected_auxiliary"] for c in found], [expected] if expected else [])
+
+    @unittest.skipUnless(os.environ.get("CGEL_REQUIRE_PARSER") == "1", "configured parser required")
+    def test_configured_tag_agreement(self):
+        for sentence, _, _, _, expected in AGREEMENT_CASES:
+            with self.subTest(sentence=sentence):
+                analysis = analyze(sentence)
+                candidates = probe_tag_agreement(sentence, analysis["root"], variety="standard_english")["candidates"]
+                found = [c["expected_auxiliary"] for c in candidates]
+                print(f"Cambridge tag agreement {sentence!r}: {found}; parse={analysis['parse_string']}")
+                self.assertEqual(found, [expected] if expected else [])

@@ -1,14 +1,14 @@
 # Cambridge Phase C backlog
 
-Snapshot through the question-tag auxiliary prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
+Snapshot through the question-tag agreement prototype. The [master plan](CAMBRIDGE_FULL_COVERAGE_MASTER_PLAN.md) defines the exit criteria. The [cross-domain QA](CGEL_CROSS_DOMAIN_QA.md) explains the pilot scope decisions.
 
 | Diagnostic specifications | Primary pilot | Supporting pilot | Outside pilot | Production-enabled |
 |---:|---:|---:|---:|---:|
-| 204 | 21 | 5 | 178 | 0 |
+| 204 | 22 | 5 | 177 | 0 |
 
 ## Next implementation batch
 
-**Question-tag agreement (CLS-183)** is next. Check agreement with the tag pronoun, including singular antecedents that license plural-form *they*.
+**Canonical pronominal case (COMP-084)** is next. Compare subject and object evidence against the more specific case rules before selecting a shared finding.
 
 After that batch, triage adjacent diagnostics by governing relation and compatible edits. Use the source and diagnostic family below to find related rules. A catalog entry can share a detector or receive a documented no-detector disposition.
 
@@ -31,6 +31,7 @@ After that batch, triage adjacent diagnostics by governing relation and compatib
 | Inclusive let’s | CLS-268 | — | This batch | Verify broader subject and parser coverage, including vocatives. |
 | Reported negative directives | CLS-270 | — | This batch | Broaden reporting-verb and parser coverage. |
 | Auxiliary choice in canonical tags | CLS-182 | — | This batch | Broaden anchor and tag shapes and validate canonical grounding. |
+| Question-tag agreement | CLS-183 | — | This batch | Broaden coverage of tag shapes and validate canonical grounding. |
 | Imperative verb form | CLS-130 | — | [#115](https://github.com/ybcole/SynTutor/pull/115) | Establish the source of directive intent and validate the resulting finding. |
 
 ## Rule-by-rule inventory
@@ -51,7 +52,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 | `PHR-334` | Singular they and finite agreement | Ch. 5, pp. 493, 494 | Queued |
 | `PHR-343` | Agreement attraction versus grammatical overrides | Ch. 5, pp. 500, 501 | Queued |
 | `PHR-347` | Mass aggregates and agreement | Ch. 5, pp. 504 | Queued |
-| `CLS-183` | Agreement with the pronoun in canonical tags | Ch. 10, pp. 893 | Next |
+| `CLS-183` | Agreement with the pronoun in canonical tags | Ch. 10, pp. 893 | Pilot |
 
 ### Article determiner (19)
 
@@ -171,7 +172,7 @@ When a batch lands, update the rows and link its evidence. Record canonical grou
 
 | Rule | Construction | Cambridge source | Status |
 |---|---|---|---|
-| `COMP-084` | Canonical pronominal subject and object case | Ch. 4, pp. 237 | Queued |
+| `COMP-084` | Canonical pronominal subject and object case | Ch. 4, pp. 237 | Next |
 | `PHR-283` | Finite clause subjects and nominative case | Ch. 5, pp. 459 | Queued |
 | `PHR-289` | Accusative in ordinary noncoordinate object positions | Ch. 5, pp. 461 | Queued |
 | `PHR-290` | Accusative subject of a for-infinitival | Ch. 5, pp. 461 | Queued |
