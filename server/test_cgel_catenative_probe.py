@@ -3,6 +3,7 @@ import unittest
 
 from cgel_catenative_probe import probe_believe_object, probe_catenative_perfect
 from cgel_catenative_probe import probe_interrogative_infinitival_subject
+from cgel_catenative_probe import probe_participial_relative_marker
 from parse_engine import NodeBuilder, analyze, parse_parse_string
 
 
@@ -107,3 +108,44 @@ class InterrogativeInfinitivalSubjectTests(unittest.TestCase):
                 found = [row["rule_id"] for row in result["candidates"]]
                 self.assertIn(found, ([], ["CLS-407"]) if target else ([],))
                 print(f"Cambridge wh-infinitival {sentence!r}: {found}; target={target}; parse={analysis['parse_string']}")
+
+
+class ParticipialRelativeMarkerTests(unittest.TestCase):
+    def test_bare_participle_and_finite_relative(self):
+        for auxiliary in (False, True):
+            verb = "(VBG waiting) (ADVP (RB outside))"
+            predicate = f"(VBP are) (VP {verb})" if auxiliary else verb
+            sentence = "The people who " + ("are " if auxiliary else "") + "waiting outside need shelter."
+            parse = (
+                "(S (NP (NP (DT The) (NNS people)) "
+                f"(SBAR (WHNP (WP who)) (S (VP {predicate})))) "
+                "(VP (VBP need) (NP (NN shelter))) (. .))"
+            )
+            with self.subTest(auxiliary=auxiliary):
+                tree = NodeBuilder().build(parse_parse_string(parse), 9 if auxiliary else 8)
+                rows = probe_participial_relative_marker(sentence, tree, variety="standard_english")["candidates"]
+                self.assertEqual([row["rule_id"] for row in rows], [] if auxiliary else ["CLS-408"])
+                if rows:
+                    start, end = rows[0]["relation"]["marker_char_span"]
+                    self.assertEqual(sentence[start:end], "who")
+                    self.assertIsNone(rows[0]["edit_hint"])
+
+    @unittest.skipUnless(os.environ.get("CGEL_REQUIRE_PARSER") == "1", "configured parser required")
+    def test_configured_participial_modifiers(self):
+        for sentence, target in [
+            ("The people who waiting outside need shelter.", True),
+            ("The workers who repairing the lift need more time.", True),
+            ("The people waiting outside need shelter.", False),
+            ("The people who are waiting outside need shelter.", False),
+            ("The workers who repair the lift need more time.", False),
+            ("I know who is repairing the lift.", False),
+            ("The person to contact is here.", False),
+        ]:
+            with self.subTest(sentence=sentence):
+                analysis = analyze(sentence)
+                rows = probe_participial_relative_marker(
+                    sentence, analysis["root"], variety="standard_english"
+                )["candidates"]
+                found = [row["rule_id"] for row in rows]
+                self.assertIn(found, ([], ["CLS-408"]) if target else ([],))
+                print(f"Cambridge participial modifier {sentence!r}: {found}; target={target}; parse={analysis['parse_string']}")
