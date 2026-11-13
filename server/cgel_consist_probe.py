@@ -90,3 +90,47 @@ def probe_come_across(sentence, tree, *, variety, encounter_confirmed=False):
         "edit_hint": None,
     })
     return result
+
+
+def probe_fixed_composition(sentence, tree, *, variety, static_state_confirmed=False):
+    """Report an ordinary progressive in a confirmed fixed-state reading."""
+    result = {"status": "not_evaluated", "production_enabled": False, "candidates": []}
+    if variety != "standard_english" or static_state_confirmed is not True:
+        return result
+    tokens = tokens_with_spans(sentence)
+    leaves = list(_ordered_leaves(tree))
+    if len(tokens) != len(leaves) or any(
+        leaf["span"] != [token["index"], token["index"] + 1] or leaf["surface"] != token["text"]
+        for leaf, token in zip(leaves, tokens)
+    ) or any(token["text"] in {'"', '“', '”', "'", "‘", "’"} for token in tokens):
+        return result
+    result["status"] = "candidate_only"
+    parts = tree.get("children", [])
+    if tree["type"] != "S" or [part["type"] for part in parts] != ["NP", "VP", "."]:
+        return result
+    vp = parts[1].get("children", [])
+    if len(vp) != 2 or vp[0].get("pos") not in {"VBP", "VBZ"} or vp[1]["type"] != "VP":
+        return result
+    auxiliary, lower = vp
+    if auxiliary["surface"].casefold() not in {"am", "is", "are"}:
+        return result
+    predicate = lower.get("children", [])
+    if len(predicate) != 2 or predicate[0].get("pos") != "VBG":
+        return result
+    verb, complement = predicate
+    word = verb["surface"].casefold()
+    if word == "consisting":
+        pp = complement.get("children", [])
+        if (complement["type"] != "PP" or len(pp) != 2 or pp[0].get("pos") != "IN"
+                or pp[0]["surface"].casefold() != "of" or pp[1]["type"] != "NP"):
+            return result
+    elif word != "containing" or complement["type"] != "NP":
+        return result
+    result["candidates"].append({
+        "rule_id": "OTH-216", "source_chapter": 3, "source_pages": [167, 168],
+        "relation": {"kind": "progressive_with_fixed_composition",
+                     "auxiliary_char_span": tokens[auxiliary["span"][0]]["char_span"],
+                     "verb_char_span": tokens[verb["span"][0]]["char_span"]},
+        "edit_hint": None,
+    })
+    return result
