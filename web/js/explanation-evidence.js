@@ -65,21 +65,15 @@ function renderContextualObservations(evidence, panel) {
     short.dataset.xaiShort = '';
     short.textContent = naturalText ? naturalText[0].text : item.short;
     section.append(status, short);
-    const more = document.createElement('details');
-    more.dataset.xaiDetails = '';
-    const summary = document.createElement('summary');
-    summary.textContent = 'Why this is shown';
-    const deep = document.createElement('p');
-    deep.dataset.xaiDeep = '';
-    deep.textContent = naturalText ? naturalText[1].text : item.deep;
-    more.append(summary, deep);
+    // The learner reads one explanation. Provenance and proof atoms remain in
+    // the server payload for tests and tooling, not as a second dropdown.
     if (Array.isArray(item.proof) && item.proof.length) {
       const proof = document.createElement('p');
+      proof.dataset.xaiProof = '';
       proof.textContent = 'Observed tree evidence: '
         + item.proof.map(fact => fact.predicate + ' (' + fact.fact_id + ', ' + fact.proof_path + ')').join('; ') + '.';
-      more.append(proof);
+      section.append(proof);
     }
-    section.append(more);
     if (natural?.selected_node_id === item.node_id) {
       const style = document.createElement('details');
       style.dataset.xai6Style = '';
@@ -389,42 +383,6 @@ export function learnerFeatureParagraph(evidence, feature) {
   return meaning[feature] || learnerParagraph(evidence);
 }
 
-function renderCandidateXai(evidence, panel) {
-  const data = evidence?.candidate_xai;
-  if (!data || data.status !== 'candidate_only' || !Array.isArray(data.items) || !data.items.length) return;
-  const section = document.createElement('details');
-  section.dataset.xaiCandidate = '';
-  const summary = document.createElement('summary');
-  summary.textContent = 'Candidate grammar checks (' + data.items.length + ') — not verified errors';
-  section.append(summary);
-  const scope = document.createElement('p');
-  scope.textContent = 'These are local candidate observations from source-linked checks. '
-    + 'They are not approved grammar errors and do not certify the rest of the sentence.';
-  section.append(scope);
-  for (const item of data.items) {
-    const row = document.createElement('div');
-    row.dataset.candidateRule = item.rule_id;
-    const head = document.createElement('p');
-    head.textContent = item.rule_id + ': ' + item.explanation.short;
-    row.append(head);
-    const more = document.createElement('details');
-    const moreLabel = document.createElement('summary');
-    moreLabel.textContent = 'Why this is shown';
-    const deep = document.createElement('p');
-    deep.textContent = item.explanation.deep;
-    more.append(moreLabel, deep);
-    const binding = document.createElement('p');
-    binding.textContent = 'Tree binding: ' + (item.tree_binding?.status || 'unmapped')
-      + '; affected node: ' + (item.tree_binding?.affected_node_id || 'none')
-      + (item.tree_binding?.governor_node_id
-        ? '; related node: ' + item.tree_binding.governor_node_id : '') + '.';
-    more.append(binding);
-    row.append(more);
-    section.append(row);
-  }
-  panel.append(section);
-}
-
 function renderLegacyDiagnostic(panel, detail) {
   if (!detail || detail.status !== 'error') return;
   const remediation = detail.remediation || {
@@ -452,21 +410,25 @@ function renderLegacyDiagnostic(panel, detail) {
   panel.append(section);
 }
 
+export function evidenceParagraphText(evidence, options = {}) {
+  return options.feature
+    ? learnerFeatureParagraph(evidence, options.feature)
+    : learnerFindingParagraph(evidence, options.nodeId) ?? learnerParagraph(evidence);
+}
+
 export function renderEvidence(evidence, host = document.querySelector('#explainNode'), options = {}) {
   if (!host) return;
   host.querySelector('[data-shared-evidence]')?.remove();
   const panel = document.createElement('section');
   panel.dataset.sharedEvidence = '';
   panel.setAttribute('aria-live', 'polite');
+  const text = options.paragraphOverride || evidenceParagraphText(evidence, options);
   const paragraph = document.createElement('p');
   paragraph.dataset.xaiShort = '';
   paragraph.className = 'learner-grammar-paragraph';
-  paragraph.textContent = options.feature
-    ? learnerFeatureParagraph(evidence, options.feature)
-    : learnerFindingParagraph(evidence, options.nodeId) ?? learnerParagraph(evidence);
+  paragraph.textContent = text;
   panel.append(paragraph);
   renderLegacyDiagnostic(panel, options.legacyDetail);
-  renderCandidateXai(evidence, panel);
   host.append(panel);
   if (options.treeRoot) applyEvidenceFocus(options.treeRoot, evidence);
 }

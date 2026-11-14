@@ -435,6 +435,15 @@ def build_canonical_analysis(analysis: dict[str, Any], chapter: int | None = Non
     sentence = str(analysis.get("sentence", ""))
     try:
         matches = _matching_gold_records(sentence, profile, reference_records)
+        # Chapter 7 has a core profile and an Appendix-NOM profile. When the
+        # caller does not choose one, select the profile that has an exact
+        # IMG source record instead of failing on the default.
+        if not matches and chapter == 7 and appendix_nom is None:
+            alternate = convention_profile(7, True)
+            alternate_matches = _matching_gold_records(sentence, alternate, reference_records)
+            if alternate_matches:
+                profile = alternate
+                matches = alternate_matches
     except Exception as exc:  # malformed source index/data must fail closed
         matches = []
         match_failure = exc
@@ -461,102 +470,161 @@ def build_canonical_analysis(analysis: dict[str, Any], chapter: int | None = Non
             )
             for row in matches
         }
-        if len(signatures) > 1:
+        ambiguous = len(signatures) > 1
+        # Ambiguity is real, but refusing to show any tree is not useful to a
+        # learner. Select a deterministic IMG-verified analysis and expose the
+        # other verified analyses as accepted alternatives.
+        ordered = sorted(matches, key=lambda row: str(row.get("id") or ""))
+        selected = ordered[0]
+        try:
+            imported = canonicalize_gold_record(
+                selected, {"chapter": int(profile["chapter"])})
+        except Exception as exc:  # malformed source projection must fail closed
+            imported = {
+                "status": "unresolved", "tree": None,
+                "errors": [f"gold source importer failed safely: {type(exc).__name__}: {exc}"],
+            }
+        if imported.get("status") != "normalized" or not isinstance(imported.get("tree"), dict):
             result = {
                 "status": "unresolved", "tree": None,
                 "reasons": [{
-                    "code": "AMBIGUOUS_GOLD_REFERENCE",
-                    "detail": "Different IMG-verified B-R source analyses match this sentence and convention; no tree was selected.",
+                    "code": "GOLD_SOURCE_IMPORT_UNRESOLVED",
+                    "detail": "; ".join(imported.get("errors") or ["The matching B-R source record could not be projected."]),
                 }],
                 "normalization_trace": [{
                     "rule_id": "EXACT_GOLD_REFERENCE_LOOKUP",
-                    "evidence": "The matching source records disagree structurally.",
+                    "evidence": "The matching IMG record was retained as unresolved; no parser fallback was substituted.",
                 }],
             }
         else:
-            try:
-                imported = canonicalize_gold_record(
-                    matches[0], {"chapter": int(profile["chapter"])})
-            except Exception as exc:  # malformed source projection must fail closed
-                imported = {
-                    "status": "unresolved", "tree": None,
-                    "errors": [f"gold source importer failed safely: {type(exc).__name__}: {exc}"],
-                }
-            if imported.get("status") != "normalized" or not isinstance(imported.get("tree"), dict):
+            envelope = imported["tree"]
+            if profile.get("version") != "V1":
+                # Chapter 2+ replaces the V1 Sentence label with S. A handful
+                # of source records still use the V1 spelling; normalize it
+                # rather than rejecting an otherwise valid source analysis.
+                _upgrade_legacy_labels(envelope["root"])
+            # The exact-gold lookup matches lexical yield, not punctuation
+            # or whitespace. Preserve the submitted sentence and rebase
+            # lexical-token character offsets onto that exact request text.
+            source_tokens = envelope.get("tokens") or []
+            rebased_tokens, alignment_errors = _align_words_to_sentence(
+                [str(token.get("text", "")) for token in source_tokens], sentence)
+            if alignment_errors or len(rebased_tokens) != len(source_tokens):
                 result = {
                     "status": "unresolved", "tree": None,
                     "reasons": [{
-                        "code": "GOLD_SOURCE_IMPORT_UNRESOLVED",
-                        "detail": "; ".join(imported.get("errors") or ["The matching B-R source record could not be projected."]),
+                        "code": "REQUEST_TOKEN_ALIGNMENT_FAILED",
+                        "detail": "; ".join(alignment_errors or [
+                            "The selected gold tree's tokenization could not be aligned to the submitted sentence."
+                        ]),
                     }],
                     "normalization_trace": [{
-                        "rule_id": "EXACT_GOLD_REFERENCE_LOOKUP",
-                        "evidence": "The matching IMG record was retained as unresolved; no parser fallback was substituted.",
+                        "rule_id": "EXACT_IMG_GOLD_REFERENCE",
+                        "evidence": "The lexical source match could not be safely rebased to the exact request text.",
                     }],
                 }
             else:
-                envelope = imported["tree"]
-                # The exact-gold lookup matches lexical yield, not punctuation
-                # or whitespace. Preserve the submitted sentence and rebase
-                # lexical-token character offsets onto that exact request text.
-                source_tokens = envelope.get("tokens") or []
-                rebased_tokens, alignment_errors = _align_words_to_sentence(
-                    [str(token.get("text", "")) for token in source_tokens], sentence)
-                if alignment_errors or len(rebased_tokens) != len(source_tokens):
+                for token, rebased in zip(source_tokens, rebased_tokens):
+                    token["char_span"] = rebased["char_span"]
+                envelope["sentence"] = sentence
+                # The declared free-analysis profile is FINAL-D1 (V10 plus
+                # the adopted Appendix NOM refinement), not merely a Ch10 lesson.
+                envelope["convention_profile"] = profile
+                if ambiguous:
+                    alternatives = []
+                    primary_words = _tree_words(selected.get("tree"))
+                    for index, alt_record in enumerate(ordered[1:], 1):
+                        alt_tree = alt_record.get("tree")
+                        if not isinstance(alt_tree, dict):
+                            continue
+                        if ([word.casefold() for word in _tree_words(alt_tree)]
+                                != [word.casefold() for word in primary_words]):
+                            envelope.setdefault("notes", []).append(
+                                "unaligned_ambiguous_source=" + str(alt_record.get("id")))
+                            continue
+                        cursor = [0]
+                        try:
+                            alt_root = _build_canonical_node(
+                                alt_tree, source_tokens, cursor,
+                                f"{envelope['tree_id']}-alt-{index}",
+                                envelope.setdefault("notes", []))
+                            if cursor[0] != len(source_tokens):
+                                raise ValueError(
+                                    f"alternative consumed {cursor[0]} of {len(source_tokens)} token(s)")
+                        except (TypeError, ValueError) as exc:
+                            envelope.setdefault("notes", []).append(
+                                "unprojected_ambiguous_source=" + str(alt_record.get("id"))
+                                + ":" + str(exc))
+                            continue
+                        alternative = {
+                            "analysis_id": f"{envelope['tree_id']}-alt-{index}",
+                            "root": alt_root,
+                            "acceptance": "ACCEPTED",
+                            "source_refs": [envelope["tree_id"]],
+                            "rationale": "IMG-verified source record "
+                                         + str(alt_record.get("id")),
+                        }
+                        probe = dict(envelope)
+                        probe["accepted_alternatives"] = [alternative]
+                        try:
+                            alt_validation = validate_canonical_tree(probe)
+                        except Exception as exc:
+                            alt_validation = {"valid": False, "errors": [str(exc)]}
+                        if not alt_validation["valid"]:
+                            envelope.setdefault("notes", []).append(
+                                "invalid_ambiguous_source=" + str(alt_record.get("id")))
+                            continue
+                        alternatives.append(alternative)
+                    envelope["accepted_alternatives"] = alternatives
+                    envelope.setdefault("notes", []).append(
+                        "ambiguous_source_records="
+                        + ",".join(str(row.get("id")) for row in ordered)
+                        + "; primary_source_record=" + str(selected.get("id")))
+                else:
+                    duplicate_ids = [str(row.get("id")) for row in ordered[1:]]
+                    if duplicate_ids:
+                        envelope.setdefault("notes", []).append(
+                            "identical_gold_reference_records=" + ",".join(duplicate_ids))
+                try:
+                    validation = validate_canonical_tree(envelope)
+                except Exception as exc:  # unexpected validator error cannot promote a tree
+                    validation = {
+                        "valid": False,
+                        "errors": [f"canonical validator failed safely: {type(exc).__name__}: {exc}"],
+                        "warnings": [],
+                    }
+                if not validation["valid"]:
                     result = {
                         "status": "unresolved", "tree": None,
                         "reasons": [{
-                            "code": "REQUEST_TOKEN_ALIGNMENT_FAILED",
-                            "detail": "; ".join(alignment_errors or [
-                                "The selected gold tree's tokenization could not be aligned to the submitted sentence."
-                            ]),
+                            "code": "CANONICAL_GOLD_VALIDATION_FAILED",
+                            "detail": "; ".join(validation["errors"]),
                         }],
                         "normalization_trace": [{
-                            "rule_id": "EXACT_IMG_GOLD_REFERENCE",
-                            "evidence": "The lexical source match could not be safely rebased to the exact request text.",
+                            "rule_id": "EXACT_GOLD_REFERENCE_LOOKUP",
+                            "evidence": "The imported source envelope failed the approved M1 canonical validator.",
                         }],
                     }
                 else:
-                    for token, rebased in zip(source_tokens, rebased_tokens):
-                        token["char_span"] = rebased["char_span"]
-                    envelope["sentence"] = sentence
-                    # The declared free-analysis profile is FINAL-D1 (V10 plus
-                    # the adopted Appendix NOM refinement), not merely a Ch10 lesson.
-                    envelope["convention_profile"] = profile
-                    try:
-                        validation = validate_canonical_tree(envelope)
-                    except Exception as exc:  # unexpected validator error cannot promote a tree
-                        validation = {
-                            "valid": False,
-                            "errors": [f"canonical validator failed safely: {type(exc).__name__}: {exc}"],
-                            "warnings": [],
-                        }
-                    if not validation["valid"]:
-                        result = {
-                            "status": "unresolved", "tree": None,
-                            "reasons": [{
-                                "code": "CANONICAL_GOLD_VALIDATION_FAILED",
-                                "detail": "; ".join(validation["errors"]),
-                            }],
-                            "normalization_trace": [{
-                                "rule_id": "EXACT_GOLD_REFERENCE_LOOKUP",
-                                "evidence": "The imported source envelope failed the approved M1 canonical validator.",
-                            }],
-                        }
-                    else:
-                        duplicate_ids = [str(row.get("id")) for row in matches[1:]]
-                        if duplicate_ids:
-                            envelope.setdefault("notes", []).append(
-                                "identical_gold_reference_records=" + ",".join(duplicate_ids))
-                        result = {
-                            "status": "normalized", "tree": envelope, "reasons": [],
-                            "normalization_trace": [{
-                                "rule_id": "EXACT_IMG_GOLD_REFERENCE",
-                                "evidence": "Exact lexical yield and convention-profile match to an IMG-verified Burton-Roberts source record.",
-                                "source_record_id": matches[0].get("id"),
-                            }],
-                            "validation": validation,
-                        }
+                    evidence = ("Exact lexical yield and convention-profile match to an "
+                                "IMG-verified Burton-Roberts source record.")
+                    if ambiguous:
+                        evidence += (" Multiple IMG analyses agree on the words; the primary "
+                                     "analysis is shown and the others are accepted alternatives.")
+                    result = {
+                        "status": "normalized", "tree": envelope,
+                        "reasons": ([{"code": "AMBIGUOUS_GOLD_REFERENCE",
+                                      "detail": "Multiple IMG-verified analyses are available; "
+                                                "a primary analysis was selected and alternatives are exposed."}]
+                                    if ambiguous else []),
+                        "normalization_trace": [{
+                            "rule_id": "EXACT_IMG_GOLD_REFERENCE",
+                            "evidence": evidence,
+                            "source_record_id": selected.get("id"),
+                        }],
+                        "validation": validation,
+                        "ambiguous": ambiguous,
+                    }
     else:
         try:
             result = normalize_benepar_candidate(analysis, profile)
@@ -584,8 +652,11 @@ def build_canonical_analysis(analysis: dict[str, Any], chapter: int | None = Non
     if result.get("working_tree"):
         try:
             result["working_display_labels"] = final_d1_display_labels(result["working_tree"]["root"])
-        except (OSError, BadZipFile, ParseError, KeyError, ValueError, IndexError):
-            result.pop("working_tree")
+        except (OSError, BadZipFile, ParseError, KeyError, ValueError, IndexError) as exc:
+            # Keep the provisional tree: a display-label gap must not erase the
+            # only structured diagnostic the learner can inspect.
+            result["working_display_labels"] = None
+            result["working_label_diagnostic"] = str(exc)
 
     # Experimental independent chart construction can propose a B-R-shaped
     # alternative even if the Benepar-to-B-R adapter fails. This is diagnostic,
@@ -820,6 +891,16 @@ def _preserve_source_node_metadata(out: dict[str, Any],
     return out
 
 
+def _upgrade_legacy_labels(node: dict[str, Any]) -> None:
+    """Rename V1-era Sentence/Phrase labels for chapters that use S/NP labels."""
+    if not isinstance(node, dict):
+        return
+    if node.get("label") == "Sentence":
+        node["label"] = "S"
+    for child in node.get("children") or []:
+        _upgrade_legacy_labels(child)
+
+
 def _build_canonical_node(raw: dict[str, Any], tokens: list[dict[str, Any]], cursor: list[int],
                           node_id: str, notes: list[str]) -> dict[str, Any]:
     if raw.get("gap") is True:
@@ -839,7 +920,7 @@ def _build_canonical_node(raw: dict[str, Any], tokens: list[dict[str, Any]], cur
             out = {"id": node_id, "word": word, "elided": True}
             return _preserve_source_node_metadata(out, raw)
         idx = cursor[0]
-        if idx >= len(tokens) or tokens[idx]["text"] != word:
+        if idx >= len(tokens) or str(tokens[idx]["text"]).casefold() != word.casefold():
             raise ValueError(f"terminal {word!r} does not align with source token {idx}")
         cursor[0] += 1
         out = {"id": node_id, "word": word, "token_span": [idx, idx + 1]}
@@ -850,7 +931,7 @@ def _build_canonical_node(raw: dict[str, Any], tokens: list[dict[str, Any]], cur
         start = cursor[0]
         for word in words:
             idx = cursor[0]
-            if idx >= len(tokens) or tokens[idx]["text"] != word:
+            if idx >= len(tokens) or str(tokens[idx]["text"]).casefold() != word.casefold():
                 raise ValueError(f"triangle word {word!r} does not align to source token {idx}")
             cursor[0] += 1
         if not words:
@@ -858,6 +939,9 @@ def _build_canonical_node(raw: dict[str, Any], tokens: list[dict[str, Any]], cur
         out = {"id": node_id, "label": str(raw.get("label", "")),
                "triangle": True, "words": words,
                "token_span": [start, cursor[0]]}
+        if isinstance(raw.get("features"), list) and all(
+                isinstance(feature, str) and feature for feature in raw["features"]):
+            out["features"] = list(raw["features"])
         if not raw.get("label"):
             out.pop("label", None)
             out["unlabelled"] = True
@@ -1228,7 +1312,7 @@ def validate_canonical_tree(envelope: dict[str, Any]) -> dict[str, Any]:
                 errors.append(f"{path}.token_span must cover exactly one token")
                 return None
             covered.append(start)
-            if tokens[start].get("text") != word:
+            if str(tokens[start].get("text", "")).casefold() != word.casefold():
                 errors.append(f"{path}.word does not match token {start}")
             return start, end
         if "gap" in node:
@@ -1244,9 +1328,14 @@ def validate_canonical_tree(envelope: dict[str, Any]) -> dict[str, Any]:
                 node_indices[node_id] = index
             return None
         if "triangle" in node or "words" in node:
-            unknown = sorted(set(node) - {"id", "label", "unlabelled", "triangle", "words", "token_span", "index", "source_refs", "notes"})
+            unknown = sorted(set(node) - {"id", "label", "unlabelled", "triangle", "features", "words", "token_span", "index", "source_refs", "notes"})
             if unknown:
                 errors.append(f"{path} triangle has unsupported field(s): " + ", ".join(unknown))
+            if "features" in node:
+                features = node.get("features")
+                if (not isinstance(features, list)
+                        or not all(isinstance(feature, str) and feature for feature in features)):
+                    errors.append(f"{path}.features must be an array of non-empty strings")
         if node.get("triangle") is True:
             if "children" in node or "gap" in node or "word" in node:
                 errors.append(f"{path} triangle cannot also be a branch, terminal or gap")
@@ -1287,7 +1376,7 @@ def validate_canonical_tree(envelope: dict[str, Any]) -> dict[str, Any]:
                 for offset, word in enumerate(words):
                     index = start + offset
                     covered.append(index)
-                    if tokens[index].get("text") != word:
+                    if str(tokens[index].get("text", "")).casefold() != word.casefold():
                         errors.append(f"{path}.words[{offset}] does not match token {index}")
             return start, end
 

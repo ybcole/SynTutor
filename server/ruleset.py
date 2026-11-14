@@ -590,6 +590,25 @@ def _is_central_modal(leaf):
     return leaf.get('type') == 'MD' and _lower(leaf) in MODAL_SURFACES
 
 
+def _predicate_verb(vp):
+    """Return the finite head verb of a clause's main predicate VP.
+
+    Only the head projection is inspected. Verbs inside an embedded NP,
+    relative clause, participial phrase or other complement are not the
+    predicate of the clause whose subject is being checked.
+    """
+    for child in vp.get('children', []):
+        child_type = child.get('type')
+        if child_type in {'VB', 'VBD', 'VBG', 'VBN', 'VBP', 'VBZ', 'MD'}:
+            return child
+        if child_type in {'VP', 'AUX'}:
+            head = _predicate_verb(child)
+            if head is not None:
+                return head
+        # NP/SBAR/PP/ADVP/S and punctuation are not the predicate head.
+    return None
+
+
 def _verb_key(leaf):
     t = leaf.get('type')
     s = _lower(leaf)
@@ -2141,20 +2160,38 @@ def _check_more(root, clauses, leaves):
                                 _tree_evidence(lf['id'], 'adverb + determiner')))
 
     # 2.9 quantified subject: 'the number of X' takes a singular verb
-    for i in range(len(leaves) - 2):
-        if _lower(leaves[i]) == 'the' and _lower(leaves[i + 1]) == 'number' \
-                and _lower(leaves[i + 2]) == 'of':
-            for lf in leaves[i + 3:]:
-                if lf.get('type') == 'VBP' or _lower(lf) in ('are', 'were'):
-                    out.append(_finding('2.9', 'error', 'C-NUMBER-AGREE',
-                                        'agreement', lf['id'],
-                                        f"With the phrase 'the number of', this sentence takes "
-                                        f"a singular verb, not '{lf['surface']}'.",
-                                        _tree_evidence(leaves[i + 1]['id'],
-                                                       'the number of + plural verb')))
-                    break
-                if lf.get('type') in ('VBZ',) or _lower(lf) in ('is', 'was'):
-                    break
+    for clause in clauses:
+        subj = vp = None
+        for child in clause.get('children', []):
+            if child.get('type') == 'NP' and subj is None:
+                subj = child
+            elif child.get('type') == 'VP' and vp is None:
+                vp = child
+        if subj is None or vp is None:
+            continue
+        subject_leaves = _leaves(subj)
+        subject_lows = [_lower(leaf) for leaf in subject_leaves]
+        number_leaf = None
+        for i in range(len(subject_lows) - 2):
+            if (subject_lows[i] == 'the' and subject_lows[i + 1] == 'number'
+                    and subject_lows[i + 2] == 'of'):
+                number_leaf = subject_leaves[i + 1]
+                break
+        if number_leaf is None:
+            continue
+        # Only the clause predicate is agreement evidence. A verb inside the
+        # relative clause in "the number of students who were late" agrees
+        # with "students", not with "the number of".
+        vhead = _predicate_verb(vp)
+        if vhead is None:
+            continue
+        if vhead.get('type') == 'VBP' or _lower(vhead) in ('are', 'were'):
+            out.append(_finding('2.9', 'error', 'C-NUMBER-AGREE',
+                                'agreement', vhead['id'],
+                                f"With the phrase 'the number of', this sentence takes "
+                                f"a singular verb, not '{vhead['surface']}'.",
+                                _tree_evidence(number_leaf['id'],
+                                               'the number of + plural verb')))
 
     # 10.2 proper nouns, I, days, months
     for lf in leaves:
@@ -2238,12 +2275,13 @@ f"The possessive '{lf['surface']}' in this sentence "
                 vp = c
         if vp is None:
             continue
-        vhead = None
-        for x in _leaves(vp):
-            if x.get('type') in FINITE_TYPES or x.get('type') in ('VBZ', 'VBP', 'VBD'):
-                vhead = x
-                break
+        vhead = _predicate_verb(vp)
         if vhead is None:
+            continue
+        if vhead.get('type') in {'VB', 'VBG', 'VBN'}:
+            continue
+        if (vhead.get('type') == 'VBD'
+                and _lower(vhead) not in (BE_SURFACES | HAVE_SURFACES | DO_SURFACES)):
             continue
         nlow, vlow = _lower(nearest), _lower(vhead)
         if nlow == 'i' and vlow not in ('am', 'was'):
@@ -2458,13 +2496,16 @@ f"The possessive '{lf['surface']}' in this sentence "
         if not ccs:
             continue
         conj = _lower(ccs[0])
-        vhead = None
-        for x in _leaves(vp):
-            if x.get('type') in ('VBZ', 'VBP') or _lower(x) in (
-                    BE_SURFACES | HAVE_SURFACES | DO_SURFACES):
-                vhead = x
-                break
+        vhead = _predicate_verb(vp)
         if vhead is None:
+            continue
+        if vhead.get('type') in {'VB', 'VBG', 'VBN'}:
+            # Non-finite predicates do not carry finite subject agreement.
+            continue
+        if (vhead.get('type') == 'VBD'
+                and _lower(vhead) not in (BE_SURFACES | HAVE_SURFACES | DO_SURFACES)):
+            # A past-tense lexical verb ("saw") does not distinguish
+            # singular from plural, so it cannot be evidence of a mismatch.
             continue
         vkey = _verb_key(vhead)
         vlow = _lower(vhead)

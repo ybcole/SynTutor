@@ -22,10 +22,16 @@ NAMES = {
     "Adv": "adverb", "PRO": "pronoun", "PRON": "pronoun",
     "ART": "article", "DET": "determiner", "NAME": "name",
     "P": "preposition", "DEG": "degree word",
+    "Q": "quantifier", "QA": "quantifying adjective", "POSS": "possessive",
+    "DEM": "demonstrative determiner", "V-part": "participle",
+    "PartP": "participle phrase", "Prt": "particle",
+    "PRE-DET": "pre-determiner", "PART": "particle", "NEG": "negator",
+    "name": "name", "Phrase": "phrase", "PHRASE": "phrase",
     "MOD": "modal auxiliary", "PERF": "perfect auxiliary",
     "PROG": "progressive auxiliary", "PASS": "passive auxiliary",
     "AUX": "auxiliary", "TENSE": "tense marker",
-    "C": "clause introducer", "C2": "clause introducer",
+    "C": "clause introducer", "C1": "clause introducer",
+    "C2": "clause introducer", "pronoun": "pronoun",
 }
 BE = {"am", "is", "are", "was", "were", "be", "been", "being"}
 HAVE = {"have", "has", "had"}
@@ -33,18 +39,22 @@ MODALS = {"can", "could", "may", "might", "must", "shall", "should", "will", "wo
 PRONOUNS = {
     "i": "the person speaking", "me": "the person speaking",
     "you": "the person being addressed",
-    "he": "a person referred to as he", "him": "a person referred to as he",
-    "she": "a person referred to as she", "her": "a person referred to as she",
-    "we": "the speaker and others", "us": "the speaker and others",
-    "they": "people or things being referred to",
-    "them": "people or things being referred to",
+    "he": "a male person already known in the context",
+    "him": "a male person already known in the context",
+    "she": "a female person already known in the context",
+    "her": "a female person already known in the context",
+    "we": "the speaker and other people", "us": "the speaker and other people",
+    "they": "people or things already known in the context",
+    "them": "people or things already known in the context",
     "it": "a thing, idea or situation already understood",
 }
 ARTICLES = {"the": "points to something identifiable in context",
             "a": "introduces one non-specific example",
             "an": "introduces one non-specific example"}
-LEXICAL = {"N", "V", "A", "Adv", "P", "PRO", "PRON", "ART", "NAME",
-           "DEG", "MOD", "PERF", "PROG", "PASS", "AUX", "DET", "C", "C2"}
+LEXICAL = {"N", "V", "A", "Adv", "P", "PRO", "PRON", "pronoun", "ART", "NAME",
+           "name", "DEG", "Q", "QA", "POSS", "DEM", "V-part", "PRE-DET", "PART",
+           "Prt", "NEG", "MOD", "PERF", "PROG", "PASS", "AUX", "TENSE", "DET",
+           "C", "C1", "C2"}
 
 
 def _quote(value: str) -> str:
@@ -71,6 +81,21 @@ def _first_ancestor(node: dict, by_id: dict[str, dict], labels: set[str]) -> dic
                  if k in by_id and by_id[k].get("label") in labels), None)
 
 
+def _larger_context(node: dict, by_id: dict[str, dict]) -> str | None:
+    """Nearest enclosing phrase whose surface is not just this node's surface."""
+    own = str(node.get("surface") or "").strip()
+    labels = {"S", "S'", "S''", "S-bar", "S-dbar",
+              "VP", "NP", "NOM", "PP", "AP", "AdvP"}
+    for ancestor_id in node.get("ancestor_ids") or []:
+        ancestor = by_id.get(ancestor_id)
+        if not ancestor or ancestor.get("label") not in labels:
+            continue
+        surface = str(ancestor.get("surface") or "").strip()
+        if surface and surface != own:
+            return _node_phrase(ancestor)
+    return None
+
+
 def _neighbor(graph: dict, node: dict, offset: int) -> str | None:
     span = node.get("token_span")
     if not span or span[0] == span[1]:
@@ -93,15 +118,18 @@ def _word(node: dict, graph: dict, by_id: dict[str, dict]) -> str:
     word, lower = node["surface"], node["surface"].lower()
     kind = _word_kind(node, by_id)
     clause = _first_ancestor(node, by_id, {"S", "S'", "S''", "S-bar", "S-dbar"})
-    phrase = _first_ancestor(node, by_id, {"VP", "NP", "NOM", "PP", "AP", "AdvP"})
+    raw_context = _larger_context(node, by_id)
+    context = raw_context or "the sentence as a whole"
     next_word = _neighbor(graph, node, 1)
     previous_word = _neighbor(graph, node, -1)
-    context = _node_phrase(phrase) if phrase else _quote(graph.get("sentence", ""))
 
     if kind in {"PRO", "PRON"} or lower in PRONOUNS and kind not in {"N", "V", "A"}:
         meaning = PRONOUNS.get(lower)
         if meaning:
-            return f"{_quote(word)} is a pronoun referring to {meaning}. In this sentence, it is part of {context}."
+            if raw_context:
+                return (f"{_quote(word)} is a pronoun referring to {meaning}. "
+                        f"In this sentence, it is part of {context}.")
+            return f"{_quote(word)} is a pronoun referring to {meaning} in this sentence."
         return f"{_quote(word)} is a pronoun used to refer to someone or something in this sentence."
 
     if lower in BE and kind in {"V", "AUX", "PROG", "PASS", "TENSE", "PERF"}:
@@ -138,6 +166,27 @@ def _word(node: dict, graph: dict, by_id: dict[str, dict]) -> str:
         return (f"{_quote(word)} is a modal helping verb that can express {meaning}. "
                 f"Here it belongs to the verb phrase {context}.")
 
+    if kind == "Q":
+        return f"{_quote(word)} is a quantifier that tells how many or how much."
+    if kind == "QA":
+        return (f"{_quote(word)} is a quantifying adjective telling how much or "
+                "how many.")
+    if kind == "Prt":
+        return (f"{_quote(word)} is a particle that combines with the verb to "
+                "form a phrasal verb.")
+    if kind in {"NAME", "name"}:
+        return (f"{_quote(word)} is a name identifying a particular person, place, "
+                "day or thing.")
+    if kind == "POSS":
+        return f"{_quote(word)} is a possessive word showing who something belongs to."
+    if kind == "DEM":
+        return (f"{_quote(word)} is a demonstrative word pointing to something "
+                "identified in the context.")
+    if kind == "V-part":
+        return f"{_quote(word)} is a participle forming part of {context}."
+    if kind in {"PRE-DET", "PART", "NEG"}:
+        return f"{_quote(word)} is a {NAMES.get(kind, 'function word')} in {context}."
+
     if kind in {"ART", "DET"} or lower in ARTICLES and kind not in {"N", "V"}:
         meaning = ARTICLES.get(lower)
         if meaning:
@@ -160,15 +209,26 @@ def _word(node: dict, graph: dict, by_id: dict[str, dict]) -> str:
     if kind in {"Adv", "DEG"}:
         return f"{_quote(word)} adds detail or emphasis to the surrounding expression {context}."
     if kind == "P":
+        if lower in {"here", "there", "where", "everywhere", "nowhere"}:
+            return f"{_quote(word)} is a place word that stands for a location in this sentence."
         pp = _first_ancestor(node, by_id, {"PP"})
-        if pp:
+        if pp and str(pp.get("surface") or "").strip() != word.strip():
             return f"{_quote(word)} introduces the preposition phrase {_node_phrase(pp)}, linking it to the rest of the expression."
         return f"{_quote(word)} is a preposition relating the following words to the surrounding phrase."
-    if kind in {"C", "C2"}:
+    if kind in {"C", "C1", "C2"}:
+        if kind == "C2" and lower in {"who", "whom", "whose", "what", "which",
+                                      "when", "where", "why", "how"}:
+            return (f"{_quote(word)} is the wh-phrase at the front of the question. "
+                    "It corresponds to the missing position inside the clause.")
+        if lower in {"that", "whether", "if"}:
+            return f"{_quote(word)} introduces the subordinate clause {context}."
+        if lower in BE | HAVE | MODALS | {"do", "does", "did"}:
+            return (f"{_quote(word)} is an auxiliary verb placed before the subject "
+                    "to form a question in this sentence.")
         return f"{_quote(word)} introduces or connects a clause in this sentence."
     if previous_word:
         return (f"{_quote(word)} appears after {_quote(previous_word)}"
-                + (f" as part of {context}." if phrase else " in this sentence."))
+                + (f" as part of {context}." if raw_context else " in this sentence."))
     if next_word:
         return f"{_quote(word)} appears before {_quote(next_word)}, as part of this sentence."
     return f"{_quote(word)} is the word at this point in the sentence."
@@ -181,14 +241,52 @@ def _phrase(node: dict, graph: dict, by_id: dict[str, dict]) -> str:
     parent = by_id.get(node["parent_id"])
     other = next((by_id[k] for k in node["sibling_ids"]
                   if k in by_id and by_id[k]["surface"]), None)
-    if label in {"S", "S'", "S''", "S-bar", "S-dbar"}:
+    if not str(node.get("surface") or "").strip():
+        if label == "TENSE":
+            return ("This position marks the tense of the clause; the tense is not "
+                    "carried by a separate spoken word here.")
+        if label == "C2":
+            return ("This position marks the fronted wh-phrase or relative operator; "
+                    "the phrase itself appears at the front of the clause.")
+        if label == "C1":
+            return ("This position marks the clause introducer; no word is "
+                    "pronounced here.")
+        if label in {"AUX", "DET"}:
+            return ("This position marks structural information that is not "
+                    "pronounced as a separate word here.")
+        description = NAMES.get(label)
+        if description:
+            return f"This empty position stands for an omitted {description}."
+        return ("This position represents an understood or omitted part of the "
+                "sentence, rather than a word that is actually spoken.")
+    if label in {"S", "S'", "S''", "S-bar", "S-dbar", "Sentence"}:
         if len(children) >= 2 and children[0].get("label") == "NP" and children[1].get("label") == "VP":
-            return (f"In {surface}, {_node_phrase(children[0])} identifies who or what "
-                    f"the sentence is about, and {_node_phrase(children[1])} tells us "
-                    f"what happens or what is being described.")
+            subject = (_node_phrase(children[0]) if str(children[0].get("surface") or "").strip()
+                       else "the understood subject")
+            predicate = (_node_phrase(children[1]) if str(children[1].get("surface") or "").strip()
+                         else "the predicate")
+            return (f"In {surface}, {subject} identifies who or what "
+                    f"the sentence is about, and {predicate} tells us "
+                    "what happens or what is being described.")
+        if label in {"S-bar", "S'", "S''", "S-dbar"} and parent \
+                and parent.get("label") in {"S-bar", "S'", "S''", "S-dbar"} \
+                and parent.get("surface") == node.get("surface"):
+            return f"{surface} is the inner clause layer of this subordinate clause."
+        if label in {"S-bar", "S'", "S''", "S-dbar"} and children:
+            lead = (_node_phrase(children[0])
+                    if str(children[0].get("surface") or "").strip()
+                    else "the clause marker")
+            return (f"{surface} is a subordinate clause layer; {lead} introduces "
+                    "it and the following clause supplies the rest.")
         if children:
             return f"{surface} is a clause made up of the connected parts of this sentence."
         return f"{surface} is a clause in this sentence."
+
+    if label in {"Phrase", "PHRASE", "PHRASE-a", "PHRASE-b", "PHRASE-c"}:
+        return f"{surface} is a phrase in the sentence structure."
+
+    if label == "PartP":
+        return f"{surface} is a participle phrase describing or identifying a noun."
 
     if label == "NP":
         noun = next((c for c in children if c.get("label") in {"N", "NOM", "NAME"}), None)
@@ -196,6 +294,9 @@ def _phrase(node: dict, graph: dict, by_id: dict[str, dict]) -> str:
             return (f"{surface} is a noun phrase identifying who or what this clause is about. "
                     f"The accompanying verb phrase {_node_phrase(other)} tells us more about it.")
         if noun:
+            if str(noun.get("surface") or "").strip() == str(node.get("surface") or "").strip():
+                return (f"{surface} is a noun phrase naming a person, thing, "
+                        "group, or idea.")
             return f"{surface} is a noun phrase built around {_node_phrase(noun)}, which names the person or thing being referred to."
         return f"{surface} is a noun phrase referring to a person, thing, group, or idea."
 
@@ -203,6 +304,12 @@ def _phrase(node: dict, graph: dict, by_id: dict[str, dict]) -> str:
         return f"{surface} groups a noun with any words that describe or restrict it, forming part of a larger noun phrase."
 
     if label == "VP":
+        if parent and parent.get("label") == "VP" and parent.get("surface") == node.get("surface"):
+            parts = ", ".join(str(child.get("label") or "word") for child in children[:4])
+            return (f"{surface} is the inner verb-phrase layer containing "
+                    f"{parts or 'its parts'}.")
+        if len(children) == 1 and children[0].get("label") == "VP":
+            return f"{surface} is a nested verb-phrase layer in this clause."
         if other and parent and parent.get("label") in {"S", "S'", "S''"} and other.get("label") == "NP":
             return (f"{surface} is the verb phrase, expressing what happens or is true "
                     f"of {_node_phrase(other)} in this clause.")
@@ -219,6 +326,9 @@ def _phrase(node: dict, graph: dict, by_id: dict[str, dict]) -> str:
     if label == "PP":
         beginning = children[0] if children else None
         if beginning:
+            if str(beginning.get("surface") or "").strip() == str(node.get("surface") or "").strip():
+                return (f"{surface} is a short prepositional expression adding "
+                        "place, time or manner information.")
             return (f"{surface} is a preposition phrase beginning with {_node_phrase(beginning)}. "
                     "It adds a relationship such as place, time or manner to the surrounding expression.")
         return f"{surface} is a preposition phrase adding information to the surrounding expression."
@@ -226,21 +336,28 @@ def _phrase(node: dict, graph: dict, by_id: dict[str, dict]) -> str:
     if label == "AdvP":
         return f"{surface} is an adverb phrase adding information about how, when, where or to what extent something happens."
 
-    if label in {"V", "N", "A", "Adv", "ART", "DET", "PRO", "PRON", "AUX", "MOD",
-                 "PERF", "PROG", "PASS", "P", "DEG", "NAME", "C", "C2"}:
+    if label in LEXICAL:
         description = NAMES.get(label, "word group")
         if len(children) == 1 and children[0]["kind"] == "word":
-            return _word(children[0], graph, by_id)
+            # The branch explains the phrase-marker slot; the word child
+            # explains the word itself. Keeping them distinct prevents the
+            # learner from seeing the same paragraph twice.
+            role = {"C1": "clause-marker", "C2": "fronted-phrase"}.get(label, description)
+            context = _larger_context(node, by_id) or "this part of the sentence"
+            return (f"The {role} position in {context} is filled by "
+                    f"{_quote(children[0]['surface'])}.")
         if label in {"V", "AUX", "MOD", "PERF", "PROG", "PASS"}:
             return f"{surface} is the {description} in this part of the sentence."
         return f"{surface} is the {description} in the surrounding phrase."
 
     if node["kind"] == "triangle":
-        if parent and parent.get("label"):
+        if (parent and parent.get("label")
+                and str(parent.get("surface") or "").strip() != str(node.get("surface") or "").strip()):
             return f"{surface} is a part of the larger {_node_phrase(parent)} phrase; its internal words are not analysed further here."
         return f"{surface} forms a phrase whose internal words are not analysed further here."
 
-    if parent and parent["surface"]:
+    if (parent and parent.get("surface")
+            and str(parent.get("surface")).strip() != str(node.get("surface") or "").strip()):
         return f"{surface} forms one part of the larger expression {_node_phrase(parent)}."
     return f"{surface} is a unit in the structure of this sentence."
 

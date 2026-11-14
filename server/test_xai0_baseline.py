@@ -111,7 +111,11 @@ class XAI0BaselineTests(unittest.TestCase):
         self.assertEqual(inventory["source_records"], 4)
         self.assertEqual(inventory["templates_pending_review"], 1)
         self.assertEqual(inventory["sources_pending_eligibility"], 2)
-        self.assertEqual(inventory["runtime_enabled_cambridge_rules"], 0)
+        live_registry = json.loads(
+            (ROOT / "grammar/runtime_registry.json").read_text(encoding="utf-8"))
+        expected_live = len(live_registry.get("enabled_rules") or [])
+        self.assertGreater(expected_live, 0)
+        self.assertEqual(inventory["runtime_enabled_cambridge_rules"], expected_live)
         self.assertEqual(inventory["template_channels"]["structural"], 1)
         self.assertEqual(inventory["template_channels"]["grammatical"], 1)
 

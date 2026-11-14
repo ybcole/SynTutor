@@ -3138,6 +3138,15 @@ body.workspace-view-open .app-main { display: none; }
 .tree-outline-body [aria-current="true"] { font-weight: 700; text-decoration: underline; }
 .cp-change { overflow-wrap: anywhere; }
 .cp-change del, .cp-change ins { font-weight: 650; }
+.cp-impact {
+  margin-top: 10px;
+  padding: 8px 10px;
+  border-left: 3px solid var(--accent, #3a73c1);
+  background: color-mix(in srgb, var(--accent, #3a73c1) 7%, transparent);
+}
+.cp-impact-summary { margin: 4px 0; font-weight: 600; }
+.cp-impact-item { margin: 3px 0; font-size: .85rem; color: var(--muted, #5b6472); }
+.cp-impact-introduced { color: var(--err); }
 .correction-panel details { max-inline-size: 100%; }
 @media (prefers-reduced-motion: reduce) {
   .correction-panel .loading-spinner { animation: none; }
@@ -3175,6 +3184,19 @@ body.workspace-view-open .app-main { display: none; }
   outline-offset: 1px;
 }
 .lesson-tree-wrap [data-node-id][role="button"] { cursor: pointer; }
+.lesson-tree-legend {
+  margin: 0 0 .5rem;
+  padding: .35rem .5rem;
+  font-size: .78rem;
+  color: var(--muted, #5b6472);
+  border-left: 3px solid var(--accent, #3a73c1);
+}
+/* Nodes with a node-specific explanation carry a dotted marker. Nodes that
+   repeat their enclosing phrase's explanation stay selectable but unmarked. */
+.canonical-tree-view [data-node-id][data-explainable="unique"]:not([data-legacy-issue]):not([data-candidate-issue]) > text {
+  text-decoration: underline dotted;
+  text-underline-offset: .22em;
+}
 .lesson-tree-wrap [data-node-id][role="button"]:focus-visible > text,
 .lesson-tree-wrap [data-feature-label]:focus-visible,
 .canonical-tree-view [data-node-id][data-xai7-focus="selected"] > text,

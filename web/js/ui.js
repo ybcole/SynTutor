@@ -227,6 +227,19 @@ export function renderCorrection(summary) {
     box.appendChild(list);
   }
 
+  if (correction.impact) {
+    label(box, 'What this revision changes');
+    const impact = correction.impact;
+    const line = document.createElement('p');
+    line.className = 'ex-text';
+    line.textContent = impact.whole_sentence_clean
+      ? 'Re-parsing finds no remaining rule-level error.'
+      : `Re-parsing after the revision: ${impact.resolved_count || 0} resolved, `
+        + `${impact.remaining_count || 0} still present, `
+        + `${impact.introduced_count || 0} newly introduced.`;
+    box.appendChild(line);
+  }
+
   if (summary.explanation) {
     label(box, 'Why');
     const why = document.createElement('p');
@@ -391,6 +404,40 @@ export function renderCorrectionPanel(info, handlers = {}) {
       annotation.append(removed ? ' · Added ' : 'Added ', replacement);
     }
     box.appendChild(annotation);
+
+    if (info.impact) {
+      const impact = info.impact;
+      const section = document.createElement('section');
+      section.className = 'cp-impact';
+      const heading = document.createElement('div');
+      heading.className = 'nc-label';
+      heading.textContent = 'What this fix changes';
+      const line = document.createElement('p');
+      line.className = 'cp-impact-summary';
+      if (impact.whole_sentence_clean) {
+        line.textContent = 'Re-parsing finds no remaining rule-level error. The whole sentence is clean.';
+      } else {
+        const parts = [];
+        if (impact.resolved_count) parts.push(`${impact.resolved_count} issue${impact.resolved_count === 1 ? '' : 's'} resolved`);
+        if (impact.remaining_count) parts.push(`${impact.remaining_count} still present`);
+        if (impact.introduced_count) parts.push(`${impact.introduced_count} newly introduced`);
+        line.textContent = `Re-parsing after this edit: ${parts.join(', ') || 'no change in the rule-level error set'}.`;
+      }
+      section.append(heading, line);
+      for (const row of (impact.remaining || []).slice(0, 3)) {
+        const item = document.createElement('p');
+        item.className = 'cp-impact-item';
+        item.textContent = `Still present: ${row.violation || row.suggested_fix || row.constraint}`;
+        section.append(item);
+      }
+      for (const row of (impact.introduced || []).slice(0, 3)) {
+        const item = document.createElement('p');
+        item.className = 'cp-impact-item cp-impact-introduced';
+        item.textContent = `New after the edit: ${row.violation || row.suggested_fix || row.constraint}`;
+        section.append(item);
+      }
+      box.appendChild(section);
+    }
 
     const canonical = preview.payload.br_analysis?.tree;
     const details = document.createElement('details');

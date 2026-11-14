@@ -7,7 +7,15 @@ It is a display/evidence bridge, not a Cambridge rule evaluator.
 """
 from __future__ import annotations
 
+import re
 from typing import Any
+
+_LEAF_TAGS = {
+    "CC", "CD", "DT", "EX", "IN", "JJ", "JJR", "JJS", "MD", "NN", "NNS",
+    "NNP", "NNPS", "PDT", "PRP", "PRP$", "RB", "RBR", "RBS", "RP", "TO",
+    "UH", "VB", "VBD", "VBG", "VBN", "VBP", "VBZ", "WDT", "WP", "WP$", "WRB",
+}
+_QUOTED = re.compile(r"['\u2018\u2019]([^'\u2018\u2019]{1,60})['\u2018\u2019]")
 
 
 def _walk(root: dict[str, Any] | None, parent: dict[str, Any] | None = None):
@@ -68,6 +76,18 @@ def bind_details_to_canonical(tree: dict[str, Any] | None,
             _span_length(node),
         ))
 
+    def token_for_word(word: str):
+        """Resolve a quoted word in prose to the canonical token that carries it."""
+        target = word.strip().lower()
+        if not target:
+            return None
+        for token in tokens:
+            if str(token.get("text", "")).lower() == target:
+                return smallest_token(int(token.get("index", 0)))
+        return None
+
+    tokens = tree.get("tokens") if isinstance(tree.get("tokens"), list) else []
+
     mapped = 0
     unmapped = 0
     for detail in details.values():
@@ -90,7 +110,33 @@ def bind_details_to_canonical(tree: dict[str, Any] | None,
                     else smallest_token(start))
             if node is not None:
                 targets.append(node)
-        if not rows and isinstance(detail.get("span"), list) and len(detail["span"]) == 2:
+        # A finding can name one word while its repair edits a different word
+        # ("These child" flags the determiner but repairs the noun). Bind the
+        # flagged node too so every red word has an explanation.
+        span = detail.get("span") if isinstance(detail.get("span"), list) else []
+        if len(span) == 2 and all(isinstance(value, int) for value in span):
+            start, end = span
+            if str(detail.get("type") or "").upper() in _LEAF_TAGS or end - start <= 1:
+                for index in range(start, min(end, start + 1)):
+                    node = smallest_token(index)
+                    if node is not None:
+                        targets.append(node)
+        if not rows:
+            prose = " ".join(str(remediation.get(key) or "") for key in
+                             ("violation", "suggested_fix", "alternative_fix"))
+            prose += " " + str(detail.get("text") or "")
+            surface_words = set(re.findall(
+                r"[A-Za-z0-9][A-Za-z0-9'’-]*", str(detail.get("surface") or "").lower()))
+            for word in _QUOTED.findall(prose):
+                # Resolve only single-word quotes that actually occur inside
+                # the flagged node. Otherwise prose such as "subjects with
+                # 'and'" would mark an unrelated conjunction.
+                if " " in word.strip() or word.strip().lower() not in surface_words:
+                    continue
+                node = token_for_word(word)
+                if node is not None:
+                    targets.append(node)
+        if not targets and isinstance(detail.get("span"), list) and len(detail["span"]) == 2:
             start, end = detail["span"]
             if isinstance(start, int) and isinstance(end, int):
                 node = smallest_span(start, end)
@@ -118,5 +164,7 @@ def bind_details_to_canonical(tree: dict[str, Any] | None,
             "node_ids": [node["id"] for node in unique],
             "label": _node_label(unique[0], parents),
             "token_span": unique[0].get("token_span"),
+            "token_spans": [node.get("token_span") for node in unique
+                            if isinstance(node.get("token_span"), list)],
         }
     return {"status": "mapped", "mapped": mapped, "unmapped": unmapped}

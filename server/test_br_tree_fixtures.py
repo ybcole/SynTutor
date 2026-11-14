@@ -16,6 +16,7 @@ class BurtonRobertsFixtureTests(unittest.TestCase):
         aligned = []
         accepted = []
         rejected = []
+        legacy = []
         for record in records:
             if record.get("status") != "IMG" or record.get("correct") is False:
                 continue
@@ -23,6 +24,11 @@ class BurtonRobertsFixtureTests(unittest.TestCase):
             version = record.get("_convention_version")
             tree = record.get("tree")
             if not isinstance(sentence, str) or not version or not isinstance(tree, dict):
+                continue
+            if version != "V1" and tree.get("label") == "Sentence":
+                # V1-era flat Sentence labels cannot be valid V2+ references
+                # (V2 requires S -> NP VP). They remain lesson examples.
+                legacy.append(record.get("id"))
                 continue
             if _source_yield(tree) != _atoms(sentence):
                 continue
@@ -53,7 +59,8 @@ class BurtonRobertsFixtureTests(unittest.TestCase):
             "B-R IMG source audit: "
             f"{len(aligned)} sentence-aligned records; "
             f"{len(accepted)} normalized and validated; "
-            f"{len(rejected)} explicitly unresolved."
+            f"{len(rejected)} explicitly unresolved; "
+            f"{len(legacy)} legacy-label lesson records skipped."
         )
         if rejected:
             print("Explicitly unresolved source records:")

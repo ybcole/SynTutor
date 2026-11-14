@@ -1,6 +1,7 @@
 import { accountUserId } from './session-scope.js';
 import { fromCanonicalEnvelope } from './syntax-builder.js';
-import { requestEvidence, renderEvidence, learnerFindingParagraph } from './explanation-evidence.js';
+import { requestEvidence, renderEvidence, learnerFindingParagraph, evidenceParagraphText } from './explanation-evidence.js';
+import { shouldCollapseExplanation } from './explanation-dedupe.js';
 import { findCanonicalNode, canonicalNodeFacts } from './canonical-view.js';
 import { mapLegacyDetailsToCanonical } from './legacy-node-map.js';
 import { enableCanvasView } from './canvas-view.js';
@@ -141,6 +142,44 @@ function activePreview() {
   return null;
 }
 
+function correctionErrorRows(payload) {
+  return Object.values(payload?.node_details || {})
+    .filter((detail) => detail && detail.status === 'error')
+    .map((detail) => ({
+      constraint: detail.constraint,
+      type: detail.type,
+      surface: detail.surface,
+      violation: detail.remediation?.violation || detail.text || '',
+      suggested_fix: detail.remediation?.suggested_fix || '',
+    }));
+}
+
+// A single validated edit is re-parsed. Compare the error set before and
+// after so the learner sees cascades instead of an unsupported claim that
+// the whole sentence is now correct.
+function previewImpact(originalPayload, previewPayload) {
+  if (!originalPayload || !previewPayload) return null;
+  const before = correctionErrorRows(originalPayload);
+  const after = correctionErrorRows(previewPayload);
+  const key = (row) => `${row.constraint || ''}|${row.type || ''}`;
+  const beforeKeys = new Set(before.map(key));
+  const afterKeys = new Set(after.map(key));
+  const resolved = before.filter((row) => !afterKeys.has(key(row)));
+  const remaining = after.filter((row) => beforeKeys.has(key(row)));
+  const introduced = after.filter((row) => !beforeKeys.has(key(row)));
+  const verdict = previewPayload.summary?.verdict;
+  return {
+    resolved_count: resolved.length,
+    remaining_count: remaining.length,
+    introduced_count: introduced.length,
+    resolved,
+    remaining,
+    introduced,
+    resulting_verdict: verdict,
+    whole_sentence_clean: verdict === 'grammatical' && !remaining.length && !introduced.length,
+  };
+}
+
 function refreshCorrectionUi() {
   if (!focus) {
     renderCorrectionPanel(focusResult ? { result: focusResult } : null, correctionHandlers);
@@ -153,6 +192,7 @@ function refreshCorrectionUi() {
     alternativeCanCorrect: Boolean(focus.alternativeEdit),
     suggestedFix: focus.suggestedFix || '',
     preview: activePreview(),
+    impact: previewImpact(session?.payload, activePreview()?.payload),
     renderCanonical: (tree) => renderLessonTree(tree, {
       displayLabels: activePreview()?.payload?.br_analysis?.display_labels,
     }),
@@ -1595,7 +1635,7 @@ function showCanonicalTree(payload) {
   const displayLabels = working ? analysis?.working_display_labels : analysis?.display_labels;
   if (!host || workspaceView !== 'tutor' || quizMode
       || (!working && analysis?.status !== 'normalized') || !envelope?.root
-      || (envelope.convention_profile?.version === 'FINAL' && !displayLabels)) {
+      || (!working && envelope.convention_profile?.version === 'FINAL' && !displayLabels)) {
     clearCanonicalTree();
     return false;
   }
@@ -1603,7 +1643,13 @@ function showCanonicalTree(payload) {
   canonicalCanvas = null;
   host.replaceChildren();
   const visual = renderLessonTree(envelope, {stackFeatures: true, displayLabels, interactive: true});
-  host.append(visual);
+  const legend = document.createElement('p');
+  legend.className = 'lesson-tree-legend';
+  legend.textContent = 'Underlined nodes have a specific explanation. Every node can be selected; '
+    + 'unmarked nodes repeat the explanation of their enclosing phrase. '
+    + 'Dots with matching subscripts (•₁, •₂) mark unpronounced positions linked to a moved '
+    + 'word or auxiliary; they are part of the analysis, not errors.';
+  host.append(legend, visual);
   host.hidden = false;
   // Moves the SVG into a pannable/zoomable viewport; everything below queries
   // the host, so selection keeps working on the moved SVG.
@@ -1621,6 +1667,7 @@ function showCanonicalTree(payload) {
   }
   indexParents(envelope.root);
   const legacyMap = mapLegacyDetailsToCanonical(envelope.root, payload?.node_details || {});
+  const explanationCache = new Map();
   const candidateIds = new Set();
   for (const item of payload?.explanation_evidence?.candidate_xai?.items || []) {
     const binding = item.tree_binding || {};
@@ -1647,6 +1694,7 @@ function showCanonicalTree(payload) {
       group.dataset.candidateIssue = 'true';
       titles.push('Candidate grammar check — not a verified error');
     }
+    group.dataset.explainable = legacyDetail || candidateIds.has(id) ? 'unique' : 'structural';
     if (titles.length) group.setAttribute('title', titles.join(' · '));
     // A word remains selectable as its own node. Parent references are shown
     // as metadata only, never silently substituted for word-level evidence.
@@ -1689,11 +1737,28 @@ function showCanonicalTree(payload) {
         // A pending request must not repaint another sentence/account/view.
         if (selectedVersion !== requestVersion || host.hidden || !host.contains(group)
             || (session?.payload !== payload && activePreview()?.payload !== payload)) return;
-        renderEvidence(evidence, evidenceSlot, {
+        const options = {
           treeRoot: group.closest('#canonicalTreeView'),
           nodeId: owner.id,
           legacyDetail: legacyMap.detailForNode(owner.id) || legacyMap.detailForNode(id),
-        });
+        };
+        // Repeated explanations are collapsed, not hidden: a learner who
+        // selects a second node sees that it shares its enclosing phrase's
+        // explanation and can jump back to the phrase for the full text.
+        const text = evidenceParagraphText(evidence, options);
+        const parent = parents.get(owner.id);
+        const parentText = parent ? explanationCache.get(parent.id)?.text : null;
+        if (shouldCollapseExplanation(owner, text, parentText)) {
+          const parentFacts = canonicalNodeFacts(envelope, parent);
+          options.paragraphOverride = 'Same explanation as the enclosing '
+            + (parentFacts.label || 'phrase')
+            + (parentFacts.surface ? ' “' + parentFacts.surface + '”' : '')
+            + '. Select that phrase or a word for a more specific explanation.';
+          group.dataset.explainable = 'structural';
+        } else {
+          explanationCache.set(owner.id, {text});
+        }
+        renderEvidence(evidence, evidenceSlot, options);
       } catch (error) {
         if (host.hidden || !host.contains(group)) return;
         const message = document.createElement('p');
@@ -1725,8 +1790,14 @@ function setTreeAuthorityNotice(payload) {
     .map((row) => row?.message || row?.detail).find(Boolean)
     || (analysis?.reasons || []).map((row) => row?.detail).find(Boolean);
   if (canonicalShown) {
-    notice.hidden = true;
-    notice.textContent = '';
+    if (!analysis?.tree && analysis?.working_tree) {
+      notice.textContent = 'Provisional B-R working tree: this analysis is unresolved. '
+        + 'Known categories are shown; the remaining grouping is provisional.';
+      notice.hidden = false;
+    } else {
+      notice.hidden = true;
+      notice.textContent = '';
+    }
     document.querySelector('#openCanonicalBuilder')?.remove();
     return;
   }
@@ -2160,6 +2231,14 @@ function buildHighlightSpans(text, payload) {
       const edit = row?.edit || row;
       if (Number.isInteger(edit?.start) && Number.isInteger(edit?.end)) {
         addTokenSpan(edit.start, edit.end);
+        matched = true;
+      }
+    }
+    // Bound canonical words include the flagged word and any word named by
+    // its repair, so both sides of a multi-word error stay highlighted.
+    for (const span of detail.canonical_binding?.token_spans || []) {
+      if (Array.isArray(span) && span.length === 2) {
+        addTokenSpan(span[0], span[1]);
         matched = true;
       }
     }

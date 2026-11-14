@@ -81,4 +81,19 @@ assert.equal(backendMapped.mapped, 1);
 assert.equal(backendMapped.byNode.get('sg-root-1-0-0')?.constraint, 'C-SUBJECT-AGREEMENT');
 assert.equal(backendMapped.byNode.get('sg-root-1'), undefined);
 
+// A multi-word error binds every word it names, so each red word opens the
+// same "What's wrong" explanation instead of leaving one word without one.
+const multiBound = mapLegacyDetailsToCanonical(tree, {
+  n2: {
+    status: 'error',
+    span: [0, 1],
+    constraint: 'C-DETERMINER-AGREEMENT',
+    canonical_node_id: 'sg-root-0-1',
+    canonical_node_ids: ['sg-root-0-0', 'sg-root-0-1'],
+  },
+});
+assert.equal(multiBound.byNode.get('sg-root-0-0')?.constraint, 'C-DETERMINER-AGREEMENT');
+assert.equal(multiBound.byNode.get('sg-root-0-1')?.constraint, 'C-DETERMINER-AGREEMENT');
+assert.equal(multiBound.byNode.get('sg-root-0'), undefined);
+
 console.log('legacy-node-map tests passed');

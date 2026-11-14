@@ -219,13 +219,15 @@ class ChapterThreeCandidateProbeTests(unittest.TestCase):
         self.assertTrue(all(c["status"] == "needs_linguistic_validation"
                             for c in result["candidates"]))
 
-    def test_enabled_registry_remains_empty_even_after_candidate_checks(self):
-        self.assertEqual(load_runtime_registry()["active_rules"], [])
-        self.assertEqual(load_runtime_registry()["active_rule_ids"], [])
+    def test_candidate_checks_do_not_mutate_the_live_registry(self):
+        before = load_runtime_registry()
+        self.assertTrue(all(rule.get("owner_waiver") is True
+                            for rule in before["active_rules"]))
         sentence = "She may will finish tomorrow."
         rel = selection(sentence, "may", "will", dependent_role="central_modal",
                         dependent_form="modal")
         self.assertFalse(run(sentence, rel)["production_enabled"])
+        self.assertEqual(load_runtime_registry(), before)
 
 
 if __name__ == "__main__":

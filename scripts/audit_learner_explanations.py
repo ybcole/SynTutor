@@ -21,6 +21,10 @@ from burton_roberts import canonicalize_gold_record
 BANNED=("b-r structural analysis","book evidence","ch5 p.","rule references",
         "approved runtime","xai-3","benepar","cambridge grammar checks",
         "observed positions:","recorded token interval","source-reviewed")
+SELF_REFERENCE_PHRASES=("larger expression","is part of","is a part of",
+                        "part of the larger","position in","built around",
+                        "beginning with","preposition phrase","verb phrase",
+                        "clause ","in “")
 
 def run():
     validator=Draft202012Validator(json.loads(
@@ -30,13 +34,19 @@ def run():
     examples=0
     checked=0
     failures=[]
+    self_reference_failures=0
+    duplicate_parent_failures=0
     def audit(key,analysis):
-        nonlocal checked
+        nonlocal checked,self_reference_failures,duplicate_parent_failures
         try:
             graph=build_fact_graph(analysis)
             if graph["status"] not in {"observed","provisional"}:return
-            for node in graph["nodes"]:
-                result=compose_learner_explanation(graph,node_id=node["node_id"])
+            nodes=graph["nodes"]
+            by_id={node["node_id"]:node for node in nodes}
+            texts={node["node_id"]:compose_learner_explanation(
+                graph,node_id=node["node_id"]) for node in nodes}
+            for node in nodes:
+                result=texts[node["node_id"]]
                 errors=list(validator.iter_errors(result))
                 if errors:
                     failures.append(key+":schema")
@@ -46,10 +56,19 @@ def run():
                         or any(b in text.lower() for b in BANNED)
                         or result["source_claim_ids"] or result["whole_sentence_certified"]):
                     failures.append(key+":student-copy")
+                surface=str(node.get("surface") or "").strip()
+                if surface and any(f"{phrase}“{surface}”" in text
+                                   for phrase in SELF_REFERENCE_PHRASES):
+                    self_reference_failures+=1
+                    failures.append(key+":"+node["node_id"]+":self-reference")
+                parent=by_id.get(node.get("parent_id"))
+                if parent is not None and text==texts.get(parent["node_id"]):
+                    duplicate_parent_failures+=1
+                    failures.append(key+":"+node["node_id"]+":duplicate-parent")
                 checked+=1
                 status[result["status"]]+=1
                 families[node.get("label") or node["kind"]]+=1
-        except (ValueError,KeyError,TypeError) as exc:
+        except (ValueError,KeyError,TypeError,RecursionError):
             failures.append(key+":unavailable")
     course=json.loads((ROOT/"web/content/lessons/course.json").read_text())
     for lesson in course["lessons"]:
@@ -66,11 +85,13 @@ def run():
                 gold+=1
                 audit(path.stem+":"+str(row.get("id")),entry)
     return {
-        "schema_version":"learner-audit-1.0.0",
+        "schema_version":"learner-audit-1.1.0",
         "language_policy":"ENGLISH_ONLY",
         "lesson_trees":examples,"normalized_gold_trees":gold,
         "examined_nodes":checked,"status_counts":dict(status),
         "observed_label_counts":dict(sorted(families.items())),
+        "self_reference_failures":self_reference_failures,
+        "duplicate_parent_failures":duplicate_parent_failures,
         "model_network_calls":0,
         "independent_human_accuracy_cases":0,
         "unverified_rule_activations":0,

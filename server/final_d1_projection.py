@@ -100,7 +100,9 @@ def leaf(node):
 
 def kids(node):
     return [child for child in node.get("children", []) if not (
-        leaf(child) and (child.get("punct") or child["surface"] in {"[", "]", "(", ")", ":", ";"}))]
+        leaf(child) and (child.get("punct") or child["surface"] in {
+            "[", "]", "(", ")", ":", ";", ".", "?", "!", "\u2026", "...",
+        }))]
 
 
 def raw(label, children):
@@ -142,6 +144,45 @@ class Gap:
 
 
 class Projection:
+    WORKING_LEAF_LABEL = {
+        "MD": "MOD", "TO": "C1", "DT": "DET", "PDT": "DET", "PRP$": "DET",
+        "NN": "N", "NNS": "N", "NNP": "N", "NNPS": "N",
+        "JJ": "A", "JJR": "A", "JJS": "A",
+        "RB": "Adv", "RBR": "Adv", "RBS": "Adv",
+        "IN": "P", "PRP": "pronoun", "WP": "pronoun", "EX": "pronoun",
+        "CD": "Q", "POS": "POSS",
+    }
+    WORKING_BRANCH_LABEL = {
+        "SQ": "S", "SBARQ": "S", "SINV": "S", "FRAG": "S", "SBAR": "S-bar",
+        "NML": "NOM", "NX": "NOM", "WHNP": "NP", "WHADVP": "AdvP",
+        "WHPP": "PP", "ADJP": "AP", "ADVP": "AdvP", "PRN": "PP",
+        "ROOT": "S", "TOP": "S",
+    }
+
+    def working_leaf(self, part):
+        if tag(part) == "CC":
+            # Coordinators are overt terminals in B-R phrase markers rather
+            # than a phrase category of their own.
+            return word_node(part)
+        label = self.WORKING_LEAF_LABEL.get(tag(part))
+        if tag(part) in VERB_TAGS - {"MD"}:
+            child = branch("V", (), word_node(part))
+            child["notes"] = ["Verb category only. Frame and tense analysis remain unresolved."]
+            return child
+        if label:
+            if label == "MOD":
+                # A modal is a branch with an overt word, not a triangle, so the
+                # FINAL-D1 display features can be attached. The form is not
+                # established in a provisional tree; mark the default explicitly.
+                child = branch("MOD", (), word_node(part), features=("pres",))
+                child["notes"] = ["Modal category and provisional present form. "
+                                  "The main-verb analysis remains unresolved."]
+                return child
+            return {"triangle": True, "label": label, "words": [part["surface"]],
+                    "notes": ["Category label only. Internal analysis remains unresolved."]}
+        return {"triangle": True, "words": [part["surface"]],
+                "notes": ["The syntactic role of this word remains unresolved."]}
+
     def __init__(self, tokens):
         self.tokens = tokens
         self.index = 0
@@ -165,21 +206,30 @@ class Projection:
         parts = kids(node)
         if tag(node) in {"ROOT", "TOP"} and len(parts) == 1:
             return self.working_tree(parts[0])
+        # Never collapse a whole clause into one triangle. Keep the observed
+        # constituent order, label known categories, and make the uncertainty
+        # local to the span that could not be projected.
+        label = self.WORKING_BRANCH_LABEL.get(tag(node), tag(node))
+        if parts and label in {"S", "S-bar", "VP", "NP", "NOM", "PP", "AP", "AdvP"}:
+            children = []
+            for part in parts:
+                if leaf(part):
+                    child = self.working_leaf(part)
+                else:
+                    child = self.working_tree(part, subject)
+                if tag(node) == "S" and tag(part) == "NP" and not children:
+                    subject = child
+                children.append(child)
+            result = branch(label, (), *children)
+            result["notes"] = ["Provisional constituent grouping. " + reason]
+            return result
         if tag(node) in {"S", "VP"} and parts:
             children = []
             for part in parts:
                 if leaf(part):
-                    # A word's category alone cannot establish its verb frame.
-                    if tag(part) in VERB_TAGS - {"MD"}:
-                        child = branch("V", (), word_node(part))
-                        child["notes"] = ["Verb category only. Frame and tense analysis remain unresolved."]
-                    else:
-                        child = {"triangle": True, "words": [part["surface"]],
-                                 "notes": ["The syntactic role of this word remains unresolved."]}
+                    child = self.working_leaf(part)
                 else:
                     child = self.working_tree(part, subject)
-                    if tag(node) == "S" and tag(part) == "NP" and not children:
-                        subject = child
                 children.append(child)
             result = branch(tag(node), (), *children)
             result["notes"] = ["Provisional constituent grouping. " + reason]
@@ -187,7 +237,8 @@ class Projection:
         result = {"triangle": True, "words": [n["surface"] for n in leaves(node)],
                   "notes": ["Unresolved internal analysis. " + reason]}
         # These identify the candidate phrase category only, not its internals.
-        category = {"NP": "NP", "PP": "PP", "ADJP": "AP", "ADVP": "AdvP"}.get(tag(node))
+        category = {"NP": "NP", "PP": "PP", "ADJP": "AP", "ADVP": "AdvP",
+                    "SBAR": "S-bar", "SQ": "S", "SBARQ": "S"}.get(tag(node))
         if category:
             result["label"] = category
         return result
@@ -226,6 +277,11 @@ class Projection:
                     return branch("PP", refs, branch("P", refs, word_node(parts[0])))
                 if tag(parts[0]) in {"IN", "RP"}:
                     return self.pp(parts)
+            # Benepar sometimes tags an adjective (or degree adverb + adjective)
+            # as ADVP. Project the phrase as AP; the matrix still reports the
+            # adjective/adverb choice independently.
+            if label == "ADVP" and parts and leaf(parts[-1]) and tag(parts[-1]) in ADJ_TAGS:
+                return self.modifier(parts, adjective=True)
             return self.modifier(parts, adjective=label == "ADJP")
         if label in {"S", "SQ", "SBARQ", "SBAR", "SINV"}:
             return self.clause(node)
@@ -242,10 +298,11 @@ class Projection:
         if len(nodes) == 1 and tag(nodes[0]) == ("ADJP" if adjective else "ADVP"):
             return self.phrase(nodes[0])
         if (adjective and nodes and tag(nodes[0]) == "ADJP"
-                and all(tag(node) == "SBAR" for node in nodes[1:])):
+                and all(tag(node) in {"SBAR", "PP"} for node in nodes[1:])):
             base = self.phrase(nodes[0])
             return branch(category, refs, *base["children"],
-                          *(self.clause(node) for node in nodes[1:]))
+                          *(self.clause(node) if tag(node) == "SBAR" else self.phrase(node)
+                            for node in nodes[1:]))
         head_tags = ADJ_TAGS | ({"CD", "DT", "NN", "RB"} if quantifying else set()) if adjective else ADV_TAGS | {"NN"}
         head = next((i for i in range(len(nodes) - 1, -1, -1)
                      if leaf(nodes[i]) and tag(nodes[i]) in head_tags), None)
@@ -298,6 +355,15 @@ class Projection:
             right = self.temporal_pp(nodes[2])
             if left is not None and right is not None:
                 return branch("PP", COORD, left, word_node(nodes[1]), right)
+        if (len(nodes) > 3 and leaf(nodes[0]) and tag(nodes[0]) == "CC"
+                and word(nodes[0]) in {"either", "neither"}):
+            # Correlative subject: CC + NP + CC + NP. The leading either/
+            # neither is part of the coordination, but it precedes the first
+            # conjunct, so the normal NP CC NP coordinator cannot start here.
+            coordination = self.coordinate(
+                nodes[1:], lambda part: self.np(part, nonrestrictive))
+            if coordination:
+                return branch("NP", COORD, word_node(nodes[0]), *coordination)
         coordination = self.coordinate(nodes, lambda part: self.np(part, nonrestrictive))
         if coordination:
             return branch("NP", COORD, *coordination)
@@ -308,7 +374,17 @@ class Projection:
             if len(inside) == 1 and leaf(inside[0]) and tag(inside[0]) in ADJ_TAGS:
                 ap = branch("AP", ("Ch7 p. 147",), branch("A", ("Ch7 p. 147",), word_node(inside[0])))
                 return branch("NP", NOUN, ap, self.clause(nodes[1]))
-            return branch("NP", NOUN, self.phrase(nodes[0]), self.clause(nodes[1]))
+            head_word = word(leaves(nodes[0])[-1])
+            sbar_parts = kids(nodes[1])
+            if (sbar_parts and leaf(sbar_parts[0])
+                    and word(sbar_parts[0]) in {"than", "as"}):
+                # Comparative as/than clauses are complements, not relatives.
+                return branch("NP", NOUN, self.phrase(nodes[0]), self.clause(nodes[1]))
+            if self.noun_complement(head_word, nodes[1]):
+                return branch("NP", NOUN, self.phrase(nodes[0]), self.clause(nodes[1]))
+            # A modifying SBAR with an object/subject gap is a relative clause,
+            # not a complement clause. Project the gap so movement is visible.
+            return branch("NP", WH, self.phrase(nodes[0]), self.relative(nodes[1]))
         if (len(nodes) == 2 and tag(nodes[0]) == "NP" and tag(nodes[1]) == "NP"
                 and kids(nodes[1]) and tag(kids(nodes[1])[0]) == "CONJP"):
             conjunction = kids(nodes[1])[0]
@@ -384,7 +460,7 @@ class Projection:
             head = next((i for i in range(stop - 1, start - 1, -1)
                          if leaf(nodes[i]) and (tag(nodes[i]) in NOUN_TAGS or (
                              start and i > start and tag(nodes[i]) == "CD" and word(nodes[i]) == "one"
-                             and tag(nodes[i - 1]) == "JJR"))), None)
+                             and tag(nodes[i - 1]) in ADJ_TAGS))), None)
             if head is None:
                 if len(nodes) == 1 and leaf(nodes[0]) and tag(nodes[0]) == "CD":
                     return branch("NP", NOUN, det, branch("NOM", NOMINAL, self.modifier(nodes, adjective=True, quantifying=True)))
@@ -427,6 +503,10 @@ class Projection:
             for mod in reversed(nodes[start:noun_start]):
                 if leaf(mod) and tag(mod) == "VBG":
                     phrase = branch("PartP", ("Ch7 pp. 147–148, 158",), branch("V-part", ("Ch7 p. 158",), word_node(mod)))
+                elif leaf(mod) and tag(mod) == "VBN":
+                    # A past-participial premodifier ("the revised report") is a
+                    # reduced relative, not an adjective phrase with no head.
+                    phrase = branch("PartP", ("Ch7 pp. 147–148, 158",), branch("V-part", ("Ch7 p. 158",), word_node(mod)))
                 elif tag(mod) == "ADJP":
                     phrase = self.phrase(mod)
                 elif tag(mod) == "QP":
@@ -436,13 +516,18 @@ class Projection:
                 nominal = branch("NOM", NOMINAL, phrase, nominal)
         for mod in modifiers:
             if tag(mod) == "SBAR":
-                if self.noun_complement(head_word, mod):
+                sbar_parts = kids(mod)
+                if (sbar_parts and leaf(sbar_parts[0])
+                        and word(sbar_parts[0]) in {"than", "as"}):
+                    phrase = self.clause(mod)
+                elif self.noun_complement(head_word, mod):
                     phrase = self.clause(mod)
                     if len(nominal["children"]) == 1 and nominal["children"][0].get("label") == "N":
                         nominal = branch("NOM", NOMINAL, nominal["children"][0], phrase)
                         continue
                     raise ProjectionUnavailable("Noun complement has ambiguous attachment")
-                phrase = self.relative(mod)
+                else:
+                    phrase = self.relative(mod)
                 if id(mod) in nonrestrictive:
                     return branch("NP", WH, branch("NP", NOUN, det, nominal), phrase)
             elif tag(mod) == "VP" and kids(mod) and tag(kids(mod)[0]) in {"VBG", "VBN"}:
@@ -537,11 +622,11 @@ class Projection:
             return None
         base = lemma(head)
         next_tag = tag(first[0])
-        if (base == "have" or word(head) in {"'ve", "'s", "'d"}) and next_tag == "VBN":
+        if (base == "have" or word(head) in {"'ve", "'s", "'d"}) and next_tag in VERB_TAGS:
             return "PASS" if word(head) == "'s" and self.dependency(first[0]) == "ROOT" and self.dependency(head) == "auxpass" else "PERF"
-        if base == "be" and next_tag in {"VBN", "VBG"}:
+        if base == "be" and next_tag in VERB_TAGS:
             return "PASS" if next_tag == "VBN" else "PROG"
-        if base == "do" and next_tag in {"VB", "VBP"}:
+        if base == "do" and next_tag in VERB_TAGS:
             return "TENSE"
         return None
 
@@ -728,7 +813,12 @@ class Projection:
             particle = tail.pop(0)
         if incoming and not passive and tail and tag(tail[0]) == "SBAR" and not self.is_adverbial(tail[0]):
             parts = kids(tail[0])
-            if parts and not tag(parts[0]).startswith("WH"):
+            first_leaves = leaves(parts[0]) if parts else []
+            complementizer_like = bool(parts) and (
+                not tag(parts[0]).startswith("WH")
+                or (tag(parts[0]) in {"WHNP", "WHADVP"} and first_leaves
+                    and word(first_leaves[0]) == "that"))
+            if complementizer_like:
                 clause = self.clause(tail.pop(0), incoming)
                 v = branch("V", FRAME_REFS["trans"], *head_words, features=("trans", *features))
                 return self.attach(branch("VP", FRAME_REFS["trans"], v, branch("NP", SUBORDINATE, clause)),
@@ -798,6 +888,12 @@ class Projection:
                 raise ProjectionUnavailable("Unsupported complex object frame")
         elif base in INTENSIVE and tail and self.is_predicative(base, tail[0]):
             frame = "intens"
+            complement.append(self.predicative(tail.pop(0), subject))
+        elif tail and tag(tail[0]) == "ADJP" and (
+                base in INTENSIVE or base in {"do", "make", "take", "have", "give", "find"}):
+            # Preserve the observed adjectival dependent ("did good") without
+            # endorsing it. The adjective/adverb rule reports the error.
+            frame = "intens" if base in INTENSIVE else "complex"
             complement.append(self.predicative(tail.pop(0), subject))
         elif (base in {"give", "send", "lend", "hand", "pass", "sell", "offer", "show", "write"}
               and len(tail) >= 2 and tag(tail[0]) == "PP" and kids(tail[0])
@@ -914,10 +1010,21 @@ class Projection:
 
     def is_adverbial(self, node):
         parts = kids(node)
-        return len(parts) == 2 and (
-            (leaf(parts[0]) and word(parts[0]) in SUBORDINATORS)
-            or (tag(parts[0]) in {"WHNP", "WHADVP"} and leaves(parts[0])
-                and word(leaves(parts[0])[0]) in {"whatever", "whoever", "whenever", "wherever", "however"}))
+        if len(parts) != 2:
+            return False
+        if leaf(parts[0]) and word(parts[0]) in SUBORDINATORS:
+            return True
+        # Benepar wraps a subordinating wh-word as WHNP/WHADVP. "when",
+        # "where", "while", "because" and similar clauses are adjuncts, not
+        # complement clauses, even though the wh-phrase is not a bare leaf.
+        if tag(parts[0]) in {"WHNP", "WHADVP", "WHPP"}:
+            heads = leaves(parts[0])
+            if heads and word(heads[0]) in SUBORDINATORS:
+                return True
+            if heads and word(heads[0]) in {"whatever", "whoever", "whenever",
+                                             "wherever", "however", "where"}:
+                return True
+        return False
 
     def extract_delayed_sbar(self, node):
         """Find a trailing non-adverbial SBAR inside a nested VP and remove it."""
@@ -943,6 +1050,19 @@ class Projection:
             return self.locative_inversion(parts)
         if label in {"SBAR", "SBARQ"}:
             if parts and tag(parts[0]).startswith("WH"):
+                heads = leaves(parts[0])
+                # Benepar wraps the complementiser "that" as WHNP(WDT that).
+                # It is a C1 marker, not a relative wh-phrase.
+                if (len(parts) == 2 and heads and word(heads[0]) == "that"
+                        and tag(parts[1]) == "S"):
+                    carrier = branch("C1", SUBORDINATE, word_node(heads[0]))
+                    body_node = parts[1]
+                    if (incoming is None and kids(body_node)
+                            and all(tag(part) == "VP" for part in kids(body_node))):
+                        body = self.clause(body_node, self.gap("subject"))
+                    else:
+                        body = self.clause(body_node, incoming)
+                    return branch("S′", SUBORDINATE, carrier, body)
                 return self.wh_clause(parts)
             if not parts or tag(parts[-1]) != "S" or len(parts) > 2:
                 raise ProjectionUnavailable("Unsupported subordinate clause wrapper")
@@ -963,10 +1083,18 @@ class Projection:
                 finally:
                     self.allow_object_gap -= 1
             else:
-                body = (self.nonfinite(parts[-1], wrap=False)
-                        if len(parts) == 2 and word(parts[0]) == "for"
-                        and self.is_nonfinite(parts[-1])
-                        else self.clause(parts[-1], incoming))
+                body_node = parts[-1]
+                if (incoming is None and tag(body_node) == "S" and kids(body_node)
+                        and all(tag(part) == "VP" for part in kids(body_node))):
+                    # A subordinate clause whose subject is a relative/ECM gap
+                    # still has a structural subject position. Keep the gap
+                    # explicit rather than refusing the whole sentence.
+                    body = self.clause(body_node, self.gap("subject"))
+                else:
+                    body = (self.nonfinite(body_node, wrap=False)
+                            if len(parts) == 2 and word(parts[0]) == "for"
+                            and self.is_nonfinite(body_node)
+                            else self.clause(body_node, incoming))
             return branch("S′", SUBORDINATE, carrier, body)
         if label != "S":
             raise ProjectionUnavailable(f"Unsupported clause structure {label}")
@@ -1023,7 +1151,13 @@ class Projection:
                 and subject["children"][0]["children"][0]["word"].lower() == "it"):
             outer_delayed = self.clause(parts.pop())
         if len(parts) != 1 or tag(parts[0]) != "VP":
-            raise ProjectionUnavailable("Clause has no single identifiable predicate")
+            if (len(parts) == 1 and leaf(parts[0])
+                    and tag(parts[0]) in VERB_TAGS):
+                # Benepar can place a finite verb directly under S when the
+                # verb has no dependents. Restore the VP projection layer.
+                parts[0] = raw("VP", [parts[0]])
+            else:
+                raise ProjectionUnavailable("Clause has no single identifiable predicate")
         predicate_parts = kids(parts[0])
         if (outer_delayed is None
                 and subject.get("children", [{}])[0].get("label") == "pronoun"
@@ -1202,6 +1336,16 @@ class Projection:
             if (not any(tag(node) == "VP" for node in tail)
                     and any(tag(node) == "NP" for node in tail)):
                 return "predicative"
+        # In "Who did ... say that submitted ..." and "... believe has
+        # submitted ...", the wh-word fills the subject gap of a nested
+        # subjectless clause, not an object position of the higher verb.
+        for descendant in self.phrase_nodes(body):
+            if tag(descendant) != "SBAR":
+                continue
+            inner = kids(descendant)
+            if (inner and tag(inner[-1]) == "S" and kids(inner[-1])
+                    and all(tag(part) == "VP" for part in kids(inner[-1]))):
+                return "subject"
         if any(tag(node) == "PP" and len(kids(node)) == 1 for node in self.phrase_nodes(body)):
             return "preposition"
         return "object"
@@ -1243,6 +1387,20 @@ class Projection:
 
     def relative(self, node):
         parts = kids(node)
+        if (len(parts) == 2 and tag(parts[0]) == "WHNP" and leaves(parts[0])
+                and word(leaves(parts[0])[0]) == "that" and tag(parts[1]) == "S"):
+            # In a relative clause, "that" is the C1 complementiser and the
+            # relative operator is a covert C2 gap. This is the inverse of the
+            # complement-clause use of "that".
+            link = self.gap(self.wh_gap(parts[0], parts[1]))
+            body = self.clause(parts[1], link)
+            if not link.used:
+                raise ProjectionUnavailable("Relative clause has no uniquely identified gap")
+            operator = branch("C2", WH, {"gap": True, "index": link.index})
+            operator["index"] = link.index
+            carrier = branch("C1", WH, word_node(leaves(parts[0])[0]))
+            return branch("S″", WH, operator,
+                          branch("S′", WH, carrier, body))
         if parts and tag(parts[0]).startswith("WH"):
             return self.wh_clause(parts, relative=True)
         if len(parts) == 2 and leaf(parts[0]) and word(parts[0]) == "that" and tag(parts[1]) == "S":
@@ -1255,4 +1413,5 @@ class Projection:
         if not link.used:
             raise ProjectionUnavailable("Relative clause has no uniquely identified object gap")
         operator = branch("C2", WH, {"gap": True, "index": link.index})
+        operator["index"] = link.index
         return branch("S″", WH, operator, branch("S′", WH, branch("C1", WH), body))

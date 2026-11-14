@@ -70,7 +70,9 @@ class ParserBackedRuntimeTests(unittest.TestCase):
                     self.assertTrue(expected <= labels, (expected, labels))
 
     def test_real_central_modal_with_extra_to_retains_the_marker_in_final_d1(self):
-        with patch.object(api, "classify", return_value=None):
+        empty_runtime = {"active_rule_ids": [], "active_rules": []}
+        with patch.object(api, "classify", return_value=None), \
+             patch.object(api, "load_runtime_registry", return_value=empty_runtime):
             payload = api.build_payload("She can to go.")
         result = payload["br_analysis"]
         self.assertEqual(result["status"], "normalized", result["reasons"])
@@ -93,9 +95,8 @@ class ParserBackedRuntimeTests(unittest.TestCase):
     def test_unresolved_constructions_keep_working_trees_without_promoting_evidence(self):
         from explanations import explain_analysis
         cases = [
-            "She is taller than he is.", "They demolished.", "Arrived late.",
+            "They demolished.", "Arrived late.",
             "She asked what Jon had broken the vase.",
-            "She'll be arriving tomorrow or on Friday.",
         ]
         with patch.object(api, "classify", return_value=None):
             for sentence in cases:
@@ -111,6 +112,20 @@ class ParserBackedRuntimeTests(unittest.TestCase):
                     self.assertTrue(result["working_display_labels"])
                     evidence = explain_analysis({"status": "normalized", "tree": tree})
                     self.assertEqual(evidence["status"], "ANALYSIS_UNRESOLVED")
+
+    def test_comparative_and_temporal_coordination_normalize(self):
+        cases = [
+            "She is taller than he is.",
+            "She'll be arriving tomorrow or on Friday.",
+        ]
+        with patch.object(api, "classify", return_value=None):
+            for sentence in cases:
+                with self.subTest(sentence=sentence):
+                    payload = api.build_payload(sentence)
+                    result = payload["br_analysis"]
+                    self.assertEqual(result["status"], "normalized", result.get("reasons"))
+                    self.assertIsNotNone(result["tree"])
+                    self.assertEqual(list(M1_VALIDATOR.iter_errors(result["tree"])), [])
 
     def test_out_of_range_sentence_index_is_rejected(self):
         with self.assertRaisesRegex(ValueError, "out of range"):
@@ -163,7 +178,9 @@ class ParserBackedRuntimeTests(unittest.TestCase):
                 source.update(status="approved", crosswalk_status="compatible", **review)
 
         with patch.object(api, "classify", return_value=None), \
-             patch.object(explanations, "load_registry", return_value=template_registry):
+             patch.object(explanations, "load_registry", return_value=template_registry), \
+             patch.object(api, "load_runtime_registry",
+                          return_value={"active_rule_ids": [], "active_rules": []}):
             disabled = api.build_payload(passage, sentence_index=1, variety="standard_english")
             self.assertEqual(disabled["cambridge_evaluation"]["findings"], [])
             self.assertEqual(disabled["explanation_evidence"]["channels"]["remediation"], [])

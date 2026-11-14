@@ -106,6 +106,55 @@ def word_info(words):
 
 
 
+def _error_rows(details):
+    rows = []
+    for detail_id, detail in (details or {}).items():
+        if not isinstance(detail, dict) or detail.get('status') != 'error':
+            continue
+        remediation = detail.get('remediation') or {}
+        rows.append({
+            'detail_id': detail_id,
+            'constraint': detail.get('constraint'),
+            'rule_id': detail.get('rule_id'),
+            'type': detail.get('type'),
+            'surface': detail.get('surface'),
+            'violation': remediation.get('violation') or detail.get('text'),
+            'suggested_fix': remediation.get('suggested_fix'),
+        })
+    return rows
+
+
+def _correction_impact(original_details, corrected_result, corrected_sentence):
+    """Describe what one validated correction resolves, leaves, or introduces.
+
+    Re-parsing is the authority: a word-level edit can silently repair another
+    error or expose a new one. The learner sees the delta instead of a claim
+    that the whole sentence is now correct.
+    """
+    corrected_details = (corrected_result or {}).get('details') or {}
+    before = _error_rows(original_details)
+    after = _error_rows(corrected_details)
+    before_keys = {(row['constraint'], row['type']) for row in before}
+    after_keys = {(row['constraint'], row['type']) for row in after}
+    resolved = [row for row in before if (row['constraint'], row['type']) not in after_keys]
+    remaining = [row for row in after if (row['constraint'], row['type']) in before_keys]
+    introduced = [row for row in after if (row['constraint'], row['type']) not in before_keys]
+    verdict = (corrected_result or {}).get('summary', {}).get('verdict')
+    return {
+        'corrected_sentence': corrected_sentence,
+        'resulting_verdict': verdict,
+        'resolved_count': len(resolved),
+        'remaining_count': len(remaining),
+        'introduced_count': len(introduced),
+        'resolved': resolved,
+        'remaining': remaining,
+        'introduced': introduced,
+        'whole_sentence_clean': verdict == 'grammatical' and not remaining and not introduced,
+        'note': ('This edit changes the sentence as a whole; the counts come from '
+                 're-parsing the corrected text, not from the single edit.'),
+    }
+
+
 def build_payload(text, sentence_index=0, convention_version=None,
                   chapter=None, appendix_nom=None, variety=None,
                   include_candidate_xai=False):
@@ -219,12 +268,19 @@ def build_payload(text, sentence_index=0, convention_version=None,
                 }
                 correction['corrected_br_analysis'] = build_canonical_analysis(
                     corrected_analysis, chapter=chapter, appendix_nom=appendix_nom)
+                corrected_result = evaluate(
+                    corrected_analysis['root'], text=correction['corrected_sentence'])
+                correction['impact'] = _correction_impact(
+                    details, corrected_result, correction['corrected_sentence'])
             except Exception as exc:  # correction annotations survive a parser fallback
                 correction['corrected_candidate_parse'] = None
                 correction['corrected_br_analysis'] = {
                     'status': 'unresolved', 'convention_version': convention_version,
                     'tree': None, 'diagnostics': [{'code': 'CORRECTED_PARSE_UNAVAILABLE',
                                                    'message': str(exc)}],
+                }
+                correction['impact'] = {
+                    'status': 'unavailable', 'note': 'The corrected sentence could not be re-parsed.',
                 }
             summary['correction'] = correction
             summary['corrected_sentence'] = correction['corrected_sentence']

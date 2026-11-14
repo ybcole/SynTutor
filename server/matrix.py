@@ -59,7 +59,9 @@ except ImportError:  # pragma: no cover
         master = None
 
 SENTENCE_CLASSES = {'S', 'SINV', 'SQ', 'SBARQ', 'FRAG', 'ROOT'}
-
+# Source-linked findings whose node is the exact error word and whose
+# deterministic matrix rewrite can safely supply a structured edit.
+SAFE_RULE_REMEDIATION = {'C-UNCOUNTABLE', 'C-COORD-CASE', 'C-COORD-SUBJ-AGREE'}
 NOUN_CLASS = {'NN', 'NNS', 'NNP', 'NNPS', 'PRP', 'NML', 'NX'}
 COLLECTIVE_NOUNS = {
     'team', 'staff', 'government', 'family', 'committee', 'group', 'audience',
@@ -1646,6 +1648,16 @@ class MatrixEvaluator:
                 for key in ('edit', 'alternative_edit'):
                     if not merged.get(key) and matrix_rem.get(key):
                         merged[key] = matrix_rem[key]
+            elif (detail.get('constraint') in SAFE_RULE_REMEDIATION
+                  and not merged.get('edit') and not merged.get('edits')):
+                # Some source-linked findings carry prose only. For these
+                # constraints the node is the error word, so the deterministic
+                # matrix rewrite is safe to attach and makes the correction
+                # executable.
+                matrix_rem = self._remediate(root, detail) or {}
+                for key in ('edit', 'edits', 'alternative_edit'):
+                    if not merged.get(key) and matrix_rem.get(key):
+                        merged[key] = matrix_rem[key]
             detail['remediation'] = merged
         self._suppress_be_past_duplicates()
 
@@ -2562,12 +2574,14 @@ class MatrixEvaluator:
         parent = self._find_node(root, detail['parent']) if detail.get('parent') else None
         if node is None:
             return self._rem_generic(detail)
-        if cid == 'C-SUBJECT-AGREEMENT':
-            return self._rem_agreement(node, parent)
+        if cid in {'C-SUBJECT-AGREEMENT', 'C-SUBJ-AGREE-XP', 'C-COORD-SUBJ-AGREE'}:
+            return self._rem_agreement(node, parent, root)
         if cid == 'C-DETERMINER-AGREEMENT':
             return self._rem_det(node, parent)
         if cid == 'C-NOUN-FORM':
             return self._rem_noun_form(node)
+        if cid == 'C-UNCOUNTABLE':
+            return self._rem_uncountable(node, parent)
         if cid == 'C-AUX-FORM':
             return self._rem_aux(node, parent)
         if cid == 'C-BE-PAST':
@@ -2585,6 +2599,8 @@ class MatrixEvaluator:
             return self._rem_mod_pos(node, parent)
         if cid == 'C-PRONOUN-CASE':
             return self._rem_pronoun_case(node, parent)
+        if cid == 'C-COORD-CASE':
+            return self._rem_pronoun_case(node, parent, force_subject=True)
         if cid == 'C-ADJ-ADV':
             return self._rem_adj_adv(node, parent)
         if cid == 'C-ARTICLE':
@@ -2623,11 +2639,40 @@ class MatrixEvaluator:
             rem = self._rem_generic(detail)
         return rem
 
-    def _rem_agreement(self, node, parent):
-        subj, vp = clause_subject_and_verb(parent)
-        vp_head = phrase_head(node) if vp is None else phrase_head(vp)
-        if subj is None:
+    def _clause_ancestor(self, root, node_id):
+        """Return the nearest sentence-level ancestor of a node, if any."""
+        path = []
+        def walk(node):
+            if node.get('id') == node_id:
+                return True
+            for child in node.get('children', []):
+                path.append(node)
+                if walk(child):
+                    return True
+                path.pop()
+            return False
+        if not walk(root):
             return None
+        for ancestor in reversed(path):
+            if ancestor.get('type') in SENTENCE_CLASSES:
+                return ancestor
+        return None
+
+    def _rem_agreement(self, node, parent, root=None):
+        subj, vp = (clause_subject_and_verb(parent)
+                    if parent is not None and parent.get('type') in SENTENCE_CLASSES
+                    else (None, None))
+        if (subj is None or vp is None) and root is not None:
+            clause = self._clause_ancestor(root, node.get('id'))
+            if clause is not None:
+                fallback_subj, fallback_vp = clause_subject_and_verb(clause)
+                subj = subj or fallback_subj
+                vp = vp or fallback_vp
+        if vp is None and node.get('type') == 'VP':
+            vp = node
+        if subj is None or vp is None:
+            return None
+        vp_head = phrase_head(vp)
         subj_head = subject_head(subj)
         if subj_head is None or vp_head is None:
             return None
@@ -2780,6 +2825,27 @@ class MatrixEvaluator:
             'alternative_edit': _edit(node['span'][0], node['span'][1],
                                      _preserve_case(node['surface'],
                                                     'these' if numreq == 'sg' else 'this')),
+        }
+
+    def _rem_uncountable(self, node, parent):
+        """An uncountable noun cannot take the indefinite article."""
+        determiner = next((child for child in (parent or {}).get('children', [])
+                           if child.get('type') in {'DT', 'PDT'}
+                           and _lower(child.get('surface', '')) in {'a', 'an'}), None)
+        if determiner is None:
+            return None
+        span = determiner.get('span')
+        replacement = 'some'
+        return {
+            'violation': (f"The word '{node['surface']}' is uncountable and cannot "
+                          f"follow the article '{determiner['surface']}'."),
+            'suggested_fix': (f"Change '{determiner['surface']}' to '{replacement}' "
+                              f"before '{node['surface']}'."),
+            'alternative_fix': (f"Or use a countable noun that names one unit, such "
+                                f"as 'a piece of {node['surface']}'."),
+            'targeted_outcome': f"'{replacement} {node['surface']}'",
+            'edits': [{'node': determiner['id'], 'replacement': replacement}],
+            'edit': _edit(span[0], span[1], replacement) if span else None,
         }
 
     @staticmethod
@@ -2962,7 +3028,7 @@ class MatrixEvaluator:
         return {'me': 'I', 'us': 'we', 'him': 'he', 'her': 'she',
                 'them': 'they'}.get(surf)
 
-    def _rem_pronoun_case(self, node, parent):
+    def _rem_pronoun_case(self, node, parent, force_subject=False):
         # A subject-case error is flagged on the VP (the whole predicate sits in
         # the subject slot), so the pronoun to repair is the clause subject's.
         if node is not None and node['type'] == 'VP' and parent is not None \
@@ -2973,7 +3039,8 @@ class MatrixEvaluator:
             head = phrase_head(node) if node else None
         if head is None or head['type'] != 'PRP':
             return None
-        objective_needed = parent is not None and parent['type'] not in SENTENCE_CLASSES
+        objective_needed = (False if force_subject else
+                            parent is not None and parent['type'] not in SENTENCE_CLASSES)
         target = self._pronoun_target(_lower(head['surface']), objective_needed)
         if target is None:
             return None

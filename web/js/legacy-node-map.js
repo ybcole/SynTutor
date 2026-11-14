@@ -46,6 +46,14 @@ export function mapLegacyDetailsToCanonical(root, details = {}) {
   let unmapped = 0;
   for (const detail of Object.values(details || {})) {
     if (!detail || detail.status !== 'error') continue;
+    const bound = Array.isArray(detail.canonical_node_ids)
+      ? detail.canonical_node_ids.filter((id) => typeof id === 'string' && id)
+      : [];
+    if (bound.length) {
+      mapped += 1;
+      for (const id of new Set(bound)) assign(id, detail);
+      continue;
+    }
     if (typeof detail.canonical_node_id === 'string' && detail.canonical_node_id) {
       mapped += 1;
       assign(detail.canonical_node_id, detail);
