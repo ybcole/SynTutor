@@ -80,8 +80,9 @@ _REPLACEMENTS = [
     (r"\bhead noun\b", "main noun"),
     (r"\bhead verb\b", "main verb"),
     (r"\bcomplement\b", "completing word"),
-    (r"\bdaughter\b", "part"),
-    (r"\bsister\b", "neighbouring"),
+    # These words are also ordinary family terms. Rewrite only explicit tree terms.
+    (r"\bdaughter(?=\s+(?:node|constituent|branch)s?\b)", "child"),
+    (r"\bsister(?=\s+(?:node|constituent|branch)s?\b)", "sibling"),
     (r"\bclause\b", "part of the sentence"),
     (r"\bprogressive\b", "-ing form"),
     (r"\bplain form\b", "base form"),
@@ -128,6 +129,32 @@ _ROLE_NAMES = {
 }
 
 
+# Quoted input/examples are evidence, not instructional terminology.
+# Preserve exact spelling and spacing within these spans, including contractions.
+_QUOTED_SPAN = re.compile(
+    r"""'(?:(?:[^'])|(?<=[A-Za-z])'(?=[A-Za-z]))*'"""
+    r"""|"(?:[^"\\]|\\.)*"|“[^”]*”|‘(?:[^’]|(?<=[A-Za-z])’(?=[A-Za-z]))*’"""
+)
+
+
+def _simplify_unquoted(segment):
+    segment = _TAG_RE.sub(lambda m: _TAG_NAMES[m.group(1)], segment)
+    for pattern, replacement in _REPLACEMENTS:
+        segment = re.sub(pattern, replacement, segment, flags=re.I)
+    return re.sub(r"\s+", " ", segment)
+
+
+def _replace_unquoted_terms(value):
+    parts = []
+    last = 0
+    for match in _QUOTED_SPAN.finditer(value):
+        parts.append(_simplify_unquoted(value[last:match.start()]))
+        parts.append(match.group(0))
+        last = match.end()
+    parts.append(_simplify_unquoted(value[last:]))
+    return "".join(parts)
+
+
 def _plain_text(text, capitalize=True):
     if not isinstance(text, str):
         return text
@@ -136,10 +163,7 @@ def _plain_text(text, capitalize=True):
         return value
     value = _SENTENCE_PREFIX.sub('', value)
     value = _TAG_PREFIX.sub('', value)
-    value = _TAG_RE.sub(lambda m: _TAG_NAMES[m.group(1)], value)
-    for pattern, replacement in _REPLACEMENTS:
-        value = re.sub(pattern, replacement, value, flags=re.I)
-    value = re.sub(r"\s+", " ", value).strip()
+    value = _replace_unquoted_terms(value).strip()
     if capitalize and value and value[0].isalpha():
         value = value[0].upper() + value[1:]
     return value
