@@ -46,7 +46,7 @@ TEMPORAL_P_WORDS = {"now", "then"}
 LOCATIVE_PREPOSITIONS = {"above", "across", "against", "along", "at", "behind", "below", "beside",
                         "between", "beyond", "by", "in", "inside", "near", "on", "outside", "under"}
 INTENSIVE = {"be", "become", "seem", "appear", "look", "feel", "sound", "taste", "smell", "remain", "get", "grow", "prove"}
-COMPLEX = {"call", "consider", "find", "keep", "make", "paint", "put", "render", "name", "elect", "turn", "get"}
+COMPLEX = {"call", "consider", "find", "keep", "make", "paint", "put", "place", "render", "name", "elect", "turn", "get"}
 DITRANSITIVE = {"give", "tell", "show", "send", "offer", "lend", "bring", "pay", "buy", "hand", "teach", "ask", "promise", "write", "read", "pass", "sell", "owe", "leave"}
 SELECTED_PP = {
     "refer": {"to"}, "glance": {"at"}, "look": {"at", "for", "after"}, "listen": {"to"},
@@ -747,8 +747,8 @@ class Projection:
                     frame = "complex"
                 if frame != "trans":
                     complement.append(self.phrase(tail.pop(0)))
-            if base == "put" and frame == "trans" and particle is None and not any(tag(node) == "PRT" for node in tail):
-                raise ProjectionUnavailable("Put has no overt or licensed covert object-predicative")
+            if base in {"put", "place"} and frame == "trans" and particle is None and not any(tag(node) == "PRT" for node in tail):
+                raise ProjectionUnavailable(f"{base} has no overt or licensed covert object-predicative")
         elif tail and tag(tail[0]) == "PP" and self.selected_pp(base, tail[0]):
             frame = "prep"
             complement.append(self.phrase(tail.pop(0)))
@@ -763,7 +763,8 @@ class Projection:
         refs = FRAME_REFS[frame]
         if base == "sleep":
             refs += ("Ch5 p. 104 [1e]",)
-        v_refs = (*refs, "Ch6 p. 113 [8]–[9]") if feature else refs
+        v_refs = (*refs, *(("Ch4 p. 85 ex. 1(14)",) if base == "place" and frame == "complex" else ()),
+                  *(("Ch6 p. 113 [8]–[9]",) if feature else ()))
         suffix = ("phrasal",) if particle is not None or tail and tag(tail[0]) == "PRT" else ()
         if particle is not None:
             head_words.extend(word_node(n) for n in leaves(particle))

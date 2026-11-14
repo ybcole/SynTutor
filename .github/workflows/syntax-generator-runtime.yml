@@ -98,7 +98,7 @@ jobs:
       - name: Audit FINAL-D1 sentence coverage
         run: |
           python scripts/audit_final_d1_sentence_coverage.py --output artifacts/final-d1-coverage.json
-          python scripts/audit_final_d1_sentence_coverage.py --heldout evaluation/final_d1_heldout_sentences.json --output artifacts/final-d1-heldout-coverage.json
+          python scripts/audit_final_d1_sentence_coverage.py --heldout evaluation/final_d1_heldout_sentences.json --include-canonical-trees --output artifacts/final-d1-heldout-coverage.json
       - name: Upload FINAL-D1 coverage report
         uses: actions/upload-artifact@v4
         with:
