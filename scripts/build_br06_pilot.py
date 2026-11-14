@@ -139,7 +139,6 @@ def main():
     for key in ('title', 'content_version', 'estimated_minutes', 'outcomes'):
         if key in pilot:
             ordered[key] = pilot[key]
-    ordered['description'] = pilot.get('description', '')
     ordered['teaching'] = TEACHING
     ordered['worked_example'] = WORKED
     ordered['guided'] = GUIDED

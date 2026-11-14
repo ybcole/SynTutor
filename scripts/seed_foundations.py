@@ -1,6 +1,7 @@
 """Render immutable Foundations assessment catalog rows, without activating them."""
 import argparse
 import json
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -43,6 +44,7 @@ def render(course):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--course', type=Path, default=COURSE)
+    parser.add_argument('--course', type=Path, default=COURSE, help='Path to the course JSON. Use - for standard input.')
     args = parser.parse_args()
-    print(render(json.loads(args.course.read_text())), end='')
+    course = json.load(sys.stdin) if args.course == Path('-') else json.loads(args.course.read_text())
+    print(render(course), end='')

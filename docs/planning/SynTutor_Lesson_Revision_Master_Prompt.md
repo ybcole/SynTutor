@@ -258,6 +258,8 @@ The [Chapter 11 storyboard](syntax-foundations-chapter-11-storyboard.md) and [pi
 - Validate selected early/middle/advanced chapters visually on desktop and mobile. Run a small real-user timing and clarity review where possible. Document what cannot be verified locally.
 - Prepare migration/deployment/rollback documentation and the final owner acceptance report. Do not claim production verification without production evidence.
 
+The [Phase 5 integration report](../reports/syntax-foundations-revision-phase-5.md) records the combined local preview, rollback rehearsal, and remaining publication evidence.
+
 **Gate 5:** Owner reviews course-wide release candidate; only then publish/merge/deploy as separately instructed.
 
 ---

@@ -24,5 +24,5 @@ Chapter 5 and all 12 published lesson browser checks, lesson and Builder suites,
 
 Pilot hashes:
 
-- `web/content/lessons/br-06-pilot.json` — `6f73dc7c59c7c38c77dc3055eb0d82588f476dfe829ffc06fc30edad7c13d383`
+- `web/content/lessons/br-06-pilot.json` — `6789f04a053ec041eadb6059bb81e2f3ab5156ad628d8e99f3872d88c2c5ab62`
 - `web/js/auxiliaries-pilot.js` — `244afba4b4f9f25d545c3ac0230a333b53ae2146e79a75cd9e1045bd832208a1`
