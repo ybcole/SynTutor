@@ -10,7 +10,7 @@ This file gives you (the next AI agent) the context, the exact current state, wh
 ## 0. TL;DR
 
 - Chapters **1–8** have local previews (`?preview=br-0X`), storyboards, pilot reports and browser tests.
-- Review the Chapter 8 pilot at **Gate 4.8** before outlining Chapter 9. First-time learner timing remains unverified.
+- Review the Chapter 8 pilot at **Gate 4.8** and approve the Chapter 9 storyboard before implementation. First-time learner timing remains unverified.
 - The published catalog changes during Phase 5.
 
 ---
@@ -63,7 +63,7 @@ Also read: `web/js/lesson-notation.js` (`displayVpLevel` shows VP₁/VP₂), `we
 ## 5. What to do next
 
 1. Walk through the [Chapter 8 pilot](../reports/syntax-foundations-chapter-8-pilot.md) for Gate 4.8.
-2. After that review, prepare the Chapter 9 storyboard.
+2. Review the [Chapter 9 storyboard](syntax-foundations-chapter-9-storyboard.md), then implement the pilot for Gate 4.9.
 3. Phase 5 covers release preparation, published titles, reviewed catalog records and immutable assessment seeds.
 
 ## 6. Run a preview (verified commands)
