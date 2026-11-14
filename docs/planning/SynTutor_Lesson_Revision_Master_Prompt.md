@@ -1,7 +1,7 @@
 # SYNTUTOR — MASTER IMPLEMENTATION PROMPT
 ## Syntax Foundations lesson revision (Burton-Roberts Chapters 1–11)
 
-**Status:** Chapter 5 pilot ready for Gate 4.5 review. First-time learner timing remains unverified.
+**Status:** Chapter 6 pilot ready for Gate 4.6 review. Chapter 7 storyboard ready for outline approval. First-time learner timing remains unverified.
 **Target branch:** `feat/lessons/revision-plan`, based on `origin/explore/foundations-lesson-rollout-plan` at `7df6b1e6775760b67a445f1cfa995d33b922ca2a`.
 **Implementation:** Codex. **Acceptance:** project owner.
 **Phase 0 audit:** `docs/planning/syntax_foundations_revision_phase_0.md` on the revision branch.
@@ -239,6 +239,8 @@ The [Chapter 4 storyboard](syntax-foundations-chapter-4-storyboard.md) and [pilo
 
 The [Chapter 5 storyboard](syntax-foundations-chapter-5-storyboard.md) and [pilot review](../reports/syntax-foundations-chapter-5-pilot.md) record the progression from VP attachment to particle movement, ellipsis, and sentence adverbials.
 
+The [Chapter 6 storyboard](syntax-foundations-chapter-6-storyboard.md) and [pilot review](../reports/syntax-foundations-chapter-6-pilot.md) record auxiliary structure, passive recognition, negation and question fronting. The [Chapter 7 storyboard](syntax-foundations-chapter-7-storyboard.md) maps the revised noun-phrase lesson.
+
 **Gates 4.2–4.11:** Separate owner approval for each completed chapter. Rejected or unresolved chapters remain unapproved and must not be treated as complete. Keep lesson 12 unchanged.
 
 ## Phase 5 — Full-course integration and release readiness
@@ -316,7 +318,7 @@ At the end of a handoff, **stop** and ask for a specific approval or needed sour
 
 # H. Resume at the current gate
 
-Review the Chapter 5 pilot at Gate 4.5 before outlining Chapter 6. The Chapter 5 pilot report gives the preview route and records the source and browser evidence. First-time learner timing remains pending.
+Review the Chapter 6 pilot at Gate 4.6 and approve the Chapter 7 storyboard before implementing Chapter 7. The Chapter 6 pilot report gives the preview route and verification evidence. First-time learner timing remains pending.
 
 For later chapters, use one handoff document or pull-request summary per unit. Carry shared baseline and migration decisions forward by reference. Update only the chapter's new evidence, examples, outcomes, test results and open decisions. The chapter's outline and completed walkthrough still require the approval in Phase 4. Keep commits on the revision branch until the owner authorizes integration.
 

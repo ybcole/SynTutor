@@ -60,30 +60,11 @@ Also read: `web/js/lesson-notation.js` (`displayVpLevel` shows VP₁/VP₂), `we
 
 ---
 
-## 5. What is going to be done next (in order)
+## 5. What to do next
 
-**A. Confirm the platform is current (you, on the new machine).**
-```bash
-git pull origin feat/lessons/revision-plan      # bring down 1e28b6d if not already pushed
-git log --oneline -3
-```
-
-**B. Gate 4.5 — owner review of Chapter 5 (human step, cannot be done by AI).**
-Run the preview (see §6), walk Chapter 5, accept linguistic accuracy, readability, activities, time, sources. Record the verdict in the Chapter 5 pilot report / handoff. Do not skip to Chapter 6 without this.
-
-**C. Chapter 6 implementation (only after Gate 4.5 acceptance).** Follow `docs/planning/syntax-foundations-chapter-6-storyboard.md` and the master prompt §D/§E. Deliverables:
-- `web/content/lessons/br-06-pilot.json` (title *More on verbs — auxiliary VPs*, outcomes, 5+5 checks mapped to anchors, `preview_sources` from `ch06.trees.json` figures).
-- `web/js/auxiliary-vp-pilot.js` (pages: intro+opening, each-aux-heads-its-own-VP, stack-the-chain, adverbial-placement, negate, ask-a-question, recap, closing).
-- Register `'br-06'` in `pilotArticles`.
-- `scripts/test_chapter_six_pilot_browser.py`, mirroring the Ch.5 test.
-- `docs/reports/syntax-foundations-chapter-6-pilot.md`.
-- Then **stop at Gate 4.6**. Do **not** begin Chapter 7.
-
-Follow the master prompt §G handoff template at the end of the unit and stop for owner approval.
-
-**D. Publication (only when owner explicitly authorises Phase 5).** Reviewed `course.json` entry + immutable assessment seed + migration gate. This is where the **published catalog titles** finally change (see handoff §6).
-
----
+1. Walk through the [Chapter 6 pilot](../reports/syntax-foundations-chapter-6-pilot.md) for Gate 4.6 and review the [Chapter 7 storyboard](syntax-foundations-chapter-7-storyboard.md).
+2. After those reviews, implement the Chapter 7 local pilot, run the chapter and shared checks, and return for Gate 4.7.
+3. Phase 5 covers release preparation, published titles, reviewed catalog records and immutable assessment seeds.
 
 ## 6. Run a preview (verified commands)
 
@@ -97,6 +78,7 @@ Open (edit the `br-0X` to switch chapters; keep `?preview=`):
 - Ch.3 http://127.0.0.1:8000/?preview=br-03#lesson/br-03/introduction
 - Ch.4 http://127.0.0.1:8000/?preview=br-04#lesson/br-04/introduction
 - Ch.5 http://127.0.0.1:8000/?preview=br-05#lesson/br-05/introduction
+- Ch.6 http://127.0.0.1:8000/?preview=br-06#lesson/br-06/introduction
 
 If you drop `?preview=` you are back on the old published catalog.
 

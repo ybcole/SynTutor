@@ -42,7 +42,7 @@
   ],
   "worked_example": {
     "sentence": "You should have written an essay",
-    "origin": "Original example built to illustrate chained auxiliary VPs.",
+    "origin": "Adapted from printed example [53b] on p. 122.",
     "steps": [
       {
         "text": "MOD “should” [past] heads the highest VP and is the only tensed verb.",
@@ -136,9 +136,9 @@
         "edition": "3rd edition (Pearson Education, 2011; ISBN 9781408233740)",
         "chapter": 6,
         "printed_page": 122,
-        "evidence_status": "TXT",
+        "evidence_status": "IMG",
         "review_status": "INDEPENDENTLY_REVIEWED",
-        "review_note": "Original instructional example source-checked against cited B-R auxiliary VP conventions; not a printed diagram.",
+        "review_note": "Tree adapted from printed example [53b] on p. 122.",
         "source_record_id": "lesson-br-06-worked"
       },
       "movement": [],
@@ -428,6 +428,7 @@
       "concepts",
       "chain",
       "adverbials",
+      "passive",
       "negation",
       "questions",
       "recap"
@@ -579,7 +580,7 @@
     "closing": [
       {
         "id": "closing-chain",
-        "prompt": "In “You should have been writing that essay”, list the auxiliary types from top to bottom above the lexical verb.",
+        "prompt": "In “The crew might have been checking the valves”, which auxiliary types occur from highest to lowest?",
         "answer": "b",
         "outcome_ids": [
           "o1",
@@ -597,7 +598,7 @@
           {
             "id": "b",
             "text": "MOD → PERF → PROG",
-            "feedback": "“Should” (MOD), “have” (PERF) and “been” (PROG) each head a VP; only MOD is tensed."
+            "feedback": "“Might” (MOD), “have” (PERF) and “been” (PROG) each head a VP. Only MOD is tensed."
           },
           {
             "id": "c",
@@ -636,7 +637,7 @@
       },
       {
         "id": "closing-dosupport",
-        "prompt": "In “Byron would not dance” versus “Byron did not dance”, what structural difference explains where not attaches?",
+        "prompt": "Compare “Ivo might not sing” with “Ivo did not sing”. Why does the second sentence use “did”?",
         "answer": "c",
         "outcome_ids": [
           "o3"
@@ -647,24 +648,24 @@
         "options": [
           {
             "id": "a",
-            "text": "There is no structural difference; “not” attaches the same way.",
-            "feedback": "Only the first sentence has an auxiliary for “not” to attach to. The second needs do-support."
+            "text": "“Did” makes the second sentence passive.",
+            "feedback": "Both clauses are active. Look for the verb that carries tense and hosts “not”."
           },
           {
             "id": "b",
-            "text": "The first is passive and the second is active.",
-            "feedback": "Neither sentence is passive. The difference is the presence of a tensed auxiliary."
+            "text": "“Did” lets “sing” carry past tense.",
+            "feedback": "“Did” itself carries the past tense. “Sing” stays in its bare form."
           },
           {
             "id": "c",
-            "text": "The first has a tensed MOD “would” for “not” to attach to; the second has no auxiliary, so do-support supplies an empty “do” under TENSE.",
-            "feedback": "Without an auxiliary, an empty “do” carries tense and negation; the lexical verb stays untensed."
+            "text": "“Did” carries tense and hosts “not” when the positive clause has only the lexical verb.",
+            "feedback": "The first clause already has “might”. The second uses do-support, leaving “sing” untensed."
           }
         ]
       },
       {
         "id": "closing-fronting",
-        "prompt": "In “Does Byron dance?”, what moved to C, and where did the gap remain?",
+        "prompt": "In “Does Nia cycle?”, what moved to C, and where did the gap remain?",
         "answer": "b",
         "outcome_ids": [
           "o3"
@@ -675,24 +676,24 @@
         "options": [
           {
             "id": "a",
-            "text": "The lexical verb “dance” moved to C, leaving no gap.",
+            "text": "The lexical verb “cycle” moved to C, leaving no gap.",
             "feedback": "The lexical verb stays. “Do” from the TENSE node moves to C."
           },
           {
             "id": "b",
-            "text": "“do” moved from the TENSE node to C; the lexical V remains untensed with the gap under the auxiliary position.",
+            "text": "“Does” moved to C. The gap is under TENSE, and “cycle” stays untensed.",
             "feedback": "Do-support supplies “do”, which fronts to C and leaves a gap where it was."
           },
           {
             "id": "c",
-            "text": "The subject “Byron” moved to C, leaving a gap in the subject slot.",
+            "text": "The subject “Nia” moved to C, leaving a gap in the subject slot.",
             "feedback": "The subject stays. The tense-carrier “do” fronts to C and leaves a gap."
           }
         ]
       },
       {
         "id": "closing-copula",
-        "prompt": "In “Was Kubla extravagant”, why does was behave like an auxiliary even though the main verb be has no other verb to help?",
+        "prompt": "In “Was Hana ready?”, why does “was” appear before the subject?",
         "answer": "a",
         "outcome_ids": [
           "o1"

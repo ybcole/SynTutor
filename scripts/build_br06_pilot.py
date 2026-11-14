@@ -76,9 +76,9 @@ TREE = {
         'edition': '3rd edition (Pearson Education, 2011; ISBN 9781408233740)',
         'chapter': 6,
         'printed_page': 122,
-        'evidence_status': 'TXT',
+        'evidence_status': 'IMG',
         'review_status': 'INDEPENDENTLY_REVIEWED',
-        'review_note': 'Original instructional example source-checked against cited B-R auxiliary VP conventions; not a printed diagram.',
+        'review_note': 'Tree adapted from printed example [53b] on p. 122.',
         'source_record_id': 'lesson-br-06-worked',
     },
     'movement': [],
@@ -90,7 +90,7 @@ TREE = {
 
 WORKED = {
     'sentence': SENTENCE,
-    'origin': 'Original example built to illustrate chained auxiliary VPs.',
+    'origin': 'Adapted from printed example [53b] on p. 122.',
     'steps': [
         {'text': 'MOD “should” [past] heads the highest VP and is the only tensed verb.',
          'source_ids': ['BR-3E-P121', 'BR-3E-P122'], 'focus_node_id': 'lesson-br-06-worked-root-1-0'},

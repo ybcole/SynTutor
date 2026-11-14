@@ -1,6 +1,6 @@
 # Chapter 6 proposal · More on verbs — auxiliary VPs
 
-**Status** · Outline only. **Not implemented.** Gate 4.5 (Chapter 5) review and this outline's owner approval must both precede any Chapter 6 code (Phase 4, step 2). First-time learner timing is an unverified estimate.
+**Status** · Implemented as a [local pilot](../reports/syntax-foundations-chapter-6-pilot.md). Gate 4.6 and learner timing are pending. The implementation adds a brief passive recognition page before negation.
 
 ## Source and scope
 
@@ -38,12 +38,13 @@ The current Chapter 4 lesson already introduces the lexical/auxiliary distinctio
 | Each auxiliary heads its own VP | Display “You should have written an essay” ([53b]). Switch the read-only tree to show MOD over PERF over the lexical V, and point out that only MOD carries *past*. Ask the learner to click the verb that carries tense. Immediate feedback on the choice. | 1:30 |
 | Stack the chain | Trace the numbered levels of [53b], then a longer chain (“You should have been writing that essay”, Disc.2/[56]) to show recursion. One editable repair: reattach a detached higher-VP under the correct auxiliary. | 1:15 |
 | Where do the adverbials go? | Compare [62] (adverbial before a verb modifies the following VP) with [66] (final adverbial modifies the lexical VP), and show the [69] time-adverbial exception as a single contrast. Label these as the book's stated simplifications. Unscored short response: which VP does the final phrase modify here? | 1:00 |
+| Recognize a passive | Trace the active object, then its passive subject and the gap. Read PASS and the optional agent PP. | 0:35 |
 | Negate a clause | Compare “Byron would not dance” ([86]) with “Byron did not dance” ([88]). Define the TENSE node and do-support; show the empty *do* carrying tense and negation. Ask the learner to pick which element carries tense in the second sentence. | 1:00 |
 | Ask a question | Compare “Was Byron dancing” ([91]) with “Does Byron dance” ([93]) and “Was Kubla extravagant” ([103]). Trace the fronted element to C and the gap it leaves. One boundary/branch task: mark the fronted auxiliary and its gap. | 1:00 |
-| Recap and references | Recap: each auxiliary heads a VP; only the first verb carries tense; negation uses *not/n't* or do-support; questions front the tense-carrier to C and leave a gap. Note that passive and multi-adjunct ordering are deferred. Put book/figure anchors in the reference dropdown. | 0:30 |
+| Recap and references | Recap: each auxiliary heads a VP; only the first verb carries tense; negation uses *not/n't* or do-support; questions front the tense-carrier to C and leave a gap. Recall the passive object gap. Defer complex and ditransitive passives and multi-adjunct ordering. Put book/figure anchors in the reference dropdown. | 0:30 |
 | Closing check | Five new questions with option-specific feedback, best/last score and incremental XP on improved retakes. | 1:25 |
 
-**Estimated total 9 min 25 sec.** A first-time learner trial is pending. If the trial exceeds ten minutes, make the adverbial-placement page an optional "beyond the core" step and shorten the [62]/[66]/[69] narration, preserving the tense rule, do-support and question fronting as the core sequence. Do not import the passive argument-linking material to save time — it is deferred, not condensed.
+**Estimated total 10 min, including 35 seconds for passive recognition.** A first-time learner trial is pending. If the trial exceeds ten minutes, make the adverbial-placement page an optional "beyond the core" step and shorten the [62]/[66]/[69] narration, preserving the tense rule, do-support and question fronting as the core sequence. Do not import the passive argument-linking material to save time — it is deferred, not condensed.
 
 
 
