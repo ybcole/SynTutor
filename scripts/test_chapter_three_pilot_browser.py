@@ -52,6 +52,7 @@ try:
 
         page.goto(f'{base}/?preview=br-03#lesson/catalog', wait_until='domcontentloaded')
         chapter = view.locator('.lesson-module').filter(has=page.get_by_role('heading', name=PILOT['title'], exact=True))
+        expect(chapter.locator('.lesson-module-description')).to_contain_text('prepositional phrases can join')
         chapter.get_by_role('button', name='Start lesson', exact=True).click()
         expect(view.get_by_role('heading', name=PILOT['title'], exact=True)).to_be_visible()
         expect(view.get_by_role('heading', name='Words and phrases have categories')).to_be_visible()
@@ -107,6 +108,9 @@ try:
         expect(view.locator('.lesson-total')).to_have_text('1 / 12 lessons completed · 15 lesson XP')
         page.goto(f'{base}/#lesson/br-03/introduction', wait_until='domcontentloaded')
         expect(view.get_by_role('heading', name='Introduction to Adjective Phrases')).to_be_visible()
+        view.get_by_role('button', name='← All lessons', exact=True).click()
+        published = view.locator('.lesson-module').filter(has=page.get_by_role('heading', name='Heads and adjective phrases', exact=True))
+        expect(published.locator('.lesson-module-description')).to_contain_text('Using adjective phrases')
         assert not errors and not parses, (errors, parses)
         browser.close()
 finally:

@@ -562,7 +562,7 @@ function catalog() {
       el('p', chapter, 'lesson-eyebrow'),
       el('h2', lesson.title),
     );
-    const description = course.module_descriptions?.[lesson.lesson_id];
+    const description = articleFor(lesson)?.description ?? course.module_descriptions?.[lesson.lesson_id];
     if (description) card.append(el('p', description, 'lesson-module-description'));
     const objective = el('p', undefined, 'lesson-module-objective');
     objective.append(el('strong', 'Learning objective'), ' ', lesson.outcomes[0].text);

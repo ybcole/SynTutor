@@ -47,6 +47,7 @@ function trace(body, { el, button, showDiagram }, label, steps) {
 }
 
 export const categoriesPilot = {
+  description: 'Distinguish words from the phrases they head, then trace noun, adjective, adverb and prepositional phrases. See how two prepositional phrases can join to form a larger one.',
   references: [
     'Chapter 3, printed pp. 47–53, figures [7], [14], [18] · Nouns and noun phrases',
     'Printed pp. 54–56 and p. 62, diagrams (a–b) · Adjectives, adverbs and degree',

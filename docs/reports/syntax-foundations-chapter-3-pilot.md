@@ -20,11 +20,13 @@ The early notation is intentional. The examples are original and the tree canvas
 
 The desktop and 390 px browser walkthrough verified seven-page navigation, the book title, wrong and correct replacement feedback, page-specific tree notation, saved transfer work, the score-only opening check and closing review. A 3/5 first attempt earned 9 device XP. A 5/5 retake raised the total to 15. The walkthrough made no parser requests.
 
+The preview catalog card now describes the full category lesson. The Chapter 3 browser check verifies the revised card and the original published card separately.
+
 The pilot data uses the existing chapter metadata to load in the local player. The recap and this receipt record the precise printed anchors. Before publication, add the corresponding catalog source IDs and reviewed metadata to the new version, and produce its matching assessment seed. The existing published Chapter 3 and Cambridge companion stay on their current paths. The legacy receipt mismatches remain a separate publication blocker.
 
 Pilot source hashes:
 
 - `web/content/lessons/br-03-pilot.json` — `ca7a12ce6a4bb31dba79ab77a17b8ac34787e3ac63371fb013ef874a9caae0d7`
-- `web/js/categories-pilot.js` — `a573e5bc715cad5308aaccc7bcc6bc25b8185fe1d1f5aef31d9bd9684c487aa5`
+- `web/js/categories-pilot.js` — `26ba43283abd2f61d884ab9e8955c8b10cccd262d9ab9e0afff5c40eca272e8e`
 
 Gate 4.3 review precedes Chapter 4.
