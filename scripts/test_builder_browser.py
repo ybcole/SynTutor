@@ -26,6 +26,9 @@ try:
    if '/api/evaluate' in r.request.url:checks.append(r.request.post_data_json)
    r.continue_()
   page.route('**/*',route);page.goto(base,wait_until='domcontentloaded');page.locator('.sidebar-item[data-view="builder"]').click();tools=page.locator('#builderTools');expect(tools).to_be_visible();expect(tools.get_by_label('B-R convention',exact=True)).to_have_value('FINAL')
+  convention=tools.get_by_label('B-R convention',exact=True)
+  advanced=tools.get_by_text('Advanced tree conventions',exact=True)
+  expect(convention).to_be_hidden()
   tools.get_by_text('Reviewed construction practice',exact=True).click();tools.get_by_label('Builder exercise',exact=True).select_option('br-02');tools.get_by_role('button',name='Start construction practice',exact=True).click();expect(tools.get_by_label('B-R convention',exact=True)).to_have_value('2')
   def nodes():return page.evaluate("()=>import('/js/syntax-builder-ui.js').then(m=>Object.values(m.builderModel().nodes).map(n=>({id:n.id,type:n.type,text:n.text,parent:n.parent})))")
   words=nodes();assert len(words)==3
@@ -42,7 +45,9 @@ try:
   tools.get_by_role('button',name='Check construction',exact=True).click();panel=page.locator('#explainNode');expect(panel).to_contain_text('Structure: well_formed.');expect(panel).to_contain_text('Exercise: matched.');expect(panel).to_contain_text('Grammaticality: unresolved.')
   expect(panel.locator('[data-shared-evidence]')).to_be_visible();page.screenshot(path=str(OUT/'construction-desktop.png'),full_page=True)
   # Undo/redo and source/profile validation operate on this exact tree.
+  expect(convention).to_be_hidden();advanced.click();expect(convention).to_be_visible()
   tools.get_by_role('button',name='Undo',exact=True).click();tools.get_by_role('button',name='Redo',exact=True).click();tools.get_by_label('B-R convention',exact=True).select_option('1');tools.get_by_role('button',name='Check construction',exact=True).click();expect(panel).to_contain_text('Structure: invalid.');
+  expect(convention).to_be_visible()
   for _ in range(3):
    if tools.get_by_label('B-R convention',exact=True).input_value()=='2':break
    tools.get_by_role('button',name='Undo',exact=True).click()
@@ -57,5 +62,32 @@ try:
   page.set_viewport_size({'width':390,'height':844});tools.get_by_role('button',name='Hide editing controls',exact=True).click();page.screenshot(path=str(OUT/'construction-mobile.png'),full_page=True);assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
   assert not parses,parses;assert checks and all('tree' in c and 'text' not in c for c in checks);assert not errors,errors
   assert not page.evaluate("Object.keys(localStorage).some(k=>/^syntutor:(lessons|assessments):/.test(k))")
-  page.set_viewport_size({'width':1440,'height':1050});page.locator('.sidebar-item[data-view="tutor"]').click();expect(tools).to_be_hidden();browser.close();print('PASS: keyboard/touch node editing, canonical target match, separate verdicts, undo/redo, profile errors, safe import, draft reload, progressive hints/model, mobile layout and no parse/progress side effects.')
+  page.set_viewport_size({'width':1440,'height':1050})
+  page.evaluate("""() => localStorage.setItem('syntutor:lessons:v1:guest', JSON.stringify({
+    'br-02@1.0.0': { stage: 2, visited: ['predict', 'understand'], responses: { predict: 'b' }, completed_at: null }
+  }))""")
+  page.goto(base+'/#lesson/S',wait_until='domcontentloaded')
+  lesson=page.locator('#curriculumView')
+  inline=lesson.get_by_role('region',name='Build your first labelled tree exercise')
+  expect(inline.locator('#builderCanvas')).to_be_visible()
+  expect(tools).to_be_hidden()
+  standalone=page.evaluate("localStorage.getItem('syntutor:builder:v1:guest')")
+  assert [n['text'] for n in nodes()]==['The','robins','sing']
+  inline.get_by_role('button',name='Guide me').click()
+  for step in inline.locator('.first-tree-guide button').all():
+   step.press('Enter')
+  expect(inline.get_by_role('status')).to_contain_text('Your tree matches')
+  page.locator('.sidebar-item[data-view="builder"]').click()
+  expect(tools).to_be_visible()
+  assert page.evaluate("localStorage.getItem('syntutor:builder:v1:guest')")==standalone
+  assert [n['text'] for n in nodes()]!=['The','robins','sing']
+  page.locator('.sidebar-item[data-view="lessons"]').click()
+  lesson.locator('.lesson-module').nth(1).get_by_role('button',name='Resume lesson').click()
+  expect(lesson.get_by_role('heading',name='Reading and Building the NP/VP Tree')).to_be_visible()
+  inline.get_by_role('button',name='Check my tree',exact=True).click()
+  expect(inline.get_by_role('status')).to_contain_text('Your tree matches')
+  assert page.evaluate("JSON.parse(localStorage.getItem('syntutor:lessons:v1:guest'))['br-02@1.0.0'].stage")==2
+  assert not parses,parses
+  assert not errors,errors
+  page.locator('.sidebar-item[data-view="tutor"]').click();expect(tools).to_be_hidden();browser.close();print('PASS: keyboard/touch node editing, canonical target match, separate verdicts, undo/redo, profile errors, safe import, draft reload, progressive hints/model, mobile layout and no parse/progress side effects.')
 finally:server.shutdown();server.server_close();thread.join(2)

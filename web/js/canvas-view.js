@@ -2,12 +2,12 @@
 export function enableCanvasView(host, lessonWrap) {
   if (!host || !lessonWrap) throw new Error('Missing canonical tree container');
   const svg = lessonWrap.querySelector('svg');
-  if (!svg) throw new Error('Canonical B-R SVG is missing');
+  if (!svg) throw new Error('Canonical tree SVG is missing');
   const viewport = document.createElement('div');
   viewport.className = 'canonical-viewport';
   viewport.tabIndex = 0;
   viewport.setAttribute('role', 'region');
-  viewport.setAttribute('aria-label', 'Burton-Roberts syntax tree: drag to pan, wheel to zoom');
+  viewport.setAttribute('aria-label', 'Syntax tree. Drag to pan or scroll to zoom.');
   const layer = document.createElement('div');
   layer.className = 'canonical-layer';
   layer.append(svg);
@@ -50,9 +50,9 @@ export function enableCanvasView(host, lessonWrap) {
     button.addEventListener('click', action);
     controls.append(button);
   };
-  makeButton('+', 'Zoom in B-R tree', () => zoom(1.25));
-  makeButton('−', 'Zoom out B-R tree', () => zoom(.8));
-  makeButton('Fit', 'Fit B-R tree', fit);
+  makeButton('+', 'Zoom in on syntax tree', () => zoom(1.25));
+  makeButton('−', 'Zoom out of syntax tree', () => zoom(.8));
+  makeButton('Fit', 'Fit syntax tree', fit);
   const onWheel = event => {
     event.preventDefault();
     zoom(event.deltaY < 0 ? 1.12 : 1 / 1.12, event.clientX, event.clientY);

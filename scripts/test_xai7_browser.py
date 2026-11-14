@@ -49,7 +49,7 @@ try:
     page.locator('.sidebar-item[data-view="lessons"]').click()
     page.evaluate("async () => {const m=await import('/js/lessons-ui.js');await m.openLessons('br-04')}")
     lesson=page.locator('#curriculumView')
-    tree=lesson.locator('.lesson-evidence-card .lesson-tree-wrap').first
+    tree=lesson.locator('.lesson-tree-canvas')
     tree.wait_for(timeout=30000)
     nodes=tree.locator('svg g[data-node-id][role="button"]')
     assert nodes.count()>=3
@@ -74,12 +74,11 @@ try:
     assert feature.count()>=1,'br-04 must expose its recorded B-R V feature'
     feature.press('Enter')
     expect(area.locator('[data-xai-short]')).to_contain_text('transitive',timeout=30000)
-    current=tree.locator('svg').get_attribute('width')
-    tree.get_by_role('button',name='Zoom in').click()
-    enlarged=tree.locator('svg').get_attribute('width')
-    assert float(enlarged)>float(current)
-    tree.get_by_role('button',name='Reset zoom').click()
-    assert tree.locator('svg').get_attribute('width')==current
+    current=tree.locator('svg').bounding_box()['width']
+    tree.get_by_role('button',name='Zoom in B-R tree').click()
+    assert tree.locator('svg').bounding_box()['width']>current
+    tree.get_by_role('button',name='Fit B-R tree').click()
+    assert tree.locator('svg').bounding_box()['width']==current
     page.set_viewport_size({'width':390,'height':844})
     assert page.evaluate('document.documentElement.scrollWidth <= innerWidth')
     page.set_viewport_size({'width':1440,'height':980})

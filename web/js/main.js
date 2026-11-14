@@ -19,7 +19,7 @@ import {
 } from './correction.js';
 import { initLessons, openLessons, closeLessons, renderLessonTree } from './lessons-ui.js';
 import { initQuizzes, openQuizzes, closeQuizzes } from './quizzes-ui.js';
-import { initSyntaxBuilder, openBuilderView, closeBuilderView, isBuilderOpen, clearBuilder } from './syntax-builder-ui.js';
+import { initSyntaxBuilder, openBuilderView, mountEmbeddedBuilder, closeBuilderView, isBuilderOpen, clearBuilder } from './syntax-builder-ui.js';
 import { initHistory, setHistoryEnabled, openHistoryDrawer, closeHistoryDrawer, shouldPersistHistory } from './history.js';
 import { levelFromXp } from './level.js';
 import { createLeaderboardView } from './leaderboard.js';
@@ -395,6 +395,9 @@ function setActiveNav(viewName) {
 function setWorkspaceView(viewName) {
   workspaceView = VIEW_ALIASES[viewName] || viewName;
   syncGeneratorVarietyVisibility();
+  if (workspaceView !== 'lessons' && /^#lesson\//.test(location.hash)) {
+    history.replaceState(history.state, '', location.pathname + location.search);
+  }
   if (!overlayView) setActiveNav(workspaceView);
 }
 
@@ -479,7 +482,7 @@ export function boot() {
   setActiveNav(workspaceView);
   initSyntaxBuilder({ onStatusChange: (msg) => log(msg), setWorkspaceView, userId: () => activeUserId });
   initQuizzes({ userId: () => activeUserId, client: () => supabase, onExit: enterTutorMode, onLesson: enterLessonsMode, onNavigate: enterAssessmentMode });
-  initLessons({ userId: () => activeUserId, client: () => supabase, onNavigate: enterLessonsMode, onExit: enterTutorMode });
+  initLessons({ userId: () => activeUserId, client: () => supabase, onNavigate: enterLessonsMode, onExit: enterTutorMode, mountBuilder: mountEmbeddedBuilder });
   initResizers();
   syncInputClearBtn();
   // The one auth modal: the sidebar login and the lessons gateway both land
@@ -742,11 +745,11 @@ function enterTutorMode() {
 
 // Lessons: the module picker and its in-place builder. The Grammar Tutor's
 // blur/pipeline listeners stay quiet — the lesson owns the input box.
-function enterLessonsMode(lessonId = null) {
+function enterLessonsMode(lessonId = null, options) {
   teardownWorkspace();
   setQuizMode(true);
   setWorkspaceView('lessons');
-  openLessons(lessonId);
+  openLessons(lessonId, options);
 }
 
 function enterAssessmentMode(assessmentId = null) {

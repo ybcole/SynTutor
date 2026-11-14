@@ -1,0 +1,418 @@
+{
+  "title": "Non-finite clauses",
+  "content_version": "2.0.0",
+  "estimated_minutes": 10,
+  "outcomes": [
+    {
+      "id": "o1",
+      "text": "Distinguish four non-finite forms and locate the tense feature."
+    },
+    {
+      "id": "o2",
+      "text": "Find overt and silent subjects, their controllers and the relevant C positions."
+    },
+    {
+      "id": "o3",
+      "text": "Recognize non-finite clause functions and compare Type I and Type II complements."
+    }
+  ],
+  "preview_sources": [
+    {
+      "id": "BR-3E-P225",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 10,
+      "printed_page": 225,
+      "evidence_status": "TXT",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P227",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 10,
+      "printed_page": 227,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P228",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 10,
+      "printed_page": 228,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P230",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 10,
+      "printed_page": 230,
+      "evidence_status": "TXT",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P234",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 10,
+      "printed_page": 234,
+      "evidence_status": "TXT",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P243",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 10,
+      "printed_page": 243,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P244",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 10,
+      "printed_page": 244,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    }
+  ],
+  "revised_assessment": {
+    "required_sections": [
+      "introduction",
+      "concepts",
+      "worked-example",
+      "subjects-and-control",
+      "clause-functions",
+      "verb-complements",
+      "application",
+      "recap"
+    ],
+    "opening": [
+      {
+        "id": "opening-tense",
+        "prompt": "Which verb carries past tense in “Nora planned to inspect the bridge”?",
+        "answer": "b",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P226"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "inspect",
+            "feedback": "“Inspect” stays in its stem form after infinitival “to”."
+          },
+          {
+            "id": "b",
+            "text": "planned",
+            "feedback": "“Planned” is finite. The infinitival group stays the same in “Nora plans to inspect the bridge”."
+          },
+          {
+            "id": "c",
+            "text": "to",
+            "feedback": "Infinitival “to” is untensed."
+          }
+        ]
+      },
+      {
+        "id": "opening-bare",
+        "prompt": "In “The crew made Ivo wait”, what form is “wait”?",
+        "answer": "a",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P225",
+          "BR-3E-P226"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "Bare infinitive",
+            "feedback": "The verb is in the stem form without “to”."
+          },
+          {
+            "id": "b",
+            "text": "To-infinitive",
+            "feedback": "There is no infinitival “to” in this example."
+          },
+          {
+            "id": "c",
+            "text": "-ing participle",
+            "feedback": "This would have an -ing form such as “waiting”."
+          }
+        ]
+      },
+      {
+        "id": "opening-controller",
+        "prompt": "Who is understood to check the maps in “Nia enjoys checking the maps”?",
+        "answer": "c",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P225"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "An unnamed person",
+            "feedback": "The main subject identifies the person who checks the maps."
+          },
+          {
+            "id": "b",
+            "text": "Everyone",
+            "feedback": "The context here identifies a specific person."
+          },
+          {
+            "id": "c",
+            "text": "Nia",
+            "feedback": "Nia controls the silent subject of “checking the maps”."
+          }
+        ]
+      },
+      {
+        "id": "opening-for",
+        "prompt": "In “For Ivo to wait outside seemed unfair”, who is the overt subject of “to wait”?",
+        "answer": "b",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P230",
+          "BR-3E-P244"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "No one is expressed",
+            "feedback": "“Ivo” occurs inside the clause introduced by “for”."
+          },
+          {
+            "id": "b",
+            "text": "Ivo",
+            "feedback": "“For” introduces the clause and “Ivo” is its overt subject."
+          },
+          {
+            "id": "c",
+            "text": "The person who thought it unfair",
+            "feedback": "The sentence gives the person who waits, without naming who judged it unfair."
+          }
+        ]
+      },
+      {
+        "id": "opening-purpose",
+        "prompt": "In “Nia paused to check the ropes”, what gives the purpose of pausing?",
+        "answer": "a",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P234"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "to check the ropes",
+            "feedback": "The entire infinitival clause gives the purpose."
+          },
+          {
+            "id": "b",
+            "text": "Nia",
+            "feedback": "Nia is the subject of the main clause."
+          },
+          {
+            "id": "c",
+            "text": "the ropes",
+            "feedback": "This is the object inside the clause that gives the purpose."
+          }
+        ]
+      }
+    ],
+    "closing": [
+      {
+        "id": "closing-bare",
+        "prompt": "In “All Ren did was tighten the bolts”, where does [-tense] appear in the bare infinitival VP?",
+        "answer": "c",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P226"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "On “was”",
+            "feedback": "“Was” is finite and outside the bare infinitival VP."
+          },
+          {
+            "id": "b",
+            "text": "On a silent “to” branch",
+            "feedback": "The bare infinitive marks the lexical verb directly."
+          },
+          {
+            "id": "c",
+            "text": "On V “tighten”",
+            "feedback": "“Tighten” is the untensed lexical verb."
+          }
+        ]
+      },
+      {
+        "id": "closing-to",
+        "prompt": "In “Mina agreed to count the crates”, where does [-tense] appear in the infinitival VP?",
+        "answer": "b",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P226"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "On V “count”",
+            "feedback": "“Count” stays in the stem form. Look at the branch above “to”."
+          },
+          {
+            "id": "b",
+            "text": "On the branch above “to”",
+            "feedback": "“Count the crates” is the lexical VP complement of “to”."
+          },
+          {
+            "id": "c",
+            "text": "On V “agreed”",
+            "feedback": "“Agreed” carries past tense in the main clause."
+          }
+        ]
+      },
+      {
+        "id": "closing-free",
+        "prompt": "In “Reading maps takes practice”, what does the silent subject of “reading” refer to?",
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P225",
+          "BR-3E-P244"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "People in general",
+            "feedback": "There is no overt controller in this sentence."
+          },
+          {
+            "id": "b",
+            "text": "A particular person named in the sentence",
+            "feedback": "No person is named."
+          },
+          {
+            "id": "c",
+            "text": "The maps",
+            "feedback": "“Maps” is what people read, so it is the object."
+          }
+        ]
+      },
+      {
+        "id": "closing-types",
+        "prompt": "Compare “They expected Lea to sing” and “They persuaded Lea to sing”. In which is “Lea” the overt subject inside the infinitival clause?",
+        "answer": "c",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P243"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "Both sentences",
+            "feedback": "Lea is understood to sing in both, but only one has her name inside the lower clause."
+          },
+          {
+            "id": "b",
+            "text": "The sentence with “persuaded”",
+            "feedback": "Lea is the higher object in this sentence. She controls the silent lower subject."
+          },
+          {
+            "id": "c",
+            "text": "The sentence with “expected”",
+            "feedback": "The whole clause “Lea to sing” is the complement of “expected”."
+          }
+        ]
+      },
+      {
+        "id": "closing-preposition",
+        "prompt": "In “Mina insisted on locking the gate”, what is the function of “locking the gate”?",
+        "answer": "b",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P234"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "Subject of the main clause",
+            "feedback": "“Mina” is the main subject."
+          },
+          {
+            "id": "b",
+            "text": "Complement of “on” inside PP",
+            "feedback": "The -ing clause is the group selected by the preposition."
+          },
+          {
+            "id": "c",
+            "text": "Purpose adverbial",
+            "feedback": "The clause supplies what Mina insisted on."
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,12 +1,43 @@
 import {createBuilderSession} from './builder-session.js';
-import {builderProfile,paletteFor,NODE,addPhrase,addWordsFromText,addSpecial,connect,disconnect,removeNode,toCanonicalEnvelope,fromCanonicalEnvelope,childrenOf} from './syntax-builder.js';
+import {builderProfile,NODE,addPhrase,addWordsFromText,addSpecial,connect,disconnect,removeNode,toCanonicalEnvelope,fromCanonicalEnvelope,childrenOf} from './syntax-builder.js';
 import {subscribeAuthState} from './auth.js';
 const el=(tag,text)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;return n;};
 export function createBuilderTools(config){
- let host,session,identity,selected='',course,active=false,message='',hintStep=0,collapsed=false;
+ let host,session,identity,selected='',course,active=false,message='',hintStep=0,collapsed=false,lessonPractice=null,previousDraft=null,inline=null;
  const snapshot=()=>({version:1,model:config.state.model,profile:config.state.canonicalProfile||builderProfile(),targetId:config.state.targetId||null,view:config.state.view});
- function apply(d){config.state.model=d.model;config.state.canonicalProfile=d.profile;config.state.targetId=d.targetId;config.state.view=d.view||{ox:60,oy:60,scale:1};config.reset();config.refresh();render();}
- function initSession(recover){identity=config.userId?.()||'guest';let storage;try{storage=localStorage;}catch{}session=createBuilderSession({storage,identity,initial:snapshot()});if(recover)apply(session.load());else session.save();}
+ function restore(d){
+  config.state.model=d.model;
+  config.state.canonicalProfile=d.profile;
+  config.state.targetId=d.targetId;
+  config.state.view=d.view||{ox:60,oy:60,scale:1};
+ }
+ function apply(d){restore(d);config.reset();config.refresh();render();}
+ function seedPractice(lesson) {
+  const tree=lesson.worked_example.tree;
+  config.state.model={nodes:{}};
+  addWordsFromText(config.state.model,tree.tokens.map(token=>token.text).join(' '),0,240);
+  config.state.canonicalProfile=tree.convention_profile;
+  config.state.targetId=lesson.lesson_id;
+  config.state.view={ox:60,oy:60,scale:1};
+  config.reset();
+  hintStep=0;
+ }
+ function initSession(recover){
+  identity=config.userId?.()||'guest';
+  let storage;try{storage=localStorage;}catch{}
+  if(lessonPractice)seedPractice(lessonPractice.lesson);
+  if(inline){
+   config.state.model=inline.seed();
+   config.state.canonicalProfile=inline.profile||builderProfile(1);
+   config.state.targetId=null;
+   config.state.view={ox:24,oy:20,scale:1};
+   config.reset();
+  }
+  const lessonId=inline?.id||lessonPractice?.lesson.lesson_id;
+  const draftIdentity=inline?.profile?`${identity}:inline:${lessonId}`:lessonId?`${identity}:lesson:${lessonId}`:identity;
+  session=createBuilderSession({storage,identity:draftIdentity,initial:snapshot()});
+  if(recover)apply(session.load());else session.save();
+ }
  function mutate(fn){const before=JSON.parse(JSON.stringify(snapshot()));try{fn();config.refresh();record();message='';render();}catch(e){apply(before);message=e.message;updateStatus();}}
  function record(){if(!active||!session)return;if(identity!==(config.userId?.()||'guest'))return;session.record(snapshot());updateStatus();}
  function updateStatus(){const n=host?.querySelector('[data-builder-save]');if(n)n.textContent=message||session?.status||'';}
@@ -15,20 +46,25 @@ export function createBuilderTools(config){
  function select(name,options,value){const n=el('select');n.setAttribute('aria-label',name);for(const [v,label] of options){const o=el('option',label);o.value=v;n.append(o);}n.value=value??'';return n;}
  function input(name,value=''){const n=el('input');n.setAttribute('aria-label',name);n.value=value;return n;}
  function render(){
-  if(!active)return;const open=host?.querySelector('details[data-edit]')?.open,io=host?.querySelector('[data-builder-json]')?.value||'';
+  if(!active||inline)return;const open=host?.querySelector('details[data-edit]')?.open,io=host?.querySelector('[data-builder-json]')?.value||'';
+  const practiceOpen=host.querySelector('details[data-practice]')?.open??Boolean(lessonPractice);
+  const conventionsOpen=host.querySelector('details[data-conventions]')?.open??false;
   host.replaceChildren();const heading=el('h2','Build a B-R tree');host.append(heading,button(collapsed?'Show editing controls':'Hide editing controls',()=>{collapsed=!collapsed;render();config.fit();}));
+  if(lessonPractice)host.append(button('Return to lesson',lessonPractice.onReturn));
   const view=el('div');view.className='builder-tool-actions';view.append(button('Zoom in',()=>config.zoom(1.25)),button('Zoom out',()=>config.zoom(.8)),button('Fit tree',()=>config.fit()),button('Pan left',()=>config.pan(-50,0)),button('Pan right',()=>config.pan(50,0)),button('Pan up',()=>config.pan(0,-50)),button('Pan down',()=>config.pan(0,50)));host.append(view);
   if(collapsed)return;
+  if(lessonPractice) {
+   const steps=el('ol');
+   for(const text of lessonPractice.steps)steps.append(el('li',text));
+   host.append(el('h3',`Build “${lessonPractice.lesson.worked_example.sentence}”`),steps);
+  }
   const profile=config.state.canonicalProfile||builderProfile();
-  const profiles=[['FINAL','Free construction · FINAL-D1'],...Array.from({length:10},(_,i)=>[String(i+1),`Chapter ${i+1} · V${i+1}${i===6?' core':''}`]),['7D','Chapter 7 · Appendix D1']];
-  const pick=select('B-R convention',profiles,profile.version==='FINAL'?'FINAL':profile.appendix_nom?'7D':String(profile.chapter));
-  pick.addEventListener('change',()=>mutate(()=>{config.state.canonicalProfile=builderProfile(pick.value==='FINAL'?null:parseInt(pick.value),pick.value==='7D');config.state.targetId=null;}));host.append(field('Convention',pick));
   host.append(el('p','Edit with the canvas or these keyboard and touch controls. Checking a tree does not establish sentence grammaticality.'));
   const actions=el('div');actions.className='builder-tool-actions';
   const undo=button('Undo',()=>apply(session.undo())),redo=button('Redo',()=>apply(session.redo()));undo.disabled=!session.canUndo;redo.disabled=!session.canRedo;
   actions.append(undo,redo,button('Save draft',()=>{session.save();updateStatus();}),button('Check construction',()=>config.evaluate()));host.append(actions);
   const editor=el('details');editor.dataset.edit='';editor.open=open??true;editor.append(el('summary','Nodes and connections'));
-  const nodes=Object.values(config.state.model.nodes),palette=paletteFor(profile);
+  const nodes=Object.values(config.state.model.nodes),palette=config.palette();
   if(!nodes.some(n=>n.id===selected))selected=nodes[0]?.id||'';
   const list=select('Selected Builder node',[['','Choose a node'],...nodes.map(n=>[n.id,`${n.id}: ${n.kind===NODE.WORD?n.text:n.type}${n.canonicalData?.empty?' ∅':''}`])],selected);
   list.addEventListener('change',()=>{selected=list.value;config.select(selected);render();});editor.append(field('Selected node',list));
@@ -55,15 +91,52 @@ export function createBuilderTools(config){
   if(special.length){const empty=select('New empty position',special,special[0][0]);editor.append(field('Zero-word position',empty),button('Add empty position',()=>mutate(()=>{selected=addSpecial(config.state.model,empty.value,nodes.length*80,240).id;})));}
   host.append(editor);
   const exercises=el('details');exercises.append(el('summary','Reviewed construction practice'));
-  if(course){const units=course.lessons.filter(l=>l.worked_example?.tree&&l.lesson_id!=='br-01'),choice=select('Builder exercise',[['','Choose an exercise'],...units.map(l=>[l.lesson_id,l.title])],config.state.targetId||'');exercises.append(choice,button('Start construction practice',()=>mutate(()=>{
-   const l=units.find(l=>l.lesson_id===choice.value);if(!l)throw Error('Choose an exercise');const t=l.worked_example.tree;config.state.model={nodes:{}};addWordsFromText(config.state.model,t.tokens.map(t=>t.text).join(' '),0,240);config.state.canonicalProfile=t.convention_profile;config.state.targetId=l.lesson_id;hintStep=0;
-  })));
-  if(config.state.targetId){const l=units.find(l=>l.lesson_id===config.state.targetId);exercises.append(el('p',`Target: ${l.title} — ${l.worked_example.tree.sentence}`),button('Next hint',()=>{const steps=l.worked_example.steps;const step=steps[Math.min(hintStep++,steps.length-1)];message=step.instruction||step.text||step.explanation||step.caption||JSON.stringify(step);updateStatus();}),button('Show model tree',()=>{config.showModel(l.worked_example.tree);}),button('Load model for exploration',()=>mutate(()=>{config.state.model=fromCanonicalEnvelope(l.worked_example.tree);config.reset();})));}
-  }else exercises.append(el('p','Loading reviewed exercises…'));host.append(exercises);
+  exercises.dataset.practice='';
+  exercises.open=practiceOpen;
+  const units=lessonPractice?[lessonPractice.lesson]:course?.lessons.filter(l=>l.worked_example?.tree&&l.lesson_id!=='br-01');
+  if(units){
+   if(lessonPractice){
+    exercises.append(button('Restart construction practice',()=>mutate(()=>seedPractice(lessonPractice.lesson))));
+   }else{
+    const choice=select('Builder exercise',[['','Choose an exercise'],...units.map(l=>[l.lesson_id,l.title])],config.state.targetId||'');
+    exercises.append(choice,button('Start construction practice',()=>mutate(()=>{
+     const lesson=units.find(l=>l.lesson_id===choice.value);
+     if(!lesson)throw Error('Choose an exercise');
+     seedPractice(lesson);
+    })));
+   }
+   const target=units.find(l=>l.lesson_id===config.state.targetId);
+   if(target)exercises.append(el('p',`Target: ${target.title} — ${target.worked_example.tree.sentence}`),button('Next hint',()=>{
+    const steps=target.worked_example.steps;
+    const step=steps[Math.min(hintStep++,steps.length-1)];
+    message=step.instruction||step.text||step.explanation||step.caption||JSON.stringify(step);
+    updateStatus();
+   }),button('Show model tree',()=>config.showModel(target.worked_example.tree)),button('Load model for exploration',()=>mutate(()=>{
+    config.state.model=fromCanonicalEnvelope(target.worked_example.tree);
+    config.reset();
+   })));
+  }else exercises.append(el('p','Loading reviewed exercises…'));
+  host.append(exercises);
+  const conventions=el('details');
+  conventions.dataset.conventions='';
+  conventions.open=conventionsOpen;
+  conventions.append(el('summary','Advanced tree conventions'));
+  const profiles=[['FINAL','Free construction · FINAL-D1'],...Array.from({length:10},(_,i)=>[String(i+1),`Chapter ${i+1} · V${i+1}${i===6?' core':''}`]),['7D','Chapter 7 · Appendix D1']];
+  const pick=select('B-R convention',profiles,profile.version==='FINAL'?'FINAL':profile.appendix_nom?'7D':String(profile.chapter));
+  pick.addEventListener('change',()=>mutate(()=>{
+   config.state.canonicalProfile=builderProfile(pick.value==='FINAL'?null:parseInt(pick.value),pick.value==='7D');
+   config.state.targetId=null;
+  }));
+  conventions.append(field('Convention',pick));
+  if(config.state.targetId)conventions.append(el('p','Changing conventions ends this exercise and keeps the tree on the canvas.'));
+  host.append(conventions);
   const interchange=el('details');interchange.append(el('summary','Canonical JSON, movement and alternatives'));const json=el('textarea');json.dataset.builderJson='';json.setAttribute('aria-label','Canonical Builder JSON');json.value=io;json.rows=7;json.maxLength=240000;
   interchange.append(el('p','Export/import the shared canonical envelope. Advanced movement, indices, empty positions and accepted-alternative metadata are preserved; imported source claims do not become authority.'),json,
    button('Export canonical JSON',()=>{try{json.value=JSON.stringify(toCanonicalEnvelope(config.state.model,profile),null,2);}catch(e){message=e.message;updateStatus();}}),
    button('Import canonical JSON',async()=>{message='Checking import…';updateStatus();try{const tree=JSON.parse(json.value),before=JSON.stringify(snapshot()),account=identity;await config.validateImport(tree);if(!active||account!==identity||before!==JSON.stringify(snapshot()))throw Error('Construction changed during import; try again');const model=fromCanonicalEnvelope(tree);mutate(()=>{config.state.model=model;config.state.canonicalProfile=tree.convention_profile;config.state.targetId=null;config.reset();});}catch(e){message=`Import failed: ${e.message}. Current work retained.`;updateStatus();}}));host.append(interchange);
+  appendStatus();
+ }
+ function appendStatus(){
   const status=el('p');status.dataset.builderSave='';status.setAttribute('role','status');host.append(status);updateStatus();
  }
  // Duplicate same-account auth notifications can arrive after a user edit.
@@ -75,9 +148,44 @@ export function createBuilderTools(config){
   config.state.model={nodes:{}};
   config.state.canonicalProfile=builderProfile();
   config.state.targetId=null;
+  if(lessonPractice||inline)previousDraft=snapshot();
   config.reset();initSession(true);render();
  });
- return {open({recover=true}={}){active=true;if(!host){host=el('section');host.id='builderTools';host.setAttribute('aria-label','Accessible Builder controls');document.querySelector('.canvas-stage').append(host);}host.hidden=false;initSession(recover);render();config.fit();fetch('/content/lessons/course.json').then(r=>r.json()).then(data=>{course=data;render();}).catch(()=>{message='Reviewed exercises unavailable; free construction remains available.';updateStatus();});},
- close(){record();active=false;if(host)host.hidden=true;},record,render,select(id){selected=id;render();},
- undo(){if(session)apply(session.undo());},redo(){if(session)apply(session.redo());}};
+ return {
+ open({recover=true,practice=null,embedded=null}={}){
+  active=true;lessonPractice=practice;inline=embedded;
+  previousDraft=practice||inline?snapshot():null;
+  if(practice||inline)collapsed=false;
+  message='';hintStep=0;
+  if(inline){
+   if(host)host.hidden=true;
+   initSession(recover);
+   config.fit();
+   return;
+  }
+  if(!host){
+   host=el('section');host.id='builderTools';
+   host.setAttribute('aria-label','Accessible Builder controls');
+  }
+  document.querySelector('.canvas-stage').append(host);
+  host.hidden=false;host.replaceChildren();initSession(recover);render();config.fit();
+  if(practice)return;
+  fetch('/content/lessons/course.json').then(r=>r.json()).then(data=>{course=data;render();}).catch(()=>{
+   message='Reviewed exercises unavailable; free construction remains available.';updateStatus();
+  });
+ },
+ close(){
+  record();active=false;if(previousDraft)restore(previousDraft);
+  previousDraft=null;lessonPractice=null;inline=null;if(host)host.hidden=true;
+ },
+ record,render,select(id){selected=id;render();},
+ restartInline(){
+  if(!inline||!session)return;
+  const draft={...snapshot(),model:inline.seed(),view:{ox:24,oy:20,scale:1}};
+  session.record(draft);
+  apply(draft);
+  config.fit();
+ },
+ undo(){if(!session?.canUndo)return false;apply(session.undo());return true;},
+ redo(){if(session)apply(session.redo());}};
 }

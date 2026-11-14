@@ -1,6 +1,6 @@
 import { lessonKey, cleanProgress, reduceProgress, prerequisitesMet, completedCriteria } from './lesson-core.js';
 
-export function createLessonStore(course, { storage, userId = 'guest', client = null, syncTimeoutMs = 5000 } = {}) {
+export function createLessonStore(course, { storage, userId = 'guest', client = null, syncTimeoutMs = 5000, revisedProgress } = {}) {
   const key = `syntutor:lessons:v1:${userId}`;
   let records = {}, status = userId === 'guest' ? 'Saved on this device' : 'Saved on this device; account sync pending';
   let queue = Promise.resolve();
@@ -35,11 +35,14 @@ export function createLessonStore(course, { storage, userId = 'guest', client = 
     if (!client || userId === 'guest') return;
     // The course is topologically ordered, so offline prerequisites sync first.
     for (const lesson of course.lessons) {
-      const record = records[lessonKey(lesson)]; if (!record || !dirty.has(lessonKey(lesson))) continue;
+      const record = records[lessonKey(lesson)]; if (lesson.revised_assessment || !record || !dirty.has(lessonKey(lesson))) continue;
       const { data, error } = await bounded(client.rpc('save_lesson_progress', { p_lesson_id: lesson.lesson_id,
         p_content_version: lesson.content_version, p_state: { responses: record.responses, visited: record.visited, stage: record.stage } }));
       if (error) throw new Error('Account sync unavailable. Your lesson progress is saved on this device; retry sync when connected.');
-      if (data) { records[lessonKey(lesson)] = cleanProgress(lesson, data); remoteAwards.set(lessonKey(lesson),data.earned || 0); }
+      if (data) {
+        records[lessonKey(lesson)] = cleanProgress(lesson, { ...data, updated_at: record.updated_at });
+        remoteAwards.set(lessonKey(lesson), data.earned || 0);
+      }
       dirty.delete(lessonKey(lesson));
     }
     write(); status = 'Synced to your account';
@@ -51,11 +54,17 @@ export function createLessonStore(course, { storage, userId = 'guest', client = 
     async load() {
       if (!client || userId === 'guest') return;
       try {
-        const { data, error } = await bounded(client.from('lesson_progress').select('lesson_id,content_version,responses,visited,stage,completed_at'));
+        const { data, error } = await bounded(client.from('lesson_progress').select('lesson_id,content_version,responses,visited,stage,completed_at,updated_at'));
         if (error) throw error;
         for (const row of data || []) {
           const lesson = course.lessons.find(l => l.lesson_id === row.lesson_id && l.content_version === row.content_version);
-          if (!lesson) continue;
+          if (!lesson) {
+            if (row.completed_at && course.lessons.some(l => l.prerequisites.some(p =>
+              p.lesson_id === row.lesson_id && p.content_version === row.content_version))) {
+              records[lessonKey(row)] = row;
+            }
+            continue;
+          }
           const local = records[lessonKey(lesson)];
           if (!local || row.completed_at) records[lessonKey(lesson)] = cleanProgress(lesson,row);
         }
@@ -67,7 +76,13 @@ export function createLessonStore(course, { storage, userId = 'guest', client = 
         // Refresh in case another tab saved the same version. XP is still derived once per key.
         read();
         const previous = records[lessonKey(lesson)];
-        const next = reduceProgress(lesson, previous, event, { prerequisites: prerequisitesMet(lesson,records) });
+        const equivalents = { ...records };
+        for (const requirement of lesson.prerequisites) {
+          const revised = course.lessons.find(item => item.lesson_id === requirement.lesson_id && item.revised_assessment);
+          if (revised && revisedProgress?.(revised).completed_at) equivalents[lessonKey(requirement)] = { completed_at: true };
+        }
+        const next = reduceProgress(lesson, previous, event, { prerequisites: prerequisitesMet(lesson,equivalents) });
+        next.updated_at = new Date().toISOString();
         records[lessonKey(lesson)] = next; dirty.add(lessonKey(lesson)); write();
         remoteAwards.delete(lessonKey(lesson));
         try { if(!syncBlocked)await sync(); } catch (error) { syncBlocked=true;status = error.message; }
