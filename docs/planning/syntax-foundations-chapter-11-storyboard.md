@@ -1,6 +1,6 @@
 # Chapter 11 proposal · Languages, sentences and grammars
 
-**Status** · Outline ready for owner review. Chapter 11 implementation follows outline approval.
+**Status** · Implemented as a [local pilot](../reports/syntax-foundations-chapter-11-pilot.md). Gate 4.11 review and first-time learner timing are pending.
 
 ## Source and scope
 

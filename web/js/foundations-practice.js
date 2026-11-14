@@ -90,7 +90,7 @@ export function addWordPractice(body, { el, button }, steps) {
   renderStep();
 }
 
-export function addCombinationPractice(body, { el, button }, basic, incomplete) {
+export function addCombinationPractice(body, { el, button }, basic, incomplete, { showDerivation = false } = {}) {
   const section = el('section', undefined, 'lesson-transfer');
   const heading = el('h3', 'Try it yourself');
   const prompt = el('p', 'Join two complete sentences. Try the unfinished input to see why it fails.');
@@ -103,6 +103,7 @@ export function addCombinationPractice(body, { el, button }, basic, incomplete) 
   const status = el('div', undefined, 'lesson-feedback');
   status.setAttribute('role', 'status');
   let result = '';
+  let derivation = '';
   let reuse = false;
   const check = button('Apply the rule', () => {
     const parts = inputs.map(input => input.value);
@@ -119,11 +120,13 @@ export function addCombinationPractice(body, { el, button }, basic, incomplete) 
       return;
     }
     const joined = parts.map(part => `[${part}]`).join(' and ');
+    const structure = `[S ${parts.map(part => reuse && part === result ? derivation : `[S ${part}]`).join(' and ')}]`;
     if (reuse) {
-      feedback('The same rule joined a complete earlier result with another sentence.', true, `${joined}.`);
+      feedback('The same rule joined a complete earlier result with another sentence.', true, showDerivation ? structure : `${joined}.`);
     } else {
       result = parts.join(' and ');
-      feedback('Both inputs are complete, so their combination can serve as a new input.', true, `${joined}.`);
+      derivation = structure;
+      feedback('Both inputs are complete, so their combination can serve as a new input.', true, showDerivation ? structure : `${joined}.`);
       next.hidden = false;
     }
   });
@@ -137,6 +140,7 @@ export function addCombinationPractice(body, { el, button }, basic, incomplete) 
   const restart = button('Start again', () => {
     reuse = false;
     result = '';
+    derivation = '';
     prompt.textContent = 'Join two complete sentences. Try the unfinished input to see why it fails.';
     fillInputs([...basic, incomplete]);
     status.textContent = '';

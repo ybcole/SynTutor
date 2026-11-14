@@ -1,0 +1,314 @@
+{
+  "title": "Languages, sentences and grammars",
+  "content_version": "2.0.0",
+  "estimated_minutes": 10,
+  "outcomes": [
+    {
+      "id": "o1",
+      "text": "Explain how a finite list and a recursive rule can describe an unbounded set."
+    },
+    {
+      "id": "o2",
+      "text": "Apply a rule twice and explain how it groups its inputs or rejects an unfinished one."
+    },
+    {
+      "id": "o3",
+      "text": "Explain how grammar rules license sentences and describe their structure."
+    }
+  ],
+  "revised_assessment": {
+    "required_sections": [
+      "introduction",
+      "concepts",
+      "worked-example",
+      "apply-the-rule",
+      "rule-and-structure",
+      "application",
+      "recap"
+    ],
+    "opening": [
+      {
+        "id": "opening-list",
+        "prompt": "If the complete list contains “Iris rests” and “Leo waits”, does “Iris rests and Leo waits” belong to it?",
+        "answer": "b",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P260"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "Yes, because both parts are listed.",
+            "feedback": "The list contains the individual parts. It needs an added rule to permit their combination."
+          },
+          {
+            "id": "b",
+            "text": "No, because the combined sentence is absent.",
+            "feedback": "A complete list contains every member of that fixed set."
+          },
+          {
+            "id": "c",
+            "text": "Only if Iris comes first.",
+            "feedback": "The list supplies no combination in either order."
+          }
+        ]
+      },
+      {
+        "id": "opening-input",
+        "prompt": "If “and” joins two complete sentences, which input is unfinished?",
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P260"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "Iris rests and",
+            "feedback": "There is no sentence after “and”."
+          },
+          {
+            "id": "b",
+            "text": "Mina waves",
+            "feedback": "This input is a complete sentence."
+          },
+          {
+            "id": "c",
+            "text": "Leo waits",
+            "feedback": "This input has a subject and predicate."
+          }
+        ]
+      },
+      {
+        "id": "opening-reuse",
+        "prompt": "What can the output of the toy sentence-combination rule become?",
+        "answer": "c",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P260"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "A new rule",
+            "feedback": "The rule stays the same."
+          },
+          {
+            "id": "b",
+            "text": "A single word",
+            "feedback": "The result is a complete sentence."
+          },
+          {
+            "id": "c",
+            "text": "An input to the same rule",
+            "feedback": "The rule produces an S, and it accepts S as an input."
+          }
+        ]
+      },
+      {
+        "id": "opening-grouping",
+        "prompt": "In “[Iris rests and Leo waits] and [Mina waves]”, what is the first input to the last step?",
+        "answer": "b",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P260"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "Iris rests",
+            "feedback": "This was a starting sentence, but the first bracket includes the earlier combination."
+          },
+          {
+            "id": "b",
+            "text": "Iris rests and Leo waits",
+            "feedback": "The entire first bracket serves as one input."
+          },
+          {
+            "id": "c",
+            "text": "Mina waves",
+            "feedback": "This is the second input."
+          }
+        ]
+      },
+      {
+        "id": "opening-tree",
+        "prompt": "What does a labelled tree describe about a sequence?",
+        "answer": "a",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P265"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "How its words are grouped",
+            "feedback": "The branches show the parts and their relationships."
+          },
+          {
+            "id": "b",
+            "text": "How often the sequence is used",
+            "feedback": "The tree gives structure, while frequency needs different evidence."
+          },
+          {
+            "id": "c",
+            "text": "Who first said it",
+            "feedback": "The labels describe grammatical categories."
+          }
+        ]
+      }
+    ],
+    "closing": [
+      {
+        "id": "closing-recursion",
+        "prompt": "A toy grammar lists “Ren reads” and “Ivo sings” and permits S → S and S. How can it derive “Ren reads and Ivo sings and Ren reads”?",
+        "answer": "c",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P260"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "Write a new rule for three sentences.",
+            "feedback": "Two applications of the original rule suffice."
+          },
+          {
+            "id": "b",
+            "text": "Apply the rule once with three inputs.",
+            "feedback": "Each application takes two inputs."
+          },
+          {
+            "id": "c",
+            "text": "Join the two base sentences, then join the result with another base sentence.",
+            "feedback": "The first result is an S, so it qualifies as an input to the second step."
+          }
+        ]
+      },
+      {
+        "id": "closing-incomplete",
+        "prompt": "Why does the toy grammar fail to derive “Ivo sings and”?",
+        "answer": "b",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P260"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "It uses a verb.",
+            "feedback": "“Ivo sings” is already a complete base sentence."
+          },
+          {
+            "id": "b",
+            "text": "It lacks a complete second sentence.",
+            "feedback": "The rule requires an S on each side of “and”."
+          },
+          {
+            "id": "c",
+            "text": "It repeats a base sentence.",
+            "feedback": "The sequence contains only one complete base sentence."
+          }
+        ]
+      },
+      {
+        "id": "closing-brackets",
+        "prompt": "Which grouping records a final step with “Ren reads” as the first input and “Ivo sings and Nia listens” as the second?",
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P260"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "[Ren reads] and [Ivo sings and Nia listens]",
+            "feedback": "The second bracket preserves the earlier combination."
+          },
+          {
+            "id": "b",
+            "text": "[Ren reads and Ivo sings] and [Nia listens]",
+            "feedback": "This version groups a different pair first."
+          },
+          {
+            "id": "c",
+            "text": "[Ren reads] and [Ivo sings] and [Nia listens]",
+            "feedback": "This version does not show which pair formed the earlier result."
+          }
+        ]
+      },
+      {
+        "id": "closing-order",
+        "prompt": "The toy grammar uses S → NP VP and licenses “The bird sings”. Why does this rule fail for “Sings the bird”?",
+        "answer": "c",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P266"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "The sequence has no noun phrase.",
+            "feedback": "“The bird” is an NP. Check its position."
+          },
+          {
+            "id": "b",
+            "text": "The sequence has no verb phrase.",
+            "feedback": "“Sings” is a VP in this toy grammar. Check its position."
+          },
+          {
+            "id": "c",
+            "text": "The VP comes before the NP.",
+            "feedback": "The rule specifies the order as well as the categories."
+          }
+        ]
+      },
+      {
+        "id": "closing-structure",
+        "prompt": "What does a grammar supply for a licensed sentence in addition to a membership decision?",
+        "answer": "b",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P263"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "A count of how often it has been said.",
+            "feedback": "Frequency is separate from the structure assigned by the grammar."
+          },
+          {
+            "id": "b",
+            "text": "A structural description.",
+            "feedback": "The rules specify the permitted combinations and their grouping."
+          },
+          {
+            "id": "c",
+            "text": "A list of every future use.",
+            "feedback": "A grammar describes a pattern that can apply to novel sentences."
+          }
+        ]
+      }
+    ]
+  }
+}
