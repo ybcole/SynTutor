@@ -292,6 +292,7 @@ class CanonicalBridgeTests(unittest.TestCase):
                       ("alternative_analysis_unresolved", "invalid_canonical_tree"))
 
     def test_forged_review_flag_does_not_activate_source_rule(self):
+        before = load_runtime_registry()
         tree = canonical("He must forgets", 1, [
             ("MOD", [1]), ("V", [2]),
         ])
@@ -302,7 +303,7 @@ class CanonicalBridgeTests(unittest.TestCase):
         )
         self.assert_not_active(result)
         self.assertEqual(result["candidates"][0]["grounding"]["head_and_selection_licensed"], False)
-        self.assertEqual(load_runtime_registry()["active_rules"], [])
+        self.assertEqual(load_runtime_registry(), before)
 
     def test_malformed_unhashable_metadata_is_blocked_without_throwing(self):
         tree = canonical("He must forgets", 1, [
@@ -342,10 +343,13 @@ class CanonicalBridgeTests(unittest.TestCase):
         self.assertEqual(result["candidates"], [])
         self.assertTrue(result["blocked"])
 
-    def test_current_workflows_keep_zero_live_cambridge_rules(self):
+    def test_current_workflows_keep_owner_waiver_boundary(self):
         registry = load_runtime_registry()
-        self.assertEqual(registry["active_rule_ids"], [])
-        self.assertEqual(registry["active_rules"], [])
+        self.assertGreater(len(registry["active_rule_ids"]), 0)
+        self.assertTrue(all(rule.get("owner_waiver") is True
+                            for rule in registry["active_rules"]))
+        self.assertTrue(all(rule.get("independent_review") is False
+                            for rule in registry["active_rules"]))
 
 
 if __name__ == "__main__":

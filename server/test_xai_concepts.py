@@ -124,10 +124,18 @@ class XAI1ConceptTests(unittest.TestCase):
         self.assertTrue(all(r["book_id"] == "BR3" for r in early))
         self.assertEqual(pending_by_node("UNKNOWN-CATEGORY"), [])
 
-    def test_never_enable_live_cambridge_or_live_templates(self):
+    def test_live_cambridge_is_limited_to_owner_waivers(self):
         active = read_json(LIVE_CAMBRIDGE).get("enabled_rules", [])
         existing = read_json(LIVE_TEMPLATES)
-        self.assertEqual(active, [])
+        self.assertGreater(len(active), 0)
+        # Enabling a rule requires the explicit owner-waiver boundary. No live
+        # rule may claim independent review, and every rule must record the
+        # owner-waived crosswalk and enabled runtime status.
+        self.assertTrue(all(row.get("owner_waiver") is True for row in active))
+        self.assertTrue(all(row.get("independent_review") is False for row in active))
+        self.assertTrue(all(row.get("crosswalk_status") == "owner_waived_unverified"
+                            for row in active))
+        self.assertTrue(all(row.get("runtime_status") == "enabled" for row in active))
         self.assertEqual(sum(row["independent_review"] is True for row in existing["templates"]), 2)
         self.assertEqual(sum(row["status"] == "approved" for row in existing["sources"]), 4)
         self.assertTrue(all(not any(c["runtime"].values())

@@ -60,6 +60,10 @@ class LearnerExplanationTests(unittest.TestCase):
                     self.assertLess(len(out["text"]),750)
                     self.assertTrue(all(phrase.lower() not in out["text"].lower()
                                         for phrase in FORBIDDEN),out["text"])
+                    surface=str(node.get("surface") or "").strip()
+                    if surface:
+                        self.assertNotIn(f"larger expression “{surface}”",out["text"])
+                        self.assertNotIn(f"is part of “{surface}”",out["text"])
                 n+=1
         self.assertGreaterEqual(n,68)  # All 68 nodes across the ten source lesson trees
 

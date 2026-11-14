@@ -1,4 +1,5 @@
 """API contract tests using stubs instead of downloading spaCy/Benepar models."""
+import importlib
 import sys
 import types
 import unittest
@@ -48,6 +49,13 @@ for _name, _module in _PREVIOUS_MODULES.items():
         sys.modules.pop(_name, None)
     else:
         sys.modules[_name] = _module
+
+
+def tearDownModule():
+    """Rebind api to the real modules after this isolated stub-based module."""
+    importlib.invalidate_caches()
+    if "api" in sys.modules:
+        importlib.reload(sys.modules["api"])
 
 
 class SyntaxGeneratorApiContractTests(unittest.TestCase):

@@ -836,7 +836,7 @@ class GeneratorCanonicalEnvelopeTests(unittest.TestCase):
         self.assertEqual(envelope["tokens"][0]["char_span"], [0, 3])
         self.assertEqual(envelope["tokens"][1]["char_span"], [6, 12])
 
-    def test_conflicting_exact_gold_references_remain_unresolved(self):
+    def test_conflicting_exact_gold_references_select_primary_and_alternatives(self):
         records = [
             self.v7_record("ch7-a", "NOM"),
             self.v7_record("ch7-b", "PHRASE-b"),
@@ -845,9 +845,12 @@ class GeneratorCanonicalEnvelopeTests(unittest.TestCase):
             self.lexical_analysis("the clowns"), chapter=7,
             reference_records=records,
         )
-        self.assertEqual(result["status"], "unresolved")
-        self.assertIsNone(result["tree"])
-        self.assertEqual(result["diagnostics"][0]["code"], "AMBIGUOUS_GOLD_REFERENCE")
+        self.assertEqual(result["status"], "normalized", result.get("reasons"))
+        self.assertTrue(result["ambiguous"])
+        self.assertEqual(result["reasons"][0]["code"], "AMBIGUOUS_GOLD_REFERENCE")
+        self.assertGreaterEqual(len(result["tree"]["accepted_alternatives"]), 1)
+        self.assertTrue(any("ambiguous_source_records=ch7-a,ch7-b" in note
+                            for note in result["tree"].get("notes") or []))
 
     def test_v7_appendix_profile_does_not_select_core_gold_record(self):
         records = [

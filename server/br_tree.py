@@ -5,6 +5,7 @@ canonical tree only from an exact IMG-verified B-R reference or a narrowly
 specified convention mapping. Unsupported cases return an explicit unresolved result.
 """
 from __future__ import annotations
+from copy import deepcopy
 from difflib import SequenceMatcher
 from functools import lru_cache
 import json
@@ -15,6 +16,7 @@ from typing import Any, Iterable
 SCHEMA_VERSION = "1.0.0"
 CONVENTIONS = tuple(f"V{i}" for i in range(1, 11))
 _WORD = re.compile(r"[\w]+(?:[-'’][\w]+)*", re.UNICODE)
+_CLITIC = re.compile(r"^(.+?)(n't|'s|'re|'m|'ve|'ll|'d)$", re.IGNORECASE)
 _DISPLAY = re.compile(r"[\w]+(?:[-'’][\w]+)*|[^\w\s]", re.UNICODE)
 LABEL_INTRO = {
     "Sentence": 1, "Phrase": 1, "PHRASE": 2, "S": 2, "NP": 2, "VP": 2,
@@ -41,7 +43,23 @@ def _version_number(version: str) -> int:
 
 
 def _atoms(value: str) -> list[str]:
-    return [m.group(0).casefold().replace("’", "'") for m in _WORD.finditer(str(value))]
+    text = str(value).casefold().replace("’", "'").strip()
+    # A standalone clitic token (a source tree may store "John" and "'s" as
+    # separate terminals) is already one atom.
+    if re.fullmatch(r"n't|'s|'re|'m|'ve|'ll|'d", text):
+        return [text]
+    atoms = []
+    for match in _WORD.finditer(str(value)):
+        token = match.group(0).casefold().replace("’", "'")
+        clitic = _CLITIC.match(token)
+        if clitic:
+            # The parser tokenizes clitics separately ("John" + "'s",
+            # "I" + "'m", "do" + "n't"). Match that tokenization here so a
+            # source tree and its sentence compare on the same atoms.
+            atoms.extend([clitic.group(1), clitic.group(2)])
+        else:
+            atoms.append(token)
+    return atoms
 
 
 def _token_positions(tokens: list[dict[str, Any]] | None, sentence: str) -> tuple[list[str], list[int]]:
@@ -355,10 +373,22 @@ def validate_tree(tree: dict[str, Any], convention_version: str,
     return errors
 
 
+def _upgrade_legacy_labels(node: dict[str, Any]) -> None:
+    """Rename V1-era Sentence labels for chapters that use S."""
+    if not isinstance(node, dict):
+        return
+    if node.get("label") == "Sentence":
+        node["label"] = "S"
+    for child in node.get("children") or []:
+        _upgrade_legacy_labels(child)
+
+
 def _make_reference(record: dict[str, Any], tokens: list[dict[str, Any]] | None,
                     sentence: str, version: str) -> dict[str, Any]:
     expected, positions = _token_positions(tokens, sentence)
-    source_tree = record["tree"]
+    source_tree = deepcopy(record["tree"])
+    if version != "V1":
+        _upgrade_legacy_labels(source_tree)
     if _source_yield(source_tree) != expected:
         raise ValueError("source reference tree yield mismatch")
     runtime_tree = _source_to_runtime(source_tree, positions, [0], {"next": 0})
@@ -374,7 +404,10 @@ def _make_reference(record: dict[str, Any], tokens: list[dict[str, Any]] | None,
             diagnostics.append({"code": "ALTERNATIVE_TOKEN_MISMATCH", "message": "Alternative yield mismatch."})
             continue
         try:
-            alt_tree = _source_to_runtime(alternative["tree"], positions, [0], {"next": 0})
+            alt_source = deepcopy(alternative["tree"])
+            if version != "V1":
+                _upgrade_legacy_labels(alt_source)
+            alt_tree = _source_to_runtime(alt_source, positions, [0], {"next": 0})
             alt_errors = validate_tree(alt_tree, version, expected)
         except (TypeError, ValueError) as exc:
             alt_tree, alt_errors = None, [str(exc)]

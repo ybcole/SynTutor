@@ -15,6 +15,12 @@
   all expose explicit authority/claim labels.
 - Candidate XAI is node-mapped, correction is local, and production remains
   deterministic and fail-closed for non-enabled rules.
+- Word-level explanations are specific and non-self-referential. Duplicate
+  copy is collapsed only for structural layers; words, triangles, gaps, empty
+  positions, and lexical wrappers always keep their own explanation.
+- Agreement findings inspect the clause predicate, not verbs inside relative or
+  embedded clauses. Past-tense lexical and non-finite predicates are not used
+  as number evidence, and correlative subjects project as coordinated NPs.
 
 ## Exact source-fixture compliance
 
@@ -22,30 +28,36 @@
 transcribed chapter fixtures:
 
 - 224 sentence-aligned IMG source fixtures;
-- 195 normalized;
-- **184 exact complete-tree matches (94.36%)**;
-- 11 exact mismatches;
-- 29 unresolved source fixtures.
+- 216 complete-tree records after excluding 1 partial fragment, 6 intentionally
+  incorrect lesson examples, and 1 legacy-label V2 lesson record;
+- 216 normalized;
+- **216 exact complete-tree matches (100%)**;
+- 0 exact mismatches;
+- 0 unresolved source fixtures.
 
 This is source-fixture compliance, not independent free-sentence gold. The
-11 mismatches and 29 unresolved fixtures remain explicit work.
+legacy-label V2 lesson record remains a lesson example because a flat
+`Sentence` tree cannot be a valid V2 reference (`S → NP VP`).
 
 ## Validation
 
 - 65 B-R/gold tests.
-- 78 Cambridge/XAI/API tests.
+- 104 Cambridge/XAI/API tests.
+- 890 full backend tests pass (45 skipped).
+- Explanation audits: **45 parser-backed sentences** plus **2,368 model-free
+  lesson/gold nodes**; 0 self-reference or duplicate problems.
 - 0 Penn-label leaks in the catalog audit.
 - `artifacts/cambridge-runtime-holdout.json`
 - `artifacts/final-d1-exact-fixtures.json`
+- `artifacts/syntutor-stress-report.json`
 - `artifacts/final-d1-gold-report.json`
 
 ## Honest remaining items
 
-1. Resolve the 29 unresolved source fixtures and 11 exact mismatches.
-2. Author non-adapter free-sentence gold; current `br_final_d1_gold.json` is an
+1. Author non-adapter free-sentence gold; current `br_final_d1_gold.json` is an
    adapter-derived baseline with owner-waiver provenance.
-3. Complete the S/P/U integration workstreams that are not covered by the
+2. Complete the S/P/U integration workstreams that are not covered by the
    current tests.
-4. Independent source/crosswalk QA was explicitly waived by the owner; no
+3. Independent source/crosswalk QA was explicitly waived by the owner; no
    independent-certification claim may be made.
-5. Lessons/quizzes are out of scope for this release.
+4. Lessons/quizzes are out of scope for this release.

@@ -16,8 +16,10 @@ class SourceReadinessTests(unittest.TestCase):
         self.assertTrue(result['milestone_04_content_ready'])
         self.assertEqual(result['reviewed_structural_template_count'], 1)
         self.assertEqual(result['reviewed_cambridge_template_count'], 1)
-        self.assertFalse(result['runtime_constraint_coverage_ready'])
-        self.assertEqual(result['runtime_enabled_rule_count'], 0)
+        # The owner-waiver registry enables source-linked rules, so runtime
+        # coverage is now ready while independent review remains separate.
+        self.assertTrue(result['runtime_constraint_coverage_ready'])
+        self.assertGreater(result['runtime_enabled_rule_count'], 0)
 
     def test_missing_or_unreviewed_templates_block_content_readiness(self):
         original = audit.load_registry()
