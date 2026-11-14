@@ -21,6 +21,10 @@
 - Agreement findings inspect the clause predicate, not verbs inside relative or
   embedded clauses. Past-tense lexical and non-finite predicates are not used
   as number evidence, and correlative subjects project as coordinated NPs.
+- Relative pronoun choice is diagnosed from antecedent animacy and the
+  subject/object gap (`whom` → `which`, `which` → `who`/`whom`, subject `whom`
+  → `who`), with an executable edit. A pronoun inside a relative clause is not
+  treated as a prepositional object.
 
 ## Exact source-fixture compliance
 
@@ -43,8 +47,8 @@ legacy-label V2 lesson record remains a lesson example because a flat
 
 - 65 B-R/gold tests.
 - 104 Cambridge/XAI/API tests.
-- 890 full backend tests pass (45 skipped).
-- Explanation audits: **45 parser-backed sentences** plus **2,368 model-free
+- 895 full backend tests pass (45 skipped).
+- Explanation audits: **47 parser-backed sentences** plus **2,368 model-free
   lesson/gold nodes**; 0 self-reference or duplicate problems.
 - 0 Penn-label leaks in the catalog audit.
 - `artifacts/cambridge-runtime-holdout.json`

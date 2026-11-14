@@ -67,6 +67,8 @@ CASES = [
     ("agreement-relative-scope", "I and he saw the three thieves stealing the car whom was parked on the wrong side."),
     ("number-of-relative-scope", "The number of students who were late surprised me."),
     ("correlative-relative-scope", "Neither the teacher nor I saw the man who was late."),
+    ("relative-pronoun-inanimate", "The car whom was parked outside belongs to me."),
+    ("relative-pronoun-human", "The man which saw me was late."),
     # --- Long, nested stress sentences --------------------------------------
     ("nested-relative", "The professor who the students believe has submitted the report that the committee requested yesterday was praised."),
     ("long-coordination", "The administrator and the committee reviewed the applications that arrived late and decided that the process should continue."),
@@ -191,7 +193,16 @@ def inspect(case_id, sentence):
         issues.append("ERROR_WITHOUT_EXPLANATION_NODE")
     if unbound_red:
         issues.append("RED_WORD_WITHOUT_BOUND_DETAIL")
-    if payload.get("summary", {}).get("verdict") == "ungrammatical" and not correction:
+    actionable_edit = any(
+        (detail.get("remediation") or {}).get("edit")
+        or (detail.get("remediation") or {}).get("edits")
+        for detail in details.values())
+    # A whole-sentence correction can legitimately be withheld when the
+    # detector rejects the repaired candidate (for example, when another
+    # independent issue remains). Flag only when no local executable fix
+    # exists at all.
+    if (payload.get("summary", {}).get("verdict") == "ungrammatical"
+            and not correction and not actionable_edit):
         issues.append("NO_CORRECTION_FOR_UNGRAMMATICAL")
     if impact.get("introduced_count"):
         issues.append("CORRECTION_INTRODUCES_ERRORS")
@@ -212,6 +223,7 @@ def inspect(case_id, sentence):
         "triangle_count": len(triangles),
         "unlabelled_triangle_count": len(unlabelled_triangles),
         "error_detail_count": len(details),
+        "actionable_edit": actionable_edit,
         "unbound_error_details": unbound,
         "red_tokens": sorted(red_spans),
         "unbound_red_tokens": unbound_red,

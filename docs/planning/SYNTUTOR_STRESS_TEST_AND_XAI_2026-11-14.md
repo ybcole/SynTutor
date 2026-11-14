@@ -46,7 +46,7 @@ of asserting an empty registry.
 
 ## 2. Method
 
-Harness: `scripts/stress_test_syntutor.py` (43 sentences).
+Harness: `scripts/stress_test_syntutor.py` (45 sentences).
 
 It calls the same `server.api.build_payload` used by `/api/parse` and records:
 
@@ -69,11 +69,11 @@ Final result:
 
 | Metric | Value |
 |---|---:|
-| Cases | 43 |
+| Cases | 45 |
 | Fatal errors | 0 |
-| Normalized B-R trees | 43 |
+| Normalized B-R trees | 45 |
 | Provisional working trees | 0 |
-| Cases with display labels | 43 / 43 |
+| Cases with display labels | 45 / 45 |
 | Unlabelled triangles | 0 |
 | Whole-sentence triangles | 0 |
 | Red words without a bound explanation | 0 |
@@ -128,7 +128,7 @@ additional `canonical_node_ids`.
   structured edit for `C-UNCOUNTABLE`, `C-COORD-CASE` and
   `C-COORD-SUBJ-AGREE`.
 
-**Result.** In the 43-case suite, zero red words lack a bound explanation.
+**Result.** In the 45-case suite, zero red words lack a bound explanation.
 
 ### ST-03 — Repeated explanations on nested nodes
 
@@ -414,6 +414,39 @@ punctuation; `was` is not flagged. The dedicated regression suite
 `server/test_agreement_scoping.py` covers the coordinated, correlative and
 `the number of` cases, and the three sentences are in the stress harness.
 
+### ST-16 — Relative pronoun choice was not diagnosed
+
+**Symptom.** `the car whom was parked` was accepted even though a thing takes
+`which`/`that`, and `the man which saw me` was accepted even though a person
+takes `who`. A related false positive appeared in
+`The students from several departments whom I met were late.`, where the
+preposition + object-pronoun rule read the subject pronoun `I` inside the
+relative clause and tried to change it to `me`.
+
+**Root cause.** The 5.4 rule checked only the surface word before the relative
+pronoun and only handled `which`/`who`, never `whom`. The matrix preposition
+rule used the last pronoun of the PP's NP object without excluding an embedded
+relative clause.
+
+**Fix.**
+
+- `licensing.py::check_relatives` now derives the antecedent NP from the tree,
+  classifies its head noun as human/nonhuman, and inspects the relative
+  clause's subject/object gap. It emits `C-RELATIVE-PRONOUN` with an executable
+  replacement edit for:
+  - nonhuman antecedent + `who`/`whom` → `which`;
+  - human antecedent + `which` → `who` (subject gap) or `whom` (object gap);
+  - subject-gap `whom` → `who`.
+- `HUMAN_ANTECEDENTS` / `NONHUMAN_ANTECEDENTS` were expanded; unknown common
+  nouns stay unverified, and collective nouns such as `committee` are not forced
+  into either class.
+- `matrix.py::_has_clause` prevents the preposition + object-pronoun rule from
+  reading a pronoun inside a relative clause.
+
+**Result.** The reported `whom` is diagnosed as `which`; `was` remains
+unflagged. `server/test_relative_pronoun.py` covers inanimate, human,
+subject-gap, object-gap, collective and preposition-inside-relative cases.
+
 ## 4. XAI design answers
 
 ### 4.1 Which nodes need an explanation?
@@ -532,11 +565,11 @@ node scripts/test_tree_layout.js
 
 Final result:
 
-- Stress harness: 43/43 normalized, 0 provisional, 0 unlabelled triangles, 0
+- Stress harness: 45/45 normalized, 0 provisional, 0 unlabelled triangles, 0
   whole-sentence triangles, 0 unbound red words, 0 correction cascades.
-- Explanation audits: 45 parser-backed sentences and 2,368 model-free
+- Explanation audits: 47 parser-backed sentences and 2,368 model-free
   lesson/gold nodes; **0 self-reference or duplicate problems**.
-- Full backend suite: **890 tests pass**, 45 skipped, 0 failures, 0 errors.
+- Full backend suite: **895 tests pass**, 45 skipped, 0 failures, 0 errors.
 - B-R/gold handoff suites: 65 tests pass.
 - Runtime/API/XAI handoff suites: 104 tests pass.
 - Exact fixtures: **216/216 exact (100%)**, 0 unresolved.

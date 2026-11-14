@@ -26,8 +26,12 @@ class AgreementScopingTests(unittest.TestCase):
             "I and he saw the three thieves stealing the car whom was parked "
             "on the wrong side")
         self.assertNotIn(("C-COORD-SUBJ-AGREE", "was"), errors)
-        self.assertEqual([constraint for constraint, _ in errors],
-                         ["C-TERMINAL-PUNCT"])
+        # The relative pronoun is wrong for the inanimate antecedent, but the
+        # relative-clause verb is not compared with the main subject.
+        self.assertIn(("C-RELATIVE-PRONOUN", "whom"), errors)
+        self.assertEqual(
+            sorted(constraint for constraint, _ in errors),
+            ["C-RELATIVE-PRONOUN", "C-TERMINAL-PUNCT"])
 
     def test_coordinated_subject_rule_still_catches_main_verb(self):
         self.assertIn(("C-COORD-SUBJ-AGREE", "was"),

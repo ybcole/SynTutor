@@ -1304,6 +1304,23 @@ def _leaves_list(node, out=None):
     return out
 
 
+def _has_clause(node):
+    """True when a subtree contains a clause/relative layer.
+
+    A pronoun buried inside a relative clause ("several departments whom I
+    met") is not the direct prepositional object even if it is the last
+    pronoun in the subtree.
+    """
+    stack = [node]
+    while stack:
+        current = stack.pop()
+        for child in current.get('children', []):
+            if child.get('type') in {'SBAR', 'S', 'SINV', 'SQ', 'SBARQ', 'VP'}:
+                return True
+            stack.append(child)
+    return False
+
+
 def _indefinite_article(word):
     """Deterministic 'a'/'an' choice for a (head) word, with phonetic
     exceptions for silent-h and vowel-letter-with-consonant-sound words."""
@@ -1782,7 +1799,8 @@ class MatrixEvaluator:
                 head = h['surface'] if h else '?'
                 onp = _np_head(child)
                 if onp is not None and onp['type'] == 'PRP' and \
-                        _lower(onp['surface']) in PRON_SUBJ_PLAIN:
+                        _lower(onp['surface']) in PRON_SUBJ_PLAIN \
+                        and not _has_clause(child):
                     target = ruleset.PRONOUN_SUBJECT_TO_OBJECT[_lower(onp['surface'])]
                     return ('error', 'C-PRONOUN-CASE',
                             f"'{onp['surface']}' is a subject form, but it comes after the "

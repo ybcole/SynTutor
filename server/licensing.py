@@ -365,12 +365,38 @@ HUMAN_ANTECEDENTS = {
     'students', 'friend', 'friends', 'doctor', 'doctors', 'mother', 'father',
     'brother', 'sister', 'parents', 'kids', 'someone', 'anyone', 'everyone',
     'everybody', 'somebody', 'anybody', 'nobody', 'those', 'neighbor',
-    'neighbour', 'lady', 'gentleman', 'worker', 'workers',
+    'neighbour', 'lady', 'ladies', 'gentleman', 'gentlemen', 'worker', 'workers',
+    'administrator', 'administrators', 'professor', 'professors', 'thief',
+    'thieves', 'burglar', 'burglars', 'driver', 'drivers', 'nurse', 'nurses',
+    'lawyer', 'lawyers', 'judge', 'judges', 'officer', 'officers', 'engineer',
+    'engineers', 'scientist', 'scientists', 'researcher', 'researchers',
+    'author', 'authors', 'writer', 'writers', 'artist', 'artists', 'singer',
+    'singers', 'actor', 'actors', 'actress', 'actresses', 'chef', 'chefs',
+    'waiter', 'waiters', 'waitress', 'waitresses', 'manager', 'managers',
+    'director', 'directors', 'president', 'presidents', 'king', 'kings',
+    'queen', 'queens', 'prince', 'princess', 'boss', 'bosses', 'colleague',
+    'colleagues', 'classmate', 'classmates', 'teammate', 'teammates', 'partner',
+    'partners', 'husband', 'husbands', 'wife', 'wives', 'son', 'sons',
+    'daughter', 'daughters', 'baby', 'babies', 'kid', 'teenager', 'teenagers',
+    'adult', 'adults', 'citizen', 'citizens', 'customer', 'customers', 'guest',
+    'guests', 'neighbors', 'neighbours', 'passenger', 'passengers', 'patient',
+    'patients', 'player', 'players', 'soldier', 'soldiers', 'athlete',
+    'athletes', 'clerk', 'clerks', 'guard', 'guards',
 }
 NONHUMAN_ANTECEDENTS = {
-    'book', 'books', 'car', 'cars', 'table', 'chair', 'house', 'houses', 'dog',
-    'cat', 'idea', 'ideas', 'plan', 'plans', 'city', 'phone', 'computer',
-    'movie', 'song', 'thing', 'things', 'rain', 'weather', 'stone',
+    'book', 'books', 'car', 'cars', 'table', 'tables', 'chair', 'chairs',
+    'house', 'houses', 'dog', 'dogs', 'cat', 'cats', 'idea', 'ideas', 'plan',
+    'plans', 'city', 'cities', 'phone', 'phones', 'computer', 'computers',
+    'movie', 'movies', 'song', 'songs', 'thing', 'things', 'rain', 'weather',
+    'stone', 'stones', 'tree', 'trees', 'road', 'roads', 'street', 'streets',
+    'building', 'buildings', 'door', 'doors', 'window', 'windows', 'key',
+    'keys', 'bag', 'bags', 'box', 'boxes', 'bottle', 'bottles', 'letter',
+    'letters', 'message', 'messages', 'story', 'stories', 'problem',
+    'problems', 'question', 'questions', 'answer', 'answers', 'reason',
+    'reasons', 'event', 'events', 'situation', 'situations', 'company',
+    'companies', 'school', 'schools', 'country', 'countries', 'river',
+    'rivers', 'mountain', 'mountains', 'garden', 'gardens', 'village',
+    'villages', 'file', 'files', 'report', 'reports', 'meeting', 'meetings',
 }
 VERB_START = {'VB', 'VBD', 'VBP', 'VBZ', 'MD', 'IN', 'TO'}
 SG_FINITE = {'is', 'was', 'has', 'does'}
@@ -411,6 +437,30 @@ def _antecedent_number(np_node):
     return None
 
 
+def _antecedent_animacy(np_node):
+    """'human' / 'nonhuman' / None for the head noun of a relative antecedent."""
+    pp_ids = {lf['id'] for c in np_node.get('children', [])
+              if c.get('type') == 'PP' for lf in _leaves(c)}
+    nouns = [lf for lf in _leaves(np_node)
+             if lf['id'] not in pp_ids
+             and lf.get('type') in ('NN', 'NNS', 'NNP', 'NNPS', 'PRP')]
+    if not nouns:
+        return None
+    head = nouns[-1]
+    low = _lower(head)
+    if low in HUMAN_ANTECEDENTS:
+        return 'human'
+    if low in NONHUMAN_ANTECEDENTS:
+        return 'nonhuman'
+    if head.get('type') in ('PRP',) and low in {'i', 'me', 'he', 'him', 'she',
+                                                 'her', 'we', 'us', 'they',
+                                                 'them', 'you'}:
+        return 'human'
+    # A proper name is more likely a person than a thing, but places and
+    # products are also proper names; leave the case unflagged when unsure.
+    return None
+
+
 def _first_finite(vp):
     for lf in _leaves(vp):
         if lf.get('type') in ('VBZ', 'VBP') or _lower(lf) in SG_FINITE | PL_FINITE:
@@ -448,26 +498,89 @@ def check_relatives(root):
                      f"'{prev['surface']} whose [noun] {nxt['surface']} ...'.",
                      'WHNP(WP who) + S(VP) or WHNP(WP$ whose + NN) + S')))
 
-    # --- 5.4  who / which choice ---------------------------------------------- #
+    # --- 5.4  relative pronoun choice (who / whom / which) -------------------- #
+    handled_pronoun_ids = set()
+    for node in _iter(root):
+        sibling_kids = node.get('children', [])
+        for idx, sbar in enumerate(sibling_kids):
+            if sbar.get('type') != 'SBAR':
+                continue
+            sk = sbar.get('children', [])
+            if not sk or sk[0].get('type') != 'WHNP':
+                continue
+            wh = _leaves(sk[0])
+            if not wh:
+                continue
+            wh_leaf = wh[0]
+            wh_low = _lower(wh_leaf)
+            if wh_low not in {'who', 'whom', 'which'}:
+                continue
+            antecedent = next((k for k in reversed(sibling_kids[:idx])
+                               if k.get('type') == 'NP'), None)
+            if antecedent is None:
+                continue
+            clause = next((c for c in sk if c.get('type') == 'S'), None)
+            subject_gap = bool(clause and clause.get('children')
+                               and clause['children'][0].get('type') == 'VP')
+            animacy = _antecedent_animacy(antecedent)
+            fix = reason = None
+            if wh_low in {'who', 'whom'} and animacy == 'nonhuman':
+                fix = 'which'
+                reason = (f"The antecedent '{antecedent['surface']}' is not a "
+                          f"person; use 'which' (or 'that') instead of "
+                          f"'{wh_leaf['surface']}'.")
+            elif wh_low == 'which' and animacy == 'human':
+                fix = 'who' if subject_gap else 'whom'
+                reason = (f"The antecedent '{antecedent['surface']}' is a person; "
+                          f"use '{fix}' here instead of 'which'.")
+            elif wh_low == 'whom' and subject_gap:
+                fix = 'who'
+                reason = ("The relative pronoun is the subject of the clause; "
+                          "use 'who', not 'whom'.")
+            handled_pronoun_ids.add(wh_leaf['id'])
+            if not fix:
+                continue
+            out.append(_finding(
+                '5.4', 'error', 'C-RELATIVE-PRONOUN', 'relative pronoun',
+                wh_leaf['id'], reason,
+                _tree_evidence(sbar['id'], 'antecedent NP + SBAR(WHNP ...)',
+                               [{'node': antecedent['id']},
+                                {'node': wh_leaf['id']}]),
+                remediation={
+                    'suggested_fix': f"write '{fix}'",
+                    'edits': [{'node': wh_leaf['id'], 'replacement': fix}],
+                }))
+
+    # Fallback for flat relative clauses without an SBAR node.
     for i, lf in enumerate(leaves):
-        low = _lower(lf)
-        if low not in ('which', 'who') or i == 0:
+        if lf['id'] in handled_pronoun_ids or i == 0:
             continue
-        prev = _lower(leaves[i - 1])
-        if low == 'which' and prev in HUMAN_ANTECEDENTS:
-            out.append(_finding(
-                '5.4', 'error', 'C-RELATIVE-PRONOUN', 'relative pronoun', lf['id'],
-                f"'which' does not refer to people; use 'who' (or 'that') after "
-                f"'{leaves[i - 1]['surface']}'.",
-                _tree_evidence(lf['id'], 'human antecedent + which',
-                               [{'node': leaves[i - 1]['id']}, {'node': lf['id']}])))
-        elif low == 'who' and prev in NONHUMAN_ANTECEDENTS:
-            out.append(_finding(
-                '5.4', 'error', 'C-RELATIVE-PRONOUN', 'relative pronoun', lf['id'],
-                f"'who' refers to people; use 'which' (or 'that') after "
-                f"'{leaves[i - 1]['surface']}'.",
-                _tree_evidence(lf['id'], 'non-human antecedent + who',
-                               [{'node': leaves[i - 1]['id']}, {'node': lf['id']}])))
+        low = _lower(lf)
+        if low not in ('which', 'who', 'whom'):
+            continue
+        prev = leaves[i - 1]
+        prev_low = _lower(prev)
+        fix = reason = None
+        if low in ('who', 'whom') and prev_low in NONHUMAN_ANTECEDENTS:
+            fix = 'which'
+            reason = (f"'{lf['surface']}' refers to people, but "
+                      f"'{prev['surface']}' is not a person; use 'which' "
+                      f"(or 'that').")
+        elif low == 'which' and prev_low in HUMAN_ANTECEDENTS:
+            fix = 'who'
+            reason = (f"'which' does not refer to people; use 'who' (or 'that') "
+                      f"after '{prev['surface']}'.")
+        if not fix:
+            continue
+        out.append(_finding(
+            '5.4', 'error', 'C-RELATIVE-PRONOUN', 'relative pronoun', lf['id'],
+            reason,
+            _tree_evidence(lf['id'], 'antecedent + relative pronoun',
+                           [{'node': prev['id']}, {'node': lf['id']}]),
+            remediation={
+                'suggested_fix': f"write '{fix}'",
+                'edits': [{'node': lf['id'], 'replacement': fix}],
+            }))
 
     # --- 2.7  subject-gap relative: verb agrees with the antecedent ------------ #
     for node in _iter(root):

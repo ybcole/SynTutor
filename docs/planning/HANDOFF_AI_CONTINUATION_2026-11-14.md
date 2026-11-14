@@ -158,7 +158,21 @@ Regression: `server/test_agreement_scoping.py`.
 - Builder accepts `features` on triangles.
 - Policy tests assert the owner-waiver boundary rather than an empty registry.
 - CI isolated job includes `test_explanation_coverage`,
-  `test_agreement_scoping`, and `node scripts/test_explanation_dedupe.js`.
+  `test_agreement_scoping`, `test_relative_pronoun`, and
+  `node scripts/test_explanation_dedupe.js`.
+
+### 4.6 Relative pronoun choice and pronoun-case scoping
+
+- `licensing.py::check_relatives` now chooses `who`/`whom`/`which` from the
+  antecedent's animacy and the relative clause's subject/object gap, with an
+  executable replacement edit.
+- `HUMAN_ANTECEDENTS` / `NONHUMAN_ANTECEDENTS` were expanded; collective nouns
+  (`committee`, `government`) stay unverified rather than being forced into one
+  class.
+- `matrix.py::_has_clause` prevents the preposition + object-pronoun rule from
+  reading a pronoun inside a relative clause
+  (`The students from several departments whom I met` is no longer flagged).
+- Regression: `server/test_relative_pronoun.py`.
 
 ## 5. Verification
 
@@ -198,8 +212,8 @@ Current expected results:
 
 | Gate | Result |
 |---|---:|
-| Full backend suite | **890 tests pass**, 45 skipped |
-| Stress suite | **43/43 normalized**, 0 issues |
+| Full backend suite | **895 tests pass**, 45 skipped |
+| Stress suite | **45/45 normalized**, 0 issues |
 | Exact fixtures | **216/216 exact**, 0 unresolved |
 | Held-out grammatical | **281/281 normalized** |
 | Held-out ungrammatical | **45/45 with trees** |
@@ -211,9 +225,12 @@ Current expected results:
 
 1. **No independent human review or non-adapter free-sentence gold.** The owner
    waiver covers the 193 runtime rules. Do not claim certification.
-2. **Relative pronoun choice is incomplete.** `the car whom was parked` is not
-   yet diagnosed as `whom` → `which`; the agreement false positive on `was` is
-   fixed, but this independent issue remains.
+2. **Animacy knowledge is finite.** `check_relatives` now selects
+   `who`/`whom`/`which` from the antecedent's animacy and the subject/object
+   gap, so `the car whom was parked` is diagnosed as `which` with an executable
+   edit. Unknown common nouns are deliberately left unverified rather than
+   guessed; extend `HUMAN_ANTECEDENTS` / `NONHUMAN_ANTECEDENTS` when a
+   domain-specific noun needs coverage.
 3. **Lenient structural rules.** Nine garden-path/ungrammatical constructions
    were normalized with structural rules; the rule matrix still reports their
    grammar errors. Do not treat normalization as a grammaticality certificate.
@@ -300,5 +317,6 @@ See `git diff --stat` for the full list. The central files are:
   `scripts/audit_explanation_self_reference.py`,
   `scripts/audit_final_d1_exact_fixtures.py`,
   `scripts/test_explanation_dedupe.js`
-- `server/test_explanation_coverage.py`, `server/test_agreement_scoping.py`
+- `server/test_explanation_coverage.py`, `server/test_agreement_scoping.py`,
+  `server/test_relative_pronoun.py`
 - `docs/planning/SYNTUTOR_STRESS_TEST_AND_XAI_2026-11-14.md`
