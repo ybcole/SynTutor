@@ -1,0 +1,52 @@
+{
+  "schema_version": "xai8-release-policy-1.0.0",
+  "language_policy": "ENGLISH_ONLY",
+  "stage": "HOLD_INTERNAL_ONLY",
+  "new_diagnostic_rollout_enabled": false,
+  "rollback": {
+    "kill_switch": true,
+    "canary_percent": 0,
+    "last_known_good_commit": "bdcc19686691d282f70c9a39631c04083c79d358",
+    "operator_instruction": "Keep grammar/xai4_candidates.json runtime_enabled_rule_ids empty and grammar/xai6_policy.json model_enabled false; revert the feature release to last_known_good_commit if observed unsupported verified claims or operational regressions occur."
+  },
+  "technical_gates": {
+    "minimum_nonoverlapping_probes": 50,
+    "minimum_probe_families": 12,
+    "minimum_source_tree_nodes": 100,
+    "require_all_node_explanations_nonempty": true,
+    "require_all_evidence_proof_ids_resolved": true,
+    "max_unsupported_book_verified_claims": 0,
+    "max_global_grammar_certifications": 0,
+    "max_model_calls": 0,
+    "require_no_raw_text_in_telemetry": true
+  },
+  "expert_gates": {
+    "minimum_independently_adjudicated_cases": 200,
+    "minimum_independent_linguists": 2,
+    "requires_blind_readability_comparison": true,
+    "requires_expert_reviewed_repair_meaning": true,
+    "requires_heldout_dialect_and_ambiguity_coverage": true,
+    "requires_measured_error_precision_and_recall": true,
+    "requires_measured_role_accuracy": true,
+    "requires_measured_false_positive_rate": true,
+    "requires_measured_repair_validity": true,
+    "requires_measured_learner_comprehension": true,
+    "requires_documented_thresholds_before_expert_evaluation": true,
+    "adjudicated_case_count": 0,
+    "independent_linguist_count": 0,
+    "expert_evaluation_report": null,
+    "reviewers": [],
+    "quality_metrics_available": false
+  },
+  "telemetry": {
+    "enabled": false,
+    "explicit_opt_in_required": true,
+    "raw_sentence_collection_allowed": false,
+    "ip_collection_allowed": false,
+    "user_identifiers_allowed": false,
+    "freeform_feedback_allowed": false,
+    "retention": "IN_PROCESS_AGGREGATES_ONLY",
+    "minimum_aggregate_reporting_sample": 20
+  },
+  "notes": "Engineering gates can be evaluated with public unadjudicated probes and canonical source trees. Expert quality, comprehension, grammaticality precision/recall and repair validity remain NOT_MEASURED; synthetic tests never count as human signoff."
+}
