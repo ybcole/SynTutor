@@ -70,10 +70,10 @@ export const nounPhrasesPilot = {
 
     switch (section.id) {
       case 'introduction': {
-        p('A triangle showed where an NP fit in earlier trees. Now look inside that noun phrase. The head noun names what kind of thing it is about. The nominal (NOM) holds the noun and any modifiers. The determiner position (DET) can hold a word that tells which things or how many.');
-        addIntroExample(body, el, 'Imagine someone pointing to a group of baskets. The brackets mark the two parts of the NP.',
+        p('Earlier trees often used a triangle to stand for a whole noun phrase (NP). Now open up that triangle. Think about “those baskets” and “my baskets”. Both are about baskets, but the first word helps you work out which ones. In this chapter, you’ll see where that word goes and how other words add detail to the noun.');
+        addIntroExample(body, el, 'Imagine someone pointing at baskets. The brackets mark the two parts of the phrase they use.',
           '[Those] [baskets]',
-          '“Those” fills DET and tells which baskets. “Baskets” is the head noun. It fills NOM on its own.');
+          '“Those” tells which baskets. It fills the determiner position (DET). “Baskets” is the head noun. It fills the nominal (NOM) on its own here. If you add a word like “woven”, it goes with “baskets” inside NOM.');
         body.append(el('h3', 'What you’ll see in this chapter'));
         const list = el('ul');
         for (const outcome of lesson.outcomes) list.append(el('li', outcome.text));

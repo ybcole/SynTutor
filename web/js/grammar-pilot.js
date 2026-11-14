@@ -38,10 +38,10 @@ export const grammarPilot = {
     const example = text => body.append(lessonExample(el, text));
     switch (section.id) {
       case 'introduction': {
-        p('Trees show how words group together. A grammar gives rules for which groups can go together and in what order. See how a few rules can describe sentences you have never seen before.');
-        addIntroExample(body, el, 'The brackets mark two complete sentences joined by “and”.',
+        p('The earlier chapters used trees to show how a sentence is built. But how can people make sense of a sentence they’ve never heard before? A grammar is a set of rules for building sentences. This chapter shows how a few rules can describe many different sentences.');
+        addIntroExample(body, el, 'Start with two short sentences. The brackets show the two groups that “and” joins.',
           '[Iris rests] and [Leo waits].',
-          'The rule joins the two sentences to make a new one. You can use that new sentence in the same rule again.');
+          '“Iris rests” and “Leo waits” join to make a new sentence. You can use that new sentence in the same rule and join it to another one. Using the result of a rule in that rule again is called recursion. You’ll trace the steps in a tree.');
         body.append(el('h3', 'What you’ll see in this chapter'));
         const list = el('ul');
         for (const outcome of lesson.outcomes) list.append(el('li', outcome.text));

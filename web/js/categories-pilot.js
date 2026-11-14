@@ -49,10 +49,10 @@ export const categoriesPilot = {
     const example = text => body.append(lessonExample(el, text));
 
     if (section.id === 'introduction') {
-      p('Chapter 2 used NP and VP to name kinds of phrases. The kind of phrase is its phrasal category. The kind of word, such as noun, is its lexical category. Sometimes one word can form a whole phrase.');
-      addIntroExample(body, el, 'The brackets show the whole subject group.',
+      p('Chapter 2 looked at the jobs phrases do in a sentence. Now look inside a phrase. Why is “the lamps” a noun phrase when it has more than one word? In this chapter, you’ll find the main word in each group and see how it helps you name the whole phrase.');
+      addIntroExample(body, el, 'The brackets mark the whole subject. Look for the word that tells you what was glowing.',
         '[The lamps] glowed.',
-        '“Lamps” is a noun. It heads the noun phrase (NP) “the lamps”. The whole NP does the job of subject.');
+        '“Lamps” is the main word, or head. Its lexical category, or word type, is noun. The phrasal category, or phrase type, of “the lamps” is noun phrase (NP). Its job in this sentence is subject.');
       heading('What you’ll see in this chapter');
       const list = el('ul');
       for (const outcome of lesson.outcomes) list.append(el('li', outcome.text));

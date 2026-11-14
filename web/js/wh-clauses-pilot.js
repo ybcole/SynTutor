@@ -110,10 +110,10 @@ export const whClausesPilot = {
 
     switch (section.id) {
       case 'introduction': {
-        p('Chapter 8 put a question inside a larger clause. Now look at questions that ask for a specific part of an answer. A wh-expression is a word or phrase like “what” or “which bridge”. Moving it to the front is called fronting. A dot marks the gap where the wh-expression does its job.');
-        addIntroExample(body, el, 'In the statement, the brackets show the group the question asks for.',
+        p('Chapter 8 showed how to put a question inside a larger sentence. Now start with a question that asks for one missing piece of information. If someone asks what Nora is inspecting, you can look at a possible answer to find the job of “what”. In this chapter, you’ll trace that link in questions and use it to read relative clauses.');
+        addIntroExample(body, el, 'Start with a possible answer. The brackets show the part the question asks for.',
           'Nora is inspecting [the bridge].',
-          'In “What is Nora inspecting?”, “what” asks for the direct object. Its old spot after “inspecting” is empty.');
+          'In “What is Nora inspecting?”, “what” asks for the direct object, “the bridge”. A word or group like “what” is called a wh-expression. It appears at the front of the question. A dot marks the gap after “inspecting”, where the direct object would go.');
         body.append(el('h3', 'What you’ll see in this chapter'));
         const list = el('ul');
         for (const outcome of lesson.outcomes) list.append(el('li', outcome.text));

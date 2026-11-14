@@ -147,10 +147,10 @@ export const auxiliariesPilot = {
     };
 
     if (section.id === 'introduction') {
-      p('In Chapter 4, the lexical verb and its complements formed one VP. An auxiliary is a helping verb. It can add tense, possibility, aspect, or voice. Each auxiliary heads its own VP. The next VP is its complement. See how those VPs fit inside one another.');
-      addIntroExample(body, el, 'The brackets separate the auxiliary from the verb group it helps.',
+      p('A verb phrase can have more than one verb. Compare “studies” with “is studying”. Both describe studying, and “is” helps show that the action is in progress. This chapter looks at how helping verbs fit into a tree and how they help form questions and negative statements.');
+      addIntroExample(body, el, 'In the sentence below, the first brackets mark the helping verb. The second mark the group that tells what Monsieur Blanc is doing.',
         'Monsieur Blanc [is] [studying the menu].',
-        '“Is” is a progressive auxiliary. It heads a VP. The lexical VP “studying the menu” is its complement. “Is” is the only verb here that carries tense.');
+        '“Is” is a helping verb called a progressive auxiliary. It heads its own VP. The lexical VP “studying the menu” is its complement. Only “is” carries tense here. You’ll follow the same pattern when there is more than one auxiliary.');
       heading('What you’ll see in this chapter');
       const list = el('ul');
       for (const outcome of lesson.outcomes) list.append(el('li', outcome.text));

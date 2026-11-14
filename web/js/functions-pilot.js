@@ -139,10 +139,10 @@ export const functionsPilot = {
     const example = text => body.append(lessonExample(el, text));
 
     if (page === 0) {
-      p('Chapter 1 showed how words form groups. Now look at the two main parts of a statement. The subject is the part paired with the predicate. The predicate tells what the subject does, what happens to it, or what it is like. In “The lantern glows”, “the lantern” is the subject and “glows” is the predicate.');
-      addIntroExample(body, el, 'Adding words to each group keeps the same two-part pattern.',
+      p('In Chapter 1, you tested which words belong together. Now you’ll use those groups to take a sentence apart. Start with a sentence about a glowing lantern. Which words pick out the lantern? Which words tell you what it is doing?');
+      addIntroExample(body, el, 'Read each bracketed group on its own. See which one names the lantern and which one tells you what it is doing.',
         '[The lantern by the stairs] [is glowing].',
-        'The first group names the lantern. The second says what it is doing. Subject and predicate are functions, or jobs. Category tells what kind of phrase each group is.');
+        '“The lantern by the stairs” is the subject. “Is glowing” is the predicate. Those names tell you each group’s function, or job. The category tells you what kind of phrase it is. You’ll use a yes/no question to check where the whole subject ends.');
       heading('What you’ll see in this chapter');
       const list = el('ul');
       for (const outcome of lesson.outcomes) list.append(el('li', outcome.text));

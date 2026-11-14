@@ -109,10 +109,10 @@ export const basicVpPilot = {
     const trace = (label, steps) => addTreeTrace(body, ui, label, steps);
 
     if (section.id === 'introduction') {
-      p('In Chapter 2, you split a sentence into subject and predicate. Now look inside the predicate VP. A lexical verb gives the main action or state. An auxiliary is a helping verb. In “might inspect”, “inspect” is the lexical verb and “might” is the auxiliary. Chapter 6 shows how that extra verb fits into the tree.');
-      addIntroExample(body, el, 'The brackets enclose the whole predicate in this inspection example.',
+      p('Chapter 3 showed how the head helps you name a phrase. Now look at the words that go with a verb. “Nora waited” makes sense with just the verb in its predicate. What goes with “inspected”? In this chapter, you’ll compare verbs by the groups they take and the jobs those groups do.');
+      addIntroExample(body, el, 'The brackets mark the whole predicate. First find the word that gives the main action. Then look for what Nora inspected.',
         'Nora [inspected the bridge].',
-        '“Inspected” is the lexical head. “The bridge” is its complement, a group that fills a job the head calls for. Its job here is direct object. It tells what Nora inspected.');
+        '“Inspected” gives the main action, so it is the lexical verb and the head of this VP. “The bridge” fills a role that “inspected” calls for here. That makes it a complement. Its job is direct object because it tells what Nora inspected.');
       heading('What you’ll see in this chapter');
       const list = el('ul');
       for (const outcome of lesson.outcomes) list.append(el('li', outcome.text));

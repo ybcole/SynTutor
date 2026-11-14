@@ -79,10 +79,10 @@ export const embeddedClausesPilot = {
 
     switch (section.id) {
       case 'introduction': {
-        p('In Chapter 7, one nominal could sit inside another. A clause can sit inside another group, too. A clause inside a larger structure is an embedded clause. The main clause is the highest clause. It includes the clauses inside it.');
-        addIntroExample(body, el, 'The brackets mark the complete content of Leo’s report.',
+        p('A sentence can tell you what someone said or thought. If Leo reports that Nora is inspecting the bridge, part of his report has a subject and predicate of its own. This chapter looks at how one clause fits inside another and what jobs the smaller clause can do.');
+        addIntroExample(body, el, 'The brackets mark everything Leo says. Look inside them for another subject and predicate.',
           'Leo says [that Nora is inspecting the bridge].',
-          'Find the smaller clause in the brackets. “Nora” is its subject. “Is inspecting the bridge” is its predicate. “That” starts the embedded clause.');
+          '“Nora” is the subject inside the brackets. “Is inspecting the bridge” is its predicate. The word “that” starts this embedded clause, a clause inside a larger structure. The main clause begins with “Leo” and includes the whole report.');
         body.append(el('h3', 'What you’ll see in this chapter'));
         const list = el('ul');
         for (const outcome of lesson.outcomes) list.append(el('li', outcome.text));

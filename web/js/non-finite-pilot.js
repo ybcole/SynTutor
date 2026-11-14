@@ -92,10 +92,10 @@ export const nonFinitePilot = {
 
     switch (section.id) {
       case 'introduction': {
-        p('Chapter 6 showed where tense goes in a chain of verbs. A finite verb carries tense. A non-finite clause has no tense of its own. It can still have a verb and complements. Its subject may be spoken or understood.');
-        addIntroExample(body, el, 'The brackets mark what Nora planned to do.',
+        p('Chapter 6 showed which verb carries tense in a verb chain. Now compare “Nora planned” with “Nora plans”. The main verb changes from past to present. Do the words that say what Nora plans to do have to change too? This chapter looks at clauses without tense of their own, and how to work out who does the action in them.');
+        addIntroExample(body, el, 'The brackets mark what Nora planned to do. Try changing “planned” to “plans” and read the words in brackets again.',
           'Nora planned [to inspect the bridge].',
-          '“Planned” carries past tense. Try “plans” instead. The words “to inspect the bridge” stay the same.');
+          '“Planned” carries past tense, so it is finite. The smaller clause, “to inspect the bridge”, stays the same. It is non-finite because it has no tense of its own. Nora is still the person who would do the inspecting, even though her name is outside the brackets.');
         body.append(el('h3', 'What you’ll see in this chapter'));
         const list = el('ul');
         for (const outcome of lesson.outcomes) list.append(el('li', outcome.text));

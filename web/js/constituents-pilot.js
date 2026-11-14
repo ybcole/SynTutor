@@ -78,10 +78,10 @@ export const constituentsPilot = {
     };
 
     if (page === 0) {
-      paragraph('A constituent is a word or group of words that works as one unit. A phrase is a group of words that works as a unit, too. One phrase can sit inside another. This way of arranging small groups inside bigger groups is called hierarchy.');
-      addIntroExample(body, el, 'The brackets mark where Mina paused and the landmark inside that location.',
+      paragraph('When you read a sentence, some words make sense as a group. How can you tell which words go together? In this chapter, you’ll test groups by leaving words out, swapping them for a single word, and asking what question they answer.');
+      addIntroExample(body, el, 'Read the sentence below. The outer brackets mark where Mina paused. The inner brackets mark the landmark inside that location.',
         'Mina paused [near [the stone arch]].',
-        '“The stone arch” names the landmark. Add “near” and you get a bigger group that tells where Mina paused.');
+        '“The stone arch” names the landmark. Add “near” and the whole phrase tells where Mina paused. A constituent is a word or group that works as one unit. Both bracketed groups are constituents. The way one group fits inside the other is called hierarchy.');
       heading('What you’ll see in this chapter');
       const list = el('ul');
       for (const outcome of lesson.outcomes) list.append(el('li', outcome.text));
