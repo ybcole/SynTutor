@@ -1,6 +1,6 @@
 # Chapter 8 proposal · Sentences within sentences
 
-**Status** · Outline ready for owner review. Chapter 8 implementation follows outline approval. First-time learner timing remains pending.
+**Status** · Implemented as a [local pilot](../reports/syntax-foundations-chapter-8-pilot.md). Gate 4.8 review is pending. First-time learner timing remains pending.
 
 ## Source and scope
 
@@ -30,7 +30,7 @@ Noel Burton-Roberts, *Analysing Sentences*, third edition, Pearson, 2011, ISBN 9
 | Follow the clause as subject or object | Switch between “That the latch jammed surprised Mina” and “It surprised Mina that the latch jammed”. Then locate the object NP containing S′ in “Mina noticed that the latch jammed”. Use one cue per tree. | 1:10 |
 | Find the head the clause completes | Compare “certain that the latch jammed”, “the claim that the latch jammed”, and “about whether the latch jammed”. Trace A, N and P beside their complements. Give one short copular example in prose. | 0:55 |
 | Distinguish two ways to add a clause | Compare “Mina waited after the gate closed” with “Mina waited because the gate jammed”. Use a two-choice attachment exercise and feedback. Trace the PP in the first and the adverbial S′ in the second. | 1:05 |
-| Transfer | In “Ria heard that Ivo wondered whether the hall was open”, mark the two embedded spans before revealing an authored answer. | 0:45 |
+| Transfer | In “Ria heard that Ivo wondered whether the hall was open”, choose where both embedded spans start before revealing the complete bracketed answer. | 0:45 |
 | Recap and references | Find the clause boundary, then check the introductory word and the host. Revisit one contrast where the same clause changes role. Put book and figure references in the recap dropdown. | 0:25 |
 | Closing check | Five new items with option-specific feedback, last and best scores, and retakes. | 1:20 |
 
