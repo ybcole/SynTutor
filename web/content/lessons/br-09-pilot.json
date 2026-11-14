@@ -1,0 +1,388 @@
+{
+  "title": "Wh-clauses",
+  "content_version": "2.0.0",
+  "estimated_minutes": 10,
+  "outcomes": [
+    {
+      "id": "o1",
+      "text": "Use a possible answer to find a wh-expression’s role and gap."
+    },
+    {
+      "id": "o2",
+      "text": "Distinguish C2 and C1 in main and embedded wh-questions."
+    },
+    {
+      "id": "o3",
+      "text": "Distinguish noun complements and the two kinds of relative clause by meaning and attachment."
+    }
+  ],
+  "preview_sources": [
+    {
+      "id": "BR-3E-P201",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 9,
+      "printed_page": 201,
+      "evidence_status": "TXT",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P203",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 9,
+      "printed_page": 203,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P205",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 9,
+      "printed_page": 205,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P208",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 9,
+      "printed_page": 208,
+      "evidence_status": "TXT",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P210",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 9,
+      "printed_page": 210,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    }
+  ],
+  "revised_assessment": {
+    "required_sections": [
+      "introduction",
+      "concepts",
+      "worked-example",
+      "embedded-interrogatives",
+      "relatives-and-complements",
+      "relative-scope",
+      "application",
+      "recap"
+    ],
+    "opening": [
+      {
+        "id": "opening-object",
+        "prompt": "In a possible answer to “What is Eli packing?”, where would “the red bag” go?",
+        "answer": "b",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P199"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "Before “Eli”",
+            "feedback": "“Eli” is the subject. The bag is what he is packing."
+          },
+          {
+            "id": "b",
+            "text": "After “packing”",
+            "feedback": "“The red bag” fills the direct-object position."
+          },
+          {
+            "id": "c",
+            "text": "Between “is” and “packing”",
+            "feedback": "Keep the auxiliary and lexical verb in order. The object follows the lexical verb."
+          }
+        ]
+      },
+      {
+        "id": "opening-subject",
+        "prompt": "In “Who is fixing the latch?”, which role does “who” ask about?",
+        "answer": "a",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P201"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "Subject",
+            "feedback": "A possible answer names the person doing the fixing."
+          },
+          {
+            "id": "b",
+            "text": "Direct object",
+            "feedback": "“The latch” already supplies the object."
+          },
+          {
+            "id": "c",
+            "text": "Auxiliary",
+            "feedback": "“Is” supplies the auxiliary. The question asks for a person."
+          }
+        ]
+      },
+      {
+        "id": "opening-embedded",
+        "prompt": "In “Nia asked what Ren was carrying”, which group follows “what”?",
+        "answer": "c",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P203"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "was Ren carrying",
+            "feedback": "That word order would belong in a direct question."
+          },
+          {
+            "id": "b",
+            "text": "Ren carrying",
+            "feedback": "This leaves out the auxiliary “was”."
+          },
+          {
+            "id": "c",
+            "text": "Ren was carrying",
+            "feedback": "The subject comes before “was” inside the embedded question."
+          }
+        ]
+      },
+      {
+        "id": "opening-content",
+        "prompt": "In “the claim that the bridge was unsafe”, what does the clause give?",
+        "answer": "b",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P205"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "The person who made the claim",
+            "feedback": "The clause does not identify a speaker."
+          },
+          {
+            "id": "b",
+            "text": "The content of the claim",
+            "feedback": "The clause tells what was claimed."
+          },
+          {
+            "id": "c",
+            "text": "The time at which the claim was made",
+            "feedback": "The clause describes the bridge. It does not date the claim."
+          }
+        ]
+      },
+      {
+        "id": "opening-subset",
+        "prompt": "In “The baskets which were damaged were returned”, which baskets does the statement say were returned?",
+        "answer": "a",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P210"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "The damaged baskets",
+            "feedback": "The relative identifies the subset being discussed."
+          },
+          {
+            "id": "b",
+            "text": "All the baskets",
+            "feedback": "The sentence makes the return claim about the baskets selected by the relative."
+          },
+          {
+            "id": "c",
+            "text": "The undamaged baskets",
+            "feedback": "“Which were damaged” picks out the damaged ones."
+          }
+        ]
+      }
+    ],
+    "closing": [
+      {
+        "id": "closing-stranded",
+        "prompt": "In “Who did Ari speak to?”, where is the gap corresponding to “who”?",
+        "answer": "c",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P200"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "In the subject position",
+            "feedback": "“Ari” occupies the subject position."
+          },
+          {
+            "id": "b",
+            "text": "Under TENSE",
+            "feedback": "The TENSE gap corresponds to “did”."
+          },
+          {
+            "id": "c",
+            "text": "In the NP position after “to”",
+            "feedback": "The preposition stays inside S, and the gap marks its complement."
+          }
+        ]
+      },
+      {
+        "id": "closing-front-positions",
+        "prompt": "In “Ren wondered what Ivo was reading”, how are the embedded front positions filled?",
+        "answer": "b",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P203"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "C2 contains “what” and C1 contains “was”",
+            "feedback": "“Was” stays after Ivo in the embedded S."
+          },
+          {
+            "id": "b",
+            "text": "C2 contains “what” and C1 is unfilled",
+            "feedback": "“What” fronts and “was” stays inside S."
+          },
+          {
+            "id": "c",
+            "text": "C1 contains “what” and C2 is unfilled",
+            "feedback": "The wh-expression occupies the higher position, C2."
+          }
+        ]
+      },
+      {
+        "id": "closing-relative-that",
+        "prompt": "Compare “the report that the roof leaked” and “the report that Ivo filed”. Which inner clause contains an object gap?",
+        "answer": "a",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P205",
+          "BR-3E-P208"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "Ivo filed",
+            "feedback": "Ivo filed the report. The relative has an object gap after “filed”."
+          },
+          {
+            "id": "b",
+            "text": "the roof leaked",
+            "feedback": "The clause gives the report’s content and is complete."
+          },
+          {
+            "id": "c",
+            "text": "Both inner clauses",
+            "feedback": "Both begin with “that”, but only the relative leaves an object position unfilled."
+          }
+        ]
+      },
+      {
+        "id": "closing-restrictive",
+        "prompt": "In “the lamps which had faded”, what does the restrictive S″ join?",
+        "answer": "c",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P210"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "The determiner “the”",
+            "feedback": "The determiner combines with the larger NOM."
+          },
+          {
+            "id": "b",
+            "text": "The whole NP “the lamps”",
+            "feedback": "That is the attachment for a non-restrictive relative."
+          },
+          {
+            "id": "c",
+            "text": "The smaller NOM “lamps”",
+            "feedback": "The relative narrows the nominal under the determiner."
+          }
+        ]
+      },
+      {
+        "id": "closing-non-restrictive",
+        "prompt": "In “The lamps, which had faded, were replaced”, what does the relative join?",
+        "answer": "b",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P210"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "The head noun alone",
+            "feedback": "The relative adds information about the already identified group."
+          },
+          {
+            "id": "b",
+            "text": "The whole NP “the lamps”",
+            "feedback": "The relative joins the entire NP under a higher NP."
+          },
+          {
+            "id": "c",
+            "text": "The predicate “were replaced”",
+            "feedback": "The relative describes the lamps, while the predicate tells what happened to them."
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 # Chapter 9 proposal · Wh-clauses
 
-**Status** · Outline ready for owner review. Chapter 9 implementation follows outline approval. First-time learner timing is pending.
+**Status** · Implemented as a [local pilot](../reports/syntax-foundations-chapter-9-pilot.md). Gate 4.9 review is pending. First-time learner timing is pending.
 
 ## Source and scope
 

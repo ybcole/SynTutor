@@ -11,6 +11,7 @@ import { adverbialsPilot } from './adverbials-pilot.js';
 import { auxiliariesPilot } from './auxiliaries-pilot.js';
 import { nounPhrasesPilot } from './noun-phrases-pilot.js';
 import { embeddedClausesPilot } from './embedded-clauses-pilot.js';
+import { whClausesPilot } from './wh-clauses-pilot.js';
 import { requestEvidence, renderEvidence } from './explanation-evidence.js';
 import { subscribeAuthState } from './auth.js';
 import { enableCanvasView } from './canvas-view.js';
@@ -59,6 +60,7 @@ const pilotArticles = {
   'br-06': auxiliariesPilot,
   'br-07': nounPhrasesPilot,
   'br-08': embeddedClausesPilot,
+  'br-09': whClausesPilot,
 };
 const pilotId = () => {
   if (!['localhost', '127.0.0.1', '[::1]'].includes(location.hostname)) return null;

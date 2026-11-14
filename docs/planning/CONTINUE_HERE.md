@@ -9,8 +9,8 @@ This file gives you (the next AI agent) the context, the exact current state, wh
 
 ## 0. TL;DR
 
-- Chapters **1–8** have local previews (`?preview=br-0X`), storyboards, pilot reports and browser tests.
-- Review the Chapter 8 pilot at **Gate 4.8** and approve the Chapter 9 storyboard before implementation. First-time learner timing remains unverified.
+- Chapters **1–9** have local previews (`?preview=br-0X`), storyboards, pilot reports and browser tests.
+- Review the Chapter 9 pilot at **Gate 4.9** before outlining Chapter 10. First-time learner timing remains unverified.
 - The published catalog changes during Phase 5.
 
 ---
@@ -55,6 +55,7 @@ Any tree a lesson shows must come from these records or be clearly `DERIVED_FROM
 | 6 | `br-06-pilot.json` | `auxiliaries-pilot.js` | `...chapter-6-storyboard.md` | `...chapter-6-pilot.md` | `test_chapter_six_pilot_browser.py` |
 | 7 | `br-07-pilot.json` | `noun-phrases-pilot.js` | `...chapter-7-storyboard.md` | `...chapter-7-pilot.md` | `test_chapter_seven_pilot_browser.py` |
 | 8 | `br-08-pilot.json` | `embedded-clauses-pilot.js` | `...chapter-8-storyboard.md` | `...chapter-8-pilot.md` | `test_chapter_eight_pilot_browser.py` |
+| 9 | `br-09-pilot.json` | `wh-clauses-pilot.js` | `...chapter-9-storyboard.md` | `...chapter-9-pilot.md` | `test_chapter_nine_pilot_browser.py` |
 
 Also read: `web/js/lesson-notation.js` (`displayVpLevel` shows VP₁/VP₂), `web/js/lesson-presentation.js`, `web/js/lesson-tree-exercise.js`, `web/js/lesson-core.js`, `web/js/lesson-progress.js`, `web/css/lessons.css`.
 
@@ -62,8 +63,8 @@ Also read: `web/js/lesson-notation.js` (`displayVpLevel` shows VP₁/VP₂), `we
 
 ## 5. What to do next
 
-1. Walk through the [Chapter 8 pilot](../reports/syntax-foundations-chapter-8-pilot.md) for Gate 4.8.
-2. Review the [Chapter 9 storyboard](syntax-foundations-chapter-9-storyboard.md), then implement the pilot for Gate 4.9.
+1. Walk through the [Chapter 9 pilot](../reports/syntax-foundations-chapter-9-pilot.md) for Gate 4.9.
+2. After that review, prepare the Chapter 10 storyboard.
 3. Phase 5 covers release preparation, published titles, reviewed catalog records and immutable assessment seeds.
 
 ## 6. Run a preview (verified commands)
@@ -81,6 +82,7 @@ Open (edit the `br-0X` to switch chapters; keep `?preview=`):
 - Ch.6 http://127.0.0.1:8000/?preview=br-06#lesson/br-06/introduction
 - Ch.7 http://127.0.0.1:8000/?preview=br-07#lesson/br-07/introduction
 - Ch.8 http://127.0.0.1:8000/?preview=br-08#lesson/br-08/introduction
+- Ch.9 http://127.0.0.1:8000/?preview=br-09#lesson/br-09/introduction
 
 If you drop `?preview=` you are back on the old published catalog.
 
@@ -121,6 +123,6 @@ for f in web/js/*.js; do node --check "$f" || echo "FAIL $f"; done
 # tests named in the master prompt (verify scripts exist on branch first)
 npm run test:lessons
 npm run test:builder
-python scripts/test_chapter_eight_pilot_browser.py
+python scripts/test_chapter_nine_pilot_browser.py
 ```
 Report exact commands and outcomes. Leave failures visible; do not claim passes from reading old reports.
