@@ -1,5 +1,6 @@
 # Session handoff · Burton-Roberts lesson revision
 
+
 **Branch:** `feat/lessons/revision-plan`
 **Handoff written:** 2026-11-14
 **Author of this handoff:** AI agent session (continued ChatGPT/Codex's work)
@@ -25,8 +26,7 @@ Everything below was verified by reading the repository in this session. Where s
 ## 2. Commit log on the branch (most recent first)
 
 ```
-1e28b6d  Outline Chapter 6 auxiliary VPs for review
-641b155  Add the Burton-Roberts Chapter 5 lesson pilot
+ae6a7
 ccf17da  Outline Chapter 5 and explain numbered VP levels
 a89e9d4  Add the Burton-Roberts Chapter 4 lesson pilot
 6d951fe  Outline Chapter 4 and align the Chapter 3 preview card
@@ -40,7 +40,7 @@ bf846ee  Outline Chapter 3 and fix revised lesson entry navigation
 8e45ac3  Record the Syntax Foundations Phase 0 audit
 ```
 
-`1e28b6d` (Chapter 6 outline) was committed in this session but **could not be pushed** from the session environment (no GitHub credentials). See §7 for the exact push command.
+`1e28b6d` (Chapter 6 outline) and `ae6a7a0` (this handoff report + `CONTINUE_HERE.md`) were committed in this session but **could not be pushed** from the session environment (no GitHub credentials). See §7 for the exact push command.
 
 ---
 
@@ -119,12 +119,12 @@ Do **not** claim the catalog titles are fixed. They are fixed in previews only.
 
 ## 7. Push status and how to push
 
-`1e28b6d` is committed locally but **unpushed**. This session environment has no GitHub credentials (no token/helper/SSH; terminal prompts disabled), so it could not push and did not attempt to obtain secrets.
+`1e28b6d` (Chapter 6 outline) and `ae6a7a0` (this handoff report + `CONTINUE_HERE.md`) are committed locally but **unpushed**. This session environment has no GitHub credentials (no token/helper/SSH; terminal prompts disabled), so it could not push and did not attempt to obtain secrets.
 
 From an authenticated terminal:
 ```bash
 cd <repo-root>
-git log --oneline -1                 # expect: 1e28b6d Outline Chapter 6 auxiliary VPs for review
+git log --oneline -3                 # expect: ae6a7a0, 1e28b6d, 641b155
 git push origin feat/lessons/revision-plan
 ```
 
