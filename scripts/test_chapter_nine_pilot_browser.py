@@ -140,6 +140,27 @@ try:
 
         page.goto(f'{base}/#lesson/br-09/introduction', wait_until='domcontentloaded')
         expect(view.get_by_role('heading', name='Wh-fronting and typed gaps', exact=True)).to_be_visible()
+        # A controlled gap and its overt controller expose the same index.
+        labels = page.evaluate("""async () => {
+            const { renderLessonTree } = await import('/js/lessons-ui.js');
+            const root = { label: 'S', children: [
+                { label: 'NP', index: 1, triangle: true, words: ['Nia'] },
+                { label: 'VP', children: [
+                    { word: 'tries' },
+                    { label: 'S', children: [
+                        { label: 'NP', children: [{ gap: true, index: 1 }] },
+                        { label: 'VP', children: [{ word: 'to' }, { word: 'wait' }] },
+                    ] },
+                ] },
+            ] };
+            const tree = renderLessonTree({ root, sentence: 'Nia tries to wait' });
+            return [
+                [...tree.querySelectorAll('svg text')].map(label => label.textContent),
+                tree.querySelector('.lesson-tree-text').textContent,
+            ];
+        }""")
+        assert {'NP (1)', '• (1)'} <= set(labels[0])
+        assert 'NP (1) — Nia' in labels[1] and '• (1)' in labels[1]
         assert not errors and not parses, (errors, parses)
         browser.close()
 finally:

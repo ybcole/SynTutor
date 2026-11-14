@@ -117,7 +117,8 @@ export function renderLessonTree(envelope, {
     if (node.gap) return node.index === undefined ? '•' : `• (${node.index})`;
     const numberedVP = displayVpLevel(node);
     const name=node.label === 'AUX' ? '' : node.label === 'S-bar' ? 'S′' : node.label === 'S-dbar' ? 'S″' : node.unlabelled ? '' : numberedVP || node.label || node.word;
-    return `${name || ''}${withFeatures && node.features?.length ? ` [${node.features.join(', ')}]` : ''}${node.empty ? ' (empty)' : ''}`;
+    const index = node.index === undefined ? '' : ` (${node.index})`;
+    return `${name || ''}${index}${withFeatures && node.features?.length ? ` [${node.features.join(', ')}]` : ''}${node.empty ? ' (empty)' : ''}`;
   }
   const blankFor = node => blank?.node_id && blank.node_id === node.id ? blank.field : null;
   const featureRows = node => {
