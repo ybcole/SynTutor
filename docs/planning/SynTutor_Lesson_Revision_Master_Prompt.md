@@ -1,7 +1,7 @@
 # SYNTUTOR — MASTER IMPLEMENTATION PROMPT
 ## Syntax Foundations lesson revision (Burton-Roberts Chapters 1–11)
 
-**Status:** Chapter 9 pilot ready for walkthrough. Chapter 10 storyboard ready for outline approval. First-time learner timing remains unverified.
+**Status:** Chapter 10 pilot ready for Gate 4.10 review. First-time learner timing remains unverified.
 **Target branch:** `feat/lessons/revision-plan`, based on `origin/explore/foundations-lesson-rollout-plan` at `7df6b1e6775760b67a445f1cfa995d33b922ca2a`.
 **Implementation:** Codex. **Acceptance:** project owner.
 **Phase 0 audit:** `docs/planning/syntax_foundations_revision_phase_0.md` on the revision branch.
@@ -245,7 +245,7 @@ The [Chapter 8 storyboard](syntax-foundations-chapter-8-storyboard.md) and [pilo
 
 The [Chapter 9 storyboard](syntax-foundations-chapter-9-storyboard.md) and [pilot review](../reports/syntax-foundations-chapter-9-pilot.md) cover main and embedded wh-questions, relative clauses, and noun complements.
 
-The [Chapter 10 storyboard](syntax-foundations-chapter-10-storyboard.md) maps the four non-finite forms, overt and covert subjects, and Type I and II complements.
+The [Chapter 10 storyboard](syntax-foundations-chapter-10-storyboard.md) and [pilot review](../reports/syntax-foundations-chapter-10-pilot.md) cover the four non-finite forms, overt and covert subjects, and Type I and II complements.
 
 **Gates 4.2–4.11:** Separate owner approval for each completed chapter. Rejected or unresolved chapters remain unapproved and must not be treated as complete. Keep lesson 12 unchanged.
 
@@ -324,7 +324,7 @@ At the end of a handoff, **stop** and ask for a specific approval or needed sour
 
 # H. Resume at the current gate
 
-Review the Chapter 9 pilot at Gate 4.9 and approve the Chapter 10 storyboard before implementing its pilot. The Chapter 9 pilot report gives the preview route and verification evidence. First-time learner timing remains pending.
+Review the Chapter 10 pilot at Gate 4.10 before outlining Chapter 11. The Chapter 10 pilot report gives the preview route and verification evidence. First-time learner timing remains pending.
 
 For later chapters, use one handoff document or pull-request summary per unit. Carry shared baseline and migration decisions forward by reference. Update only the chapter's new evidence, examples, outcomes, test results and open decisions. The chapter's outline and completed walkthrough still require the approval in Phase 4. Keep commits on the revision branch until the owner authorizes integration.
 

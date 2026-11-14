@@ -1,6 +1,6 @@
 # Chapter 10 proposal · Non-finite clauses
 
-**Status** · Outline ready for owner review. Chapter 10 implementation follows outline approval.
+**Status** · Implemented as a [local pilot](../reports/syntax-foundations-chapter-10-pilot.md). Gate 4.10 review is pending.
 
 ## Source and scope
 
