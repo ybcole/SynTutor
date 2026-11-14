@@ -1,4 +1,5 @@
 """Read-only lesson publication/structure/provenance gate, without parser models."""
+import argparse
 import hashlib
 import json
 from pathlib import Path
@@ -13,7 +14,7 @@ from seed_foundations import render as foundations_sql, TARGET as FOUNDATIONS_SE
 def digest(lesson):
     return hashlib.sha256(json.dumps(lesson,sort_keys=True,ensure_ascii=False,separators=(',',':')).encode()).hexdigest()
 
-def validate(course=None):
+def validate(course=None, *, lesson_id=None):
     course=course or json.loads((ROOT/'web/content/lessons/course.json').read_text())
     schema=json.loads((ROOT/'web/content/lessons/course.schema.json').read_text())
     Draft202012Validator.check_schema(schema);Draft202012Validator(schema).validate(course)
@@ -38,7 +39,10 @@ def validate(course=None):
             source=sources[ident]
             if source['book']=='B-R':assert ranges[source['chapter']][0]<=source['printed_page']<=ranges[source['chapter']][1]
     for c in course['concepts']:cited(c['source_ids'])
-    for lesson in course['lessons']:
+    if lesson_id is not None and lesson_id not in lessons:
+        raise ValueError(f'Unknown lesson ID: {lesson_id}')
+    selected = [lessons[lesson_id]] if lesson_id else course['lessons']
+    for lesson in selected:
         ident=lesson['lesson_id'];cited(lesson['source_ids'])
         receipt=json.loads((ROOT/lesson['review_receipt']).read_text())
         assert receipt['lesson_sha256'][ident]==digest(lesson),f'{ident}: content changed after source review'
@@ -48,7 +52,8 @@ def validate(course=None):
             prior = lessons[prereq['lesson_id']]
             assert prior['content_version'] == prereq['content_version'] or (
                 prior.get('revised_assessment') and prereq['content_version'] == '1.0.0')
-        if assessment := lesson.get('revised_assessment'):
+        assessment = lesson.get('revised_assessment')
+        if assessment:
             assert lesson['track'] == 'foundations' and ident == f"br-{lesson['chapter']:02d}"
             assert lesson['content_version'] != '1.0.0'
             questions = assessment['opening'] + assessment['closing']
@@ -71,7 +76,8 @@ def validate(course=None):
             question=lesson[key];cited(question['source_ids'])
             assert question['id']==key and question['answer'] in {o['id'] for o in question['options']}
             assert set(question['outcome_ids'])<={o['id'] for o in lesson['outcomes']}
-        assert set(o['id'] for o in lesson['outcomes'])<=set(lesson['exit']['outcome_ids'])
+        if not assessment:
+            assert {o['id'] for o in lesson['outcomes']} <= set(lesson['exit']['outcome_ids'])
         if lesson['track']=='foundations':assert all(sources[s]['book']=='B-R' for s in lesson['source_ids'])
         else:assert all(sources[s]['book']=='Cambridge' for s in lesson['source_ids'])
         tree=lesson['worked_example']['tree']
@@ -101,7 +107,11 @@ def validate(course=None):
     else:
         assert old_seed == seed_sql(course), 'Legacy database answer contract drift.'
     assert FOUNDATIONS_SEED.read_text() == foundations_sql(course), 'Revised database answer contract drift.'
-    print(f'PASS: {len(lessons)} reviewed versioned lessons, {len(sources)} page sources, 10 canonical authored trees, outcomes/answers/receipts/reference IDs and SQL seed integrity.')
+    scope = lesson_id or f'{len(selected)} lessons'
+    print(f'PASS: {scope} lesson checks, {len(sources)} shared source records, course schema and SQL seed integrity.')
     return course
 
-if __name__=='__main__':validate()
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--lesson', help='Check one lesson receipt and content, plus shared schema and SQL seed.')
+    validate(lesson_id=parser.parse_args().lesson)

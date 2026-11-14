@@ -230,6 +230,8 @@ Order: 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10 → 11. For **each** c
 5. Present desktop/mobile chapter walkthrough, one correct and one incorrect attempt, feedback, resume and XP behavior.
 6. Provide commit SHA(s), changed files, page anchors, limitations and open questions. **Stop at the owner gate**; do not auto-advance.
 
+The [Chapter 2 storyboard](syntax-foundations-chapter-2-storyboard.md) is ready for review. It does not record Gate 3 acceptance or authorize Chapter 2 implementation.
+
 **Gates 4.2–4.11:** Separate owner approval for each completed chapter. Rejected or unresolved chapters remain unapproved and must not be treated as complete. Keep lesson 12 unchanged.
 
 ## Phase 5 — Full-course integration and release readiness
