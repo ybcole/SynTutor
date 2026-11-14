@@ -94,10 +94,25 @@ try:
 
         # Load each authored section so a mismatch with an assessment's required IDs is visible.
         for id, pilot in PILOTS.items():
+            tree_pages = 0
             for section in pilot['revised_assessment']['required_sections']:
                 open_lesson(preview + f'{id}/{section}')
                 expect(view).to_contain_text('Chapter pilot · progress saved on this device')
                 assert page.url.endswith(f'#lesson/{id}/{section}')
+                canvases = view.locator('.lesson-tree-canvas')
+                if canvases.count():
+                    tree_pages += 1
+                    expect(canvases.locator('details.lesson-tree-text > summary')).to_have_count(canvases.count())
+                    expect(view.locator('.lesson-notation').first).to_be_visible()
+                    assert canvases.evaluate_all("""nodes => nodes.every(canvas => {
+                      const outline = canvas.querySelector('.lesson-tree-text');
+                      const notation = canvas.closest('article').querySelector('.lesson-notation');
+                      return !outline.open && Boolean(outline.compareDocumentPosition(notation) & Node.DOCUMENT_POSITION_FOLLOWING);
+                    })""")
+                    disclosure = canvases.first.locator('details.lesson-tree-text')
+                    disclosure.locator('summary').press('Enter')
+                    expect(disclosure.locator('.lesson-tree-outline > ul > li').first).to_be_visible()
+            assert tree_pages, id
             if id == 'br-02':
                 open_lesson(preview + f'{id}/introduction')
                 expect(check_panel('opening')).to_contain_text('Question 1 of 5')
@@ -149,7 +164,16 @@ try:
             menu.locator(f'a[href$="/{section}"]').tap()
             expect(mobile).to_have_url(preview + f'{id}/{section}')
             expect(mobile.locator('#curriculumView svg[aria-label^="Syntax tree"]').first).to_be_visible()
+            disclosure = mobile.locator('.lesson-tree-text').first
+            disclosure.locator('summary').tap()
+            expect(disclosure.locator('.lesson-tree-outline > ul > li').first).to_be_visible()
             assert mobile.locator('#curriculumView').evaluate('(el) => el.scrollWidth <= el.clientWidth')
+        open_lesson(preview + 'br-11/worked-example')
+        disclosure = view.locator('.lesson-tree-text').first
+        disclosure.locator('summary').press('Enter')
+        view.get_by_role('button', name='Reuse the first result').click()
+        expect(disclosure).to_have_attribute('open', '')
+        expect(disclosure.locator('.lesson-tree-outline')).to_contain_text('Mina waves')
         mobile.close()
 
         open_lesson(base + '/?preview=br-02#lesson/br-02/introduction')

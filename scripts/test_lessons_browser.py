@@ -261,8 +261,8 @@ try:
   expect(closing.locator('.lesson-question')).to_have_count(1)
   page.set_viewport_size({'width':390,'height':844})
   assert view.evaluate('(el) => el.scrollWidth <= el.clientWidth')
-  expect(view.get_by_text('Read the tree as text',exact=True)).to_have_count(0)
-  outline=view.get_by_role('group',name='Tree structure')
+  view.get_by_text('Read tree as text',exact=True).press('Enter')
+  outline=view.locator('.lesson-tree-outline')
   expect(outline).to_contain_text('?')
   expect(outline).not_to_contain_text('PHRASE-b')
   guided.locator('input[value="'+chapter_one['guided']['answer']+'"]').check()
@@ -622,10 +622,10 @@ try:
      expect(view.locator('svg .lesson-tree-focus')).to_have_attribute('data-node-id',step['focus_node_id'])
     assert all(captions) and len(set(captions)) == len(visible_steps)
     expect(viewport.get_by_role('button',name='Fit syntax tree')).to_be_visible()
-    expect(view.get_by_text('Read the tree as text',exact=True)).to_have_count(0)
-    outline=view.get_by_role('group',name='Tree structure')
-    expect(outline.get_by_role('list')).not_to_have_count(0)
-    expect(outline.get_by_role('button')).to_have_count(0)
+    view.get_by_text('Read tree as text',exact=True).press('Enter')
+    outline=view.locator('.lesson-tree-outline')
+    expect(outline.get_by_role('list').first).to_be_visible()
+    expect(outline.get_by_role('button').first).to_be_visible()
     expect(view.locator('.lesson-shared-evidence summary')).to_have_text('Explanation')
     assert viewport.bounding_box()['y'] < view.locator('.lesson-shared-evidence').bounding_box()['y']
     if ident=='br-08':
@@ -808,7 +808,8 @@ try:
      target=lesson[key]['build_target']
      masked=post_test.locator(f'svg [data-node-id="{target["node_id"]}"]')
      expect(masked.locator('.br-feature-row')).to_have_text('[?]')
-     outline=post_test.get_by_role('group',name='Tree structure')
+     post_test.get_by_text('Read tree as text',exact=True).press('Enter')
+     outline=post_test.locator('.lesson-tree-outline')
      expect(outline).to_contain_text('[?]')
      expect(outline).not_to_contain_text(f'[{target["expected"]}]')
     if key=='exit':

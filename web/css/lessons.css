@@ -188,13 +188,23 @@
 .constituent-diagram .lesson-tree-wrap:has(> svg) { background:var(--bg); padding:12px; border-radius:10px; }
 .constituent-diagram .lesson-tree-wrap > svg { margin-inline:auto; }
 .constituent-page .lesson-tree-canvas .canonical-viewport { height:clamp(240px,36vw,300px); }
-.lesson-tree-outline {
-  position:absolute;
-  width:1px;
-  height:1px;
-  overflow:hidden;
-  clip-path:inset(50%);
-  white-space:nowrap;
+.lesson-tree-canvas > .lesson-tree-text {
+  margin-block:12px 0;
+  padding:4px 12px;
+  border:1px solid var(--border);
+  border-radius:8px;
+  background:var(--panel);
+  color:var(--ink);
+  font-size:.9rem;
+}
+.lesson-tree-canvas > .lesson-tree-text > summary {
+  min-block-size:40px;
+  align-content:center;
+  cursor:pointer;
+}
+.lesson-tree-text .lesson-tree-outline {
+  overflow-wrap:anywhere;
+  margin-block-end:8px;
 }
 .constituent-page .lesson-shared-evidence,
 .constituent-page .constituent-caption,.constituent-page .constituent-selection { font-size:.9rem; }
