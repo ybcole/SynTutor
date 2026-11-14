@@ -1,0 +1,405 @@
+{
+  "title": "Adverbials and other matters",
+  "content_version": "2.0.0",
+  "estimated_minutes": 10,
+  "outcomes": [
+    {
+      "id": "o1",
+      "text": "Distinguish a verb complement from a VP adjunct and explain where it attaches."
+    },
+    {
+      "id": "o2",
+      "text": "Distinguish a particle from a preposition and an understood complement from an optional detail."
+    },
+    {
+      "id": "o3",
+      "text": "Distinguish an event adverbial from a sentence adverbial by what it modifies."
+    }
+  ],
+  "preview_sources": [
+    {
+      "id": "BR-3E-P87",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 5,
+      "printed_page": 87,
+      "evidence_status": "TXT",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P91",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 5,
+      "printed_page": 91,
+      "evidence_status": "TXT",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P95",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 5,
+      "printed_page": 95,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P97",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 5,
+      "printed_page": 97,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P99",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 5,
+      "printed_page": 99,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P100",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 5,
+      "printed_page": 100,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    }
+  ],
+  "revised_assessment": {
+    "required_sections": [
+      "introduction",
+      "concepts",
+      "worked-example",
+      "mobility",
+      "particles",
+      "ellipsis",
+      "application",
+      "recap"
+    ],
+    "opening": [
+      {
+        "id": "opening-time",
+        "prompt": "In “The nurse checked the chart at noon”, which group tells when the check happened?",
+        "answer": "b",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P87",
+          "BR-3E-P89"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "the chart",
+            "feedback": "The chart is what the nurse checked."
+          },
+          {
+            "id": "b",
+            "text": "at noon",
+            "feedback": "This PP tells when the checking happened."
+          },
+          {
+            "id": "c",
+            "text": "checked the chart",
+            "feedback": "This group names the activity itself."
+          }
+        ]
+      },
+      {
+        "id": "opening-placement",
+        "prompt": "In “Ari put the key on the hook”, which group tells where the key ended up?",
+        "answer": "c",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P90"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "Ari",
+            "feedback": "Ari is the person who moved the key."
+          },
+          {
+            "id": "b",
+            "text": "the key",
+            "feedback": "The key is the thing Ari moved."
+          },
+          {
+            "id": "c",
+            "text": "on the hook",
+            "feedback": "This PP gives the resulting location of the key."
+          }
+        ]
+      },
+      {
+        "id": "opening-particle",
+        "prompt": "Replace “the light” with “it” in “Sal switched off the light”. Which version keeps the original meaning?",
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P95"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "Sal switched it off.",
+            "feedback": "The object pronoun comes before the particle."
+          },
+          {
+            "id": "b",
+            "text": "Sal switched off it.",
+            "feedback": "In this switching pattern the pronoun precedes “off”."
+          },
+          {
+            "id": "c",
+            "text": "Sal switched it.",
+            "feedback": "This leaves out the particle that gives the switching-off meaning."
+          }
+        ]
+      },
+      {
+        "id": "opening-understood",
+        "prompt": "Mina is giving class handouts to Ren. Someone says “Mina gave two copies”. Who is understood to receive them?",
+        "answer": "b",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P97"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "Mina",
+            "feedback": "Mina is the giver."
+          },
+          {
+            "id": "b",
+            "text": "Ren",
+            "feedback": "The context identifies Ren as the recipient."
+          },
+          {
+            "id": "c",
+            "text": "Two copies",
+            "feedback": "“Two copies” names what was given."
+          }
+        ]
+      },
+      {
+        "id": "opening-scope",
+        "prompt": "In “Luckily, the glass stayed intact”, what does “luckily” express?",
+        "answer": "c",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P99",
+          "BR-3E-P100"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "How the glass moved",
+            "feedback": "The statement describes what happened to the glass. “Luckily” evaluates the outcome."
+          },
+          {
+            "id": "b",
+            "text": "When the event happened",
+            "feedback": "The word gives no time for the event."
+          },
+          {
+            "id": "c",
+            "text": "The speaker’s evaluation of what happened",
+            "feedback": "The speaker presents the whole outcome as fortunate."
+          }
+        ]
+      }
+    ],
+    "closing": [
+      {
+        "id": "closing-replacement",
+        "prompt": "In “Lea scrubbed the pan after dinner, and Nia did so before lunch”, what does “did so” stand for?",
+        "answer": "b",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P89",
+          "BR-3E-P91"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "scrubbed",
+            "feedback": "Include what was scrubbed in the activity that both people did."
+          },
+          {
+            "id": "b",
+            "text": "scrubbed the pan",
+            "feedback": "The time changes while the verb and its object stay together."
+          },
+          {
+            "id": "c",
+            "text": "scrubbed the pan after dinner",
+            "feedback": "Nia did the activity before lunch. The first time phrase is outside the replaced group."
+          }
+        ]
+      },
+      {
+        "id": "closing-complement",
+        "prompt": "In “Nia put the crate under the stairs”, where does “under the stairs” attach?",
+        "answer": "a",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P90"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "Beside V and the object NP in the basic VP",
+            "feedback": "The PP completes the placement pattern and locates the crate."
+          },
+          {
+            "id": "b",
+            "text": "Beside the basic VP in a higher VP",
+            "feedback": "An optional event detail would attach there. This PP supplies the resulting location of the object."
+          },
+          {
+            "id": "c",
+            "text": "Inside the subject NP",
+            "feedback": "“Nia” is the subject. The PP belongs inside the predicate."
+          }
+        ]
+      },
+      {
+        "id": "closing-particle",
+        "prompt": "In “Ari folded it up”, what is “up” doing?",
+        "answer": "c",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P95"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "Heading the PP “it up”",
+            "feedback": "A preposition heads a phrase with a following complement here. “It” is the object of “folded”."
+          },
+          {
+            "id": "b",
+            "text": "Modifying the entire statement",
+            "feedback": "“Up” contributes to the meaning of the folding, inside the predicate."
+          },
+          {
+            "id": "c",
+            "text": "Serving as the particle of “fold up”",
+            "feedback": "The particle follows the object pronoun in the separated form."
+          }
+        ]
+      },
+      {
+        "id": "closing-ellipsis",
+        "prompt": "Ari is giving things to Jo. Someone says “Ari gave a ticket”. What does E represent in the tree for this use?",
+        "answer": "b",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P97"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "The direct object “a ticket”",
+            "feedback": "“A ticket” is overt. E marks the role that context fills."
+          },
+          {
+            "id": "b",
+            "text": "The understood recipient NP",
+            "feedback": "Jo receives the ticket. That role is understood even though no words name Jo."
+          },
+          {
+            "id": "c",
+            "text": "An optional time adjunct",
+            "feedback": "No time is implied by E. The context supplies the recipient."
+          }
+        ]
+      },
+      {
+        "id": "closing-scope",
+        "prompt": "In “Unfortunately, the lamp broke”, what does “unfortunately” attach beside?",
+        "answer": "a",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P99",
+          "BR-3E-P100"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "The S “the lamp broke”, under a higher S",
+            "feedback": "The word gives the speaker’s evaluation of the whole statement."
+          },
+          {
+            "id": "b",
+            "text": "The V “broke”, within the basic VP",
+            "feedback": "“Unfortunately” gives an evaluation of the event rather than a complement of the verb."
+          },
+          {
+            "id": "c",
+            "text": "The noun “lamp”, within the subject NP",
+            "feedback": "The evaluation applies to what happened, rather than identifying the lamp."
+          }
+        ]
+      }
+    ]
+  }
+}

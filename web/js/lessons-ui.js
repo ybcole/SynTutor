@@ -7,6 +7,7 @@ import { constituentsPilot } from './constituents-pilot.js';
 import { functionsPilot } from './functions-pilot.js';
 import { categoriesPilot } from './categories-pilot.js';
 import { basicVpPilot } from './basic-vp-pilot.js';
+import { adverbialsPilot } from './adverbials-pilot.js';
 import { requestEvidence, renderEvidence } from './explanation-evidence.js';
 import { subscribeAuthState } from './auth.js';
 import { enableCanvasView } from './canvas-view.js';
@@ -46,7 +47,7 @@ const legacyArticleSections = [
   { id: 'recap', advances: 'worked', references: true },
   { id: 'closing-check', assessment: true },
 ];
-const pilotArticles = { 'br-01': constituentsPilot, 'br-02': functionsPilot, 'br-03': categoriesPilot, 'br-04': basicVpPilot };
+const pilotArticles = { 'br-01': constituentsPilot, 'br-02': functionsPilot, 'br-03': categoriesPilot, 'br-04': basicVpPilot, 'br-05': adverbialsPilot };
 const pilotId = () => {
   if (!['localhost', '127.0.0.1', '[::1]'].includes(location.hostname)) return null;
   const id = new URLSearchParams(location.search).get('preview');

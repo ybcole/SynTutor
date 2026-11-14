@@ -1,6 +1,6 @@
 # Chapter 5 proposal · Adverbials and other matters
 
-**Status** · Outline ready for owner review. The revised Chapter 5 pilot follows outline approval.
+**Status** · Implemented as a [local pilot](../reports/syntax-foundations-chapter-5-pilot.md). Gate 4.5 review and first-time learner timing are pending.
 
 ## Source and scope
 
