@@ -50,7 +50,10 @@ try:
                 panel.get_by_role('button', name=label, exact=True).click()
             return panel
 
-        page.goto(f'{base}/?preview=br-02#lesson/br-02/introduction', wait_until='domcontentloaded')
+        page.goto(f'{base}/?preview=br-02#lesson/catalog', wait_until='domcontentloaded')
+        chapter = view.locator('.lesson-module').filter(has=page.get_by_role('heading', name=PILOT['title'], exact=True))
+        chapter.get_by_role('button', name='Start lesson', exact=True).click()
+        expect(page).to_have_url(f'{base}/?preview=br-02#lesson/br-02/introduction')
         expect(view.get_by_role('heading', name=PILOT['title'], exact=True)).to_be_visible()
         expect(view.get_by_role('heading', name='Two groups, two functions')).to_be_visible()
         opening = submit('opening', 2)
@@ -78,6 +81,9 @@ try:
         view.get_by_role('button', name='Next →', exact=True).click()
         response = view.get_by_role('textbox', name='Your explanation')
         response.fill('Leo is the subject. Loose modifies bolt.')
+        view.get_by_role('button', name='← All lessons', exact=True).click()
+        chapter.get_by_role('button', name='Resume lesson', exact=True).click()
+        expect(page).to_have_url(f'{base}/?preview=br-02#lesson/br-02/application')
         page.reload(wait_until='domcontentloaded')
         expect(response).to_have_value('Leo is the subject. Loose modifies bolt.')
         view.get_by_role('button', name='Compare your explanation').click()

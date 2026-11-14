@@ -357,6 +357,7 @@ function articlePageFor(lesson, progress, sections, requested, workedExample) {
   if (progress.completed_at && !lesson.revised_assessment) return 0;
   const last = indexOf(readingState(lesson).last);
   if (last >= 0) return last;
+  if (lesson.revised_assessment) return 0;
   const checkpoint = sections.findIndex(section => available(section) &&
     (section.advances === STAGES[progress.stage] || section.assessment));
   if (STAGES[progress.stage] === 'worked') {

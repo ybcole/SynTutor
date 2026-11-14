@@ -1,7 +1,7 @@
 # SYNTUTOR — MASTER IMPLEMENTATION PROMPT
 ## Syntax Foundations lesson revision (Burton-Roberts Chapters 1–11)
 
-**Status:** Chapter 2 pilot implemented for Gate 4.2 review. First-time learner timing remains unverified.
+**Status:** Chapter 2 pilot implemented for Gate 4.2 review. First-time learner timing remains unverified. The Chapter 3 outline is prepared for review.
 **Target branch:** `feat/lessons/revision-plan`, based on `origin/explore/foundations-lesson-rollout-plan` at `7df6b1e6775760b67a445f1cfa995d33b922ca2a`.
 **Implementation:** Codex. **Acceptance:** project owner.
 **Phase 0 audit:** `docs/planning/syntax_foundations_revision_phase_0.md` on the revision branch.
@@ -232,6 +232,8 @@ Order: 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10 → 11. For **each** c
 6. Provide commit SHA(s), changed files, page anchors, limitations and open questions. **Stop at the owner gate**; do not auto-advance.
 
 The [Chapter 2 storyboard](syntax-foundations-chapter-2-storyboard.md) records the scope of the first Phase 4 pilot. The [pilot review](../reports/syntax-foundations-chapter-2-pilot.md) records its source and test evidence.
+
+The [Chapter 3 storyboard](syntax-foundations-chapter-3-storyboard.md) maps the full category sequence and draft checks. Chapter 3 implementation follows the Chapter 2 walkthrough and approval of the Chapter 3 outline.
 
 **Gates 4.2–4.11:** Separate owner approval for each completed chapter. Rejected or unresolved chapters remain unapproved and must not be treated as complete. Keep lesson 12 unchanged.
 
