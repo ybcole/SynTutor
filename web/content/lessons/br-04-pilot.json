@@ -1,0 +1,397 @@
+{
+  "title": "The basic Verb Phrase",
+  "content_version": "2.0.0",
+  "estimated_minutes": 10,
+  "outcomes": [
+    {
+      "id": "o1",
+      "text": "Find the lexical verb and separate the subject from the immediate parts of the basic VP."
+    },
+    {
+      "id": "o2",
+      "text": "Compare six verb patterns by the number and functions of their complements."
+    },
+    {
+      "id": "o3",
+      "text": "Explain what a predicative describes and distinguish a PP complement from an optional location."
+    }
+  ],
+  "preview_sources": [
+    {
+      "id": "BR-3E-P72",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 4,
+      "printed_page": 72,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P73",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 4,
+      "printed_page": 73,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P76",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 4,
+      "printed_page": 76,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P77",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 4,
+      "printed_page": 77,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P78",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 4,
+      "printed_page": 78,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    }
+  ],
+  "revised_assessment": {
+    "required_sections": [
+      "introduction",
+      "concepts",
+      "worked-example",
+      "predicatives",
+      "prepositional-complements",
+      "application",
+      "recap"
+    ],
+    "opening": [
+      {
+        "id": "opening-verb",
+        "prompt": "Which word is the main verb in “The wind shook the shutters”?",
+        "answer": "b",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P70"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "wind",
+            "feedback": "“Wind” is the noun in the subject."
+          },
+          {
+            "id": "b",
+            "text": "shook",
+            "feedback": "“Shook” names the action and heads the VP."
+          },
+          {
+            "id": "c",
+            "text": "shutters",
+            "feedback": "“Shutters” is the noun in the object."
+          }
+        ]
+      },
+      {
+        "id": "opening-object",
+        "prompt": "In “Eli packed the red bag”, which whole group answers “What did Eli pack?”",
+        "answer": "c",
+        "outcome_ids": [
+          "o1",
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P71"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "bag",
+            "feedback": "Include the words that go with the noun in the object."
+          },
+          {
+            "id": "b",
+            "text": "packed the red bag",
+            "feedback": "That span also contains the verb."
+          },
+          {
+            "id": "c",
+            "text": "the red bag",
+            "feedback": "All three words belong to the object NP."
+          }
+        ]
+      },
+      {
+        "id": "opening-recipient",
+        "prompt": "Who receives something in “The courier gave Ada a receipt”?",
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P72"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "Ada",
+            "feedback": "Ada receives the receipt."
+          },
+          {
+            "id": "b",
+            "text": "The courier",
+            "feedback": "The courier gives the receipt."
+          },
+          {
+            "id": "c",
+            "text": "A receipt",
+            "feedback": "A receipt is what is given."
+          }
+        ]
+      },
+      {
+        "id": "opening-description",
+        "prompt": "What is quiet in “The librarian kept the room quiet”?",
+        "answer": "b",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P76",
+          "BR-3E-P77"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "The librarian",
+            "feedback": "The description applies to the space the librarian kept quiet."
+          },
+          {
+            "id": "b",
+            "text": "The room",
+            "feedback": "“Quiet” describes “the room”."
+          },
+          {
+            "id": "c",
+            "text": "Both the librarian and the room",
+            "feedback": "The sentence describes the room and leaves the librarian’s own noise level open."
+          }
+        ]
+      },
+      {
+        "id": "opening-location",
+        "prompt": "In “The visitors rested near the gate”, which group can be removed while keeping the same action and a complete sentence?",
+        "answer": "c",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P70",
+          "BR-3E-P78"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "The visitors",
+            "feedback": "Those words supply the subject."
+          },
+          {
+            "id": "b",
+            "text": "rested",
+            "feedback": "The sentence needs this verb to express the action."
+          },
+          {
+            "id": "c",
+            "text": "near the gate",
+            "feedback": "“The visitors rested” already expresses a complete action. The PP adds its location."
+          }
+        ]
+      }
+    ],
+    "closing": [
+      {
+        "id": "closing-vp",
+        "prompt": "Compare “The bell rang” and “The caretaker rang the bell”. Which groups are the two VPs, in that order?",
+        "answer": "b",
+        "outcome_ids": [
+          "o1",
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P70",
+          "BR-3E-P71",
+          "BR-3E-P72"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "The bell / the caretaker",
+            "feedback": "Those are the subjects. Find the verb in each sentence."
+          },
+          {
+            "id": "b",
+            "text": "rang / rang the bell",
+            "feedback": "The first VP has no complement. The second contains the direct object “the bell”."
+          },
+          {
+            "id": "c",
+            "text": "rang / the bell",
+            "feedback": "“The bell” is the second sentence’s object. The VP includes its verb as well."
+          }
+        ]
+      },
+      {
+        "id": "closing-recipient",
+        "prompt": "In “Ari sent a note to Ren”, what are the roles of “a note” and “to Ren”, in that order?",
+        "answer": "c",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P72",
+          "BR-3E-P73"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "Recipient and direct object",
+            "feedback": "Ren is the recipient. The note is the thing sent."
+          },
+          {
+            "id": "b",
+            "text": "Direct object and optional location",
+            "feedback": "“To Ren” identifies the recipient in this two-complement pattern."
+          },
+          {
+            "id": "c",
+            "text": "Direct object and recipient expressed as a PP",
+            "feedback": "“A note” is the thing sent, and “to Ren” expresses the recipient in PP form."
+          }
+        ]
+      },
+      {
+        "id": "closing-subject-predicative",
+        "prompt": "In “Nia became a pilot”, what function does “a pilot” have?",
+        "answer": "a",
+        "outcome_ids": [
+          "o2",
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P76"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "Subject predicative",
+            "feedback": "“A pilot” identifies Nia after the change."
+          },
+          {
+            "id": "b",
+            "text": "Direct object",
+            "feedback": "The NP identifies the subject in this pattern."
+          },
+          {
+            "id": "c",
+            "text": "Indirect object",
+            "feedback": "This sentence describes a change in Nia’s role. There is no recipient."
+          }
+        ]
+      },
+      {
+        "id": "closing-object-predicative",
+        "prompt": "In “The team painted the door blue”, what does “blue” do inside the VP?",
+        "answer": "b",
+        "outcome_ids": [
+          "o2",
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P76",
+          "BR-3E-P77"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "Describes the subject",
+            "feedback": "The sentence says what colour the door became."
+          },
+          {
+            "id": "b",
+            "text": "Describes the direct object",
+            "feedback": "“Blue” is an object predicative. It describes the direct object “the door”."
+          },
+          {
+            "id": "c",
+            "text": "Functions as the direct object",
+            "feedback": "“The door” is what the team painted. “Blue” gives the resulting colour."
+          }
+        ]
+      },
+      {
+        "id": "closing-pp-complement",
+        "prompt": "In “The recipe consists of three steps”, what role does “of three steps” play?",
+        "answer": "c",
+        "outcome_ids": [
+          "o2",
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P78"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "Optional location",
+            "feedback": "The PP identifies what makes up the recipe. It gives no place."
+          },
+          {
+            "id": "b",
+            "text": "Direct object",
+            "feedback": "The preposition “of” heads a PP that this use of “consists” selects."
+          },
+          {
+            "id": "c",
+            "text": "Prepositional complement",
+            "feedback": "“Consists” selects an “of” phrase here to specify the parts of the recipe."
+          }
+        ]
+      }
+    ]
+  }
+}

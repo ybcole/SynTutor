@@ -59,6 +59,7 @@ jobs:
           python scripts/test_achievements_database.py
           python scripts/test_leaderboard_database.py
           python scripts/test_account_integration_database.py
+          python scripts/test_foundation_database.py --after-account-tests
       - name: Compile backend modules and tests
         run: python -m compileall -q server
       - name: Run isolated Syntax Generator tests
@@ -151,6 +152,7 @@ jobs:
       - name: Validate source-reviewed lesson contracts
         run: |
           python scripts/validate_lessons.py
+          python scripts/test_foundations_preview_catalog.py
           python scripts/validate_assessments.py
           python scripts/validate_builder_contracts.py
 
@@ -229,6 +231,7 @@ jobs:
         run: |
           python -m pip install 'playwright>=1.51,<2'
           python -m playwright install --with-deps chromium
+          python scripts/test_foundations_preview_browser.py
           python scripts/test_progression_browser.py
           python scripts/test_ui_prototype_browser.py
           python scripts/test_account_journey_browser.py

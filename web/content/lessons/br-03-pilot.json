@@ -1,0 +1,323 @@
+{
+  "title": "Sentence structure: categories",
+  "content_version": "2.0.0",
+  "estimated_minutes": 10,
+  "outcomes": [
+    {
+      "id": "o1",
+      "text": "Distinguish a word’s category from the category of the whole phrase."
+    },
+    {
+      "id": "o2",
+      "text": "Find the heads of adjective, adverb and prepositional phrases."
+    },
+    {
+      "id": "o3",
+      "text": "Identify what is joined in a simple coordination and label the whole group."
+    }
+  ],
+  "revised_assessment": {
+    "required_sections": [
+      "introduction",
+      "concepts",
+      "worked-example",
+      "prepositions-and-coordination",
+      "application",
+      "recap"
+    ],
+    "opening": [
+      {
+        "id": "opening-replacement",
+        "prompt": "Which words does “they” replace in “The glass jars fell”?",
+        "answer": "b",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P55",
+          "BR-3E-P62"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "jars",
+            "feedback": "“The glass” would be left behind."
+          },
+          {
+            "id": "b",
+            "text": "The glass jars",
+            "feedback": "The pronoun takes the place of the entire subject group."
+          },
+          {
+            "id": "c",
+            "text": "jars fell",
+            "feedback": "That includes part of the predicate."
+          }
+        ]
+      },
+      {
+        "id": "opening-description",
+        "prompt": "Which word supplies the basic description in “very cold”?",
+        "answer": "c",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P55",
+          "BR-3E-P62"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "very",
+            "feedback": "“Very” indicates degree."
+          },
+          {
+            "id": "b",
+            "text": "Both words equally",
+            "feedback": "“Cold” can supply the description on its own."
+          },
+          {
+            "id": "c",
+            "text": "cold",
+            "feedback": "“Cold” supplies the description and “very” adjusts its degree."
+          }
+        ]
+      },
+      {
+        "id": "opening-manner",
+        "prompt": "Which word tells how someone spoke in “spoke rather softly”?",
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P55",
+          "BR-3E-P62"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "softly",
+            "feedback": "“Softly” tells how the person spoke."
+          },
+          {
+            "id": "b",
+            "text": "rather",
+            "feedback": "“Rather” modifies “softly”."
+          },
+          {
+            "id": "c",
+            "text": "spoke",
+            "feedback": "“Spoke” names the action."
+          }
+        ]
+      },
+      {
+        "id": "opening-location",
+        "prompt": "In “The puppy hid behind the couch”, which group answers “Where did the puppy hide?”",
+        "answer": "b",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P55",
+          "BR-3E-P62"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "the couch",
+            "feedback": "That names the landmark."
+          },
+          {
+            "id": "b",
+            "text": "behind the couch",
+            "feedback": "The answer includes the relation and its landmark."
+          },
+          {
+            "id": "c",
+            "text": "hid behind",
+            "feedback": "This includes the action and omits the landmark."
+          }
+        ]
+      },
+      {
+        "id": "opening-coordination",
+        "prompt": "In “The cats and the dogs slept”, which two groups does “and” join?",
+        "answer": "c",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P55",
+          "BR-3E-P62"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "“cats” and “dogs”",
+            "feedback": "Each noun belongs to a larger group with “the”."
+          },
+          {
+            "id": "b",
+            "text": "“the cats” and “the dogs slept”",
+            "feedback": "“Slept” is outside the coordinated subject."
+          },
+          {
+            "id": "c",
+            "text": "“the cats” and “the dogs”",
+            "feedback": "Each group names one set of animals."
+          }
+        ]
+      }
+    ],
+    "closing": [
+      {
+        "id": "closing-name",
+        "prompt": "In “Lea nodded”, how does the Chapter 3 tree represent “Lea”?",
+        "answer": "a",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P55",
+          "BR-3E-P62"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "A name inside a one-word NP",
+            "feedback": "The name supplies the whole subject NP."
+          },
+          {
+            "id": "b",
+            "text": "A name directly under S",
+            "feedback": "The phrase level still appears above the name."
+          },
+          {
+            "id": "c",
+            "text": "A pronoun inside an NP",
+            "feedback": "“Lea” is a name. A pronoun could replace the NP."
+          }
+        ]
+      },
+      {
+        "id": "closing-ap",
+        "prompt": "In “The notice was unusually clear”, what is the category of the whole group “unusually clear”?",
+        "answer": "b",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P55",
+          "BR-3E-P62"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "AdvP",
+            "feedback": "“Unusually” modifies the adjective."
+          },
+          {
+            "id": "b",
+            "text": "AP",
+            "feedback": "The adjective “clear” heads the whole phrase."
+          },
+          {
+            "id": "c",
+            "text": "A",
+            "feedback": "A labels the head word “clear”. AP labels the phrase."
+          }
+        ]
+      },
+      {
+        "id": "closing-advp",
+        "prompt": "In “The guide answered very patiently”, what is the head of “very patiently” and what is the group’s category?",
+        "answer": "c",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P55",
+          "BR-3E-P62"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "“very”, AdvP",
+            "feedback": "“Very” marks degree. “Patiently” heads the group."
+          },
+          {
+            "id": "b",
+            "text": "“patiently”, AP",
+            "feedback": "“Patiently” is an adverb in this sentence."
+          },
+          {
+            "id": "c",
+            "text": "“patiently”, AdvP",
+            "feedback": "The adverb heads the group and “very” modifies it."
+          }
+        ]
+      },
+      {
+        "id": "closing-pp",
+        "prompt": "Compare “The bag is under the desk” and “The bag is there”. Which phrase category covers both locations in this analysis?",
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P55",
+          "BR-3E-P62"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "PP",
+            "feedback": "“Under” takes an NP complement. Locative “there” can form a PP by itself here."
+          },
+          {
+            "id": "b",
+            "text": "NP",
+            "feedback": "“The desk” is an NP inside the longer PP."
+          },
+          {
+            "id": "c",
+            "text": "AdvP",
+            "feedback": "This analysis treats locative “there” as P heading a one-word PP."
+          }
+        ]
+      },
+      {
+        "id": "closing-coordination",
+        "prompt": "In “The hikers rested beside the stream and near the bridge”, what does “and” join?",
+        "answer": "b",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P55",
+          "BR-3E-P62"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "Two nouns forming an NP",
+            "feedback": "Each noun belongs to an NP within a larger location phrase."
+          },
+          {
+            "id": "b",
+            "text": "Two whole PPs forming a PP",
+            "feedback": "Each conjunct includes its own preposition and landmark."
+          },
+          {
+            "id": "c",
+            "text": "Two prepositions with one shared landmark",
+            "feedback": "Each preposition has its own landmark group."
+          }
+        ]
+      }
+    ]
+  }
+}

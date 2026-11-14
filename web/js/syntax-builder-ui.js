@@ -21,7 +21,7 @@ import { requestEvidence, renderEvidence } from './explanation-evidence.js';
 //   right-click (hold) + drag -> marquee-select multiple nodes
 
 import {
-  POS_TYPES, PHRASE_NODE_TYPES, NODE_TYPE_GROUPS, NODE, toCanonicalEnvelope, fromCanonicalEnvelope, builderProfile, paletteFor,
+  POS_TYPES, NODE, toCanonicalEnvelope, fromCanonicalEnvelope, builderProfile, paletteFor,
   createModel, addWordsFromText, addPhrase, moveNode, setType,
   removeNode, connect, canConnect, disconnect,
   dotOf, dotHit, nodeHit, endpointOf, endpointHit, toTree, compareTrees, leavesOf, leafText,
@@ -127,10 +127,16 @@ const state = {
 };
 
 let tools;
+let embedded = null;
+function currentPalette() {
+  return embedded
+    ? { labels: embedded.labels || ['PHRASE-a', 'PHRASE-b', 'PHRASE-c'], features: [] }
+    : paletteFor(state.canonicalProfile || builderProfile());
+}
 export function initSyntaxBuilder({ onStatusChange, setWorkspaceView, userId } = {}) {
   state.onStatus = onStatusChange || (() => {});
   state.setWorkspaceView = setWorkspaceView || null;
-  tools=createBuilderTools({state,userId,reset:resetTransientState,
+  tools=createBuilderTools({state,userId,palette:currentPalette,reset:resetTransientState,
     validateImport:async tree=>{
       const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),8000);
       try{const r=await fetch(`${API_BASE}/api/evaluate`,{method:'POST',headers:{'Content-Type':'application/json'},signal:controller.signal,body:JSON.stringify({tree})});
@@ -140,7 +146,11 @@ export function initSyntaxBuilder({ onStatusChange, setWorkspaceView, userId } =
     refresh:()=>{evidenceRequest++;state.nodeErrors=new Map();state.lastEvaluation=null;draw();syncCanvasToInput();},
     zoom:factor=>{state.view.scale=Math.max(.15,Math.min(4,state.view.scale*factor));draw();},
     pan:(dx,dy)=>{state.view.ox+=dx;state.view.oy+=dy;draw();},
-    fit:()=>{if(treeIsComplete()){applyTreeLayout({fit:true});state.snapped=true;}draw();},
+    fit:()=>{
+      if(embedded)fitEmbeddedView();
+      else if(treeIsComplete()){applyTreeLayout({fit:true});state.snapped=true;}
+      draw();
+    },
     evaluate:buildTree,select:(id,explain=false)=>{selectOnly(id);draw();if(explain)explainSelected();},
     showModel:tree=>{const container=document.getElementById('explainNode');if(container){container.replaceChildren(renderLessonTree(tree));}}});
 }
@@ -169,6 +179,7 @@ export function getSentenceFromLeaves() {
 // disabled while the builder owns the workspace).
 function syncCanvasToInput() {
   const sentence = getSentenceFromLeaves();
+  if (embedded) return sentence;
   const input = document.getElementById('inputText');
   if (!input) return sentence;
   if (input.value === sentence) return sentence;
@@ -197,6 +208,42 @@ export function clearBuilder() {
 // ---------------------------------------------------------------------------
 // View lifecycle
 // ---------------------------------------------------------------------------
+
+// Use the existing canvas in the lesson while keeping the
+// normal workspace and its draft available for the next standalone visit.
+export function mountEmbeddedBuilder(stage, exercise) {
+  ensureWired();
+  const canvas = state.canvas;
+  const home = canvas.parentElement;
+  embedded = exercise;
+  stage.append(canvas);
+  stage.classList.toggle('lesson-touch-builder', Boolean(exercise.profile));
+  canvas.hidden = false;
+  resize();
+  tools.open({ embedded: exercise });
+  draw();
+  return {
+    check: () => exercise.check(state.model),
+    undo: () => tools.undo(),
+    restart: () => tools.restartInline(),
+    edit(action) {
+      const feedback = action(state.model);
+      changed();
+      fitEmbeddedView();
+      draw();
+      return feedback;
+    },
+    destroy() {
+      tools.close();
+      closeMenu();
+      closeEditor();
+      resetTransientState();
+      home.append(canvas);
+      canvas.hidden = true;
+      embedded = null;
+    },
+  };
+}
 
 export function openBuilderView(opts = {}) {
   state.canonicalProfile = opts.canonicalTree?.convention_profile || state.canonicalProfile || builderProfile();
@@ -305,7 +352,7 @@ export function openBuilderView(opts = {}) {
     applyTreeLayout({ fit: true });
     syncCanvasToInput();
   }
-  if(!state.challenge)tools?.open({recover:!opts.canonicalTree&&!opts.model&&!opts.reset});
+  if(!state.challenge)tools?.open({recover:!opts.canonicalTree&&!opts.model&&!opts.reset,practice:opts.lessonPractice});
   canvas.focus();
   explainSelected();
   state.treeCorrect = treeIsComplete();
@@ -443,9 +490,10 @@ function ensureWired() {
   });
   wireCanvas(state.canvas);
   window.addEventListener('resize', () => {
-    if (isBuilderOpen()) {
+    if (isBuilderOpen() || embedded) {
       resize();
-      if(state.snapped)applyTreeLayout({fit:true});
+      if(embedded)fitEmbeddedView();
+      else if(state.snapped)applyTreeLayout({fit:true});
       draw();
     }
   });
@@ -462,6 +510,24 @@ function resize() {
   canvas.height = Math.round(h * dpr);
   canvas.style.width = `${w}px`;
   canvas.style.height = `${h}px`;
+}
+
+// Fitting the lesson canvas keeps the learner’s node positions and branch order.
+function fitEmbeddedView() {
+  const nodes = Object.values(state.model.nodes);
+  if (!nodes.length) return;
+  const left = Math.min(...nodes.map(node => node.x));
+  const right = Math.max(...nodes.map(node => node.x + node.w));
+  const top = Math.min(...nodes.map(node => node.y));
+  const bottom = Math.max(...nodes.map(node => node.y + node.h));
+  const width = state.canvas.clientWidth, height = state.canvas.clientHeight;
+  const scale = Math.max(.15, Math.min(1.2,
+    (width - 36) / (right - left), (height - 36) / (bottom - top)));
+  state.view = {
+    scale,
+    ox: (width - (right - left) * scale) / 2 - left * scale,
+    oy: (height - (bottom - top) * scale) / 2 - top * scale,
+  };
 }
 
 // ---------------------------------------------------------------------------
@@ -493,6 +559,40 @@ function wireCanvas(canvas) {
   canvas.addEventListener('contextmenu', onContextMenu);
   canvas.addEventListener('wheel', onWheel, { passive: false });
   canvas.addEventListener('keydown', onKeyDown);
+
+  // In the compact labelled exercise, a hold opens the same menu as right-click.
+  let touch = null;
+  canvas.addEventListener('pointerdown', event => {
+    if (event.pointerType !== 'touch' || !embedded?.profile || touch) return;
+    event.preventDefault();
+    canvas.setPointerCapture(event.pointerId);
+    const { clientX, clientY } = event;
+    const timer = setTimeout(() => {
+      if (!embedded?.profile) return;
+      onKeyDown({ key: 'Escape' });
+      const { sx, sy } = eventPos(event);
+      const point = toWorld(sx, sy);
+      openMenu(clientX, clientY, point, nodeHit(state.model, point.x, point.y));
+      touch.menu = true;
+    }, 450);
+    touch = { id: event.pointerId, clientX, clientY, timer, menu: false };
+    onMouseDown({ button: 0, clientX, clientY });
+  });
+  canvas.addEventListener('pointermove', event => {
+    if (event.pointerId !== touch?.id || touch.menu) return;
+    if (Math.hypot(event.clientX - touch.clientX, event.clientY - touch.clientY) < 8) return;
+    clearTimeout(touch.timer);
+    onMouseMove(event);
+  });
+  function finishTouch(event) {
+    if (event.pointerId !== touch?.id) return;
+    clearTimeout(touch.timer);
+    if (event.type === 'pointercancel') onKeyDown({ key: 'Escape' });
+    else if (!touch.menu) onMouseUp(event);
+    touch = null;
+  }
+  canvas.addEventListener('pointerup', finishTouch);
+  canvas.addEventListener('pointercancel', finishTouch);
 }
 
 function onMouseDown(e) {
@@ -785,6 +885,7 @@ function onDoubleClick(e) {
 // Words SynTutor doesn't recognise are still flagged visually, but they can
 // now be connected like any other node.
 async function validateWords(nodes) {
+  if (embedded) return;
   const words = nodes.map((n) => n.text);
   let results = null;
   try {
@@ -877,6 +978,7 @@ function openInlineEditor(world, clientX, clientY, initial, onCommit) {
   input.placeholder = 'type words…';
   input.style.left = `${clientX}px`;
   input.style.top = `${clientY}px`;
+  if (embedded) { input.style.position = 'fixed'; input.style.zIndex = '210'; }
   document.body.appendChild(input);
   state.editor = input;
   const w = world;
@@ -908,7 +1010,7 @@ function editNode(node, clientX, clientY) {
   } else {
     openInlineEditor(world, clientX, clientY, node.type, (text) => {
       const t = text.trim();
-      if (paletteFor(state.canonicalProfile||builderProfile()).labels.includes(t)) setType(state.model, node.id, t);
+      if (currentPalette().labels.includes(t)) setType(state.model, node.id, t);
       else {state.onStatus('Choose a category from this chapter’s palette.');return;}
       changed();
       explainSelected();
@@ -954,7 +1056,7 @@ function openMenu(clientX, clientY, world, node) {
   body.className = 'builder-menu-scroll';
   menu.appendChild(body);
 
-  const phraseTypes = paletteFor(state.canonicalProfile||builderProfile()).labels;
+  const phraseTypes = currentPalette().labels;
   const sections = (node && node.kind === NODE.WORD)
     ? [{ name: 'Words are terminals; add a category above them', types: [] }]
     : [{ name: 'Phrases', types: phraseTypes }];
@@ -989,6 +1091,21 @@ function openMenu(clientX, clientY, world, node) {
   search.addEventListener('input', () => render(search.value));
 
   if (node) {
+    if (embedded?.profile && node.kind === NODE.PHRASE && !node.canonicalData?.unlabelled) {
+      const words = childrenOf(state.model, node.id);
+      if (node.canonicalTriangle || (words.length && words.every(child => child.kind === NODE.WORD))) {
+        const triangle = document.createElement('button');
+        triangle.type = 'button';
+        triangle.className = 'builder-menu-item';
+        triangle.textContent = node.canonicalTriangle ? 'Expand triangle' : 'Collapse to triangle';
+        triangle.addEventListener('click', () => {
+          node.canonicalTriangle = !node.canonicalTriangle;
+          closeMenu();
+          changed();
+        });
+        menu.appendChild(triangle);
+      }
+    }
     const del = document.createElement('button');
     del.type = 'button';
     del.className = 'builder-menu-delete';
@@ -1010,6 +1127,7 @@ function openMenu(clientX, clientY, world, node) {
     menu.appendChild(del);
   }
 
+  if (embedded) menu.style.zIndex = '210';
   document.body.appendChild(menu);
   // Clamp inside the viewport.
   const rect = menu.getBoundingClientRect();
@@ -1029,7 +1147,7 @@ function menuItem(label, node, world) {
   const btn = document.createElement('button');
   btn.type = 'button';
   btn.className = 'builder-menu-item';
-  const isPhrase = PHRASE_NODE_TYPES.includes(label);
+  const isPhrase = currentPalette().labels.includes(label);
   if (isPhrase) btn.classList.add('is-phrase');
   btn.textContent = label;
   if (node && node.type === label) btn.classList.add('is-current');
@@ -1165,6 +1283,7 @@ async function showBuilderEvidence(nodeId = null) {
 }
 
 function explainSelected() {
+  if (embedded) return;
   const ids = [...state.selection];
   const node = ids.length ? state.model.nodes[ids[ids.length - 1]] : null;
   if (!node) {
@@ -1629,7 +1748,7 @@ function applyTreeLayout({ fit = true } = {}) {
   const totalH = Math.max(maxY - minY, 1);
   if (cw && ch) {
     const pad=24,toolsPanel=document.getElementById('builderTools');
-    const rect=toolsPanel&&!toolsPanel.hidden?toolsPanel.getBoundingClientRect():null;
+    const rect=!embedded&&toolsPanel&&!toolsPanel.hidden?toolsPanel.getBoundingClientRect():null;
     const left=rect&&innerWidth>760?Math.min(rect.width+30,cw*.48):0;
     const bottom=rect&&innerWidth<=760?rect.height+20:0;
     const top=60,availableW=Math.max(100,cw-left),availableH=Math.max(120,ch-bottom-top);

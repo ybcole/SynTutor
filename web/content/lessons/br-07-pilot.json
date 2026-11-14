@@ -1,0 +1,404 @@
+{
+  "title": "The structure of Noun Phrases",
+  "content_version": "2.0.0",
+  "estimated_minutes": 10,
+  "outcomes": [
+    {
+      "id": "o1",
+      "text": "Read the DET–NOM split and distinguish empty DET from a plain pronoun or name."
+    },
+    {
+      "id": "o2",
+      "text": "Locate pre-determiners and trace the layers created by modifiers."
+    },
+    {
+      "id": "o3",
+      "text": "Use meaning to decide where a modifier attaches in a nominal or with an indefinite pronoun."
+    }
+  ],
+  "preview_sources": [
+    {
+      "id": "BR-3E-P143",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 7,
+      "printed_page": 143,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P145",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 7,
+      "printed_page": 145,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P149",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 7,
+      "printed_page": 149,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P152",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 7,
+      "printed_page": 152,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P153",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 7,
+      "printed_page": 153,
+      "evidence_status": "TXT",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P156",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 7,
+      "printed_page": 156,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    }
+  ],
+  "revised_assessment": {
+    "required_sections": [
+      "introduction",
+      "concepts",
+      "worked-example",
+      "pre-modifiers",
+      "post-modifiers",
+      "application",
+      "recap"
+    ],
+    "opening": [
+      {
+        "id": "opening-head",
+        "prompt": "Which word names the kind of thing referred to in “those baskets”?",
+        "answer": "b",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P141",
+          "BR-3E-P142"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "those",
+            "feedback": "“Those” helps identify which things are meant."
+          },
+          {
+            "id": "b",
+            "text": "baskets",
+            "feedback": "“Baskets” names the things and heads the phrase."
+          },
+          {
+            "id": "c",
+            "text": "Both words equally",
+            "feedback": "The phrase refers to baskets, and “those” points them out."
+          }
+        ]
+      },
+      {
+        "id": "opening-before-det",
+        "prompt": "Which phrase puts a word before the determiner “the”?",
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P145"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "both the lanterns",
+            "feedback": "“Both” comes before the article."
+          },
+          {
+            "id": "b",
+            "text": "the blue lanterns",
+            "feedback": "“Blue” follows the article."
+          },
+          {
+            "id": "c",
+            "text": "the lanterns near the door",
+            "feedback": "The location follows the noun."
+          }
+        ]
+      },
+      {
+        "id": "opening-colour",
+        "prompt": "What does “red” describe in “a new red kite”?",
+        "answer": "c",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P149"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "a",
+            "feedback": "“A” is the article."
+          },
+          {
+            "id": "b",
+            "text": "new",
+            "feedback": "“New” and “red” describe different properties."
+          },
+          {
+            "id": "c",
+            "text": "kite",
+            "feedback": "“Red” describes the colour of the kite."
+          }
+        ]
+      },
+      {
+        "id": "opening-origin",
+        "prompt": "In “the wooden crates from Cebu”, which group gives the origin?",
+        "answer": "b",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P152",
+          "BR-3E-P153"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "the wooden crates",
+            "feedback": "This group names and describes the crates."
+          },
+          {
+            "id": "b",
+            "text": "from Cebu",
+            "feedback": "“From Cebu” tells where the crates came from."
+          },
+          {
+            "id": "c",
+            "text": "wooden",
+            "feedback": "This adjective describes what the crates are made of."
+          }
+        ]
+      },
+      {
+        "id": "opening-pronoun",
+        "prompt": "Which complete group does “someone” form in “Someone waved”?",
+        "answer": "a",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P141",
+          "BR-3E-P156"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "A noun phrase",
+            "feedback": "“Someone” is a pronoun that forms the whole subject NP."
+          },
+          {
+            "id": "b",
+            "text": "A verb phrase",
+            "feedback": "“Waved” supplies the verb."
+          },
+          {
+            "id": "c",
+            "text": "A prepositional phrase",
+            "feedback": "The subject contains a pronoun and has no preposition."
+          }
+        ]
+      }
+    ],
+    "closing": [
+      {
+        "id": "closing-empty-det",
+        "prompt": "What does the DET branch contain in “lanterns” in “Lanterns glowed”?",
+        "answer": "c",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P143"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "An unspoken “the”",
+            "feedback": "The bare plural has an empty DET. Supplying “the” changes its interpretation."
+          },
+          {
+            "id": "b",
+            "text": "The noun “lanterns”",
+            "feedback": "“Lanterns” is the head noun under NOM."
+          },
+          {
+            "id": "c",
+            "text": "No word",
+            "feedback": "The bare plural NP has an empty DET branch and an overt NOM."
+          }
+        ]
+      },
+      {
+        "id": "closing-predet",
+        "prompt": "In “both these notebooks”, what is the sister of PRE-DET?",
+        "answer": "b",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P145"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "The determiner “these”",
+            "feedback": "“These” stays inside the smaller NP."
+          },
+          {
+            "id": "b",
+            "text": "The whole NP “these notebooks”",
+            "feedback": "“Both” combines with the complete inner NP."
+          },
+          {
+            "id": "c",
+            "text": "The noun “notebooks”",
+            "feedback": "The noun stays inside NOM."
+          }
+        ]
+      },
+      {
+        "id": "closing-inner-nom",
+        "prompt": "Read “a small blue lantern” as a blue lantern that is small. Which words form the smaller NOM?",
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P149"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "blue lantern",
+            "feedback": "“Small” modifies the group already formed by “blue” and “lantern”."
+          },
+          {
+            "id": "b",
+            "text": "small blue",
+            "feedback": "These words exclude the head noun."
+          },
+          {
+            "id": "c",
+            "text": "a small blue lantern",
+            "feedback": "That is the entire NP, including DET."
+          }
+        ]
+      },
+      {
+        "id": "closing-pp-scope",
+        "prompt": "In “the metal boxes from Iloilo”, assume “metal boxes” names the kind of box. What does “from Iloilo” attach beside?",
+        "answer": "c",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P152",
+          "BR-3E-P153"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "The determiner “the”",
+            "feedback": "The origin belongs with the nominal and leaves DET outside."
+          },
+          {
+            "id": "b",
+            "text": "The modifier “metal”",
+            "feedback": "The origin applies to the boxes, with “metal” identifying the kind."
+          },
+          {
+            "id": "c",
+            "text": "The NOM “metal boxes”",
+            "feedback": "The PP adds origin to the group that names the kind of box."
+          }
+        ]
+      },
+      {
+        "id": "closing-modified-pronoun",
+        "prompt": "How is “anyone near the entrance” structured in this analysis?",
+        "answer": "b",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P156"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "A determiner and a noun under NOM",
+            "feedback": "“Anyone” is a pronoun here."
+          },
+          {
+            "id": "b",
+            "text": "Pronoun and PP as sisters under NP",
+            "feedback": "“Near the entrance” modifies the indefinite pronoun directly under NP."
+          },
+          {
+            "id": "c",
+            "text": "A PP headed by “anyone”",
+            "feedback": "“Near” is the head of the PP."
+          }
+        ]
+      }
+    ]
+  }
+}

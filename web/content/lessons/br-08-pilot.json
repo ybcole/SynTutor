@@ -1,0 +1,433 @@
+{
+  "title": "Sentences within sentences",
+  "content_version": "2.0.0",
+  "estimated_minutes": 10,
+  "outcomes": [
+    {
+      "id": "o1",
+      "text": "Find the main clause and the complete spans of its embedded clauses."
+    },
+    {
+      "id": "o2",
+      "text": "Read C and S under S′ with “that”, unfilled C or interrogative “whether”."
+    },
+    {
+      "id": "o3",
+      "text": "Use the clause’s function and host to decide where it attaches."
+    }
+  ],
+  "preview_sources": [
+    {
+      "id": "BR-3E-P172",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 8,
+      "printed_page": 172,
+      "evidence_status": "TXT",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P175",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 8,
+      "printed_page": 175,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P176",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 8,
+      "printed_page": 176,
+      "evidence_status": "TXT",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P177",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 8,
+      "printed_page": 177,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P180",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 8,
+      "printed_page": 180,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P183",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 8,
+      "printed_page": 183,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P185",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 8,
+      "printed_page": 185,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P186",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 8,
+      "printed_page": 186,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    }
+  ],
+  "revised_assessment": {
+    "required_sections": [
+      "introduction",
+      "concepts",
+      "worked-example",
+      "clausal-subjects-and-objects",
+      "clausal-complements",
+      "adverbial-clauses",
+      "application",
+      "recap"
+    ],
+    "opening": [
+      {
+        "id": "opening-report",
+        "prompt": "In “Mina says that the gate jammed”, which group gives the complete content of her report?",
+        "answer": "b",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P174"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "Mina says",
+            "feedback": "This introduces the report. The content follows “says”."
+          },
+          {
+            "id": "b",
+            "text": "that the gate jammed",
+            "feedback": "This span includes the introductory word and the reported event."
+          },
+          {
+            "id": "c",
+            "text": "the gate",
+            "feedback": "That is only the subject inside the report."
+          }
+        ]
+      },
+      {
+        "id": "opening-question",
+        "prompt": "In “Ari wondered whether the hall was open”, which word introduces the embedded question?",
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P175",
+          "BR-3E-P176"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "whether",
+            "feedback": "“Whether” introduces the question about the hall."
+          },
+          {
+            "id": "b",
+            "text": "wondered",
+            "feedback": "This is the verb in the main clause."
+          },
+          {
+            "id": "c",
+            "text": "was",
+            "feedback": "This verb belongs in the embedded predicate."
+          }
+        ]
+      },
+      {
+        "id": "opening-subject",
+        "prompt": "In “That the lights went out surprised Ren”, what surprised Ren?",
+        "answer": "c",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P177"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "Ren",
+            "feedback": "Ren is the person who was surprised."
+          },
+          {
+            "id": "b",
+            "text": "The lights",
+            "feedback": "This identifies the subject inside the embedded clause."
+          },
+          {
+            "id": "c",
+            "text": "That the lights went out",
+            "feedback": "The whole clause tells what caused the surprise."
+          }
+        ]
+      },
+      {
+        "id": "opening-claim",
+        "prompt": "What does “that the ferry was late” supply in “the claim that the ferry was late”?",
+        "answer": "b",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P183"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "The time of the claim",
+            "feedback": "The clause states what someone claimed."
+          },
+          {
+            "id": "b",
+            "text": "The content of the claim",
+            "feedback": "The clause completes the noun “claim”."
+          },
+          {
+            "id": "c",
+            "text": "The person making the claim",
+            "feedback": "The clause does not identify the person making it."
+          }
+        ]
+      },
+      {
+        "id": "opening-reason",
+        "prompt": "In “The crew stopped because the rope snapped”, which group gives the reason for stopping?",
+        "answer": "a",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P186"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "because the rope snapped",
+            "feedback": "The full reason clause includes “because”."
+          },
+          {
+            "id": "b",
+            "text": "the rope",
+            "feedback": "This is the subject inside the reason clause."
+          },
+          {
+            "id": "c",
+            "text": "The crew stopped",
+            "feedback": "This names the event that the reason explains."
+          }
+        ]
+      }
+    ],
+    "closing": [
+      {
+        "id": "closing-nesting",
+        "prompt": "In “Ren thinks Ivo knows the bell rang”, which is the most deeply embedded clause?",
+        "answer": "c",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P172"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "Ren thinks Ivo knows the bell rang",
+            "feedback": "This is the main clause, including both embedded clauses."
+          },
+          {
+            "id": "b",
+            "text": "Ivo knows the bell rang",
+            "feedback": "This clause is embedded under “thinks”, and it contains a further clause."
+          },
+          {
+            "id": "c",
+            "text": "the bell rang",
+            "feedback": "This clause supplies what Ivo knows, inside what Ren thinks."
+          }
+        ]
+      },
+      {
+        "id": "closing-empty-c",
+        "prompt": "In “Ria heard the ferry had left”, what word appears under C in the embedded clause tree?",
+        "answer": "b",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P174",
+          "BR-3E-P175"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "that",
+            "feedback": "“That” could be supplied in a different version. It is absent here."
+          },
+          {
+            "id": "b",
+            "text": "No word",
+            "feedback": "C is unfilled. The inner S begins at “the ferry”."
+          },
+          {
+            "id": "c",
+            "text": "had",
+            "feedback": "“Had” is inside the embedded predicate."
+          }
+        ]
+      },
+      {
+        "id": "closing-question-order",
+        "prompt": "In “Ivo asked whether the door was locked”, what is the word order inside the embedded S?",
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P175",
+          "BR-3E-P176"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "the door was locked",
+            "feedback": "“Whether” occupies C. The subject comes before “was” inside S."
+          },
+          {
+            "id": "b",
+            "text": "was the door locked",
+            "feedback": "This is the order of the standalone yes/no question."
+          },
+          {
+            "id": "c",
+            "text": "whether the door was locked",
+            "feedback": "This is the whole S′. The inner S begins after “whether”."
+          }
+        ]
+      },
+      {
+        "id": "closing-extraposition",
+        "prompt": "In “It bothered Nia that the lamp flickered”, where does the extraposed S′ attach in this analysis?",
+        "answer": "c",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P177",
+          "BR-3E-P180"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "Inside the subject NP",
+            "feedback": "Dummy “it” fills the subject slot in this version."
+          },
+          {
+            "id": "b",
+            "text": "Beside the verb inside the main VP",
+            "feedback": "The final clause supplies what bothered Nia. It is the extraposed subject."
+          },
+          {
+            "id": "c",
+            "text": "Directly under the main S",
+            "feedback": "The extraposed clause attaches beside the subject NP and the predicate VP."
+          }
+        ]
+      },
+      {
+        "id": "closing-after",
+        "prompt": "In “Ren stayed after the rain stopped”, what does temporal “after” take as its complement?",
+        "answer": "b",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P185"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "The NP “the rain”",
+            "feedback": "The complement includes the predicate “stopped” as well."
+          },
+          {
+            "id": "b",
+            "text": "The S “the rain stopped”",
+            "feedback": "The preposition “after” and the bare S form a PP in this analysis."
+          },
+          {
+            "id": "c",
+            "text": "The S′ “after the rain stopped”",
+            "feedback": "“After” heads the PP. It is outside the clause that it takes as complement."
+          }
+        ]
+      }
+    ]
+  }
+}

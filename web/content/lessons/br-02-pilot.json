@@ -1,0 +1,322 @@
+{
+  "title": "Sentence structure: functions",
+  "content_version": "2.0.0",
+  "estimated_minutes": 10,
+  "outcomes": [
+    {
+      "id": "o1",
+      "text": "Find the full subject and predicate in a simple statement."
+    },
+    {
+      "id": "o2",
+      "text": "Use a tree to distinguish a phrase’s category from its function."
+    },
+    {
+      "id": "o3",
+      "text": "Distinguish a modifier from a complement by checking its relation to a head."
+    }
+  ],
+  "revised_assessment": {
+    "required_sections": [
+      "introduction",
+      "concepts",
+      "worked-example",
+      "application",
+      "recap"
+    ],
+    "opening": [
+      {
+        "id": "opening-subject",
+        "prompt": "In “The boat near the pier is rocking”, which words identify what is rocking?",
+        "answer": "b",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P29",
+          "BR-3E-P30"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "The boat",
+            "feedback": "This leaves out the words identifying the boat."
+          },
+          {
+            "id": "b",
+            "text": "The boat near the pier",
+            "feedback": "The whole group identifies the boat."
+          },
+          {
+            "id": "c",
+            "text": "near the pier",
+            "feedback": "These words locate the boat."
+          }
+        ]
+      },
+      {
+        "id": "opening-predicate",
+        "prompt": "In “The small bells rang twice”, which group says what happened?",
+        "answer": "c",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P29",
+          "BR-3E-P30"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "rang",
+            "feedback": "This leaves out how often."
+          },
+          {
+            "id": "b",
+            "text": "The small bells",
+            "feedback": "This names the subject."
+          },
+          {
+            "id": "c",
+            "text": "rang twice",
+            "feedback": "These words give the action and how often it happened."
+          }
+        ]
+      },
+      {
+        "id": "opening-position",
+        "prompt": "In “Inez found the kite”, which group functions as the subject?",
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P29",
+          "BR-3E-P30"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "Inez",
+            "feedback": "This is the group directly before the full predicate."
+          },
+          {
+            "id": "b",
+            "text": "the kite",
+            "feedback": "This group is inside the predicate."
+          },
+          {
+            "id": "c",
+            "text": "Inez found",
+            "feedback": "This crosses the subject–predicate boundary."
+          }
+        ]
+      },
+      {
+        "id": "opening-omission",
+        "prompt": "In “Rui carried a heavy parcel”, what can be left out to give “Rui carried a parcel”?",
+        "answer": "b",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P29",
+          "BR-3E-P30"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "parcel",
+            "feedback": "This removes the noun."
+          },
+          {
+            "id": "b",
+            "text": "heavy",
+            "feedback": "The description can be omitted."
+          },
+          {
+            "id": "c",
+            "text": "a",
+            "feedback": "The revised sentence still needs “a”."
+          }
+        ]
+      },
+      {
+        "id": "opening-question",
+        "prompt": "Which yes/no question keeps the tense and meaning of “The lid is rattling”?",
+        "answer": "c",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P29",
+          "BR-3E-P30"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "Was the lid rattling?",
+            "feedback": "That changes the tense."
+          },
+          {
+            "id": "b",
+            "text": "Is rattling the lid?",
+            "feedback": "This moves part of the predicate into the wrong position."
+          },
+          {
+            "id": "c",
+            "text": "Is the lid rattling?",
+            "feedback": "The auxiliary comes before the whole subject."
+          }
+        ]
+      }
+    ],
+    "closing": [
+      {
+        "id": "closing-boundary",
+        "prompt": "In “The violin in its case was rattling”, where is the subject–predicate boundary?",
+        "answer": "b",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P29",
+          "BR-3E-P30"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "After “violin”",
+            "feedback": "The location words identify the violin and stay with the subject."
+          },
+          {
+            "id": "b",
+            "text": "After “case”",
+            "feedback": "The question “Was the violin in its case rattling?” keeps that entire subject together."
+          },
+          {
+            "id": "c",
+            "text": "After “was”",
+            "feedback": "“Was” belongs to the predicate in the statement."
+          }
+        ]
+      },
+      {
+        "id": "closing-category",
+        "prompt": "In “The visitor greeted the caretaker”, which NP is the subject, and why?",
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P29",
+          "BR-3E-P30"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "“The visitor”, because its NP is directly under S",
+            "feedback": "The other NP is inside the VP."
+          },
+          {
+            "id": "b",
+            "text": "“The caretaker”, because it names a person",
+            "feedback": "Both NPs name people. Their positions distinguish the functions."
+          },
+          {
+            "id": "c",
+            "text": "Both, because both are NPs",
+            "feedback": "An NP’s category alone does not establish its function."
+          }
+        ]
+      },
+      {
+        "id": "closing-sisters",
+        "prompt": "In the V2 tree for “The shutters creaked”, which two nodes are sisters?",
+        "answer": "c",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P29",
+          "BR-3E-P30"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "S and the subject NP",
+            "feedback": "S is the parent of the subject NP."
+          },
+          {
+            "id": "b",
+            "text": "S and the predicate VP",
+            "feedback": "S is the parent of the predicate VP."
+          },
+          {
+            "id": "c",
+            "text": "The subject NP and the predicate VP",
+            "feedback": "They share S as their immediate parent."
+          }
+        ]
+      },
+      {
+        "id": "closing-modifier",
+        "prompt": "In “Nico folded a damp towel”, which word modifies “towel”?",
+        "answer": "a",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P29",
+          "BR-3E-P30"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "damp",
+            "feedback": "It adds a description. “Nico folded a towel” preserves the relation."
+          },
+          {
+            "id": "b",
+            "text": "towel",
+            "feedback": "This noun is the head of the phrase."
+          },
+          {
+            "id": "c",
+            "text": "folded",
+            "feedback": "This verb is in the larger predicate."
+          }
+        ]
+      },
+      {
+        "id": "closing-complement",
+        "prompt": "In “Ava slipped beside the counter”, the whole location can be left out. Why does “the counter” still belong with “beside” in the original phrase?",
+        "answer": "b",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P29",
+          "BR-3E-P30"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "Every part of an optional phrase is optional",
+            "feedback": "Omitting a whole phrase tests a different relation from omitting one part inside it."
+          },
+          {
+            "id": "b",
+            "text": "It supplies the landmark required by this use of “beside”",
+            "feedback": "In this reading, the location is defined relative to the counter."
+          },
+          {
+            "id": "c",
+            "text": "It modifies the verb directly",
+            "feedback": "The landmark joins “beside” inside the location phrase."
+          }
+        ]
+      }
+    ]
+  }
+}
