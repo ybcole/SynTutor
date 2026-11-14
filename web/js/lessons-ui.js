@@ -4,6 +4,7 @@ import { createLessonStore } from './lesson-progress.js';
 import { createFoundationStore } from './foundation-progress.js';
 import { renderFoundationCheck } from './foundation-check.js';
 import { constituentsPilot } from './constituents-pilot.js';
+import { functionsPilot } from './functions-pilot.js';
 import { requestEvidence, renderEvidence } from './explanation-evidence.js';
 import { subscribeAuthState } from './auth.js';
 import { enableCanvasView } from './canvas-view.js';
@@ -43,10 +44,14 @@ const legacyArticleSections = [
   { id: 'recap', advances: 'worked', references: true },
   { id: 'closing-check', assessment: true },
 ];
-const chapterOnePreview = () => ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname) &&
-  new URLSearchParams(location.search).get('preview') === 'br-01';
-const lessonUserId = () => chapterOnePreview() ? 'guest' : options.userId?.() || 'guest';
-const readingScope = () => chapterOnePreview() ? 'preview-br-01' : lessonUserId();
+const pilotArticles = { 'br-01': constituentsPilot, 'br-02': functionsPilot };
+const pilotId = () => {
+  if (!['localhost', '127.0.0.1', '[::1]'].includes(location.hostname)) return null;
+  const id = new URLSearchParams(location.search).get('preview');
+  return Object.hasOwn(pilotArticles, id) ? id : null;
+};
+const lessonUserId = () => pilotId() ? 'guest' : options.userId?.() || 'guest';
+const readingScope = () => pilotId() ? `preview-${pilotId()}` : lessonUserId();
 const legacyLessonLinks = { NP: 'br-07', ADJP: 'br-03', VP: 'br-04', S: 'br-02', SBAR: 'br-08', SBARQ: 'br-09' };
 const postTestKeys = ['guided', 'transfer', 'exit'];
 const lessonCanvases = new Map();
@@ -69,7 +74,7 @@ function lessonReferences(lesson) {
     list.append(el('li', `${source.title} · ${source.edition} · Chapter ${source.chapter} · printed p. ${source.printed_page}`));
   }
   for (const reference of articleFor(lesson)?.references || []) list.append(el('li', reference));
-  details.append(list, el('p', lesson.lesson_id === 'br-01' && chapterOnePreview()
+  details.append(list, el('p', lesson.lesson_id === pilotId()
     ? 'AI source check complete. Pilot acceptance is pending.'
     : 'AI checked the cited pages. The lesson has no human instructor sign-off.'));
   return details;
@@ -308,7 +313,7 @@ export function renderLessonTree(envelope, {
   const ul=el('ul');ul.append(list(root));text.append(ul);wrap.append(text);return wrap;
 }
 function articleFor(lesson) {
-  return lesson.lesson_id === 'br-01' && lesson.revised_assessment ? constituentsPilot : articleLessons[lesson.lesson_id];
+  return (lesson.revised_assessment && pilotArticles[lesson.lesson_id]) || articleLessons[lesson.lesson_id];
 }
 function articleSections(article) {
   return article.sections ?? article.headings.map((title, index) => ({ ...legacyArticleSections[index], title }));
@@ -1114,7 +1119,7 @@ function lessonScreen() {
   } else {
     header.append(el('p', chapter, 'lesson-eyebrow'), h1, el('p', lesson.outcomes[0].text, 'lesson-lead'));
   }
-  if (chapterOnePreview() && lesson.lesson_id === 'br-01') {
+  if (lesson.lesson_id === pilotId()) {
     header.append(el('p', 'Chapter pilot · progress saved on this device', 'lesson-guide-note'));
   }
   host.append(header);
@@ -1236,25 +1241,26 @@ export async function openLessons(id = null, { workedExample = false, section, f
   try {
     if (!course) {
       const catalog = await (await fetch('/content/lessons/course.json', { cache: 'no-cache' })).json();
-      if (chapterOnePreview()) {
-        const response = await fetch('/content/lessons/br-01-pilot.json', { cache: 'no-cache' });
+      const preview = pilotId();
+      if (preview) {
+        const response = await fetch(`/content/lessons/${preview}-pilot.json`, { cache: 'no-cache' });
         if (!response.ok) throw new Error('Chapter pilot unavailable.');
         const pilot = await response.json();
-        catalog.lessons = catalog.lessons.map(lesson => lesson.lesson_id === 'br-01' ? { ...lesson, ...pilot } : lesson);
+        catalog.lessons = catalog.lessons.map(lesson => lesson.lesson_id === preview ? { ...lesson, ...pilot } : lesson);
       }
       course = validateCourse(catalog);
     }
     if (!store) {
       let storage;
       try { storage = localStorage; } catch { storage = null; }
-      if (storage && chapterOnePreview()) {
+      if (storage && pilotId()) {
         const device = storage;
         storage = {
-          getItem: key => device.getItem(`syntutor:preview-br-01:${key}`),
-          setItem: (key, value) => device.setItem(`syntutor:preview-br-01:${key}`, value),
+          getItem: key => device.getItem(`syntutor:${readingScope()}:${key}`),
+          setItem: (key, value) => device.setItem(`syntutor:${readingScope()}:${key}`, value),
         };
       }
-      const config = { storage, userId: lessonUserId(), client: chapterOnePreview() ? null : options.client?.() };
+      const config = { storage, userId: lessonUserId(), client: pilotId() ? null : options.client?.() };
       const revised = createFoundationStore(course, config);
       const next = createLessonStore(course, { ...config, revisedProgress: revised.progress });
       await revised.load();

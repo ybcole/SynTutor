@@ -14,7 +14,7 @@ Open [Chapter 1 pilot](http://127.0.0.1:8000/?preview=br-01#lesson/br-01/introdu
 
 ## Walkthrough
 
-The six pages follow the reasoning in the [source map and storyboard](../planning/syntax-foundations-chapter-1-storyboard.md). The same sentence carries the learner from nested brackets to omission, replacement and question tests. The learner then compares flat and nested phrase markers and repairs a flat tree. Two partial V1 diagrams show alternative attachments, followed by a written transfer response with a hint and an authored comparison. The recap gives the analysis procedure and printed-page references.
+The catalog and chapter header use the book’s title, **Sentence structure: constituents**. The six pages follow the reasoning in the [source map and storyboard](../planning/syntax-foundations-chapter-1-storyboard.md). The same sentence carries the learner from nested brackets to omission, replacement and question tests. The learner then compares flat and nested phrase markers and repairs a flat tree. Two partial V1 diagrams show alternative attachments, followed by a written transfer response with a hint and an authored comparison. The recap gives the analysis procedure and printed-page references.
 
 The opening and closing checks each have five items. The opening displays the score without answers and earns zero XP. The closing displays last and best scores, feedback and correct answers. The browser walkthrough confirmed that a first 3/5 earns 9 device XP and an improved 5/5 reaches 15 XP. The sidebar distinguishes a visited teaching section from a finished assessment. The timing estimate is 9 min 45 sec. The automated interaction test excludes reading and reasoning, so actual first-time learner timing remains open.
 
@@ -32,7 +32,7 @@ Noel Burton-Roberts, *Analysing Sentences*, third edition, Pearson, 2011, ISBN 9
 
 Pilot source hashes:
 
-- `web/content/lessons/br-01-pilot.json` — `b71c4cff9b5913df57545b037762be8610f758e465e228db42d862f5e6c524cb`
+- `web/content/lessons/br-01-pilot.json` — `f6bb26ade9c4c3edd5f3f06db1dcd026271e143b93c64cb1cbb55ab66feb1aff`
 - `web/js/constituents-pilot.js` — `d3554765ca4ebb73ea5830d5e9f8112f25c0ddd200286aef7884660a3351cc0d`
 - Reused `web/js/constituent-tree-builder.js` — `459eeaada0538c9d0ae68311acaebe0fcc9417290d9ce1a1ce6a730752642f51`
 

@@ -1,6 +1,6 @@
-# Chapter 2 proposal · Sentence structure and functions
+# Chapter 2 proposal · Sentence structure: functions
 
-**Status:** Source-checked proposal for review. Chapter 1 pilot acceptance and learner timing remain open. This outline does not change the Chapter 2 lesson.
+**Status:** The local pilot implements this storyboard. Learner timing and Gate 4.2 acceptance remain open.
 
 ## Source map and scope
 
@@ -54,7 +54,7 @@ Opening items 1–3 and 5 draw on pp. 24–31. Opening item 4 and closing item 4
 
 ## Release and review sequence
 
-1. Complete Gate 3 with a learner walkthrough of Chapter 1, then review this outline before implementing Chapter 2.
+1. Chapter 1 was walked through by the owner. The request to proceed moved this work into the Chapter 2 pilot. First-time learner timing remains unverified.
 2. Use the Chapter 1 preview approach for the next learner walkthrough. Keep authored trees under V2. Record the original source anchors, accepted transfer responses, draft assessment keys and the post-implementation review separately.
 3. When preparing Chapter 2 for release, use a new lesson version and matching assessment seed. Keep Chapter 12's existing completion path and verify the active Chapter 2 prerequisite fallback from Phase 2.
 4. Run focused validation with `python scripts/validate_lessons.py --lesson br-02` when the candidate is in the versioned catalog. The command still checks shared schema, source metadata and SQL seed. Run the full validator before release.

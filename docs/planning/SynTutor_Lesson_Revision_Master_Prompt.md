@@ -1,7 +1,7 @@
 # SYNTUTOR — MASTER IMPLEMENTATION PROMPT
 ## Syntax Foundations lesson revision (Burton-Roberts Chapters 1–11)
 
-**Status:** Chapter 1 pilot implemented for Gate 3 review. The first-time learner timing trial and owner acceptance are pending.
+**Status:** Chapter 2 pilot implemented for Gate 4.2 review. First-time learner timing remains unverified.
 **Target branch:** `feat/lessons/revision-plan`, based on `origin/explore/foundations-lesson-rollout-plan` at `7df6b1e6775760b67a445f1cfa995d33b922ca2a`.
 **Implementation:** Codex. **Acceptance:** project owner.
 **Phase 0 audit:** `docs/planning/syntax_foundations_revision_phase_0.md` on the revision branch.
@@ -34,6 +34,7 @@ At each approved unit of work: (1) inspect existing implementation and source ev
 15. Place concise **source/page references and inspired-figure attribution** in the current summary-page References dropdown, backed by internal source IDs/receipts for substantive claims. The UI need not print a citation after every sentence.
 16. Require **AI-generated source-verification receipts AND owner chapter-by-chapter acceptance**. Include the commit, files changed, page/figure anchors, verified limitations, tests and concrete learner questions in each handoff.
 17. Preserve old lesson source, content and source receipts by Git commit and assessment version. Keep historical seed migrations immutable. Old learner lesson progress need not remain active or queryable after the explicitly scoped reset. Do not present retired unreviewed material as current instructional authority.
+18. Use the exact third-edition chapter title in the Lessons catalog and chapter header for each revised Chapter 1–11. Use concise learner-facing headings for the individual pages. Verify titles against the book’s contents and keep lesson IDs and section links stable.
 
 ## Non-negotiable integrity rules retained from the implementation architecture
 
@@ -152,13 +153,13 @@ These are **proposed lesson outcomes and activities**, derived from the historic
 
 | Ch. | Source range | Proposed indispensable learning goal | Original activity concept | Special caution |
 |---|---|---|---|---|
-| **1** Constituents | 6–23 | Explain nested grouping and how constituency evidence/ambiguity motivates tree structure | Highlight exactly the words spanned by a group; contrast two candidate groupings | Use `PHRASE-a/b` placeholders only if justified for the selected introductory representation |
-| **2** Functions | 24–45 | Distinguish subject/predicate **function** from phrase **category**; identify appropriate NP–VP split | Select subject boundary and trace parents of NPs | Verify chapter-specific treatment of labels and whether a top-split triangle is warranted |
-| **3** Categories | 46–66 | Introduce phrase categories and head-related distinctions at the book's actual level | Identify the head and phrase span in a compact authored tree | Do not reduce the chapter automatically to adjective phrases; first check the full chapter outline |
-| **4** Basic VP | 67–86 | Explain verb–object relation and the basic internal VP hierarchy | Construct a reviewed transitive VP and distinguish subject vs object NP | Avoid presenting one VP shape as universal |
-| **5** Adverbials etc. | 87–110 | Distinguish the important adverbial/adjunct attachments from complements | Compare an example with and without a temporal modifier | Check actual B-R attachments and conceptual coverage; do not overgeneralize tests |
-| **6** Auxiliary VPs | 111–140 | Identify key auxiliary and embedded VP relationships in the book's progression | Trace a higher and lower VP in one source-validated example | Earlier rollout focused on progressive; audit whether other essential auxiliary patterns must be retained |
-| **7** NP structure | 141–170 | Show nominal head, determiner and major NP-internal relationships | Assemble a reviewed NP from words and trace N → NOM → NP if source-authorized | Verify exact node/category notation; avoid importing Penn labels |
+| **1** Sentence structure: constituents | 6–23 | Explain nested grouping and how constituency evidence/ambiguity motivates tree structure | Highlight exactly the words spanned by a group; contrast two candidate groupings | Use `PHRASE-a/b` placeholders only if justified for the selected introductory representation |
+| **2** Sentence structure: functions | 24–45 | Distinguish subject/predicate **function** from phrase **category**; identify appropriate NP–VP split | Select subject boundary and trace parents of NPs | Verify chapter-specific treatment of labels and whether a top-split triangle is warranted |
+| **3** Sentence structure: categories | 46–66 | Introduce phrase categories and head-related distinctions at the book's actual level | Identify the head and phrase span in a compact authored tree | Do not reduce the chapter automatically to adjective phrases; first check the full chapter outline |
+| **4** The basic Verb Phrase | 67–86 | Explain verb–object relation and the basic internal VP hierarchy | Construct a reviewed transitive VP and distinguish subject vs object NP | Avoid presenting one VP shape as universal |
+| **5** Adverbials and other matters | 87–110 | Distinguish the important adverbial/adjunct attachments from complements | Compare an example with and without a temporal modifier | Check actual B-R attachments and conceptual coverage; do not overgeneralize tests |
+| **6** More on verbs: auxiliary VPs | 111–140 | Identify key auxiliary and embedded VP relationships in the book's progression | Trace a higher and lower VP in one source-validated example | Earlier rollout focused on progressive; audit whether other essential auxiliary patterns must be retained |
+| **7** The structure of Noun Phrases | 141–170 | Show nominal head, determiner and major NP-internal relationships | Assemble a reviewed NP from words and trace N → NOM → NP if source-authorized | Verify exact node/category notation; avoid importing Penn labels |
 | **8** Sentences within sentences | 171–195 | Recognize a clause embedded in another construction and its structural boundaries | Mark outer and inner clause spans in an original example | Confirm whether `S′`, `C`, and alternatives apply to each example |
 | **9** Wh-clauses | 196–223 | Explain core wh-clause fronting and source-appropriate gap relations | Trace fronted item to reviewed source-position gap(s) | Do not reduce the chapter automatically to object wh-questions; audit essential variations |
 | **10** Non-finite clauses | 224–253 | Distinguish basic finite/non-finite clause analyses and source-approved infinitival structure | Select appropriate non-finite unit and trace a validated complement | Existing plan overfocuses on `to`; inspect chapter scope and feature-only notation |
@@ -230,7 +231,7 @@ Order: 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10 → 11. For **each** c
 5. Present desktop/mobile chapter walkthrough, one correct and one incorrect attempt, feedback, resume and XP behavior.
 6. Provide commit SHA(s), changed files, page anchors, limitations and open questions. **Stop at the owner gate**; do not auto-advance.
 
-The [Chapter 2 storyboard](syntax-foundations-chapter-2-storyboard.md) is ready for review. It does not record Gate 3 acceptance or authorize Chapter 2 implementation.
+The [Chapter 2 storyboard](syntax-foundations-chapter-2-storyboard.md) records the scope of the first Phase 4 pilot. The [pilot review](../reports/syntax-foundations-chapter-2-pilot.md) records its source and test evidence.
 
 **Gates 4.2–4.11:** Separate owner approval for each completed chapter. Rejected or unresolved chapters remain unapproved and must not be treated as complete. Keep lesson 12 unchanged.
 
