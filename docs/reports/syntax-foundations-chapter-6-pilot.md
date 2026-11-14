@@ -8,7 +8,7 @@ Noel Burton-Roberts, *Analysing Sentences*, third edition, Pearson, 2011, ISBN 9
 
 | Scope | Printed anchors and review |
 | --- | --- |
-| Progressive and stacked VPs | Pp. 121–122, [52–53b]. Each auxiliary heads a VP with a VP complement. The tense feature sits on the first verb. The worked chain adapts the printed example [53b], which the pilot metadata now credits. |
+| Progressive and stacked VPs | Pp. 121–122, [52–53b]. Each auxiliary heads a VP with a VP complement. The tense feature sits on the first verb. The original worked sentence “Mara should have packed the lantern” illustrates the auxiliary pattern in [53b]. Its canonical metadata identifies the source pattern and marks the tree as original instructional material awaiting independent review. |
 | Adverbial scope | Pp. 123–125, [62], [66], [69]. The lesson presents the two attachment patterns as assumptions for the examples and notes a time-phrase exception. |
 | Passive | Pp. 125–128, [71], [78]. The original curator/statue contrast shows PASS, the direct-object gap and the optional agent PP outside the basic lexical VP. The lexical verb keeps [trans]. Complex and ditransitive passive derivations remain deferred. |
 | Negation and do-support | P. 129, [86], [88]. The shared parent of TENSE and the lexical VP is the predicate VP. The tensed modal or TENSE bears the feature and groups the verb form with “not”. |
@@ -20,9 +20,9 @@ The assessed pilot version is `2.0.0`. Opening and closing checks use five items
 
 The browser test covered the opening score of 2/5 without answer review or XP, feedback on the tense-carrier choice, branch repair and undo, the saved branch after reload, mobile navigation and tree fit, passive recognition, negation and question trees, and the closing check. The 3/5 closing attempt earned 9 XP, and the 5/5 retake raised the total to 15 XP. The normal Chapter 6 route still loaded the published lesson. The test recorded no parser calls.
 
-Chapter 5 and all 12 published lesson browser checks, lesson and Builder suites, the tree layout checks and Vercel-filtered static build passed. The pilot overlay passed catalog validation, and its worked tree passed the canonical JSON schema. The Python course validator stopped during import because `lemminflect` is unavailable in this environment.
+Chapter 5 and all 12 published lesson browser checks, lesson and Builder suites, the tree layout checks and Vercel-filtered static build passed. The pilot overlay passed catalog validation, and its worked tree passed the canonical JSON schema. The combined candidate now passes both canonical tree validators. The published Chapter 6 record also passes its individual receipt check.
 
 Pilot hashes:
 
-- `web/content/lessons/br-06-pilot.json` — `6789f04a053ec041eadb6059bb81e2f3ab5156ad628d8e99f3872d88c2c5ab62`
-- `web/js/auxiliaries-pilot.js` — `244afba4b4f9f25d545c3ac0230a333b53ae2146e79a75cd9e1045bd832208a1`
+- `web/content/lessons/br-06-pilot.json` — `39061e6857bc0105929c464e877bac323e00263c1d84d885b1601320ee565456`
+- `web/js/auxiliaries-pilot.js` — `b83c30064beadf15c26f9ff3e7fb28cf5275ca7ae1c977002cb95460ded9deea`

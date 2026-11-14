@@ -14,6 +14,27 @@ from seed_foundations import render as foundations_sql, TARGET as FOUNDATIONS_SE
 def digest(lesson):
     return hashlib.sha256(json.dumps(lesson,sort_keys=True,ensure_ascii=False,separators=(',',':')).encode()).hexdigest()
 
+def validate_worked_tree(lesson, canonical):
+    ident = lesson['lesson_id']
+    tree=lesson['worked_example']['tree']
+    if lesson['track']=='foundations' and lesson['chapter']==11:
+        assert tree is None and lesson['convention_profile'] is None and not lesson['tree_ids']
+    if tree:
+        canonical.validate(tree);result=validate_canonical_tree(tree);assert result['valid'],result
+        assert tree['convention_profile']==lesson['convention_profile']
+        assert tree['convention_profile']['chapter']==lesson['chapter']
+        assert tree['source']['evidence_status']=='TXT','Original instructional trees must not claim to be printed diagrams'
+        nodes={}
+        def walk(node):
+            nodes[node.get('id')]=node
+            for c in node.get('children',[]):walk(c)
+        walk(tree['root'])
+        for step in lesson['worked_example']['steps']:assert step['focus_node_id'] in nodes
+        target=lesson['guided']['build_target'];node=nodes[target['node_id']]
+        actual=node.get('label') if target['field']=='label' else node.get('features',[None])[0]
+        assert actual==target['expected'],f'{ident}: guided target does not match its reviewed tree'
+
+
 def validate(course=None, *, lesson_id=None):
     course=course or json.loads((ROOT/'web/content/lessons/course.json').read_text())
     schema=json.loads((ROOT/'web/content/lessons/course.schema.json').read_text())
@@ -80,23 +101,7 @@ def validate(course=None, *, lesson_id=None):
             assert {o['id'] for o in lesson['outcomes']} <= set(lesson['exit']['outcome_ids'])
         if lesson['track']=='foundations':assert all(sources[s]['book']=='B-R' for s in lesson['source_ids'])
         else:assert all(sources[s]['book']=='Cambridge' for s in lesson['source_ids'])
-        tree=lesson['worked_example']['tree']
-        if lesson['track']=='foundations' and lesson['chapter']==11:
-            assert tree is None and lesson['convention_profile'] is None and not lesson['tree_ids']
-        if tree:
-            canonical.validate(tree);result=validate_canonical_tree(tree);assert result['valid'],result
-            assert tree['convention_profile']==lesson['convention_profile']
-            assert tree['convention_profile']['chapter']==lesson['chapter']
-            assert tree['source']['evidence_status']=='TXT','Original instructional trees must not claim to be printed diagrams'
-            nodes={}
-            def walk(node):
-                nodes[node.get('id')]=node
-                for c in node.get('children',[]):walk(c)
-            walk(tree['root'])
-            for step in lesson['worked_example']['steps']:assert step['focus_node_id'] in nodes
-            target=lesson['guided']['build_target'];node=nodes[target['node_id']]
-            actual=node.get('label') if target['field']=='label' else node.get('features',[None])[0]
-            assert actual==target['expected'],f'{ident}: guided target does not match its reviewed tree'
+        validate_worked_tree(lesson, canonical)
     old_seed = (ROOT/'supabase/migrations/20261108000001_lesson_catalog.sql').read_text()
     retired = {lesson['lesson_id'] for lesson in lessons.values() if lesson.get('revised_assessment')}
     if retired:

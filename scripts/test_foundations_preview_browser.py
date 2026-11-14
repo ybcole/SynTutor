@@ -124,6 +124,34 @@ try:
         expect(view.locator('.lesson-stage-body')).to_be_visible()
         expect(view.get_by_text('Chapter pilot · progress saved on this device')).to_have_count(0)
 
+        # Check keyboard navigation in the desktop sidebar and tap navigation in
+        # the dark mobile reader using representative early, middle and late chapters.
+        page.set_viewport_size({'width': 1440, 'height': 1000})
+        mobile = browser.new_page(viewport={'width': 390, 'height': 844}, has_touch=True, is_mobile=True)
+        mobile.add_init_script("""
+          localStorage.setItem('syntutor_onboarding_seen', '1');
+          localStorage.setItem('syntutor_theme', 'dark');
+        """)
+        mobile.on('pageerror', lambda error: errors.append(str(error)))
+        mobile.route('**/*', route)
+        for id, section in [('br-01', 'worked-example'), ('br-06', 'chain'), ('br-11', 'worked-example')]:
+            open_lesson(preview + f'{id}/introduction')
+            sidebar = view.locator('.lesson-section-sidebar')
+            sidebar.locator(f'a[href$="/{section}"]').press('Enter')
+            expect(page).to_have_url(preview + f'{id}/{section}')
+            expect(view.locator('.lesson-stage-body > h2')).to_be_focused()
+            expect(view.locator('svg[aria-label^="Syntax tree"]').first).to_be_visible()
+
+            mobile.goto(preview + f'{id}/introduction', wait_until='domcontentloaded')
+            expect(mobile.locator('html')).to_have_attribute('data-theme', 'dark')
+            menu = mobile.locator('.lesson-section-mobile')
+            menu.locator('summary').tap()
+            menu.locator(f'a[href$="/{section}"]').tap()
+            expect(mobile).to_have_url(preview + f'{id}/{section}')
+            expect(mobile.locator('#curriculumView svg[aria-label^="Syntax tree"]').first).to_be_visible()
+            assert mobile.locator('#curriculumView').evaluate('(el) => el.scrollWidth <= el.clientWidth')
+        mobile.close()
+
         open_lesson(base + '/?preview=br-02#lesson/br-02/introduction')
         expect(check_panel('opening')).to_contain_text('Question 2 of 5')
         open_lesson(base + '/#lesson/catalog')

@@ -5,6 +5,8 @@ import subprocess
 
 from jsonschema import Draft202012Validator
 
+from validate_lessons import validate_worked_tree
+
 ROOT = Path(__file__).resolve().parents[1]
 LESSONS = ROOT / 'web/content/lessons'
 course = json.loads(subprocess.check_output(
@@ -22,7 +24,9 @@ assert [lesson for lesson in course['lessons'] if lesson['track'] != 'foundation
     lesson for lesson in published['lessons'] if lesson['track'] != 'foundations']
 revised = [lesson for lesson in course['lessons'] if lesson.get('revised_assessment')]
 assert [lesson['lesson_id'] for lesson in revised] == [f'br-{n:02}' for n in range(1, 12)]
+canonical = Draft202012Validator(json.loads((ROOT / 'docs/canonical-burton-roberts-tree.schema.json').read_text()))
 for lesson in revised:
+    validate_worked_tree(lesson, canonical)
     assert lesson['content_version'] == '2.0.0'
     for kind in ('opening', 'closing'):
         questions = lesson['revised_assessment'][kind]
@@ -35,4 +39,4 @@ for lesson in revised:
                 assert source['book'] == 'B-R' and source['chapter'] == chapter, question['id']
                 assert pages['printed_start'] <= source['printed_page'] <= pages['printed_end'], id
 
-print('PASS: combined course schema, 110 assessment items and in-chapter anchors, and unchanged Cambridge catalog.')
+print('PASS: combined course schema, 110 assessment items and in-chapter anchors, canonical worked trees and unchanged Cambridge catalog.')

@@ -2,7 +2,6 @@
 from dataclasses import dataclass
 from copy import deepcopy
 
-from lemminflect import getLemma
 
 
 CLAUSE = ("Ch2 pp. 29–30",)
@@ -112,6 +111,9 @@ def lemma(node):
     term = word(node)
     if term in {"am", "is", "are", "was", "were", "been", "being", "'m", "'re", "'s"}:
         return "be"
+    # Canonical tree validation imports this module without projecting verbs.
+    from lemminflect import getLemma
+
     return next(iter(getLemma(term, upos="VERB", lemmatize_oov=False)), term)
 
 

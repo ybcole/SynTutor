@@ -14,9 +14,17 @@ The local candidate combines the eleven Burton-Roberts pilots at version `2.0.0`
 ## Publication evidence still needed
 
 - The structural and page-range checks establish that the assessment anchors resolve. The chapter reports carry the detailed source checks. In particular, Chapters 1–3 use existing catalog anchors that are narrower than the ranges recorded for individual questions in their reports. Reconcile those item-level anchors with the cited edition and record independent content, figure and notation review before issuing new publication receipts.
-- The unchanged published catalog already differs from its recorded receipts for `br-02`, `br-03`, `br-08` and `cgel-clauses`. The hashes were compared directly. The full Python publication validator also requires `lemminflect`, which is unavailable in this environment. Resolve the receipt differences against their reviewed versions and rerun the gate with the dependency installed. The Cambridge receipt requires its own source review.
-- Chapter 6’s pilot tree is adapted from a printed example and carries `IMG` evidence. The legacy publication validator expects instructional trees to carry `TXT`. Review the adaptation and reconcile the tree's evidence classification with the publication rule before merging its overlay into the published catalog.
-- First-time learner timings, broader visual and accessibility review, instructor sign-off and hosted account checks are pending. The ten-minute chapter durations are estimates.
+- The full Python publication validator runs without loading the parser lemmatizer. It reports existing receipt drift in `br-02`, `br-03`, `br-08` and `cgel-clauses`; the other eight published records pass individually. Commit `7df6b1e` introduced the differences. The affected changes are the Cambridge insight in Chapters 2 and 8, assessment hints and feedback in Chapter 3, and the Cambridge companion's teaching and example-origin wording. The historical catalog and receipts on `main` retain the reviewed wording. Use that wording for the Cambridge companion in the eventual integration and explicitly include revised Foundations wording in the new review receipts.
+- Chapter 6 now uses an original instructional tree for the modal–perfect sequence. It retains the printed anchor for the structure it illustrates. The candidate passes the canonical schema, structural rules and guided-target checks. The new tree's independent review remains pending.
+- The reference copy used in the pilot receipts was unavailable for a fresh page-level check. First-time learner timings, instructor sign-off and hosted account checks remain pending. The ten-minute catalog durations are estimates.
+
+## Owner walkthrough and timing
+
+In a fresh browser profile, work through Chapter 1's constituent tests and tree repair, Chapter 6's auxiliary chain and branch repair, and Chapter 11's recursive derivation. Repeat the desktop sidebar links with the keyboard or use the Chapter contents dropdown on a phone. The browser test exercised those interactions in desktop light mode and mobile dark mode and checked that the tree pages fit at 390 px. Start each timed run at the introduction and stop when the first closing score appears. Record elapsed time, any pauses and the first point where an instruction, label or example needed rereading. Keep automated interaction times out of the learner timing record.
+
+## Integration with main
+
+A read-only merge simulation against `main` at `c72744c` found seven Git conflicts. Six concern Cambridge coverage, planning, probes or probe tests. The seventh is in `web/js/main.js`. Main's Lessons initialization also lacks the embedded Builder callback used by legacy guided practice. Prepare integration on a branch based on current main, carry over the lesson changes and embedded Builder wiring, and preserve the Generator and Cambridge changes already on main. Rerun the full preview and Builder checks on that integrated tree before preparing any release.
 
 ## Release and rollback rehearsal
 

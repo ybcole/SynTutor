@@ -25,7 +25,7 @@ def tokenise(text):
     return tokens
 
 
-SENTENCE = 'You should have written an essay'
+SENTENCE = 'Mara should have packed the lantern'
 TOKENS = tokenise(SENTENCE)
 
 
@@ -36,7 +36,7 @@ def build_root():
         'token_span': [0, 6],
         'children': [
             {'id': 'lesson-br-06-worked-root-0', 'label': 'NP', 'triangle': True,
-             'words': ['You'], 'token_span': [0, 1]},
+             'words': ['Mara'], 'token_span': [0, 1]},
             {
                 'id': 'lesson-br-06-worked-root-1', 'label': 'VP', 'token_span': [1, 6],
                 'children': [
@@ -53,9 +53,9 @@ def build_root():
                                 'children': [
                                     {'id': 'lesson-br-06-worked-root-1-1-1-0', 'label': 'V', 'features': ['trans'],
                                      'token_span': [3, 4],
-                                     'children': [{'id': 'lesson-br-06-worked-root-1-1-1-0-0', 'word': 'written', 'token_span': [3, 4]}]},
+                                     'children': [{'id': 'lesson-br-06-worked-root-1-1-1-0-0', 'word': 'packed', 'token_span': [3, 4]}]},
                                     {'id': 'lesson-br-06-worked-root-1-1-1-1', 'label': 'NP', 'triangle': True,
-                                     'words': ['an', 'essay'], 'token_span': [4, 6]},
+                                     'words': ['the', 'lantern'], 'token_span': [4, 6]},
                                 ],
                             },
                         ],
@@ -76,9 +76,9 @@ TREE = {
         'edition': '3rd edition (Pearson Education, 2011; ISBN 9781408233740)',
         'chapter': 6,
         'printed_page': 122,
-        'evidence_status': 'IMG',
-        'review_status': 'INDEPENDENTLY_REVIEWED',
-        'review_note': 'Tree adapted from printed example [53b] on p. 122.',
+        'evidence_status': 'TXT',
+        'review_status': 'NOT_REVIEWED',
+        'review_note': 'Original instructional tree illustrating the auxiliary structure in [53b].',
         'source_record_id': 'lesson-br-06-worked',
     },
     'movement': [],
@@ -90,13 +90,13 @@ TREE = {
 
 WORKED = {
     'sentence': SENTENCE,
-    'origin': 'Adapted from printed example [53b] on p. 122.',
+    'origin': 'Original SynTutor example using the auxiliary pattern in [53b] on printed p. 122.',
     'steps': [
         {'text': 'MOD “should” [past] heads the highest VP and is the only tensed verb.',
          'source_ids': ['BR-3E-P121', 'BR-3E-P122'], 'focus_node_id': 'lesson-br-06-worked-root-1-0'},
         {'text': 'PERF “have” heads the next VP, the complement of the MOD VP.',
          'source_ids': ['BR-3E-P122'], 'focus_node_id': 'lesson-br-06-worked-root-1-1-0'},
-        {'text': 'The lexical VP “written an essay” is the complement of the PERF VP.',
+        {'text': 'The lexical VP “packed the lantern” is the complement of the PERF VP.',
          'source_ids': ['BR-3E-P122', 'BR-3E-P123'], 'focus_node_id': 'lesson-br-06-worked-root-1-1-1'},
     ],
     'source_ids': ['BR-3E-P121', 'BR-3E-P122', 'BR-3E-P123'],
@@ -106,14 +106,14 @@ WORKED = {
 
 GUIDED = {
     'id': 'guided',
-    'prompt': 'In this worked tree, the PERF VP “have written an essay” is the complement of which node?',
+    'prompt': 'In this worked tree, which VP directly contains “have packed the lantern”?',
     'options': [
-        {'id': 'a', 'text': 'The lexical V “written”', 'feedback': 'Try again. The lexical verb sits lowest. The PERF VP is the complement of the MOD VP.'},
-        {'id': 'b', 'text': 'The MOD VP “should”', 'feedback': 'Yes. Each auxiliary VP takes the next VP as its complement; “should” heads the outer VP.'},
-        {'id': 'c', 'text': 'The object NP “an essay”', 'feedback': 'Try again. The object NP is below the lexical verb, not above the PERF VP.'},
+        {'id': 'a', 'text': 'The lexical VP “packed the lantern”', 'feedback': 'Try again. The lexical VP sits inside the perfect VP. Look one level higher than the perfect VP.'},
+        {'id': 'b', 'text': 'The outer VP headed by “should”', 'feedback': 'Yes. “Should” heads the outer VP, which takes the perfect VP as its complement.'},
+        {'id': 'c', 'text': 'The object NP “the lantern”', 'feedback': 'Try again. The object NP is below the lexical verb, not above the PERF VP.'},
     ],
     'answer': 'b',
-    'hint': 'Look at the highest verb. It is the modal “should”, and the next VP below it is its complement.',
+    'hint': 'Find the modal “should”. Its VP is the parent of “have packed the lantern”.',
     'source_ids': ['BR-3E-P121', 'BR-3E-P122'],
     'outcome_ids': ['o1'],
     'build_target': {'node_id': 'lesson-br-06-worked-root-1-1', 'field': 'label', 'expected': 'VP'},

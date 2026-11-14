@@ -62,8 +62,8 @@ try:
 
         next_page = view.get_by_role('button', name='Next →', exact=True)
         next_page.click()
-        view.get_by_role('radio', name='written').check()
-        expect(view.get_by_role('status')).to_contain_text('“Written” heads the lowest VP')
+        view.get_by_role('radio', name='packed').check()
+        expect(view.get_by_role('status')).to_contain_text('“Packed” heads the lowest VP')
         view.get_by_role('radio', name='should').check()
         expect(view.get_by_role('status')).to_contain_text('heads the highest VP')
         note = view.locator('.constituent-diagram .lesson-tree-observation')

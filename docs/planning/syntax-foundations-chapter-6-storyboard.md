@@ -35,7 +35,7 @@ The current Chapter 4 lesson already introduces the lexical/auxiliary distinctio
 | Page | Learner task and transition | Budget |
 | --- | --- | ---: |
 | Introduction and opening check | Revisit “Nora inspected the bridge” from Chapters 4–5. Add “Nora might have inspected the bridge” and ask which word carries the tense. Define auxiliary and the four types (MOD, PERF, PROG, PASS) in prose before the preview bullets; put general key terms below. Show the five-question opening check with a score-only result and no XP. | 1:45 |
-| Each auxiliary heads its own VP | Display “You should have written an essay” ([53b]). Switch the read-only tree to show MOD over PERF over the lexical V, and point out that only MOD carries *past*. Ask the learner to click the verb that carries tense. Immediate feedback on the choice. | 1:30 |
+| Each auxiliary heads its own VP | Display the original sentence “Mara should have packed the lantern”, using the auxiliary pattern in [53b]. Switch the read-only tree to show MOD over PERF over the lexical V, and point out that only MOD carries *past*. Ask the learner to click the verb that carries tense. Immediate feedback on the choice. | 1:30 |
 | Stack the chain | Trace the numbered levels of [53b], then a longer chain (“You should have been writing that essay”, Disc.2/[56]) to show recursion. One editable repair: reattach a detached higher-VP under the correct auxiliary. | 1:15 |
 | Where do the adverbials go? | Compare [62] (adverbial before a verb modifies the following VP) with [66] (final adverbial modifies the lexical VP), and show the [69] time-adverbial exception as a single contrast. Label these as the book's stated simplifications. Unscored short response: which VP does the final phrase modify here? | 1:00 |
 | Recognize a passive | Trace the active object, then its passive subject and the gap. Read PASS and the optional agent PP. | 0:35 |
@@ -54,7 +54,7 @@ All trees use the stored `web/content/book/ch06.trees.json` records (convention 
 
 | Example | Expected analysis and feedback (source anchor) |
 | --- | --- |
-| You should have written an essay ([53b], p.122) | MOD (`should`, past) takes a PERF VP (`have` + participle) as complement; the lexical V is `written` with `[trans]` and object NP. Only MOD carries tense. If the learner marks *have* as tensed, direct them to the first verb of the sequence. |
+| Mara should have packed the lantern (original example illustrating [53b], p. 122) | MOD (`should`, past) takes a PERF VP (`have` + participle) as complement; the lexical V is `packed` with `[trans]` and object NP. Only MOD carries tense. If the learner marks *have* as tensed, direct them to the first verb of the sequence. |
 | You should have been writing that essay (Disc.2/[56], p.133) | MOD → PERF → PROG → lexical V. Used to show recursion; each auxiliary heads one VP; still only MOD is tensed. |
 | That hippo could easily have killed me ([62], p.123) | Per Assumption 1, the pre-verbal adverbial *easily* modifies the following PERF VP. Present this as the book's stated assumption. |
 | They have been complaining for the fun of it ([66], p.124) | Per Assumption 2, the sentence-final adverbial modifies the lexical VP. |
@@ -81,7 +81,7 @@ For the pilot: reuse the existing numbered trace controls, one editable Builder 
 
 | Item | Prompt | Answer and feedback focus |
 | --- | --- | --- |
-| Opening 1 | In “You should have written an essay”, which word carries the tense? | **should.** Only the first verb of an auxiliary sequence is tensed; *have* and *written* are not. |
+| Opening 1 | In “Ravi should have closed the gate”, which word carries tense? | **should.** Only the first verb of an auxiliary sequence is tensed; *have* and *closed* are untensed. |
 | Opening 2 | How many VPs does “Mina might have finished the report” contain, one per auxiliary plus the verb? | **Three** (MOD *might*, PERF *have*, lexical *finished*). Each auxiliary heads its own VP. |
 | Opening 3 | In “Byron did not dance”, which word carries the tense and the negation? | **did.** *do* under the TENSE node carries tense and negation; *dance* is untensed. |
 | Opening 4 | In “Is the cat sleeping?”, what has moved to the front, and what did it leave behind? | **The auxiliary *is* moved to the front (C), leaving a gap under its PROG node.** |

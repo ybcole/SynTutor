@@ -18,11 +18,11 @@ const studying = {
 };
 
 const chain = {
-  sentence: 'You should have written an essay',
-  root: node('sentence', 'S', group('subject', 'NP', 'You'),
+  sentence: 'Mara should have packed the lantern',
+  root: node('sentence', 'S', group('subject', 'NP', 'Mara'),
     vp(1, aux('modal', 'MOD', 'should', 'past'),
       vp(2, aux('perfect', 'PERF', 'have'),
-        vp(3, verb('written', 'trans'), group('object', 'NP', 'an essay'))))),
+        vp(3, verb('packed', 'trans'), group('object', 'NP', 'the lantern'))))),
 };
 
 const hippo = {
@@ -100,7 +100,7 @@ const repair = {
   build: {
     branch: root => [root.children[1], root.children[1].children[1]],
     action: 'Connect the lower VP under the auxiliary VP',
-    hint: 'Attach the PERF VP “have written an essay” under the MOD VP “should”. Only the first verb is tensed.',
+    hint: 'Attach “have packed the lantern” under the VP headed by MOD “should”. Only the first verb is tensed.',
     success: 'The MOD “should” heads its own VP and takes the PERF VP as its complement. Only “should” is tensed.',
   },
 };
@@ -158,32 +158,32 @@ export const auxiliariesPilot = {
     }
     if (section.id === 'concepts') {
       p('In an auxiliary chain, the lexical verb comes after the auxiliaries. Each auxiliary is the head of its own VP, and its complement is the next VP. The last VP is the lexical one: the verb plus its own complements.');
-      example('You [should] [have] [written an essay].');
+      example('Mara [should] [have] [packed the lantern].');
       const feedback = status();
-      body.append(practiceQuestion('chain-heads', 'In “should have written an essay”, which verb carries tense?', [
-        'should', 'written',
+      body.append(practiceQuestion('chain-heads', 'In “should have packed the lantern”, which verb carries tense?', [
+        'should', 'packed',
       ], answer => {
         feedback.className = `lesson-feedback ${answer === '0' ? 'correct' : 'retry'}`;
         feedback.textContent = answer === '0'
           ? '“Should” carries tense and heads the highest VP.'
-          : '“Written” heads the lowest VP. It is a participle here. The modal “should” carries tense.';
+          : '“Packed” heads the lowest VP. It is a participle here. The modal “should” carries tense.';
       }), feedback);
       trace('Separate the auxiliary from the verb group', [
         ['Find the progressive auxiliary', studying, 'progressive', 'PROG “is” heads the outer VP. It is tense-marked [pres] and takes a VP complement.'],
         ['Find the lexical VP', studying, 'vp2', 'The inner VP “studying the menu” is headed by V [trans] and holds the object NP.'],
       ]);
       heading(repair.buildTitle);
-      p('The worked sentence “You should have written an essay” is seeded below. Connect the lower VP under the MOD VP headed by “should”. Drag from the parent’s connection point or use Guide me. Then select Check my tree.');
+      p('The tree below shows “Mara should have packed the lantern” with one branch detached. Connect the VP “have packed the lantern” to the outer VP headed by “should”. Drag from the connection point on the outer VP or use Guide me, then select Check my tree.');
       addBranchExercise(body, ui, repair);
     }
     if (section.id === 'chain') {
-      p('Count the auxiliaries to find how many VPs stack. In “should have written”, two auxiliaries give two auxiliary VPs above the lexical VP, for three layers in all. The tense feature sits only on the first.');
-      example('You [should] [have] [written an essay].');
-      p('Only the first verb is tensed. If you place the tense on “have” or “written”, the tree no longer matches the book’s convention.');
+      p('Count the auxiliaries to find how many VPs stack. In “should have packed”, two auxiliaries give two auxiliary VPs above the lexical VP, for three layers in all. The tense feature sits only on the first.');
+      example('Mara [should] [have] [packed the lantern].');
+      p('Only the first verb is tensed. If you place the tense on “have” or “packed”, the tree no longer matches the book’s convention.');
       trace('Trace each auxiliary layer', [
         ['Find MOD', chain, 'modal', 'MOD “should” [past] is the highest verb. It is the only tensed verb in the sequence.'],
         ['Find PERF', chain, 'perfect', 'PERF “have” heads the next VP. It is untensed and takes the lexical VP as its complement.'],
-        ['Find the lexical VP', chain, 'vp3', 'V [trans] “written” heads the lowest VP with the object NP “an essay”.'],
+        ['Find the lexical VP', chain, 'vp3', 'V [trans] “packed” heads the lowest VP with the object NP “the lantern”.'],
         ['Read the whole chain', chain, 'vp1', 'Each auxiliary VP sits directly above the next. Only the first verb, “should”, carries tense.'],
       ]);
       p('The order is modal (MOD), perfect (PERF), progressive (PROG), then passive (PASS), followed by the lexical verb. A chain can skip any auxiliary it does not need.');

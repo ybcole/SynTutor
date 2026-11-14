@@ -40,8 +40,8 @@
     }
   ],
   "worked_example": {
-    "sentence": "You should have written an essay",
-    "origin": "Adapted from printed example [53b] on p. 122.",
+    "sentence": "Mara should have packed the lantern",
+    "origin": "Original SynTutor example using the auxiliary pattern in [53b] on printed p. 122.",
     "steps": [
       {
         "text": "MOD “should” [past] heads the highest VP and is the only tensed verb.",
@@ -59,7 +59,7 @@
         "focus_node_id": "lesson-br-06-worked-root-1-1-0"
       },
       {
-        "text": "The lexical VP “written an essay” is the complement of the PERF VP.",
+        "text": "The lexical VP “packed the lantern” is the complement of the PERF VP.",
         "source_ids": [
           "BR-3E-P122",
           "BR-3E-P123"
@@ -78,50 +78,50 @@
       "tokens": [
         {
           "index": 0,
-          "text": "You",
+          "text": "Mara",
           "char_span": [
             0,
-            3
+            4
           ]
         },
         {
           "index": 1,
           "text": "should",
           "char_span": [
-            4,
-            10
+            5,
+            11
           ]
         },
         {
           "index": 2,
           "text": "have",
           "char_span": [
-            11,
-            15
+            12,
+            16
           ]
         },
         {
           "index": 3,
-          "text": "written",
+          "text": "packed",
           "char_span": [
-            16,
+            17,
             23
           ]
         },
         {
           "index": 4,
-          "text": "an",
+          "text": "the",
           "char_span": [
             24,
-            26
+            27
           ]
         },
         {
           "index": 5,
-          "text": "essay",
+          "text": "lantern",
           "char_span": [
-            27,
-            32
+            28,
+            35
           ]
         }
       ],
@@ -135,15 +135,15 @@
         "edition": "3rd edition (Pearson Education, 2011; ISBN 9781408233740)",
         "chapter": 6,
         "printed_page": 122,
-        "evidence_status": "IMG",
-        "review_status": "INDEPENDENTLY_REVIEWED",
-        "review_note": "Tree adapted from printed example [53b] on p. 122.",
+        "evidence_status": "TXT",
+        "review_status": "NOT_REVIEWED",
+        "review_note": "Original instructional tree illustrating the auxiliary structure in [53b].",
         "source_record_id": "lesson-br-06-worked"
       },
       "movement": [],
       "accepted_alternatives": [],
       "notes": [],
-      "sentence": "You should have written an essay",
+      "sentence": "Mara should have packed the lantern",
       "root": {
         "id": "lesson-br-06-worked-root",
         "label": "S",
@@ -157,7 +157,7 @@
             "label": "NP",
             "triangle": true,
             "words": [
-              "You"
+              "Mara"
             ],
             "token_span": [
               0,
@@ -240,7 +240,7 @@
                         "children": [
                           {
                             "id": "lesson-br-06-worked-root-1-1-1-0-0",
-                            "word": "written",
+                            "word": "packed",
                             "token_span": [
                               3,
                               4
@@ -253,8 +253,8 @@
                         "label": "NP",
                         "triangle": true,
                         "words": [
-                          "an",
-                          "essay"
+                          "the",
+                          "lantern"
                         ],
                         "token_span": [
                           4,
@@ -274,26 +274,26 @@
   },
   "guided": {
     "id": "guided",
-    "prompt": "In this worked tree, the PERF VP “have written an essay” is the complement of which node?",
+    "prompt": "In this worked tree, which VP directly contains “have packed the lantern”?",
     "options": [
       {
         "id": "a",
-        "text": "The lexical V “written”",
-        "feedback": "Try again. The lexical verb sits lowest. The PERF VP is the complement of the MOD VP."
+        "text": "The lexical VP “packed the lantern”",
+        "feedback": "Try again. The lexical VP sits inside the perfect VP. Look one level higher than the perfect VP."
       },
       {
         "id": "b",
-        "text": "The MOD VP “should”",
-        "feedback": "Yes. Each auxiliary VP takes the next VP as its complement; “should” heads the outer VP."
+        "text": "The outer VP headed by “should”",
+        "feedback": "Yes. “Should” heads the outer VP, which takes the perfect VP as its complement."
       },
       {
         "id": "c",
-        "text": "The object NP “an essay”",
+        "text": "The object NP “the lantern”",
         "feedback": "Try again. The object NP is below the lexical verb, not above the PERF VP."
       }
     ],
     "answer": "b",
-    "hint": "Look at the highest verb. It is the modal “should”, and the next VP below it is its complement.",
+    "hint": "Find the modal “should”. Its VP is the parent of “have packed the lantern”.",
     "source_ids": [
       "BR-3E-P121",
       "BR-3E-P122"
@@ -435,7 +435,7 @@
     "opening": [
       {
         "id": "opening-tense",
-        "prompt": "In “You should have written an essay”, which word carries the tense?",
+        "prompt": "In “Ravi should have closed the gate”, which word carries tense?",
         "answer": "b",
         "outcome_ids": [
           "o1"
@@ -453,12 +453,12 @@
           {
             "id": "b",
             "text": "should",
-            "feedback": "Only the first verb of an auxiliary sequence is tensed. “Have” and “written” are not."
+            "feedback": "Only the first verb of an auxiliary sequence is tensed. “Have” and “closed” are untensed here."
           },
           {
             "id": "c",
-            "text": "written",
-            "feedback": "“Written” is the lexical verb and carries no tense of its own."
+            "text": "closed",
+            "feedback": "“Closed” is a participle after perfect “have”, so it carries no tense of its own."
           }
         ]
       },
