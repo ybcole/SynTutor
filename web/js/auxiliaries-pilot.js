@@ -125,14 +125,14 @@ export const auxiliariesPilot = {
     { id: 'closing-check', title: 'Check what you learned', assessment: true },
   ],
   keyTerms: [
-    ['Auxiliary verb', 'A helping verb such as a modal, a form of “be” or a form of “have”. Each auxiliary heads its own verb phrase and takes the next verb phrase as its complement.'],
-    ['Modal auxiliary (MOD)', 'A modal such as “can”, “could”, “might” or “should”. It is always the first verb and carries the tense.'],
-    ['Perfect auxiliary (PERF)', 'A form of “have” followed by a past participle, as in “has studied”.'],
-    ['Progressive auxiliary (PROG)', 'A form of “be” followed by an -ing verb, as in “is studying”.'],
-    ['Passive auxiliary (PASS)', 'A form of “be” followed by a passive participle, as in “was moved”. In a corresponding active clause, the passive subject typically has an object role.'],
-    ['Tense feature', 'The pres/past marker on a verb. In a sequence of verbs only the first verb is tensed.'],
-    ['Do-support', 'The use of “do” under the TENSE node to carry tense and negation when no other auxiliary is present, as in “did not dance”.'],
-    ['Fronting', 'Moving the tense-carrying element to the front position C to form a question, leaving a gap where it was.'],
+    ['Auxiliary verb', 'A helping verb, such as a modal or a form of “be” or “have”. It heads its own VP. The next VP is its complement.'],
+    ['Modal auxiliary (MOD)', 'A helping verb such as “can”, “could”, “might”, or “should”. It comes first in the chain and carries tense.'],
+    ['Perfect auxiliary (PERF)', 'A form of “have” that comes before a past participle, as in “has studied”.'],
+    ['Progressive auxiliary (PROG)', 'A form of “be” that comes before an -ing verb, as in “is studying”.'],
+    ['Passive auxiliary (PASS)', 'A form of “be” that comes before a passive participle, as in “was moved”. The passive subject is often the object in the matching active sentence.'],
+    ['Tense feature', 'A mark such as [pres] or [past]. In a verb chain, only the first verb carries tense.'],
+    ['Do-support', 'Using “do” when a verb like “dance” needs help to form a question or a negative. In “did not dance”, “did” carries past tense under TENSE.'],
+    ['Fronting', 'Moving a word or group to the front. In a yes/no question, the verb that carries tense moves to C and leaves a gap.'],
   ],
   teach(body, _page, ui) {
     const { el, lesson, section, practiceQuestion } = ui;
@@ -147,17 +147,17 @@ export const auxiliariesPilot = {
     };
 
     if (section.id === 'introduction') {
-      p('Chapter 4 grouped the lexical verb with its complements inside one VP. Auxiliary verbs add information such as tense, possibility, aspect or voice. Each auxiliary heads its own verb phrase and takes the following verb phrase as its complement. Chapter 6 shows how these layers stack.');
+      p('In Chapter 4, the lexical verb and its complements formed one VP. An auxiliary is a helping verb. It can add tense, possibility, aspect, or voice. Each auxiliary heads its own VP. The next VP is its complement. See how those VPs fit inside one another.');
       addIntroExample(body, el, 'The brackets separate the auxiliary from the verb group it helps.',
         'Monsieur Blanc [is] [studying the menu].',
-        '“Is” is a progressive auxiliary. It heads one VP and takes the lexical VP “studying the menu” as its complement. Only the first verb in the sequence carries the tense feature.');
+        '“Is” is a progressive auxiliary. It heads a VP. The lexical VP “studying the menu” is its complement. “Is” is the only verb here that carries tense.');
       heading('What you’ll see in this chapter');
       const list = el('ul');
       for (const outcome of lesson.outcomes) list.append(el('li', outcome.text));
       body.append(list);
     }
     if (section.id === 'concepts') {
-      p('In an auxiliary chain, the lexical verb comes after the auxiliaries. Each auxiliary is the head of its own VP, and its complement is the next VP. The last VP is the lexical one: the verb plus its own complements.');
+      p('Find the lexical verb at the end of the chain. It heads the innermost VP, which holds any complements of that verb. Work back from there. Each auxiliary heads a bigger VP that holds the one you just found.');
       example('Mara [should] [have] [packed the lantern].');
       const feedback = status();
       body.append(practiceQuestion('chain-heads', 'In “should have packed the lantern”, which verb carries tense?', [
@@ -173,24 +173,24 @@ export const auxiliariesPilot = {
         ['Find the lexical VP', studying, 'vp2', 'The inner VP “studying the menu” is headed by V [trans] and holds the object NP.'],
       ]);
       heading(repair.buildTitle);
-      p('The tree below shows “Mara should have packed the lantern” with one branch detached. Connect the VP “have packed the lantern” to the outer VP headed by “should”. Drag from the connection point on the outer VP or use Guide me, then select Check my tree.');
+      p('One branch is missing from the tree. Connect “have packed the lantern” to the VP headed by “should”. Drag from that parent node or choose Guide me. Then select Check my tree.');
       addBranchExercise(body, ui, repair);
     }
     if (section.id === 'chain') {
-      p('Count the auxiliaries to find how many VPs stack. In “should have packed”, two auxiliaries give two auxiliary VPs above the lexical VP, for three layers in all. The tense feature sits only on the first.');
+      p('Count the auxiliaries in “should have packed”. “Should” and “have” each head a VP. “Packed” heads the lexical VP inside them. That makes three VPs. Only the first verb carries tense.');
       example('Mara [should] [have] [packed the lantern].');
-      p('Only the first verb is tensed. If you place the tense on “have” or “packed”, the tree no longer matches the book’s convention.');
+      p('Follow the three steps below to see how each VP fits inside the one above it.');
       trace('Trace each auxiliary layer', [
         ['Find MOD', chain, 'modal', 'MOD “should” [past] is the highest verb. It is the only tensed verb in the sequence.'],
         ['Find PERF', chain, 'perfect', 'PERF “have” heads the next VP. It is untensed and takes the lexical VP as its complement.'],
         ['Find the lexical VP', chain, 'vp3', 'V [trans] “packed” heads the lowest VP with the object NP “the lantern”.'],
-        ['Read the whole chain', chain, 'vp1', 'Each auxiliary VP sits directly above the next. Only the first verb, “should”, carries tense.'],
+        ['Read the whole chain', chain, 'vp1', 'Each auxiliary heads a VP that holds the next one. Only the first verb, “should”, carries tense.'],
       ]);
-      p('The order is modal (MOD), perfect (PERF), progressive (PROG), then passive (PASS), followed by the lexical verb. A chain can skip any auxiliary it does not need.');
-      p('Each auxiliary determines the next verb’s form. A modal takes the bare form, as in “might write”. Perfect “have” takes a participle, as in “has written”. Progressive “be” takes an -ing form, as in “is writing”. Passive “be” takes a passive participle, as in “was written”.');
+      p('Read the possible slots in order. Modal (MOD) comes first, then perfect (PERF), progressive (PROG), and passive (PASS). The lexical verb comes last. A sentence can skip any auxiliary slot it does not need.');
+      p('Look at the verb right after each auxiliary. A modal takes the plain verb form, as in “might write”. Perfect “have” takes a past participle, as in “has written”. Progressive “be” takes an -ing form, as in “is writing”. Passive “be” takes a passive participle, as in “was written”.');
     }
     if (section.id === 'adverbials') {
-      p('Adverbials can appear inside the chain too. The book follows two working rules. For these examples, an adverbial before a verb modifies the following VP, and a final adverbial attaches to the lexical VP. Some final time phrases have wider scope.');
+      p('Look for which VP an adverbial goes with. In these examples, an adverbial before a verb goes with the following VP. One at the end usually goes with the lexical VP. Some time phrases at the end go with a higher VP.');
       example('That hippo [could] [easily] [have] [killed me].');
       trace('Place an adjunct inside the auxiliary chain', [
         ['Find the pre-verb adverbial', hippo, 'ease', 'The AdvP “easily” comes before “have”, so it attaches beside the PERF VP — the next VP below it.'],
@@ -201,13 +201,13 @@ export const auxiliariesPilot = {
         ['Attach the final PP', theyFull, 'fun', '“For the fun of it” is a sentence-final adverbial. It modifies the lexical VP “complaining”.'],
         ['Compare a bare lexical VP', they, 'vp3', 'Without the adverbial the lexical VP is just “complaining”. The PP is an optional adjunct here.'],
       ]);
-      p('A time adverbial can behave differently. In “They were going to India next week last week”, the final “last week” modifies the higher past-tense PROG VP, while “next week” stays with the lexical VP. That exception shows why position alone does not decide scope.');
+      p('In “They were going to India next week last week”, start with “next week”. It tells when the trip was set to happen and goes with the lexical VP. “Last week” tells when that plan held. It goes with the higher past-tense PROG VP. What a time phrase means can help you find its scope.');
     }
     if (section.id === 'passive') {
-      p('Passive “be” also heads a VP and takes a VP complement. Compare the subject and object in these two sentences.');
+      p('Passive “be” heads its own VP. It takes another VP as its complement. Look for “the statue” in both sentences.');
       example('The curator moved [the statue].');
       example('[The statue] was moved by the curator.');
-      p('The active object “the statue” becomes the passive subject. The dot marks the object position that is now empty. “Moved” keeps its [trans] feature. The optional “by” phrase names the person who moved the statue.');
+      p('“The statue” is the object in the active sentence and the subject in the passive sentence. A dot marks the empty object position in the passive tree. “Moved” still has [trans]. The optional “by” phrase tells who moved the statue.');
       trace('Compare the active object and passive gap', [
         ['Find the active object', active, 'object', '“The statue” is the object NP beside V in the active VP.'],
         ['Find the passive subject', passive, 'subject', '“The statue” is the subject NP. “Was” heads the higher VP as PASS [past].'],
@@ -215,18 +215,18 @@ export const auxiliariesPilot = {
       ]);
     }
     if (section.id === 'negation') {
-      p('To negate a sentence, put “not” (often contracted to “n’t”) after the first auxiliary. The auxiliary carries the tense, so “not” has a tensed head to attach to.');
+      p('To make a sentence negative, put “not” after the first auxiliary. “Not” can shorten to “n’t”. In the tree it goes with the auxiliary that carries tense.');
       example('Byron [would] [not] [dance].');
-      p('If there is no auxiliary, English supplies one: an empty “do” under a TENSE node. The “do” carries tense and negation, and the lexical verb stays untensed.');
+      p('With a lexical verb like “dance”, English uses do-support if there is no auxiliary. In the tree, the TENSE node holds “do”. “Do” carries tense and goes with “not”. The lexical verb stays untensed.');
       example('Byron [did] [not] [dance].');
       trace('Compare an auxiliary and an empty do', [
         ['Mark the tensed MOD', would, 'negation', 'MOD “would” [past] heads the highest VP. “Not” attaches to it, and “dance” is an untensed lexical verb.'],
         ['Mark the empty do', did, 'support', 'No auxiliary is available, so an empty “do” under TENSE [past] carries the negation. V “dance” stays untensed.'],
       ]);
-      p('“Be” is special. As a lexical verb it still behaves like an auxiliary, so negation and questions use “be” itself rather than do-support.');
+      p('Lexical “be” behaves like an auxiliary here. Use “be” itself in a negative sentence or a question.');
     }
     if (section.id === 'questions') {
-      p('Fronting moves the tense-carrying element before the subject in a yes/no question. It goes under C and leaves a gap in its original position. If the sentence has an auxiliary or “be”, that word moves. If not, empty “do” moves and the lexical verb stays untensed.');
+      p('To make a yes/no question, move the word that carries tense in front of the subject. This is fronting. Put it under C and mark its old spot with a gap. An auxiliary or “be” can move there. If there is neither, use “do”. The lexical verb stays untensed.');
       example('Was Byron dancing?');
       example('Does Byron dance?');
       trace('Front an auxiliary and front do-support', [
@@ -234,12 +234,12 @@ export const auxiliariesPilot = {
         ['Front the empty do', dances, 'complementiser', '“Do” from the TENSE node moves to C. The gap is under TENSE [pres]. The lexical verb “dance” stays in place and is untensed.'],
         ['Front as a copula', kubla, 'complementiser', 'With “be” the lexical verb itself moves to C. It leaves a gap under V and keeps “extravagant” as a subject predicative.'],
       ]);
-      p('C stands for complementiser, the front position that holds the fronted verb in these yes/no questions. S′ (printed “S-bar”) is the layer that groups C with the smaller S.');
+      p('C is the complementiser position. It holds the verb that moves to the front in these questions. The S′ layer, read “S-bar”, groups C with S.');
     }
     if (section.id === 'recap') {
-      p('Start by counting the verbs. Each auxiliary is the head of its own VP and takes the next VP as complement, so a chain of auxiliaries stacks one VP above the next. Only the first verb in the sequence carries the tense feature.');
-      p('MOD comes before PERF, which comes before PROG, which comes before PASS. Place adverbials by their position and role: a pre-verb adverbial modifies the next VP, and a sentence-final adverbial attaches to the lexical VP unless a time adverbial modifies a higher, tensed auxiliary VP.');
-      p('Negate by putting “not” after the first auxiliary, or use empty “do” under TENSE when no auxiliary is present. Questions front that same tense-carrier to C, leaving a gap behind.');
+      p('Start with the lexical VP. Then work outward. Each auxiliary heads its own VP and takes the next VP as its complement. Only the first verb carries tense.');
+      p('Remember the order MOD, PERF, PROG, PASS. Look at what each adverbial goes with. An adverbial before a verb can go with the next VP. One at the end often goes with the lexical VP. Some final time phrases go with a higher VP that carries tense.');
+      p('“Not” goes after the first auxiliary. Use do-support under TENSE if a verb like “dance” has no auxiliary. In a yes/no question, move the word that carries tense to C and leave a gap.');
     }
   },
 };

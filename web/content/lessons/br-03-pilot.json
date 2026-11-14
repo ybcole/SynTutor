@@ -5,15 +5,15 @@
   "outcomes": [
     {
       "id": "o1",
-      "text": "Distinguish a word’s category from the category of the whole phrase."
+      "text": "Tell the kind of word from the kind of whole phrase."
     },
     {
       "id": "o2",
-      "text": "Find the heads of adjective, adverb and prepositional phrases."
+      "text": "Find the heads of adjective, adverb, and prepositional phrases."
     },
     {
       "id": "o3",
-      "text": "Identify what is joined in a simple coordination and label the whole group."
+      "text": "Find the groups joined in coordination and name the kind of whole group."
     }
   ],
   "revised_assessment": {

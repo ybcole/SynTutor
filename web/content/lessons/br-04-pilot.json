@@ -5,15 +5,15 @@
   "outcomes": [
     {
       "id": "o1",
-      "text": "Find the lexical verb and separate the subject from the immediate parts of the basic VP."
+      "text": "Find the subject and the lexical verb. Then find the parts right under the basic VP."
     },
     {
       "id": "o2",
-      "text": "Compare six verb patterns by the number and functions of their complements."
+      "text": "Compare six verb patterns by counting complements and naming their jobs."
     },
     {
       "id": "o3",
-      "text": "Explain what a predicative describes and distinguish a PP complement from an optional location."
+      "text": "Say what a predicative describes. Tell a PP complement from an optional place."
     }
   ],
   "preview_sources": [

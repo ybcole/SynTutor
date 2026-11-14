@@ -35,7 +35,7 @@ function trace(body, { el, button, showDiagram }) {
   const caption = el('p');
   note.append(caption);
   const steps = [
-    ['Find the two sisters', topSplit, 'sentence', 'S branches directly to the subject NP and predicate VP. The triangles leave their internal branches hidden.'],
+    ['Find the two sisters', topSplit, 'sentence', 'From S, one branch leads to the subject NP and one leads to the predicate VP. The triangles stand for the words inside each phrase.'],
     ['Trace the subject NP', twoNps, 'subject', 'In “Mira checked the lantern”, “Mira” is the NP directly under S. It is the subject.'],
     ['Trace the NP inside VP', twoNps, 'object', '“The lantern” is also an NP. Its parent is VP, so it belongs inside the predicate.'],
   ];
@@ -123,14 +123,14 @@ export const functionsPilot = {
     { id: 'closing-check', title: 'Check what you learned', assessment: true },
   ],
   keyTerms: [
-    ['Subject', 'The group that a predicate is paired with. In a simple English statement, it typically comes before the predicate.'],
-    ['Predicate', 'The part of a clause that says what the subject does, what happens to it, or what state it is in.'],
-    ['Category', 'The grammatical kind of a word or phrase, such as noun phrase or verb phrase.'],
-    ['Function', 'The grammatical role a group has in its structure, such as subject or predicate.'],
-    ['Sister nodes', 'Nodes that share the same immediate parent.'],
-    ['Head', 'The central element that determines a phrase’s category.'],
-    ['Modifier', 'An element that adds information about another element.'],
-    ['Complement', 'An element that fills a role required or licensed by a head in a particular construction.'],
+    ['Subject', 'The part paired with the predicate. It usually comes first in a simple English statement.'],
+    ['Predicate', 'The part that tells what the subject does, what happens to it, or what it is like.'],
+    ['Category', 'The kind of word or phrase, such as noun phrase or verb phrase.'],
+    ['Function', 'The job a word or group does, such as subject or predicate.'],
+    ['Sister nodes', 'Nodes that share the same parent.'],
+    ['Head', 'The main word that gives a phrase its category.'],
+    ['Modifier', 'A word or group that adds a detail about another word or group.'],
+    ['Complement', 'A word or group that fills a role its head calls for in that use.'],
   ],
   teach(body, page, ui) {
     const { el, button, lesson } = ui;
@@ -139,20 +139,20 @@ export const functionsPilot = {
     const example = text => body.append(lessonExample(el, text));
 
     if (page === 0) {
-      p('Chapter 1 showed how smaller groups fit inside larger ones. To analyse a whole statement, start at the top. The subject is the part paired with the predicate. The predicate tells what the subject does, what happens to it, or what state it is in. In “The lantern glows”, “the lantern” is the subject and “glows” is the predicate.');
+      p('Chapter 1 showed how words form groups. Now look at the two main parts of a statement. The subject is the part paired with the predicate. The predicate tells what the subject does, what happens to it, or what it is like. In “The lantern glows”, “the lantern” is the subject and “glows” is the predicate.');
       addIntroExample(body, el, 'Adding words to each group keeps the same two-part pattern.',
         '[The lantern by the stairs] [is glowing].',
-        'The first group identifies the lantern. The second says what it is doing. Subject and predicate are functions, the jobs these groups do. The category of each group tells what kind of phrase it is.');
+        'The first group names the lantern. The second says what it is doing. Subject and predicate are functions, or jobs. Category tells what kind of phrase each group is.');
       heading('What you’ll see in this chapter');
       const list = el('ul');
       for (const outcome of lesson.outcomes) list.append(el('li', outcome.text));
       body.append(list);
     }
     if (page === 1) {
-      p('Where does the subject end when it contains more than a noun? Compare the statement with its yes/no question.');
+      p('A subject can be longer than one word. Compare the statement with its yes/no question to find where the subject ends.');
       example(`${lantern}.`);
       example('Is the lantern by the stairs glowing?');
-      p('In the question, “is” comes before the complete subject. “Glowing” follows the subject in the question. In the statement, “is glowing” is the complete predicate. Select the last word of the subject in the statement.');
+      p('In the question, “is” comes before the whole subject and “glowing” comes after it. In the statement, “is glowing” is the whole predicate. Pick the last word of the subject in the statement.');
       const words = el('div', undefined, 'lesson-tree-steps');
       const feedback = el('div', undefined, 'lesson-tree-observation');
       feedback.setAttribute('role', 'status');
@@ -173,23 +173,23 @@ export const functionsPilot = {
       body.append(words, feedback);
     }
     if (page === 2) {
-      p('A noun phrase (NP) is centred on a noun, such as “lantern”. A verb phrase (VP) is centred on a verb. In the first tree, the NP and VP share S, the sentence node, as their immediate parent. Nodes with the same immediate parent are sisters.');
-      p('Now compare a statement with two NPs. Follow each NP up one branch to see which function its position supports.');
+      p('A noun phrase (NP) is built around a noun, such as “lantern”. A verb phrase (VP) is built around a verb. In the first tree, both phrases sit right under S, the sentence node. S is their parent. Nodes that share a parent are sisters.');
+      p('Next, look at a sentence with two NPs. Follow one branch up from each NP. Its parent helps show what job the NP does.');
       trace(body, ui);
       heading('Repair one branch');
       example(`${repairSentence}.`);
-      p('Attach the detached NP “the lantern” to VP so it shares a parent with “checked”. Use Guide me for help with the branch.');
+      p('Attach “the lantern” to VP. The NP and “checked” should share that parent. Choose Guide me if you need help.');
       repair(body, ui);
     }
     if (page === 3) {
-      p('The subject NP and predicate VP work together in the statements above. Inside a phrase, a head is the central element that gives the phrase its category. Compare what happens when two different parts are left out.');
+      p('Inside a phrase, the head is the main word. It gives the phrase its category, or type. To see what the other parts do, try leaving out one part at a time.');
       example('Tessa repaired a loose hinge.');
-      p('Within the group “a loose hinge”, “hinge” is the head. “Loose” is a modifier because it adds a description, and “Tessa repaired a hinge” still describes a repair. The whole group “a loose hinge” is a complement of “repaired” because it fills the role of the thing repaired in this sentence.');
+      p('In “a loose hinge”, “hinge” is the head. “Loose” is a modifier because it adds a detail. “Tessa repaired a hinge” still makes sense without it. The whole NP “a loose hinge” is a complement of “repaired”. It tells what Tessa repaired.');
       example('Ava slipped beside the counter.');
-      p('Inside the location phrase, “beside” and “the counter” are sisters. The location can be omitted as a whole. The landmark “the counter” is still a complement of “beside” in this reading. It supplies what the location is beside.');
+      p('“Beside” and “the counter” share a parent. You can leave out the whole location. If you keep “beside” with this meaning, “the counter” fills the complement role. It tells what the location is beside.');
       heading('Try a new sentence');
       example('Leo tightened a loose bolt.');
-      p('Write the subject and predicate. Then identify what “loose” modifies and which group completes “tightened”.');
+      p('Write the subject and predicate. Then say which word “loose” describes and which group tells what Leo tightened.');
       const hint = el('details', undefined, 'lesson-sources');
       hint.append(el('summary', 'Hint'), el('p', 'Compare “Leo tightened a bolt” with the original. Which word can disappear while the thing being tightened is still named?'));
       body.append(hint);
@@ -218,9 +218,9 @@ export const functionsPilot = {
       body.append(practice);
     }
     if (page === 4) {
-      p('Start with the largest groups. Use the yes/no question to check the full subject boundary, then read the predicate in the original statement.');
-      p('Identify each group’s category and follow its branch to its parent. The NP directly under S is the subject in the trees here. An NP under VP has a different job.');
-      p('Within a phrase, compare sisters. A modifier adds information that can often be omitted. A complement fills a role licensed by the head in that construction. Check the same reading each time you change the example.');
+      p('Find the biggest groups first. Use a yes/no question to check where the subject ends. Then go back to the statement to find the whole predicate.');
+      p('Name each group’s category, then find its parent. In these trees, the NP directly under S is the subject. The NP under VP has its own job.');
+      p('Compare the sisters inside a phrase. A modifier adds a detail you can often leave out. A complement fills a role the head calls for. Keep the same meaning when you test what happens if you leave words out.');
     }
   },
 };

@@ -65,11 +65,11 @@ export const embeddedClausesPilot = {
     { id: 'closing-check', title: 'Check what you learned', assessment: true },
   ],
   keyTerms: [
-    ['Main clause', 'The highest clause in a sentence. It can contain smaller clauses.'],
-    ['Embedded clause', 'A clause that forms part of a larger grammatical structure. It is also called a subordinate clause.'],
-    ['Complementiser (C)', 'An introductory word such as “that” or “whether”, or the position that holds it in the tree.'],
-    ['Extraposed subject', 'A clause that occurs at the end of a sentence while dummy “it” fills the subject position.'],
-    ['Adverbial clause', 'A clause that adds a relation such as reason or condition to an event or whole statement.'],
+    ['Main clause', 'The highest clause in a sentence. It can hold smaller clauses.'],
+    ['Embedded clause', 'A clause inside a larger structure. It is also called a subordinate clause.'],
+    ['Complementiser (C)', 'A word such as “that” or “whether” that starts a subordinate clause. C is its spot in the tree.'],
+    ['Extraposed subject', 'A subject clause that moves to the end. Dummy “it” fills the subject spot.'],
+    ['Adverbial clause', 'A clause that can tell when or why something happens, or give a condition. It can apply to an event or a whole statement.'],
   ],
   teach(body, _page, ui) {
     const { el, lesson, section } = ui;
@@ -79,10 +79,10 @@ export const embeddedClausesPilot = {
 
     switch (section.id) {
       case 'introduction': {
-        p('Chapter 7 showed how one nominal can contain another. The same pattern can occur with clauses. An embedded clause forms part of a larger grammatical structure. The main clause is the highest clause. It includes the material embedded within it.');
+        p('In Chapter 7, one nominal could sit inside another. A clause can sit inside another group, too. A clause inside a larger structure is an embedded clause. The main clause is the highest clause. It includes the clauses inside it.');
         addIntroExample(body, el, 'The brackets mark the complete content of Leo’s report.',
           'Leo says [that Nora is inspecting the bridge].',
-          'Inside the report, “Nora” is the subject and “is inspecting the bridge” is its predicate. The word “that” introduces this embedded clause.');
+          'Find the smaller clause in the brackets. “Nora” is its subject. “Is inspecting the bridge” is its predicate. “That” starts the embedded clause.');
         body.append(el('h3', 'What you’ll see in this chapter'));
         const list = el('ul');
         for (const outcome of lesson.outcomes) list.append(el('li', outcome.text));
@@ -90,35 +90,35 @@ export const embeddedClausesPilot = {
         break;
       }
       case 'concepts':
-        p('In a report, the words reporting what happened sit inside the clause that contains the reporting verb.');
+        p('In a report, first find the reporting verb. Then find the smaller clause that tells what was reported.');
         example('Leo says [that Nora is inspecting the bridge].');
         p('Compare “Leo spoke and Nora inspected the bridge”. Here “and” joins two clauses at the same level. Each describes a separate event.');
-        p('A clause can also contain another clause that has an embedded clause of its own. In this example, start at the deepest bracket and follow each report outward.');
+        p('A clause inside a report can hold another clause. Start with the innermost brackets in this example. Work outward from one report to the next.');
         example('Maya thinks [Leo said [Nora closed the gate]].');
-        p('“Closed” heads the clause reporting Nora’s action. That action is the content of what Leo “said”. The whole group starting at “Leo” supplies what Maya “thinks”. The main clause starts at “Maya” and includes both reports.');
+        p('Start with what Nora did. Leo “said” she closed something. The group starting at “Leo” tells what Maya “thinks”. The main clause begins at “Maya” and holds both smaller reports.');
         break;
       case 'worked-example': {
-        p('A complementiser introduces a subordinate clause. C is its position in the tree. S contains the subject and predicate. The higher layer S′, read “S-bar”, groups C with S.');
+        p('A complementiser introduces a subordinate clause. It goes in C. The subject and predicate go under S. S′, read “S-bar”, is the node above C and S.');
         example('Leo says [that [Nora is inspecting the bridge]].');
-        p('In this report, “that” fills C. In “that bridge”, it is a demonstrative inside the NP, as in Chapter 7.');
+        p('In this report, “that” goes in C. In “that bridge”, “that” is a demonstrative inside an NP. The same word can have a different job.');
         const overt = lesson.worked_example.tree;
         trace('Compare three ways to introduce an embedded clause', [
-          ['Find overt “that”', overt, overt.root.children[0].id, '“That” occupies C, beside S under S′.'],
+          ['Find overt “that”', overt, overt.root.children[0].id, '“That” fills C. C and S sit side by side under S′.'],
           ['Find the unfilled C', implicit, 'intro', '“Leo says Nora is inspecting the bridge” keeps the same inner S. The C branch has no word.'],
           ['Find interrogative “whether”', whether, 'intro', 'In “Leo asked whether Nora was inspecting the bridge”, C contains “whether”. Inside S, the subject “Nora” comes before “was”.'],
         ]);
-        p('A standalone question begins “Was Nora inspecting the bridge?” In the embedded question, “whether” already occupies C, so “was” stays after the subject.');
+        p('The direct question starts with “was”. In the embedded question, “whether” fills C. “Was” stays after the subject.');
         body.append(el('h3', repair.buildTitle));
-        p('Drag from S′ to the detached C branch, or use Guide me. Then select Check my tree.');
+        p('Drag a branch from S′ to C, or choose Guide me. Then select Check my tree.');
         addBranchExercise(body, ui, repair);
         break;
       }
       case 'clausal-subjects-and-objects':
-        p('The completed S′ can fill different roles. In the first example, the bracketed clause identifies what surprised Mina. It is a clausal subject, shown inside the subject NP.');
+        p('An S′ can do different jobs. In the first example, the bracketed clause tells what surprised Mina. It is a clausal subject, so it sits inside the subject NP.');
         example('[That the latch jammed] surprised Mina.');
-        p('A speaker can move the subject clause to the end and put dummy “it” in the subject slot. The relocated clause is called an extraposed subject.');
+        p('You can move the subject clause to the end and fill the subject spot with dummy “it”. “It” fills the spot without naming anything. The clause at the end is an extraposed subject.');
         example('It surprised Mina [that the latch jammed].');
-        p('Compare a report of what Mina noticed. Here the clause fills the verb’s direct-object position.');
+        p('Now look at what Mina noticed. The whole clause is the direct object of “noticed”.');
         example('Mina noticed [that the latch jammed].');
         trace('Compare three functions of the same clause', [
           ['Find the clausal subject', subject, 'clausal-np', 'The subject NP contains S′. It is a sister of the predicate VP under main S.'],
@@ -127,20 +127,20 @@ export const embeddedClausesPilot = {
         ]);
         break;
       case 'clausal-complements':
-        p('A clause can complete an adjective, noun or preposition. Find the head that the clause supplies information for in each example.');
+        p('A clause can complete an adjective, a noun, or a preposition. In each example, find the head that takes the clause as its complement.');
         example('Certain [that the latch jammed] · the claim [that the latch jammed] · about [whether the latch jammed]');
         trace('Find the host of each clausal complement', [
           ['Trace the adjective', adjective, 'embedded', 'S′ completes “certain”. A and S′ are sisters within AP.'],
           ['Trace the noun', noun, 'embedded', 'The clause gives the content of the claim. N and S′ are sisters within NOM.'],
           ['Trace the preposition', preposition, 'embedded', '“Whether the latch jammed” is the complement of “about”. P and S′ are sisters within PP.'],
         ]);
-        p('A clause can also function as a subject predicative. In “The question is whether the latch jammed”, S′ attaches directly beside “is” within VP.');
+        p('A clause can also be a subject predicative. In “The question is whether the latch jammed”, the clause tells what the question is. S′ sits right beside “is” inside VP.');
         break;
       case 'adverbial-clauses': {
-        p('A clause can be part of an optional time or reason expression. First check what introduces it.');
+        p('A clause can help tell when or why something happened. Look at the first word to see how the expression is built.');
         example('Mina waited [after the gate closed].');
         example('Mina waited [because the gate jammed].');
-        p('Temporal “after” is a preposition here. It takes S as its complement, and together they form a PP. “Because” is a subordinating conjunction. It fills C and makes an adverbial clause that supplies a reason.');
+        p('Here, “after” tells when something happened. It is a preposition that takes S as its complement. Together they make a PP. “Because” is a subordinating conjunction. It fills C and introduces an adverbial clause that tells why something happened.');
         const feedback = el('p', undefined, 'lesson-feedback');
         feedback.setAttribute('role', 'status');
         body.append(ui.practiceQuestion('reason-attachment', 'Which group attaches beside the basic VP in the reason example?', [
@@ -155,11 +155,11 @@ export const embeddedClausesPilot = {
           ['Trace the time PP', time, 'added', 'The PP is a sister of the basic VP. Inside it, P “after” takes S directly.'],
           ['Trace the reason S′', reason, 'embedded', 'The whole S′ is a sister of the basic VP. Inside it, C “because” introduces S.'],
         ]);
-        p('Some adverbial clauses apply to the whole statement. In “In case there is any doubt, the gate is locked”, the first clause explains why the speaker is making the statement.');
+        p('Some adverbial clauses go with the whole statement. In “In case there is any doubt, the gate is locked”, the first clause tells why the speaker says the gate is locked.');
         break;
       }
       case 'application': {
-        p('Find what Ria heard. Then find the embedded question inside what she heard. Choose the two words where the embedded clauses start.');
+        p('Find what Ria heard. Then find the question inside that report. Choose the two words that start the embedded clauses.');
         example('Ria heard that Ivo wondered whether the hall was open.');
         const feedback = el('p', undefined, 'lesson-feedback');
         feedback.setAttribute('role', 'status');
@@ -181,9 +181,9 @@ export const embeddedClausesPilot = {
         break;
       }
       case 'recap':
-        p('Start with the main clause and locate the complete spans inside it. In a report, S′ covers C and S. C may contain “that” or “whether”, or be unfilled in a report such as “Leo says Nora is inspecting the bridge”.');
-        p('Then ask which job the clause does. The clause about the latch can be the subject of “surprised Mina”, or the object of “noticed”. It can also complete a noun, as in “the claim that the latch jammed”.');
-        p('For an optional time or reason expression, inspect the first word. Temporal “after” can head a PP containing S. “Because” introduces an adverbial S′.');
+        p('Find the main clause, then mark every word in each embedded clause. In a report, S′ groups C and S. C can hold “that” or “whether”. It can also be empty, as in “Leo says Nora is inspecting the bridge”.');
+        p('Ask what the clause does. The clause about the latch can tell what surprised Mina or what she noticed. It can also give the content of a noun, as in “the claim that the latch jammed”.');
+        p('For a time or reason expression, start with the first word. “After” can head a PP that contains S. “Because” fills C in an adverbial S′.');
         break;
     }
   },

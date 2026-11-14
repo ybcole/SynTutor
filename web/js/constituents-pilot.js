@@ -59,12 +59,12 @@ export const constituentsPilot = {
     { id: 'closing-check', title: 'Check what you learned', assessment: true },
   ],
   keyTerms: [
-    ['Constituent', 'A word or group of words that works as a unit in a particular expression.'],
-    ['Phrase', 'A sequence of words that can function as a unit.'],
-    ['Hierarchy', 'The arrangement of smaller units within larger ones.'],
-    ['Phrase marker', 'A tree diagram that represents how an expression is grouped.'],
-    ['Dominance', 'A node dominates the elements it reaches by following branches downward. Immediate dominance takes just one branch.'],
-    ['Structural ambiguity', 'Two or more interpretations that arise from different groupings of the same words.'],
+    ['Constituent', 'A word or group of words that works as one unit.'],
+    ['Phrase', 'A group of words that works as one unit. A phrase can also be just one word.'],
+    ['Hierarchy', 'The way small groups fit inside bigger groups.'],
+    ['Phrase marker', 'A tree that shows which words belong together.'],
+    ['Dominance', 'A node dominates what its branches reach below it. It immediately dominates what it reaches in one branch.'],
+    ['Structural ambiguity', 'When the same words can mean different things because they group in different ways.'],
   ],
   teach(body, page, ui) {
     const { el, lesson } = ui;
@@ -78,49 +78,49 @@ export const constituentsPilot = {
     };
 
     if (page === 0) {
-      paragraph('A constituent is a word or group of words that works as one unit in an expression. A phrase is a sequence of words that can work as a unit. A phrase can contain another phrase, and this arrangement of smaller groups inside larger ones is called hierarchy.');
+      paragraph('A constituent is a word or group of words that works as one unit. A phrase is a group of words that works as a unit, too. One phrase can sit inside another. This way of arranging small groups inside bigger groups is called hierarchy.');
       addIntroExample(body, el, 'The brackets mark where Mina paused and the landmark inside that location.',
         'Mina paused [near [the stone arch]].',
-        'The inner group names the landmark. Adding “near” makes a larger group that specifies the location.');
+        '“The stone arch” names the landmark. Add “near” and you get a bigger group that tells where Mina paused.');
       heading('What you’ll see in this chapter');
       const list = el('ul');
       for (const outcome of lesson.outcomes) list.append(el('li', outcome.text));
       body.append(list);
     }
     if (page === 1) {
-      paragraph('The brackets in the introduction propose two groups. To see whether those boundaries fit the sentence, try changing one group at a time.');
+      paragraph('The brackets suggest two groups. Try changing one group at a time to see which words belong together.');
       example(sentence);
       heading('Omit the location or replace it');
-      paragraph('“Mina paused” is still a complete sentence. The location is optional here, and leaving it out as a whole supports the proposed boundary. “Mina paused there” gives another clue. One word, “there”, takes the place of “near the stone arch”.');
+      paragraph('First, leave out “near the stone arch”. “Mina paused” is still a complete sentence. Now put “there” in its place. In “Mina paused there”, one word stands for the whole location.');
       heading('Find the smaller group');
-      paragraph('Keep “near” and replace the landmark instead. In “Mina paused near it”, “it” stands for “the stone arch”. Ask what Mina paused near and the answer is “the stone arch”. Ask where Mina paused and the answer is “near the stone arch”. The answers have different boundaries.');
+      paragraph('This time, keep “near”. In “Mina paused near it”, “it” stands for “the stone arch”. Ask “What did Mina pause near?” The answer is “the stone arch”. Ask “Where did Mina pause?” The answer is “near the stone arch”. The second answer includes one more word.');
       heading('Check the same words in a longer sentence');
       example('Mina paused near the stone arch that spans the canal.');
-      paragraph('Suppose the last words identify which arch Mina paused near. Then the answer to what Mina paused near is “the stone arch that spans the canal”. The shorter location phrase from the first sentence ends too early for this reading.');
+      paragraph('Suppose “that spans the canal” tells which arch Mina paused near. Then the answer to “What did Mina pause near?” is “the stone arch that spans the canal”. The whole location now includes those extra words.');
       disclosure('Try the question test', 'Where did Mina pause? “Near the stone arch that spans the canal.” The longer landmark sits inside the longer location phrase.');
     }
     if (page === 2) {
-      paragraph('A phrase marker is a tree diagram that shows how an expression is grouped. A node is a point in the tree where branches can meet and a label can appear. PHRASE-a names the outer group in this drawing. PHRASE-b names the group inside it.');
+      paragraph('A phrase marker is a tree that shows which words belong together. A node is a point on the tree. It can have a label and branches below it. Here, PHRASE-a labels the big group. PHRASE-b labels the smaller group inside it.');
       example(sentence);
-      paragraph('A node dominates the elements its branches reach below it. It immediately dominates the elements it reaches in one branch. Use both drawings to see whether the three landmark words have a node of their own.');
+      paragraph('A node dominates everything its branches reach below it. It immediately dominates anything it reaches in one branch. In each tree, look for a node that reaches just the three words naming the landmark.');
       const nested = locationTree(true);
       comparison(body, ui, 'Compare the phrase markers', [
         { label: 'Trace the flat drawing', step: 1, tree: locationTree(false), focusId: 'PHRASE-a',
-          caption: 'All four words join PHRASE-a directly. The drawing gives the landmark words no node of their own.' },
+          caption: 'All four words sit right under PHRASE-a. There is no smaller node for the landmark.' },
         { label: 'Trace the landmark', step: 2, tree: nested, focusId: 'PHRASE-b',
-          caption: 'PHRASE-b reaches all and only “the stone arch”. The replacement and question tests support that grouping.' },
+          caption: 'PHRASE-b reaches exactly three words, “the stone arch”. That is the group you found with the tests.' },
         { label: 'Trace the outer phrase', step: 3, tree: nested, focusId: 'PHRASE-a',
-          caption: 'PHRASE-a immediately dominates “near” and PHRASE-b. It reaches the landmark words indirectly through PHRASE-b.' },
+          caption: 'PHRASE-a immediately dominates “near” and PHRASE-b. To reach the landmark words, follow another branch down from PHRASE-b.' },
       ]);
-      paragraph('A triangle can stand for a whole group when its internal branches are left unexpanded. Here the landmark’s branches are open so each word can be traced.');
+      paragraph('A triangle stands for a whole group. It hides the branches inside that group. Here, the branches are drawn so you can follow them to each word.');
       heading('Repair a flat tree');
-      paragraph('In “beside the red gate”, give the gate words a node of their own. Keep “beside” directly under the outer node. Use Guide me for help with the branches.');
+      paragraph('Put the words “the red gate” under their own node. Keep “beside” right under the outer node. Choose Guide me if you need help.');
       addConstituentTreeBuilder(body, ui);
     }
     if (page === 3) {
-      paragraph('Structural ambiguity occurs when different groupings of the same words lead to different readings. Look at the phrase “with binoculars” and decide who might have them.');
+      paragraph('The same words can have two meanings when they group in two ways. This is structural ambiguity. In the next example, who might have the binoculars?');
       example('Nina spotted the climber with binoculars.');
-      paragraph('The drawings show only the part of the sentence where the grouping changes. Follow “with binoculars” up one branch from PHRASE-c in each drawing.');
+      paragraph('The trees show the part where the grouping changes. In each tree, start at PHRASE-c and follow one branch up. See which group contains “with binoculars”.');
       comparison(body, ui, 'Compare the two readings', [
         { label: 'Nina used binoculars', tree: ambiguityTree(false), focusId: 'PHRASE-a',
           caption: 'The binoculars phrase joins the group that includes “spotted”. It describes how Nina spotted the climber.' },
@@ -129,7 +129,7 @@ export const constituentsPilot = {
       ]);
       heading('Try another sentence');
       example('Ivo sketched the guide with a pencil.');
-      paragraph('Describe both readings. For each one, say which group “with a pencil” belongs to.');
+      paragraph('Explain both meanings. In each one, which group does “with a pencil” belong to?');
       disclosure('Hint', 'Ask whether the pencil explains how the sketch was made or helps identify the guide.');
       const key = `syntutor:lesson-transfer:${ui.userId}:br-01@${lesson.content_version}:application`;
       const label = el('label', 'Your explanation');
@@ -158,9 +158,9 @@ export const constituentsPilot = {
       body.append(practice);
     }
     if (page === 4) {
-      paragraph('Start with a proposed group in a specific sentence. Omit it if the rest can stand on its own, replace it with a suitable word, or check which question the group answers. Moving a whole group can provide another clue. A sequence that sounds like a unit still needs checking in context.');
-      paragraph('Draw a boundary around the words that belong together. In a tree, trace a node down to all and only those words. One branch shows an immediate part. A route through another node shows a part inside a smaller group.');
-      paragraph('When the same words allow two readings, explain what changes in the grouping. Ask what the disputed phrase tells the reader in each interpretation, then trace where its branch joins.');
+      paragraph('Start with a group you think belongs together. Try leaving it out, replacing it, moving it, or asking a question it answers. Check what happens in that sentence.');
+      paragraph('Mark the words in the group. In a tree, follow the branches down from its node. They should reach exactly those words. One branch leads to an immediate part. More branches lead to parts inside that part.');
+      paragraph('If the same words have two meanings, show where the grouping changes. Ask what the phrase tells you each time. Then find where its branch joins the tree.');
     }
   },
 };

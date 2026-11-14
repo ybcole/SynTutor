@@ -5,15 +5,15 @@
   "outcomes": [
     {
       "id": "o1",
-      "text": "Explain that each auxiliary heads its own VP and takes a VP complement, and name the four auxiliary types (MOD, PERF, PROG, PASS)."
+      "text": "Show how each auxiliary heads a VP and takes the next VP as its complement. Name MOD, PERF, PROG, and PASS."
     },
     {
       "id": "o2",
-      "text": "Apply the rule that only the first verb of a sequence carries the tense feature."
+      "text": "Find the first verb in a chain and mark it for tense."
     },
     {
       "id": "o3",
-      "text": "Distinguish negation by not/n't on a tensed auxiliary from do-support, and explain how a question fronts the tense-carrying element to C, leaving a gap."
+      "text": "Use “not” with an auxiliary or with do-support. Show what moves to C in a question and where it leaves a gap."
     }
   ],
   "teaching": [

@@ -97,7 +97,7 @@ try:
         expect(outline.last.get_by_text('C1 (empty)', exact=True)).to_have_count(1)
         expect(outline.last.get_by_text('• (2)', exact=True)).to_have_count(1)
         next_page.click()
-        expect(view.get_by_text('In this pattern, P takes the S directly.', exact=False)).to_be_visible()
+        expect(view.get_by_text('Here, P takes S directly.', exact=False)).to_be_visible()
 
         page.set_viewport_size({'width': 390, 'height': 844})
         page.evaluate("document.documentElement.dataset.theme = 'dark'")

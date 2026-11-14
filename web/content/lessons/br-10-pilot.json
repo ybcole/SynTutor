@@ -5,15 +5,15 @@
   "outcomes": [
     {
       "id": "o1",
-      "text": "Distinguish four non-finite forms and locate the tense feature."
+      "text": "Tell the four non-finite forms apart. Find where [-tense] goes."
     },
     {
       "id": "o2",
-      "text": "Find overt and silent subjects, their controllers and the relevant C positions."
+      "text": "Find the overt or silent subject. Look for its controller and the front positions C1 and C2."
     },
     {
       "id": "o3",
-      "text": "Recognize non-finite clause functions and compare Type I and Type II complements."
+      "text": "Name the jobs of non-finite clauses. Tell Type I and Type II complements apart."
     }
   ],
   "preview_sources": [

@@ -55,12 +55,12 @@ export const nounPhrasesPilot = {
     { id: 'closing-check', title: 'Check what you learned', assessment: true },
   ],
   keyTerms: [
-    ['Determiner (DET)', 'The position for words such as “the”, “those”, “some” and “my”. They help indicate which things or how many are meant.'],
-    ['Nominal (NOM)', 'The layer within a noun phrase that contains the head noun and its modifiers.'],
-    ['Pre-determiner (PRE-DET)', 'An element such as “all” or “both” that can come before a determiner and combines with a full NP.'],
-    ['Pre-modifier', 'A modifier that comes before the head it modifies.'],
-    ['Post-modifier', 'A modifier that comes after the head it modifies.'],
-    ['Indefinite pronoun', 'A pronoun such as “someone” or “anyone” that refers without naming a specific person or thing.'],
+    ['Determiner (DET)', 'The place for words like “the”, “those”, “some”, and “my”. These words help tell which things or how many.'],
+    ['Nominal (NOM)', 'The part of an NP that holds the head noun and its modifiers.'],
+    ['Pre-determiner (PRE-DET)', 'A word such as “all” or “both” that can come before a determiner. It goes with the whole NP.'],
+    ['Pre-modifier', 'A modifier that comes before the head it describes.'],
+    ['Post-modifier', 'A modifier that comes after the head it describes.'],
+    ['Indefinite pronoun', 'A pronoun such as “someone” that refers to a person or thing without saying exactly who or what.'],
   ],
   teach(body, _page, ui) {
     const { el, lesson, section } = ui;
@@ -70,10 +70,10 @@ export const nounPhrasesPilot = {
 
     switch (section.id) {
       case 'introduction': {
-        p('Earlier trees used a triangle to show where a noun phrase (NP) fits. Now look inside the NP. The head noun names the kind of thing the phrase is about. The nominal (NOM) contains that noun and any modifiers of it. The determiner position (DET) can hold a word that helps specify which things or how many are meant.');
+        p('A triangle showed where an NP fit in earlier trees. Now look inside that noun phrase. The head noun names what kind of thing it is about. The nominal (NOM) holds the noun and any modifiers. The determiner position (DET) can hold a word that tells which things or how many.');
         addIntroExample(body, el, 'Imagine someone pointing to a group of baskets. The brackets mark the two parts of the NP.',
           '[Those] [baskets]',
-          '“Those” fills DET and points out the baskets. “Baskets” is the head noun and fills NOM by itself.');
+          '“Those” fills DET and tells which baskets. “Baskets” is the head noun. It fills NOM on its own.');
         body.append(el('h3', 'What you’ll see in this chapter'));
         const list = el('ul');
         for (const outcome of lesson.outcomes) list.append(el('li', outcome.text));
@@ -81,24 +81,24 @@ export const nounPhrasesPilot = {
         break;
       }
       case 'concepts': {
-        p('The determiner can change while the nominal stays the same. Compare the article “the”, the demonstrative “those”, the quantifier “some” and the possessive “my”. Each occupies the same DET position in these examples.');
+        p('Keep “baskets” and change the first word. “The” is an article, “those” is a demonstrative, “some” is a quantifier, and “my” is a possessive. Each fills DET here. The nominal stays the same.');
         example('The baskets · those baskets · some baskets · my baskets');
-        p('DET can also be empty. In “Baskets were stacked by the door”, the subject is a bare plural NP. It could take “the”, so the tree keeps a DET branch with no word. A mass noun such as “sand” can also occur with empty DET.');
+        p('Sometimes no word fills DET. “Baskets” is a bare plural NP in “Baskets were stacked by the door”. You could say “the baskets”. The tree shows an empty DET in the bare plural. A mass noun like “sand” can also have empty DET.');
         trace('Compare three ways to build an NP', [
           ['Find the article', article, 'determiner', '“The” is ART under DET. The noun remains under NOM.'],
           ['Find empty DET', bare, 'det', 'The DET branch ends without a word. NOM still contains “baskets”.'],
           ['Compare the pronoun', pronoun, 'pronoun', '“They” forms an NP on its own, as a name such as “Mina” can. Its tree has a single branch from NP.'],
         ]);
-        p('A possessive can be longer than one word. In “the maker’s baskets”, the NP “the maker” and the possessive ending form the determiner of “baskets”.');
+        p('A possessive can have several words. In “the maker’s baskets”, start with the NP “the maker”. It joins the possessive ending to make the determiner for “baskets”.');
         break;
       }
       case 'worked-example': {
-        p('Use the same split for another demonstrative phrase. “Those” is DEM under DET. Keep the noun “lanterns” under NOM.');
+        p('Try the same split with “those lanterns”. “Those” is a demonstrative (DEM) under DET. “Lanterns” goes under NOM.');
         example('[Those] [lanterns]');
         body.append(el('h3', repair.buildTitle));
-        p('Attach the detached NOM to the whole NP. Drag from the parent’s connection point, or use Guide me. Then select Check my tree.');
+        p('Attach NOM to the whole NP. Drag from the NP’s connection point or choose Guide me. Then select Check my tree.');
         addBranchExercise(body, ui, repair);
-        p('A pre-determiner can come before a determiner. In the example below, “all” combines with the whole NP “those baskets”. The demonstrative “those” still fills DET inside that group.');
+        p('A pre-determiner can come before a determiner. Here, “all” goes with the whole NP “those baskets”. Inside that NP, “those” still fills DET.');
         example('[All] [those baskets]');
         trace('Trace the pre-determiner and the NP it joins', [
           ['Find PRE-DET', predet, 'all', '“All” is the pre-determiner. It attaches at the level of the larger NP.'],
@@ -107,33 +107,33 @@ export const nounPhrasesPilot = {
         break;
       }
       case 'pre-modifiers':
-        p('A pre-modifier comes before the head. In this example, start with “red kite”. The adjective phrase “red” and the noun form a nominal. Then “new” modifies that whole group, creating a larger NOM.');
+        p('A pre-modifier goes before the head. Group “red” and “kite” first. The AP “red” and the noun “kite” make a NOM. Then “new” goes with all of “red kite”. Now you have a larger NOM.');
         example('A [new [red kite]]');
         trace('Build the two nominal layers', [
           ['Read the smaller NOM', kite, 'inner', '“Red kite” is the smaller nominal. “Red” is an AP beside N.'],
           ['Read the larger NOM', kite, 'outer', '“New” is an AP beside the smaller NOM “red kite”. Both are under the larger NOM.'],
         ]);
-        p('Other categories can occur before the noun. In “those two kites”, the numeral “two” is a quantifying adjective (QA). In “the sleeping child”, “sleeping” heads a participle phrase (PartP). In “the paper kite”, “paper” and “kite” form a compound under N.');
+        p('Look at three other words that come before a noun. In “those two kites”, “two” is a quantifying adjective (QA). In “the sleeping child”, “sleeping” heads a participle phrase (PartP). In “the paper kite”, “paper” and “kite” make a compound under N.');
         break;
       case 'post-modifiers':
-        p('A post-modifier follows the noun. To place it in a tree, ask which words it goes with. Suppose “wooden crates” names a kind of crate and Cebu is where those crates came from. The PP “from Cebu” joins the smaller nominal “wooden crates”.');
+        p('A post-modifier goes after the noun. Ask what it describes. Suppose the crates are made of wood and came from Cebu. The PP “from Cebu” goes with the whole nominal “wooden crates”.');
         example('The [[wooden crates] from Cebu]');
-        p('Now suppose an applicant is eager and the application is for a particular job. “For the job” goes with “applicant”. The AP “eager” then modifies that smaller nominal.');
+        p('Now picture an eager person applying for a job. “For the job” goes with “applicant”. The AP “eager” goes with that whole smaller group.');
         example('The [eager [applicant for the job]]');
         trace('Compare the two modifier attachments', [
           ['Trace “wooden crates”', crates, 'inner', 'The smaller NOM includes the adjective and noun. The origin PP joins that whole NOM.'],
           ['Trace “applicant for the job”', applicant, 'inner', 'The smaller NOM includes the noun and PP. The AP “eager” joins that whole NOM.'],
         ]);
-        p('An adjective phrase with its own complement can also follow the noun. In “the pilot ready for departure”, “ready for departure” is the whole AP.');
+        p('An AP can follow a noun when it has a complement of its own. In “the pilot ready for departure”, the whole AP is “ready for departure”.');
         break;
       case 'application': {
-        p('Suppose “ceramic bowls” names a kind of bowl and Vigan is their place of origin. Which group does the origin PP join?');
+        p('The bowls are ceramic and they came from Vigan. Which group does the PP “from Vigan” go with?');
         example('Those ceramic bowls from Vigan');
         const check = el('details', undefined, 'lesson-sources');
         check.append(el('summary', 'Check the attachment'),
           el('p', '“Ceramic bowls” forms the smaller NOM. The PP “from Vigan” joins that NOM under a larger one. “Those” stays in DET.'));
         body.append(check);
-        p('Compare an indefinite pronoun, which refers without naming a particular person. “Someone” can form an NP on its own. If a PP modifies it in the next example, both the pronoun and the PP attach directly under NP.');
+        p('An indefinite pronoun can refer to a person without saying who it is. “Someone” can be a whole NP on its own. When you add the PP in the next example, the pronoun and PP both sit right under NP.');
         example('Someone [from Vigan]');
         trace('Compare a plain and a modified pronoun', [
           ['Read the plain pronoun', pronoun, 'pronoun', 'The pronoun “they” forms a complete NP by itself.'],
@@ -142,9 +142,9 @@ export const nounPhrasesPilot = {
         break;
       }
       case 'recap':
-        p('Find the head noun, then split a basic NP into DET and NOM. A bare plural can have empty DET, as “baskets” does. In “all those baskets”, the pre-determiner “all” joins the full inner NP.');
-        p('Inside NOM, use the intended meaning to find the smaller group first. “From Cebu” can join the whole nominal “wooden crates”. In “the eager applicant for the job”, the job phrase groups first with “applicant”.');
-        p('If an indefinite pronoun has a modifier, check the NP directly. In “someone from Vigan”, the PP joins the pronoun under NP.');
+        p('Find the head noun. Then look for DET and NOM. In the bare plural “baskets”, DET is empty. In “all those baskets”, the pre-determiner “all” goes with the whole NP “those baskets”.');
+        p('Use the meaning to decide which words group first. “From Cebu” can go with “wooden crates”. In “the eager applicant for the job”, “for the job” goes with “applicant” first.');
+        p('An indefinite pronoun can have a modifier. In “someone from Vigan”, “someone” and the PP “from Vigan” both sit right under NP.');
         break;
     }
   },

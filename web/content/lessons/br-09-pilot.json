@@ -5,15 +5,15 @@
   "outcomes": [
     {
       "id": "o1",
-      "text": "Use a possible answer to find a wh-expression’s role and gap."
+      "text": "Use a possible answer to find a wh-expression’s job and its gap."
     },
     {
       "id": "o2",
-      "text": "Distinguish C2 and C1 in main and embedded wh-questions."
+      "text": "Tell C2 from C1 in main and embedded wh-questions."
     },
     {
       "id": "o3",
-      "text": "Distinguish noun complements and the two kinds of relative clause by meaning and attachment."
+      "text": "Use meaning and tree branches to tell noun complements from the two kinds of relative clause."
     }
   ],
   "preview_sources": [

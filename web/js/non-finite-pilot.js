@@ -70,11 +70,11 @@ export const nonFinitePilot = {
   ],
   keyTerms: [
     ['Finite verb', 'A verb that carries tense in its clause.'],
-    ['Non-finite clause', 'A clause whose verb sequence carries no tense of its own.'],
-    ['Overt subject', 'A subject expressed in spoken or written words.'],
-    ['Covert subject', 'A subject understood without an overt expression.'],
-    ['Controller', 'An overt element that identifies an understood constituent in a lower clause.'],
-    ['Index', 'A number that links positions in a tree. The same number shows that they refer to the same participant.'],
+    ['Non-finite clause', 'A clause whose verbs have no tense of their own.'],
+    ['Overt subject', 'A subject with words you can point to.'],
+    ['Covert subject', 'A subject you can work out even though no words name it.'],
+    ['Controller', 'A word or group that shows who or what a silent part of a smaller clause refers to.'],
+    ['Index', 'A number that links spots in a tree. The same number can show that two spots refer to the same person or thing.'],
   ],
   teach(body, _page, ui) {
     const { el, lesson, section } = ui;
@@ -92,10 +92,10 @@ export const nonFinitePilot = {
 
     switch (section.id) {
       case 'introduction': {
-        p('Chapter 6 showed where tense sits in a sequence of verbs. A finite verb carries tense in its clause. A non-finite clause has no tense of its own. It can still contain a verb, complements and an understood or expressed subject.');
+        p('Chapter 6 showed where tense goes in a chain of verbs. A finite verb carries tense. A non-finite clause has no tense of its own. It can still have a verb and complements. Its subject may be spoken or understood.');
         addIntroExample(body, el, 'The brackets mark what Nora planned to do.',
           'Nora planned [to inspect the bridge].',
-          '“Planned” carries past tense. Changing it to “plans” leaves “to inspect the bridge” unchanged.');
+          '“Planned” carries past tense. Try “plans” instead. The words “to inspect the bridge” stay the same.');
         body.append(el('h3', 'What you’ll see in this chapter'));
         const list = el('ul');
         for (const outcome of lesson.outcomes) list.append(el('li', outcome.text));
@@ -103,22 +103,22 @@ export const nonFinitePilot = {
         break;
       }
       case 'concepts':
-        p('The marker [-tense], read “minus tense”, identifies the untensed verb or auxiliary in these patterns. Compare where it belongs in each example.');
+        p('Read [-tense] as “minus tense”. It marks the untensed verb or auxiliary. See which branch has that mark in each example.');
         example('The crew made Ivo [wait].');
-        p('“Wait” is a bare infinitive. It has the stem form without “to”, so [-tense] goes on V.');
+        p('“Wait” is a bare infinitive. It uses the plain verb form without “to”. Put [-tense] on V.');
         example('Nora planned [to inspect the bridge].');
-        p('In the to-infinitive, [-tense] goes on the branch above “to”. “Inspect” keeps its stem form.');
+        p('In a to-infinitive, put [-tense] on the branch above “to”. The verb “inspect” stays in its plain form.');
         example('With [the lamps packed], the crew left.');
-        p('“Packed” is a passive participle and carries [-tense] on V. The lamps are what someone packed. In the passive clause, “the lamps” is the subject and the object position is empty.');
+        p('“Packed” is a passive participle. Put [-tense] on V. “The lamps” is the subject of the passive clause, even though the lamps are what someone packed. The object spot is empty.');
         trace('Trace the passive participle clause', [
           ['Find the passive subject', packed, 'lower-subject', '“The lamps” is the overt subject. It carries index 1.'],
           ['Find the object gap', packed, 'object-dot', 'The matching index shows that the lamps are what someone packed. The passive verb carries [-tense].'],
         ]);
         example('[Knowing the route] helps.');
-        p('In an -ing participle clause, [-tense] goes on the first -ing verb. Here it goes on “knowing”. Compare “is checking”, where “is” carries tense in a finite progressive.');
+        p('In this -ing participle clause, put [-tense] on “knowing”. Compare “is checking”. There, “is” carries tense, so the progressive is finite.');
         break;
       case 'worked-example': {
-        p('Return to the inspection example and look inside the smaller VP. The branch above “to” shows [-tense]. Its sister is the lexical VP that contains “inspect” and the object “the bridge”.');
+        p('Look at the smaller VP in the inspection tree. The node above “to” has [-tense]. Its sister is the lexical VP “inspect the bridge”.');
         example('Nora plans [to inspect the bridge].');
         const fragment = lesson.worked_example.tree;
         const [to, lexical] = fragment.root.children;
@@ -127,38 +127,38 @@ export const nonFinitePilot = {
           ['Find the lexical VP', fragment, lexical.id, '“Inspect the bridge” is the entire complement of “to”.'],
         ]);
         body.append(el('h3', repair.buildTitle));
-        p('Drag from the higher VP to the detached lexical VP, or use Guide me. Then select Check my tree.');
+        p('Drag a branch from the higher VP to the detached lexical VP, or choose Guide me. Then select Check my tree.');
         addBranchExercise(body, ui, repair);
-        p('Compare “Nora walked to the bridge”. Here “to” is a preposition and “the bridge” is its NP complement.');
+        p('In “Nora walked to the bridge”, “to” is a preposition. Its NP complement is “the bridge”.');
         break;
       }
       case 'subjects-and-control':
-        p('An overt subject is expressed in words. A covert subject is understood. When it refers to people in general, it is free. When an overt element in the larger clause identifies it, that element is its controller.');
+        p('An overt subject has words you can point to. A covert subject is understood without words. It can mean people in general. Then it is free. If a word group in the larger clause tells who it is, that group is its controller.');
         example('[Knowing the route] helps. · Nia enjoys [checking the maps]. · Nia enjoys [Ivo checking the maps].');
         trace('Compare free, controlled and overt subjects', [
           ['Find the free subject', free, 'lower-subject-dot', 'The dot marks a free subject. The example makes a general statement about knowing the route.'],
           ['Find the controlled subject', controlled, 'lower-subject-dot', 'The matching 1s on Nia’s NP and the dot show that Nia is understood to check the maps.'],
           ['Find the overt subject', overt, 'lower-subject', '“Ivo” is expressed inside the non-finite clause and names who checks the maps.'],
         ]);
-        p('A complementiser can mark the start of the clause. “For” goes in C1 with an overt subject. In the embedded question with “whether”, C1 is filled and the subject is silent. With “what”, C2 is filled and C1 is empty.');
+        p('A complementiser can start the clause. “For” fills C1 before a spoken subject. In the next example, “whether” fills C1 and the subject is silent. In the example with “what”, C2 is filled and C1 is empty.');
         example('[For Ivo to wait outside] seemed unfair. · Nia wondered [whether to wait]. · Nia knew [what to pack].');
         trace('Locate C1 and C2 in infinitival clauses', [
           ['Find “for” in C1', forClause, 'for', '“For” fills C1. “Ivo” is the overt subject inside S.'],
           ['Find “whether” in C1', whetherClause, 'whether', '“Whether” introduces the embedded question. The silent subject is understood as Nia in the full sentence.'],
-          ['Find “what” in C2', whatClause, 'what', '“What” fills C2 and corresponds to the object gap after “pack”. C1 has no word.'],
+          ['Find “what” in C2', whatClause, 'what', '“What” fills C2. The object gap after “pack” shows where it does its job. C1 is empty.'],
         ]);
         break;
       case 'clause-functions':
-        p('Once the subject and verb are clear, ask how the clause fits into the larger structure.');
+        p('Find the subject and verb first. Then ask what job the whole clause does in the sentence.');
         example('[Checking the ropes] takes time.');
-        p('The bracketed clause identifies what takes time. It functions as subject.');
+        p('The bracketed clause tells what takes time. It is the subject.');
         example('Nia insisted on [checking the ropes].');
-        p('The clause completes “on”, so it is a complement of P inside PP. In this pattern, P takes the S directly.');
+        p('The clause completes the preposition “on”. That makes it the complement of P inside the PP. Here, P takes S directly.');
         example('Nia paused [to check the ropes].');
-        p('The clause explains the purpose of pausing, so it functions as an adverbial. Non-finite clauses can also complete an adjective or noun, as in “eager to help” and “a request to speak”. In “the crates stacked by the door”, the participle clause modifies “crates”.');
+        p('The clause tells why someone paused. It works as an adverbial of purpose. A non-finite clause can also complete an adjective or a noun. Look at “eager to help” and “a request to speak”. In “the crates stacked by the door”, the participle clause describes the crates.');
         break;
       case 'verb-complements':
-        p('The words after the main verb can look identical and still group differently. A Type I verb such as “expect” can take one clausal complement with its own overt subject. A Type II verb such as “persuade” takes an object and a clause whose subject is understood.');
+        p('Two sentences can look alike but group differently. “Expect” is a Type I verb here. It takes one clause with its own overt subject. “Persuade” is Type II here. It takes an object and a clause with a covert subject.');
         example('They expected [Ivo to wait].');
         example('They persuaded [Ivo] [to wait].');
         check('type-two-object', 'What is “Ivo” in the sentence with “persuaded”?',
@@ -176,7 +176,7 @@ export const nonFinitePilot = {
         body.append(note);
         break;
       case 'application': {
-        p('Ren is understood to leave in both examples. Decide which clause contains the overt NP “Ren” before revealing the bracketed analyses.');
+        p('Ren is the one who would leave in both examples. Where does the spoken NP “Ren” belong in each sentence? Decide before you reveal the brackets.');
         example('Nia expected Ren to leave. · Nia advised Ren to leave.');
         const answer = el('details', undefined, 'lesson-sources');
         answer.append(el('summary', 'Check both analyses'),
@@ -186,9 +186,9 @@ export const nonFinitePilot = {
         break;
       }
       case 'recap':
-        p('Find the untensed form first. The marker sits above infinitival “to” or on the untensed verb in the bare infinitive, passive participle and -ing examples.');
-        p('Then find the lower subject. It may be overt, free or controlled. Matching indices link the overt controller to the silent position.');
-        p('Finally, ask what the clause does. “Checking the ropes” can be a subject or complete a preposition. After a verb, check whether the following NP belongs inside the lower clause, as with “expected”, or is an object of the higher verb, as with “persuaded”.');
+        p('First find the untensed form. Put [-tense] above infinitival “to” or on the untensed verb in the other three forms.');
+        p('Now find the subject of the smaller clause. It can be overt, free, or controlled. Matching indices link a controller you can see to a subject you have to work out.');
+        p('Last, ask what the clause does. “Checking the ropes” can be a subject or complete a preposition. After “expected”, the NP can be the subject inside the lower clause. After “persuaded”, the NP is the object of the higher verb.');
         break;
     }
   },

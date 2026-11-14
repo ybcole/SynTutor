@@ -70,7 +70,7 @@ try:
         expect(view.get_by_role('heading', name='Test a group in context')).to_be_visible()
         expect(view.get_by_text('Mina paused near the stone arch.', exact=True)).to_be_visible()
         view.get_by_role('button', name='Next →', exact=True).click()
-        for label, caption in [('Trace the landmark', 'all and only'), ('Trace the outer phrase', 'indirectly')]:
+        for label, caption in [('Trace the landmark', 'exactly three words'), ('Trace the outer phrase', 'another branch down')]:
             view.get_by_role('button', name=label, exact=True).press('Enter')
             expect(view.locator('.constituent-diagram .lesson-tree-observation')).to_contain_text(caption)
         assert 'undefined' not in view.locator('.constituent-diagram svg').get_attribute('aria-label')

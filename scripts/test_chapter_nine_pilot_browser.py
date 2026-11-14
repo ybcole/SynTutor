@@ -103,7 +103,7 @@ try:
         next_page.click()
         expect(outline.get_by_text('•', exact=True)).to_have_count(0)
         view.get_by_role('button', name='Compare relative “that”').click()
-        expect(note).to_contain_text('occupies C2')
+        expect(note).to_contain_text('sits in C2')
         expect(outline.get_by_text('•', exact=True)).to_have_count(1)
         view.get_by_role('button', name='Leave C2 unfilled').click()
         expect(outline.get_by_text('C2 (empty)', exact=True)).to_have_count(1)

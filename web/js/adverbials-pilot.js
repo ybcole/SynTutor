@@ -81,12 +81,12 @@ export const adverbialsPilot = {
     { id: 'closing-check', title: 'Check what you learned', assessment: true },
   ],
   keyTerms: [
-    ['Adverbial', 'A grammatical function that adds information about an event or relates to a whole sentence. Several kinds of phrase can serve this function.'],
-    ['Adjunct', 'An optional modifier that adds information such as when, where or how an event happened.'],
-    ['Particle', 'A word that combines with a verb to form a phrasal verb, such as “off” in “turn off”.'],
-    ['Ellipsis', 'The omission of material that can be understood from context.'],
-    ['Disjunct adverbial', 'A comment by a speaker or writer on a whole statement or on how it is expressed.'],
-    ['Conjunct adverbial', 'An expression that connects a statement to the surrounding discourse, such as “therefore”.'],
+    ['Adverbial', 'A job a phrase can do. It can tell when, where, or how an event happened, or apply to a whole statement.'],
+    ['Adjunct', 'An optional modifier. It can tell when, where, or how something happened.'],
+    ['Particle', 'A word like “off” that joins a verb to make a phrasal verb, such as “turn off”.'],
+    ['Ellipsis', 'Leaving words out when their meaning is clear from the words or situation around them.'],
+    ['Disjunct adverbial', 'A comment on a whole statement or on how someone says it.'],
+    ['Conjunct adverbial', 'A word or phrase such as “therefore” that links a statement to the words around it.'],
   ],
   teach(body, _page, ui) {
     const { el, lesson, section, button } = ui;
@@ -97,10 +97,10 @@ export const adverbialsPilot = {
 
     switch (section.id) {
       case 'introduction': {
-        p('Chapter 4 grouped “inspected” with its direct object. Adding a time leaves that event intact. A phrase that supplies a detail about an event or relates to a whole statement has an adverbial function. An adjunct is an optional modifier. It can add information such as time, place or manner to a verb phrase.');
+        p('In Chapter 4, “inspected” went with its direct object. Now add a time. The inspection is the same event with one more detail. A phrase has an adverbial function if it adds a detail about an event or applies to the whole statement. An adjunct is an optional modifier. It can tell when, where, or how something happened.');
         addIntroExample(body, el, 'The brackets separate the inspection from its time.',
           'Nora [inspected the bridge] [in June].',
-          '“In June” is a prepositional phrase (PP). Its function here is to tell when the inspection happened. The entire inspection is what it modifies.');
+          '“In June” is a prepositional phrase (PP). Here it does the job of an adverbial. It tells when the whole inspection happened.');
         heading('What you’ll see in this chapter');
         const list = el('ul');
         for (const outcome of lesson.outcomes) list.append(el('li', outcome.text));
@@ -108,10 +108,10 @@ export const adverbialsPilot = {
         break;
       }
       case 'concepts': {
-        p('In “Nora inspected the bridge in June”, the verb and object describe the inspection. The time phrase can be left out while the event stays the same. Use the same question about the PP in the next two sentences.');
+        p('In “Nora inspected the bridge in June”, you can leave out “in June” and still tell what Nora did. Try leaving out the PP in the next two sentences. What changes?');
         example('Mina repaired the tools [in the shed].');
         example('Mina put the tools [in the shed].');
-        p('With “repaired”, the shed is where the repair happened. With “put”, it is where the tools ended up. That resulting location completes the placement pattern. A phrase that gives the object’s resulting state or location can be an object predicative.');
+        p('With “repaired”, the shed is where the work happened. With “put”, the shed is where the tools ended up. The place completes the meaning of “put” here. A phrase that tells where an object ends up or what it becomes can be an object predicative.');
         const feedback = el('p', undefined, 'lesson-feedback');
         feedback.setAttribute('role', 'status');
         body.append(ui.practiceQuestion('placement-pp', 'Where does “in the shed” attach in the placement example?', [
@@ -121,7 +121,7 @@ export const adverbialsPilot = {
             ? 'Yes. The resulting location is a complement of “put”, so it attaches beside V.'
             : 'That works for the optional repair location. With “put”, the location completes the placement pattern. Attach the PP beside V.';
         }), feedback);
-        p('In the trees, VP₁ is the verb with its complements. VP₂ is the larger group that includes the adjunct.');
+        p('VP₁ holds the verb and its complements. VP₂ is the bigger group. It holds VP₁ and the adjunct.');
         trace('Compare two roles for the same PP', [
           ['Trace the repair location', repaired, 'shed', '“In the shed” is an adjunct here. The PP is a sister of VP₁ under VP₂.'],
           ['Trace the resulting location', put, 'shed', '“In the shed” is an object predicative here. It is a complement beside V and the object NP in the basic VP.'],
@@ -129,7 +129,7 @@ export const adverbialsPilot = {
         break;
       }
       case 'worked-example': {
-        p('Return to the inspection. The inner VP, VP₁, contains the verb and its complement. The outer VP, VP₂, contains that whole phrase and the time adjunct.');
+        p('Look at the inspection again. Find the verb and its complement inside VP₁. Then find VP₂. It holds all of VP₁ plus the time adjunct.');
         example('Nora [inspected the bridge] [in June].');
         const inspection = numberedInspection(lesson.worked_example.tree);
         const [, outer] = inspection.root.children;
@@ -140,52 +140,52 @@ export const adverbialsPilot = {
           ['Find the full predicate', inspection, outer.id, 'VP₂ covers the inspection and its time. Another adjunct can add another VP layer.'],
         ]);
         heading(repair.buildTitle);
-        p('Connect the detached PP “in June” to the same parent as the inner VP. Drag from the parent’s connection point or use Guide me. Then select Check my tree.');
+        p('Attach “in June” so it shares a parent with the inner VP. Drag from that parent’s connection point or choose Guide me. Then select Check my tree.');
         addBranchExercise(body, ui, repair);
         example('Nora inspected the bridge in June, and Mara did so in July.');
-        p('The expression “did so” can stand for a verb phrase. Here it replaces “inspected the bridge”. The time changes from June to July while the activity stays the same.');
+        p('“Did so” can stand for a whole VP. Here it replaces “inspected the bridge”. The time changes from June to July. The action stays the same.');
         break;
       }
       case 'mobility':
-        p('The time adjunct followed the basic VP. Some adjuncts can also come before it. In these two examples, “quietly” is an adverb phrase (AdvP) that describes how Mara checked the latch.');
+        p('“In June” came after the basic VP. Some adjuncts can also go before it. In both examples below, “quietly” is an adverb phrase (AdvP). It tells how Mara checked the latch.');
         example('Mara [quietly] checked the latch.');
         example('Mara checked the latch [quietly].');
         trace('Compare positions for the same manner adjunct', [
           ['Read the preceding adjunct', preceding, 'quietly', '“Quietly” precedes the basic VP. Both share VP₂.'],
           ['Read the following adjunct', following, 'quietly', '“Quietly” follows the basic VP. Both still share VP₂.'],
         ]);
-        p('Some noun phrases can do the same job. In “Mara checked the latch last night”, the NP “last night” adds a time. Other adverbial positions can need a different analysis. The trees here cover clear cases where the adjunct sits beside the whole phrase it modifies.');
+        p('An NP can add a time, too. In “Mara checked the latch last night”, “last night” is an NP. In these trees, the adjunct sits next to the whole phrase it modifies. Other positions can work differently.');
         break;
       case 'particles':
-        p('When a short word like “off” follows a verb, check what it groups with. A particle combines with a verb to form a phrasal verb. In “turned off”, “off” helps express switching something off. In “off the bus”, the preposition begins a phrase that describes the path.');
+        p('When you see “off”, ask which words it goes with. In “turned off”, “off” is a particle. It joins a verb to make a phrasal verb meaning “switch off”. In “off the bus”, “off” is a preposition. It joins “the bus” to show the path.');
         example('Lea [turned off] the lamp.');
         example('Lea stepped [off the bus].');
-        p('Try replacing “the lamp” with “it”. The switching meaning survives in “Lea turned it off”. With the stepping meaning, “off” stays before its complement, as in “Lea stepped off it”.');
+        p('Replace “the lamp” with “it”. In “Lea turned it off”, “it” fits before the particle. In “Lea stepped off it”, “it” stays after the preposition.');
         trace('Compare a particle and a preposition', [
           ['Find the separated particle', particle, 'particle', '“Off” is Prt and follows the object pronoun. V carries [trans] and [phrasal].'],
           ['Find the preposition', bus, 'preposition', '“Off” heads the PP “off the bus”. It stays with “the bus” in this use.'],
         ]);
         break;
       case 'ellipsis':
-        p('Leaving a phrase out can give two different results. An adjunct can be left out because it supplies extra detail. In ellipsis, a role is still understood even though the words that would fill it are absent.');
-        p('Imagine that Mina is giving supplies to Ren and the conversation is about what Ren received.');
+        p('You can leave out an adjunct because it adds an extra detail. Ellipsis works differently. The words are missing, but the listener can still work out the role they would fill.');
+        p('Suppose Mina gives supplies to Ren. The people talking already know that Ren gets the supplies.');
         example('Mina gave Ren a map.');
         example('Mina gave a map.');
         trace('Compare a spoken and an understood recipient', [
           ['Find the spoken recipient', overt, 'recipient', '“Ren” names the recipient. It is the indirect object in this ditransitive VP.'],
-          ['Find the understood recipient', elliptical, 'understood', 'The context still identifies Ren. E marks the understood recipient under NP. E contributes no spoken word.'],
+          ['Find the understood recipient', elliptical, 'understood', 'The listener can still work out that Ren gets the gift. E marks the understood recipient under NP. No word is spoken for E.'],
         ]);
-        p('An extra phrase such as “after lunch” would tell when the gift was given. The recipient is a role in the giving event itself.');
+        p('“After lunch” would add a time. The recipient has a role in the giving itself, even when no words name that person.');
         break;
       case 'application': {
-        p('An adverbial can describe an event or relate to the whole statement. Compare the two readings of “honestly”.');
+        p('An adverbial can tell how something happened. It can also apply to the whole statement. See how “honestly” does both jobs.');
         example('Lea answered the question [honestly].');
         example('[Honestly], Lea answered the question.');
         trace('Compare event manner with a speaker comment', [
           ['Read the manner of answering', manner, 'honestly', '“Honestly” describes how Lea answered. The AdvP is beside VP within a higher VP.'],
           ['Read the speaker’s comment', comment, 'honestly', '“Honestly” marks how the speaker presents the statement. The AdvP is beside S within a higher S.'],
         ]);
-        p('A sentence adverbial that expresses a speaker’s comment is a disjunct. A conjunct links the statement to nearby discourse. In “The latch broke. Therefore, the gate opened”, “therefore” connects the opening to the earlier event as its result.');
+        p('A disjunct adds the speaker’s comment to a statement. A conjunct links a statement to the words around it. In “The latch broke. Therefore, the gate opened”, “therefore” shows that the opening was a result of the break.');
         example('[Unfortunately], the gate jammed.');
         const check = el('details', undefined, 'lesson-sources');
         check.append(el('summary', 'Check what “unfortunately” modifies'),
@@ -194,9 +194,9 @@ export const adverbialsPilot = {
         break;
       }
       case 'recap':
-        p('Start with the verb and its complements. In “Mina put the tools in the shed”, the PP gives the resulting location and attaches beside V. In “Nora inspected the bridge in June”, the PP supplies the time and attaches beside the basic VP.');
-        p('Then check what the words group with. The object can come between “turned” and the particle “off”. In ellipsis, context can supply a complement such as the recipient even when no words name it.');
-        p('For an adverbial, ask what it applies to. Manner can describe the event inside VP. A comment such as “unfortunately” applies to the whole statement and sits beside S in the tree.');
+        p('Start with the verb and its complements. In “Mina put the tools in the shed”, the PP tells where the tools ended up and sits beside V. In “Nora inspected the bridge in June”, the PP adds a time and sits beside the basic VP.');
+        p('Next, check which words go together. The object can go between “turned” and the particle “off”. With ellipsis, the missing words can still have a role, such as naming the recipient.');
+        p('Ask what each adverbial goes with. A manner adverbial tells how the event happened and sits inside VP. “Unfortunately” can give the speaker’s view of the whole event. In that case, it sits beside S.');
         break;
     }
   },

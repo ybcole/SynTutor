@@ -110,7 +110,7 @@ try:
         expect(page).to_have_url(f'{base}/?preview=br-04#lesson/br-04/prepositional-complements')
         view.get_by_role('button', name='Trace the subject location').click()
         expect(note).to_contain_text('subject predicative')
-        expect(view.get_by_text('The PP adds an optional location', exact=False)).to_be_visible()
+        expect(view.get_by_text('The PP adds a place where she waited', exact=False)).to_be_visible()
         assert view.evaluate('(el) => el.scrollWidth <= el.clientWidth')
 
         next_page.click()

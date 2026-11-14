@@ -5,15 +5,15 @@
   "outcomes": [
     {
       "id": "o1",
-      "text": "Find the full subject and predicate in a simple statement."
+      "text": "Find the whole subject and predicate in a statement."
     },
     {
       "id": "o2",
-      "text": "Use a tree to distinguish a phrase’s category from its function."
+      "text": "Use a tree to tell a phrase’s category from its job, or function."
     },
     {
       "id": "o3",
-      "text": "Distinguish a modifier from a complement by checking its relation to a head."
+      "text": "Use the head to tell a modifier from a complement."
     }
   ],
   "revised_assessment": {

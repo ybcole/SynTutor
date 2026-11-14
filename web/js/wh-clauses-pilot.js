@@ -92,13 +92,13 @@ export const whClausesPilot = {
     { id: 'closing-check', title: 'Check what you learned', assessment: true },
   ],
   keyTerms: [
-    ['Wh-expression', 'A word or phrase such as “who”, “which books” or “with whom” that can introduce a wh-clause.'],
-    ['Fronting', 'Placing a word or phrase at the front of a clause while it keeps a grammatical role inside that clause.'],
-    ['Gap', 'A tree position with no spoken words that can correspond to a fronted element.'],
-    ['Embedded interrogative', 'A question expressed as part of a larger clause, as in “asked what Ren saw”.'],
-    ['Relative clause', 'A clause that modifies a nominal or noun phrase and contains a gap linked to the noun phrase it describes.'],
-    ['Restrictive relative', 'A relative clause that helps identify which people or things are meant.'],
-    ['Non-restrictive relative', 'A relative clause that adds information about an already identified person or group.'],
+    ['Wh-expression', 'A word or phrase such as “who”, “which books”, or “with whom” that can start a wh-clause.'],
+    ['Fronting', 'Moving a word or group to the front while it still has a job inside the clause.'],
+    ['Gap', 'An empty spot in a tree. It can show where a group at the front does its job.'],
+    ['Embedded interrogative', 'A question inside a larger clause, as in “Mina asked what Ren saw”.'],
+    ['Relative clause', 'A clause that adds information about a nominal or NP. It can have a gap linked to the person or thing it describes.'],
+    ['Restrictive relative', 'A relative clause that helps tell which people or things are meant.'],
+    ['Non-restrictive relative', 'A relative clause that adds a detail about people or things you can already identify.'],
   ],
   teach(body, _page, ui) {
     const { el, lesson, section } = ui;
@@ -110,10 +110,10 @@ export const whClausesPilot = {
 
     switch (section.id) {
       case 'introduction': {
-        p('Chapter 8 showed how a clause can report a question. This chapter starts with a question that asks for a particular part of an answer. A wh-expression is a word or phrase such as “what” or “which bridge”. In a wh-question it can appear at the front, a placement called fronting. The tree uses a dot to mark its gap, the position that supplies its grammatical role.');
+        p('Chapter 8 put a question inside a larger clause. Now look at questions that ask for a specific part of an answer. A wh-expression is a word or phrase like “what” or “which bridge”. Moving it to the front is called fronting. A dot marks the gap where the wh-expression does its job.');
         addIntroExample(body, el, 'In the statement, the brackets show the group the question asks for.',
           'Nora is inspecting [the bridge].',
-          'In “What is Nora inspecting?”, “what” asks for the direct object. The object position after “inspecting” has no spoken words.');
+          'In “What is Nora inspecting?”, “what” asks for the direct object. Its old spot after “inspecting” is empty.');
         body.append(el('h3', 'What you’ll see in this chapter'));
         const list = el('ul');
         for (const outcome of lesson.outcomes) list.append(el('li', outcome.text));
@@ -121,7 +121,7 @@ export const whClausesPilot = {
         break;
       }
       case 'concepts':
-        p('Start with a possible answer. Suppose Nora is inspecting the bridge with Ivo. The next two questions both ask about her companion. One keeps “with” inside the clause, and the other fronts the whole phrase.');
+        p('Imagine that Nora is inspecting the bridge with Ivo. Both questions below ask who is with her. In one, “with” stays inside the clause. In the other, the whole PP moves to the front.');
         example('[Who] is Nora inspecting the bridge with?');
         example('[With whom] is Nora inspecting the bridge?');
         trace('Compare three positions for a wh-gap', [
@@ -129,10 +129,10 @@ export const whClausesPilot = {
           ['Find the whole PP gap', frontedPP, 'wh-gap', 'The whole PP “with whom” has moved. Its gap is a PP beside the VP it modifies.'],
           ['Find the subject gap', subjectQuestion, 'wh-gap', '“Who is inspecting the bridge?” asks for the inspector. The gap is in the subject NP. This analysis also shows “is” fronted, although the order of “who” and “is” stays the same.'],
         ]);
-        p('A whole adjective phrase or adverb phrase can also be questioned, as in “How tall is the tower?” or “How quickly did the crew leave?”');
+        p('A question can ask about a whole AP or AdvP. “How tall is the tower?” asks for an AP. “How quickly did the crew leave?” asks for an AdvP.');
         break;
       case 'worked-example':
-        p('Return to the object question. C2 is the higher front position for the wh-expression under S″. C1 is the lower position for the fronted auxiliary under S′. Each fronted item corresponds to a different gap inside S.');
+        p('Find the two front positions in the object question. C2 is higher, under S″. It holds the wh-expression. C1 is lower, under S′. It holds the fronted auxiliary. Each has its own gap inside S.');
         example('[What] [is] Nora inspecting?');
         trace('Match each front position to its gap', [
           ['Find “what” in C2', main, whFront.id, '“What” asks for the object and sits in C2 under S″.'],
@@ -141,11 +141,11 @@ export const whClausesPilot = {
           ['Find the auxiliary gap', main, auxOrigin.id, 'The dot under PROG [pres] marks the original position of “is”.'],
         ]);
         body.append(el('h3', repair.buildTitle));
-        p('Drag from the lower VP to the detached object NP, or use Guide me. Then select Check my tree.');
+        p('Drag a branch from the lower VP to the detached object NP, or choose Guide me. Then select Check my tree.');
         addBranchExercise(body, ui, repair);
         break;
       case 'embedded-interrogatives':
-        p('An embedded interrogative expresses a question inside a larger clause. Compare a question asked directly with one that reports what Mina asked.');
+        p('An embedded interrogative is a question inside a larger clause. Compare the direct question with the sentence that tells what Mina asked.');
         example('What is Nora inspecting?');
         example('Mina asked [what Nora was inspecting].');
         trace('Compare the two front positions', [
@@ -153,23 +153,23 @@ export const whClausesPilot = {
           ['Read embedded C1', embedded, 'C1', '“What” is in C2. C1 has no word, and “was” stays after Nora under PROG.'],
           ['Read the embedded object gap', embedded, 'wh-gap', 'The missing object is beside “inspecting” inside the embedded S.'],
         ]);
-        p('A main wh-question can ask about something inside a report. In the next example, “what” asks for the object inside the report. “Did” belongs to the main question and leaves its own gap under TENSE.');
+        p('A main question can ask for a word group inside a report. Here, “what” asks for the object in the smaller clause. “Did” belongs to the main question. Its gap is under TENSE.');
         example('[What] did Mina say [Nora was inspecting •]?');
         break;
       case 'relatives-and-complements':
-        p('A noun complement gives the content of a noun such as “claim”. A relative clause modifies a nominal or noun phrase. In these examples, check whether the clause gives what the claim says or helps identify which claim is meant.');
+        p('A noun complement tells what a noun such as “claim” contains. A relative clause modifies a nominal or noun phrase. Ask whether the clause tells what the claim says or which claim the speaker means.');
         example('The claim [that the ferry was late]');
         example('The claim [which Ria disputed]');
         trace('Compare the content clause and relative variants', [
           ['Find the noun complement', nounComplement, 'content', 'The complete clause “the ferry was late” gives the claim’s content. S′ attaches beside N.'],
-          ['Find the relative with “which”', claimRelative('which'), 'wh-gap', 'Ria disputed something: the claim. “Which” sits in C2 and corresponds to the object gap. The relative joins NOM.'],
-          ['Compare relative “that”', claimRelative('that'), 'C2', 'Relative “that” occupies C2 in this analysis. The object gap remains after “disputed”.'],
+          ['Find the relative with “which”', claimRelative('which'), 'wh-gap', 'Ria disputed something: the claim. “Which” sits in C2. Its gap is in the object spot. The relative joins NOM.'],
+          ['Compare relative “that”', claimRelative('that'), 'C2', 'Here, “that” sits in C2. The object gap is still after “disputed”.'],
           ['Leave C2 unfilled', claimRelative(null), 'C2', '“The claim Ria disputed” also works. No word fills C2, and the object gap still identifies the claim.'],
         ]);
-        p('Omission works in this object relative. In “The guide who waved wore a hat”, “who” corresponds to the subject of “waved”. Removing it would leave “The guide waved wore a hat”, which breaks that relative-clause reading.');
+        p('You can leave out the wh-word in this object relative. Compare the subject relative in “The guide who waved wore a hat”. “Who” is the subject of “waved”. Leaving it out gives “The guide waved wore a hat” and breaks the relative-clause reading.');
         break;
       case 'relative-scope': {
-        p('A restrictive relative narrows the set being discussed. A non-restrictive relative adds information about a group already identified. Compare what each statement says was removed.');
+        p('A restrictive relative tells which members of a group are meant. A non-restrictive relative adds a detail about a group you can already identify. Check what each statement says was removed.');
         example('The lanterns [which had cracked] were removed.');
         example('The lanterns, [which had cracked], were removed.');
         const feedback = el('p', undefined, 'lesson-feedback');
@@ -189,7 +189,7 @@ export const whClausesPilot = {
         break;
       }
       case 'application': {
-        p('Decide whether the bracketed relative gives content or helps identify the ropes. Then recover the missing object.');
+        p('Look at the bracketed relative clause. Which ropes does it describe? Then find the missing object inside the clause.');
         example('The ropes [which Ivo checked] were dry.');
         const feedback = el('p', undefined, 'lesson-feedback');
         feedback.setAttribute('role', 'status');
@@ -208,9 +208,9 @@ export const whClausesPilot = {
         break;
       }
       case 'recap':
-        p('Use a possible answer to recover the role of a wh-expression. In “What is Nora inspecting?”, the gap after “inspecting” corresponds to “what”. The separate gap under PROG corresponds to “is”.');
-        p('Read C2 before C1. In “Mina asked what Nora was inspecting”, the embedded C2 holds “what”. C1 is unfilled, and “was” stays after the subject.');
-        p('Inside an NP, a clause that gives the noun’s content joins N. A restrictive relative joins NOM and narrows the set. A non-restrictive relative joins the whole NP and adds information.');
+        p('Try answering the question to find the job of the wh-expression. In “What is Nora inspecting?”, “what” stands for the object after “inspecting”. “Is” has its own gap under PROG.');
+        p('Look at C2 first, then C1. In “Mina asked what Nora was inspecting”, “what” fills the embedded C2. C1 is empty. “Was” stays after the subject.');
+        p('Inside an NP, a noun complement gives the noun’s content and joins N. A restrictive relative tells which ones and joins NOM. A non-restrictive relative adds a detail and joins the whole NP.');
         break;
     }
   },
