@@ -1,0 +1,321 @@
+{
+  "content_version": "2.0.0",
+  "estimated_minutes": 10,
+  "outcomes": [
+    {
+      "id": "o1",
+      "text": "Use omission, replacement or a question to test a group in context."
+    },
+    {
+      "id": "o2",
+      "text": "Use brackets and branches to identify exactly which words belong together."
+    },
+    {
+      "id": "o3",
+      "text": "Explain how two groupings of the same words can lead to two readings."
+    }
+  ],
+  "revised_assessment": {
+    "required_sections": [
+      "introduction",
+      "concepts",
+      "worked-example",
+      "application",
+      "recap"
+    ],
+    "opening": [
+      {
+        "id": "opening-replace",
+        "prompt": "In “Jo checked the old clock”, which words can “it” replace to make “Jo checked it”?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Jo checked",
+            "feedback": "Those words identify the person and action. Both stay in the new sentence."
+          },
+          {
+            "id": "b",
+            "text": "the old clock",
+            "feedback": "“It” takes the place of all three words after “checked”."
+          },
+          {
+            "id": "c",
+            "text": "old clock",
+            "feedback": "That replacement would leave “the” before “it”."
+          }
+        ],
+        "answer": "b",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P16",
+          "BR-3E-P17"
+        ]
+      },
+      {
+        "id": "opening-where",
+        "prompt": "In “Luz waited by the lake”, which words answer “Where did Luz wait?”",
+        "options": [
+          {
+            "id": "a",
+            "text": "the lake",
+            "feedback": "That names the landmark. The question asks for the location relative to it."
+          },
+          {
+            "id": "b",
+            "text": "waited by",
+            "feedback": "This includes the action and leaves out the landmark."
+          },
+          {
+            "id": "c",
+            "text": "by the lake",
+            "feedback": "The complete answer includes the relation “by” and the landmark “the lake”."
+          }
+        ],
+        "answer": "c",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P16",
+          "BR-3E-P17"
+        ]
+      },
+      {
+        "id": "opening-brackets",
+        "prompt": "In [behind [the green door]], which words are inside the inner brackets?",
+        "options": [
+          {
+            "id": "a",
+            "text": "the green door",
+            "feedback": "The inner opening bracket comes before “the” and its closing bracket follows “door”."
+          },
+          {
+            "id": "b",
+            "text": "behind the green door",
+            "feedback": "The outer brackets enclose the whole location."
+          },
+          {
+            "id": "c",
+            "text": "behind the",
+            "feedback": "Those words cross the inner boundary."
+          }
+        ],
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P16",
+          "BR-3E-P17"
+        ]
+      },
+      {
+        "id": "opening-readings",
+        "prompt": "In “Rae saw the cyclist with binoculars”, could the last words describe Rae’s equipment or the cyclist’s equipment?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Rae’s equipment only",
+            "feedback": "That is the likely everyday reading. The words can also describe a cyclist who has binoculars."
+          },
+          {
+            "id": "b",
+            "text": "The cyclist’s equipment only",
+            "feedback": "The last words can also describe how Rae saw the cyclist."
+          },
+          {
+            "id": "c",
+            "text": "Either, depending on the grouping",
+            "feedback": "The last words can describe the seeing or join the words that identify the cyclist."
+          }
+        ],
+        "answer": "c",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P16",
+          "BR-3E-P17"
+        ]
+      },
+      {
+        "id": "opening-omit",
+        "prompt": "In “Kai rested under the bench”, which words can be omitted to leave “Kai rested”?",
+        "options": [
+          {
+            "id": "a",
+            "text": "the bench",
+            "feedback": "That leaves “under” without its landmark."
+          },
+          {
+            "id": "b",
+            "text": "under the bench",
+            "feedback": "The whole location can be left out."
+          },
+          {
+            "id": "c",
+            "text": "rested under",
+            "feedback": "That would leave “Kai the bench”."
+          }
+        ],
+        "answer": "b",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P16",
+          "BR-3E-P17"
+        ]
+      }
+    ],
+    "closing": [
+      {
+        "id": "closing-omit",
+        "prompt": "“Emil left before the concert” can become “Emil left”. What does that support?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The whole time phrase is an optional group here",
+            "feedback": "Leaving out the whole time phrase still gives a complete sentence."
+          },
+          {
+            "id": "b",
+            "text": "“Before” can be omitted by itself",
+            "feedback": "The example removes “before the concert” together."
+          },
+          {
+            "id": "c",
+            "text": "“The concert” is the whole time phrase",
+            "feedback": "The time phrase also includes “before”."
+          }
+        ],
+        "answer": "a",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P16",
+          "BR-3E-P17"
+        ]
+      },
+      {
+        "id": "closing-brackets",
+        "prompt": "In [beside [the paper lantern]], which words must one node reach to represent just the landmark?",
+        "options": [
+          {
+            "id": "a",
+            "text": "beside the paper lantern",
+            "feedback": "That is the larger location."
+          },
+          {
+            "id": "b",
+            "text": "the paper lantern",
+            "feedback": "The node reaches all and only the inner group."
+          },
+          {
+            "id": "c",
+            "text": "paper lantern",
+            "feedback": "This leaves out “the”, which is inside the inner group."
+          }
+        ],
+        "answer": "b",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P16",
+          "BR-3E-P17"
+        ]
+      },
+      {
+        "id": "closing-direct",
+        "prompt": "PHRASE-a branches to “under” and PHRASE-b. PHRASE-b branches to “the”, “wooden” and “bridge”. What does PHRASE-a immediately dominate?",
+        "options": [
+          {
+            "id": "a",
+            "text": "All four words",
+            "feedback": "PHRASE-a reaches the bridge words through another node."
+          },
+          {
+            "id": "b",
+            "text": "The three bridge words",
+            "feedback": "Those three branches come from PHRASE-b."
+          },
+          {
+            "id": "c",
+            "text": "“under” and PHRASE-b",
+            "feedback": "Those are the two elements one branch below PHRASE-a."
+          }
+        ],
+        "answer": "c",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P16",
+          "BR-3E-P17"
+        ]
+      },
+      {
+        "id": "closing-context",
+        "prompt": "In “Ari waited beside the bus that goes downtown”, the last words identify which bus. Why does “beside the bus” end too early for the location group?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The full landmark includes “that goes downtown”",
+            "feedback": "On this reading the descriptive words are part of the landmark and therefore part of the whole location."
+          },
+          {
+            "id": "b",
+            "text": "A location group must contain the verb “waited”",
+            "feedback": "“Waited” describes the action. The location begins at “beside”."
+          },
+          {
+            "id": "c",
+            "text": "The words “the bus” cannot form a phrase anywhere",
+            "feedback": "They can form a phrase in other contexts. Here the specified reading requires the longer landmark."
+          }
+        ],
+        "answer": "a",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P16",
+          "BR-3E-P17"
+        ]
+      },
+      {
+        "id": "closing-attachment",
+        "prompt": "In “Eva interviewed the reporter with a recorder”, which group does “with a recorder” join if it identifies the person Eva interviewed?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The interviewing group",
+            "feedback": "That attachment would make the recorder part of how Eva conducted the interview."
+          },
+          {
+            "id": "b",
+            "text": "The reporter group",
+            "feedback": "The phrase helps identify the reporter by saying who had the recorder."
+          },
+          {
+            "id": "c",
+            "text": "“Eva” by itself",
+            "feedback": "The reading describes the reporter, the person being interviewed."
+          }
+        ],
+        "answer": "b",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P16",
+          "BR-3E-P17"
+        ]
+      }
+    ]
+  }
+}

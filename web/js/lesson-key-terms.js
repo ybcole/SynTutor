@@ -67,8 +67,7 @@ const keyTerms = {
   ],
 };
 
-export function addLessonKeyTerms(body, el, lessonId) {
-  const terms = keyTerms[lessonId];
+export function addLessonKeyTerms(body, el, lessonId, terms = keyTerms[lessonId]) {
   if (!terms) return;
   const section = el('section', undefined, 'lesson-key-terms');
   section.append(el('h3', 'Key terms'));

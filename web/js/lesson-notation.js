@@ -87,7 +87,10 @@ export function lessonNotation(lesson, page, el) {
     for (const child of node.children || []) collect(child);
   }
   if (lesson.lesson_id === 'br-01') {
-    for (const label of page === 3 ? ['S', 'PHRASE-a', 'PHRASE-b', 'PHRASE-c', 'PHRASE-d'] : ['PHRASE-a', 'PHRASE-b']) {
+    const ambiguityLabels = lesson.revised_assessment
+      ? ['PHRASE-a', 'PHRASE-b', 'PHRASE-c']
+      : ['S', 'PHRASE-a', 'PHRASE-b', 'PHRASE-c', 'PHRASE-d'];
+    for (const label of page === 3 ? ambiguityLabels : ['PHRASE-a', 'PHRASE-b']) {
       labels.add(label);
     }
   } else {

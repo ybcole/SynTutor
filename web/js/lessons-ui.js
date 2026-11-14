@@ -3,6 +3,7 @@ import { STAGES, STAGE_TITLES, validateCourse, lessonKey, emptyProgress, canAdva
 import { createLessonStore } from './lesson-progress.js';
 import { createFoundationStore } from './foundation-progress.js';
 import { renderFoundationCheck } from './foundation-check.js';
+import { constituentsPilot } from './constituents-pilot.js';
 import { requestEvidence, renderEvidence } from './explanation-evidence.js';
 import { subscribeAuthState } from './auth.js';
 import { enableCanvasView } from './canvas-view.js';
@@ -42,6 +43,10 @@ const legacyArticleSections = [
   { id: 'recap', advances: 'worked', references: true },
   { id: 'closing-check', assessment: true },
 ];
+const chapterOnePreview = () => ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname) &&
+  new URLSearchParams(location.search).get('preview') === 'br-01';
+const lessonUserId = () => chapterOnePreview() ? 'guest' : options.userId?.() || 'guest';
+const readingScope = () => chapterOnePreview() ? 'preview-br-01' : lessonUserId();
 const legacyLessonLinks = { NP: 'br-07', ADJP: 'br-03', VP: 'br-04', S: 'br-02', SBAR: 'br-08', SBARQ: 'br-09' };
 const postTestKeys = ['guided', 'transfer', 'exit'];
 const lessonCanvases = new Map();
@@ -63,8 +68,10 @@ function lessonReferences(lesson) {
   for (const source of sources) {
     list.append(el('li', `${source.title} · ${source.edition} · Chapter ${source.chapter} · printed p. ${source.printed_page}`));
   }
-  for (const reference of articleLessons[lesson.lesson_id]?.references || []) list.append(el('li', reference));
-  details.append(list, el('p', 'AI checked the cited pages. The lesson has no human instructor sign-off.'));
+  for (const reference of articleFor(lesson)?.references || []) list.append(el('li', reference));
+  details.append(list, el('p', lesson.lesson_id === 'br-01' && chapterOnePreview()
+    ? 'AI source check complete. Pilot acceptance is pending.'
+    : 'AI checked the cited pages. The lesson has no human instructor sign-off.'));
   return details;
 }
 const SVG_NS = 'http://www.w3.org/2000/svg';
@@ -300,7 +307,9 @@ export function renderLessonTree(envelope, {
   }
   const ul=el('ul');ul.append(list(root));text.append(ul);wrap.append(text);return wrap;
 }
-function articleFor(lesson) { return articleLessons[lesson.lesson_id]; }
+function articleFor(lesson) {
+  return lesson.lesson_id === 'br-01' && lesson.revised_assessment ? constituentsPilot : articleLessons[lesson.lesson_id];
+}
 function articleSections(article) {
   return article.sections ?? article.headings.map((title, index) => ({ ...legacyArticleSections[index], title }));
 }
@@ -319,7 +328,7 @@ function updateLessonRoute(hash, replace = false) {
   else history.pushState(null, '', hash);
 }
 function readingKey(lesson) {
-  return `syntutor:lesson-reading:v1:${options.userId?.() || 'guest'}:${lessonKey(lesson)}`;
+  return `syntutor:lesson-reading:v1:${readingScope()}:${lessonKey(lesson)}`;
 }
 function readingState(lesson) {
   try {
@@ -374,7 +383,9 @@ function articleSectionNav(lesson, progress, sections, mobile = false) {
       });
     }
     if (index === articlePage) link.setAttribute('aria-current', 'location');
-    const status = locked ? 'Finish earlier stages first' : done ? 'Finished' : visited.includes(section.id) ? 'Visited' : '';
+    const status = locked ? 'Finish earlier stages first'
+      : done ? (revised && !section.assessment ? 'Visited' : 'Finished')
+        : visited.includes(section.id) ? 'Visited' : '';
     if (status) link.append(el('small', status));
     const item = el('li');
     item.append(link);
@@ -734,7 +745,7 @@ function focusAssessmentPosition() {
 }
 
 function openingResultKey(lesson) {
-  return `syntutor:opening-result:v1:${options.userId?.() || 'guest'}:${lessonKey(lesson)}`;
+  return `syntutor:opening-result:v1:${readingScope()}:${lessonKey(lesson)}`;
 }
 
 function openingStatus(score, total) {
@@ -751,7 +762,7 @@ function savedOpeningStatus(lesson, total) {
 }
 
 function addOpeningQuestions(panel, lesson, prompts) {
-  const draftKey = `syntutor:opening-check:${options.userId?.() || 'guest'}:${lessonKey(lesson)}`;
+  const draftKey = `syntutor:opening-check:${readingScope()}:${lessonKey(lesson)}`;
   let answers = [];
   let selected;
   try {
@@ -831,7 +842,7 @@ function articleScreen(lesson, p, article) {
   host.append(frame);
 
   article.teach(body, page, {
-    el, button, lesson,
+    el, button, lesson, userId: lessonUserId(),
     getWorkedExample: id => course.lessons.find(item => item.lesson_id === id).worked_example,
     showClosingWarmup: !revised && section.assessment && !reviewing && !p.responses.guided && STAGES[p.stage] === 'guided',
     practiceQuestion: (key, prompt, choices, onAnswer) => question(
@@ -885,12 +896,12 @@ function articleScreen(lesson, p, article) {
   if (diagram) diagram.after(lessonNotation(lesson, page, el));
 
   if (section.id === 'introduction') {
-    addLessonKeyTerms(body, el, lesson.lesson_id);
+    addLessonKeyTerms(body, el, lesson.lesson_id, article.keyTerms);
   }
 
   if (revised) {
     if (section.references) body.append(lessonReferences(lesson));
-    const userId = options.userId?.() || 'guest';
+    const userId = lessonUserId();
     const kind = section.assessment ? 'closing' : section.id === 'introduction' ? 'opening' : null;
     if (kind) body.append(renderFoundationCheck({
       lesson, progress: p, kind, el, button, userId, account: userId !== 'guest',
@@ -1103,6 +1114,9 @@ function lessonScreen() {
   } else {
     header.append(el('p', chapter, 'lesson-eyebrow'), h1, el('p', lesson.outcomes[0].text, 'lesson-lead'));
   }
+  if (chapterOnePreview() && lesson.lesson_id === 'br-01') {
+    header.append(el('p', 'Chapter pilot · progress saved on this device', 'lesson-guide-note'));
+  }
   host.append(header);
   if (article) { articleScreen(lesson, p, article); return; }
   const columns=el('div',undefined,'lesson-columns'),body=el('section',undefined,'lesson-stage-body'),aside=el('aside',undefined,'lesson-evidence-card');
@@ -1161,7 +1175,7 @@ function render() {
   if (notice) footer.append(el('p', notice));
   const syncStatus = foundations.pending ? 'Saved on this device. Account sync is pending.' : store.status;
   footer.append(el('p', syncStatus));
-  if (options.userId?.()) footer.append(button('Retry account sync', async () => {
+  if (lessonUserId() !== 'guest') footer.append(button('Retry account sync', async () => {
     const token = generation;
     const legacy = store;
     await foundations.load();
@@ -1220,11 +1234,27 @@ export async function openLessons(id = null, { workedExample = false, section, f
   showCurriculumState(host, { message: 'Loading reviewed lessons…' });
   const token = ++generation;
   try {
-    course ||= validateCourse(await (await fetch('/content/lessons/course.json', { cache: 'no-cache' })).json());
+    if (!course) {
+      const catalog = await (await fetch('/content/lessons/course.json', { cache: 'no-cache' })).json();
+      if (chapterOnePreview()) {
+        const response = await fetch('/content/lessons/br-01-pilot.json', { cache: 'no-cache' });
+        if (!response.ok) throw new Error('Chapter pilot unavailable.');
+        const pilot = await response.json();
+        catalog.lessons = catalog.lessons.map(lesson => lesson.lesson_id === 'br-01' ? { ...lesson, ...pilot } : lesson);
+      }
+      course = validateCourse(catalog);
+    }
     if (!store) {
       let storage;
       try { storage = localStorage; } catch { storage = null; }
-      const config = { storage, userId: options.userId?.() || 'guest', client: options.client?.() };
+      if (storage && chapterOnePreview()) {
+        const device = storage;
+        storage = {
+          getItem: key => device.getItem(`syntutor:preview-br-01:${key}`),
+          setItem: (key, value) => device.setItem(`syntutor:preview-br-01:${key}`, value),
+        };
+      }
+      const config = { storage, userId: lessonUserId(), client: chapterOnePreview() ? null : options.client?.() };
       const revised = createFoundationStore(course, config);
       const next = createLessonStore(course, { ...config, revisedProgress: revised.progress });
       await revised.load();

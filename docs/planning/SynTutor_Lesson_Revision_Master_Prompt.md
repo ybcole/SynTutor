@@ -1,7 +1,7 @@
 # SYNTUTOR — MASTER IMPLEMENTATION PROMPT
 ## Syntax Foundations lesson revision (Burton-Roberts Chapters 1–11)
 
-**Status:** Phase 0 audit ready for owner review. Application implementation is pending Gate 0.
+**Status:** Chapter 1 pilot implemented for Gate 3 review. The first-time learner timing trial and owner acceptance are pending.
 **Target branch:** `feat/lessons/revision-plan`, based on `origin/explore/foundations-lesson-rollout-plan` at `7df6b1e6775760b67a445f1cfa995d33b922ca2a`.
 **Implementation:** Codex. **Acceptance:** project owner.
 **Phase 0 audit:** `docs/planning/syntax_foundations_revision_phase_0.md` on the revision branch.
@@ -214,6 +214,8 @@ Phase 2 implementation and local walkthrough are recorded in [the Phase 2 review
 - Perform source-mapped storyboard, original examples, concise concept teaching, tree diagrams and guided exercises for **Chapter 1 only**. Follow the complete chapter process in Section D.
 - Verify actual 5–10-minute feasibility by timed user pilot; if unrealistic, present a concrete scope/time trade-off.
 - Confirm the exact source-review and publication/version process before proceeding to later chapters.
+
+The [Chapter 1 pilot review](../reports/syntax-foundations-chapter-1-pilot.md) records the source check, local preview and verification results.
 
 **Gate 3:** Owner personally walks Chapter 1, accepts linguistic accuracy, readability, activity quality, approximate completion time, and sources. Only then generalize the pattern.
 

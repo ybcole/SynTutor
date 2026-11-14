@@ -457,3 +457,18 @@ a.lesson-section-link:focus-visible { outline:2px solid var(--accent); outline-o
 }
 .lesson-section-mobile[open] .lesson-section-nav { padding-bottom:8px; }
 .lesson-section-mobile .lesson-section-link { min-height:44px; box-sizing:border-box; align-content:center; }
+
+.lesson-pilot-transfer { display:grid; gap:10px; justify-items:start; }
+.lesson-pilot-transfer textarea {
+  box-sizing:border-box;
+  width:100%;
+  min-width:0;
+  resize:vertical;
+  padding:10px 12px;
+  border:1px solid var(--border);
+  border-radius:9px;
+  background:var(--bg);
+  color:var(--ink);
+  font:inherit;
+}
+.lesson-pilot-transfer p:empty { display:none; }
