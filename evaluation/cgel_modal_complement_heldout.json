@@ -1,0 +1,187 @@
+{
+  "rule_id": "COMP-034",
+  "variety": "standard_english",
+  "provenance": "Original evaluation examples frozen before running the unchanged candidate.",
+  "cases": [
+    {
+      "id": "packs",
+      "group": "inflected",
+      "sentence": "The clerk can packs the parcels.",
+      "expected_sentence": "The clerk can pack the parcels."
+    },
+    {
+      "id": "checks",
+      "group": "inflected",
+      "sentence": "Our pilot might checks the instruments.",
+      "expected_sentence": "Our pilot might check the instruments."
+    },
+    {
+      "id": "moves",
+      "group": "inflected",
+      "sentence": "The machine should moves smoothly.",
+      "expected_sentence": "The machine should move smoothly."
+    },
+    {
+      "id": "has",
+      "group": "inflected",
+      "sentence": "A volunteer will has the key.",
+      "expected_sentence": "A volunteer will have the key."
+    },
+    {
+      "id": "does",
+      "group": "inflected",
+      "sentence": "The technician could does the repair.",
+      "expected_sentence": "The technician could do the repair."
+    },
+    {
+      "id": "check",
+      "group": "inserted_to",
+      "sentence": "The nurse must to check the label.",
+      "expected_sentence": "The nurse must check the label."
+    },
+    {
+      "id": "leave",
+      "group": "inserted_to",
+      "sentence": "The guests should to leave soon.",
+      "expected_sentence": "The guests should leave soon."
+    },
+    {
+      "id": "bring",
+      "group": "inserted_to",
+      "sentence": "Our driver could to bring a spare wheel.",
+      "expected_sentence": "Our driver could bring a spare wheel."
+    },
+    {
+      "id": "have",
+      "group": "inserted_to",
+      "sentence": "The courier may to have arrived already.",
+      "expected_sentence": "The courier may have arrived already."
+    },
+    {
+      "id": "be",
+      "group": "inserted_to",
+      "sentence": "This machine will to be inspected tomorrow.",
+      "expected_sentence": "This machine will be inspected tomorrow."
+    },
+    {
+      "id": "negated",
+      "group": "stress",
+      "sentence": "The guard will not opens the gate.",
+      "expected_sentence": "The guard will not open the gate."
+    },
+    {
+      "id": "adverb",
+      "group": "stress",
+      "sentence": "The guide might easily loses the trail.",
+      "expected_sentence": "The guide might easily lose the trail."
+    },
+    {
+      "id": "question",
+      "group": "stress",
+      "sentence": "Can the captain to board now?",
+      "expected_sentence": "Can the captain board now?"
+    },
+    {
+      "id": "compound",
+      "group": "stress",
+      "sentence": "The cook may chops and stirs the onions.",
+      "expected_sentence": "The cook may chop and stir the onions."
+    },
+    {
+      "id": "plain",
+      "group": "valid_control",
+      "sentence": "The clerk can pack the parcels.",
+      "expected_sentence": null
+    },
+    {
+      "id": "negative",
+      "group": "valid_control",
+      "sentence": "The guard will not open the gate.",
+      "expected_sentence": null
+    },
+    {
+      "id": "inversion",
+      "group": "valid_control",
+      "sentence": "Can the captain board now?",
+      "expected_sentence": null
+    },
+    {
+      "id": "perfect",
+      "group": "valid_control",
+      "sentence": "The courier may have arrived already.",
+      "expected_sentence": null
+    },
+    {
+      "id": "passive",
+      "group": "valid_control",
+      "sentence": "This machine will be inspected tomorrow.",
+      "expected_sentence": null
+    },
+    {
+      "id": "ought",
+      "group": "valid_control",
+      "sentence": "The guests ought to leave soon.",
+      "expected_sentence": null
+    },
+    {
+      "id": "lexical-need",
+      "group": "valid_control",
+      "sentence": "The nurse needs to check the label.",
+      "expected_sentence": null
+    },
+    {
+      "id": "lexical-dare",
+      "group": "valid_control",
+      "sentence": "The apprentice dares to question the result.",
+      "expected_sentence": null
+    },
+    {
+      "id": "lexical-can",
+      "group": "valid_control",
+      "sentence": "The workers can peaches every autumn.",
+      "expected_sentence": null
+    },
+    {
+      "id": "nominal-can",
+      "group": "valid_control",
+      "sentence": "The empty can goes into the recycling bin.",
+      "expected_sentence": null
+    },
+    {
+      "id": "purpose",
+      "group": "valid_control",
+      "sentence": "The driver could stop to check the map.",
+      "expected_sentence": null
+    },
+    {
+      "id": "coordination",
+      "group": "valid_control",
+      "sentence": "The mechanic can or should replace the belt.",
+      "expected_sentence": null
+    },
+    {
+      "id": "negated-coordination",
+      "group": "valid_control",
+      "sentence": "The mechanic may or may not replace the belt.",
+      "expected_sentence": null
+    },
+    {
+      "id": "rather",
+      "group": "valid_control",
+      "sentence": "The child would rather stay home.",
+      "expected_sentence": null
+    },
+    {
+      "id": "conditional",
+      "group": "valid_control",
+      "sentence": "The hikers could camp if it stops raining.",
+      "expected_sentence": null
+    },
+    {
+      "id": "quotation",
+      "group": "valid_control",
+      "sentence": "The student wrote “can to go” in the margin.",
+      "expected_sentence": null
+    }
+  ]
+}
