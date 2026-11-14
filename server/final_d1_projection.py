@@ -756,7 +756,7 @@ class Projection:
                     raise ProjectionUnavailable("Two noun phrases after find can have ditransitive or object-predicative readings")
                 if label == "NP" and base in DITRANSITIVE or (label == "PP" and base in DITRANSITIVE and word(kids(second)[0]) in {"to", "for"}):
                     frame = "ditrans"
-                elif base in COMPLEX and (label in {"NP", "ADJP"} or base == "put"):
+                elif base in COMPLEX and (label in {"NP", "ADJP"} or base in {"put", "place"}):
                     frame = "complex"
                 if frame != "trans":
                     complement.append(self.phrase(tail.pop(0)))
