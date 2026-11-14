@@ -20,6 +20,8 @@ The local candidate combines the eleven Burton-Roberts pilots at version `2.0.0`
 
 ## Owner walkthrough and timing
 
+The [Gate 5 review guide](syntax-foundations-gate-5-review.md) includes the command to generate the answer packet, source checks for Chapters 1–3, and a learner observation sheet.
+
 In a fresh browser profile, work through Chapter 1's constituent tests and tree repair, Chapter 6's auxiliary chain and branch repair, and Chapter 11's recursive derivation. Repeat the desktop sidebar links with the keyboard or use the Chapter contents dropdown on a phone. The browser test exercised those interactions in desktop light mode and mobile dark mode and checked that the tree pages fit at 390 px. Start each timed run at the introduction and stop when the first closing score appears. Record elapsed time, any pauses and the first point where an instruction, label or example needed rereading. Keep automated interaction times out of the learner timing record.
 
 ## Integration with main

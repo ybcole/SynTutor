@@ -11,8 +11,9 @@ const root = new URL('../', import.meta.url);
 const cwd = fileURLToPath(root);
 const read = path => readFileSync(new URL(path, root), 'utf8');
 const candidate = execFileSync(process.execPath, ['scripts/compose_foundations_preview.js'], { cwd });
-const seed = execFileSync('python3', ['scripts/seed_foundations.py', '--course', '-'],
-  { input: candidate, cwd, encoding: 'utf8' });
+const renderSeed = input => execFileSync('python3', ['scripts/seed_foundations.py', '--course', '-'],
+  { input, cwd, encoding: 'utf8' });
+const seed = renderSeed(candidate);
 const course = JSON.parse(candidate);
 const published = JSON.parse(read('web/content/lessons/course.json'));
 const chapters = course.lessons.filter(lesson => lesson.revised_assessment);
@@ -38,6 +39,15 @@ try {
   await db.exec(seed);
   assert.equal(await scalar('select count(*)::int from public.foundation_assessments'), 11);
   assert.equal(await scalar('select count(*)::int from public.foundation_active'), 0);
+  const edited = structuredClone(course);
+  const question = edited.lessons[0].revised_assessment.closing[0];
+  question.answer = question.options.find(option => option.id !== question.answer).id;
+  edited.lessons[1].content_version = '2.0.1';
+  await assert.rejects(() => db.exec(renderSeed(JSON.stringify(edited))),
+    /Foundations seed differs from stored versions: br-01@2\.0\.0/);
+  await db.exec('rollback');
+  assert.equal(await scalar('select count(*)::int from public.foundation_assessments'), 11,
+    'a mismatched key rolls back other additions in the same seed');
 
   async function identity(userId) {
     await db.exec('reset role');
@@ -123,4 +133,4 @@ try {
 } finally {
   await db.close();
 }
-console.log('PASS: actual seed, eleven-version cutover, account isolation, revised scoring/replay, Cambridge and quiz XP, and rollback.');
+console.log('PASS: actual seed, immutable-key mismatch rollback, eleven-version cutover, account isolation, revised scoring/replay, Cambridge and quiz XP, and rollback.');
