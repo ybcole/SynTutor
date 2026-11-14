@@ -92,13 +92,16 @@ jobs:
         run: python -m unittest -v test_parser_runtime test_correction_offsets test_parser_whitespace test_modal_category_runtime
       - name: Verify Cambridge directive and question context
         working-directory: server
-        run: CGEL_REQUIRE_PARSER=1 python -m unittest -v test_cgel_imperative_probe test_cgel_inversion_probe test_cgel_negation_probe test_cgel_tag_probe test_cgel_case_probe test_cgel_consist_probe test_cgel_lexical_number_probe test_cgel_coordination_probe test_cgel_comparative_probe test_cgel_remote_conditional_probe test_cgel_since_probe test_cgel_catenative_probe test_cgel_doubling_probe
+        run: CGEL_REQUIRE_PARSER=1 python -m unittest -v test_cgel_imperative_probe test_cgel_inversion_probe test_cgel_negation_probe test_cgel_tag_probe test_cgel_case_probe test_cgel_consist_probe test_cgel_lexical_number_probe test_cgel_coordination_probe test_cgel_comparative_probe test_cgel_remote_conditional_probe test_cgel_since_probe test_cgel_catenative_probe test_cgel_doubling_probe test_cgel_punctuation_probe test_cgel_tense_aspect_probe test_cgel_determiner_probe test_cgel_verb_form_probe test_cgel_usage_probe test_cgel_word_order_probe test_cgel_phase_d test_cgel_candidate_xai test_final_d1_extraposition test_final_d1_heldout_gaps test_cambridge_runtime_pilot
       - name: Run existing LF/CRLF multiline parser regression
         run: python server/test_multiline_parse.py
       - name: Audit FINAL-D1 sentence coverage
         run: |
           python scripts/audit_final_d1_sentence_coverage.py --output artifacts/final-d1-coverage.json
           python scripts/audit_final_d1_sentence_coverage.py --heldout evaluation/final_d1_heldout_sentences.json --include-canonical-trees --output artifacts/final-d1-heldout-coverage.json
+          python scripts/report_br_final_d1_gold.py --output artifacts/final-d1-gold-report.json
+          python scripts/audit_cambridge_runtime_holdout.py --output artifacts/cambridge-runtime-holdout.json
+          python scripts/audit_final_d1_exact_fixtures.py --output artifacts/final-d1-exact-fixtures.json
       - name: Upload FINAL-D1 coverage report
         uses: actions/upload-artifact@v4
         with:
@@ -106,6 +109,9 @@ jobs:
           path: |
             artifacts/final-d1-coverage.json
             artifacts/final-d1-heldout-coverage.json
+            artifacts/final-d1-gold-report.json
+            artifacts/cambridge-runtime-holdout.json
+            artifacts/final-d1-exact-fixtures.json
           if-no-files-found: error
 
       - name: Measure XAI-0 real-parser baseline on 116 development cases

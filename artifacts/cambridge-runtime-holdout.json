@@ -1,0 +1,29 @@
+{
+  "schema_version": "cambridge-runtime-holdout-1.0.0",
+  "enabled_rules": 193,
+  "claim": "Owner-waived candidate runtime measurement; not independent gold.",
+  "grammatical": {
+    "path": "evaluation/grammatical_sentences.json",
+    "sentences": 281,
+    "evaluated": 281,
+    "working_tree_available": 0,
+    "tree_available": 281,
+    "skipped_unresolved": 0,
+    "sentences_with_findings": 0,
+    "finding_count": 0,
+    "by_rule": {},
+    "findings": []
+  },
+  "ungrammatical": {
+    "path": "evaluation/ungrammatical_sentences.json",
+    "sentences": 45,
+    "evaluated": 29,
+    "working_tree_available": 16,
+    "tree_available": 45,
+    "skipped_unresolved": 0,
+    "sentences_with_findings": 0,
+    "finding_count": 0,
+    "by_rule": {},
+    "findings": []
+  }
+}

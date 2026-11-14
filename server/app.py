@@ -203,6 +203,7 @@ class Handler(BaseHTTPRequestHandler):
             self._json(400, {'error': 'variety must be a non-empty string or null'})
             return
         variety = variety.strip() if isinstance(variety, str) else None
+        include_candidate_xai = data.get('include_candidate_xai') is True
         if appendix_nom is True and chapter not in (None, 7):
             self._json(400, {'error': 'appendix_nom is only valid for Chapter 7 or free analysis'})
             return
@@ -218,10 +219,12 @@ class Handler(BaseHTTPRequestHandler):
         else:
             convention_version = convention_version or 'V10'
         try:
-            payload = build_payload(text, sentence_index=sentence_index,
-                                    convention_version=convention_version,
-                                    chapter=chapter, appendix_nom=appendix_nom,
-                                    variety=variety)
+            payload = build_payload(
+                text, sentence_index=sentence_index,
+                convention_version=convention_version,
+                chapter=chapter, appendix_nom=appendix_nom,
+                variety=variety,
+                **({'include_candidate_xai': True} if include_candidate_xai else {}))
         except ParseFailure as exc:
             self._json(422, {'error': str(exc), 'input': text})
             return

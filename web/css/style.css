@@ -3196,6 +3196,48 @@ body.workspace-view-open .app-main { display: none; }
 .lesson-tree-wrap [data-node-id][data-xai7-issue] > text {
   text-decoration: underline wavy;
 }
+/* Candidate findings are unapproved local checks. They are visible in red,
+   but the inspector labels them "not verified errors" and production rules
+   remain fail-closed. */
+.canonical-tree-view [data-node-id][data-candidate-issue] > text {
+  fill: var(--err);
+  font-weight: 750;
+  text-decoration: underline wavy;
+  text-decoration-thickness: 1px;
+}
+.canonical-tree-view [data-node-id][data-candidate-issue] > polygon,
+.canonical-tree-view [data-node-id][data-candidate-issue] > rect {
+  stroke: var(--err);
+}
+/* Legacy matrix findings are mapped from Benepar token spans to canonical
+   B-R nodes. They are a legacy diagnostic, not book-verified Cambridge. */
+.canonical-tree-view [data-node-id][data-legacy-issue] > text {
+  fill: var(--err);
+  font-weight: 750;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.canonical-tree-view [data-node-id][data-legacy-issue] > polygon,
+.canonical-tree-view [data-node-id][data-legacy-issue] > rect {
+  stroke: var(--err);
+}
+[data-legacy-diagnostic] {
+  border-left: 3px solid var(--err);
+  margin: 10px 0;
+  padding: 6px 0 6px 12px;
+}
+[data-legacy-diagnostic] summary {
+  color: var(--err);
+  cursor: pointer;
+  font-weight: 700;
+}
+.authority-strip {
+  color: var(--muted);
+  display: block;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  margin-top: 4px;
+}
 .xai7-tree-zoom {
   display: flex; flex-wrap: wrap; align-items: center; gap: .4rem;
   padding: .35rem 0;

@@ -118,8 +118,9 @@ class SyntaxGeneratorApiContractTests(unittest.TestCase):
         self.assertEqual(payload["meta"]["tree_authority"].split(";")[0],
                          "B-R canonical analysis is in br_analysis")
         self.assertEqual(payload["meta"]["br_convention_version"], "V2")
-        self.assertEqual(payload["cambridge_evaluation"]["status"], "no_runtime_rules")
-        self.assertEqual(payload["cambridge_evaluation"]["evaluated_rule_ids"], [])
+        self.assertEqual(payload["cambridge_evaluation"]["status"], "evaluated")
+        self.assertGreater(len(payload["cambridge_evaluation"]["evaluated_rule_ids"]), 0)
+        self.assertEqual(payload["cambridge_evaluation"]["findings"], [])
         self.assertEqual(payload['summary']['verdict_authority'], 'legacy_diagnostic')
         self.assertIs(payload['summary']['book_verified'], False)
 

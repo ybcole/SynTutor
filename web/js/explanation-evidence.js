@@ -4,7 +4,11 @@ import { applyEvidenceFocus, evidenceFocusText } from './xai7-focus.js';
 
 export async function requestEvidence(tree, nodeId = null, options = {}) {
   const body = { tree: tree || null };
-  if (nodeId !== null) body.node_id = nodeId;
+  if (nodeId !== null) {
+    body.node_id = nodeId;
+    if (options.includeCandidateXai !== false) body.include_candidate_xai = true;
+  }
+  if (options.includeCandidateXai === true) body.include_candidate_xai = true;
   if (options.variety) body.variety = options.variety;
   const response = await (options.fetch || fetch)(`${API_BASE}/api/explain`, {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -385,6 +389,69 @@ export function learnerFeatureParagraph(evidence, feature) {
   return meaning[feature] || learnerParagraph(evidence);
 }
 
+function renderCandidateXai(evidence, panel) {
+  const data = evidence?.candidate_xai;
+  if (!data || data.status !== 'candidate_only' || !Array.isArray(data.items) || !data.items.length) return;
+  const section = document.createElement('details');
+  section.dataset.xaiCandidate = '';
+  const summary = document.createElement('summary');
+  summary.textContent = 'Candidate grammar checks (' + data.items.length + ') — not verified errors';
+  section.append(summary);
+  const scope = document.createElement('p');
+  scope.textContent = 'These are local candidate observations from source-linked checks. '
+    + 'They are not approved grammar errors and do not certify the rest of the sentence.';
+  section.append(scope);
+  for (const item of data.items) {
+    const row = document.createElement('div');
+    row.dataset.candidateRule = item.rule_id;
+    const head = document.createElement('p');
+    head.textContent = item.rule_id + ': ' + item.explanation.short;
+    row.append(head);
+    const more = document.createElement('details');
+    const moreLabel = document.createElement('summary');
+    moreLabel.textContent = 'Why this is shown';
+    const deep = document.createElement('p');
+    deep.textContent = item.explanation.deep;
+    more.append(moreLabel, deep);
+    const binding = document.createElement('p');
+    binding.textContent = 'Tree binding: ' + (item.tree_binding?.status || 'unmapped')
+      + '; affected node: ' + (item.tree_binding?.affected_node_id || 'none')
+      + (item.tree_binding?.governor_node_id
+        ? '; related node: ' + item.tree_binding.governor_node_id : '') + '.';
+    more.append(binding);
+    row.append(more);
+    section.append(row);
+  }
+  panel.append(section);
+}
+
+function renderLegacyDiagnostic(panel, detail) {
+  if (!detail || detail.status !== 'error') return;
+  const remediation = detail.remediation || {
+    violation: detail.text || 'This part of the sentence has a grammar issue.',
+    suggested_fix: 'Review the highlighted word and correct it.',
+    alternative_fix: null,
+  };
+  const section = document.createElement('details');
+  section.dataset.legacyDiagnostic = '';
+  section.open = true;
+  const summary = document.createElement('summary');
+  summary.textContent = 'What\'s wrong';
+  section.append(summary);
+  const issue = document.createElement('p');
+  issue.textContent = remediation.violation || detail.text || 'This part of the sentence has a grammar issue.';
+  section.append(issue);
+  const fix = document.createElement('p');
+  fix.textContent = remediation.suggested_fix || 'Review the highlighted word and correct it.';
+  section.append(fix);
+  if (remediation.alternative_fix) {
+    const alternative = document.createElement('p');
+    alternative.textContent = 'Alternative: ' + remediation.alternative_fix;
+    section.append(alternative);
+  }
+  panel.append(section);
+}
+
 export function renderEvidence(evidence, host = document.querySelector('#explainNode'), options = {}) {
   if (!host) return;
   host.querySelector('[data-shared-evidence]')?.remove();
@@ -398,6 +465,8 @@ export function renderEvidence(evidence, host = document.querySelector('#explain
     ? learnerFeatureParagraph(evidence, options.feature)
     : learnerFindingParagraph(evidence, options.nodeId) ?? learnerParagraph(evidence);
   panel.append(paragraph);
+  renderLegacyDiagnostic(panel, options.legacyDetail);
+  renderCandidateXai(evidence, panel);
   host.append(panel);
   if (options.treeRoot) applyEvidenceFocus(options.treeRoot, evidence);
 }

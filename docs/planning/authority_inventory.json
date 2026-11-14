@@ -1,0 +1,850 @@
+{
+  "schema_version": "authority-inventory-1.0.0",
+  "authority": {
+    "schema_version": "authority-manifest-1.0.0",
+    "coherence_policy": "one structural authority, one approved grammar authority, labeled legacy channels",
+    "structure": {
+      "authority": "burton_roberts",
+      "label": "B-R canonical tree",
+      "status": "normalized",
+      "derived": true,
+      "book_verified": false
+    },
+    "detection": {
+      "authority": "legacy_matrix",
+      "label": "Legacy matrix diagnostic + advisory CoLA",
+      "production_verdict": true,
+      "book_verified": false,
+      "legacy_rulebook_rules": 112
+    },
+    "cambridge": {
+      "authority": "cambridge",
+      "label": "0 runtime-enabled Cambridge rules",
+      "runtime_enabled": 0,
+      "catalog_records": 3914,
+      "diagnostic_specs": 204,
+      "constraint_specs": 203,
+      "candidate_only": true
+    },
+    "candidate": {
+      "label": "Candidate grammar checks — not verified errors",
+      "production_enabled": false
+    },
+    "explanations": {
+      "structural": "B-R only",
+      "grammatical": "Cambridge only",
+      "remediation": "Cambridge only",
+      "legacy_prose": "withheld when shared evidence exists"
+    },
+    "correction": {
+      "production": "legacy remediation + optional MLM fallback",
+      "candidate": "Phase D selected-sentence candidate correction"
+    },
+    "lessons_quizzes": {
+      "current": "legacy rulebook content",
+      "cambridge_generation": "pending"
+    }
+  },
+  "legacy_rulebook": {
+    "source": "server/ruleset.py",
+    "count": 112,
+    "methods": {
+      "L": 30,
+      "T": 62,
+      "C": 20
+    },
+    "rules": [
+      {
+        "rule_id": "1.1",
+        "name": "Regular noun plurals",
+        "example_error": "boxs",
+        "method": "L",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "1.2",
+        "name": "Irregular noun plurals",
+        "example_error": "childs",
+        "method": "L",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "1.3",
+        "name": "Possessive ‘s / s’",
+        "example_error": "the boys toy",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "1.4",
+        "name": "Verb endings (-s, -ed, -ing)",
+        "example_error": "runing",
+        "method": "L",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "1.5",
+        "name": "Irregular past tense",
+        "example_error": "goed",
+        "method": "L",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "1.6",
+        "name": "Irregular past participle",
+        "example_error": "had went",
+        "method": "L",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "1.7",
+        "name": "Comparative/superlative formation",
+        "example_error": "gooder, more tall",
+        "method": "L",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "1.8",
+        "name": "Adverb formation",
+        "example_error": "happyly",
+        "method": "L",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "1.9",
+        "name": "Reflexive forms",
+        "example_error": "hisself",
+        "method": "L",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "1.10",
+        "name": "Homophones (its/it’s, their/there)",
+        "example_error": "Its raining",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "1.11",
+        "name": "Contractions",
+        "example_error": "dont",
+        "method": "L",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "1.12",
+        "name": "Spelling",
+        "example_error": "recieve",
+        "method": "L",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "1.13",
+        "name": "Numerals and measures",
+        "example_error": "two hundreds",
+        "method": "L",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "2.1",
+        "name": "Subject-verb, simple",
+        "example_error": "The boy go",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "2.2",
+        "name": "Subject-verb across intervening phrase",
+        "example_error": "The boy with the bags go",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "2.3",
+        "name": "Coordinated subjects (and / or / nor)",
+        "example_error": "Tom or Ann are",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "2.4",
+        "name": "Existential there",
+        "example_error": "There is books",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "2.5",
+        "name": "Collective and notional nouns",
+        "example_error": "The team are",
+        "method": "C",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "2.6",
+        "name": "Questions and inversion",
+        "example_error": "Where is the books?",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "2.7",
+        "name": "Relative clauses",
+        "example_error": "the boys who plays",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "2.8",
+        "name": "Indefinite pronouns",
+        "example_error": "Everyone have",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "2.9",
+        "name": "Quantified subjects",
+        "example_error": "A number of / Each of the boys are",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "2.10",
+        "name": "Determiner-noun number",
+        "example_error": "these book",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "2.11",
+        "name": "Quantifier-noun",
+        "example_error": "less books, much books",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "2.12",
+        "name": "Pronoun-antecedent",
+        "example_error": "The girls lost her bag",
+        "method": "C",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "2.13",
+        "name": "Correlatives",
+        "example_error": "Either he or I am",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "2.14",
+        "name": "Reflexive-antecedent",
+        "example_error": "She hurt himself",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "3.1",
+        "name": "a/an choice",
+        "example_error": "a apple",
+        "method": "L",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "3.2",
+        "name": "Missing article",
+        "example_error": "I saw dog",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "3.3",
+        "name": "Unnecessary article",
+        "example_error": "She plays the football",
+        "method": "C",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "3.4",
+        "name": "Definite vs indefinite",
+        "example_error": "I saw the dog (first mention)",
+        "method": "C",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "3.5",
+        "name": "Stacked determiners",
+        "example_error": "the my book",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "3.6",
+        "name": "Determiner with no noun",
+        "example_error": "the my",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "3.7",
+        "name": "some/any",
+        "example_error": "I don’t have some money",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "3.8",
+        "name": "each/every/all/whole/other/another",
+        "example_error": "another books",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "3.15",
+        "name": "much/many with the right noun class",
+        "example_error": "much books",
+        "method": "L",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "4.1",
+        "name": "Countable vs uncountable",
+        "example_error": "informations, an advice",
+        "method": "L",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "4.2",
+        "name": "Noun as modifier (number)",
+        "example_error": "a ten-years plan",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "4.3",
+        "name": "Plural-only / singular -s nouns",
+        "example_error": "a scissors, the news are",
+        "method": "L",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "5.1",
+        "name": "Case, simple",
+        "example_error": "Me go, between you and I",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "5.2",
+        "name": "Case in coordination and comparison",
+        "example_error": "Me and him went, taller than I",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "5.3",
+        "name": "Ambiguous reference",
+        "example_error": "Tom told Jim he...",
+        "method": "C",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "5.4",
+        "name": "Relative pronoun choice",
+        "example_error": "the man which",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "5.5",
+        "name": "Dummy it/there",
+        "example_error": "Is raining",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "5.6",
+        "name": "Possessive pronoun vs determiner",
+        "example_error": "This is my",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "5.7",
+        "name": "Reflexive vs ordinary pronoun",
+        "example_error": "Myself am happy",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "6.1",
+        "name": "Auxiliary + verb form",
+        "example_error": "She can goes",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "6.2",
+        "name": "Finite main verb",
+        "example_error": "She going to school",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "6.3",
+        "name": "Missing verb / copula",
+        "example_error": "She very happy",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "6.4",
+        "name": "Passive formation",
+        "example_error": "The house build",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "6.5",
+        "name": "Intransitive passive",
+        "example_error": "It was happened",
+        "method": "L",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "6.6",
+        "name": "Stative verbs in progressive",
+        "example_error": "I am knowing",
+        "method": "L",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "6.7",
+        "name": "Tense consistency",
+        "example_error": "He said he will come",
+        "method": "C",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "6.8",
+        "name": "Transitivity",
+        "example_error": "discuss about, arrived the station",
+        "method": "L",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "6.9",
+        "name": "Gerund vs infinitive",
+        "example_error": "enjoy to swim",
+        "method": "L",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "6.10",
+        "name": "to + base form",
+        "example_error": "to goes",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "6.11",
+        "name": "Phrasal verbs",
+        "example_error": "pick up it",
+        "method": "L",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "6.12",
+        "name": "Modals and semi-modals",
+        "example_error": "must to go, use to go",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "6.13",
+        "name": "Question formation",
+        "example_error": "Where you are going?",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "6.14",
+        "name": "Negation",
+        "example_error": "I don’t have no money",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "6.15",
+        "name": "Imperatives",
+        "example_error": "Don’t goes",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "6.16",
+        "name": "Conditionals",
+        "example_error": "If I will go",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "6.17",
+        "name": "Subjunctive and wish",
+        "example_error": "I wish I was",
+        "method": "C",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "6.18",
+        "name": "Reported speech",
+        "example_error": "She said me",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "6.19",
+        "name": "Causatives and perception verbs",
+        "example_error": "made me to cry",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "6.20",
+        "name": "Verb + clause patterns",
+        "example_error": "suggest him to go",
+        "method": "L",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "7.1",
+        "name": "Adjective vs adverb",
+        "example_error": "runs quick",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "7.2",
+        "name": "Adjective order",
+        "example_error": "red big car",
+        "method": "L",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "7.3",
+        "name": "Adverb placement",
+        "example_error": "I like very much it",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "7.4",
+        "name": "Participial adjectives",
+        "example_error": "I am boring",
+        "method": "L",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "7.5",
+        "name": "Intensifiers and degree",
+        "example_error": "enough big, too much good",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "7.6",
+        "name": "Comparative structures",
+        "example_error": "more taller, as tall than",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "7.7",
+        "name": "Modifier position",
+        "example_error": "the car red",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "8.1",
+        "name": "Wrong preposition",
+        "example_error": "depends in",
+        "method": "C",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "8.2",
+        "name": "Missing preposition",
+        "example_error": "listen music",
+        "method": "C",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "8.3",
+        "name": "Unnecessary preposition",
+        "example_error": "discuss about",
+        "method": "L",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "8.4",
+        "name": "Adjective + preposition",
+        "example_error": "interested on",
+        "method": "L",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "8.5",
+        "name": "Time and place (in/on/at)",
+        "example_error": "on 5 pm",
+        "method": "L",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "8.6",
+        "name": "Preposition + gerund",
+        "example_error": "look forward to see",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "9.1",
+        "name": "Fragment",
+        "example_error": "Because I was late.",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "9.2",
+        "name": "Missing subject",
+        "example_error": "Went to school.",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "9.3",
+        "name": "Run-on / fused sentence",
+        "example_error": "I like tea she likes coffee",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "9.4",
+        "name": "Comma splice",
+        "example_error": "I came, I saw.",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "9.5",
+        "name": "Double subject",
+        "example_error": "My brother he...",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "9.6",
+        "name": "Word order in statements",
+        "example_error": "Yesterday went I",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "9.7",
+        "name": "Missing or extra word",
+        "example_error": "She is very the happy",
+        "method": "C",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "9.8",
+        "name": "Parallel structure",
+        "example_error": "to run, swimming",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "9.9",
+        "name": "Conjunction pairing",
+        "example_error": "Although..., but...",
+        "method": "L",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "9.10",
+        "name": "Relative clause formation",
+        "example_error": "the man who I saw him",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "9.11",
+        "name": "Dangling / misplaced modifier",
+        "example_error": "Walking home, the rain started",
+        "method": "C",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "9.12",
+        "name": "Redundancy",
+        "example_error": "return back",
+        "method": "L",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "9.13",
+        "name": "Indirect question word order",
+        "example_error": "I wonder where is he",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "9.14",
+        "name": "Clause linking",
+        "example_error": "because to see you",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "9.15",
+        "name": "Object order",
+        "example_error": "gave to me a book",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "10.1",
+        "name": "Sentence-initial capital",
+        "example_error": "the boy runs",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "10.2",
+        "name": "Proper nouns, “I”, days, months",
+        "example_error": "i am, monday",
+        "method": "L",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "10.3",
+        "name": "Terminal punctuation",
+        "example_error": "missing period/question mark",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "10.4",
+        "name": "Commas",
+        "example_error": "series, introductory, clauses",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "10.5",
+        "name": "Apostrophes",
+        "example_error": "the 1990’s",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "10.6",
+        "name": "Quotation and dialogue",
+        "example_error": "mismatched marks",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "10.7",
+        "name": "Hyphens and dashes",
+        "example_error": "a well known author",
+        "method": "C",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "10.8",
+        "name": "Colons and semicolons",
+        "example_error": "misuse",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "10.9",
+        "name": "Spacing and repeats",
+        "example_error": "the the, space before comma",
+        "method": "T",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "10.10",
+        "name": "Numbers, dates, abbreviations",
+        "example_error": "inconsistent format",
+        "method": "L",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "11.1",
+        "name": "Confusable words",
+        "example_error": "affect/effect, lose/loose",
+        "method": "C",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "11.2",
+        "name": "Collocations",
+        "example_error": "do a decision",
+        "method": "C",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "11.3",
+        "name": "Tense-time agreement",
+        "example_error": "Yesterday I go",
+        "method": "C",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "11.4",
+        "name": "Selectional restrictions",
+        "example_error": "The book eats",
+        "method": "C",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "11.5",
+        "name": "Structural ambiguity",
+        "example_error": "PP-attachment",
+        "method": "C",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "11.6",
+        "name": "Register",
+        "example_error": "slang in formal writing",
+        "method": "C",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "11.7",
+        "name": "L1 interference / false friends",
+        "example_error": "I am agree",
+        "method": "C",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      },
+      {
+        "rule_id": "11.8",
+        "name": "Connector misuse",
+        "example_error": "I was tired, however I slept",
+        "method": "C",
+        "disposition": "legacy_diagnostic_until_ported_or_retired"
+      }
+    ]
+  },
+  "migration_policy": {
+    "structural_authority": "burton_roberts_canonical",
+    "grammar_authority": "cambridge_runtime_registry",
+    "legacy_authority": "diagnostic_only",
+    "delete_policy": "port_or_retire_after_parity_tests",
+    "production_without_independent_review": false
+  }
+}

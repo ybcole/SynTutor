@@ -128,8 +128,8 @@ class CambridgeEvaluatorTests(unittest.TestCase):
             with self.subTest(args=args):
                 self.assertEqual(self.passive_registry(**args)["active_rule_ids"], [])
         actual = evaluate_cambridge(self.passive_analysis(), load_runtime_registry(), variety="standard_english")
-        self.assertEqual(actual["status"], "no_runtime_rules")
-        self.assertEqual(actual["findings"], [])
+        self.assertEqual(actual["status"], "evaluated")
+        self.assertEqual([row["rule_id"] for row in actual["findings"]], ["CLS-357"])
 
     @staticmethod
     def analysis(sentence):

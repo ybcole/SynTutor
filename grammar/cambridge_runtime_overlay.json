@@ -1,0 +1,1749 @@
+{
+  "schema_version": "cambridge-runtime-overlay-1.0.0",
+  "purpose": "Owner-waived candidate rules. Not independently human-certified.",
+  "policy": {
+    "independent_human_review": false,
+    "owner_waiver": true,
+    "claim": "AI-checked source examples and guards; no independent certification",
+    "candidate_set": "phase_c"
+  },
+  "rules": [
+    {
+      "rule_id": "CLS-099",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-100",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-102",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-103",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-1034",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-1035",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-1036",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-104",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-106",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-107",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-108",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-1101",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-1103",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-1119",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-1129",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-114",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-1159",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-1166",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-117",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-1188",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-119",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-1197",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-120",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-1218",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-1222",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-1239",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-1244",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-1259",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-126",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-1274",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-1276",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-128",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-130",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-131",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-1325",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-1329",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-1379",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-1415",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-1425",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-1451",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-1479",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-156",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-171",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-182",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-183",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-201",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-213",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-217",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-229",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-268",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-270",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-285",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-286",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-320",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-333",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-357",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-407",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "CLS-408",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "COMP-030",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "COMP-031",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "COMP-033",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "COMP-034",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "COMP-035",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "COMP-036",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "COMP-040",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "COMP-041",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "COMP-042",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "COMP-060",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "COMP-061",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "COMP-062",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "COMP-063",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "COMP-084",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "COMP-085",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "COMP-087",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "COMP-116",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "COMP-128",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "COMP-138",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "COMP-189",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "COMP-194",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "COMP-202",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "MORPH-025",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "MORPH-026",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "MORPH-035",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "MORPH-041",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "MORPH-056",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "MORPH-078",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "MORPH-080",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "MORPH-083",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "MORPH-092",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "MORPH-104",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "MORPH-105",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "MORPH-109",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "MORPH-114",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "MORPH-130",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "MORPH-141",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "MORPH-237",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "MORPH-258",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "MORPH-309",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "MORPH-311",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "MORPH-313",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "MORPH-316",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "MORPH-357",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "MORPH-385",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "MORPH-391",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "MORPH-445",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "MORPH-477",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "MORPH-480",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "MORPH-481",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "MORPH-482",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "MORPH-483",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "OTH-098",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "OTH-102",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "OTH-158",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "OTH-182",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "OTH-216",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "OTH-377",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "OTH-439",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "OTH-458",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "OTH-615",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "OTH-671",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "OTH-688",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "OTH-698",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "OTH-699",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "OTH-701",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "OTH-708",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "OTH-712",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "OTH-715",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "OTH-717",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "OTH-726",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "OTH-730",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "OTH-737",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "OTH-740",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "OTH-743",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "OTH-756",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "OTH-761",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "OTH-764",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-028",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-043",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-044",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-062",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-065",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-079",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-080",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-083",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-084",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-087",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-088",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-110",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-126",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-128",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-133",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-140",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-157",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-161",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-164",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-197",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-220",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-240",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-247",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-258",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-283",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-289",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-290",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-295",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-305",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-321",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-334",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-347",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-381",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-420",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-580",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-582",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-590",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-593",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-600",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-602",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-620",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-629",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-632",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-644",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-645",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-653",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-654",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-666",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-684",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-704",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-705",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-706",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-737",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-748",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "PHR-769",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "WCAT-046",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    },
+    {
+      "rule_id": "WCAT-059",
+      "status": "REVIEWED",
+      "runtime_check": {
+        "kind": "candidate_probe_set",
+        "set": "phase_c"
+      },
+      "review_basis": "owner_waived_ai_review"
+    }
+  ]
+}

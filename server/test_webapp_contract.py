@@ -108,6 +108,18 @@ class FlaskParseContractTests(unittest.TestCase):
                                       convention_version="V2", chapter=2,
                                       appendix_nom=None, variety="AmE")
 
+    def test_candidate_xai_flag_is_forwarded(self):
+        expected = {"br_analysis": {"status": "unresolved"}}
+        with patch("webapp.build_payload", return_value=expected) as build:
+            response = self.client.post("/api/parse", json={
+                "text": "A sentence.", "include_candidate_xai": True
+            })
+        self.assertEqual(response.status_code, 200)
+        build.assert_called_once_with("A sentence.", sentence_index=0,
+                                      convention_version="V10", chapter=None,
+                                      appendix_nom=None, variety=None,
+                                      include_candidate_xai=True)
+
     def test_empty_variety_returns_400(self):
         response = self.client.post("/api/parse", json={
             "text": "A sentence.", "variety": "   "
