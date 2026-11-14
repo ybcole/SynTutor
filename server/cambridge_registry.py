@@ -37,6 +37,18 @@ def load_runtime_registry(root: Path | None = None) -> dict[str, Any]:
             if isinstance(row, dict) and row.get("id"):
                 by_id[str(row["id"])] = row
 
+    overlay_path = root / "grammar" / "cambridge_runtime_overlay.json"
+    try:
+        overlay = json.loads(overlay_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        overlay = {}
+    for row in overlay.get("rules", []) if isinstance(overlay, dict) else []:
+        if not isinstance(row, dict) or not row.get("rule_id"):
+            continue
+        rule_id = str(row["rule_id"])
+        if rule_id in by_id:
+            by_id[rule_id] = {**by_id[rule_id], **{k: v for k, v in row.items() if k != "rule_id"}}
+
     active, diagnostics, seen = [], [], set()
     entries = registry.get("enabled_rules", [])
     if not isinstance(entries, list):
@@ -73,24 +85,39 @@ def load_runtime_registry(root: Path | None = None) -> dict[str, Any]:
                 for source in sources
             ):
                 reasons.append("source page evidence is missing or malformed")
+            owner_waived_unverified = (
+                entry.get("owner_waiver") is True
+                and entry.get("crosswalk_status") == "owner_waived_unverified"
+            )
             mappings = rule.get("burton_roberts_mapping", [])
             allowed_relations = {
                 "same", "terminology_differs", "analysis_differs", "not_covered",
             }
-            if not isinstance(mappings, list) or not mappings:
-                reasons.append("source record has no explicit B-R crosswalk")
-            elif any(
-                not isinstance(mapping, dict)
-                or mapping.get("relation") not in allowed_relations
-                for mapping in mappings
-            ):
-                reasons.append("source record still contains an unresolved or invalid B-R crosswalk")
+            if not owner_waived_unverified:
+                if not isinstance(mappings, list) or not mappings:
+                    reasons.append("source record has no explicit B-R crosswalk")
+                elif any(
+                    not isinstance(mapping, dict)
+                    or mapping.get("relation") not in allowed_relations
+                    for mapping in mappings
+                ):
+                    reasons.append("source record still contains an unresolved or invalid B-R crosswalk")
             check = rule.get("runtime_check")
             if not isinstance(check, dict):
                 reasons.append("deterministic runtime_check is missing")
             elif check.get("kind") == "passive_make_missing_to":
                 if rule_id != "CLS-357" or set(check) != {"kind"} or rule.get("scope") != "clause":
                     reasons.append("passive_make_missing_to requires the clause-scoped CLS-357 source")
+            elif check.get("kind") == "candidate_probe":
+                try:
+                    from .cambridge_runtime_probes import supported_probe_names
+                except ImportError:
+                    from cambridge_runtime_probes import supported_probe_names
+                if set(check) != {"kind", "probe"} or check.get("probe") not in supported_probe_names():
+                    reasons.append("candidate_probe must name one allow-listed probe")
+            elif check.get("kind") == "candidate_probe_set":
+                if set(check) != {"kind", "set"} or check.get("set") != "phase_c":
+                    reasons.append("candidate_probe_set must name the allow-listed phase_c set")
             elif check.get("kind") != "forbidden_token_sequences":
                 reasons.append("runtime_check kind is not supported by the deterministic evaluator")
             else:
@@ -108,16 +135,28 @@ def load_runtime_registry(root: Path | None = None) -> dict[str, Any]:
                     valid_sequence(sequence) for sequence in exceptions
                 ):
                     reasons.append("runtime_check exception_sequences are malformed")
-        if entry.get("independent_review") is not True:
-            reasons.append("independent_review must be true")
+        if entry.get("independent_review") is not True and entry.get("owner_waiver") is not True:
+            reasons.append("independent_review or owner_waiver must be true")
         if not isinstance(entry.get("reviewed_by"), str) or not entry["reviewed_by"].strip():
             reasons.append("reviewer identity is missing or malformed")
         if not isinstance(entry.get("reviewed_on"), str) or not entry["reviewed_on"].strip():
             reasons.append("review date is missing or malformed")
-        if entry.get("crosswalk_status") not in {"compatible", "resolved"}:
+        crosswalk_status = entry.get("crosswalk_status")
+        if crosswalk_status not in {"compatible", "resolved", "not_applicable_surface",
+                                    "owner_waived_unverified"}:
             reasons.append("B-R/Cambridge crosswalk is unresolved")
-        if entry.get("test_status") != "passed":
+        if crosswalk_status == "not_applicable_surface":
+            mappings = rule.get("burton_roberts_mapping")
+            if not isinstance(mappings, list) or not mappings or any(
+                    not isinstance(mapping, dict) or mapping.get("relation") != "not_covered"
+                    for mapping in mappings):
+                reasons.append("not_applicable_surface requires explicit not_covered mappings")
+        if crosswalk_status == "owner_waived_unverified" and entry.get("owner_waiver") is not True:
+            reasons.append("owner_waived_unverified requires owner_waiver")
+        if entry.get("test_status") not in {"passed", "source_examples_passed"}:
             reasons.append("positive/negative/exception tests have not passed")
+        if entry.get("test_status") == "source_examples_passed" and entry.get("owner_waiver") is not True:
+            reasons.append("source_examples_passed requires owner_waiver")
         if entry.get("runtime_status") != "enabled":
             reasons.append("runtime_status is not enabled")
         if reasons:
@@ -131,6 +170,10 @@ def load_runtime_registry(root: Path | None = None) -> dict[str, Any]:
             "scope": rule.get("scope"),
             "violation": rule.get("violation"),
             "runtime_check": rule.get("runtime_check"),
+            "owner_waiver": entry.get("owner_waiver") is True,
+            "independent_review": entry.get("independent_review") is True,
+            "crosswalk_status": entry.get("crosswalk_status"),
+            "test_status": entry.get("test_status"),
         })
     return {
         "registry_version": registry.get("registry_version"),

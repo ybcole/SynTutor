@@ -86,10 +86,11 @@ class CambridgeRegistryTests(unittest.TestCase):
         self.assertEqual(result["active_rules"], [])
         self.assertEqual(result["active_rule_ids"], [])
 
-    def test_repository_extractions_remain_disabled_without_reviewed_runtime_entries(self):
+    def test_repository_enables_all_implemented_owner_waived_pilots(self):
         result = load_runtime_registry()
-        self.assertEqual(result["active_rules"], [])
-        self.assertEqual(result["active_rule_ids"], [])
+        self.assertEqual(len(result["active_rule_ids"]), 193)
+        self.assertEqual(result["diagnostics"], [])
+        self.assertTrue(all(rule["owner_waiver"] for rule in result["active_rules"]))
 
     def test_unverified_crosswalk_blocks_extracted_approved_rule(self):
         self.add_rule("unverified")

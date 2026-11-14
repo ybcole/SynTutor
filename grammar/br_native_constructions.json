@@ -546,6 +546,26 @@
       "level": "structural"
     },
     {
+      "id": "BR05-V-NP-PRT",
+      "chapter_introduced": 5,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          95
+        ],
+        "evidence": "IMG_SOURCE_FIXTURE_ch5-39",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "VP",
+      "children": [
+        "V",
+        "NP",
+        "Prt"
+      ],
+      "condition": "Transitive phrasal verb with the particle after the NP object. V carries the trans and phrasal features, NP is the object, and Prt is the particle; this is distinct from V + Prt + NP and from a locative PP.",
+      "level": "structural"
+    },
+    {
       "id": "BR05-VP-PP-ADJUNCT",
       "chapter_introduced": 5,
       "source": {
@@ -1613,6 +1633,392 @@
         "NP"
       ],
       "condition": "Coordinate NP requires category-compatible conjuncts.",
+      "level": "structural"
+    },
+    {
+      "id": "BR03-AP-COORD",
+      "chapter_introduced": 3,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          61,
+          64
+        ],
+        "evidence": "IMG_SOURCE_FIXTURES_CH3_COORDINATION",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "AP",
+      "children": [
+        "AP",
+        "@word",
+        "AP"
+      ],
+      "condition": "Coordinate AP with category-compatible AP conjuncts; preserve the coordinate level for lexical and phrasal conjuncts.",
+      "level": "structural"
+    },
+    {
+      "id": "BR03-ADVP-COORD",
+      "chapter_introduced": 3,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          64
+        ],
+        "evidence": "IMG_SOURCE_FIXTURES_CH3_COORDINATION",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "AdvP",
+      "children": [
+        "AdvP",
+        "@word",
+        "AdvP"
+      ],
+      "condition": "Coordinate AdvP with category-compatible AdvP conjuncts.",
+      "level": "structural"
+    },
+    {
+      "id": "BR03-PP-COORD",
+      "chapter_introduced": 3,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          61
+        ],
+        "evidence": "IMG_SOURCE_FIXTURES_CH3_COORDINATION",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "PP",
+      "children": [
+        "PP",
+        "@word",
+        "PP"
+      ],
+      "condition": "Coordinate PP with category-compatible PP conjuncts.",
+      "level": "structural"
+    },
+    {
+      "id": "BR03-VP-COORD",
+      "chapter_introduced": 3,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          64
+        ],
+        "evidence": "IMG_SOURCE_FIXTURES_CH3_COORDINATION",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "VP",
+      "children": [
+        "VP",
+        "@word",
+        "VP"
+      ],
+      "condition": "Coordinate VP with category-compatible VP conjuncts.",
+      "level": "structural"
+    },
+    {
+      "id": "BR03-S-COORD",
+      "chapter_introduced": 3,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          64
+        ],
+        "evidence": "IMG_SOURCE_FIXTURES_CH3_COORDINATION",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "S",
+      "children": [
+        "S",
+        "@word",
+        "S"
+      ],
+      "condition": "Coordinate S with category-compatible S conjuncts.",
+      "level": "structural"
+    },
+    {
+      "id": "BR03-A-COORD",
+      "chapter_introduced": 3,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          61
+        ],
+        "evidence": "IMG_SOURCE_FIXTURES_CH3_COORDINATION",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "A",
+      "children": [
+        "A",
+        "@word",
+        "A"
+      ],
+      "condition": "Coordinate lexical A with category-compatible A conjuncts inside an AP.",
+      "level": "structural"
+    },
+    {
+      "id": "BR03-P-COORD",
+      "chapter_introduced": 3,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          61
+        ],
+        "evidence": "IMG_SOURCE_FIXTURES_CH3_COORDINATION",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "P",
+      "children": [
+        "P",
+        "@word",
+        "P"
+      ],
+      "condition": "Coordinate lexical P with category-compatible P conjuncts inside a PP.",
+      "level": "structural"
+    },
+    {
+      "id": "BR03-AP-DEG-AP",
+      "chapter_introduced": 3,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          65
+        ],
+        "evidence": "IMG_SOURCE_FIXTURES_CH3_COORDINATION",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "AP",
+      "children": [
+        "DEG",
+        "AP"
+      ],
+      "condition": "Nested degree modification: DEG modifies an AP rather than flattening two adverbs into one terminal.",
+      "level": "structural"
+    },
+    {
+      "id": "BR05-S-ADVP-RIGHT",
+      "chapter_introduced": 5,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          100
+        ],
+        "evidence": "IMG_SOURCE_FIXTURE_ch5-55b",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "S",
+      "children": [
+        "S",
+        "AdvP"
+      ],
+      "condition": "Sentence-level AdvP adjunct after the basic S; the first S remains the clause nucleus.",
+      "level": "structural"
+    },
+    {
+      "id": "BR05-VP-NP-TEMPORAL",
+      "chapter_introduced": 5,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          102,
+          105
+        ],
+        "evidence": "IMG_SOURCE_FIXTURES_ch5-d3_ex2c",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "VP",
+      "children": [
+        "VP",
+        "NP"
+      ],
+      "condition": "Higher VP with a temporal NP adjunct after the VP; the NP is an adjunct, not an object.",
+      "level": "structural"
+    },
+    {
+      "id": "BR05-S-ADV-LEFT",
+      "chapter_introduced": 5,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          106
+        ],
+        "evidence": "IMG_SOURCE_FIXTURE_ch5-ex2f",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "S",
+      "children": [
+        "Adv",
+        "S"
+      ],
+      "condition": "Sentence-initial lexical adverb preceding the clause S.",
+      "level": "structural"
+    },
+    {
+      "id": "BR06-PERF-GAP",
+      "chapter_introduced": 6,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          134
+        ],
+        "evidence": "IMG_SOURCE_FIXTURE_ch6-d6",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "PERF",
+      "children": [
+        "@gap"
+      ],
+      "condition": "Perfect auxiliary gap after fronting, with a licensed controller.",
+      "level": "structural"
+    },
+    {
+      "id": "BR06-PASS-GAP",
+      "chapter_introduced": 6,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          138
+        ],
+        "evidence": "IMG_SOURCE_FIXTURE_ch6-ex3d",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "PASS",
+      "children": [
+        "@gap"
+      ],
+      "condition": "Passive auxiliary gap after fronting, with a licensed controller.",
+      "level": "structural"
+    },
+    {
+      "id": "BR08-VP-V-S",
+      "chapter_introduced": 8,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          171
+        ],
+        "evidence": "IMG_SOURCE_FIXTURE_ch8-1b",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "VP",
+      "children": [
+        "V",
+        "S"
+      ],
+      "condition": "Verb with a selected finite S complement.",
+      "level": "structural"
+    },
+    {
+      "id": "BR08-S-SBAR-S",
+      "chapter_introduced": 8,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          191
+        ],
+        "evidence": "IMG_SOURCE_FIXTURE_ch8-disc8",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "S",
+      "children": [
+        "S-bar",
+        "S"
+      ],
+      "condition": "Sentence-initial subordinate S-bar adjunct followed by the main S; the adjunct does not become the subject.",
+      "level": "structural"
+    },
+    {
+      "id": "BR08-VP-V-GAP",
+      "chapter_introduced": 8,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          188
+        ],
+        "evidence": "IMG_SOURCE_FIXTURE_ch8-disc3",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "VP",
+      "children": [
+        "V",
+        "@gap"
+      ],
+      "condition": "Passive verb with a licensed object gap before a by-phrase and a delayed extraposed clause.",
+      "level": "structural"
+    },
+    {
+      "id": "BR08-VP-V-SBAR",
+      "chapter_introduced": 8,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          189
+        ],
+        "evidence": "IMG_SOURCE_FIXTURE_ch8-disc4",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "VP",
+      "children": [
+        "V",
+        "S-bar"
+      ],
+      "condition": "Verb with a selected S-bar complement.",
+      "level": "structural"
+    },
+    {
+      "id": "BR09-NP-SDBAR",
+      "chapter_introduced": 9,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          214
+        ],
+        "evidence": "IMG_SOURCE_FIXTURE_ch9-d4-20",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "NP",
+      "children": [
+        "S-dbar"
+      ],
+      "condition": "Nominal content clause S-dbar as an NP complement.",
+      "level": "structural"
+    },
+    {
+      "id": "BR09-S-NP-VP-SDBAR",
+      "chapter_introduced": 9,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          214
+        ],
+        "evidence": "IMG_SOURCE_FIXTURE_ch9-d4-22",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "S",
+      "children": [
+        "NP",
+        "VP",
+        "S-dbar"
+      ],
+      "condition": "Extraposed S-dbar with expletive subject and VP; keep the delayed clause distinct.",
+      "level": "structural"
+    },
+    {
+      "id": "BR09-NP-EXPLETIVE-WORD",
+      "chapter_introduced": 9,
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences, 3rd ed. (2011)",
+        "printed_pages": [
+          214
+        ],
+        "evidence": "IMG_SOURCE_FIXTURE_ch9-d4-22",
+        "review_status": "NEEDS_INDEPENDENT_EXAMPLE_AUDIT"
+      },
+      "parent": "NP",
+      "children": [
+        "@word"
+      ],
+      "condition": "Expletive/pronoun NP in the printed extraposition example; not a general NP-to-word rule.",
       "level": "structural"
     },
     {

@@ -10,6 +10,9 @@ from parse_engine import ParseFailure, analyze, load_models
 from br_tree import build_correction_alignment
 from burton_roberts import build_canonical_analysis
 from cambridge_registry import load_runtime_registry
+from canonical_binding import bind_details_to_canonical
+from authority import build_authority_manifest
+from findings import build_unified_findings
 from cambridge_evaluator import evaluate_cambridge
 from xai4_partial import evaluate_xai4
 from xai5_repair import localize_xai4
@@ -104,7 +107,8 @@ def word_info(words):
 
 
 def build_payload(text, sentence_index=0, convention_version=None,
-                  chapter=None, appendix_nom=None, variety=None):
+                  chapter=None, appendix_nom=None, variety=None,
+                  include_candidate_xai=False):
     """Build the shared analysis payload for the selected sentence.
 
     The legacy matrix provides deterministic findings. CoLA is advisory: it
@@ -157,6 +161,7 @@ def build_payload(text, sentence_index=0, convention_version=None,
     result = evaluate(analysis['root'], text=analysis['sentence'])
     details = result['details']
     summary = result['summary']
+    canonical_binding = bind_details_to_canonical(br_analysis.get('tree'), details)
     root = analysis['root']
     tokens = analysis['tokens']
 
@@ -294,6 +299,16 @@ def build_payload(text, sentence_index=0, convention_version=None,
     explanation_analysis = {**br_analysis, 'sentence': analysis['sentence']}
     shared_explanation_evidence = explain_analysis(
         explanation_analysis, runtime_registry=cambridge_runtime, variety=variety)
+    if include_candidate_xai:
+        try:
+            from cgel_candidate_xai import candidate_xai_for_sentence
+            shared_explanation_evidence['candidate_xai'] = candidate_xai_for_sentence(
+                analysis['sentence'], analysis=explanation_analysis, candidate_tree=root)
+        except Exception as exc:  # candidate diagnostics never fail the parse
+            shared_explanation_evidence['candidate_xai'] = {
+                'status': 'unavailable', 'production_enabled': False,
+                'items': [], 'blocked': [f'{type(exc).__name__}: {exc}'],
+            }
 
     return {
         'meta': {
@@ -332,6 +347,14 @@ def build_payload(text, sentence_index=0, convention_version=None,
         'candidate_tree': root,
         'br_analysis': br_analysis,
         'explanation_evidence': shared_explanation_evidence,
+        'candidate_xai': shared_explanation_evidence.get('candidate_xai'),
+        'authority': build_authority_manifest(
+            br_status=br_analysis.get('status'),
+            runtime_registry=cambridge_runtime,
+        ),
+        'canonical_binding': canonical_binding,
+        'unified_findings': build_unified_findings(
+            details, shared_explanation_evidence.get('candidate_xai')),
         'canonical_evaluation': evaluate_analysis(explanation_analysis, variety=variety),
         'cambridge_runtime': cambridge_runtime,
         'cambridge_evaluation': cambridge_evaluation,

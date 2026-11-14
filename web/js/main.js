@@ -2,6 +2,7 @@ import { accountUserId } from './session-scope.js';
 import { fromCanonicalEnvelope } from './syntax-builder.js';
 import { requestEvidence, renderEvidence, learnerFindingParagraph } from './explanation-evidence.js';
 import { findCanonicalNode, canonicalNodeFacts } from './canonical-view.js';
+import { mapLegacyDetailsToCanonical } from './legacy-node-map.js';
 import { enableCanvasView } from './canvas-view.js';
 import { loadClerk, createSupabaseClient, currentUserEmail, isAccountSession, setAuthState, initAuthModal, openAuthModal } from './auth.js';
 import { API_BASE } from './config.js';
@@ -241,7 +242,8 @@ async function showCorrected(variant = 'corrected') {
       refreshCorrectionUi();
       return;
     }
-    applyStatuses(cp.tree, cp.node_details, cp.summary);
+    applyStatuses(cp.tree, cp.node_details, cp.summary,
+      cp.explanation_evidence?.candidate_xai, cp.tokens);
     const expected = expectedScopeWords(session.payload, target.scopeId, edit);
     target[cacheKey] = {
       payload: cp,
@@ -1275,14 +1277,6 @@ function initProfileMenu() {
 
 function wireEvents() {
   const ta = document.querySelector('#inputText');
-  document.querySelector('#generatorVariety')?.addEventListener('change', () => {
-    const text = ta.value.trim();
-    if (workspaceView !== 'tutor' || quizMode || !text) return;
-    const index = text === session?.inputText ? session.sentence_index : 0;
-    invalidateAnalysis('English variety changed');
-    historySpans = [];
-    runPipeline({ index, isReplay: true });
-  });
   // Single-click editing (empty input / single sentence / active sentence /
   // blank space): this listener is registered before activateSentenceAtCaret,
   // so once readOnly flips false the sentence-nav click short-circuits.
@@ -1547,7 +1541,7 @@ function failPipeline(title, lines) {
 }
 
 async function postParse(text, index = null, variety = null) {
-  const body = { text };
+  const body = { text, include_candidate_xai: true };
   if (index !== undefined && index !== null) body.sentence_index = index;
   if (variety) body.variety = variety;
   const res = await fetch(`${API_BASE}/api/parse`, {
@@ -1561,7 +1555,10 @@ async function postParse(text, index = null, variety = null) {
   }
   const payload = await res.json();
   try {
-    payload.explanation_evidence ??= await requestEvidence(payload.br_analysis?.tree, null, { variety: payload.meta?.cambridge_variety });
+    payload.explanation_evidence ??= await requestEvidence(payload.br_analysis?.tree, null, {
+      variety: payload.meta?.cambridge_variety,
+      includeCandidateXai: true,
+    });
   } catch (error) {
     payload.explanation_evidence = null;
     log(`Book evidence unavailable: ${error.message}`);
@@ -1605,12 +1602,6 @@ function showCanonicalTree(payload) {
   canonicalCanvas?.destroy();
   canonicalCanvas = null;
   host.replaceChildren();
-  const help = document.createElement('p');
-  help.className = 'canonical-tree-help';
-  help.textContent = working
-    ? 'B-R working tree. Triangles preserve spans that need further analysis. Select a node to see its status. Drag to pan, scroll to zoom.'
-    : 'Select a node to inspect its Burton-Roberts structure and available book evidence. Drag to pan, scroll to zoom.';
-  host.append(help);
   const visual = renderLessonTree(envelope, {stackFeatures: true, displayLabels, interactive: true});
   host.append(visual);
   host.hidden = false;
@@ -1629,11 +1620,34 @@ function showCanonicalTree(payload) {
     }
   }
   indexParents(envelope.root);
+  const legacyMap = mapLegacyDetailsToCanonical(envelope.root, payload?.node_details || {});
+  const candidateIds = new Set();
+  for (const item of payload?.explanation_evidence?.candidate_xai?.items || []) {
+    const binding = item.tree_binding || {};
+    if (binding.tree_authority !== 'canonical_fact_graph') continue;
+    for (const key of ['affected_node_id', 'governor_node_id']) {
+      if (binding[key]) candidateIds.add(binding[key]);
+    }
+    for (const key of ['mark_node_ids', 'relation_node_ids', 'mark_boundary_node_ids']) {
+      for (const id of binding[key] || []) candidateIds.add(id);
+    }
+  }
   let requestVersion = 0;
   for (const group of host.querySelectorAll('[data-node-id]')) {
     const id = group.getAttribute('data-node-id');
     const node = findCanonicalNode(envelope.root, id);
     if (!node) continue;
+    const legacyDetail = legacyMap.byNode.get(id);
+    const titles = [];
+    if (legacyDetail) {
+      group.dataset.legacyIssue = 'true';
+      titles.push(`Grammar check: ${legacyDetail.constraint || 'finding'}`);
+    }
+    if (candidateIds.has(id)) {
+      group.dataset.candidateIssue = 'true';
+      titles.push('Candidate grammar check — not a verified error');
+    }
+    if (titles.length) group.setAttribute('title', titles.join(' · '));
     // A word remains selectable as its own node. Parent references are shown
     // as metadata only, never silently substituted for word-level evidence.
     const owner = node;
@@ -1675,7 +1689,11 @@ function showCanonicalTree(payload) {
         // A pending request must not repaint another sentence/account/view.
         if (selectedVersion !== requestVersion || host.hidden || !host.contains(group)
             || (session?.payload !== payload && activePreview()?.payload !== payload)) return;
-        renderEvidence(evidence, evidenceSlot, {treeRoot: group.closest('#canonicalTreeView'), nodeId: owner.id});
+        renderEvidence(evidence, evidenceSlot, {
+          treeRoot: group.closest('#canonicalTreeView'),
+          nodeId: owner.id,
+          legacyDetail: legacyMap.detailForNode(owner.id) || legacyMap.detailForNode(id),
+        });
       } catch (error) {
         if (host.hidden || !host.contains(group)) return;
         const message = document.createElement('p');
@@ -1707,10 +1725,12 @@ function setTreeAuthorityNotice(payload) {
     .map((row) => row?.message || row?.detail).find(Boolean)
     || (analysis?.reasons || []).map((row) => row?.detail).find(Boolean);
   if (canonicalShown) {
-    notice.textContent = analysis?.tree
-      ? 'Explore the syntax tree by selecting a word or phrase.'
-      : 'Part of this sentence could not be analyzed confidently.';
-  } else if (workspaceView === 'tutor' && !quizMode) {
+    notice.hidden = true;
+    notice.textContent = '';
+    document.querySelector('#openCanonicalBuilder')?.remove();
+    return;
+  }
+  if (workspaceView === 'tutor' && !quizMode) {
     notice.textContent = status === 'normalized' ? 'B-R display labels are unavailable. The raw parser diagnostic is hidden by default.'
       : `B-R analysis remains unresolved; raw parser labels are hidden by default.${detail ? ` ${detail}` : ''}`;
     const canvas = document.querySelector('#treeCanvas');
@@ -1735,18 +1755,6 @@ function setTreeAuthorityNotice(payload) {
     notice.textContent = 'Benepar parser diagnostic';
   }
   notice.hidden = false;
-  document.querySelector('#openCanonicalBuilder')?.remove();
-  if (status === 'normalized' && analysis?.tree) {
-    const button = document.createElement('button');
-    button.id = 'openCanonicalBuilder';
-    button.type = 'button';
-    button.textContent = 'Explore B-R tree in Builder';
-    button.addEventListener('click', () => {
-      try { enterBuilderMode(analysis.tree); }
-      catch (error) { renderDiagnostic('Canonical tree cannot be edited yet', [error.message]); }
-    });
-    notice.append(document.createElement('br'), button);
-  }
 }
 
 function clearTreeAuthorityNotice() {
@@ -1816,7 +1824,8 @@ function showLessonModelTree(payload, focusId = null) {
   clearTreeAuthorityNotice();
   prepareLessonModelCanvas();
   lessonModelActive = true;
-  applyStatuses(payload.tree, payload.node_details || {}, payload.summary || {});
+  applyStatuses(payload.tree, payload.node_details || {}, payload.summary || {},
+    payload.explanation_evidence?.candidate_xai, payload.tokens);
   renderer.setTree(payload.tree);
   if (focusId) renderer.select(focusId);
   // The canvas was hidden while the builder owned it; refit once the browser
@@ -1907,7 +1916,8 @@ async function analyzeForQuiz(text, index = null) {
     ]);
     return null;
   }
-  applyStatuses(payload.tree, payload.node_details, payload.summary);
+  applyStatuses(payload.tree, payload.node_details, payload.summary,
+    payload.explanation_evidence?.candidate_xai, payload.tokens);
   session = buildSession(payload, clean);
   lastAnalyzedText = clean;
   historySpans = [];
@@ -2021,7 +2031,8 @@ async function executePipeline(opts, request) {
 
   log(`Stage 4: benepar parse string \u2014 ${payload.parse.parse_string}`);
 
-  applyStatuses(payload.tree, payload.node_details, payload.summary);
+  applyStatuses(payload.tree, payload.node_details, payload.summary,
+    payload.explanation_evidence?.candidate_xai, payload.tokens);
   const s = payload.summary;
   log(`Stage 5: rule-matrix validation \u2014 ${s.valid_edges} valid / ${s.violated_edges} violated / ${s.unrated_edges} unrated \u00b7 fired${JSON.stringify(s.constraints_fired)}`);
 
@@ -2123,12 +2134,59 @@ function buildHighlightSpans(text, payload) {
     }
   }
   const sentenceClean = payload.summary?.verdict === 'grammatical';
+  const errorTokenSpans = [];
+  const addTokenSpan = (start, end) => {
+    if (!Number.isInteger(start) || !Number.isInteger(end) || end <= start) return;
+    errorTokenSpans.push([start, end]);
+  };
+  const tokenForChar = (start, end) => {
+    if (start === end) {
+      return tokenRanges.find((token) => token.start <= start && start <= token.end)?.index;
+    }
+    return tokenRanges.find((token) => token.start < end && token.end > start)?.index;
+  };
+  const initialTokenIndex = tokenRanges[0]?.index;
+  for (const detail of Object.values(payload.node_details || {})) {
+    if (detail.status !== 'error') continue;
+    if (detail.constraint === 'C-CAPITALIZATION'
+        && !(Array.isArray(detail.span) && detail.span[0] <= initialTokenIndex
+             && initialTokenIndex < detail.span[1])) continue;
+    const remediation = detail.remediation || {};
+    const edits = [];
+    if (remediation.edit) edits.push(remediation);
+    for (const row of remediation.edits || []) edits.push(row);
+    let matched = false;
+    for (const row of edits) {
+      const edit = row?.edit || row;
+      if (Number.isInteger(edit?.start) && Number.isInteger(edit?.end)) {
+        addTokenSpan(edit.start, edit.end);
+        matched = true;
+      }
+    }
+    if (!matched && Array.isArray(detail.canonical_binding?.token_span)) {
+      addTokenSpan(detail.canonical_binding.token_span[0], detail.canonical_binding.token_span[1]);
+      matched = true;
+    }
+    if (!matched && Array.isArray(detail.span)) {
+      addTokenSpan(detail.span[0], detail.span[1]);
+    }
+  }
+  for (const item of payload.explanation_evidence?.candidate_xai?.items || []) {
+    for (const row of item.tree_binding?.mapped || []) {
+      if (Array.isArray(row.token_ids) && row.token_ids.length) {
+        addTokenSpan(Math.min(...row.token_ids), Math.max(...row.token_ids) + 1);
+      } else if (Array.isArray(row.span) && row.span.length === 2) {
+        const index = tokenForChar(row.span[0], row.span[1]);
+        if (Number.isInteger(index)) addTokenSpan(index, index + 1);
+      }
+    }
+  }
   return tokenRanges.map((token) => {
     let status = sentenceClean ? 'valid' : 'neutral';
     const isSentenceInitialToken = token.index === tokenRanges[0]?.index;
-    for (const detail of Object.values(payload.node_details)) {
-      if (detail.status === 'error' && detail.span[0] <= token.index && token.index < detail.span[1]) {
-        if (detail.constraint === 'C-CAPITALIZATION' && !isSentenceInitialToken) continue;
+    for (const [start, end] of errorTokenSpans) {
+      if (start <= token.index && token.index < end) {
+        if (payload.node_details?.[token.index]?.constraint === 'C-CAPITALIZATION') continue;
         status = 'error';
         break;
       }
@@ -2236,12 +2294,14 @@ function syncHighlightScroll() {
   }
 }
 
-function applyStatuses(tree, details, summary) {
+function applyStatuses(tree, details, summary, candidateXai = null, tokens = []) {
   const fallback = summary?.verdict === 'grammatical' ? 'valid' : 'neutral';
+  const all = [];
   const walk = (node) => {
     const d = details[node.id];
     const raw = d?.display_status || d?.status || fallback;
     node.edgeResult = { status: raw === 'error' ? 'error' : raw === 'valid' ? 'valid' : 'neutral' };
+    all.push(node);
     for (const c of node.children || []) walk(c);
   };
   walk(tree);
@@ -2249,6 +2309,43 @@ function applyStatuses(tree, details, summary) {
   if (ungrammatical
       && !Object.values(details).some((detail) => detail?.status === 'error')) {
     tree.edgeResult = { status: 'error' };
+  }
+  // Candidate findings are unapproved, but the learner still needs to see
+  // where the local check points. Mark the smallest covering nodes red.
+  if (candidateXai?.items?.length) {
+    const tokenIdForChar = (start, end) => {
+      if (start === end) {
+        const hit = tokens.find((t) => t.start <= start && start <= t.end);
+        return hit?.i ?? hit?.index ?? null;
+      }
+      return tokens.find((t) => t.start < end && t.end > start)?.i
+        ?? tokens.find((t) => t.start < end && t.end > start)?.index
+        ?? null;
+    };
+    const markTokens = (ids) => {
+      if (!ids?.length) return;
+      const hits = all.filter((node) => node !== tree && node.span
+        && node.span[0] <= Math.min(...ids) && Math.max(...ids) < node.span[1]);
+      if (!hits.length) return;
+      hits.sort((a, b) => (a.span[1] - a.span[0]) - (b.span[1] - b.span[0]));
+      hits[0].edgeResult = { status: 'error', candidate: true };
+    };
+    for (const item of candidateXai.items) {
+      const binding = item.tree_binding || {};
+      for (const row of binding.mapped || []) {
+        if (row.token_ids?.length) {
+          markTokens(row.token_ids);
+        } else if (row.span) {
+          const id = tokenIdForChar(row.span[0], row.span[1]);
+          if (id !== null && id !== undefined) markTokens([id]);
+        }
+      }
+      for (const span of binding.spans || []) {
+        if (!span || span.length !== 2) continue;
+        const id = tokenIdForChar(span[0], span[1]);
+        if (id !== null && id !== undefined) markTokens([id]);
+      }
+    }
   }
   return tree;
 }
@@ -2275,7 +2372,7 @@ function handleNodeSelect(id) {
   if (!node || !detail) return;
   // Raw parser nodes have no source-validated B-R word/phrase correspondence.
   // Avoid putting a legacy constraint badge ahead of a learner explanation.
-  renderEvidence(payload?.explanation_evidence);
+  renderEvidence(payload?.explanation_evidence, undefined, {legacyDetail: detail});
   // Keep the fresh detail card visible in the bottom-right explain pane
   // without yanking the rest of the workspace.
   document.querySelector('#explainNode')

@@ -140,6 +140,7 @@ def parse():
     if variety is not None and (not isinstance(variety, str) or not variety.strip()):
         return jsonify({'error': 'variety must be a non-empty string or null'}), 400
     variety = variety.strip() if isinstance(variety, str) else None
+    include_candidate_xai = data.get('include_candidate_xai') is True
     if appendix_nom is True and chapter not in (None, 7):
         return jsonify({'error': 'appendix_nom is only valid for Chapter 7 or free analysis'}), 400
     if appendix_nom is False and chapter is None:
@@ -153,10 +154,12 @@ def parse():
         convention_version = convention_version or 'V10'
 
     try:
-        payload = build_payload(text, sentence_index=sentence_index,
-                                convention_version=convention_version,
-                                chapter=chapter, appendix_nom=appendix_nom,
-                                variety=variety)
+        payload = build_payload(
+            text, sentence_index=sentence_index,
+            convention_version=convention_version,
+            chapter=chapter, appendix_nom=appendix_nom,
+            variety=variety,
+            **({'include_candidate_xai': True} if include_candidate_xai else {}))
     except ParseFailure as exc:
         return jsonify({'error': str(exc), 'input': text}), 422
     except ValueError as exc:

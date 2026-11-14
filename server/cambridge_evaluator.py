@@ -13,10 +13,12 @@ try:
     from .burton_roberts import validate_canonical_tree
     from .cgel_passive_make_candidate import probe_passive_make
     from .cgel_passive_make_grounding import ground_passive_make_candidates
+    from .cambridge_runtime_probes import run_candidate_probe
 except ImportError:  # direct script-directory imports
     from burton_roberts import validate_canonical_tree
     from cgel_passive_make_candidate import probe_passive_make
     from cgel_passive_make_grounding import ground_passive_make_candidates
+    from cambridge_runtime_probes import run_candidate_probe
 
 
 _TOKEN_RE = re.compile(r"\w+(?:['’]\w+)*|[^\w\s]", re.UNICODE)
@@ -128,6 +130,50 @@ def _evaluate_passive_make(analysis, variety):
     return {"status": "evidence_unavailable" if candidates else "not_applicable"}
 
 
+def _evaluate_candidate_probe(sentence: str, rule_id: str,
+                              check: dict[str, Any], raw_tree: Any) -> dict[str, Any]:
+    probe_name = check.get("probe")
+    if not isinstance(probe_name, str) or not probe_name:
+        return {"status": "invalid_check", "candidate_matches": []}
+    try:
+        candidates = run_candidate_probe(probe_name, sentence, raw_tree)
+    except KeyError:
+        return {"status": "invalid_check", "candidate_matches": []}
+    except (TypeError, ValueError, AttributeError, OSError, RecursionError):
+        return {"status": "evidence_unavailable", "candidate_matches": []}
+    matches = [candidate for candidate in candidates
+               if isinstance(candidate, dict) and candidate.get("rule_id") == rule_id]
+    if matches:
+        return {"status": "violation", "candidate_matches": matches}
+    return {"status": "passed", "candidate_matches": []}
+
+
+def _evaluate_candidate_probe_set(sentence: str, rule_id: str,
+                                   check: dict[str, Any], raw_tree: Any,
+                                   cache: dict[str, dict[str, list[dict[str, Any]]]]) -> dict[str, Any]:
+    set_name = check.get("set")
+    if set_name != "phase_c":
+        return {"status": "invalid_check", "candidate_matches": []}
+    if set_name not in cache:
+        try:
+            if __package__:
+                from .cgel_phase_d import collect_candidate_findings
+            else:
+                from cgel_phase_d import collect_candidate_findings
+            result = collect_candidate_findings(sentence, raw_tree,
+                                                include_tree_binding=False)
+        except Exception:
+            return {"status": "evidence_unavailable", "candidate_matches": []}
+        grouped: dict[str, list[dict[str, Any]]] = {}
+        for finding in result.get("findings", []):
+            grouped.setdefault(finding.get("rule_id"), []).append(finding)
+        cache[set_name] = grouped
+    matches = cache[set_name].get(rule_id, [])
+    if matches:
+        return {"status": "violation", "candidate_matches": matches}
+    return {"status": "passed", "candidate_matches": []}
+
+
 def evaluate_cambridge(analysis: dict[str, Any] | None,
                        registry: dict[str, Any] | None,
                        variety: str | None = None) -> dict[str, Any]:
@@ -201,6 +247,7 @@ def evaluate_cambridge(analysis: dict[str, Any] | None,
     findings = []
     diagnostics = list(registry.get("diagnostics") or [])
     evaluated_ids = []
+    candidate_cache: dict[str, dict[str, list[dict[str, Any]]]] = {}
     for rule in active_rules:
         if not isinstance(rule, dict) or not rule.get("rule_id"):
             diagnostics.append({
@@ -226,6 +273,13 @@ def evaluate_cambridge(analysis: dict[str, Any] | None,
         if kind == "passive_make_missing_to" and rule_id == "CLS-357" and (
                 rule.get("scope") == "clause" and set(check) == {"kind"}):
             outcome = _evaluate_passive_make(analysis, variety)
+        elif kind == "candidate_probe_set":
+            raw_tree = (analysis.get("parser_diagnostics") or {}).get("raw_candidate_tree")
+            outcome = _evaluate_candidate_probe_set(sentence, rule_id, check, raw_tree,
+                                                     candidate_cache)
+        elif kind == "candidate_probe":
+            raw_tree = (analysis.get("parser_diagnostics") or {}).get("raw_candidate_tree")
+            outcome = _evaluate_candidate_probe(sentence, rule_id, check, raw_tree)
         elif rule.get("scope") != "sentence":
             diagnostics.append({
                 "code": "UNSUPPORTED_RUNTIME_SCOPE",
@@ -260,6 +314,7 @@ def evaluate_cambridge(analysis: dict[str, Any] | None,
                 "matched_sequences": outcome.get("violating_matches", outcome.get("matched_sequences", [])),
                 "excepted_matches": outcome.get("excepted_matches", []),
                 **({"structural_matches": outcome["structural_matches"]} if "structural_matches" in outcome else {}),
+                **({"candidate_matches": outcome["candidate_matches"]} if "candidate_matches" in outcome else {}),
             })
     return {
         "status": "evaluated" if evaluated_ids else "no_implemented_rules",

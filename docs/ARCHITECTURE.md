@@ -5,6 +5,12 @@ byte to the final node explanation, and from a source sentence to a verdict.
 It is derived from the code in this repository, not from a design proposal.
 Where a number or model name appears, it is the number the code uses today.
 
+If the terms **Benepar tree**, **B-R canonical tree**, **legacy matrix**,
+**CoLA**, **Cambridge candidate**, or **two books** are confusing, read
+[SynTutor Architecture Q&A](planning/SYNTUTOR_ARCHITECTURE_QA.md) first.
+The active authority-migration plan is
+[Architecture Authority Migration](planning/ARCHITECTURE_AUTHORITY_MIGRATION.md).
+
 ---
 
 ## 0. The system in one page
@@ -538,6 +544,18 @@ If any guard fails, the sentence stays `unverified`. The corrector is
 optional, just like the detector: no network, no weights, or no flip simply
 means no promotion.
 
+**Candidate-only Cambridge path.** The separate Phase D pipeline in
+`server/cgel_phase_d.py` is not this production correction search. It consumes
+the candidate-only Cambridge probes, applies their explicit edit hints,
+reparses and reruns the probes, and returns a local candidate with lineage.
+It never enables a registry rule and never certifies the whole sentence.
+Candidate findings are mapped to syntax-tree nodes by
+`server/cgel_candidate_xai.py`, which composes the short local paragraph from
+the rule explanation and the observed tree context. The node inspector can
+request this with `include_candidate_xai`. See
+[CGEL_PHASE_D_SELECTED_SENTENCE.md](planning/CGEL_PHASE_D_SELECTED_SENTENCE.md)
+and [CGEL_CANDIDATE_XAI_MAPPING.md](planning/CGEL_CANDIDATE_XAI_MAPPING.md).
+
 ### Stage 9 — Payload assembly
 
 `api.py::build_payload` returns one JSON object with six top-level keys.
@@ -626,13 +644,16 @@ When the payload arrives, `main.js`:
   deepest box under the pointer; arrow keys move through depth-first order;
   Enter/Space selects.
 - Node colors come from `edgeResult.status`: ok / error / unlisted.
-- Selection is local: `handleNodeSelect` reads
-  `session.payload.node_details[id]` and renders it immediately. There is no
-  second HTTP request for a node explanation.
+- The legacy parser tree reads `session.payload.node_details[id]` locally.
+- The canonical B-R tree requests `/api/explain` for the selected canonical
+  node. It maps legacy matrix details from Benepar token spans and remediation
+  edit positions onto canonical nodes (`web/js/legacy-node-map.js`) so the
+  canonical view marks the same error and can show the legacy repair.
 
 #### Node inspector
 
-`web/js/ui.js::renderNodeDetail` renders the right-hand explain pane:
+`web/js/ui.js::renderNodeDetail` renders the legacy node card when shared
+evidence is absent:
 
 - a status dot (ok / error / unlisted) and the phrase or tag name;
 - the node surface;
@@ -641,8 +662,11 @@ When the payload arrives, `main.js`:
   "What's wrong / How to fix it / Alternative fix" card;
 - otherwise: the explanation text.
 
-This is the point where the symbolic matrix becomes learner-facing: every
-phrase and word has a cached, deterministic explanation or repair card.
+When a canonical node is selected, `web/js/explanation-evidence.js` renders the
+shared evidence pane instead. Legacy error details are shown in a separate
+`Legacy diagnostic — not book-verified` section so the repair is not lost when
+the canonical tree is displayed. Candidate findings are shown separately as
+candidate-only checks.
 
 #### Workspace modes
 

@@ -1,24 +1,1956 @@
 {
   "registry_version": 1,
-  "purpose": "Explicit allow-list for independently reviewed Cambridge rules that have passed source, crosswalk, implementation, and regression gates.",
-  "enabled_rules": [],
+  "purpose": "Explicit owner-waived allow-list for implemented candidate rules.",
+  "enabled_rules": [
+    {
+      "rule_id": "CLS-099",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-100",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-102",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-103",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-1034",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-1035",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-1036",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-104",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-106",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-107",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-108",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-1101",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-1103",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-1119",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-1129",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-114",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-1159",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-1166",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-117",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-1188",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-119",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-1197",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-120",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-1218",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-1222",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-1239",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-1244",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-1259",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-126",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-1274",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-1276",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-128",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-130",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-131",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-1325",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-1329",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-1379",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-1415",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-1425",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-1451",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-1479",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-156",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-171",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-182",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-183",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-201",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-213",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-217",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-229",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-268",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-270",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-285",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-286",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-320",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-333",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-357",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-407",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "CLS-408",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "COMP-030",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "COMP-031",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "COMP-033",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "COMP-034",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "COMP-035",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "COMP-036",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "COMP-040",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "COMP-041",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "COMP-042",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "COMP-060",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "COMP-061",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "COMP-062",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "COMP-063",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "COMP-084",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "COMP-085",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "COMP-087",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "COMP-116",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "COMP-128",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "COMP-138",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "COMP-189",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "COMP-194",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "COMP-202",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "MORPH-025",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "MORPH-026",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "MORPH-035",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "MORPH-041",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "MORPH-056",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "MORPH-078",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "MORPH-080",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "MORPH-083",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "MORPH-092",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "MORPH-104",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "MORPH-105",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "MORPH-109",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "MORPH-114",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "MORPH-130",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "MORPH-141",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "MORPH-237",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "MORPH-258",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "MORPH-309",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "MORPH-311",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "MORPH-313",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "MORPH-316",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "MORPH-357",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "MORPH-385",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "MORPH-391",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "MORPH-445",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "MORPH-477",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "MORPH-480",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "MORPH-481",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "MORPH-482",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "MORPH-483",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "OTH-098",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "OTH-102",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "OTH-158",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "OTH-182",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "OTH-216",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "OTH-377",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "OTH-439",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "OTH-458",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "OTH-615",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "OTH-671",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "OTH-688",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "OTH-698",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "OTH-699",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "OTH-701",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "OTH-708",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "OTH-712",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "OTH-715",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "OTH-717",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "OTH-726",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "OTH-730",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "OTH-737",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "OTH-740",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "OTH-743",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "OTH-756",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "OTH-761",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "OTH-764",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-028",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-043",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-044",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-062",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-065",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-079",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-080",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-083",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-084",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-087",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-088",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-110",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-126",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-128",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-133",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-140",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-157",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-161",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-164",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-197",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-220",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-240",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-247",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-258",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-283",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-289",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-290",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-295",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-305",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-321",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-334",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-347",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-381",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-420",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-580",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-582",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-590",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-593",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-600",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-602",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-620",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-629",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-632",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-644",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-645",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-653",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-654",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-666",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-684",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-704",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-705",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-706",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-737",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-748",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "PHR-769",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "WCAT-046",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    },
+    {
+      "rule_id": "WCAT-059",
+      "owner_waiver": true,
+      "independent_review": false,
+      "reviewed_by": "owner waiver + AI source examples/guards",
+      "reviewed_on": "2026-11-14",
+      "crosswalk_status": "owner_waived_unverified",
+      "test_status": "source_examples_passed",
+      "runtime_status": "enabled"
+    }
+  ],
   "policy": {
     "extraction_status_alone_never_enables_a_rule": true,
     "permitted_rule_types": [
       "constraint",
       "variety_restricted"
     ],
-    "required_review_state": "independently_reviewed",
+    "required_review_state": "owner_waived_ai_review",
     "required_crosswalk_status": [
-      "compatible",
-      "resolved"
+      "owner_waived_unverified"
     ],
-    "required_test_state": "passed",
-    "default_when_absent": "disabled"
+    "required_test_state": "source_examples_passed",
+    "default_when_absent": "disabled",
+    "independent_review": false
   },
   "notes": [
-    "No Cambridge rule is runtime-enabled by default.",
-    "The legacy rule matrix is a separate legacy path and is not represented as Cambridge runtime evaluation.",
-    "A rule may be added only after independent review, framework crosswalk resolution, a deterministic implementation, and passing positive, negative, and exception tests."
+    "Owner explicitly waived independent human review on 2026-11-14.",
+    "All enabled rules are AI-checked candidate probes, not independently certified.",
+    "The runtime executes one allow-listed Phase-C candidate set and filters by rule id.",
+    "Rules without a matching candidate finding simply pass for that sentence."
   ]
 }

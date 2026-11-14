@@ -112,7 +112,22 @@ def _finding_node_labels(evaluation, tree_nodes):
     return labels_by_rule
 
 
-def explain_analysis(analysis, node_id=None, *, registry=None, runtime_registry=None, variety=None):
+def _attach_candidate_xai(output, analysis, source_text, node_id, include_candidate_xai):
+    if not include_candidate_xai:
+        return
+    try:
+        from cgel_candidate_xai import candidate_xai_for_sentence
+        output['candidate_xai'] = candidate_xai_for_sentence(
+            source_text, analysis=analysis, node_id=node_id)
+    except Exception as exc:  # candidate diagnostics are never a production failure
+        output['candidate_xai'] = {
+            'status': 'unavailable', 'production_enabled': False,
+            'items': [], 'blocked': [f'{type(exc).__name__}: {exc}'],
+        }
+
+
+def explain_analysis(analysis, node_id=None, *, registry=None, runtime_registry=None,
+                     variety=None, include_candidate_xai=False):
     if node_id is not None and (not isinstance(node_id, str) or len(node_id) > 200):
         raise ValueError('node_id must be a string of at most 200 characters')
     if not isinstance(analysis, dict):
@@ -123,7 +138,7 @@ def explain_analysis(analysis, node_id=None, *, registry=None, runtime_registry=
               'fact_graph': None, 'contextual_explanations': None,
               'xai4_partial_evaluation': None, 'xai5_localization': None,
               'xai6_naturalization': None, 'xai7_unified': None,
-              'learner_explanation': None}
+              'learner_explanation': None, 'candidate_xai': None}
     from xai4_partial import evaluate_xai4
     source_text = analysis.get('sentence')
     if source_text is None and isinstance(analysis.get('tree'), dict):
@@ -154,6 +169,8 @@ def explain_analysis(analysis, node_id=None, *, registry=None, runtime_registry=
         output['status'] = 'ANALYSIS_UNRESOLVED'
         output['diagnostics'].append({'code': 'ANALYSIS_UNRESOLVED',
                                       'message': 'No resolved canonical analysis is available.'})
+        _attach_candidate_xai(output, analysis, source_text, node_id,
+                              include_candidate_xai)
         from xai7_unified import assemble
         output['xai7_unified'] = assemble(output)
         return output
@@ -258,6 +275,8 @@ def explain_analysis(analysis, node_id=None, *, registry=None, runtime_registry=
     else:
         output['diagnostics'].append({'code': 'NO_BOOK_BASIS',
                                       'message': 'No independently reviewed source/template supports an explanation for this analysis.'})
+    _attach_candidate_xai(output, analysis, source_text, node_id,
+                          include_candidate_xai)
     from xai7_unified import assemble
     output['xai7_unified'] = assemble(output)
     return output
@@ -300,13 +319,16 @@ def explain_request(data):
     if 'quiz_item_id' in data:
         from quiz_bank import explain_quiz_request
         return explain_quiz_request(data)
-    if set(data) - {'tree', 'node_id', 'variety'}:
-        raise ValueError('only tree, node_id and variety are accepted; source registries cannot be supplied')
+    if set(data) - {'tree', 'node_id', 'variety', 'include_candidate_xai'}:
+        raise ValueError('only tree, node_id, variety and include_candidate_xai are accepted; source registries cannot be supplied')
+    include_candidate_xai = data.get('include_candidate_xai') is True
     variety = data.get('variety')
     if variety is not None and (not isinstance(variety, str) or not variety.strip()):
         raise ValueError('variety must be a non-empty string or null')
     tree = data.get('tree')
     if tree is None:
-        return explain_analysis({'status': 'unresolved'}, data.get('node_id'), variety=variety)
+        return explain_analysis({'status': 'unresolved'}, data.get('node_id'), variety=variety,
+                                include_candidate_xai=include_candidate_xai)
     validate_envelope(tree)
-    return explain_analysis({'status': 'normalized', 'tree': tree}, data.get('node_id'), variety=variety)
+    return explain_analysis({'status': 'normalized', 'tree': tree}, data.get('node_id'), variety=variety,
+                            include_candidate_xai=include_candidate_xai)

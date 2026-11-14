@@ -1,0 +1,1414 @@
+{
+  "schema_version": "final-d1-exact-fixtures-1.0.0",
+  "source": "web/content/book/ch01.trees.json..ch10.trees.json (IMG sentence-aligned)",
+  "claim": "Exact complete-tree agreement against transcribed chapter fixtures; not independent free-sentence gold.",
+  "source_img_records": 224,
+  "normalized": 195,
+  "exact_matches": 184,
+  "exact_rate": 0.9436,
+  "reference_path_matches": 195,
+  "unresolved": 29,
+  "mismatches": [
+    {
+      "record_id": "ch1-25a",
+      "chapter": 1,
+      "sentence": "beside a stream"
+    },
+    {
+      "record_id": "ch1-25c",
+      "chapter": 1,
+      "sentence": "beside a stream"
+    },
+    {
+      "record_id": "ch2-38",
+      "chapter": 2,
+      "sentence": "their rather dubious jokes"
+    },
+    {
+      "record_id": "ch2-39",
+      "chapter": 2,
+      "sentence": "their rather dubious jokes"
+    },
+    {
+      "record_id": "ch5-11",
+      "chapter": 5,
+      "sentence": "Max spotted those wildcats in the spring"
+    },
+    {
+      "record_id": "ch5-35",
+      "chapter": 5,
+      "sentence": "he called up the boss"
+    },
+    {
+      "record_id": "ch5-46",
+      "chapter": 5,
+      "sentence": "William gave some bleach"
+    },
+    {
+      "record_id": "ch6-86",
+      "chapter": 6,
+      "sentence": "Byron would not dance"
+    },
+    {
+      "record_id": "ch6-88",
+      "chapter": 6,
+      "sentence": "Byron did not dance"
+    },
+    {
+      "record_id": "ch10-101b",
+      "chapter": 10,
+      "sentence": "They expected the bear to dance"
+    },
+    {
+      "record_id": "ch10-102b",
+      "chapter": 10,
+      "sentence": "They persuaded the bear to dance"
+    }
+  ],
+  "rows": [
+    {
+      "record_id": "ch1-5",
+      "chapter": 1,
+      "status": "unresolved",
+      "exact": false
+    },
+    {
+      "record_id": "ch1-25a",
+      "chapter": 1,
+      "status": "normalized",
+      "exact": false
+    },
+    {
+      "record_id": "ch1-25b",
+      "chapter": 1,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch1-25c",
+      "chapter": 1,
+      "status": "normalized",
+      "exact": false
+    },
+    {
+      "record_id": "ch1-34",
+      "chapter": 1,
+      "status": "unresolved",
+      "exact": false
+    },
+    {
+      "record_id": "ch1-ex3a",
+      "chapter": 1,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch1-ex3b",
+      "chapter": 1,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch1-ex6a",
+      "chapter": 1,
+      "status": "unresolved",
+      "exact": false
+    },
+    {
+      "record_id": "ch1-ex6b",
+      "chapter": 1,
+      "status": "unresolved",
+      "exact": false
+    },
+    {
+      "record_id": "ch1-ex6c",
+      "chapter": 1,
+      "status": "unresolved",
+      "exact": false
+    },
+    {
+      "record_id": "ch2-2",
+      "chapter": 2,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch2-33",
+      "chapter": 2,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch2-34",
+      "chapter": 2,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch2-36",
+      "chapter": 2,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch2-38",
+      "chapter": 2,
+      "status": "normalized",
+      "exact": false
+    },
+    {
+      "record_id": "ch2-39",
+      "chapter": 2,
+      "status": "normalized",
+      "exact": false
+    },
+    {
+      "record_id": "ch2-42",
+      "chapter": 2,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch2-43",
+      "chapter": 2,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch2-ex5a",
+      "chapter": 2,
+      "status": "unresolved",
+      "exact": false
+    },
+    {
+      "record_id": "ch2-ex5b",
+      "chapter": 2,
+      "status": "unresolved",
+      "exact": false
+    },
+    {
+      "record_id": "ch2-ex5c",
+      "chapter": 2,
+      "status": "unresolved",
+      "exact": false
+    },
+    {
+      "record_id": "ch2-ex3a",
+      "chapter": 2,
+      "status": "unresolved",
+      "exact": false
+    },
+    {
+      "record_id": "ch2-ex3b",
+      "chapter": 2,
+      "status": "unresolved",
+      "exact": false
+    },
+    {
+      "record_id": "ch2-ex4a",
+      "chapter": 2,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch2-ex4b",
+      "chapter": 2,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch2-ex5-3",
+      "chapter": 2,
+      "status": "unresolved",
+      "exact": false
+    },
+    {
+      "record_id": "ch3-7",
+      "chapter": 3,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch3-14",
+      "chapter": 3,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch3-18",
+      "chapter": 3,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch3-19a",
+      "chapter": 3,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch3-19b",
+      "chapter": 3,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch3-29",
+      "chapter": 3,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch3-30",
+      "chapter": 3,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch3-40a",
+      "chapter": 3,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch3-40b",
+      "chapter": 3,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch3-41a",
+      "chapter": 3,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch3-41b",
+      "chapter": 3,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch3-text-a",
+      "chapter": 3,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch3-text-b",
+      "chapter": 3,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch3-ex3a",
+      "chapter": 3,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch3-ex3b",
+      "chapter": 3,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch3-ex3c",
+      "chapter": 3,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch3-ex3d",
+      "chapter": 3,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch3-ex3e",
+      "chapter": 3,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch3-ex4",
+      "chapter": 3,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch4-21",
+      "chapter": 4,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch4-22",
+      "chapter": 4,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch4-26",
+      "chapter": 4,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch4-32",
+      "chapter": 4,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch4-46a",
+      "chapter": 4,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch4-46b",
+      "chapter": 4,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch4-51",
+      "chapter": 4,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch4-52b",
+      "chapter": 4,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch4-56",
+      "chapter": 4,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch4-ex4a",
+      "chapter": 4,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch4-ex4b",
+      "chapter": 4,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch4-ex4c",
+      "chapter": 4,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch4-ex4d",
+      "chapter": 4,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch4-ex4e",
+      "chapter": 4,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch4-ex4f",
+      "chapter": 4,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch5-11",
+      "chapter": 5,
+      "status": "normalized",
+      "exact": false
+    },
+    {
+      "record_id": "ch5-12",
+      "chapter": 5,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch5-15",
+      "chapter": 5,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch5-16",
+      "chapter": 5,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch5-32",
+      "chapter": 5,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch5-35",
+      "chapter": 5,
+      "status": "normalized",
+      "exact": false
+    },
+    {
+      "record_id": "ch5-39",
+      "chapter": 5,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch5-46",
+      "chapter": 5,
+      "status": "normalized",
+      "exact": false
+    },
+    {
+      "record_id": "ch5-55a",
+      "chapter": 5,
+      "status": "unresolved",
+      "exact": false
+    },
+    {
+      "record_id": "ch5-55b",
+      "chapter": 5,
+      "status": "unresolved",
+      "exact": false
+    },
+    {
+      "record_id": "ch5-58",
+      "chapter": 5,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch5-d1",
+      "chapter": 5,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch5-d2",
+      "chapter": 5,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch5-d3",
+      "chapter": 5,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch5-ex2a",
+      "chapter": 5,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch5-ex2b",
+      "chapter": 5,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch5-ex2c",
+      "chapter": 5,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch5-ex2d",
+      "chapter": 5,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch5-ex2e",
+      "chapter": 5,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch5-ex2f",
+      "chapter": 5,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch5-ex6a",
+      "chapter": 5,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch5-ex6b",
+      "chapter": 5,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch5-fex-ex",
+      "chapter": 5,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch6-52",
+      "chapter": 6,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch6-53b",
+      "chapter": 6,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch6-62",
+      "chapter": 6,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch6-66",
+      "chapter": 6,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch6-69",
+      "chapter": 6,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch6-78",
+      "chapter": 6,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch6-81",
+      "chapter": 6,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch6-86",
+      "chapter": 6,
+      "status": "normalized",
+      "exact": false
+    },
+    {
+      "record_id": "ch6-88",
+      "chapter": 6,
+      "status": "normalized",
+      "exact": false
+    },
+    {
+      "record_id": "ch6-91",
+      "chapter": 6,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch6-93",
+      "chapter": 6,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch6-103",
+      "chapter": 6,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch6-d1",
+      "chapter": 6,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch6-d2",
+      "chapter": 6,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch6-d3",
+      "chapter": 6,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch6-d4",
+      "chapter": 6,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch6-d5",
+      "chapter": 6,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch6-d6",
+      "chapter": 6,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch6-ex1-1",
+      "chapter": 6,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch6-ex1-2",
+      "chapter": 6,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch6-ex1-3",
+      "chapter": 6,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch6-ex3a",
+      "chapter": 6,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch6-ex3b",
+      "chapter": 6,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch6-ex3c",
+      "chapter": 6,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch6-ex3d",
+      "chapter": 6,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch6-ex3e",
+      "chapter": 6,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-1",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-2",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-3",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-4",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-5",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-6",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-7",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-10a",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-10b",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-12",
+      "chapter": 7,
+      "status": "unresolved",
+      "exact": false
+    },
+    {
+      "record_id": "ch7-14",
+      "chapter": 7,
+      "status": "unresolved",
+      "exact": false
+    },
+    {
+      "record_id": "ch7-18",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-19",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-20",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-25",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-26",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-32",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-36",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-39a",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-42",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-53b",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-54b",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-67",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-72a",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-72b",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-75",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-76",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-disc1",
+      "chapter": 7,
+      "status": "unresolved",
+      "exact": false
+    },
+    {
+      "record_id": "ch7-disc2",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-disc3",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-disc4",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-disc5-37",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-disc7",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-disc8",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-ex1-a",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-ex1-b",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-ex1-c-i",
+      "chapter": 7,
+      "status": "unresolved",
+      "exact": false
+    },
+    {
+      "record_id": "ch7-ex1-c-ii",
+      "chapter": 7,
+      "status": "unresolved",
+      "exact": false
+    },
+    {
+      "record_id": "ch7-ex1-d",
+      "chapter": 7,
+      "status": "unresolved",
+      "exact": false
+    },
+    {
+      "record_id": "ch7-ex1-e",
+      "chapter": 7,
+      "status": "unresolved",
+      "exact": false
+    },
+    {
+      "record_id": "ch7-ex1-f",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-app-16",
+      "chapter": 7,
+      "status": "unresolved",
+      "exact": false
+    },
+    {
+      "record_id": "ch7-app-17",
+      "chapter": 7,
+      "status": "unresolved",
+      "exact": false
+    },
+    {
+      "record_id": "ch7-app-18",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-app-19b",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch7-app-20b",
+      "chapter": 7,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch8-1b",
+      "chapter": 8,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch8-4a",
+      "chapter": 8,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch8-9a",
+      "chapter": 8,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch8-10a",
+      "chapter": 8,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch8-11a",
+      "chapter": 8,
+      "status": "unresolved",
+      "exact": false
+    },
+    {
+      "record_id": "ch8-11b",
+      "chapter": 8,
+      "status": "unresolved",
+      "exact": false
+    },
+    {
+      "record_id": "ch8-15",
+      "chapter": 8,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch8-23",
+      "chapter": 8,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch8-24",
+      "chapter": 8,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch8-36",
+      "chapter": 8,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch8-47",
+      "chapter": 8,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch8-54",
+      "chapter": 8,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch8-61",
+      "chapter": 8,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch8-67c",
+      "chapter": 8,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch8-71",
+      "chapter": 8,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch8-disc1",
+      "chapter": 8,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch8-disc2",
+      "chapter": 8,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch8-disc3",
+      "chapter": 8,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch8-disc4",
+      "chapter": 8,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch8-disc5",
+      "chapter": 8,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch8-disc6",
+      "chapter": 8,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch8-disc7",
+      "chapter": 8,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch8-disc8",
+      "chapter": 8,
+      "status": "unresolved",
+      "exact": false
+    },
+    {
+      "record_id": "ch8-ex1-a",
+      "chapter": 8,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch8-ex1-b",
+      "chapter": 8,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch8-ex1-c",
+      "chapter": 8,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch8-ex1-d",
+      "chapter": 8,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch8-ex2-a",
+      "chapter": 8,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch8-ex2-b",
+      "chapter": 8,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch8-ex2-c",
+      "chapter": 8,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch8-ex2-d",
+      "chapter": 8,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch8-ex2-e",
+      "chapter": 8,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch8-ex2-f",
+      "chapter": 8,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch9-11a",
+      "chapter": 9,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch9-11b",
+      "chapter": 9,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch9-38",
+      "chapter": 9,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch9-39",
+      "chapter": 9,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch9-59",
+      "chapter": 9,
+      "status": "unresolved",
+      "exact": false
+    },
+    {
+      "record_id": "ch9-60",
+      "chapter": 9,
+      "status": "unresolved",
+      "exact": false
+    },
+    {
+      "record_id": "ch9-d1a",
+      "chapter": 9,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch9-d1bi",
+      "chapter": 9,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch9-d1bii",
+      "chapter": 9,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch9-d1c",
+      "chapter": 9,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch9-d1d",
+      "chapter": 9,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch9-d2",
+      "chapter": 9,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch9-d3a",
+      "chapter": 9,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch9-d3b",
+      "chapter": 9,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch9-d4-20",
+      "chapter": 9,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch9-d4-22",
+      "chapter": 9,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch9-d5",
+      "chapter": 9,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch9-d6-53a",
+      "chapter": 9,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch9-d6-53b",
+      "chapter": 9,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch9-ex3a",
+      "chapter": 9,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch10-11",
+      "chapter": 10,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch10-14a",
+      "chapter": 10,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch10-21",
+      "chapter": 10,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch10-22",
+      "chapter": 10,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch10-37",
+      "chapter": 10,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch10-d1-26",
+      "chapter": 10,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch10-d2-42a",
+      "chapter": 10,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch10-d3-44a",
+      "chapter": 10,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch10-d3-44b",
+      "chapter": 10,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch10-d4-50",
+      "chapter": 10,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch10-d5-55b",
+      "chapter": 10,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch10-d6-62",
+      "chapter": 10,
+      "status": "normalized",
+      "exact": true
+    },
+    {
+      "record_id": "ch10-ex2a",
+      "chapter": 10,
+      "status": "unresolved",
+      "exact": false
+    },
+    {
+      "record_id": "ch10-ex2b",
+      "chapter": 10,
+      "status": "unresolved",
+      "exact": false
+    },
+    {
+      "record_id": "ch10-101b",
+      "chapter": 10,
+      "status": "normalized",
+      "exact": false
+    },
+    {
+      "record_id": "ch10-102b",
+      "chapter": 10,
+      "status": "normalized",
+      "exact": false
+    }
+  ]
+}

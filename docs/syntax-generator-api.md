@@ -45,7 +45,7 @@ Source fixture provenance is retained. Imported source envelopes preserve an exp
 
 ## Canonical schema compatibility — resolved in this continuation
 
-The API normalizer now uses `build_canonical_analysis` from `server/burton_roberts.py`. Exact sentence/profile-matched IMG source records are imported through the read-only gold importer and validated against the M1 envelope validator before being returned. Conflicting source records and source records that fail projection stay unresolved. The narrow V2 candidate mapping also constructs and validates an M1 envelope.
+The API normalizer now uses `build_canonical_analysis` from `server/burton_roberts.py`. Exact sentence/profile-matched IMG source records are imported through the read-only gold importer and validated against the M1 envelope validator before being returned. Conflicting source records and source records that fail projection stay unresolved. The Benepar-to-B-R FINAL-D1 construction projection and the V2 chapter shell also construct and validate an M1 envelope. A schema-valid tree is structural evidence, not a grammaticality verdict or independently verified gold.
 
 The API contract tests validate the actual `br_analysis.tree` response against `docs/canonical-burton-roberts-tree.schema.json`. `grammar/br_tree.schema.json` is retained only as a deprecated internal projection schema for the legacy `server/br_tree.py` module and its focused tests; it is not the public Generator canonical-output contract.
 
@@ -55,7 +55,7 @@ The live Benepar-to-B-R mapping remains deliberately conservative:
 
 1. Exact sentence-aligned B-R gold references are used only when the reference has IMG evidence, is not marked incorrect, matches the selected convention version, and passes structural validation.
 2. If distinct matching gold references produce different structures, the result is unresolved rather than arbitrarily selecting one.
-3. The non-reference live mapping is the narrowly supported V2 `S → NP VP` shell. It leaves NP and VP internal structure as triangles; it does not rename arbitrary Penn labels into B-R categories. Terminal punctuation is retained in the full sentence and raw candidate diagnostics but is not fabricated as a phrase-marker leaf; punctuation inside a phrase that prevents safe alignment remains unresolved.
+3. The non-reference live mapping is the declared FINAL-D1 construction projection plus the V2 chapter shell. It uses Benepar evidence but reconstructs B-R layers and leaves unsupported NP/VP internals as triangles; it does not rename arbitrary Penn labels into B-R categories. Terminal punctuation is retained in the full sentence and raw candidate diagnostics but is not fabricated as a phrase-marker leaf; punctuation inside a phrase that prevents safe alignment remains unresolved.
 4. Chapter 7 Appendix D1 references are filtered separately from V7 core references.
 5. Other Benepar structures, unsupported profiles, token-yield mismatches, or unsupported punctuation/mapping cases remain unresolved with diagnostics and the raw candidate preserved.
 
@@ -63,13 +63,28 @@ This is not a general V1–V10 Benepar transformer. In particular, arbitrary V3�
 
 The read-only B-R fixture projection also records source-only metadata and accepted alternatives. A source-only zero-word elision marker that has no corresponding canonical node shape remains unresolved; it is not reinterpreted as a gap or fabricated lexical terminal.
 
+## Authority and unified findings
+
+`/api/parse` now exposes:
+
+- `authority`: explicit structure, legacy-detection, Cambridge-runtime,
+  candidate, explanation and correction channels;
+- `canonical_binding`: legacy details mapped to canonical B-R node IDs;
+- `unified_findings`: legacy and candidate findings with `authority` and
+  `claim_status`, never merged into a single unlabeled verdict;
+- `candidate_xai`: candidate-only tree-mapped explanations when requested.
+
+`evaluation/br_final_d1_gold.json` is an **AI adapter-derived baseline with
+owner-waiver provenance**, not independent gold. Its adapter match is a drift
+check, not exact accuracy evidence.
+
 ## Cambridge rule boundary
 
 `grammar/runtime_registry.json` is a fail-closed allow-list. Extraction status alone never enables a rule. An entry must meet the independent-review, source-page, crosswalk, test, reviewer, and runtime-state gates. Only `constraint` and `variety_restricted` rules can trigger grammatical findings; descriptive generalizations, classifications, and stylistic/prescriptive material cannot be treated as prohibitions.
 
 `server/cambridge_evaluator.py` now provides a deterministic execution boundary for explicitly typed `runtime_check` records. The first supported primitive is `forbidden_token_sequences` with occurrence-specific exception sequences. It is restricted to sentence-scope checks, validates token-sequence types, and returns a violation only for non-exempt matching occurrences. Variety-restricted rules require a non-empty declared variety and an explicit matching `variety` request value. Rules without a supported machine-readable check are skipped. The rule schema, registry, API payload, and evaluator tests cover allow-list, unresolved-analysis, positive, negative, exception, non-constraint, unsupported-scope, and variety-selection paths.
 
-**Current source state:** the allow-list enables zero Cambridge rules. All 196 extracted rule records retain unverified B-R mappings, and they have not cleared the independent-review/crosswalk/runtime gates. Therefore no Cambridge grammatical rule is currently evaluated and the API returns `cambridge_evaluation.status = "no_runtime_rules"` for a normalized parse, or `not_evaluated` when B-R normalization is unresolved. The test cases for the generic primitive are synthetic evaluator-contract tests, not claims about Cambridge judgments. The legacy rule matrix remains separate and is not a Cambridge verdict.
+**Current source state:** the allow-list enables all 193 implemented pilot rules (187 primary + 6 supporting) as owner-waived, AI-checked candidate rules. The runtime executes one allow-listed Phase-C candidate set and filters findings by rule id; crosswalk status is `owner_waived_unverified` and tests are source-example/guard tests, not independent certification. The 11 deferred semantic specifications remain outside runtime. For a normalized parse the API returns `cambridge_evaluation.status = "evaluated"` with the pilot rules considered; it returns `not_evaluated` when B-R normalization is unresolved. The legacy rule matrix remains separate and is not a Cambridge verdict.
 
 ## CoLA / acceptability-model role
 
@@ -97,8 +112,8 @@ A separate `.github/workflows/syntax-generator-runtime.yml` installs the pinned 
 
 ## Outstanding before Milestone 02 approval
 
-- The current candidate normalizer does not generally restructure Benepar analyses into V3–V10 B-R trees. Exact eligible IMG source references and the narrow V2 shell are supported; other candidate shapes remain unresolved unless a separately reviewed source mapping is added.
-- No Cambridge rule is runtime-enabled because the 196 extracted rule records retain unverified B-R mappings and have not cleared the independent-review/runtime gates. The generic evaluator primitive is tested synthetically; rule-specific positive/negative/exception tests remain pending until a rule is eligible.
+- The adapter supports the declared FINAL-D1 construction projection plus the V2 chapter shell. Unsupported constructions remain unresolved/working; the optional native chart is diagnostic research, not authority.
+- No Cambridge rule is runtime-enabled: 204 diagnostic specifications retain unverified B-R mappings and have not cleared the crosswalk/runtime gates. The generic evaluator primitive is tested synthetically; rule-specific positive/negative/exception tests remain pending until a rule is eligible. Owner-waived review does not create an independent-certification claim.
 - The parser-backed workflow has been added but has not yet produced a successful run in this environment. Its actual spaCy/Benepar parse, multi-sentence, and API tests remain unverified; GitHub Actions has returned startup failures before creating jobs on recent branch commits.
 - An unexpected exact-gold lookup, importer, canonical validator, or Benepar adapter exception is converted to an explicit unresolved result. The raw candidate parse is retained in `parser_diagnostics`; it is never promoted after a failure.
 - Runtime latency/performance and deployed-model missing-model fallback still need evidence. HTTP 400/422/503 error contracts are covered by model-free route tests, but that does not verify the deployed model service.

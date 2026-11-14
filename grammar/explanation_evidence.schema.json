@@ -916,6 +916,59 @@
           }
         }
       ]
+    },
+    "candidate_xai": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "required": [
+            "schema_version",
+            "status",
+            "production_enabled",
+            "items",
+            "tree_authority",
+            "whole_sentence_certified",
+            "caveat"
+          ],
+          "properties": {
+            "schema_version": {
+              "const": "cgel-candidate-xai-1.0.0"
+            },
+            "status": {
+              "enum": [
+                "candidate_only",
+                "unavailable",
+                "not_evaluated"
+              ]
+            },
+            "production_enabled": {
+              "const": false
+            },
+            "whole_sentence_certified": {
+              "const": false
+            },
+            "tree_authority": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            },
+            "caveat": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": true
+        }
+      ]
     }
   },
   "required": [
