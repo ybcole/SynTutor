@@ -72,7 +72,7 @@ const symbols = {
 
 const displayCategory = label => ({ 'S-bar': 'S′', 'S-dbar': 'S″' })[label] || label;
 
-export function lessonNotation(lesson, page, el) {
+export function lessonNotation(lesson, page, el, pageLabels) {
   const guide = el('details', undefined, 'lesson-notation');
   guide.append(el('summary', 'Tree notation'));
   const labels = new Set();
@@ -86,7 +86,12 @@ export function lessonNotation(lesson, page, el) {
     if (node.index !== undefined) marks.add('Index');
     for (const child of node.children || []) collect(child);
   }
-  if (lesson.lesson_id === 'br-01') {
+  if (pageLabels) {
+    for (const label of pageLabels) {
+      if (Object.hasOwn(symbols, label)) marks.add(label);
+      else labels.add(label);
+    }
+  } else if (lesson.lesson_id === 'br-01') {
     const ambiguityLabels = lesson.revised_assessment
       ? ['PHRASE-a', 'PHRASE-b', 'PHRASE-c']
       : ['S', 'PHRASE-a', 'PHRASE-b', 'PHRASE-c', 'PHRASE-d'];

@@ -5,6 +5,7 @@ import { createFoundationStore } from './foundation-progress.js';
 import { renderFoundationCheck } from './foundation-check.js';
 import { constituentsPilot } from './constituents-pilot.js';
 import { functionsPilot } from './functions-pilot.js';
+import { categoriesPilot } from './categories-pilot.js';
 import { requestEvidence, renderEvidence } from './explanation-evidence.js';
 import { subscribeAuthState } from './auth.js';
 import { enableCanvasView } from './canvas-view.js';
@@ -44,7 +45,7 @@ const legacyArticleSections = [
   { id: 'recap', advances: 'worked', references: true },
   { id: 'closing-check', assessment: true },
 ];
-const pilotArticles = { 'br-01': constituentsPilot, 'br-02': functionsPilot };
+const pilotArticles = { 'br-01': constituentsPilot, 'br-02': functionsPilot, 'br-03': categoriesPilot };
 const pilotId = () => {
   if (!['localhost', '127.0.0.1', '[::1]'].includes(location.hostname)) return null;
   const id = new URLSearchParams(location.search).get('preview');
@@ -848,7 +849,7 @@ function articleScreen(lesson, p, article) {
   host.append(frame);
 
   article.teach(body, page, {
-    el, button, lesson, userId: lessonUserId(),
+    el, button, lesson, section, userId: lessonUserId(),
     getWorkedExample: id => course.lessons.find(item => item.lesson_id === id).worked_example,
     showClosingWarmup: !revised && section.assessment && !reviewing && !p.responses.guided && STAGES[p.stage] === 'guided',
     practiceQuestion: (key, prompt, choices, onAnswer) => question(
@@ -899,7 +900,7 @@ function articleScreen(lesson, p, article) {
   });
 
   const diagram = body.querySelector('.constituent-diagram');
-  if (diagram) diagram.after(lessonNotation(lesson, page, el));
+  if (diagram) diagram.after(lessonNotation(lesson, page, el, section.notationLabels));
 
   if (section.id === 'introduction') {
     addLessonKeyTerms(body, el, lesson.lesson_id, article.keyTerms);

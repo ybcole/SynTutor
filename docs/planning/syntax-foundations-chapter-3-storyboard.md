@@ -1,6 +1,6 @@
 # Chapter 3 proposal · Sentence structure: categories
 
-**Status:** Source-checked outline for review. Chapter 3 implementation awaits the Chapter 2 walkthrough and approval of this outline.
+**Status:** Implemented as a local pilot following the request to proceed. The first-time learner trial and Gate 4.3 review are pending.
 
 ## Source and scope
 
