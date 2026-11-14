@@ -9,17 +9,16 @@ This file gives you (the next AI agent) the context, the exact current state, wh
 
 ## 0. TL;DR
 
-- Chapters **1–5** are implemented as isolated **previews** (`?preview=br-0X`). Each has a storyboard, pilot report, and browser test. **None is owner-accepted and none has verified learner timing.**
-- **Chapter 6** exists only as an **outline** (`docs/planning/syntax-foundations-chapter-6-storyboard.md`), committed this session in `1e28b6d` (not yet pushed). **No Chapter 6 code.**
-- The next gate is **Gate 4.5 (Chapter 5 review)**. After owner acceptance, the next buildable step is **Chapter 6 implementation** (per its outline), then stop at Gate 4.6.
-- The published Lessons page still shows old content + old titles on purpose (publication is Phase 5 / Gate 5).
+- Chapters **1–7** have local previews (`?preview=br-0X`), storyboards, pilot reports and browser tests.
+- Review the Chapter 7 pilot at **Gate 4.7** before outlining Chapter 8. First-time learner timing remains unverified.
+- The published catalog changes during Phase 5.
 
 ---
 
 ## 1. Files to read first (in this order)
 
 1. `docs/planning/SynTutor_Lesson_Revision_Master_Prompt.md` — the binding spec (sections A–I; §E phases, §F acceptance checklist, §G handoff template).
-2. `docs/reports/session-handoff-2026-11-14.md` — status report: chapter table, files, title situation, push state.
+2. `docs/reports/session-handoff-2026-11-14.md` — historical session report. Use the current master plan and pilot reports for progress.
 3. `docs/planning/CONVENTIONS.md` — B-R notation and `[TXT]`/`[IMG]`/`[DERIVED_FROM_INSTRUCTIONS]` status rules.
 4. `docs/BR_NATIVE_ENGINE_CONSTRUCTION.md` — authoritative chapter-by-chapter structural summary; §2 "Third Edition conventions" is the notation bible. Chapter 6 row: "*MOD/PERF/PROG/PASS/TENSE recursive VP structure; tense and negation; do-support, question auxiliary fronting and gap.*"
 5. The relevant chapter storyboard + pilot report + pilot JS + pilot JSON (see §4).
@@ -41,7 +40,6 @@ Any tree a lesson shows must come from these records or be clearly `DERIVED_FROM
 - `web/js/lessons-ui.js` has `pilotArticles = { 'br-01': ..., ... }` and `pilotId()` which only returns an id when hostname is localhost/127.0.0.1 **and** `?preview=br-0X` is present.
 - In `openLessons`, when a pilot is active: `catalog.lessons = catalog.lessons.map(l => l.lesson_id === preview ? { ...l, ...pilot } : l)`. So the pilot JSON **overrides** content **and title**.
 - Pilot JSON schema keys: `title`, `content_version`, `estimated_minutes`, `outcomes`, `preview_sources`, `revised_assessment` (`required_sections`, `opening[]`, `closing[]`). Page bodies live in the matching `*-pilot.js` module, not the JSON.
-- To add Chapter 6: create `web/content/lessons/br-06-pilot.json`, `web/js/auxiliary-vp-pilot.js`, register `'br-06': auxiliaryVpPilot` in `pilotArticles`.
 
 ---
 
@@ -54,7 +52,8 @@ Any tree a lesson shows must come from these records or be clearly `DERIVED_FROM
 | 3 | `br-03-pilot.json` | `categories-pilot.js` | `...chapter-3-storyboard.md` | `...chapter-3-pilot.md` | `test_chapter_three_pilot_browser.py` |
 | 4 | `br-04-pilot.json` | `basic-vp-pilot.js` | `...chapter-4-storyboard.md` | `...chapter-4-pilot.md` | `test_chapter_four_pilot_browser.py` |
 | 5 | `br-05-pilot.json` | `adverbials-pilot.js` | `...chapter-5-storyboard.md` | `...chapter-5-pilot.md` | `test_chapter_five_pilot_browser.py` |
-| 6 | — (to create) | — (to create) | `...chapter-6-storyboard.md` (exists) | — (to create) | — (to create) |
+| 6 | `br-06-pilot.json` | `auxiliaries-pilot.js` | `...chapter-6-storyboard.md` | `...chapter-6-pilot.md` | `test_chapter_six_pilot_browser.py` |
+| 7 | `br-07-pilot.json` | `noun-phrases-pilot.js` | `...chapter-7-storyboard.md` | `...chapter-7-pilot.md` | `test_chapter_seven_pilot_browser.py` |
 
 Also read: `web/js/lesson-notation.js` (`displayVpLevel` shows VP₁/VP₂), `web/js/lesson-presentation.js`, `web/js/lesson-tree-exercise.js`, `web/js/lesson-core.js`, `web/js/lesson-progress.js`, `web/css/lessons.css`.
 
@@ -62,8 +61,8 @@ Also read: `web/js/lesson-notation.js` (`displayVpLevel` shows VP₁/VP₂), `we
 
 ## 5. What to do next
 
-1. Walk through the [Chapter 6 pilot](../reports/syntax-foundations-chapter-6-pilot.md) for Gate 4.6 and review the [Chapter 7 storyboard](syntax-foundations-chapter-7-storyboard.md).
-2. After those reviews, implement the Chapter 7 local pilot, run the chapter and shared checks, and return for Gate 4.7.
+1. Walk through the [Chapter 7 pilot](../reports/syntax-foundations-chapter-7-pilot.md) for Gate 4.7.
+2. After that review, prepare the Chapter 8 storyboard.
 3. Phase 5 covers release preparation, published titles, reviewed catalog records and immutable assessment seeds.
 
 ## 6. Run a preview (verified commands)
@@ -79,6 +78,7 @@ Open (edit the `br-0X` to switch chapters; keep `?preview=`):
 - Ch.4 http://127.0.0.1:8000/?preview=br-04#lesson/br-04/introduction
 - Ch.5 http://127.0.0.1:8000/?preview=br-05#lesson/br-05/introduction
 - Ch.6 http://127.0.0.1:8000/?preview=br-06#lesson/br-06/introduction
+- Ch.7 http://127.0.0.1:8000/?preview=br-07#lesson/br-07/introduction
 
 If you drop `?preview=` you are back on the old published catalog.
 
@@ -119,6 +119,6 @@ for f in web/js/*.js; do node --check "$f" || echo "FAIL $f"; done
 # tests named in the master prompt (verify scripts exist on branch first)
 npm run test:lessons
 npm run test:builder
-python scripts/test_chapter_five_pilot_browser.py   # and chapter_six once it exists
+python scripts/test_chapter_seven_pilot_browser.py
 ```
 Report exact commands and outcomes. Leave failures visible; do not claim passes from reading old reports.

@@ -1,6 +1,6 @@
 # Chapter 7 proposal · The structure of Noun Phrases
 
-**Status** · Outline for owner review. Chapter 6 walkthrough and Chapter 7 outline approval precede Chapter 7 implementation.
+**Status** · Implemented as a [local pilot](../reports/syntax-foundations-chapter-7-pilot.md). Gate 4.7 review and learner timing are pending.
 
 ## Source and scope
 
@@ -26,7 +26,7 @@ Noel Burton-Roberts, *Analysing Sentences*, third edition, Pearson, 2011, ISBN 9
 | --- | --- | ---: |
 | Introduction and opening check | Introduce the example “[those] [baskets]” and define DET, NOM and noun head in prose. Use the preview bullets, general key terms and five diagnostic questions. | 1:45 |
 | Find DET and NOM | Compare “those baskets”, “the baskets”, and “baskets”. Trace “those” as DEM under DET and “baskets” as N under NOM. Compare bare “baskets” with “they”. | 1:15 |
-| Build the basic NP | Reuse the existing “those baskets” tree repair. Give feedback if NOM is attached below DET. After the repair, trace “all those baskets” to see PRE-DET beside the inner NP. | 1:15 |
+| Build the basic NP | Reuse the existing “those lanterns” tree repair. Give feedback if NOM is attached below DET. After the repair, trace “all those baskets” to see PRE-DET beside the inner NP. | 1:15 |
 | Add modifiers inside NOM | Use “a new red kite” to trace “red kite” before adding “new”. Briefly compare “those two kites”, “the sleeping child” and “the paper kite” for QA, PartP and compound N. | 1:05 |
 | Compare modifier attachments | Display “the wooden crates from Cebu”. Read “wooden crates” as a kind of crate, then attach the origin PP to that NOM. Compare “the eager applicant for the job”, where “applicant for the job” is the smaller NOM in the intended reading. Add one short example of an AP with its own complement, “the pilot ready for departure”. | 1:10 |
 | Apply the distinction | In “those ceramic bowls from Vigan”, ask what the PP modifies. Give an authored self-check. Compare “someone from Vigan”, where the PP joins the indefinite pronoun under NP. | 1:00 |
@@ -39,7 +39,7 @@ Noel Burton-Roberts, *Analysing Sentences*, third edition, Pearson, 2011, ISBN 9
 
 - “Those baskets” is NP with DET → DEM and NOM → N. Bare plural “baskets” still has a DET node with no word. “They” has NP → pronoun. Do not render an empty DET as a movement gap.
 - “All those baskets” has NP → PRE-DET + NP. The inner NP retains DET and NOM. The editable example keeps a single target and leaves PRE-DET to the read-only comparison.
-- “A new red kite” has NOM → AP + NOM, with the inner NOM → AP + N. “Those two kites” uses AP → QA for “two”. “The sleeping child” uses PartP → V-part for “sleeping”. “Paper kite” is shown as a compound N in its material reading. Before publishing, confirm the precise compound and participle labels against the figures.
+- “A new red kite” has NOM → AP + NOM, with the inner NOM → AP + N. “Those two kites” uses AP → QA for “two”. “The sleeping child” uses PartP → V-part for “sleeping”. “Paper kite” is shown as a compound N in its material reading. The compound and participle labels were checked against [32] and Discussion 3.
 - In the intended kind-plus-origin reading of “the wooden crates from Cebu”, the larger NOM branches to NOM “wooden crates” and PP. In the intended reading of “the eager applicant for the job”, the larger NOM branches to AP “eager” and NOM “applicant for the job”. Use context to select the reading and accept a coherent explanation of the chosen attachment.
 - “Someone from Vigan” has NP → pronoun + PP, following [72b]. The illustration of a modified indefinite pronoun needs its own tree and caption.
 
