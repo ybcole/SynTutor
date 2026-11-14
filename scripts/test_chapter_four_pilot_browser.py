@@ -140,6 +140,28 @@ try:
 
         page.goto(f'{base}/#lesson/br-04/introduction', wait_until='domcontentloaded')
         expect(view.get_by_role('heading', name='The basic transitive VP', exact=True)).to_be_visible()
+        # A numbered VP uses the same label in the tree, outline and notation guide.
+        assert page.evaluate("""async () => {
+            const { renderLessonTree } = await import('/js/lessons-ui.js');
+            const { lessonNotation } = await import('/js/lesson-notation.js');
+            const el = (tag, text) => {
+                const element = document.createElement(tag);
+                if (text !== undefined) element.textContent = text;
+                return element;
+            };
+            const root = { id: 'outer', label: 'VP', ref: 'VP2', children: [
+                { id: 'inner', label: 'VP', source_refs: ['VP1'], children: [{ word: 'waited' }] },
+                { id: 'time', label: 'NP', triangle: true, words: ['last', 'night'] },
+            ] };
+            const tree = renderLessonTree({ root, sentence: 'waited last night' });
+            const notation = lessonNotation({ worked_example: { tree: { root } } }, 2, el);
+            const pageGuide = lessonNotation({}, 2, el, ['VP1', 'VP3']);
+            const entries = [...notation.querySelectorAll(':scope > dl:first-of-type dt')].map(node => node.textContent);
+            return entries.join(' ') === 'VP₂ VP₁ NP'
+                && tree.querySelector('svg').textContent.includes('VP₁')
+                && tree.querySelector('details').textContent.includes('VP₂')
+                && pageGuide.textContent.includes('VP₃A higher verb phrase level');
+        }""")
         assert not errors and not parses, (errors, parses)
         browser.close()
 finally:

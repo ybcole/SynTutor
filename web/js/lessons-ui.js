@@ -13,7 +13,7 @@ import { enableCanvasView } from './canvas-view.js';
 import { addConstituentReview, addConstituentTeaching, constituentHeadings, constituentOpeningCheck, constituentReferences } from './constituents-lesson.js';
 import { addSubjectPredicateTeaching, subjectPredicateHeadings, subjectPredicateOpeningCheck, subjectPredicateReferences } from './subject-predicate-lesson.js';
 import { phraseStructureArticles } from './phrase-structure-lessons.js';
-import { lessonNotation } from './lesson-notation.js';
+import { displayVpLevel, lessonNotation } from './lesson-notation.js';
 import { addLessonKeyTerms } from './lesson-key-terms.js';
 
 const articleLessons = {
@@ -100,8 +100,7 @@ export function renderLessonTree(envelope, {
     const master = displayLabels?.[node.id];
     if (master) return withFeatures ? master.join(' ') : master[0] || '';
     if (node.gap) return node.index === undefined ? '•' : `• (${node.index})`;
-    const vpSourceRef = node.label === 'VP' ? [node.ref, ...(node.source_refs || [])].find(ref => typeof ref === 'string' && /^VP[1-9][0-9]*$/.test(ref)) : null;
-    const numberedVP = vpSourceRef ? 'VP' + vpSourceRef.slice(2).replace(/[0-9]/g, digit => '₀₁₂₃₄₅₆₇₈₉'[Number(digit)]) : null;
+    const numberedVP = displayVpLevel(node);
     const name=node.label === 'AUX' ? '' : node.label === 'S-bar' ? 'S′' : node.label === 'S-dbar' ? 'S″' : node.unlabelled ? '' : numberedVP || node.label || node.word;
     return `${name || ''}${withFeatures && node.features?.length ? ` [${node.features.join(', ')}]` : ''}${node.empty ? ' (empty)' : ''}`;
   }

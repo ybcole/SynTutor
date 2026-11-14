@@ -11,6 +11,8 @@ const categories = {
   S: 'Sentence or clause node.',
   NP: 'Noun phrase.',
   VP: 'Verb phrase.',
+  VP1: 'The basic verb phrase, including the verb and any complements it takes.',
+  VP2: 'The next verb phrase level, formed when an adjunct joins the basic verb phrase.',
   N: 'Noun.',
   A: 'Adjective.',
   AP: 'Adjective phrase.',
@@ -70,7 +72,26 @@ const symbols = {
   Index: 'A number used to mark a structural relationship between positions.',
 };
 
-const displayCategory = label => ({ 'S-bar': 'S′', 'S-dbar': 'S″' })[label] || label;
+export function vpLevel(node) {
+  if (node.label !== 'VP') return undefined;
+  return [node.ref, ...(node.source_refs || [])].find(ref => typeof ref === 'string' && /^VP[1-9][0-9]*$/.test(ref));
+}
+
+function displayCategory(label) {
+  if (/^VP[1-9][0-9]*$/.test(label)) return label.replace(/[0-9]/g, digit => '₀₁₂₃₄₅₆₇₈₉'[Number(digit)]);
+  return ({ 'S-bar': 'S′', 'S-dbar': 'S″' })[label] || label;
+}
+
+function categoryDescription(label) {
+  return categories[label] ?? (/^VP[1-9][0-9]*$/.test(label)
+    ? 'A higher verb phrase level, formed when another adjunct joins the phrase below it.'
+    : undefined);
+}
+
+export function displayVpLevel(node) {
+  const level = vpLevel(node);
+  return level && displayCategory(level);
+}
 
 export function lessonNotation(lesson, page, el, pageLabels, pageFeatures = []) {
   const guide = el('details', undefined, 'lesson-notation');
@@ -79,7 +100,7 @@ export function lessonNotation(lesson, page, el, pageLabels, pageFeatures = []) 
   const marks = new Set(['Node', 'Branch']);
   const usedFeatures = new Set(pageFeatures);
   function collect(node) {
-    if (node.label && node.label !== 'AUX') labels.add(node.label);
+    if (node.label && node.label !== 'AUX') labels.add(vpLevel(node) || node.label);
     for (const feature of node.features || []) usedFeatures.add(feature);
     if (node.triangle) marks.add('△');
     if (node.gap) marks.add('•');
@@ -101,16 +122,16 @@ export function lessonNotation(lesson, page, el, pageLabels, pageFeatures = []) 
   } else {
     collect(lesson.worked_example.tree.root);
   }
-  function addGroup(parent, title, keys, descriptions, display) {
+  function addGroup(parent, title, keys, describe, display) {
     if (!keys.length) return;
     const list = el('dl');
-    for (const key of keys) list.append(el('dt', display(key)), el('dd', descriptions[key]));
+    for (const key of keys) list.append(el('dt', display(key)), el('dd', describe(key)));
     parent.append(el('h4', title), list);
   }
   function addEntries(parent, categoryKeys, featureKeys, symbolKeys) {
-    addGroup(parent, 'Categories and labels', categoryKeys, categories, displayCategory);
-    addGroup(parent, 'Features', featureKeys, features, key => `[${key}]`);
-    addGroup(parent, 'Diagram symbols', symbolKeys, symbols, key => key);
+    addGroup(parent, 'Categories and labels', categoryKeys, categoryDescription, displayCategory);
+    addGroup(parent, 'Features', featureKeys, key => features[key], key => `[${key}]`);
+    addGroup(parent, 'Diagram symbols', symbolKeys, key => symbols[key], key => key);
   }
   addEntries(guide, [...labels], [...usedFeatures], [...marks]);
   const all = el('details');
