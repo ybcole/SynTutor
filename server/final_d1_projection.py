@@ -8,6 +8,7 @@ from lemminflect import getLemma
 CLAUSE = ("Ch2 pp. 29–30",)
 NOUN = ("Ch7 pp. 141–144",)
 NOMINAL = ("Ch7 pp. 165–168",)
+PARTITIVE_PREDET = ("Ch7 pp. 145–146 [18]–[20]", "Ch7 p. 156 [74]–[75]")
 LOCATIVE = ("Ch3 p. 57 [19]", "Ch4 pp. 74–75, 78")
 DEICTIC_P = ("Ch3 pp. 56–57",)
 ADVERBIAL = ("Ch5 pp. 87–93",)
@@ -46,7 +47,7 @@ TEMPORAL_P_WORDS = {"now", "then"}
 LOCATIVE_PREPOSITIONS = {"above", "across", "against", "along", "at", "behind", "below", "beside",
                         "between", "beyond", "by", "in", "inside", "near", "on", "outside", "under"}
 INTENSIVE = {"be", "become", "seem", "appear", "look", "feel", "sound", "taste", "smell", "remain", "get", "grow", "prove"}
-COMPLEX = {"call", "consider", "find", "keep", "make", "paint", "put", "render", "name", "elect", "turn", "get"}
+COMPLEX = {"call", "consider", "find", "keep", "make", "paint", "put", "place", "render", "name", "elect", "turn", "get"}
 DITRANSITIVE = {"give", "tell", "show", "send", "offer", "lend", "bring", "pay", "buy", "hand", "teach", "ask", "promise", "write", "read", "pass", "sell", "owe", "leave"}
 SELECTED_PP = {
     "refer": {"to"}, "glance": {"at"}, "look": {"at", "for", "after"}, "listen": {"to"},
@@ -281,6 +282,18 @@ class Projection:
             return branch("NP", COORD, *coordination)
         if len(nodes) == 1 and tag(nodes[0]) == "NP":
             return self.phrase(nodes[0])
+        # Benepar may group a pre-determiner as its own NP before the of-PP.
+        # The book keeps it as PRE-DET and represents the omitted head as E.
+        if len(nodes) == 2 and tag(nodes[1]) == "PP" and kids(nodes[1]) and word(kids(nodes[1])[0]) == "of":
+            first = kids(nodes[0]) if tag(nodes[0]) == "NP" else [nodes[0]]
+            if len(first) == 1 and leaf(first[0]) and word(first[0]) in {"all", "both", "half"}:
+                return branch("NP", PARTITIVE_PREDET,
+                              branch("PRE-DET", PARTITIVE_PREDET, word_node(first[0])),
+                              branch("NP", PARTITIVE_PREDET,
+                                     branch("DET", PARTITIVE_PREDET),
+                                     branch("NOM", PARTITIVE_PREDET,
+                                            branch("N", PARTITIVE_PREDET, {"elided": True, "symbol": "E"}),
+                                            self.phrase(nodes[1]))))
         if tag(nodes[0]) == "SBAR" and len(nodes) == 1:
             return branch("NP", SUBORDINATE, self.clause(nodes[0]))
         if len(nodes) == 1 and leaf(nodes[0]) and (tag(nodes[0]) in {"PRP", "EX"} or word(nodes[0]) in PRONOUNS):
@@ -743,12 +756,12 @@ class Projection:
                     raise ProjectionUnavailable("Two noun phrases after find can have ditransitive or object-predicative readings")
                 if label == "NP" and base in DITRANSITIVE or (label == "PP" and base in DITRANSITIVE and word(kids(second)[0]) in {"to", "for"}):
                     frame = "ditrans"
-                elif base in COMPLEX and (label in {"NP", "ADJP"} or base == "put"):
+                elif base in COMPLEX and (label in {"NP", "ADJP"} or base in {"put", "place"}):
                     frame = "complex"
                 if frame != "trans":
                     complement.append(self.phrase(tail.pop(0)))
-            if base == "put" and frame == "trans" and particle is None and not any(tag(node) == "PRT" for node in tail):
-                raise ProjectionUnavailable("Put has no overt or licensed covert object-predicative")
+            if base in {"put", "place"} and frame == "trans" and particle is None and not any(tag(node) == "PRT" for node in tail):
+                raise ProjectionUnavailable(f"{base} has no overt or licensed covert object-predicative")
         elif tail and tag(tail[0]) == "PP" and self.selected_pp(base, tail[0]):
             frame = "prep"
             complement.append(self.phrase(tail.pop(0)))
@@ -763,7 +776,8 @@ class Projection:
         refs = FRAME_REFS[frame]
         if base == "sleep":
             refs += ("Ch5 p. 104 [1e]",)
-        v_refs = (*refs, "Ch6 p. 113 [8]–[9]") if feature else refs
+        v_refs = (*refs, *(("Ch4 p. 85 ex. 1(14)",) if base == "place" and frame == "complex" else ()),
+                  *(("Ch6 p. 113 [8]–[9]",) if feature else ()))
         suffix = ("phrasal",) if particle is not None or tail and tag(tail[0]) == "PRT" else ()
         if particle is not None:
             head_words.extend(word_node(n) for n in leaves(particle))

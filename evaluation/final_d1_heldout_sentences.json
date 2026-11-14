@@ -1,0 +1,22 @@
+[
+  {"text": "The careful student wrote a short letter.", "focus": "Ch2 subject-predicate; Ch4 transitive VP; Ch7 DET/NOM"},
+  {"text": "Several young teachers waited outside.", "focus": "Ch3 locative P; Ch7 nominal modification"},
+  {"text": "A visitor handed the librarian a note.", "focus": "Ch4 ditransitive VP"},
+  {"text": "Mara placed the notebook under the table.", "focus": "Ch4 object-predicative; lexical frame needs verification"},
+  {"text": "The visitors spoke quietly in the hall.", "focus": "Ch5 nested adjunct VP"},
+  {"text": "Perhaps the new teacher will arrive tomorrow.", "focus": "Ch5 sentence adverbial; Ch6 modal"},
+  {"text": "The tired children have been sleeping.", "focus": "Ch6 perfect and progressive auxiliaries"},
+  {"text": "The letter was written by the student.", "focus": "Ch6 passive and by phrase"},
+  {"text": "Did the librarian read the letter?", "focus": "Ch6 auxiliary fronting"},
+  {"text": "Both of the visitors left early.", "focus": "Ch7 predetermination and nominal structure"},
+  {"text": "The teacher's old friend smiled.", "focus": "Ch7 possessive and recursive NOM"},
+  {"text": "The child believes that the visitor left.", "focus": "Ch8 finite clausal object"},
+  {"text": "She left because the visitors had arrived.", "focus": "Ch8 clausal adjunct"},
+  {"text": "Which notebook did the librarian find?", "focus": "Ch9 wh object and auxiliary fronting"},
+  {"text": "The woman who found the notebook smiled.", "focus": "Ch9 relative clause and subject gap"},
+  {"text": "The book that Mara borrowed was expensive.", "focus": "Ch9 relative clause and object gap"},
+  {"text": "The student hopes to return tomorrow.", "focus": "Ch10 controlled infinitival subject"},
+  {"text": "They persuaded the visitor to leave early.", "focus": "Ch10 object control"},
+  {"text": "The book was believed to be valuable.", "focus": "Ch10 passive Type I infinitive"},
+  {"text": "I asked whether the visitor could return.", "focus": "Ch8 whether-clause; Ch6 modal"}
+]
