@@ -203,6 +203,24 @@ class NormalizationTests(unittest.TestCase):
         self.assertEqual(unresolved["status"], "unresolved")
         self.assertIn("object-predicative", unresolved["reasons"][0]["detail"])
 
+    def test_predeterminer_of_phrase_has_ellipted_noun_head(self):
+        for pre in ("Both", "All", "Half"):
+            with self.subTest(pre=pre):
+                sentence = f"{pre} of the visitors left early."
+                analysis = candidate(sentence)
+                parse = (f"(S (NP (NP (DT {pre})) (PP (IN of) (NP (DT the) (NNS visitors)))) "
+                         "(VP (VBD left) (ADVP (RB early))) (. .))")
+                analysis["root"] = NodeBuilder().build(parse_parse_string(parse), len(analysis["tokens"]))
+                result = build_canonical_analysis(analysis, reference_records=[])
+                self.assertEqual(result["status"], "normalized", result["reasons"])
+                subject = result["tree"]["root"]["children"][0]
+                self.assertEqual([n["label"] for n in subject["children"]], ["PRE-DET", "NP"])
+                det, nom = subject["children"][1]["children"]
+                self.assertEqual(det["label"], "DET")
+                self.assertTrue(det["empty"])
+                self.assertEqual([n["label"] for n in nom["children"]], ["N", "PP"])
+                self.assertEqual(nom["children"][0]["children"][0]["empty_role"], "ellipsis")
+
     def test_final_lexical_declaratives_cover_simple_nps_and_two_complement_frames(self):
         cases = [
             ("The boy sleeps.", "(NP (DT The) (NN boy))", "(VP (VBZ sleeps))", ["intrans", "pres"], ["DET", "NOM"]),
