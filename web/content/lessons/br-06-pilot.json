@@ -1,0 +1,723 @@
+{
+  "title": "More on verbs: auxiliary VPs",
+  "content_version": "2.0.0",
+  "estimated_minutes": 10,
+  "outcomes": [
+    {
+      "id": "o1",
+      "text": "Explain that each auxiliary heads its own VP and takes a VP complement, and name the four auxiliary types (MOD, PERF, PROG, PASS)."
+    },
+    {
+      "id": "o2",
+      "text": "Apply the rule that only the first verb of a sequence carries the tense feature."
+    },
+    {
+      "id": "o3",
+      "text": "Distinguish negation by not/n't on a tensed auxiliary from do-support, and explain how a question fronts the tense-carrying element to C, leaving a gap."
+    }
+  ],
+  "description": "",
+  "teaching": [
+    {
+      "text": "Each auxiliary is the head of its own VP and takes the next VP as its complement, producing a chain of nested VPs.",
+      "source_ids": [
+        "BR-3E-P121",
+        "BR-3E-P122"
+      ]
+    },
+    {
+      "text": "Only the first verb in the sequence carries the tense feature.",
+      "source_ids": [
+        "BR-3E-P122",
+        "BR-3E-P123"
+      ]
+    },
+    {
+      "text": "The auxiliary types appear in a fixed order: MOD, then PERF, then PROG, then PASS.",
+      "source_ids": [
+        "BR-3E-P123",
+        "BR-3E-P124"
+      ]
+    }
+  ],
+  "worked_example": {
+    "sentence": "You should have written an essay",
+    "origin": "Original example built to illustrate chained auxiliary VPs.",
+    "steps": [
+      {
+        "text": "MOD “should” [past] heads the highest VP and is the only tensed verb.",
+        "source_ids": [
+          "BR-3E-P121",
+          "BR-3E-P122"
+        ],
+        "focus_node_id": "lesson-br-06-worked-root-1-0"
+      },
+      {
+        "text": "PERF “have” heads the next VP, the complement of the MOD VP.",
+        "source_ids": [
+          "BR-3E-P122"
+        ],
+        "focus_node_id": "lesson-br-06-worked-root-1-1-0"
+      },
+      {
+        "text": "The lexical VP “written an essay” is the complement of the PERF VP.",
+        "source_ids": [
+          "BR-3E-P122",
+          "BR-3E-P123"
+        ],
+        "focus_node_id": "lesson-br-06-worked-root-1-1-1"
+      }
+    ],
+    "source_ids": [
+      "BR-3E-P121",
+      "BR-3E-P122",
+      "BR-3E-P123"
+    ],
+    "tree": {
+      "schema_version": "1.1.0",
+      "tree_id": "lesson-br-06-worked",
+      "tokens": [
+        {
+          "index": 0,
+          "text": "You",
+          "char_span": [
+            0,
+            3
+          ]
+        },
+        {
+          "index": 1,
+          "text": "should",
+          "char_span": [
+            4,
+            10
+          ]
+        },
+        {
+          "index": 2,
+          "text": "have",
+          "char_span": [
+            11,
+            15
+          ]
+        },
+        {
+          "index": 3,
+          "text": "written",
+          "char_span": [
+            16,
+            23
+          ]
+        },
+        {
+          "index": 4,
+          "text": "an",
+          "char_span": [
+            24,
+            26
+          ]
+        },
+        {
+          "index": 5,
+          "text": "essay",
+          "char_span": [
+            27,
+            32
+          ]
+        }
+      ],
+      "convention_profile": {
+        "chapter": 6,
+        "version": "V6",
+        "profile_id": "V6"
+      },
+      "source": {
+        "book": "Burton-Roberts, Analysing Sentences",
+        "edition": "3rd edition (Pearson Education, 2011; ISBN 9781408233740)",
+        "chapter": 6,
+        "printed_page": 122,
+        "evidence_status": "TXT",
+        "review_status": "INDEPENDENTLY_REVIEWED",
+        "review_note": "Original instructional example source-checked against cited B-R auxiliary VP conventions; not a printed diagram.",
+        "source_record_id": "lesson-br-06-worked"
+      },
+      "movement": [],
+      "accepted_alternatives": [],
+      "notes": [],
+      "sentence": "You should have written an essay",
+      "root": {
+        "id": "lesson-br-06-worked-root",
+        "label": "S",
+        "token_span": [
+          0,
+          6
+        ],
+        "children": [
+          {
+            "id": "lesson-br-06-worked-root-0",
+            "label": "NP",
+            "triangle": true,
+            "words": [
+              "You"
+            ],
+            "token_span": [
+              0,
+              1
+            ]
+          },
+          {
+            "id": "lesson-br-06-worked-root-1",
+            "label": "VP",
+            "token_span": [
+              1,
+              6
+            ],
+            "children": [
+              {
+                "id": "lesson-br-06-worked-root-1-0",
+                "label": "MOD",
+                "features": [
+                  "past"
+                ],
+                "token_span": [
+                  1,
+                  2
+                ],
+                "children": [
+                  {
+                    "id": "lesson-br-06-worked-root-1-0-0",
+                    "word": "should",
+                    "token_span": [
+                      1,
+                      2
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "lesson-br-06-worked-root-1-1",
+                "label": "VP",
+                "token_span": [
+                  2,
+                  6
+                ],
+                "children": [
+                  {
+                    "id": "lesson-br-06-worked-root-1-1-0",
+                    "label": "PERF",
+                    "token_span": [
+                      2,
+                      3
+                    ],
+                    "children": [
+                      {
+                        "id": "lesson-br-06-worked-root-1-1-0-0",
+                        "word": "have",
+                        "token_span": [
+                          2,
+                          3
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "lesson-br-06-worked-root-1-1-1",
+                    "label": "VP",
+                    "token_span": [
+                      3,
+                      6
+                    ],
+                    "children": [
+                      {
+                        "id": "lesson-br-06-worked-root-1-1-1-0",
+                        "label": "V",
+                        "features": [
+                          "trans"
+                        ],
+                        "token_span": [
+                          3,
+                          4
+                        ],
+                        "children": [
+                          {
+                            "id": "lesson-br-06-worked-root-1-1-1-0-0",
+                            "word": "written",
+                            "token_span": [
+                              3,
+                              4
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "id": "lesson-br-06-worked-root-1-1-1-1",
+                        "label": "NP",
+                        "triangle": true,
+                        "words": [
+                          "an",
+                          "essay"
+                        ],
+                        "token_span": [
+                          4,
+                          6
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "accepted_alternatives": []
+  },
+  "guided": {
+    "id": "guided",
+    "prompt": "In this worked tree, the PERF VP “have written an essay” is the complement of which node?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The lexical V “written”",
+        "feedback": "Try again. The lexical verb sits lowest. The PERF VP is the complement of the MOD VP."
+      },
+      {
+        "id": "b",
+        "text": "The MOD VP “should”",
+        "feedback": "Yes. Each auxiliary VP takes the next VP as its complement; “should” heads the outer VP."
+      },
+      {
+        "id": "c",
+        "text": "The object NP “an essay”",
+        "feedback": "Try again. The object NP is below the lexical verb, not above the PERF VP."
+      }
+    ],
+    "answer": "b",
+    "hint": "Look at the highest verb. It is the modal “should”, and the next VP below it is its complement.",
+    "source_ids": [
+      "BR-3E-P121",
+      "BR-3E-P122"
+    ],
+    "outcome_ids": [
+      "o1"
+    ],
+    "build_target": {
+      "node_id": "lesson-br-06-worked-root-1-1",
+      "field": "label",
+      "expected": "VP"
+    }
+  },
+  "preview_sources": [
+    {
+      "id": "BR-3E-P123",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 6,
+      "printed_page": 123,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P124",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 6,
+      "printed_page": 124,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P125",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 6,
+      "printed_page": 125,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P127",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 6,
+      "printed_page": 127,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P129",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 6,
+      "printed_page": 129,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P130",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 6,
+      "printed_page": 130,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P131",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 6,
+      "printed_page": 131,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "BR-3E-P132",
+      "book": "B-R",
+      "title": "Analysing Sentences: An Introduction to English Syntax",
+      "edition": "3rd edition, Pearson Education, 2011",
+      "chapter": 6,
+      "printed_page": 132,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — scoped AI source review for local pilot",
+      "reviewed_on": "2026-11-14"
+    }
+  ],
+  "revised_assessment": {
+    "required_sections": [
+      "introduction",
+      "concepts",
+      "chain",
+      "adverbials",
+      "negation",
+      "questions",
+      "recap"
+    ],
+    "opening": [
+      {
+        "id": "opening-tense",
+        "prompt": "In “You should have written an essay”, which word carries the tense?",
+        "answer": "b",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P121",
+          "BR-3E-P122"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "have",
+            "feedback": "“Have” is the perfect auxiliary here. The tense sits on the first verb of the sequence."
+          },
+          {
+            "id": "b",
+            "text": "should",
+            "feedback": "Only the first verb of an auxiliary sequence is tensed. “Have” and “written” are not."
+          },
+          {
+            "id": "c",
+            "text": "written",
+            "feedback": "“Written” is the lexical verb and carries no tense of its own."
+          }
+        ]
+      },
+      {
+        "id": "opening-vps",
+        "prompt": "How many verb phrases (VPs) does “Mina might have finished the report” contain, counting one per auxiliary plus the lexical verb?",
+        "answer": "c",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P121",
+          "BR-3E-P122"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "One",
+            "feedback": "Each auxiliary heads its own VP, so there is more than one."
+          },
+          {
+            "id": "b",
+            "text": "Two",
+            "feedback": "Count every auxiliary VP plus the lexical VP: “might”, “have” and “finished”."
+          },
+          {
+            "id": "c",
+            "text": "Three",
+            "feedback": "MOD “might”, PERF “have” and lexical “finished” each head a VP."
+          }
+        ]
+      },
+      {
+        "id": "opening-negation",
+        "prompt": "In “Byron did not dance”, which word carries both the tense and the negation?",
+        "answer": "a",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P129"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "did",
+            "feedback": "“Do” under the TENSE node carries tense and negation; “dance” is untensed."
+          },
+          {
+            "id": "b",
+            "text": "dance",
+            "feedback": "The lexical verb is untensed here. The support “do” carries tense and negation."
+          },
+          {
+            "id": "c",
+            "text": "not",
+            "feedback": "“Not” supplies the negation, but the tense is on the support word “did”."
+          }
+        ]
+      },
+      {
+        "id": "opening-question",
+        "prompt": "In “Is the cat sleeping?”, what has moved to the front, and what did it leave behind?",
+        "answer": "b",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P130"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "The subject “the cat” moved, leaving a gap before the verb.",
+            "feedback": "The subject stays in place. The tensed auxiliary moves to the front."
+          },
+          {
+            "id": "b",
+            "text": "The auxiliary “is” moved to the front, leaving a gap under its PROG node.",
+            "feedback": "The tensed auxiliary fronts to C and its original position becomes a gap."
+          },
+          {
+            "id": "c",
+            "text": "The verb “sleeping” moved, leaving no gap.",
+            "feedback": "The lexical verb stays in place. The tensed auxiliary fronts and leaves a gap."
+          }
+        ]
+      },
+      {
+        "id": "opening-passive",
+        "prompt": "In “The window was broken by the wind”, what does the by-phrase tell you, and is it required to complete the verb?",
+        "answer": "c",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P127"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "It is a required direct object of “broken”.",
+            "feedback": "The object has become the subject. The by-phrase names the agent and is optional."
+          },
+          {
+            "id": "b",
+            "text": "It tells you the tense of the verb.",
+            "feedback": "Tense sits on the auxiliary “was”. The by-phrase names who or what did the action."
+          },
+          {
+            "id": "c",
+            "text": "It names the agent and is an optional adjunct, not a required complement.",
+            "feedback": "The verb is passive, and the by-phrase adds the agent as an optional adjunct."
+          }
+        ]
+      }
+    ],
+    "closing": [
+      {
+        "id": "closing-chain",
+        "prompt": "In “You should have been writing that essay”, list the auxiliary types from top to bottom above the lexical verb.",
+        "answer": "b",
+        "outcome_ids": [
+          "o1",
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P122"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "PERF → MOD → PROG",
+            "feedback": "The modal is highest. Below it come the perfect and then the progressive."
+          },
+          {
+            "id": "b",
+            "text": "MOD → PERF → PROG",
+            "feedback": "“Should” (MOD), “have” (PERF) and “been” (PROG) each head a VP; only MOD is tensed."
+          },
+          {
+            "id": "c",
+            "text": "MOD → PROG → PERF",
+            "feedback": "The perfect “have” sits above the progressive “been”."
+          }
+        ]
+      },
+      {
+        "id": "closing-tense",
+        "prompt": "Which single verb is tensed in “Nia could have been helping us”?",
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "BR-3E-P122"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "could",
+            "feedback": "The tense feature sits only on the first verb of the sequence."
+          },
+          {
+            "id": "b",
+            "text": "have",
+            "feedback": "“Have” is a perfect auxiliary with no tense of its own here."
+          },
+          {
+            "id": "c",
+            "text": "helping",
+            "feedback": "The lexical verb is untensed. Only the first verb carries tense."
+          }
+        ]
+      },
+      {
+        "id": "closing-dosupport",
+        "prompt": "In “Byron would not dance” versus “Byron did not dance”, what structural difference explains where not attaches?",
+        "answer": "c",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P129"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "There is no structural difference; “not” attaches the same way.",
+            "feedback": "Only the first sentence has an auxiliary for “not” to attach to. The second needs do-support."
+          },
+          {
+            "id": "b",
+            "text": "The first is passive and the second is active.",
+            "feedback": "Neither sentence is passive. The difference is the presence of a tensed auxiliary."
+          },
+          {
+            "id": "c",
+            "text": "The first has a tensed MOD “would” for “not” to attach to; the second has no auxiliary, so do-support supplies an empty “do” under TENSE.",
+            "feedback": "Without an auxiliary, an empty “do” carries tense and negation; the lexical verb stays untensed."
+          }
+        ]
+      },
+      {
+        "id": "closing-fronting",
+        "prompt": "In “Does Byron dance?”, what moved to C, and where did the gap remain?",
+        "answer": "b",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "BR-3E-P131"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "The lexical verb “dance” moved to C, leaving no gap.",
+            "feedback": "The lexical verb stays. “Do” from the TENSE node moves to C."
+          },
+          {
+            "id": "b",
+            "text": "“do” moved from the TENSE node to C; the lexical V remains untensed with the gap under the auxiliary position.",
+            "feedback": "Do-support supplies “do”, which fronts to C and leaves a gap where it was."
+          },
+          {
+            "id": "c",
+            "text": "The subject “Byron” moved to C, leaving a gap in the subject slot.",
+            "feedback": "The subject stays. The tense-carrier “do” fronts to C and leaves a gap."
+          }
+        ]
+      },
+      {
+        "id": "closing-copula",
+        "prompt": "In “Was Kubla extravagant”, why does was behave like an auxiliary even though the main verb be has no other verb to help?",
+        "answer": "a",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "BR-3E-P132"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "text": "“Be” always behaves like an auxiliary; the copula fronts to C and leaves a gap under V.",
+            "feedback": "The lexical verb “be” moves to C like an auxiliary, leaving a gap under V."
+          },
+          {
+            "id": "b",
+            "text": "Because “extravagant” is the real verb.",
+            "feedback": "“Extravagant” is an adjective phrase. “Be” is the verb and behaves like an auxiliary."
+          },
+          {
+            "id": "c",
+            "text": "Because there is a hidden “do”.",
+            "feedback": "No “do” is involved. The verb “be” itself fronts to C."
+          }
+        ]
+      }
+    ]
+  }
+}
