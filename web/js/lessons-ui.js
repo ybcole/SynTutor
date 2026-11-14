@@ -6,6 +6,7 @@ import { renderFoundationCheck } from './foundation-check.js';
 import { constituentsPilot } from './constituents-pilot.js';
 import { functionsPilot } from './functions-pilot.js';
 import { categoriesPilot } from './categories-pilot.js';
+import { basicVpPilot } from './basic-vp-pilot.js';
 import { requestEvidence, renderEvidence } from './explanation-evidence.js';
 import { subscribeAuthState } from './auth.js';
 import { enableCanvasView } from './canvas-view.js';
@@ -45,7 +46,7 @@ const legacyArticleSections = [
   { id: 'recap', advances: 'worked', references: true },
   { id: 'closing-check', assessment: true },
 ];
-const pilotArticles = { 'br-01': constituentsPilot, 'br-02': functionsPilot, 'br-03': categoriesPilot };
+const pilotArticles = { 'br-01': constituentsPilot, 'br-02': functionsPilot, 'br-03': categoriesPilot, 'br-04': basicVpPilot };
 const pilotId = () => {
   if (!['localhost', '127.0.0.1', '[::1]'].includes(location.hostname)) return null;
   const id = new URLSearchParams(location.search).get('preview');
@@ -900,7 +901,7 @@ function articleScreen(lesson, p, article) {
   });
 
   const diagram = body.querySelector('.constituent-diagram');
-  if (diagram) diagram.after(lessonNotation(lesson, page, el, section.notationLabels));
+  if (diagram) diagram.after(lessonNotation(lesson, page, el, section.notationLabels, section.notationFeatures));
 
   if (section.id === 'introduction') {
     addLessonKeyTerms(body, el, lesson.lesson_id, article.keyTerms);
@@ -1247,7 +1248,8 @@ export async function openLessons(id = null, { workedExample = false, section, f
       if (preview) {
         const response = await fetch(`/content/lessons/${preview}-pilot.json`, { cache: 'no-cache' });
         if (!response.ok) throw new Error('Chapter pilot unavailable.');
-        const pilot = await response.json();
+        const { preview_sources: previewSources = [], ...pilot } = await response.json();
+        catalog.sources.push(...previewSources);
         catalog.lessons = catalog.lessons.map(lesson => lesson.lesson_id === preview ? { ...lesson, ...pilot } : lesson);
       }
       course = validateCourse(catalog);

@@ -1,4 +1,4 @@
-import { addIntroExample, lessonExample, setTreeStepLabel } from './lesson-presentation.js';
+import { addIntroExample, lessonExample, addTreeTrace } from './lesson-presentation.js';
 
 function phrase(id, label, ...children) { return { id, label, children }; }
 function word(text) { return { word: text }; }
@@ -18,33 +18,6 @@ const locations = {
     phrase('second-location', 'PP', phrase('second-head', 'P', word('near')), landmark('heater', 'the heater'))),
 };
 const there = { sentence: 'there', root: phrase('there-phrase', 'PP', phrase('there-head', 'P', word('there'))) };
-
-function trace(body, { el, button, showDiagram }, label, steps) {
-  const figure = el('div', undefined, 'constituent-diagram');
-  const controls = el('div', undefined, 'lesson-tree-steps');
-  controls.setAttribute('role', 'group');
-  controls.setAttribute('aria-label', label);
-  const canvas = el('div');
-  const note = el('div', undefined, 'lesson-tree-observation');
-  note.setAttribute('aria-live', 'polite');
-  const caption = el('p');
-  note.append(caption);
-  const buttons = steps.map(([text], i) => {
-    const control = button(text, () => show(i));
-    setTreeStepLabel(control, el, text, i + 1);
-    return control;
-  });
-  function show(index) {
-    const [, tree, focusId, explanation] = steps[index];
-    buttons.forEach((control, i) => control.setAttribute('aria-pressed', String(i === index)));
-    showDiagram(canvas, tree, { focusId, highlightWords: true, wordBaseline: 3 });
-    caption.textContent = explanation;
-  }
-  controls.append(...buttons);
-  figure.append(controls, canvas, note);
-  body.append(figure);
-  show(0);
-}
 
 export const categoriesPilot = {
   description: 'Distinguish words from the phrases they head, then trace noun, adjective, adverb and prepositional phrases. See how two prepositional phrases can join to form a larger one.',
@@ -111,7 +84,7 @@ export const categoriesPilot = {
       body.append(choices, feedback);
       example('Lamps flickered. Mina waited.');
       p('In the first statement, “lamps” is a noun that forms the whole subject NP. In the second, “Mina” is a name that forms an NP by itself. Compare the name with the pronoun in “They flickered”.');
-      trace(body, ui, 'Compare two one-word noun phrases', [
+      addTreeTrace(body, ui, 'Compare two one-word noun phrases', [
         ['Trace the name', { sentence: 'Mina', root: phrase('name-np', 'NP', phrase('name', 'name', word('Mina'))) },
           'name-np', '“Mina” is a name. The NP above it represents the full phrase that functions as the subject.'],
         ['Trace the pronoun', { sentence: 'they', root: phrase('pronoun-np', 'NP', phrase('pronoun', 'pronoun', word('they'))) },
@@ -122,7 +95,7 @@ export const categoriesPilot = {
       p('An adjective phrase (AP) is headed by an adjective. An adverb phrase (AdvP) is headed by an adverb. In the following example, “visible” supplies the description and “quite clearly” tells how clearly the sign could be seen.');
       example('The sign was [quite clearly visible].');
       p('“Quite” is a degree word. Follow its branch to see which word it modifies before comparing the shorter description.');
-      trace(body, ui, 'Trace the adjective and adverb phrases', [
+      addTreeTrace(body, ui, 'Trace the adjective and adverb phrases', [
         ['Find the adjective', description, 'adjective', '“Visible” is the head of the whole AP.'],
         ['Read the adverb phrase', description, 'modifier', '“Clearly” heads “quite clearly”. The degree word “quite” modifies “clearly”. Together they form an AdvP that modifies “visible”.'],
         ['Compare a direct modifier', simpleDescription, 'simple-degree', 'In “very visible”, “very” modifies the adjective directly. The whole group is still an AP.'],
@@ -133,7 +106,7 @@ export const categoriesPilot = {
       p('A prepositional phrase (PP) is headed by a preposition. In “beside the bench”, “beside” expresses the spatial relation and its NP complement supplies the landmark.');
       example('The puppy slept [beside the bench and near the heater].');
       p('Coordination joins two or more units. Here “and” joins two PPs, called conjuncts. Each has its own head and landmark. In this analysis the coordinate group is also a PP.');
-      trace(body, ui, 'Trace the two locations and their replacement', [
+      addTreeTrace(body, ui, 'Trace the two locations and their replacement', [
         ['Trace the first PP', locations, 'first-location', '“Beside” heads the first PP. “The bench” is its NP complement.'],
         ['Trace the second PP', locations, 'second-location', '“Near” heads the second PP. “The heater” is its NP complement.'],
         ['Read the whole coordination', locations, 'locations', 'Both PPs and the word “and” sit directly under the outer PP.'],

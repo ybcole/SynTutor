@@ -27,6 +27,6 @@ The pilot data uses the existing chapter metadata to load in the local player. T
 Pilot source hashes:
 
 - `web/content/lessons/br-03-pilot.json` — `ca7a12ce6a4bb31dba79ab77a17b8ac34787e3ac63371fb013ef874a9caae0d7`
-- `web/js/categories-pilot.js` — `26ba43283abd2f61d884ab9e8955c8b10cccd262d9ab9e0afff5c40eca272e8e`
+- `web/js/categories-pilot.js` — `f0142abfafc3ac753055a0f4a3dd520837208eac4640ece77fa32ed332244bba`
 
 Gate 4.3 review precedes Chapter 4.

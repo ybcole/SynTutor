@@ -72,12 +72,12 @@ const symbols = {
 
 const displayCategory = label => ({ 'S-bar': 'S′', 'S-dbar': 'S″' })[label] || label;
 
-export function lessonNotation(lesson, page, el, pageLabels) {
+export function lessonNotation(lesson, page, el, pageLabels, pageFeatures = []) {
   const guide = el('details', undefined, 'lesson-notation');
   guide.append(el('summary', 'Tree notation'));
   const labels = new Set();
   const marks = new Set(['Node', 'Branch']);
-  const usedFeatures = new Set();
+  const usedFeatures = new Set(pageFeatures);
   function collect(node) {
     if (node.label && node.label !== 'AUX') labels.add(node.label);
     for (const feature of node.features || []) usedFeatures.add(feature);

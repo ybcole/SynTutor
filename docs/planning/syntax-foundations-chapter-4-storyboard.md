@@ -1,6 +1,6 @@
 # Chapter 4 proposal · The basic Verb Phrase
 
-**Status** · Outline ready for owner review. Chapter 3 pilot acceptance and Chapter 4 outline approval precede Chapter 4 implementation.
+**Status** · Implemented as a [local pilot](../reports/syntax-foundations-chapter-4-pilot.md). Gate 4.4 review and first-time learner timing are pending.
 
 ## Source and scope
 

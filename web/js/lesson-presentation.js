@@ -30,3 +30,30 @@ export function setTreeStepLabel(control, el, label, number) {
   control.replaceChildren(badge, label);
   control.setAttribute('aria-description', `Step ${number}`);
 }
+
+export function addTreeTrace(body, { el, button, showDiagram }, label, steps) {
+  const figure = el('div', undefined, 'constituent-diagram');
+  const controls = el('div', undefined, 'lesson-tree-steps');
+  controls.setAttribute('role', 'group');
+  controls.setAttribute('aria-label', label);
+  const canvas = el('div');
+  const note = el('div', undefined, 'lesson-tree-observation');
+  note.setAttribute('aria-live', 'polite');
+  const caption = el('p');
+  note.append(caption);
+  const buttons = steps.map(([text], i) => {
+    const control = button(text, () => show(i));
+    setTreeStepLabel(control, el, text, i + 1);
+    return control;
+  });
+  function show(index) {
+    const [, tree, focusId, explanation] = steps[index];
+    buttons.forEach((control, i) => control.setAttribute('aria-pressed', String(i === index)));
+    showDiagram(canvas, tree, { focusId, highlightWords: true, wordBaseline: 3 });
+    caption.textContent = explanation;
+  }
+  controls.append(...buttons);
+  figure.append(controls, canvas, note);
+  body.append(figure);
+  show(0);
+}
