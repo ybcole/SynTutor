@@ -9,6 +9,8 @@ import threading
 
 from playwright.sync_api import expect, sync_playwright
 
+from lesson_browser_steps import choose_tree_step
+
 ROOT = Path(__file__).resolve().parents[1]
 DIST = ROOT / 'dist'
 PILOTS = {path.name[:5]: json.loads(path.read_text())
@@ -203,7 +205,7 @@ try:
         open_lesson(preview + 'br-11/worked-example')
         disclosure = view.locator('.lesson-tree-text').first
         disclosure.locator('summary').press('Enter')
-        view.get_by_role('button', name='Reuse the first result').click()
+        choose_tree_step(view, 'Reuse the first result')
         expect(disclosure).to_have_attribute('open', '')
         expect(disclosure.locator('.lesson-tree-outline')).to_contain_text('Mina waves')
         mobile.close()

@@ -1,4 +1,4 @@
-import { addIntroExample, lessonExample, setTreeStepLabel } from './lesson-presentation.js';
+import { addIntroExample, lessonExample, treeStepGuide } from './lesson-presentation.js';
 import { addSubjectPredicateBuilder } from './subject-predicate-builder.js';
 
 export const subjectPredicateHeadings = [
@@ -105,8 +105,9 @@ function addTreeComparison(body, ui) {
   observation.append(caption, feedback);
   const picker = ['Short sentence', 'Try the longer sentence'].map((label, index) =>
     button(label, () => chooseExample(index)));
-  const branchLabels = [['Whole sentence', 'Subject', 'Predicate'], ['S', 'NP', 'VP']];
-  const branchButtons = branchLabels[0].map((label, index) =>
+  const guide = treeStepGuide(ui, 'Trace the short sentence', ['Whole sentence', 'Subject', 'Predicate'], selectBranch);
+  observation.prepend(guide.title);
+  const branchButtons = ['S', 'NP', 'VP'].map((label, index) =>
     button(label, () => selectBranch(index, true)));
   const explanations = [
     'S covers the whole sentence. Its two direct branches divide the words into two groups.',
@@ -116,6 +117,7 @@ function addTreeComparison(body, ui) {
   let current = 0;
 
   function describe(index, answer) {
+    if (current === 0) guide.update(index);
     branchButtons.forEach((control, i) => control.setAttribute('aria-pressed', String(i === index)));
     caption.textContent = explanations[index] ?? '';
     if (current === 0 || !answer) return;
@@ -152,9 +154,8 @@ function addTreeComparison(body, ui) {
   function chooseExample(index) {
     current = index;
     picker.forEach((control, i) => control.setAttribute('aria-pressed', String(i === index)));
-    branchButtons.forEach((control, i) => {
-      setTreeStepLabel(control, el, branchLabels[index][i], index === 0 ? i + 1 : undefined);
-    });
+    guide.controls.hidden = guide.title.hidden = index !== 0;
+    branches.hidden = index === 0;
     sentence.textContent = examples[index].sentence;
     prompt.hidden = index === 0;
     feedback.textContent = '';
@@ -163,7 +164,7 @@ function addTreeComparison(body, ui) {
 
   switches.append(...picker);
   branches.append(...branchButtons);
-  body.append(switches, sentence, prompt, branches, diagram);
+  body.append(switches, sentence, prompt, branches, guide.controls, diagram);
   chooseExample(0);
 }
 

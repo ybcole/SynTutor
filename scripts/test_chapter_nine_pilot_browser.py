@@ -7,6 +7,8 @@ import threading
 
 from playwright.sync_api import expect, sync_playwright
 
+from lesson_browser_steps import choose_tree_step
+
 ROOT = Path(__file__).resolve().parents[1]
 PILOT = json.loads((ROOT / 'web/content/lessons/br-09-pilot.json').read_text())
 
@@ -65,13 +67,13 @@ try:
         next_page.click()
         expect(note).to_contain_text('an NP inside the PP')
         expect(view.locator('svg [data-node-id="wh-gap"]')).to_have_text('NP')
-        view.get_by_role('button', name='Find the whole PP gap').press('Enter')
+        choose_tree_step(view, 'Find the whole PP gap', keyboard=True)
         expect(note).to_contain_text('Its gap is a PP')
         expect(view.locator('svg [data-node-id="wh-gap"]')).to_have_text('PP')
-        view.get_by_role('button', name='Find the subject gap').click()
+        choose_tree_step(view, 'Find the subject gap')
         expect(note).to_contain_text('subject NP')
         next_page.click()
-        view.get_by_role('button', name='Find the auxiliary gap').click()
+        choose_tree_step(view, 'Find the auxiliary gap')
         expect(outline.get_by_text('•', exact=True)).to_have_count(2)
         exercise = view.get_by_role('region', name='Attach the NP that contains the object gap exercise')
         check = exercise.get_by_role('button', name='Check my tree')
@@ -94,7 +96,7 @@ try:
         page.set_viewport_size({'width': 390, 'height': 844})
         page.evaluate("document.documentElement.dataset.theme = 'dark'")
         next_page.click()
-        view.get_by_role('button', name='Read embedded C1').click()
+        choose_tree_step(view, 'Read embedded C1')
         expect(outline.get_by_text('C1 (empty)', exact=True)).to_have_count(1)
         expect(outline.get_by_text('was', exact=True)).to_have_count(1)
         expect(outline.get_by_text('•', exact=True)).to_have_count(1)
@@ -102,10 +104,10 @@ try:
 
         next_page.click()
         expect(outline.get_by_text('•', exact=True)).to_have_count(0)
-        view.get_by_role('button', name='Compare relative “that”').click()
+        choose_tree_step(view, 'Compare relative “that”')
         expect(note).to_contain_text('sits in C2')
         expect(outline.get_by_text('•', exact=True)).to_have_count(1)
-        view.get_by_role('button', name='Leave C2 unfilled').click()
+        choose_tree_step(view, 'Leave C2 unfilled')
         expect(outline.get_by_text('C2 (empty)', exact=True)).to_have_count(1)
         expect(outline.get_by_text('•', exact=True)).to_have_count(1)
 
@@ -114,7 +116,7 @@ try:
         expect(view.get_by_role('status')).to_contain_text('already identified lanterns')
         view.get_by_role('radio', name='The first sentence').check()
         expect(view.get_by_role('status')).to_contain_text('from the larger set')
-        view.get_by_role('button', name='Read the non-restrictive relative').click()
+        choose_tree_step(view, 'Read the non-restrictive relative')
         expect(note).to_contain_text('joins that NP')
         assert view.evaluate('(el) => el.scrollWidth <= el.clientWidth')
 

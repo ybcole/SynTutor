@@ -8,6 +8,8 @@ from time import monotonic
 
 from playwright.sync_api import expect, sync_playwright
 
+from lesson_browser_steps import choose_tree_step
+
 ROOT = Path(__file__).resolve().parents[1]
 PILOT = json.loads((ROOT / 'web/content/lessons/br-01-pilot.json').read_text())
 OUT = Path('/tmp/syntutor-chapter-one-pilot')
@@ -71,7 +73,7 @@ try:
         expect(view.get_by_text('Mina paused near the stone arch.', exact=True)).to_be_visible()
         view.get_by_role('button', name='Next →', exact=True).click()
         for label, caption in [('Trace the landmark', 'exactly three words'), ('Trace the outer phrase', 'another branch down')]:
-            view.get_by_role('button', name=label, exact=True).press('Enter')
+            choose_tree_step(view, label, keyboard=True)
             expect(view.locator('.constituent-diagram .lesson-tree-observation')).to_contain_text(caption)
         assert 'undefined' not in view.locator('.constituent-diagram svg').get_attribute('aria-label')
         page.screenshot(path=OUT / 'tree-desktop.png', full_page=True)

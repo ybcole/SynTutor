@@ -7,6 +7,8 @@ import threading
 
 from playwright.sync_api import expect, sync_playwright
 
+from lesson_browser_steps import choose_tree_step
+
 ROOT = Path(__file__).resolve().parents[1]
 PILOT = json.loads((ROOT / 'web/content/lessons/br-04-pilot.json').read_text())
 
@@ -69,7 +71,7 @@ try:
         expect(view.get_by_role('heading', name='Intransitive verbs', exact=True)).to_be_visible()
         note = view.locator('.constituent-diagram .lesson-tree-observation')
         outline = view.locator('.lesson-tree-outline')
-        view.get_by_role('button', name='Compare the intransitive VP').press('Enter')
+        choose_tree_step(view, 'Compare the intransitive VP', keyboard=True)
         expect(note).to_contain_text('only immediate part of VP')
         expect(outline).to_contain_text('V [intrans]')
         view.get_by_text('Tree notation', exact=True).click()
@@ -97,7 +99,7 @@ try:
 
         next_page.click()
         expect(view.get_by_role('heading', name='Ditransitive verbs', exact=True)).to_be_visible()
-        view.get_by_role('button', name='Compare the recipient PP').click()
+        choose_tree_step(view, 'Compare the recipient PP')
         expect(note).to_contain_text('“To Leo” is the corresponding PP')
         expect(outline.get_by_text('PP — to Leo', exact=True)).to_have_count(1)
         view.get_by_text('Tree notation', exact=True).click()
@@ -110,14 +112,14 @@ try:
         expect(page).to_have_url(f'{base}/?preview=br-04#lesson/br-04/predicatives')
         expect(view.get_by_role('heading', name='Intensive verbs and subject predicatives', exact=True)).to_be_visible()
         expect(view.get_by_role('heading', name='Complex transitive verbs and object predicatives', exact=True)).to_be_visible()
-        view.get_by_role('button', name='Describe the object').click()
+        choose_tree_step(view, 'Describe the object')
         expect(note).to_contain_text('describes “the steps”')
         expect(outline.get_by_text('AP — slippery', exact=True)).to_have_count(1)
         assert view.evaluate('(el) => el.scrollWidth <= el.clientWidth')
         next_page.click()
         expect(page).to_have_url(f'{base}/?preview=br-04#lesson/br-04/prepositional-complements')
         expect(view.get_by_role('heading', name='Prepositional verbs and selected PPs', exact=True)).to_be_visible()
-        view.get_by_role('button', name='Trace the subject location').click()
+        choose_tree_step(view, 'Trace the subject location')
         expect(note).to_contain_text('subject predicative')
         expect(view.get_by_text('The PP adds a place where she waited', exact=False)).to_be_visible()
         assert view.evaluate('(el) => el.scrollWidth <= el.clientWidth')

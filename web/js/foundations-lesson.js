@@ -1,4 +1,4 @@
-import { setTreeStepLabel } from './lesson-presentation.js';
+import { treeStepGuide } from './lesson-presentation.js';
 
 export function addWorkedExample(body, ui, labels, {
   highlightWords = false, captions, comparison, extraSteps = [], tracePath = false,
@@ -13,9 +13,6 @@ export function addWorkedExample(body, ui, labels, {
     return;
   }
 
-  const controls = el('div', undefined, 'constituent-controls lesson-tree-steps');
-  controls.setAttribute('role', 'group');
-  controls.setAttribute('aria-label', 'Explore the worked tree');
   const diagram = el('div', undefined, 'constituent-diagram');
   const observation = el('div', undefined, 'lesson-tree-observation');
   const caption = el('p', undefined, 'constituent-caption');
@@ -24,15 +21,13 @@ export function addWorkedExample(body, ui, labels, {
   const steps = worked.steps.map((step, index) => ({
     id: step.focus_node_id, label: labels[index], caption: captions?.[index] ?? step.text,
   })).filter(step => step.label).concat(extraSteps);
-  const choices = steps.map((step, index) => {
-    const control = button(step.label, () => select(index));
-    setTreeStepLabel(control, el, step.label, index + 1);
-    return control;
-  });
+  const guide = treeStepGuide(ui, 'Explore the worked tree', steps.map(step => step.label), select);
+  const { controls } = guide;
+  observation.prepend(guide.title);
 
   function describe(index, position) {
-    choices.forEach((choice, i) => choice.setAttribute('aria-pressed', String(i === index)));
     if (index !== -1) {
+      guide.update(index);
       caption.textContent = steps[index].caption;
     } else if (position) {
       const { node, parent } = position;
@@ -69,7 +64,7 @@ export function addWorkedExample(body, ui, labels, {
     function show(compare) {
       primary.setAttribute('aria-pressed', String(!compare));
       alternate.setAttribute('aria-pressed', String(compare));
-      controls.hidden = compare;
+      controls.hidden = guide.title.hidden = compare;
       sentence.textContent = compare ? comparison.tree.sentence : worked.sentence;
       if (compare) {
         observation.querySelector('.constituent-selection')?.remove();
@@ -87,7 +82,6 @@ export function addWorkedExample(body, ui, labels, {
     body.append(switcher);
   }
 
-  controls.append(...choices);
   body.append(sentence, controls, diagram);
   select(0);
 }

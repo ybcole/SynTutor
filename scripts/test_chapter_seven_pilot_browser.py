@@ -7,6 +7,8 @@ import threading
 
 from playwright.sync_api import expect, sync_playwright
 
+from lesson_browser_steps import choose_tree_step
+
 ROOT = Path(__file__).resolve().parents[1]
 PILOT = json.loads((ROOT / 'web/content/lessons/br-07-pilot.json').read_text())
 
@@ -64,12 +66,12 @@ try:
         next_page.click()
         note = view.locator('.constituent-diagram .lesson-tree-observation')
         outline = view.locator('.lesson-tree-outline')
-        view.get_by_role('button', name='Find empty DET').press('Enter')
+        choose_tree_step(view, 'Find empty DET', keyboard=True)
         expect(note).to_contain_text('ends without a word')
         expect(view.locator('svg [data-node-id="det"]')).to_have_text('DET (empty)')
         expect(outline.get_by_text('DET (empty)', exact=True)).to_have_count(1)
         expect(outline.get_by_text('•', exact=True)).to_have_count(0)
-        view.get_by_role('button', name='Compare the pronoun').click()
+        choose_tree_step(view, 'Compare the pronoun')
         expect(outline.get_by_text('DET', exact=True)).to_have_count(0)
 
         next_page.click()
@@ -103,18 +105,18 @@ try:
         page.reload(wait_until='domcontentloaded')
         check.click()
         expect(status).to_contain_text('share NP as their parent')
-        view.get_by_role('button', name='Read the inner NP').click()
+        choose_tree_step(view, 'Read the inner NP')
         expect(note).to_contain_text('sister of PRE-DET')
 
         page.set_viewport_size({'width': 390, 'height': 844})
         page.evaluate("document.documentElement.dataset.theme = 'dark'")
         next_page.click()
         expect(page).to_have_url(f'{base}/?preview=br-07#lesson/br-07/pre-modifiers')
-        view.get_by_role('button', name='Read the larger NOM').click()
+        choose_tree_step(view, 'Read the larger NOM')
         expect(note).to_contain_text('smaller NOM “red kite”')
         assert view.evaluate('(el) => el.scrollWidth <= el.clientWidth')
         next_page.click()
-        view.get_by_role('button', name='Trace “applicant for the job”').click()
+        choose_tree_step(view, 'Trace “applicant for the job”')
         expect(note).to_contain_text('smaller NOM includes the noun and PP')
         expect(view.locator('svg [data-node-id="inner"]')).to_have_class('lesson-tree-focus')
         assert view.evaluate('(el) => el.scrollWidth <= el.clientWidth')
@@ -125,13 +127,13 @@ try:
         expect(page).to_have_url(f'{base}/?preview=br-07#lesson/br-07/application')
         view.get_by_text('Check the attachment').click()
         expect(view.get_by_text('“Ceramic bowls” forms the smaller NOM.', exact=False)).to_be_visible()
-        view.get_by_role('button', name='Read the modified pronoun').click()
+        choose_tree_step(view, 'Read the modified pronoun')
         expect(note).to_contain_text('pronoun and PP are sisters under NP')
         expect(outline.get_by_text('PP — from Vigan', exact=True)).to_have_count(1)
 
         next_page.click()
         expect(page).to_have_url(f'{base}/?preview=br-07#lesson/br-07/nom-appendix')
-        view.get_by_role('button', name='Replace the smaller NOM').click()
+        choose_tree_step(view, 'Replace the smaller NOM')
         expect(note).to_contain_text('including the complement')
         expect(outline.get_by_text('one', exact=True)).to_have_count(1)
         expect(view.get_by_text('Tree notation', exact=True)).to_be_visible()

@@ -46,41 +46,85 @@ export function addFoundationsBookCoverage(body, el, lessonId, sectionId) {
   return practice;
 }
 
-export function setTreeStepLabel(control, el, label, number) {
-  if (number === undefined) {
-    control.textContent = label;
-    control.removeAttribute('aria-description');
-    return;
-  }
-  const badge = el('span', String(number), 'lesson-tree-step-number');
-  badge.setAttribute('aria-hidden', 'true');
-  control.replaceChildren(badge, label);
-  control.setAttribute('aria-description', `Step ${number}`);
-}
-
-export function addTreeTrace(body, { el, button, showDiagram }, label, steps) {
-  const figure = el('div', undefined, 'constituent-diagram');
-  const controls = el('div', undefined, 'lesson-tree-steps');
+export function treeStepGuide({ el, button }, label, labels, onSelect) {
+  const controls = el('div', undefined, 'lesson-tree-steps lesson-tree-guide');
   controls.setAttribute('role', 'group');
   controls.setAttribute('aria-label', label);
+  const title = el('p', undefined, 'lesson-tree-step-title');
+  const picker = el('details', undefined, 'lesson-tree-step-picker');
+  const number = el(labels.length > 1 ? 'summary' : 'span', undefined, 'lesson-tree-step-number');
+  const choices = el('ol', undefined, 'lesson-tree-step-choices');
+  let current = 0;
+
+  function update(index) {
+    current = index;
+    const atEnd = index === labels.length - 1;
+    number.textContent = String(index + 1);
+    number.setAttribute('aria-label', `Step ${index + 1} of ${labels.length}${labels.length > 1 ? ' · Choose a step' : ''}`);
+    title.textContent = labels[index];
+    arrow.textContent = atEnd ? '←' : '→';
+    arrow.setAttribute('aria-label', atEnd ? 'Previous step' : 'Next step');
+    arrow.title = arrow.getAttribute('aria-label');
+    for (const [i, choice] of Array.from(choices.children).entries()) {
+      if (i === index) choice.firstElementChild.setAttribute('aria-current', 'step');
+      else choice.firstElementChild.removeAttribute('aria-current');
+    }
+  }
+
+  function select(index) {
+    if (index < 0 || index >= labels.length) return;
+    update(index);
+    onSelect(index);
+  }
+
+  const arrow = button('', () => select(current + (current === labels.length - 1 ? -1 : 1)), 'lesson-tree-step-arrow');
+  if (labels.length > 1) {
+    for (const [index, text] of labels.entries()) {
+      const item = el('li');
+      item.append(button(text, () => {
+        picker.open = false;
+        select(index);
+        number.focus();
+      }));
+      choices.append(item);
+    }
+    picker.append(number, choices);
+    picker.addEventListener('focusout', event => {
+      if (!picker.contains(event.relatedTarget)) picker.open = false;
+    });
+    controls.append(picker, arrow);
+    controls.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && picker.open) {
+        event.preventDefault();
+        picker.open = false;
+        number.focus();
+      } else if (!picker.open && (event.key === 'ArrowLeft' || event.key === 'ArrowRight')) {
+        event.preventDefault();
+        select(current + (event.key === 'ArrowLeft' ? -1 : 1));
+      }
+    });
+  } else {
+    controls.append(number);
+  }
+  update(0);
+  return { controls, title, update };
+}
+
+export function addTreeTrace(body, ui, label, steps, options = {}) {
+  const { el, showDiagram } = ui;
+  const figure = el('div', undefined, 'constituent-diagram');
   const canvas = el('div');
   const note = el('div', undefined, 'lesson-tree-observation');
   note.setAttribute('aria-live', 'polite');
   const caption = el('p');
-  note.append(caption);
-  const buttons = steps.map(([text], i) => {
-    const control = button(text, () => show(i));
-    setTreeStepLabel(control, el, text, i + 1);
-    return control;
-  });
+  const guide = treeStepGuide(ui, label, steps.map(([text]) => text), show);
+  note.append(guide.title, caption);
   function show(index) {
     const [, tree, focusId, explanation] = steps[index];
-    buttons.forEach((control, i) => control.setAttribute('aria-pressed', String(i === index)));
-    showDiagram(canvas, tree, { focusId, highlightWords: true, wordBaseline: 3 });
+    showDiagram(canvas, tree, { focusId, highlightWords: true, wordBaseline: 3, ...options });
     caption.textContent = explanation;
   }
-  controls.append(...buttons);
-  figure.append(controls, canvas, note);
+  figure.append(guide.controls, canvas, note);
   body.append(figure);
   show(0);
 }

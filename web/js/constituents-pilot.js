@@ -1,5 +1,5 @@
 import { addConstituentTreeBuilder } from './constituent-tree-builder.js';
-import { addIntroExample, setTreeStepLabel } from './lesson-presentation.js';
+import { addIntroExample, addTreeTrace } from './lesson-presentation.js';
 
 const sentence = 'Mina paused near the stone arch.';
 const word = (text, index) => ({ id: `word-${index}`, word: text });
@@ -27,11 +27,7 @@ function comparison(body, { el, button, showDiagram }, name, views) {
   const captionText = el('p');
   observation.append(captionText);
   observation.setAttribute('aria-live', 'polite');
-  const buttons = views.map(({ label, step }, index) => {
-    const control = button(label, () => select(index));
-    if (step) setTreeStepLabel(control, el, label, step);
-    return control;
-  });
+  const buttons = views.map(({ label }, index) => button(label, () => select(index)));
   function select(index) {
     const { tree, focusId, caption } = views[index];
     buttons.forEach((item, i) => item.setAttribute('aria-pressed', String(i === index)));
@@ -104,14 +100,14 @@ export const constituentsPilot = {
       example(sentence);
       paragraph('A node dominates everything its branches reach below it. It immediately dominates anything it reaches in one branch. In each tree, look for a node that reaches just the three words naming the landmark.');
       const nested = locationTree(true);
-      comparison(body, ui, 'Compare the phrase markers', [
-        { label: 'Trace the flat drawing', step: 1, tree: locationTree(false), focusId: 'PHRASE-a',
-          caption: 'All four words sit right under PHRASE-a. There is no smaller node for the landmark.' },
-        { label: 'Trace the landmark', step: 2, tree: nested, focusId: 'PHRASE-b',
-          caption: 'PHRASE-b reaches exactly three words, “the stone arch”. That is the group you found with the tests.' },
-        { label: 'Trace the outer phrase', step: 3, tree: nested, focusId: 'PHRASE-a',
-          caption: 'PHRASE-a immediately dominates “near” and PHRASE-b. To reach the landmark words, follow another branch down from PHRASE-b.' },
-      ]);
+      addTreeTrace(body, ui, 'Compare the phrase markers', [
+        ['Trace the flat drawing', locationTree(false), 'PHRASE-a',
+          'All four words sit right under PHRASE-a. There is no smaller node for the landmark.'],
+        ['Trace the landmark', nested, 'PHRASE-b',
+          'PHRASE-b reaches exactly three words, “the stone arch”. That is the group you found with the tests.'],
+        ['Trace the outer phrase', nested, 'PHRASE-a',
+          'PHRASE-a immediately dominates “near” and PHRASE-b. To reach the landmark words, follow another branch down from PHRASE-b.'],
+      ], { wordBaseline: 0 });
       paragraph('A triangle stands for a whole group. It hides the branches inside that group. Here, the branches are drawn so you can follow them to each word.');
       heading('Repair a flat tree');
       paragraph('Put the words “the red gate” under their own node. Keep “beside” right under the outer node. Choose Guide me if you need help.');

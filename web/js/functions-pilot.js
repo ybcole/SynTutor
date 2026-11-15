@@ -1,4 +1,4 @@
-import { addIntroExample, lessonExample, setTreeStepLabel } from './lesson-presentation.js';
+import { addIntroExample, lessonExample, addTreeTrace } from './lesson-presentation.js';
 import { addEmbeddedTreeExercise } from './lesson-tree-exercise.js';
 import { addPhrase, addWordsFromText, childrenOf, connect, createModel, roots } from './syntax-builder.js';
 
@@ -24,36 +24,13 @@ const twoNps = {
   ] },
 };
 
-function trace(body, { el, button, showDiagram }) {
-  const figure = el('div', undefined, 'constituent-diagram');
-  const controls = el('div', undefined, 'lesson-tree-steps');
-  controls.setAttribute('role', 'group');
-  controls.setAttribute('aria-label', 'Trace the sentence groups');
-  const canvas = el('div');
-  const note = el('div', undefined, 'lesson-tree-observation');
-  note.setAttribute('aria-live', 'polite');
-  const caption = el('p');
-  note.append(caption);
+function trace(body, ui) {
   const steps = [
     ['Find the two sisters', topSplit, 'sentence', 'From S, one branch leads to the subject NP and one leads to the predicate VP. The triangles stand for the words inside each phrase.'],
     ['Trace the subject NP', twoNps, 'subject', 'In “Mira checked the lantern”, “Mira” is the NP directly under S. It is the subject.'],
     ['Trace the NP inside VP', twoNps, 'object', '“The lantern” is also an NP. Its parent is VP, so it belongs inside the predicate.'],
   ];
-  const buttons = steps.map(([label], index) => {
-    const control = button(label, () => select(index));
-    setTreeStepLabel(control, el, label, index + 1);
-    return control;
-  });
-  function select(index) {
-    const [, tree, focusId, explanation] = steps[index];
-    buttons.forEach((control, i) => control.setAttribute('aria-pressed', String(i === index)));
-    showDiagram(canvas, tree, { focusId, highlightWords: true, wordBaseline: 3 });
-    caption.textContent = explanation;
-  }
-  controls.append(...buttons);
-  figure.append(controls, canvas, note);
-  body.append(figure);
-  select(0);
+  addTreeTrace(body, ui, 'Trace the sentence groups', steps);
 }
 
 function repair(body, ui) {

@@ -231,24 +231,51 @@
 .constituent-page .lesson-tree-observation .constituent-caption { font-size:1rem; }
 .lesson-tree-observation .constituent-selection mark { background:var(--bg); color:var(--ink); }
 .lesson-tree-observation > .lesson-feedback { background:var(--panel); }
-.curriculum-view .lesson-tree-steps button:has(.lesson-tree-step-number) {
-  display:inline-flex;
-  align-items:center;
-  gap:7px;
-}
-.lesson-tree-step-number {
-  display:inline-grid;
+.lesson-tree-guide { display:flex; align-items:center; gap:6px; margin-block:0 8px; }
+.lesson-tree-guide[hidden] { display:none; }
+.lesson-tree-step-picker { position:relative; }
+.curriculum-view .lesson-tree-guide :is(.lesson-tree-step-number,.lesson-tree-step-arrow) {
+  display:grid;
   place-items:center;
-  flex:none;
-  width:1.45rem;
-  height:1.45rem;
+  box-sizing:border-box;
+  width:2.25rem;
+  height:2.25rem;
+  min-height:0;
+  padding:0;
+  line-height:1;
   border:1px solid var(--accent-border);
   border-radius:50%;
   background:var(--bg);
   color:var(--accent-strong);
-  font-size:.8rem;
   font-weight:700;
 }
+.lesson-tree-step-number { font-size:.9rem; }
+.lesson-tree-step-picker summary { list-style:none; cursor:pointer; }
+.lesson-tree-step-picker summary::-webkit-details-marker { display:none; }
+.curriculum-view .lesson-tree-guide :is(summary,button):hover { border-color:var(--accent); }
+.lesson-tree-step-choices {
+  position:absolute;
+  inset-block-start:calc(100% + 5px);
+  inset-inline-start:0;
+  z-index:5;
+  width:min(20rem,calc(100vw - 4rem));
+  box-sizing:border-box;
+  margin:0;
+  padding:6px 6px 6px 2rem;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:var(--panel);
+}
+.curriculum-view .lesson-tree-step-choices button {
+  width:100%;
+  padding:6px 8px;
+  border-color:transparent;
+  border-radius:6px;
+  font-size:.85rem;
+  text-align:start;
+}
+.lesson-tree-step-choices button[aria-current=step] { background:var(--accent-soft); color:var(--accent-strong); }
+.lesson-tree-step-title { font-weight:650; }
 .constituent-selection:empty { display:none; }
 .constituent-selection mark { background:var(--accent-soft); color:var(--accent-strong); font-weight:650; }
 .lesson-tree-canvas [data-constituent-selected] > text { fill:var(--accent-strong); font-weight:750; }

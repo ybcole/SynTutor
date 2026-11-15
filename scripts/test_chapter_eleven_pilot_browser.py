@@ -7,6 +7,8 @@ import threading
 
 from playwright.sync_api import expect, sync_playwright
 
+from lesson_browser_steps import choose_tree_step
+
 ROOT = Path(__file__).resolve().parents[1]
 PILOT = json.loads((ROOT / 'web/content/lessons/br-11-pilot.json').read_text())
 
@@ -62,7 +64,7 @@ try:
         next_page.click()
         expect(view.get_by_text('S → S and S', exact=True)).to_be_visible()
         next_page.click()
-        view.get_by_role('button', name='Reuse the first result').press('Enter')
+        choose_tree_step(view, 'Reuse the first result', keyboard=True)
         expect(view.locator('.lesson-tree-observation')).to_contain_text('first input')
         expect(view.locator('.lesson-tree-outline')).to_contain_text('Mina waves')
 

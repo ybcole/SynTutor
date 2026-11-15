@@ -7,6 +7,8 @@ import threading
 
 from playwright.sync_api import expect, sync_playwright
 
+from lesson_browser_steps import choose_tree_step
+
 ROOT = Path(__file__).resolve().parents[1]
 PILOT = json.loads((ROOT / 'web/content/lessons/br-02-pilot.json').read_text())
 
@@ -65,7 +67,7 @@ try:
         view.get_by_role('button', name='stairs', exact=True).press('Enter')
         expect(view.get_by_role('status')).to_contain_text('completes the subject')
         view.get_by_role('button', name='Next →', exact=True).click()
-        view.get_by_role('button', name='Trace the NP inside VP').click()
+        choose_tree_step(view, 'Trace the NP inside VP')
         expect(view.locator('.constituent-diagram .lesson-tree-observation')).to_contain_text('Its parent is VP')
         exercise = view.get_by_role('region', name='Attach the NP inside the predicate')
         exercise.get_by_role('button', name='Check my tree').click()

@@ -6,6 +6,7 @@ from pathlib import Path
 import re
 import threading
 from playwright.sync_api import sync_playwright, expect
+from lesson_browser_steps import choose_tree_step
 ROOT=Path(__file__).resolve().parents[1]
 COURSE=json.loads((ROOT/'web/content/lessons/course.json').read_text())
 OUT=Path('/tmp/syntutor-lessons-browser');OUT.mkdir(exist_ok=True)
@@ -362,15 +363,15 @@ try:
   view.get_by_role('button',name='Next →',exact=True).click()
   expect(part_heading).to_have_text('Reading and Building the NP/VP Tree')
   assert view.get_by_role('heading',name='What the triangles show').bounding_box()['y'] < view.locator('.canonical-viewport').bounding_box()['y']
-  expect(view.locator('.lesson-tree-step-number')).to_have_text(['1','2','3'])
-  view.get_by_role('button',name='Subject',exact=True).click()
+  expect(view.locator('.lesson-tree-step-number')).to_have_text('1')
+  choose_tree_step(view, 'Subject')
   expect(view.locator('.lesson-tree-observation > .constituent-selection')).to_be_visible()
   expect(view.locator('.lesson-word-traced')).to_have_text('The robins')
   expect(view.locator('.constituent-selection mark')).to_have_text(['The','robins'])
   view.get_by_role('button',name='Inspect VP for sing',exact=True).press('Enter')
   expect(view.locator('.lesson-word-traced')).to_have_text('sing')
   expect(view.locator('.constituent-caption')).to_contain_text('Category: VP · Function: predicate')
-  view.get_by_role('button',name='Predicate',exact=True).click()
+  choose_tree_step(view, 'Predicate')
   expect(view.locator('.lesson-tree-focus text').first).to_have_text('VP')
   view.get_by_text('Tree notation',exact=True).click()
   practice=view.get_by_role('heading',name='Find the full predicate',exact=True)
@@ -379,7 +380,7 @@ try:
   longer.press('Enter')
   expect(longer).to_be_focused()
   expect(practice).to_be_visible()
-  expect(view.locator('.lesson-tree-step-number')).to_have_count(0)
+  expect(view.locator('.lesson-tree-step-number')).to_be_hidden()
   assert practice.bounding_box()['y'] < view.get_by_role('heading',name='Build your first labelled tree').bounding_box()['y']
   expect(view.locator('.lesson-word-traced')).to_have_count(0)
   view.get_by_role('button',name='Inspect NP for The robins near the gate',exact=True).press('Enter')
@@ -610,11 +611,11 @@ try:
     skipped={'br-03':1,'br-09':2}.get(ident)
     visible_steps=[step for i,step in enumerate(worked['steps']) if i!=skipped]
     step_count=len(visible_steps)+(2 if ident=='br-09' else 0)
-    expect(step_controls.locator('.lesson-tree-step-number')).to_have_text([str(i+1) for i in range(step_count)])
+    expect(step_controls.locator('.lesson-tree-step-number')).to_have_attribute('aria-label', f'Step 1 of {step_count} · Choose a step')
     for i, step in enumerate(visible_steps):
-     step_button=step_controls.get_by_role('button').nth(i)
-     step_button.press('Enter')
-     expect(step_button).to_have_attribute('aria-pressed','true')
+     if i:
+      step_controls.get_by_role('button',name='Next step',exact=True).press('Enter')
+     expect(step_controls.locator('.lesson-tree-step-number')).to_have_text(str(i+1))
      observation=view.locator('.lesson-tree-observation')
      expect(observation.locator('.constituent-selection')).to_be_visible()
      expect(observation).to_have_css('background-color','rgb(255, 255, 255)')
@@ -643,17 +644,17 @@ try:
      comparison.get_by_role('button').first.press('Enter')
      expect(step_controls).to_be_visible()
     if ident=='br-07':
-     step_controls.get_by_role('button',name='Find the noun').press('Enter')
+     choose_tree_step(step_controls, 'Find the noun', keyboard=True)
      expect(viewport.locator('.lesson-branch-traced')).to_have_count(2)
     if ident=='br-09':
      expect(viewport.locator('svg text').filter(has_text=re.compile(r'^•'))).to_have_count(2)
      for parent, control in [('PROG','Find the PROG gap'),('NP','Trace the NP gap')]:
       viewport.get_by_role('button',name=f'Inspect gap under {parent}',exact=True).press('Enter')
-      expect(step_controls.get_by_role('button',name=control)).to_have_attribute('aria-pressed','true')
+      expect(step_controls.locator('button[aria-current=step]')).to_have_text(control)
       expect(view.locator('.constituent-selection')).to_contain_text(f'Gap under {parent}')
       expect(view.locator('.constituent-caption')).to_contain_text(f'The dot under {parent}')
      viewport.get_by_role('button',name='Inspect NP for Nora',exact=True).press('Enter')
-     expect(step_controls.locator('[aria-pressed=true]')).to_have_count(0)
+     expect(step_controls.locator('button[aria-current=step]')).to_have_text('Trace the NP gap')
      expect(view.locator('.constituent-caption')).to_have_text('NP is directly under S.')
     if ident=='br-10':
      expect(viewport.locator('svg text').filter(has_text=re.compile(r'^\[-tense\]$'))).to_have_count(1)

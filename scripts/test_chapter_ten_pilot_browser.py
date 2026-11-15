@@ -7,6 +7,8 @@ import threading
 
 from playwright.sync_api import expect, sync_playwright
 
+from lesson_browser_steps import choose_tree_step
+
 ROOT = Path(__file__).resolve().parents[1]
 PILOT = json.loads((ROOT / 'web/content/lessons/br-10-pilot.json').read_text())
 
@@ -60,7 +62,7 @@ try:
 
         next_page = view.get_by_role('button', name='Next →', exact=True)
         next_page.click()
-        view.get_by_role('button', name='Find the object gap').press('Enter')
+        choose_tree_step(view, 'Find the object gap', keyboard=True)
         outline = view.locator('.lesson-tree-outline')
         expect(outline).to_contain_text('V [trans, -tense]')
         expect(outline.get_by_text('• (1)', exact=True)).to_have_count(1)
@@ -88,12 +90,12 @@ try:
 
         next_page.click()
         expect(outline.first.get_by_text('•', exact=True)).to_have_count(1)
-        view.get_by_role('button', name='Find the controlled subject').click()
+        choose_tree_step(view, 'Find the controlled subject')
         expect(outline.first.get_by_text('NP (1) — Nia', exact=True)).to_have_count(1)
         expect(outline.first.get_by_text('• (1)', exact=True)).to_have_count(1)
-        view.get_by_role('button', name='Find the overt subject').click()
+        choose_tree_step(view, 'Find the overt subject')
         expect(outline.first.get_by_text('NP — Ivo', exact=True)).to_have_count(1)
-        view.get_by_role('button', name='Find “what” in C2').click()
+        choose_tree_step(view, 'Find “what” in C2')
         expect(outline.last.get_by_text('C1 (empty)', exact=True)).to_have_count(1)
         expect(outline.last.get_by_text('• (2)', exact=True)).to_have_count(1)
         next_page.click()
@@ -105,7 +107,7 @@ try:
         expect(view.get_by_role('heading', name='Non-finite noun complements and NOM modifiers')).to_be_visible()
         expect(view.locator('#br10-12')).to_be_visible()
         expect(view.locator('#br10-13')).to_be_visible()
-        view.get_by_role('button', name='Follow the silent wh-expression').click()
+        choose_tree_step(view, 'Follow the silent wh-expression')
         expect(view.locator('svg [data-node-id="inner-nom"]')).to_contain_text('NOM (1)')
         expect(outline.get_by_text('• (1)', exact=True)).to_have_count(2)
         expect(view.get_by_text('Tree notation', exact=True)).to_be_visible()
@@ -114,7 +116,7 @@ try:
         expect(view.get_by_role('status')).to_contain_text('Look for it in the higher VP')
         view.get_by_role('radio', name='The object of “persuaded”').check()
         expect(view.get_by_role('status')).to_contain_text('controls the silent subject')
-        view.get_by_role('button', name='Trace the silent subject').click()
+        choose_tree_step(view, 'Trace the silent subject')
         expect(outline.get_by_text('NP (1) — Ivo', exact=True)).to_have_count(1)
         expect(outline.get_by_text('• (1)', exact=True)).to_have_count(1)
         expect(view.locator('svg [data-node-id="controller"]')).to_contain_text('NP (1)')

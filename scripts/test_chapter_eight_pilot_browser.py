@@ -7,6 +7,8 @@ import threading
 
 from playwright.sync_api import expect, sync_playwright
 
+from lesson_browser_steps import choose_tree_step
+
 ROOT = Path(__file__).resolve().parents[1]
 PILOT = json.loads((ROOT / 'web/content/lessons/br-08-pilot.json').read_text())
 
@@ -65,12 +67,12 @@ try:
         next_page.click()
         note = view.locator('.constituent-diagram .lesson-tree-observation')
         outline = view.locator('.lesson-tree-outline')
-        view.get_by_role('button', name='Find the unfilled C').press('Enter')
+        choose_tree_step(view, 'Find the unfilled C', keyboard=True)
         expect(note).to_contain_text('C branch has no word')
         expect(view.locator('svg [data-node-id="intro"]')).to_have_text('C (empty)')
         expect(outline.get_by_text('C (empty)', exact=True)).to_have_count(1)
         expect(outline.get_by_text('•', exact=True)).to_have_count(0)
-        view.get_by_role('button', name='Find interrogative “whether”').click()
+        choose_tree_step(view, 'Find interrogative “whether”')
         expect(note).to_contain_text('subject “Nora” comes before “was”')
         expect(outline.get_by_text('whether', exact=True)).to_have_count(1)
 
@@ -94,17 +96,17 @@ try:
         page.set_viewport_size({'width': 390, 'height': 844})
         page.evaluate("document.documentElement.dataset.theme = 'dark'")
         next_page.click()
-        view.get_by_role('button', name='Find the extraposed subject').click()
+        choose_tree_step(view, 'Find the extraposed subject')
         expect(note).to_contain_text('attaches directly under the main S')
         assert outline.locator(':scope > ul > li > ul > li').count() == 3
-        view.get_by_role('button', name='Find the clausal object').click()
+        choose_tree_step(view, 'Find the clausal object')
         expect(note).to_contain_text('object NP contains S′')
         assert view.evaluate('(el) => el.scrollWidth <= el.clientWidth')
 
         next_page.click()
-        view.get_by_role('button', name='Trace the noun').click()
+        choose_tree_step(view, 'Trace the noun')
         expect(note).to_contain_text('sisters within NOM')
-        view.get_by_role('button', name='Trace the preposition').click()
+        choose_tree_step(view, 'Trace the preposition')
         expect(note).to_contain_text('sisters within PP')
         next_page.click()
         view.get_by_role('radio', name='The inner S beginning with “the gate”').check()
@@ -112,7 +114,7 @@ try:
         view.get_by_role('radio', name='The S′ beginning with “because”').check()
         expect(view.get_by_role('status')).to_contain_text('whole S′ joins the basic VP')
         expect(note).to_contain_text('P “after” takes S directly')
-        view.get_by_role('button', name='Trace the reason S′').click()
+        choose_tree_step(view, 'Trace the reason S′')
         expect(note).to_contain_text('C “because” introduces S')
         assert view.evaluate('(el) => el.scrollWidth <= el.clientWidth')
 
