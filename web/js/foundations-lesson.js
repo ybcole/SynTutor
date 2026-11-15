@@ -23,7 +23,6 @@ export function addWorkedExample(body, ui, labels, {
   })).filter(step => step.label).concat(extraSteps);
   const guide = treeStepGuide(ui, 'Explore the worked tree', steps.map(step => step.label), select);
   const { controls } = guide;
-  observation.prepend(guide.title);
 
   function describe(index, position) {
     if (index !== -1) {
@@ -64,7 +63,7 @@ export function addWorkedExample(body, ui, labels, {
     function show(compare) {
       primary.setAttribute('aria-pressed', String(!compare));
       alternate.setAttribute('aria-pressed', String(compare));
-      controls.hidden = guide.title.hidden = compare;
+      controls.hidden = compare;
       sentence.textContent = compare ? comparison.tree.sentence : worked.sentence;
       if (compare) {
         observation.querySelector('.constituent-selection')?.remove();

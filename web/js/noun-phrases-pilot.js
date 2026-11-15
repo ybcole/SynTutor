@@ -98,6 +98,7 @@ export const nounPhrasesPilot = {
           ['Compare the pronoun', pronoun, 'pronoun', '“They” forms an NP on its own, as a name such as “Mina” can. Its tree has a single branch from NP.'],
         ]);
         p('A possessive can have several words. In “the maker’s baskets”, start with the NP “the maker”. It joins the possessive ending to make the determiner for “baskets”.');
+        p('Try “those baskets” and “the maker’s baskets” side by side. “Those” and “the maker’s” each tell you which baskets and occupy the same DET position in their phrases. Inside “the maker’s”, however, “the maker” is an NP with its own determiner. Follow the branches from the larger NP before naming each DET.');
         break;
       }
       case 'worked-example': {
@@ -133,6 +134,7 @@ export const nounPhrasesPilot = {
           ['Trace “applicant for the job”', applicant, 'inner', 'The smaller NOM includes the noun and PP. The AP “eager” joins that whole NOM.'],
         ]);
         p('An AP can follow a noun when it has a complement of its own. In “the pilot ready for departure”, the whole AP is “ready for departure”.');
+        p('First ask what the noun modifier describes. Then ask what the adjective’s complement belongs to. In “the pilot ready for departure”, the whole AP describes the pilot. Inside that AP, “for departure” tells what the pilot is ready for and belongs with “ready”. The outer attachment and the inner attachment do different jobs.');
         break;
       case 'application': {
         p('The bowls are ceramic and they came from Vigan. Which group does the PP “from Vigan” go with?');
@@ -157,6 +159,7 @@ export const nounPhrasesPilot = {
         break;
       case 'nom-appendix':
         p('Suppose two maps show the same island. If one map has a red border, you can ask for “one with a red border”. Follow which words one replaces and which remain.');
+        p('Try two replies: “I want one with a red border” and “I want one of the island”. In the first, the border can describe the map after “one” replaces the nominal. In the second, the intended map-content reading is hard to keep, because “of the island” goes with the head “map”. That contrast helps locate the complement and the modifier.');
         trace('Compare a noun complement and a NOM modifier', [
           ['Find the noun complement', map, 'content', '“Of the island” tells what the map depicts. It attaches beside N inside the smaller NOM.'],
           ['Find the modifier', map, 'border', '“With a red border” describes the map as an added detail. It attaches beside the smaller NOM.'],

@@ -95,6 +95,7 @@ export const categoriesPilot = {
       p('An adjective phrase (AP) has an adjective as its head. An adverb phrase (AdvP) has an adverb as its head. In the next example, “visible” describes the sign. “Quite clearly” tells how clearly someone could see it.');
       example('The sign was [quite clearly visible].');
       p('“Quite” is a degree word. It tells how much. Follow its branch to find the word it modifies.');
+      p('Read “quite clearly visible” in two passes. First, “quite” tells how clearly, so group it with “clearly” inside AdvP. Next, the whole AdvP modifies “visible”. “Visible” heads the AP, even though the AP contains an adverb phrase of its own.');
       addTreeTrace(body, ui, 'Trace the adjective and adverb phrases', [
         ['Find the adjective', description, 'adjective', '“Visible” is the head of the whole AP.'],
         ['Read the adverb phrase', description, 'modifier', '“Clearly” heads “quite clearly”. The degree word “quite” modifies “clearly”. Together they form an AdvP that modifies “visible”.'],
@@ -106,6 +107,7 @@ export const categoriesPilot = {
       p('A prepositional phrase (PP) has a preposition as its head. In “beside the bench”, “beside” tells how the place relates to the bench. The NP “the bench” is its complement. It names the landmark.');
       example('The puppy slept [beside the bench and near the heater].');
       p('Joining parts with a word like “and” is called coordination. Each part joined is a conjunct. Here, both conjuncts are PPs with their own head and landmark. Together they form a larger PP.');
+      p('Try covering the shared words in “above and beside the bench”. The coordinator joins the two prepositions, and “the bench” is their shared complement. Now read “above the table and beside the bench”. Each preposition has its own complement, so the coordinator joins two complete PPs.');
       addTreeTrace(body, ui, 'Trace the two locations and their replacement', [
         ['Trace the first PP', locations, 'first-location', '“Beside” heads the first PP. “The bench” is its NP complement.'],
         ['Trace the second PP', locations, 'second-location', '“Near” heads the second PP. “The heater” is its NP complement.'],

@@ -133,6 +133,7 @@ export const whClausesPilot = {
         break;
       case 'worked-example':
         p('Find the two front positions in the object question. C2 is higher, under S″. It holds the wh-expression. C1 is lower, under S′. It holds the fronted auxiliary. Each has its own gap inside S.');
+        p('Start with a possible answer: “Nora is inspecting the bridge.” The answer tells you which words “what” replaces. Mark an object gap after “inspecting”, then put “what” in the higher C2 position. The auxiliary “is” has a separate gap after the subject and moves to the lower C1 position.');
         example('[What] [is] Nora inspecting?');
         trace('Match each front position to its gap', [
           ['Find “what” in C2', main, whFront.id, '“What” asks for the object and sits in C2 under S″.'],
@@ -146,6 +147,7 @@ export const whClausesPilot = {
         break;
       case 'embedded-interrogatives':
         p('An embedded interrogative is a question inside a larger clause. Compare the direct question with the sentence that tells what Mina asked.');
+        p('Compare asking “What is Nora inspecting?” with reporting “Mina asked what Nora was inspecting”. The word “what” still corresponds to the object of “inspecting”. In the report, however, “was” stays after the subject, and C1 of the embedded clause is empty. Track the wh-expression and auxiliary separately.');
         example('What is Nora inspecting?');
         example('Mina asked [what Nora was inspecting].');
         trace('Compare the two front positions', [
@@ -170,6 +172,7 @@ export const whClausesPilot = {
         break;
       case 'relative-scope': {
         p('A restrictive relative tells which members of a group are meant. A non-restrictive relative adds a detail about a group you can already identify. Check what each statement says was removed.');
+        p('Picture two sets of lanterns, some cracked and some intact. A restrictive relative can identify the cracked ones. If everyone already knows which lanterns are meant, the clause can instead add that they had cracked. The tree places that second kind of comment beside the complete NP.');
         example('The lanterns [which had cracked] were removed.');
         example('The lanterns, [which had cracked], were removed.');
         const feedback = el('p', undefined, 'lesson-feedback');

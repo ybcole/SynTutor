@@ -106,7 +106,6 @@ function addTreeComparison(body, ui) {
   const picker = ['Short sentence', 'Try the longer sentence'].map((label, index) =>
     button(label, () => chooseExample(index)));
   const guide = treeStepGuide(ui, 'Trace the short sentence', ['Whole sentence', 'Subject', 'Predicate'], selectBranch);
-  observation.prepend(guide.title);
   const branchButtons = ['S', 'NP', 'VP'].map((label, index) =>
     button(label, () => selectBranch(index, true)));
   const explanations = [
@@ -154,7 +153,7 @@ function addTreeComparison(body, ui) {
   function chooseExample(index) {
     current = index;
     picker.forEach((control, i) => control.setAttribute('aria-pressed', String(i === index)));
-    guide.controls.hidden = guide.title.hidden = index !== 0;
+    guide.controls.hidden = index !== 0;
     branches.hidden = index === 0;
     sentence.textContent = examples[index].sentence;
     prompt.hidden = index === 0;

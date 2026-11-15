@@ -611,7 +611,7 @@ try:
     skipped={'br-03':1,'br-09':2}.get(ident)
     visible_steps=[step for i,step in enumerate(worked['steps']) if i!=skipped]
     step_count=len(visible_steps)+(2 if ident=='br-09' else 0)
-    expect(step_controls.locator('.lesson-tree-step-number')).to_have_attribute('aria-label', f'Step 1 of {step_count} · Choose a step')
+    expect(step_controls.locator('summary')).to_have_attribute('aria-label', re.compile(rf'^Step 1 of {step_count}:'))
     for i, step in enumerate(visible_steps):
      if i:
       step_controls.get_by_role('button',name='Next step',exact=True).press('Enter')

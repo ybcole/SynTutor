@@ -131,6 +131,7 @@ export const nonFinitePilot = {
         break;
       case 'worked-example': {
         p('Look at the smaller VP in the inspection tree. The node above “to” has [-tense]. Its sister is the lexical VP “inspect the bridge”.');
+        p('Say “Nora plans to inspect the bridge”, then change “plans” to “planned”. The time changes on the higher verb, but “to inspect the bridge” keeps its form. Inside the smaller VP, “to” bears [-tense] and takes “inspect the bridge” as its VP complement. In that lowest VP, “the bridge” belongs with “inspect”.');
         example('Nora plans [to inspect the bridge].');
         const fragment = lesson.worked_example.tree;
         const [to, lexical] = fragment.root.children;
@@ -153,6 +154,7 @@ export const nonFinitePilot = {
           ['Find the overt subject', overt, 'lower-subject', '“Ivo” is expressed inside the non-finite clause and names who checks the maps.'],
         ]);
         p('A complementiser can start the clause. “For” fills C1 before a spoken subject. In the next example, “whether” fills C1 and the subject is silent. In the example with “what”, C2 is filled and C1 is empty.');
+        p('Compare “for Ivo to wait” and “whether to wait”. In the first, C1 is “for” and “Ivo” is the spoken subject of “wait”. In the second, C1 is “whether”, and the subject may have to be inferred from the larger sentence. In “Nia knew what to pack”, “what” belongs in C2 and points to an object gap after “pack”. That object gap is separate from the understood subject, Nia.');
         example('[For Ivo to wait outside] seemed unfair. · Nia wondered [whether to wait]. · Nia knew [what to pack].');
         trace('Locate C1 and C2 in infinitival clauses', [
           ['Find “for” in C1', forClause, 'for', '“For” fills C1. “Ivo” is the overt subject inside S.'],
@@ -171,6 +173,7 @@ export const nonFinitePilot = {
         break;
       case 'noun-clause-functions':
         p('Ask what the clause tells you about the noun. In “a request to move the crates”, it gives the request’s content. In “the crates to move”, it tells which crates, and there is an object gap after “move”.');
+        p('Try the question “What did the request ask for?” The answer is “to move the crates”, which gives the request’s content. For “the crates to move”, ask “Which crates?” The relative identifies them, and “move” leaves the object unspoken. The guide follows that gap back to the nominal “crates”.');
         trace('Compare a noun complement and a NOM modifier', [
           ['Read the complement of N', request, 'embedded', '“To move the crates” is the content of the request. It joins N within NOM.'],
           ['Read the relative beside NOM', crates, 'inner-nom', '“To move” helps identify the crates. The smaller NOM and the relative S″ join under a larger NOM.'],

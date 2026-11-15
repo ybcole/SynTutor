@@ -56,6 +56,7 @@ export const grammarPilot = {
         break;
       case 'worked-example':
         p('A derivation shows the steps that build a structure. Join the first two sentences. Then follow that whole group into the next step.');
+        p('Use the rule S → S and S as a recipe. “Iris rests” and “Leo waits” each already count as S, so they can be the two inputs. The result “Iris rests and Leo waits” also counts as S. You can feed that entire result into the next rule application alongside “Mina waves”.');
         addTreeTrace(body, ui, 'Trace the two rule applications', [
           ['Join two starting sentences', first, 'first', 'The rule joins “Iris rests” and “Leo waits”. The result is an S.'],
           ['Reuse the first result', second, 'first', 'The earlier S stays together as the first input. “Mina waves” is the second input.'],
@@ -69,6 +70,7 @@ export const grammarPilot = {
         break;
       case 'rule-and-structure':
         p('A phrase marker shows the groups in a string of words. A rule says which groups can go together and which goes first. Try this with a second small grammar.');
+        p('Keep two questions separate. First, can the grammar build the string? Second, what grouping does the derivation give the string? A tree answers the grouping question for a particular derivation. The rules give you a way to check any new string against the toy grammar.');
         example('S → NP VP · NP → DET N · VP → V');
         p('Here DET can be “the”, N can be “dog”, and V can be “waits”. The first rule places NP before VP.');
         example('[The dog] [waits].');

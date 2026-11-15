@@ -139,6 +139,7 @@ export const basicVpPilot = {
       example('Mara handed [Leo] [a map].');
       example('Mara handed [a map] [to Leo].');
       p('Mara hands over “a map” in both sentences. Leo is the recipient, the person who gets it. In the second sentence, the prepositional phrase (PP) “to Leo” names him.');
+      p('Try naming the two roles before you look at their order. “A map” answers “What did Mara hand over?” and Leo answers “Who received it?” The construction can put the recipient before the map as an NP or after it as a “to” PP. This is why being first after the verb does not always make a group the direct object.');
       trace('Compare two ways to express the recipient', [
         ['Find the recipient NP', recipientNP, 'recipient', '“Leo” is the indirect object in NP form. It comes before the direct object.'],
         ['Find the direct object', recipientNP, 'object', '“A map” is the direct object. Both NPs are sisters of V [ditrans].'],
@@ -152,6 +153,7 @@ export const basicVpPilot = {
       p('Look at “a coach” in both sentences. In the first, it tells what Mina became. In the second, it is the direct object. It tells whom Mina met.');
       example('The rain left [the steps] [slippery].');
       p('What became slippery? The steps did. “Slippery” is an object predicative because it describes the direct object. When the verb has both of these complements, it is complex transitive [complex]. A subject or object predicative can be an NP, an adjective phrase (AP), or a PP.');
+      p('Compare “The steps became slippery” with “The rain left the steps slippery”. The description is about the steps in both. In the first sentence, the steps are the subject, so “slippery” is a subject predicative. In the second, the steps are the direct object, so the same AP is an object predicative.');
       trace('Compare subject and object predicatives', [
         ['Identify the subject', became, 'description', '“A coach” identifies Mina. The NP is a subject predicative beside V [intens].'],
         ['Compare a direct object', met, 'object', '“A coach” refers to the person Mina met. The NP is a direct object beside V [trans].'],
@@ -168,6 +170,7 @@ export const basicVpPilot = {
       ]);
       example('Mina waited [in the studio].');
       p('Compare the last statement with “Mina waited”. “Waited” can be the whole predicate. The PP adds a place where she waited. Chapter 5 shows where to attach this kind of optional modifier.');
+      p('One way to classify a PP after a verb is to ask what information it supplies. “On her notes” fills the slot selected by “relied”. “In the studio” after “was” describes the subject’s location. “In the studio” after “waited” adds the place where the waiting happened. These three PPs look similar but do different work.');
     }
     if (section.id === 'application') {
       p('Both sentences have two groups after the verb. Ask what job each group does to tell the patterns apart.');

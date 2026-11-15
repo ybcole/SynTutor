@@ -147,6 +147,7 @@ export const adverbialsPilot = {
         addBranchExercise(body, ui, repair);
         example('Nora inspected the bridge in June, and Mara did so in July.');
         p('“Did so” can stand for a whole VP. Here it replaces “inspected the bridge”. The time changes from June to July. The action stays the same.');
+        p('When you use this test, ask exactly which part of the first predicate repeats. In “Mara swept the floor carefully, and Ivo did so hastily”, the manner changes. Only “swept the floor” repeats. In “Mara swept the floor carefully at noon, and Ivo did so at dusk”, the repeated group can include “carefully”. Each reading points to a different VP layer.');
         break;
       }
       case 'mobility':
@@ -171,6 +172,7 @@ export const adverbialsPilot = {
         break;
       case 'ellipsis':
         p('You can leave out an adjunct because it adds an extra detail. Ellipsis works differently. The words are missing, but the listener can still work out the role they would fill.');
+        p('Compare “Mina gave the map to Ren” with “Mina gave the map” in a conversation where Ren was receiving supplies. The recipient can be understood from context, so the shorter wording can leave that role unspoken. In “Mina gave the map after lunch”, the time phrase tells when, without supplying the missing recipient.');
         p('Suppose Mina gives supplies to Ren. The people talking already know that Ren gets the supplies.');
         example('Mina gave Ren a map.');
         example('Mina gave a map.');
@@ -189,6 +191,7 @@ export const adverbialsPilot = {
           ['Read the speaker’s comment', comment, 'honestly', '“Honestly” marks how the speaker presents the statement. The AdvP is beside S within a higher S.'],
         ]);
         p('A disjunct adds the speaker’s comment to a statement. A conjunct links a statement to the words around it. In “The latch broke. Therefore, the gate opened”, “therefore” shows that the opening was a result of the break.');
+        p('Imagine a witness saying “Honestly, Lea answered the question”. “Honestly” comments on how the witness presents the whole statement. In “Lea answered the question honestly”, it can describe Lea’s manner. Ask whose honesty is at issue before attaching the adverbial.');
         example('[Unfortunately], the gate jammed.');
         const check = el('details', undefined, 'lesson-sources');
         check.append(el('summary', 'Check what “unfortunately” modifies'),

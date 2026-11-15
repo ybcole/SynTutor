@@ -195,6 +195,7 @@ export const auxiliariesPilot = {
       ]);
       p('Read the possible slots in order. Modal (MOD) comes first, then perfect (PERF), progressive (PROG), and passive (PASS). The lexical verb comes last. A sentence can skip any auxiliary slot it does not need.');
       p('Look at the verb right after each auxiliary. A modal takes the plain verb form, as in “might write”. Perfect “have” takes a past participle, as in “has written”. Progressive “be” takes an -ing form, as in “is writing”. Passive “be” takes a passive participle, as in “was written”.');
+      p('Trace “might have written” from left to right. “Might” takes the plain form “have”, and “have” takes the participle “written”. Try “might write” next. Without perfect “have”, the modal now selects “write” directly. The form of each verb is a clue to which auxiliary selects it.');
     }
     if (section.id === 'adverbials') {
       p('Look for which VP an adverbial goes with. In these examples, an adverbial before a verb goes with the following VP. One at the end usually goes with the lexical VP. Some time phrases at the end go with a higher VP.');
@@ -215,6 +216,7 @@ export const auxiliariesPilot = {
       example('The curator moved [the statue].');
       example('[The statue] was moved by the curator.');
       p('“The statue” is the object in the active sentence and the subject in the passive sentence. A dot marks the empty object position in the passive tree. “Moved” still has [trans]. The optional “by” phrase tells who moved the statue.');
+      p('You can read the passive by asking what was moved. The answer is still “the statue”, even though it now stands before “was” as the subject. The optional “by” phrase identifies who moved it. If you omit that phrase, the dot after “moved” still records the original object position.');
       trace('Compare the active object and passive gap', [
         ['Find the active object', active, 'object', '“The statue” is the object NP beside V in the active VP.'],
         ['Find the passive subject', passive, 'subject', '“The statue” is the subject NP. “Was” heads the higher VP as PASS [past].'],
@@ -244,6 +246,7 @@ export const auxiliariesPilot = {
         ['Find the object gap in a passive question', passiveQuestion, 'object-gap', '“The parcel” is the subject of the passive. Its original object position remains marked under the lower VP.'],
       ]);
       p('C is the complementiser position. It holds the verb that moves to the front in these questions. The S′ layer, read “S-bar”, groups C with S.');
+      p('Use the two parts of S′ to keep track of the question. In “Was Byron dancing?”, C holds the fronted “was”, while S contains the subject “Byron” and the predicate with the old auxiliary position marked by a gap. Chapter 8 uses the same C position for words that introduce embedded clauses.');
     }
     if (section.id === 'recap') {
       p('Start with the lexical VP. Then work outward. Each auxiliary heads its own VP and takes the next VP as its complement. Only the first verb carries tense.');

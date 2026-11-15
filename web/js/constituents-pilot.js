@@ -85,6 +85,7 @@ export const constituentsPilot = {
     }
     if (page === 1) {
       paragraph('The brackets suggest two groups. Try changing one group at a time to see which words belong together.');
+      paragraph('A useful test changes one group while keeping the rest of the sentence steady. If one word such as “there” can stand for the whole location, that is evidence that those words work together. Try a second test when the first one is uncertain. A group can be a constituent even if the sentence needs it.');
       example(sentence);
       heading('Omit the location or replace it');
       paragraph('First, leave out “near the stone arch”. “Mina paused” is still a complete sentence. Now put “there” in its place. In “Mina paused there”, one word stands for the whole location.');
@@ -99,6 +100,7 @@ export const constituentsPilot = {
       paragraph('A phrase marker is a tree that shows which words belong together. A node is a point on the tree. It can have a label and branches below it. Here, PHRASE-a labels the big group. PHRASE-b labels the smaller group inside it.');
       example(sentence);
       paragraph('A node dominates everything its branches reach below it. It immediately dominates anything it reaches in one branch. In each tree, look for a node that reaches just the three words naming the landmark.');
+      paragraph('Start at PHRASE-a and follow just one branch. In the nested drawing, you can reach “near” or the PHRASE-b node in one move. You need another move to reach “arch”. That is why PHRASE-a dominates “arch” without immediately dominating it.');
       const nested = locationTree(true);
       addTreeTrace(body, ui, 'Compare the phrase markers', [
         ['Trace the flat drawing', locationTree(false), 'PHRASE-a',
@@ -117,6 +119,7 @@ export const constituentsPilot = {
       paragraph('The same words can have two meanings when they group in two ways. This is structural ambiguity. In the next example, who might have the binoculars?');
       example('Nina spotted the climber with binoculars.');
       paragraph('The trees show the part where the grouping changes. In each tree, start at PHRASE-c and follow one branch up. See which group contains “with binoculars”.');
+      paragraph('In both readings, “with binoculars” is the same group. The question is what it joins. Picture Nina looking through binoculars, then picture a climber wearing them. Those two situations give you a reason to draw a different attachment.');
       comparison(body, ui, 'Compare the two readings', [
         { label: 'Nina used binoculars', tree: ambiguityTree(false), focusId: 'PHRASE-a',
           caption: 'The binoculars phrase joins the group that includes “spotted”. It describes how Nina spotted the climber.' },

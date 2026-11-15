@@ -127,6 +127,7 @@ export const functionsPilot = {
     }
     if (page === 1) {
       p('A subject can be longer than one word. Compare the statement with its yes/no question to find where the subject ends.');
+      p('In “The lantern by the stairs is glowing”, “lantern” alone names the object, but it does not include the words that identify which lantern. In the question, “the lantern by the stairs” moves as a group relative to “is”. Use the whole group when you mark the subject.');
       example(`${lantern}.`);
       example('Is the lantern by the stairs glowing?');
       p('In the question, “is” comes before the whole subject and “glowing” comes after it. In the statement, “is glowing” is the whole predicate. Pick the last word of the subject in the statement.');
@@ -152,6 +153,7 @@ export const functionsPilot = {
     if (page === 2) {
       p('A noun phrase (NP) is built around a noun, such as “lantern”. A verb phrase (VP) is built around a verb. In the first tree, both phrases sit right under S, the sentence node. S is their parent. Nodes that share a parent are sisters.');
       p('Next, look at a sentence with two NPs. Follow one branch up from each NP. Its parent helps show what job the NP does.');
+      p('Think of category as the kind of group and function as its job here. In “Mira checked the lantern”, both “Mira” and “the lantern” are NPs. Switch them in “The lantern startled Mira” and both categories stay the same, while “Mira” is now the object. A tree shows the difference by placing the two NPs under different parents.');
       trace(body, ui);
       heading('Repair one branch');
       example(`${repairSentence}.`);
@@ -164,6 +166,7 @@ export const functionsPilot = {
       p('In “a loose hinge”, “hinge” is the head. “Loose” is a modifier because it adds a detail. “Tessa repaired a hinge” still makes sense without it. The whole NP “a loose hinge” is a complement of “repaired”. It tells what Tessa repaired.');
       example('Ava slipped beside the counter.');
       p('“Beside” and “the counter” share a parent. You can leave out the whole location. If you keep “beside” with this meaning, “the counter” fills the complement role. It tells what the location is beside.');
+      p('Use the omission test at two levels. In “Tessa slipped beside the counter”, you can leave out the entire location and still have “Tessa slipped”. Inside the location phrase, “the counter” is needed to say what the person was beside. A group can be optional as a whole while containing parts that depend on each other.');
       heading('Try a new sentence');
       example('Leo tightened a loose bolt.');
       p('Write the subject and predicate. Then say which word “loose” describes and which group tells what Leo tightened.');

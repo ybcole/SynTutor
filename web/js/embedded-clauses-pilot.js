@@ -98,16 +98,19 @@ export const embeddedClausesPilot = {
         p('Start with what Nora did. Leo “said” she closed something. The group starting at “Leo” tells what Maya “thinks”. The main clause begins at “Maya” and holds both smaller reports.');
         break;
       case 'worked-example': {
-        p('A complementiser introduces a subordinate clause. It goes in C. The subject and predicate go under S. S′, read “S-bar”, is the node above C and S.');
+        p('Start with a complete statement: “Nora is inspecting the bridge.” “Nora” is the subject, and “is inspecting the bridge” is the predicate. In a tree, S is the node that groups that subject and predicate.');
         example('Leo says [that [Nora is inspecting the bridge]].');
-        p('In this report, “that” goes in C. In “that bridge”, “that” is a demonstrative inside an NP. The same word can have a different job.');
+        p('Now Leo is reporting that statement. Ask “What does Leo say?” The answer is the whole outer bracket, “that Nora is inspecting the bridge”. The inner bracket still contains the same subject and predicate, so it remains S.');
+        p('The word “that” introduces the statement as part of Leo’s report. A word that introduces a subordinate clause in this way is called a complementiser. C is the position it fills. S′, read “S-bar”, joins C to the inner S and covers the full embedded clause. Read the tree from the inside out: S holds the statement, and S′ includes its introducer.');
+        p('Compare “Leo says that Nora is inspecting the bridge” with “Leo says Nora is inspecting the bridge”. Both reports contain the same inner S. In the second, C is still drawn but has no spoken word. In “Nora is inspecting that bridge”, “that” instead helps identify which bridge, so it belongs inside the NP “that bridge”.');
         const overt = lesson.worked_example.tree;
         trace('Compare three ways to introduce an embedded clause', [
           ['Find overt “that”', overt, overt.root.children[0].id, '“That” fills C. C and S sit side by side under S′.'],
           ['Find the unfilled C', implicit, 'intro', '“Leo says Nora is inspecting the bridge” keeps the same inner S. The C branch has no word.'],
           ['Find interrogative “whether”', whether, 'intro', 'In “Leo asked whether Nora was inspecting the bridge”, C contains “whether”. Inside S, the subject “Nora” comes before “was”.'],
         ]);
-        p('The direct question starts with “was”. In the embedded question, “whether” fills C. “Was” stays after the subject.');
+        example('Was Nora inspecting the bridge? · Leo asked [whether [Nora was inspecting the bridge]].');
+        p('The first sentence asks a question directly, so “was” comes before “Nora”. The second tells what Leo asked. “Whether” introduces the yes/no question from C, and the inner S keeps “Nora” before “was”. When you compare the trees, locate the word in C first and then read the subject and predicate under S.');
         body.append(el('h3', repair.buildTitle));
         p('Drag a branch from S′ to C, or choose Guide me. Then select Check my tree.');
         addBranchExercise(body, ui, repair);
@@ -127,8 +130,9 @@ export const embeddedClausesPilot = {
         ]);
         break;
       case 'clausal-complements':
-        p('A clause can complete an adjective, a noun, or a preposition. In each example, find the head that takes the clause as its complement.');
+        p('Keep the same event in mind: the latch jammed. Now change how the sentence presents the event. An adjective can describe someone’s reaction to it, a noun can name a claim about it, and a preposition can introduce a question about it. Find the head word in each example before you decide where the clause attaches.');
         example('Certain [that the latch jammed] · the claim [that the latch jammed] · about [whether the latch jammed]');
+        p('Put the fragments back into sentences. “Mina was certain that the latch jammed” tells what she was certain about. “Mina checked the claim that the latch jammed” tells what the claim said. “Mina asked about whether the latch jammed” puts the question after the preposition “about”. The bracketed clause joins the head word whose meaning it completes in each construction.');
         trace('Find the host of each clausal complement', [
           ['Trace the adjective', adjective, 'embedded', 'S′ completes “certain”. A and S′ are sisters within AP.'],
           ['Trace the noun', noun, 'embedded', 'The clause gives the content of the claim. N and S′ are sisters within NOM.'],
