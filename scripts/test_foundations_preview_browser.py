@@ -263,7 +263,7 @@ try:
         assert view.locator('.lesson-module h2').all_text_contents() == [pilot['title'] for pilot in PILOTS.values()]
         expect(view.locator('.lesson-total')).to_have_text('0 / 12 lessons completed · 0 lesson XP in this view')
         open_lesson(base + '/#lesson/br-01/introduction')
-        dictionary_example = view.locator('.lesson-dictionary-hint').get_by_role('button', name='Define constituent', exact=True)
+        dictionary_example = view.get_by_role('button', name='Define constituent', exact=True).first
         dictionary_example.hover()
         chapter_one_dictionary = view.get_by_role('region', name='Dictionary definition')
         expect(chapter_one_dictionary).to_contain_text('works as a unit')
@@ -274,7 +274,11 @@ try:
         open_lesson(base + '/#lesson/br-04/concepts')
         expect(view.locator('#br04-03')).to_be_visible()
         expect(view.locator('#br04-04')).to_be_visible()
-        expect(view.locator('.lesson-dictionary-hint')).to_be_visible()
+        terms = view.locator('.lesson-dictionary-term')
+        repeats = view.locator('.lesson-dictionary-term-repeat')
+        assert repeats.count() > 0
+        expect(terms.first).to_have_css('text-decoration-line', 'underline')
+        expect(repeats.first).to_have_css('text-decoration-line', 'none')
         view.get_by_role('button', name='Define complement', exact=True).first.hover()
         expect(view.get_by_role('region', name='Dictionary definition')).to_contain_text('fills a role')
         open_lesson(base + '/#lesson/br-07/nom-appendix')

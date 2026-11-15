@@ -955,10 +955,6 @@ function articleScreen(lesson, p, article) {
 
   if (revised) {
     if (!section.assessment) {
-      const dictionaryExample = lesson.lesson_id === 'br-01' && section.id === 'introduction';
-      if (dictionaryExample) {
-        heading.after(el('p', 'Try the lesson dictionary. Hover over constituent or tap it to see where it’s taught.', 'lesson-dictionary-hint'));
-      }
       closeLessonDictionary = addLessonDictionary(body, {
         scrollHost: host,
         resolve({ chapter, section: id }) {
@@ -972,9 +968,6 @@ function articleScreen(lesson, p, article) {
         },
         navigate: target => openLesson(target.id, target),
       });
-      if (!dictionaryExample && body.querySelector('.lesson-dictionary-term')) {
-        heading.after(el('p', 'Hover over or tap a dotted-underlined term for its definition and lesson link.', 'lesson-dictionary-hint'));
-      }
     }
     if (section.references) body.append(lessonReferences(lesson));
     const userId = lessonUserId();

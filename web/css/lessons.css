@@ -134,6 +134,9 @@
   text-underline-offset:.19em;
   cursor:help;
 }
+.curriculum-view .constituent-page button.lesson-dictionary-term-repeat {
+  text-decoration:none;
+}
 .curriculum-view .constituent-page .lesson-dictionary-term:is(:hover,[aria-expanded="true"]) {
   color:var(--accent-strong);
 }
@@ -494,10 +497,6 @@
 .lesson-reflection p { margin:0; }
 .lesson-reflection p + p { margin-block-start:8px; }
 .lesson-reflection-prompt { font-weight:600; }
-.lesson-dictionary-hint {
-  font-size:.875rem;
-  color:var(--muted);
-}
 .lesson-transfer-choices { align-items:center; }
 .curriculum-view .lesson-transfer-choices button { min-height:40px; }
 .lesson-combination-inputs { display:grid; gap:12px; margin-block-end:12px; }

@@ -27,6 +27,7 @@ const excluded = [
 
 function annotate(body, resolve) {
   const matches = new WeakMap();
+  const seen = new Set();
   const walker = document.createTreeWalker(body, NodeFilter.SHOW_TEXT, {
     acceptNode(node) {
       const parent = node.parentElement;
@@ -47,7 +48,10 @@ function annotate(body, resolve) {
       if (!target) continue;
       const trigger = document.createElement('button');
       trigger.type = 'button';
-      trigger.className = 'lesson-dictionary-term';
+      trigger.className = seen.has(entry)
+        ? 'lesson-dictionary-term lesson-dictionary-term-repeat'
+        : 'lesson-dictionary-term';
+      seen.add(entry);
       trigger.textContent = spelling;
       trigger.setAttribute('aria-label', `Define ${spelling}`);
       trigger.setAttribute('aria-expanded', 'false');
