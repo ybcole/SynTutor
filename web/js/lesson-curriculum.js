@@ -27,10 +27,11 @@ export async function loadActiveCourse(fetcher = fetch) {
     if (!response.ok) throw Error(`Lesson metadata unavailable: ${path}`);
     return response.json();
   };
-  const [catalog, overlays] = await Promise.all([
-    json('/content/lessons/course.json'),
-    Promise.all(activeLessonIds.map(async id => [id, await json(`/content/lessons/${id}-pilot.json`)])),
-  ]);
+  const catalog=await json('/content/lessons/course.json');
+  // The implemented Lessons catalog, never the reference book's table of
+  // contents, decides which chapter overlays are released.
+  const ids=catalog.lessons.map(l=>l.lesson_id).filter(id=>activeLessonIds.includes(id));
+  const overlays=await Promise.all(ids.map(async id=>[id,await json(`/content/lessons/${id}-pilot.json`)]));
   return composeLessonPreview(catalog, overlays);
 }
 export function quizCurriculum(course) {
@@ -39,13 +40,17 @@ export function quizCurriculum(course) {
     { id: 'cambridge', lessonTrack: 'grammar', title: 'Cambridge', subtitle: 'Cambridge Grammar' },
   ].map(track => ({
     ...track,
-    chapters: course.lessons.filter(l => l.track === track.lessonTrack).map(lesson => {
+    chapters: course.lessons.filter(l => l.track === track.lessonTrack).flatMap(lesson => {
       const article = pilotArticles[lesson.lesson_id] || cambridgeChapterData[lesson.lesson_id];
-      const topics = (article?.sections || []).filter(s =>
+      if(!article?.sections?.length||!lesson.revised_assessment)return [];
+      // required_sections governs completion, not what the renderer teaches
+      // (e.g. the NOM appendix is a real, optional instructional section).
+      const topics = article.sections.filter(s =>
         !s.assessment && !['introduction', 'recap', 'chapter-review', 'closing-check'].includes(s.id)
         && !/^(exercises? on|category and coordination exercises|wh-question and relative clause exercises|grammar rules and sentence derivation exercise)/i.test(s.title));
-      return { id: lesson.lesson_id, title: lesson.title, chapter: lesson.chapter, content_version: lesson.content_version,
-        outcomes: lesson.outcomes, topics: topics.map(s => ({ id: s.id, title: s.title })) };
+      if(!topics.length)return [];
+      return [{ id: lesson.lesson_id, title: lesson.title, chapter: lesson.chapter, content_version: lesson.content_version,
+        outcomes: lesson.outcomes, topics: topics.map(s => ({ id: s.id, title: s.title })) }];
     }),
   }));
 }

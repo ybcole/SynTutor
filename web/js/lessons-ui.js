@@ -5,7 +5,7 @@ import { createLessonStore } from './lesson-progress.js';
 import { createFoundationStore } from './foundation-progress.js';
 import { renderFoundationCheck } from './foundation-check.js';
 import { addFoundationsBookCoverage } from './lesson-presentation.js';
-import { pilotArticles, cambridgePilotIds } from './lesson-curriculum.js';
+import { pilotArticles, cambridgePilotIds, loadActiveCourse } from './lesson-curriculum.js';
 import { requestEvidence, renderEvidence } from './explanation-evidence.js';
 import { subscribeAuthState } from './auth.js';
 import { enableCanvasView } from './canvas-view.js';
@@ -1298,6 +1298,8 @@ export async function openLessons(id = null, { workedExample = false, section, f
   const token = ++generation;
   try {
     if (!course) {
+      if(deviceRelease())course=await loadActiveCourse();
+      else {
       const response = await fetch('/content/lessons/course.json', { cache: 'no-cache' });
       if (!response.ok) throw new Error('Lesson catalog unavailable.');
       const catalog = await response.json();
@@ -1311,6 +1313,7 @@ export async function openLessons(id = null, { workedExample = false, section, f
         return [id, await response.json()];
       }));
       course = ids.length ? composeLessonPreview(catalog, pilots) : validateCourse(catalog);
+      }
     }
     if (!store) {
       let storage;

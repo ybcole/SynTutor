@@ -23,7 +23,7 @@ export function createQuizStore(bank,{storage,userId='guest',client=null,timeout
        const t=state.attempts[id];
        if(t.quiz_v2){
          const {error}=await bounded(client.from('quiz_practice_v2').upsert({user_id:userId,attempt_id:id,payload:t},{onConflict:'user_id,attempt_id'}));
-         if(error)throw Error('Practice account sync unavailable; attempts remain saved on this device. Retry when connected.');
+         if(error)throw Error('Quiz account sync unavailable; attempts remain saved on this device. Retry when connected.');
          t.synced=true;dirty.delete(id);continue;
        }
       const payload=Object.fromEntries(['attempt_id','assessment_id','content_version','seed','presented','responses','position'].map(k=>[k,t[k]]));

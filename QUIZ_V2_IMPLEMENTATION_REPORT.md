@@ -1,5 +1,14 @@
 # Quiz V2 implementation report
 
+## Formal-assessment correction
+- The current feature is a scored, independent **quiz**, not a guided practice activity. A question-only presentation projection excludes keys/rationales/answer trees; results are submission-gated. Scores, percentages, correct answers and explanations appear only after submission.
+- Current new attempts use **2,902 versioned formal questions** (92 applications, 1,561 grammatical analyses, 1,249 self-contained concept completions). Lesson-wording recall prompts are not selected for new quizzes. Historical practice items and attempt contracts are preserved separately.
+- Both views now load the same implemented Lessons catalog/overlays. Reference-only, planned or unimplemented chapters cannot create quizzes. Optional sections actually taught by the renderer remain included.
+- **Preliminaries is implemented:** `cgel-ch01-pilot.json` includes instructional sections, learning outcomes, and opening/closing assessments. It remains because removing a real lesson would violate alignment. Browser checks compare every live Lessons chapter name/order against both Quiz tabs.
+- Syntax-only legacy assessments are excluded from Cambridge's published-assessment list. All 329 subtopic quizzes, 31 General Quizzes, Personalized modes and both Masters retain their counts, deterministic selection, scoring and persistence.
+- New question review remains pending; no independent approval or verified XP is fabricated. Numerical quiz scoring is separate from XP. The historical `practice`/`unscored-v2` persistence flags remain XP-exemption fields for compatibility, not the current student-facing activity type.
+- Added `web/js/quiz-assessment-items.js` and `scripts/test_quiz_formal.js`; updated curriculum loading, quiz UI/core/progress/selection and browser/database tests. Historical implementation notes below describe the earlier stages, not the current quiz terminology.
+
 ## Git
 - Base: fetched `origin/main`, starting SHA `115b1dfc1bfda90697344d2a72d5e47ba7828782`.
 - Branch: `feat/quiz-v2`, initially developed in isolated `SynTutor-quiz-v2`; moved into the original `SynTutor` worktree at the user's request. Original untracked audit files remain untouched; the extra worktree is detached.

@@ -37,8 +37,24 @@ export function makeAttempt(bank,assessment,seed=randomSeed(),id=crypto.randomUU
 }
 export function itemsFor(bank,attempt) {
   const practice=attempt.quiz_v2===true&&attempt.practice===true&&attempt.xp_policy==='unscored-v2'&&attempt.spec?.content_tier==='lesson-practice';
-  const items=practice?[...bank.items,...(bank.practice_items||[])]:bank.items;
+  const formal=attempt.quiz_v2===true&&attempt.practice===true&&attempt.xp_policy==='unscored-v2'
+    &&attempt.assessment_contract==='quiz-v2-formal-1'&&attempt.spec?.content_tier==='lesson-assessment';
+  const items=formal?[...bank.items,...(bank.assessment_items||[])]:practice?[...bank.items,...(bank.practice_items||[])]:bank.items;
   return attempt.presented.map(ref=>{const q=items.find(q=>q.item_id===ref.item_id&&q.content_version===ref.content_version);if(!q)throw new Error('Assessment content version is unavailable.');return q;});
+}
+// The attempt UI receives a question-only projection: never answer keys,
+// option rationales, source explanations, answer trees or correctness flags.
+export function questionForLearner(bank,attempt,index=attempt.position){
+  const q=itemsFor(bank,attempt)[index];
+  if(!q)throw Error('Unknown question position.');
+  return {item_id:q.item_id,kind:q.kind,prompt:q.prompt,
+    ...(q.stimulus?{stimulus:{sentence:q.stimulus.sentence}}:{}),
+    options:q.options.map(o=>({id:o.id,text:o.text,...(o.diagram?{diagram:o.diagram}:{})})),
+  };
+}
+export function reviewForLearner(bank,attempt){
+  if(!attempt.submitted_at)throw Error('Submit the quiz before viewing scores, answers or explanations.');
+  return gradeAttempt(bank,attempt);
 }
 export function validateAttempt(bank,attempt) {
   const v2 = attempt?.quiz_v2 === true;

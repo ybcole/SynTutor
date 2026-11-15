@@ -34,6 +34,13 @@ export function eligibleQuestions(bank, curriculum, trackId, tier = 'reviewed') 
           && ['resolved', 'compatible'].includes(s.crosswalk_status);
       });
   });
+  if(tier==='lesson-assessment'){
+    return [...published,...(bank.assessment_items||[]).filter(q=>{
+      const meta=questionMetadata(q,curriculum);
+      return meta?.track_id===trackId&&q.publication_status==='assessment_draft'
+        &&q.assessment_format==='independent'&&q.review_status==='UNREVIEWED'&&q.independent_review===false;
+    })];
+  }
   if(tier!=='lesson-practice')return published;
   const practice=(bank.practice_items||[]).filter(q=>{
     const meta=questionMetadata(q,curriculum);
@@ -44,7 +51,7 @@ export function eligibleQuestions(bank, curriculum, trackId, tier = 'reviewed') 
   return [...published,...practice];
 }
 export function publishedBlueprint(bank, curriculum, spec) {
-  if (spec.mode !== 'topic'||spec.content_tier==='lesson-practice') return null;
+  if (spec.mode !== 'topic'||['lesson-practice','lesson-assessment'].includes(spec.content_tier)) return null;
   const eligible = new Set(eligibleQuestions(bank, curriculum, spec.track).filter(q => {
     const m = questionMetadata(q, curriculum);
     return m.chapter_id === spec.chapter && m.subtopic_id === spec.topic;
@@ -56,7 +63,7 @@ export function publishedBlueprint(bank, curriculum, spec) {
 }
 export function topicPerformance(bank, curriculum, attempts, trackId) {
   const topics = new Map(), missed = new Set(), seen = new Set(), concepts = new Map(), missedFamilies = new Set(), missedExamples = new Set();
-  const questions=[...bank.items,...(bank.practice_items||[])];
+  const questions=[...bank.items,...(bank.practice_items||[]),...(bank.assessment_items||[])];
   const rows = Object.values(attempts).filter(t => t.submitted_at && Array.isArray(t.presented) && t.responses)
     .sort((a,b) => a.submitted_at.localeCompare(b.submitted_at) || a.attempt_id.localeCompare(b.attempt_id));
   for (const t of rows) for (const r of t.presented) {
@@ -95,7 +102,7 @@ export function balancedSelection(groups, count, random, preference = () => 0) {
   }
   return pools.flatMap(g => g.selected);
 }
-export const specKey = spec => `quiz-v2:${spec.track}:${spec.mode}:${spec.chapter || ''}:${spec.topic || ''}:${spec.count || ''}${spec.content_tier==='lesson-practice'?':lesson-practice':''}`;
+export const specKey = spec => `quiz-v2:${spec.track}:${spec.mode}:${spec.chapter || ''}:${spec.topic || ''}:${spec.count || ''}${['lesson-practice','lesson-assessment'].includes(spec.content_tier)?':'+spec.content_tier:''}${spec.format==='formal'?':formal-1':''}`;
 export function selectQuestions(bank, curriculum, spec, attempts = {}, seed = randomSeed()) {
   const random = rng(seed), track = curriculum.find(t => t.id === spec.track);
   if (!track) throw Error('Unknown quiz track.');
@@ -109,7 +116,7 @@ export function selectQuestions(bank, curriculum, spec, attempts = {}, seed = ra
     const eligible = shuffled(all.filter(q => !performance.missed.has(q.item_id)
       &&(!q.practice_family||!performance.missedFamilies.has(q.practice_family))
       &&!(q.practice_example_ids||[]).some(id=>performance.missedExamples.has(id))), random);
-    if (eligible.length < 5) throw Error(`Only ${eligible.length} ${spec.content_tier==='lesson-practice'?'eligible practice':'reviewed'} questions remain after excluding every previously missed question. Five are required; try another available topic quiz.`);
+    if (eligible.length < 5) throw Error(`Only ${eligible.length} eligible questions remain after excluding every previously missed question. Five are required; try another available topic quiz.`);
     diagnostic = [...performance.topics.values()].reduce((n,t) => n + t.answered, 0) < 5;
     if (diagnostic) {
       const groups = track.chapters.map(c => ({ id: c.id, items: eligible.filter(q => meta(q).chapter_id === c.id) })).filter(g => g.items.length);
@@ -151,10 +158,11 @@ export function makeV2Attempt(bank, curriculum, spec, attempts = {}, seed = rand
   const title = spec.mode === 'topic' ? chapter.topics.find(t => t.id === spec.topic).title
     : spec.mode === 'general' ? `${chapter.title} — General Quiz`
     : spec.mode === 'master' ? `${track.title || spec.track} Master Quiz`
-    : `Personalized ${track.title || spec.track} Quiz${selected.diagnostic ? ' — diagnostic practice' : ''}`;
+    : `Personalized ${track.title || spec.track} Quiz${selected.diagnostic ? ' — diagnostic assessment' : ''}`;
   return { attempt_id: id, assessment_id: specKey(spec), content_version: '2.0.0',
     quiz_v2: true, spec: { ...spec }, title,
     diagnostic: selected.diagnostic, includes_unreviewed:selected.unreviewed, seed, practice: true, xp_policy: 'unscored-v2',
+    ...(spec.format==='formal'?{assessment_contract:'quiz-v2-formal-1'}:{}),
     presented: selected.items.map(q => ({ item_id: q.item_id, content_version: q.content_version, option_order: shuffled(q.options.map(o => o.id), random) })),
     responses: {}, position: 0, started_at: new Date().toISOString(), submitted_at: null };
 }
