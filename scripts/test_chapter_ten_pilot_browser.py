@@ -7,6 +7,8 @@ import threading
 
 from playwright.sync_api import expect, sync_playwright
 
+from lesson_browser_steps import choose_tree_step
+
 ROOT = Path(__file__).resolve().parents[1]
 PILOT = json.loads((ROOT / 'web/content/lessons/br-10-pilot.json').read_text())
 
@@ -53,14 +55,14 @@ try:
         page.goto(f'{base}/?preview=br-10#lesson/catalog', wait_until='domcontentloaded')
         chapter = view.locator('.lesson-module').filter(has=page.get_by_role('heading', name=PILOT['title'], exact=True))
         chapter.get_by_role('button', name='Start lesson', exact=True).click()
-        expect(view.get_by_role('heading', name='Where does tense belong?')).to_be_visible()
+        expect(view.get_by_role('heading', name='Introduction to non-finite clauses and their subjects')).to_be_visible()
         opening = submit('opening', 2)
         expect(opening.get_by_role('status')).to_have_text('Opening check complete. 2 / 5 correct.')
         expect(opening.get_by_text('Correct answer:', exact=False)).to_have_count(0)
 
         next_page = view.get_by_role('button', name='Next →', exact=True)
         next_page.click()
-        view.get_by_role('button', name='Find the object gap').press('Enter')
+        choose_tree_step(view, 'Find the object gap', keyboard=True)
         outline = view.locator('.lesson-tree-outline')
         expect(outline).to_contain_text('V [trans, -tense]')
         expect(outline.get_by_text('• (1)', exact=True)).to_have_count(1)
@@ -88,25 +90,33 @@ try:
 
         next_page.click()
         expect(outline.first.get_by_text('•', exact=True)).to_have_count(1)
-        view.get_by_role('button', name='Find the controlled subject').click()
+        choose_tree_step(view, 'Find the controlled subject')
         expect(outline.first.get_by_text('NP (1) — Nia', exact=True)).to_have_count(1)
         expect(outline.first.get_by_text('• (1)', exact=True)).to_have_count(1)
-        view.get_by_role('button', name='Find the overt subject').click()
+        choose_tree_step(view, 'Find the overt subject')
         expect(outline.first.get_by_text('NP — Ivo', exact=True)).to_have_count(1)
-        view.get_by_role('button', name='Find “what” in C2').click()
+        choose_tree_step(view, 'Find “what” in C2')
         expect(outline.last.get_by_text('C1 (empty)', exact=True)).to_have_count(1)
         expect(outline.last.get_by_text('• (2)', exact=True)).to_have_count(1)
         next_page.click()
-        expect(view.get_by_text('In this pattern, P takes the S directly.', exact=False)).to_be_visible()
+        expect(view.get_by_text('Here, P takes S directly.', exact=False)).to_be_visible()
 
         page.set_viewport_size({'width': 390, 'height': 844})
         page.evaluate("document.documentElement.dataset.theme = 'dark'")
+        next_page.click()
+        expect(view.get_by_role('heading', name='Non-finite noun complements and NOM modifiers')).to_be_visible()
+        expect(view.locator('#br10-12')).to_be_visible()
+        expect(view.locator('#br10-13')).to_be_visible()
+        choose_tree_step(view, 'Follow the silent wh-expression')
+        expect(view.locator('svg [data-node-id="inner-nom"]')).to_contain_text('NOM (1)')
+        expect(outline.get_by_text('• (1)', exact=True)).to_have_count(2)
+        expect(view.get_by_text('Tree notation', exact=True)).to_be_visible()
         next_page.click()
         view.get_by_role('radio', name='The overt subject inside the lower clause').check()
         expect(view.get_by_role('status')).to_contain_text('Look for it in the higher VP')
         view.get_by_role('radio', name='The object of “persuaded”').check()
         expect(view.get_by_role('status')).to_contain_text('controls the silent subject')
-        view.get_by_role('button', name='Trace the silent subject').click()
+        choose_tree_step(view, 'Trace the silent subject')
         expect(outline.get_by_text('NP (1) — Ivo', exact=True)).to_have_count(1)
         expect(outline.get_by_text('• (1)', exact=True)).to_have_count(1)
         expect(view.locator('svg [data-node-id="controller"]')).to_contain_text('NP (1)')

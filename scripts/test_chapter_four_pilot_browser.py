@@ -7,6 +7,8 @@ import threading
 
 from playwright.sync_api import expect, sync_playwright
 
+from lesson_browser_steps import choose_tree_step
+
 ROOT = Path(__file__).resolve().parents[1]
 PILOT = json.loads((ROOT / 'web/content/lessons/br-04-pilot.json').read_text())
 
@@ -54,7 +56,10 @@ try:
         chapter = view.locator('.lesson-module').filter(has=page.get_by_role('heading', name=PILOT['title'], exact=True))
         expect(chapter.locator('.lesson-module-description')).to_contain_text('six patterns')
         chapter.get_by_role('button', name='Start lesson', exact=True).click()
-        expect(view.get_by_role('heading', name='What belongs inside a verb phrase?')).to_be_visible()
+        expect(view.get_by_role('heading', name='Introduction to the basic verb phrase')).to_be_visible()
+        contents = view.locator('.lesson-section-sidebar')
+        expect(contents.locator('a[href$="/worked-example"] span')).to_have_text('Ditransitive verbs')
+        expect(contents.locator('a[href$="/prepositional-complements"] span')).to_have_text('Prepositional verbs and PP complements')
         opening = submit('opening', 2)
         expect(opening.get_by_role('status')).to_have_text('Opening check complete. 2 / 5 correct.')
         expect(opening.get_by_text('Correct answer:', exact=False)).to_have_count(0)
@@ -62,9 +67,11 @@ try:
 
         next_page = view.get_by_role('button', name='Next →', exact=True)
         next_page.click()
+        expect(view.get_by_role('heading', name='Transitive verbs and direct objects', exact=True)).to_be_visible()
+        expect(view.get_by_role('heading', name='Intransitive verbs', exact=True)).to_be_visible()
         note = view.locator('.constituent-diagram .lesson-tree-observation')
         outline = view.locator('.lesson-tree-outline')
-        view.get_by_role('button', name='Compare the intransitive VP').press('Enter')
+        choose_tree_step(view, 'Compare the intransitive VP', keyboard=True)
         expect(note).to_contain_text('only immediate part of VP')
         expect(outline).to_contain_text('V [intrans]')
         view.get_by_text('Tree notation', exact=True).click()
@@ -91,7 +98,8 @@ try:
         expect(status).to_contain_text('shares VP with V [trans]')
 
         next_page.click()
-        view.get_by_role('button', name='Compare the recipient PP').click()
+        expect(view.get_by_role('heading', name='Ditransitive verbs', exact=True)).to_be_visible()
+        choose_tree_step(view, 'Compare the recipient PP')
         expect(note).to_contain_text('“To Leo” is the corresponding PP')
         expect(outline.get_by_text('PP — to Leo', exact=True)).to_have_count(1)
         view.get_by_text('Tree notation', exact=True).click()
@@ -102,15 +110,18 @@ try:
         page.evaluate("document.documentElement.dataset.theme = 'dark'")
         next_page.click()
         expect(page).to_have_url(f'{base}/?preview=br-04#lesson/br-04/predicatives')
-        view.get_by_role('button', name='Describe the object').click()
+        expect(view.get_by_role('heading', name='Intensive verbs and subject predicatives', exact=True)).to_be_visible()
+        expect(view.get_by_role('heading', name='Complex transitive verbs and object predicatives', exact=True)).to_be_visible()
+        choose_tree_step(view, 'Describe the object')
         expect(note).to_contain_text('describes “the steps”')
         expect(outline.get_by_text('AP — slippery', exact=True)).to_have_count(1)
         assert view.evaluate('(el) => el.scrollWidth <= el.clientWidth')
         next_page.click()
         expect(page).to_have_url(f'{base}/?preview=br-04#lesson/br-04/prepositional-complements')
-        view.get_by_role('button', name='Trace the subject location').click()
+        expect(view.get_by_role('heading', name='Prepositional verbs and selected PPs', exact=True)).to_be_visible()
+        choose_tree_step(view, 'Trace the subject location')
         expect(note).to_contain_text('subject predicative')
-        expect(view.get_by_text('The PP adds an optional location', exact=False)).to_be_visible()
+        expect(view.get_by_text('The PP adds a place where she waited', exact=False)).to_be_visible()
         assert view.evaluate('(el) => el.scrollWidth <= el.clientWidth')
 
         next_page.click()

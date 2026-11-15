@@ -5,15 +5,15 @@
   "outcomes": [
     {
       "id": "o1",
-      "text": "Explain how a finite list and a recursive rule can describe an unbounded set."
+      "text": "Show how a short list and a recursive rule can describe a set with no fixed size."
     },
     {
       "id": "o2",
-      "text": "Apply a rule twice and explain how it groups its inputs or rejects an unfinished one."
+      "text": "Use a rule twice. Explain how it joins two complete groups and why an unfinished one does not fit."
     },
     {
       "id": "o3",
-      "text": "Explain how grammar rules license sentences and describe their structure."
+      "text": "Explain how rules tell which sentences are allowed and show how they are built."
     }
   ],
   "revised_assessment": {

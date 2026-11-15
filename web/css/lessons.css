@@ -231,24 +231,82 @@
 .constituent-page .lesson-tree-observation .constituent-caption { font-size:1rem; }
 .lesson-tree-observation .constituent-selection mark { background:var(--bg); color:var(--ink); }
 .lesson-tree-observation > .lesson-feedback { background:var(--panel); }
-.curriculum-view .lesson-tree-steps button:has(.lesson-tree-step-number) {
-  display:inline-flex;
+.lesson-tree-guide {
+  display:flex;
   align-items:center;
-  gap:7px;
+  gap:8px;
+  width:fit-content;
+  max-width:100%;
+  margin-block:0 8px;
+  padding:3px;
+  box-sizing:border-box;
+  border:1px solid var(--accent-border);
+  border-radius:24px;
+  background:var(--bg);
+}
+.lesson-tree-guide[hidden] { display:none; }
+.lesson-tree-step-picker { position:relative; min-width:0; }
+.lesson-tree-step-label {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  min-height:36px;
+  padding:4px 10px;
+  box-sizing:border-box;
+  border-radius:20px;
+  font-size:.9rem;
+  line-height:1.25;
 }
 .lesson-tree-step-number {
-  display:inline-grid;
+  display:grid;
   place-items:center;
   flex:none;
   width:1.45rem;
   height:1.45rem;
-  border:1px solid var(--accent-border);
   border-radius:50%;
-  background:var(--bg);
+  background:var(--accent-soft);
   color:var(--accent-strong);
   font-size:.8rem;
   font-weight:700;
 }
+.lesson-tree-step-title { font-weight:600; overflow-wrap:anywhere; }
+.curriculum-view .lesson-tree-guide .lesson-tree-step-arrow {
+  flex:none;
+  inline-size:40px;
+  min-block-size:40px;
+  aspect-ratio:1;
+  padding:0;
+  border:1px solid var(--accent-border);
+  border-radius:50%;
+  background:var(--panel);
+  color:var(--accent-strong);
+  font-weight:700;
+}
+.lesson-tree-step-picker summary { list-style:none; cursor:pointer; }
+.lesson-tree-step-picker summary::-webkit-details-marker { display:none; }
+.curriculum-view .lesson-tree-guide :is(summary,.lesson-tree-step-arrow):hover { background:var(--accent-soft); }
+.lesson-tree-step-choices {
+  position:absolute;
+  inset-block-start:calc(100% + 5px);
+  inset-inline-start:0;
+  z-index:5;
+  width:min(20rem,calc(100vw - 4rem));
+  box-sizing:border-box;
+  margin:0;
+  padding:6px 6px 6px 2rem;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:var(--panel);
+}
+.curriculum-view .lesson-tree-step-choices button {
+  width:100%;
+  padding:6px 8px;
+  border-color:transparent;
+  border-radius:6px;
+  font-size:.85rem;
+  text-align:start;
+}
+.lesson-tree-step-choices button[aria-current=step] { background:var(--accent-soft); color:var(--accent-strong); }
 .constituent-selection:empty { display:none; }
 .constituent-selection mark { background:var(--accent-soft); color:var(--accent-strong); font-weight:650; }
 .lesson-tree-canvas [data-constituent-selected] > text { fill:var(--accent-strong); font-weight:750; }
@@ -383,11 +441,30 @@
 .lesson-transfer-example { margin-block:8px; }
 .lesson-transfer-example > .lesson-bracketed-example { margin-block:.3rem .6rem; }
 .constituent-controls[hidden], .lesson-transfer [hidden] { display:none; }
+.lesson-practice-panel {
+  padding:clamp(12px,3vw,20px);
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:var(--panel);
+}
+.lesson-practice-panel > :first-child { margin-block-start:0; }
+.lesson-practice-panel > :last-child { margin-block-end:0; }
+.lesson-practice-panel .lesson-tree-steps { display:flex; flex-wrap:wrap; gap:6px; }
 .lesson-transfer-choices { align-items:center; }
 .curriculum-view .lesson-transfer-choices button { min-height:40px; }
-.lesson-combination-inputs { display:grid; gap:8px; }
+.lesson-combination-inputs { display:grid; gap:12px; margin-block-end:12px; }
 .lesson-combination-inputs label { display:grid; gap:4px; }
-.lesson-combination-inputs select { width:100%; }
+.lesson-combination-inputs select {
+  box-sizing:border-box;
+  width:100%;
+  min-height:44px;
+  padding:8px 12px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:var(--bg);
+  color:var(--ink);
+  font:inherit;
+}
 
 .lesson-key-terms dl {
   display:grid;
@@ -468,17 +545,29 @@ a.lesson-section-link:focus-visible { outline:2px solid var(--accent); outline-o
 .lesson-section-mobile[open] .lesson-section-nav { padding-bottom:8px; }
 .lesson-section-mobile .lesson-section-link { min-height:44px; box-sizing:border-box; align-content:center; }
 
-.lesson-pilot-transfer { display:grid; gap:10px; justify-items:start; }
+.lesson-pilot-transfer { display:grid; gap:8px; }
+.lesson-explanation-editor {
+  display:grid;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:var(--panel);
+}
 .lesson-pilot-transfer textarea {
   box-sizing:border-box;
   width:100%;
   min-width:0;
   resize:vertical;
   padding:10px 12px;
-  border:1px solid var(--border);
-  border-radius:9px;
+  border:0;
+  border-radius:9px 9px 0 0;
   background:var(--bg);
   color:var(--ink);
   font:inherit;
 }
-.lesson-pilot-transfer p:empty { display:none; }
+.lesson-explanation-actions {
+  display:flex;
+  justify-content:flex-end;
+  padding:8px 10px;
+  border-block-start:1px solid var(--border);
+}
+.constituent-page .lesson-explanation-result h4 { margin:0 0 6px; }

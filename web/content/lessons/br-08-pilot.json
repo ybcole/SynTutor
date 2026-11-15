@@ -5,15 +5,15 @@
   "outcomes": [
     {
       "id": "o1",
-      "text": "Find the main clause and the complete spans of its embedded clauses."
+      "text": "Find the main clause and all the words in each embedded clause."
     },
     {
       "id": "o2",
-      "text": "Read C and S under S′ with “that”, unfilled C or interrogative “whether”."
+      "text": "Find C and S under S′. See when C holds “that” or “whether”, and when it is empty."
     },
     {
       "id": "o3",
-      "text": "Use the clause’s function and host to decide where it attaches."
+      "text": "Use a clause’s job to find the word or group it belongs with."
     }
   ],
   "preview_sources": [

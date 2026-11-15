@@ -5,15 +5,15 @@
   "outcomes": [
     {
       "id": "o1",
-      "text": "Use omission, replacement or a question to test a group in context."
+      "text": "Test a group by leaving it out, replacing it, or asking a question it answers."
     },
     {
       "id": "o2",
-      "text": "Use brackets and branches to identify exactly which words belong together."
+      "text": "Use brackets and branches to show which words belong together."
     },
     {
       "id": "o3",
-      "text": "Explain how two groupings of the same words can lead to two readings."
+      "text": "Explain how the same words can mean two things when they group in two ways."
     }
   ],
   "revised_assessment": {

@@ -87,10 +87,10 @@ export function addConstituentTeaching(body, page, { el, button, showDiagram, sh
     section('What this chapter covers',
       'A word or group of words that works as one part of a sentence is called a constituent. The way smaller groups fit inside larger ones is called hierarchy.');
     addIntroExample(body, el,
-      'The place phrase shows where the meeting took place. It contains a smaller group.',
+      'In the example below, the place phrase shows where the meeting took place. It contains a smaller group.',
       'We met [near [the quiet garden]].',
       'The outer brackets mark the whole place phrase. The inner brackets mark “the quiet garden”, the group that identifies the nearby landmark.');
-    body.append(el('h3', 'What you’ll see in this chapter'));
+    body.append(el('h3', 'What you’ll learn in this chapter'));
     const list = el('ul');
     for (const objective of [
       'Test whether words form a group by replacing them with one word or asking a question.',
@@ -116,13 +116,13 @@ export function addConstituentTeaching(body, page, { el, button, showDiagram, sh
     const tree = el('div');
     const observation = el('div', undefined, 'lesson-tree-observation');
     observation.append(sentence);
-    diagram.append(tree, observation);
+    diagram.append(tree);
     body.append(diagram);
     const nested = drawings(['near', 'the', 'quiet', 'garden'])[1];
     figureControls('Highlight a group', ['the quiet garden', 'near the quiet garden'], tree, index => {
       sentence.replaceChildren(...(index ? [el('mark', 'near the quiet garden')] : ['near ', el('mark', 'the quiet garden')]));
       sentence.append(index ? ' · The outer node includes every word.' : ' · The inner node covers just the garden group.');
-      showDiagram(tree, nested, { focusId: index ? 'PHRASE-a' : 'PHRASE-b' });
+      showDiagram(tree, nested, { focusId: index ? 'PHRASE-a' : 'PHRASE-b', observation });
     });
   }
   if (page === 2) {
@@ -165,7 +165,7 @@ export function addConstituentTeaching(body, page, { el, button, showDiagram, sh
       caption.textContent = index
         ? '“With a telescope” joins “the hikers”. It identifies which hikers the speaker watched.'
         : '“With a telescope” joins the larger group that includes “watched”. It describes how the speaker watched.';
-      showDiagram(tree, alternatives[index], { focusId: index ? 'PHRASE-b' : 'PHRASE-a' }).after(observation);
+      showDiagram(tree, alternatives[index], { focusId: index ? 'PHRASE-b' : 'PHRASE-a', observation });
     });
     paragraph('To explain the difference in your own words, ask “Who had the telescope?” In one reading it was the person watching. In the other it was the hikers. The branch shows which reading the tree represents.');
   }

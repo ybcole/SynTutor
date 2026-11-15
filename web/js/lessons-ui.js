@@ -4,6 +4,7 @@ import { composeLessonPreview } from './lesson-preview.js';
 import { createLessonStore } from './lesson-progress.js';
 import { createFoundationStore } from './foundation-progress.js';
 import { renderFoundationCheck } from './foundation-check.js';
+import { addFoundationsBookCoverage } from './lesson-presentation.js';
 import { constituentsPilot } from './constituents-pilot.js';
 import { functionsPilot } from './functions-pilot.js';
 import { categoriesPilot } from './categories-pilot.js';
@@ -683,7 +684,7 @@ function question(lesson,key,p,locked,onAnswer = answer => act({type:'answer',an
   return section;
 }
 
-function mountLessonCanvas(host, tree, options, textOpen = false) {
+function mountLessonCanvas(host, tree, { observation, ...options }, textOpen = false) {
   const treeView = renderLessonTree(tree, { ...options, lessonCanvas: true });
   const canvas = el('div', undefined, 'lesson-tree-canvas');
   canvas.append(treeView);
@@ -691,6 +692,7 @@ function mountLessonCanvas(host, tree, options, textOpen = false) {
   lessonCanvases.set(host, enableCanvasView(canvas, treeView));
   const text = treeView.querySelector('.lesson-tree-text');
   text.open = textOpen;
+  if (observation) canvas.append(observation);
   canvas.append(text);
   return canvas;
 }
@@ -778,15 +780,13 @@ function appendWorkedTree(aside, worked, { focusId, blank = null, comparisonTree
     wordBaseline: comparisonTree ? 2 : 0,
     highlightWords: highlightWords || Boolean(comparisonTree),
     tracePath,
+    observation: inline ? observation ?? selectedWords : null,
   }, textOpen);
   if (inline) {
     if (selected) describeSelection(selected);
     if (observation) {
       observation.querySelector('.constituent-selection')?.remove();
       observation.prepend(selectedWords);
-      canvas.after(observation);
-    } else {
-      canvas.append(selectedWords);
     }
   } else {
     aside.append(el('p', worked.origin, 'lesson-origin'));
@@ -918,6 +918,10 @@ function articleScreen(lesson, p, article) {
   frame.append(articleSectionNav(lesson, p, sections), layout);
   host.append(frame);
 
+  const teachBookTopics = () => addFoundationsBookCoverage(body, el, lesson.lesson_id, section.id);
+  const bookBeforeActivity = revised && !['introduction', 'application', 'recap'].includes(section.id);
+  let bookPractice = bookBeforeActivity ? teachBookTopics() : undefined;
+
   article.teach(body, page, {
     el, button, lesson, section, userId: revised ? revisedScope() : readingScope(),
     getWorkedExample: id => course.lessons.find(item => item.lesson_id === id).worked_example,
@@ -948,10 +952,9 @@ function articleScreen(lesson, p, article) {
       const textOpen = clearLessonDiagram(figure);
       if (flatTree) {
         const canvas = mountLessonCanvas(figure, flatTree, {
-          focusId: flatTree.root.id, wordBaseline: 2, highlightWords: true,
+          focusId: flatTree.root.id, wordBaseline: 2, highlightWords: true, observation,
         }, textOpen);
         observation.querySelector('.constituent-selection')?.remove();
-        canvas.after(observation);
         return canvas;
       }
       const worked = lesson.worked_example;
@@ -970,8 +973,11 @@ function articleScreen(lesson, p, article) {
     },
   });
 
+  if (revised && !bookBeforeActivity) bookPractice = teachBookTopics();
+
   const diagram = [...body.querySelectorAll('.constituent-diagram')].at(-1);
   if (diagram) diagram.after(lessonNotation(lesson, page, el, section.notationLabels, section.notationFeatures));
+  if (bookPractice) body.append(bookPractice);
 
   if (section.id === 'introduction') {
     addLessonKeyTerms(body, el, lesson.lesson_id, article.keyTerms);

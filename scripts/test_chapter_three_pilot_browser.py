@@ -7,6 +7,8 @@ import threading
 
 from playwright.sync_api import expect, sync_playwright
 
+from lesson_browser_steps import choose_tree_step
+
 ROOT = Path(__file__).resolve().parents[1]
 PILOT = json.loads((ROOT / 'web/content/lessons/br-03-pilot.json').read_text())
 
@@ -55,7 +57,7 @@ try:
         expect(chapter.locator('.lesson-module-description')).to_contain_text('prepositional phrases can join')
         chapter.get_by_role('button', name='Start lesson', exact=True).click()
         expect(view.get_by_role('heading', name=PILOT['title'], exact=True)).to_be_visible()
-        expect(view.get_by_role('heading', name='Words and phrases have categories')).to_be_visible()
+        expect(view.get_by_role('heading', name='Introduction to lexical and phrasal categories')).to_be_visible()
         opening = submit('opening', 2)
         expect(opening.get_by_role('status')).to_have_text('Opening check complete. 2 / 5 correct.')
         expect(opening.get_by_text('Correct answer:', exact=False)).to_have_count(0)
@@ -66,10 +68,10 @@ try:
         expect(view.locator('.lesson-tree-observation').first).to_contain_text('full subject group')
         view.get_by_role('button', name='The paper lamps', exact=True).press('Enter')
         expect(view.locator('.lesson-tree-observation').first).to_contain_text('whole NP')
-        view.get_by_role('button', name='Trace the pronoun', exact=True).click()
+        choose_tree_step(view, 'Trace the pronoun')
         expect(view.locator('.constituent-diagram .lesson-tree-observation')).to_contain_text('forms a whole NP')
         next_page.click()
-        view.get_by_role('button', name='Read the adverb phrase', exact=True).click()
+        choose_tree_step(view, 'Read the adverb phrase')
         expect(view.locator('.lesson-tree-observation')).to_contain_text('modifies “clearly”')
         view.get_by_text('Tree notation', exact=True).click()
         expect(view.locator('.lesson-notation > dl').get_by_text('AdvP', exact=True)).to_be_visible()
@@ -77,9 +79,9 @@ try:
         page.set_viewport_size({'width': 390, 'height': 844})
         next_page.click()
         expect(page).to_have_url(f'{base}/?preview=br-03#lesson/br-03/prepositions-and-coordination')
-        view.get_by_role('button', name='Read the whole coordination', exact=True).click()
+        choose_tree_step(view, 'Read the whole coordination')
         expect(view.locator('.lesson-tree-observation')).to_contain_text('outer PP')
-        view.get_by_role('button', name='Compare “there”', exact=True).click()
+        choose_tree_step(view, 'Compare “there”')
         expect(view.locator('.lesson-tree-observation')).to_contain_text('forms a PP by itself')
         view.get_by_text('Tree notation', exact=True).click()
         expect(view.locator('.lesson-notation > dl').get_by_text('PP', exact=True)).to_be_visible()

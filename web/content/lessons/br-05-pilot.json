@@ -5,15 +5,15 @@
   "outcomes": [
     {
       "id": "o1",
-      "text": "Distinguish a verb complement from a VP adjunct and explain where it attaches."
+      "text": "Tell a verb complement from a VP adjunct. Show where each goes in the tree."
     },
     {
       "id": "o2",
-      "text": "Distinguish a particle from a preposition and an understood complement from an optional detail."
+      "text": "Tell a particle from a preposition. Tell an understood complement from an extra detail."
     },
     {
       "id": "o3",
-      "text": "Distinguish an event adverbial from a sentence adverbial by what it modifies."
+      "text": "Tell an event adverbial from a sentence adverbial by asking what it goes with."
     }
   ],
   "preview_sources": [

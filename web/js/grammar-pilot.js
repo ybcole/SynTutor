@@ -16,21 +16,21 @@ export const grammarPilot = {
     'Printed pp. 265–268, [11–12] · Phrase markers and generative grammar',
   ],
   sections: [
-    { id: 'introduction', title: 'What does a grammar describe?' },
-    { id: 'concepts', title: 'Compare a list with a rule' },
-    { id: 'worked-example', title: 'Trace two applications', notationLabels: ['S', '△'] },
-    { id: 'apply-the-rule', title: 'Apply the rule' },
-    { id: 'rule-and-structure', title: 'Explain what the rules license' },
-    { id: 'application', title: 'Derive a new sentence' },
+    { id: 'introduction', title: 'Introduction to languages, sentences and grammars' },
+    { id: 'concepts', title: 'Languages, varieties and language description' },
+    { id: 'worked-example', title: 'Finite rules for infinite languages', notationLabels: ['S', '△'] },
+    { id: 'apply-the-rule', title: 'Recursive coordination exercise' },
+    { id: 'rule-and-structure', title: 'Grammars and sentence analysis' },
+    { id: 'application', title: 'Grammar rules and sentence derivation exercise' },
     { id: 'recap', title: 'Chapter recap', references: true },
     { id: 'closing-check', title: 'Check what you learned', assessment: true },
   ],
   keyTerms: [
-    ['Grammar', 'A system of rules that specifies which sequences are sentences and how those sentences are structured.'],
-    ['Recursion', 'A pattern in which an output can serve as an input to the same rule.'],
-    ['Derivation', 'The steps that show how a grammar builds a structure from its rules and starting elements.'],
-    ['Phrase marker', 'A tree or labelled bracketing that represents a sentence’s structure.'],
-    ['Generative grammar', 'A grammar that specifies permitted sentences and gives them structural descriptions.'],
+    ['Grammar', 'Rules that tell which word sequences count as sentences and how they are built.'],
+    ['Recursion', 'Using the result of a rule as a new input to the same rule.'],
+    ['Derivation', 'The steps that show how rules build a structure.'],
+    ['Phrase marker', 'A tree or set of labelled brackets that shows the groups in a sentence.'],
+    ['Generative grammar', 'A grammar that tells which sentences its rules allow and shows the structure of each one.'],
   ],
   teach(body, _page, ui) {
     const { el, lesson, section } = ui;
@@ -38,45 +38,47 @@ export const grammarPilot = {
     const example = text => body.append(lessonExample(el, text));
     switch (section.id) {
       case 'introduction': {
-        p('Earlier chapters used trees to show how words group together. A grammar states the rules that permit those groups and orders. This chapter asks how a small set of rules can describe sentences a learner has never encountered.');
-        addIntroExample(body, el, 'The brackets mark two complete sentences joined by “and”.',
+        p('The earlier chapters used trees to show how a sentence is built. But how can people make sense of a sentence they’ve never heard before? A grammar is a set of rules for building sentences. This chapter shows how a few rules can describe many different sentences.');
+        addIntroExample(body, el, 'In the example below, the brackets show two short sentences. The rule joins them with “and” to make a larger sentence. The tree labels each sentence S.',
           '[Iris rests] and [Leo waits].',
-          'The two inputs form a new sentence. If the new sentence can be an input to the same rule, the process can continue.');
-        body.append(el('h3', 'What you’ll see in this chapter'));
+          '“Iris rests” and “Leo waits” join to make a new sentence. You can use that new sentence in the same rule and join it to another one. Using the result of a rule in that rule again is called recursion. You’ll trace the steps in a tree.');
+        body.append(el('h3', 'What you’ll learn in this chapter'));
         const list = el('ul');
         for (const outcome of lesson.outcomes) list.append(el('li', outcome.text));
         body.append(list);
         break;
       }
       case 'concepts':
-        p('One way to study a language is to ask which sequences count as sentences in it. Speakers of different English varieties may have different patterns, so a grammar describes the variety it is intended to model.');
-        p('Imagine a toy language whose entire list is “Iris rests”, “Leo waits” and “Mina waves”. The list answers whether any sequence belongs to that tiny language. “Iris rests and Leo waits” is absent from it.');
+        p('A language variety is a way of using a language shared by a group of speakers. English speakers use different patterns in different varieties. A grammar describes which patterns make sentences in the variety being studied.');
+        p('Imagine a made-up language with only three sentences. They are “Iris rests”, “Leo waits”, and “Mina waves”. Its list tells you exactly which sentences belong. “Iris rests and Leo waits” is missing from the list.');
         example('S → S and S');
-        p('Add this rule while keeping the three starting sentences. It combines two sentences, labelled S, into another S. Recursion means that this result can serve as an input again. Each step produces a finite sentence, and the rule sets no maximum length.');
+        p('Keep the three sentences and add a rule. Join two sentences, each marked S, to make a new S. Then you can use that new S in the same rule again. This is recursion. Each sentence ends, but the rule gives no limit on how long a sentence can grow.');
         break;
       case 'worked-example':
-        p('A derivation records how a rule builds a structure. Trace the first combination, then see where it goes in the next step.');
+        p('A derivation shows the steps that build a structure. Join the first two sentences. Then follow that whole group into the next step.');
+        p('Use the rule S → S and S as a recipe. “Iris rests” and “Leo waits” each already count as S, so they can be the two inputs. The result “Iris rests and Leo waits” also counts as S. You can feed that entire result into the next rule application alongside “Mina waves”.');
         addTreeTrace(body, ui, 'Trace the two rule applications', [
           ['Join two starting sentences', first, 'first', 'The rule joins “Iris rests” and “Leo waits”. The result is an S.'],
           ['Reuse the first result', second, 'first', 'The earlier S stays together as the first input. “Mina waves” is the second input.'],
-          ['Read the new sentence', second, 'second', 'The larger S groups the earlier result with “Mina waves”. It can be used in another application.'],
+          ['Read the new sentence', second, 'second', 'The larger S joins the earlier group to “Mina waves”. You can use this new S in the rule again.'],
         ]);
-        p('The diagram records this particular derivation. The same words can also be grouped by joining “Leo waits” with “Mina waves” first.');
+        p('The tree shows one way to build the sentence. You can get the same words in the same order by joining “Leo waits” and “Mina waves” first.');
         break;
       case 'apply-the-rule':
-        p('Choose two complete inputs, then reuse their result with a third sentence. Try the unfinished input and read which part the rule still requires.');
+        p('Pick two complete sentences. Join them, then use the result with a third sentence. Try the unfinished choice to see what the rule still needs.');
         addCombinationPractice(body, ui, base, 'Iris rests and', { showDerivation: true });
         break;
       case 'rule-and-structure':
-        p('A phrase marker describes the groups in a sequence. A rule also specifies which groups can combine and in what order. Try a separate toy grammar for a simple statement.');
+        p('A phrase marker shows the groups in a string of words. A rule says which groups can go together and which goes first. Try this with a second small grammar.');
+        p('Keep two questions separate. First, can the grammar build the string? Second, what grouping does the derivation give the string? A tree answers the grouping question for a particular derivation. The rules give you a way to check any new string against the toy grammar.');
         example('S → NP VP · NP → DET N · VP → V');
         p('Here DET can be “the”, N can be “dog”, and V can be “waits”. The first rule places NP before VP.');
         example('[The dog] [waits].');
         example('[Waits] [the dog].');
-        p('The first sequence can be derived: “the dog” is NP and “waits” is VP. The second reverses them, so this toy grammar has no derivation for it. Bracketing the reversed sequence still describes two groups. To explain which order is permitted, the grammar needs a rule.');
+        p('The first line follows the rule. “The dog” is NP and “waits” is VP, so NP comes first. The second line puts VP first, so this toy grammar has no derivation for it. You can still put brackets around both groups. The rule explains why their order matters.');
         break;
       case 'application': {
-        p('The base list includes “Mina waves” and “Leo waits”. Can the rule derive the combined sentence below? Identify the inputs before checking.');
+        p('The starting list has “Mina waves” and “Leo waits”. Can the rule build the sentence below? Say which two inputs it needs, then check.');
         example('Mina waves and Leo waits.');
         const answer = el('details', undefined, 'lesson-sources');
         answer.append(el('summary', 'Check the derivation'),
@@ -86,8 +88,8 @@ export const grammarPilot = {
         break;
       }
       case 'recap':
-        p('A complete list can describe a small fixed set. A recursive rule can describe an unbounded set because each new S can become an input to the same rule.');
-        p('A generative grammar does two jobs. It specifies which sequences its rules permit and gives those sequences a structural description. A tree records the grouping, while the derivation explains how the rules build it.');
+        p('A list can cover a small set of sentences. A recursive rule can describe an unbounded set, with no fixed size. Every new S can go back into the rule again.');
+        p('A generative grammar does two things. It says which word sequences the rules allow and shows how each is built. The tree shows the groups. The derivation shows the steps that made them.');
         break;
     }
   },

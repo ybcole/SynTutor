@@ -7,6 +7,8 @@ import threading
 
 from playwright.sync_api import expect, sync_playwright
 
+from lesson_browser_steps import choose_tree_step
+
 ROOT = Path(__file__).resolve().parents[1]
 PILOT = json.loads((ROOT / 'web/content/lessons/br-02-pilot.json').read_text())
 
@@ -55,7 +57,7 @@ try:
         chapter.get_by_role('button', name='Start lesson', exact=True).click()
         expect(page).to_have_url(f'{base}/?preview=br-02#lesson/br-02/introduction')
         expect(view.get_by_role('heading', name=PILOT['title'], exact=True)).to_be_visible()
-        expect(view.get_by_role('heading', name='Two groups, two functions')).to_be_visible()
+        expect(view.get_by_role('heading', name='Introduction to grammatical functions')).to_be_visible()
         opening = submit('opening', 2)
         expect(opening.get_by_role('status')).to_have_text('Opening check complete. 2 / 5 correct.')
         expect(opening.get_by_text('Correct answer:', exact=False)).to_have_count(0)
@@ -65,13 +67,14 @@ try:
         view.get_by_role('button', name='stairs', exact=True).press('Enter')
         expect(view.get_by_role('status')).to_contain_text('completes the subject')
         view.get_by_role('button', name='Next →', exact=True).click()
-        view.get_by_role('button', name='Trace the NP inside VP').click()
+        choose_tree_step(view, 'Trace the NP inside VP')
         expect(view.locator('.constituent-diagram .lesson-tree-observation')).to_contain_text('Its parent is VP')
         exercise = view.get_by_role('region', name='Attach the NP inside the predicate')
         exercise.get_by_role('button', name='Check my tree').click()
         expect(exercise.locator('.first-tree-footer [role=status]')).to_contain_text('still detached')
         exercise.get_by_role('button', name='Guide me').click()
         exercise.get_by_role('button', name='Attach the lantern group to VP', exact=False).click()
+        expect(exercise.locator('.first-tree-stage + .first-tree-footer [role=status]')).to_contain_text('The lantern group now joins')
         exercise.get_by_role('button', name='Check my tree').click()
         expect(exercise.locator('.first-tree-footer [role=status]')).to_contain_text('share VP')
         page.reload(wait_until='domcontentloaded')
@@ -86,8 +89,11 @@ try:
         expect(page).to_have_url(f'{base}/?preview=br-02#lesson/br-02/application')
         page.reload(wait_until='domcontentloaded')
         expect(response).to_have_value('Leo is the subject. Loose modifies bolt.')
-        view.get_by_role('button', name='Compare your explanation').click()
-        expect(view.get_by_role('status')).to_contain_text('the full complement')
+        view.locator('.lesson-explanation-editor textarea + .lesson-explanation-actions').get_by_role(
+            'button', name='Compare your explanation').click()
+        explanation = view.locator('.lesson-explanation-result')
+        expect(explanation.get_by_role('heading', name='Explanation', exact=True)).to_be_visible()
+        expect(explanation).to_contain_text('the full complement')
         assert view.evaluate('(el) => el.scrollWidth <= el.clientWidth')
         view.get_by_role('button', name='Next →', exact=True).click()
         view.get_by_text('References and source review', exact=True).click()

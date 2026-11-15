@@ -1,4 +1,4 @@
-import { setTreeStepLabel } from './lesson-presentation.js';
+import { treeStepGuide } from './lesson-presentation.js';
 
 export function addWorkedExample(body, ui, labels, {
   highlightWords = false, captions, comparison, extraSteps = [], tracePath = false,
@@ -13,9 +13,6 @@ export function addWorkedExample(body, ui, labels, {
     return;
   }
 
-  const controls = el('div', undefined, 'constituent-controls lesson-tree-steps');
-  controls.setAttribute('role', 'group');
-  controls.setAttribute('aria-label', 'Explore the worked tree');
   const diagram = el('div', undefined, 'constituent-diagram');
   const observation = el('div', undefined, 'lesson-tree-observation');
   const caption = el('p', undefined, 'constituent-caption');
@@ -24,15 +21,12 @@ export function addWorkedExample(body, ui, labels, {
   const steps = worked.steps.map((step, index) => ({
     id: step.focus_node_id, label: labels[index], caption: captions?.[index] ?? step.text,
   })).filter(step => step.label).concat(extraSteps);
-  const choices = steps.map((step, index) => {
-    const control = button(step.label, () => select(index));
-    setTreeStepLabel(control, el, step.label, index + 1);
-    return control;
-  });
+  const guide = treeStepGuide(ui, 'Explore the worked tree', steps.map(step => step.label), select);
+  const { controls } = guide;
 
   function describe(index, position) {
-    choices.forEach((choice, i) => choice.setAttribute('aria-pressed', String(i === index)));
     if (index !== -1) {
+      guide.update(index);
       caption.textContent = steps[index].caption;
     } else if (position) {
       const { node, parent } = position;
@@ -74,8 +68,8 @@ export function addWorkedExample(body, ui, labels, {
       if (compare) {
         observation.querySelector('.constituent-selection')?.remove();
         showDiagram(diagram, comparison.tree, {
-          focusId: comparison.focusId, highlightWords: true, stackFeatures: true,
-        }).after(observation);
+          focusId: comparison.focusId, highlightWords: true, stackFeatures: true, observation,
+        });
         caption.textContent = comparison.caption;
       } else {
         select(0);
@@ -87,7 +81,6 @@ export function addWorkedExample(body, ui, labels, {
     body.append(switcher);
   }
 
-  controls.append(...choices);
   body.append(sentence, controls, diagram);
   select(0);
 }

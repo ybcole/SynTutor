@@ -1,4 +1,4 @@
-import { addIntroExample, lessonExample, addTreeTrace } from './lesson-presentation.js';
+import { addExplanationPractice, addIntroExample, lessonExample, addTreeTrace } from './lesson-presentation.js';
 
 function phrase(id, label, ...children) { return { id, label, children }; }
 function word(text) { return { word: text }; }
@@ -28,19 +28,19 @@ export const categoriesPilot = {
     'Printed pp. 57–62, figure [41b] · Co-ordination of prepositional phrases',
   ],
   sections: [
-    { id: 'introduction', title: 'Words and phrases have categories' },
-    { id: 'concepts', title: 'Find the noun and the whole phrase', notationLabels: ['NP', 'name', 'pronoun'] },
-    { id: 'worked-example', title: 'Read an AP and its adverb phrase', notationLabels: ['AP', 'A', 'AdvP', 'Adv', 'DEG'] },
-    { id: 'prepositions-and-coordination', title: 'Join two prepositional phrases', notationLabels: ['PP', 'P', 'NP', '△'] },
-    { id: 'application', title: 'Try a new coordination' },
+    { id: 'introduction', title: 'Introduction to lexical and phrasal categories' },
+    { id: 'concepts', title: 'Nouns, noun phrases and lexical categories', notationLabels: ['NP', 'name', 'pronoun'] },
+    { id: 'worked-example', title: 'Adjectives, adverbs, APs and AdvPs', notationLabels: ['AP', 'A', 'AdvP', 'Adv', 'DEG'] },
+    { id: 'prepositions-and-coordination', title: 'Prepositions, prepositional phrases and coordination', notationLabels: ['PP', 'P', 'NP', '△'] },
+    { id: 'application', title: 'Category and coordination exercises' },
     { id: 'recap', title: 'Chapter recap', references: true },
     { id: 'closing-check', title: 'Check what you learned', assessment: true },
   ],
   keyTerms: [
-    ['Lexical category', 'The grammatical class of a word, such as noun, adjective, adverb or preposition.'],
-    ['Phrasal category', 'The grammatical class of a whole group. In an ordinary headed phrase, the head determines the class.'],
-    ['Degree word', 'A word such as “very” or “quite” that indicates how strongly a quality applies.'],
-    ['Coordination', 'The joining of two or more units, often with a word such as “and” or “or”. Each joined unit is a conjunct.'],
+    ['Lexical category', 'The kind of word, such as noun, adjective, adverb, or preposition.'],
+    ['Phrasal category', 'The kind of phrase. In a phrase with a head, the head gives the phrase its category.'],
+    ['Degree word', 'A word like “very” or “quite” that tells how much a description applies.'],
+    ['Coordination', 'Joining two or more parts, often with “and” or “or”. Each part that joins is a conjunct.'],
   ],
   teach(body, _page, ui) {
     const { el, button, lesson, section } = ui;
@@ -49,19 +49,19 @@ export const categoriesPilot = {
     const example = text => body.append(lessonExample(el, text));
 
     if (section.id === 'introduction') {
-      p('Chapter 2 used labels such as NP and VP for whole groups. A phrasal category is the class of a whole phrase. A lexical category is the class of an individual word, such as noun. One word can sometimes be enough to form a phrase.');
-      addIntroExample(body, el, 'The brackets show the whole subject group.',
+      p('Chapter 2 looked at the jobs phrases do in a sentence. Now look inside a phrase. A grammatical category tells you what kind of word or phrase something is. The head is the word that gives a phrase its category. In this chapter, you’ll find heads and use them to name whole phrases.');
+      addIntroExample(body, el, 'In the example below, the brackets mark the whole subject. Look for the noun inside them that tells you what was glowing.',
         '[The lamps] glowed.',
-        '“Lamps” is a noun. “The lamps” is a noun phrase (NP) headed by that noun, and it functions as the subject.');
-      heading('What you’ll see in this chapter');
+        '“Lamps” is the main word, or head. Its lexical category, or word type, is noun (N). The phrasal category, or phrase type, of “the lamps” is noun phrase (NP). Its job in this sentence is subject.');
+      heading('What you’ll learn in this chapter');
       const list = el('ul');
       for (const outcome of lesson.outcomes) list.append(el('li', outcome.text));
       body.append(list);
     }
     if (section.id === 'concepts') {
-      p('Nouns are a word class. The forms “lamp” and “lamps” show one clue: many nouns have a plural form. In the next statement, “lamps” is the head. It gives the whole group its category as an NP.');
+      p('A noun is a word that can head a noun phrase. Count nouns such as “lamp” often have a plural form that means more than one. In the next example, “lamps” is the head. This noun makes the whole group a noun phrase (NP).');
       example('The paper lamps flickered.');
-      p('Compare “They flickered”. Select the words that the pronoun replaces.');
+      p('In “They flickered”, the pronoun “they” stands in for a group from the example.');
       const choices = el('div', undefined, 'lesson-tree-steps');
       choices.setAttribute('role', 'group');
       choices.setAttribute('aria-label', 'Choose the replaced span');
@@ -81,9 +81,11 @@ export const categoriesPilot = {
         choice.setAttribute('aria-pressed', 'false');
         choices.append(choice);
       }
-      body.append(choices, feedback);
+      const exercise = el('section', undefined, 'lesson-practice-panel');
+      exercise.append(el('p', 'Pick the words that “they” replaces.'), choices, feedback);
+      body.append(exercise);
       example('Lamps flickered. Mina waited.');
-      p('In the first statement, “lamps” is a noun that forms the whole subject NP. In the second, “Mina” is a name that forms an NP by itself. Compare the name with the pronoun in “They flickered”.');
+      p('A noun can make a whole NP. In the first tree, “lamps” does this by itself. The name “Mina” also makes a whole NP. A pronoun such as “they” can fill that same spot.');
       addTreeTrace(body, ui, 'Compare two one-word noun phrases', [
         ['Trace the name', { sentence: 'Mina', root: phrase('name-np', 'NP', phrase('name', 'name', word('Mina'))) },
           'name-np', '“Mina” is a name. The NP above it represents the full phrase that functions as the subject.'],
@@ -92,9 +94,10 @@ export const categoriesPilot = {
       ]);
     }
     if (section.id === 'worked-example') {
-      p('An adjective phrase (AP) is headed by an adjective. An adverb phrase (AdvP) is headed by an adverb. In the following example, “visible” supplies the description and “quite clearly” tells how clearly the sign could be seen.');
+      p('An adjective phrase (AP) has an adjective as its head. An adverb phrase (AdvP) has an adverb as its head. The tree uses A and Adv for the head words themselves. In the next example, “visible” describes the sign. “Quite clearly” tells how clearly someone could see it.');
       example('The sign was [quite clearly visible].');
-      p('“Quite” is a degree word. Follow its branch to see which word it modifies before comparing the shorter description.');
+      p('A degree word tells how much or how strongly a description applies. In this example, DEG labels “quite”. Follow its branch to find the word it modifies.');
+      p('Read “quite clearly visible” in two passes. First, “quite” tells how clearly, so group it with “clearly” inside AdvP. Next, the whole AdvP modifies “visible”. “Visible” heads the AP, even though the AP contains an adverb phrase of its own.');
       addTreeTrace(body, ui, 'Trace the adjective and adverb phrases', [
         ['Find the adjective', description, 'adjective', '“Visible” is the head of the whole AP.'],
         ['Read the adverb phrase', description, 'modifier', '“Clearly” heads “quite clearly”. The degree word “quite” modifies “clearly”. Together they form an AdvP that modifies “visible”.'],
@@ -103,9 +106,10 @@ export const categoriesPilot = {
       p('“The sign was visible” also works. Here the adjective alone is the whole AP.');
     }
     if (section.id === 'prepositions-and-coordination') {
-      p('A prepositional phrase (PP) is headed by a preposition. In “beside the bench”, “beside” expresses the spatial relation and its NP complement supplies the landmark.');
+      p('A prepositional phrase (PP) has a preposition as its head. The tree labels the preposition P. In the first location of the example below, “beside” tells how the place relates to the bench. The NP “the bench” is its complement. It names the landmark.');
       example('The puppy slept [beside the bench and near the heater].');
-      p('Coordination joins two or more units. Here “and” joins two PPs, called conjuncts. Each has its own head and landmark. In this analysis the coordinate group is also a PP.');
+      p('Joining parts with a word like “and” is called coordination. Each part joined is a conjunct. Here, both conjuncts are PPs with their own head and landmark. Together they form a larger PP.');
+      p('Try covering the shared words in “above and beside the bench”. The coordinator joins the two prepositions, and “the bench” is their shared complement. Now read “above the table and beside the bench”. Each preposition has its own complement, so the coordinator joins two complete PPs.');
       addTreeTrace(body, ui, 'Trace the two locations and their replacement', [
         ['Trace the first PP', locations, 'first-location', '“Beside” heads the first PP. “The bench” is its NP complement.'],
         ['Trace the second PP', locations, 'second-location', '“Near” heads the second PP. “The heater” is its NP complement.'],
@@ -115,38 +119,20 @@ export const categoriesPilot = {
     }
     if (section.id === 'application') {
       example('The cat hid behind the chair and under the blanket.');
-      p('Write the two groups joined by “and” and give the category of the whole location.');
+      p('Write the two groups that “and” joins. Then name the category of the whole location group.');
       const hint = el('details', undefined, 'lesson-sources');
-      hint.append(el('summary', 'Hint'), el('p', 'Find each preposition and include its landmark in the same group.'));
+      hint.append(el('summary', 'Hint'), el('p', 'Find each preposition. Put the words that name its landmark in the same group.'));
       body.append(hint);
       const key = `syntutor:lesson-transfer:${ui.userId}:br-03@${lesson.content_version}:application`;
-      const label = el('label', 'Your explanation');
-      label.htmlFor = 'chapter-three-transfer';
-      const input = el('textarea');
-      input.id = label.htmlFor;
-      input.rows = 3;
-      input.maxLength = 1200;
-      try { input.value = localStorage.getItem(key) || ''; } catch { /* The exercise still works. */ }
-      const feedback = el('div', undefined, 'lesson-tree-observation');
-      const answer = el('p');
-      feedback.setAttribute('aria-live', 'polite');
-      feedback.append(answer);
-      const reveal = button('Compare your explanation', () => {
-        answer.textContent = '“Behind the chair” and “under the blanket” are the two PPs. Each includes a preposition and its landmark. Together with “and”, they form one coordinate PP.';
+      addExplanationPractice(body, ui, {
+        key, id: 'chapter-three-transfer',
+        explanation: '“Behind the chair” and “under the blanket” are the two PPs. Each includes a preposition and its landmark. Together with “and”, they form one coordinate PP.',
       });
-      reveal.disabled = !input.value.trim();
-      input.addEventListener('input', () => {
-        reveal.disabled = !input.value.trim();
-        try { localStorage.setItem(key, input.value); } catch { /* Keep the current response in the field. */ }
-      });
-      const practice = el('div', undefined, 'lesson-pilot-transfer');
-      practice.append(label, input, reveal, feedback);
-      body.append(practice);
     }
     if (section.id === 'recap') {
-      p('Identify the complete phrase before naming its category. A pronoun can help find the span of an NP. A phrase can consist of just one word, as in “Mina waited”.');
-      p('Find what each dependent goes with. In “quite clearly visible”, the AdvP goes with the adjective, and “quite” goes with the adverb inside that AdvP.');
-      p('When you see “and”, find the full span of each conjunct. In the location examples, each PP has its own preposition and landmark. The whole coordinate group is also a PP.');
+      p('Find all the words in a phrase before you name its category. Try a pronoun to check which words go together in an NP. An NP can also be one word, as “Mina” is in “Mina waited”.');
+      p('Ask what each dependent goes with. In “quite clearly visible”, the AdvP “quite clearly” goes with “visible”. Inside the AdvP, “quite” goes with “clearly”.');
+      p('When you see “and”, find the whole group on each side. Each group is a conjunct. Here, each PP has its own preposition and landmark. The joined group is also a PP.');
     }
   },
 };

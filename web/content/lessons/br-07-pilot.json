@@ -5,15 +5,15 @@
   "outcomes": [
     {
       "id": "o1",
-      "text": "Read the DET–NOM split and distinguish empty DET from a plain pronoun or name."
+      "text": "Find DET and NOM. Tell an empty DET from a pronoun or name on its own."
     },
     {
       "id": "o2",
-      "text": "Locate pre-determiners and trace the layers created by modifiers."
+      "text": "Find pre-determiners and follow the groups that modifiers make."
     },
     {
       "id": "o3",
-      "text": "Use meaning to decide where a modifier attaches in a nominal or with an indefinite pronoun."
+      "text": "Use the meaning to decide where a modifier goes with a nominal or an indefinite pronoun."
     }
   ],
   "preview_sources": [
