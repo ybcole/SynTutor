@@ -1635,16 +1635,31 @@ function tenseOfWord(word) {
   return null;
 }
 
+function verbTag(word) {
+  const tag = String(word?.tag || '').toUpperCase();
+  if (/^(VB|VBP|VBZ|VBD|VBG|VBN|MD)$/.test(tag)) return tag;
+  const low = String(word?.text || '').toLowerCase();
+  if (!low) return tag;
+  if (['will', 'would', 'can', 'could', 'may', 'might', 'shall', 'should',
+       'must'].includes(low)) return 'MD';
+  if (['is', 'are', 'am', 'has', 'does'].includes(low)) return 'VBZ';
+  if (['was', 'were', 'had', 'did'].includes(low)) return 'VBD';
+  if (/ing$/.test(low)) return 'VBG';
+  if (/ed$/.test(low)) return 'VBD';
+  if (/(s|es)$/.test(low) && !/ss$/.test(low)) return 'VBZ';
+  if (PAST_WORDS.has(low)) return 'VBD';
+  return 'VBP';
+}
+
 function verbTense(word) {
   const tense = tenseOfWord(word);
   if (tense) return tense;
   const low = String(word?.text || '').toLowerCase();
   if (!low) return null;
   const tag = String(word?.tag || '').toUpperCase();
-  if (tag && !/^(VB|VBP|VBZ|VBD|MD)$/.test(tag)) return null;
-  if (/(ing|ed)$/.test(low)) return null;
-  // A finite base verb with no tag yet ("walk", "read") is present; the
-  // validator will refine it when its tag arrives.
+  if (tag === 'VBG' || tag === 'VBN' || /ing$/.test(low)) return null;
+  if (/ed$/.test(low)) return 'past';
+  if (/s$/.test(low) && !/ss$/.test(low)) return 'pres';
   return 'pres';
 }
 
@@ -1729,10 +1744,12 @@ function inferCanonicalFeatures() {
     const features = new Set((node.canonicalFeatures || [])
       .filter((feature) => !FRAME_FEATURES.has(feature)));
     if (node.type === 'V' || node.type === 'V(I)' || node.type === 'V(II)') {
+      const head = headWordOf(node);
+      if (head) head.tag = verbTag(head);
       if (node.type === 'V') {
         for (const frame of inferVerbFrame(node)) features.add(frame);
       }
-      const tense = verbTense(headWordOf(node)) || clauseTense(node);
+      const tense = verbTense(head) || clauseTense(node);
       if (tense) features.add(tense);
     } else if (node.type === 'MOD') {
       const tense = tenseOfWord(headWordOf(node));
