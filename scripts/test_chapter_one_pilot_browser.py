@@ -58,7 +58,7 @@ try:
             return panel
 
         page.goto(f'{base}/?preview=br-01#lesson/br-01/introduction', wait_until='domcontentloaded')
-        expect(view.get_by_role('heading', name='Words form groups')).to_be_visible()
+        expect(view.get_by_role('heading', name='Introduction to sentence structure and constituents')).to_be_visible()
         expect(view.get_by_text('Mina paused [near [the stone arch]].', exact=True)).to_be_visible()
         expect(view.locator('.lesson-key-terms dt')).to_have_count(6)
         opening = select('opening', 3)

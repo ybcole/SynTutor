@@ -55,7 +55,7 @@ try:
         chapter.get_by_role('button', name='Start lesson', exact=True).click()
         expect(page).to_have_url(f'{base}/?preview=br-02#lesson/br-02/introduction')
         expect(view.get_by_role('heading', name=PILOT['title'], exact=True)).to_be_visible()
-        expect(view.get_by_role('heading', name='Two groups, two functions')).to_be_visible()
+        expect(view.get_by_role('heading', name='Introduction to grammatical functions')).to_be_visible()
         opening = submit('opening', 2)
         expect(opening.get_by_role('status')).to_have_text('Opening check complete. 2 / 5 correct.')
         expect(opening.get_by_text('Correct answer:', exact=False)).to_have_count(0)

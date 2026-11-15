@@ -115,11 +115,11 @@ export const functionsPilot = {
     'Printed pp. 32–38, figures [36], [43], [46], [48] · Heads, modifiers, and complements',
   ],
   sections: [
-    { id: 'introduction', title: 'Two groups, two functions' },
-    { id: 'concepts', title: 'Subject, predicate, NP and VP' },
-    { id: 'worked-example', title: 'Read and repair the top split' },
-    { id: 'application', title: 'Heads, modifiers and complements' },
-    { id: 'recap', title: 'Chapter recap', references: true },
+    { id: 'introduction', title: 'Introduction to grammatical functions' },
+    { id: 'concepts', title: 'Subject, predicate, noun phrases and verb phrases' },
+    { id: 'worked-example', title: 'Subject and predicate tree exercise' },
+    { id: 'application', title: 'Dependency and function: heads, modifiers and complements' },
+    { id: 'recap', title: 'Summary and exercises on grammatical functions', references: true },
     { id: 'closing-check', title: 'Check what you learned', assessment: true },
   ],
   keyTerms: [

@@ -53,7 +53,7 @@ try:
         page.goto(f'{base}/?preview=br-09#lesson/catalog', wait_until='domcontentloaded')
         chapter = view.locator('.lesson-module').filter(has=page.get_by_role('heading', name=PILOT['title'], exact=True))
         chapter.get_by_role('button', name='Start lesson', exact=True).click()
-        expect(view.get_by_role('heading', name='What does a wh-clause ask or describe?')).to_be_visible()
+        expect(view.get_by_role('heading', name='Introduction to wh-questions and relative clauses')).to_be_visible()
         opening = submit('opening', 2)
         expect(opening.get_by_role('status')).to_have_text('Opening check complete. 2 / 5 correct.')
         expect(opening.get_by_text('Correct answer:', exact=False)).to_have_count(0)

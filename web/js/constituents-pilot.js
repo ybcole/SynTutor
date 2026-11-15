@@ -51,10 +51,10 @@ export const constituentsPilot = {
     'Printed pp. 15–18 · Grouping in context, phrase markers [34–35] and ambiguity [36]',
   ],
   sections: [
-    { id: 'introduction', title: 'Words form groups' },
+    { id: 'introduction', title: 'Introduction to sentence structure and constituents' },
     { id: 'concepts', title: 'Structure and constituent tests' },
-    { id: 'worked-example', title: 'Read and repair a phrase marker' },
-    { id: 'application', title: 'Explain two readings' },
+    { id: 'worked-example', title: 'Phrases, constituents and phrase markers' },
+    { id: 'application', title: 'Structural ambiguity exercises' },
     { id: 'recap', title: 'Chapter recap', references: true },
     { id: 'closing-check', title: 'Check what you learned', assessment: true },
   ],

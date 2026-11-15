@@ -54,7 +54,7 @@ try:
         chapter = view.locator('.lesson-module').filter(has=page.get_by_role('heading', name=PILOT['title'], exact=True))
         expect(chapter.locator('.lesson-module-description')).to_contain_text('particles and ellipsis')
         chapter.get_by_role('button', name='Start lesson', exact=True).click()
-        expect(view.get_by_role('heading', name='What does the extra phrase modify?')).to_be_visible()
+        expect(view.get_by_role('heading', name='Introduction to adverbials')).to_be_visible()
         opening = submit('opening', 2)
         expect(opening.get_by_role('status')).to_have_text('Opening check complete. 2 / 5 correct.')
         expect(opening.get_by_text('Correct answer:', exact=False)).to_have_count(0)
