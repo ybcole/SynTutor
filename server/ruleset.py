@@ -1406,6 +1406,28 @@ def _check_tree(root, clauses, leaves, text=None, quoted=None):
                        or _lower(x) in (BE_SURFACES | HAVE_SURFACES | DO_SURFACES | MODAL_SURFACES)]
         if not before_verbs or not after_verbs:
             continue
+        # Coordinated predicate sharing the subject: a finite verb directly
+        # after the comma with no subject of its own is not a second clause
+        # ("They went to the market, bought some fruit, and returned home.").
+        first_after_verb = next(
+            (k for k, x in enumerate(after)
+             if x.get('type') in FINITE_TYPES
+             or _lower(x) in (BE_SURFACES | HAVE_SURFACES | DO_SURFACES |
+                              MODAL_SURFACES)), None)
+        if first_after_verb is not None and not any(
+                x.get('type') in {'PRP', 'NN', 'NNS', 'NNP', 'NNPS', 'WP', 'EX'}
+                for x in after[:first_after_verb]):
+            continue
+        # A participial or absolute adjunct before the comma has no finite
+        # predicate of its own ("Having finished the report, she went home.").
+        if before and (before[0].get('type') in {'VBG', 'VBN', 'TO'}
+                       or _lower(before[0]) in {'having', 'being'}):
+            continue
+        # Correlative comparison is one construction, not two spliced clauses
+        # ("The more you practice, the better you become.").
+        if before and after and _lower(before[0]) == 'the' \
+                and _lower(after[0]) == 'the':
+            continue
         first_words = [_lower(x) for x in before[:3]]
         if any(w in SUBORDINATORS for w in first_words):
             continue
@@ -1530,8 +1552,6 @@ def _check_tree(root, clauses, leaves, text=None, quoted=None):
         def verbish(t): return t.startswith('vb')
         hit = False
         if nounish(at) and nounish(bt) and ct=='and' and nounish(dt):
-            hit = True
-        if nounish(at) and nounish(bt) and ct=='and' and d.get('type')=='DT' and i+4 < len(leaves) and nounish((leaves[i+4].get('type') or '').lower()):
             hit = True
         if (verbish(at) or verbish(bt)) and verbish(at) and verbish(bt) and ct=='and' and verbish(dt):
             hit = True
@@ -2118,6 +2138,7 @@ def _check_more(root, clauses, leaves):
         for j in range(i + 1, len(leaves)):
             x = leaves[j]
             if _lower(x) in WH_WORDS or _lower(x) in SUBORDINATORS \
+                    or _lower(x) in {'than', 'as'} \
                     or x.get('type') in ('CC', ',', ';', ':', '.'):
                 break
             if x.get('type') in FINITE_TYPES:
@@ -2186,12 +2207,18 @@ def _check_more(root, clauses, leaves):
         if vhead is None:
             continue
         if vhead.get('type') == 'VBP' or _lower(vhead) in ('are', 'were'):
+            singular = 'is' if _lower(vhead) == 'are' else 'was'
             out.append(_finding('2.9', 'error', 'C-NUMBER-AGREE',
                                 'agreement', vhead['id'],
                                 f"With the phrase 'the number of', this sentence takes "
                                 f"a singular verb, not '{vhead['surface']}'.",
                                 _tree_evidence(number_leaf['id'],
-                                               'the number of + plural verb')))
+                                               'the number of + plural verb'),
+                                remediation={
+                                    'suggested_fix': f"write '{singular}'",
+                                    'edits': [{'node': vhead['id'],
+                                               'replacement': singular}],
+                                }))
 
     # 10.2 proper nouns, I, days, months
     for lf in leaves:
@@ -2335,6 +2362,26 @@ f"The possessive '{lf['surface']}' in this sentence "
                                 f"'{ahead['surface']}\u2019 {bhead['surface']}'.",
                                 _wordlist_evidence(f"{ahead['surface']} {bhead['surface']}",
                                                    [f"{ahead['surface']}\u2019 {bhead['surface']}"],
+                                                   'possessive \u2019s rule')))
+
+    # 1.3b possessive 's inside one NP (the students books are here)
+    for node in _iter_nodes(root):
+        if node.get('type') != 'NP':
+            continue
+        nl = _leaves(node)
+        if len(nl) >= 3 and nl[0].get('type') == 'DT' \
+                and nl[1].get('type') == 'NNS' \
+                and _lower(nl[1]) in ANIMATE_PLURAL \
+                and nl[2].get('type') in ('NN', 'NNP', 'NNS', 'NNPS'):
+            if any(x.get('type') in ('POS', 'PRP$') for x in nl):
+                continue
+            out.append(_finding('1.3', 'error', 'C-POSSESSIVE-S', 'possessive',
+                                nl[1]['id'],
+                                f"In '{nl[1]['surface']} {nl[2]['surface']}', the first "
+                                f"noun needs an apostrophe to show ownership: write "
+                                f"'{nl[1]['surface']}\u2019 {nl[2]['surface']}'.",
+                                _wordlist_evidence(f"{nl[1]['surface']} {nl[2]['surface']}",
+                                                   [f"{nl[1]['surface']}\u2019 {nl[2]['surface']}"],
                                                    'possessive \u2019s rule')))
 
     # 9.11 dangling / misplaced modifier (Walking home, the rain started)
@@ -2524,16 +2571,23 @@ f"The possessive '{lf['surface']}' in this sentence "
                           'fish and chips', 'gin and tonic'}:
                 continue
             if vkey == ('3', 'sg') or vlow in ('is', 'was', 'has', 'does'):
+                agreeing = ({'is': 'are', 'was': 'were', 'has': 'have',
+                             'does': 'do'}.get(vlow) or _base_of(vlow))
                 out.append(_finding('2.3', 'error', 'C-COORD-SUBJ-AGREE',
                                     'subject-verb agreement', vhead['id'],
                                     f"'{subj['surface']}' joins two subjects with "
                                     f"'{conj}', which makes it plural; this verb "
                                     f"'{vhead['surface']}' is singular and does not "
-                                    "agree.",
+                                    f"agree. Write '{agreeing}' instead.",
                                     _tree_evidence(ccs[0]['id'],
                                                    'NP CC NP + singular verb',
                                                    [{'node': ccs[0]['id']},
-                                                    {'node': vhead['id']}])))
+                                                    {'node': vhead['id']}]),
+                                    remediation={
+                                        'suggested_fix': f"write '{agreeing}'",
+                                        'edits': [{'node': vhead['id'],
+                                                   'replacement': agreeing}],
+                                    }))
         elif conj in ('or', 'nor'):
             near = heads[-1]
             nkey = None
@@ -2557,16 +2611,23 @@ f"The possessive '{lf['surface']}' in this sentence "
                                                     {'node': vhead['id']}])))
             elif nkey[1] == 'pl' and (vkey == ('3', 'sg')
                                       or vlow in ('is', 'was', 'has', 'does')):
+                agreeing = ({'is': 'are', 'was': 'were', 'has': 'have',
+                             'does': 'do'}.get(vlow) or _base_of(vlow))
                 out.append(_finding('2.3', 'error', 'C-COORD-SUBJ-AGREE',
                                     'subject-verb agreement', vhead['id'],
                                     f"After '{conj}', the verb agrees with the "
                                     f"nearest subject '{near['surface']}', which is "
                                     f"plural; this verb '{vhead['surface']}' does not "
-                                    "agree.",
+                                    f"agree. Write '{agreeing}' instead.",
                                     _tree_evidence(near['id'],
                                                    'nearest NP + verb',
                                                    [{'node': near['id']},
-                                                    {'node': vhead['id']}])))
+                                                    {'node': vhead['id']}]),
+                                    remediation={
+                                        'suggested_fix': f"write '{agreeing}'",
+                                        'edits': [{'node': vhead['id'],
+                                                   'replacement': agreeing}],
+                                    }))
 
     # 4.2 noun as modifier must be singular (a ten-years plan)
     MEASURE_SG = {'years': 'year', 'months': 'month', 'weeks': 'week',
@@ -3458,6 +3519,10 @@ def _check_basic(root, clauses, leaves):
             nln = _lower(leaves[i + 1])
             if nln == 'to':
                 n2 = _lower(leaves[i + 2])
+                if leaves[i + 2].get('type') not in {'VB', 'VBP', 'VBZ', 'VBG', 'VBN'}:
+                    # "recommended to the students" is a prepositional phrase,
+                    # not "recommend" + a to-infinitive.
+                    continue
                 ger = _vbg_of(_base_of(n2))
                 out.append(_finding(
                     '6.9', 'error', 'C-GERUND-INFIN', 'verb complement',
@@ -3629,6 +3694,25 @@ def _check_basic(root, clauses, leaves):
         if lows[i] not in WH_WORDS or i == 0 or i + 2 >= len(leaves):
             continue
         if _lower(leaves[i + 1]) not in WH_AUX:
+            continue
+        # A wh-word that follows a noun is a relative pronoun, not an embedded
+        # interrogative ("the students who were in the laboratory").
+        if i > 0 and leaves[i - 1].get('type') in {'NN', 'NNS', 'NNP', 'NNPS',
+                                                   'PRP$'}:
+            continue
+        # Only embedded questions introduced by a reporting/mental verb are in
+        # scope ("I wonder who called", "Do you know where he went").
+        embedding = {
+            'ask', 'asked', 'asks', 'wonder', 'wondered', 'wonders',
+            'know', 'knew', 'knows', 'tell', 'told', 'tells',
+            'explain', 'explained', 'explains', 'decide', 'decided', 'decides',
+            'remember', 'remembered', 'forget', 'forgot', 'understand',
+            'understood', 'say', 'said', 'says', 'think', 'thought', 'thinks',
+            'show', 'showed', 'shows', 'mention', 'mentioned', 'discover',
+            'discovered', 'determine', 'determined', 'find', 'found',
+        }
+        if not any(_lower(leaves[k]) in embedding
+                   for k in range(max(0, i - 4), i)):
             continue
         # A pronoun subject right after the auxiliary is already reported by the
         # clause-level 9.13 check; skip it here to avoid a duplicate finding.

@@ -48,7 +48,7 @@ PRONOUNS = {
     "them": "people or things already known in the context",
     "it": "a thing, idea or situation already understood",
 }
-ARTICLES = {"the": "points to something identifiable in context",
+ARTICLES = {"the": "points to something the reader can already identify",
             "a": "introduces one non-specific example",
             "an": "introduces one non-specific example"}
 LEXICAL = {"N", "V", "A", "Adv", "P", "PRO", "PRON", "pronoun", "ART", "NAME",
@@ -81,11 +81,19 @@ def _first_ancestor(node: dict, by_id: dict[str, dict], labels: set[str]) -> dic
                  if k in by_id and by_id[k].get("label") in labels), None)
 
 
-def _larger_context(node: dict, by_id: dict[str, dict]) -> str | None:
-    """Nearest enclosing phrase whose surface is not just this node's surface."""
+def _phrase_context(node: dict, by_id: dict[str, dict]) -> str | None:
+    """Nearest enclosing phrase (never a clause) whose surface differs."""
+    return _nearest_context(node, by_id, {"VP", "NP", "NOM", "PP", "AP", "AdvP",
+                                          "PartP"})
+
+
+def _clause_context(node: dict, by_id: dict[str, dict]) -> str | None:
+    """Nearest enclosing clause whose surface differs."""
+    return _nearest_context(node, by_id, {"S", "S'", "S''", "S-bar", "S-dbar"})
+
+
+def _nearest_context(node: dict, by_id: dict[str, dict], labels: set[str]) -> str | None:
     own = str(node.get("surface") or "").strip()
-    labels = {"S", "S'", "S''", "S-bar", "S-dbar",
-              "VP", "NP", "NOM", "PP", "AP", "AdvP"}
     for ancestor_id in node.get("ancestor_ids") or []:
         ancestor = by_id.get(ancestor_id)
         if not ancestor or ancestor.get("label") not in labels:
@@ -118,8 +126,11 @@ def _word(node: dict, graph: dict, by_id: dict[str, dict]) -> str:
     word, lower = node["surface"], node["surface"].lower()
     kind = _word_kind(node, by_id)
     clause = _first_ancestor(node, by_id, {"S", "S'", "S''", "S-bar", "S-dbar"})
-    raw_context = _larger_context(node, by_id)
-    context = raw_context or "the sentence as a whole"
+    # Lexical words name the smallest enclosing phrase. Clause-level words
+    # (verbs, auxiliaries, modals, clause markers) fall back to the clause,
+    # because their role is defined there.
+    raw_context = _phrase_context(node, by_id)
+    context = raw_context or _clause_context(node, by_id) or "this part of the sentence"
     next_word = _neighbor(graph, node, 1)
     previous_word = _neighbor(graph, node, -1)
 
@@ -343,7 +354,7 @@ def _phrase(node: dict, graph: dict, by_id: dict[str, dict]) -> str:
             # explains the word itself. Keeping them distinct prevents the
             # learner from seeing the same paragraph twice.
             role = {"C1": "clause-marker", "C2": "fronted-phrase"}.get(label, description)
-            context = _larger_context(node, by_id) or "this part of the sentence"
+            context = _phrase_context(node, by_id) or _clause_context(node, by_id) or "this part of the sentence"
             return (f"The {role} position in {context} is filled by "
                     f"{_quote(children[0]['surface'])}.")
         if label in {"V", "AUX", "MOD", "PERF", "PROG", "PASS"}:

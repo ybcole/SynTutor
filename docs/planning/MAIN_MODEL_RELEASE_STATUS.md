@@ -25,6 +25,14 @@
   subject/object gap (`whom` → `which`, `which` → `who`/`whom`, subject `whom`
   → `who`), with an executable edit. A pronoun inside a relative clause is not
   treated as a prepositional object.
+- Detection rules are clause/phrase-scoped: comma splices, determiner stacks,
+  run-ons, gerund/infinitive, indirect-question order and quantifier
+  comparisons never read a verb or determiner across a clause boundary. The
+  183-sentence stress corpus reports 0 flagged cases.
+- Learner explanations are sentence-aware: local words use the smallest
+  enclosing phrase and never quote the whole sentence; only clause-level roles
+  (clause nodes, verbs, auxiliaries, modals, `C1`/`C2`, movement) quote the
+  clause.
 
 ## Exact source-fixture compliance
 
@@ -47,8 +55,8 @@ legacy-label V2 lesson record remains a lesson example because a flat
 
 - 65 B-R/gold tests.
 - 104 Cambridge/XAI/API tests.
-- 895 full backend tests pass (45 skipped).
-- Explanation audits: **47 parser-backed sentences** plus **2,368 model-free
+- 908 full backend tests pass (45 skipped).
+- Explanation audits: **185 parser-backed sentences** plus **2,368 model-free
   lesson/gold nodes**; 0 self-reference or duplicate problems.
 - 0 Penn-label leaks in the catalog audit.
 - `artifacts/cambridge-runtime-holdout.json`

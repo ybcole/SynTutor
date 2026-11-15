@@ -161,6 +161,23 @@ Regression: `server/test_agreement_scoping.py`.
   `test_agreement_scoping`, `test_relative_pronoun`, and
   `node scripts/test_explanation_dedupe.js`.
 
+### 4.7 Detection scoping and sentence-aware explanations
+
+- The 183-sentence stress corpus surfaces false positives across clause
+  boundaries. The comma-splice, determiner-stack, run-on, tense-finite,
+  comma-omission, gerund/infinitive, indirect-question and quantifier rules now
+  inspect only the clause/phrase they own. Regression:
+  `server/test_detection_scoping.py`.
+- `learner_explanations.py` now separates phrase context from clause context:
+  local words use the smallest phrase and never quote the whole sentence,
+  while clause-level roles (verbs, auxiliaries, modals, `C1`/`C2`, movement)
+  keep the clause context. Regression:
+  `server/test_explanation_sentence_awareness.py`.
+- The explanation audit
+  (`scripts/audit_explanation_self_reference.py`) also reports
+  over-context and word-level duplicate-parent problems; both are 0 over 185
+  parser-backed sentences.
+
 ### 4.6 Relative pronoun choice and pronoun-case scoping
 
 - `licensing.py::check_relatives` now chooses `who`/`whom`/`which` from the
@@ -212,12 +229,14 @@ Current expected results:
 
 | Gate | Result |
 |---|---:|
-| Full backend suite | **895 tests pass**, 45 skipped |
-| Stress suite | **45/45 normalized**, 0 issues |
+| Full backend suite | **908 tests pass**, 45 skipped |
+| Stress suite | **183 cases: 165 normalized, 18 labelled working trees, 0 flagged** |
 | Exact fixtures | **216/216 exact**, 0 unresolved |
 | Held-out grammatical | **281/281 normalized** |
 | Held-out ungrammatical | **45/45 with trees** |
-| Explanation audits | 0 self-reference/duplicate failures |
+| Explanation audits | 185 parser-backed sentences; 0 self-reference, over-context or word-level duplicate failures |
+| Rule-probe corpus | **71/83 implemented error rules exercised directly** |
+| Learner XAI quality | Flesch mean **89.5**; 0 jargon/id/actionability flags |
 | B-R/gold suites | 65 tests pass |
 | Runtime/API/XAI suites | 104 tests pass |
 
@@ -231,15 +250,21 @@ Current expected results:
    edit. Unknown common nouns are deliberately left unverified rather than
    guessed; extend `HUMAN_ANTECEDENTS` / `NONHUMAN_ANTECEDENTS` when a
    domain-specific noun needs coverage.
-3. **Lenient structural rules.** Nine garden-path/ungrammatical constructions
-   were normalized with structural rules; the rule matrix still reports their
+3. **18 complex constructions still use labelled provisional working trees.**
+   The 183-sentence corpus normalized 165 and kept 18 provisional (inversion
+   families, gapping/VP ellipsis, appositives, perception passives, `since`
+   temporal/causal ambiguity, and a few pied-piping/relative gaps). They are
+   labelled and reason-coded, not triangles.
+4. **Lenient structural rules.** Some garden-path/ungrammatical strings are
+   normalized with structural rules; the rule matrix still reports their
    grammar errors. Do not treat normalization as a grammaticality certificate.
-4. **Explanation dedupe is lazy for structural layers.** A layer selected
+5. **Explanation dedupe is lazy for structural layers.** A layer selected
    before its parent is not collapsed until the parent is selected. Words and
-   lexical wrappers are never collapsed.
-5. **No browser visual pass.** A Playwright/visual pass is still recommended.
-6. **S/P/U integration workstreams** from the prior handoff remain open.
-7. **Optional UX:** a `Full B-R` / `Learner view` toggle for `C1`/`C2` nodes
+   lexical wrappers are never collapsed, and lexical words never quote the
+   whole sentence.
+6. **No browser visual pass.** A Playwright/visual pass is still recommended.
+7. **S/P/U integration workstreams** from the prior handoff remain open.
+8. **Optional UX:** a `Full B-R` / `Learner view` toggle for `C1`/`C2` nodes
    and movement subscripts is recommended for beginners. Keep the canonical
    tree and API unchanged; hide only in presentation.
 
@@ -318,5 +343,9 @@ See `git diff --stat` for the full list. The central files are:
   `scripts/audit_final_d1_exact_fixtures.py`,
   `scripts/test_explanation_dedupe.js`
 - `server/test_explanation_coverage.py`, `server/test_agreement_scoping.py`,
-  `server/test_relative_pronoun.py`
+  `server/test_relative_pronoun.py`, `server/test_detection_scoping.py`,
+  `server/test_explanation_sentence_awareness.py`
+- `scripts/audit_rule_coverage.py`, `scripts/rule_probe_corpus.py`,
+  `scripts/audit_rule_probes.py`, `scripts/audit_learner_xai_quality.py`
+- `docs/planning/NEXT_STEPS_2026-11-14.md` (ranked remaining plan)
 - `docs/planning/SYNTUTOR_STRESS_TEST_AND_XAI_2026-11-14.md`

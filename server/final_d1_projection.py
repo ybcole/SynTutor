@@ -37,8 +37,11 @@ DETERMINERS = {
 DEGREE = {"very", "too", "rather", "quite", "so", "as", "more", "most", "less", "least", "somewhat", "how", "almost", "extremely", "fairly", "any"}
 QA = {"many", "few", "much", "little", "more", "less", "fewer", "most", "least"}
 PREDET = {"all", "both", "half", "double", "twice"}
-PRONOUNS = {"everyone", "everybody", "everything", "anyone", "anybody", "anything",
-            "someone", "somebody", "something", "nobody", "nothing", "none"}
+PRONOUNS = {
+    "everyone", "everybody", "everything", "anyone", "anybody", "anything",
+    "someone", "somebody", "something", "nobody", "nothing", "none",
+}
+POSSESSIVE_PRONOUNS = {"mine", "yours", "his", "hers", "ours", "theirs"}
 SUBORDINATORS = {"if", "unless", "because", "although", "though", "while", "whereas", "when", "once", "as", "until", "before", "after", "since", "than"}
 TEMPORAL_P = {"after", "before", "until"}
 TIME_NOUNS = {"today", "tomorrow", "yesterday", "tonight", "night", "week", "year", "day", "time", "moment"}
@@ -273,6 +276,15 @@ class Projection:
             return self.pp(kids(node))
         if label in {"ADJP", "ADVP"}:
             parts = kids(node)
+            if (label == "ADJP" and len(parts) == 1 and leaf(parts[0])
+                    and tag(parts[0]) in {"VBN", "VBG"}):
+                # A participial predicate ("was surprised", "was missing") is
+                # an AP whose head is a participle, not an adjective with no
+                # identifiable head.
+                participle = branch(
+                    "PartP", ("Ch7 pp. 147–148, 158",),
+                    branch("V-part", ("Ch7 p. 158",), word_node(parts[0])))
+                return branch("AP", ("Ch7 p. 147",), participle)
             if label == "ADVP" and len(parts) == 1 and leaf(parts[0]):
                 if word(parts[0]) in LOCATIVE_WORDS | TEMPORAL_P_WORDS:
                     refs = LOCATIVE if word(parts[0]) in LOCATIVE_WORDS else DEICTIC_P
@@ -305,7 +317,7 @@ class Projection:
             return branch(category, refs, *base["children"],
                           *(self.clause(node) if tag(node) == "SBAR" else self.phrase(node)
                             for node in nodes[1:]))
-        head_tags = ADJ_TAGS | ({"CD", "DT", "NN", "RB"} if quantifying else set()) if adjective else ADV_TAGS | {"NN"}
+        head_tags = ADJ_TAGS | ({"CD", "DT", "NN", "RB"} if quantifying else set()) if adjective else ADV_TAGS | {"NN", "NNS", "NNP", "NNPS"}
         head = next((i for i in range(len(nodes) - 1, -1, -1)
                      if leaf(nodes[i]) and tag(nodes[i]) in head_tags), None)
         if head is None:
@@ -318,6 +330,10 @@ class Projection:
                       branch("QA" if quantifying else "A" if adjective else "Adv", refs, word_node(nodes[head])), *after)
 
     def pp(self, nodes, gap=None):
+        coordination = (self.coordinate(nodes, lambda part: self.pp(kids(part[0])))
+                        if gap is None else None)
+        if coordination:
+            return branch("PP", COORD, *coordination)
         if len(nodes) > 1 and leaf(nodes[0]) and word(nodes[0]) == "not":
             return branch("PP", ADVERBIAL, word_node(nodes[0]), self.pp(nodes[1:], gap))
         if not nodes or not leaf(nodes[0]) or tag(nodes[0]) not in {"IN", "TO", "RP", "RB", "VBG"}:
@@ -366,6 +382,20 @@ class Projection:
                 nodes[1:], lambda part: self.np(part, nonrestrictive))
             if coordination:
                 return branch("NP", COORD, word_node(nodes[0]), *coordination)
+        if len(nodes) >= 3 and tag(nodes[0]) == "CONJP":
+            # Correlative coordination ("Not only the teacher but also the
+            # students"). The CONJP material is overt coordinator wording and
+            # stays as words rather than an unlabelled triangle.
+            children = []
+            for part in nodes:
+                if tag(part) == "CONJP":
+                    children.extend(word_node(lf) for lf in leaves(part) if leaf(lf))
+                elif tag(part) == "NP":
+                    children.append(self.np(kids(part), nonrestrictive))
+                else:
+                    children.append(self.phrase(part))
+            if len(children) >= 2:
+                return branch("NP", COORD, *children)
         coordination = self.coordinate(nodes, lambda part: self.np(part, nonrestrictive))
         if coordination:
             return branch("NP", COORD, *coordination)
@@ -414,7 +444,9 @@ class Projection:
                                             self.phrase(nodes[1]))))
         if tag(nodes[0]) == "SBAR" and len(nodes) == 1:
             return branch("NP", SUBORDINATE, self.clause(nodes[0]))
-        if len(nodes) == 1 and leaf(nodes[0]) and (tag(nodes[0]) in {"PRP", "EX"} or word(nodes[0]) in PRONOUNS):
+        if len(nodes) == 1 and leaf(nodes[0]) and (
+                tag(nodes[0]) in {"PRP", "EX"} or word(nodes[0]) in PRONOUNS
+                or word(nodes[0]) in POSSESSIVE_PRONOUNS):
             return branch("NP", NOUN, branch("pronoun", NOUN, word_node(nodes[0])))
         if len(nodes) == 1 and leaf(nodes[0]) and word(nodes[0]) in {"this", "that", "these", "those"}:
             return branch("NP", ("Ch7 pp. 155–157",), branch("DET", NOUN, branch("DEM", NOUN, word_node(nodes[0]))),
@@ -462,7 +494,7 @@ class Projection:
             head = next((i for i in range(stop - 1, start - 1, -1)
                          if leaf(nodes[i]) and (tag(nodes[i]) in NOUN_TAGS or (
                              start and i > start and tag(nodes[i]) == "CD" and word(nodes[i]) == "one"
-                             and tag(nodes[i - 1]) in ADJ_TAGS))), None)
+                             and tag(nodes[i - 1]) in (ADJ_TAGS | {"DT"})))), None)
             if head is None:
                 if len(nodes) == 1 and leaf(nodes[0]) and tag(nodes[0]) == "CD":
                     return branch("NP", NOUN, det, branch("NOM", NOMINAL, self.modifier(nodes, adjective=True, quantifying=True)))
@@ -719,6 +751,18 @@ class Projection:
             right["children"][0] = branch("V", COORD, left, word_node(nodes[1]), lexical,
                                           features=lexical["features"])
             return right
+        if (len(nodes) >= 3
+                and sum(1 for node in nodes if tag(node) == "VP") >= 2
+                and all(tag(node) in {"VP", ",", "CC"} for node in nodes)):
+            # Coordinated predicates sharing one subject: "went to the market,
+            # bought some fruit, and returned home".
+            children = []
+            for part in nodes:
+                if tag(part) == "VP":
+                    children.append(self.vp(kids(part), mode, subject))
+                else:
+                    children.append(word_node(part))
+            return branch("VP", COORD, *children)
         coordination = self.coordinate(nodes, lambda part: self.vp(part, mode, subject))
         if coordination:
             if incoming or passive or fronted:
@@ -1363,7 +1407,18 @@ class Projection:
         wh, body = parts
         link = self.gap(self.wh_gap(wh, body))
         words = [n["surface"] for n in leaves(wh)]
-        fronted = branch("C2", WH, *([{"word": words[0]}] if len(words) == 1 else [{"triangle": True, "words": words}]))
+        if len(words) == 1:
+            fronted = branch("C2", WH, {"word": words[0]})
+        else:
+            lead = str(words[0]).lower()
+            fronted_label = "PP" if lead in {
+                "to", "for", "in", "on", "at", "by", "with", "from", "of",
+                "about", "into", "over", "under", "between", "among",
+                "against", "without", "after", "before", "during", "through",
+                "across", "behind", "beside", "near", "as", "than",
+            } else "NP"
+            fronted = branch("C2", WH, {"triangle": True, "label": fronted_label,
+                                        "words": words})
         fronted["index"] = link.index
         if tag(body) == "SQ":
             lower = self.question(kids(body), link)

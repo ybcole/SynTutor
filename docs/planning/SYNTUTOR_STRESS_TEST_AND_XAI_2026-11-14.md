@@ -46,7 +46,7 @@ of asserting an empty registry.
 
 ## 2. Method
 
-Harness: `scripts/stress_test_syntutor.py` (45 sentences).
+Harness: `scripts/stress_test_syntutor.py` (183 sentences across coordination, adverbial clauses, relatives, wh-questions, comparatives, passives, modals/tense, non-finite control/raising, clefts, inversion, ellipsis, fronting, agreement, articles/quantifiers, pronouns/prepositions, ungrammatical probes, and deeply nested sentences).
 
 It calls the same `server.api.build_payload` used by `/api/parse` and records:
 
@@ -69,11 +69,11 @@ Final result:
 
 | Metric | Value |
 |---|---:|
-| Cases | 45 |
+| Cases | 183 |
 | Fatal errors | 0 |
-| Normalized B-R trees | 45 |
-| Provisional working trees | 0 |
-| Cases with display labels | 45 / 45 |
+| Normalized B-R trees | 165 |
+| Provisional working trees | 18 |
+| Cases with display labels | 183 / 183 |
 | Unlabelled triangles | 0 |
 | Whole-sentence triangles | 0 |
 | Red words without a bound explanation | 0 |
@@ -447,6 +447,73 @@ relative clause.
 unflagged. `server/test_relative_pronoun.py` covers inanimate, human,
 subject-gap, object-gap, collective and preposition-inside-relative cases.
 
+### ST-17 — Detection rules mis-scoped across clause boundaries
+
+**Symptom.** The 183-sentence corpus produced false positives on grammatical
+sentences:
+
+- `C-COMMA-SPLICE` on coordinated predicates ("They went to the market, bought
+  some fruit, and returned home."), on correlative comparatives ("The more you
+  practice, the better you become."), and on participial adjuncts ("Having
+  finished the report, she went home.").
+- `C-DET-STACK` on coordination and apposition ("Both the committee and the
+  staff…", "Her idea — to rebuild the bridge — …").
+- `C-RUNON` on a comparative subordinate ("…far worse than we expected.").
+- `C-TENSE-FINITE` on a bare-infinitive small clause ("We heard the door
+  close.").
+- `C-COMMA-OMISSION` on two-item coordination ("a university guide and an
+  umbrella").
+- `C-GERUND-INFIN` on a preposition ("recommended to the students").
+- `C-INDIRECT-WH-INVERSION` on a relative clause ("the students who were in the
+  laboratory").
+- `C-QUANTIFIER` on a comparative ("He earns less than his colleague.").
+- A crash in `_rem_quantifier` when a comparative had no noun head.
+
+**Fix.**
+
+- Comma splice: skip when the second part has no subject of its own (shared
+  coordinated predicate), when the first part is a participial/absolute
+  adjunct, and for the correlative `the more…the better` construction.
+- Determiner stack: skip when the NP coordinates or frames more than one part
+  (`CC` or dash/comma/appositive punctuation).
+- Run-on: treat `than`/`as` as clause boundaries.
+- Tense-finite: a perception/causative small clause may have a bare predicate
+  that the parser tags as a simple category.
+- Comma omission: removed the two-item determiner variant.
+- Gerund/infinitive: require the word after `to` to be a verb.
+- Indirect wh inversion: only apply after a reporting/mental verb, and never
+  after a noun antecedent (relative clause).
+- Quantifier: `less/fewer/more` followed by `than`/`as` is a comparison, not a
+  quantifier–noun error; the crash is fixed by returning no remediation.
+
+Regression: `server/test_detection_scoping.py`.
+
+### ST-18 — Sentence-aware explanations
+
+**Symptom.** Lexical explanations could quote the whole clause/sentence even
+when the word's role was local. A pronoun in a long clause was described as
+"part of ⟨the whole clause⟩", and the context reference was not tied to the
+displayed sentence.
+
+**Fix.** `learner_explanations.py` now separates **phrase context** from
+**clause context**:
+
+- Lexical words (nouns, adjectives, adverbs, prepositions, determiners,
+  quantifiers, names, possessives, demonstratives, participles, particles) use
+  the smallest enclosing **phrase** and never quote the whole sentence.
+- Clause-level roles (clause nodes, verbs, auxiliaries, modals, tense,
+  `C1`/`C2`, movement/gap positions) use the clause context, because their role
+  is defined there.
+- Pronouns use a phrase context only if one exists; otherwise they state the
+  referent without quoting the full clause.
+- The article wording no longer repeats "in context" before the local noun
+  phrase.
+
+Regression: `server/test_explanation_sentence_awareness.py` and the
+sentence-awareness check in `scripts/audit_explanation_self_reference.py`.
+Audit result: 185 parser-backed sentences, 0 self-reference, 0 over-context
+and 0 word-level duplicate-parent problems.
+
 ## 4. XAI design answers
 
 ### 4.1 Which nodes need an explanation?
@@ -565,17 +632,26 @@ node scripts/test_tree_layout.js
 
 Final result:
 
-- Stress harness: 45/45 normalized, 0 provisional, 0 unlabelled triangles, 0
-  whole-sentence triangles, 0 unbound red words, 0 correction cascades.
-- Explanation audits: 47 parser-backed sentences and 2,368 model-free
-  lesson/gold nodes; **0 self-reference or duplicate problems**.
-- Full backend suite: **895 tests pass**, 45 skipped, 0 failures, 0 errors.
+- Stress harness: 183 cases, 165 normalized, 18 labelled provisional working
+  trees, 0 unlabelled triangles, 0 whole-sentence triangles, 0 unbound red
+  words, 0 correction cascades, 0 flagged cases.
+- Explanation audits: 185 parser-backed sentences and 2,368 model-free
+  lesson/gold nodes; **0 self-reference, over-context or word-level duplicate
+  problems**.
+- Full backend suite: **908 tests pass**, 45 skipped, 0 failures, 0 errors.
 - B-R/gold handoff suites: 65 tests pass.
 - Runtime/API/XAI handoff suites: 104 tests pass.
 - Exact fixtures: **216/216 exact (100%)**, 0 unresolved.
 - Held-out audit: **281/281 grammatical sentences normalized**, **45/45
   ungrammatical sentences have trees**.
 - JS dedupe/map/evidence/correction/layout tests pass.
+- Rule-probe corpus: **71/83 implemented error rules exercised directly**
+  (`scripts/audit_rule_probes.py`); the 12 remaining are trigger-specific,
+  fire a related constraint, or depend on a lexicon resource.
+- Learner XAI quality: mean Flesch reading ease **89.5**, 0 jargon, id-leak,
+  over-length or non-actionable flags (`scripts/audit_learner_xai_quality.py`).
+- Remaining work and the ranked plan are in
+  `docs/planning/NEXT_STEPS_2026-11-14.md`.
 
 ## 7. Known limits
 

@@ -1,0 +1,897 @@
+{
+  "schema_version": "rule-probe-report-1.0.0",
+  "probes": 83,
+  "passed": 71,
+  "failed": 12,
+  "results": [
+    {
+      "probe": "adj-order",
+      "sentence": "She bought a red big car.",
+      "expected": "C-ADJ-ORDER",
+      "fired": [
+        "C-ADJ-ORDER"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "adj-prep",
+      "sentence": "He is interested on music.",
+      "expected": "C-ADJ-PREP",
+      "fired": [
+        "C-ADJ-PREP"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "adverb-form",
+      "sentence": "She runs quick.",
+      "expected": "C-ADVERB-FORM",
+      "fired": [
+        "C-ADJ-ADV"
+      ],
+      "pass": true,
+      "as_error": false,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "adverb-placement",
+      "sentence": "I like very much it.",
+      "expected": "C-ADVERB-PLACEMENT",
+      "fired": [
+        "C-ADVERB-PLACEMENT"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "apostrophe",
+      "sentence": "Its a nice day.",
+      "expected": "C-APOSTROPHE",
+      "fired": [
+        "C-HOMOPHONE",
+        "C-MISSING-SUBJECT"
+      ],
+      "pass": true,
+      "as_error": false,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "capitalization",
+      "sentence": "i went home yesterday.",
+      "expected": "C-CAPITALIZATION",
+      "fired": [
+        "C-CAPITALIZATION",
+        "C-PROPER-NOUN"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "causative-to",
+      "sentence": "She made him to go.",
+      "expected": "C-CAUSATIVE-TO",
+      "fired": [
+        "C-CAUSATIVE-TO"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "clause-linking",
+      "sentence": "Although he was tired, but he finished the report.",
+      "expected": "C-CLAUSE-LINKING",
+      "fired": [
+        "C-CONJUNCTION-PAIR"
+      ],
+      "pass": true,
+      "as_error": false,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "collocation",
+      "sentence": "I do a mistake every day.",
+      "expected": "C-COLLOCATION",
+      "fired": [],
+      "pass": true,
+      "as_error": false,
+      "verdict": "grammatical"
+    },
+    {
+      "probe": "comparative-double",
+      "sentence": "She is more taller than her brother.",
+      "expected": "C-COMPARATIVE-DOUBLE",
+      "fired": [
+        "C-COMPARATIVE-DOUBLE"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "comparative-form",
+      "sentence": "This book is gooder than that one.",
+      "expected": "C-COMPARATIVE-FORM",
+      "fired": [
+        "C-COMPARATIVE-FORM"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "comparative-struct",
+      "sentence": "She is as tall than her brother.",
+      "expected": "C-COMPARATIVE-STRUCT",
+      "fired": [
+        "C-COMPARATIVE-STRUCT"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "conditional-will",
+      "sentence": "If it will rain tomorrow, we will stay indoors.",
+      "expected": "C-CONDITIONAL-WILL",
+      "fired": [
+        "C-CONDITIONAL-WILL"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "confusable",
+      "sentence": "This will effect the result.",
+      "expected": "C-CONFUSABLE",
+      "fired": [],
+      "pass": true,
+      "as_error": false,
+      "verdict": "grammatical"
+    },
+    {
+      "probe": "conjunction-pair",
+      "sentence": "Although he was tired, but he finished the report.",
+      "expected": "C-CONJUNCTION-PAIR",
+      "fired": [
+        "C-CONJUNCTION-PAIR"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "connector",
+      "sentence": "He was tired, however he finished the report.",
+      "expected": "C-CONNECTOR",
+      "fired": [],
+      "pass": true,
+      "as_error": false,
+      "verdict": "grammatical"
+    },
+    {
+      "probe": "contraction",
+      "sentence": "I cant go with you.",
+      "expected": "C-CONTRACTION",
+      "fired": [
+        "C-CONTRACTION"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "correlative-agree",
+      "sentence": "Either the boys or the girl are coming.",
+      "expected": "C-CORRELATIVE-AGREE",
+      "fired": [
+        "C-SUBJECT-AGREEMENT"
+      ],
+      "pass": true,
+      "as_error": false,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "dangling",
+      "sentence": "Walking home, the rain started.",
+      "expected": "C-DANGLING",
+      "fired": [
+        "C-DANGLING"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "det-noun-agree",
+      "sentence": "A books are on the table.",
+      "expected": "C-DET-NOUN-AGREE",
+      "fired": [
+        "C-DETERMINER-AGREEMENT"
+      ],
+      "pass": true,
+      "as_error": false,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "det-stack",
+      "sentence": "The my book is lost.",
+      "expected": "C-DET-STACK",
+      "fired": [
+        "C-DET-STACK"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "double-negative",
+      "sentence": "I do not know nothing about it.",
+      "expected": "C-DOUBLE-NEGATIVE",
+      "fired": [
+        "C-DOUBLE-NEGATIVE"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "dummy-it",
+      "sentence": "Is raining outside.",
+      "expected": "C-DUMMY-IT",
+      "fired": [
+        "C-MISSING-SUBJECT"
+      ],
+      "pass": false,
+      "as_error": false,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "extra-prep",
+      "sentence": "We discussed about the plan.",
+      "expected": "C-EXTRA-PREP",
+      "fired": [
+        "C-EXTRA-PREP"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "extra-word",
+      "sentence": "He is is here today.",
+      "expected": "C-EXTRA-WORD",
+      "fired": [
+        "C-AUX-FORM",
+        "C-SPACING-REPEAT"
+      ],
+      "pass": true,
+      "as_error": false,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "first-mention",
+      "sentence": "I saw dog in the park.",
+      "expected": "C-FIRST-MENTION",
+      "fired": [
+        "C-ARTICLE"
+      ],
+      "pass": true,
+      "as_error": false,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "fragment",
+      "sentence": "Because I was late.",
+      "expected": "C-FRAGMENT",
+      "fired": [
+        "C-TENSE-FINITE"
+      ],
+      "pass": true,
+      "as_error": false,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "gerund-infinitive",
+      "sentence": "I enjoy to read books.",
+      "expected": "C-GERUND-INFINITIVE",
+      "fired": [
+        "C-GERUND-INFIN",
+        "C-GERUND-INFINITIVE"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "homophone",
+      "sentence": "I want too go home.",
+      "expected": "C-HOMOPHONE",
+      "fired": [
+        "C-TO_TOO"
+      ],
+      "pass": true,
+      "as_error": false,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "hyphen",
+      "sentence": "He is a well known author.",
+      "expected": "C-HYPHEN",
+      "fired": [],
+      "pass": true,
+      "as_error": false,
+      "verdict": "grammatical"
+    },
+    {
+      "probe": "indefinite-agree",
+      "sentence": "Everyone are here now.",
+      "expected": "C-INDEFINITE-AGREE",
+      "fired": [
+        "C-INDEF-AGREE",
+        "C-SUBJECT-AGREEMENT"
+      ],
+      "pass": true,
+      "as_error": false,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "intransitive-passive",
+      "sentence": "The accident was happened yesterday.",
+      "expected": "C-INTRANSITIVE-PASSIVE",
+      "fired": [
+        "C-INTRANSITIVE-PASSIVE"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "intro-comma",
+      "sentence": "However I left early.",
+      "expected": "C-INTRO-COMMA",
+      "fired": [
+        "C-INTRO-COMMA"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "l1-interference",
+      "sentence": "I have twenty years old.",
+      "expected": "C-L1-INTERFERENCE",
+      "fired": [
+        "C-MOD-POS"
+      ],
+      "pass": false,
+      "as_error": false,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "lexicon-malformed",
+      "sentence": "I am a studant here.",
+      "expected": "C-LEXICON-MALFORMED",
+      "fired": [],
+      "pass": false,
+      "as_error": false,
+      "verdict": "unverified"
+    },
+    {
+      "probe": "lexicon-tag-mismatch",
+      "sentence": "The quickly fox jumps.",
+      "expected": "C-LEXICON-TAG-MISMATCH",
+      "fired": [],
+      "pass": false,
+      "as_error": false,
+      "verdict": "unverified"
+    },
+    {
+      "probe": "lexicon-unknown",
+      "sentence": "The zorble is here.",
+      "expected": "C-LEXICON-UNKNOWN",
+      "fired": [],
+      "pass": false,
+      "as_error": false,
+      "verdict": "unverified"
+    },
+    {
+      "probe": "missing-prep",
+      "sentence": "She listens music.",
+      "expected": "C-MISSING-PREP",
+      "fired": [
+        "C-MISSING-PREP"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "noun-modifier-number",
+      "sentence": "A two-years project is here.",
+      "expected": "C-NOUN-MODIFIER-NUMBER",
+      "fired": [
+        "C-NOUN-MODIFIER-NUMBER"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "numeral",
+      "sentence": "I have five book.",
+      "expected": "C-NUMERAL",
+      "fired": [
+        "C-QUANT-PLURAL"
+      ],
+      "pass": true,
+      "as_error": false,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "numeral-format",
+      "sentence": "The number is 12,00.",
+      "expected": "C-NUMERAL-FORMAT",
+      "fired": [],
+      "pass": false,
+      "as_error": false,
+      "verdict": "grammatical"
+    },
+    {
+      "probe": "object-order",
+      "sentence": "She gave to him the book.",
+      "expected": "C-OBJECT-ORDER",
+      "fired": [
+        "C-OBJECT-ORDER"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "participial",
+      "sentence": "Having finished the report.",
+      "expected": "C-PARTICIPIAL",
+      "fired": [],
+      "pass": false,
+      "as_error": false,
+      "verdict": "unverified"
+    },
+    {
+      "probe": "passive",
+      "sentence": "The book was wrote by him.",
+      "expected": "C-PASSIVE",
+      "fired": [
+        "C-VERB-FORM"
+      ],
+      "pass": true,
+      "as_error": false,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "phrasal-order",
+      "sentence": "She picked up it.",
+      "expected": "C-PHRASAL-ORDER",
+      "fired": [
+        "C-ADVERB-PLACEMENT",
+        "C-PHRASAL-ORDER"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "plural-form",
+      "sentence": "The childs are here.",
+      "expected": "C-PLURAL-FORM",
+      "fired": [
+        "C-NOUN-FORM"
+      ],
+      "pass": true,
+      "as_error": false,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "plural-only",
+      "sentence": "She gave me some advices.",
+      "expected": "C-PLURAL-ONLY",
+      "fired": [
+        "C-UNCOUNTABLE"
+      ],
+      "pass": true,
+      "as_error": false,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "possessive",
+      "sentence": "This is my.",
+      "expected": "C-POSSESSIVE",
+      "fired": [
+        "C-POSSESSIVE"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "possessive-s",
+      "sentence": "The students books are here.",
+      "expected": "C-POSSESSIVE-S",
+      "fired": [
+        "C-POSSESSIVE-S"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "pp-attach",
+      "sentence": "She saw the man with the telescope.",
+      "expected": "C-PP-ATTACH",
+      "fired": [],
+      "pass": true,
+      "as_error": false,
+      "verdict": "grammatical"
+    },
+    {
+      "probe": "prep-gerund",
+      "sentence": "I look forward to see you.",
+      "expected": "C-PREP-GERUND",
+      "fired": [
+        "C-PREP-GERUND"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "pron-ambig",
+      "sentence": "When John met Tom, he smiled.",
+      "expected": "C-PRON-AMBIG",
+      "fired": [],
+      "pass": true,
+      "as_error": false,
+      "verdict": "grammatical"
+    },
+    {
+      "probe": "pron-antecedent",
+      "sentence": "The students lost his books.",
+      "expected": "C-PRON-ANTECEDENT",
+      "fired": [],
+      "pass": true,
+      "as_error": false,
+      "verdict": "unverified"
+    },
+    {
+      "probe": "proper-noun",
+      "sentence": "I met john yesterday.",
+      "expected": "C-PROPER-NOUN",
+      "fired": [
+        "C-ARTICLE"
+      ],
+      "pass": false,
+      "as_error": false,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "quotation",
+      "sentence": "He said, \"i am tired.\"",
+      "expected": "C-QUOTATION",
+      "fired": [
+        "C-PROPER-NOUN"
+      ],
+      "pass": false,
+      "as_error": false,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "redundancy",
+      "sentence": "Please repeat again.",
+      "expected": "C-REDUNDANCY",
+      "fired": [
+        "C-REDUNDANCY"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "reflexive-antecedent",
+      "sentence": "Myself did the work.",
+      "expected": "C-REFLEXIVE-ANTECEDENT",
+      "fired": [
+        "C-REFLEXIVE-SUBJECT"
+      ],
+      "pass": true,
+      "as_error": false,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "reflexive-form",
+      "sentence": "He did it hisself.",
+      "expected": "C-REFLEXIVE-FORM",
+      "fired": [
+        "C-REFLEXIVE-FORM"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "register",
+      "sentence": "The boss is gonna fire us.",
+      "expected": "C-REGISTER",
+      "fired": [],
+      "pass": false,
+      "as_error": false,
+      "verdict": "grammatical"
+    },
+    {
+      "probe": "relative-agree",
+      "sentence": "The man who were late left.",
+      "expected": "C-RELATIVE-AGREE",
+      "fired": [
+        "C-RELATIVE-AGREE"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "relative-possessive",
+      "sentence": "The boy who's bag is here.",
+      "expected": "C-RELATIVE-POSSESSIVE",
+      "fired": [
+        "C-ARTICLE"
+      ],
+      "pass": false,
+      "as_error": false,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "reported-speech",
+      "sentence": "She said me that she was tired.",
+      "expected": "C-REPORTED-SPEECH",
+      "fired": [
+        "C-REPORTED-SPEECH"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "resumptive-relative",
+      "sentence": "The man that I saw him was tall.",
+      "expected": "C-RESUMPTIVE-RELATIVE",
+      "fired": [
+        "C-RESUMPTIVE-RELATIVE"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "runon",
+      "sentence": "I came I saw.",
+      "expected": "C-RUNON",
+      "fired": [
+        "C-PRONOUN-CASE",
+        "C-RUNON"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "selectional",
+      "sentence": "He suggested me to leave.",
+      "expected": "C-SELECTIONAL",
+      "fired": [
+        "C-VERB-CLAUSE-PATTERN"
+      ],
+      "pass": true,
+      "as_error": false,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "sentence-capital",
+      "sentence": "the cat sat on the mat.",
+      "expected": "C-SENTENCE-CAPITAL",
+      "fired": [
+        "C-CAPITALIZATION",
+        "C-SENTENCE-CAPITAL"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "some-any",
+      "sentence": "I do not have some money.",
+      "expected": "C-SOME-ANY",
+      "fired": [
+        "C-SOME-ANY"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "spacing-repeat",
+      "sentence": "I want to to go home.",
+      "expected": "C-SPACING-REPEAT",
+      "fired": [
+        "C-SPACING-REPEAT"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "spelling",
+      "sentence": "I recieve the letter.",
+      "expected": "C-SPELLING",
+      "fired": [
+        "C-SPELLING"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "stative-progressive",
+      "sentence": "I am knowing the answer.",
+      "expected": "C-STATIVE-PROGRESSIVE",
+      "fired": [
+        "C-STATIVE-PROGRESSIVE"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "subjunctive",
+      "sentence": "I wish I was taller.",
+      "expected": "C-SUBJUNCTIVE",
+      "fired": [],
+      "pass": true,
+      "as_error": false,
+      "verdict": "grammatical"
+    },
+    {
+      "probe": "tense-consistency",
+      "sentence": "He said that he will come.",
+      "expected": "C-TENSE-CONSISTENCY",
+      "fired": [],
+      "pass": true,
+      "as_error": false,
+      "verdict": "grammatical"
+    },
+    {
+      "probe": "tense-finite",
+      "sentence": "The boy in the garden.",
+      "expected": "C-TENSE-FINITE",
+      "fired": [
+        "C-TENSE-FINITE"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "tense-time",
+      "sentence": "Yesterday I go to school.",
+      "expected": "C-TENSE-TIME",
+      "fired": [],
+      "pass": true,
+      "as_error": false,
+      "verdict": "grammatical"
+    },
+    {
+      "probe": "terminal-punct",
+      "sentence": "The cat is on the mat",
+      "expected": "C-TERMINAL-PUNCT",
+      "fired": [
+        "C-TERMINAL-PUNCT"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "time-place-prep",
+      "sentence": "I will meet you in Monday.",
+      "expected": "C-TIME-PLACE-PREP",
+      "fired": [
+        "C-TIME-PLACE-PREP"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "to-base",
+      "sentence": "She wants to goes home.",
+      "expected": "C-TO-BASE",
+      "fired": [
+        "C-TO-BASE"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "transitivity",
+      "sentence": "She arrived the station.",
+      "expected": "C-TRANSITIVITY",
+      "fired": [
+        "C-TRANSITIVITY"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "unnecessary-article",
+      "sentence": "We have the breakfast at eight.",
+      "expected": "C-UNNECESSARY-ARTICLE",
+      "fired": [
+        "C-UNNECESSARY-ARTICLE"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "verb-clause-pattern",
+      "sentence": "The teacher suggested him to leave.",
+      "expected": "C-VERB-CLAUSE-PATTERN",
+      "fired": [
+        "C-VERB-CLAUSE-PATTERN"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "verb-ending",
+      "sentence": "She is runing fast.",
+      "expected": "C-VERB-ENDING",
+      "fired": [
+        "C-VERB-ENDING"
+      ],
+      "pass": true,
+      "as_error": true,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "word-order",
+      "sentence": "The book she read.",
+      "expected": "C-WORD-ORDER",
+      "fired": [
+        "C-TENSE-FINITE"
+      ],
+      "pass": false,
+      "as_error": false,
+      "verdict": "ungrammatical"
+    },
+    {
+      "probe": "wrong-preposition",
+      "sentence": "She is married with him.",
+      "expected": "C-WRONG-PREPOSITION",
+      "fired": [
+        "C-ADJ-PREP"
+      ],
+      "pass": true,
+      "as_error": false,
+      "verdict": "ungrammatical"
+    }
+  ]
+}

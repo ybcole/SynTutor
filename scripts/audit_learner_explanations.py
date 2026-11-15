@@ -14,7 +14,7 @@ import sys
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"server"))
 from jsonschema import Draft202012Validator
-from learner_explanations import compose_learner_explanation
+from learner_explanations import compose_learner_explanation, LEXICAL
 from xai_facts import build_fact_graph
 from burton_roberts import canonicalize_gold_record
 
@@ -62,7 +62,9 @@ def run():
                     self_reference_failures+=1
                     failures.append(key+":"+node["node_id"]+":self-reference")
                 parent=by_id.get(node.get("parent_id"))
-                if parent is not None and text==texts.get(parent["node_id"]):
+                if (parent is not None and text==texts.get(parent["node_id"])
+                        and (node.get("kind")=="word"
+                             or node.get("label") in LEXICAL)):
                     duplicate_parent_failures+=1
                     failures.append(key+":"+node["node_id"]+":duplicate-parent")
                 checked+=1

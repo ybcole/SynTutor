@@ -1269,6 +1269,18 @@ def _gov_verb(grandparent, sbar_gov):
     return ''
 
 
+def _next_leaf_after(root, node):
+    """Surface of the leaf immediately after `node` inside `root`, if any."""
+    if root is None:
+        return None
+    leaves = _leaves_list(root)
+    for index, leaf in enumerate(leaves):
+        if leaf.get('id') == node.get('id'):
+            return (_lower(leaves[index + 1].get('surface', ''))
+                    if index + 1 < len(leaves) else None)
+    return None
+
+
 def _gov_licenses_base(grandparent, sbar_gov):
     """True when the clause's governing verb licenses a bare base form, so the
     base verb must not be treated as a finite agreement target."""
@@ -1931,6 +1943,15 @@ class MatrixEvaluator:
                     break
         vp_head = phrase_head(child)
         if vp_head is None:
+            if _gov_licenses_base(grandparent, self._sbar_gov):
+                # A perception/causative small clause ("We heard the door
+                # close", "We saw the man leave") can have a bare verb that
+                # the parser tags as a simple category. The main verb supplies
+                # the finite time, so this is not a missing-verb error.
+                return ('valid', 'C-SMALL-CLAUSE-PREDICATE',
+                        f"The words '{self._p(child)}' describe what was heard, "
+                        f"seen or caused after '{self._p(parent)}'; the main "
+                        'verb shows the time.')
             return ('error', 'C-TENSE-FINITE',
                     f"The sentence '{self._p(parent)}' has a subject but no verb, so "
                     'it is not complete. Add a verb.')
@@ -2154,6 +2175,18 @@ class MatrixEvaluator:
         if ct in DET_CLASS or ct == 'PRP$' or _lower(child.get('surface', '')) in POSS_DET_PLAIN:
             determinatives = _np_determinatives(parent)
             if len(determinatives) > 1:
+                parent_leaves = _leaves_list(parent)
+                if any(lf.get('type') == 'CC' for lf in parent_leaves) or any(
+                        (lf.get('surface') or '').strip() in
+                        {'-', '\u2014', '\u2013', ',', ':'} for lf in parent_leaves):
+                    # "Both the committee and the staff", "Her idea — to
+                    # rebuild the bridge — ...": the extra determiners belong
+                    # to different conjuncts or to an appositive, not to one
+                    # stacked determiner position.
+                    return ('valid', 'C-DETERMINER',
+                            f"'{self._p(parent)}' coordinates or frames more than "
+                            "one part, so the little words before the nouns are "
+                            "not stacked determiners.")
                 if any((lf.get('surface') or '').strip() == '-'
                        for lf in _leaves_list(parent)):
                     return ('valid', 'C-DETERMINER',
@@ -2214,6 +2247,11 @@ class MatrixEvaluator:
         if ct in ADJ_CLASS or ct == 'ADJP':
             if ct in ADJ_CLASS and _lower(child.get('surface', '')) in \
                     {'less', 'fewer', 'much', 'many', 'little', 'few'}:
+                nxt = _next_leaf_after(grandparent, child)
+                if nxt in {'than', 'as'}:
+                    return ('valid', 'C-QUANTIFIER',
+                            f"'{self._p(child)}' is part of the comparison in "
+                            f"'{self._p(grandparent)}'.")
                 return self._quantifier_check(parent, child, head)
             return self._modifier_pos(parent, child)
         if ct in {'CD', 'PDT', 'QP'}:
@@ -2244,6 +2282,17 @@ class MatrixEvaluator:
 
     def _quantifier_check(self, parent, child, head):
         word = _lower(child['surface'])
+        parent_leaves = _leaves_list(parent)
+        for index, leaf in enumerate(parent_leaves):
+            if leaf.get('id') == child.get('id'):
+                nxt = parent_leaves[index + 1] if index + 1 < len(parent_leaves) else None
+                if nxt is not None and _lower(nxt.get('surface', '')) in {'than', 'as'}:
+                    # "less than", "more than", "as much as" are comparisons,
+                    # not a quantifier-noun agreement choice.
+                    return ('valid', 'C-QUANTIFIER',
+                            f"The words '{self._p(child)} {self._p(nxt)}' form a "
+                            'comparison in this sentence.')
+                break
         if head is None:
             return ('error', 'C-QUANTIFIER',
                     f"The word '{self._p(child)}' is in '{self._p(parent)}', but "
@@ -2694,13 +2743,24 @@ class MatrixEvaluator:
         subj_head = subject_head(subj)
         if subj_head is None or vp_head is None:
             return None
-        coordinated = is_coordinated(subj)
+        sleaves = _leaves_list(subj)
+        correlative_ccs = [x for x in sleaves if x.get('type') == 'CC']
+        correlative = any(_lower(cc.get('surface', '')) in ('or', 'nor')
+                          for cc in correlative_ccs)
+        if correlative:
+            # With either/or and neither/nor the verb agrees with the nearest
+            # conjunct, not with the coordination as a whole.
+            heads = [x for x in sleaves
+                     if x.get('type') in ('NN', 'NNS', 'NNP', 'NNPS', 'PRP')]
+            if heads:
+                subj_head = heads[-1]
+        coordinated = is_coordinated(subj) and not correlative
         sk = ('3', 'pl') if coordinated else subject_key(subj_head)
         # A singular determiner overrides the number of a plural-looking head:
         # 'Every students are' has a singular subject, so the verb must be 'is'.
         det = next((c for c in subj.get('children', [])
                     if c.get('type') == 'DT'), None)
-        if det is not None and _lower(det.get('surface', '')) in {
+        if not correlative and det is not None and _lower(det.get('surface', '')) in {
                 'every', 'each', 'neither', 'either', 'one', 'this', 'that',
                 'another'}:
             sk = ('3', 'sg')
@@ -3063,13 +3123,12 @@ class MatrixEvaluator:
         if target is None:
             return None
         position = 'the object' if objective_needed else 'the subject'
-        demand = 'an object' if objective_needed else 'a subject'
+        required = 'object' if objective_needed else 'subject'
+        actual = 'subject' if objective_needed else 'object'
         return {
-            'violation': (f"'{head['surface']}' is the wrong form for {position}. "
-                          f"(It is the "
-                          f"{'subject' if not objective_needed else 'object'} form.)"),
-            'suggested_fix': (f"Change '{head['surface']}' to '{target}', because a pronoun "
-                              f"used as {demand} needs the '{demand}' form."),
+            'violation': (f"'{head['surface']}' is the {actual} form, but "
+                          f"{position} needs the {required} form."),
+            'suggested_fix': (f"Change '{head['surface']}' to '{target}'."),
             'alternative_fix': (f"Or use the person's name or another noun in place of "
                                 f"'{head['surface']}' instead."),
             'targeted_outcome': f"'{target}' instead of '{head['surface']}'",
@@ -3217,7 +3276,12 @@ class MatrixEvaluator:
         if word not in ('less', 'fewer') or parent is None:
             return None
         head = _np_head(parent)
-        noun_s = head['surface'] if head else 'the noun'
+        if head is None:
+            # "less than his colleague" is a comparative, not a quantifier
+            # used with a count/mass noun. Without a noun head there is no
+            # less/fewer choice to repair.
+            return None
+        noun_s = head['surface']
         if word == 'less':
             suggested = (f"Change '{node['surface']}' to 'fewer', because '{noun_s}' is a "
                          f"plural noun you can count: '{node['surface']} {noun_s}' \u2192 "

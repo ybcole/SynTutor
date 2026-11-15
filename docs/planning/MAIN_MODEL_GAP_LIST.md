@@ -7,12 +7,13 @@ not lessons or quizzes (U03 is excluded by owner decision).
 
 - Stress-test/XAI repair pass (2026-11-14): every red word is bound to its
   explanation, repeated explanations are collapsed only for structural layers,
-  word explanations are specific instead of self-referential, candidate-check
-  dropdowns are removed, correction cascades expose a re-parsed delta, all 45
-  complex stress sentences normalize with labelled trees, and the exact fixture
-  audit is 216/216 (0 unresolved). Agreement findings are scoped to the clause
-  predicate, so a relative-clause verb is no longer compared with the main
-  subject, and relative pronoun choice is diagnosed from antecedent animacy.
+  word explanations are specific instead of self-referential and quote only the
+  smallest necessary context, candidate-check dropdowns are removed, correction
+  cascades expose a re-parsed delta, and the exact fixture audit is 216/216
+  (0 unresolved). A 183-sentence complex-sentence corpus reports 0 flagged
+  cases: 165 trees normalize and 18 are labelled provisional working trees.
+  Detector rules are clause/phrase-scoped, agreement findings inspect the clause
+  predicate, and relative pronoun choice is diagnosed from antecedent animacy.
   See
   `docs/planning/SYNTUTOR_STRESS_TEST_AND_XAI_2026-11-14.md`.
 - Authority manifest attached to `/api/parse`.

@@ -40,6 +40,28 @@ SELF_REFERENCE_PHRASES = (
     "position in", "built around", "beginning with", "preposition phrase",
     "verb phrase", "clause ", "in “",
 )
+# Nodes whose role genuinely depends on the whole clause/sentence may quote it.
+SENTENCE_LEVEL_LABELS = {"V", "AUX", "MOD", "TENSE", "C1", "C2", "PERF",
+                         "PROG", "PASS", "C"}
+LEXICAL_LABELS = {"N", "V", "A", "Adv", "P", "PRO", "PRON", "pronoun", "ART",
+                  "NAME", "name", "DEG", "Q", "QA", "POSS", "DEM", "V-part",
+                  "PRE-DET", "PART", "Prt", "NEG", "MOD", "PERF", "PROG",
+                  "PASS", "AUX", "TENSE", "DET", "C", "C1", "C2"}
+
+
+def _quote(value: str) -> str:
+    clean = " ".join(value.split())
+    if len(clean) > 110:
+        clean = clean[:107].rsplit(" ", 1)[0] + "..."
+    return f"“{clean}”" if clean else "this position"
+
+
+def _lexical_label(node, by_id):
+    for ancestor_id in node.get("ancestor_ids") or []:
+        ancestor = by_id.get(ancestor_id)
+        if ancestor and ancestor.get("label") in LEXICAL_LABELS:
+            return ancestor.get("label")
+    return None
 
 
 def audit_sentence(sentence: str) -> list[dict]:
@@ -68,9 +90,23 @@ def audit_sentence(sentence: str) -> list[dict]:
                     break
             if "this position" in text and node.get("kind") != "empty":
                 reasons.append("this-position-on-overt-node")
+        # Structural layers may legitimately repeat their parent; the UI
+        # collapses them. Words and lexical wrappers must never do so.
         if (parent and parent.get("node_id") in texts
-                and text == texts.get(parent["node_id"])):
+                and text == texts.get(parent["node_id"])
+                and (node.get("kind") == "word"
+                     or _lexical_label(node, by_id) is not None)):
             reasons.append("identical-to-parent")
+        # Sentence-awareness: a local word or phrase should not quote the whole
+        # sentence; only clause-level roles need that context.
+        sentence_quote = _quote(sentence)
+        if (surface and surface != sentence.strip()
+                and sentence_quote in text):
+            if node.get("kind") == "word":
+                if _lexical_label(node, by_id) not in SENTENCE_LEVEL_LABELS:
+                    reasons.append("over-context:full-sentence")
+            elif node.get("label") in {"NP", "NOM", "PP", "AP", "AdvP", "PartP"}:
+                reasons.append("over-context:full-sentence")
         if reasons:
             problems.append({
                 "sentence": sentence,
