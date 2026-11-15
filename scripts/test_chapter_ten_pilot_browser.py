@@ -126,7 +126,7 @@ try:
         view.get_by_role('button', name='← All lessons', exact=True).click()
         chapter.get_by_role('button', name='Resume lesson', exact=True).click()
         expect(page).to_have_url(f'{base}/?preview=br-10#lesson/br-10/application')
-        view.get_by_text('Check both analyses').click()
+        expect(view.get_by_text('Which verb takes “Ren to leave” as one group', exact=False)).to_be_visible()
         expect(view.get_by_text('Ren is the higher object', exact=False)).to_be_visible()
         next_page.click()
         view.get_by_text('References and source review', exact=True).click()

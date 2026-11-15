@@ -53,6 +53,14 @@ export function addExplanationPractice(body, { el, button }, { key, id, explanat
   body.append(practice);
 }
 
+export function lessonReflection(el, prompt, explanation, example) {
+  const reflection = el('div', undefined, 'lesson-reflection');
+  reflection.append(el('p', prompt, 'lesson-reflection-prompt'));
+  if (example) reflection.append(lessonExample(el, example));
+  reflection.append(el('p', explanation));
+  return reflection;
+}
+
 export function addFoundationsBookCoverage(body, el, lessonId, sectionId) {
   const entries = foundationsBookContent[lessonId]?.[sectionId] ?? [];
   const recap = sectionId === 'recap' && foundationsBookRecaps[lessonId];
@@ -63,8 +71,11 @@ export function addFoundationsBookCoverage(body, el, lessonId, sectionId) {
   }
   if (!entries.length) return;
 
-  const practice = el('details', undefined, 'lesson-sources');
-  practice.append(el('summary', 'Practice and feedback'));
+  const practice = el('section', undefined, 'lesson-reflections');
+  practice.setAttribute('aria-labelledby', 'lesson-reflections-title');
+  const practiceTitle = el('h3', 'Think it through');
+  practiceTitle.id = 'lesson-reflections-title';
+  practice.append(practiceTitle);
   for (const [id, title, example, explanation, prompt, feedback, definition] of entries) {
     const heading = el('h3', title);
     heading.id = id.toLowerCase();
@@ -73,12 +84,9 @@ export function addFoundationsBookCoverage(body, el, lessonId, sectionId) {
     if (definition) body.append(el('p', definition));
     body.append(lessonExample(el, example), ...paragraphs);
 
-    const exercise = el('section');
+    const exercise = lessonReflection(el, prompt, feedback);
     exercise.id = `${heading.id}-practice`;
-    exercise.setAttribute('aria-label', title);
-    const answer = el('details');
-    answer.append(el('summary', 'Check your answer'), el('p', feedback));
-    exercise.append(el('h4', title), el('p', prompt), answer);
+    if (entries.length > 1) exercise.prepend(el('h4', title));
     practice.append(exercise);
   }
   return practice;

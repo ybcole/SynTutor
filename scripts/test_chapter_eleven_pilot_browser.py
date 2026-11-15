@@ -96,7 +96,7 @@ try:
         view.get_by_role('button', name='← All lessons', exact=True).click()
         chapter.get_by_role('button', name='Resume lesson', exact=True).click()
         expect(page).to_have_url(f'{base}/?preview=br-11#lesson/br-11/application')
-        view.get_by_text('Check the derivation').click()
+        expect(view.get_by_text('Can the coordination rule build the sentence above?', exact=False)).to_be_visible()
         expect(view.get_by_text('[S [S Mina waves] and [S Leo waits]]', exact=True)).to_be_visible()
         next_page.click()
         view.get_by_text('References and source review', exact=True).click()

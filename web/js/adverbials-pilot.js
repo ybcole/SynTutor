@@ -1,4 +1,4 @@
-import { addIntroExample, addTreeTrace, lessonExample } from './lesson-presentation.js';
+import { addIntroExample, addTreeTrace, lessonExample, lessonReflection } from './lesson-presentation.js';
 import { addBranchExercise } from './lesson-tree-exercise.js';
 
 const node = (id, label, ...children) => ({ id, label, children });
@@ -193,10 +193,9 @@ export const adverbialsPilot = {
         p('A disjunct adds the speaker’s comment to a statement. A conjunct links a statement to the words around it. In “The latch broke. Therefore, the gate opened”, “therefore” shows that the opening was a result of the break.');
         p('Imagine a witness saying “Honestly, Lea answered the question”. “Honestly” comments on how the witness presents the whole statement. In “Lea answered the question honestly”, it can describe Lea’s manner. Ask whose honesty is at issue before attaching the adverbial.');
         example('[Unfortunately], the gate jammed.');
-        const check = el('details', undefined, 'lesson-sources');
-        check.append(el('summary', 'Check what “unfortunately” modifies'),
-          el('p', 'It gives the speaker’s evaluation of the entire statement. Draw it beside S, under a higher S.'));
-        body.append(check);
+        body.append(lessonReflection(el,
+          'What does “unfortunately” tell you about the jam? Where would its branch go?',
+          'The word gives the speaker’s evaluation of the whole event. Draw it beside S, under a higher S. The two branches show that the comment applies to the entire statement.'));
         break;
       }
       case 'recap':

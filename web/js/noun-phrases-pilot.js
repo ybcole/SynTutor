@@ -1,4 +1,4 @@
-import { addIntroExample, addTreeTrace, lessonExample } from './lesson-presentation.js';
+import { addIntroExample, addTreeTrace, lessonExample, lessonReflection } from './lesson-presentation.js';
 import { addBranchExercise } from './lesson-tree-exercise.js';
 
 const node = (id, label, ...children) => ({ id, label, children });
@@ -137,12 +137,10 @@ export const nounPhrasesPilot = {
         p('First ask what the noun modifier describes. Then ask what the adjective’s complement belongs to. In “the pilot ready for departure”, the whole AP describes the pilot. Inside that AP, “for departure” tells what the pilot is ready for and belongs with “ready”. The outer attachment and the inner attachment do different jobs.');
         break;
       case 'application': {
-        p('The bowls are ceramic and they came from Vigan. Which group does the PP “from Vigan” go with?');
         example('Those ceramic bowls from Vigan');
-        const check = el('details', undefined, 'lesson-sources');
-        check.append(el('summary', 'Check the attachment'),
-          el('p', '“Ceramic bowls” forms the smaller NOM. The PP “from Vigan” joins that NOM under a larger one. “Those” stays in DET.'));
-        body.append(check);
+        body.append(lessonReflection(el,
+          'The bowls are ceramic and they came from Vigan. Which group does the PP “from Vigan” describe?',
+          '“Ceramic bowls” forms the smaller NOM. The PP “from Vigan” describes that whole group, so it joins the smaller NOM under a larger one. “Those” stays in DET.'));
         p('An indefinite pronoun can refer to a person without saying who it is. “Someone” can be a whole NP on its own. When you add the PP in the next example, the pronoun and PP both sit right under NP.');
         example('Someone [from Vigan]');
         trace('Compare a plain and a modified pronoun', [

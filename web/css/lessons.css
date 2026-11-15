@@ -487,6 +487,16 @@
 .lesson-practice-panel > :first-child { margin-block-start:0; }
 .lesson-practice-panel > :last-child { margin-block-end:0; }
 .lesson-practice-panel .lesson-tree-steps { display:flex; flex-wrap:wrap; gap:6px; }
+.lesson-reflections { margin-block:28px 16px; }
+.lesson-reflection {
+  margin-block:16px;
+  padding-inline-start:14px;
+  border-inline-start:2px solid var(--border);
+}
+.lesson-reflection h4 { margin:0 0 6px; }
+.lesson-reflection p { margin:0; }
+.lesson-reflection p + p { margin-block-start:8px; }
+.lesson-reflection-prompt { font-weight:600; }
 .lesson-transfer-choices { align-items:center; }
 .curriculum-view .lesson-transfer-choices button { min-height:40px; }
 .lesson-combination-inputs { display:grid; gap:12px; margin-block-end:12px; }
