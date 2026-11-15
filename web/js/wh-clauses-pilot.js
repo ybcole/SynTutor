@@ -1,4 +1,4 @@
-import { addIntroExample, addTreeTrace, lessonExample } from './lesson-presentation.js';
+import { addIntroExample, addTreeTrace, lessonExample, lessonReflection } from './lesson-presentation.js';
 import { addBranchExercise } from './lesson-tree-exercise.js';
 
 const node = (id, label, ...children) => ({ id, label, children });
@@ -192,22 +192,11 @@ export const whClausesPilot = {
         break;
       }
       case 'application': {
-        p('Look at the bracketed relative clause. Which ropes does it describe? Then find the missing object inside the clause.');
         example('The ropes [which Ivo checked] were dry.');
-        const feedback = el('p', undefined, 'lesson-feedback');
-        feedback.setAttribute('role', 'status');
-        body.append(ui.practiceQuestion('relative-transfer', 'What does “which Ivo checked” do?', [
-          'Gives the content of the noun', 'Identifies which ropes were dry',
-        ], answer => {
-          feedback.className = `lesson-feedback ${answer === '1' ? 'correct' : 'retry'}`;
-          feedback.textContent = answer === '1'
-            ? 'The statement applies to the ropes Ivo checked.'
-            : 'Try supplying what Ivo checked. The missing object links the clause to “ropes”.';
-        }), feedback);
-        const check = el('details', undefined, 'lesson-sources');
-        check.append(el('summary', 'Check the relative’s job'),
-          el('p', 'The relative picks out the ropes Ivo checked. The object gap is after “checked”, and the relative joins the NOM “ropes”.'));
-        body.append(check);
+        body.append(lessonReflection(el,
+          'The sentence reports that some ropes were dry and includes a clause about Ivo’s inspection.',
+          'Which ropes does “which Ivo checked” pick out, and where would the missing object go inside the clause?',
+          'The relative picks out the ropes Ivo checked. The object gap is after “checked”: Ivo checked something, and that missing object is linked to “ropes”. The relative joins the NOM “ropes” to show which ones were dry.'));
         break;
       }
       case 'recap':

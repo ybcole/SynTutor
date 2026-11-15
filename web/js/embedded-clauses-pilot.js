@@ -1,4 +1,4 @@
-import { addIntroExample, addTreeTrace, lessonExample } from './lesson-presentation.js';
+import { addIntroExample, addTreeTrace, lessonExample, lessonReflection } from './lesson-presentation.js';
 import { addBranchExercise } from './lesson-tree-exercise.js';
 
 const node = (id, label, ...children) => ({ id, label, children });
@@ -163,25 +163,12 @@ export const embeddedClausesPilot = {
         break;
       }
       case 'application': {
-        p('Find what Ria heard. Then find the question inside that report. Choose the two words that start the embedded clauses.');
         example('Ria heard that Ivo wondered whether the hall was open.');
-        const feedback = el('p', undefined, 'lesson-feedback');
-        feedback.setAttribute('role', 'status');
-        body.append(ui.practiceQuestion('embedded-spans', 'Where do the outer and inner embedded clauses start, in that order?', [
-          '“Ivo” and “the hall”', '“that” and “whether”', '“Ria” and “whether”',
-        ], answer => {
-          feedback.className = `lesson-feedback ${answer === '1' ? 'correct' : 'retry'}`;
-          feedback.textContent = [
-            'Those are the subjects inside the two S nodes. Include the introductory word in each full S′.',
-            'Both starts include the introductory word. The two embedded spans end at “open”.',
-            '“Ria” starts the main clause. Start the outer embedded clause at the word that introduces what she heard.',
-          ][Number(answer)];
-        }), feedback);
-        const check = el('details', undefined, 'lesson-sources');
-        check.append(el('summary', 'Check both spans'),
-          lessonExample(el, 'Ria heard [that Ivo wondered [whether the hall was open]].'),
-          el('p', 'The outer report starts at “that”. The inner question starts at “whether”, and its S starts at “the hall”. Both embedded spans end at “open”.'));
-        body.append(check);
+        body.append(lessonReflection(el,
+          'Ria hears a report about Ivo, and that report contains his question about the hall.',
+          'Where do the two embedded clauses start and end? Find what Ria heard first, then find the question Ivo wondered about.',
+          'The outer clause starts at “that” and the inner question starts at “whether”. “Ivo” and “the hall” begin the subject–predicate groups inside those clauses. Include the complementiser in each full S′. Both embedded clauses end at “open”.',
+          { example: 'Ria heard [that Ivo wondered [whether the hall was open]].' }));
         break;
       }
       case 'recap':

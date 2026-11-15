@@ -172,9 +172,7 @@ export const functionsPilot = {
       heading('Try a new sentence');
       example('Leo tightened a loose bolt.');
       p('Write the subject and predicate. Then say which word “loose” describes and which group tells what Leo tightened.');
-      const hint = el('details', undefined, 'lesson-sources');
-      hint.append(el('summary', 'Hint'), el('p', 'Compare “Leo tightened a bolt” with the original. Which word can disappear while the thing being tightened is still named?'));
-      body.append(hint);
+      body.append(el('p', 'Compare “Leo tightened a bolt” with the original. Which word can disappear while the thing being tightened is still named?'));
       const key = `syntutor:lesson-transfer:${ui.userId}:br-02@${lesson.content_version}:application`;
       addExplanationPractice(body, ui, {
         key, id: 'chapter-two-transfer',

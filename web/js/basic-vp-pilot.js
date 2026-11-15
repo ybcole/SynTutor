@@ -45,9 +45,7 @@ const recap = [
 ];
 
 function transfer(body, { el, button, userId, lesson }) {
-  const hint = el('details', undefined, 'lesson-sources');
-  hint.append(el('summary', 'Hint'), el('p', 'Find the direct object in each sentence. Does the other phrase tell who gets something? Or does it tell what the object is like?'));
-  body.append(hint);
+  body.append(el('p', 'Find the direct object in each sentence. Does the other phrase tell who gets something? Or does it tell what the object is like?'));
 
   const key = `syntutor:lesson-transfer:${userId}:${lesson.lesson_id}@${lesson.content_version}:application`;
   addExplanationPractice(body, { el, button }, {

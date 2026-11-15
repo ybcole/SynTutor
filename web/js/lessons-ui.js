@@ -25,6 +25,7 @@ import { phraseStructureArticles } from './phrase-structure-lessons.js';
 import { cambridgeChapterArticles } from './cambridge-chapter-lessons.js?v=2026.11.16c';
 import { displayVpLevel, lessonNotation } from './lesson-notation.js';
 import { addLessonKeyTerms } from './lesson-key-terms.js';
+import { addLessonDictionary } from './lesson-dictionary.js';
 
 const articleLessons = {
   'br-01': {
@@ -49,6 +50,7 @@ const articleLessons = {
 let options = {}, course, store, foundations, host, active = null, step = 0, track = 'foundations', busy = false, notice = '', generation = 0, lastFocus = null;
 let reviewStage = null;
 let articlePage = 0, practiceResponses = null, assessmentIndex = 0;
+let closeLessonDictionary;
 const legacyArticleSections = [
   { id: 'introduction', advances: 'predict' },
   { id: 'concepts', advances: 'understand' },
@@ -706,6 +708,8 @@ function clearLessonDiagram(host) {
 }
 
 function clearLessonCanvases() {
+  closeLessonDictionary?.();
+  closeLessonDictionary = undefined;
   embeddedBuilderCleanup?.();
   embeddedBuilderCleanup = null;
   for (const view of lessonCanvases.values()) view.destroy();
@@ -987,6 +991,21 @@ function articleScreen(lesson, p, article) {
   }
 
   if (revised) {
+    if (!section.assessment) {
+      closeLessonDictionary = addLessonDictionary(body, {
+        scrollHost: host,
+        resolve({ chapter, section: id }) {
+          const destination = course.lessons.find(item => item.lesson_id === `br-${String(chapter).padStart(2, '0')}`);
+          if (!destination?.revised_assessment) return null;
+          const destinationSection = articleSections(articleFor(destination)).find(item => item.id === id);
+          return destinationSection && {
+            id: destination.lesson_id, section: id, title: destinationSection.title,
+            href: sectionRoute(destination, destinationSection),
+          };
+        },
+        navigate: target => openLesson(target.id, target),
+      });
+    }
     if (section.references) body.append(lessonReferences(lesson));
     const userId = lessonUserId();
     const kind = section.assessment ? 'closing' : section.id === 'introduction' ? 'opening' : null;

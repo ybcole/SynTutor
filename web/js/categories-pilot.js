@@ -120,9 +120,7 @@ export const categoriesPilot = {
     if (section.id === 'application') {
       example('The cat hid behind the chair and under the blanket.');
       p('Write the two groups that “and” joins. Then name the category of the whole location group.');
-      const hint = el('details', undefined, 'lesson-sources');
-      hint.append(el('summary', 'Hint'), el('p', 'Find each preposition. Put the words that name its landmark in the same group.'));
-      body.append(hint);
+      body.append(el('p', 'Find each preposition. Put the words that name its landmark in the same group.'));
       const key = `syntutor:lesson-transfer:${ui.userId}:br-03@${lesson.content_version}:application`;
       addExplanationPractice(body, ui, {
         key, id: 'chapter-three-transfer',
