@@ -95,7 +95,7 @@ export function createQuizStore(bank,{storage,userId='guest',client=null,timeout
     submit(id){return transact(()=>{const t=state.attempts[id];if(!t)throw Error('Unknown attempt');
       if(t.submitted_at)return {attempt_id:id,earned:0,grade:gradeAttempt(bank,t)};
       const a=bank.assessments.find(a=>quizKey(a)===quizKey(t));const before=t.practice?0:summaryFor(bank,state.attempts,a).xp_awarded;
-      const grade=gradeAttempt(bank,t);t.submitted_at=new Date().toISOString();t.synced=false;dirty.add(id);delete state.drafts[quizKey(t)];
+       const grade=gradeAttempt(bank,t);if(t.quiz_v2)t.correct=grade.correct;t.submitted_at=new Date().toISOString();t.synced=false;dirty.add(id);delete state.drafts[quizKey(t)];
       return {attempt_id:id,earned:t.practice?0:Math.max(0,grade.target_xp-before),grade};});},
     async retry(){blocked=false;await this.load();},
   };

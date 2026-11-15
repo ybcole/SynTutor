@@ -1,4 +1,4 @@
-import { reviewed, rng, shuffled, randomSeed } from './quiz-core.js';
+import { reviewed, rng, shuffled, randomSeed, MAX_QUIZ_ITEMS } from './quiz-core.js';
 
 export const GENERAL_POLICY = Object.freeze({ minimum: 5, perTopic: 1 });
 // An additive crosswalk: published content and answer keys remain unchanged.
@@ -23,9 +23,9 @@ export function questionMetadata(q, curriculum) {
     lesson_reference: q.lesson_reference || `#lesson/${chapter.id}/${topic}`,
     content_version: q.content_version };
 }
-export function eligibleQuestions(bank, curriculum, trackId) {
+export function eligibleQuestions(bank, curriculum, trackId, tier = 'reviewed') {
   const sources = new Map(bank.sources.map(s => [s.id, s]));
-  return bank.items.filter(q => {
+  const published = bank.items.filter(q => {
     const meta = questionMetadata(q, curriculum);
     return meta?.track_id === trackId && reviewed(q) && q.publication_status === 'published'
       && q.source_ids?.length && q.source_ids.every(id => {
@@ -34,9 +34,17 @@ export function eligibleQuestions(bank, curriculum, trackId) {
           && ['resolved', 'compatible'].includes(s.crosswalk_status);
       });
   });
+  if(tier!=='lesson-practice')return published;
+  const practice=(bank.practice_items||[]).filter(q=>{
+    const meta=questionMetadata(q,curriculum);
+    return meta?.track_id===trackId&&q.publication_status==='practice'&&q.review_status==='UNREVIEWED'
+      &&q.independent_review===false&&q.source_metadata?.kind==='syntutor_lesson_section'
+      &&q.lesson_reference===`#lesson/${meta.chapter_id}/${meta.subtopic_id}`;
+  });
+  return [...published,...practice];
 }
 export function publishedBlueprint(bank, curriculum, spec) {
-  if (spec.mode !== 'topic') return null;
+  if (spec.mode !== 'topic'||spec.content_tier==='lesson-practice') return null;
   const eligible = new Set(eligibleQuestions(bank, curriculum, spec.track).filter(q => {
     const m = questionMetadata(q, curriculum);
     return m.chapter_id === spec.chapter && m.subtopic_id === spec.topic;
@@ -47,16 +55,19 @@ export function publishedBlueprint(bank, curriculum, spec) {
   })) || null;
 }
 export function topicPerformance(bank, curriculum, attempts, trackId) {
-  const topics = new Map(), missed = new Set(), seen = new Set(), concepts = new Map();
+  const topics = new Map(), missed = new Set(), seen = new Set(), concepts = new Map(), missedFamilies = new Set(), missedExamples = new Set();
+  const questions=[...bank.items,...(bank.practice_items||[])];
   const rows = Object.values(attempts).filter(t => t.submitted_at && Array.isArray(t.presented) && t.responses)
     .sort((a,b) => a.submitted_at.localeCompare(b.submitted_at) || a.attempt_id.localeCompare(b.attempt_id));
   for (const t of rows) for (const r of t.presented) {
-    const q = bank.items.find(q => q.item_id === r.item_id && q.content_version === r.content_version);
+    const q = questions.find(q => q.item_id === r.item_id && q.content_version === r.content_version);
     const m = questionMetadata(q, curriculum);
     if (m?.track_id !== trackId) continue;
     const correct = t.responses[q.item_id] === q.answer;
     seen.add(q.item_id);
     if (!correct) missed.add(q.item_id); // Never remove historical misses after a later success.
+    if(!correct&&q.practice_family)missedFamilies.add(q.practice_family);
+    if(!correct)for(const example of q.practice_example_ids||[])missedExamples.add(example);
     const key = `${m.chapter_id}/${m.subtopic_id}`;
     const old = topics.get(key) || { answered: 0, correct: 0, incorrect: 0, recent: 0.5 };
     old.answered++; old.correct += Number(correct); old.incorrect += Number(!correct);
@@ -70,7 +81,7 @@ export function topicPerformance(bank, curriculum, attempts, trackId) {
       prior.answered++; prior.incorrect += Number(!correct); concepts.set(id, prior);
     }
   }
-  return { topics, concepts, missed, seen };
+  return { topics, concepts, missed, seen, missedFamilies, missedExamples };
 }
 // Water-fill allocation: shuffled ties fairly rotate extras, respecting capacity.
 export function balancedSelection(groups, count, random, preference = () => 0) {
@@ -84,19 +95,21 @@ export function balancedSelection(groups, count, random, preference = () => 0) {
   }
   return pools.flatMap(g => g.selected);
 }
-export const specKey = spec => `quiz-v2:${spec.track}:${spec.mode}:${spec.chapter || ''}:${spec.topic || ''}:${spec.count || ''}`;
+export const specKey = spec => `quiz-v2:${spec.track}:${spec.mode}:${spec.chapter || ''}:${spec.topic || ''}:${spec.count || ''}${spec.content_tier==='lesson-practice'?':lesson-practice':''}`;
 export function selectQuestions(bank, curriculum, spec, attempts = {}, seed = randomSeed()) {
   const random = rng(seed), track = curriculum.find(t => t.id === spec.track);
   if (!track) throw Error('Unknown quiz track.');
   // Deduplicate stable IDs even if multiple content versions become available.
-  const all = [...new Map(eligibleQuestions(bank, curriculum, spec.track).map(q => [q.item_id, q])).values()];
+  const all = [...new Map(eligibleQuestions(bank, curriculum, spec.track, spec.content_tier).map(q => [q.item_id, q])).values()];
   const meta = q => questionMetadata(q, curriculum);
   const chapter = track.chapters.find(c => c.id === spec.chapter);
   let selection, diagnostic = false;
   if (spec.mode === 'personalized') {
     const performance = topicPerformance(bank, curriculum, attempts, spec.track);
-    const eligible = shuffled(all.filter(q => !performance.missed.has(q.item_id)), random);
-    if (eligible.length < 5) throw Error(`Only ${eligible.length} reviewed questions remain after excluding every previously missed question. Five are required; try another available topic quiz.`);
+    const eligible = shuffled(all.filter(q => !performance.missed.has(q.item_id)
+      &&(!q.practice_family||!performance.missedFamilies.has(q.practice_family))
+      &&!(q.practice_example_ids||[]).some(id=>performance.missedExamples.has(id))), random);
+    if (eligible.length < 5) throw Error(`Only ${eligible.length} ${spec.content_tier==='lesson-practice'?'eligible practice':'reviewed'} questions remain after excluding every previously missed question. Five are required; try another available topic quiz.`);
     diagnostic = [...performance.topics.values()].reduce((n,t) => n + t.answered, 0) < 5;
     if (diagnostic) {
       const groups = track.chapters.map(c => ({ id: c.id, items: eligible.filter(q => meta(q).chapter_id === c.id) })).filter(g => g.items.length);
@@ -114,6 +127,7 @@ export function selectQuestions(bank, curriculum, spec, attempts = {}, seed = ra
       selection = eligible.sort((a,b) => rank(b) - rank(a)).slice(0,5);
     }
   } else if (spec.mode === 'master') {
+    if(spec.count>MAX_QUIZ_ITEMS)throw Error(`Choose no more than ${MAX_QUIZ_ITEMS} questions per attempt.`);
     selection = balancedSelection(track.chapters.map(c => ({ id: c.id, items: all.filter(q => meta(q).chapter_id === c.id) })), spec.count, random);
   } else {
     if (!chapter) throw Error('Unknown chapter.');
@@ -128,7 +142,7 @@ export function selectQuestions(bank, curriculum, spec, attempts = {}, seed = ra
         Math.max(GENERAL_POLICY.minimum, chapter.topics.length * GENERAL_POLICY.perTopic), random);
     } else throw Error('Unknown quiz mode.');
   }
-  return { items: shuffled(selection, random), diagnostic };
+  return { items: shuffled(selection, random), diagnostic, unreviewed:selection.some(q=>q.review_status==='UNREVIEWED') };
 }
 export function makeV2Attempt(bank, curriculum, spec, attempts = {}, seed = randomSeed(), id = crypto.randomUUID()) {
   if (!Number.isInteger(seed) || seed < 0 || seed > 4294967295) throw Error('Invalid seed.');
@@ -140,7 +154,7 @@ export function makeV2Attempt(bank, curriculum, spec, attempts = {}, seed = rand
     : `Personalized ${track.title || spec.track} Quiz${selected.diagnostic ? ' — diagnostic practice' : ''}`;
   return { attempt_id: id, assessment_id: specKey(spec), content_version: '2.0.0',
     quiz_v2: true, spec: { ...spec }, title,
-    diagnostic: selected.diagnostic, seed, practice: true, xp_policy: 'unscored-v2',
+    diagnostic: selected.diagnostic, includes_unreviewed:selected.unreviewed, seed, practice: true, xp_policy: 'unscored-v2',
     presented: selected.items.map(q => ({ item_id: q.item_id, content_version: q.content_version, option_order: shuffled(q.options.map(o => o.id), random) })),
     responses: {}, position: 0, started_at: new Date().toISOString(), submitted_at: null };
 }

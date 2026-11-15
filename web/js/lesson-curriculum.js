@@ -44,7 +44,7 @@ export function quizCurriculum(course) {
       const topics = (article?.sections || []).filter(s =>
         !s.assessment && !['introduction', 'recap', 'chapter-review', 'closing-check'].includes(s.id)
         && !/^(exercises? on|category and coordination exercises|wh-question and relative clause exercises|grammar rules and sentence derivation exercise)/i.test(s.title));
-      return { id: lesson.lesson_id, title: lesson.title, chapter: lesson.chapter,
+      return { id: lesson.lesson_id, title: lesson.title, chapter: lesson.chapter, content_version: lesson.content_version,
         outcomes: lesson.outcomes, topics: topics.map(s => ({ id: s.id, title: s.title })) };
     }),
   }));

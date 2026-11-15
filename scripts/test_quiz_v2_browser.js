@@ -56,13 +56,27 @@ try{
   assert.equal(await quiz.locator('.quiz-chapter').count(),11);
   await quiz.getByRole('button',{name:'Cambridge — Cambridge Grammar',exact:true}).click();
   assert.equal(await quiz.locator('.quiz-chapter').count(),20);
-  assert.ok(await quiz.getByText(/only 10 distinct reviewed questions/).isVisible());
+  const cambridgeMaster=quiz.locator('.quiz-practice').filter({has:page.getByRole('heading',{name:'Cambridge Master Quiz',exact:true})});
+  await cambridgeMaster.getByRole('spinbutton').fill('25');
+  await cambridgeMaster.getByRole('button',{name:'Start lesson practice · no XP',exact:true}).click();
+  await quiz.getByRole('heading',{name:'Question 1 of 25',exact:true}).waitFor();
+  assert.ok(await quiz.getByText(/Lesson practice — not independently reviewed/).isVisible());
+  await quiz.getByRole('button',{name:'Submit assessment · 25 unanswered',exact:true}).click();
+  await quiz.locator('.quiz-score').filter({hasText:'0/25'}).waitFor();
+  assert.ok(await quiz.getByText(/LESSON PRACTICE — NOT INDEPENDENTLY REVIEWED/).isVisible());
+  await quiz.getByRole('button',{name:'← All quizzes',exact:true}).click();
   await quiz.getByRole('button',{name:'Syntax — Burton-Roberts',exact:true}).click();
   const chapter=quiz.locator('[data-chapter="br-03"]');
   await chapter.locator('summary').focus();await page.keyboard.press('Enter');
   assert.equal(await chapter.getAttribute('open'),'');
-  const unavailable=chapter.locator('.quiz-topic-card').filter({has:page.getByRole('heading',{name:'Nouns, noun phrases and lexical categories',exact:true})});
-  assert.ok(await unavailable.getByRole('button',{name:'Questions Under Review',exact:true}).isDisabled());
+  const formerlyUnavailable=chapter.locator('.quiz-topic-card').filter({has:page.getByRole('heading',{name:'Nouns, noun phrases and lexical categories',exact:true})});
+  assert.ok(await formerlyUnavailable.getByRole('button',{name:'Start lesson practice · no XP',exact:true}).isEnabled());
+  await formerlyUnavailable.getByRole('button',{name:'Start lesson practice · no XP',exact:true}).click();
+  await quiz.getByRole('heading',{name:'Question 1 of 5',exact:true}).waitFor();
+  await quiz.getByRole('button',{name:'Submit assessment · 5 unanswered',exact:true}).click();
+  await quiz.locator('.quiz-score').filter({hasText:'0/5'}).waitFor();
+  assert.ok(await quiz.getByText(/has not been independently reviewed/).first().isVisible());
+  await quiz.getByRole('button',{name:'← All quizzes',exact:true}).click();
   const topic=chapter.locator('.quiz-topic-card').filter({has:page.getByRole('heading',{name:'Adjectives, adverbs, APs and AdvPs',exact:true})});
   await topic.getByRole('button',{name:'Start quiz',exact:true}).click();
   await quiz.getByRole('heading',{name:'Question 1 of 5',exact:true}).waitFor();
@@ -97,7 +111,7 @@ try{
   await personalized.getByRole('button',{name:'Start quiz',exact:true}).click();
   await quiz.getByRole('heading',{name:'Question 1 of 5',exact:true}).waitFor();
   const personal=await page.evaluate(()=>Object.values(JSON.parse(localStorage.getItem('syntutor:assessments:v1:guest')).attempts).find(t=>t.spec?.mode==='personalized'));
-  const missed=await page.evaluate(()=>Object.values(JSON.parse(localStorage.getItem('syntutor:assessments:v1:guest')).attempts).find(t=>t.spec?.mode==='master').presented.map(r=>r.item_id));
+  const missed=await page.evaluate(()=>Object.values(JSON.parse(localStorage.getItem('syntutor:assessments:v1:guest')).attempts).find(t=>t.spec?.mode==='master'&&t.spec?.track==='syntax').presented.map(r=>r.item_id));
   assert.ok(personal.presented.every(r=>!missed.includes(r.item_id)));
   await page.evaluate(()=>switchQuizAccount('quiz-browser-a'));
   await page.waitForFunction(()=>document.querySelector('#sidebarProgressLabel').textContent.includes('250 verified XP'));
@@ -115,5 +129,5 @@ try{
     assert.equal(overflow,false,`${width}px ${theme}: no horizontal page overflow`);
   }
   assert.deepEqual(errors,[]);
-  console.log('PASS Quiz V2 browser: both tracks, native keyboard expansion, review shortages, published topic XP routing, offline-content draft reload, variable Master count/review, personalized exclusions, account XP/isolation, 390/1360px light/dark layouts; no page errors.');
+  console.log('PASS Quiz V2 browser: both tracks, native keyboard expansion, formerly unavailable topic practice, explicit unreviewed/no-XP notices, Cambridge Master, published topic XP routing, offline-content draft reload, variable Master count/review, personalized exclusions, account XP/isolation, 390/1360px light/dark layouts; no page errors.');
 }finally{await browser.close();await new Promise(resolve=>server.close(resolve));}

@@ -1,6 +1,7 @@
 // Deterministic assessment manifests and grading; independent of lesson progress.
 export const quizKey = q => `${q.assessment_id}@${q.content_version}`;
 export const itemKey = q => `${q.item_id}@${q.content_version}`;
+export const MAX_QUIZ_ITEMS = 1000; // Matches the private practice persistence contract.
 export const targetXp = correct => {
   if (!Number.isInteger(correct) || correct < 0 || correct > 5) throw new Error('Score must be an integer from 0 to 5.');
   return Math.max(0,10-2*(5-correct));
@@ -35,13 +36,15 @@ export function makeAttempt(bank,assessment,seed=randomSeed(),id=crypto.randomUU
     responses:{},position:0,started_at:new Date().toISOString(),submitted_at:null,practice:false};
 }
 export function itemsFor(bank,attempt) {
-  return attempt.presented.map(ref=>{const q=bank.items.find(q=>q.item_id===ref.item_id&&q.content_version===ref.content_version);if(!q)throw new Error('Assessment content version is unavailable.');return q;});
+  const practice=attempt.quiz_v2===true&&attempt.practice===true&&attempt.xp_policy==='unscored-v2'&&attempt.spec?.content_tier==='lesson-practice';
+  const items=practice?[...bank.items,...(bank.practice_items||[])]:bank.items;
+  return attempt.presented.map(ref=>{const q=items.find(q=>q.item_id===ref.item_id&&q.content_version===ref.content_version);if(!q)throw new Error('Assessment content version is unavailable.');return q;});
 }
 export function validateAttempt(bank,attempt) {
   const v2 = attempt?.quiz_v2 === true;
   if (v2 && (!attempt.practice || attempt.xp_policy !== 'unscored-v2' || attempt.content_version !== '2.0.0')) throw Error('Quiz V2 is unscored practice only.');
   const count = attempt?.presented?.length;
-  if(!attempt||!Array.isArray(attempt.presented)||!Number.isInteger(count)||count<1||count>1000||(!v2&&count!==5)||new Set(attempt.presented.map(r=>r.item_id)).size!==count)throw new Error('Distinct question versions are required (five for published assessments).');
+  if(!attempt||!Array.isArray(attempt.presented)||!Number.isInteger(count)||count<1||count>MAX_QUIZ_ITEMS||(!v2&&count!==5)||new Set(attempt.presented.map(r=>r.item_id)).size!==count)throw new Error('Distinct question versions are required (five for published assessments).');
   if(v2 && (['topic','personalized'].includes(attempt.spec?.mode) && count!==5)) throw Error('This quiz requires five questions.');
   const items=itemsFor(bank,attempt);
   if(!attempt.practice){

@@ -3,9 +3,11 @@ import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import {makeV2Attempt} from '../web/js/quiz-v2.js';
 import {loadActiveCourse,quizCurriculum} from '../web/js/lesson-curriculum.js';
+import {makeLessonPractice,validateLessonPractice} from '../web/js/quiz-lesson-practice.js';
 const file=p=>fs.readFileSync(new URL('../'+p,import.meta.url),'utf8');
 const bank=JSON.parse(file('web/content/quizzes/bank.json'));
 const curriculum=quizCurriculum(await loadActiveCourse(async p=>({ok:true,json:async()=>JSON.parse(file('web'+p))})));
+bank.practice_items=validateLessonPractice(makeLessonPractice(curriculum,JSON.parse(file('web/content/quizzes/syntax-practice-source.json'))),curriculum);
 const db=new PGlite();
 await db.exec(`create role anon;create role authenticated;create schema auth;
 create function auth.jwt() returns jsonb language sql stable as $$select coalesce(nullif(current_setting('request.jwt.claims',true),'')::jsonb,'{}'::jsonb)$$;
@@ -34,6 +36,12 @@ delete invalid.practice;await assert.rejects(()=>insert('user_clerk_a',invalid),
 const forged={...makeV2Attempt(bank,curriculum,{track:'syntax',mode:'master',count:15},{},44),correct:15,xp:999999};
 await insert('user_clerk_a',forged);
 await assert.rejects(()=>db.query('select public.save_quiz_attempt($1::jsonb,true)',[JSON.stringify(forged)]),/Invalid assessment payload/);
+const lessonPractice=makeV2Attempt(bank,curriculum,{track:'cambridge',mode:'topic',chapter:'cgel-ch07',topic:'preposition-style',content_tier:'lesson-practice'},{},46);
+await insert('user_clerk_a',lessonPractice);
+// Try to disguise practice item IDs as an otherwise valid published contract.
+const disguised=Object.fromEntries(['attempt_id','assessment_id','content_version','seed','presented','responses','position'].map(k=>[k,lessonPractice[k]]));
+disguised.assessment_id=bank.assessments[0].assessment_id;disguised.content_version=bank.assessments[0].content_version;
+await assert.rejects(()=>db.query('select public.save_quiz_attempt($1::jsonb,true)',[JSON.stringify(disguised)]));
 assert.equal((await db.query('select count(*)::int as n from public.quiz_xp_events_v1')).rows[0].n,0);
 await assert.rejects(()=>db.exec("insert into public.quiz_xp_events_v1 values ('user_clerk_a','00000000-0000-0000-0000-000000000001','x','1.0.0',10,now())"),/permission denied/);
 await identity('user_clerk_legacy','anon');const legacyRole=makeV2Attempt(bank,curriculum,{track:'syntax',mode:'master',count:15},{},45);await insert('user_clerk_legacy',legacyRole);
