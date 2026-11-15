@@ -1,0 +1,531 @@
+{
+  "title": "Comparatives",
+  "content_version": "2.1.0",
+  "estimated_minutes": 13,
+  "outcomes": [
+    {
+      "id": "o1",
+      "text": "Recover the missing counterpart in a comparative clause and decide when a subject is needed."
+    },
+    {
+      "id": "o2",
+      "text": "Select the expression and complement that convey the intended comparison."
+    },
+    {
+      "id": "o3",
+      "text": "Distinguish a ranking in a noun phrase from a free superlative."
+    }
+  ],
+  "key_terms": [
+    {
+      "term": "comparative clause",
+      "definition": "The clause in a comparison such as than it was or as it is wide, with part of its interpretation supplied by the larger construction."
+    },
+    {
+      "term": "comparison set",
+      "definition": "The group of things or occasions a ranking is made over."
+    },
+    {
+      "term": "superlative",
+      "definition": "A form such as deepest or most efficiently, used to locate the extreme of a scale within a set."
+    }
+  ],
+  "revised_assessment": {
+    "required_sections": [
+      "introduction",
+      "concepts",
+      "worked-example",
+      "application",
+      "recap"
+    ],
+    "opening": [
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "The shelf is as deep as it is wide.",
+            "feedback": "The second clause retains wide but leaves its degree unexpressed."
+          },
+          {
+            "id": "b",
+            "text": "The shelf is as deep as it is quite wide.",
+            "feedback": "The second clause retains wide but leaves its degree unexpressed."
+          },
+          {
+            "id": "c",
+            "text": "The shelf is as deep as it is very wide.",
+            "feedback": "The second clause retains wide but leaves its degree unexpressed."
+          }
+        ],
+        "prompt": "Which comparison leaves the degree of width available for as to supply?",
+        "answer": "a",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH13-P1108"
+        ],
+        "id": "opening-1"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "fewer equipment",
+            "feedback": "Equipment has its ordinary mass reading. Fewer ordinarily counts separate items."
+          },
+          {
+            "id": "b",
+            "text": "few equipment",
+            "feedback": "Equipment has its ordinary mass reading. Fewer ordinarily counts separate items."
+          },
+          {
+            "id": "c",
+            "text": "less equipment",
+            "feedback": "Equipment has its ordinary mass reading. Fewer ordinarily counts separate items."
+          }
+        ],
+        "prompt": "Which wording measures an amount of equipment?",
+        "answer": "c",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH13-P1127",
+          "CGEL-2002-CH13-P1129"
+        ],
+        "id": "opening-2"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "The possible meanings of shelf",
+            "feedback": "The incorporated superlative modifies shelf and ranks it against other shelves."
+          },
+          {
+            "id": "b",
+            "text": "The shelves in the case",
+            "feedback": "The incorporated superlative modifies shelf and ranks it against other shelves."
+          },
+          {
+            "id": "c",
+            "text": "One shelf across several occasions",
+            "feedback": "The incorporated superlative modifies shelf and ranks it against other shelves."
+          }
+        ],
+        "prompt": "What is ranked in “the deepest shelf in the case”?",
+        "answer": "b",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH13-P1168",
+          "CGEL-2002-CH13-P1169"
+        ],
+        "id": "opening-3"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Lea works faster than she did last year.",
+            "feedback": "She supplies the subject of did, which stands for the earlier working."
+          },
+          {
+            "id": "b",
+            "text": "Lea works faster than did last year.",
+            "feedback": "She supplies the subject of did, which stands for the earlier working."
+          },
+          {
+            "id": "c",
+            "text": "Lea works faster than did she last year.",
+            "feedback": "She supplies the subject of did, which stands for the earlier working."
+          }
+        ],
+        "prompt": "Which wording keeps a subject for the retained did?",
+        "answer": "a",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH13-P1113"
+        ],
+        "id": "opening-4"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "same screws as last time",
+            "feedback": "This use of same occurs in a definite noun phrase with the."
+          },
+          {
+            "id": "b",
+            "text": "some same screws as last time",
+            "feedback": "This use of same occurs in a definite noun phrase with the."
+          },
+          {
+            "id": "c",
+            "text": "the same screws as last time",
+            "feedback": "This use of same occurs in a definite noun phrase with the."
+          }
+        ],
+        "prompt": "Choose the ordinary phrase naming matching screws.",
+        "answer": "c",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH13-P1138",
+          "CGEL-2002-CH13-P1141"
+        ],
+        "id": "opening-5"
+      }
+    ],
+    "closing": [
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Every comparative clause lacks a subject.",
+            "feedback": "The missing position represents the number of brackets ordered."
+          },
+          {
+            "id": "b",
+            "text": "The missing subject is the comparative counterpart of more brackets.",
+            "feedback": "The missing position represents the number of brackets ordered."
+          },
+          {
+            "id": "c",
+            "text": "Were ordered is the main predicate of more brackets arrived.",
+            "feedback": "The missing position represents the number of brackets ordered."
+          }
+        ],
+        "prompt": "Why is the subject absent in “More brackets arrived than were ordered”?",
+        "answer": "b",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH13-P1113"
+        ],
+        "id": "closing-1"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Rae spoke like she.",
+            "feedback": "As a guide describes the capacity. Like a guide describes resemblance."
+          },
+          {
+            "id": "b",
+            "text": "Rae spoke as a guide.",
+            "feedback": "As a guide describes the capacity. Like a guide describes resemblance."
+          },
+          {
+            "id": "c",
+            "text": "Rae spoke like a guide.",
+            "feedback": "As a guide describes the capacity. Like a guide describes resemblance."
+          }
+        ],
+        "prompt": "Rae really is a guide and spoke in that capacity. Which wording explicitly presents the role?",
+        "answer": "b",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH13-P1148",
+          "CGEL-2002-CH13-P1154",
+          "CGEL-2002-CH13-P1156"
+        ],
+        "id": "closing-2"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "The lowest lake is on the left.",
+            "feedback": "Lowest describes the lake’s level. The clause compares it with its level on other occasions."
+          },
+          {
+            "id": "b",
+            "text": "The lake is low, which surprises us.",
+            "feedback": "Lowest describes the lake’s level. The clause compares it with its level on other occasions."
+          },
+          {
+            "id": "c",
+            "text": "The lake is the lowest it has been all year.",
+            "feedback": "Lowest describes the lake’s level. The clause compares it with its level on other occasions."
+          }
+        ],
+        "prompt": "Which sentence has a free superlative with an integrated relative?",
+        "answer": "c",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH13-P1168",
+          "CGEL-2002-CH13-P1169"
+        ],
+        "id": "closing-3"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "superior to the original / similar to the original",
+            "feedback": "Both adjectives can use to to introduce their standard of comparison."
+          },
+          {
+            "id": "b",
+            "text": "superior of the original / similar than the original",
+            "feedback": "Both adjectives can use to to introduce their standard of comparison."
+          },
+          {
+            "id": "c",
+            "text": "superior than the original / similar the original",
+            "feedback": "Both adjectives can use to to introduce their standard of comparison."
+          }
+        ],
+        "prompt": "Which pair gives ordinary complements in both phrases?",
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH13-P1130",
+          "CGEL-2002-CH13-P1141"
+        ],
+        "id": "closing-4"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "We used no fasteners other than screws.",
+            "feedback": "Screws is a noun phrase. Those that the store sold is another possible noun phrase."
+          },
+          {
+            "id": "b",
+            "text": "We used no fasteners other than the store sold.",
+            "feedback": "Screws is a noun phrase. Those that the store sold is another possible noun phrase."
+          },
+          {
+            "id": "c",
+            "text": "We used no fasteners other than were delivered.",
+            "feedback": "Screws is a noun phrase. Those that the store sold is another possible noun phrase."
+          }
+        ],
+        "prompt": "Which continuation supplies a noun phrase after postpositive other than?",
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH13-P1145"
+        ],
+        "id": "closing-5"
+      }
+    ]
+  },
+  "preview_sources": [
+    {
+      "id": "CGEL-2002-CH13-P1108",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1108,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH13-P1113",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1113,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH13-P1127",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1127,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH13-P1129",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1129,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH13-P1130",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1130,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH13-P1138",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1138,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH13-P1141",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1141,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH13-P1145",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1145,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH13-P1148",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1148,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH13-P1154",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1154,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH13-P1156",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1156,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH13-P1162",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1162,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH13-P1168",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1168,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH13-P1169",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1169,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    }
+  ]
+}

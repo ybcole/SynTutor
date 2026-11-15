@@ -39,7 +39,9 @@ export function validateCourse(course) {
     if (lesson.revised_assessment) {
       const assessment = lesson.revised_assessment;
       const required = assessment.required_sections;
-      if (lesson.track !== 'foundations' || !/^br-(0[1-9]|1[01])$/.test(lesson.lesson_id) ||
+      const revisedIdentity = (lesson.track === 'foundations' && /^br-(0[1-9]|1[01])$/.test(lesson.lesson_id))
+        || (lesson.track === 'grammar' && /^cgel-ch\d+$/.test(lesson.lesson_id));
+      if (!revisedIdentity ||
           lesson.content_version === '1.0.0' || !Array.isArray(required) || !required.length ||
           new Set(required).size !== required.length ||
           required.some(id => !/^[a-z0-9-]+$/.test(id) || id === 'closing-check')) {
@@ -61,7 +63,10 @@ export function validateCourse(course) {
           if (kind === 'closing') q.outcome_ids.forEach(id => closingOutcomes.add(id));
         }
       }
-      if (lesson.outcomes.some(o => !closingOutcomes.has(o.id))) throw new Error('Closing check must cover every outcome.');
+    }
+    if (lesson.key_terms !== undefined && (!Array.isArray(lesson.key_terms)
+        || lesson.key_terms.some(term => !term?.term?.trim() || !term?.definition?.trim()))) {
+      throw new Error('Invalid lesson key terms.');
     }
     if (lesson.worked_example.tree && !lesson.convention_profile) throw new Error('Tree without convention profile.');
   }

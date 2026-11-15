@@ -1,0 +1,491 @@
+{
+  "title": "Complementation and valency",
+  "content_version": "2.1.0",
+  "estimated_minutes": 12,
+  "outcomes": [
+    {
+      "id": "o1",
+      "text": "Identify the complement a particular verb and sense allow."
+    },
+    {
+      "id": "o2",
+      "text": "Distinguish an object, a prepositional complement and an optional adjunct."
+    },
+    {
+      "id": "o3",
+      "text": "Preserve the correct verb frame when adding recipients, particles or pronouns."
+    }
+  ],
+  "key_terms": [
+    {
+      "term": "valency",
+      "definition": "The set of complement patterns available to a word in a particular sense."
+    },
+    {
+      "term": "complement",
+      "definition": "A dependent whose type or presence is licensed by the head of its construction."
+    },
+    {
+      "term": "adjunct",
+      "definition": "An added dependent specifying circumstances such as time, place or manner."
+    },
+    {
+      "term": "particle",
+      "definition": "A short word such as back or off that forms a construction with a verb and may alternate in position with a noun-phrase object."
+    }
+  ],
+  "revised_assessment": {
+    "required_sections": [
+      "introduction",
+      "concepts",
+      "worked-example",
+      "application",
+      "recap"
+    ],
+    "opening": [
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "The mixture consists with milk and flour.",
+            "feedback": "In this sense consist selects an of phrase."
+          },
+          {
+            "id": "b",
+            "text": "The mixture consists of milk and flour.",
+            "feedback": "In this sense consist selects an of phrase."
+          },
+          {
+            "id": "c",
+            "text": "The mixture consists milk and flour.",
+            "feedback": "In this sense consist selects an of phrase."
+          }
+        ],
+        "prompt": "Which wording expresses the material that makes up a mixture?",
+        "answer": "b",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH04-P0220"
+        ],
+        "id": "opening-1"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "after lunch",
+            "feedback": "After lunch specifies time. The manual answers what was perused and is the object."
+          },
+          {
+            "id": "b",
+            "text": "perused the manual",
+            "feedback": "After lunch specifies time. The manual answers what was perused and is the object."
+          },
+          {
+            "id": "c",
+            "text": "the manual",
+            "feedback": "After lunch specifies time. The manual answers what was perused and is the object."
+          }
+        ],
+        "prompt": "In “We perused the manual after lunch”, what is the adjunct?",
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH04-P0221"
+        ],
+        "id": "opening-2"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Explain Jo the result.",
+            "feedback": "Explain takes the result as direct object and licenses a recipient to phrase."
+          },
+          {
+            "id": "b",
+            "text": "Explain to Jo to the result.",
+            "feedback": "Explain takes the result as direct object and licenses a recipient to phrase."
+          },
+          {
+            "id": "c",
+            "text": "Explain the result to Jo.",
+            "feedback": "Explain takes the result as direct object and licenses a recipient to phrase."
+          }
+        ],
+        "prompt": "Which version gives the recipient in the ordinary frame for explain?",
+        "answer": "c",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH04-P0309"
+        ],
+        "id": "opening-3"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "The latch tends that it sticks.",
+            "feedback": "Tend selects a to-infinitival in this construction."
+          },
+          {
+            "id": "b",
+            "text": "The latch tends to stick.",
+            "feedback": "Tend selects a to-infinitival in this construction."
+          },
+          {
+            "id": "c",
+            "text": "The latch tends sticking.",
+            "feedback": "Tend selects a to-infinitival in this construction."
+          }
+        ],
+        "prompt": "Which sentence describes the latch’s tendency?",
+        "answer": "b",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH04-P0220",
+          "CGEL-2002-CH04-P0221"
+        ],
+        "id": "opening-4"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "It is the finite subject.",
+            "feedback": "Him is accusative, as expected for an ordinary personal-pronoun object."
+          },
+          {
+            "id": "b",
+            "text": "It is the object of called.",
+            "feedback": "Him is accusative, as expected for an ordinary personal-pronoun object."
+          },
+          {
+            "id": "c",
+            "text": "It is the person who placed the call.",
+            "feedback": "Him is accusative, as expected for an ordinary personal-pronoun object."
+          }
+        ],
+        "prompt": "In “She called him”, what makes him the right form?",
+        "answer": "b",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH04-P0237"
+        ],
+        "id": "opening-5"
+      }
+    ],
+    "closing": [
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "She switched it off.",
+            "feedback": "An ordinary unstressed personal pronoun precedes the particle in this construction."
+          },
+          {
+            "id": "b",
+            "text": "She switched off they.",
+            "feedback": "An ordinary unstressed personal pronoun precedes the particle in this construction."
+          },
+          {
+            "id": "c",
+            "text": "She switched off it.",
+            "feedback": "An ordinary unstressed personal pronoun precedes the particle in this construction."
+          }
+        ],
+        "prompt": "How would you replace “the lamp” with “it” in “She switched off the lamp”?",
+        "answer": "a",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH04-P0247",
+          "CGEL-2002-CH04-P0253"
+        ],
+        "id": "closing-1"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "A ramp was constructed at the café.",
+            "feedback": "Construct does not have the relevant inchoative use. The passive makes a ramp the subject of a complete clause."
+          },
+          {
+            "id": "b",
+            "text": "A ramp constructed at the café.",
+            "feedback": "Construct does not have the relevant inchoative use. The passive makes a ramp the subject of a complete clause."
+          },
+          {
+            "id": "c",
+            "text": "A ramp destroyed at the café.",
+            "feedback": "Construct does not have the relevant inchoative use. The passive makes a ramp the subject of a complete clause."
+          }
+        ],
+        "prompt": "Which ordinary sentence says that a ramp came into existence through the café’s work?",
+        "answer": "a",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH04-P0221",
+          "CGEL-2002-CH04-P0304",
+          "CGEL-2002-CH04-P0306"
+        ],
+        "id": "closing-2"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "It changes perused into a preposition.",
+            "feedback": "A time adjunct and the verb’s object perform different jobs."
+          },
+          {
+            "id": "b",
+            "text": "It says when, while perused normally calls for what was examined.",
+            "feedback": "A time adjunct and the verb’s object perform different jobs."
+          },
+          {
+            "id": "c",
+            "text": "It supplies an object naming the thing examined.",
+            "feedback": "A time adjunct and the verb’s object perform different jobs."
+          }
+        ],
+        "prompt": "Why doesn’t “after lunch” provide what perused needs in “We perused after lunch”?",
+        "answer": "b",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH04-P0221"
+        ],
+        "id": "closing-3"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "the manual we came across",
+            "feedback": "The idiomatic combination came across resists fronting across with a relative phrase."
+          },
+          {
+            "id": "b",
+            "text": "the manual across which we came",
+            "feedback": "The idiomatic combination came across resists fronting across with a relative phrase."
+          },
+          {
+            "id": "c",
+            "text": "the manual we came from",
+            "feedback": "The idiomatic combination came across resists fronting across with a relative phrase."
+          }
+        ],
+        "prompt": "Which wording preserves the idiomatic sense “found by chance”?",
+        "answer": "a",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH04-P0275",
+          "CGEL-2002-CH04-P0280"
+        ],
+        "id": "closing-4"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Give licenses the double-object frame. Explain uses a to phrase for the recipient in this sense.",
+            "feedback": "The available complement frames are properties of individual verbs and senses."
+          },
+          {
+            "id": "b",
+            "text": "Jo must always follow the direct object, regardless of verb.",
+            "feedback": "The available complement frames are properties of individual verbs and senses."
+          },
+          {
+            "id": "c",
+            "text": "Explain takes the recipient in the same frame as give.",
+            "feedback": "The available complement frames are properties of individual verbs and senses."
+          }
+        ],
+        "prompt": "Why can you say “We gave Jo a copy” but normally “We explained the result to Jo”?",
+        "answer": "a",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH04-P0309"
+        ],
+        "id": "closing-5"
+      }
+    ]
+  },
+  "preview_sources": [
+    {
+      "id": "CGEL-2002-CH04-P0220",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 4,
+      "printed_page": 220,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH04-P0221",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 4,
+      "printed_page": 221,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH04-P0237",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 4,
+      "printed_page": 237,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH04-P0247",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 4,
+      "printed_page": 247,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH04-P0253",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 4,
+      "printed_page": 253,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH04-P0270",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 4,
+      "printed_page": 270,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH04-P0275",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 4,
+      "printed_page": 275,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH04-P0280",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 4,
+      "printed_page": 280,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH04-P0304",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 4,
+      "printed_page": 304,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH04-P0306",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 4,
+      "printed_page": 306,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH04-P0309",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 4,
+      "printed_page": 309,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    }
+  ]
+}
