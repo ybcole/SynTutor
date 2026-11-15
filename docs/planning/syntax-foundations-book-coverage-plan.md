@@ -6,6 +6,8 @@
 
 **App baseline.** `feat/lessons/revision-integration` at `bf60d8b`, including the plain-language revisions and chapter introductions. The regular Lessons entry point loads the `br-01`–`br-11` overlays and the corresponding article modules. Plan against the composed chapter, including its interactive blocks and assessments. The base catalog and legacy articles can describe earlier versions. Main and the revision branch had diverged when this plan was written. Recheck both tips before implementation and bring forward the newer Foundations prose. Work within the Syntax Foundations track.
 
+**Implementation.** The baseline ratings below record what was available before this revision. All 99 coverage IDs map to teaching and feedback in [the Foundations coverage blocks](../../web/js/foundations-book-content.js). Each ID is attached to a specific lesson page and is also the heading ID in the reader. The existing recaps include the additional distinctions. Chapter 7 has a dedicated appendix page in the normal navigation. Chapters 5, 6 and 7 use the existing tree controls for the new VP-layer, passive-question and pro-NOM comparisons. Added practice is unscored, so the saved completion requirements, graded questions and XP rules can keep their existing versions.
+
 ## How to use the coverage matrix
 
 - **Taught** means an explanation and a usable example exist. Retain them, check the linked practice, and add only what the row calls for.

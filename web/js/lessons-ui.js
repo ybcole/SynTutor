@@ -4,6 +4,7 @@ import { composeLessonPreview } from './lesson-preview.js';
 import { createLessonStore } from './lesson-progress.js';
 import { createFoundationStore } from './foundation-progress.js';
 import { renderFoundationCheck } from './foundation-check.js';
+import { addFoundationsBookCoverage } from './lesson-presentation.js';
 import { constituentsPilot } from './constituents-pilot.js';
 import { functionsPilot } from './functions-pilot.js';
 import { categoriesPilot } from './categories-pilot.js';
@@ -935,6 +936,8 @@ function articleScreen(lesson, p, article) {
       return appendWorkedTree(figure, worked, { focusId, comparisonTree: { ...worked.tree, root }, inline: true, observation, textOpen });
     },
   });
+
+  if (revised) addFoundationsBookCoverage(body, el, lesson.lesson_id, section.id);
 
   const diagram = [...body.querySelectorAll('.constituent-diagram')].at(-1);
   if (diagram) diagram.after(lessonNotation(lesson, page, el, section.notationLabels, section.notationFeatures));

@@ -130,8 +130,16 @@ try:
         expect(outline.get_by_text('PP — from Vigan', exact=True)).to_have_count(1)
 
         next_page.click()
+        expect(page).to_have_url(f'{base}/?preview=br-07#lesson/br-07/nom-appendix')
+        view.get_by_role('button', name='Replace the smaller NOM').click()
+        expect(note).to_contain_text('including the complement')
+        expect(outline.get_by_text('one', exact=True)).to_have_count(1)
+        expect(view.get_by_text('Tree notation', exact=True)).to_be_visible()
+
+        next_page.click()
         view.get_by_text('References and source review', exact=True).click()
         expect(view.get_by_text('Chapter 7 · printed p. 156', exact=False)).to_be_visible()
+        expect(view.get_by_text('Printed pp. 165–170', exact=False)).to_be_visible()
         view.get_by_role('button', name='Check what you learned', exact=True).click()
         closing = submit('closing', 3)
         expect(closing.get_by_role('status')).to_have_text('Last attempt 3 / 5 · Best 3 / 5')

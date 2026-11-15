@@ -19,6 +19,8 @@ const checking = vp(1, verb('checked', 'trans'), group('object', 'NP', 'the latc
 const quietly = group('quietly', 'AdvP', 'quietly');
 const preceding = sentence('Mara quietly checked the latch', 'Mara', vp(2, quietly, checking));
 const following = sentence('Mara checked the latch quietly', 'Mara', vp(2, checking, quietly));
+const twoAdjuncts = sentence('Mara checked the latch quietly after lunch', 'Mara',
+  vp(3, following.root.children[1], group('time', 'PP', 'after lunch')));
 
 const particle = sentence('Lea turned it off', 'Lea', node('predicate', 'VP',
   verb('turned', 'trans', 'phrasal'), group('object', 'NP', 'it'), node('particle', 'Prt', { word: 'off' })));
@@ -72,7 +74,7 @@ export const adverbialsPilot = {
   sections: [
     { id: 'introduction', title: 'What does the extra phrase modify?' },
     { id: 'concepts', title: 'Find the basic VP', notationLabels: [...vpLevels, 'PP'], notationFeatures: ['trans', 'complex'] },
-    { id: 'worked-example', title: 'Trace and attach an adjunct', notationLabels: [...vpLevels, 'PP'], notationFeatures: ['trans'] },
+    { id: 'worked-example', title: 'Trace and attach an adjunct', notationLabels: [...vpLevels, 'VP3', 'AdvP', 'PP'], notationFeatures: ['trans'] },
     { id: 'mobility', title: 'Check what can move', notationLabels: [...vpLevels, 'AdvP'], notationFeatures: ['trans'] },
     { id: 'particles', title: 'Separate particles from prepositions', notationLabels: [...phraseLabels, 'VP', 'Prt', 'PP', 'P'], notationFeatures: ['trans', 'phrasal'] },
     { id: 'ellipsis', title: 'Read an understood complement', notationLabels: [...phraseLabels, 'VP', 'E'], notationFeatures: ['ditrans'] },
@@ -138,6 +140,7 @@ export const adverbialsPilot = {
           ['Find the basic VP', inspection, inner.id, '“Inspected the bridge” describes the inspection. The object NP joins V inside VP₁.'],
           ['Find the time adjunct', inspection, time.id, '“In June” attaches beside the whole basic VP.'],
           ['Find the full predicate', inspection, outer.id, 'VP₂ covers the inspection and its time. Another adjunct can add another VP layer.'],
+          ['Read two adjunct layers', twoAdjuncts, 'vp3', 'Start with VP₁ “checked the latch”. “Quietly” adds VP₂. “After lunch” applies to that whole event and adds VP₃.'],
         ]);
         heading(repair.buildTitle);
         p('Attach “in June” so it shares a parent with the inner VP. Drag from that parent’s connection point or choose Guide me. Then select Check my tree.');

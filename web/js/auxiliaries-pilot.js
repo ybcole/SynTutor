@@ -93,6 +93,13 @@ const passive = {
       vp(2, vp(3, verb('moved', 'trans'), node('object', 'NP', gap('object-gap'))),
         group('agent', 'PP', 'by the curator')))),
 };
+const passiveQuestion = {
+  sentence: 'Was the parcel delivered',
+  root: node('sentence', 'S-bar', node('complementiser', 'C', { word: 'was' }),
+    node('clause', 'S', group('subject', 'NP', 'the parcel'),
+      vp(1, vacated('passive', 'PASS', 'past'),
+        vp(2, verb('delivered', 'trans'), node('object', 'NP', gap('object-gap')))))),
+};
 
 const baseLabels = ['S', 'NP', 'VP', 'V', '△'];
 const repair = {
@@ -120,7 +127,7 @@ export const auxiliariesPilot = {
     { id: 'adverbials', title: 'Place adverbials in the chain', notationLabels: [...baseLabels, 'MOD', 'PERF', 'PROG', 'AdvP', 'PP'], notationFeatures: ['past', 'pres', 'trans', 'intrans'] },
     { id: 'passive', title: 'Follow the object in a passive', notationLabels: [...baseLabels, 'PASS', 'PP', '•'], notationFeatures: ['past', 'trans'] },
     { id: 'negation', title: 'Negate with an auxiliary or with do', notationLabels: [...baseLabels, 'MOD', 'TENSE'], notationFeatures: ['past', 'intrans'] },
-    { id: 'questions', title: 'Front the tense-carrying element', notationLabels: [...baseLabels, 'PROG', 'TENSE', 'C', 'S-bar', 'AP', '•'], notationFeatures: ['past', 'pres', 'intrans', 'intens'] },
+    { id: 'questions', title: 'Front the tense-carrying element', notationLabels: [...baseLabels, 'PROG', 'PASS', 'TENSE', 'C', 'S-bar', 'AP', '•'], notationFeatures: ['past', 'pres', 'intrans', 'intens', 'trans'] },
     { id: 'recap', title: 'Chapter recap', references: true },
     { id: 'closing-check', title: 'Check what you learned', assessment: true },
   ],
@@ -179,7 +186,7 @@ export const auxiliariesPilot = {
     if (section.id === 'chain') {
       p('Count the auxiliaries in “should have packed”. “Should” and “have” each head a VP. “Packed” heads the lexical VP inside them. That makes three VPs. Only the first verb carries tense.');
       example('Mara [should] [have] [packed the lantern].');
-      p('Follow the three steps below to see how each VP fits inside the one above it.');
+      p('Follow the steps to see how each VP fits inside the one above it.');
       trace('Trace each auxiliary layer', [
         ['Find MOD', chain, 'modal', 'MOD “should” [past] is the highest verb. It is the only tensed verb in the sequence.'],
         ['Find PERF', chain, 'perfect', 'PERF “have” heads the next VP. It is untensed and takes the lexical VP as its complement.'],
@@ -233,6 +240,8 @@ export const auxiliariesPilot = {
         ['Front the auxiliary', dancing, 'complementiser', 'The tensed PROG “was” moves to C. The subject stays in S, and a gap marks the empty PROG position.'],
         ['Front the empty do', dances, 'complementiser', '“Do” from the TENSE node moves to C. The gap is under TENSE [pres]. The lexical verb “dance” stays in place and is untensed.'],
         ['Front as a copula', kubla, 'complementiser', 'With “be” the lexical verb itself moves to C. It leaves a gap under V and keeps “extravagant” as a subject predicative.'],
+        ['Find the auxiliary gap in a passive question', passiveQuestion, 'passive-gap', '“Was” is under C. The higher gap marks its original position under PASS.'],
+        ['Find the object gap in a passive question', passiveQuestion, 'object-gap', '“The parcel” is the subject of the passive. Its original object position remains marked under the lower VP.'],
       ]);
       p('C is the complementiser position. It holds the verb that moves to the front in these questions. The S′ layer, read “S-bar”, groups C with S.');
     }

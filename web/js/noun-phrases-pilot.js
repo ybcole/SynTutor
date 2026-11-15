@@ -24,6 +24,12 @@ const crates = phrase('the wooden crates from Cebu', det('ART', 'the'),
 const applicant = phrase('the eager applicant for the job', det('ART', 'the'),
   node('outer', 'NOM', ap('eager'), node('inner', 'NOM', noun('applicant'), triangle('job', 'PP', 'for the job'))));
 const someone = phrase('someone from Vigan', leaf('pronoun', 'pronoun', 'someone'), triangle('origin', 'PP', 'from Vigan'));
+const map = phrase('a map of the island with a red border', det('ART', 'a'),
+  node('outer', 'NOM',
+    node('inner', 'NOM', noun('map'), triangle('content', 'PP', 'of the island')),
+    triangle('border', 'PP', 'with a red border')));
+const one = phrase('one with a red border', { id: 'det', label: 'DET', empty: true },
+  node('nom', 'NOM', { word: 'one' }, triangle('border', 'PP', 'with a red border')));
 
 const coreLabels = ['NP', 'DET', 'NOM', 'N'];
 const repair = {
@@ -43,6 +49,7 @@ export const nounPhrasesPilot = {
     'Printed pp. 145–149, [18], [25–28], [32], [36] · Pre-determiners and modifiers before the noun',
     'Printed pp. 150–155, [39a], [A–B], [65–67] · Modifiers after the noun and their scope',
     'Printed pp. 155–156, [72a–b] · Modified indefinite pronouns',
+    'Printed pp. 165–170, appendix [14–20] · One as a pro-form for NOM and the complement–adjunct distinction',
   ],
   sections: [
     { id: 'introduction', title: 'What is inside a noun phrase?' },
@@ -51,6 +58,7 @@ export const nounPhrasesPilot = {
     { id: 'pre-modifiers', title: 'Add modifiers inside NOM', notationLabels: [...coreLabels, 'ART', 'AP', 'A'] },
     { id: 'post-modifiers', title: 'Compare modifier attachments', notationLabels: [...coreLabels, 'ART', 'AP', 'A', 'PP', '△'] },
     { id: 'application', title: 'Apply the distinction', notationLabels: ['NP', 'pronoun', 'PP', '△'] },
+    { id: 'nom-appendix', title: 'Appendix: Test NOM with one', notationLabels: [...coreLabels, 'ART', 'PP', '△'] },
     { id: 'recap', title: 'Chapter recap', references: true },
     { id: 'closing-check', title: 'Check what you learned', assessment: true },
   ],
@@ -145,6 +153,15 @@ export const nounPhrasesPilot = {
         p('Find the head noun. Then look for DET and NOM. In the bare plural “baskets”, DET is empty. In “all those baskets”, the pre-determiner “all” goes with the whole NP “those baskets”.');
         p('Use the meaning to decide which words group first. “From Cebu” can go with “wooden crates”. In “the eager applicant for the job”, “for the job” goes with “applicant” first.');
         p('An indefinite pronoun can have a modifier. In “someone from Vigan”, “someone” and the PP “from Vigan” both sit right under NP.');
+        p('Try one or ones to see which words form a NOM. A noun complement stays inside the NOM that the pro-form replaces. An adjunct can stay outside and describe the pro-form.');
+        break;
+      case 'nom-appendix':
+        p('Suppose two maps show the same island. If one map has a red border, you can ask for “one with a red border”. Follow which words one replaces and which remain.');
+        trace('Compare a noun complement and a NOM modifier', [
+          ['Find the noun complement', map, 'content', '“Of the island” tells what the map depicts. It attaches beside N inside the smaller NOM.'],
+          ['Find the modifier', map, 'border', '“With a red border” describes the map as an added detail. It attaches beside the smaller NOM.'],
+          ['Replace the smaller NOM', one, 'nom', '“One” stands for “map of the island”, including the complement. Under the appendix convention, the pro-form is written directly under NOM and the border PP stays next to it.'],
+        ]);
         break;
     }
   },

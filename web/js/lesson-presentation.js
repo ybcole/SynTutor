@@ -1,3 +1,5 @@
+import { foundationsBookContent, foundationsBookRecaps } from './foundations-book-content.js';
+
 export function hasExampleBrackets(text) {
   return /\[[^\]]+\]/.test(text);
 }
@@ -17,6 +19,19 @@ export function addIntroExample(body, el, context, example, explanation) {
     el('p', explanation),
   );
   body.append(panel);
+}
+
+export function addFoundationsBookCoverage(body, el, lessonId, sectionId) {
+  const entries = foundationsBookContent[lessonId]?.[sectionId] ?? [];
+  for (const [id, title, example, explanation, prompt, feedback] of entries) {
+    const heading = el('h3', title);
+    heading.id = id.toLowerCase();
+    const answer = el('details', undefined, 'lesson-sources');
+    answer.append(el('summary', 'Check your answer'), el('p', feedback));
+    body.append(heading, lessonExample(el, example), el('p', explanation), el('p', prompt), answer);
+  }
+  const recap = sectionId === 'recap' && foundationsBookRecaps[lessonId];
+  if (recap) body.append(el('p', recap));
 }
 
 export function setTreeStepLabel(control, el, label, number) {

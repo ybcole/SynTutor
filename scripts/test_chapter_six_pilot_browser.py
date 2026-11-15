@@ -127,6 +127,9 @@ try:
         expect(view.locator('.lesson-tree-outline')).to_contain_text('V [intens, past]')
         expect(view.locator('.lesson-tree-outline').get_by_text('was', exact=True)).to_have_count(1)
         expect(view.locator('.lesson-tree-outline').get_by_text('•', exact=True)).to_have_count(1)
+        view.get_by_role('button', name='Find the object gap in a passive question').press('Enter')
+        expect(note).to_contain_text('original object position')
+        expect(view.locator('.lesson-tree-outline').get_by_text('•', exact=True)).to_have_count(2)
 
         next_page.click()
         view.get_by_text('References and source review', exact=True).click()

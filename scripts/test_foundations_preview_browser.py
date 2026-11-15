@@ -3,6 +3,8 @@ from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 import json
 from pathlib import Path
+import re
+import subprocess
 import threading
 
 from playwright.sync_api import expect, sync_playwright
@@ -13,6 +15,15 @@ PILOTS = {path.name[:5]: json.loads(path.read_text())
           for path in sorted((DIST / 'content/lessons').glob('br-*-pilot.json'))}
 assert len(PILOTS) == 11
 COURSE = json.loads((DIST / 'content/lessons/course.json').read_text())
+BOOK_COVERAGE = json.loads(subprocess.check_output([
+    'node', '--input-type=module', '-e',
+    "import { foundationsBookContent } from './dist/js/foundations-book-content.js';"
+    "console.log(JSON.stringify(foundationsBookContent));",
+], cwd=ROOT))
+PLAN = ROOT / 'docs/planning/syntax-foundations-book-coverage-plan.md'
+planned_topics = re.findall(r'^\| (BR\d{2}-(?:\d{2}|P)) ·', PLAN.read_text(), re.M)
+assert sorted(planned_topics) == sorted(
+    row[0] for chapter in BOOK_COVERAGE.values() for sections in chapter.values() for row in sections)
 
 
 class Quiet(SimpleHTTPRequestHandler):
@@ -95,10 +106,24 @@ try:
         # Load each authored section so a mismatch with an assessment's required IDs is visible.
         for id, pilot in PILOTS.items():
             tree_pages = 0
-            for section in pilot['revised_assessment']['required_sections']:
+            topics = BOOK_COVERAGE[id]
+            sections = dict.fromkeys([*pilot['revised_assessment']['required_sections'], *topics])
+            for section in sections:
                 open_lesson(preview + f'{id}/{section}')
                 expect(view).to_contain_text('Chapter pilot · progress saved on this device')
                 assert page.url.endswith(f'#lesson/{id}/{section}')
+                for topic_id, title, example, explanation, prompt, answer in topics.get(section, []):
+                    selector = f'#{topic_id.lower()}'
+                    heading = view.locator(selector)
+                    expect(heading).to_have_text(title)
+                    expect(view.locator(f'{selector} + p')).to_have_text(example)
+                    expect(view.locator(f'{selector} + p + p')).to_have_text(explanation)
+                    expect(view.locator(f'{selector} + p + p + p')).to_have_text(prompt)
+                    practice = view.locator(f'{selector} + p + p + p + details')
+                    expect(practice).not_to_have_attribute('open', '')
+                    practice.locator('summary').press('Enter')
+                    expect(practice.locator('p')).to_have_text(answer)
+                    expect(practice.locator('p')).to_be_visible()
                 canvases = view.locator('.lesson-tree-canvas')
                 if canvases.count():
                     tree_pages += 1
@@ -186,6 +211,11 @@ try:
         expect(view.locator('.lesson-module')).to_have_count(11)
         assert view.locator('.lesson-module h2').all_text_contents() == [pilot['title'] for pilot in PILOTS.values()]
         expect(view.locator('.lesson-total')).to_have_text('0 / 12 lessons completed · 0 lesson XP in this view')
+        open_lesson(base + '/#lesson/br-04/concepts')
+        expect(view.locator('#br04-03')).to_be_visible()
+        expect(view.locator('#br04-04')).to_be_visible()
+        open_lesson(base + '/#lesson/br-07/nom-appendix')
+        expect(view.locator('#br07-11')).to_be_visible()
         open_lesson(base + '/#lesson/br-02/introduction')
         expect(check_panel('opening')).to_contain_text('Question 1 of 5')
         panel = submit('br-02', 'opening', 2)
@@ -200,4 +230,4 @@ try:
 finally:
     server.shutdown()
 
-print('PASS: eleven pilots, required section routes, isolated drafts and progress, scored checks, Cambridge navigation and packaged published isolation.')
+print(f'PASS: {len(planned_topics)} book topics across eleven pilots, practice feedback, section routes, progress, Cambridge navigation and normal Lessons launch.')
