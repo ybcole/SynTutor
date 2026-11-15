@@ -1,0 +1,2688 @@
+{
+  "summary": {
+    "cases": 105,
+    "grammatical_cases": 38,
+    "ungrammatical_cases": 41,
+    "provisional_cases": 26,
+    "fatal": 0,
+    "normalized": 66,
+    "unresolved": 39,
+    "unlabelled_triangles": 0,
+    "whole_sentence_triangles": 0,
+    "false_positives": 1,
+    "missed_errors": 9,
+    "provisional_now_normalized": 3,
+    "cases_with_issues": 46,
+    "xai_self_reference": 0,
+    "xai_over_context": 0,
+    "xai_word_parent_duplicate": 0,
+    "xai_repeated": 102
+  },
+  "results": [
+    {
+      "case": "inv-never",
+      "sentence": "Never have I seen such a storm.",
+      "expectation": "provisional",
+      "verdict": "ungrammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "Unsupported declarative inversion"
+      ],
+      "nodes": 16,
+      "triangles": 3,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-VBN-SIMPLE-PAST"
+      ],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "inv-only",
+      "sentence": "Only after the meeting did she realize the mistake.",
+      "expectation": "provisional",
+      "verdict": "grammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "Unsupported declarative inversion"
+      ],
+      "nodes": 28,
+      "triangles": 1,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "inv-here",
+      "sentence": "Here comes the bus.",
+      "expectation": "provisional",
+      "verdict": "grammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "Unsupported declarative inversion"
+      ],
+      "nodes": 14,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "inv-so",
+      "sentence": "So tired was he that he fell asleep.",
+      "expectation": "provisional",
+      "verdict": "unverified",
+      "br_status": "unresolved",
+      "reasons": [
+        "Unsupported declarative inversion"
+      ],
+      "nodes": 26,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "inv-not-until",
+      "sentence": "Not until midnight did the committee finish.",
+      "expectation": "provisional",
+      "verdict": "grammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "Unsupported declarative inversion"
+      ],
+      "nodes": 23,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "inv-rarely",
+      "sentence": "Rarely does the manager approve overtime.",
+      "expectation": "provisional",
+      "verdict": "ungrammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "Unsupported declarative inversion"
+      ],
+      "nodes": 21,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-ARTICLE"
+      ],
+      "suggestions": [],
+      "correction": "Rarely does the manager approve an overtime.",
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "inv-under-no",
+      "sentence": "Under no circumstances should you open the door.",
+      "expectation": "provisional",
+      "verdict": "grammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "Unsupported declarative inversion"
+      ],
+      "nodes": 26,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "inv-such",
+      "sentence": "Such was the impact that the policy changed.",
+      "expectation": "provisional",
+      "verdict": "grammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "NP has no identifiable noun head"
+      ],
+      "nodes": 33,
+      "triangles": 1,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "ell-gapping",
+      "sentence": "They reviewed the first draft and we the second.",
+      "expectation": "provisional",
+      "verdict": "unverified",
+      "br_status": "unresolved",
+      "reasons": [
+        "Clause has no single identifiable predicate"
+      ],
+      "nodes": 35,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "ell-vp",
+      "sentence": "She can play the piano and he can too.",
+      "expectation": "provisional",
+      "verdict": "grammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "Auxiliary has no overt VP complement"
+      ],
+      "nodes": 29,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "ell-gapping-2",
+      "sentence": "The students finished the exam, and the teacher the grading.",
+      "expectation": "provisional",
+      "verdict": "unverified",
+      "br_status": "unresolved",
+      "reasons": [
+        "Clause has no single identifiable predicate"
+      ],
+      "nodes": 35,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "ell-gapping-3",
+      "sentence": "Some ordered tea, others coffee.",
+      "expectation": "provisional",
+      "verdict": "grammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "Clause has no single identifiable predicate"
+      ],
+      "nodes": 28,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "app-plan",
+      "sentence": "The plan, a bold one, was approved.",
+      "expectation": "provisional",
+      "verdict": "grammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "Unsupported nominal dependent NP"
+      ],
+      "nodes": 27,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "app-aunt",
+      "sentence": "My aunt, who lives in Paris, is visiting.",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 33,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 1
+      },
+      "issues": [
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "app-dash",
+      "sentence": "The proposal — a compromise — satisfied everyone.",
+      "expectation": "provisional",
+      "verdict": "grammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "Unsupported nominal dependent NP"
+      ],
+      "nodes": 22,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "app-ceo",
+      "sentence": "The CEO, a former engineer, explained the design.",
+      "expectation": "provisional",
+      "verdict": "grammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "Unsupported nominal dependent NP"
+      ],
+      "nodes": 30,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "part-perfect",
+      "sentence": "Having finished the report, she went home.",
+      "expectation": "provisional",
+      "verdict": "grammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "Clause has no single identifiable predicate"
+      ],
+      "nodes": 24,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "part-dangling",
+      "sentence": "Walking home, the rain started.",
+      "expectation": "ungrammatical",
+      "verdict": "ungrammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "Clause has no single identifiable predicate"
+      ],
+      "nodes": 20,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-DANGLING"
+      ],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "part-frustrated",
+      "sentence": "Frustrated by the delay, the passengers complained.",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "Clause has no overt or licensed covert subject"
+      ],
+      "nodes": 25,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "part-committee",
+      "sentence": "The committee, having reviewed the evidence, approved the plan.",
+      "expectation": "provisional",
+      "verdict": "grammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "Clause has no single identifiable predicate"
+      ],
+      "nodes": 32,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "comp-less",
+      "sentence": "He earns less than his colleague.",
+      "expectation": "provisional",
+      "verdict": "grammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "NP has no identifiable noun head"
+      ],
+      "nodes": 20,
+      "triangles": 1,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "comp-as",
+      "sentence": "She is as tall as her brother.",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 22,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "comp-the-more",
+      "sentence": "The more you practice, the better you become.",
+      "expectation": "provisional",
+      "verdict": "grammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "Clause has no overt or licensed covert subject"
+      ],
+      "nodes": 24,
+      "triangles": 4,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "comp-worse",
+      "sentence": "The situation is far worse than we expected.",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 27,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "comp-easier",
+      "sentence": "This exam is easier than the previous one.",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 27,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "comp-fewer",
+      "sentence": "Fewer students attended than last year.",
+      "expectation": "provisional",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 26,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 1
+      },
+      "issues": [
+        "PROVISIONAL_NOW_NORMALIZED",
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "nf-heard",
+      "sentence": "We heard the door close.",
+      "expectation": "provisional",
+      "verdict": "grammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "Unsupported complex object frame"
+      ],
+      "nodes": 17,
+      "triangles": 1,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "nf-seen",
+      "sentence": "The children were seen playing in the yard.",
+      "expectation": "provisional",
+      "verdict": "grammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "Non-finite complement has no supported control analysis"
+      ],
+      "nodes": 28,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "nf-made-to",
+      "sentence": "She made him to go.",
+      "expectation": "ungrammatical",
+      "verdict": "ungrammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "make has no overt or licensed covert complement"
+      ],
+      "nodes": 17,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-CAUSATIVE-TO"
+      ],
+      "suggestions": [],
+      "correction": "She made him go.",
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "nf-let",
+      "sentence": "They let the students leave early.",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 25,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "nf-expect",
+      "sentence": "I expect her to finish the task.",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 26,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "nf-believed",
+      "sentence": "The report is believed to be accurate.",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 28,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 1
+      },
+      "issues": [
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "pp-to-whom",
+      "sentence": "The man to whom she spoke was her former teacher.",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 38,
+      "triangles": 1,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 1
+      },
+      "issues": [
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "pp-to-which",
+      "sentence": "The report to which she referred was missing.",
+      "expectation": "provisional",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 31,
+      "triangles": 1,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 1
+      },
+      "issues": [
+        "PROVISIONAL_NOW_NORMALIZED",
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "pp-strand",
+      "sentence": "Who did you give the keys to?",
+      "expectation": "provisional",
+      "verdict": "grammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "Wh-phrase has no unique stranded preposition"
+      ],
+      "nodes": 26,
+      "triangles": 1,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "pp-look-for",
+      "sentence": "This is the book that she was looking for.",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 40,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 2
+      },
+      "issues": [
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "pp-in-which",
+      "sentence": "The city in which I grew up has changed.",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 30,
+      "triangles": 1,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 1
+      },
+      "issues": [
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "nest-book",
+      "sentence": "The book that the teacher recommended to the students who were preparing for the exam was out of print.",
+      "expectation": "provisional",
+      "verdict": "grammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "Relative clause has no uniquely identified gap"
+      ],
+      "nodes": 74,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "nest-prof",
+      "sentence": "The professor who the students believe has submitted the report was praised.",
+      "expectation": "provisional",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 52,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 5
+      },
+      "issues": [
+        "PROVISIONAL_NOW_NORMALIZED",
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "nest-what",
+      "sentence": "What the administrator said about the proposal that the committee rejected surprised everyone.",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 57,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 6
+      },
+      "issues": [
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "nest-committee",
+      "sentence": "The committee that reviewed the proposal which the administrator submitted approved it.",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 53,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 5
+      },
+      "issues": [
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "nest-cleft",
+      "sentence": "It was the assistant who the manager believed had submitted the report.",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 50,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 4
+      },
+      "issues": [
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "q-say",
+      "sentence": "Who did the administrator say submitted the application?",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "Unclassified VP dependent VP"
+      ],
+      "nodes": 26,
+      "triangles": 1,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "cleft-what",
+      "sentence": "What she needs is a longer holiday.",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 30,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 1
+      },
+      "issues": [
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "cleft-it",
+      "sentence": "It was the assistant who approved the request.",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 33,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 2
+      },
+      "issues": [
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "q-explain",
+      "sentence": "Could you explain why the system failed?",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 33,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 2
+      },
+      "issues": [
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "q-whether",
+      "sentence": "I wonder whether the committee will accept the revised report.",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 36,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 1
+      },
+      "issues": [
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "cond-if",
+      "sentence": "If it rains tomorrow, we will stay indoors.",
+      "expectation": "grammatical",
+      "verdict": "unverified",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 31,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "cond-were",
+      "sentence": "If I were you, I would apologize.",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 24,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 1
+      },
+      "issues": [
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "subj-go",
+      "sentence": "I suggest that he go now.",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 22,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "subj-wish",
+      "sentence": "I wish I was taller.",
+      "expectation": "ungrammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 20,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": [
+        "MISSED_ERROR"
+      ]
+    },
+    {
+      "case": "cond-had",
+      "sentence": "Had I known, I would have called.",
+      "expectation": "grammatical",
+      "verdict": "ungrammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "Unsupported subordinate clause wrapper"
+      ],
+      "nodes": 23,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-COMMA-SPLICE",
+        "C-VBN-SIMPLE-PAST"
+      ],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": [
+        "FALSE_POSITIVE"
+      ]
+    },
+    {
+      "case": "cond-unless",
+      "sentence": "Unless you hurry, you will miss the train.",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 28,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 1
+      },
+      "issues": [
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "corr-both",
+      "sentence": "Both the committee and the staff approved the plan.",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 30,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 2
+      },
+      "issues": [
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "corr-either",
+      "sentence": "Either the boys or the girl is coming.",
+      "expectation": "grammatical",
+      "verdict": "unverified",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 24,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 1
+      },
+      "issues": [
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "corr-neither",
+      "sentence": "Neither the teacher nor the students were ready.",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 24,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 1
+      },
+      "issues": [
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "corr-notonly",
+      "sentence": "Not only the teacher but also the students were surprised.",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 27,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 1
+      },
+      "issues": [
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "corr-yet",
+      "sentence": "The book is long, yet it is easy to read.",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 39,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 3
+      },
+      "issues": [
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "corr-serial",
+      "sentence": "They went to the market, bought some fruit, and returned home.",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 37,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "long-report",
+      "sentence": "The report that she wrote after interviewing the witnesses was praised by the committee that had commissioned it.",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 79,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 10
+      },
+      "issues": [
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "long-concession",
+      "sentence": "Although the researchers who examined the evidence disagreed, the committee decided that the funding should continue.",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 63,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 4
+      },
+      "issues": [
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "long-temporal",
+      "sentence": "When the alarm rang, the students who were in the laboratory left the building immediately.",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 64,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 6
+      },
+      "issues": [
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "long-proposal",
+      "sentence": "The proposal that the committee discussed at length during the meeting was finally approved.",
+      "expectation": "grammatical",
+      "verdict": "unverified",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 58,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 4
+      },
+      "issues": [
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "long-conditional",
+      "sentence": "If the students who missed the deadline explain their situation, the professor may accept the late work.",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 66,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 4
+      },
+      "issues": [
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "long-audit",
+      "sentence": "The administrator who the committee appointed last year resigned after the audit revealed irregularities.",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 60,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 4
+      },
+      "issues": [
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "long-scientist",
+      "sentence": "The scientist whose research the foundation funded received an award for the discovery that changed the field.",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 68,
+      "triangles": 1,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 6
+      },
+      "issues": [
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "long-policy",
+      "sentence": "The policy that the government introduced after the crisis was criticized by the economists who had predicted it.",
+      "expectation": "grammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 76,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 8
+      },
+      "issues": [
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "err-list",
+      "sentence": "The list of items are on the table.",
+      "expectation": "ungrammatical",
+      "verdict": "ungrammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 30,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-SUBJ-AGREE-XP"
+      ],
+      "suggestions": [],
+      "correction": "The list of items is on the table.",
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "err-neither",
+      "sentence": "Neither of the boys are ready.",
+      "expectation": "ungrammatical",
+      "verdict": "ungrammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 25,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-SUBJ-AGREE-XP"
+      ],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "err-each",
+      "sentence": "Each of the students have a book.",
+      "expectation": "ungrammatical",
+      "verdict": "ungrammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 29,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-SUBJ-AGREE-XP"
+      ],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "err-whom-car",
+      "sentence": "I and he saw the three thieves stealing the car whom was parked on the wrong side.",
+      "expectation": "ungrammatical",
+      "verdict": "ungrammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 68,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-RELATIVE-PRONOUN"
+      ],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 6
+      },
+      "issues": [
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "err-dont",
+      "sentence": "She don't likes apples.",
+      "expectation": "ungrammatical",
+      "verdict": "ungrammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 16,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-AUX-FORM",
+        "C-IMPERATIVE-VERB",
+        "C-SUBJECT-AGREEMENT"
+      ],
+      "suggestions": [],
+      "correction": "She doesn't like apples.",
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "err-have-went",
+      "sentence": "He have went to the store.",
+      "expectation": "ungrammatical",
+      "verdict": "ungrammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 21,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-SUBJECT-AGREEMENT",
+        "C-VERB-FORM"
+      ],
+      "suggestions": [],
+      "correction": "He has gone to the store.",
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "err-childs",
+      "sentence": "The childs are play in the park.",
+      "expectation": "ungrammatical",
+      "verdict": "ungrammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 25,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-AUX-FORM",
+        "C-NOUN-FORM"
+      ],
+      "suggestions": [],
+      "correction": "The children are playing in the park.",
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "err-they-was",
+      "sentence": "They was late, and the committee were divided.",
+      "expectation": "ungrammatical",
+      "verdict": "ungrammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 28,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-SUBJECT-AGREEMENT",
+        "C-WAS-WERE"
+      ],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "err-which-man",
+      "sentence": "The man which called was polite.",
+      "expectation": "ungrammatical",
+      "verdict": "ungrammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 26,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-RELATIVE-PRONOUN"
+      ],
+      "suggestions": [],
+      "correction": "The man who called was polite.",
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 1
+      },
+      "issues": [
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "err-a-apples",
+      "sentence": "A apples are on the table.",
+      "expectation": "ungrammatical",
+      "verdict": "ungrammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 21,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-DETERMINER-AGREEMENT"
+      ],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "err-information",
+      "sentence": "The information are useful.",
+      "expectation": "ungrammatical",
+      "verdict": "ungrammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 14,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-SUBJECT-AGREEMENT"
+      ],
+      "suggestions": [],
+      "correction": "The information is useful.",
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "err-there-is",
+      "sentence": "There is many reasons for the delay.",
+      "expectation": "ungrammatical",
+      "verdict": "ungrammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 27,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-EXISTENTIAL"
+      ],
+      "suggestions": [],
+      "correction": "There are many reasons for the delay.",
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "err-homework",
+      "sentence": "The teacher gave the students a homework.",
+      "expectation": "ungrammatical",
+      "verdict": "ungrammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 25,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-UNCOUNTABLE"
+      ],
+      "suggestions": [],
+      "correction": "The teacher gave the students some homework.",
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "err-suggested",
+      "sentence": "She suggested me to leave.",
+      "expectation": "ungrammatical",
+      "verdict": "ungrammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 22,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-VERB-CLAUSE-PATTERN"
+      ],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 1
+      },
+      "issues": [
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "err-interested",
+      "sentence": "He is interested on music.",
+      "expectation": "ungrammatical",
+      "verdict": "ungrammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 18,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-ADJ-PREP"
+      ],
+      "suggestions": [],
+      "correction": "He is interested in music.",
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "err-discussed",
+      "sentence": "We discussed about the plan.",
+      "expectation": "ungrammatical",
+      "verdict": "ungrammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 18,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-EXTRA-PREP"
+      ],
+      "suggestions": [],
+      "correction": "We discussed the plan.",
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "err-look-forward",
+      "sentence": "I look forward to see you.",
+      "expectation": "ungrammatical",
+      "verdict": "ungrammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "Unsupported VP phrase"
+      ],
+      "nodes": 18,
+      "triangles": 1,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-PREP-GERUND"
+      ],
+      "suggestions": [],
+      "correction": "I look forward to seeing you.",
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "err-happened",
+      "sentence": "The accident was happened yesterday.",
+      "expectation": "ungrammatical",
+      "verdict": "ungrammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "Object gap conflicts with the verb frame or an overt object"
+      ],
+      "nodes": 19,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-INTRANSITIVE-PASSIVE"
+      ],
+      "suggestions": [],
+      "correction": "The accident happened yesterday.",
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "err-dog-tail",
+      "sentence": "The dog tail is long.",
+      "expectation": "ungrammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 17,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": [
+        "MISSED_ERROR"
+      ]
+    },
+    {
+      "case": "err-students-books",
+      "sentence": "The students books are here.",
+      "expectation": "ungrammatical",
+      "verdict": "ungrammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 17,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-POSSESSIVE-S"
+      ],
+      "suggestions": [],
+      "correction": "The students’ books are here.",
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "err-yesterday-go",
+      "sentence": "Yesterday I go to school.",
+      "expectation": "ungrammatical",
+      "verdict": "grammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "Clause has no single identifiable predicate"
+      ],
+      "nodes": 21,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": [
+        "MISSED_ERROR"
+      ]
+    },
+    {
+      "case": "err-said-will",
+      "sentence": "He said that he will come.",
+      "expectation": "ungrammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 21,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": [
+        "MISSED_ERROR"
+      ]
+    },
+    {
+      "case": "err-gonna",
+      "sentence": "The boss is gonna fire us.",
+      "expectation": "ungrammatical",
+      "verdict": "grammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "Unclassified VP dependent VP"
+      ],
+      "nodes": 23,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": [
+        "MISSED_ERROR"
+      ]
+    },
+    {
+      "case": "err-john",
+      "sentence": "I met john yesterday.",
+      "expectation": "ungrammatical",
+      "verdict": "ungrammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 18,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-ARTICLE"
+      ],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 1
+      },
+      "issues": [
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "err-quote",
+      "sentence": "He said, \"i am tired.\"",
+      "expectation": "ungrammatical",
+      "verdict": "ungrammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "Unclassified VP dependent S"
+      ],
+      "nodes": 17,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-PROPER-NOUN"
+      ],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "err-whos",
+      "sentence": "The boy who's bag is here.",
+      "expectation": "ungrammatical",
+      "verdict": "ungrammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 31,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-ARTICLE"
+      ],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 2
+      },
+      "issues": [
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "err-book-read",
+      "sentence": "The book she read.",
+      "expectation": "ungrammatical",
+      "verdict": "ungrammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "Unsupported clause structure NP"
+      ],
+      "nodes": 22,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-TENSE-FINITE"
+      ],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "err-very-much",
+      "sentence": "I like very much this book.",
+      "expectation": "ungrammatical",
+      "verdict": "grammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "Unclassified VP dependent NP"
+      ],
+      "nodes": 19,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": [
+        "MISSED_ERROR"
+      ]
+    },
+    {
+      "case": "err-good",
+      "sentence": "The students did good on the exam.",
+      "expectation": "ungrammatical",
+      "verdict": "ungrammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 25,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-ADJ-ADV"
+      ],
+      "suggestions": [],
+      "correction": "The students did well on the exam.",
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "err-quick",
+      "sentence": "She runs quick.",
+      "expectation": "ungrammatical",
+      "verdict": "ungrammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 11,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-ADJ-ADV"
+      ],
+      "suggestions": [],
+      "correction": "She runs quickly.",
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "err-always",
+      "sentence": "He always is late.",
+      "expectation": "ungrammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 14,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": [
+        "MISSED_ERROR"
+      ]
+    },
+    {
+      "case": "err-comma-list",
+      "sentence": "I bought apples oranges and pears.",
+      "expectation": "ungrammatical",
+      "verdict": "ungrammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 22,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-COMMA-OMISSION"
+      ],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 1
+      },
+      "issues": [
+        "XAI_REPEATED"
+      ]
+    },
+    {
+      "case": "err-splice",
+      "sentence": "I came, I saw.",
+      "expectation": "ungrammatical",
+      "verdict": "ungrammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "Clause has no single identifiable predicate"
+      ],
+      "nodes": 15,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-COMMA-SPLICE"
+      ],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "err-runon",
+      "sentence": "I came I saw.",
+      "expectation": "ungrammatical",
+      "verdict": "ungrammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "Unsupported VP phrase"
+      ],
+      "nodes": 14,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-PRONOUN-CASE",
+        "C-RUNON"
+      ],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "err-fragment",
+      "sentence": "The boy in the garden.",
+      "expectation": "ungrammatical",
+      "verdict": "ungrammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "Unsupported clause structure NP"
+      ],
+      "nodes": 18,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-TENSE-FINITE"
+      ],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "err-because",
+      "sentence": "Because I was late.",
+      "expectation": "ungrammatical",
+      "verdict": "ungrammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 13,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [
+        "C-TENSE-FINITE"
+      ],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": []
+    },
+    {
+      "case": "err-hyphen",
+      "sentence": "He is a well known author.",
+      "expectation": "ungrammatical",
+      "verdict": "grammatical",
+      "br_status": "unresolved",
+      "reasons": [
+        "AP has no identifiable head"
+      ],
+      "nodes": 14,
+      "triangles": 3,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": [
+        "MISSED_ERROR"
+      ]
+    },
+    {
+      "case": "err-collocation",
+      "sentence": "I do a mistake every day.",
+      "expectation": "ungrammatical",
+      "verdict": "grammatical",
+      "br_status": "normalized",
+      "reasons": [],
+      "nodes": 22,
+      "triangles": 0,
+      "unlabelled_triangles": 0,
+      "display_labels": true,
+      "errors": [],
+      "suggestions": [],
+      "correction": null,
+      "xai": {
+        "self_reference": 0,
+        "over_context": 0,
+        "word_parent_duplicate": 0,
+        "jargon": 0,
+        "repeated": 0
+      },
+      "issues": [
+        "MISSED_ERROR"
+      ]
+    }
+  ]
+}
