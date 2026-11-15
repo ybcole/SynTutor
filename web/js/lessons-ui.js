@@ -387,6 +387,49 @@ function articleSections(article) {
 function sectionRoute(lesson, section) {
   return `#lesson/${lesson.lesson_id}/${section.id}`;
 }
+let cambridgeGlossary;
+function cambridgeDictionaryTerms() {
+  if (cambridgeGlossary) return cambridgeGlossary;
+  const lessons = course.lessons.filter(lesson => lesson.track === 'grammar' && Array.isArray(lesson.key_terms));
+  const headwords = new Set(lessons.flatMap(lesson => lesson.key_terms.map(term => term.term.toLowerCase())));
+  const entries = new Map();
+  for (const lesson of lessons) {
+    for (const { term, definition } of lesson.key_terms) {
+      const key = term.toLowerCase();
+      if (!definition || entries.has(key)) continue;
+      let alias;
+      if (!/s$/i.test(term)) {
+        alias = /[^aeiou]y$/i.test(term) ? term.slice(0, -1) + 'ies'
+          : /(x|z|ch|sh)$/i.test(term) ? term + 'es' : term + 's';
+        if (headwords.has(alias.toLowerCase())) alias = undefined;
+      }
+      entries.set(key, {
+        title: term, definition, aliases: alias ? [alias] : [],
+        chapter: lesson.chapter, course: 'Cambridge', lessonId: lesson.lesson_id,
+      });
+    }
+  }
+  cambridgeGlossary = [...entries.values()];
+  return cambridgeGlossary;
+}
+function cambridgeDictionaryTarget(entry) {
+  const destination = course.lessons.find(item => item.lesson_id === entry.lessonId);
+  if (!destination) return null;
+  const destinationSection = articleSections(articleFor(destination)).filter(item => !item.assessment).at(-1);
+  return destinationSection && {
+    id: destination.lesson_id, section: destinationSection.id, title: destinationSection.title,
+    href: sectionRoute(destination, destinationSection),
+  };
+}
+function foundationDictionaryTarget({ chapter, section: id }) {
+  const destination = course.lessons.find(item => item.lesson_id === `br-${String(chapter).padStart(2, '0')}`);
+  if (!destination?.revised_assessment) return null;
+  const destinationSection = articleSections(articleFor(destination)).find(item => item.id === id);
+  return destinationSection && {
+    id: destination.lesson_id, section: id, title: destinationSection.title,
+    href: sectionRoute(destination, destinationSection),
+  };
+}
 function readLessonRoute() {
   const match = /^#lesson\/([a-z0-9-]+)(?:\/([a-z0-9-]+))?$/i.exec(location.hash);
   if (!match) return null;
@@ -992,17 +1035,12 @@ function articleScreen(lesson, p, article) {
 
   if (revised) {
     if (!section.assessment) {
+      const cambridge = lesson.track === 'grammar';
       closeLessonDictionary = addLessonDictionary(body, {
         scrollHost: host,
-        resolve({ chapter, section: id }) {
-          const destination = course.lessons.find(item => item.lesson_id === `br-${String(chapter).padStart(2, '0')}`);
-          if (!destination?.revised_assessment) return null;
-          const destinationSection = articleSections(articleFor(destination)).find(item => item.id === id);
-          return destinationSection && {
-            id: destination.lesson_id, section: id, title: destinationSection.title,
-            href: sectionRoute(destination, destinationSection),
-          };
-        },
+        terms: cambridge ? cambridgeDictionaryTerms() : [],
+        includeFoundations: !cambridge,
+        resolve: cambridge ? cambridgeDictionaryTarget : foundationDictionaryTarget,
         navigate: target => openLesson(target.id, target),
       });
     }
@@ -1029,6 +1067,16 @@ function articleScreen(lesson, p, article) {
       : button('All lessons', showCatalog, 'lesson-primary'));
     layout.append(actions);
     return;
+  }
+
+  if (lesson.track === 'grammar' && !section.assessment) {
+    closeLessonDictionary = addLessonDictionary(body, {
+      scrollHost: host,
+      terms: cambridgeDictionaryTerms(),
+      includeFoundations: false,
+      resolve: cambridgeDictionaryTarget,
+      navigate: target => openLesson(target.id, target),
+    });
   }
 
   if (section.id === 'introduction') {

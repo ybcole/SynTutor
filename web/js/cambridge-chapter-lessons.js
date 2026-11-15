@@ -40,14 +40,26 @@ function articleForChapter(chapter) {
       };
       const renderCheck = check => {
         if (!check) return;
-        const section = el('section', undefined, 'lesson-quick-check');
-        section.append(el('h3', 'Quick check'));
-        section.append(el('p', check.prompt));
-        const list = el('ul');
-        for (const option of check.options || []) {
-          list.append(el('li', option.text + (option.feedback ? ' — ' + option.feedback : '')));
+        const section = el('section', undefined, 'lesson-reflections');
+        section.setAttribute('aria-label', 'Practice and feedback');
+        section.append(el('h3', 'Practice and feedback'));
+        const reflection = el('div', undefined, 'lesson-reflection');
+        reflection.append(el('p', check.prompt, 'lesson-reflection-prompt'));
+        const options = check.options || [];
+        const answer = options.find(option => option.id === check.answer) ?? options[0];
+        const sentence = value => {
+          const text = (value || '').trim();
+          return text && (/[.!?]$/.test(text) ? text : `${text}.`);
+        };
+        if (answer) {
+          const prose = [sentence(answer.text), sentence(answer.feedback)].filter(Boolean);
+          for (const option of options) {
+            if (option === answer) continue;
+            prose.push(sentence(option.text), sentence(option.feedback));
+          }
+          reflection.append(el('p', prose.filter(Boolean).join(' ')));
         }
-        section.append(list);
+        section.append(reflection);
         body.append(section);
       };
       const renderConcept = (title, content) => {

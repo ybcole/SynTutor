@@ -15,9 +15,7 @@ for (const [chapter, section, entries] of foundationsGlossary) {
 }
 
 const escapePattern = value => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-const spellings = [...new Set([...terms.keys(), ...Array.from(notation.keys(), key => key.toLowerCase())])]
-  .sort((a, b) => b.length - a.length).map(escapePattern);
-const termPattern = new RegExp(`(?<![\\p{L}\\p{N}_-])(?:${spellings.join('|')})(?![\\p{L}\\p{N}_-])`, 'giu');
+const baseSpellings = [...new Set([...terms.keys(), ...Array.from(notation.keys(), key => key.toLowerCase())])];
 const excluded = [
   'a', 'button', 'summary', 'label', 'textarea', 'select', 'svg',
   '.lesson-example-sentence', '.lesson-notation', '.lesson-tree-canvas',
@@ -25,9 +23,34 @@ const excluded = [
   '.lesson-sources', '.lesson-pilot-transfer', '[role="status"]',
 ].join(',');
 
-function annotate(body, resolve) {
+function customLookup(entries = [], includeFoundations = true) {
+  const customTerms = new Map();
+  const customNotation = new Map();
+  for (const entry of entries) {
+    const aliases = Array.isArray(entry.aliases) ? entry.aliases : entry.aliases?.split('|') ?? [];
+    for (const alias of [entry.title, ...aliases]) {
+      if (!alias) continue;
+      const key = alias.toLowerCase();
+      // Uppercase notation such as PASS should match only its written form.
+      const exact = /[A-Z]/.test(alias) && !/[a-z]/.test(alias) ? alias : null;
+      (exact ? customNotation : customTerms).set(exact || key, entry);
+    }
+  }
+  const raw = [...new Set([...customTerms.keys(), ...Array.from(customNotation.keys(), key => key.toLowerCase())])];
+  const all = includeFoundations ? [...new Set([...raw, ...baseSpellings])] : raw;
+  return {
+    customTerms,
+    customNotation,
+    pattern: all.length
+      ? new RegExp(`(?<![\\p{L}\\p{N}_-])(?:${all.sort((a, b) => b.length - a.length).map(escapePattern).join('|')})(?![\\p{L}\\p{N}_-])`, 'giu')
+      : /(?!)/gu,
+  };
+}
+
+function annotate(body, resolve, entries = [], includeFoundations = true) {
   const matches = new WeakMap();
   const seen = new Set();
+  const { customTerms, customNotation, pattern } = customLookup(entries, includeFoundations);
   const walker = document.createTreeWalker(body, NodeFilter.SHOW_TEXT, {
     acceptNode(node) {
       const parent = node.parentElement;
@@ -40,9 +63,10 @@ function annotate(body, resolve) {
   for (const node of nodes) {
     const fragment = document.createDocumentFragment();
     let cursor = 0;
-    for (const match of node.textContent.matchAll(termPattern)) {
+    for (const match of node.textContent.matchAll(pattern)) {
       const [spelling] = match;
-      const entry = notation.get(spelling) ?? terms.get(spelling.toLowerCase());
+      const entry = customNotation.get(spelling) ?? customTerms.get(spelling.toLowerCase())
+        ?? (includeFoundations ? notation.get(spelling) ?? terms.get(spelling.toLowerCase()) : undefined);
       if (!entry) continue;
       const target = resolve(entry);
       if (!target) continue;
@@ -67,8 +91,10 @@ function annotate(body, resolve) {
   return matches;
 }
 
-export function addLessonDictionary(body, { resolve, navigate, scrollHost }) {
-  const matches = annotate(body, resolve);
+export function addLessonDictionary(body, {
+  resolve, navigate, scrollHost, terms: customTerms = [], includeFoundations = true,
+}) {
+  const matches = annotate(body, resolve, customTerms, includeFoundations);
   const controller = new AbortController();
   const { signal } = controller;
   const panel = document.createElement('span');
@@ -122,7 +148,9 @@ export function addLessonDictionary(body, { resolve, navigate, scrollHost }) {
     const { entry, target } = matches.get(trigger);
     title.textContent = entry.title;
     definition.textContent = entry.definition;
-    link.textContent = `Chapter ${entry.chapter} · ${target.title}`;
+    link.textContent = entry.course
+      ? `${entry.course} · Chapter ${entry.chapter} · ${target.title}`
+      : `Chapter ${entry.chapter} · ${target.title}`;
     link.href = target.href;
     trigger.setAttribute('aria-expanded', 'true');
     trigger.setAttribute('aria-controls', panel.id);
