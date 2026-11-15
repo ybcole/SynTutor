@@ -142,6 +142,7 @@ try:
                     expect(exercise.locator(':scope > p').last).to_have_text(answer)
                     expect(exercise.locator(':scope > p').last).to_be_visible()
                     expect(exercise.locator('details')).to_have_count(0)
+                    expect(exercise).to_have_css('border-inline-start-width', '0px')
                 canvases = view.locator('.lesson-tree-canvas')
                 if canvases.count():
                     tree_pages += 1
@@ -261,6 +262,15 @@ try:
         expect(view.locator('.lesson-module')).to_have_count(11)
         assert view.locator('.lesson-module h2').all_text_contents() == [pilot['title'] for pilot in PILOTS.values()]
         expect(view.locator('.lesson-total')).to_have_text('0 / 12 lessons completed · 0 lesson XP in this view')
+        open_lesson(base + '/#lesson/br-01/introduction')
+        dictionary_example = view.locator('.lesson-dictionary-hint').get_by_role('button', name='Define constituent', exact=True)
+        dictionary_example.hover()
+        chapter_one_dictionary = view.get_by_role('region', name='Dictionary definition')
+        expect(chapter_one_dictionary).to_contain_text('works as a unit')
+        chapter_one_dictionary.get_by_role('link', name='Chapter 1', exact=False).click()
+        expect(page).to_have_url(base + '/#lesson/br-01/concepts')
+        open_lesson(base + '/#lesson/br-01/recap')
+        expect(view.locator('.lesson-sources').first).to_have_css('border-inline-start-width', '0px')
         open_lesson(base + '/#lesson/br-04/concepts')
         expect(view.locator('#br04-03')).to_be_visible()
         expect(view.locator('#br04-04')).to_be_visible()
