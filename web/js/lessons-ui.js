@@ -968,6 +968,9 @@ function articleScreen(lesson, p, article) {
         },
         navigate: target => openLesson(target.id, target),
       });
+      if (body.querySelector('.lesson-dictionary-term')) {
+        heading.after(el('p', 'Hover over or tap a dotted-underlined term for its definition and lesson link.', 'lesson-dictionary-hint'));
+      }
     }
     if (section.references) body.append(lessonReferences(lesson));
     const userId = lessonUserId();

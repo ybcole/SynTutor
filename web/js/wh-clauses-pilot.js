@@ -194,6 +194,7 @@ export const whClausesPilot = {
       case 'application': {
         example('The ropes [which Ivo checked] were dry.');
         body.append(lessonReflection(el,
+          'The sentence reports that some ropes were dry and includes a clause about Ivo’s inspection.',
           'Which ropes does “which Ivo checked” pick out, and where would the missing object go inside the clause?',
           'The relative picks out the ropes Ivo checked. The object gap is after “checked”: Ivo checked something, and that missing object is linked to “ropes”. The relative joins the NOM “ropes” to show which ones were dry.'));
         break;

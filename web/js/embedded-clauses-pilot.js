@@ -165,9 +165,10 @@ export const embeddedClausesPilot = {
       case 'application': {
         example('Ria heard that Ivo wondered whether the hall was open.');
         body.append(lessonReflection(el,
+          'Ria hears a report about Ivo, and that report contains his question about the hall.',
           'Where do the two embedded clauses start and end? Find what Ria heard first, then find the question Ivo wondered about.',
           'The outer clause starts at “that” and the inner question starts at “whether”. “Ivo” and “the hall” begin the subject–predicate groups inside those clauses. Include the complementiser in each full S′. Both embedded clauses end at “open”.',
-          'Ria heard [that Ivo wondered [whether the hall was open]].'));
+          { example: 'Ria heard [that Ivo wondered [whether the hall was open]].' }));
         break;
       }
       case 'recap':

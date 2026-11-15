@@ -125,7 +125,7 @@ try:
                 assert len(entries) <= 4, (id, section)
                 expect(view.locator('article > h3[id^="br"]')).to_have_count(len(entries))
                 if entries:
-                    expect(view.get_by_role('heading', name='Think it through')).to_be_visible()
+                    expect(view.locator('#lesson-reflections-title')).to_have_text('Practice and feedback')
                 for topic_id, title, example, explanation, prompt, answer, *definition in entries:
                     selector = f'#{topic_id.lower()}'
                     heading = view.locator(selector)
@@ -136,6 +136,8 @@ try:
                     for index, paragraph in enumerate(explanation.split('\n\n'), start=2 + len(definition)):
                         expect(view.locator(selector + ' + p' * index)).to_have_text(paragraph)
                     exercise = view.locator(f'{selector}-practice')
+                    expect(exercise.locator('.lesson-reflection-intro + .lesson-reflection-prompt')).to_be_visible()
+                    assert exercise.locator('.lesson-reflection-intro').inner_text().strip()
                     expect(exercise.locator('.lesson-reflection-prompt')).to_have_text(prompt)
                     expect(exercise.locator(':scope > p').last).to_have_text(answer)
                     expect(exercise.locator(':scope > p').last).to_be_visible()
@@ -262,6 +264,9 @@ try:
         open_lesson(base + '/#lesson/br-04/concepts')
         expect(view.locator('#br04-03')).to_be_visible()
         expect(view.locator('#br04-04')).to_be_visible()
+        expect(view.locator('.lesson-dictionary-hint')).to_be_visible()
+        view.get_by_role('button', name='Define complement', exact=True).first.hover()
+        expect(view.get_by_role('region', name='Dictionary definition')).to_contain_text('fills a role')
         open_lesson(base + '/#lesson/br-07/nom-appendix')
         expect(view.locator('#br07-11')).to_be_visible()
         open_lesson(base + '/#lesson/br-02/introduction')

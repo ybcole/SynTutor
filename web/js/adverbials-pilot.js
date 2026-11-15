@@ -194,6 +194,7 @@ export const adverbialsPilot = {
         p('Imagine a witness saying “Honestly, Lea answered the question”. “Honestly” comments on how the witness presents the whole statement. In “Lea answered the question honestly”, it can describe Lea’s manner. Ask whose honesty is at issue before attaching the adverbial.');
         example('[Unfortunately], the gate jammed.');
         body.append(lessonReflection(el,
+          'The speaker uses “unfortunately” to react to a gate jamming.',
           'What does “unfortunately” tell you about the jam? Where would its branch go?',
           'The word gives the speaker’s evaluation of the whole event. Draw it beside S, under a higher S. The two branches show that the comment applies to the entire statement.'));
         break;

@@ -1,4 +1,6 @@
-import { foundationsBookContent, foundationsBookRecaps, foundationsRecapPoints } from './foundations-book-content.js';
+import {
+  foundationsBookContent, foundationsBookRecaps, foundationsPracticeIntros, foundationsRecapPoints,
+} from './foundations-book-content.js';
 
 export function hasExampleBrackets(text) {
   return /\[[^\]]+\]/.test(text);
@@ -53,9 +55,12 @@ export function addExplanationPractice(body, { el, button }, { key, id, explanat
   body.append(practice);
 }
 
-export function lessonReflection(el, prompt, explanation, example) {
+export function lessonReflection(el, introduction, prompt, explanation, {
+  example, heading = 'Practice and feedback',
+} = {}) {
   const reflection = el('div', undefined, 'lesson-reflection');
-  reflection.append(el('p', prompt, 'lesson-reflection-prompt'));
+  if (heading) reflection.append(el('h3', heading));
+  reflection.append(el('p', introduction, 'lesson-reflection-intro'), el('p', prompt, 'lesson-reflection-prompt'));
   if (example) reflection.append(lessonExample(el, example));
   reflection.append(el('p', explanation));
   return reflection;
@@ -73,7 +78,7 @@ export function addFoundationsBookCoverage(body, el, lessonId, sectionId) {
 
   const practice = el('section', undefined, 'lesson-reflections');
   practice.setAttribute('aria-labelledby', 'lesson-reflections-title');
-  const practiceTitle = el('h3', 'Think it through');
+  const practiceTitle = el('h3', 'Practice and feedback');
   practiceTitle.id = 'lesson-reflections-title';
   practice.append(practiceTitle);
   for (const [id, title, example, explanation, prompt, feedback, definition] of entries) {
@@ -84,7 +89,7 @@ export function addFoundationsBookCoverage(body, el, lessonId, sectionId) {
     if (definition) body.append(el('p', definition));
     body.append(lessonExample(el, example), ...paragraphs);
 
-    const exercise = lessonReflection(el, prompt, feedback);
+    const exercise = lessonReflection(el, foundationsPracticeIntros[id], prompt, feedback, { heading: null });
     exercise.id = `${heading.id}-practice`;
     if (entries.length > 1) exercise.prepend(el('h4', title));
     practice.append(exercise);

@@ -194,15 +194,17 @@ export const nonFinitePilot = {
           ['Trace the silent subject', persuaded, 'lower-subject-dot', 'The dot and the object NP share index 1. Ivo is understood to wait.'],
         ]);
         body.append(lessonReflection(el,
+          'The two versions of the delay sentence use the same smaller clause after different verbs.',
           '“They expected there to be a delay” uses dummy “there”. Why does replacing “expected” with “persuaded” fail?',
           '“Expected” can take a smaller clause with dummy “there” as its subject. “Persuaded” needs a higher object that can be persuaded, which dummy “there” cannot supply. With other verbs, look for a controller separately. In “Nia promised Ren to wait”, Nia is the one understood to wait.'));
         break;
       case 'application': {
         example('Nia expected Ren to leave. · Nia advised Ren to leave.');
         body.append(lessonReflection(el,
-          'Ren would leave in both sentences. Which verb takes “Ren to leave” as one group, and which verb takes Ren as its object?',
+          'Nia expects Ren to leave in one sentence and advises Ren to leave in the other.',
+          'Ren would leave in both cases. Which verb takes “Ren to leave” as one group, and which verb takes Ren as its object?',
           'With “expected”, Ren is the overt lower subject, so “Ren to leave” forms one clause. With “advised”, Ren is the higher object and controls the silent lower subject. That gives “advised” two separate complements.',
-          'Nia expected [Ren to leave]. · Nia advised [Ren] [to leave].'));
+          { example: 'Nia expected [Ren to leave]. · Nia advised [Ren] [to leave].' }));
         break;
       }
       case 'recap':

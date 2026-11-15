@@ -80,9 +80,10 @@ export const grammarPilot = {
       case 'application': {
         example('Mina waves and Leo waits.');
         body.append(lessonReflection(el,
-          'The starting list has “Mina waves” and “Leo waits”. Can the coordination rule build the sentence above? Which two inputs does it need?',
+          'The toy grammar starts with two short sentences and has a rule that joins sentences with “and”.',
+          'Can the coordination rule build the sentence above? Which two inputs does it need?',
           'Both inputs are on the base list and count as S. The rule joins them into a larger S in one step. The brackets show both the inputs and the result.',
-          '[S [S Mina waves] and [S Leo waits]]'));
+          { example: '[S [S Mina waves] and [S Leo waits]]' }));
         break;
       }
       case 'recap':

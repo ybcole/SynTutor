@@ -90,6 +90,7 @@ export const constituentsPilot = {
       example('Mina paused near the stone arch that spans the canal.');
       paragraph('Suppose “that spans the canal” tells which arch Mina paused near. Then the answer to “What did Mina pause near?” is “the stone arch that spans the canal”. The whole location now includes those extra words.');
       body.append(lessonReflection(el,
+        'Mina paused at an arch. This longer sentence adds words to identify which arch it was.',
         'Where did Mina pause? Give the whole location, including the words that identify the arch.',
         '“Near the stone arch that spans the canal” answers where she paused. “The stone arch that spans the canal” answers what she paused near. The two answers show the smaller group inside the larger one.'));
     }

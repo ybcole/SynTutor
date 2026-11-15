@@ -139,7 +139,8 @@ export const nounPhrasesPilot = {
       case 'application': {
         example('Those ceramic bowls from Vigan');
         body.append(lessonReflection(el,
-          'The bowls are ceramic and they came from Vigan. Which group does the PP “from Vigan” describe?',
+          'The example describes bowls by their material and where they came from.',
+          'Which group does the PP “from Vigan” describe?',
           '“Ceramic bowls” forms the smaller NOM. The PP “from Vigan” describes that whole group, so it joins the smaller NOM under a larger one. “Those” stays in DET.'));
         p('An indefinite pronoun can refer to a person without saying who it is. “Someone” can be a whole NP on its own. When you add the PP in the next example, the pronoun and PP both sit right under NP.');
         example('Someone [from Vigan]');
