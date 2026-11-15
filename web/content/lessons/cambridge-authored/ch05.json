@@ -1,0 +1,1988 @@
+{
+  "title": "Nouns and noun phrases",
+  "description": "Explore how nouns, nominals and determiners build noun phrases, from countability and quantification to case, genitives and agreement.",
+  "example": "The committee's decision left several of the younger residents deeply unhappy.",
+  "key_terms": [
+    {
+      "term": "noun",
+      "definition": "A lexical category whose members prototypically head noun phrases and inflect for number and case."
+    },
+    {
+      "term": "noun phrase",
+      "definition": "A phrase whose head is a noun, a pronoun, or a fused nominal element."
+    },
+    {
+      "term": "nominal",
+      "definition": "The unit between noun and NP, containing the head noun and its internal dependents."
+    },
+    {
+      "term": "common noun",
+      "definition": "A noun such as doctor or city that is not specialised to naming a particular entity."
+    },
+    {
+      "term": "proper noun",
+      "definition": "A noun specialised to head a proper name, such as Clinton or Thames."
+    },
+    {
+      "term": "proper name",
+      "definition": "A conventional name for a particular entity, such as New Zealand or The Open University."
+    },
+    {
+      "term": "pronoun",
+      "definition": "A subcategory of noun with a narrower range of dependents and special inflection."
+    },
+    {
+      "term": "count noun",
+      "definition": "A noun use that presents entities as countable units."
+    },
+    {
+      "term": "non-count noun",
+      "definition": "A noun use that presents a substance or collection without individual counting."
+    },
+    {
+      "term": "determiner",
+      "definition": "The NP function that marks definiteness, indefiniteness or quantity."
+    },
+    {
+      "term": "determinative",
+      "definition": "A lexical category such as the, this, some, three or much."
+    },
+    {
+      "term": "definiteness",
+      "definition": "The grammatical marking associated with identifiable or familiar referents."
+    },
+    {
+      "term": "quantification",
+      "definition": "The marking of quantity, including universal, existential and negative meanings."
+    },
+    {
+      "term": "referential",
+      "definition": "An NP use that picks out an entity or entities."
+    },
+    {
+      "term": "non-referential",
+      "definition": "An NP use that ascribes a property or role rather than picking out a referent."
+    },
+    {
+      "term": "fused head",
+      "definition": "A single expression that performs the head function together with a dependent function."
+    },
+    {
+      "term": "partitive",
+      "definition": "A construction denoting a subset or subquantity of a set, often with of."
+    },
+    {
+      "term": "genitive",
+      "definition": "The case marked by ’s or a possessive pronoun, used in several distinct constructions."
+    },
+    {
+      "term": "subject-determiner",
+      "definition": "A genitive NP that combines determiner function with a subject-like relation to the head noun."
+    },
+    {
+      "term": "case",
+      "definition": "The grammatical marking of a pronoun or NP for functions such as subject, object or possessor."
+    },
+    {
+      "term": "gender",
+      "definition": "A grammatical category relevant to pronoun selection and agreement."
+    },
+    {
+      "term": "agreement",
+      "definition": "The matching of grammatical features between a source and a target, such as subject and verb."
+    },
+    {
+      "term": "number-transparent noun",
+      "definition": "A noun such as number or lot whose agreement follows the oblique complement rather than its own number."
+    },
+    {
+      "term": "collective noun",
+      "definition": "A singular noun denoting a group, which may take singular or plural agreement."
+    },
+    {
+      "term": "vocative",
+      "definition": "An NP used to address someone directly, often set off by intonation or punctuation."
+    },
+    {
+      "term": "appositive modifier",
+      "definition": "A modifier that adds a characterisation of the head without restricting its reference."
+    },
+    {
+      "term": "compound noun",
+      "definition": "A lexical unit made of two or more bases functioning as a single noun."
+    }
+  ],
+  "intro": [
+    "Put *the committee’s decision* beside *several of the younger residents* and the two phrases seem to belong to different crafts. One is a tight little unit closed by an apostrophe; the other sprawls across a partitive, a comparative and a postmodifying phrase. Both are noun phrases, and both have a head, dependents and an internal order that the rest of the grammar must respect. They name, but they also count, classify, identify, compare and evaluate, often in the same sentence.",
+    "The chapter works outward from the smallest questions. It starts with what makes a noun a noun and why the phrase has three layers rather than two, then takes up number and countability, determiners and quantification, reference and fused heads, pronouns, the dependents that cluster inside a nominal, case and genitives, gender and agreement, and finally proper names and vocatives.",
+    "Running through all of it is a single discipline: keep form, function and meaning apart. *The* is a determinative by category and a determiner by function; the apostrophe marks a case form that turns up in half a dozen constructions; the same phrase can pick out an entity, ascribe a role, or address the person in front of you. Once those axes are separated, the irregularities in this chapter stop looking irregular."
+  ],
+  "sections": [
+    {
+      "id": "nouns-nps",
+      "title": "Nouns, nominals, and noun phrases",
+      "advances": "predict",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A clause needs something to talk about, and the phrase that supplies it usually looks like *the doctor*: a noun with a determiner attached. The same shape can serve as the thing affected or as the description after *is*. Subject, object and predicative complement are the three positions where such phrases feel most at home; outside the fused-head construction, each is built around a noun head with one or more dependents."
+        },
+        {
+          "type": "examples",
+          "title": "One phrase, three clause functions",
+          "items": [
+            {
+              "text": "The doctor arrived.",
+              "mark": "ok",
+              "note": "Subject: the phrase names who arrived."
+            },
+            {
+              "text": "We need a doctor.",
+              "mark": "ok",
+              "note": "Object: the phrase names what is needed."
+            },
+            {
+              "text": "Kim is a doctor.",
+              "mark": "ok",
+              "note": "Predicative complement: the phrase ascribes a role."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "*Dog*, *dog’s*, *dogs*, *dogs’*: four forms from one short word, and the apostrophe is doing two quite different jobs. That inflection for number and case is one of the things that makes nouns nouns, along with the dependents they attract: determinatives, pre-head adjective phrases, relative clauses. What they do not take is an object. English says *I dislike it*, never *my dislike it*."
+        },
+        {
+          "type": "paragraph",
+          "text": "*She* and *the doctor* compete for the same slots, which is the main reason pronouns count as a subcategory of noun rather than a separate primary category. Their inflectional paradigm is different and the range of dependents they tolerate is much narrower, but the phrases they head behave like noun phrases in clause structure. The same reasoning brings in dummy *there* and bare role phrases such as *president*, each of which fills at least one central noun phrase function."
+        },
+        {
+          "type": "paragraph",
+          "text": "Beyond the clause, the same phrase turns up in places that are easy to overlook: inside a preposition phrase (*to the doctor*), in determiner position inside a larger phrase (*Sue’s analysis*), as an adjunct (*the day before yesterday*), as a modifier of an adjective, adverb or preposition, as a supplement (*his wife, a distinguished anthropologist*) and as a vocative (*Elizabeth, your taxi is here*)."
+        },
+        {
+          "type": "table",
+          "title": "Three layers",
+          "columns": [
+            "Layer",
+            "Head",
+            "Example"
+          ],
+          "rows": [
+            [
+              "NP",
+              "Nominal",
+              "the old man"
+            ],
+            [
+              "Nominal",
+              "Noun",
+              "old man"
+            ],
+            [
+              "Noun",
+              "Word",
+              "man"
+            ],
+            [
+              "NP",
+              "Pronoun",
+              "she"
+            ],
+            [
+              "NP",
+              "Fused nominal",
+              "the rich"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is a pronoun treated as a noun rather than a separate primary category?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It heads phrases that occur in the same clause functions as noun-headed NPs.",
+            "feedback": "The functional likeness matters more than the different inflectional paradigm."
+          },
+          {
+            "id": "b",
+            "text": "It always refers to a person.",
+            "feedback": "Pronouns can refer to things, places and propositions."
+          },
+          {
+            "id": "c",
+            "text": "It cannot take dependents.",
+            "feedback": "Pronouns take a narrower range of dependents, not none."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "noun-classes",
+      "title": "Noun classes and the NP layers",
+      "advances": "understand",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*The manager*, *Sue* and *she* can all fill the subject slot, but they arrive there by different routes. Common nouns describe a class of entity; proper nouns are specialised to head proper names; pronouns do the referring with far less internal structure. The line between the last two is worth watching, because a proper name does not need a proper noun at its head: *The Open University* is built on *university*, and *Rhode Island* on *island*."
+        },
+        {
+          "type": "paragraph",
+          "text": "Order *another cake* and the noun gives you a countable object; ask for *some more cake* and the same noun gives you a mass. Count uses accept low numerals and the indefinite article, non-count uses accept *much* and *little* and usually have no plural form. *Poetry* sits at the non-count end, *report* at the count end, and *cake* moves between them as the situation requires."
+        },
+        {
+          "type": "paragraph",
+          "text": "*The old man* contains a phrase smaller than itself. *The* is the determiner, and *old man* is the nominal that serves as head of the whole phrase; *man* is the head of that nominal. The intermediate layer is not decorative. A nominal can sit as a pre-head dependent inside a bigger phrase, as in *another United States warship*, whereas a full phrase cannot: *another the United States warship* fails."
+        },
+        {
+          "type": "table",
+          "title": "Noun classes and layers",
+          "columns": [
+            "Contrast",
+            "First member",
+            "Second member"
+          ],
+          "rows": [
+            [
+              "Noun class",
+              "Common: manager",
+              "Proper: Sue; pronoun: she"
+            ],
+            [
+              "Countability",
+              "Count: three reports",
+              "Non-count: poetry"
+            ],
+            [
+              "Layer",
+              "Nominal: old man",
+              "NP: the old man"
+            ],
+            [
+              "Proper name head",
+              "Proper noun: Clinton",
+              "Common noun: The Open University"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Nominals and proper names",
+          "items": [
+            {
+              "text": "the old man",
+              "mark": "ok",
+              "note": "The NP consists of determiner the and nominal old man."
+            },
+            {
+              "text": "another United States warship",
+              "mark": "ok",
+              "note": "United States is a nominal modifying warship, not an NP."
+            },
+            {
+              "text": "The Open University",
+              "mark": "ok",
+              "note": "A proper name whose head university is a common noun."
+            },
+            {
+              "text": "a cake / some cake",
+              "mark": "ok",
+              "note": "Count and non-count construals of the same noun."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the head of the NP the old man?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The nominal old man",
+            "feedback": "The nominal is the head of the NP; man is the head of the nominal."
+          },
+          {
+            "id": "b",
+            "text": "The determiner the",
+            "feedback": "The is a dependent, not the head."
+          },
+          {
+            "id": "c",
+            "text": "The adjective old",
+            "feedback": "Old modifies man inside the nominal."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "number-countability",
+      "title": "Number and countability",
+      "advances": "worked",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "One noun can support two grammars. *Another cake* individuates; *some more cake* measures. Countability therefore belongs to uses rather than to lexemes, and the tests follow from that: numerals and the indefinite article on one side, *much* and *little* and the absence of a plural on the other."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Scissors*, *trousers* and *outskirts* have no singular use; *equipment* and *furniture* have no plural. Number is a smaller contrast than countability, singular against plural, but the lexicon is full of exceptions. *The police* are plural, while *the government* can go either way depending on whether the group is imagined as a unit or as the people inside it."
+        },
+        {
+          "type": "paragraph",
+          "text": "Agreement inside the phrase usually follows the head noun, but not always. A small set of quantificational nouns — *number*, *lot*, *heap* — are number-transparent: their agreement is supplied by the oblique complement rather than by their own singular form. That is why a singular-looking head can take a plural verb, and why the reverse also occurs."
+        },
+        {
+          "type": "table",
+          "title": "Countability and number",
+          "columns": [
+            "Pattern",
+            "Example",
+            "Behaviour"
+          ],
+          "rows": [
+            [
+              "Count singular",
+              "a report; three reports",
+              "Numerals and plural inflection"
+            ],
+            [
+              "Non-count",
+              "poetry; much poetry",
+              "No plural; much/little"
+            ],
+            [
+              "Dual use",
+              "a cake / some cake",
+              "Count and non-count construals"
+            ],
+            [
+              "Plural-only",
+              "scissors; trousers",
+              "Plural form and agreement"
+            ],
+            [
+              "Singular-only",
+              "equipment; furniture",
+              "No plural counterpart"
+            ],
+            [
+              "Number-transparent",
+              "a number of spots",
+              "Agreement follows the oblique"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Number inside the NP",
+          "items": [
+            {
+              "text": "A number of spots have appeared.",
+              "mark": "ok",
+              "note": "Agreement follows spots, not the singular head number."
+            },
+            {
+              "text": "Heaps of money has been spent.",
+              "mark": "ok",
+              "note": "The number-transparent noun takes singular agreement from money."
+            },
+            {
+              "text": "The committee has not decided.",
+              "mark": "ok",
+              "note": "Collective viewed as a unit."
+            },
+            {
+              "text": "The committee have not decided.",
+              "mark": "ok",
+              "note": "Collective viewed as its members; optional plural override."
+            }
+          ]
+        },
+        {
+          "type": "diagnostic",
+          "title": "Test countability",
+          "steps": [
+            "Try combining the noun with a low numeral: one report, two reports.",
+            "Try the indefinite article: a suggestion.",
+            "Try much or little versus many or few.",
+            "Check whether a plural form is available in the intended sense."
+          ],
+          "conclusion": "Countability belongs to a use in context; many nouns allow both count and non-count construals."
+        }
+      ],
+      "check": {
+        "prompt": "Why does A number of spots take a plural verb?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Number is a number-transparent noun, so agreement follows spots.",
+            "feedback": "The oblique complement supplies the plural feature."
+          },
+          {
+            "id": "b",
+            "text": "Number is always plural.",
+            "feedback": "Number itself is singular in form."
+          },
+          {
+            "id": "c",
+            "text": "Spots is the subject.",
+            "feedback": "Spots is the complement of of, not the subject."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "determiner",
+      "title": "The determiner function",
+      "advances": "guided",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*The* and *Sue’s* have almost nothing in common as forms: one is a single determinative, the other a genitive phrase with an apostrophe. Both can occupy the slot before *report*, and that shared position is what the grammar calls the determiner function. The word class and the job belong to different levels of description, and confusing them causes trouble later with quantifiers and genitives alike."
+        },
+        {
+          "type": "paragraph",
+          "text": "Consider a newspaper article: the definite article marks a referent as recoverable from the situation, from the prior text or from the phrase itself. The indefinite article does the opposite, presenting a referent as new or unspecified. Identity is not uniqueness: *the president* works perfectly well in a country that has had forty of them, because context singles out the relevant one."
+        },
+        {
+          "type": "paragraph",
+          "text": "*All the students*, *half the cake* and *quite a success* put more than a bare determiner in the determiner region. *All*, *both* and *half* can sit in front of the determiner as predeterminers, and adverbs such as *quite* and *rather* hover outside it. Determiner phrases built from *too many* or *so few* can themselves fill the slot, which shows that the position accepts more than single words."
+        },
+        {
+          "type": "table",
+          "title": "Function and category",
+          "columns": [
+            "Expression",
+            "Category",
+            "Function"
+          ],
+          "rows": [
+            [
+              "the",
+              "Determinative",
+              "Determiner"
+            ],
+            [
+              "this",
+              "Determinative",
+              "Determiner"
+            ],
+            [
+              "Sue’s",
+              "Genitive NP",
+              "Determiner / subject-determiner"
+            ],
+            [
+              "all",
+              "Determinative",
+              "Predeterminer or determiner"
+            ],
+            [
+              "quite",
+              "Adverb",
+              "Peripheral modifier"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Determiners in place",
+          "items": [
+            {
+              "text": "the report",
+              "mark": "ok",
+              "note": "The is a determinative functioning as determiner."
+            },
+            {
+              "text": "Sue’s report",
+              "mark": "ok",
+              "note": "A genitive NP functions as subject-determiner."
+            },
+            {
+              "text": "all the students",
+              "mark": "ok",
+              "note": "All is a predeterminer modifier."
+            },
+            {
+              "text": "quite a success",
+              "mark": "ok",
+              "note": "Quite is a peripheral modifier outside the determiner."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which statement correctly distinguishes function from category?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Determiner is a function; determinative is a category.",
+            "feedback": "A determinative can function as determiner, but so can a genitive NP."
+          },
+          {
+            "id": "b",
+            "text": "Determiner is a category; determinative is a function.",
+            "feedback": "The terms are the other way round."
+          },
+          {
+            "id": "c",
+            "text": "Both terms name the same word class.",
+            "feedback": "They belong to different levels of description."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "quantification",
+      "title": "Quantification and determinatives",
+      "advances": "transfer",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A teacher reports that *every student* handed in a draft, that *some* need more time, and that *none* has asked for an extension. Three quantifiers, three different kinds of claim: one distributes over the members of a set one at a time and takes a singular noun, one asserts that a subset exists, one denies that any member qualifies. Add *all* and *both* for universal force, *either* and *neither* for a choice between two, and the main semantic types are in place."
+        },
+        {
+          "type": "paragraph",
+          "text": "If all the students passed, then most passed, and if most passed, then some did. The entailments run in one direction only. When a speaker chooses the weaker term, hearers often infer that the stronger would have been false, with *some* hinting at *not all*. That inference can be cancelled in a way that an entailment cannot."
+        },
+        {
+          "type": "examples",
+          "title": "The scalar cline",
+          "items": [
+            {
+              "text": "All the students passed.",
+              "mark": "ok",
+              "note": "Entails the two weaker claims; nothing weaker entails it."
+            },
+            {
+              "text": "Most of the students passed.",
+              "mark": "ok",
+              "note": "Entailed by all, and entails some; not the reverse."
+            },
+            {
+              "text": "Some of the students passed.",
+              "mark": "ok",
+              "note": "The weakest claim; compatible with all and with not all."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "*Some* prefers positive contexts and *any* prefers negatives, questions and conditionals; *a few* points upward while *few* points down; *many* goes with count nouns and *much* with non-count. Meaning is not the whole story, because the determinatives differ grammatically too. *Enough* and *sufficient* measure sufficiency; *another* adds one more item to a series."
+        },
+        {
+          "type": "table",
+          "title": "Quantifiers and their work",
+          "columns": [
+            "Meaning",
+            "Determinatives",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Universal",
+              "all, both",
+              "all the students; both reports"
+            ],
+            [
+              "Distributive",
+              "each, every",
+              "each student; every report"
+            ],
+            [
+              "Existential",
+              "some, any",
+              "some reports; any questions"
+            ],
+            [
+              "Negative",
+              "no, none",
+              "no reports; none were ready"
+            ],
+            [
+              "Disjunctive",
+              "either, neither",
+              "either option; neither answer"
+            ],
+            [
+              "Degree",
+              "many, much, few, little",
+              "many reports; much water"
+            ],
+            [
+              "Sufficiency",
+              "enough, sufficient",
+              "enough time; sufficient evidence"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Quantification in context",
+          "items": [
+            {
+              "text": "Every student has a ticket.",
+              "mark": "ok",
+              "note": "Distributive every takes a singular noun and singular agreement."
+            },
+            {
+              "text": "Some students have not replied.",
+              "mark": "ok",
+              "note": "Some is positive in form; the clause itself is negative."
+            },
+            {
+              "text": "Do you have any questions?",
+              "mark": "ok",
+              "note": "Any is favoured in interrogative contexts."
+            },
+            {
+              "text": "A few people came, but few stayed.",
+              "mark": "ok",
+              "note": "A few is positive; few is negative in orientation."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which quantifier is distributive and normally singular?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Every",
+            "feedback": "Every student, not every students; agreement is singular."
+          },
+          {
+            "id": "b",
+            "text": "All",
+            "feedback": "All can combine with plural or non-count nouns."
+          },
+          {
+            "id": "c",
+            "text": "Some",
+            "feedback": "Some is existential, not inherently distributive."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "reference",
+      "title": "Articles, definiteness, and reference",
+      "advances": "exit",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*I met a doctor* and *Kim is a doctor* contain the same two words in the same order, but they do different work. In the first, the phrase picks out a person the speaker encountered; in the second, it says what Kim does for a living and picks out nobody. Reference is the link to an entity, while denotation is the class that the noun itself names."
+        },
+        {
+          "type": "paragraph",
+          "text": "Articles steer that distinction but do not settle it. The definite article usually signals that the hearer can identify the referent; the indefinite article presents one as not yet identifiable. Generic uses cut across both: *The tiger is a dangerous animal* and *A tiger is a dangerous animal* make the same general claim, and neither is about a particular tiger."
+        },
+        {
+          "type": "paragraph",
+          "text": "Some phrases carry no determiner at all. Bare plurals and non-count nouns can be generic (*Tickets are expensive*, *Water is scarce*), and a special group of bare role phrases appears as predicative complements: *She was elected president*, *They appointed him treasurer*. What makes these last ones interesting is their narrow distribution. The same bare form is not available as an ordinary subject or object."
+        },
+        {
+          "type": "table",
+          "title": "Referential and non-referential uses",
+          "columns": [
+            "Use",
+            "Example",
+            "Interpretation"
+          ],
+          "rows": [
+            [
+              "Referential",
+              "I met a doctor.",
+              "A particular doctor is picked out."
+            ],
+            [
+              "Ascriptive",
+              "Kim is a doctor.",
+              "A property is ascribed to Kim."
+            ],
+            [
+              "Role",
+              "They appointed her treasurer.",
+              "A role is assigned, not a person identified."
+            ],
+            [
+              "Generic",
+              "Tigers are dangerous.",
+              "The kind, not a particular tiger."
+            ],
+            [
+              "Bare role",
+              "She was elected president.",
+              "No determiner; predicative complement only"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Reference and role",
+          "items": [
+            {
+              "text": "I met a doctor.",
+              "mark": "ok",
+              "note": "Referential: a particular doctor is introduced."
+            },
+            {
+              "text": "Kim is a doctor.",
+              "mark": "ok",
+              "note": "Non-referential: the NP ascribes a profession."
+            },
+            {
+              "text": "They appointed her treasurer.",
+              "mark": "ok",
+              "note": "Bare role NP as predicative complement."
+            },
+            {
+              "text": "Tigers are dangerous.",
+              "mark": "ok",
+              "note": "Bare plural with generic reference."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which use of a doctor is non-referential?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Kim is a doctor.",
+            "feedback": "It ascribes a property rather than picking out a doctor."
+          },
+          {
+            "id": "b",
+            "text": "I met a doctor.",
+            "feedback": "It introduces a particular doctor."
+          },
+          {
+            "id": "c",
+            "text": "A doctor called while you were out.",
+            "feedback": "It refers to a particular unknown doctor."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "fused-heads",
+      "title": "Fused heads and elliptical NPs",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Answer *Did you buy some?* with *Yes, some sausages*, and the shorter reply drops the noun without losing it. *Some* is doing two jobs at once, determiner and head, and the missing noun is recovered from the question. The same doubling shows up in *the second* after *the first candidate*, where a modifier takes over the head function, and in *the rich*, where an adjective does."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Many would disagree*, *none were ready*, *both will do*, *Kim’s had broken down*: in each, one expression carries the determiner or modifier role and the head role together. Quantifiers and genitives are the most productive sources of these phrases. Partitive versions make the subset explicit (*few of her friends knew*) or leave it to context (*we made suggestions but few were taken up*)."
+        },
+        {
+          "type": "paragraph",
+          "text": "*The man I met* can shorten to *the man* when the modifier is recoverable, but *the rich* has no separate head word to begin with. Fusion is not ellipsis, though the two are often confused. In an elliptical phrase a postmodifier goes missing under identity with an earlier expression, and the head stays overt. Fusion and ellipsis differ structurally, not just in how much has been left unsaid."
+        },
+        {
+          "type": "examples",
+          "title": "Fused-head NPs",
+          "items": [
+            {
+              "text": "Did you buy some?",
+              "mark": "ok",
+              "note": "Some fuses determiner and head; the antecedent supplies the noun."
+            },
+            {
+              "text": "The first candidate performed well, but the second did not.",
+              "mark": "ok",
+              "note": "The second fuses modifier and head."
+            },
+            {
+              "text": "The rich are not always happy.",
+              "mark": "ok",
+              "note": "The adjective rich fuses modifier and head."
+            },
+            {
+              "text": "Kim’s had broken down.",
+              "mark": "ok",
+              "note": "Genitive fused subject-determiner-head."
+            },
+            {
+              "text": "Few of her friends knew.",
+              "mark": "ok",
+              "note": "Explicitly partitive fused head."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is fused in the second in The first candidate performed well, but the second did not?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The modifier second and the head function",
+            "feedback": "Second modifies an understood candidate and also serves as head."
+          },
+          {
+            "id": "b",
+            "text": "The determiner and the modifier only",
+            "feedback": "The fused element also performs the head function."
+          },
+          {
+            "id": "c",
+            "text": "Two separate heads",
+            "feedback": "A fused head is one expression performing two functions."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "pronouns",
+      "title": "Pronouns and pronoun-headed NPs",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "English keeps its pronouns in a small closed list and asks them to carry a great deal: person, number, gender, case, and sometimes a distinction between dependent and independent forms. Personal pronouns such as *I*, *you*, *she*, *it*, *we* and *they* have nominative, accusative, genitive and reflexive forms; *each other* and *one another* are reciprocal; *who*, *which* and *what* serve as interrogative and relative pronouns; *today* and *tomorrow* make up the small temporal group."
+        },
+        {
+          "type": "paragraph",
+          "text": "*My* and *mine* differ in exactly one respect: the first sits in determiner position, the second stands as head or fused head. The same split runs through *your* and *yours*, *her* and *hers*. Pronouns also tolerate far fewer dependents than common nouns and never combine with determiners, which is part of why they feel like a category apart even though they head the same kind of phrase."
+        },
+        {
+          "type": "paragraph",
+          "text": "Person, number and gender are built into the personal system, but the fit with the world is loose. *They* can take a singular antecedent when the person’s sex is unknown or irrelevant, which fills a gap the masculine and feminine forms leave open. *One* supplies a general, non-referential personal pronoun with its own reflexive *oneself*, and dummy *there* appears in existential clauses as a subject with no referent at all."
+        },
+        {
+          "type": "table",
+          "title": "Pronoun subcategories",
+          "columns": [
+            "Subcategory",
+            "Examples",
+            "Special feature"
+          ],
+          "rows": [
+            [
+              "Personal",
+              "I, you, she, they",
+              "Person, number and gender"
+            ],
+            [
+              "Reciprocal",
+              "each other, one another",
+              "Two or more participants related mutually"
+            ],
+            [
+              "Interrogative",
+              "who, which, what",
+              "Used in questions and embedded interrogatives"
+            ],
+            [
+              "Relative",
+              "who, which, that",
+              "Links a relative clause to an antecedent"
+            ],
+            [
+              "Temporal",
+              "today, tomorrow",
+              "Deictic time reference"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Pronoun forms and uses",
+          "items": [
+            {
+              "text": "She gave me her keys, but mine were missing.",
+              "mark": "ok",
+              "note": "Her is a dependent genitive; mine is an independent genitive."
+            },
+            {
+              "text": "Someone has left their umbrella behind.",
+              "mark": "ok",
+              "note": "Singular they is neutral as to sex."
+            },
+            {
+              "text": "They helped each other.",
+              "mark": "ok",
+              "note": "Reciprocal pronoun."
+            },
+            {
+              "text": "Today is the last day.",
+              "mark": "ok",
+              "note": "Temporal pronoun as subject."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which pair contrasts dependent and independent genitive pronouns?",
+        "options": [
+          {
+            "id": "a",
+            "text": "my / mine",
+            "feedback": "My functions as determiner; mine functions as head or fused head."
+          },
+          {
+            "id": "b",
+            "text": "I / me",
+            "feedback": "Those are nominative and accusative forms."
+          },
+          {
+            "id": "c",
+            "text": "she / herself",
+            "feedback": "Those are non-reflexive and reflexive forms."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "internal-dependents",
+      "title": "Complements and modifiers inside the NP",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*His fear of the dark* and *the woman in the garden* look alike on the page: noun, then preposition phrase. Only one of the two phrases is required by its noun. *Fear* selects its *of* phrase in a way that *woman* does not select *in the garden*; *reliance* does the same with *on the system*, and *belief* can take a *that*-clause. The first kind of dependent is a complement, the second a modifier, and the contrast that organises clause structure reappears inside the nominal."
+        },
+        {
+          "type": "paragraph",
+          "text": "Attributive adjectives sit between the determiner and the head, and most of them cannot bring a post-head dependent with them. *A proud of his son father* is impossible for that reason. Put the adjective after the noun and the dependent becomes possible: *a father proud of his son*. Relative clauses and preposition phrases are the other main post-head modifiers, and they are far less constrained."
+        },
+        {
+          "type": "paragraph",
+          "text": "Not every modifier restricts. *My friend, a doctor* adds a characterisation without narrowing down which friend is meant, and the comma marks the difference in writing. Composite nominals such as *language teacher* or *Ministry of Defence officials* are built by the syntax and interpreted compositionally. Compounds such as *blackbird* or *coffee table* are stored as lexical units, which is why their meaning is not simply the sum of their parts."
+        },
+        {
+          "type": "table",
+          "title": "Dependents inside the nominal",
+          "columns": [
+            "Dependent",
+            "Status",
+            "Example"
+          ],
+          "rows": [
+            [
+              "of the dark",
+              "Complement licensed by fear",
+              "his fear of the dark"
+            ],
+            [
+              "on the system",
+              "Complement licensed by reliance",
+              "their reliance on the system"
+            ],
+            [
+              "young",
+              "Attributive modifier",
+              "a young woman"
+            ],
+            [
+              "in the garden",
+              "Post-head modifier",
+              "the woman in the garden"
+            ],
+            [
+              "who called",
+              "Relative clause modifier",
+              "the woman who called"
+            ],
+            [
+              "a doctor",
+              "Appositive modifier",
+              "my friend, a doctor"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Licensed and optional dependents",
+          "items": [
+            {
+              "text": "his fear of the dark",
+              "mark": "ok",
+              "note": "Of the dark is a complement selected by fear."
+            },
+            {
+              "text": "the woman in the garden",
+              "mark": "ok",
+              "note": "In the garden is a post-head modifier."
+            },
+            {
+              "text": "a father proud of his son",
+              "mark": "ok",
+              "note": "Postpositive adjective with its own complement."
+            },
+            {
+              "text": "my friend, a doctor",
+              "mark": "ok",
+              "note": "A doctor is an appositive modifier."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which dependent is a complement rather than a modifier?",
+        "options": [
+          {
+            "id": "a",
+            "text": "of the dark in his fear of the dark",
+            "feedback": "Fear licenses the PP complement."
+          },
+          {
+            "id": "b",
+            "text": "in the garden in the woman in the garden",
+            "feedback": "That is an optional locative modifier."
+          },
+          {
+            "id": "c",
+            "text": "young in a young woman",
+            "feedback": "That is an attributive modifier."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "np-order",
+      "title": "Order, compounds, and appositives",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*All the very old wooden houses near the river* stacks almost every layer the phrase allows: predeterminer, determiner, adverb-modified adjective, another adjective, noun head, then a post-head preposition phrase. The order is not a single linear rule. Each layer admits certain categories and excludes others, and the exclusions do most of the explanatory work."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Blackbird* and *black bird* differ in more than a space. The first is a lexical unit with its own meaning and its own stress pattern; the second is a syntactic combination in which *black* modifies *bird* in the ordinary way. Spelling is only a hint; stress and meaning are better evidence, and they affect how each expression is stored and interpreted."
+        },
+        {
+          "type": "paragraph",
+          "text": "Appositives characterise rather than restrict. In *my friend, a doctor* the second phrase does not tell you which friend is at issue; it adds a description. Change the punctuation to *my friend the doctor* and the post-head expression starts to help identify the referent, which brings it much closer to a restrictive modifier."
+        },
+        {
+          "type": "examples",
+          "title": "Order and interpretation",
+          "items": [
+            {
+              "text": "all the very old wooden houses near the river",
+              "mark": "ok",
+              "note": "Predeterminer, determiner, modifiers, head, post-head modifier."
+            },
+            {
+              "text": "a blackbird",
+              "mark": "ok",
+              "note": "A compound noun with a lexicalised meaning."
+            },
+            {
+              "text": "a black bird",
+              "mark": "ok",
+              "note": "A composite nominal: black modifies bird syntactically."
+            },
+            {
+              "text": "my friend, a doctor",
+              "mark": "ok",
+              "note": "Appositive modifier, not a restrictive one."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the difference between a blackbird and a black bird?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Blackbird is a compound noun; black bird is a composite nominal.",
+            "feedback": "The compound is a lexical unit; the composite nominal is syntactically compositional."
+          },
+          {
+            "id": "b",
+            "text": "They are identical in structure.",
+            "feedback": "Stress and meaning can distinguish them."
+          },
+          {
+            "id": "c",
+            "text": "Black bird contains no noun.",
+            "feedback": "Bird is the noun head."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "case",
+      "title": "Case: nominative and accusative",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "English keeps case on a short list of words. Personal pronouns distinguish nominative from accusative in many contexts (*I know them* against *They know me*), *who* and *whom* preserve a similar contrast in formal style, and *you* and *it* have a single plain form for everything. Nouns long ago lost the distinction, which is why case is most visible exactly where the paradigm is smallest."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Between you and me* is formal standard; *between you and I* is hypercorrection in the mouths of speakers who have been taught that *me* is always wrong. Assignment is syntactic, but usage is not tidy. Coordination creates its own pressures: *He and I went* is standard, while *Me and him went* is common in informal speech and follows a different logic."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Who did you see?* puts the interrogative word at the front, but its case depends on the gap it has left behind: it is the object of *see*, so formal style writes *whom*. *Who saw you?* leaves no gap in object position and keeps the nominative. Relative clauses show the same tension, and competing analyses of *those whom he thought were guilty* reflect a real disagreement about where case is assigned, not simple carelessness."
+        },
+        {
+          "type": "table",
+          "title": "Case forms",
+          "columns": [
+            "Function",
+            "Pronoun",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Subject",
+              "I, he, she, they",
+              "I know them."
+            ],
+            [
+              "Object",
+              "me, him, her, them",
+              "They know me."
+            ],
+            [
+              "Dependent genitive",
+              "my, his, her, their",
+              "my report"
+            ],
+            [
+              "Independent genitive",
+              "mine, his, hers, theirs",
+              "The report is mine."
+            ],
+            [
+              "Reflexive",
+              "myself, himself, herself",
+              "She hurt herself."
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Case in context",
+          "items": [
+            {
+              "text": "I know them.",
+              "mark": "ok",
+              "note": "Nominative subject I; accusative object them."
+            },
+            {
+              "text": "Between you and me, this is a problem.",
+              "mark": "ok",
+              "note": "Formal standard uses accusative me after a preposition."
+            },
+            {
+              "text": "Who did you see?",
+              "mark": "ok",
+              "note": "Who is fronted object; formal style has whom."
+            },
+            {
+              "text": "Who saw you?",
+              "mark": "ok",
+              "note": "Who is subject and remains nominative."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is whom used in Who did you see? in formal style?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It functions as the object of see, even though it is fronted.",
+            "feedback": "Case follows the gap relation, not the surface position."
+          },
+          {
+            "id": "b",
+            "text": "It is always used at the beginning of a question.",
+            "feedback": "Who is used when the interrogative element is subject."
+          },
+          {
+            "id": "c",
+            "text": "It refers to a person.",
+            "feedback": "Both who and whom refer to people."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "genitives",
+      "title": "Genitives and the subject-determiner",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "One apostrophe, several constructions. *Kim’s father* puts the genitive in determiner position; the same marker can also mark the subject of a gerund-participial, hide inside a preposition phrase, serve as a predicative complement, modify a following nominal, or fuse determiner and head. Six patterns in all, and the grammar treats them as distinct even though the spelling is identical."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Kim’s father* means the father of Kim, and the genitive phrase makes the whole phrase definite. The subject-determiner is the central case and the one that shapes the rest. The pattern is recursive — *Kim’s father’s business* nests one inside another — and the marker attaches at the end of the genitive phrase even when that phrase has a post-head dependent of its own: *the people next door’s behaviour*."
+        },
+        {
+          "type": "paragraph",
+          "text": "The other constructions differ mainly in where the genitive sits. The oblique type leaves the determiner slot free, which is why *a friend of Kim’s* and *those friends of Kim’s* both work. The predicative type is a complement rather than part of a larger phrase. The attributive type modifies a nominal and can be built on a bare nominal, as in *an old people’s home*. *Own* reinforces the possessive relation, as in *Kim’s own report*."
+        },
+        {
+          "type": "table",
+          "title": "Six genitive constructions",
+          "columns": [
+            "Type",
+            "Example",
+            "Function"
+          ],
+          "rows": [
+            [
+              "Subject-determiner",
+              "Kim’s father",
+              "Genitive NP determines the matrix NP"
+            ],
+            [
+              "Subject of gerund",
+              "Kim’s joining the party",
+              "Genitive marks the subject of a clause"
+            ],
+            [
+              "Fused subject-determiner-head",
+              "Kim’s was better.",
+              "Genitive fuses determiner and head"
+            ],
+            [
+              "Oblique",
+              "a friend of Kim’s",
+              "Genitive inside a PP dependent"
+            ],
+            [
+              "Predicative",
+              "This is Kim’s.",
+              "Genitive NP is a predicative complement"
+            ],
+            [
+              "Attributive",
+              "an old people’s home",
+              "Genitive modifies a nominal"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Genitive relations",
+          "items": [
+            {
+              "text": "Kim’s father has arrived.",
+              "mark": "ok",
+              "note": "Subject-determiner: the father of Kim."
+            },
+            {
+              "text": "No one objected to Kim’s joining the party.",
+              "mark": "ok",
+              "note": "Genitive marks the subject of the gerund-participial."
+            },
+            {
+              "text": "She’s a friend of Kim’s.",
+              "mark": "ok",
+              "note": "Oblique genitive inside a PP dependent."
+            },
+            {
+              "text": "This is Kim’s.",
+              "mark": "ok",
+              "note": "Predicative genitive."
+            },
+            {
+              "text": "an old people’s home",
+              "mark": "ok",
+              "note": "Attributive genitive modifying home."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What kind of genitive is Kim’s in a friend of Kim’s?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Oblique genitive",
+            "feedback": "It is inside a PP dependent rather than in determiner position."
+          },
+          {
+            "id": "b",
+            "text": "Subject-determiner",
+            "feedback": "That would be Kim’s friend, not a friend of Kim’s."
+          },
+          {
+            "id": "c",
+            "text": "Predicative genitive",
+            "feedback": "It is not a complement of be."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "gender-agreement",
+      "title": "Gender and pronoun agreement",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "English does not put gender on nouns, but it has not abandoned the category. Third-person singular pronouns distinguish masculine, feminine and neuter — *he*, *she*, *it* — and a handful of nouns, *mother* and *father* among them, carry gender through their meaning. Most nouns are simply neutral, and the pronoun is left to decide."
+        },
+        {
+          "type": "paragraph",
+          "text": "*The doctor said she would call* is fine when the doctor is female, even though *doctor* has no grammatical gender at all. Choosing that pronoun is partly a matter of sense and partly a matter of grammar. When the person’s sex is unknown or irrelevant, singular *they* does the work, as in *Someone has left their umbrella behind*."
+        },
+        {
+          "type": "paragraph",
+          "text": "Relative pronouns inherit person and number from their antecedents rather than from their own form. *The nurse who wants to see him* is singular because *nurse* is; *the nurses who want to see him* is plural because *nurses* is. The relative word itself looks identical in both, so the agreement has to be read through the antecedent."
+        },
+        {
+          "type": "examples",
+          "title": "Gender and antecedent",
+          "items": [
+            {
+              "text": "The doctor said she would call.",
+              "mark": "ok",
+              "note": "Semantic gender: the doctor is female."
+            },
+            {
+              "text": "Someone has left their umbrella behind.",
+              "mark": "ok",
+              "note": "Singular they is neutral as to sex."
+            },
+            {
+              "text": "The nurses who want to see him are waiting.",
+              "mark": "ok",
+              "note": "Who takes plural agreement from nurses."
+            },
+            {
+              "text": "The nurse who wants to see him is waiting.",
+              "mark": "ok",
+              "note": "Who takes singular agreement from nurse."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is their possible in Someone has left their umbrella behind?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Singular they is neutral as to sex.",
+            "feedback": "It supplies a gender-neutral pronoun for an unknown person."
+          },
+          {
+            "id": "b",
+            "text": "Someone is plural.",
+            "feedback": "Someone is singular in form."
+          },
+          {
+            "id": "c",
+            "text": "Their always refers to more than one person.",
+            "feedback": "Singular they refers to one person."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "subject-verb-agreement",
+      "title": "Subject-verb agreement and number in predicatives",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*The nurse wants* against *the nurses want*; *the dog was* against *the dogs were*. Agreement is a small, uneven system in English. The verb changes only in the present tense outside the modals, and in the preterite of *be*. Everything else, including ordinary past tenses, carries no number at all."
+        },
+        {
+          "type": "paragraph",
+          "text": "Collective nouns allow an optional plural override. *The committee has decided* treats the group as a unit; *the committee have decided* treats it as its members. Number-transparent nouns are less forgiving: *a number of spots* must take a plural verb, and *heaps of money* a singular one, because the agreement comes from the oblique complement rather than the head."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Kim and Pat are ready* is plural; *Kim or Pat is ready* is normally singular. Coordinated subjects depend on how the coordinates are related. *Both ... and* requires a plural verb, while *either ... or* and *neither ... nor* often let the verb agree with the nearer coordinate, a pattern prescriptive rules try to tidy up and ordinary usage keeps ignoring."
+        },
+        {
+          "type": "paragraph",
+          "text": "*My daughter is a doctor* and *My daughters are doctors* happen to match, but *The only thing we need now is some new curtains* does not, and nothing is wrong with it. Number in a predicative complement is a different matter entirely. The predicative names a value rather than agreeing with its subject, and there is no person or gender agreement between the two."
+        },
+        {
+          "type": "table",
+          "title": "Agreement patterns",
+          "columns": [
+            "Pattern",
+            "Example",
+            "Agreement"
+          ],
+          "rows": [
+            [
+              "Simple",
+              "The nurse wants to see you.",
+              "Singular subject, singular verb"
+            ],
+            [
+              "Simple plural",
+              "The nurses want to see you.",
+              "Plural subject, plural verb"
+            ],
+            [
+              "Collective",
+              "The committee has/have decided.",
+              "Optional singular or plural"
+            ],
+            [
+              "Number-transparent",
+              "A number of spots have appeared.",
+              "Plural override"
+            ],
+            [
+              "Coordination",
+              "Kim and Pat are ready.",
+              "Plural"
+            ],
+            [
+              "Predicative number",
+              "The only thing we need is new curtains.",
+              "Semantic matching, not agreement"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Agreement in action",
+          "items": [
+            {
+              "text": "The committee has decided.",
+              "mark": "ok",
+              "note": "Collective viewed as a unit."
+            },
+            {
+              "text": "The committee have decided.",
+              "mark": "ok",
+              "note": "Collective viewed as its members."
+            },
+            {
+              "text": "A number of spots have appeared.",
+              "mark": "ok",
+              "note": "Number-transparent noun with plural complement."
+            },
+            {
+              "text": "The only thing we need now is some new curtains.",
+              "mark": "ok",
+              "note": "Predicative number does not agree with the subject."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why does A number of spots take a plural verb?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Number is number-transparent, so agreement follows spots.",
+            "feedback": "The oblique complement supplies the plural feature."
+          },
+          {
+            "id": "b",
+            "text": "Number is always plural.",
+            "feedback": "Number is singular in form."
+          },
+          {
+            "id": "c",
+            "text": "Spots is the subject.",
+            "feedback": "Spots is the complement of of."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "proper-names",
+      "title": "Proper names and vocatives",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Mary*, *Melbourne*, *the United States*: each of these is a label for one entity, and the words inside them behave differently from ordinary nouns. A proper name is the label; a proper noun is the word specialised to build one. The two sets overlap without coinciding. *The Open University* is a proper name with a common noun at its head, and *New Zealand* is a proper name made of two proper nouns."
+        },
+        {
+          "type": "paragraph",
+          "text": "In their primary use, proper names are already definite, so the article often has nothing to do. Strong names carry no determiner at all (*Kim*, *New York*). Weak names mark definiteness redundantly with *the* (*the Thames*, *the Bronx*), and plural names are always weak: *the Alps*, *the Bahamas*, *the Beatles*."
+        },
+        {
+          "type": "paragraph",
+          "text": "Names also have secondary lives. *The New Zealand government* uses a name as a modifier; *the new Clinton* treats one as a description, almost as a common noun. Embellishments add material of their own, as in *Alexander the Great* or *the Richard Burton I remember*. At the other edge of the category sit vocatives, where a phrase is used to address someone rather than to say anything about them: *Elizabeth, your taxi is here*."
+        },
+        {
+          "type": "table",
+          "title": "Proper names",
+          "columns": [
+            "Type",
+            "Example",
+            "Determiner"
+          ],
+          "rows": [
+            [
+              "Strong singular",
+              "Kim; New York",
+              "None"
+            ],
+            [
+              "Weak singular",
+              "the Thames; the Bronx",
+              "the"
+            ],
+            [
+              "Weak plural",
+              "the Alps; the Beatles",
+              "the"
+            ],
+            [
+              "Proper name with common noun head",
+              "The Open University",
+              "the"
+            ],
+            [
+              "Name as modifier",
+              "the New Zealand government",
+              "the belongs to government"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Names and vocatives",
+          "items": [
+            {
+              "text": "Kim has arrived.",
+              "mark": "ok",
+              "note": "Strong proper name with no determiner."
+            },
+            {
+              "text": "the Thames",
+              "mark": "ok",
+              "note": "Weak proper name with redundant the."
+            },
+            {
+              "text": "the New Zealand government",
+              "mark": "ok",
+              "note": "Proper name functioning as a modifier."
+            },
+            {
+              "text": "Elizabeth, your taxi is here.",
+              "mark": "ok",
+              "note": "Vocative NP addressing Elizabeth."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which expression is a proper name but not a proper noun?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The Open University",
+            "feedback": "It is a proper name whose head university is a common noun."
+          },
+          {
+            "id": "b",
+            "text": "Clinton",
+            "feedback": "Clinton is a proper noun heading a proper name."
+          },
+          {
+            "id": "c",
+            "text": "Thames",
+            "feedback": "Thames is a proper noun."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "chapter-review",
+      "title": "Chapter Review",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Three layers, then: NP, nominal and noun. The phrase adds a determiner to the nominal; the nominal contains the head noun and its internal dependents. Nouns inflect for number and case, attract noun-specific dependents and refuse objects. Pronouns, dummy *there* and bare role phrases belong in the same category because they turn up in the same central functions."
+        },
+        {
+          "type": "paragraph",
+          "text": "Inside the phrase, number, countability and quantification do most of the shaping. Count and non-count are properties of uses; number-transparent nouns take agreement from their complements; determiners mark definiteness and quantity; quantifiers cover universal, existential, distributive, negative and scalar meanings. Reference cuts across all of these forms without lining up neatly with any of them."
+        },
+        {
+          "type": "paragraph",
+          "text": "The remaining sections show how much structure can fit into a short phrase. Fused heads and pronouns compress the head and its dependents into one word; case and genitives mark grammatical relations; gender and agreement link the phrase to pronouns and verbs. Proper names and vocatives take the same machinery to the edges of reference and address."
+        },
+        {
+          "type": "note",
+          "tone": "why",
+          "title": "An NP checklist",
+          "text": "Identify the head nominal. Separate determiner from determinative. Check whether the NP is referential or ascriptive. Look for a fused head or an elliptical postmodifier. Then examine number, countability, case and agreement. Finally, ask whether a genitive is subject-determiner, oblique, predicative or attributive."
+        }
+      ],
+      "check": {
+        "prompt": "Which statement correctly describes the NP layers?",
+        "options": [
+          {
+            "id": "a",
+            "text": "An NP contains a determiner and a head nominal; the nominal contains the noun and its internal dependents.",
+            "feedback": "This is the basic NP > nominal > noun hierarchy."
+          },
+          {
+            "id": "b",
+            "text": "A nominal always contains a determiner.",
+            "feedback": "The determiner belongs to the NP, not the nominal."
+          },
+          {
+            "id": "c",
+            "text": "A noun phrase always has an overt noun head.",
+            "feedback": "Fused-head NPs and pronoun-headed NPs are exceptions."
+          }
+        ],
+        "answer": "a"
+      }
+    }
+  ],
+  "worked": [
+    "Take *The committee’s decision left several of the younger residents deeply unhappy*. The subject NP is *The committee’s decision*: its head nominal is *decision*, and *the committee’s* is a subject-determiner. The object NP is *several of the younger residents*, a partitive fused-head construction with *several* as the fused determiner-head and *of the younger residents* as its complement.",
+    "The adjective *unhappy* is an object-oriented predicative complement in a complex-transitive clause. The example brings together several layers of NP structure: a genitive determiner, a nominal head, a partitive quantifier, a comparative adjective and a post-head PP. Each layer has its own syntax even though the whole phrase functions as a single object."
+  ],
+  "application": [
+    "When you meet a long NP, find the head nominal first. Everything before it is a determiner, predeterminer or pre-head modifier; everything after it may be a complement or a post-head modifier. Then decide whether the determiner is an article, a demonstrative, a quantifier or a genitive NP.",
+    "Next, check reference. Is the NP picking out an entity, ascribing a role, or making a generic statement? This affects article choice and interpretation. Then check number and countability: the head noun, a number-transparent quantifier or a collective meaning may determine agreement.",
+    "Finally, look at case and genitives. A genitive may be a subject-determiner, an oblique, a predicative or an attributive modifier. The same form can belong to different constructions, and the construction, not the apostrophe alone, determines the meaning."
+  ],
+  "reveal": [
+    "In *The committee’s decision left several of the younger residents deeply unhappy*, *The committee’s* is a subject-determiner inside the subject NP *The committee’s decision*. *Several of the younger residents* is a partitive fused-head NP functioning as object. *Unhappy* is an object-oriented predicative complement, and the clause is complex-transitive."
+  ],
+  "recap": [
+    "Nouns head nominals, nominals head NPs, and NPs add determiners and other dependents. Nouns inflect for number and case and do not take objects. Pronouns are a subcategory of noun; fused heads and bare role NPs are also NP constructions.",
+    "Countability, number, quantification, definiteness and reference organise the NP’s meaning. Case and genitives mark grammatical relations, while gender and agreement connect NPs to pronouns and verbs. Proper names and vocatives show how reference and address work at the boundaries of NP structure."
+  ],
+  "self_check": [
+    {
+      "question": "What are the three layers of NP structure?",
+      "answer": "NP, nominal and noun. The NP contains a determiner and a head nominal; the nominal contains the head noun and its internal dependents."
+    },
+    {
+      "question": "What is the difference between a determiner and a determinative?",
+      "answer": "Determiner is a function; determinative is a lexical category such as the, this, some or three. A genitive NP can also function as determiner."
+    },
+    {
+      "question": "What is a fused-head NP?",
+      "answer": "An NP in which one expression performs the head function together with a dependent function, as in some in Did you buy some? or the second in the second candidate."
+    },
+    {
+      "question": "Name three types of genitive construction.",
+      "answer": "Subject-determiner (Kim’s father), oblique (a friend of Kim’s), and predicative (This is Kim’s)."
+    },
+    {
+      "question": "Why does A number of spots take a plural verb?",
+      "answer": "Number is a number-transparent noun, so agreement follows the plural oblique complement spots."
+    }
+  ],
+  "opening": [
+    {
+      "prompt": "Which layer sits between the noun and the NP?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The nominal",
+          "feedback": "The nominal contains the noun and its internal dependents; the NP adds a determiner."
+        },
+        {
+          "id": "b",
+          "text": "The clause",
+          "feedback": "A clause is a larger construction."
+        },
+        {
+          "id": "c",
+          "text": "The preposition phrase",
+          "feedback": "A PP can be a dependent, not the intermediate layer."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which pair contrasts a determiner function with a determinative category?",
+      "options": [
+        {
+          "id": "a",
+          "text": "the as determiner; the as determinative",
+          "feedback": "The same word belongs to a category and performs a function."
+        },
+        {
+          "id": "b",
+          "text": "the as noun; the as verb",
+          "feedback": "The is not a noun or verb."
+        },
+        {
+          "id": "c",
+          "text": "the as clause; the as phrase",
+          "feedback": "These are not the relevant levels."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which NP is non-referential?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kim is a doctor.",
+          "feedback": "The NP a doctor ascribes a property."
+        },
+        {
+          "id": "b",
+          "text": "I met a doctor.",
+          "feedback": "It introduces a particular doctor."
+        },
+        {
+          "id": "c",
+          "text": "A doctor called.",
+          "feedback": "It refers to a particular unknown doctor."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What does a fused head do?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It performs the head function and a dependent function at once.",
+          "feedback": "Some in Did you buy some? is both determiner and head."
+        },
+        {
+          "id": "b",
+          "text": "It removes the head from the NP.",
+          "feedback": "The head function is still present, but fused."
+        },
+        {
+          "id": "c",
+          "text": "It turns an NP into a clause.",
+          "feedback": "Fusion is an NP-internal construction."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which verb form shows subject-verb agreement?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The nurse wants to see you.",
+          "feedback": "Wants agrees with the singular subject nurse."
+        },
+        {
+          "id": "b",
+          "text": "The nurse will see you.",
+          "feedback": "Will does not vary for number."
+        },
+        {
+          "id": "c",
+          "text": "The nurse slept.",
+          "feedback": "Slept does not vary for number."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "closing": [
+    {
+      "prompt": "What is the head of the NP the old man?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The nominal old man",
+          "feedback": "The nominal is the head of the NP; man is the head of the nominal."
+        },
+        {
+          "id": "b",
+          "text": "The determiner the",
+          "feedback": "The is a dependent."
+        },
+        {
+          "id": "c",
+          "text": "The adjective old",
+          "feedback": "Old modifies man."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What kind of genitive is Kim’s in a friend of Kim’s?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Oblique genitive",
+          "feedback": "It is inside a PP dependent, not in determiner position."
+        },
+        {
+          "id": "b",
+          "text": "Subject-determiner",
+          "feedback": "That would be Kim’s friend."
+        },
+        {
+          "id": "c",
+          "text": "Predicative genitive",
+          "feedback": "It is not a complement of be."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which expression is a bare role NP?",
+      "options": [
+        {
+          "id": "a",
+          "text": "president in She was elected president",
+          "feedback": "It is a predicative complement without a determiner."
+        },
+        {
+          "id": "b",
+          "text": "the president",
+          "feedback": "It contains a determiner."
+        },
+        {
+          "id": "c",
+          "text": "presidents in Presidents are elected",
+          "feedback": "That is a bare plural, not a bare role NP."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Why does The committee have decided allow a plural verb?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The collective noun can be construed as its members rather than as a unit.",
+          "feedback": "Collectives allow an optional plural override."
+        },
+        {
+          "id": "b",
+          "text": "Committee is always plural.",
+          "feedback": "Committee is singular in form."
+        },
+        {
+          "id": "c",
+          "text": "Decided is a plural-only verb.",
+          "feedback": "The verb form is not inherently plural."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which statement about proper names is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A proper name may have a common noun as its head.",
+          "feedback": "The Open University is a proper name headed by university."
+        },
+        {
+          "id": "b",
+          "text": "Every proper name contains a proper noun.",
+          "feedback": "The Open University does not."
+        },
+        {
+          "id": "c",
+          "text": "Proper names always take the definite article.",
+          "feedback": "Strong names such as Kim do not."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "stages": {
+    "predict": {
+      "prompt": "Which structure is the head of the NP the old man?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The nominal old man",
+          "feedback": "The nominal is the NP head; man is the nominal head."
+        },
+        {
+          "id": "b",
+          "text": "The determiner the",
+          "feedback": "The is a dependent."
+        },
+        {
+          "id": "c",
+          "text": "The adjective old",
+          "feedback": "Old modifies man."
+        }
+      ],
+      "answer": "a"
+    },
+    "guided": {
+      "prompt": "What does some fuse in Did you buy some?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Determiner and head",
+          "feedback": "The antecedent supplies the understood noun."
+        },
+        {
+          "id": "b",
+          "text": "Modifier and complement",
+          "feedback": "The fused element is in determiner and head function."
+        },
+        {
+          "id": "c",
+          "text": "Subject and object",
+          "feedback": "Those are clause functions."
+        }
+      ],
+      "answer": "a"
+    },
+    "transfer": {
+      "prompt": "Why does A number of spots take a plural verb?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Number is number-transparent, so agreement follows spots.",
+          "feedback": "The oblique complement controls agreement."
+        },
+        {
+          "id": "b",
+          "text": "Number is plural.",
+          "feedback": "Number is singular in form."
+        },
+        {
+          "id": "c",
+          "text": "Spots is the subject.",
+          "feedback": "Spots is the complement of of."
+        }
+      ],
+      "answer": "a"
+    },
+    "exit": {
+      "prompt": "What kind of genitive is Kim’s in a friend of Kim’s?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Oblique genitive",
+          "feedback": "It is related to friend through of."
+        },
+        {
+          "id": "b",
+          "text": "Subject-determiner",
+          "feedback": "That is Kim’s friend."
+        },
+        {
+          "id": "c",
+          "text": "Attributive genitive",
+          "feedback": "That is an old people’s home."
+        }
+      ],
+      "answer": "a"
+    }
+  }
+}

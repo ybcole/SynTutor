@@ -1,331 +1,1222 @@
 {
-  "title": "Enough, and accustomed to",
-  "content_version": "2.1.0",
-  "estimated_minutes": 9,
+  "title": "Adjectives and adverbs",
+  "content_version": "3.1.0",
+  "estimated_minutes": 20,
   "outcomes": [
     {
       "id": "o1",
-      "text": "Place enough according to the expression it modifies."
+      "text": "Explain the main ideas in Adjectives and adverbs."
     },
     {
       "id": "o2",
-      "text": "Recognise prepositional to after accustomed and contrast it with infinitival to."
+      "text": "Recognise the patterns in real sentences."
     },
     {
       "id": "o3",
-      "text": "Explain the choices in a sentence that contains both constructions."
+      "text": "Use the ideas when you read and write."
     }
   ],
   "key_terms": [
     {
-      "term": "degree",
-      "definition": "How far a quality or activity reaches, as in bright enough."
+      "term": "adjective",
+      "definition": "A lexical category whose members typically modify nouns and denote properties."
     },
     {
-      "term": "prepositional to",
-      "definition": "The to in accustomed to the schedule or accustomed to working late."
+      "term": "adverb",
+      "definition": "A lexical category whose members characteristically modify verbs and other categories except nouns."
     },
     {
-      "term": "infinitival marker",
-      "definition": "The to before a plain verb in an infinitival clause, as in to work late."
+      "term": "attributive",
+      "definition": "The function of an adjective phrase used as a pre-head modifier inside a nominal."
+    },
+    {
+      "term": "predicative complement",
+      "definition": "A complement that ascribes a property to a predicand, often realised by an AdjP."
+    },
+    {
+      "term": "postpositive",
+      "definition": "The function of an adjective phrase used as a post-head modifier inside an NP."
+    },
+    {
+      "term": "gradable",
+      "definition": "Able to denote a property in varying degrees, as with happy, happier, very happy."
+    },
+    {
+      "term": "non-gradable",
+      "definition": "A use of an adjective that does not readily accept degree modification or comparison."
+    },
+    {
+      "term": "degree adverb",
+      "definition": "An adverb such as very, too, quite or enough that indicates the degree of a property."
+    },
+    {
+      "term": "comparative",
+      "definition": "The grade form used to compare two or more entities, as in happier or more useful."
+    },
+    {
+      "term": "superlative",
+      "definition": "The grade form used to single out the highest degree, as in happiest or most useful."
+    },
+    {
+      "term": "adjective phrase",
+      "definition": "A phrase headed by an adjective, with optional modifiers and complements."
+    },
+    {
+      "term": "adverb phrase",
+      "definition": "A phrase headed by an adverb, with optional modifiers and complements."
+    },
+    {
+      "term": "complement",
+      "definition": "A dependent licensed by the head, such as of dogs in afraid of dogs."
+    },
+    {
+      "term": "modifier",
+      "definition": "A dependent that adds information without being required by the head."
+    },
+    {
+      "term": "attributive-only adjective",
+      "definition": "An adjective restricted to attributive function, such as former or mere."
+    },
+    {
+      "term": "never-attributive adjective",
+      "definition": "An adjective excluded from attributive function, such as asleep or alone."
+    },
+    {
+      "term": "flat adverb",
+      "definition": "An adverb with the same form as an adjective, such as fast or hard."
+    },
+    {
+      "term": "adjunct",
+      "definition": "A modifier in clause structure, such as a manner or time expression."
+    },
+    {
+      "term": "VP-oriented adjunct",
+      "definition": "An adjunct that modifies the predicate, such as manner or frequency."
+    },
+    {
+      "term": "clause-oriented adjunct",
+      "definition": "An adjunct that modifies the clause’s applicability, such as evaluation or modality."
+    },
+    {
+      "term": "focusing modifier",
+      "definition": "An adverb such as only or also that highlights a particular constituent."
+    },
+    {
+      "term": "scopal focus",
+      "definition": "The element that a focusing modifier applies to semantically."
+    },
+    {
+      "term": "stacked modification",
+      "definition": "A sequence in which one modifier is itself modified, as in only very rarely."
+    },
+    {
+      "term": "submodification",
+      "definition": "A structure in which a modifier modifies another modifier, as in quite remarkably well."
     }
   ],
   "revised_assessment": {
     "required_sections": [
-      "introduction",
-      "concepts",
-      "worked-example",
-      "application",
-      "recap"
+      "preliminaries",
+      "criterial-properties",
+      "category-boundaries",
+      "adjp-complementation",
+      "adjp-modification",
+      "restricted-adjectives",
+      "adverbs",
+      "advp-structure",
+      "adverb-position",
+      "focusing-adverbs",
+      "modifier-style",
+      "chapter-review"
     ],
     "opening": [
       {
+        "id": "opening-1",
+        "prompt": "Which category typically modifies nouns?",
         "options": [
           {
             "id": "a",
-            "text": "enough",
-            "feedback": "Degree enough follows the adjective quiet."
+            "text": "Adjectives",
+            "feedback": "Adjectives modify nominals and denote properties."
           },
           {
             "id": "b",
-            "text": "with enough",
-            "feedback": "Degree enough follows the adjective quiet."
+            "text": "Adverbs",
+            "feedback": "Adverbs characteristically modify categories other than nouns."
           },
           {
             "id": "c",
-            "text": "of enough",
-            "feedback": "Degree enough follows the adjective quiet."
+            "text": "Prepositions",
+            "feedback": "Prepositions head PPs; they do not modify nouns in this way."
           }
         ],
-        "prompt": "Finish “The room was quiet ___ to record in.”",
         "answer": "a",
         "outcome_ids": [
           "o1"
         ],
         "source_ids": [
-          "CGEL-2002-CH06-P0534"
-        ],
-        "id": "opening-1"
-      },
-      {
-        "options": [
-          {
-            "id": "a",
-            "text": "Jo plans to work late.",
-            "feedback": "Accustomed takes prepositional to with a gerund-participial complement. Plans to expresses an intention."
-          },
-          {
-            "id": "b",
-            "text": "Jo is accustomed to work late.",
-            "feedback": "Accustomed takes prepositional to with a gerund-participial complement. Plans to expresses an intention."
-          },
-          {
-            "id": "c",
-            "text": "Jo is accustomed to working late.",
-            "feedback": "Accustomed takes prepositional to with a gerund-participial complement. Plans to expresses an intention."
-          }
-        ],
-        "prompt": "Which phrase says that late work is already familiar to Jo?",
-        "answer": "c",
-        "outcome_ids": [
-          "o2"
-        ],
-        "source_ids": [
-          "CGEL-2002-CH06-P0545"
-        ],
-        "id": "opening-2"
-      },
-      {
-        "options": [
-          {
-            "id": "a",
-            "text": "Both are infinitival constructions.",
-            "feedback": "The first choice is about modifier position. The second depends on which kind of to is present."
-          },
-          {
-            "id": "b",
-            "text": "Enough follows the adjective it grades. To after accustomed licenses the -ing clause.",
-            "feedback": "The first choice is about modifier position. The second depends on which kind of to is present."
-          },
-          {
-            "id": "c",
-            "text": "Both need a plain verb after to.",
-            "feedback": "The first choice is about modifier position. The second depends on which kind of to is present."
-          }
-        ],
-        "prompt": "Why do “warm enough” and “accustomed to working” call for different form choices?",
-        "answer": "b",
-        "outcome_ids": [
-          "o3"
-        ],
-        "source_ids": [
+          "CGEL-2002-CH06-P0527",
+          "CGEL-2002-CH06-P0526",
+          "CGEL-2002-CH06-P0528",
+          "CGEL-2002-CH06-P0529",
+          "CGEL-2002-CH06-P0530",
+          "CGEL-2002-CH06-P0531",
+          "CGEL-2002-CH06-P0532",
+          "CGEL-2002-CH06-P0533",
           "CGEL-2002-CH06-P0534",
-          "CGEL-2002-CH06-P0545"
-        ],
-        "id": "opening-3"
+          "CGEL-2002-CH06-P0535",
+          "CGEL-2002-CH06-P0536",
+          "CGEL-2002-CH06-P0537",
+          "CGEL-2002-CH06-P0538",
+          "CGEL-2002-CH06-P0539",
+          "CGEL-2002-CH06-P0540",
+          "CGEL-2002-CH06-P0541",
+          "CGEL-2002-CH06-P0542",
+          "CGEL-2002-CH06-P0543",
+          "CGEL-2002-CH06-P0544",
+          "CGEL-2002-CH06-P0545",
+          "CGEL-2002-CH06-P0546",
+          "CGEL-2002-CH06-P0547",
+          "CGEL-2002-CH06-P0548",
+          "CGEL-2002-CH06-P0549",
+          "CGEL-2002-CH06-P0550",
+          "CGEL-2002-CH06-P0551",
+          "CGEL-2002-CH06-P0552",
+          "CGEL-2002-CH06-P0553",
+          "CGEL-2002-CH06-P0554",
+          "CGEL-2002-CH06-P0555",
+          "CGEL-2002-CH06-P0556",
+          "CGEL-2002-CH06-P0557",
+          "CGEL-2002-CH06-P0558",
+          "CGEL-2002-CH06-P0559",
+          "CGEL-2002-CH06-P0560",
+          "CGEL-2002-CH06-P0561",
+          "CGEL-2002-CH06-P0562",
+          "CGEL-2002-CH06-P0563",
+          "CGEL-2002-CH06-P0564",
+          "CGEL-2002-CH06-P0565",
+          "CGEL-2002-CH06-P0566",
+          "CGEL-2002-CH06-P0567",
+          "CGEL-2002-CH06-P0568",
+          "CGEL-2002-CH06-P0569",
+          "CGEL-2002-CH06-P0570",
+          "CGEL-2002-CH06-P0571",
+          "CGEL-2002-CH06-P0572",
+          "CGEL-2002-CH06-P0573",
+          "CGEL-2002-CH06-P0574",
+          "CGEL-2002-CH06-P0575",
+          "CGEL-2002-CH06-P0576",
+          "CGEL-2002-CH06-P0577",
+          "CGEL-2002-CH06-P0578",
+          "CGEL-2002-CH06-P0579",
+          "CGEL-2002-CH06-P0580",
+          "CGEL-2002-CH06-P0581",
+          "CGEL-2002-CH06-P0582",
+          "CGEL-2002-CH06-P0583",
+          "CGEL-2002-CH06-P0584",
+          "CGEL-2002-CH06-P0585",
+          "CGEL-2002-CH06-P0586",
+          "CGEL-2002-CH06-P0587",
+          "CGEL-2002-CH06-P0588",
+          "CGEL-2002-CH06-P0589",
+          "CGEL-2002-CH06-P0590",
+          "CGEL-2002-CH06-P0591",
+          "CGEL-2002-CH06-P0592",
+          "CGEL-2002-CH06-P0593",
+          "CGEL-2002-CH06-P0594",
+          "CGEL-2002-CH06-P0595"
+        ]
       },
       {
+        "id": "opening-2",
+        "prompt": "Which function is a predicative adjective performing?",
         "options": [
           {
             "id": "a",
-            "text": "enough",
-            "feedback": "The blank is before chairs, the ordinary position for enough when it specifies the amount."
+            "text": "Acting as a complement that ascribes a property",
+            "feedback": "In She is happy, happy is a predicative complement."
           },
           {
             "id": "b",
-            "text": "chairs were enough",
-            "feedback": "The blank is before chairs, the ordinary position for enough when it specifies the amount."
+            "text": "Modifying a following noun",
+            "feedback": "That is the attributive function."
           },
           {
             "id": "c",
-            "text": "chairs enough",
-            "feedback": "The blank is before chairs, the ordinary position for enough when it specifies the amount."
+            "text": "Heading a preposition phrase",
+            "feedback": "Prepositions head PPs."
           }
         ],
-        "prompt": "Complete “We had ___ chairs for everyone.”",
         "answer": "a",
         "outcome_ids": [
           "o1"
         ],
         "source_ids": [
-          "CGEL-2002-CH06-P0534"
-        ],
-        "id": "opening-4"
+          "CGEL-2002-CH06-P0527",
+          "CGEL-2002-CH06-P0526",
+          "CGEL-2002-CH06-P0528",
+          "CGEL-2002-CH06-P0529",
+          "CGEL-2002-CH06-P0530",
+          "CGEL-2002-CH06-P0531",
+          "CGEL-2002-CH06-P0532",
+          "CGEL-2002-CH06-P0533",
+          "CGEL-2002-CH06-P0534",
+          "CGEL-2002-CH06-P0535",
+          "CGEL-2002-CH06-P0536",
+          "CGEL-2002-CH06-P0537",
+          "CGEL-2002-CH06-P0538",
+          "CGEL-2002-CH06-P0539",
+          "CGEL-2002-CH06-P0540",
+          "CGEL-2002-CH06-P0541",
+          "CGEL-2002-CH06-P0542",
+          "CGEL-2002-CH06-P0543",
+          "CGEL-2002-CH06-P0544",
+          "CGEL-2002-CH06-P0545",
+          "CGEL-2002-CH06-P0546",
+          "CGEL-2002-CH06-P0547",
+          "CGEL-2002-CH06-P0548",
+          "CGEL-2002-CH06-P0549",
+          "CGEL-2002-CH06-P0550",
+          "CGEL-2002-CH06-P0551",
+          "CGEL-2002-CH06-P0552",
+          "CGEL-2002-CH06-P0553",
+          "CGEL-2002-CH06-P0554",
+          "CGEL-2002-CH06-P0555",
+          "CGEL-2002-CH06-P0556",
+          "CGEL-2002-CH06-P0557",
+          "CGEL-2002-CH06-P0558",
+          "CGEL-2002-CH06-P0559",
+          "CGEL-2002-CH06-P0560",
+          "CGEL-2002-CH06-P0561",
+          "CGEL-2002-CH06-P0562",
+          "CGEL-2002-CH06-P0563",
+          "CGEL-2002-CH06-P0564",
+          "CGEL-2002-CH06-P0565",
+          "CGEL-2002-CH06-P0566",
+          "CGEL-2002-CH06-P0567",
+          "CGEL-2002-CH06-P0568",
+          "CGEL-2002-CH06-P0569",
+          "CGEL-2002-CH06-P0570",
+          "CGEL-2002-CH06-P0571",
+          "CGEL-2002-CH06-P0572",
+          "CGEL-2002-CH06-P0573",
+          "CGEL-2002-CH06-P0574",
+          "CGEL-2002-CH06-P0575",
+          "CGEL-2002-CH06-P0576",
+          "CGEL-2002-CH06-P0577",
+          "CGEL-2002-CH06-P0578",
+          "CGEL-2002-CH06-P0579",
+          "CGEL-2002-CH06-P0580",
+          "CGEL-2002-CH06-P0581",
+          "CGEL-2002-CH06-P0582",
+          "CGEL-2002-CH06-P0583",
+          "CGEL-2002-CH06-P0584",
+          "CGEL-2002-CH06-P0585",
+          "CGEL-2002-CH06-P0586",
+          "CGEL-2002-CH06-P0587",
+          "CGEL-2002-CH06-P0588",
+          "CGEL-2002-CH06-P0589",
+          "CGEL-2002-CH06-P0590",
+          "CGEL-2002-CH06-P0591",
+          "CGEL-2002-CH06-P0592",
+          "CGEL-2002-CH06-P0593",
+          "CGEL-2002-CH06-P0594",
+          "CGEL-2002-CH06-P0595"
+        ]
       },
       {
+        "id": "opening-3",
+        "prompt": "Which adjective is never-attributive?",
         "options": [
           {
             "id": "a",
-            "text": "accustomed to following the schedule",
-            "feedback": "Accustomed to the new schedule preserves the prepositional frame."
+            "text": "Asleep",
+            "feedback": "The child was asleep, but not an asleep child in ordinary use."
           },
           {
             "id": "b",
-            "text": "planning to follow the schedule",
-            "feedback": "Accustomed to the new schedule preserves the prepositional frame."
+            "text": "Happy",
+            "feedback": "Happy occurs attributively and predicatively."
           },
           {
             "id": "c",
-            "text": "hoping to follow the schedule",
-            "feedback": "Accustomed to the new schedule preserves the prepositional frame."
+            "text": "Former",
+            "feedback": "Former is attributive-only."
           }
         ],
-        "prompt": "Which phrase lets you replace the activity with “the new schedule” without changing the frame?",
         "answer": "a",
         "outcome_ids": [
-          "o2"
+          "o1"
         ],
         "source_ids": [
-          "CGEL-2002-CH06-P0545"
+          "CGEL-2002-CH06-P0527",
+          "CGEL-2002-CH06-P0526",
+          "CGEL-2002-CH06-P0528",
+          "CGEL-2002-CH06-P0529",
+          "CGEL-2002-CH06-P0530",
+          "CGEL-2002-CH06-P0531",
+          "CGEL-2002-CH06-P0532",
+          "CGEL-2002-CH06-P0533",
+          "CGEL-2002-CH06-P0534",
+          "CGEL-2002-CH06-P0535",
+          "CGEL-2002-CH06-P0536",
+          "CGEL-2002-CH06-P0537",
+          "CGEL-2002-CH06-P0538",
+          "CGEL-2002-CH06-P0539",
+          "CGEL-2002-CH06-P0540",
+          "CGEL-2002-CH06-P0541",
+          "CGEL-2002-CH06-P0542",
+          "CGEL-2002-CH06-P0543",
+          "CGEL-2002-CH06-P0544",
+          "CGEL-2002-CH06-P0545",
+          "CGEL-2002-CH06-P0546",
+          "CGEL-2002-CH06-P0547",
+          "CGEL-2002-CH06-P0548",
+          "CGEL-2002-CH06-P0549",
+          "CGEL-2002-CH06-P0550",
+          "CGEL-2002-CH06-P0551",
+          "CGEL-2002-CH06-P0552",
+          "CGEL-2002-CH06-P0553",
+          "CGEL-2002-CH06-P0554",
+          "CGEL-2002-CH06-P0555",
+          "CGEL-2002-CH06-P0556",
+          "CGEL-2002-CH06-P0557",
+          "CGEL-2002-CH06-P0558",
+          "CGEL-2002-CH06-P0559",
+          "CGEL-2002-CH06-P0560",
+          "CGEL-2002-CH06-P0561",
+          "CGEL-2002-CH06-P0562",
+          "CGEL-2002-CH06-P0563",
+          "CGEL-2002-CH06-P0564",
+          "CGEL-2002-CH06-P0565",
+          "CGEL-2002-CH06-P0566",
+          "CGEL-2002-CH06-P0567",
+          "CGEL-2002-CH06-P0568",
+          "CGEL-2002-CH06-P0569",
+          "CGEL-2002-CH06-P0570",
+          "CGEL-2002-CH06-P0571",
+          "CGEL-2002-CH06-P0572",
+          "CGEL-2002-CH06-P0573",
+          "CGEL-2002-CH06-P0574",
+          "CGEL-2002-CH06-P0575",
+          "CGEL-2002-CH06-P0576",
+          "CGEL-2002-CH06-P0577",
+          "CGEL-2002-CH06-P0578",
+          "CGEL-2002-CH06-P0579",
+          "CGEL-2002-CH06-P0580",
+          "CGEL-2002-CH06-P0581",
+          "CGEL-2002-CH06-P0582",
+          "CGEL-2002-CH06-P0583",
+          "CGEL-2002-CH06-P0584",
+          "CGEL-2002-CH06-P0585",
+          "CGEL-2002-CH06-P0586",
+          "CGEL-2002-CH06-P0587",
+          "CGEL-2002-CH06-P0588",
+          "CGEL-2002-CH06-P0589",
+          "CGEL-2002-CH06-P0590",
+          "CGEL-2002-CH06-P0591",
+          "CGEL-2002-CH06-P0592",
+          "CGEL-2002-CH06-P0593",
+          "CGEL-2002-CH06-P0594",
+          "CGEL-2002-CH06-P0595"
+        ]
+      },
+      {
+        "id": "opening-4",
+        "prompt": "What does an adverb characteristically modify?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Verbs and categories other than nouns",
+            "feedback": "Adverbs also modify adjectives, adverbs, PPs and clauses."
+          },
+          {
+            "id": "b",
+            "text": "Only nouns",
+            "feedback": "That is the adjective’s characteristic function."
+          },
+          {
+            "id": "c",
+            "text": "Only verbs",
+            "feedback": "Adverbs also modify adjectives, adverbs, PPs and clauses."
+          }
         ],
-        "id": "opening-5"
+        "answer": "a",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH06-P0527",
+          "CGEL-2002-CH06-P0526",
+          "CGEL-2002-CH06-P0528",
+          "CGEL-2002-CH06-P0529",
+          "CGEL-2002-CH06-P0530",
+          "CGEL-2002-CH06-P0531",
+          "CGEL-2002-CH06-P0532",
+          "CGEL-2002-CH06-P0533",
+          "CGEL-2002-CH06-P0534",
+          "CGEL-2002-CH06-P0535",
+          "CGEL-2002-CH06-P0536",
+          "CGEL-2002-CH06-P0537",
+          "CGEL-2002-CH06-P0538",
+          "CGEL-2002-CH06-P0539",
+          "CGEL-2002-CH06-P0540",
+          "CGEL-2002-CH06-P0541",
+          "CGEL-2002-CH06-P0542",
+          "CGEL-2002-CH06-P0543",
+          "CGEL-2002-CH06-P0544",
+          "CGEL-2002-CH06-P0545",
+          "CGEL-2002-CH06-P0546",
+          "CGEL-2002-CH06-P0547",
+          "CGEL-2002-CH06-P0548",
+          "CGEL-2002-CH06-P0549",
+          "CGEL-2002-CH06-P0550",
+          "CGEL-2002-CH06-P0551",
+          "CGEL-2002-CH06-P0552",
+          "CGEL-2002-CH06-P0553",
+          "CGEL-2002-CH06-P0554",
+          "CGEL-2002-CH06-P0555",
+          "CGEL-2002-CH06-P0556",
+          "CGEL-2002-CH06-P0557",
+          "CGEL-2002-CH06-P0558",
+          "CGEL-2002-CH06-P0559",
+          "CGEL-2002-CH06-P0560",
+          "CGEL-2002-CH06-P0561",
+          "CGEL-2002-CH06-P0562",
+          "CGEL-2002-CH06-P0563",
+          "CGEL-2002-CH06-P0564",
+          "CGEL-2002-CH06-P0565",
+          "CGEL-2002-CH06-P0566",
+          "CGEL-2002-CH06-P0567",
+          "CGEL-2002-CH06-P0568",
+          "CGEL-2002-CH06-P0569",
+          "CGEL-2002-CH06-P0570",
+          "CGEL-2002-CH06-P0571",
+          "CGEL-2002-CH06-P0572",
+          "CGEL-2002-CH06-P0573",
+          "CGEL-2002-CH06-P0574",
+          "CGEL-2002-CH06-P0575",
+          "CGEL-2002-CH06-P0576",
+          "CGEL-2002-CH06-P0577",
+          "CGEL-2002-CH06-P0578",
+          "CGEL-2002-CH06-P0579",
+          "CGEL-2002-CH06-P0580",
+          "CGEL-2002-CH06-P0581",
+          "CGEL-2002-CH06-P0582",
+          "CGEL-2002-CH06-P0583",
+          "CGEL-2002-CH06-P0584",
+          "CGEL-2002-CH06-P0585",
+          "CGEL-2002-CH06-P0586",
+          "CGEL-2002-CH06-P0587",
+          "CGEL-2002-CH06-P0588",
+          "CGEL-2002-CH06-P0589",
+          "CGEL-2002-CH06-P0590",
+          "CGEL-2002-CH06-P0591",
+          "CGEL-2002-CH06-P0592",
+          "CGEL-2002-CH06-P0593",
+          "CGEL-2002-CH06-P0594",
+          "CGEL-2002-CH06-P0595"
+        ]
+      },
+      {
+        "id": "opening-5",
+        "prompt": "What does a focusing adverb highlight?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Its focus within its scope",
+            "feedback": "Only in Only Kim resigned highlights Kim."
+          },
+          {
+            "id": "b",
+            "text": "The entire sentence equally",
+            "feedback": "A focus selects a particular element within the scope."
+          },
+          {
+            "id": "c",
+            "text": "The following noun only",
+            "feedback": "Focusing adverbs can modify many categories."
+          }
+        ],
+        "answer": "a",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH06-P0527",
+          "CGEL-2002-CH06-P0526",
+          "CGEL-2002-CH06-P0528",
+          "CGEL-2002-CH06-P0529",
+          "CGEL-2002-CH06-P0530",
+          "CGEL-2002-CH06-P0531",
+          "CGEL-2002-CH06-P0532",
+          "CGEL-2002-CH06-P0533",
+          "CGEL-2002-CH06-P0534",
+          "CGEL-2002-CH06-P0535",
+          "CGEL-2002-CH06-P0536",
+          "CGEL-2002-CH06-P0537",
+          "CGEL-2002-CH06-P0538",
+          "CGEL-2002-CH06-P0539",
+          "CGEL-2002-CH06-P0540",
+          "CGEL-2002-CH06-P0541",
+          "CGEL-2002-CH06-P0542",
+          "CGEL-2002-CH06-P0543",
+          "CGEL-2002-CH06-P0544",
+          "CGEL-2002-CH06-P0545",
+          "CGEL-2002-CH06-P0546",
+          "CGEL-2002-CH06-P0547",
+          "CGEL-2002-CH06-P0548",
+          "CGEL-2002-CH06-P0549",
+          "CGEL-2002-CH06-P0550",
+          "CGEL-2002-CH06-P0551",
+          "CGEL-2002-CH06-P0552",
+          "CGEL-2002-CH06-P0553",
+          "CGEL-2002-CH06-P0554",
+          "CGEL-2002-CH06-P0555",
+          "CGEL-2002-CH06-P0556",
+          "CGEL-2002-CH06-P0557",
+          "CGEL-2002-CH06-P0558",
+          "CGEL-2002-CH06-P0559",
+          "CGEL-2002-CH06-P0560",
+          "CGEL-2002-CH06-P0561",
+          "CGEL-2002-CH06-P0562",
+          "CGEL-2002-CH06-P0563",
+          "CGEL-2002-CH06-P0564",
+          "CGEL-2002-CH06-P0565",
+          "CGEL-2002-CH06-P0566",
+          "CGEL-2002-CH06-P0567",
+          "CGEL-2002-CH06-P0568",
+          "CGEL-2002-CH06-P0569",
+          "CGEL-2002-CH06-P0570",
+          "CGEL-2002-CH06-P0571",
+          "CGEL-2002-CH06-P0572",
+          "CGEL-2002-CH06-P0573",
+          "CGEL-2002-CH06-P0574",
+          "CGEL-2002-CH06-P0575",
+          "CGEL-2002-CH06-P0576",
+          "CGEL-2002-CH06-P0577",
+          "CGEL-2002-CH06-P0578",
+          "CGEL-2002-CH06-P0579",
+          "CGEL-2002-CH06-P0580",
+          "CGEL-2002-CH06-P0581",
+          "CGEL-2002-CH06-P0582",
+          "CGEL-2002-CH06-P0583",
+          "CGEL-2002-CH06-P0584",
+          "CGEL-2002-CH06-P0585",
+          "CGEL-2002-CH06-P0586",
+          "CGEL-2002-CH06-P0587",
+          "CGEL-2002-CH06-P0588",
+          "CGEL-2002-CH06-P0589",
+          "CGEL-2002-CH06-P0590",
+          "CGEL-2002-CH06-P0591",
+          "CGEL-2002-CH06-P0592",
+          "CGEL-2002-CH06-P0593",
+          "CGEL-2002-CH06-P0594",
+          "CGEL-2002-CH06-P0595"
+        ]
       }
     ],
     "closing": [
       {
+        "id": "closing-1",
+        "prompt": "Why is of dogs a complement in afraid of dogs?",
         "options": [
           {
             "id": "a",
-            "text": "We enough tested the microphone.",
-            "feedback": "The short direct object stays next to tested, with enough after it."
+            "text": "Afraid licenses the PP complement.",
+            "feedback": "The adjective’s lexical entry selects the preposition."
           },
           {
             "id": "b",
-            "text": "We tested enough the microphone.",
-            "feedback": "The short direct object stays next to tested, with enough after it."
+            "text": "It follows the adjective.",
+            "feedback": "Position alone does not determine complement status."
           },
           {
             "id": "c",
-            "text": "We tested the microphone enough.",
-            "feedback": "The short direct object stays next to tested, with enough after it."
+            "text": "It can be omitted.",
+            "feedback": "Optional complements are still licensed."
           }
         ],
-        "prompt": "Keep the direct object in “We tested the microphone” and add enough.",
-        "answer": "c",
-        "outcome_ids": [
-          "o1"
-        ],
-        "source_ids": [
-          "CGEL-2002-CH06-P0535"
-        ],
-        "id": "closing-1"
-      },
-      {
-        "options": [
-          {
-            "id": "a",
-            "text": "The number of songs",
-            "feedback": "Enough measures the action. The song identifies what was practised."
-          },
-          {
-            "id": "b",
-            "text": "The quality of the song itself",
-            "feedback": "Enough measures the action. The song identifies what was practised."
-          },
-          {
-            "id": "c",
-            "text": "The extent of the practice",
-            "feedback": "Enough measures the action. The song identifies what was practised."
-          }
-        ],
-        "prompt": "What is enough about in “We practised the song enough”?",
-        "answer": "c",
-        "outcome_ids": [
-          "o1"
-        ],
-        "source_ids": [
-          "CGEL-2002-CH06-P0534"
-        ],
-        "id": "closing-2"
-      },
-      {
-        "options": [
-          {
-            "id": "a",
-            "text": "planned to stay late",
-            "feedback": "The infinitival marker is followed by the plain verb stay. The other uses take a prepositional complement."
-          },
-          {
-            "id": "b",
-            "text": "accustomed to the late shift",
-            "feedback": "The infinitival marker is followed by the plain verb stay. The other uses take a prepositional complement."
-          },
-          {
-            "id": "c",
-            "text": "accustomed to staying late",
-            "feedback": "The infinitival marker is followed by the plain verb stay. The other uses take a prepositional complement."
-          }
-        ],
-        "prompt": "Which expression contains infinitival to?",
         "answer": "a",
         "outcome_ids": [
           "o2"
         ],
         "source_ids": [
-          "CGEL-2002-CH06-P0545"
-        ],
-        "id": "closing-3"
-      },
-      {
-        "options": [
-          {
-            "id": "a",
-            "text": "It belongs to accustomed.",
-            "feedback": "Enough and time form a noun phrase that measures an amount."
-          },
-          {
-            "id": "b",
-            "text": "It modifies the adjective late.",
-            "feedback": "Enough and time form a noun phrase that measures an amount."
-          },
-          {
-            "id": "c",
-            "text": "It specifies the amount of time.",
-            "feedback": "Enough and time form a noun phrase that measures an amount."
-          }
-        ],
-        "prompt": "In “We’re accustomed to staying late, but we don’t have enough time”, why does enough go first in its phrase?",
-        "answer": "c",
-        "outcome_ids": [
-          "o3"
-        ],
-        "source_ids": [
+          "CGEL-2002-CH06-P0527",
+          "CGEL-2002-CH06-P0526",
+          "CGEL-2002-CH06-P0528",
+          "CGEL-2002-CH06-P0529",
+          "CGEL-2002-CH06-P0530",
+          "CGEL-2002-CH06-P0531",
+          "CGEL-2002-CH06-P0532",
+          "CGEL-2002-CH06-P0533",
           "CGEL-2002-CH06-P0534",
-          "CGEL-2002-CH06-P0545"
-        ],
-        "id": "closing-4"
+          "CGEL-2002-CH06-P0535",
+          "CGEL-2002-CH06-P0536",
+          "CGEL-2002-CH06-P0537",
+          "CGEL-2002-CH06-P0538",
+          "CGEL-2002-CH06-P0539",
+          "CGEL-2002-CH06-P0540",
+          "CGEL-2002-CH06-P0541",
+          "CGEL-2002-CH06-P0542",
+          "CGEL-2002-CH06-P0543",
+          "CGEL-2002-CH06-P0544",
+          "CGEL-2002-CH06-P0545",
+          "CGEL-2002-CH06-P0546",
+          "CGEL-2002-CH06-P0547",
+          "CGEL-2002-CH06-P0548",
+          "CGEL-2002-CH06-P0549",
+          "CGEL-2002-CH06-P0550",
+          "CGEL-2002-CH06-P0551",
+          "CGEL-2002-CH06-P0552",
+          "CGEL-2002-CH06-P0553",
+          "CGEL-2002-CH06-P0554",
+          "CGEL-2002-CH06-P0555",
+          "CGEL-2002-CH06-P0556",
+          "CGEL-2002-CH06-P0557",
+          "CGEL-2002-CH06-P0558",
+          "CGEL-2002-CH06-P0559",
+          "CGEL-2002-CH06-P0560",
+          "CGEL-2002-CH06-P0561",
+          "CGEL-2002-CH06-P0562",
+          "CGEL-2002-CH06-P0563",
+          "CGEL-2002-CH06-P0564",
+          "CGEL-2002-CH06-P0565",
+          "CGEL-2002-CH06-P0566",
+          "CGEL-2002-CH06-P0567",
+          "CGEL-2002-CH06-P0568",
+          "CGEL-2002-CH06-P0569",
+          "CGEL-2002-CH06-P0570",
+          "CGEL-2002-CH06-P0571",
+          "CGEL-2002-CH06-P0572",
+          "CGEL-2002-CH06-P0573",
+          "CGEL-2002-CH06-P0574",
+          "CGEL-2002-CH06-P0575",
+          "CGEL-2002-CH06-P0576",
+          "CGEL-2002-CH06-P0577",
+          "CGEL-2002-CH06-P0578",
+          "CGEL-2002-CH06-P0579",
+          "CGEL-2002-CH06-P0580",
+          "CGEL-2002-CH06-P0581",
+          "CGEL-2002-CH06-P0582",
+          "CGEL-2002-CH06-P0583",
+          "CGEL-2002-CH06-P0584",
+          "CGEL-2002-CH06-P0585",
+          "CGEL-2002-CH06-P0586",
+          "CGEL-2002-CH06-P0587",
+          "CGEL-2002-CH06-P0588",
+          "CGEL-2002-CH06-P0589",
+          "CGEL-2002-CH06-P0590",
+          "CGEL-2002-CH06-P0591",
+          "CGEL-2002-CH06-P0592",
+          "CGEL-2002-CH06-P0593",
+          "CGEL-2002-CH06-P0594",
+          "CGEL-2002-CH06-P0595"
+        ]
       },
       {
+        "id": "closing-2",
+        "prompt": "Where does enough normally occur with an adjective?",
         "options": [
           {
             "id": "a",
-            "text": "care about enough it / care about it enough",
-            "feedback": "With care, enough can precede or follow the whole about phrase."
+            "text": "After the adjective",
+            "feedback": "Old enough, not enough old."
           },
           {
             "id": "b",
-            "text": "enough care about it / care about enough it",
-            "feedback": "With care, enough can precede or follow the whole about phrase."
+            "text": "Before the adjective",
+            "feedback": "Enough old is not the normal order."
           },
           {
             "id": "c",
-            "text": "care enough about it / care about it enough",
-            "feedback": "With care, enough can precede or follow the whole about phrase."
+            "text": "Before the determiner",
+            "feedback": "Enough has its own placement rules."
           }
         ],
-        "prompt": "Which pair shows two possible positions with a prepositional complement of care?",
-        "answer": "c",
+        "answer": "a",
         "outcome_ids": [
-          "o1"
+          "o2"
         ],
         "source_ids": [
-          "CGEL-2002-CH06-P0535"
+          "CGEL-2002-CH06-P0527",
+          "CGEL-2002-CH06-P0526",
+          "CGEL-2002-CH06-P0528",
+          "CGEL-2002-CH06-P0529",
+          "CGEL-2002-CH06-P0530",
+          "CGEL-2002-CH06-P0531",
+          "CGEL-2002-CH06-P0532",
+          "CGEL-2002-CH06-P0533",
+          "CGEL-2002-CH06-P0534",
+          "CGEL-2002-CH06-P0535",
+          "CGEL-2002-CH06-P0536",
+          "CGEL-2002-CH06-P0537",
+          "CGEL-2002-CH06-P0538",
+          "CGEL-2002-CH06-P0539",
+          "CGEL-2002-CH06-P0540",
+          "CGEL-2002-CH06-P0541",
+          "CGEL-2002-CH06-P0542",
+          "CGEL-2002-CH06-P0543",
+          "CGEL-2002-CH06-P0544",
+          "CGEL-2002-CH06-P0545",
+          "CGEL-2002-CH06-P0546",
+          "CGEL-2002-CH06-P0547",
+          "CGEL-2002-CH06-P0548",
+          "CGEL-2002-CH06-P0549",
+          "CGEL-2002-CH06-P0550",
+          "CGEL-2002-CH06-P0551",
+          "CGEL-2002-CH06-P0552",
+          "CGEL-2002-CH06-P0553",
+          "CGEL-2002-CH06-P0554",
+          "CGEL-2002-CH06-P0555",
+          "CGEL-2002-CH06-P0556",
+          "CGEL-2002-CH06-P0557",
+          "CGEL-2002-CH06-P0558",
+          "CGEL-2002-CH06-P0559",
+          "CGEL-2002-CH06-P0560",
+          "CGEL-2002-CH06-P0561",
+          "CGEL-2002-CH06-P0562",
+          "CGEL-2002-CH06-P0563",
+          "CGEL-2002-CH06-P0564",
+          "CGEL-2002-CH06-P0565",
+          "CGEL-2002-CH06-P0566",
+          "CGEL-2002-CH06-P0567",
+          "CGEL-2002-CH06-P0568",
+          "CGEL-2002-CH06-P0569",
+          "CGEL-2002-CH06-P0570",
+          "CGEL-2002-CH06-P0571",
+          "CGEL-2002-CH06-P0572",
+          "CGEL-2002-CH06-P0573",
+          "CGEL-2002-CH06-P0574",
+          "CGEL-2002-CH06-P0575",
+          "CGEL-2002-CH06-P0576",
+          "CGEL-2002-CH06-P0577",
+          "CGEL-2002-CH06-P0578",
+          "CGEL-2002-CH06-P0579",
+          "CGEL-2002-CH06-P0580",
+          "CGEL-2002-CH06-P0581",
+          "CGEL-2002-CH06-P0582",
+          "CGEL-2002-CH06-P0583",
+          "CGEL-2002-CH06-P0584",
+          "CGEL-2002-CH06-P0585",
+          "CGEL-2002-CH06-P0586",
+          "CGEL-2002-CH06-P0587",
+          "CGEL-2002-CH06-P0588",
+          "CGEL-2002-CH06-P0589",
+          "CGEL-2002-CH06-P0590",
+          "CGEL-2002-CH06-P0591",
+          "CGEL-2002-CH06-P0592",
+          "CGEL-2002-CH06-P0593",
+          "CGEL-2002-CH06-P0594",
+          "CGEL-2002-CH06-P0595"
+        ]
+      },
+      {
+        "id": "closing-3",
+        "prompt": "Which adjective is attributive-only?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Utter",
+            "feedback": "Utter nonsense, but not The nonsense is utter in ordinary use."
+          },
+          {
+            "id": "b",
+            "text": "Awake",
+            "feedback": "Awake is never-attributive."
+          },
+          {
+            "id": "c",
+            "text": "Happy",
+            "feedback": "Happy occurs in all three central functions."
+          }
         ],
-        "id": "closing-5"
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH06-P0527",
+          "CGEL-2002-CH06-P0526",
+          "CGEL-2002-CH06-P0528",
+          "CGEL-2002-CH06-P0529",
+          "CGEL-2002-CH06-P0530",
+          "CGEL-2002-CH06-P0531",
+          "CGEL-2002-CH06-P0532",
+          "CGEL-2002-CH06-P0533",
+          "CGEL-2002-CH06-P0534",
+          "CGEL-2002-CH06-P0535",
+          "CGEL-2002-CH06-P0536",
+          "CGEL-2002-CH06-P0537",
+          "CGEL-2002-CH06-P0538",
+          "CGEL-2002-CH06-P0539",
+          "CGEL-2002-CH06-P0540",
+          "CGEL-2002-CH06-P0541",
+          "CGEL-2002-CH06-P0542",
+          "CGEL-2002-CH06-P0543",
+          "CGEL-2002-CH06-P0544",
+          "CGEL-2002-CH06-P0545",
+          "CGEL-2002-CH06-P0546",
+          "CGEL-2002-CH06-P0547",
+          "CGEL-2002-CH06-P0548",
+          "CGEL-2002-CH06-P0549",
+          "CGEL-2002-CH06-P0550",
+          "CGEL-2002-CH06-P0551",
+          "CGEL-2002-CH06-P0552",
+          "CGEL-2002-CH06-P0553",
+          "CGEL-2002-CH06-P0554",
+          "CGEL-2002-CH06-P0555",
+          "CGEL-2002-CH06-P0556",
+          "CGEL-2002-CH06-P0557",
+          "CGEL-2002-CH06-P0558",
+          "CGEL-2002-CH06-P0559",
+          "CGEL-2002-CH06-P0560",
+          "CGEL-2002-CH06-P0561",
+          "CGEL-2002-CH06-P0562",
+          "CGEL-2002-CH06-P0563",
+          "CGEL-2002-CH06-P0564",
+          "CGEL-2002-CH06-P0565",
+          "CGEL-2002-CH06-P0566",
+          "CGEL-2002-CH06-P0567",
+          "CGEL-2002-CH06-P0568",
+          "CGEL-2002-CH06-P0569",
+          "CGEL-2002-CH06-P0570",
+          "CGEL-2002-CH06-P0571",
+          "CGEL-2002-CH06-P0572",
+          "CGEL-2002-CH06-P0573",
+          "CGEL-2002-CH06-P0574",
+          "CGEL-2002-CH06-P0575",
+          "CGEL-2002-CH06-P0576",
+          "CGEL-2002-CH06-P0577",
+          "CGEL-2002-CH06-P0578",
+          "CGEL-2002-CH06-P0579",
+          "CGEL-2002-CH06-P0580",
+          "CGEL-2002-CH06-P0581",
+          "CGEL-2002-CH06-P0582",
+          "CGEL-2002-CH06-P0583",
+          "CGEL-2002-CH06-P0584",
+          "CGEL-2002-CH06-P0585",
+          "CGEL-2002-CH06-P0586",
+          "CGEL-2002-CH06-P0587",
+          "CGEL-2002-CH06-P0588",
+          "CGEL-2002-CH06-P0589",
+          "CGEL-2002-CH06-P0590",
+          "CGEL-2002-CH06-P0591",
+          "CGEL-2002-CH06-P0592",
+          "CGEL-2002-CH06-P0593",
+          "CGEL-2002-CH06-P0594",
+          "CGEL-2002-CH06-P0595"
+        ]
+      },
+      {
+        "id": "closing-4",
+        "prompt": "Why is outside a preposition in They are outside?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It heads a PP and can occur as a complement of be.",
+            "feedback": "The category is based on syntax, not the traditional label."
+          },
+          {
+            "id": "b",
+            "text": "It modifies the verb are.",
+            "feedback": "It is a complement, not a modifier."
+          },
+          {
+            "id": "c",
+            "text": "It ends in -side.",
+            "feedback": "Morphology alone does not decide."
+          }
+        ],
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH06-P0527",
+          "CGEL-2002-CH06-P0526",
+          "CGEL-2002-CH06-P0528",
+          "CGEL-2002-CH06-P0529",
+          "CGEL-2002-CH06-P0530",
+          "CGEL-2002-CH06-P0531",
+          "CGEL-2002-CH06-P0532",
+          "CGEL-2002-CH06-P0533",
+          "CGEL-2002-CH06-P0534",
+          "CGEL-2002-CH06-P0535",
+          "CGEL-2002-CH06-P0536",
+          "CGEL-2002-CH06-P0537",
+          "CGEL-2002-CH06-P0538",
+          "CGEL-2002-CH06-P0539",
+          "CGEL-2002-CH06-P0540",
+          "CGEL-2002-CH06-P0541",
+          "CGEL-2002-CH06-P0542",
+          "CGEL-2002-CH06-P0543",
+          "CGEL-2002-CH06-P0544",
+          "CGEL-2002-CH06-P0545",
+          "CGEL-2002-CH06-P0546",
+          "CGEL-2002-CH06-P0547",
+          "CGEL-2002-CH06-P0548",
+          "CGEL-2002-CH06-P0549",
+          "CGEL-2002-CH06-P0550",
+          "CGEL-2002-CH06-P0551",
+          "CGEL-2002-CH06-P0552",
+          "CGEL-2002-CH06-P0553",
+          "CGEL-2002-CH06-P0554",
+          "CGEL-2002-CH06-P0555",
+          "CGEL-2002-CH06-P0556",
+          "CGEL-2002-CH06-P0557",
+          "CGEL-2002-CH06-P0558",
+          "CGEL-2002-CH06-P0559",
+          "CGEL-2002-CH06-P0560",
+          "CGEL-2002-CH06-P0561",
+          "CGEL-2002-CH06-P0562",
+          "CGEL-2002-CH06-P0563",
+          "CGEL-2002-CH06-P0564",
+          "CGEL-2002-CH06-P0565",
+          "CGEL-2002-CH06-P0566",
+          "CGEL-2002-CH06-P0567",
+          "CGEL-2002-CH06-P0568",
+          "CGEL-2002-CH06-P0569",
+          "CGEL-2002-CH06-P0570",
+          "CGEL-2002-CH06-P0571",
+          "CGEL-2002-CH06-P0572",
+          "CGEL-2002-CH06-P0573",
+          "CGEL-2002-CH06-P0574",
+          "CGEL-2002-CH06-P0575",
+          "CGEL-2002-CH06-P0576",
+          "CGEL-2002-CH06-P0577",
+          "CGEL-2002-CH06-P0578",
+          "CGEL-2002-CH06-P0579",
+          "CGEL-2002-CH06-P0580",
+          "CGEL-2002-CH06-P0581",
+          "CGEL-2002-CH06-P0582",
+          "CGEL-2002-CH06-P0583",
+          "CGEL-2002-CH06-P0584",
+          "CGEL-2002-CH06-P0585",
+          "CGEL-2002-CH06-P0586",
+          "CGEL-2002-CH06-P0587",
+          "CGEL-2002-CH06-P0588",
+          "CGEL-2002-CH06-P0589",
+          "CGEL-2002-CH06-P0590",
+          "CGEL-2002-CH06-P0591",
+          "CGEL-2002-CH06-P0592",
+          "CGEL-2002-CH06-P0593",
+          "CGEL-2002-CH06-P0594",
+          "CGEL-2002-CH06-P0595"
+        ]
+      },
+      {
+        "id": "closing-5",
+        "prompt": "Why does Happily, they watched TV differ from They happily watched TV?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Front position gives an evaluation reading; central position gives a manner reading.",
+            "feedback": "Position affects scope and orientation."
+          },
+          {
+            "id": "b",
+            "text": "Happily is an adjective in the first sentence.",
+            "feedback": "It is an adverb in both."
+          },
+          {
+            "id": "c",
+            "text": "The second sentence has no subject.",
+            "feedback": "They is the subject."
+          }
+        ],
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH06-P0527",
+          "CGEL-2002-CH06-P0526",
+          "CGEL-2002-CH06-P0528",
+          "CGEL-2002-CH06-P0529",
+          "CGEL-2002-CH06-P0530",
+          "CGEL-2002-CH06-P0531",
+          "CGEL-2002-CH06-P0532",
+          "CGEL-2002-CH06-P0533",
+          "CGEL-2002-CH06-P0534",
+          "CGEL-2002-CH06-P0535",
+          "CGEL-2002-CH06-P0536",
+          "CGEL-2002-CH06-P0537",
+          "CGEL-2002-CH06-P0538",
+          "CGEL-2002-CH06-P0539",
+          "CGEL-2002-CH06-P0540",
+          "CGEL-2002-CH06-P0541",
+          "CGEL-2002-CH06-P0542",
+          "CGEL-2002-CH06-P0543",
+          "CGEL-2002-CH06-P0544",
+          "CGEL-2002-CH06-P0545",
+          "CGEL-2002-CH06-P0546",
+          "CGEL-2002-CH06-P0547",
+          "CGEL-2002-CH06-P0548",
+          "CGEL-2002-CH06-P0549",
+          "CGEL-2002-CH06-P0550",
+          "CGEL-2002-CH06-P0551",
+          "CGEL-2002-CH06-P0552",
+          "CGEL-2002-CH06-P0553",
+          "CGEL-2002-CH06-P0554",
+          "CGEL-2002-CH06-P0555",
+          "CGEL-2002-CH06-P0556",
+          "CGEL-2002-CH06-P0557",
+          "CGEL-2002-CH06-P0558",
+          "CGEL-2002-CH06-P0559",
+          "CGEL-2002-CH06-P0560",
+          "CGEL-2002-CH06-P0561",
+          "CGEL-2002-CH06-P0562",
+          "CGEL-2002-CH06-P0563",
+          "CGEL-2002-CH06-P0564",
+          "CGEL-2002-CH06-P0565",
+          "CGEL-2002-CH06-P0566",
+          "CGEL-2002-CH06-P0567",
+          "CGEL-2002-CH06-P0568",
+          "CGEL-2002-CH06-P0569",
+          "CGEL-2002-CH06-P0570",
+          "CGEL-2002-CH06-P0571",
+          "CGEL-2002-CH06-P0572",
+          "CGEL-2002-CH06-P0573",
+          "CGEL-2002-CH06-P0574",
+          "CGEL-2002-CH06-P0575",
+          "CGEL-2002-CH06-P0576",
+          "CGEL-2002-CH06-P0577",
+          "CGEL-2002-CH06-P0578",
+          "CGEL-2002-CH06-P0579",
+          "CGEL-2002-CH06-P0580",
+          "CGEL-2002-CH06-P0581",
+          "CGEL-2002-CH06-P0582",
+          "CGEL-2002-CH06-P0583",
+          "CGEL-2002-CH06-P0584",
+          "CGEL-2002-CH06-P0585",
+          "CGEL-2002-CH06-P0586",
+          "CGEL-2002-CH06-P0587",
+          "CGEL-2002-CH06-P0588",
+          "CGEL-2002-CH06-P0589",
+          "CGEL-2002-CH06-P0590",
+          "CGEL-2002-CH06-P0591",
+          "CGEL-2002-CH06-P0592",
+          "CGEL-2002-CH06-P0593",
+          "CGEL-2002-CH06-P0594",
+          "CGEL-2002-CH06-P0595"
+        ]
       }
     ]
   },
   "preview_sources": [
+    {
+      "id": "CGEL-2002-CH06-P0527",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 527,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0526",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 526,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0528",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 528,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0529",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 529,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0530",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 530,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0531",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 531,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0532",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 532,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0533",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 533,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
     {
       "id": "CGEL-2002-CH06-P0534",
       "book": "Cambridge",
@@ -355,6 +1246,132 @@
       "reviewed_on": "2026-11-14"
     },
     {
+      "id": "CGEL-2002-CH06-P0536",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 536,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0537",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 537,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0538",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 538,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0539",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 539,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0540",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 540,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0541",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 541,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0542",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 542,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0543",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 543,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0544",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 544,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
       "id": "CGEL-2002-CH06-P0545",
       "book": "Cambridge",
       "title": "The Cambridge Grammar of the English Language",
@@ -367,6 +1384,706 @@
       "independent_review": true,
       "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
       "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0546",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 546,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0547",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 547,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0548",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 548,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0549",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 549,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0550",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 550,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0551",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 551,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0552",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 552,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0553",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 553,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0554",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 554,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0555",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 555,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0556",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 556,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0557",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 557,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0558",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 558,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0559",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 559,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0560",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 560,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0561",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 561,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0562",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 562,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0563",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 563,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0564",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 564,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0565",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 565,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0566",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 566,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0567",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 567,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0568",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 568,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0569",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 569,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0570",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 570,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0571",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 571,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0572",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 572,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0573",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 573,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0574",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 574,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0575",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 575,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0576",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 576,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0577",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 577,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0578",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 578,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0579",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 579,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0580",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 580,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0581",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 581,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0582",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 582,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0583",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 583,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0584",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 584,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0585",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 585,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0586",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 586,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0587",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 587,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0588",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 588,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0589",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 589,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0590",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 590,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0591",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 591,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0592",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 592,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0593",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 593,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0594",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 594,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0595",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 595,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
     }
   ]
 }

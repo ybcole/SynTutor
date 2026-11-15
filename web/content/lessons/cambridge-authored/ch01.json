@@ -1,0 +1,1291 @@
+{
+  "title": "Preliminaries",
+  "key_terms": [
+    {
+      "term": "descriptive grammar",
+      "definition": "An account of how speakers actually use a language."
+    },
+    {
+      "term": "register",
+      "definition": "A way of using language that suits a particular situation."
+    },
+    {
+      "term": "accent",
+      "definition": "How speech sounds are pronounced."
+    },
+    {
+      "term": "dialect",
+      "definition": "A variety that differs in vocabulary and grammar as well as pronunciation."
+    },
+    {
+      "term": "lexeme",
+      "definition": "A word as a dictionary entry, apart from its different forms."
+    },
+    {
+      "term": "word token",
+      "definition": "One occurrence of a word in speech or writing."
+    },
+    {
+      "term": "inflection",
+      "definition": "An ending that marks a grammatical feature such as tense or number."
+    },
+    {
+      "term": "constituent",
+      "definition": "A word or group that behaves as one unit inside a larger structure."
+    },
+    {
+      "term": "head",
+      "definition": "The central word of a phrase."
+    },
+    {
+      "term": "complement",
+      "definition": "A dependent that fills a slot the head requires."
+    },
+    {
+      "term": "modifier",
+      "definition": "A dependent that adds information without filling a required slot."
+    },
+    {
+      "term": "determinative",
+      "definition": "A word such as the, a or this that helps identify a noun phrase."
+    },
+    {
+      "term": "preterite",
+      "definition": "The verb form often used for past time, as in lived or went."
+    },
+    {
+      "term": "entailment",
+      "definition": "A meaning that must be true whenever the original statement is true."
+    },
+    {
+      "term": "implicature",
+      "definition": "A meaning a speaker suggests without stating it."
+    },
+    {
+      "term": "presupposition",
+      "definition": "Information a sentence takes for granted."
+    }
+  ],
+  "intro": [
+    "Start with a sentence that sounds wrong and turns out to be regular. Millions of speakers say *They was late*, and they say it consistently, in the same contexts, with the same kind of subject. A grammar that asks how English works has to find room for that fact rather than file it under error. What it describes is not a rule handed down but a system people run.",
+    "The chapter sets out the working assumptions for everything that follows. It separates description from advice, speech from writing, accent from dialect, and the shape of a construction from the meaning it carries. Along the way it assembles the vocabulary later chapters assume: lexeme, constituent, head, complement, implicature.",
+    "The examples are short, and each one does a single job. Read them aloud where you can. The labels matter less than the patterns they point at."
+  ],
+  "sections": [
+    {
+      "id": "what-this-course-covers",
+      "title": "What this course covers",
+      "advances": "predict",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "“Arrested!” a headline reads, under a photograph of a man being led away. Nobody reading it parses a subjectless passive with an elided auxiliary; the sense arrives whole. Yet a grammar of English has to decide whether strings like this belong to its object of study, and the headline sits at the edge: unmistakably English, shaped by conventions of its own."
+        },
+        {
+          "type": "paragraph",
+          "text": "Take the spelling of *car* and *cart*: it preserves an /r/ that most southern British speakers have long since dropped. The course describes present-day Standard English as a synchronic snapshot rather than a history, so such details enter only when they explain something visible today. It records the principles behind words, phrases, clauses and sentences in current use."
+        },
+        {
+          "type": "paragraph",
+          "text": "Road signs, chemical formulae, poetry and computer jargon each run on conventions of their own, and the course sets them aside. The scope is deliberately general-purpose. What is left is the ordinary language a reader of a newspaper, a novel or a report is expected to follow. Standard English is the variety described, but describing it confers no rank on the others."
+        },
+        {
+          "type": "examples",
+          "title": "Edge cases the description sets aside",
+          "items": [
+            {
+              "text": "EXIT ONLY THIS LANE",
+              "mark": "ok",
+              "note": "A fixed sign formula, not a clause built in the ordinary way."
+            },
+            {
+              "text": "Man bites dog, arrested",
+              "mark": "ok",
+              "note": "Headline compression; the grammar of headlines is not the grammar of prose."
+            },
+            {
+              "text": "They was late",
+              "mark": "bad",
+              "note": "A non-standard dialect form, regular within that variety but outside the standard described here."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "tone": "watch",
+          "title": "Description is not endorsement",
+          "text": "Saying that a form occurs in Standard English is a report about usage. It is not a claim that every other variety is wrong."
+        }
+      ],
+      "check": {
+        "prompt": "Which description matches “synchronic”?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A snapshot of the language at one point in time",
+            "feedback": "Synchronic description studies the language as it is now."
+          },
+          {
+            "id": "b",
+            "text": "The history of the language over centuries",
+            "feedback": "That is diachronic description."
+          },
+          {
+            "id": "c",
+            "text": "A list of usages to avoid",
+            "feedback": "That is prescriptive advice."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "prescriptive-descriptive",
+      "title": "Prescriptive and descriptive approaches",
+      "advances": "understand",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Open a usage manual at random and you meet a ranking: abaci or abacuses, whom or who, fewer or less. The manual is telling you which form a careful writer should choose. A descriptive grammar answers a different question — which forms Standard English speakers actually use, what each one means, and where each belongs. Both are legitimate enterprises. They are not the same enterprise."
+        },
+        {
+          "type": "paragraph",
+          "text": "Coverage follows from that difference. A usage manual arranges itself around uncertainty, so it discusses abbreviations, stress placement and disputed word meanings alongside points of grammar. A descriptive grammar covers the regular system — plurals, tense, clause structure — whether or not anybody argues about it. The plural of *abacus* earns a place in the grammar; a recommendation about abbreviations does not, unless the abbreviation itself has grammatical structure."
+        },
+        {
+          "type": "table",
+          "title": "What each approach asks of the same form",
+          "columns": [
+            "Question",
+            "Prescriptive work",
+            "Descriptive work"
+          ],
+          "rows": [
+            [
+              "What is the question?",
+              "What should a careful writer do?",
+              "What do speakers actually do?"
+            ],
+            [
+              "What counts as evidence?",
+              "Authority, tradition, taste",
+              "Intuitions, corpora, observed usage"
+            ],
+            [
+              "How is coverage organised?",
+              "Points of dispute",
+              "The regular system"
+            ],
+            [
+              "What does “correct” mean?",
+              "Recommended by the manual",
+              "Regular in the variety described"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "How the two approaches treat the same form",
+          "items": [
+            {
+              "text": "The *data* are unreliable.",
+              "mark": "ok",
+              "note": "A usage manual may prefer the Latin plural."
+            },
+            {
+              "text": "The *data is* unreliable.",
+              "mark": "ok",
+              "note": "Many Standard English speakers use the singular; description records it without ranking it."
+            },
+            {
+              "text": "The *data* are is unreliable.",
+              "mark": "bad",
+              "note": "Neither tradition nor usage licenses two finite verbs in one clause."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "tone": "why",
+          "title": "Why both can coexist",
+          "text": "A prescriptive guide can be useful without being a grammar, and a grammar can describe a disputed form without recommending it. Keeping the goals apart prevents evidence about usage from being overruled by preference."
+        }
+      ],
+      "check": {
+        "prompt": "What makes a form “correct” in a descriptive grammar?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It is regular in the variety being described.",
+            "feedback": "Description reports the regular system."
+          },
+          {
+            "id": "b",
+            "text": "It appears in an older usage guide.",
+            "feedback": "Tradition can inform advice but is not the test for a description."
+          },
+          {
+            "id": "c",
+            "text": "It sounds formal.",
+            "feedback": "Formality is a matter of register, not correctness."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "disagreement",
+      "title": "Where descriptivists and prescriptivists disagree",
+      "advances": "worked",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A manual may call a construction incorrect by analogy with another, and that analogy is exactly what a descriptive grammar puts under the microscope. The disagreements worth attending to are rarely about slang or spelling. They concern constructions ordinary speakers use every day."
+        },
+        {
+          "type": "paragraph",
+          "text": "Take the contraction in *You’re on the list*. The subject is the single pronoun *you*, and *are* reduces to *’re*. Coordinate that subject and the reduction becomes impossible: the coordinated version keeps the full form. Something about the shape of the subject controls whether the clitic can attach. An argument that a second construction must be ungrammatical “because the first one is” proves nothing until the two have been shown to behave alike."
+        },
+        {
+          "type": "paragraph",
+          "text": "A second disagreement confuses informality with ungrammaticality. *It’s me* is ordinary in speech and increasingly in writing; *It is I* belongs to a formal register. Both are grammatical. Describing the register difference tells a reader more than declaring one of them a mistake."
+        },
+        {
+          "type": "diagnostic",
+          "title": "Test an analogy before accepting it",
+          "steps": [
+            "Identify the construction the manual calls incorrect.",
+            "Identify the construction it resembles.",
+            "Test whether the two behave alike under movement, substitution or agreement.",
+            "If the behaviour diverges, the analogy does not support the judgement."
+          ],
+          "conclusion": "The contraction case fails at step three: the reduction applies to a single pronoun but not to a coordinated subject."
+        },
+        {
+          "type": "examples",
+          "title": "Contraction and case: two analogies under test",
+          "items": [
+            {
+              "text": "You’re on the list.",
+              "mark": "ok",
+              "note": "Single pronoun subject."
+            },
+            {
+              "text": "You and Maya are on the list.",
+              "mark": "ok",
+              "note": "Coordinated subject, full form of are."
+            },
+            {
+              "text": "You and Maya’re on the list.",
+              "mark": "bad",
+              "note": "The reduction does not apply to this subject."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "tone": "watch",
+          "title": "The Latin analogy",
+          "text": "Latin marks predicative complements with the nominative. English does not inherit Latin case marking, so an argument that English “must” use I because Latin does is an argument from a different language."
+        }
+      ],
+      "check": {
+        "prompt": "Why does “You and Maya’re” fail?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The reduction of are is sensitive to the shape of the subject.",
+            "feedback": "A coordinated subject blocks this contraction."
+          },
+          {
+            "id": "b",
+            "text": "Coordinated subjects cannot take are.",
+            "feedback": "They can: “You and Maya are on the list.”"
+          },
+          {
+            "id": "c",
+            "text": "Contractions are informal.",
+            "feedback": "Register is separate from this structural restriction."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "speech-writing",
+      "title": "Speech and writing",
+      "advances": "guided",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A transcript of spontaneous conversation looks like a foreign language on the page. Speakers restart, hesitate, and abandon constructions halfway through. Writing is tidier because it is planned and can be revised. Neither difference touches the underlying grammar: the same words, phrases and clause patterns turn up in both, and any given construction can be spoken or written. What changes is the pressure of production and the conventions of the medium."
+        },
+        {
+          "type": "paragraph",
+          "text": "Examples in this course appear in ordinary spelling, with phonetic transcription held back for the places where pronunciation is the point, such as the inflectional forms of verbs in Chapter 18. The choice keeps the page readable, and it keeps two systems visibly apart: how a word is spelled and how it is said."
+        },
+        {
+          "type": "subheading",
+          "text": "Rhotic and non-rhotic accents"
+        },
+        {
+          "type": "paragraph",
+          "text": "Say *car*, *cart*, *stir*. Some speakers finish each word with an /r/; others stop at the vowel. The difference is not random. The same speakers who drop it in *far* will produce it in *far away*, where a vowel follows, and many will insert one in *idea of*, where the spelling offers none. Rhotic and non-rhotic name two regular systems, not correctness and error."
+        },
+        {
+          "type": "table",
+          "title": "Where /r/ surfaces in each accent type",
+          "columns": [
+            "Environment",
+            "Rhotic accent",
+            "Non-rhotic accent"
+          ],
+          "rows": [
+            [
+              "car (no following vowel)",
+              "/r/ pronounced",
+              "/r/ absent"
+            ],
+            [
+              "far away (vowel follows)",
+              "/r/ pronounced",
+              "/r/ pronounced"
+            ],
+            [
+              "idea of (no /r/ in spelling)",
+              "no /r/ inserted",
+              "/r/ often inserted"
+            ]
+          ]
+        },
+        {
+          "type": "diagnostic",
+          "title": "Locate the /r/ pattern",
+          "steps": [
+            "Say the word in isolation and listen after the vowel.",
+            "Say it before a vowel and listen again.",
+            "If /r/ appears only before a vowel, the accent is non-rhotic.",
+            "Check whether an /r/ appears where the spelling has none; that is intrusive r."
+          ],
+          "conclusion": "The pattern is a property of the accent, not of the individual word."
+        },
+        {
+          "type": "note",
+          "tone": "why",
+          "title": "Why the course uses an accent-neutral system",
+          "text": "A written example should not presuppose one accent. The transcription system records the contrasts that distinguish words, while noting where accents differ predictably."
+        }
+      ],
+      "check": {
+        "prompt": "In a non-rhotic accent, when does post-vocalic /r/ surface?",
+        "options": [
+          {
+            "id": "a",
+            "text": "When a vowel follows",
+            "feedback": "Linking r appears before a following vowel."
+          },
+          {
+            "id": "b",
+            "text": "Always",
+            "feedback": "That describes a rhotic accent."
+          },
+          {
+            "id": "c",
+            "text": "Never",
+            "feedback": "Linking and intrusive r both occur."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "description-theory",
+      "title": "Description and theory",
+      "advances": "transfer",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Two grammarians can agree on every example and still disagree about why the examples pattern as they do. One offers a description, the other a theory, and the second is worth having only if it makes the first simpler or predicts facts that nobody has checked yet."
+        },
+        {
+          "type": "paragraph",
+          "text": "Evidence arrives from several directions at once: the grammarian’s own intuitions, the judgements of other native speakers, and computer corpora — large machine-readable collections of naturally occurring text. Each source has limits. Intuitions can be shaped by schooling, and a corpus can be skewed toward one register. Where the sources converge, the description stands on firm ground."
+        },
+        {
+          "type": "paragraph",
+          "text": "The description aims to be neutral between speech and writing. Written examples are easier to cite and easier to check, but the grammar they illustrate belongs to the language, not to a separate written system."
+        },
+        {
+          "type": "examples",
+          "title": "Where the evidence comes from",
+          "items": [
+            {
+              "text": "Intuition: “That sounds odd to me.”",
+              "mark": "ok",
+              "note": "A starting point, useful but not decisive."
+            },
+            {
+              "text": "Other speakers: “I would say it that way too.”",
+              "mark": "ok",
+              "note": "A check on idiolect."
+            },
+            {
+              "text": "Corpus: the construction appears across registers.",
+              "mark": "ok",
+              "note": "Evidence about actual distribution."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which source is strongest on its own?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Convergence across intuition, consultation and corpora",
+            "feedback": "Agreement across independent sources is the strongest support."
+          },
+          {
+            "id": "b",
+            "text": "The grammarian’s intuition alone",
+            "feedback": "Intuition is a starting point, not proof."
+          },
+          {
+            "id": "c",
+            "text": "A single corpus",
+            "feedback": "A corpus can be skewed by register."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "constituent-structure",
+      "title": "Constituent structure",
+      "advances": "exit",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*The letter arrived too late* does not fall apart into seven independent words. *The letter* behaves as one unit, and *arrived too late* as another; inside the second, *too late* forms a smaller unit again. A unit that behaves this way is a constituent, and constituents are what the sentence is built from."
+        },
+        {
+          "type": "paragraph",
+          "text": "Put *the letter* inside a larger sentence and it travels as a unit: *It was the letter that arrived too late*. Replace it with a pronoun and the substitution covers all of it; omit it and the remainder still stands. Constituency is established by behaviour, not by a hunch about which words belong together. A span that merely happens to sit together, like *letter arrived*, survives none of these operations."
+        },
+        {
+          "type": "examples",
+          "title": "Bracketing the sentence",
+          "items": [
+            {
+              "text": "[*The letter*] [arrived [too late]]",
+              "mark": "ok",
+              "note": "Subject, then predicate with a modifier inside it."
+            },
+            {
+              "text": "[The *letter arrived*] [too late]",
+              "mark": "ambiguous",
+              "note": "Possible only under a special reading, and not the preferred grouping."
+            },
+            {
+              "text": "[The] [*letter arrived*] [too late]",
+              "mark": "bad",
+              "note": "The and letter belong together."
+            }
+          ]
+        },
+        {
+          "type": "diagnostic",
+          "title": "Substitution and movement",
+          "steps": [
+            "Choose a span and replace it with a pronoun or a single word.",
+            "If the replacement fits and preserves the meaning, the span is a constituent.",
+            "Move the span to the front or into a cleft.",
+            "If it moves as a unit, the grouping is confirmed."
+          ],
+          "conclusion": "Applying either test to *letter arrived* fails; applying it to *the letter* succeeds."
+        }
+      ],
+      "check": {
+        "prompt": "Which operation is a constituency test?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Replacing the span with a pronoun",
+            "feedback": "Substitution applies to constituents."
+          },
+          {
+            "id": "b",
+            "text": "Counting the words",
+            "feedback": "Word count says nothing about grouping."
+          },
+          {
+            "id": "c",
+            "text": "Checking the spelling",
+            "feedback": "Spelling is a separate system."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "categories-functions",
+      "title": "Syntactic categories and grammatical functions",
+      "advances": null,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Run *the letter* through three sentences and watch what stays constant. As subject, as object, as complement, it remains the same kind of expression. Category is a property of the expression itself: a noun phrase is built around a noun, a verb phrase around a verb, and the label does not change when the phrase moves."
+        },
+        {
+          "type": "paragraph",
+          "text": "The same noun phrase can be subject in one clause and object in another; a clause can be a complement in one sentence and an adjunct in the next. Function is the other question, and it is not a property of the expression. Keeping the two apart prevents a great deal of confusion. “Subject” is not a category, and “noun phrase” is not a function."
+        },
+        {
+          "type": "table",
+          "title": "Naming categories and naming functions",
+          "columns": [
+            "Expression",
+            "Category",
+            "Function"
+          ],
+          "rows": [
+            [
+              "the letter",
+              "noun phrase",
+              "subject in “The letter arrived.”"
+            ],
+            [
+              "the letter",
+              "noun phrase",
+              "object in “She opened the letter.”"
+            ],
+            [
+              "slowly",
+              "adverb phrase",
+              "modifier in “It opened slowly.”"
+            ],
+            [
+              "in the garden",
+              "preposition phrase",
+              "adjunct in “They talked in the garden.”"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "One phrase in three positions",
+          "items": [
+            {
+              "text": "The crew checked the ropes.",
+              "mark": "ok",
+              "note": "The crew is the subject."
+            },
+            {
+              "text": "The rope held the crew.",
+              "mark": "ok",
+              "note": "The crew is the object; the category is unchanged."
+            },
+            {
+              "text": "The crew is a category.",
+              "mark": "bad",
+              "note": "A category is a kind of expression, not a participant in a sentence."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "In “She opened the letter”, what is the letter?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A noun phrase functioning as object",
+            "feedback": "Category and function are named separately."
+          },
+          {
+            "id": "b",
+            "text": "A subject",
+            "feedback": "She is the subject."
+          },
+          {
+            "id": "c",
+            "text": "A verb",
+            "feedback": "Opened is the verb."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "morphology",
+      "title": "Morphology: inflection and word formation",
+      "advances": null,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Say *walk*, *walks*, *walked*, then *cat*, *cats*. The endings change something small and grammatical, and the dictionary entry stays where it was; those endings are inflections. Other processes build a genuinely new word. Derivation changes the meaning and often the category, as when *teach* becomes *teacher*. Compounding joins two words, as in *bedroom*. Conversion presses an existing word into a new category, as when we *bottle* the jam."
+        },
+        {
+          "type": "table",
+          "title": "Inflection, derivation, compounding and conversion",
+          "columns": [
+            "Process",
+            "Example",
+            "What happens"
+          ],
+          "rows": [
+            [
+              "Inflection",
+              "walk → walked",
+              "Marks tense, number or case; the lexeme stays the same."
+            ],
+            [
+              "Derivation",
+              "teach → teacher",
+              "Builds a new lexeme, often of a different category."
+            ],
+            [
+              "Compounding",
+              "bed + room",
+              "Joins two lexemes into one word."
+            ],
+            [
+              "Conversion",
+              "bottle (noun) → bottle (verb)",
+              "Uses an existing word in a new category."
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Inflection, derivation and compounding from one base",
+          "items": [
+            {
+              "text": "go, goes, went, going",
+              "mark": "ok",
+              "note": "Four inflected forms of one lexeme."
+            },
+            {
+              "text": "teach → teacher → teachers",
+              "mark": "ok",
+              "note": "Derivation, then inflection of the new lexeme."
+            },
+            {
+              "text": "Every word-form is a separate lexeme.",
+              "mark": "bad",
+              "note": "Inflected forms belong to the same lexeme."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "tone": "watch",
+          "title": "Meaning is a poor guide",
+          "text": "A word’s meaning does not reliably predict which endings or objects it takes. Distribution — the company a word keeps — is the better test."
+        }
+      ],
+      "check": {
+        "prompt": "Which process creates a new lexeme?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Derivation",
+            "feedback": "Teacher is a different dictionary entry from teach."
+          },
+          {
+            "id": "b",
+            "text": "Inflection",
+            "feedback": "Walked is a form of walk."
+          },
+          {
+            "id": "c",
+            "text": "Spelling",
+            "feedback": "Spelling is not a morphological process."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "defining-concepts",
+      "title": "Defining grammatical concepts",
+      "advances": null,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Bottle* names a thing, yet *They bottled the jam* uses it as a verb. *The destruction of the city* names an event, yet it behaves like a noun in every position a noun phrase can occupy. A definition by meaning — a noun names a person, place or thing — explains neither case, and it is unreliable as a test."
+        },
+        {
+          "type": "paragraph",
+          "text": "Grammarians sort words by distribution instead: the endings a word takes, the company it keeps, the slots it can fill. Nouns take determiners and plurals; verbs take tense endings and objects. No test is perfect, but these are public and repeatable in a way that appeals to meaning are not."
+        },
+        {
+          "type": "diagnostic",
+          "title": "Distribution, not meaning",
+          "steps": [
+            "Ask whether the word can follow a determiner such as the or this.",
+            "Ask whether it can take a plural or a tense ending.",
+            "Ask which slots it fills in the clause.",
+            "Use the answers to assign the category."
+          ],
+          "conclusion": "A word can name an action or thing and still belong to a different category from the one its meaning suggests."
+        }
+      ],
+      "check": {
+        "prompt": "Why does meaning make a poor test for word class?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Words with similar meanings do not always behave alike.",
+            "feedback": "Distribution predicts grammatical behaviour."
+          },
+          {
+            "id": "b",
+            "text": "Words have no meaning.",
+            "feedback": "They do; the point is that meaning underdetermines category."
+          },
+          {
+            "id": "c",
+            "text": "Every word can be any class.",
+            "feedback": "Conversion is possible but not unlimited."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "truth-entailment",
+      "title": "Truth conditions and entailment",
+      "advances": null,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "“All the students passed” is true just in case every member of the set passed. From it, “Some students passed” follows: no situation makes the first true and the second false. One sentence guaranteeing another is entailment."
+        },
+        {
+          "type": "paragraph",
+          "text": "If a statement entails another, the second cannot be false while the first is true. Entailment is stronger than the loose sense of implication. Where two statements cannot both be true, the relation is inconsistency: “All the students passed” and “No student passed” cannot describe the same situation."
+        },
+        {
+          "type": "table",
+          "title": "Entailment, inconsistency and presupposition",
+          "columns": [
+            "Relation",
+            "Test",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Entailment",
+              "The second cannot be false if the first is true.",
+              "All passed → Some passed"
+            ],
+            [
+              "Inconsistency",
+              "The two cannot both be true.",
+              "All passed vs No one passed"
+            ],
+            [
+              "Presupposition",
+              "The assumption survives negation and questioning.",
+              "She stopped smoking → she used to smoke"
+            ]
+          ]
+        },
+        {
+          "type": "diagnostic",
+          "title": "Test entailment under negation",
+          "steps": [
+            "Negate the first sentence.",
+            "Ask whether the second sentence still follows.",
+            "If it does not, the relation was entailment.",
+            "If it survives, you are looking at a presupposition instead."
+          ],
+          "conclusion": "“All the students did not pass” does not entail “Some passed”, so the original relation was entailment."
+        }
+      ],
+      "check": {
+        "prompt": "Which relation cannot be cancelled without contradiction?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Entailment",
+            "feedback": "If the first is true, the second must be true."
+          },
+          {
+            "id": "b",
+            "text": "Conversational implicature",
+            "feedback": "It can be cancelled, as in “Some passed, in fact all did.”"
+          },
+          {
+            "id": "c",
+            "text": "Presupposition",
+            "feedback": "It survives negation, but it is not an entailment."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "implicature-presupposition",
+      "title": "Implicature and presupposition",
+      "advances": null,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Say “Some students passed” and a listener will often hear that not all of them did. Nothing in the truth conditions requires that reading: the sentence is true if every student passed. The suggestion is a conversational implicature, and it evaporates the moment the speaker adds “in fact all did.”"
+        },
+        {
+          "type": "paragraph",
+          "text": "With *but*, something else is going on. “She is poor but honest” asserts poverty and honesty, and the contrast the word carries cannot be cancelled while it stays in place. Presupposition behaves differently again: “She stopped smoking” takes for granted that she used to smoke, and the assumption survives negation and questioning alike."
+        },
+        {
+          "type": "table",
+          "title": "Entailment, implicature, presupposition",
+          "columns": [
+            "Type",
+            "What it is",
+            "Behaviour"
+          ],
+          "rows": [
+            [
+              "Entailment",
+              "Required by truth conditions",
+              "Cannot be cancelled without contradiction"
+            ],
+            [
+              "Conversational implicature",
+              "Suggested by cooperative use",
+              "Cancellable"
+            ],
+            [
+              "Conventional implicature",
+              "Carried by a particular word",
+              "Not cancellable while the word is used"
+            ],
+            [
+              "Presupposition",
+              "Taken for granted",
+              "Survives negation and questioning"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "What some and stop contribute",
+          "items": [
+            {
+              "text": "Some students passed.",
+              "mark": "ok",
+              "note": "Entails that at least one passed; implicates that not all did."
+            },
+            {
+              "text": "Some students passed, in fact all did.",
+              "mark": "ok",
+              "note": "The implicature is cancelled."
+            },
+            {
+              "text": "She stopped smoking.",
+              "mark": "ok",
+              "note": "Presupposes that she used to smoke."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which meaning survives negation?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A presupposition",
+            "feedback": "“She did not stop smoking” still assumes she used to smoke."
+          },
+          {
+            "id": "b",
+            "text": "An entailment",
+            "feedback": "Negation normally removes it."
+          },
+          {
+            "id": "c",
+            "text": "A conversational implicature",
+            "feedback": "Implicatures are cancellable and context-dependent."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "chapter-review",
+      "title": "Chapter Review",
+      "advances": null,
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The chapter hands over a working toolkit rather than a creed. Description reports the regular system of Standard English; prescription ranks usages. Accent and dialect vary along different axes, and pronunciation is described in a system that privileges no single accent. Speech and writing share one grammar even where they differ in planning and polish."
+        },
+        {
+          "type": "paragraph",
+          "text": "Inside the sentence, words group into constituents, phrases are built around heads, and category stays independent of function. Inside the word, inflection, derivation, compounding and conversion do four different jobs. In meaning, entailment, implicature and presupposition part company under negation and cancellation."
+        },
+        {
+          "type": "paragraph",
+          "text": "Read a sentence with the toolkit in hand: identify the constituents, name their categories and functions, check the morphology, then ask what the sentence entails, what it suggests and what it takes for granted. Later chapters run the same procedure over larger constructions."
+        }
+      ],
+      "check": {
+        "prompt": "Which question belongs to pragmatics rather than truth-conditional semantics?",
+        "options": [
+          {
+            "id": "a",
+            "text": "What does the speaker suggest beyond what is said?",
+            "feedback": "Pragmatics studies speaker meaning in context."
+          },
+          {
+            "id": "b",
+            "text": "Under what conditions is the sentence true?",
+            "feedback": "That is truth-conditional semantics."
+          },
+          {
+            "id": "c",
+            "text": "What does the sentence entail?",
+            "feedback": "Entailment is a semantic relation."
+          }
+        ],
+        "answer": "a"
+      }
+    }
+  ],
+  "worked": [
+    "Look again at Unhappily, the letter arrived too late. The first word is set off by a comma and can appear at the beginning, in the middle or at the end. That freedom shows it is not required by the verb; it comments on the clause as a whole.",
+    "Inside the predicate, arrived is the head and too late adds information about the arrival. The letter is the subject, and the whole sentence is one clause. Nothing here is unusual, yet the example already shows the difference between a complement, which the verb needs, and a modifier, which it does not."
+  ],
+  "application": [
+    "When you meet a new sentence, start with the verbs. Find the head of each clause and ask what it needs to complete its meaning; those required dependents are complements. Anything else that adds time, place, manner or comment is a modifier or a supplement.",
+    "Then look at the groups. Try moving or replacing a span; if it travels as a unit, it is a constituent. If a span only looks like a group because the words happen to sit together, the test will show it.",
+    "Finally, separate description from advice. You may prefer one wording, and a style guide may recommend it, but that preference is not evidence about the grammar."
+  ],
+  "reveal": [
+    "In Unhappily, the letter arrived too late, Unhappily is a supplement, the letter is the subject, and arrived too late is the predicate. Within it, arrived is the head and too late is a modifier. The verb does not require either Unhappily or too late."
+  ],
+  "recap": [
+    "A descriptive grammar reports patterns; advice about usage is a different activity. Speech and writing share a grammar, while accents and dialects vary in different ways. Words have forms that belong to lexemes, and some processes create new words.",
+    "Sentences group into constituents, and phrases are built around heads. Complements are required; modifiers are not. Form and meaning are separate, and meaning includes entailment, implicature and presupposition, each with its own behaviour."
+  ],
+  "self_check": [
+    {
+      "question": "Explain the difference between a lexeme and a word token.",
+      "answer": "A word token is one occurrence; a lexeme is the dictionary entry shared by all its forms."
+    },
+    {
+      "question": "Give one test that shows a span is a constituent.",
+      "answer": "It can move, be replaced or be omitted as a unit."
+    },
+    {
+      "question": "Explain why a preterite form need not mean past time.",
+      "answer": "Time reference comes from the whole sentence; If I lived there presents a present hypothesis."
+    },
+    {
+      "question": "Give one example each of entailment, implicature and presupposition.",
+      "answer": "All passed entails Some passed; Some passed implicates not all; She stopped smoking presupposes she used to."
+    }
+  ],
+  "opening": [
+    {
+      "prompt": "Which statement belongs in a descriptive grammar?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Speakers often use this form.",
+          "feedback": "It reports usage."
+        },
+        {
+          "id": "b",
+          "text": "Avoid this form.",
+          "feedback": "That is advice."
+        },
+        {
+          "id": "c",
+          "text": "This form is ugly.",
+          "feedback": "That is a reaction."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is a lexeme?",
+      "options": [
+        {
+          "id": "a",
+          "text": "One occurrence of a word",
+          "feedback": "That is a word token."
+        },
+        {
+          "id": "b",
+          "text": "A dictionary entry covering a word’s forms",
+          "feedback": "That is the lexeme."
+        },
+        {
+          "id": "c",
+          "text": "A letter of the alphabet",
+          "feedback": "A lexeme is a word entry."
+        }
+      ],
+      "answer": "b"
+    },
+    {
+      "prompt": "In The letter arrived too late, which span is a constituent?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The letter",
+          "feedback": "It behaves as one unit."
+        },
+        {
+          "id": "b",
+          "text": "letter arrived",
+          "feedback": "It crosses the subject–predicate boundary."
+        },
+        {
+          "id": "c",
+          "text": "arrived too",
+          "feedback": "Too belongs with late."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which dependent does the verb require?",
+      "options": [
+        {
+          "id": "a",
+          "text": "the bridge in inspected the bridge",
+          "feedback": "The verb needs an object here."
+        },
+        {
+          "id": "b",
+          "text": "carefully in inspected carefully",
+          "feedback": "This is optional."
+        },
+        {
+          "id": "c",
+          "text": "too in too late",
+          "feedback": "This modifies late."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which sentence keeps form and meaning apart?",
+      "options": [
+        {
+          "id": "a",
+          "text": "If I lived there (present hypothesis)",
+          "feedback": "Preterite form, non-past meaning."
+        },
+        {
+          "id": "b",
+          "text": "She lived there",
+          "feedback": "Past form, past meaning."
+        },
+        {
+          "id": "c",
+          "text": "She lives there",
+          "feedback": "Present form, present meaning."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "closing": [
+    {
+      "prompt": "Accent differs from dialect because accent concerns…",
+      "options": [
+        {
+          "id": "a",
+          "text": "pronunciation",
+          "feedback": "Accent is about sound."
+        },
+        {
+          "id": "b",
+          "text": "vocabulary",
+          "feedback": "That is dialect."
+        },
+        {
+          "id": "c",
+          "text": "word order",
+          "feedback": "That is dialect."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which statement is an entailment?",
+      "options": [
+        {
+          "id": "a",
+          "text": "All passed, so some passed.",
+          "feedback": "The second must be true."
+        },
+        {
+          "id": "b",
+          "text": "Some passed suggests not all.",
+          "feedback": "That is an implicature."
+        },
+        {
+          "id": "c",
+          "text": "She stopped smoking assumes she used to.",
+          "feedback": "That is a presupposition."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which word is the head of arrived too late?",
+      "options": [
+        {
+          "id": "a",
+          "text": "arrived",
+          "feedback": "The phrase is built around the verb."
+        },
+        {
+          "id": "b",
+          "text": "late",
+          "feedback": "Late modifies the verb."
+        },
+        {
+          "id": "c",
+          "text": "too",
+          "feedback": "Too modifies late."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What shows that a span is a constituent?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It can be replaced as a unit.",
+          "feedback": "Replacement shows grouping."
+        },
+        {
+          "id": "b",
+          "text": "It has a clear meaning.",
+          "feedback": "Meaning does not decide structure."
+        },
+        {
+          "id": "c",
+          "text": "It has no pause.",
+          "feedback": "Punctuation is not the test."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "The preterite in If I lived there expresses…",
+      "options": [
+        {
+          "id": "a",
+          "text": "a present hypothesis",
+          "feedback": "Form and meaning differ here."
+        },
+        {
+          "id": "b",
+          "text": "a past event",
+          "feedback": "The sentence is about now."
+        },
+        {
+          "id": "c",
+          "text": "a future plan",
+          "feedback": "The sentence is hypothetical."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "stages": {
+    "predict": {
+      "prompt": "Which is a descriptive claim?",
+      "options": [
+        {
+          "id": "a",
+          "text": "This form occurs in informal speech.",
+          "feedback": "It reports a pattern."
+        },
+        {
+          "id": "b",
+          "text": "This form is incorrect.",
+          "feedback": "That is advice."
+        },
+        {
+          "id": "c",
+          "text": "This form is ugly.",
+          "feedback": "That is a reaction."
+        }
+      ],
+      "answer": "a"
+    },
+    "guided": {
+      "prompt": "Which span is a constituent?",
+      "options": [
+        {
+          "id": "a",
+          "text": "arrived too late",
+          "feedback": "It behaves as one unit."
+        },
+        {
+          "id": "b",
+          "text": "letter arrived",
+          "feedback": "It crosses a boundary."
+        },
+        {
+          "id": "c",
+          "text": "The letter",
+          "feedback": "Also a constituent, but the predicate span is the better example of a larger group."
+        }
+      ],
+      "answer": "a"
+    },
+    "transfer": {
+      "prompt": "In She sent her brother a card, which phrase is the indirect object?",
+      "options": [
+        {
+          "id": "a",
+          "text": "her brother",
+          "feedback": "It names the receiver."
+        },
+        {
+          "id": "b",
+          "text": "a card",
+          "feedback": "It names the thing sent."
+        },
+        {
+          "id": "c",
+          "text": "sent her brother",
+          "feedback": "That is the verb with its first object."
+        }
+      ],
+      "answer": "a"
+    },
+    "exit": {
+      "prompt": "Which statement separates construction from use?",
+      "options": [
+        {
+          "id": "a",
+          "text": "An imperative clause often gives a directive.",
+          "feedback": "Form and typical use are described separately."
+        },
+        {
+          "id": "b",
+          "text": "Imperatives always command.",
+          "feedback": "They can also advise or invite."
+        },
+        {
+          "id": "c",
+          "text": "Commands are always imperatives.",
+          "feedback": "Requests can use question forms."
+        }
+      ],
+      "answer": "a"
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import { showCurriculumState } from './curriculum-state.js';
-import { STAGES, STAGE_TITLES, validateCourse, lessonKey, emptyProgress, canAdvance, lessonXp } from './lesson-core.js';
+import { STAGES, STAGE_TITLES, validateCourse, lessonKey, emptyProgress, canAdvance, lessonXp } from './lesson-core.js?v=2026.11.16c';
 import { composeLessonPreview } from './lesson-preview.js';
 import { createLessonStore } from './lesson-progress.js';
 import { createFoundationStore } from './foundation-progress.js';
@@ -22,7 +22,7 @@ import { enableCanvasView } from './canvas-view.js';
 import { addConstituentReview, addConstituentTeaching, constituentHeadings, constituentOpeningCheck, constituentReferences } from './constituents-lesson.js';
 import { addSubjectPredicateTeaching, subjectPredicateHeadings, subjectPredicateOpeningCheck, subjectPredicateReferences } from './subject-predicate-lesson.js';
 import { phraseStructureArticles } from './phrase-structure-lessons.js';
-import { cambridgeChapterArticles } from './cambridge-chapter-lessons.js';
+import { cambridgeChapterArticles } from './cambridge-chapter-lessons.js?v=2026.11.16c';
 import { displayVpLevel, lessonNotation } from './lesson-notation.js';
 import { addLessonKeyTerms } from './lesson-key-terms.js';
 
@@ -71,8 +71,8 @@ const pilotArticles = {
   'br-11': grammarPilot,
 };
 const cambridgePilotIds = [
-  'cgel-ch01', 'cgel-ch03', 'cgel-ch04', 'cgel-ch05', 'cgel-ch06',
-  'cgel-ch07', 'cgel-ch10', 'cgel-ch13', 'cgel-ch14', 'cgel-ch15',
+  'cgel-clauses', 'cgel-ch01', 'cgel-ch03', 'cgel-ch04', 'cgel-ch05', 'cgel-ch06',
+  'cgel-ch07', 'cgel-ch08', 'cgel-ch09', 'cgel-ch10', 'cgel-ch11', 'cgel-ch12', 'cgel-ch13', 'cgel-ch14', 'cgel-ch15',
   'cgel-ch16', 'cgel-ch17', 'cgel-ch18', 'cgel-ch19', 'cgel-ch20',
 ];
 const previewMode = () => {
@@ -979,7 +979,10 @@ function articleScreen(lesson, p, article) {
   if (diagram) diagram.after(lessonNotation(lesson, page, el, section.notationLabels, section.notationFeatures));
   if (bookPractice) body.append(bookPractice);
 
-  if (section.id === 'introduction') {
+  const termsSection = article.keyTermsOnRecap
+    ? (article.sections || []).filter(section => !section.assessment).at(-1)?.id
+    : 'introduction';
+  if (section.id === termsSection) {
     addLessonKeyTerms(body, el, lesson.lesson_id, article.keyTerms);
   }
 

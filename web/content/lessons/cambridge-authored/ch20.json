@@ -1,0 +1,1366 @@
+{
+  "title": "Punctuation",
+  "description": "Explore punctuation indicators, primary and secondary boundaries, parentheses, dashes, quotation marks, capitalisation, hyphens and apostrophes.",
+  "example": "The editor—usually meticulous—left the final paragraph unmarked; the typesetter, however, noticed it immediately.",
+  "key_terms": [
+    {
+      "term": "punctuation",
+      "definition": "The use of marks, spaces and non-segmental modifications to indicate structure and meaning in writing."
+    },
+    {
+      "term": "punctuation indicator",
+      "definition": "A punctuation mark, space, or non-segmental modification such as italics or capitals."
+    },
+    {
+      "term": "segmental",
+      "definition": "Occupying a position in the linear sequence of writing, as marks and spaces do."
+    },
+    {
+      "term": "non-segmental",
+      "definition": "A modification such as italics, bold face or capitalisation that does not occupy a separate position."
+    },
+    {
+      "term": "punctuation mark",
+      "definition": "A written symbol such as a comma, full stop or question mark."
+    },
+    {
+      "term": "character",
+      "definition": "A graphical shape used to realise one or more punctuation indicators."
+    },
+    {
+      "term": "primary terminal",
+      "definition": "A full stop, question mark or exclamation mark marking the end of an orthographic sentence."
+    },
+    {
+      "term": "secondary boundary mark",
+      "definition": "A comma, semicolon or colon marking boundaries within or between clauses."
+    },
+    {
+      "term": "delimiting comma",
+      "definition": "A comma pair enclosing a supplement or parenthetical element."
+    },
+    {
+      "term": "parenthesis",
+      "definition": "A pair of round or square brackets enclosing material."
+    },
+    {
+      "term": "dash",
+      "definition": "A punctuation indicator used for interruption, supplement or range."
+    },
+    {
+      "term": "quotation mark",
+      "definition": "A paired indicator enclosing quoted or highlighted material."
+    },
+    {
+      "term": "capitalisation",
+      "definition": "The use of upper-case letters for sentence beginnings, proper names or emphasis."
+    },
+    {
+      "term": "orthographic sentence",
+      "definition": "A unit of writing beginning with a capital and ending with a primary terminal."
+    },
+    {
+      "term": "orthographic word",
+      "definition": "A minimal unit of writing flanked by spaces or punctuation."
+    },
+    {
+      "term": "hyphen",
+      "definition": "A word-internal mark joining parts of a compound or a line break."
+    },
+    {
+      "term": "long hyphen",
+      "definition": "A mark used in some styles to join coordinated names or relationships."
+    },
+    {
+      "term": "apostrophe",
+      "definition": "A word-internal mark used for omission or the genitive."
+    },
+    {
+      "term": "ellipsis points",
+      "definition": "Three dots marking omission or a trailing off."
+    },
+    {
+      "term": "abbreviation full stop",
+      "definition": "A full stop marking an abbreviation, as in Col. Blimp."
+    },
+    {
+      "term": "slash",
+      "definition": "A mark used for alternatives, fractions, dates or line breaks."
+    },
+    {
+      "term": "light punctuation",
+      "definition": "A style using relatively few optional marks, especially commas."
+    },
+    {
+      "term": "heavy punctuation",
+      "definition": "A style using more optional marks, especially commas."
+    },
+    {
+      "term": "asyndetic",
+      "definition": "Coordination without an overt coordinator."
+    },
+    {
+      "term": "supplement",
+      "definition": "A detached element set off from the clause, often by commas, dashes or parentheses."
+    },
+    {
+      "term": "vocative",
+      "definition": "An expression naming the person addressed, often set off by commas."
+    },
+    {
+      "term": "connective adjunct",
+      "definition": "An expression such as however that links a clause to surrounding discourse."
+    }
+  ],
+  "intro": [
+    "Read a page aloud and you will hear pauses the page does not contain, and see marks that speech has no equivalent for. Punctuation is a system of its own: marks, spaces and modifications such as italics and capitals, arranged to show where units begin and end, what status a stretch of writing carries, and what has been left out. It is not a transcription of speech, and treating it as one produces most of the confusion the subject attracts.",
+    "The chapter first fixes the domain — what counts as punctuation and what falls outside it — and separates the functional indicator from the graphical character that realises it. From there it asks how binding the rules are, how orthographic sentences and words differ from syntactic ones, and what punctuation actually does. The remaining sections take the marks family by family: terminals and boundary marks, brackets and dashes, quotation, capitals, hyphens, apostrophes, stops and slashes.",
+    "One theme recurs. Some marks the writing system requires, some are conventions that vary by region and house style, and some are choices of tone. Any description that flattens those levels will mistake a preference for a rule."
+  ],
+  "sections": [
+    {
+      "id": "domain",
+      "title": "The domain of punctuation",
+      "advances": "predict",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A page of English is held together by things that occupy positions in the line: full stops, commas, semicolons, colons, question marks, quotation marks, brackets. These are segmental, and so are the spaces between words — which is why spaces count as punctuation. They separate, and separating is the job."
+        },
+        {
+          "type": "paragraph",
+          "text": "Other indicators take up no position at all. Italics, bold face, small capitals and capitalisation modify the default roman lower case in place. Italics can carry a title or a quotation; a capital can announce a sentence. Because nothing is inserted into the line, it is easy to forget that these are punctuation too."
+        },
+        {
+          "type": "paragraph",
+          "text": "The domain has edges, and they are not sharp. The apostrophe and the ordinary hyphen work inside words. Accents belong to spelling rather than punctuation, though the diaeresis in *coöperate* sits awkwardly between the two. Quotation marks and brackets can enclose several sentences, and a paragraph break can mark a boundary; the layout of chapters and headings does not."
+        },
+        {
+          "type": "table",
+          "title": "Punctuation indicators",
+          "columns": [
+            "Type",
+            "Examples",
+            "Status"
+          ],
+          "rows": [
+            [
+              "Segmental mark",
+              ". , ; : ? !",
+              "Occupies a position"
+            ],
+            [
+              "Segmental space",
+              "word space",
+              "Separates words"
+            ],
+            [
+              "Non-segmental modification",
+              "italics, bold, capitals",
+              "Modifies default form"
+            ],
+            [
+              "Word-internal mark",
+              "apostrophe, hyphen",
+              "Within a word"
+            ],
+            [
+              "Beyond the sentence",
+              "quotation marks, parentheses",
+              "Can enclose multiple sentences"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why are spaces part of punctuation?",
+        "options": [
+          {
+            "id": "a",
+            "text": "They are segmental units that separate words in writing.",
+            "feedback": "They occupy positions in the linear sequence."
+          },
+          {
+            "id": "b",
+            "text": "They are non-segmental.",
+            "feedback": "Spaces are segmental."
+          },
+          {
+            "id": "c",
+            "text": "They mark sentence boundaries only.",
+            "feedback": "They mark word boundaries too."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "indicators-characters",
+      "title": "Indicators and characters",
+      "advances": "understand",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Compare the mark in *Kim’s report* with the mark in *the word ‘bank’*. They may look identical, and in many fonts they are. Functionally they are different indicators — an apostrophe and a single quotation mark — and naming them by shape alone conceals that. An indicator is a job; a character is a shape that may do more than one job."
+        },
+        {
+          "type": "paragraph",
+          "text": "Pairs complicate the picture. Quotation marks open and close, and a font with distinct opening and closing characters makes the pairing visible, while a font without them uses one shape for both positions. The dash, the ordinary hyphen and the long hyphen are three further indicators, realised by different characters and different spacing."
+        },
+        {
+          "type": "paragraph",
+          "text": "The full stop is the clearest case of one character serving several functions: it ends a sentence, marks an abbreviation, and appears three at a time in ellipsis points. Only the first two share a realisation. Ellipsis points are a separate indicator that happens to be built from the same character."
+        },
+        {
+          "type": "table",
+          "title": "Indicators and characters",
+          "columns": [
+            "Indicator",
+            "Character(s)",
+            "Function"
+          ],
+          "rows": [
+            [
+              "Apostrophe",
+              "’ or '",
+              "Omission or genitive"
+            ],
+            [
+              "Single quotation mark",
+              "‘ ’ or '",
+              "Quotation"
+            ],
+            [
+              "Dash",
+              "—, –, - or --",
+              "Interruption or range"
+            ],
+            [
+              "Ordinary hyphen",
+              "-",
+              "Word-internal joining"
+            ],
+            [
+              "Ellipsis points",
+              "...",
+              "Omission or trailing off"
+            ],
+            [
+              "Full stop",
+              ".",
+              "Sentence terminal or abbreviation"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why are apostrophe and single quotation mark distinct indicators?",
+        "options": [
+          {
+            "id": "a",
+            "text": "They have different functions even when realised by the same character.",
+            "feedback": "The apostrophe cannot be realised by the opening quotation character."
+          },
+          {
+            "id": "b",
+            "text": "They always use different characters.",
+            "feedback": "They can share a character."
+          },
+          {
+            "id": "c",
+            "text": "They are both non-segmental.",
+            "feedback": "Both are segmental marks."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "rules-variation",
+      "title": "The status of punctuation rules",
+      "advances": "worked",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Style manuals codify punctuation, which makes it look like law. It is not law. Some marks the orthographic system demands; others are conventions a publisher can adopt or drop. Punctuation shows less social variation than grammar, but it varies by region, by period and by house style, and those variations are not errors."
+        },
+        {
+          "type": "paragraph",
+          "text": "The most visible axis is weight. Light punctuation uses few optional commas, heavy punctuation many. *On Sundays they like to have a picnic lunch in the park if it’s fine* is the light version; *On Sundays, they like to have a picnic lunch in the park, if it’s fine* is the heavy one. Neither is a mistake, and a careful writer keeps to one convention within a document."
+        },
+        {
+          "type": "paragraph",
+          "text": "Quotation conventions divide along the same lines. American practice tends to put commas and full stops inside the closing quotation mark; British practice often puts them where the logic of the sentence puts them. The disagreement is about convention, not grammar, and consistency matters more than the choice."
+        },
+        {
+          "type": "examples",
+          "title": "Light and heavy punctuation",
+          "items": [
+            {
+              "text": "On Sundays they like to have a picnic lunch in the park if it’s fine.",
+              "mark": "ok",
+              "note": "Light punctuation: few optional commas."
+            },
+            {
+              "text": "On Sundays, they like to have a picnic lunch in the park, if it’s fine.",
+              "mark": "ok",
+              "note": "Heavy punctuation: more optional commas."
+            },
+            {
+              "text": "He said, ‘I’m leaving.’",
+              "mark": "ok",
+              "note": "Quotation with comma before the quote."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the difference between light and heavy punctuation?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Light uses fewer optional marks; heavy uses more.",
+            "feedback": "The difference concerns optional commas and similar marks."
+          },
+          {
+            "id": "b",
+            "text": "Light is grammatical; heavy is ungrammatical.",
+            "feedback": "Both are conventional styles."
+          },
+          {
+            "id": "c",
+            "text": "Heavy uses no full stops.",
+            "feedback": "Full stops are required in both."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "orthographic-units",
+      "title": "Orthographic sentences and words",
+      "advances": "guided",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "What makes a sentence a sentence on the page? A capital at the front and a terminal at the back. The definition is circular in a useful way: the orthographic sentence is a unit of writing, and it need not match a syntactic sentence. Two main clauses can form one orthographic sentence or two, and the punctuation decides which."
+        },
+        {
+          "type": "paragraph",
+          "text": "Orthographic words work the same way. A word, for the purposes of writing, is whatever sits between spaces or punctuation. *Greenhouse* is one such unit and one compound; *green house* is two units and a syntactic construction. The definition tracks typography, not grammar."
+        },
+        {
+          "type": "paragraph",
+          "text": "None of this licenses reading punctuation as prosody. Speech has intonation and pause; writing has its own inventory. A comma may fall where a speaker would pause, or where a grammatical boundary lies, or simply where a style wants a mark. Any account that reduces it to one of these fails on the other two."
+        },
+        {
+          "type": "examples",
+          "title": "Orthographic and grammatical units",
+          "items": [
+            {
+              "text": "You will have to make a decision soon. It is not for me to influence you.",
+              "mark": "ok",
+              "note": "Two orthographic sentences."
+            },
+            {
+              "text": "By all means take the report with you, but be sure to return it.",
+              "mark": "ok",
+              "note": "One orthographic sentence with two coordinated clauses."
+            },
+            {
+              "text": "greenhouse / green house",
+              "mark": "ok",
+              "note": "One compound word versus two words."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What defines an orthographic sentence?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A capital letter at the beginning and a primary terminal at the end",
+            "feedback": "This is a unit of writing, not necessarily a syntactic sentence."
+          },
+          {
+            "id": "b",
+            "text": "A clause with a subject and predicate",
+            "feedback": "That is a syntactic definition."
+          },
+          {
+            "id": "c",
+            "text": "A paragraph",
+            "feedback": "A paragraph can contain several sentences."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "functions",
+      "title": "Functions of punctuation",
+      "advances": "transfer",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Punctuation marks boundaries at every scale. Spaces divide words, terminals divide sentences, and commas with their relatives divide smaller stretches inside the sentence. Boundary marking turns up almost everywhere, which is why it is usually treated as the primary function."
+        },
+        {
+          "type": "paragraph",
+          "text": "Marks also carry status. A question mark makes a question, an exclamation mark an exclamation, quotation marks a quotation or a highlighted word. Capitals flag sentence openings and proper names. These tell a reader how to take the unit, not merely where it stops."
+        },
+        {
+          "type": "paragraph",
+          "text": "Then there is grouping, and there is omission. Brackets and dashes set supplementary material apart; commas can do the same; colons and semicolons signal a relation between clauses. Apostrophes, ellipsis points and abbreviation stops mark material that has been dropped or reduced. A single mark can serve more than one of these ends."
+        },
+        {
+          "type": "table",
+          "title": "Functions of punctuation",
+          "columns": [
+            "Function",
+            "Examples",
+            "Effect"
+          ],
+          "rows": [
+            [
+              "Boundary",
+              ". , ; : ? !",
+              "Marks units and sub-units"
+            ],
+            [
+              "Status",
+              "? ! quotation marks",
+              "Signals question, exclamation or quotation"
+            ],
+            [
+              "Grouping",
+              "parentheses, dashes, commas",
+              "Sets off supplements and parentheticals"
+            ],
+            [
+              "Omission",
+              "apostrophe, ellipsis",
+              "Marks missing material"
+            ],
+            [
+              "Abbreviation",
+              "Col.",
+              "Marks a reduced word"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which function is primary in punctuation?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Marking boundaries",
+            "feedback": "Boundary marking is involved in virtually all punctuation."
+          },
+          {
+            "id": "b",
+            "text": "Marking emphasis",
+            "feedback": "Emphasis is one use, not the primary function."
+          },
+          {
+            "id": "c",
+            "text": "Marking pronunciation",
+            "feedback": "Punctuation is not a direct transcription of speech."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "primary-terminals",
+      "title": "Primary terminals",
+      "advances": "exit",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Three marks end an orthographic sentence: the full stop, the question mark and the exclamation mark. These are the primary terminals, and choosing among them is choosing a status — statement, question, exclamation — with the full stop as the unmarked default."
+        },
+        {
+          "type": "paragraph",
+          "text": "Informal writing sometimes piles marks together for emphasis. That is a stylistic gesture rather than a grammatical one, and it is rare in academic or legal prose."
+        },
+        {
+          "type": "paragraph",
+          "text": "The full stop has a second life inside abbreviations: *Col. Blimp*. The character is the same as the sentence terminal, the function is not. Ellipsis points, though made of the same dots, are a separate indicator for omission or a trailing off."
+        },
+        {
+          "type": "examples",
+          "title": "Primary terminals",
+          "items": [
+            {
+              "text": "The meeting is over.",
+              "mark": "ok",
+              "note": "Full stop marks a statement."
+            },
+            {
+              "text": "Is the meeting over?",
+              "mark": "ok",
+              "note": "Question mark marks a question."
+            },
+            {
+              "text": "The meeting is over!",
+              "mark": "ok",
+              "note": "Exclamation mark marks an exclamation."
+            },
+            {
+              "text": "Col. Blimp",
+              "mark": "ok",
+              "note": "Full stop marks an abbreviation."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which mark is a primary terminal?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A question mark",
+            "feedback": "It marks the end of an orthographic sentence."
+          },
+          {
+            "id": "b",
+            "text": "A comma",
+            "feedback": "A comma is a secondary boundary mark."
+          },
+          {
+            "id": "c",
+            "text": "A hyphen",
+            "feedback": "A hyphen is word-internal."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "secondary-boundaries",
+      "title": "Comma, semicolon, and colon",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Inside the sentence, three marks carry the boundary work. The comma is the flexible member of the set; the semicolon and the colon are specialists. All three mark boundaries, though boundaries of different weight and different kinds."
+        },
+        {
+          "type": "paragraph",
+          "text": "The semicolon joins main clauses that are closely related but not linked by a conjunction: *The road was closed; we had to take a detour*. The colon points forward, introducing an explanation, a list or a quotation: *The reason was simple: nobody had checked the figures*."
+        },
+        {
+          "type": "paragraph",
+          "text": "The comma covers the most ground — coordination, supplementation, asyndetic sequences, vocatives, some boundaries below the clause. Whether a given comma is obligatory, optional or merely stylistic depends on the construction and on the style in force. It is not a pause written down."
+        },
+        {
+          "type": "examples",
+          "title": "Secondary boundaries",
+          "items": [
+            {
+              "text": "The road was closed; we had to take a detour.",
+              "mark": "ok",
+              "note": "Semicolon between related main clauses."
+            },
+            {
+              "text": "The reason was simple: nobody had checked the figures.",
+              "mark": "ok",
+              "note": "Colon introduces an explanation."
+            },
+            {
+              "text": "Jo, close the door.",
+              "mark": "ok",
+              "note": "Comma sets off a vocative."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which mark typically separates closely related main clauses without a conjunction?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A semicolon",
+            "feedback": "The road was closed; we had to take a detour."
+          },
+          {
+            "id": "b",
+            "text": "A question mark",
+            "feedback": "That is a primary terminal."
+          },
+          {
+            "id": "c",
+            "text": "An apostrophe",
+            "feedback": "That is word-internal."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "comma-uses",
+      "title": "Comma uses and delimiting commas",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Consider two commas in very different jobs. In *Kim went to the concert, but Pat stayed at home* the comma marks the join between coordinated clauses; in *Some went by bus, some by train* it marks a sequence with no coordinator at all. Same mark, different boundary."
+        },
+        {
+          "type": "paragraph",
+          "text": "Delimiting commas come in pairs and enclose. *My father, who retired last year, now lives in Florida* puts a supplement between two marks, and a single comma would leave the reader unsure where the aside ends. The pair is the unit, not either comma on its own."
+        },
+        {
+          "type": "paragraph",
+          "text": "That pairing does grammatical work. *The students who passed were congratulated* restricts the reference to those who passed. *The students, who passed, were congratulated* treats the passing as extra information about all of them. The commas do not decorate a difference in meaning; they signal a difference in structure."
+        },
+        {
+          "type": "examples",
+          "title": "Comma functions",
+          "items": [
+            {
+              "text": "Kim went to the concert, but Pat stayed at home.",
+              "mark": "ok",
+              "note": "Comma between coordinated clauses."
+            },
+            {
+              "text": "My father, who retired last year, now lives in Florida.",
+              "mark": "ok",
+              "note": "Delimiting commas around a supplement."
+            },
+            {
+              "text": "The students who passed were congratulated.",
+              "mark": "ok",
+              "note": "No commas: integrated relative."
+            },
+            {
+              "text": "The students, who passed, were congratulated.",
+              "mark": "ok",
+              "note": "Delimiting commas: supplementary relative."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What do the commas do in My father, who retired last year, now lives in Florida?",
+        "options": [
+          {
+            "id": "a",
+            "text": "They delimit a supplementary relative clause.",
+            "feedback": "The relative adds information rather than restricting the antecedent."
+          },
+          {
+            "id": "b",
+            "text": "They mark a coordination.",
+            "feedback": "There is no coordination."
+          },
+          {
+            "id": "c",
+            "text": "They mark an abbreviation.",
+            "feedback": "No abbreviation is involved."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "parentheses-dash",
+      "title": "Parentheses and the dash",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Brackets hold material aside. What they enclose can be a word, a phrase, a clause or several sentences, and the closing bracket mirrors the opening one. The effect is a whisper: present in the sentence, but subordinate to its main line."
+        },
+        {
+          "type": "paragraph",
+          "text": "The dash is louder. It can introduce a supplement, cut a thought short or set off an apposition: *The editor—usually meticulous—left the paragraph unmarked*. Informal and literary prose uses dashes freely; formal prose is more sparing."
+        },
+        {
+          "type": "paragraph",
+          "text": "Put the same aside in brackets and in dashes and the difference is emphasis. Brackets push the material into the background; dashes pull it forward or register an interruption. Grammar permits either, and rhetoric does not make them interchangeable."
+        },
+        {
+          "type": "examples",
+          "title": "Parentheses and dashes",
+          "items": [
+            {
+              "text": "The editor (usually meticulous) left the paragraph unmarked.",
+              "mark": "ok",
+              "note": "Parentheses background the supplement."
+            },
+            {
+              "text": "The editor—usually meticulous—left the paragraph unmarked.",
+              "mark": "ok",
+              "note": "Dashes foreground or interrupt."
+            },
+            {
+              "text": "There were three options—tea, coffee, or water.",
+              "mark": "ok",
+              "note": "Dash introduces a list."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the difference between parentheses and dashes in supplements?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Parentheses tend to background; dashes tend to foreground or interrupt.",
+            "feedback": "The effect is stylistic and rhetorical."
+          },
+          {
+            "id": "b",
+            "text": "Parentheses are grammatical; dashes are ungrammatical.",
+            "feedback": "Both are grammatical."
+          },
+          {
+            "id": "c",
+            "text": "Dashes mark abbreviations.",
+            "feedback": "That is a different function."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "quotation",
+      "title": "Quotation marks and related indicators",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Quotation marks fence off material that is being cited, named or held at arm’s length: direct speech, titles, words used as words. Single and double marks are distinct indicators even when a font realises them with one character, and they normally come in pairs."
+        },
+        {
+          "type": "paragraph",
+          "text": "How quotation marks interact with neighbouring punctuation is a matter of regional and house convention. American style tends to place commas and full stops inside the closing mark; British style often follows the syntax. Each is regular within its own system, and mixing them inside one document is what creates trouble."
+        },
+        {
+          "type": "paragraph",
+          "text": "The marks also do lighter work: scare quotes that signal scepticism, metalinguistic quotation that names a word rather than using it, and titles of short works. Italics overlap with several of these functions, especially for titles. Choosing between the two is a convention, not a grammatical requirement."
+        },
+        {
+          "type": "examples",
+          "title": "Quotation conventions",
+          "items": [
+            {
+              "text": "She said, ‘I’m leaving.’",
+              "mark": "ok",
+              "note": "Single quotation marks enclose direct speech."
+            },
+            {
+              "text": "She said, “I’m leaving.”",
+              "mark": "ok",
+              "note": "Double quotation marks in another style."
+            },
+            {
+              "text": "The word ‘bank’ has several meanings.",
+              "mark": "ok",
+              "note": "Quotation marks mark a word used as a word."
+            },
+            {
+              "text": "His ‘apology’ was not convincing.",
+              "mark": "ok",
+              "note": "Scare quotes signal scepticism."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What do quotation marks do in The word ‘bank’ has several meanings?",
+        "options": [
+          {
+            "id": "a",
+            "text": "They mark a word used as a word.",
+            "feedback": "This is a metalinguistic use."
+          },
+          {
+            "id": "b",
+            "text": "They mark a question.",
+            "feedback": "A question mark does that."
+          },
+          {
+            "id": "c",
+            "text": "They mark an abbreviation.",
+            "feedback": "No abbreviation is involved."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "capitalisation",
+      "title": "Capitalisation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A capital is punctuation that leaves no mark in the line: it changes a letter’s shape instead of inserting something. It marks the start of an orthographic sentence, the conventional form of a proper name, and — depending on style — the words of a title."
+        },
+        {
+          "type": "paragraph",
+          "text": "The sentence-initial capital is part of what defines the orthographic sentence; without it the unit is incomplete. Proper names have conventions of their own, some lexical and some grammatical. Titles vary widely, with some styles capitalising every major word and others only the first word and the names."
+        },
+        {
+          "type": "paragraph",
+          "text": "It is a mistake to read every capital as emphasis. Most mark structure — a sentence opening, a name, a heading — and emphatic capitals belong to informal registers. One letter shape does several jobs, and context decides which."
+        },
+        {
+          "type": "examples",
+          "title": "Capitalisation uses",
+          "items": [
+            {
+              "text": "The meeting is over.",
+              "mark": "ok",
+              "note": "Sentence-initial capital."
+            },
+            {
+              "text": "We met Kim in London.",
+              "mark": "ok",
+              "note": "Proper-name capitals."
+            },
+            {
+              "text": "The Lord of the Rings",
+              "mark": "ok",
+              "note": "Title capitalisation in one style."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What does the initial capital in The meeting is over mark?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The beginning of an orthographic sentence",
+            "feedback": "Sentence-initial capitals are part of the orthographic sentence definition."
+          },
+          {
+            "id": "b",
+            "text": "A proper name",
+            "feedback": "The is not a proper name here."
+          },
+          {
+            "id": "c",
+            "text": "An abbreviation",
+            "feedback": "No abbreviation is involved."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "word-level",
+      "title": "Word-level punctuation: spaces and hyphens",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The space is punctuation’s least visible indicator and one of its most consequential. *Greenhouse* is one word on the page; *green house* is two. The difference is typographic, and a grammatical difference travels with it."
+        },
+        {
+          "type": "paragraph",
+          "text": "The ordinary hyphen joins the parts of a compound or breaks a word across lines: *non-negotiable*, *well-known*. The long hyphen links coordinated names and relationships: *the doctor–patient relationship*. The dash, which looks similar at small sizes, is a different indicator doing a different job."
+        },
+        {
+          "type": "paragraph",
+          "text": "Hyphenation is part convention and part grammar. Compound nouns may be written open, hyphenated or solid, and the choice tracks style and the compound’s degree of lexicalisation. Hyphens also disambiguate, as *a small-business owner* against *a small business owner* shows."
+        },
+        {
+          "type": "examples",
+          "title": "Spaces and hyphens",
+          "items": [
+            {
+              "text": "greenhouse / green house",
+              "mark": "ok",
+              "note": "One compound word versus two words."
+            },
+            {
+              "text": "non-negotiable",
+              "mark": "ok",
+              "note": "Ordinary hyphen in a compound."
+            },
+            {
+              "text": "the doctor–patient relationship",
+              "mark": "ok",
+              "note": "Long hyphen joining coordinated names."
+            },
+            {
+              "text": "a small-business owner",
+              "mark": "ok",
+              "note": "Hyphen disambiguates the compound."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What does the hyphen do in a small-business owner?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It marks small-business as a compound modifier.",
+            "feedback": "It disambiguates from a small business owner."
+          },
+          {
+            "id": "b",
+            "text": "It marks a sentence boundary.",
+            "feedback": "A hyphen is word-internal."
+          },
+          {
+            "id": "c",
+            "text": "It marks an abbreviation.",
+            "feedback": "No abbreviation is involved."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "apostrophe-slash",
+      "title": "Apostrophe, abbreviation stop, and slash",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The apostrophe works inside words. It marks omission in *don’t* and *rock ’n’ roll*, and the genitive in *Kim’s* and *dogs’*. It is not the single quotation mark, even where one character serves both, and its position follows the morphology and spelling of the word."
+        },
+        {
+          "type": "paragraph",
+          "text": "The abbreviation stop marks a reduced word: *Col. Blimp*, *e.g.*, *i.e.* Practice varies by style and region, and many styles drop the stops in acronyms and initialisms. This is a use of the full stop, not a separate mark."
+        },
+        {
+          "type": "paragraph",
+          "text": "The slash is a general-purpose separator: alternatives in *and/or*, fractions in *3/4*, dates in *9/11*, line breaks in quoted verse. It is conventional, occasionally ambiguous, and — like the rest of the system — a fact about writing rather than about speech."
+        },
+        {
+          "type": "examples",
+          "title": "Apostrophe, abbreviation, slash",
+          "items": [
+            {
+              "text": "don’t",
+              "mark": "ok",
+              "note": "Apostrophe marks omission."
+            },
+            {
+              "text": "Kim’s report",
+              "mark": "ok",
+              "note": "Apostrophe marks the genitive."
+            },
+            {
+              "text": "Col. Blimp",
+              "mark": "ok",
+              "note": "Full stop marks an abbreviation."
+            },
+            {
+              "text": "and/or",
+              "mark": "ok",
+              "note": "Slash marks alternatives."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which use of the apostrophe is word-internal?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The apostrophe in don’t",
+            "feedback": "It marks omission inside a word."
+          },
+          {
+            "id": "b",
+            "text": "The full stop in Col.",
+            "feedback": "That is an abbreviation stop."
+          },
+          {
+            "id": "c",
+            "text": "The slash in and/or",
+            "feedback": "That is a slash."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "chapter-review",
+      "title": "Chapter Review",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Segmental marks, spaces and non-segmental modifications: punctuation is a writing system built from those. The distinction to keep is between the indicator, which is a function, and the character, which is a shape. The apostrophe and the single quotation mark show why it matters: different jobs, sometimes one shape."
+        },
+        {
+          "type": "paragraph",
+          "text": "Rules sit at three levels. Some marks the orthographic system requires, some are conventions of region and house, and some are choices of weight and tone. The orthographic sentence and the orthographic word are defined by these marks rather than by syntax, which is why the two descriptions can diverge."
+        },
+        {
+          "type": "paragraph",
+          "text": "Terminals close sentences; secondary marks divide what lies inside them. Brackets and dashes handle supplements, quotation marks and capitals handle status, hyphens and apostrophes handle the insides of words. That the system is conventional does not make it arbitrary. The conventions are learnable, and they are learned."
+        },
+        {
+          "type": "note",
+          "tone": "why",
+          "title": "A punctuation checklist",
+          "text": "Identify the indicator and its function. Decide whether it marks a boundary, status, grouping, omission or abbreviation. Check whether the mark is required, optional or stylistic. Then consider the house style, region and light or heavy punctuation convention."
+        }
+      ],
+      "check": {
+        "prompt": "Which statement correctly describes punctuation?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It is a writing system using marks, spaces and non-segmental modifications.",
+            "feedback": "It is not a direct transcription of speech."
+          },
+          {
+            "id": "b",
+            "text": "It is exactly the same as prosody.",
+            "feedback": "Punctuation and prosody are related but distinct."
+          },
+          {
+            "id": "c",
+            "text": "It has no optional conventions.",
+            "feedback": "Light and heavy styles show optional variation."
+          }
+        ],
+        "answer": "a"
+      }
+    }
+  ],
+  "worked": [
+    "Take *The editor—usually meticulous—left the final paragraph unmarked; the typesetter, however, noticed it immediately*. The dashes delimit the supplement *usually meticulous*. The semicolon separates two closely related main clauses. The comma after *typesetter* sets off the connective adjunct *however*.",
+    "The example shows boundary, grouping and status functions at once. The dashes mark a supplement; the semicolon marks a clause boundary; the comma marks a supplement-like connective. None of these marks is a direct transcription of a pause, and each has a conventional function in the written sentence."
+  ],
+  "application": [
+    "Identify the punctuation indicator and its function. Is it a primary terminal, a secondary boundary mark, a parenthesis, a dash, a quotation mark, a capital, a hyphen, an apostrophe or a slash? Then decide whether it marks a boundary, status, grouping, omission or abbreviation.",
+    "Check whether the mark is required, optional or stylistic. Light and heavy styles differ in optional commas; regional and house styles differ in quotation conventions. Do not treat a stylistic preference as a grammatical rule.",
+    "Distinguish the orthographic sentence and word from syntactic units. Punctuation defines units of writing, not necessarily units of grammar. The same sequence can be one sentence or two, one word or two, depending on the punctuation."
+  ],
+  "reveal": [
+    "In *The editor—usually meticulous—left the final paragraph unmarked; the typesetter, however, noticed it immediately*, the dashes delimit a supplement, the semicolon separates two main clauses, and the comma sets off the connective adjunct *however*. The marks indicate boundaries and grouping, not pronunciation."
+  ],
+  "recap": [
+    "Punctuation uses segmental marks, spaces and non-segmental modifications to organise writing. Indicators are functional categories; characters are their graphical realisations. Primary terminals mark sentence boundaries; secondary marks mark smaller boundaries and relations.",
+    "Parentheses and dashes set off supplements; quotation marks and capitals mark status; hyphens and apostrophes operate within words. Punctuation rules vary by style, region and house convention, and they are not a direct representation of prosody."
+  ],
+  "self_check": [
+    {
+      "question": "What is a punctuation indicator?",
+      "answer": "A punctuation mark, space or non-segmental modification such as italics or capitals used to organise writing."
+    },
+    {
+      "question": "What is the difference between an indicator and a character?",
+      "answer": "An indicator is a functional mark; a character is a graphical shape that realises it. The apostrophe and single quotation mark are distinct indicators that may share a character."
+    },
+    {
+      "question": "What is an orthographic sentence?",
+      "answer": "A unit of writing beginning with a capital letter and ending with a full stop, question mark or exclamation mark."
+    },
+    {
+      "question": "What is the difference between light and heavy punctuation?",
+      "answer": "Light style uses fewer optional marks; heavy style uses more, especially commas."
+    },
+    {
+      "question": "What do delimiting commas do?",
+      "answer": "They enclose a supplement or parenthetical element and mark both of its boundaries."
+    }
+  ],
+  "opening": [
+    {
+      "prompt": "Which is a punctuation indicator?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A word space",
+          "feedback": "Spaces are segmental punctuation indicators."
+        },
+        {
+          "id": "b",
+          "text": "A letter’s meaning",
+          "feedback": "Meaning is not a punctuation indicator."
+        },
+        {
+          "id": "c",
+          "text": "A syllable",
+          "feedback": "Syllables are phonological, not punctuation."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which mark is a primary terminal?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A full stop",
+          "feedback": "It marks the end of an orthographic sentence."
+        },
+        {
+          "id": "b",
+          "text": "A comma",
+          "feedback": "A comma is a secondary boundary mark."
+        },
+        {
+          "id": "c",
+          "text": "A hyphen",
+          "feedback": "A hyphen is word-internal."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What defines an orthographic sentence?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A capital at the beginning and a primary terminal at the end",
+          "feedback": "It is a unit of writing."
+        },
+        {
+          "id": "b",
+          "text": "A clause with a subject and predicate",
+          "feedback": "That is a syntactic definition."
+        },
+        {
+          "id": "c",
+          "text": "A paragraph",
+          "feedback": "A paragraph can contain several sentences."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What do delimiting commas do?",
+      "options": [
+        {
+          "id": "a",
+          "text": "They enclose a supplement or parenthetical element.",
+          "feedback": "They mark both boundaries."
+        },
+        {
+          "id": "b",
+          "text": "They mark an abbreviation.",
+          "feedback": "That is an abbreviation full stop."
+        },
+        {
+          "id": "c",
+          "text": "They mark a question.",
+          "feedback": "A question mark does that."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Why are apostrophe and single quotation mark distinct indicators?",
+      "options": [
+        {
+          "id": "a",
+          "text": "They have different functions even when realised by the same character.",
+          "feedback": "The apostrophe marks omission or genitive; the quotation mark marks quotation."
+        },
+        {
+          "id": "b",
+          "text": "They always use different characters.",
+          "feedback": "They can share a character."
+        },
+        {
+          "id": "c",
+          "text": "They are both non-segmental.",
+          "feedback": "Both are segmental."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "closing": [
+    {
+      "prompt": "Why are spaces part of punctuation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "They are segmental units that separate words in writing.",
+          "feedback": "They occupy positions in the linear sequence."
+        },
+        {
+          "id": "b",
+          "text": "They are non-segmental.",
+          "feedback": "Spaces are segmental."
+        },
+        {
+          "id": "c",
+          "text": "They mark sentence boundaries only.",
+          "feedback": "They mark word boundaries too."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is the difference between light and heavy punctuation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Light uses fewer optional marks; heavy uses more.",
+          "feedback": "The difference concerns optional commas and similar marks."
+        },
+        {
+          "id": "b",
+          "text": "Light is grammatical; heavy is ungrammatical.",
+          "feedback": "Both are conventional styles."
+        },
+        {
+          "id": "c",
+          "text": "Heavy uses no full stops.",
+          "feedback": "Full stops are required in both."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What do the commas do in My father, who retired last year, now lives in Florida?",
+      "options": [
+        {
+          "id": "a",
+          "text": "They delimit a supplementary relative clause.",
+          "feedback": "The relative adds information rather than restricting."
+        },
+        {
+          "id": "b",
+          "text": "They mark a coordination.",
+          "feedback": "There is no coordination."
+        },
+        {
+          "id": "c",
+          "text": "They mark an abbreviation.",
+          "feedback": "No abbreviation is involved."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is the difference between parentheses and dashes in supplements?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Parentheses tend to background; dashes tend to foreground or interrupt.",
+          "feedback": "The effect is stylistic and rhetorical."
+        },
+        {
+          "id": "b",
+          "text": "Parentheses are grammatical; dashes are ungrammatical.",
+          "feedback": "Both are grammatical."
+        },
+        {
+          "id": "c",
+          "text": "Dashes mark abbreviations.",
+          "feedback": "That is a different function."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which statement correctly describes punctuation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It is a writing system using marks, spaces and non-segmental modifications.",
+          "feedback": "It is not a direct transcription of speech."
+        },
+        {
+          "id": "b",
+          "text": "It is exactly the same as prosody.",
+          "feedback": "Punctuation and prosody are related but distinct."
+        },
+        {
+          "id": "c",
+          "text": "It has no optional conventions.",
+          "feedback": "Light and heavy styles show optional variation."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "stages": {
+    "predict": {
+      "prompt": "Which is a punctuation indicator?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A word space",
+          "feedback": "Spaces are segmental punctuation indicators."
+        },
+        {
+          "id": "b",
+          "text": "A letter’s meaning",
+          "feedback": "Meaning is not punctuation."
+        },
+        {
+          "id": "c",
+          "text": "A syllable",
+          "feedback": "Syllables are phonological."
+        }
+      ],
+      "answer": "a"
+    },
+    "guided": {
+      "prompt": "Which mark is a primary terminal?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A full stop",
+          "feedback": "It marks the end of an orthographic sentence."
+        },
+        {
+          "id": "b",
+          "text": "A comma",
+          "feedback": "A secondary boundary mark."
+        },
+        {
+          "id": "c",
+          "text": "A hyphen",
+          "feedback": "Word-internal."
+        }
+      ],
+      "answer": "a"
+    },
+    "transfer": {
+      "prompt": "What defines an orthographic sentence?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A capital at the beginning and a primary terminal at the end",
+          "feedback": "It is a unit of writing."
+        },
+        {
+          "id": "b",
+          "text": "A clause with a subject and predicate",
+          "feedback": "A syntactic definition."
+        },
+        {
+          "id": "c",
+          "text": "A paragraph",
+          "feedback": "A paragraph can contain several sentences."
+        }
+      ],
+      "answer": "a"
+    },
+    "exit": {
+      "prompt": "What do delimiting commas do?",
+      "options": [
+        {
+          "id": "a",
+          "text": "They enclose a supplement or parenthetical element.",
+          "feedback": "They mark both boundaries."
+        },
+        {
+          "id": "b",
+          "text": "They mark an abbreviation.",
+          "feedback": "That is an abbreviation full stop."
+        },
+        {
+          "id": "c",
+          "text": "They mark a question.",
+          "feedback": "A question mark does that."
+        }
+      ],
+      "answer": "a"
+    }
+  }
+}

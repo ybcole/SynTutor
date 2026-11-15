@@ -1,333 +1,1070 @@
 {
-  "title": "Morphology and spelling",
-  "content_version": "2.1.0",
-  "estimated_minutes": 11,
+  "title": "Inflectional morphology and related matters",
+  "content_version": "3.1.0",
+  "estimated_minutes": 20,
   "outcomes": [
     {
       "id": "o1",
-      "text": "Apply common spelling changes when adding an inflectional suffix."
+      "text": "Explain the main ideas in Inflectional morphology and related matters."
     },
     {
       "id": "o2",
-      "text": "Distinguish ordinary noun plurals, surname plurals and genitives."
+      "text": "Recognise the patterns in real sentences."
     },
     {
       "id": "o3",
-      "text": "Use sound or clause position to choose between forms such as a and an or am not and aren’t."
+      "text": "Use the ideas when you read and write."
     }
   ],
   "key_terms": [
     {
-      "term": "inflection",
-      "definition": "A form change that marks a grammatical distinction such as past tense or plural."
+      "term": "morphology",
+      "definition": "The part of grammar concerned with the form of words."
     },
     {
-      "term": "base",
-      "definition": "The form to which a suffix is attached, such as fit in fitted."
+      "term": "inflection",
+      "definition": "A form change marking a grammatical distinction such as plural, tense or case."
+    },
+    {
+      "term": "lexical word-formation",
+      "definition": "The creation of new lexemes by derivation or compounding."
+    },
+    {
+      "term": "lexeme",
+      "definition": "A vocabulary item whose forms are related by inflection."
+    },
+    {
+      "term": "lexical base",
+      "definition": "The starting form to which inflectional operations apply."
+    },
+    {
+      "term": "suffixation",
+      "definition": "The addition of a suffix to a base."
+    },
+    {
+      "term": "internal change",
+      "definition": "A morphological operation that changes a vowel or consonant inside the base."
+    },
+    {
+      "term": "alternation",
+      "definition": "Different realisations of a morphological unit depending on context."
+    },
+    {
+      "term": "regular form",
+      "definition": "An inflectional form produced by a general rule not specific to a lexeme."
+    },
+    {
+      "term": "irregular form",
+      "definition": "An inflectional form requiring lexeme-specific information."
+    },
+    {
+      "term": "syncretism",
+      "definition": "Identity of form between distinct inflectional categories."
+    },
+    {
+      "term": "defective lexeme",
+      "definition": "A lexeme lacking some inflectional forms found in its category."
+    },
+    {
+      "term": "grade",
+      "definition": "The system of plain, comparative and superlative forms."
+    },
+    {
+      "term": "inflectional comparative",
+      "definition": "A comparative formed with -er, as in cheaper."
+    },
+    {
+      "term": "analytic comparative",
+      "definition": "A comparative formed with more or less, as in more careful."
+    },
+    {
+      "term": "plural",
+      "definition": "The number form used for more than one entity."
     },
     {
       "term": "genitive",
-      "definition": "A form that marks a relation such as possession, as in the guests’ coats."
+      "definition": "The case form marked by ’s or a possessive pronoun."
+    },
+    {
+      "term": "base plural",
+      "definition": "A plural identical in form to the lexical base, as in sheep."
+    },
+    {
+      "term": "vowel-change plural",
+      "definition": "A plural formed by changing the base vowel, as in teeth."
+    },
+    {
+      "term": "foreign plural",
+      "definition": "A plural retaining a borrowed morphological pattern, as in formulae."
+    },
+    {
+      "term": "preterite",
+      "definition": "The primary past-tense verb form."
+    },
+    {
+      "term": "past participle",
+      "definition": "The verb form used after perfect have and passive be."
+    },
+    {
+      "term": "weak form",
+      "definition": "A reduced pronunciation of a grammaticised word in connected speech."
+    },
+    {
+      "term": "clitic",
+      "definition": "A reduced form attached prosodically to a neighbouring word."
+    },
+    {
+      "term": "liaison",
+      "definition": "The linking of sounds across word boundaries in connected speech."
+    },
+    {
+      "term": "negative auxiliary",
+      "definition": "A negative form of an auxiliary, such as isn’t or won’t."
+    },
+    {
+      "term": "consonant doubling",
+      "definition": "Doubling of a final consonant before a suffix, as in batting."
+    },
+    {
+      "term": "e-deletion",
+      "definition": "Deletion of final e before a suffix, as in liking."
     }
   ],
   "revised_assessment": {
     "required_sections": [
-      "introduction",
-      "concepts",
-      "worked-example",
-      "application",
-      "recap"
+      "inflection-word-formation",
+      "lexical-base",
+      "inflectional-categories",
+      "alternation-syncretism",
+      "speech-writing",
+      "phonological-alternations",
+      "spelling-alternations",
+      "grade",
+      "noun-plurals",
+      "genitive",
+      "verb-forms",
+      "complex-bases",
+      "weak-forms",
+      "chapter-review"
     ],
     "opening": [
       {
+        "id": "opening-1",
+        "prompt": "Which pair contains forms of the same lexeme?",
         "options": [
           {
             "id": "a",
-            "text": "fited",
-            "feedback": "Fit meets the conditions for doubling t before -ed."
+            "text": "simple, simpler, simplest",
+            "feedback": "They are inflectional forms of simple."
           },
           {
             "id": "b",
-            "text": "fittted",
-            "feedback": "Fit meets the conditions for doubling t before -ed."
+            "text": "simple, simplify",
+            "feedback": "Simplify is a different lexeme."
           },
           {
             "id": "c",
-            "text": "fitted",
-            "feedback": "Fit meets the conditions for doubling t before -ed."
+            "text": "simple, simpleton",
+            "feedback": "Simpleton is a different lexeme."
           }
         ],
-        "prompt": "What is the ordinary past-tense spelling of fit in “They ___ a new latch”?",
-        "answer": "c",
-        "outcome_ids": [
-          "o1"
-        ],
-        "source_ids": [
-          "CGEL-2002-CH18-P1575"
-        ],
-        "id": "opening-1"
-      },
-      {
-        "options": [
-          {
-            "id": "a",
-            "text": "the Brady’s",
-            "feedback": "Surname Brady retains y in its ordinary plural. An apostrophe would signal a different construction."
-          },
-          {
-            "id": "b",
-            "text": "the Bradys",
-            "feedback": "Surname Brady retains y in its ordinary plural. An apostrophe would signal a different construction."
-          },
-          {
-            "id": "c",
-            "text": "the Bradies",
-            "feedback": "Surname Brady retains y in its ordinary plural. An apostrophe would signal a different construction."
-          }
-        ],
-        "prompt": "Which phrase names the Brady family in the plural without showing possession?",
-        "answer": "b",
-        "outcome_ids": [
-          "o2"
-        ],
-        "source_ids": [
-          "CGEL-2002-CH18-P1585",
-          "CGEL-2002-CH18-P1595"
-        ],
-        "id": "opening-2"
-      },
-      {
-        "options": [
-          {
-            "id": "a",
-            "text": "a",
-            "feedback": "Unit begins with a consonant sound even though its first written letter is a vowel."
-          },
-          {
-            "id": "b",
-            "text": "an",
-            "feedback": "Unit begins with a consonant sound even though its first written letter is a vowel."
-          },
-          {
-            "id": "c",
-            "text": "both equally in the same pronunciation",
-            "feedback": "Unit begins with a consonant sound even though its first written letter is a vowel."
-          }
-        ],
-        "prompt": "Which article fits “___ unit” in ordinary pronunciation?",
         "answer": "a",
         "outcome_ids": [
-          "o3"
+          "o1"
         ],
         "source_ids": [
-          "CGEL-2002-CH18-P1618"
-        ],
-        "id": "opening-3"
+          "CGEL-2002-CH18-P1569",
+          "CGEL-2002-CH18-P1568",
+          "CGEL-2002-CH18-P1567",
+          "CGEL-2002-CH18-P1570",
+          "CGEL-2002-CH18-P1571",
+          "CGEL-2002-CH18-P1572",
+          "CGEL-2002-CH18-P1573",
+          "CGEL-2002-CH18-P1574",
+          "CGEL-2002-CH18-P1575",
+          "CGEL-2002-CH18-P1576",
+          "CGEL-2002-CH18-P1577",
+          "CGEL-2002-CH18-P1578",
+          "CGEL-2002-CH18-P1579",
+          "CGEL-2002-CH18-P1580",
+          "CGEL-2002-CH18-P1581",
+          "CGEL-2002-CH18-P1582",
+          "CGEL-2002-CH18-P1583",
+          "CGEL-2002-CH18-P1584",
+          "CGEL-2002-CH18-P1585",
+          "CGEL-2002-CH18-P1586",
+          "CGEL-2002-CH18-P1587",
+          "CGEL-2002-CH18-P1588",
+          "CGEL-2002-CH18-P1589",
+          "CGEL-2002-CH18-P1590",
+          "CGEL-2002-CH18-P1591",
+          "CGEL-2002-CH18-P1592",
+          "CGEL-2002-CH18-P1593",
+          "CGEL-2002-CH18-P1594",
+          "CGEL-2002-CH18-P1595",
+          "CGEL-2002-CH18-P1596",
+          "CGEL-2002-CH18-P1597",
+          "CGEL-2002-CH18-P1598",
+          "CGEL-2002-CH18-P1599",
+          "CGEL-2002-CH18-P1600",
+          "CGEL-2002-CH18-P1601",
+          "CGEL-2002-CH18-P1602",
+          "CGEL-2002-CH18-P1603",
+          "CGEL-2002-CH18-P1604",
+          "CGEL-2002-CH18-P1605",
+          "CGEL-2002-CH18-P1606",
+          "CGEL-2002-CH18-P1607",
+          "CGEL-2002-CH18-P1608",
+          "CGEL-2002-CH18-P1609",
+          "CGEL-2002-CH18-P1610",
+          "CGEL-2002-CH18-P1611",
+          "CGEL-2002-CH18-P1612",
+          "CGEL-2002-CH18-P1613",
+          "CGEL-2002-CH18-P1614",
+          "CGEL-2002-CH18-P1615",
+          "CGEL-2002-CH18-P1616",
+          "CGEL-2002-CH18-P1617",
+          "CGEL-2002-CH18-P1618",
+          "CGEL-2002-CH18-P1619"
+        ]
       },
       {
+        "id": "opening-2",
+        "prompt": "What is the lexical base?",
         "options": [
           {
             "id": "a",
-            "text": "hopping / hopeing",
-            "feedback": "Hop doubles p. Hope drops silent e."
+            "text": "The starting form for inflectional operations",
+            "feedback": "Dogs and workers are formed from their bases."
           },
           {
             "id": "b",
-            "text": "hoping / hopping",
-            "feedback": "Hop doubles p. Hope drops silent e."
+            "text": "The plural form",
+            "feedback": "The plural is an inflected form."
           },
           {
             "id": "c",
-            "text": "hopping / hoping",
-            "feedback": "Hop doubles p. Hope drops silent e."
+            "text": "The past tense",
+            "feedback": "The past tense is an inflected form."
           }
         ],
-        "prompt": "Which pair correctly distinguishes hop from hope in the -ing forms?",
-        "answer": "c",
+        "answer": "a",
         "outcome_ids": [
           "o1"
         ],
         "source_ids": [
+          "CGEL-2002-CH18-P1569",
+          "CGEL-2002-CH18-P1568",
+          "CGEL-2002-CH18-P1567",
+          "CGEL-2002-CH18-P1570",
+          "CGEL-2002-CH18-P1571",
+          "CGEL-2002-CH18-P1572",
+          "CGEL-2002-CH18-P1573",
+          "CGEL-2002-CH18-P1574",
           "CGEL-2002-CH18-P1575",
-          "CGEL-2002-CH18-P1576"
-        ],
-        "id": "opening-4"
+          "CGEL-2002-CH18-P1576",
+          "CGEL-2002-CH18-P1577",
+          "CGEL-2002-CH18-P1578",
+          "CGEL-2002-CH18-P1579",
+          "CGEL-2002-CH18-P1580",
+          "CGEL-2002-CH18-P1581",
+          "CGEL-2002-CH18-P1582",
+          "CGEL-2002-CH18-P1583",
+          "CGEL-2002-CH18-P1584",
+          "CGEL-2002-CH18-P1585",
+          "CGEL-2002-CH18-P1586",
+          "CGEL-2002-CH18-P1587",
+          "CGEL-2002-CH18-P1588",
+          "CGEL-2002-CH18-P1589",
+          "CGEL-2002-CH18-P1590",
+          "CGEL-2002-CH18-P1591",
+          "CGEL-2002-CH18-P1592",
+          "CGEL-2002-CH18-P1593",
+          "CGEL-2002-CH18-P1594",
+          "CGEL-2002-CH18-P1595",
+          "CGEL-2002-CH18-P1596",
+          "CGEL-2002-CH18-P1597",
+          "CGEL-2002-CH18-P1598",
+          "CGEL-2002-CH18-P1599",
+          "CGEL-2002-CH18-P1600",
+          "CGEL-2002-CH18-P1601",
+          "CGEL-2002-CH18-P1602",
+          "CGEL-2002-CH18-P1603",
+          "CGEL-2002-CH18-P1604",
+          "CGEL-2002-CH18-P1605",
+          "CGEL-2002-CH18-P1606",
+          "CGEL-2002-CH18-P1607",
+          "CGEL-2002-CH18-P1608",
+          "CGEL-2002-CH18-P1609",
+          "CGEL-2002-CH18-P1610",
+          "CGEL-2002-CH18-P1611",
+          "CGEL-2002-CH18-P1612",
+          "CGEL-2002-CH18-P1613",
+          "CGEL-2002-CH18-P1614",
+          "CGEL-2002-CH18-P1615",
+          "CGEL-2002-CH18-P1616",
+          "CGEL-2002-CH18-P1617",
+          "CGEL-2002-CH18-P1618",
+          "CGEL-2002-CH18-P1619"
+        ]
       },
       {
+        "id": "opening-3",
+        "prompt": "What is syncretism?",
         "options": [
           {
             "id": "a",
-            "text": "the guest’s seats",
-            "feedback": "The regular plural guests has an apostrophe after its s in the genitive."
+            "text": "Identity of form between distinct inflectional categories",
+            "feedback": "Sheep has syncretism between singular and plural."
           },
           {
             "id": "b",
-            "text": "the guests seats",
-            "feedback": "The regular plural guests has an apostrophe after its s in the genitive."
+            "text": "A change of vowel in the base",
+            "feedback": "That is internal change."
           },
           {
             "id": "c",
-            "text": "the guests’ seats",
-            "feedback": "The regular plural guests has an apostrophe after its s in the genitive."
+            "text": "A spelling rule",
+            "feedback": "Syncretism is a form relation."
           }
         ],
-        "prompt": "Which form refers to seats belonging to several guests?",
-        "answer": "c",
+        "answer": "a",
         "outcome_ids": [
-          "o2"
+          "o1"
         ],
         "source_ids": [
+          "CGEL-2002-CH18-P1569",
+          "CGEL-2002-CH18-P1568",
+          "CGEL-2002-CH18-P1567",
+          "CGEL-2002-CH18-P1570",
+          "CGEL-2002-CH18-P1571",
+          "CGEL-2002-CH18-P1572",
+          "CGEL-2002-CH18-P1573",
+          "CGEL-2002-CH18-P1574",
+          "CGEL-2002-CH18-P1575",
+          "CGEL-2002-CH18-P1576",
+          "CGEL-2002-CH18-P1577",
+          "CGEL-2002-CH18-P1578",
+          "CGEL-2002-CH18-P1579",
+          "CGEL-2002-CH18-P1580",
+          "CGEL-2002-CH18-P1581",
+          "CGEL-2002-CH18-P1582",
+          "CGEL-2002-CH18-P1583",
+          "CGEL-2002-CH18-P1584",
+          "CGEL-2002-CH18-P1585",
+          "CGEL-2002-CH18-P1586",
+          "CGEL-2002-CH18-P1587",
+          "CGEL-2002-CH18-P1588",
+          "CGEL-2002-CH18-P1589",
+          "CGEL-2002-CH18-P1590",
+          "CGEL-2002-CH18-P1591",
+          "CGEL-2002-CH18-P1592",
+          "CGEL-2002-CH18-P1593",
+          "CGEL-2002-CH18-P1594",
           "CGEL-2002-CH18-P1595",
-          "CGEL-2002-CH18-P1596"
+          "CGEL-2002-CH18-P1596",
+          "CGEL-2002-CH18-P1597",
+          "CGEL-2002-CH18-P1598",
+          "CGEL-2002-CH18-P1599",
+          "CGEL-2002-CH18-P1600",
+          "CGEL-2002-CH18-P1601",
+          "CGEL-2002-CH18-P1602",
+          "CGEL-2002-CH18-P1603",
+          "CGEL-2002-CH18-P1604",
+          "CGEL-2002-CH18-P1605",
+          "CGEL-2002-CH18-P1606",
+          "CGEL-2002-CH18-P1607",
+          "CGEL-2002-CH18-P1608",
+          "CGEL-2002-CH18-P1609",
+          "CGEL-2002-CH18-P1610",
+          "CGEL-2002-CH18-P1611",
+          "CGEL-2002-CH18-P1612",
+          "CGEL-2002-CH18-P1613",
+          "CGEL-2002-CH18-P1614",
+          "CGEL-2002-CH18-P1615",
+          "CGEL-2002-CH18-P1616",
+          "CGEL-2002-CH18-P1617",
+          "CGEL-2002-CH18-P1618",
+          "CGEL-2002-CH18-P1619"
+        ]
+      },
+      {
+        "id": "opening-4",
+        "prompt": "Which plural is formed by vowel change?",
+        "options": [
+          {
+            "id": "a",
+            "text": "teeth",
+            "feedback": "Tooth → teeth."
+          },
+          {
+            "id": "b",
+            "text": "cats",
+            "feedback": "That is regular suffixation."
+          },
+          {
+            "id": "c",
+            "text": "children",
+            "feedback": "That is an ·en plural."
+          }
         ],
-        "id": "opening-5"
+        "answer": "a",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH18-P1569",
+          "CGEL-2002-CH18-P1568",
+          "CGEL-2002-CH18-P1567",
+          "CGEL-2002-CH18-P1570",
+          "CGEL-2002-CH18-P1571",
+          "CGEL-2002-CH18-P1572",
+          "CGEL-2002-CH18-P1573",
+          "CGEL-2002-CH18-P1574",
+          "CGEL-2002-CH18-P1575",
+          "CGEL-2002-CH18-P1576",
+          "CGEL-2002-CH18-P1577",
+          "CGEL-2002-CH18-P1578",
+          "CGEL-2002-CH18-P1579",
+          "CGEL-2002-CH18-P1580",
+          "CGEL-2002-CH18-P1581",
+          "CGEL-2002-CH18-P1582",
+          "CGEL-2002-CH18-P1583",
+          "CGEL-2002-CH18-P1584",
+          "CGEL-2002-CH18-P1585",
+          "CGEL-2002-CH18-P1586",
+          "CGEL-2002-CH18-P1587",
+          "CGEL-2002-CH18-P1588",
+          "CGEL-2002-CH18-P1589",
+          "CGEL-2002-CH18-P1590",
+          "CGEL-2002-CH18-P1591",
+          "CGEL-2002-CH18-P1592",
+          "CGEL-2002-CH18-P1593",
+          "CGEL-2002-CH18-P1594",
+          "CGEL-2002-CH18-P1595",
+          "CGEL-2002-CH18-P1596",
+          "CGEL-2002-CH18-P1597",
+          "CGEL-2002-CH18-P1598",
+          "CGEL-2002-CH18-P1599",
+          "CGEL-2002-CH18-P1600",
+          "CGEL-2002-CH18-P1601",
+          "CGEL-2002-CH18-P1602",
+          "CGEL-2002-CH18-P1603",
+          "CGEL-2002-CH18-P1604",
+          "CGEL-2002-CH18-P1605",
+          "CGEL-2002-CH18-P1606",
+          "CGEL-2002-CH18-P1607",
+          "CGEL-2002-CH18-P1608",
+          "CGEL-2002-CH18-P1609",
+          "CGEL-2002-CH18-P1610",
+          "CGEL-2002-CH18-P1611",
+          "CGEL-2002-CH18-P1612",
+          "CGEL-2002-CH18-P1613",
+          "CGEL-2002-CH18-P1614",
+          "CGEL-2002-CH18-P1615",
+          "CGEL-2002-CH18-P1616",
+          "CGEL-2002-CH18-P1617",
+          "CGEL-2002-CH18-P1618",
+          "CGEL-2002-CH18-P1619"
+        ]
+      },
+      {
+        "id": "opening-5",
+        "prompt": "What is a weak form?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A reduced pronunciation of a grammaticised word in connected speech",
+            "feedback": "At /ət/ versus /æt/."
+          },
+          {
+            "id": "b",
+            "text": "An irregular inflectional form",
+            "feedback": "Weak forms are phonological."
+          },
+          {
+            "id": "c",
+            "text": "A clitic pronoun",
+            "feedback": "Clitics are one type of reduced form."
+          }
+        ],
+        "answer": "a",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH18-P1569",
+          "CGEL-2002-CH18-P1568",
+          "CGEL-2002-CH18-P1567",
+          "CGEL-2002-CH18-P1570",
+          "CGEL-2002-CH18-P1571",
+          "CGEL-2002-CH18-P1572",
+          "CGEL-2002-CH18-P1573",
+          "CGEL-2002-CH18-P1574",
+          "CGEL-2002-CH18-P1575",
+          "CGEL-2002-CH18-P1576",
+          "CGEL-2002-CH18-P1577",
+          "CGEL-2002-CH18-P1578",
+          "CGEL-2002-CH18-P1579",
+          "CGEL-2002-CH18-P1580",
+          "CGEL-2002-CH18-P1581",
+          "CGEL-2002-CH18-P1582",
+          "CGEL-2002-CH18-P1583",
+          "CGEL-2002-CH18-P1584",
+          "CGEL-2002-CH18-P1585",
+          "CGEL-2002-CH18-P1586",
+          "CGEL-2002-CH18-P1587",
+          "CGEL-2002-CH18-P1588",
+          "CGEL-2002-CH18-P1589",
+          "CGEL-2002-CH18-P1590",
+          "CGEL-2002-CH18-P1591",
+          "CGEL-2002-CH18-P1592",
+          "CGEL-2002-CH18-P1593",
+          "CGEL-2002-CH18-P1594",
+          "CGEL-2002-CH18-P1595",
+          "CGEL-2002-CH18-P1596",
+          "CGEL-2002-CH18-P1597",
+          "CGEL-2002-CH18-P1598",
+          "CGEL-2002-CH18-P1599",
+          "CGEL-2002-CH18-P1600",
+          "CGEL-2002-CH18-P1601",
+          "CGEL-2002-CH18-P1602",
+          "CGEL-2002-CH18-P1603",
+          "CGEL-2002-CH18-P1604",
+          "CGEL-2002-CH18-P1605",
+          "CGEL-2002-CH18-P1606",
+          "CGEL-2002-CH18-P1607",
+          "CGEL-2002-CH18-P1608",
+          "CGEL-2002-CH18-P1609",
+          "CGEL-2002-CH18-P1610",
+          "CGEL-2002-CH18-P1611",
+          "CGEL-2002-CH18-P1612",
+          "CGEL-2002-CH18-P1613",
+          "CGEL-2002-CH18-P1614",
+          "CGEL-2002-CH18-P1615",
+          "CGEL-2002-CH18-P1616",
+          "CGEL-2002-CH18-P1617",
+          "CGEL-2002-CH18-P1618",
+          "CGEL-2002-CH18-P1619"
+        ]
       }
     ],
     "closing": [
       {
+        "id": "closing-1",
+        "prompt": "Why are simpler and simplest not new lexemes?",
         "options": [
           {
             "id": "a",
-            "text": "isn’t I",
-            "feedback": "Aren’t I is widely established in inversion. A statement instead uses I’m not or I am not."
+            "text": "They are inflectional forms of the same lexeme.",
+            "feedback": "They belong to the paradigm of simple."
           },
           {
             "id": "b",
-            "text": "aren’t I",
-            "feedback": "Aren’t I is widely established in inversion. A statement instead uses I’m not or I am not."
+            "text": "They contain the same letters.",
+            "feedback": "Spelling is not the criterion."
           },
           {
             "id": "c",
-            "text": "I aren’t",
-            "feedback": "Aren’t I is widely established in inversion. A statement instead uses I’m not or I am not."
+            "text": "They are irregular.",
+            "feedback": "Regularity is separate."
           }
         ],
-        "prompt": "Choose the ordinary inverted tag after “I’m on the list”.",
-        "answer": "b",
-        "outcome_ids": [
-          "o3"
-        ],
-        "source_ids": [
-          "CGEL-2002-CH18-P1612"
-        ],
-        "id": "closing-1"
-      },
-      {
-        "options": [
-          {
-            "id": "a",
-            "text": "tieing",
-            "feedback": "A base ending in ie changes to y before -ing in this pattern."
-          },
-          {
-            "id": "b",
-            "text": "tying",
-            "feedback": "A base ending in ie changes to y before -ing in this pattern."
-          },
-          {
-            "id": "c",
-            "text": "tiing",
-            "feedback": "A base ending in ie changes to y before -ing in this pattern."
-          }
-        ],
-        "prompt": "Which form fits “She’s ___ the cable” if the base is tie?",
-        "answer": "b",
-        "outcome_ids": [
-          "o1"
-        ],
-        "source_ids": [
-          "CGEL-2002-CH18-P1577",
-          "CGEL-2002-CH18-P1579"
-        ],
-        "id": "closing-2"
-      },
-      {
-        "options": [
-          {
-            "id": "a",
-            "text": "the Jones",
-            "feedback": "The plural adds -es. A genitive apostrophe is a separate matter."
-          },
-          {
-            "id": "b",
-            "text": "the Jones’s",
-            "feedback": "The plural adds -es. A genitive apostrophe is a separate matter."
-          },
-          {
-            "id": "c",
-            "text": "the Joneses",
-            "feedback": "The plural adds -es. A genitive apostrophe is a separate matter."
-          }
-        ],
-        "prompt": "Which plural preserves the ending of the surname Jones?",
-        "answer": "c",
+        "answer": "a",
         "outcome_ids": [
           "o2"
         ],
         "source_ids": [
-          "CGEL-2002-CH18-P1595"
-        ],
-        "id": "closing-3"
+          "CGEL-2002-CH18-P1569",
+          "CGEL-2002-CH18-P1568",
+          "CGEL-2002-CH18-P1567",
+          "CGEL-2002-CH18-P1570",
+          "CGEL-2002-CH18-P1571",
+          "CGEL-2002-CH18-P1572",
+          "CGEL-2002-CH18-P1573",
+          "CGEL-2002-CH18-P1574",
+          "CGEL-2002-CH18-P1575",
+          "CGEL-2002-CH18-P1576",
+          "CGEL-2002-CH18-P1577",
+          "CGEL-2002-CH18-P1578",
+          "CGEL-2002-CH18-P1579",
+          "CGEL-2002-CH18-P1580",
+          "CGEL-2002-CH18-P1581",
+          "CGEL-2002-CH18-P1582",
+          "CGEL-2002-CH18-P1583",
+          "CGEL-2002-CH18-P1584",
+          "CGEL-2002-CH18-P1585",
+          "CGEL-2002-CH18-P1586",
+          "CGEL-2002-CH18-P1587",
+          "CGEL-2002-CH18-P1588",
+          "CGEL-2002-CH18-P1589",
+          "CGEL-2002-CH18-P1590",
+          "CGEL-2002-CH18-P1591",
+          "CGEL-2002-CH18-P1592",
+          "CGEL-2002-CH18-P1593",
+          "CGEL-2002-CH18-P1594",
+          "CGEL-2002-CH18-P1595",
+          "CGEL-2002-CH18-P1596",
+          "CGEL-2002-CH18-P1597",
+          "CGEL-2002-CH18-P1598",
+          "CGEL-2002-CH18-P1599",
+          "CGEL-2002-CH18-P1600",
+          "CGEL-2002-CH18-P1601",
+          "CGEL-2002-CH18-P1602",
+          "CGEL-2002-CH18-P1603",
+          "CGEL-2002-CH18-P1604",
+          "CGEL-2002-CH18-P1605",
+          "CGEL-2002-CH18-P1606",
+          "CGEL-2002-CH18-P1607",
+          "CGEL-2002-CH18-P1608",
+          "CGEL-2002-CH18-P1609",
+          "CGEL-2002-CH18-P1610",
+          "CGEL-2002-CH18-P1611",
+          "CGEL-2002-CH18-P1612",
+          "CGEL-2002-CH18-P1613",
+          "CGEL-2002-CH18-P1614",
+          "CGEL-2002-CH18-P1615",
+          "CGEL-2002-CH18-P1616",
+          "CGEL-2002-CH18-P1617",
+          "CGEL-2002-CH18-P1618",
+          "CGEL-2002-CH18-P1619"
+        ]
       },
       {
+        "id": "closing-2",
+        "prompt": "Why is thieves irregular even though it ends in the regular plural suffix?",
         "options": [
           {
             "id": "a",
-            "text": "Visit cannot take -ed.",
-            "feedback": "The general doubling pattern depends on final stress as well as letters."
+            "text": "The base modification from thief to thieve- is lexeme-specific.",
+            "feedback": "The suffix is regular, but the base change is not general."
           },
           {
             "id": "b",
-            "text": "Visit has earlier stress, while the single syllable in fit is stressed.",
-            "feedback": "The general doubling pattern depends on final stress as well as letters."
+            "text": "It ends in -s.",
+            "feedback": "The suffix is not the issue."
           },
           {
             "id": "c",
-            "text": "Fit ends in a silent e.",
-            "feedback": "The general doubling pattern depends on final stress as well as letters."
+            "text": "It is a noun.",
+            "feedback": "Nouns can be regular or irregular."
           }
         ],
-        "prompt": "Why is it “visited” but “fitted”?",
-        "answer": "b",
+        "answer": "a",
         "outcome_ids": [
-          "o1"
+          "o2"
         ],
         "source_ids": [
-          "CGEL-2002-CH18-P1575"
-        ],
-        "id": "closing-4"
+          "CGEL-2002-CH18-P1569",
+          "CGEL-2002-CH18-P1568",
+          "CGEL-2002-CH18-P1567",
+          "CGEL-2002-CH18-P1570",
+          "CGEL-2002-CH18-P1571",
+          "CGEL-2002-CH18-P1572",
+          "CGEL-2002-CH18-P1573",
+          "CGEL-2002-CH18-P1574",
+          "CGEL-2002-CH18-P1575",
+          "CGEL-2002-CH18-P1576",
+          "CGEL-2002-CH18-P1577",
+          "CGEL-2002-CH18-P1578",
+          "CGEL-2002-CH18-P1579",
+          "CGEL-2002-CH18-P1580",
+          "CGEL-2002-CH18-P1581",
+          "CGEL-2002-CH18-P1582",
+          "CGEL-2002-CH18-P1583",
+          "CGEL-2002-CH18-P1584",
+          "CGEL-2002-CH18-P1585",
+          "CGEL-2002-CH18-P1586",
+          "CGEL-2002-CH18-P1587",
+          "CGEL-2002-CH18-P1588",
+          "CGEL-2002-CH18-P1589",
+          "CGEL-2002-CH18-P1590",
+          "CGEL-2002-CH18-P1591",
+          "CGEL-2002-CH18-P1592",
+          "CGEL-2002-CH18-P1593",
+          "CGEL-2002-CH18-P1594",
+          "CGEL-2002-CH18-P1595",
+          "CGEL-2002-CH18-P1596",
+          "CGEL-2002-CH18-P1597",
+          "CGEL-2002-CH18-P1598",
+          "CGEL-2002-CH18-P1599",
+          "CGEL-2002-CH18-P1600",
+          "CGEL-2002-CH18-P1601",
+          "CGEL-2002-CH18-P1602",
+          "CGEL-2002-CH18-P1603",
+          "CGEL-2002-CH18-P1604",
+          "CGEL-2002-CH18-P1605",
+          "CGEL-2002-CH18-P1606",
+          "CGEL-2002-CH18-P1607",
+          "CGEL-2002-CH18-P1608",
+          "CGEL-2002-CH18-P1609",
+          "CGEL-2002-CH18-P1610",
+          "CGEL-2002-CH18-P1611",
+          "CGEL-2002-CH18-P1612",
+          "CGEL-2002-CH18-P1613",
+          "CGEL-2002-CH18-P1614",
+          "CGEL-2002-CH18-P1615",
+          "CGEL-2002-CH18-P1616",
+          "CGEL-2002-CH18-P1617",
+          "CGEL-2002-CH18-P1618",
+          "CGEL-2002-CH18-P1619"
+        ]
       },
       {
+        "id": "closing-3",
+        "prompt": "Why is the plural of house irregular in speech but regular in writing?",
         "options": [
           {
             "id": "a",
-            "text": "an hour / an one-off event",
-            "feedback": "Hour starts with a vowel sound. One starts with a consonant sound."
+            "text": "The final consonant is voiced in the spoken plural but the written form adds regular s.",
+            "feedback": "The spoken base changes from /s/ to /z/."
           },
           {
             "id": "b",
-            "text": "an hour / a one-off event",
-            "feedback": "Hour starts with a vowel sound. One starts with a consonant sound."
+            "text": "Houses has no plural.",
+            "feedback": "It does."
           },
           {
             "id": "c",
-            "text": "a hour / an one-off event",
-            "feedback": "Hour starts with a vowel sound. One starts with a consonant sound."
+            "text": "The written plural uses -es.",
+            "feedback": "It uses -s."
           }
         ],
-        "prompt": "Which pair follows the sound rule in both places?",
-        "answer": "b",
+        "answer": "a",
         "outcome_ids": [
-          "o3"
+          "o2"
         ],
         "source_ids": [
-          "CGEL-2002-CH18-P1618"
+          "CGEL-2002-CH18-P1569",
+          "CGEL-2002-CH18-P1568",
+          "CGEL-2002-CH18-P1567",
+          "CGEL-2002-CH18-P1570",
+          "CGEL-2002-CH18-P1571",
+          "CGEL-2002-CH18-P1572",
+          "CGEL-2002-CH18-P1573",
+          "CGEL-2002-CH18-P1574",
+          "CGEL-2002-CH18-P1575",
+          "CGEL-2002-CH18-P1576",
+          "CGEL-2002-CH18-P1577",
+          "CGEL-2002-CH18-P1578",
+          "CGEL-2002-CH18-P1579",
+          "CGEL-2002-CH18-P1580",
+          "CGEL-2002-CH18-P1581",
+          "CGEL-2002-CH18-P1582",
+          "CGEL-2002-CH18-P1583",
+          "CGEL-2002-CH18-P1584",
+          "CGEL-2002-CH18-P1585",
+          "CGEL-2002-CH18-P1586",
+          "CGEL-2002-CH18-P1587",
+          "CGEL-2002-CH18-P1588",
+          "CGEL-2002-CH18-P1589",
+          "CGEL-2002-CH18-P1590",
+          "CGEL-2002-CH18-P1591",
+          "CGEL-2002-CH18-P1592",
+          "CGEL-2002-CH18-P1593",
+          "CGEL-2002-CH18-P1594",
+          "CGEL-2002-CH18-P1595",
+          "CGEL-2002-CH18-P1596",
+          "CGEL-2002-CH18-P1597",
+          "CGEL-2002-CH18-P1598",
+          "CGEL-2002-CH18-P1599",
+          "CGEL-2002-CH18-P1600",
+          "CGEL-2002-CH18-P1601",
+          "CGEL-2002-CH18-P1602",
+          "CGEL-2002-CH18-P1603",
+          "CGEL-2002-CH18-P1604",
+          "CGEL-2002-CH18-P1605",
+          "CGEL-2002-CH18-P1606",
+          "CGEL-2002-CH18-P1607",
+          "CGEL-2002-CH18-P1608",
+          "CGEL-2002-CH18-P1609",
+          "CGEL-2002-CH18-P1610",
+          "CGEL-2002-CH18-P1611",
+          "CGEL-2002-CH18-P1612",
+          "CGEL-2002-CH18-P1613",
+          "CGEL-2002-CH18-P1614",
+          "CGEL-2002-CH18-P1615",
+          "CGEL-2002-CH18-P1616",
+          "CGEL-2002-CH18-P1617",
+          "CGEL-2002-CH18-P1618",
+          "CGEL-2002-CH18-P1619"
+        ]
+      },
+      {
+        "id": "closing-4",
+        "prompt": "Why is children’s a two-step formation?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The genitive is formed from the plural children, not directly from child.",
+            "feedback": "The plural is an intermediate form."
+          },
+          {
+            "id": "b",
+            "text": "It contains two apostrophes.",
+            "feedback": "It contains one."
+          },
+          {
+            "id": "c",
+            "text": "It is irregular.",
+            "feedback": "The two-step formation is separate from regularity."
+          }
         ],
-        "id": "closing-5"
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH18-P1569",
+          "CGEL-2002-CH18-P1568",
+          "CGEL-2002-CH18-P1567",
+          "CGEL-2002-CH18-P1570",
+          "CGEL-2002-CH18-P1571",
+          "CGEL-2002-CH18-P1572",
+          "CGEL-2002-CH18-P1573",
+          "CGEL-2002-CH18-P1574",
+          "CGEL-2002-CH18-P1575",
+          "CGEL-2002-CH18-P1576",
+          "CGEL-2002-CH18-P1577",
+          "CGEL-2002-CH18-P1578",
+          "CGEL-2002-CH18-P1579",
+          "CGEL-2002-CH18-P1580",
+          "CGEL-2002-CH18-P1581",
+          "CGEL-2002-CH18-P1582",
+          "CGEL-2002-CH18-P1583",
+          "CGEL-2002-CH18-P1584",
+          "CGEL-2002-CH18-P1585",
+          "CGEL-2002-CH18-P1586",
+          "CGEL-2002-CH18-P1587",
+          "CGEL-2002-CH18-P1588",
+          "CGEL-2002-CH18-P1589",
+          "CGEL-2002-CH18-P1590",
+          "CGEL-2002-CH18-P1591",
+          "CGEL-2002-CH18-P1592",
+          "CGEL-2002-CH18-P1593",
+          "CGEL-2002-CH18-P1594",
+          "CGEL-2002-CH18-P1595",
+          "CGEL-2002-CH18-P1596",
+          "CGEL-2002-CH18-P1597",
+          "CGEL-2002-CH18-P1598",
+          "CGEL-2002-CH18-P1599",
+          "CGEL-2002-CH18-P1600",
+          "CGEL-2002-CH18-P1601",
+          "CGEL-2002-CH18-P1602",
+          "CGEL-2002-CH18-P1603",
+          "CGEL-2002-CH18-P1604",
+          "CGEL-2002-CH18-P1605",
+          "CGEL-2002-CH18-P1606",
+          "CGEL-2002-CH18-P1607",
+          "CGEL-2002-CH18-P1608",
+          "CGEL-2002-CH18-P1609",
+          "CGEL-2002-CH18-P1610",
+          "CGEL-2002-CH18-P1611",
+          "CGEL-2002-CH18-P1612",
+          "CGEL-2002-CH18-P1613",
+          "CGEL-2002-CH18-P1614",
+          "CGEL-2002-CH18-P1615",
+          "CGEL-2002-CH18-P1616",
+          "CGEL-2002-CH18-P1617",
+          "CGEL-2002-CH18-P1618",
+          "CGEL-2002-CH18-P1619"
+        ]
+      },
+      {
+        "id": "closing-5",
+        "prompt": "Which statement correctly distinguishes inflection from lexical word-formation?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Inflection creates forms of one lexeme; word-formation creates new lexemes.",
+            "feedback": "Simpler is inflection; simplify is derivation."
+          },
+          {
+            "id": "b",
+            "text": "Inflection creates new lexemes.",
+            "feedback": "That is word-formation."
+          },
+          {
+            "id": "c",
+            "text": "Word-formation creates inflectional forms.",
+            "feedback": "The labels are reversed."
+          }
+        ],
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH18-P1569",
+          "CGEL-2002-CH18-P1568",
+          "CGEL-2002-CH18-P1567",
+          "CGEL-2002-CH18-P1570",
+          "CGEL-2002-CH18-P1571",
+          "CGEL-2002-CH18-P1572",
+          "CGEL-2002-CH18-P1573",
+          "CGEL-2002-CH18-P1574",
+          "CGEL-2002-CH18-P1575",
+          "CGEL-2002-CH18-P1576",
+          "CGEL-2002-CH18-P1577",
+          "CGEL-2002-CH18-P1578",
+          "CGEL-2002-CH18-P1579",
+          "CGEL-2002-CH18-P1580",
+          "CGEL-2002-CH18-P1581",
+          "CGEL-2002-CH18-P1582",
+          "CGEL-2002-CH18-P1583",
+          "CGEL-2002-CH18-P1584",
+          "CGEL-2002-CH18-P1585",
+          "CGEL-2002-CH18-P1586",
+          "CGEL-2002-CH18-P1587",
+          "CGEL-2002-CH18-P1588",
+          "CGEL-2002-CH18-P1589",
+          "CGEL-2002-CH18-P1590",
+          "CGEL-2002-CH18-P1591",
+          "CGEL-2002-CH18-P1592",
+          "CGEL-2002-CH18-P1593",
+          "CGEL-2002-CH18-P1594",
+          "CGEL-2002-CH18-P1595",
+          "CGEL-2002-CH18-P1596",
+          "CGEL-2002-CH18-P1597",
+          "CGEL-2002-CH18-P1598",
+          "CGEL-2002-CH18-P1599",
+          "CGEL-2002-CH18-P1600",
+          "CGEL-2002-CH18-P1601",
+          "CGEL-2002-CH18-P1602",
+          "CGEL-2002-CH18-P1603",
+          "CGEL-2002-CH18-P1604",
+          "CGEL-2002-CH18-P1605",
+          "CGEL-2002-CH18-P1606",
+          "CGEL-2002-CH18-P1607",
+          "CGEL-2002-CH18-P1608",
+          "CGEL-2002-CH18-P1609",
+          "CGEL-2002-CH18-P1610",
+          "CGEL-2002-CH18-P1611",
+          "CGEL-2002-CH18-P1612",
+          "CGEL-2002-CH18-P1613",
+          "CGEL-2002-CH18-P1614",
+          "CGEL-2002-CH18-P1615",
+          "CGEL-2002-CH18-P1616",
+          "CGEL-2002-CH18-P1617",
+          "CGEL-2002-CH18-P1618",
+          "CGEL-2002-CH18-P1619"
+        ]
       }
     ]
   },
   "preview_sources": [
+    {
+      "id": "CGEL-2002-CH18-P1569",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1569,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH18-P1568",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1568,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH18-P1567",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1567,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH18-P1570",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1570,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH18-P1571",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1571,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH18-P1572",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1572,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH18-P1573",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1573,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH18-P1574",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1574,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
     {
       "id": "CGEL-2002-CH18-P1575",
       "book": "Cambridge",
@@ -371,6 +1108,20 @@
       "reviewed_on": "2026-11-14"
     },
     {
+      "id": "CGEL-2002-CH18-P1578",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1578,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
       "id": "CGEL-2002-CH18-P1579",
       "book": "Cambridge",
       "title": "The Cambridge Grammar of the English Language",
@@ -385,6 +1136,76 @@
       "reviewed_on": "2026-11-14"
     },
     {
+      "id": "CGEL-2002-CH18-P1580",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1580,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH18-P1581",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1581,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH18-P1582",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1582,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH18-P1583",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1583,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH18-P1584",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1584,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
       "id": "CGEL-2002-CH18-P1585",
       "book": "Cambridge",
       "title": "The Cambridge Grammar of the English Language",
@@ -397,6 +1218,132 @@
       "independent_review": true,
       "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
       "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH18-P1586",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1586,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH18-P1587",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1587,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH18-P1588",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1588,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH18-P1589",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1589,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH18-P1590",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1590,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH18-P1591",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1591,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH18-P1592",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1592,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH18-P1593",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1593,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH18-P1594",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1594,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
     },
     {
       "id": "CGEL-2002-CH18-P1595",
@@ -427,6 +1374,20 @@
       "reviewed_on": "2026-11-14"
     },
     {
+      "id": "CGEL-2002-CH18-P1597",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1597,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
       "id": "CGEL-2002-CH18-P1598",
       "book": "Cambridge",
       "title": "The Cambridge Grammar of the English Language",
@@ -439,6 +1400,62 @@
       "independent_review": true,
       "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
       "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH18-P1599",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1599,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH18-P1600",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1600,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH18-P1601",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1601,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH18-P1602",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1602,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
     },
     {
       "id": "CGEL-2002-CH18-P1603",
@@ -455,6 +1472,118 @@
       "reviewed_on": "2026-11-14"
     },
     {
+      "id": "CGEL-2002-CH18-P1604",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1604,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH18-P1605",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1605,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH18-P1606",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1606,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH18-P1607",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1607,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH18-P1608",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1608,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH18-P1609",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1609,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH18-P1610",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1610,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH18-P1611",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1611,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
       "id": "CGEL-2002-CH18-P1612",
       "book": "Cambridge",
       "title": "The Cambridge Grammar of the English Language",
@@ -469,6 +1598,76 @@
       "reviewed_on": "2026-11-14"
     },
     {
+      "id": "CGEL-2002-CH18-P1613",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1613,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH18-P1614",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1614,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH18-P1615",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1615,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH18-P1616",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1616,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH18-P1617",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1617,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
       "id": "CGEL-2002-CH18-P1618",
       "book": "Cambridge",
       "title": "The Cambridge Grammar of the English Language",
@@ -481,6 +1680,20 @@
       "independent_review": true,
       "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
       "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH18-P1619",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1619,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
     }
   ]
 }

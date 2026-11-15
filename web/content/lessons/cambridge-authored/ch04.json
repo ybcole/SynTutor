@@ -1,0 +1,1730 @@
+{
+  "title": "The clause: complements",
+  "description": "Learn how verbs select subjects, objects, predicative complements and prepositional dependents, and how those choices shape the clause.",
+  "example": "The committee gave the designer an award for the new bridge.",
+  "key_terms": [
+    {
+      "term": "predicator",
+      "definition": "The clause function realised by the verb phrase."
+    },
+    {
+      "term": "complement",
+      "definition": "A dependent closely related to a head and licensed by it."
+    },
+    {
+      "term": "adjunct",
+      "definition": "A modifier or supplement that is not required by the verb."
+    },
+    {
+      "term": "subject",
+      "definition": "The external core complement, prototypically an NP, with distinctive syntactic properties."
+    },
+    {
+      "term": "direct object",
+      "definition": "The internal core complement that in agent-patient clauses expresses the patient."
+    },
+    {
+      "term": "indirect object",
+      "definition": "The internal core complement characteristically associated with the recipient."
+    },
+    {
+      "term": "predicative complement",
+      "definition": "A complement that expresses a property predicated of the subject or object."
+    },
+    {
+      "term": "predicand",
+      "definition": "The element to which a predicative complement applies, usually the subject or object."
+    },
+    {
+      "term": "core complement",
+      "definition": "A complement directly related to the verb and prototypically realised by an NP or AdjP."
+    },
+    {
+      "term": "non-core complement",
+      "definition": "A complement realised by a PP or another oblique structure rather than a direct NP."
+    },
+    {
+      "term": "oblique",
+      "definition": "An NP related to the verb through a preposition rather than directly as a core complement."
+    },
+    {
+      "term": "transitivity",
+      "definition": "The presence or absence of a direct object in a clause or verb use."
+    },
+    {
+      "term": "valency",
+      "definition": "The number of syntactic complements a verb takes in a given use."
+    },
+    {
+      "term": "semantic role",
+      "definition": "The part an entity plays in the situation expressed by a clause, such as agent, patient or goal."
+    },
+    {
+      "term": "agent",
+      "definition": "The prototypical conscious causer of an action."
+    },
+    {
+      "term": "patient",
+      "definition": "The entity affected by an action."
+    },
+    {
+      "term": "experiencer",
+      "definition": "The entity that feels, perceives or cognises something."
+    },
+    {
+      "term": "stimulus",
+      "definition": "The entity or proposition that arouses a feeling, perception or cognition."
+    },
+    {
+      "term": "theme",
+      "definition": "A broad role for an entity involved in a situation without being a prototypical agent or patient."
+    },
+    {
+      "term": "goal",
+      "definition": "The endpoint or recipient towards which a situation is directed."
+    },
+    {
+      "term": "source",
+      "definition": "The starting point from which a situation or entity moves."
+    },
+    {
+      "term": "copular clause",
+      "definition": "A complex-intransitive clause whose predicative complement is related to the subject by be or a similar verb."
+    },
+    {
+      "term": "ascriptive",
+      "definition": "A use of be that ascribes a property to the subject."
+    },
+    {
+      "term": "specifying",
+      "definition": "A use of be that identifies the value of a variable, often allowing subject and complement to reverse."
+    },
+    {
+      "term": "prepositional verb",
+      "definition": "A verb that selects a PP complement headed by a specified preposition."
+    },
+    {
+      "term": "particle",
+      "definition": "An intransitive preposition that can occur between a verb and its direct object."
+    },
+    {
+      "term": "light verb",
+      "definition": "A verb such as give, take or make whose main semantic content comes from its noun complement."
+    },
+    {
+      "term": "multiple complementation",
+      "definition": "The occurrence of a verb in more than one complementation pattern."
+    }
+  ],
+  "intro": [
+    "*The committee gave the designer an award for the new bridge* looks like a verb followed by a queue of phrases. The grammar sees something more precise: a subject outside the verb phrase, two internal objects, and a prepositional complement explaining what the award was for. The verb selects that arrangement, and the arrangement is what this chapter describes.",
+    "The chapter begins with the architecture of the clause: the major functions, the split between core and non-core complements, and the five canonical patterns. From there it turns to meaning, taking up semantic roles, the subject’s cluster of properties, objects and predicative complements. The final sections widen the view to prepositional verbs, particles, idioms, light verbs and verbs that live in several complementation patterns at once.",
+    "Two questions are worth asking together: what function does this expression perform, and what role does its referent play in the situation? The answers are related but not identical. Keeping them apart lets a description handle a passive, a ditransitive alternation or a prepositional verb without collapsing syntax into meaning."
+  ],
+  "sections": [
+    {
+      "id": "clause-functions",
+      "title": "The functions inside a clause",
+      "advances": "predict",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*He always reads the paper before breakfast* contains three kinds of dependent, and only one of them fills a slot the verb demands. *Reads* is the predicator, the verb phrase that heads the clause. *The paper* is a complement, licensed by the verb. *Always* and *before breakfast* are adjuncts, adding information without completing the verb’s requirements."
+        },
+        {
+          "type": "paragraph",
+          "text": "The subject belongs with the complements but sits apart from them. It is external to the verb phrase, while objects and predicative complements are internal, which is why a canonical clause divides first into subject and predicate. The subject also carries a cluster of distinctive properties: position, case, agreement, inversion, tag formation and coordination behaviour."
+        },
+        {
+          "type": "paragraph",
+          "text": "*He looked at the paper*, *He seemed quite competent* and *He said that she was right* show complements in three forms: PP, adjective phrase and clause. Not every complement is an NP. Ask instead whether the verb licenses the dependent, and how that dependent fits the verb’s meaning."
+        },
+        {
+          "type": "table",
+          "title": "Clause functions",
+          "columns": [
+            "Function",
+            "Typical realisation",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Predicator",
+              "Verb phrase",
+              "reads"
+            ],
+            [
+              "Subject",
+              "NP, external to the VP",
+              "He"
+            ],
+            [
+              "Direct object",
+              "NP, internal to the VP",
+              "the paper"
+            ],
+            [
+              "Predicative complement",
+              "AdjP or NP",
+              "quite competent"
+            ],
+            [
+              "Adjunct",
+              "AdvP, PP or clause",
+              "before breakfast"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Function is not form",
+          "items": [
+            {
+              "text": "He reads the paper.",
+              "mark": "ok",
+              "note": "The paper is an NP object."
+            },
+            {
+              "text": "He looked at the paper.",
+              "mark": "ok",
+              "note": "At the paper is a PP complement, not an object."
+            },
+            {
+              "text": "He seemed quite competent.",
+              "mark": "ok",
+              "note": "Quite competent is a predicative complement."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which function is external to the verb phrase?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The subject",
+            "feedback": "The subject is the external core complement; objects and PCs are internal."
+          },
+          {
+            "id": "b",
+            "text": "The direct object",
+            "feedback": "The object is internal to the VP."
+          },
+          {
+            "id": "c",
+            "text": "The predicative complement",
+            "feedback": "Predicative complements are internal complements."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "core-noncore",
+      "title": "Core complements, obliques, and valency",
+      "advances": "understand",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Kim gave Pat the key* and *Kim gave the key to Pat* describe one transfer with two different structures. In the first, *Pat* and *the key* are core complements, directly related to the verb and prototypically NPs. In the second, *to Pat* is still a complement of *give*, but it is non-core, realised by a PP, and *Pat* inside it is an oblique: an NP related to the verb only through the preposition."
+        },
+        {
+          "type": "paragraph",
+          "text": "The preposition contributes to the oblique’s semantic role; in *to Pat*, *to* marks the recipient. That does not make *Pat* an indirect object, because the syntactic relation differs: the NP sits inside a PP complement rather than acting as a direct complement of the verb. The two sentences are related in meaning, not in structure."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Read* is intransitive in *She read*, transitive in *She read the letter*: same lexeme, different valency. Valency counts the syntactic complements a verb takes in a given use, not the semantic participants. A verb can be bivalent with a subject and object, or monovalent with a subject alone."
+        },
+        {
+          "type": "table",
+          "title": "Core and non-core complements",
+          "columns": [
+            "Type",
+            "Typical form",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Subject",
+              "NP, external",
+              "Kim"
+            ],
+            [
+              "Direct object",
+              "NP, internal",
+              "the key"
+            ],
+            [
+              "Indirect object",
+              "NP, internal",
+              "Pat"
+            ],
+            [
+              "Predicative complement",
+              "AdjP or NP",
+              "quite competent"
+            ],
+            [
+              "Non-core complement",
+              "PP",
+              "to Pat; in the box"
+            ],
+            [
+              "Oblique",
+              "NP inside a PP",
+              "Pat in to Pat"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "The recipient in two structures",
+          "items": [
+            {
+              "text": "Kim gave Pat the key.",
+              "mark": "ok",
+              "note": "Pat is an indirect object; the key is the direct object."
+            },
+            {
+              "text": "Kim gave the key to Pat.",
+              "mark": "ok",
+              "note": "To Pat is a PP complement; Pat is an oblique."
+            },
+            {
+              "text": "Kim gave the key.",
+              "mark": "ok",
+              "note": "The indirect object is omissible here; the direct object remains."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "tone": "why",
+          "title": "Why valency is a property of uses",
+          "text": "A verb is not permanently transitive or intransitive. Many verbs occur in several patterns, and the pattern can change the meaning. Describing valency means describing a use in a construction, not attaching one fixed label to the lexeme."
+        }
+      ],
+      "check": {
+        "prompt": "In Kim gave the key to Pat, what is Pat?",
+        "options": [
+          {
+            "id": "a",
+            "text": "An oblique inside a PP complement",
+            "feedback": "Pat is the complement of to, and the PP is the complement of give."
+          },
+          {
+            "id": "b",
+            "text": "An indirect object",
+            "feedback": "The indirect object construction is Kim gave Pat the key."
+          },
+          {
+            "id": "c",
+            "text": "A predicative complement",
+            "feedback": "Pat does not ascribe a property."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "clause-patterns",
+      "title": "The five canonical clause patterns",
+      "advances": "worked",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*She smiled*, *He washed the car* and *They gave me the key* are intransitive, monotransitive and ditransitive. The five patterns are shapes, not definitions of verbs. Add a predicative complement and the clause becomes complex: *This seems a good idea* is complex-intransitive, *I consider this a good idea* complex-transitive."
+        },
+        {
+          "type": "paragraph",
+          "text": "The labels describe clauses and verb uses, not lexemes in isolation. A verb can appear in more than one pattern, so the construction decides the label. Take *read*. *She read for a while* is intransitive; add *the letter* and it becomes monotransitive; add *us a story* and it is ditransitive."
+        },
+        {
+          "type": "paragraph",
+          "text": "A predicative complement makes the clause complex because it adds a second predication inside the same clause. *This seems a good idea* predicates *a good idea* of the subject; *I consider this a good idea* predicates it of the object. The relation is the same; the predicand has moved."
+        },
+        {
+          "type": "table",
+          "title": "Canonical clause patterns",
+          "columns": [
+            "Pattern",
+            "Structure",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Intransitive",
+              "S + P",
+              "She smiled."
+            ],
+            [
+              "Monotransitive",
+              "S + P + Od",
+              "He washed the car."
+            ],
+            [
+              "Ditransitive",
+              "S + P + Oi + Od",
+              "They gave me the key."
+            ],
+            [
+              "Complex-intransitive",
+              "S + P + PCs",
+              "This seems a good idea."
+            ],
+            [
+              "Complex-transitive",
+              "S + P + Od + PCo",
+              "I consider this a good idea."
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Recognising the pattern",
+          "items": [
+            {
+              "text": "She smiled.",
+              "mark": "ok",
+              "note": "Intransitive: no internal core complement."
+            },
+            {
+              "text": "They gave me the key.",
+              "mark": "ok",
+              "note": "Ditransitive: indirect object plus direct object."
+            },
+            {
+              "text": "This seems a good idea.",
+              "mark": "ok",
+              "note": "Complex-intransitive: predicative complement oriented to the subject."
+            },
+            {
+              "text": "I consider this a good idea.",
+              "mark": "ok",
+              "note": "Complex-transitive: object plus object-oriented predicative complement."
+            }
+          ]
+        },
+        {
+          "type": "diagnostic",
+          "title": "Name the pattern",
+          "steps": [
+            "Find the subject and the predicator.",
+            "Identify the internal complements that follow the verb.",
+            "If there is an object, decide whether there is also a second object or a predicative complement.",
+            "Check whether the extra complement ascribes a property. If it does, the clause is complex."
+          ],
+          "conclusion": "The pattern is defined by the functions present, not by the number of words after the verb."
+        }
+      ],
+      "check": {
+        "prompt": "What pattern is I consider this a good idea?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Complex-transitive",
+            "feedback": "This is the object and a good idea is its predicative complement."
+          },
+          {
+            "id": "b",
+            "text": "Ditransitive",
+            "feedback": "The second complement is predicative, not a direct object."
+          },
+          {
+            "id": "c",
+            "text": "Monotransitive",
+            "feedback": "There is an object, but also a predicative complement."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "semantic-roles",
+      "title": "Semantic roles and presentational status",
+      "advances": "guided",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Kim heard an explosion* and *The noise frightened Kim* place Kim on opposite sides of the same event: perceiver in one, affected party in the other. Roles track those differences. An agent is a prototypical conscious causer; a patient is affected by an action; an instrument is used by an agent; an experiencer feels or perceives; a stimulus arouses the feeling or perception. Theme is a broad role for entities involved without being agents or patients, and goal, source and recipient describe endpoints, starting points and receivers."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Kim heard an explosion* has an experiencer subject; *They like me* has a stimulus object. Roles are not fixed by grammatical function. A single argument can carry more than one role: in *Kim bought the car from Pat*, Kim is both agent and goal, while Pat is both agent and source."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Kim shot Pat* and *Pat was shot by Kim* describe the same situation with the same roles but present it from different perspectives. Presentational status is a separate dimension. In symmetric pairs such as *Kim married Pat* and *Pat married Kim*, the roles stay the same and the difference is entirely one of perspective. Passive does this, but it is not the only construction that can."
+        },
+        {
+          "type": "table",
+          "title": "Common semantic roles",
+          "columns": [
+            "Role",
+            "Description",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Agent",
+              "Conscious causer",
+              "Kim signed the letter."
+            ],
+            [
+              "Patient",
+              "Affected entity",
+              "They hit me."
+            ],
+            [
+              "Instrument",
+              "Entity used by an agent",
+              "I cut the lace with a knife."
+            ],
+            [
+              "Experiencer",
+              "One who feels or perceives",
+              "He heard a bang."
+            ],
+            [
+              "Stimulus",
+              "What arouses feeling or perception",
+              "The noise frightened me."
+            ],
+            [
+              "Theme",
+              "Entity involved in a situation",
+              "The key is on the table."
+            ],
+            [
+              "Goal / source",
+              "Endpoint / starting point",
+              "to Paris; from Berlin"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Roles across functions",
+          "items": [
+            {
+              "text": "Kim heard an explosion.",
+              "mark": "ok",
+              "note": "Subject as experiencer; object as stimulus."
+            },
+            {
+              "text": "The knife cut the lace.",
+              "mark": "ok",
+              "note": "Subject as causer, not an agent using an instrument."
+            },
+            {
+              "text": "Kim gave the key to Pat.",
+              "mark": "ok",
+              "note": "Pat is the recipient, expressed as an oblique."
+            },
+            {
+              "text": "Pat was shot by Kim.",
+              "mark": "ok",
+              "note": "Same roles as the active, different presentational status."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What role does the subject have in Kim heard an explosion?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Experiencer",
+            "feedback": "Kim is the one who perceives the sound."
+          },
+          {
+            "id": "b",
+            "text": "Agent",
+            "feedback": "Kim is not performing a deliberate action."
+          },
+          {
+            "id": "c",
+            "text": "Patient",
+            "feedback": "The explosion is the stimulus, not Kim."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "subject",
+      "title": "The subject and its properties",
+      "advances": "transfer",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*The minister knows the candidates* shows the subject’s position and agreement in one stroke: the NP comes before the predicator, and *knows* agrees with it. Other properties cluster around those. The subject controls the pronoun in a tag (*The candidates know, don’t they?*), takes nominative case where a pronoun shows it, moves after the auxiliary in closed interrogatives, and plays a distinctive part in open interrogatives."
+        },
+        {
+          "type": "paragraph",
+          "text": "*The parcel was opened by Kim* has *the parcel* as subject although it is the patient, not the agent. Those properties identify the subject even when the clause is non-canonical. *There is one nurse here* has dummy *there* as subject and *one nurse* as displaced subject. *More important are the moral objections* has *the moral objections* as postposed subject."
+        },
+        {
+          "type": "paragraph",
+          "text": "*This one I’m giving to Jill* has *this one* as topic and *I* as subject. Subject and topic are different jobs. Passive, existential, extraposition and preposing constructions let a speaker choose which element is presented as subject and which as topic."
+        },
+        {
+          "type": "table",
+          "title": "Subject properties",
+          "columns": [
+            "Property",
+            "Test",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Category",
+              "Prototypically an NP",
+              "The minister knows the candidates."
+            ],
+            [
+              "Position",
+              "Before the predicator",
+              "The minister knows them."
+            ],
+            [
+              "Case",
+              "Nominative pronoun in formal finite clauses",
+              "I know them."
+            ],
+            [
+              "Agreement",
+              "Verb agrees with the subject",
+              "The candidates know."
+            ],
+            [
+              "Inversion",
+              "Subject follows the auxiliary in questions",
+              "Do the candidates know?"
+            ],
+            [
+              "Tags",
+              "Tag pronoun matches the subject",
+              "The candidates know, don’t they?"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Finding the subject",
+          "items": [
+            {
+              "text": "The parcel was opened by Kim.",
+              "mark": "ok",
+              "note": "The parcel is subject, even though Kim is the agent."
+            },
+            {
+              "text": "There is one nurse here.",
+              "mark": "ok",
+              "note": "Dummy there is subject; one nurse is displaced subject."
+            },
+            {
+              "text": "More important are the moral objections.",
+              "mark": "ok",
+              "note": "The moral objections is the postposed subject."
+            },
+            {
+              "text": "The others you know, don’t you?",
+              "mark": "ok",
+              "note": "The tag pronoun matches the subject you, not the preposed object."
+            }
+          ]
+        },
+        {
+          "type": "diagnostic",
+          "title": "Test for the subject",
+          "steps": [
+            "Form a closed interrogative and see which element moves after the auxiliary.",
+            "Add a tag and see which pronoun the tag uses.",
+            "Check agreement with the finite verb where the form distinguishes it.",
+            "Check whether a pronoun with case contrast appears in the nominative."
+          ],
+          "conclusion": "The subject is the element with this cluster of properties, not simply the first NP in the clause."
+        }
+      ],
+      "check": {
+        "prompt": "In The parcel was opened by Kim, what is the subject?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The parcel",
+            "feedback": "It is the subject of the passive clause, though it has the patient role."
+          },
+          {
+            "id": "b",
+            "text": "Kim",
+            "feedback": "Kim is the agent, expressed in the by phrase."
+          },
+          {
+            "id": "c",
+            "text": "The by phrase",
+            "feedback": "The by phrase is a complement, not the subject."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "objects",
+      "title": "Direct and indirect objects",
+      "advances": "exit",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Kim gave Pat the key* contains two internal complements, and only one of them is the thing given. *Pat* is the indirect object, characteristically the recipient; *the key* is the direct object, the patient or affected entity. Put the recipient inside a PP, as in *Kim gave the key to Pat*, and *to Pat* becomes a PP complement rather than an indirect object."
+        },
+        {
+          "type": "paragraph",
+          "text": "*I used a knife* requires its object; *He lent his car* allows it to be left out. Most objects are NPs, but their obligatoriness varies with the verb. A related passive gives a useful test: if an NP complement can become the subject of a passive, it is an object. The test is sufficient, not necessary, because some objects resist passivisation."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Pat was given the key* and *The key was given to Pat* show that either object of a ditransitive can become the passive subject. The indirect object is usually the more expendable of the two. Languages with a distinct dative case do not necessarily allow that freedom."
+        },
+        {
+          "type": "paragraph",
+          "text": "*We thought it necessary to postpone the meeting* has *it* as object and *to postpone the meeting* as extraposed object. Objects can be extraposed. The clause behaves semantically like an object without occupying the object position syntactically."
+        },
+        {
+          "type": "table",
+          "title": "Object properties",
+          "columns": [
+            "Property",
+            "Direct object",
+            "Indirect object"
+          ],
+          "rows": [
+            [
+              "Typical form",
+              "NP",
+              "NP"
+            ],
+            [
+              "Core status",
+              "Internal core complement",
+              "Internal core complement"
+            ],
+            [
+              "Typical role",
+              "Patient or affected entity",
+              "Recipient"
+            ],
+            [
+              "Passive test",
+              "Often becomes passive subject",
+              "Can become passive subject in English"
+            ],
+            [
+              "Omissibility",
+              "Often obligatory",
+              "Often omissible"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Objects and related phrases",
+          "items": [
+            {
+              "text": "They gave me the key.",
+              "mark": "ok",
+              "note": "Me is the indirect object; the key is the direct object."
+            },
+            {
+              "text": "They gave the key to me.",
+              "mark": "ok",
+              "note": "To me is a PP complement, not an indirect object."
+            },
+            {
+              "text": "The key was given to me.",
+              "mark": "ok",
+              "note": "The direct object becomes the passive subject."
+            },
+            {
+              "text": "I was given the key.",
+              "mark": "ok",
+              "note": "The indirect object can also become the passive subject."
+            },
+            {
+              "text": "We thought it necessary to postpone the meeting.",
+              "mark": "ok",
+              "note": "It is the object; the clause is an extraposed object."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is to me not an indirect object in They gave the key to me?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It is a PP complement, and objects are normally NPs.",
+            "feedback": "The indirect object construction is They gave me the key."
+          },
+          {
+            "id": "b",
+            "text": "It is the direct object.",
+            "feedback": "The direct object is the key."
+          },
+          {
+            "id": "c",
+            "text": "It is a predicative complement.",
+            "feedback": "It does not ascribe a property."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "predicative-complements",
+      "title": "Predicative complements and predicands",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Kim seemed uneasy* and *He found Kim intolerant* both say something about Kim, but the predicand sits in a different place. A predicative complement expresses a property predicated of another element, its predicand. In the first sentence the predicand is the subject; in the second it is the object. The predicand is not the subject of the complement; it is the element the complement applies to."
+        },
+        {
+          "type": "paragraph",
+          "text": "Three tests separate a predicative complement from an object. Form is the first: a PC can be an AdjP (*nice*) or a bare role NP (*treasurer*), while an object is normally an NP. The passive is the second: *A minister was become by Ed* is impossible, so the PC does not become a passive subject. Case is the third: formal style allows *It was he who wrote it*, with a nominative pronoun."
+        },
+        {
+          "type": "paragraph",
+          "text": "Depictive and resultative readings describe different moments. *Kim seemed uneasy* characterises the predicand while the situation holds; *He found Kim intolerant* does the same for the object. Those are depictive readings. *Kim became angry* and *He made Kim happy* describe the state reached when a process ends: resultatives, which typically need a verb of change to supply the endpoint."
+        },
+        {
+          "type": "paragraph",
+          "text": "Obligatory and optional complements differ in how tightly they integrate. Take *He looked young*: the sense of *look* requires the complement. *He died young* is different; *young* is a predicative adjunct rather than a complement. Same form, different degree of attachment."
+        },
+        {
+          "type": "table",
+          "title": "Predicative complements and objects",
+          "columns": [
+            "Property",
+            "Predicative complement",
+            "Object"
+          ],
+          "rows": [
+            [
+              "Form",
+              "AdjP, bare role NP, or ordinary NP",
+              "Normally NP"
+            ],
+            [
+              "Meaning",
+              "Property predicated of a predicand",
+              "Participant in the situation"
+            ],
+            [
+              "Passive test",
+              "Fails",
+              "Often passes"
+            ],
+            [
+              "Pronoun case",
+              "Nominative possible in formal style",
+              "Accusative"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Predicands and readings",
+          "items": [
+            {
+              "text": "Kim seemed uneasy.",
+              "mark": "ok",
+              "note": "Subject-oriented depictive PC."
+            },
+            {
+              "text": "He found Kim intolerant.",
+              "mark": "ok",
+              "note": "Object-oriented depictive PC."
+            },
+            {
+              "text": "Kim became angry.",
+              "mark": "ok",
+              "note": "Resultative PC: the state reached at the end."
+            },
+            {
+              "text": "He made Kim happy.",
+              "mark": "ok",
+              "note": "Object-oriented resultative PC."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What distinguishes a predicative complement from an object?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It ascribes a property rather than naming a participant.",
+            "feedback": "A PC is semantically predicative, even though it is syntactically a complement."
+          },
+          {
+            "id": "b",
+            "text": "It always follows the object.",
+            "feedback": "A PC can be oriented to the subject or object."
+          },
+          {
+            "id": "c",
+            "text": "It can always become a passive subject.",
+            "feedback": "That is a property of objects, not PCs."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "copular-clauses",
+      "title": "Copular clauses",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Ed was quite competent* is the plainest copular clause: *be* relates a predicative complement to the subject, and the complement says what Ed was like. The construction covers several relations. Sometimes *be* does little beyond carrying tense; sometimes it identifies a value."
+        },
+        {
+          "type": "paragraph",
+          "text": "Two uses of *be* pull in different directions. Ascriptive *be* applies a property: *This is a good idea*, *Ed is competent*. Specifying *be* identifies a value: *The only problem is the cost*. Reverse a specifying clause and the relation survives, *The cost is the only problem*; reverse an ascriptive one and it does not."
+        },
+        {
+          "type": "paragraph",
+          "text": "Copular clauses form a family, not a single pattern. *Seem*, *become*, *remain*, *look* and *feel* take predicative complements with different degrees of obligatoriness and different semantic effects. *Become* is resultative, *remain* continuative, *seem* evidential. Calling them all copular does not make them interchangeable with *be*."
+        },
+        {
+          "type": "examples",
+          "title": "Ascriptive and specifying uses",
+          "items": [
+            {
+              "text": "This is a good idea.",
+              "mark": "ok",
+              "note": "Ascriptive: a property is applied to this."
+            },
+            {
+              "text": "The only problem is the cost.",
+              "mark": "ok",
+              "note": "Specifying: the complement identifies the problem."
+            },
+            {
+              "text": "The cost is the only problem.",
+              "mark": "ok",
+              "note": "The specifying relation allows reversal."
+            },
+            {
+              "text": "Ed became angry.",
+              "mark": "ok",
+              "note": "Resultative copular clause."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which clause uses be ascriptively?",
+        "options": [
+          {
+            "id": "a",
+            "text": "This is a good idea.",
+            "feedback": "It ascribes a property to this."
+          },
+          {
+            "id": "b",
+            "text": "The only problem is the cost.",
+            "feedback": "It specifies the value of the variable."
+          },
+          {
+            "id": "c",
+            "text": "The cost is the only problem.",
+            "feedback": "It is the reversed specifying clause."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "prepositional-verbs",
+      "title": "Prepositional verbs",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Refer* insists on *to*: *refer to her article*. *Blame* selects *on* in *blame the accident on me*. In both, the preposition belongs to the verb’s lexical requirements rather than marking place or time freely. That is what separates *refer to* from *fly to Boston*, where *to* is an ordinary goal preposition."
+        },
+        {
+          "type": "paragraph",
+          "text": "Mobile and fixed prepositions behave differently under movement. A mobile one fronts with its complement and coordinates like any ordinary preposition: *the article to which I referred*, *I referred to her article and to several others*. A fixed one stays put: *the letters across which I came* is impossible, and only *the letters which I came across* works."
+        },
+        {
+          "type": "paragraph",
+          "text": "The distinction reaches adjunct placement and passives. A mobile preposition allows an adjunct between verb and PP: *I referred repeatedly to her article*. A fixed preposition generally does not: *I came eventually across these letters*. Prepositional passives are possible with some combinations and not others, depending on how tightly verb and preposition have fused."
+        },
+        {
+          "type": "table",
+          "title": "Specified and unspecified prepositions",
+          "columns": [
+            "Type",
+            "Example",
+            "Behaviour"
+          ],
+          "rows": [
+            [
+              "Unspecified",
+              "fly to Boston",
+              "Goal preposition; contrasts with from, towards, over"
+            ],
+            [
+              "Mobile specified",
+              "refer to her article",
+              "Can front with its complement; allows adjunct insertion"
+            ],
+            [
+              "Fixed specified",
+              "come across some letters",
+              "Resists fronting and adjunct insertion; stranding preferred"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Mobile and fixed combinations",
+          "items": [
+            {
+              "text": "the article to which I referred",
+              "mark": "ok",
+              "note": "Mobile preposition fronted with its complement."
+            },
+            {
+              "text": "I referred repeatedly to her article.",
+              "mark": "ok",
+              "note": "An adjunct can intervene before the mobile preposition."
+            },
+            {
+              "text": "the letters which I came across",
+              "mark": "ok",
+              "note": "Fixed preposition stranded rather than fronted."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What makes refer a prepositional verb?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It selects a specified preposition for its PP complement.",
+            "feedback": "The verb’s lexical entry requires to, not just any goal preposition."
+          },
+          {
+            "id": "b",
+            "text": "It can be followed by any preposition.",
+            "feedback": "A prepositional verb selects a particular preposition."
+          },
+          {
+            "id": "c",
+            "text": "It cannot take an object.",
+            "feedback": "Some prepositional verbs also take an object, as congratulate does."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "particles-idioms",
+      "title": "Particles and verbal idioms",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*She put in her application* and *He brought the chairs in* show the same particle in two positions. A particle is an intransitive preposition that can sit between a verb and its direct object. Pronouns are stricter about order: *She put it in* is grammatical, *She put in it* is not."
+        },
+        {
+          "type": "paragraph",
+          "text": "A particle and a PP complement can look alike on the surface. Take *She jumped off the wall*: *off the wall* is a single PP complement. *She took off the label* is different: *off* is a particle and *the label* is the object. Look at the syntax, not only at the meaning."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Give up the struggle*, *take me to task*, *pull my leg* are lexical units larger than a word, and their meanings cannot be built from their parts. Idioms need not form syntactic constituents. In *take me to task*, *to task* belongs to the idiom but the object separates it from *take*. The syntax still has ordinary constituents; the idiom lives above them."
+        },
+        {
+          "type": "examples",
+          "title": "Particles and idioms",
+          "items": [
+            {
+              "text": "She put in her application.",
+              "mark": "ok",
+              "note": "In is a particle between the verb and its object."
+            },
+            {
+              "text": "She put it in.",
+              "mark": "ok",
+              "note": "A pronoun object follows the particle."
+            },
+            {
+              "text": "She jumped off the wall.",
+              "mark": "ok",
+              "note": "Off the wall is one PP complement, not a particle plus object."
+            },
+            {
+              "text": "He took me to task.",
+              "mark": "ok",
+              "note": "A verbal idiom whose parts do not form a single syntactic constituent."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "tone": "watch",
+          "title": "Why phrasal verb is not used here",
+          "text": "Calling verb and particle a phrasal verb suggests they form a single verb constituent. In this analysis, the verb heads the clause and the particle is a complement. The combination can be idiomatic without becoming one syntactic word."
+        }
+      ],
+      "check": {
+        "prompt": "In She put in her application, what is in?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A particle",
+            "feedback": "It is an intransitive preposition between the verb and its object."
+          },
+          {
+            "id": "b",
+            "text": "A preposition with her application as its object",
+            "feedback": "Her application is the object of put, not of in."
+          },
+          {
+            "id": "c",
+            "text": "A predicative complement",
+            "feedback": "It does not ascribe a property."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "light-verbs",
+      "title": "Light verbs",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*She gave him a kiss* says much the same as *She kissed him*, but the work is distributed differently. A light verb contributes relatively little meaning of its own; the noun complement carries the content. *We took a rest* corresponds to *We rested*, and *I made a calculation* to *I calculated*. The noun supplies the predicative content, the light verb the grammatical structure."
+        },
+        {
+          "type": "paragraph",
+          "text": "Light verbs earn their place by what they let the noun do. Modifiers and determiners attach to it: *She gave him an unusually passionate kiss*, *We took a well-earned rest*. Aspect and quantification can shift too: *He had a drink of my milk* suggests he drank only part of it, while *He drank my milk* suggests he drank it all."
+        },
+        {
+          "type": "paragraph",
+          "text": "*I had a bath* wobbles between two readings: that I bathed, or that I owned a bath. *He gave me a lick* can describe a dog licking me or a person allowing me a lick of ice cream. With light verbs the ordinary use of the same verb is always nearby, and context together with the noun’s interpretation decides which reading survives."
+        },
+        {
+          "type": "table",
+          "title": "Light verb alternatives",
+          "columns": [
+            "Light construction",
+            "Associated verb",
+            "Effect"
+          ],
+          "rows": [
+            [
+              "give someone a kiss",
+              "kiss someone",
+              "Single event; noun can be modified"
+            ],
+            [
+              "take a rest",
+              "rest",
+              "Activity presented as a bounded event"
+            ],
+            [
+              "make a calculation",
+              "calculate",
+              "Allows quantification of the product"
+            ],
+            [
+              "have a drink",
+              "drink",
+              "Often implies a smaller or bounded amount"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Light and ordinary uses",
+          "items": [
+            {
+              "text": "She gave him a kiss.",
+              "mark": "ok",
+              "note": "Light give; kiss carries the main meaning."
+            },
+            {
+              "text": "We took a well-earned rest.",
+              "mark": "ok",
+              "note": "The modifier attaches to the noun rest."
+            },
+            {
+              "text": "He had a drink of my milk.",
+              "mark": "ok",
+              "note": "Suggests a bounded amount, unlike He drank my milk."
+            },
+            {
+              "text": "I had a bath.",
+              "mark": "ok",
+              "note": "Ambiguous between bathing and owning a bath."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is give a light verb in She gave him a kiss?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Most of the meaning comes from the noun kiss.",
+            "feedback": "The construction corresponds to She kissed him."
+          },
+          {
+            "id": "b",
+            "text": "It has no grammatical function.",
+            "feedback": "It carries tense and clause structure."
+          },
+          {
+            "id": "c",
+            "text": "It cannot take an indirect object.",
+            "feedback": "It takes him as indirect object here."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "multiple-patterns",
+      "title": "Verbs with multiple complementation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Most verbs occur in more than one complementation pattern, and *make* moves through several. *They made some cakes* takes a direct object; *They made me a filing cabinet* takes an indirect and a direct object; *They made me impatient* takes an object plus a predicative complement. The meaning stays recognisable while the syntax changes."
+        },
+        {
+          "type": "paragraph",
+          "text": "Four kinds of transitive/intransitive contrast are worth separating. The intransitive subject may match the transitive subject, as in *They shot him* and *They shot at him*. It may match the object, as in *The sun radiates heat* and *Heat radiates from the sun*. The transitive may simply add an object, as in *She drank some water* and *She drank*. Or the object may become the intransitive subject, as in *He broke the vase* and *The vase broke*."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ditransitive/monotransitive pairs have their own logic. *I gave her the key* alternates with *I gave the key to her*; *They offered us $100* alternates with *They offered $100*. In *They fined us $100* and *They fined us*, the indirect object alone corresponds to the single object of the monotransitive."
+        },
+        {
+          "type": "paragraph",
+          "text": "Core/non-core contrasts and combined complements complete the picture. *He supplies arms to the rebels* alternates with *He supplies the rebels with arms*. *She kissed him on the cheek* has two complements, while *She kissed his cheek* folds their content into one. Complementation is a system of related options, not a fixed frame attached to each verb."
+        },
+        {
+          "type": "table",
+          "title": "Types of complementation contrast",
+          "columns": [
+            "Contrast",
+            "Example pair",
+            "What changes"
+          ],
+          "rows": [
+            [
+              "Transitive/intransitive",
+              "They shot him / They shot at him",
+              "Object versus PP complement"
+            ],
+            [
+              "Causative/inchoative",
+              "He broke the vase / The vase broke",
+              "Object becomes subject"
+            ],
+            [
+              "Ditransitive/monotransitive",
+              "I gave her the key / I gave the key to her",
+              "Indirect object versus PP complement"
+            ],
+            [
+              "Core/non-core",
+              "He supplies arms to them / He supplies them with arms",
+              "Alignment of object and PP"
+            ],
+            [
+              "Combined complement",
+              "She kissed him on the cheek / She kissed his cheek",
+              "Two complements versus one"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "One verb, several patterns",
+          "items": [
+            {
+              "text": "They shot him.",
+              "mark": "ok",
+              "note": "Transitive: him is the direct object."
+            },
+            {
+              "text": "They shot at him.",
+              "mark": "ok",
+              "note": "Intransitive with a PP complement; the conative suggests attempted contact."
+            },
+            {
+              "text": "He broke the vase.",
+              "mark": "ok",
+              "note": "Transitive causative."
+            },
+            {
+              "text": "The vase broke.",
+              "mark": "ok",
+              "note": "Intransitive inchoative; the object becomes subject."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What changes in They shot him versus They shot at him?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The object becomes a PP complement.",
+            "feedback": "The transitive has an object; the intransitive has a prepositional complement."
+          },
+          {
+            "id": "b",
+            "text": "The subject changes from agent to patient.",
+            "feedback": "They remains the subject in both."
+          },
+          {
+            "id": "c",
+            "text": "The verb changes from lexical to auxiliary.",
+            "feedback": "Shot remains the lexical verb."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "complementation-in-use",
+      "title": "Reading complementation in context",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Complementation shapes what a verb can mean in a sentence. *They gave the key to Pat* and *They gave Pat the key* describe the same transfer, but the second presents Pat as an indirect object and the first puts Pat inside a PP. *They shot him* says he was hit; *They shot at him* does not."
+        },
+        {
+          "type": "paragraph",
+          "text": "A writer needs the pattern as much as the analyst does. A dictionary entry records the structures a verb permits, not just its meaning. *Refer* requires *to*; *blame* allows *on* or *for*; *supply* permits either *supply arms to the rebels* or *supply the rebels with arms*. You learn the pattern along with the verb."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ambiguity often turns on complement structure. *Flying planes can be dangerous* can involve planes that fly or the activity of flying them, because one form can realise different functions. *The chicken is ready to eat* can describe the chicken as food or as an eater. Syntax narrows interpretation without always settling it."
+        }
+      ],
+      "check": {
+        "prompt": "Why does They shot at him differ from They shot him?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The prepositional construction presents an attempt rather than a successful hit.",
+            "feedback": "The contrast is between an object construction and a conative PP complement."
+          },
+          {
+            "id": "b",
+            "text": "At changes the subject from they to him.",
+            "feedback": "They remains the subject."
+          },
+          {
+            "id": "c",
+            "text": "The second sentence has no verb.",
+            "feedback": "Both contain the verb shot."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "chapter-review",
+      "title": "Chapter Review",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Everything in the chapter radiates from the verb. It selects complements, and that selection decides whether the clause is intransitive, monotransitive, ditransitive, complex-intransitive or complex-transitive. The subject sits outside the verb phrase; objects and predicative complements sit inside. Core complements attach directly, non-core complements through a preposition."
+        },
+        {
+          "type": "paragraph",
+          "text": "Grammatical function and semantic role answer different questions. A subject may be agent, experiencer or patient; an object may be patient, stimulus or theme. Presentational status accounts for the way active, passive, existential and preposing constructions align the same roles differently. The subject is identified by grammatical behaviour, not by meaning."
+        },
+        {
+          "type": "paragraph",
+          "text": "Objects, predicative complements and obliques each have their own syntax. Prepositional verbs demand specified prepositions; particles sit between verb and object; light verbs lodge the main content in a noun; most verbs appear in several complementation patterns. To read a clause is to identify those choices and watch them shape the meaning."
+        },
+        {
+          "type": "note",
+          "tone": "why",
+          "title": "A complement checklist",
+          "text": "Find the verb and its subject. Identify the internal complements. Decide whether each is an object, a predicative complement or a PP complement. Check for a particle or an oblique. Then ask what semantic roles the participants have and whether a different construction would present the same situation differently."
+        }
+      ],
+      "check": {
+        "prompt": "Which pair correctly matches function and example?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Predicative complement: quite competent in Ed seemed quite competent.",
+            "feedback": "It ascribes a property to the subject Ed."
+          },
+          {
+            "id": "b",
+            "text": "Indirect object: the key in They gave me the key.",
+            "feedback": "The key is the direct object; me is the indirect object."
+          },
+          {
+            "id": "c",
+            "text": "Oblique: Pat in Kim gave Pat the key.",
+            "feedback": "Pat is an indirect object there; the oblique occurs in to Pat."
+          }
+        ],
+        "answer": "a"
+      }
+    }
+  ],
+  "worked": [
+    "Take *The committee gave the designer an award for the new bridge*. The subject is *the committee*, the predicator is *gave*, and the two internal core complements are *the designer* and *an award*. *The designer* is the indirect object and *an award* is the direct object. *For the new bridge* is a PP complement expressing the reason or basis for the award.",
+    "The same situation can be presented as *The committee gave an award to the designer for the new bridge*. Now *an award* is the direct object and *to the designer* is a PP complement, with *the designer* as an oblique. The participants and their roles have not changed, but the syntactic functions have. That contrast is the core of this chapter."
+  ],
+  "application": [
+    "When you analyse a clause, find the verb first. Its subclass tells you which complements to expect. Then identify the subject, objects, predicative complements and any PP complements. Do not assume that every phrase after the verb is an object: *at the paper*, *to Pat* and *in the box* are PP complements, while *the paper*, *Pat* and *the box* can be objects in other patterns.",
+    "Next, separate function from role. The subject of a passive is often the patient, not the agent. The object of *hear* is a stimulus, not a patient. A predicative complement ascribes a property rather than naming a participant. Keeping these levels distinct prevents a description from turning into a list of traditional definitions.",
+    "Finally, compare alternations. *Give the key to Pat* and *give Pat the key*, *shoot him* and *shoot at him*, *break the vase* and *the vase broke* are related patterns with different syntax and sometimes different meaning. The comparison shows what the verb licenses and what the construction adds."
+  ],
+  "reveal": [
+    "In *The committee gave the designer an award for the new bridge*, the clause is ditransitive: *the committee* is subject, *the designer* is indirect object, *an award* is direct object, and *for the new bridge* is a PP complement. The related *gave an award to the designer* is monotransitive with a PP complement, and *the designer* is an oblique inside that PP."
+  ],
+  "recap": [
+    "Clauses contain a predicator, complements and adjuncts. The subject is the external core complement; objects and predicative complements are internal. Core complements are directly related to the verb, while non-core complements are realised by PPs and contain obliques.",
+    "Semantic roles describe participants, while grammatical functions describe syntactic structure. The subject has a cluster of distinctive properties. Objects and predicative complements differ in form, meaning and behaviour. Prepositional verbs, particles, idioms, light verbs and multiple complementation patterns extend the basic system."
+  ],
+  "self_check": [
+    {
+      "question": "Name the five canonical clause patterns.",
+      "answer": "Intransitive, monotransitive, ditransitive, complex-intransitive and complex-transitive."
+    },
+    {
+      "question": "What is the difference between a core complement and an oblique?",
+      "answer": "A core complement is directly related to the verb and is prototypically an NP. An oblique is an NP related to the verb through a preposition inside a PP complement."
+    },
+    {
+      "question": "Give two tests that help identify the subject.",
+      "answer": "Subject-auxiliary inversion in a closed interrogative, and the pronoun used in a tag."
+    },
+    {
+      "question": "How does a predicative complement differ from an object?",
+      "answer": "A predicative complement ascribes a property to a predicand and can be an AdjP or bare role NP; an object normally names a participant and is an NP."
+    },
+    {
+      "question": "What is a light verb?",
+      "answer": "A verb such as give, take or make whose main semantic content is supplied by its noun complement, as in give a kiss or take a rest."
+    }
+  ],
+  "opening": [
+    {
+      "prompt": "Which function is the subject?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The external core complement",
+          "feedback": "The subject sits outside the VP and has distinctive grammatical properties."
+        },
+        {
+          "id": "b",
+          "text": "The first object after the verb",
+          "feedback": "An object is internal to the VP."
+        },
+        {
+          "id": "c",
+          "text": "Any phrase before the verb",
+          "feedback": "A preposed object can also precede the verb."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "In Kim gave the key to Pat, what is to Pat?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A PP complement containing an oblique",
+          "feedback": "Pat is the complement of to, and the PP is the complement of give."
+        },
+        {
+          "id": "b",
+          "text": "An indirect object",
+          "feedback": "The indirect object construction is Kim gave Pat the key."
+        },
+        {
+          "id": "c",
+          "text": "A predicative complement",
+          "feedback": "It does not ascribe a property."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which clause is complex-transitive?",
+      "options": [
+        {
+          "id": "a",
+          "text": "I consider this a good idea.",
+          "feedback": "This is the object and a good idea is its predicative complement."
+        },
+        {
+          "id": "b",
+          "text": "This seems a good idea.",
+          "feedback": "That is complex-intransitive: no object."
+        },
+        {
+          "id": "c",
+          "text": "I gave her the key.",
+          "feedback": "That is ditransitive."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What role does Kim have in Kim heard an explosion?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Experiencer",
+          "feedback": "Kim perceives the sound."
+        },
+        {
+          "id": "b",
+          "text": "Agent",
+          "feedback": "Kim is not performing a deliberate action."
+        },
+        {
+          "id": "c",
+          "text": "Patient",
+          "feedback": "The explosion is the stimulus."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which form can be a predicative complement but not an object?",
+      "options": [
+        {
+          "id": "a",
+          "text": "An adjective phrase",
+          "feedback": "Predicative complements can be AdjPs; objects are normally NPs."
+        },
+        {
+          "id": "b",
+          "text": "A noun phrase",
+          "feedback": "Both objects and PCs can be NPs."
+        },
+        {
+          "id": "c",
+          "text": "A preposition phrase",
+          "feedback": "PPs can be complements, but the contrast here concerns AdjPs."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "closing": [
+    {
+      "prompt": "What is the subject of The parcel was opened by Kim?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The parcel",
+          "feedback": "It is the subject of the passive clause, though it has the patient role."
+        },
+        {
+          "id": "b",
+          "text": "Kim",
+          "feedback": "Kim is the agent in the by phrase."
+        },
+        {
+          "id": "c",
+          "text": "By Kim",
+          "feedback": "The by phrase is a complement."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Why is to me not an indirect object in They gave the key to me?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It is a PP complement, while objects are normally NPs.",
+          "feedback": "The indirect object construction is They gave me the key."
+        },
+        {
+          "id": "b",
+          "text": "It is the direct object.",
+          "feedback": "The direct object is the key."
+        },
+        {
+          "id": "c",
+          "text": "It is a predicative complement.",
+          "feedback": "It does not ascribe a property."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which clause has an object-oriented predicative complement?",
+      "options": [
+        {
+          "id": "a",
+          "text": "He found Kim intolerant.",
+          "feedback": "Intolerant is predicated of the object Kim."
+        },
+        {
+          "id": "b",
+          "text": "Kim seemed uneasy.",
+          "feedback": "Uneasy is predicated of the subject Kim."
+        },
+        {
+          "id": "c",
+          "text": "Kim became angry.",
+          "feedback": "Angry is subject-oriented."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is a particle?",
+      "options": [
+        {
+          "id": "a",
+          "text": "An intransitive preposition between a verb and its object",
+          "feedback": "In She put in her application, in is a particle."
+        },
+        {
+          "id": "b",
+          "text": "A preposition with an NP complement",
+          "feedback": "That is a transitive preposition or PP complement."
+        },
+        {
+          "id": "c",
+          "text": "A light verb",
+          "feedback": "A light verb is a verb such as give or take."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which pair shows an object becoming the subject of an intransitive?",
+      "options": [
+        {
+          "id": "a",
+          "text": "He broke the vase / The vase broke.",
+          "feedback": "The transitive object corresponds to the intransitive subject."
+        },
+        {
+          "id": "b",
+          "text": "They shot him / They shot at him.",
+          "feedback": "The subject stays the same; the object becomes a PP complement."
+        },
+        {
+          "id": "c",
+          "text": "I gave her the key / I gave the key to her.",
+          "feedback": "This is a ditransitive alternation, not a causative/inchoative pair."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "stages": {
+    "predict": {
+      "prompt": "Which pattern is They gave me the key?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ditransitive",
+          "feedback": "Me is the indirect object and the key is the direct object."
+        },
+        {
+          "id": "b",
+          "text": "Complex-transitive",
+          "feedback": "The second complement is an object, not a predicative complement."
+        },
+        {
+          "id": "c",
+          "text": "Monotransitive",
+          "feedback": "There are two internal objects."
+        }
+      ],
+      "answer": "a"
+    },
+    "guided": {
+      "prompt": "In He supplied the rebels with arms, what is with arms?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A PP complement",
+          "feedback": "It is a non-core complement of supplied."
+        },
+        {
+          "id": "b",
+          "text": "An indirect object",
+          "feedback": "The related construction is He supplied arms to the rebels."
+        },
+        {
+          "id": "c",
+          "text": "A predicative complement",
+          "feedback": "It does not ascribe a property."
+        }
+      ],
+      "answer": "a"
+    },
+    "transfer": {
+      "prompt": "In The parcel was opened by Kim, what role does the subject have?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Patient",
+          "feedback": "The passive promotes the affected entity to subject."
+        },
+        {
+          "id": "b",
+          "text": "Agent",
+          "feedback": "Kim is the agent in the by phrase."
+        },
+        {
+          "id": "c",
+          "text": "Experiencer",
+          "feedback": "No experience is involved."
+        }
+      ],
+      "answer": "a"
+    },
+    "exit": {
+      "prompt": "Which expression is a light verb construction?",
+      "options": [
+        {
+          "id": "a",
+          "text": "She gave him a kiss.",
+          "feedback": "Give contributes little; kiss carries the main meaning."
+        },
+        {
+          "id": "b",
+          "text": "She kissed him.",
+          "feedback": "That is the associated verb construction."
+        },
+        {
+          "id": "c",
+          "text": "She gave him an orange.",
+          "feedback": "Give has its ordinary transfer meaning."
+        }
+      ],
+      "answer": "a"
+    }
+  }
+}

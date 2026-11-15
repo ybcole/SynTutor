@@ -17,7 +17,7 @@ import {
 import {
   planFocus, contextWords, correctionPreview, matchesPreviewTokens, expectedScopeWords, findScopeNode, findTargetError,
 } from './correction.js';
-import { initLessons, openLessons, closeLessons, renderLessonTree } from './lessons-ui.js';
+import { initLessons, openLessons, closeLessons, renderLessonTree } from './lessons-ui.js?v=2026.11.16c';
 import { initQuizzes, openQuizzes, closeQuizzes } from './quizzes-ui.js';
 import { initSyntaxBuilder, openBuilderView, mountEmbeddedBuilder, closeBuilderView, isBuilderOpen, clearBuilder } from './syntax-builder-ui.js';
 import { initHistory, setHistoryEnabled, openHistoryDrawer, closeHistoryDrawer, shouldPersistHistory } from './history.js';

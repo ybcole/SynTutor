@@ -1,0 +1,1578 @@
+{
+  "title": "Coordination and supplementation",
+  "description": "Explore non-headed coordination, coordinators and linked items, layered and gapped structures, and supplements that sit apart from the clause.",
+  "example": "The guests and indeed most of the family stayed late, but the band had already packed up.",
+  "key_terms": [
+    {
+      "term": "coordination",
+      "definition": "A non-headed construction joining two or more elements of equal syntactic status."
+    },
+    {
+      "term": "coordinate",
+      "definition": "One member of a coordination, equal in status to the other members."
+    },
+    {
+      "term": "coordinator",
+      "definition": "A linking word such as and, or or but that marks a coordinate."
+    },
+    {
+      "term": "bare coordinate",
+      "definition": "The coordinate without its coordinator or modifying material."
+    },
+    {
+      "term": "expanded coordinate",
+      "definition": "A coordinate including its coordinator and any modifiers."
+    },
+    {
+      "term": "binary coordination",
+      "definition": "A coordination with two coordinates."
+    },
+    {
+      "term": "multiple coordination",
+      "definition": "A coordination with more than two coordinates."
+    },
+    {
+      "term": "syndetic",
+      "definition": "Coordination overtly marked by a coordinator."
+    },
+    {
+      "term": "asyndetic",
+      "definition": "Coordination not marked by a coordinator."
+    },
+    {
+      "term": "simple-syndetic",
+      "definition": "Multiple coordination with a coordinator before the final coordinate only."
+    },
+    {
+      "term": "polysyndetic",
+      "definition": "Multiple coordination with a coordinator before every non-initial coordinate."
+    },
+    {
+      "term": "correlative coordination",
+      "definition": "Coordination with paired markers such as both ... and or either ... or."
+    },
+    {
+      "term": "layered coordination",
+      "definition": "A coordination in which a coordination functions as a coordinate within a larger one."
+    },
+    {
+      "term": "clausal coordination",
+      "definition": "Coordination of clauses."
+    },
+    {
+      "term": "subclausal coordination",
+      "definition": "Coordination of phrases or words within a clause."
+    },
+    {
+      "term": "joint coordination",
+      "definition": "A coordination interpreted as a single joint entity, as in Kim and Pat are a couple."
+    },
+    {
+      "term": "gapped coordination",
+      "definition": "Coordination in which material is omitted from one coordinate under identity with another."
+    },
+    {
+      "term": "right nonce-constituent coordination",
+      "definition": "Coordination of expressions that are not independent constituents but form matching right-hand sequences."
+    },
+    {
+      "term": "delayed right constituent coordination",
+      "definition": "Coordination in which a shared right constituent follows both coordinates."
+    },
+    {
+      "term": "end-attachment coordination",
+      "definition": "Coordination in which the second coordinate is attached at the end of the clause."
+    },
+    {
+      "term": "connective adverb",
+      "definition": "An adverb such as however or therefore that links clauses or sentences."
+    },
+    {
+      "term": "supplementation",
+      "definition": "The relation between an anchor and a detached supplement."
+    },
+    {
+      "term": "supplement",
+      "definition": "A prosodically detached expression related to an anchor without being integrated as a dependent."
+    },
+    {
+      "term": "anchor",
+      "definition": "The expression or situation that a supplement relates to."
+    },
+    {
+      "term": "appositive",
+      "definition": "A supplement that characterises or identifies an anchor, as in my friend, a doctor."
+    },
+    {
+      "term": "parenthetical",
+      "definition": "A supplement commenting on or qualifying the clause, often an interpolation."
+    },
+    {
+      "term": "dislocation",
+      "definition": "A construction in which an NP is placed outside the main clause and resumed by a pronoun."
+    },
+    {
+      "term": "nonce constituent",
+      "definition": "A sequence that functions as a constituent only for the purposes of a particular coordination."
+    }
+  ],
+  "intro": [
+    "Say *Kim and Pat speak excellent French* and the subject is two people joined on equal footing, neither leaning on the other the way a modifier leans on its head. Try *The tourists — most of them exhausted — got into the bus* and a phrase sits beside the clause, describing the tourists without being part of its grammar. English extends clauses in these two quite different ways, and the contrast between them runs through the chapter.",
+    "The first half works through coordination: what a coordinate is, how coordinators attach, and how binary and multiple, marked and unmarked, single and repeated marking differ. Layering, scope, joint readings and gapping follow, along with the surprisingly wide range of things that can be coordinated. The second half turns to supplements — appositives, parentheticals, relative clauses, dislocations — and to what detachment buys a speaker.",
+    "One distinction is worth carrying from the start. Coordinates are equal yet integrated: they form a unit together, and the coordinator travels with the coordinate it introduces. Supplements are related to an anchor but not integrated, held in place by prosody and discourse rather than by dependency. Equality and attachment are separate questions, and keeping them apart prevents most of the usual confusions."
+  ],
+  "sections": [
+    {
+      "id": "coordination-overview",
+      "title": "Coordination as a non-headed construction",
+      "advances": "predict",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Say *Kim and Pat speak excellent French* and the subject is not one person but two, joined on equal terms. Neither name governs the other; remove either and a subject remains. Now try *He can see you this afternoon or on Tuesday*, where the alternatives are not even the same kind of phrase. English lets such things stand side by side, and the result belongs to neither category: it is an NP/PP-coordination, a construction in its own right."
+        },
+        {
+          "type": "paragraph",
+          "text": "Nothing inside it acts as a centre of gravity. *Kim’s father* is a phrase about the father, and the possessor merely locates him; *Kim and Pat* is not about either name in that way. That is what non-headed means, and it is why the pair cannot be filed as an NP with two heads. The whole is a coordination of NPs, and the category of the whole is the coordination itself."
+        },
+        {
+          "type": "paragraph",
+          "text": "Reverse the names and the structure survives: *Pat and Kim* is the same kind of subject. Either name can often stand for the pair, as when *Kim and Pat* gives way to *they*. Neither test is a law, though. *Kim and Pat are a happy couple* will not accept one name in place of the pair, because the couple is precisely what the predicate is about — a reminder that equal status does not mean interchangeable meaning."
+        },
+        {
+          "type": "table",
+          "title": "Coordination and subordination",
+          "columns": [
+            "Property",
+            "Coordination",
+            "Subordination"
+          ],
+          "rows": [
+            [
+              "Headedness",
+              "Non-headed",
+              "Head plus dependent"
+            ],
+            [
+              "Status of parts",
+              "Coordinates of equal status",
+              "Head and dependent"
+            ],
+            [
+              "Category of whole",
+              "Coordination category",
+              "Category of the head"
+            ],
+            [
+              "Typical markers",
+              "and, or, but",
+              "Subordinators, prepositions"
+            ],
+            [
+              "Example",
+              "Kim and Pat",
+              "Kim’s father"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is Kim and Pat not simply an NP?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It is a non-headed NP-coordination, not an NP with one head.",
+            "feedback": "The coordinates are equal and the whole has a coordination category."
+          },
+          {
+            "id": "b",
+            "text": "It contains no noun.",
+            "feedback": "It contains two proper nouns."
+          },
+          {
+            "id": "c",
+            "text": "It cannot be a subject.",
+            "feedback": "It can be a subject."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "coordinate-structure",
+      "title": "Coordinates, coordinators, and expanded coordinates",
+      "advances": "understand",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Listen to where the coordinator sits. In *Kim and Pat* the natural break comes before *and*, not after it, and the same grouping shows up when the phrase moves: *And Pat* travels with its coordinator attached, while *Pat* is what remains once the linking material is stripped away. Hence the two labels. The expanded coordinate includes coordinator and modifiers; the bare coordinate is the core that is left."
+        },
+        {
+          "type": "paragraph",
+          "text": "Three observations point the same way. The second coordinate shifts position together with its coordinator; coordinators can open a sentence, as in *And so did her mother*; and the prosodic break falls before the coordinator rather than after it. Each is small on its own. Together they make it hard to treat *and* as a free-standing hinge between two equals."
+        },
+        {
+          "type": "paragraph",
+          "text": "Modifiers can expand a coordinate just as coordinators do. *He offended the guests and indeed his family too* dresses its second coordinate in *and*, *indeed* and *too*, so the unit set against *the guests* is larger than the noun phrase *his family* at its core. Equality of status survives the extra clothing: there are still two coordinates, and one of them simply wears more."
+        },
+        {
+          "type": "examples",
+          "title": "Bare and expanded coordinates",
+          "items": [
+            {
+              "text": "Kim and Pat",
+              "mark": "ok",
+              "note": "And Pat is the expanded second coordinate; Pat is the bare coordinate."
+            },
+            {
+              "text": "He offended the guests and indeed his family too.",
+              "mark": "ok",
+              "note": "The second coordinate is expanded by a coordinator and two modifiers."
+            },
+            {
+              "text": "And so did her mother.",
+              "mark": "ok",
+              "note": "Sentence-initial coordinator forms a unit with its coordinate."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the bare coordinate in Kim and Pat?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Pat",
+            "feedback": "And Pat is the expanded coordinate; Pat is the bare coordinate."
+          },
+          {
+            "id": "b",
+            "text": "And Pat",
+            "feedback": "That is the expanded coordinate."
+          },
+          {
+            "id": "c",
+            "text": "Kim and",
+            "feedback": "The coordinator belongs with the following coordinate."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "coordination-types",
+      "title": "Binary, multiple, syndetic, and correlative",
+      "advances": "worked",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Count the coordinates and a first contrast appears. *Kim wrote a letter and Ed watched TV* has two, one clause on each side of the coordinator. *She wants to live in Sydney, London, or Paris* has three, and with three a new question arises: which of them carry a coordinator in front? Binary coordination never has to answer it. Multiple coordination always does."
+        },
+        {
+          "type": "paragraph",
+          "text": "Marking is the next variable. *He invited all his colleagues and all his students* announces its join; drop the *and* and the same list still coordinates, silently. A multiple coordination with a coordinator before the final coordinate only is simple-syndetic; one marked before every coordinate after the first is polysyndetic. The difference is audible in *Sydney, London, or Paris* set against *Sydney or London or Paris*."
+        },
+        {
+          "type": "paragraph",
+          "text": "Paired markers add a further layer. *Both ... and* and *either ... or* signal from the first coordinate that a second is coming; the initial word is a determinative, while *and* or *or* does the coordinating. Within a single layer of multiple coordination the medial coordinates must then be treated alike — all bare or all marked. Mix the two treatments and the structure has to be layered, which is the puzzle of the next section."
+        },
+        {
+          "type": "table",
+          "title": "Structural contrasts",
+          "columns": [
+            "Contrast",
+            "First type",
+            "Second type"
+          ],
+          "rows": [
+            [
+              "Number",
+              "Binary: Kim and Pat",
+              "Multiple: Kim, Pat, and Alex"
+            ],
+            [
+              "Marking",
+              "Syndetic: Kim and Pat",
+              "Asyndetic: Kim, Pat"
+            ],
+            [
+              "Multiple marking",
+              "Simple-syndetic: Kim, Pat, or Alex",
+              "Polysyndetic: Kim or Pat or Alex"
+            ],
+            [
+              "Initial marker",
+              "Non-correlative: Kim and Pat",
+              "Correlative: both Kim and Pat"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Coordination patterns",
+          "items": [
+            {
+              "text": "Kim wrote a letter and Ed watched TV.",
+              "mark": "ok",
+              "note": "Binary syndetic coordination."
+            },
+            {
+              "text": "She wants to live in Sydney, London, or Paris.",
+              "mark": "ok",
+              "note": "Multiple simple-syndetic coordination."
+            },
+            {
+              "text": "She wants to live in Sydney or London or Paris.",
+              "mark": "ok",
+              "note": "Multiple polysyndetic coordination."
+            },
+            {
+              "text": "He invited both his father and his uncle.",
+              "mark": "ok",
+              "note": "Correlative coordination with both."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is polysyndetic coordination?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Multiple coordination with a coordinator before every non-initial coordinate",
+            "feedback": "Monday or Tuesday or Friday."
+          },
+          {
+            "id": "b",
+            "text": "Coordination with no coordinator",
+            "feedback": "That is asyndetic."
+          },
+          {
+            "id": "c",
+            "text": "Binary coordination with both ... and",
+            "feedback": "That is correlative, not necessarily polysyndetic."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "layered-scope",
+      "title": "Layered coordination and scope",
+      "advances": "guided",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "One coordination can sit inside another. *We should invite Kim and either Pat or Alex* invites Kim, then offers a choice between two others, so the *either ... or* pair is the second coordinate of a larger NP-coordination. Word order announces nothing. The brackets come from the sense."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Egg and bacon or stew* can be read two ways, and the readings describe different dinners. Either the choice is between an egg-and-bacon dish and stew, or the choice is between egg and a bacon-or-stew dish. The words stay put; the structure shifts. Prosody and context tell a hearer which brackets to hear."
+        },
+        {
+          "type": "paragraph",
+          "text": "A single layer also demands consistency. *Kim, Tom and Pat, and your parents* leaves one medial coordinate bare and marks the other, so it cannot be a flat list of four; the comma before the last *and* signals a coordination nested inside a coordination. *Kim and Tom and Pat and your parents* can be either flat or layered, and punctuation or intonation decides which."
+        },
+        {
+          "type": "table",
+          "title": "Layered structures",
+          "columns": [
+            "Example",
+            "Possible structure",
+            "Scope"
+          ],
+          "rows": [
+            [
+              "Kim and either Pat or Alex",
+              "Kim + (either Pat or Alex)",
+              "Choice within the second coordinate"
+            ],
+            [
+              "Egg and bacon or stew",
+              "(egg and bacon) or stew",
+              "Choice between a pair and stew"
+            ],
+            [
+              "Egg and bacon or stew",
+              "egg and (bacon or stew)",
+              "Choice within the second coordinate"
+            ],
+            [
+              "Kim, Tom and Pat, and your parents",
+              "Layered",
+              "Medial marking forces layering"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Layering in context",
+          "items": [
+            {
+              "text": "We should invite Kim and either Pat or Alex.",
+              "mark": "ok",
+              "note": "The lower either-or coordination is the second coordinate."
+            },
+            {
+              "text": "Egg and bacon or stew",
+              "mark": "ok",
+              "note": "Ambiguous between two scope relations."
+            },
+            {
+              "text": "Kim, Tom and Pat, and your parents",
+              "mark": "ok",
+              "note": "Inconsistent medial marking forces a layered analysis."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why does Kim, Tom and Pat, and your parents require layering?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The medial coordinates are not marked uniformly, so it cannot be a single-layer coordination.",
+            "feedback": "Single-layer multiple coordination must treat medial coordinates alike."
+          },
+          {
+            "id": "b",
+            "text": "It contains too many coordinates.",
+            "feedback": "Multiple coordination can have many coordinates."
+          },
+          {
+            "id": "c",
+            "text": "It contains no coordinator.",
+            "feedback": "It contains and."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "clausal-subclausal",
+      "title": "Clausal and subclausal coordination",
+      "advances": "transfer",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*I left the room and Pat followed me* joins two clauses, each with its own subject and predicate. *Kim and Pat speak excellent French* joins two names inside a single clause, which then supplies one predicate for both. Same coordinator, very different sizes of unit. Grammars keep the levels apart because the consequences differ."
+        },
+        {
+          "type": "paragraph",
+          "text": "At clause level each coordinate carries its own tense, subject and polarity. At subclausal level the coordinates share the clause’s remaining machinery, so agreement and scope have to be settled for the pair together. *Kim and Pat are a happy couple* shows how far that can go: the predicate does not apply to Kim and to Pat separately but to the two as a unit."
+        },
+        {
+          "type": "paragraph",
+          "text": "That last point opens a second distinction, between joint and distributed readings. *Kim and Pat are a happy couple* treats the pair as one entity; *Kim and Pat are tall* hands the property to each of them. The subject looks identical in both. The predicate chooses the reading."
+        },
+        {
+          "type": "examples",
+          "title": "Levels and interpretations",
+          "items": [
+            {
+              "text": "I left the room and Pat followed me.",
+              "mark": "ok",
+              "note": "Clausal coordination."
+            },
+            {
+              "text": "Kim and Pat speak excellent French.",
+              "mark": "ok",
+              "note": "Subclausal NP-coordination; the predicate applies to both."
+            },
+            {
+              "text": "Kim and Pat are a happy couple.",
+              "mark": "ok",
+              "note": "Joint coordination: the pair is treated as one entity."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the difference between Kim and Pat are tall and Kim and Pat are a happy couple?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The first distributes tall to each; the second treats the pair as a joint entity.",
+            "feedback": "The predicate determines the joint or distributed reading."
+          },
+          {
+            "id": "b",
+            "text": "The first is asyndetic.",
+            "feedback": "Both contain and."
+          },
+          {
+            "id": "c",
+            "text": "The second has no subject.",
+            "feedback": "Kim and Pat is the subject."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "order",
+      "title": "Order and reversibility",
+      "advances": "exit",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Reverse a coordination and the grammar usually shrugs. *Kim and Pat* and *Pat and Kim* are equally good subjects, one reason coordinations look so unlike head-dependent phrases. This time the shrug is not universal. *They got married and had a baby* does not say what *They had a baby and got married* says, although the same two events are named."
+        },
+        {
+          "type": "paragraph",
+          "text": "Order carries meaning whenever the relation between coordinates is temporal, causal or rhetorical. *He got up and had breakfast* narrates a sequence; swap the clauses and the morning changes. *Hurry up or we’ll be late* offers no free choice at all — it threatens a consequence. The coordinates remain equal in status while the relation between them is anything but symmetrical."
+        },
+        {
+          "type": "paragraph",
+          "text": "There is a processing side as well. Complex or heavy coordinates tend to land late, where a reader or hearer can absorb them, and a contrastive coordinate may be held back for prominence. Syntax permits the reversal; discourse decides whether it earns its keep."
+        },
+        {
+          "type": "examples",
+          "title": "Order and meaning",
+          "items": [
+            {
+              "text": "Kim and Pat arrived.",
+              "mark": "ok",
+              "note": "Reversal is structurally and semantically neutral."
+            },
+            {
+              "text": "They got married and had a baby.",
+              "mark": "ok",
+              "note": "Temporal sequence is part of the interpretation."
+            },
+            {
+              "text": "Hurry up or we’ll be late.",
+              "mark": "ok",
+              "note": "Asymmetric consequence relation."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is reversal not always semantically neutral?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Coordination can express temporal, causal or rhetorical relations that depend on order.",
+            "feedback": "The coordinates are equal syntactically, but the relation can be asymmetric."
+          },
+          {
+            "id": "b",
+            "text": "Reversal changes the coordinator.",
+            "feedback": "The coordinator stays the same."
+          },
+          {
+            "id": "c",
+            "text": "Only NPs can be reversed.",
+            "feedback": "Clauses can also be reversed structurally."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "and-or",
+      "title": "And, or, and negation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*And* joins, *or* divides — the schoolroom version, which logic sharpens: *and* needs both propositions true, *or* needs at least one. English then goes its own way. *He got up and had breakfast* is not a pair of independent facts but a sequence, and *Hurry up or we’ll be late* is a condition wearing the clothes of a choice."
+        },
+        {
+          "type": "paragraph",
+          "text": "Negation drags *and* and *or* into each other’s territory. De Morgan’s equivalences equate *not (A and B)* with *not A or not B*, and *not (A or B)* with *not A and not B*. Natural language adds a wrinkle: *not* can take scope over an entire coordination, so *He didn’t buy the report or the magazine* may deny both purchases or deny only the joint one, depending on how the coordination is bracketed."
+        },
+        {
+          "type": "paragraph",
+          "text": "One curious use of *and* builds meaning by repetition rather than conjunction. *Louder and louder*, *dozens and dozens*, *again and again* assert no pair of propositions; they convey increase, plurality or recurrence. The coordinator is doing aspectual work, and calling the result a simple conjunction misses what it is for."
+        },
+        {
+          "type": "examples",
+          "title": "And and or in use",
+          "items": [
+            {
+              "text": "He got up and had breakfast.",
+              "mark": "ok",
+              "note": "Asymmetric sequence."
+            },
+            {
+              "text": "Hurry up or we’ll be late.",
+              "mark": "ok",
+              "note": "Asymmetric consequence."
+            },
+            {
+              "text": "The sound grew louder and louder.",
+              "mark": "ok",
+              "note": "Coordinator-marked reduplication expressing gradual change."
+            },
+            {
+              "text": "He didn’t buy the report or the magazine.",
+              "mark": "ok",
+              "note": "Negation can scope over the coordination."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What does Hurry up or we’ll be late express?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A consequence relation, not a free choice between alternatives",
+            "feedback": "The second coordinate presents the result of not hurrying."
+          },
+          {
+            "id": "b",
+            "text": "A simple logical disjunction",
+            "feedback": "The relation is asymmetric and conditional."
+          },
+          {
+            "id": "c",
+            "text": "A temporal sequence",
+            "feedback": "It is a consequence, not a sequence."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "both-either-neither",
+      "title": "Both, either, neither, nor, and but",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The paired markers come in fixed partnerships. *Both* looks ahead to *and*, *either* to *or*, *neither* to *nor*. In each pair the first word is a determinative announcing that another coordinate is on its way, and the coordinator arrives with the second coordinate to complete the job. Break the partnership — *both ... or*, *neither ... and* — and the sentence stumbles."
+        },
+        {
+          "type": "paragraph",
+          "text": "Negative pairing needs care. *Neither ... nor* is already negative, so *Neither Kim nor Pat came* needs no further *not*, and the pair can stand where clausal negation would otherwise go. *Nor* also works alone after a negative clause, continuing the negation as a connective: *He didn’t come, nor did she*."
+        },
+        {
+          "type": "paragraph",
+          "text": "Contrast and focus come from *but* and its relatives. *But* sets one coordinate against another or carves out an exception, as in *They allowed the others but not me*. *Not only* raises the first coordinate into prominence and usually calls for *but also* to finish the move: *She not only sings but also dances*, where the second coordinate, not the first, carries the surprise."
+        },
+        {
+          "type": "examples",
+          "title": "Correlative and contrastive linkers",
+          "items": [
+            {
+              "text": "Both Kim and Pat agreed.",
+              "mark": "ok",
+              "note": "Both correlates with and."
+            },
+            {
+              "text": "Either Kim or Pat will attend.",
+              "mark": "ok",
+              "note": "Either correlates with or."
+            },
+            {
+              "text": "Neither Kim nor Pat attended.",
+              "mark": "ok",
+              "note": "Negative coordination with neither ... nor."
+            },
+            {
+              "text": "She not only sings but also dances.",
+              "mark": "ok",
+              "note": "Not only ... but also adds a focused coordinate."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which marker correlates with nor?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Neither",
+            "feedback": "Neither Kim nor Pat."
+          },
+          {
+            "id": "b",
+            "text": "Either",
+            "feedback": "Either correlates with or."
+          },
+          {
+            "id": "c",
+            "text": "Both",
+            "feedback": "Both correlates with and."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "linkers",
+      "title": "Comparison-based and addition linkers",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Not every linker is a coordinator, and the comparison-based ones show why. *As well as*, *rather than*, *more than* and *less than* join material while keeping their comparative sense. *She plays the piano as well as the violin* adds a second accomplishment; *rather than* sets one option aside instead of merely adding another to it."
+        },
+        {
+          "type": "paragraph",
+          "text": "Addition and inclusion have a small family of their own: *including*, *instead of*, *plus*, *besides*, *along with*. Their behaviour is not uniform. Some take noun phrase complements, some prefer gerund-participials, and some behave like prepositions that happen to sit between two items. Calling them all coordinators would flatten real differences."
+        },
+        {
+          "type": "paragraph",
+          "text": "Connective adverbs are the clearest impostors. *So*, *yet*, *however* and *therefore* link clauses or sentences in discourse, but they form no coordination: they are supplements or connective adjuncts, and they can move. *For*, *only* and resultative *so ... that* have specialised linking jobs of their own, each distinct from what a coordinator does."
+        },
+        {
+          "type": "table",
+          "title": "Linkers and their status",
+          "columns": [
+            "Expression",
+            "Example",
+            "Status"
+          ],
+          "rows": [
+            [
+              "as well as",
+              "She plays piano as well as violin.",
+              "Comparison-based linker"
+            ],
+            [
+              "rather than",
+              "They chose tea rather than coffee.",
+              "Alternative linker"
+            ],
+            [
+              "including",
+              "Everyone, including Kim, agreed.",
+              "Inclusion preposition"
+            ],
+            [
+              "plus",
+              "The rent plus bills is high.",
+              "Additive linker"
+            ],
+            [
+              "however",
+              "However, nobody objected.",
+              "Connective adverb"
+            ],
+            [
+              "for",
+              "He left, for he was tired.",
+              "Formal linking word"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is however not a coordinator?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It is a connective adverb that links clauses or sentences without forming a coordination.",
+            "feedback": "It is a supplement or connective adjunct, not a coordinator."
+          },
+          {
+            "id": "b",
+            "text": "It cannot link ideas.",
+            "feedback": "It links discourse relations."
+          },
+          {
+            "id": "c",
+            "text": "It only occurs in NPs.",
+            "feedback": "It occurs at clause level."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "range",
+      "title": "What can be coordinated with what",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Coordination does not insist on matching categories. *He can see you this afternoon or on Tuesday* sets a noun phrase beside a prepositional phrase because both can say when. The result is an NP/PP-coordination, and what licenses it is the shared function, not a shared label."
+        },
+        {
+          "type": "paragraph",
+          "text": "The tolerance reaches further than one might expect. Grammaticised words coordinate when they share a role, as in *the before and after photographs* or *the up and down movement*; genitives coordinate in *Kim’s and Pat’s reports*; even clause types can be mismatched, as in *Come around six, or is that too early for you?*, where an imperative is followed by an interrogative."
+        },
+        {
+          "type": "paragraph",
+          "text": "Level matters throughout. The same string can be analysed as a coordination of words, phrases, clauses or whole sentences, and the choice changes what counts as agreeing, what falls within the scope of a modifier, and what the sentence commits its speaker to."
+        },
+        {
+          "type": "examples",
+          "title": "Unlike categories and levels",
+          "items": [
+            {
+              "text": "He can see you this afternoon or on Tuesday.",
+              "mark": "ok",
+              "note": "NP/PP-coordination with a shared adjunct function."
+            },
+            {
+              "text": "the before and after photographs",
+              "mark": "ok",
+              "note": "Coordination of grammaticised words."
+            },
+            {
+              "text": "Kim’s and Pat’s reports",
+              "mark": "ok",
+              "note": "Coordination of genitives."
+            },
+            {
+              "text": "Come around six, or is that too early for you?",
+              "mark": "ok",
+              "note": "Coordination of an imperative and a closed interrogative."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why can this afternoon and on Tuesday be coordinated?",
+        "options": [
+          {
+            "id": "a",
+            "text": "They perform the same function even though they belong to different categories.",
+            "feedback": "Coordination requires functional compatibility, not category identity."
+          },
+          {
+            "id": "b",
+            "text": "They are both NPs.",
+            "feedback": "On Tuesday is a PP."
+          },
+          {
+            "id": "c",
+            "text": "They contain the same preposition.",
+            "feedback": "This afternoon contains no preposition."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "non-basic",
+      "title": "Gapped, nonce, and delayed coordination",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Some coordinations do not wear their structure on the surface. Expansion is the mildest case: a coordinate padded with modifiers, as in *The guests and indeed his family too*. Gapping cuts deeper. *Kim is an engineer and Pat a barrister* drops the verb from the second coordinate, and the missing *is* is recovered from the first: two predications, one verb."
+        },
+        {
+          "type": "paragraph",
+          "text": "Others coordinate sequences that are not phrases at all. *I gave $10 to Kim and $5 to Pat* pairs *$10 to Kim* with *$5 to Pat* — right-hand runs that never function as constituents elsewhere, hence the name right nonce-constituent coordination. Delayed right constituent coordination goes the other way, holding a shared phrase until both coordinates have passed: *I knew of but never mentioned my work*."
+        },
+        {
+          "type": "paragraph",
+          "text": "End-attachment coordination simply hangs the second coordinate on the end of the clause: *They had found Kim guilty, but not Pat*. What makes such patterns valuable is also what makes them tricky. A stretch of words that can be coordinated with a matching stretch is probably a constituent, so coordination probes clause structure; but nonce constituents show that the construction can also manufacture units for its own purposes."
+        },
+        {
+          "type": "examples",
+          "title": "Non-basic patterns",
+          "items": [
+            {
+              "text": "Kim is an engineer and Pat a barrister.",
+              "mark": "ok",
+              "note": "Gapped coordination with the verb omitted from the second coordinate."
+            },
+            {
+              "text": "I gave $10 to Kim and $5 to Pat.",
+              "mark": "ok",
+              "note": "Right nonce-constituent coordination."
+            },
+            {
+              "text": "I knew of but never mentioned my work.",
+              "mark": "ok",
+              "note": "Delayed right constituent coordination."
+            },
+            {
+              "text": "They had found Kim guilty, but not Pat.",
+              "mark": "ok",
+              "note": "End-attachment coordination."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is gapped coordination?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Coordination with material omitted from one coordinate under identity with another",
+            "feedback": "Kim is an engineer and Pat a barrister."
+          },
+          {
+            "id": "b",
+            "text": "Coordination with no coordinator",
+            "feedback": "That is asyndetic coordination."
+          },
+          {
+            "id": "c",
+            "text": "Coordination of unlike categories",
+            "feedback": "That is a separate phenomenon."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "supplementation",
+      "title": "Supplementation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*The tourists — most of them exhausted — got into the bus.* The clause is complete without the interruption, yet the interruption is not noise: *most of them exhausted* describes the tourists, and the dashes mark it off as something said beside the clause rather than inside it. That detached constituent is a supplement, and *the tourists* is its anchor."
+        },
+        {
+          "type": "paragraph",
+          "text": "Integration separates a supplement from a dependent. A dependent belongs to its head’s syntax — *the exhausted tourists* cannot lose *exhausted* without losing part of the noun phrase. A supplement hangs on by discourse and prosody instead. It may elaborate, comment, evaluate, attribute or identify, but it does so from outside the dependency structure of the clause."
+        },
+        {
+          "type": "paragraph",
+          "text": "Supplements come in many shapes, from NPs and adjective phrases through PPs to finite and non-finite clauses. The noun phrase in *My friend, a doctor* identifies its anchor; an adverb may instead evaluate the clause, and a relative clause may add a comment without restricting it. What they share is the comma, the dash or the parenthesis — and the freedom to be lifted out."
+        },
+        {
+          "type": "table",
+          "title": "Supplements and dependents",
+          "columns": [
+            "Property",
+            "Supplement",
+            "Dependent"
+          ],
+          "rows": [
+            [
+              "Integration",
+              "Detached",
+              "Integrated"
+            ],
+            [
+              "Anchor",
+              "Related to an anchor",
+              "Licensed by a head"
+            ],
+            [
+              "Prosody",
+              "Set off",
+              "Within the prosodic phrase"
+            ],
+            [
+              "Typical forms",
+              "NP, AdjP, PP, clause",
+              "Varied by head"
+            ],
+            [
+              "Example",
+              "The tourists – most exhausted – left.",
+              "The exhausted tourists left."
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is most of them exhausted a supplement?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It is detached from the clause and relates to the tourists as an anchor.",
+            "feedback": "It is not a dependent of got or into the bus."
+          },
+          {
+            "id": "b",
+            "text": "It is a complement of got.",
+            "feedback": "Got does not license it."
+          },
+          {
+            "id": "c",
+            "text": "It contains no NP.",
+            "feedback": "It contains most of them."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "supplement-forms",
+      "title": "Forms and functions of supplements",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Function and form cross-cut in supplements. *My friend, a doctor, called* elaborates an anchor; *Fortunately, nobody was hurt* comments on a clause; *The report, according to Kim, was leaked* attributes a claim; *The report, which was leaked, caused a scandal* adds a relative clause. One detached position accommodates all four, and the punctuation carries much of the signal."
+        },
+        {
+          "type": "paragraph",
+          "text": "Appositives are the central case, because the supplement and its anchor name the same thing twice. *My friend, a doctor* characterises or identifies; either part could stand alone, and the comma tells the reader to take them together. Parentheticals comment rather than rename — *The plan, I think, will work* — while dislocations move an NP to the edge and leave a pronoun behind to hold its place: *Kim, I like her*."
+        },
+        {
+          "type": "paragraph",
+          "text": "It would be a mistake to file supplements as optional dependents. Optionality is not the issue; integration is. The same content can sit inside the clause or beside it, and the difference shows in syntax and in how the information is presented. *The exhausted tourists left* makes exhaustion part of who left; *The tourists, exhausted, left* offers it as an aside."
+        },
+        {
+          "type": "examples",
+          "title": "Supplement types",
+          "items": [
+            {
+              "text": "My friend, a doctor, called.",
+              "mark": "ok",
+              "note": "Appositive supplement identifying my friend."
+            },
+            {
+              "text": "Fortunately, nobody was hurt.",
+              "mark": "ok",
+              "note": "Evaluative supplement commenting on the clause."
+            },
+            {
+              "text": "The report, according to Kim, was leaked.",
+              "mark": "ok",
+              "note": "Attribution supplement."
+            },
+            {
+              "text": "The report, which was leaked, caused a scandal.",
+              "mark": "ok",
+              "note": "Supplementary relative clause."
+            },
+            {
+              "text": "Kim, I like her.",
+              "mark": "ok",
+              "note": "Dislocation with a resumptive pronoun."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What kind of supplement is a doctor in My friend, a doctor, called?",
+        "options": [
+          {
+            "id": "a",
+            "text": "An appositive supplement",
+            "feedback": "It characterises or identifies my friend."
+          },
+          {
+            "id": "b",
+            "text": "A catenative complement",
+            "feedback": "Called does not license it."
+          },
+          {
+            "id": "c",
+            "text": "A relative clause",
+            "feedback": "It contains no relative word or verb."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "constituency-scope",
+      "title": "Constituency, scope, and ambiguity",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Coordination has long served as a probe for constituent structure. If a stretch of words can be coordinated with a matching stretch, it behaves like a unit, and units are what clauses are built from. The probe is powerful, but it is not mechanical: nonce constituents and end-attachment show that coordination can also create units which do not exist independently."
+        },
+        {
+          "type": "paragraph",
+          "text": "Scope ambiguity is where the machinery gets interesting. *Long poems and essays* can mean long poems and long essays, or long poems together with essays of any length; *new and second-hand books* can describe books that are new or second-hand, or a collection composed of two kinds. The words are identical and the structures are not, so prosody, context and the predicate must decide."
+        },
+        {
+          "type": "paragraph",
+          "text": "Nonce constituents complicate the picture further. *I gave $10 to Kim and $5 to Pat* coordinates right-hand sequences that are not ordinary phrases; delayed right constituent coordination holds the shared phrase until after both coordinates, as in *I knew of but never mentioned my work*; end-attachment adds the second coordinate at the end, as in *They had found Kim guilty, but not Pat*."
+        },
+        {
+          "type": "paragraph",
+          "text": "The analyst therefore faces three questions rather than one. What are the coordinates? What material do they share? What scope does the coordination have? A sentence may be grammatical under more than one answer, and the work lies in seeing which answers the evidence actually supports."
+        }
+      ],
+      "examples": {
+        "title": "Scope and nonce constituents",
+        "items": [
+          {
+            "text": "long poems and essays",
+            "mark": "ok",
+            "note": "Ambiguous between long poems and long essays, or long poems plus essays."
+          },
+          {
+            "text": "I gave $10 to Kim and $5 to Pat.",
+            "mark": "ok",
+            "note": "Right nonce-constituent coordination."
+          },
+          {
+            "text": "I knew of but never mentioned my work.",
+            "mark": "ok",
+            "note": "Delayed right constituent coordination."
+          },
+          {
+            "text": "They had found Kim guilty, but not Pat.",
+            "mark": "ok",
+            "note": "End-attachment coordination."
+          }
+        ]
+      },
+      "check": {
+        "prompt": "Why is coordination not a mechanical test for constituency?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It can coordinate nonce constituents and right-hand sequences that are not independent phrases.",
+            "feedback": "Coordination can create units for the purposes of the construction."
+          },
+          {
+            "id": "b",
+            "text": "It only coordinates clauses.",
+            "feedback": "It coordinates words, phrases and clauses."
+          },
+          {
+            "id": "c",
+            "text": "It never provides evidence for structure.",
+            "feedback": "It often does, but the evidence must be interpreted carefully."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "dislocation-parentheticals",
+      "title": "Dislocation and parentheticals",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Kim, I like her.* The name sits outside the clause, and the pronoun inside does the grammatical work. Move the name to the other end and the mirror image appears: *I like her, Kim*. In the first, left dislocation, the NP opens the utterance; in the second, right dislocation, it arrives after the clause as an afterthought or clarification."
+        },
+        {
+          "type": "paragraph",
+          "text": "Parentheticals are close relatives with a different job. *The plan, I think, will work* and *The report, according to Kim, was leaked* interrupt or follow the clause in order to comment on it, hedge it or attribute it. They carry modal, evidential or attributive meaning, and they are not dependents of the verb."
+        },
+        {
+          "type": "paragraph",
+          "text": "What unites the two is detachment. Dislocation leaves a pronoun to fill the gap; parentheticals leave the clause intact and add a voice beside it. In both cases the relation to the anchor runs through discourse and prosody rather than through head-dependent syntax."
+        },
+        {
+          "type": "paragraph",
+          "text": "Take *Kim, I like her*: *Kim* is not the object of *like*; *her* is, and the verb takes its object from the pronoun. *The plan, I think, will work* is different: *I think* comments on the clause without making *I* the subject of *work*. Each piece keeps its own structure."
+        }
+      ],
+      "examples": {
+        "title": "Dislocation and parentheticals",
+        "items": [
+          {
+            "text": "Kim, I like her.",
+            "mark": "ok",
+            "note": "Left dislocation with resumptive her."
+          },
+          {
+            "text": "I like her, Kim.",
+            "mark": "ok",
+            "note": "Right dislocation."
+          },
+          {
+            "text": "The plan, I think, will work.",
+            "mark": "ok",
+            "note": "Parenthetical supplement."
+          },
+          {
+            "text": "The report, according to Kim, was leaked.",
+            "mark": "ok",
+            "note": "Attribution supplement."
+          }
+        ]
+      },
+      "check": {
+        "prompt": "What is the function of her in Kim, I like her?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A resumptive pronoun referring to Kim",
+            "feedback": "Kim is detached; her fills the object position."
+          },
+          {
+            "id": "b",
+            "text": "A complement of Kim",
+            "feedback": "Kim is not a head taking her as complement."
+          },
+          {
+            "id": "c",
+            "text": "A relative pronoun",
+            "feedback": "It introduces no relative clause."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "chapter-review",
+      "title": "Chapter Review",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Two coordinates, no head, equal status: that is the shape coordination keeps. The coordinates may be two or many, marked or unmarked, linked by a single final coordinator or by one before every coordinate after the first, plain or paired with a correlative. The coordinator travels with the coordinate that follows it, and a coordinate may be bare or dressed up with modifiers."
+        },
+        {
+          "type": "paragraph",
+          "text": "The structures can nest. Coordinations layer inside one another, join clauses or smaller units, take joint or distributed readings, and survive gapping and the other non-basic patterns. Categories need not match so long as functions do. *And* and *or* carry logical and asymmetric senses; *both/either*, *neither/nor*, *but*, *not only* and the comparison-based linkers extend the inventory."
+        },
+        {
+          "type": "paragraph",
+          "text": "Supplementation works from the other direction. A supplement is detached from its anchor — an appositive, a parenthetical, a relative clause, an evaluation or a dislocation — and relates to it through discourse and prosody. Coordination integrates equals; supplementation leaves a companion standing beside the clause."
+        },
+        {
+          "type": "note",
+          "tone": "why",
+          "title": "A coordination checklist",
+          "text": "Identify the coordinates and the coordinator. Decide whether the coordination is binary or multiple, syndetic or asyndetic. Check for layering, gapping or nonce constituents. Then ask whether the relation is clausal or subclausal, joint or distributed, and whether a supplement rather than a coordination is involved."
+        }
+      ],
+      "check": {
+        "prompt": "Which statement correctly distinguishes coordination from supplementation?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Coordination joins equal coordinates; supplementation relates a detached expression to an anchor.",
+            "feedback": "Coordination is non-headed but integrated; supplementation is detached."
+          },
+          {
+            "id": "b",
+            "text": "Coordination always has two coordinates; supplementation always has three.",
+            "feedback": "Number is not the distinction."
+          },
+          {
+            "id": "c",
+            "text": "Supplements are dependents of a head.",
+            "feedback": "Supplements are not dependents."
+          }
+        ],
+        "answer": "a"
+      }
+    }
+  ],
+  "worked": [
+    "Take *The guests and indeed most of the family stayed late, but the band had already packed up*. The first coordination is *The guests and indeed most of the family*, an NP-coordination functioning as subject. The second coordinate is expanded by *indeed*, and the whole coordination is joined by *but* to the clause *the band had already packed up*.",
+    "The example contains both subclausal and clausal coordination: the NP-coordination is the subject of the first clause, and the two clauses are coordinated by *but*. The coordinator belongs with the following coordinate in each case, and the second coordinate of the subject is expanded by a modifier."
+  ],
+  "application": [
+    "Identify the coordinates and the coordinator. Check whether the coordination is binary or multiple, syndetic or asyndetic. If multiple, decide whether it is simple-syndetic or polysyndetic, and check for correlative markers.",
+    "Look for layering, gapping, nonce constituents and end-attachment. Then decide whether the coordination is clausal or subclausal, joint or distributed. The same sequence may have more than one structure, so use prosody and meaning to resolve the ambiguity.",
+    "For supplementation, identify the anchor and the supplement. Check whether the supplement is an appositive, parenthetical, relative clause, evaluation or dislocation. Supplements are detached, so do not analyse them as ordinary dependents."
+  ],
+  "reveal": [
+    "In *The guests and indeed most of the family stayed late, but the band had already packed up*, the subject is an NP-coordination of *the guests* and *indeed most of the family*. *But* coordinates that clause with *the band had already packed up*. The second subject coordinate is expanded by *indeed*."
+  ],
+  "recap": [
+    "Coordination is non-headed and joins equal coordinates. It can be binary or multiple, syndetic or asyndetic, simple-syndetic or polysyndetic, correlative or non-correlative. Coordinators belong with the following coordinate, and coordinates can be bare or expanded.",
+    "Layering, gapping and nonce constituents show that coordination can be structurally complex. Supplementation relates a detached expression to an anchor and includes appositives, parentheticals, relative clauses and dislocations."
+  ],
+  "self_check": [
+    {
+      "question": "Why is coordination a non-headed construction?",
+      "answer": "The coordinates are equal in syntactic status; no coordinate is head or dependent."
+    },
+    {
+      "question": "What is the difference between simple-syndetic and polysyndetic coordination?",
+      "answer": "Simple-syndetic marks only the final coordinate; polysyndetic marks every non-initial coordinate."
+    },
+    {
+      "question": "What is layered coordination?",
+      "answer": "A coordination in which a coordination functions as a coordinate within a larger coordination."
+    },
+    {
+      "question": "What is a supplement?",
+      "answer": "A prosodically detached expression related to an anchor without being integrated as a dependent."
+    },
+    {
+      "question": "What is gapped coordination?",
+      "answer": "Coordination in which material is omitted from one coordinate under identity with another."
+    }
+  ],
+  "opening": [
+    {
+      "prompt": "Why is Kim and Pat a non-headed construction?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The coordinates are equal and neither is head or dependent.",
+          "feedback": "The whole is an NP-coordination."
+        },
+        {
+          "id": "b",
+          "text": "It contains no noun.",
+          "feedback": "It contains two proper nouns."
+        },
+        {
+          "id": "c",
+          "text": "It cannot be a subject.",
+          "feedback": "It can be a subject."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which coordination is polysyndetic?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Monday or Tuesday or Friday",
+          "feedback": "Every non-initial coordinate is marked."
+        },
+        {
+          "id": "b",
+          "text": "Monday, Tuesday, or Friday",
+          "feedback": "Only the final coordinate is marked."
+        },
+        {
+          "id": "c",
+          "text": "Monday, Tuesday, Friday",
+          "feedback": "That is asyndetic."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is a supplement?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A detached expression related to an anchor",
+          "feedback": "Supplements are not dependents."
+        },
+        {
+          "id": "b",
+          "text": "A coordinate of a non-headed construction",
+          "feedback": "That is a coordinate."
+        },
+        {
+          "id": "c",
+          "text": "A complement licensed by a verb",
+          "feedback": "Supplements are not licensed dependents."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is gapped coordination?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Coordination with material omitted from one coordinate",
+          "feedback": "Kim is an engineer and Pat a barrister."
+        },
+        {
+          "id": "b",
+          "text": "Coordination with no coordinator",
+          "feedback": "That is asyndetic."
+        },
+        {
+          "id": "c",
+          "text": "Coordination of unlike categories",
+          "feedback": "That is a separate pattern."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which pair correlates?",
+      "options": [
+        {
+          "id": "a",
+          "text": "either ... or",
+          "feedback": "Either is the initial correlative; or marks the following coordinate."
+        },
+        {
+          "id": "b",
+          "text": "both ... or",
+          "feedback": "Both correlates with and."
+        },
+        {
+          "id": "c",
+          "text": "neither ... and",
+          "feedback": "Neither correlates with nor."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "closing": [
+    {
+      "prompt": "Why does Kim, Tom and Pat, and your parents require layering?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The medial coordinates are not marked uniformly.",
+          "feedback": "A single-layer multiple coordination must treat medial coordinates alike."
+        },
+        {
+          "id": "b",
+          "text": "It has too many coordinates.",
+          "feedback": "Multiple coordination can be long."
+        },
+        {
+          "id": "c",
+          "text": "It contains no coordinator.",
+          "feedback": "It contains and."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Why is Hurry up or we’ll be late not a simple free choice?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It expresses a consequence relation.",
+          "feedback": "The second coordinate gives the result of not hurrying."
+        },
+        {
+          "id": "b",
+          "text": "It contains no coordinator.",
+          "feedback": "It contains or."
+        },
+        {
+          "id": "c",
+          "text": "It is asyndetic.",
+          "feedback": "It is syndetic."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Why can this afternoon and on Tuesday be coordinated?",
+      "options": [
+        {
+          "id": "a",
+          "text": "They share the same adjunct function despite different categories.",
+          "feedback": "Coordination requires functional compatibility."
+        },
+        {
+          "id": "b",
+          "text": "They are both NPs.",
+          "feedback": "On Tuesday is a PP."
+        },
+        {
+          "id": "c",
+          "text": "They have the same preposition.",
+          "feedback": "This afternoon has no preposition."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Why is most of them exhausted a supplement in The tourists – most of them exhausted – got into the bus?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It is detached from the clause and relates to the tourists as an anchor.",
+          "feedback": "It is not a dependent of got."
+        },
+        {
+          "id": "b",
+          "text": "It is a complement of got.",
+          "feedback": "Got does not license it."
+        },
+        {
+          "id": "c",
+          "text": "It contains no NP.",
+          "feedback": "It contains most of them."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which statement correctly distinguishes coordination from supplementation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Coordination joins equal coordinates; supplementation relates a detached expression to an anchor.",
+          "feedback": "Coordination is integrated; supplementation is detached."
+        },
+        {
+          "id": "b",
+          "text": "Coordination always has two coordinates.",
+          "feedback": "Multiple coordination is possible."
+        },
+        {
+          "id": "c",
+          "text": "Supplements are dependents.",
+          "feedback": "Supplements are not dependents."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "stages": {
+    "predict": {
+      "prompt": "Why is Kim and Pat not simply an NP?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It is a non-headed NP-coordination.",
+          "feedback": "The coordinates are equal."
+        },
+        {
+          "id": "b",
+          "text": "It contains no noun.",
+          "feedback": "It contains two proper nouns."
+        },
+        {
+          "id": "c",
+          "text": "It cannot be a subject.",
+          "feedback": "It can be a subject."
+        }
+      ],
+      "answer": "a"
+    },
+    "guided": {
+      "prompt": "Which coordination is polysyndetic?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Monday or Tuesday or Friday",
+          "feedback": "Every non-initial coordinate is marked."
+        },
+        {
+          "id": "b",
+          "text": "Monday, Tuesday, or Friday",
+          "feedback": "Only the final coordinate is marked."
+        },
+        {
+          "id": "c",
+          "text": "Monday, Tuesday, Friday",
+          "feedback": "That is asyndetic."
+        }
+      ],
+      "answer": "a"
+    },
+    "transfer": {
+      "prompt": "Why can this afternoon and on Tuesday be coordinated?",
+      "options": [
+        {
+          "id": "a",
+          "text": "They share the same function despite different categories.",
+          "feedback": "Functional compatibility licenses the coordination."
+        },
+        {
+          "id": "b",
+          "text": "They are both NPs.",
+          "feedback": "On Tuesday is a PP."
+        },
+        {
+          "id": "c",
+          "text": "They have the same preposition.",
+          "feedback": "This afternoon has no preposition."
+        }
+      ],
+      "answer": "a"
+    },
+    "exit": {
+      "prompt": "What is gapped coordination?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Coordination with material omitted from one coordinate",
+          "feedback": "Kim is an engineer and Pat a barrister."
+        },
+        {
+          "id": "b",
+          "text": "Coordination with no coordinator",
+          "feedback": "That is asyndetic."
+        },
+        {
+          "id": "c",
+          "text": "Coordination of unlike categories",
+          "feedback": "That is a separate pattern."
+        }
+      ],
+      "answer": "a"
+    }
+  }
+}

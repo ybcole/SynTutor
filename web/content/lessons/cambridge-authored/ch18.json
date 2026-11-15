@@ -1,0 +1,1419 @@
+{
+  "title": "Inflectional morphology and related matters",
+  "description": "Explore lexical bases, inflectional operations, regular and irregular forms, spelling and sound alternations, plurals, verb paradigms, clitics and weak forms.",
+  "example": "The children’s folders were left on the shelves, but the boxes had already been moved.",
+  "key_terms": [
+    {
+      "term": "morphology",
+      "definition": "The part of grammar concerned with the form of words."
+    },
+    {
+      "term": "inflection",
+      "definition": "A form change marking a grammatical distinction such as plural, tense or case."
+    },
+    {
+      "term": "lexical word-formation",
+      "definition": "The creation of new lexemes by derivation or compounding."
+    },
+    {
+      "term": "lexeme",
+      "definition": "A vocabulary item whose forms are related by inflection."
+    },
+    {
+      "term": "lexical base",
+      "definition": "The starting form to which inflectional operations apply."
+    },
+    {
+      "term": "suffixation",
+      "definition": "The addition of a suffix to a base."
+    },
+    {
+      "term": "internal change",
+      "definition": "A morphological operation that changes a vowel or consonant inside the base."
+    },
+    {
+      "term": "alternation",
+      "definition": "Different realisations of a morphological unit depending on context."
+    },
+    {
+      "term": "regular form",
+      "definition": "An inflectional form produced by a general rule not specific to a lexeme."
+    },
+    {
+      "term": "irregular form",
+      "definition": "An inflectional form requiring lexeme-specific information."
+    },
+    {
+      "term": "syncretism",
+      "definition": "Identity of form between distinct inflectional categories."
+    },
+    {
+      "term": "defective lexeme",
+      "definition": "A lexeme lacking some inflectional forms found in its category."
+    },
+    {
+      "term": "grade",
+      "definition": "The system of plain, comparative and superlative forms."
+    },
+    {
+      "term": "inflectional comparative",
+      "definition": "A comparative formed with -er, as in cheaper."
+    },
+    {
+      "term": "analytic comparative",
+      "definition": "A comparative formed with more or less, as in more careful."
+    },
+    {
+      "term": "plural",
+      "definition": "The number form used for more than one entity."
+    },
+    {
+      "term": "genitive",
+      "definition": "The case form marked by ’s or a possessive pronoun."
+    },
+    {
+      "term": "base plural",
+      "definition": "A plural identical in form to the lexical base, as in sheep."
+    },
+    {
+      "term": "vowel-change plural",
+      "definition": "A plural formed by changing the base vowel, as in teeth."
+    },
+    {
+      "term": "foreign plural",
+      "definition": "A plural retaining a borrowed morphological pattern, as in formulae."
+    },
+    {
+      "term": "preterite",
+      "definition": "The primary past-tense verb form."
+    },
+    {
+      "term": "past participle",
+      "definition": "The verb form used after perfect have and passive be."
+    },
+    {
+      "term": "weak form",
+      "definition": "A reduced pronunciation of a grammaticised word in connected speech."
+    },
+    {
+      "term": "clitic",
+      "definition": "A reduced form attached prosodically to a neighbouring word."
+    },
+    {
+      "term": "liaison",
+      "definition": "The linking of sounds across word boundaries in connected speech."
+    },
+    {
+      "term": "negative auxiliary",
+      "definition": "A negative form of an auxiliary, such as isn’t or won’t."
+    },
+    {
+      "term": "consonant doubling",
+      "definition": "Doubling of a final consonant before a suffix, as in batting."
+    },
+    {
+      "term": "e-deletion",
+      "definition": "Deletion of final e before a suffix, as in liking."
+    }
+  ],
+  "intro": [
+    "*The children’s folders were left on the shelves, but the boxes had already been moved.* Four plurals sit in that sentence, and they do not behave alike. *Children* changes the base; *shelves* changes a final consonant; *boxes* adds a suffix with a spelling adjustment. Then *children’s* adds a genitive on top of the irregular plural. Inflectional morphology is the part of grammar that describes these form changes, while lexical word-formation creates new vocabulary items such as *simplify* or *simpleton*.",
+    "The chapter starts with lexical bases and the operations that build inflected forms, then turns to alternation, regularity and syncretism. It compares speech with writing, surveys phonological and spelling alternations, and works through grade, noun plurals, genitives and verb paradigms. Complex bases and negative auxiliaries lead into weak forms, clitics, the incorporation of *to* and liaison.",
+    "Form and meaning rarely line up one-to-one. A single suffix may have several pronunciations or spellings, distinct categories may share one form, and a form that looks irregular in writing may be perfectly regular in speech. The description has to cover the system and the alternations that keep it from looking tidy."
+  ],
+  "sections": [
+    {
+      "id": "inflection-word-formation",
+      "title": "Inflection and lexical word-formation",
+      "advances": "predict",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Are *simpler* and *simplify* the same kind of word? Both contain *simple*, but only one belongs to the paradigm of *simple*. *Simple*, *simpler* and *simplest* are inflectional forms of one lexeme; *simplify* and *simpleton* are different lexemes created by lexical word-formation. The fact that *simpleton* contains *simple* has no bearing on its syntax: it behaves like *fool*, not like an inflected adjective."
+        },
+        {
+          "type": "paragraph",
+          "text": "*This is simpler than that* requires the comparative form of *simple*; *This is the simplest of them all* requires the superlative. The lexeme is the vocabulary item, and these are the shapes it takes in different grammatical contexts. Swap in another adjective and the same pattern appears, which is what makes the formation general rather than lexeme-specific."
+        },
+        {
+          "type": "paragraph",
+          "text": "*At* has a strong form in *What are you looking at?* and a weak form in *Look at this!* The difference is conditioned by grammatical context, but it is phonological reduction, not a new inflectional category. "
+        },
+        {
+          "type": "table",
+          "title": "Inflection and derivation",
+          "columns": [
+            "Process",
+            "Example",
+            "Effect"
+          ],
+          "rows": [
+            [
+              "Inflection",
+              "simple, simpler, simplest",
+              "Forms of one lexeme"
+            ],
+            [
+              "Derivation",
+              "simple → simplify",
+              "Creates a new lexeme"
+            ],
+            [
+              "Derivation",
+              "simple → simpleton",
+              "Creates a new lexeme"
+            ],
+            [
+              "Compounding",
+              "blackbird",
+              "Creates a new lexeme"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why are simpler and simplest not new lexemes?",
+        "options": [
+          {
+            "id": "a",
+            "text": "They are inflectional forms of the same lexeme, required by comparative and superlative syntax.",
+            "feedback": "They belong to the paradigm of simple."
+          },
+          {
+            "id": "b",
+            "text": "They contain the same letters.",
+            "feedback": "Spelling is not the criterion."
+          },
+          {
+            "id": "c",
+            "text": "They are irregular.",
+            "feedback": "Regularity is a separate question."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "lexical-base",
+      "title": "Lexical bases and morphological operations",
+      "advances": "understand",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Take *dog* and *worker*. *Worker* divides into *work* and *·er*, so its base is complex rather than simple, yet both nouns take the same plural: *dogs*, *workers*. The distinction between simple and complex bases matters for word-formation, not for the inflectional pattern."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Dregs* has no singular, yet its base is *dreg*; *sheep* has several forms identical with the base. The base is not always an independent inflectional form. Base and inflectional form are therefore separate notions, and a description that equates them will misrepresent defective and invariant lexemes."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Teeth* changes the vowel of *tooth*, *rang* changes the vowel of *ring*, and *knives* combines a suffix with a modified base. Suffixation is the main operation, but it is not the only one. Some forms take two steps: the genitive *children’s* is built from the plural *children*, and *trodden* from the preterite *trod*."
+        },
+        {
+          "type": "table",
+          "title": "Morphological operations",
+          "columns": [
+            "Operation",
+            "Example",
+            "Description"
+          ],
+          "rows": [
+            [
+              "Suffixation",
+              "dog → dogs",
+              "Add ·s"
+            ],
+            [
+              "Internal change",
+              "tooth → teeth",
+              "Change the vowel"
+            ],
+            [
+              "Combined",
+              "knife → knives",
+              "Suffix plus base modification"
+            ],
+            [
+              "Two-step",
+              "child → children → children’s",
+              "Genitive from the plural"
+            ],
+            [
+              "Two-step",
+              "tread → trod → trodden",
+              "Participle from the preterite"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is the lexical base not simply the singular form?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Defective and base-plural lexemes can lack a distinct singular form identical with the base.",
+            "feedback": "Dregs has no singular; sheep has a plural identical with the base."
+          },
+          {
+            "id": "b",
+            "text": "Every lexeme has a singular form.",
+            "feedback": "Defective lexemes do not."
+          },
+          {
+            "id": "c",
+            "text": "The base is always irregular.",
+            "feedback": "Bases can be regular or irregular."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "inflectional-categories",
+      "title": "Overview of inflectional categories",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Nouns mark number and case; pronouns mark nominative, accusative, genitive and reflexive; adjectives and some adverbs mark grade; verbs mark tense and person and have participle forms. English inflection covers less ground than the inflection of many languages, but what it covers is not simple. The list of categories is short, while the alternations within them are not."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Dog*, *dog’s*, *dogs* and *dogs’* show the noun paradigm: singular and plural, plain and genitive. Pronouns carry a richer paradigm, with case, dependent and independent genitives, and reflexive forms built from *self* or *selves*. That compound structure is why *myself* and *themselves* look unlike the personal pronouns they relate to."
+        },
+        {
+          "type": "paragraph",
+          "text": "Grade applies to many adjectives and a few adverbs, giving plain, comparative and superlative forms. Verbs have six main forms plus negative auxiliaries, and their plain present and plain form usually match the lexical base; *be* is the suppletive exception."
+        },
+        {
+          "type": "table",
+          "title": "Inflectional categories",
+          "columns": [
+            "Category",
+            "Forms",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Noun",
+              "Singular/plural; plain/genitive",
+              "dog, dogs, dog’s, dogs’"
+            ],
+            [
+              "Pronoun",
+              "Nominative, accusative, genitive, reflexive",
+              "I, me, my, mine, myself"
+            ],
+            [
+              "Adjective",
+              "Plain, comparative, superlative",
+              "weak, weaker, weakest"
+            ],
+            [
+              "Adverb",
+              "Plain, comparative, superlative",
+              "soon, sooner, soonest"
+            ],
+            [
+              "Verb",
+              "Plain present, 3rd singular, preterite, plain, gerund-participle, past participle",
+              "take, takes, took, take, taking, taken"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which category has a distinct reflexive form?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Pronouns",
+            "feedback": "Myself, yourself, herself and so on are reflexive forms."
+          },
+          {
+            "id": "b",
+            "text": "Nouns",
+            "feedback": "Nouns inflect for number and case, not reflexivity."
+          },
+          {
+            "id": "c",
+            "text": "Adjectives",
+            "feedback": "Adjectives inflect for grade."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "alternation-syncretism",
+      "title": "Alternation, regularity, and syncretism",
+      "advances": "worked",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The plural ending looks stable in writing and shifts constantly in speech. *Cats* ends in *s*, *boxes* in *es*; pronounced, the suffix is /s/, /z/ or /iz/ depending on the final sound of the base. The variation is regular, but a description that recognises only one form will miss it."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Cats* and *boxes* are regular plurals; *talked* is a regular preterite and participle. *Children*, *bought* and *thieves* are not: they need lexeme-specific information in the lexicon."
+        },
+        {
+          "type": "paragraph",
+          "text": "Regularity can be partial. *Thieves* uses the general plural suffix, but the base changes from *thief* to *thieve-*, and that change is specific to the lexeme; *chieves* is not the plural of *chief*. The whole form counts as irregular even though the suffixation is regular, because the base modification is not general."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Sheep* is both singular and plural; *hit* is both present and past. One form serves two distinct categories, which is syncretism. It is not the same as a base plural, because it describes a relation between paradigm cells rather than the shape of a single form."
+        },
+        {
+          "type": "table",
+          "title": "Regularity and syncretism",
+          "columns": [
+            "Concept",
+            "Example",
+            "Explanation"
+          ],
+          "rows": [
+            [
+              "Regular alternation",
+              "cats, boxes",
+              "General rule for plural suffix"
+            ],
+            [
+              "Irregular form",
+              "children",
+              "Lexeme-specific plural"
+            ],
+            [
+              "Modified base",
+              "thieves",
+              "Regular suffix on a special base"
+            ],
+            [
+              "Syncretism",
+              "sheep (singular/plural)",
+              "One form, two paradigm cells"
+            ],
+            [
+              "Syncretism",
+              "hit (present/past)",
+              "One form, two tense cells"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is thieves irregular even though it ends in the regular plural suffix?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The base modification from thief to thieve- is lexeme-specific.",
+            "feedback": "The suffix is regular, but the base change is not general."
+          },
+          {
+            "id": "b",
+            "text": "It ends in -s.",
+            "feedback": "The suffix is not the issue."
+          },
+          {
+            "id": "c",
+            "text": "It is a noun.",
+            "feedback": "Nouns can be regular or irregular."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "speech-writing",
+      "title": "Speech, writing, and morphological alternation",
+      "advances": "guided",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Sighed*, *kissed* and *waited* all end in *·ed* on the page, but the spoken suffixes are /d/, /t/ and /id/. The writing hides a three-way alternation that every speaker controls."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Churches* has /iz/ and *es*; *stomachs* has /s/ and *s*, because the *ch* is pronounced /k/, not /tʃ/. In several cases the written rule is derivative. The spelling follows the sound rather than the other way round."
+        },
+        {
+          "type": "paragraph",
+          "text": "Written and spoken classes usually match, but the exceptions are instructive. *Say* has a regular written third singular *says* and an irregular spoken vowel. *Pay* has a regular spoken preterite /peid/ and an irregular written *paid*. *House* has a regular written plural and an irregular spoken plural with voicing."
+        },
+        {
+          "type": "examples",
+          "title": "Speech and writing",
+          "items": [
+            {
+              "text": "sighed / kissed / waited",
+              "mark": "ok",
+              "note": "Same written ·ed; different spoken suffixes."
+            },
+            {
+              "text": "churches / stomachs",
+              "mark": "ok",
+              "note": "The spelling follows the pronunciation."
+            },
+            {
+              "text": "say / says",
+              "mark": "ok",
+              "note": "Regular in writing, irregular in speech."
+            },
+            {
+              "text": "pay / paid",
+              "mark": "ok",
+              "note": "Regular in speech, irregular in writing."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is the plural of house irregular in speech but regular in writing?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The final consonant is voiced in the spoken plural but the written form adds regular s.",
+            "feedback": "The spoken base changes from /s/ to /z/."
+          },
+          {
+            "id": "b",
+            "text": "Houses has no plural.",
+            "feedback": "It does."
+          },
+          {
+            "id": "c",
+            "text": "The written plural uses -es.",
+            "feedback": "It uses -s."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "phonological-alternations",
+      "title": "Phonological alternations",
+      "advances": "transfer",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The sibilant suffixes have three spoken shapes. *Horses* takes /iz/, *cats* takes /s/, and *dogs* takes /z/. The final sound of the base decides which one, not the spelling. The same alternation appears in the third singular present and in the genitive, which is one reason the categories are worth describing together."
+        },
+        {
+          "type": "paragraph",
+          "text": "The preterite and past participle suffix also has three shapes: /id/ in *waited*, /t/ in *kissed*, /d/ in *sighed*. Alveolar plosives trigger /id/; voiceless consonants trigger /t/; voiced sounds trigger /d/. This is a phonological rule, not a lexical one."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bases ending in syllabic /l/ can show a vowel before the suffix, and non-rhotic accents develop special patterns with final /r/. Other alternations involve syllabic /l/ and post-vocalic /r/. These are general phonological adjustments, not facts stored with individual lexemes."
+        },
+        {
+          "type": "examples",
+          "title": "Phonological suffix alternations",
+          "items": [
+            {
+              "text": "horses / cats / dogs",
+              "mark": "ok",
+              "note": "Plural suffix /iz/, /s/, /z/."
+            },
+            {
+              "text": "waited / kissed / sighed",
+              "mark": "ok",
+              "note": "Past suffix /id/, /t/, /d/."
+            },
+            {
+              "text": "The plural of bus is buses.",
+              "mark": "ok",
+              "note": "Sibilant base takes /iz/ and written es."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What determines the choice between /iz/, /s/ and /z/ in plural suffixes?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The final sound of the base",
+            "feedback": "Sibilants take /iz/; voicing determines /s/ versus /z/."
+          },
+          {
+            "id": "b",
+            "text": "The number of syllables in the base",
+            "feedback": "Syllable count is not the primary factor."
+          },
+          {
+            "id": "c",
+            "text": "The spelling of the base only",
+            "feedback": "Pronunciation is primary; spelling follows it."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "spelling-alternations",
+      "title": "Spelling alternations",
+      "advances": "exit",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "English spelling has regular alternations of its own. A final consonant may double before a suffix (*bat* → *batting*, *fit* → *fitted*), a final *e* may be deleted (*like* → *liking*, *subdue* → *subduing*), and a final *y* may become *i* (*silly* → *sillier*, *try* → *tries*). None of these changes creates a new lexeme; they keep the written form in line with pronunciation and with the spelling system."
+        },
+        {
+          "type": "paragraph",
+          "text": "The *·s/·es* alternation in plurals and the third singular present is also a spelling rule, but it follows the pronunciation. *Boxes*, *bushes* and *churches* take *es* because they end in sibilants; *cats*, *dogs* and *stomachs* take *s*. The written pattern is a consequence of the spoken one."
+        },
+        {
+          "type": "paragraph",
+          "text": "Spelling can make a regular form look irregular. *Fitted* doubles the final *t*, but the doubling is general, so the form is regular; *knitted* is regular for the same reason. *Thieves* is irregular for a different reason: the base change is lexeme-specific, not a spelling convention."
+        },
+        {
+          "type": "examples",
+          "title": "Spelling rules",
+          "items": [
+            {
+              "text": "bat → batting",
+              "mark": "ok",
+              "note": "Consonant doubling."
+            },
+            {
+              "text": "like → liking",
+              "mark": "ok",
+              "note": "E-deletion."
+            },
+            {
+              "text": "silly → sillier",
+              "mark": "ok",
+              "note": "Y-replacement."
+            },
+            {
+              "text": "box → boxes",
+              "mark": "ok",
+              "note": "Sibilant base takes es."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is fitted regular despite the doubled t?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Consonant doubling is a general spelling rule, not lexeme-specific information.",
+            "feedback": "Regularity depends on generality, not on the absence of spelling changes."
+          },
+          {
+            "id": "b",
+            "text": "It has no suffix.",
+            "feedback": "It has the past suffix."
+          },
+          {
+            "id": "c",
+            "text": "It is an irregular verb.",
+            "feedback": "Fit has a regular past."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "grade",
+      "title": "Grade: comparative and superlative",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Weak*, *weaker*, *weakest* and *soon*, *sooner*, *soonest* show grade at work. The plain form matches the lexical base, and the other two are formed by suffixation for the bases that allow it. The three-form system is general enough to feel natural and restricted enough to need description."
+        },
+        {
+          "type": "paragraph",
+          "text": "Not every base takes the suffix. *Careful* forms *more careful* and *most careful*, not *carefuller* and *carefullest*. The choice between inflectional and analytic grade is partly phonological, partly lexical and partly stylistic."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Good, better, best*; *bad, worse, worst*; *far, farther/further, farthest/furthest* are the irregulars. A few grade forms are irregular and have to be listed in the lexicon. The regular pattern still covers the majority of adjectives, which is why the irregulars stand out."
+        },
+        {
+          "type": "examples",
+          "title": "Grade forms",
+          "items": [
+            {
+              "text": "weak, weaker, weakest",
+              "mark": "ok",
+              "note": "Inflectional grade."
+            },
+            {
+              "text": "careful, more careful, most careful",
+              "mark": "ok",
+              "note": "Analytic grade."
+            },
+            {
+              "text": "good, better, best",
+              "mark": "ok",
+              "note": "Irregular grade."
+            },
+            {
+              "text": "soon, sooner, soonest",
+              "mark": "ok",
+              "note": "Inflectional grade on an adverb."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why does careful take more careful rather than carefuller?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Its length and phonological shape favour analytic comparison.",
+            "feedback": "The choice between inflectional and analytic grade is partly phonological."
+          },
+          {
+            "id": "b",
+            "text": "Careful is not an adjective.",
+            "feedback": "It is an adjective."
+          },
+          {
+            "id": "c",
+            "text": "It has no comparative form.",
+            "feedback": "It has an analytic comparative."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "noun-plurals",
+      "title": "Noun plurals",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Cats*, *dogs* and *horses* show the usual plural pattern: a suffix written *s* or *es* and pronounced /s/, /z/ or /iz/. A smaller group modifies the base before adding the suffix: *wife* → *wives*, *mouth* → *mouths* with voicing, *house* → *houses*."
+        },
+        {
+          "type": "paragraph",
+          "text": "Some nouns use a base plural, where the plural is identical with the base: *cod*, *bison*, *series*, *Chinese*, *craft*. Others change the vowel (*tooth* → *teeth*, *mouse* → *mice*, *man* → *men*), and a small class adds *·en* (*oxen*, *children*, *brethren*). None of these patterns follows from the noun’s meaning, so each class has to be learned as part of the lexeme’s entry."
+        },
+        {
+          "type": "paragraph",
+          "text": "Foreign plurals retain borrowed patterns: *formulae*, *curricula*, *phenomena*, *crises*. Some nouns have both a foreign and an anglicised plural. Compound nouns usually pluralise the first element or the head (*grown-ups*, *commanders-in-chief*), and proper nouns form plurals regularly (*Joneses*, *Marys*)."
+        },
+        {
+          "type": "table",
+          "title": "Noun plural types",
+          "columns": [
+            "Type",
+            "Example",
+            "Pattern"
+          ],
+          "rows": [
+            [
+              "Regular ·s",
+              "cats, dogs",
+              "General suffix"
+            ],
+            [
+              "Modified base",
+              "wives, houses",
+              "Suffix plus base change"
+            ],
+            [
+              "Base plural",
+              "sheep, series",
+              "Plural identical with base"
+            ],
+            [
+              "Vowel change",
+              "teeth, mice, men",
+              "Internal vowel change"
+            ],
+            [
+              "·en plural",
+              "oxen, children",
+              "En suffix"
+            ],
+            [
+              "Foreign plural",
+              "formulae, phenomena",
+              "Borrowed pattern"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which plural is a base plural?",
+        "options": [
+          {
+            "id": "a",
+            "text": "sheep",
+            "feedback": "The plural is identical with the singular/base."
+          },
+          {
+            "id": "b",
+            "text": "children",
+            "feedback": "That is an ·en plural."
+          },
+          {
+            "id": "c",
+            "text": "mice",
+            "feedback": "That is a vowel-change plural."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "genitive",
+      "title": "The genitive",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Dog* gives *dog’s* and *dogs* gives *dogs’*, so the genitive is built from the non-genitive form. The plural genitive comes from the plural, not from the base, which is why *children* → *children’s* and not *child’s* for the plural. That makes the form a two-step formation, one of several in English inflection."
+        },
+        {
+          "type": "paragraph",
+          "text": "The marker attaches at the end of the genitive noun phrase, even when a post-head dependent intervenes: *the people next door’s behaviour*. In writing, the apostrophe separates singular and plural genitives for many nouns; in speech, the two forms may be identical. The written distinction is useful, but it is not a difference in pronunciation."
+        },
+        {
+          "type": "paragraph",
+          "text": "Genitive formation interacts with plural formation and syncretism. *Sheep’s* can be singular or plural genitive, and *children’s* is a plural genitive built on the plural. The apostrophe is a spelling convention, not a separate morpheme that a speaker pronounces."
+        },
+        {
+          "type": "examples",
+          "title": "Genitive forms",
+          "items": [
+            {
+              "text": "dog’s / dogs’",
+              "mark": "ok",
+              "note": "Singular and plural genitive."
+            },
+            {
+              "text": "children’s",
+              "mark": "ok",
+              "note": "Plural genitive formed from children."
+            },
+            {
+              "text": "the people next door’s behaviour",
+              "mark": "ok",
+              "note": "Genitive marker on the final word of the NP."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is children’s a two-step formation?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The genitive is formed from the plural children, not directly from the base child.",
+            "feedback": "The plural is an intermediate form."
+          },
+          {
+            "id": "b",
+            "text": "It contains two apostrophes.",
+            "feedback": "It contains one."
+          },
+          {
+            "id": "c",
+            "text": "It is irregular.",
+            "feedback": "The two-step formation is separate from regularity."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "verb-forms",
+      "title": "Regular and irregular verb forms",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Take *talk*: *talk*, *talks*, *talked*, *talk*, *talking*, *talked*. Those are the six inflectional forms most verbs carry — plain present, third singular present, preterite, plain form, gerund-participle and past participle. Regular verbs use *·ed* for the preterite and past participle. The identity of the plain present and plain form is a feature of English, not an accident of the example."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Be* has *am*, *is* and *are*; *have* has *has*; *do* has *does*; *say* has *says*, with a vowel change in speech. Irregular present forms are few. The regular third singular suffix is *·s*, and it shows the same phonological alternations as the plural suffix."
+        },
+        {
+          "type": "paragraph",
+          "text": "Irregular preterites and past participles fall into several classes. One class uses a secondary *·ed* formation (*burn*, *keep*, *hit*, *lose*), another vowel alternation (*drink*, *dig*, *find*, *come*), a third adds *·en* for the participle (*see*, *ride*, *take*), and a fourth collects other formations (*flee*, *hear*, *stand*, *buy*, *can*). The classes are descriptive groupings, not rules that generate the forms."
+        },
+        {
+          "type": "table",
+          "title": "Verb inflection",
+          "columns": [
+            "Class",
+            "Example",
+            "Pattern"
+          ],
+          "rows": [
+            [
+              "Regular",
+              "talk, talked",
+              "·ed preterite and participle"
+            ],
+            [
+              "Irregular present",
+              "be, am, is, are",
+              "Suppletion"
+            ],
+            [
+              "Class 1",
+              "keep, kept",
+              "Secondary ·ed formation"
+            ],
+            [
+              "Class 2",
+              "drink, drank, drunk",
+              "Vowel alternation"
+            ],
+            [
+              "Class 3",
+              "take, took, taken",
+              "·en participle"
+            ],
+            [
+              "Class 4",
+              "buy, bought",
+              "Other formations"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which class uses vowel alternation?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Class 2: drink, drank, drunk",
+            "feedback": "The base vowel changes across the forms."
+          },
+          {
+            "id": "b",
+            "text": "Class 1: keep, kept",
+            "feedback": "That uses a secondary ·ed formation."
+          },
+          {
+            "id": "c",
+            "text": "Regular: talk, talked",
+            "feedback": "That uses the regular suffix."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "complex-bases",
+      "title": "Complex bases and negative auxiliaries",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A complex base inflects like a simple one. *Underpin* gives *underpins* and *underpinned*; *become* gives *becomes*, *became* and *become*. The internal structure of the base may affect meaning and the lexical entry, but it does not change the inflectional pattern."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Won’t* bears little resemblance to *will*, yet it belongs to the same auxiliary paradigm. Auxiliary verbs have negative forms: *isn’t*, *aren’t*, *wasn’t*, *weren’t*, *hasn’t*, *haven’t*, *don’t*, *doesn’t*, *didn’t*, *can’t*, *won’t*, *shan’t*, *couldn’t*, *mightn’t*, *mustn’t*, *needn’t*. Some are irregular in pronunciation and spelling, and *won’t* is the clearest case."
+        },
+        {
+          "type": "paragraph",
+          "text": "Negative forms can be cliticised onto the auxiliary or written as separate words. *Isn’t* is a clitic form; *is not* is a full form. The choice is stylistic and syntactic. The negatives belong to the auxiliary paradigm, not to a separate lexical class."
+        },
+        {
+          "type": "examples",
+          "title": "Complex bases and negative forms",
+          "items": [
+            {
+              "text": "underpin, underpins, underpinned",
+              "mark": "ok",
+              "note": "Complex base inflects regularly."
+            },
+            {
+              "text": "become, becomes, became, become",
+              "mark": "ok",
+              "note": "Complex base with irregular preterite."
+            },
+            {
+              "text": "isn’t / is not",
+              "mark": "ok",
+              "note": "Clitic and full negative forms."
+            },
+            {
+              "text": "won’t / will not",
+              "mark": "ok",
+              "note": "Irregular negative form."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is won’t not a separate lexeme from will?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It is a negative clitic/inflectional variant of the auxiliary will.",
+            "feedback": "It belongs to the paradigm of will."
+          },
+          {
+            "id": "b",
+            "text": "It has a different meaning.",
+            "feedback": "It is the negative of will."
+          },
+          {
+            "id": "c",
+            "text": "It contains no verb.",
+            "feedback": "It is an auxiliary form."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "weak-forms",
+      "title": "Weak forms, clitics, and liaison",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*At* is /æt/ in *What are you looking at?* and /ət/ in *Look at this!* Many grammaticised words behave this way, with strong and weak forms. Pronouns, prepositions, auxiliaries and determiners reduce in connected speech, and stress along with grammatical context decides which form appears."
+        },
+        {
+          "type": "paragraph",
+          "text": "Auxiliary verbs have clitic versions: *I’m*, *you’re*, *he’s*, *we’ve*, *they’ll*, *she’d*. These attach to the preceding word and are not separate words in the way full forms are. Their distribution is sensitive to syntax and style, so a description has to say where they can attach, not merely list them."
+        },
+        {
+          "type": "paragraph",
+          "text": "The infinitival marker *to* can be incorporated into the preceding verb in speech: *gonna*, *wanna*, *hafta*. This is phonological reduction, not a new inflectional category. Liaison links sounds across word boundaries, as in *an apple* or, in non-rhotic accents, *far away*."
+        },
+        {
+          "type": "examples",
+          "title": "Reduced forms",
+          "items": [
+            {
+              "text": "Look at this!",
+              "mark": "ok",
+              "note": "Weak form of at."
+            },
+            {
+              "text": "I’m / you’re / they’ll",
+              "mark": "ok",
+              "note": "Clitic auxiliaries."
+            },
+            {
+              "text": "gonna / wanna",
+              "mark": "ok",
+              "note": "Incorporation of to in informal speech."
+            },
+            {
+              "text": "an apple",
+              "mark": "ok",
+              "note": "Liaison across the word boundary."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is a weak form?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A reduced pronunciation of a grammaticised word in connected speech",
+            "feedback": "At /ət/ versus /æt/."
+          },
+          {
+            "id": "b",
+            "text": "An irregular inflectional form",
+            "feedback": "Weak forms are phonological, not inflectional."
+          },
+          {
+            "id": "c",
+            "text": "A clitic pronoun",
+            "feedback": "Clitics are one type of reduced form."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "chapter-review",
+      "title": "Chapter Review",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "One lexeme can wear many forms, and the difference between those forms and a new lexeme runs through the chapter. Inflectional morphology describes the forms a lexeme takes when syntax requires them; lexical word-formation creates new lexemes. The lexical base is the starting point for inflection and is not identical with any particular inflected form, as defective and invariant lexemes show."
+        },
+        {
+          "type": "paragraph",
+          "text": "Suffixation, internal change and combined operations produce the forms. Alternation, regularity and syncretism describe how form relates to category, and speech and writing often diverge, with the spoken rules frequently the more basic."
+        },
+        {
+          "type": "paragraph",
+          "text": "Grade, noun plurals and genitives, verb paradigms, complex bases and negative auxiliaries show the system in detail. Weak forms, clitics, the incorporation of *to* and liaison describe non-inflectional variation in connected speech."
+        },
+        {
+          "type": "note",
+          "tone": "why",
+          "title": "A morphology checklist",
+          "text": "Identify the lexeme and its lexical base. Decide whether the form is inflectional or derivational. Check the operation: suffixation, internal change or a combination. Then check whether the form is regular or lexeme-specific, and whether speech and writing diverge."
+        }
+      ],
+      "check": {
+        "prompt": "Which statement correctly distinguishes inflection from lexical word-formation?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Inflection creates forms of one lexeme; word-formation creates new lexemes.",
+            "feedback": "Simpler is inflection; simplify is derivation."
+          },
+          {
+            "id": "b",
+            "text": "Inflection creates new lexemes.",
+            "feedback": "That is word-formation."
+          },
+          {
+            "id": "c",
+            "text": "Word-formation creates inflectional forms.",
+            "feedback": "The labels are reversed."
+          }
+        ],
+        "answer": "a"
+      }
+    }
+  ],
+  "worked": [
+    "Take *The children’s folders were left on the shelves, but the boxes had already been moved*. *Children’s* is a two-step genitive: the plural *children* is formed from the base *child*, and the genitive is formed from the plural. *Shelves* is an irregular plural with base modification, and *boxes* is a regular plural with the /iz/ suffix and *es* spelling.",
+    "The example shows inflection, alternation and syncretism at work. *Children* is irregular, *shelves* modifies the base, and *boxes* follows the regular sibilant pattern. The genitive and plural categories are distinct, but they interact in the form *children’s*."
+  ],
+  "application": [
+    "Identify the lexeme and its lexical base. Decide whether the form is inflectional or a new lexeme. Then identify the operation: suffixation, internal change, or a combination. Check whether the form is regular or requires lexeme-specific information.",
+    "For spelling and pronunciation, separate the two levels. A form can be regular in writing but irregular in speech, or vice versa. The sibilant and alveolar-plosive suffixes have predictable alternations based on the final sound of the base.",
+    "For noun and verb paradigms, check the plural or preterite class, the genitive formation, and any two-step processes. For connected speech, distinguish weak forms, clitics and incorporation from inflectional morphology."
+  ],
+  "reveal": [
+    "In *The children’s folders were left on the shelves, but the boxes had already been moved*, *children’s* is a plural genitive formed from the irregular plural *children*. *Shelves* is an irregular plural with base modification. *Boxes* is a regular plural whose *es* spelling reflects the /iz/ pronunciation."
+  ],
+  "recap": [
+    "Inflectional morphology describes the forms of a lexeme; lexical word-formation creates new lexemes. The lexical base is distinct from particular inflectional forms, and operations include suffixation, internal change and combined processes.",
+    "Regularity, alternation and syncretism describe how forms relate to categories. Speech and writing can diverge, and the spoken rules are often primary. Noun plurals, genitives, verb paradigms, negative auxiliaries, weak forms and clitics show the system in detail."
+  ],
+  "self_check": [
+    {
+      "question": "What is the difference between inflection and lexical word-formation?",
+      "answer": "Inflection creates forms of one lexeme; lexical word-formation creates new lexemes."
+    },
+    {
+      "question": "Why is the lexical base not always an inflectional form?",
+      "answer": "Defective lexemes and base plurals show that the base can exist without a distinct singular form identical with it."
+    },
+    {
+      "question": "What is syncretism?",
+      "answer": "Identity of form between distinct inflectional categories, as in sheep for singular and plural."
+    },
+    {
+      "question": "Why is children’s a two-step formation?",
+      "answer": "The genitive is formed from the plural children, not directly from the base child."
+    },
+    {
+      "question": "What is a weak form?",
+      "answer": "A reduced pronunciation of a grammaticised word in connected speech, such as /ət/ for at."
+    }
+  ],
+  "opening": [
+    {
+      "prompt": "Which pair contains forms of the same lexeme?",
+      "options": [
+        {
+          "id": "a",
+          "text": "simple, simpler, simplest",
+          "feedback": "They are inflectional forms of simple."
+        },
+        {
+          "id": "b",
+          "text": "simple, simplify",
+          "feedback": "Simplify is a different lexeme."
+        },
+        {
+          "id": "c",
+          "text": "simple, simpleton",
+          "feedback": "Simpleton is a different lexeme."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is the lexical base?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The starting form for inflectional operations",
+          "feedback": "Dogs and workers are formed from their bases."
+        },
+        {
+          "id": "b",
+          "text": "The plural form",
+          "feedback": "The plural is an inflected form."
+        },
+        {
+          "id": "c",
+          "text": "The past tense",
+          "feedback": "The past tense is an inflected form."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is syncretism?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Identity of form between distinct inflectional categories",
+          "feedback": "Sheep has syncretism between singular and plural."
+        },
+        {
+          "id": "b",
+          "text": "A change of vowel in the base",
+          "feedback": "That is internal change."
+        },
+        {
+          "id": "c",
+          "text": "A spelling rule",
+          "feedback": "Syncretism is a form relation."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which plural is formed by vowel change?",
+      "options": [
+        {
+          "id": "a",
+          "text": "teeth",
+          "feedback": "Tooth → teeth."
+        },
+        {
+          "id": "b",
+          "text": "cats",
+          "feedback": "That is regular suffixation."
+        },
+        {
+          "id": "c",
+          "text": "children",
+          "feedback": "That is an ·en plural."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is a weak form?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A reduced pronunciation of a grammaticised word in connected speech",
+          "feedback": "At /ət/ versus /æt/."
+        },
+        {
+          "id": "b",
+          "text": "An irregular inflectional form",
+          "feedback": "Weak forms are phonological."
+        },
+        {
+          "id": "c",
+          "text": "A clitic pronoun",
+          "feedback": "Clitics are one type of reduced form."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "closing": [
+    {
+      "prompt": "Why are simpler and simplest not new lexemes?",
+      "options": [
+        {
+          "id": "a",
+          "text": "They are inflectional forms of the same lexeme.",
+          "feedback": "They belong to the paradigm of simple."
+        },
+        {
+          "id": "b",
+          "text": "They contain the same letters.",
+          "feedback": "Spelling is not the criterion."
+        },
+        {
+          "id": "c",
+          "text": "They are irregular.",
+          "feedback": "Regularity is separate."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Why is thieves irregular even though it ends in the regular plural suffix?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The base modification from thief to thieve- is lexeme-specific.",
+          "feedback": "The suffix is regular, but the base change is not general."
+        },
+        {
+          "id": "b",
+          "text": "It ends in -s.",
+          "feedback": "The suffix is not the issue."
+        },
+        {
+          "id": "c",
+          "text": "It is a noun.",
+          "feedback": "Nouns can be regular or irregular."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Why is the plural of house irregular in speech but regular in writing?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The final consonant is voiced in the spoken plural but the written form adds regular s.",
+          "feedback": "The spoken base changes from /s/ to /z/."
+        },
+        {
+          "id": "b",
+          "text": "Houses has no plural.",
+          "feedback": "It does."
+        },
+        {
+          "id": "c",
+          "text": "The written plural uses -es.",
+          "feedback": "It uses -s."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Why is children’s a two-step formation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The genitive is formed from the plural children, not directly from child.",
+          "feedback": "The plural is an intermediate form."
+        },
+        {
+          "id": "b",
+          "text": "It contains two apostrophes.",
+          "feedback": "It contains one."
+        },
+        {
+          "id": "c",
+          "text": "It is irregular.",
+          "feedback": "The two-step formation is separate from regularity."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which statement correctly distinguishes inflection from lexical word-formation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Inflection creates forms of one lexeme; word-formation creates new lexemes.",
+          "feedback": "Simpler is inflection; simplify is derivation."
+        },
+        {
+          "id": "b",
+          "text": "Inflection creates new lexemes.",
+          "feedback": "That is word-formation."
+        },
+        {
+          "id": "c",
+          "text": "Word-formation creates inflectional forms.",
+          "feedback": "The labels are reversed."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "stages": {
+    "predict": {
+      "prompt": "Which pair contains forms of the same lexeme?",
+      "options": [
+        {
+          "id": "a",
+          "text": "simple, simpler, simplest",
+          "feedback": "Inflectional forms of simple."
+        },
+        {
+          "id": "b",
+          "text": "simple, simplify",
+          "feedback": "Different lexemes."
+        },
+        {
+          "id": "c",
+          "text": "simple, simpleton",
+          "feedback": "Different lexemes."
+        }
+      ],
+      "answer": "a"
+    },
+    "guided": {
+      "prompt": "What is the lexical base?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The starting form for inflectional operations",
+          "feedback": "Dogs and workers are formed from their bases."
+        },
+        {
+          "id": "b",
+          "text": "The plural form",
+          "feedback": "The plural is an inflected form."
+        },
+        {
+          "id": "c",
+          "text": "The past tense",
+          "feedback": "The past tense is an inflected form."
+        }
+      ],
+      "answer": "a"
+    },
+    "transfer": {
+      "prompt": "Which plural is formed by vowel change?",
+      "options": [
+        {
+          "id": "a",
+          "text": "teeth",
+          "feedback": "Tooth → teeth."
+        },
+        {
+          "id": "b",
+          "text": "cats",
+          "feedback": "Regular suffixation."
+        },
+        {
+          "id": "c",
+          "text": "children",
+          "feedback": "·en plural."
+        }
+      ],
+      "answer": "a"
+    },
+    "exit": {
+      "prompt": "What is a weak form?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A reduced pronunciation of a grammaticised word in connected speech",
+          "feedback": "At /ət/ versus /æt/."
+        },
+        {
+          "id": "b",
+          "text": "An irregular inflectional form",
+          "feedback": "Weak forms are phonological."
+        },
+        {
+          "id": "c",
+          "text": "A clitic pronoun",
+          "feedback": "Clitics are one type of reduced form."
+        }
+      ],
+      "answer": "a"
+    }
+  }
+}

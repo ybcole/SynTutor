@@ -1,336 +1,1274 @@
 {
-  "title": "Comparatives",
-  "content_version": "2.1.0",
-  "estimated_minutes": 13,
+  "title": "Comparative constructions",
+  "content_version": "3.1.0",
+  "estimated_minutes": 20,
   "outcomes": [
     {
       "id": "o1",
-      "text": "Recover the missing counterpart in a comparative clause and decide when a subject is needed."
+      "text": "Explain the main ideas in Comparative constructions."
     },
     {
       "id": "o2",
-      "text": "Select the expression and complement that convey the intended comparison."
+      "text": "Recognise the patterns in real sentences."
     },
     {
       "id": "o3",
-      "text": "Distinguish a ranking in a noun phrase from a free superlative."
+      "text": "Use the ideas when you read and write."
     }
   ],
   "key_terms": [
     {
-      "term": "comparative clause",
-      "definition": "The clause in a comparison such as than it was or as it is wide, with part of its interpretation supplied by the larger construction."
+      "term": "comparison",
+      "definition": "A construction relating two or more things or quantities on a scale or by identity and likeness."
     },
     {
-      "term": "comparison set",
-      "definition": "The group of things or occasions a ranking is made over."
+      "term": "scalar comparison",
+      "definition": "Comparison of relative position on a gradable scale, as in older than or as old as."
+    },
+    {
+      "term": "non-scalar comparison",
+      "definition": "Comparison concerned with identity, likeness or difference rather than degree."
+    },
+    {
+      "term": "equality",
+      "definition": "A comparison presenting two values as equal or at least equal, typically with as."
+    },
+    {
+      "term": "inequality",
+      "definition": "A comparison presenting values as unequal, typically with than or less."
+    },
+    {
+      "term": "superiority",
+      "definition": "Scalar inequality in which the primary term is higher on the scale."
+    },
+    {
+      "term": "inferiority",
+      "definition": "Scalar inequality in which the primary term is lower on the scale."
+    },
+    {
+      "term": "scale orientation",
+      "definition": "The direction of a scale determined by lexical meaning, as with old versus young."
+    },
+    {
+      "term": "term comparison",
+      "definition": "Comparison between a primary term and a secondary term."
+    },
+    {
+      "term": "set comparison",
+      "definition": "Comparison among members of a set, often with a superlative."
+    },
+    {
+      "term": "primary term",
+      "definition": "The term expressed in the matrix clause of a term comparison."
+    },
+    {
+      "term": "secondary term",
+      "definition": "The term expressed in the subordinate comparative clause or phrase."
+    },
+    {
+      "term": "comparative clause",
+      "definition": "A subordinate clause complement of than or as, with part of its interpretation supplied by the matrix."
+    },
+    {
+      "term": "comparative governor",
+      "definition": "The expression that licenses a comparative complement, such as more, less, as or than."
+    },
+    {
+      "term": "comparative phrase",
+      "definition": "The phrase containing the comparative marker and its complement or modifier."
+    },
+    {
+      "term": "comparative form",
+      "definition": "The inflectional or analytic form marking scalar superiority, as in bigger or more useful."
     },
     {
       "term": "superlative",
-      "definition": "A form such as deepest or most efficiently, used to locate the extreme of a scale within a set."
+      "definition": "The form marking the extreme of a scale within a set, as in biggest or most useful."
+    },
+    {
+      "term": "metalinguistic comparison",
+      "definition": "A comparison that measures how well a description fits rather than comparing the things themselves."
+    },
+    {
+      "term": "analytic comparative",
+      "definition": "A comparative formed with more or less rather than an inflection."
+    },
+    {
+      "term": "inflectional comparative",
+      "definition": "A comparative formed with the suffix -er."
+    },
+    {
+      "term": "non-scalar equality",
+      "definition": "Identity or likeness expressed with same, similar or as."
+    },
+    {
+      "term": "non-scalar inequality",
+      "definition": "Difference or unlikeness expressed with different, other, else or unlike."
+    },
+    {
+      "term": "likeness",
+      "definition": "A relation of similarity rather than identity, often expressed by like or similar."
+    },
+    {
+      "term": "identity",
+      "definition": "The relation of being the same entity or set, often expressed by same."
+    },
+    {
+      "term": "correlative comparative",
+      "definition": "The construction the more ..., the merrier, with paired comparative phrases."
+    },
+    {
+      "term": "absolute superlative",
+      "definition": "A superlative use expressing a very high degree without comparison to a set."
+    },
+    {
+      "term": "relative superlative",
+      "definition": "A superlative use locating the extreme within a comparison set."
+    },
+    {
+      "term": "comparison set",
+      "definition": "The set of entities over which a superlative or set comparison ranges."
     }
   ],
   "revised_assessment": {
     "required_sections": [
-      "introduction",
-      "concepts",
-      "worked-example",
-      "application",
-      "recap"
+      "comparison-preliminaries",
+      "scalar-non-scalar",
+      "term-set",
+      "governors-phrases",
+      "comparative-clauses",
+      "than-as-single",
+      "likeness-contrast",
+      "scalar-inequality",
+      "scalar-equality",
+      "modification-correlative",
+      "non-scalar",
+      "as-like-unlike",
+      "set-comparison",
+      "chapter-review"
     ],
     "opening": [
       {
+        "id": "opening-1",
+        "prompt": "Which comparison is non-scalar?",
         "options": [
           {
             "id": "a",
-            "text": "The shelf is as deep as it is wide.",
-            "feedback": "The second clause retains wide but leaves its degree unexpressed."
+            "text": "I took the same bus as last time.",
+            "feedback": "It compares for identity, not degree."
           },
           {
             "id": "b",
-            "text": "The shelf is as deep as it is quite wide.",
-            "feedback": "The second clause retains wide but leaves its degree unexpressed."
+            "text": "Kim is older than Pat.",
+            "feedback": "That is scalar superiority."
           },
           {
             "id": "c",
-            "text": "The shelf is as deep as it is very wide.",
-            "feedback": "The second clause retains wide but leaves its degree unexpressed."
+            "text": "Kim is as old as Pat.",
+            "feedback": "That is scalar equality."
           }
         ],
-        "prompt": "Which comparison leaves the degree of width available for as to supply?",
         "answer": "a",
         "outcome_ids": [
           "o1"
         ],
         "source_ids": [
-          "CGEL-2002-CH13-P1108"
-        ],
-        "id": "opening-1"
-      },
-      {
-        "options": [
-          {
-            "id": "a",
-            "text": "fewer equipment",
-            "feedback": "Equipment has its ordinary mass reading. Fewer ordinarily counts separate items."
-          },
-          {
-            "id": "b",
-            "text": "few equipment",
-            "feedback": "Equipment has its ordinary mass reading. Fewer ordinarily counts separate items."
-          },
-          {
-            "id": "c",
-            "text": "less equipment",
-            "feedback": "Equipment has its ordinary mass reading. Fewer ordinarily counts separate items."
-          }
-        ],
-        "prompt": "Which wording measures an amount of equipment?",
-        "answer": "c",
-        "outcome_ids": [
-          "o2"
-        ],
-        "source_ids": [
+          "CGEL-2002-CH13-P1101",
+          "CGEL-2002-CH13-P1099",
+          "CGEL-2002-CH13-P1100",
+          "CGEL-2002-CH13-P1102",
+          "CGEL-2002-CH13-P1103",
+          "CGEL-2002-CH13-P1104",
+          "CGEL-2002-CH13-P1105",
+          "CGEL-2002-CH13-P1106",
+          "CGEL-2002-CH13-P1107",
+          "CGEL-2002-CH13-P1108",
+          "CGEL-2002-CH13-P1109",
+          "CGEL-2002-CH13-P1110",
+          "CGEL-2002-CH13-P1111",
+          "CGEL-2002-CH13-P1112",
+          "CGEL-2002-CH13-P1113",
+          "CGEL-2002-CH13-P1114",
+          "CGEL-2002-CH13-P1115",
+          "CGEL-2002-CH13-P1116",
+          "CGEL-2002-CH13-P1117",
+          "CGEL-2002-CH13-P1118",
+          "CGEL-2002-CH13-P1119",
+          "CGEL-2002-CH13-P1120",
+          "CGEL-2002-CH13-P1121",
+          "CGEL-2002-CH13-P1122",
+          "CGEL-2002-CH13-P1123",
+          "CGEL-2002-CH13-P1124",
+          "CGEL-2002-CH13-P1125",
+          "CGEL-2002-CH13-P1126",
           "CGEL-2002-CH13-P1127",
-          "CGEL-2002-CH13-P1129"
-        ],
-        "id": "opening-2"
-      },
-      {
-        "options": [
-          {
-            "id": "a",
-            "text": "The possible meanings of shelf",
-            "feedback": "The incorporated superlative modifies shelf and ranks it against other shelves."
-          },
-          {
-            "id": "b",
-            "text": "The shelves in the case",
-            "feedback": "The incorporated superlative modifies shelf and ranks it against other shelves."
-          },
-          {
-            "id": "c",
-            "text": "One shelf across several occasions",
-            "feedback": "The incorporated superlative modifies shelf and ranks it against other shelves."
-          }
-        ],
-        "prompt": "What is ranked in “the deepest shelf in the case”?",
-        "answer": "b",
-        "outcome_ids": [
-          "o3"
-        ],
-        "source_ids": [
+          "CGEL-2002-CH13-P1128",
+          "CGEL-2002-CH13-P1129",
+          "CGEL-2002-CH13-P1130",
+          "CGEL-2002-CH13-P1131",
+          "CGEL-2002-CH13-P1132",
+          "CGEL-2002-CH13-P1133",
+          "CGEL-2002-CH13-P1134",
+          "CGEL-2002-CH13-P1135",
+          "CGEL-2002-CH13-P1136",
+          "CGEL-2002-CH13-P1137",
+          "CGEL-2002-CH13-P1138",
+          "CGEL-2002-CH13-P1139",
+          "CGEL-2002-CH13-P1140",
+          "CGEL-2002-CH13-P1141",
+          "CGEL-2002-CH13-P1142",
+          "CGEL-2002-CH13-P1143",
+          "CGEL-2002-CH13-P1144",
+          "CGEL-2002-CH13-P1145",
+          "CGEL-2002-CH13-P1146",
+          "CGEL-2002-CH13-P1147",
+          "CGEL-2002-CH13-P1148",
+          "CGEL-2002-CH13-P1149",
+          "CGEL-2002-CH13-P1150",
+          "CGEL-2002-CH13-P1151",
+          "CGEL-2002-CH13-P1152",
+          "CGEL-2002-CH13-P1153",
+          "CGEL-2002-CH13-P1154",
+          "CGEL-2002-CH13-P1155",
+          "CGEL-2002-CH13-P1156",
+          "CGEL-2002-CH13-P1157",
+          "CGEL-2002-CH13-P1158",
+          "CGEL-2002-CH13-P1159",
+          "CGEL-2002-CH13-P1160",
+          "CGEL-2002-CH13-P1161",
+          "CGEL-2002-CH13-P1162",
+          "CGEL-2002-CH13-P1163",
+          "CGEL-2002-CH13-P1164",
+          "CGEL-2002-CH13-P1165",
+          "CGEL-2002-CH13-P1166",
+          "CGEL-2002-CH13-P1167",
           "CGEL-2002-CH13-P1168",
-          "CGEL-2002-CH13-P1169"
-        ],
-        "id": "opening-3"
+          "CGEL-2002-CH13-P1169",
+          "CGEL-2002-CH13-P1170"
+        ]
       },
       {
+        "id": "opening-2",
+        "prompt": "What is the primary term in Ed is more tolerant than he used to be?",
         "options": [
           {
             "id": "a",
-            "text": "Lea works faster than she did last year.",
-            "feedback": "She supplies the subject of did, which stands for the earlier working."
+            "text": "Ed’s present tolerance",
+            "feedback": "It is expressed in the matrix clause."
           },
           {
             "id": "b",
-            "text": "Lea works faster than did last year.",
-            "feedback": "She supplies the subject of did, which stands for the earlier working."
+            "text": "Ed’s past tolerance",
+            "feedback": "That is the secondary term."
           },
           {
             "id": "c",
-            "text": "Lea works faster than did she last year.",
-            "feedback": "She supplies the subject of did, which stands for the earlier working."
+            "text": "Ed",
+            "feedback": "Ed is the subject, but the comparison is between degrees of tolerance."
           }
         ],
-        "prompt": "Which wording keeps a subject for the retained did?",
         "answer": "a",
         "outcome_ids": [
           "o1"
         ],
         "source_ids": [
-          "CGEL-2002-CH13-P1113"
-        ],
-        "id": "opening-4"
+          "CGEL-2002-CH13-P1101",
+          "CGEL-2002-CH13-P1099",
+          "CGEL-2002-CH13-P1100",
+          "CGEL-2002-CH13-P1102",
+          "CGEL-2002-CH13-P1103",
+          "CGEL-2002-CH13-P1104",
+          "CGEL-2002-CH13-P1105",
+          "CGEL-2002-CH13-P1106",
+          "CGEL-2002-CH13-P1107",
+          "CGEL-2002-CH13-P1108",
+          "CGEL-2002-CH13-P1109",
+          "CGEL-2002-CH13-P1110",
+          "CGEL-2002-CH13-P1111",
+          "CGEL-2002-CH13-P1112",
+          "CGEL-2002-CH13-P1113",
+          "CGEL-2002-CH13-P1114",
+          "CGEL-2002-CH13-P1115",
+          "CGEL-2002-CH13-P1116",
+          "CGEL-2002-CH13-P1117",
+          "CGEL-2002-CH13-P1118",
+          "CGEL-2002-CH13-P1119",
+          "CGEL-2002-CH13-P1120",
+          "CGEL-2002-CH13-P1121",
+          "CGEL-2002-CH13-P1122",
+          "CGEL-2002-CH13-P1123",
+          "CGEL-2002-CH13-P1124",
+          "CGEL-2002-CH13-P1125",
+          "CGEL-2002-CH13-P1126",
+          "CGEL-2002-CH13-P1127",
+          "CGEL-2002-CH13-P1128",
+          "CGEL-2002-CH13-P1129",
+          "CGEL-2002-CH13-P1130",
+          "CGEL-2002-CH13-P1131",
+          "CGEL-2002-CH13-P1132",
+          "CGEL-2002-CH13-P1133",
+          "CGEL-2002-CH13-P1134",
+          "CGEL-2002-CH13-P1135",
+          "CGEL-2002-CH13-P1136",
+          "CGEL-2002-CH13-P1137",
+          "CGEL-2002-CH13-P1138",
+          "CGEL-2002-CH13-P1139",
+          "CGEL-2002-CH13-P1140",
+          "CGEL-2002-CH13-P1141",
+          "CGEL-2002-CH13-P1142",
+          "CGEL-2002-CH13-P1143",
+          "CGEL-2002-CH13-P1144",
+          "CGEL-2002-CH13-P1145",
+          "CGEL-2002-CH13-P1146",
+          "CGEL-2002-CH13-P1147",
+          "CGEL-2002-CH13-P1148",
+          "CGEL-2002-CH13-P1149",
+          "CGEL-2002-CH13-P1150",
+          "CGEL-2002-CH13-P1151",
+          "CGEL-2002-CH13-P1152",
+          "CGEL-2002-CH13-P1153",
+          "CGEL-2002-CH13-P1154",
+          "CGEL-2002-CH13-P1155",
+          "CGEL-2002-CH13-P1156",
+          "CGEL-2002-CH13-P1157",
+          "CGEL-2002-CH13-P1158",
+          "CGEL-2002-CH13-P1159",
+          "CGEL-2002-CH13-P1160",
+          "CGEL-2002-CH13-P1161",
+          "CGEL-2002-CH13-P1162",
+          "CGEL-2002-CH13-P1163",
+          "CGEL-2002-CH13-P1164",
+          "CGEL-2002-CH13-P1165",
+          "CGEL-2002-CH13-P1166",
+          "CGEL-2002-CH13-P1167",
+          "CGEL-2002-CH13-P1168",
+          "CGEL-2002-CH13-P1169",
+          "CGEL-2002-CH13-P1170"
+        ]
       },
       {
+        "id": "opening-3",
+        "prompt": "What does than take as its complement?",
         "options": [
           {
             "id": "a",
-            "text": "same screws as last time",
-            "feedback": "This use of same occurs in a definite noun phrase with the."
+            "text": "A comparative clause or reduced phrase",
+            "feedback": "Than is analysed as a preposition taking the comparative complement."
           },
           {
             "id": "b",
-            "text": "some same screws as last time",
-            "feedback": "This use of same occurs in a definite noun phrase with the."
+            "text": "An NP only",
+            "feedback": "It can take a clause."
           },
           {
             "id": "c",
-            "text": "the same screws as last time",
-            "feedback": "This use of same occurs in a definite noun phrase with the."
+            "text": "A finite clause only",
+            "feedback": "It can take reduced phrases."
           }
         ],
-        "prompt": "Choose the ordinary phrase naming matching screws.",
-        "answer": "c",
+        "answer": "a",
         "outcome_ids": [
-          "o2"
+          "o1"
         ],
         "source_ids": [
+          "CGEL-2002-CH13-P1101",
+          "CGEL-2002-CH13-P1099",
+          "CGEL-2002-CH13-P1100",
+          "CGEL-2002-CH13-P1102",
+          "CGEL-2002-CH13-P1103",
+          "CGEL-2002-CH13-P1104",
+          "CGEL-2002-CH13-P1105",
+          "CGEL-2002-CH13-P1106",
+          "CGEL-2002-CH13-P1107",
+          "CGEL-2002-CH13-P1108",
+          "CGEL-2002-CH13-P1109",
+          "CGEL-2002-CH13-P1110",
+          "CGEL-2002-CH13-P1111",
+          "CGEL-2002-CH13-P1112",
+          "CGEL-2002-CH13-P1113",
+          "CGEL-2002-CH13-P1114",
+          "CGEL-2002-CH13-P1115",
+          "CGEL-2002-CH13-P1116",
+          "CGEL-2002-CH13-P1117",
+          "CGEL-2002-CH13-P1118",
+          "CGEL-2002-CH13-P1119",
+          "CGEL-2002-CH13-P1120",
+          "CGEL-2002-CH13-P1121",
+          "CGEL-2002-CH13-P1122",
+          "CGEL-2002-CH13-P1123",
+          "CGEL-2002-CH13-P1124",
+          "CGEL-2002-CH13-P1125",
+          "CGEL-2002-CH13-P1126",
+          "CGEL-2002-CH13-P1127",
+          "CGEL-2002-CH13-P1128",
+          "CGEL-2002-CH13-P1129",
+          "CGEL-2002-CH13-P1130",
+          "CGEL-2002-CH13-P1131",
+          "CGEL-2002-CH13-P1132",
+          "CGEL-2002-CH13-P1133",
+          "CGEL-2002-CH13-P1134",
+          "CGEL-2002-CH13-P1135",
+          "CGEL-2002-CH13-P1136",
+          "CGEL-2002-CH13-P1137",
           "CGEL-2002-CH13-P1138",
-          "CGEL-2002-CH13-P1141"
+          "CGEL-2002-CH13-P1139",
+          "CGEL-2002-CH13-P1140",
+          "CGEL-2002-CH13-P1141",
+          "CGEL-2002-CH13-P1142",
+          "CGEL-2002-CH13-P1143",
+          "CGEL-2002-CH13-P1144",
+          "CGEL-2002-CH13-P1145",
+          "CGEL-2002-CH13-P1146",
+          "CGEL-2002-CH13-P1147",
+          "CGEL-2002-CH13-P1148",
+          "CGEL-2002-CH13-P1149",
+          "CGEL-2002-CH13-P1150",
+          "CGEL-2002-CH13-P1151",
+          "CGEL-2002-CH13-P1152",
+          "CGEL-2002-CH13-P1153",
+          "CGEL-2002-CH13-P1154",
+          "CGEL-2002-CH13-P1155",
+          "CGEL-2002-CH13-P1156",
+          "CGEL-2002-CH13-P1157",
+          "CGEL-2002-CH13-P1158",
+          "CGEL-2002-CH13-P1159",
+          "CGEL-2002-CH13-P1160",
+          "CGEL-2002-CH13-P1161",
+          "CGEL-2002-CH13-P1162",
+          "CGEL-2002-CH13-P1163",
+          "CGEL-2002-CH13-P1164",
+          "CGEL-2002-CH13-P1165",
+          "CGEL-2002-CH13-P1166",
+          "CGEL-2002-CH13-P1167",
+          "CGEL-2002-CH13-P1168",
+          "CGEL-2002-CH13-P1169",
+          "CGEL-2002-CH13-P1170"
+        ]
+      },
+      {
+        "id": "opening-4",
+        "prompt": "What does Jill is as clever as Liz ordinarily mean?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Jill is at least as clever as Liz.",
+            "feedback": "Scalar equality gives a lower bound."
+          },
+          {
+            "id": "b",
+            "text": "Jill is exactly as clever as Liz.",
+            "feedback": "Exact equality is not entailed."
+          },
+          {
+            "id": "c",
+            "text": "Jill is less clever than Liz.",
+            "feedback": "That is the negative reading."
+          }
         ],
-        "id": "opening-5"
+        "answer": "a",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH13-P1101",
+          "CGEL-2002-CH13-P1099",
+          "CGEL-2002-CH13-P1100",
+          "CGEL-2002-CH13-P1102",
+          "CGEL-2002-CH13-P1103",
+          "CGEL-2002-CH13-P1104",
+          "CGEL-2002-CH13-P1105",
+          "CGEL-2002-CH13-P1106",
+          "CGEL-2002-CH13-P1107",
+          "CGEL-2002-CH13-P1108",
+          "CGEL-2002-CH13-P1109",
+          "CGEL-2002-CH13-P1110",
+          "CGEL-2002-CH13-P1111",
+          "CGEL-2002-CH13-P1112",
+          "CGEL-2002-CH13-P1113",
+          "CGEL-2002-CH13-P1114",
+          "CGEL-2002-CH13-P1115",
+          "CGEL-2002-CH13-P1116",
+          "CGEL-2002-CH13-P1117",
+          "CGEL-2002-CH13-P1118",
+          "CGEL-2002-CH13-P1119",
+          "CGEL-2002-CH13-P1120",
+          "CGEL-2002-CH13-P1121",
+          "CGEL-2002-CH13-P1122",
+          "CGEL-2002-CH13-P1123",
+          "CGEL-2002-CH13-P1124",
+          "CGEL-2002-CH13-P1125",
+          "CGEL-2002-CH13-P1126",
+          "CGEL-2002-CH13-P1127",
+          "CGEL-2002-CH13-P1128",
+          "CGEL-2002-CH13-P1129",
+          "CGEL-2002-CH13-P1130",
+          "CGEL-2002-CH13-P1131",
+          "CGEL-2002-CH13-P1132",
+          "CGEL-2002-CH13-P1133",
+          "CGEL-2002-CH13-P1134",
+          "CGEL-2002-CH13-P1135",
+          "CGEL-2002-CH13-P1136",
+          "CGEL-2002-CH13-P1137",
+          "CGEL-2002-CH13-P1138",
+          "CGEL-2002-CH13-P1139",
+          "CGEL-2002-CH13-P1140",
+          "CGEL-2002-CH13-P1141",
+          "CGEL-2002-CH13-P1142",
+          "CGEL-2002-CH13-P1143",
+          "CGEL-2002-CH13-P1144",
+          "CGEL-2002-CH13-P1145",
+          "CGEL-2002-CH13-P1146",
+          "CGEL-2002-CH13-P1147",
+          "CGEL-2002-CH13-P1148",
+          "CGEL-2002-CH13-P1149",
+          "CGEL-2002-CH13-P1150",
+          "CGEL-2002-CH13-P1151",
+          "CGEL-2002-CH13-P1152",
+          "CGEL-2002-CH13-P1153",
+          "CGEL-2002-CH13-P1154",
+          "CGEL-2002-CH13-P1155",
+          "CGEL-2002-CH13-P1156",
+          "CGEL-2002-CH13-P1157",
+          "CGEL-2002-CH13-P1158",
+          "CGEL-2002-CH13-P1159",
+          "CGEL-2002-CH13-P1160",
+          "CGEL-2002-CH13-P1161",
+          "CGEL-2002-CH13-P1162",
+          "CGEL-2002-CH13-P1163",
+          "CGEL-2002-CH13-P1164",
+          "CGEL-2002-CH13-P1165",
+          "CGEL-2002-CH13-P1166",
+          "CGEL-2002-CH13-P1167",
+          "CGEL-2002-CH13-P1168",
+          "CGEL-2002-CH13-P1169",
+          "CGEL-2002-CH13-P1170"
+        ]
+      },
+      {
+        "id": "opening-5",
+        "prompt": "Which expression marks non-scalar likeness?",
+        "options": [
+          {
+            "id": "a",
+            "text": "similar to",
+            "feedback": "Similarity is likeness without identity."
+          },
+          {
+            "id": "b",
+            "text": "bigger than",
+            "feedback": "That is scalar superiority."
+          },
+          {
+            "id": "c",
+            "text": "less than",
+            "feedback": "That is scalar inferiority."
+          }
+        ],
+        "answer": "a",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH13-P1101",
+          "CGEL-2002-CH13-P1099",
+          "CGEL-2002-CH13-P1100",
+          "CGEL-2002-CH13-P1102",
+          "CGEL-2002-CH13-P1103",
+          "CGEL-2002-CH13-P1104",
+          "CGEL-2002-CH13-P1105",
+          "CGEL-2002-CH13-P1106",
+          "CGEL-2002-CH13-P1107",
+          "CGEL-2002-CH13-P1108",
+          "CGEL-2002-CH13-P1109",
+          "CGEL-2002-CH13-P1110",
+          "CGEL-2002-CH13-P1111",
+          "CGEL-2002-CH13-P1112",
+          "CGEL-2002-CH13-P1113",
+          "CGEL-2002-CH13-P1114",
+          "CGEL-2002-CH13-P1115",
+          "CGEL-2002-CH13-P1116",
+          "CGEL-2002-CH13-P1117",
+          "CGEL-2002-CH13-P1118",
+          "CGEL-2002-CH13-P1119",
+          "CGEL-2002-CH13-P1120",
+          "CGEL-2002-CH13-P1121",
+          "CGEL-2002-CH13-P1122",
+          "CGEL-2002-CH13-P1123",
+          "CGEL-2002-CH13-P1124",
+          "CGEL-2002-CH13-P1125",
+          "CGEL-2002-CH13-P1126",
+          "CGEL-2002-CH13-P1127",
+          "CGEL-2002-CH13-P1128",
+          "CGEL-2002-CH13-P1129",
+          "CGEL-2002-CH13-P1130",
+          "CGEL-2002-CH13-P1131",
+          "CGEL-2002-CH13-P1132",
+          "CGEL-2002-CH13-P1133",
+          "CGEL-2002-CH13-P1134",
+          "CGEL-2002-CH13-P1135",
+          "CGEL-2002-CH13-P1136",
+          "CGEL-2002-CH13-P1137",
+          "CGEL-2002-CH13-P1138",
+          "CGEL-2002-CH13-P1139",
+          "CGEL-2002-CH13-P1140",
+          "CGEL-2002-CH13-P1141",
+          "CGEL-2002-CH13-P1142",
+          "CGEL-2002-CH13-P1143",
+          "CGEL-2002-CH13-P1144",
+          "CGEL-2002-CH13-P1145",
+          "CGEL-2002-CH13-P1146",
+          "CGEL-2002-CH13-P1147",
+          "CGEL-2002-CH13-P1148",
+          "CGEL-2002-CH13-P1149",
+          "CGEL-2002-CH13-P1150",
+          "CGEL-2002-CH13-P1151",
+          "CGEL-2002-CH13-P1152",
+          "CGEL-2002-CH13-P1153",
+          "CGEL-2002-CH13-P1154",
+          "CGEL-2002-CH13-P1155",
+          "CGEL-2002-CH13-P1156",
+          "CGEL-2002-CH13-P1157",
+          "CGEL-2002-CH13-P1158",
+          "CGEL-2002-CH13-P1159",
+          "CGEL-2002-CH13-P1160",
+          "CGEL-2002-CH13-P1161",
+          "CGEL-2002-CH13-P1162",
+          "CGEL-2002-CH13-P1163",
+          "CGEL-2002-CH13-P1164",
+          "CGEL-2002-CH13-P1165",
+          "CGEL-2002-CH13-P1166",
+          "CGEL-2002-CH13-P1167",
+          "CGEL-2002-CH13-P1168",
+          "CGEL-2002-CH13-P1169",
+          "CGEL-2002-CH13-P1170"
+        ]
       }
     ],
     "closing": [
       {
+        "id": "closing-1",
+        "prompt": "Why is the same bus as last time non-scalar?",
         "options": [
           {
             "id": "a",
-            "text": "Every comparative clause lacks a subject.",
-            "feedback": "The missing position represents the number of brackets ordered."
+            "text": "It compares for identity, not degree on a scale.",
+            "feedback": "Bus is not graded."
           },
           {
             "id": "b",
-            "text": "The missing subject is the comparative counterpart of more brackets.",
-            "feedback": "The missing position represents the number of brackets ordered."
+            "text": "It contains no as.",
+            "feedback": "It contains as."
           },
           {
             "id": "c",
-            "text": "Were ordered is the main predicate of more brackets arrived.",
-            "feedback": "The missing position represents the number of brackets ordered."
+            "text": "It is a superlative.",
+            "feedback": "Same is not a superlative."
           }
         ],
-        "prompt": "Why is the subject absent in “More brackets arrived than were ordered”?",
-        "answer": "b",
-        "outcome_ids": [
-          "o1"
-        ],
-        "source_ids": [
-          "CGEL-2002-CH13-P1113"
-        ],
-        "id": "closing-1"
-      },
-      {
-        "options": [
-          {
-            "id": "a",
-            "text": "Rae spoke like she.",
-            "feedback": "As a guide describes the capacity. Like a guide describes resemblance."
-          },
-          {
-            "id": "b",
-            "text": "Rae spoke as a guide.",
-            "feedback": "As a guide describes the capacity. Like a guide describes resemblance."
-          },
-          {
-            "id": "c",
-            "text": "Rae spoke like a guide.",
-            "feedback": "As a guide describes the capacity. Like a guide describes resemblance."
-          }
-        ],
-        "prompt": "Rae really is a guide and spoke in that capacity. Which wording explicitly presents the role?",
-        "answer": "b",
-        "outcome_ids": [
-          "o2"
-        ],
-        "source_ids": [
-          "CGEL-2002-CH13-P1148",
-          "CGEL-2002-CH13-P1154",
-          "CGEL-2002-CH13-P1156"
-        ],
-        "id": "closing-2"
-      },
-      {
-        "options": [
-          {
-            "id": "a",
-            "text": "The lowest lake is on the left.",
-            "feedback": "Lowest describes the lake’s level. The clause compares it with its level on other occasions."
-          },
-          {
-            "id": "b",
-            "text": "The lake is low, which surprises us.",
-            "feedback": "Lowest describes the lake’s level. The clause compares it with its level on other occasions."
-          },
-          {
-            "id": "c",
-            "text": "The lake is the lowest it has been all year.",
-            "feedback": "Lowest describes the lake’s level. The clause compares it with its level on other occasions."
-          }
-        ],
-        "prompt": "Which sentence has a free superlative with an integrated relative?",
-        "answer": "c",
-        "outcome_ids": [
-          "o3"
-        ],
-        "source_ids": [
-          "CGEL-2002-CH13-P1168",
-          "CGEL-2002-CH13-P1169"
-        ],
-        "id": "closing-3"
-      },
-      {
-        "options": [
-          {
-            "id": "a",
-            "text": "superior to the original / similar to the original",
-            "feedback": "Both adjectives can use to to introduce their standard of comparison."
-          },
-          {
-            "id": "b",
-            "text": "superior of the original / similar than the original",
-            "feedback": "Both adjectives can use to to introduce their standard of comparison."
-          },
-          {
-            "id": "c",
-            "text": "superior than the original / similar the original",
-            "feedback": "Both adjectives can use to to introduce their standard of comparison."
-          }
-        ],
-        "prompt": "Which pair gives ordinary complements in both phrases?",
         "answer": "a",
         "outcome_ids": [
           "o2"
         ],
         "source_ids": [
+          "CGEL-2002-CH13-P1101",
+          "CGEL-2002-CH13-P1099",
+          "CGEL-2002-CH13-P1100",
+          "CGEL-2002-CH13-P1102",
+          "CGEL-2002-CH13-P1103",
+          "CGEL-2002-CH13-P1104",
+          "CGEL-2002-CH13-P1105",
+          "CGEL-2002-CH13-P1106",
+          "CGEL-2002-CH13-P1107",
+          "CGEL-2002-CH13-P1108",
+          "CGEL-2002-CH13-P1109",
+          "CGEL-2002-CH13-P1110",
+          "CGEL-2002-CH13-P1111",
+          "CGEL-2002-CH13-P1112",
+          "CGEL-2002-CH13-P1113",
+          "CGEL-2002-CH13-P1114",
+          "CGEL-2002-CH13-P1115",
+          "CGEL-2002-CH13-P1116",
+          "CGEL-2002-CH13-P1117",
+          "CGEL-2002-CH13-P1118",
+          "CGEL-2002-CH13-P1119",
+          "CGEL-2002-CH13-P1120",
+          "CGEL-2002-CH13-P1121",
+          "CGEL-2002-CH13-P1122",
+          "CGEL-2002-CH13-P1123",
+          "CGEL-2002-CH13-P1124",
+          "CGEL-2002-CH13-P1125",
+          "CGEL-2002-CH13-P1126",
+          "CGEL-2002-CH13-P1127",
+          "CGEL-2002-CH13-P1128",
+          "CGEL-2002-CH13-P1129",
           "CGEL-2002-CH13-P1130",
-          "CGEL-2002-CH13-P1141"
-        ],
-        "id": "closing-4"
+          "CGEL-2002-CH13-P1131",
+          "CGEL-2002-CH13-P1132",
+          "CGEL-2002-CH13-P1133",
+          "CGEL-2002-CH13-P1134",
+          "CGEL-2002-CH13-P1135",
+          "CGEL-2002-CH13-P1136",
+          "CGEL-2002-CH13-P1137",
+          "CGEL-2002-CH13-P1138",
+          "CGEL-2002-CH13-P1139",
+          "CGEL-2002-CH13-P1140",
+          "CGEL-2002-CH13-P1141",
+          "CGEL-2002-CH13-P1142",
+          "CGEL-2002-CH13-P1143",
+          "CGEL-2002-CH13-P1144",
+          "CGEL-2002-CH13-P1145",
+          "CGEL-2002-CH13-P1146",
+          "CGEL-2002-CH13-P1147",
+          "CGEL-2002-CH13-P1148",
+          "CGEL-2002-CH13-P1149",
+          "CGEL-2002-CH13-P1150",
+          "CGEL-2002-CH13-P1151",
+          "CGEL-2002-CH13-P1152",
+          "CGEL-2002-CH13-P1153",
+          "CGEL-2002-CH13-P1154",
+          "CGEL-2002-CH13-P1155",
+          "CGEL-2002-CH13-P1156",
+          "CGEL-2002-CH13-P1157",
+          "CGEL-2002-CH13-P1158",
+          "CGEL-2002-CH13-P1159",
+          "CGEL-2002-CH13-P1160",
+          "CGEL-2002-CH13-P1161",
+          "CGEL-2002-CH13-P1162",
+          "CGEL-2002-CH13-P1163",
+          "CGEL-2002-CH13-P1164",
+          "CGEL-2002-CH13-P1165",
+          "CGEL-2002-CH13-P1166",
+          "CGEL-2002-CH13-P1167",
+          "CGEL-2002-CH13-P1168",
+          "CGEL-2002-CH13-P1169",
+          "CGEL-2002-CH13-P1170"
+        ]
       },
       {
+        "id": "closing-2",
+        "prompt": "Why is She wrote more plays than he wrote five novels ungrammatical?",
         "options": [
           {
             "id": "a",
-            "text": "We used no fasteners other than screws.",
-            "feedback": "Screws is a noun phrase. Those that the store sold is another possible noun phrase."
+            "text": "The measure after more must be left empty in the comparative clause.",
+            "feedback": "Comparative clauses are structurally reduced."
           },
           {
             "id": "b",
-            "text": "We used no fasteners other than the store sold.",
-            "feedback": "Screws is a noun phrase. Those that the store sold is another possible noun phrase."
+            "text": "Plays is plural.",
+            "feedback": "Plurality is not the issue."
           },
           {
             "id": "c",
-            "text": "We used no fasteners other than were delivered.",
-            "feedback": "Screws is a noun phrase. Those that the store sold is another possible noun phrase."
+            "text": "Than cannot take a clause.",
+            "feedback": "Than takes comparative clauses."
           }
         ],
-        "prompt": "Which continuation supplies a noun phrase after postpositive other than?",
         "answer": "a",
         "outcome_ids": [
           "o2"
         ],
         "source_ids": [
-          "CGEL-2002-CH13-P1145"
+          "CGEL-2002-CH13-P1101",
+          "CGEL-2002-CH13-P1099",
+          "CGEL-2002-CH13-P1100",
+          "CGEL-2002-CH13-P1102",
+          "CGEL-2002-CH13-P1103",
+          "CGEL-2002-CH13-P1104",
+          "CGEL-2002-CH13-P1105",
+          "CGEL-2002-CH13-P1106",
+          "CGEL-2002-CH13-P1107",
+          "CGEL-2002-CH13-P1108",
+          "CGEL-2002-CH13-P1109",
+          "CGEL-2002-CH13-P1110",
+          "CGEL-2002-CH13-P1111",
+          "CGEL-2002-CH13-P1112",
+          "CGEL-2002-CH13-P1113",
+          "CGEL-2002-CH13-P1114",
+          "CGEL-2002-CH13-P1115",
+          "CGEL-2002-CH13-P1116",
+          "CGEL-2002-CH13-P1117",
+          "CGEL-2002-CH13-P1118",
+          "CGEL-2002-CH13-P1119",
+          "CGEL-2002-CH13-P1120",
+          "CGEL-2002-CH13-P1121",
+          "CGEL-2002-CH13-P1122",
+          "CGEL-2002-CH13-P1123",
+          "CGEL-2002-CH13-P1124",
+          "CGEL-2002-CH13-P1125",
+          "CGEL-2002-CH13-P1126",
+          "CGEL-2002-CH13-P1127",
+          "CGEL-2002-CH13-P1128",
+          "CGEL-2002-CH13-P1129",
+          "CGEL-2002-CH13-P1130",
+          "CGEL-2002-CH13-P1131",
+          "CGEL-2002-CH13-P1132",
+          "CGEL-2002-CH13-P1133",
+          "CGEL-2002-CH13-P1134",
+          "CGEL-2002-CH13-P1135",
+          "CGEL-2002-CH13-P1136",
+          "CGEL-2002-CH13-P1137",
+          "CGEL-2002-CH13-P1138",
+          "CGEL-2002-CH13-P1139",
+          "CGEL-2002-CH13-P1140",
+          "CGEL-2002-CH13-P1141",
+          "CGEL-2002-CH13-P1142",
+          "CGEL-2002-CH13-P1143",
+          "CGEL-2002-CH13-P1144",
+          "CGEL-2002-CH13-P1145",
+          "CGEL-2002-CH13-P1146",
+          "CGEL-2002-CH13-P1147",
+          "CGEL-2002-CH13-P1148",
+          "CGEL-2002-CH13-P1149",
+          "CGEL-2002-CH13-P1150",
+          "CGEL-2002-CH13-P1151",
+          "CGEL-2002-CH13-P1152",
+          "CGEL-2002-CH13-P1153",
+          "CGEL-2002-CH13-P1154",
+          "CGEL-2002-CH13-P1155",
+          "CGEL-2002-CH13-P1156",
+          "CGEL-2002-CH13-P1157",
+          "CGEL-2002-CH13-P1158",
+          "CGEL-2002-CH13-P1159",
+          "CGEL-2002-CH13-P1160",
+          "CGEL-2002-CH13-P1161",
+          "CGEL-2002-CH13-P1162",
+          "CGEL-2002-CH13-P1163",
+          "CGEL-2002-CH13-P1164",
+          "CGEL-2002-CH13-P1165",
+          "CGEL-2002-CH13-P1166",
+          "CGEL-2002-CH13-P1167",
+          "CGEL-2002-CH13-P1168",
+          "CGEL-2002-CH13-P1169",
+          "CGEL-2002-CH13-P1170"
+        ]
+      },
+      {
+        "id": "closing-3",
+        "prompt": "Why is younger than a superiority comparison?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It is grammatically comparative; the scale orientation is lexical.",
+            "feedback": "Superiority is grammatical, orientation is meaning."
+          },
+          {
+            "id": "b",
+            "text": "It means older than.",
+            "feedback": "It means less old."
+          },
+          {
+            "id": "c",
+            "text": "It contains less.",
+            "feedback": "It contains -er."
+          }
         ],
-        "id": "closing-5"
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH13-P1101",
+          "CGEL-2002-CH13-P1099",
+          "CGEL-2002-CH13-P1100",
+          "CGEL-2002-CH13-P1102",
+          "CGEL-2002-CH13-P1103",
+          "CGEL-2002-CH13-P1104",
+          "CGEL-2002-CH13-P1105",
+          "CGEL-2002-CH13-P1106",
+          "CGEL-2002-CH13-P1107",
+          "CGEL-2002-CH13-P1108",
+          "CGEL-2002-CH13-P1109",
+          "CGEL-2002-CH13-P1110",
+          "CGEL-2002-CH13-P1111",
+          "CGEL-2002-CH13-P1112",
+          "CGEL-2002-CH13-P1113",
+          "CGEL-2002-CH13-P1114",
+          "CGEL-2002-CH13-P1115",
+          "CGEL-2002-CH13-P1116",
+          "CGEL-2002-CH13-P1117",
+          "CGEL-2002-CH13-P1118",
+          "CGEL-2002-CH13-P1119",
+          "CGEL-2002-CH13-P1120",
+          "CGEL-2002-CH13-P1121",
+          "CGEL-2002-CH13-P1122",
+          "CGEL-2002-CH13-P1123",
+          "CGEL-2002-CH13-P1124",
+          "CGEL-2002-CH13-P1125",
+          "CGEL-2002-CH13-P1126",
+          "CGEL-2002-CH13-P1127",
+          "CGEL-2002-CH13-P1128",
+          "CGEL-2002-CH13-P1129",
+          "CGEL-2002-CH13-P1130",
+          "CGEL-2002-CH13-P1131",
+          "CGEL-2002-CH13-P1132",
+          "CGEL-2002-CH13-P1133",
+          "CGEL-2002-CH13-P1134",
+          "CGEL-2002-CH13-P1135",
+          "CGEL-2002-CH13-P1136",
+          "CGEL-2002-CH13-P1137",
+          "CGEL-2002-CH13-P1138",
+          "CGEL-2002-CH13-P1139",
+          "CGEL-2002-CH13-P1140",
+          "CGEL-2002-CH13-P1141",
+          "CGEL-2002-CH13-P1142",
+          "CGEL-2002-CH13-P1143",
+          "CGEL-2002-CH13-P1144",
+          "CGEL-2002-CH13-P1145",
+          "CGEL-2002-CH13-P1146",
+          "CGEL-2002-CH13-P1147",
+          "CGEL-2002-CH13-P1148",
+          "CGEL-2002-CH13-P1149",
+          "CGEL-2002-CH13-P1150",
+          "CGEL-2002-CH13-P1151",
+          "CGEL-2002-CH13-P1152",
+          "CGEL-2002-CH13-P1153",
+          "CGEL-2002-CH13-P1154",
+          "CGEL-2002-CH13-P1155",
+          "CGEL-2002-CH13-P1156",
+          "CGEL-2002-CH13-P1157",
+          "CGEL-2002-CH13-P1158",
+          "CGEL-2002-CH13-P1159",
+          "CGEL-2002-CH13-P1160",
+          "CGEL-2002-CH13-P1161",
+          "CGEL-2002-CH13-P1162",
+          "CGEL-2002-CH13-P1163",
+          "CGEL-2002-CH13-P1164",
+          "CGEL-2002-CH13-P1165",
+          "CGEL-2002-CH13-P1166",
+          "CGEL-2002-CH13-P1167",
+          "CGEL-2002-CH13-P1168",
+          "CGEL-2002-CH13-P1169",
+          "CGEL-2002-CH13-P1170"
+        ]
+      },
+      {
+        "id": "closing-4",
+        "prompt": "What is metalinguistic about more apparent than real?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It compares how well descriptions apply, not two degrees of a property.",
+            "feedback": "The comparison is about the aptness of apparent and real."
+          },
+          {
+            "id": "b",
+            "text": "It contains no comparative.",
+            "feedback": "It contains more."
+          },
+          {
+            "id": "c",
+            "text": "It compares two people.",
+            "feedback": "No two people are compared."
+          }
+        ],
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH13-P1101",
+          "CGEL-2002-CH13-P1099",
+          "CGEL-2002-CH13-P1100",
+          "CGEL-2002-CH13-P1102",
+          "CGEL-2002-CH13-P1103",
+          "CGEL-2002-CH13-P1104",
+          "CGEL-2002-CH13-P1105",
+          "CGEL-2002-CH13-P1106",
+          "CGEL-2002-CH13-P1107",
+          "CGEL-2002-CH13-P1108",
+          "CGEL-2002-CH13-P1109",
+          "CGEL-2002-CH13-P1110",
+          "CGEL-2002-CH13-P1111",
+          "CGEL-2002-CH13-P1112",
+          "CGEL-2002-CH13-P1113",
+          "CGEL-2002-CH13-P1114",
+          "CGEL-2002-CH13-P1115",
+          "CGEL-2002-CH13-P1116",
+          "CGEL-2002-CH13-P1117",
+          "CGEL-2002-CH13-P1118",
+          "CGEL-2002-CH13-P1119",
+          "CGEL-2002-CH13-P1120",
+          "CGEL-2002-CH13-P1121",
+          "CGEL-2002-CH13-P1122",
+          "CGEL-2002-CH13-P1123",
+          "CGEL-2002-CH13-P1124",
+          "CGEL-2002-CH13-P1125",
+          "CGEL-2002-CH13-P1126",
+          "CGEL-2002-CH13-P1127",
+          "CGEL-2002-CH13-P1128",
+          "CGEL-2002-CH13-P1129",
+          "CGEL-2002-CH13-P1130",
+          "CGEL-2002-CH13-P1131",
+          "CGEL-2002-CH13-P1132",
+          "CGEL-2002-CH13-P1133",
+          "CGEL-2002-CH13-P1134",
+          "CGEL-2002-CH13-P1135",
+          "CGEL-2002-CH13-P1136",
+          "CGEL-2002-CH13-P1137",
+          "CGEL-2002-CH13-P1138",
+          "CGEL-2002-CH13-P1139",
+          "CGEL-2002-CH13-P1140",
+          "CGEL-2002-CH13-P1141",
+          "CGEL-2002-CH13-P1142",
+          "CGEL-2002-CH13-P1143",
+          "CGEL-2002-CH13-P1144",
+          "CGEL-2002-CH13-P1145",
+          "CGEL-2002-CH13-P1146",
+          "CGEL-2002-CH13-P1147",
+          "CGEL-2002-CH13-P1148",
+          "CGEL-2002-CH13-P1149",
+          "CGEL-2002-CH13-P1150",
+          "CGEL-2002-CH13-P1151",
+          "CGEL-2002-CH13-P1152",
+          "CGEL-2002-CH13-P1153",
+          "CGEL-2002-CH13-P1154",
+          "CGEL-2002-CH13-P1155",
+          "CGEL-2002-CH13-P1156",
+          "CGEL-2002-CH13-P1157",
+          "CGEL-2002-CH13-P1158",
+          "CGEL-2002-CH13-P1159",
+          "CGEL-2002-CH13-P1160",
+          "CGEL-2002-CH13-P1161",
+          "CGEL-2002-CH13-P1162",
+          "CGEL-2002-CH13-P1163",
+          "CGEL-2002-CH13-P1164",
+          "CGEL-2002-CH13-P1165",
+          "CGEL-2002-CH13-P1166",
+          "CGEL-2002-CH13-P1167",
+          "CGEL-2002-CH13-P1168",
+          "CGEL-2002-CH13-P1169",
+          "CGEL-2002-CH13-P1170"
+        ]
+      },
+      {
+        "id": "closing-5",
+        "prompt": "What is the difference between a relative and an absolute superlative?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Relative ranks within a set; absolute expresses a very high degree.",
+            "feedback": "A most interesting article is absolute; the most useful option is relative."
+          },
+          {
+            "id": "b",
+            "text": "Relative uses -er; absolute uses -est.",
+            "feedback": "Both can use most."
+          },
+          {
+            "id": "c",
+            "text": "They are identical.",
+            "feedback": "The readings differ."
+          }
+        ],
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH13-P1101",
+          "CGEL-2002-CH13-P1099",
+          "CGEL-2002-CH13-P1100",
+          "CGEL-2002-CH13-P1102",
+          "CGEL-2002-CH13-P1103",
+          "CGEL-2002-CH13-P1104",
+          "CGEL-2002-CH13-P1105",
+          "CGEL-2002-CH13-P1106",
+          "CGEL-2002-CH13-P1107",
+          "CGEL-2002-CH13-P1108",
+          "CGEL-2002-CH13-P1109",
+          "CGEL-2002-CH13-P1110",
+          "CGEL-2002-CH13-P1111",
+          "CGEL-2002-CH13-P1112",
+          "CGEL-2002-CH13-P1113",
+          "CGEL-2002-CH13-P1114",
+          "CGEL-2002-CH13-P1115",
+          "CGEL-2002-CH13-P1116",
+          "CGEL-2002-CH13-P1117",
+          "CGEL-2002-CH13-P1118",
+          "CGEL-2002-CH13-P1119",
+          "CGEL-2002-CH13-P1120",
+          "CGEL-2002-CH13-P1121",
+          "CGEL-2002-CH13-P1122",
+          "CGEL-2002-CH13-P1123",
+          "CGEL-2002-CH13-P1124",
+          "CGEL-2002-CH13-P1125",
+          "CGEL-2002-CH13-P1126",
+          "CGEL-2002-CH13-P1127",
+          "CGEL-2002-CH13-P1128",
+          "CGEL-2002-CH13-P1129",
+          "CGEL-2002-CH13-P1130",
+          "CGEL-2002-CH13-P1131",
+          "CGEL-2002-CH13-P1132",
+          "CGEL-2002-CH13-P1133",
+          "CGEL-2002-CH13-P1134",
+          "CGEL-2002-CH13-P1135",
+          "CGEL-2002-CH13-P1136",
+          "CGEL-2002-CH13-P1137",
+          "CGEL-2002-CH13-P1138",
+          "CGEL-2002-CH13-P1139",
+          "CGEL-2002-CH13-P1140",
+          "CGEL-2002-CH13-P1141",
+          "CGEL-2002-CH13-P1142",
+          "CGEL-2002-CH13-P1143",
+          "CGEL-2002-CH13-P1144",
+          "CGEL-2002-CH13-P1145",
+          "CGEL-2002-CH13-P1146",
+          "CGEL-2002-CH13-P1147",
+          "CGEL-2002-CH13-P1148",
+          "CGEL-2002-CH13-P1149",
+          "CGEL-2002-CH13-P1150",
+          "CGEL-2002-CH13-P1151",
+          "CGEL-2002-CH13-P1152",
+          "CGEL-2002-CH13-P1153",
+          "CGEL-2002-CH13-P1154",
+          "CGEL-2002-CH13-P1155",
+          "CGEL-2002-CH13-P1156",
+          "CGEL-2002-CH13-P1157",
+          "CGEL-2002-CH13-P1158",
+          "CGEL-2002-CH13-P1159",
+          "CGEL-2002-CH13-P1160",
+          "CGEL-2002-CH13-P1161",
+          "CGEL-2002-CH13-P1162",
+          "CGEL-2002-CH13-P1163",
+          "CGEL-2002-CH13-P1164",
+          "CGEL-2002-CH13-P1165",
+          "CGEL-2002-CH13-P1166",
+          "CGEL-2002-CH13-P1167",
+          "CGEL-2002-CH13-P1168",
+          "CGEL-2002-CH13-P1169",
+          "CGEL-2002-CH13-P1170"
+        ]
       }
     ]
   },
   "preview_sources": [
+    {
+      "id": "CGEL-2002-CH13-P1101",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1101,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1099",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1099,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1100",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1100,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1102",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1102,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1103",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1103,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1104",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1104,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1105",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1105,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1106",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1106,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1107",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1107,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
     {
       "id": "CGEL-2002-CH13-P1108",
       "book": "Cambridge",
@@ -344,6 +1282,62 @@
       "independent_review": true,
       "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
       "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH13-P1109",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1109,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1110",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1110,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1111",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1111,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1112",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1112,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
     },
     {
       "id": "CGEL-2002-CH13-P1113",
@@ -360,6 +1354,188 @@
       "reviewed_on": "2026-11-14"
     },
     {
+      "id": "CGEL-2002-CH13-P1114",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1114,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1115",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1115,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1116",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1116,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1117",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1117,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1118",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1118,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1119",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1119,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1120",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1120,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1121",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1121,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1122",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1122,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1123",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1123,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1124",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1124,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1125",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1125,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1126",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1126,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
       "id": "CGEL-2002-CH13-P1127",
       "book": "Cambridge",
       "title": "The Cambridge Grammar of the English Language",
@@ -372,6 +1548,20 @@
       "independent_review": true,
       "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
       "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH13-P1128",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1128,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
     },
     {
       "id": "CGEL-2002-CH13-P1129",
@@ -402,6 +1592,104 @@
       "reviewed_on": "2026-11-14"
     },
     {
+      "id": "CGEL-2002-CH13-P1131",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1131,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1132",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1132,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1133",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1133,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1134",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1134,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1135",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1135,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1136",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1136,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1137",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1137,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
       "id": "CGEL-2002-CH13-P1138",
       "book": "Cambridge",
       "title": "The Cambridge Grammar of the English Language",
@@ -414,6 +1702,34 @@
       "independent_review": true,
       "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
       "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH13-P1139",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1139,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1140",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1140,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
     },
     {
       "id": "CGEL-2002-CH13-P1141",
@@ -430,6 +1746,48 @@
       "reviewed_on": "2026-11-14"
     },
     {
+      "id": "CGEL-2002-CH13-P1142",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1142,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1143",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1143,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1144",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1144,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
       "id": "CGEL-2002-CH13-P1145",
       "book": "Cambridge",
       "title": "The Cambridge Grammar of the English Language",
@@ -442,6 +1800,34 @@
       "independent_review": true,
       "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
       "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH13-P1146",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1146,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1147",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1147,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
     },
     {
       "id": "CGEL-2002-CH13-P1148",
@@ -458,6 +1844,76 @@
       "reviewed_on": "2026-11-14"
     },
     {
+      "id": "CGEL-2002-CH13-P1149",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1149,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1150",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1150,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1151",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1151,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1152",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1152,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1153",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1153,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
       "id": "CGEL-2002-CH13-P1154",
       "book": "Cambridge",
       "title": "The Cambridge Grammar of the English Language",
@@ -470,6 +1926,20 @@
       "independent_review": true,
       "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
       "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH13-P1155",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1155,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
     },
     {
       "id": "CGEL-2002-CH13-P1156",
@@ -486,6 +1956,76 @@
       "reviewed_on": "2026-11-14"
     },
     {
+      "id": "CGEL-2002-CH13-P1157",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1157,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1158",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1158,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1159",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1159,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1160",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1160,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1161",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1161,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
       "id": "CGEL-2002-CH13-P1162",
       "book": "Cambridge",
       "title": "The Cambridge Grammar of the English Language",
@@ -498,6 +2038,76 @@
       "independent_review": true,
       "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
       "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH13-P1163",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1163,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1164",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1164,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1165",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1165,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1166",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1166,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH13-P1167",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1167,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
     },
     {
       "id": "CGEL-2002-CH13-P1168",
@@ -526,6 +2136,20 @@
       "independent_review": true,
       "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
       "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH13-P1170",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 13,
+      "printed_page": 1170,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
     }
   ]
 }

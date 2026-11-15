@@ -1,0 +1,1837 @@
+{
+  "title": "The verb",
+  "description": "Follow the English verb from its six inflectional forms through auxiliaries, tense, aspect, modality, and the many ways English expresses future time.",
+  "example": "She may have been reading the report when the call came.",
+  "key_terms": [
+    {
+      "term": "lexical verb",
+      "definition": "A verb belonging to the open class of ordinary verbs, as opposed to an auxiliary."
+    },
+    {
+      "term": "auxiliary verb",
+      "definition": "A verb with special syntax, including negation, inversion, code and emphasis."
+    },
+    {
+      "term": "modal auxiliary",
+      "definition": "An auxiliary such as can, may, must, will or shall that marks mood rather than tense."
+    },
+    {
+      "term": "plain form",
+      "definition": "The uninflected verb form used after modals and dummy do, and in imperative, subjunctive and infinitival constructions."
+    },
+    {
+      "term": "preterite",
+      "definition": "The primary past-tense verb form, as in took or wanted."
+    },
+    {
+      "term": "past participle",
+      "definition": "The verb form used after perfect have and passive be, as in taken or written."
+    },
+    {
+      "term": "gerund-participle",
+      "definition": "The verb form in -ing, used after progressive be and in various non-finite clauses."
+    },
+    {
+      "term": "finite clause",
+      "definition": "A clause headed by a primary verb form, or by a plain form in an imperative or subjunctive."
+    },
+    {
+      "term": "NICE",
+      "definition": "The four auxiliary-sensitive constructions: negation, inversion, code and emphasis."
+    },
+    {
+      "term": "do-support",
+      "definition": "The use of dummy do to supply an auxiliary for negation, inversion or emphasis."
+    },
+    {
+      "term": "tense",
+      "definition": "A grammatical system that locates a situation, or part of it, in time."
+    },
+    {
+      "term": "aspect",
+      "definition": "A grammatical system concerned with the internal temporal structure of a situation."
+    },
+    {
+      "term": "mood",
+      "definition": "The grammatical marking of modality, chiefly through modal auxiliaries in English."
+    },
+    {
+      "term": "perfect",
+      "definition": "The secondary past tense marked by have plus a past participle."
+    },
+    {
+      "term": "progressive",
+      "definition": "The aspect marked by be plus a gerund-participle, presenting a situation as in progress."
+    },
+    {
+      "term": "situation",
+      "definition": "Whatever a clause expresses: an action, process, event, state or relation."
+    },
+    {
+      "term": "aspectuality",
+      "definition": "The meaning side of aspect: how a situation is viewed internally or as a whole."
+    },
+    {
+      "term": "modality",
+      "definition": "Meaning concerned with necessity, possibility and the speaker's attitude to factuality or actualisation."
+    },
+    {
+      "term": "deontic modality",
+      "definition": "Modality of obligation, permission and prohibition."
+    },
+    {
+      "term": "epistemic modality",
+      "definition": "Modality concerned with the speaker's commitment to the truth of a proposition."
+    },
+    {
+      "term": "dynamic modality",
+      "definition": "Modality concerned with abilities, dispositions and other properties of participants."
+    },
+    {
+      "term": "backshift",
+      "definition": "The use of a past tense in reported speech to mark anteriority relative to the reporting time."
+    },
+    {
+      "term": "modal remoteness",
+      "definition": "The use of a past tense form to present a situation as less likely, less direct or hypothetical."
+    },
+    {
+      "term": "future time",
+      "definition": "A semantic time reference that English expresses through several constructions rather than a dedicated future tense."
+    },
+    {
+      "term": "quasi-modal",
+      "definition": "A fixed expression with modal meaning, such as have to, had better or be able to."
+    },
+    {
+      "term": "catenative verb",
+      "definition": "A verb that takes a non-finite clause complement, often in a recursive chain."
+    }
+  ],
+  "intro": [
+    "Read *She may have been reading the report when the call came* and count what the clause does at once. It presents the reading as possible rather than actual, places it before the moment of judgement, keeps it in progress, and anchors it against a past interruption. All of that comes from the verb and the small words clustered around it. The verb is the clause’s engine, and a description of English syntax keeps returning to it even when the topic is the noun phrase or the clause.",
+    "Two tracks run through the chapter. One follows form: the six inflectional shapes of a lexical verb, the special paradigms of auxiliaries, and the difference between a verb form and the construction it builds. The other follows meaning: tense and time, perfect and progressive, mood and modality, and the several expressions that place a situation in future time.",
+    "The tracks meet in the auxiliary chain. Modal, perfect, progressive and passive can stack in a fixed order, each one selecting the shape of the next verb. See that order clearly and the individual meanings stop looking like a list of labels; they become positions in a system a speaker can combine."
+  ],
+  "sections": [
+    {
+      "id": "verb-phrase",
+      "title": "The verb phrase",
+      "advances": "predict",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*She is writing a novel* and *She began writing a novel* run the same words past the same point, yet the grammar divides them differently. In the first, *is* heads the finite clause and *writing a novel* is its non-finite complement. In the second, *began* heads the finite clause and *writing a novel* is a catenative complement. The predicate of each clause is a verb phrase, its head a verb, and that head decides which other elements are required, permitted or excluded."
+        },
+        {
+          "type": "paragraph",
+          "text": "So *is writing* is not a constituent. The auxiliary heads one clause; the lexical verb heads a subordinate clause embedded inside it. Longer chains repeat the pattern: *She may have been reading* stacks a modal, a perfect auxiliary, a progressive auxiliary and a lexical verb, each adding a layer rather than a word to a flat string."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Having finished the report, she left* opens with a participial clause; *to finish the report* is an infinitival one. Both are verb phrases with a verb at the head, and neither carries primary tense on its own. The rest of the chapter separates the forms verbs take from the constructions those forms build."
+        },
+        {
+          "type": "table",
+          "title": "Layers in a verb phrase",
+          "columns": [
+            "Layer",
+            "Head",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Finite clause",
+              "Auxiliary verb",
+              "She is writing a novel."
+            ],
+            [
+              "Non-finite complement",
+              "Lexical verb",
+              "writing a novel"
+            ],
+            [
+              "Perfect auxiliary",
+              "have",
+              "has written"
+            ],
+            [
+              "Progressive auxiliary",
+              "be",
+              "is writing"
+            ],
+            [
+              "Passive auxiliary",
+              "be",
+              "was written"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Heads inside the phrase",
+          "items": [
+            {
+              "text": "She is writing a novel.",
+              "mark": "ok",
+              "note": "Is heads the clause; writing heads the non-finite complement."
+            },
+            {
+              "text": "She began writing a novel.",
+              "mark": "ok",
+              "note": "Began heads the clause; writing is a catenative complement."
+            },
+            {
+              "text": "She may have been reading.",
+              "mark": "ok",
+              "note": "Modal may, perfect have, progressive be, lexical read: four layers."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "In She is writing a novel, which word is the head of the finite clause?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Is",
+            "feedback": "Is is the finite auxiliary heading the clause; writing heads its complement."
+          },
+          {
+            "id": "b",
+            "text": "Writing",
+            "feedback": "Writing heads the non-finite complement, not the finite clause."
+          },
+          {
+            "id": "c",
+            "text": "Novel",
+            "feedback": "Novel is the head of the object NP."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "verb-forms",
+      "title": "Six forms, one lexeme",
+      "advances": "understand",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Line up *take, took, takes, take, taking, taken* and the paradigm looks untidy: six forms, five shapes, and *take* doing duty twice. *Want* and *hit* are untidier still, with syncretism collapsing several forms onto one pronunciation. The grammar nevertheless recognises six positions, because the preterite and the past participle behave differently even when they sound identical."
+        },
+        {
+          "type": "paragraph",
+          "text": "Primary and secondary forms do different work. A past participle follows perfect *have* and passive *be*; a gerund-participle follows progressive *be* and heads a range of non-finite clauses; the plain form turns up in imperatives, subjunctives, *to*-infinitivals and bare infinitivals. Those are constructions, not further inflectional forms. Calling imperative and subjunctive separate paradigms would mistake a clause type for a shape of the verb."
+        },
+        {
+          "type": "paragraph",
+          "text": "*He left* is finite; *to leave*, *having left* and *left behind* are not. Finiteness is a property of clauses and VPs, not of verb forms in the abstract. A finite clause is headed by a primary form, or by a plain form in an imperative or subjunctive; a non-finite clause is headed by a gerund-participle, a past participle, or a plain form in an infinitival. Auxiliaries add negative forms such as *isn’t* and *couldn’t*. Modals lack the secondary forms altogether, and *must* has no preterite."
+        },
+        {
+          "type": "table",
+          "title": "The six-form paradigm",
+          "columns": [
+            "Form",
+            "take",
+            "want",
+            "hit"
+          ],
+          "rows": [
+            [
+              "Preterite",
+              "took",
+              "wanted",
+              "hit"
+            ],
+            [
+              "Third singular present",
+              "takes",
+              "wants",
+              "hits"
+            ],
+            [
+              "Plain present",
+              "take",
+              "want",
+              "hit"
+            ],
+            [
+              "Plain form",
+              "take",
+              "want",
+              "hit"
+            ],
+            [
+              "Gerund-participle",
+              "taking",
+              "wanting",
+              "hitting"
+            ],
+            [
+              "Past participle",
+              "taken",
+              "wanted",
+              "hit"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Preterite and participle in use",
+          "items": [
+            {
+              "text": "She wanted the car.",
+              "mark": "ok",
+              "note": "Preterite: the first verb of a canonical finite clause."
+            },
+            {
+              "text": "She had wanted the car.",
+              "mark": "ok",
+              "note": "Past participle after perfect have."
+            },
+            {
+              "text": "The train approaching Platform 3 is late.",
+              "mark": "ok",
+              "note": "Gerund-participle heading a non-finite clause that modifies train."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "tone": "why",
+          "title": "Why participle and adjective are distinct",
+          "text": "A word like broken can be a verb form or an adjective. In *It was broken deliberately* it denotes an event and is a passive verb. In *It didn’t look broken* it denotes a state and is an adjective. Tests with objects, seem and degree modifiers help separate the two without relying on the spelling."
+        }
+      ],
+      "check": {
+        "prompt": "Why is the imperative not a separate inflectional form of the verb?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It uses the plain form, which also appears in other constructions.",
+            "feedback": "Imperative is a clause construction, not a distinct verb paradigm."
+          },
+          {
+            "id": "b",
+            "text": "It has no subject.",
+            "feedback": "Imperatives usually have an understood subject, but that is not the reason."
+          },
+          {
+            "id": "c",
+            "text": "It cannot be negated.",
+            "feedback": "Imperatives can be negated, with do-support: Don’t be late."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "auxiliaries",
+      "title": "What makes an auxiliary",
+      "advances": "worked",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*He has seen it* gives four tests in one clause. Negate it and *not* follows *has* directly; invert it and *has* moves in front of the subject; continue with *and I have too*; stress it and the polarity becomes emphatic. A lexical verb manages none of these without help: *He did not see it*, *Did he see it?*, *He saw it and I did too*, *He DID see it*. Negation, inversion, code and emphasis give the NICE constructions their name, and they identify auxiliaries by syntax rather than meaning."
+        },
+        {
+          "type": "paragraph",
+          "text": "Dummy *do* is semantically empty. It exists to supply the auxiliary position that those four constructions demand. Because the test is syntactic, *be* counts as an auxiliary even when it merely links subject and complement: *They are cheap* yields *They are not cheap* and *Are they cheap?* Auxiliary *have* behaves the same way, while lexical *have* takes *do*: *They had a fight* gives *They didn’t have a fight*."
+        },
+        {
+          "type": "paragraph",
+          "text": "*She is writing a novel* does not split into a subject plus a flat *is writing* predicate: *is* heads the clause and *writing a novel* is its complement. Auxiliaries are heads, not dependents. The same analysis explains the shape of questions: *Has she been writing?* moves one auxiliary into the prenucleus and leaves the rest of the clause as the nucleus. Subject-auxiliary inversion is not subject postposing, where a lexical verb precedes its subject, as in *In the corner stood a small table*."
+        },
+        {
+          "type": "paragraph",
+          "text": "Several kinds of fronted element trigger inversion. Closed interrogatives invert obligatorily; open interrogatives invert when a non-subject wh-phrase is fronted; exclamatives invert optionally. Initial negatives, *only* with clause scope, and *so/such* belong to the same family, and conditional inversion in *Had he seen it, he would have reported it* completes the set."
+        },
+        {
+          "type": "table",
+          "title": "The NICE constructions",
+          "columns": [
+            "Construction",
+            "Auxiliary",
+            "Lexical verb"
+          ],
+          "rows": [
+            [
+              "Negation",
+              "He has not seen it.",
+              "He saw not it."
+            ],
+            [
+              "Inversion",
+              "Has he seen it?",
+              "Saw he it?"
+            ],
+            [
+              "Code",
+              "He has seen it and I have too.",
+              "He saw it and I saw too."
+            ],
+            [
+              "Emphasis",
+              "He HAS seen it.",
+              "He SAW it."
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Auxiliary and lexical behaviour",
+          "items": [
+            {
+              "text": "He has not seen it.",
+              "mark": "ok",
+              "note": "Auxiliary have takes not directly."
+            },
+            {
+              "text": "He did not see it.",
+              "mark": "ok",
+              "note": "Lexical see needs supportive do."
+            },
+            {
+              "text": "Has he seen it?",
+              "mark": "ok",
+              "note": "The auxiliary inverts with the subject."
+            },
+            {
+              "text": "He has seen it and I have too.",
+              "mark": "ok",
+              "note": "Code: have stands for the understood predicate."
+            }
+          ]
+        },
+        {
+          "type": "diagnostic",
+          "title": "Test for an auxiliary",
+          "steps": [
+            "Put not immediately after the verb and see whether the result is grammatical.",
+            "Form a closed interrogative and see whether the verb can precede the subject.",
+            "Add a tag or a code continuation and see whether the verb can stand alone.",
+            "Stress the verb and see whether it can carry emphatic polarity."
+          ],
+          "conclusion": "If the verb passes the NICE tests, it is an auxiliary. If it needs do, it is lexical."
+        }
+      ],
+      "check": {
+        "prompt": "Why is be an auxiliary in They are cheap?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It takes not and inverts with the subject.",
+            "feedback": "They are not cheap; Are they cheap? The definition is syntactic."
+          },
+          {
+            "id": "b",
+            "text": "It means existence.",
+            "feedback": "Meaning does not decide the auxiliary class."
+          },
+          {
+            "id": "c",
+            "text": "It has no past tense.",
+            "feedback": "Be has was and were."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "auxiliary-chain",
+      "title": "The auxiliary chain",
+      "advances": "guided",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Stack the auxiliaries and an order emerges: modal, perfect *have*, progressive *be*, passive *be*, lexical verb. Each one selects the form of what follows. A modal takes a plain form, perfect *have* a past participle, progressive *be* a gerund-participle, passive *be* a past participle. *She may have been reading* therefore reads as modal, perfect, progressive, lexical, with each verb shaping the next."
+        },
+        {
+          "type": "paragraph",
+          "text": "*She may can swim* fails. Core modals are mutually exclusive in Standard English. The same defectiveness keeps them out of infinitival and perfect positions: *to can swim*, *having could swim* and *has must swim* are all excluded. *Be*, *have* and *do* are not defective in that way, while *need*, *dare*, *have*, *do* and *use* split their time between auxiliary and lexical behaviour."
+        },
+        {
+          "type": "paragraph",
+          "text": "*She has probably been working* puts *probably* between the perfect auxiliary and its progressive complement; *They may well have been waiting* keeps *may* as head while *well* colours the modal judgement. Adverbs can sit inside the chain without breaking its dependencies."
+        },
+        {
+          "type": "table",
+          "title": "Order and selection in the chain",
+          "columns": [
+            "Auxiliary",
+            "Form of complement",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Modal",
+              "Plain form",
+              "may go"
+            ],
+            [
+              "Perfect have",
+              "Past participle",
+              "has gone"
+            ],
+            [
+              "Progressive be",
+              "Gerund-participle",
+              "is going"
+            ],
+            [
+              "Passive be",
+              "Past participle",
+              "was seen"
+            ],
+            [
+              "Supportive do",
+              "Plain form",
+              "did go"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Chains in order",
+          "items": [
+            {
+              "text": "She may have been reading.",
+              "mark": "ok",
+              "note": "Modal + perfect + progressive + lexical verb."
+            },
+            {
+              "text": "The report may have been checked.",
+              "mark": "ok",
+              "note": "Modal + perfect + passive + lexical verb."
+            },
+            {
+              "text": "She has been working.",
+              "mark": "ok",
+              "note": "Perfect + progressive + lexical verb."
+            },
+            {
+              "text": "They had been warned.",
+              "mark": "ok",
+              "note": "Perfect + passive + lexical verb."
+            }
+          ]
+        },
+        {
+          "type": "diagnostic",
+          "title": "Trace the chain",
+          "steps": [
+            "Find the first auxiliary after the subject.",
+            "Identify its category: modal, perfect, progressive or passive.",
+            "Check the form of the next verb against the selection in the table.",
+            "Continue until the lexical verb; the last verb heads the most embedded clause."
+          ],
+          "conclusion": "The chain is layered, not a flat sequence. Each auxiliary takes the following clause as its complement."
+        }
+      ],
+      "check": {
+        "prompt": "Which form follows perfect have in the auxiliary chain?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The past participle",
+            "feedback": "Has gone, had written, may have been seen."
+          },
+          {
+            "id": "b",
+            "text": "The gerund-participle",
+            "feedback": "That form follows progressive be: is going."
+          },
+          {
+            "id": "c",
+            "text": "The plain form",
+            "feedback": "That form follows a modal or supportive do."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "tense-time",
+      "title": "Tense is not time",
+      "advances": "transfer",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "English marks two primary tenses by inflection, present and preterite, and neither stays inside its obvious time zone. The present can report a timeless truth, a habit, a historic narrative, a scheduled future event, or a future situation in a subordinate clause. The preterite can soften a request, backshift a report, or mark a hypothesis as remote. Form and time are correlated, but the correlation is loose enough to be interesting."
+        },
+        {
+          "type": "paragraph",
+          "text": "*If I lived there tomorrow* does not put the living in the past; it presents a future possibility as remote. Tense is grammatical; time is semantic. The present typically locates a situation as simultaneous with the time of orientation, the preterite typically as anterior, and context supplies the rest. *I wondered whether you could help* uses the preterite to make the request less direct."
+        },
+        {
+          "type": "paragraph",
+          "text": "Take *She said she was tired*: *was* is interpreted relative to the past reporting verb, not to the moment of speaking. *He believes she is ill* shifts the reference to his belief rather than the speaker’s present. A single timeline running from the speaker’s now cannot capture those shifts."
+        },
+        {
+          "type": "table",
+          "title": "Primary tense and its uses",
+          "columns": [
+            "Form",
+            "Typical meaning",
+            "Other common use"
+          ],
+          "rows": [
+            [
+              "Present",
+              "Present time; timeless truths; habits",
+              "Historic present; futurate; subordinate future"
+            ],
+            [
+              "Preterite",
+              "Past time",
+              "Politeness; backshift; modal remoteness"
+            ],
+            [
+              "Present perfect",
+              "Past situation with present relevance",
+              "Experiential, resultative or recent past"
+            ],
+            [
+              "Past perfect",
+              "Situation before a past reference point",
+              "Backshifted reported speech"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Form and time pull apart",
+          "items": [
+            {
+              "text": "The train leaves tomorrow.",
+              "mark": "ok",
+              "note": "Present tense, future time: the present futurate."
+            },
+            {
+              "text": "If I lived there, I would walk to work.",
+              "mark": "ok",
+              "note": "Preterite form, present hypothesis: modal remoteness."
+            },
+            {
+              "text": "She said she was tired.",
+              "mark": "ok",
+              "note": "Preterite form, backshifted report."
+            },
+            {
+              "text": "I wondered whether you could help.",
+              "mark": "ok",
+              "note": "Preterite form, polite request."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "tone": "why",
+          "title": "Why there is no future tense",
+          "text": "Will and shall behave like modal auxiliaries, not like a third tense inflection. They share the syntax and meaning range of can, may and must, and they combine with past and present forms rather than replacing the primary tense system. English expresses future time in many ways, but it does not mark it with a dedicated tense."
+        }
+      ],
+      "check": {
+        "prompt": "What does the preterite signal in If I lived there tomorrow?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Modal remoteness, not past time",
+            "feedback": "The situation is future and hypothetical; the preterite marks its remoteness."
+          },
+          {
+            "id": "b",
+            "text": "A past event",
+            "feedback": "The adjunct tomorrow makes a past-time reading impossible."
+          },
+          {
+            "id": "c",
+            "text": "A completed action",
+            "feedback": "The form is not perfective in that sense."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "perfect",
+      "title": "The perfect",
+      "advances": "exit",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*She has finished* and *She had finished before I arrived* both place a situation before a reference point; the difference is where that point sits. The perfect is the secondary past tense, built from *have* plus a past participle. Its reference point is often the moment of speaking, but it can be a past moment, as in the second example, or a future one, as in *She will have finished by Friday*."
+        },
+        {
+          "type": "paragraph",
+          "text": "*She has lived in Berlin ever since she married* forces the continuative reading: the living runs from the past up to the reference point. Remove the duration phrase and *She has lived in Berlin* defaults to non-continuative, with the living located at some indefinite time within the relevant span. A duration expression such as *ever since* or *for* usually forces the continuative reading, which is also restricted to atelic situations."
+        },
+        {
+          "type": "paragraph",
+          "text": "The present perfect differs from the simple preterite by keeping a past situation tied to the present. The tie can be experiential (*I have seen that film*), resultative (*She has written the report*, so the report now exists), or recent (*He has just left*). Past-time adjuncts such as *yesterday* or *two minutes ago* normally exclude the present perfect because they place the situation wholly in the past."
+        },
+        {
+          "type": "paragraph",
+          "text": "*She may have left* puts the leaving before the modal judgement. *She must have been working* stacks perfect and progressive to present a past ongoing situation inferred from evidence. The order of the auxiliaries keeps those meanings apart: modal first, perfect second, progressive third."
+        },
+        {
+          "type": "table",
+          "title": "Uses of the present perfect",
+          "columns": [
+            "Use",
+            "Example",
+            "Present relevance"
+          ],
+          "rows": [
+            [
+              "Continuative",
+              "She has lived here for years.",
+              "The situation continues up to now."
+            ],
+            [
+              "Experiential",
+              "I have seen that film.",
+              "The experience exists within the relevant span."
+            ],
+            [
+              "Resultative",
+              "She has written the report.",
+              "The result is available now."
+            ],
+            [
+              "Recent past",
+              "He has just left.",
+              "The event is close to now."
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Perfect readings",
+          "items": [
+            {
+              "text": "She has lived in Berlin ever since she married.",
+              "mark": "ok",
+              "note": "Continuative: the living extends up to now."
+            },
+            {
+              "text": "She has lived in Berlin.",
+              "mark": "ok",
+              "note": "Default non-continuative: at some time within the relevant span."
+            },
+            {
+              "text": "She had finished before I arrived.",
+              "mark": "ok",
+              "note": "Past perfect: anterior to a past reference point."
+            },
+            {
+              "text": "She may have left.",
+              "mark": "ok",
+              "note": "The perfect is inside the scope of the modal."
+            }
+          ]
+        },
+        {
+          "type": "diagnostic",
+          "title": "Locate the perfect",
+          "steps": [
+            "Find have or had and check that the next verb is a past participle.",
+            "Identify the reference point: speaking time, a past time, or a future time.",
+            "Ask whether the situation extends up to that point or lies wholly before it.",
+            "Check whether a duration expression forces the continuative reading."
+          ],
+          "conclusion": "The perfect is a secondary past tense, not simply a past-time marker. Its reference point comes from the surrounding clause."
+        }
+      ],
+      "check": {
+        "prompt": "What is the default reading of She has lived in Berlin without a duration phrase?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Non-continuative: she lived there at some indefinite time",
+            "feedback": "The continuative reading normally needs reinforcement from a duration expression."
+          },
+          {
+            "id": "b",
+            "text": "Continuative: she still lives there",
+            "feedback": "That reading is possible with context, but it is not the default without support."
+          },
+          {
+            "id": "c",
+            "text": "Future: she will live there",
+            "feedback": "The perfect locates the situation before a reference point, not after it."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "situations-aspect",
+      "title": "Situations and aspectuality",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*The flag is red* holds steady; *She walked in the park* goes on without a natural endpoint; *She reached the summit* is over in an instant. Aspect describes that internal temporal shape, and the shape depends on the kind of situation. States are static, like *She knows the answer*. Occurrences are dynamic, dividing into activities, accomplishments and achievements: activities are durative and atelic, accomplishments durative and telic (*She wrote a novel*), achievements punctual."
+        },
+        {
+          "type": "paragraph",
+          "text": "Multiplicity adds another layer. *She knocked once* is singulary; *She knocked repeatedly* is iterative; *She usually walks to work* is a serial state built from repeated subsituations. A whole can have a different aspectual character from its parts, so a habitual sentence may behave like a state even though every instance is an activity."
+        },
+        {
+          "type": "paragraph",
+          "text": "Perfective and imperfective aspectuality divide the viewpoint. Perfective presents a situation as a complete whole, seen from outside; imperfective presents it from within, focusing on an internal phase or interval. English marks neither with a dedicated inflection. Simple present and preterite can receive either interpretation, while the progressive is a special imperfective construction."
+        },
+        {
+          "type": "table",
+          "title": "Situation types",
+          "columns": [
+            "Type",
+            "Example",
+            "Test"
+          ],
+          "rows": [
+            [
+              "State",
+              "The flag is red.",
+              "Normally resists progressive; simple present is natural."
+            ],
+            [
+              "Activity",
+              "She walked in the park.",
+              "Durative, atelic; for an hour is natural."
+            ],
+            [
+              "Accomplishment",
+              "She wrote a novel.",
+              "Durative, telic; in an hour is natural."
+            ],
+            [
+              "Achievement",
+              "She reached the summit.",
+              "Punctual; normally resists progressive and for an hour."
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "The same verb, different situation",
+          "items": [
+            {
+              "text": "She wrote a novel.",
+              "mark": "ok",
+              "note": "Accomplishment: bounded object gives a terminal point."
+            },
+            {
+              "text": "She wrote novels.",
+              "mark": "ok",
+              "note": "Activity: unbounded object, no inherent endpoint."
+            },
+            {
+              "text": "She reached the summit.",
+              "mark": "ok",
+              "note": "Achievement: punctual change of state."
+            },
+            {
+              "text": "She was reaching the summit.",
+              "mark": "ok",
+              "note": "Extendable achievement: the progressive stretches the approach."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which situation is telic?",
+        "options": [
+          {
+            "id": "a",
+            "text": "She wrote a novel.",
+            "feedback": "The bounded object gives the situation an inherent endpoint."
+          },
+          {
+            "id": "b",
+            "text": "She wrote novels.",
+            "feedback": "This is an activity: it can continue indefinitely."
+          },
+          {
+            "id": "c",
+            "text": "She was tired.",
+            "feedback": "This is a state, not a telic occurrence."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "progressive",
+      "title": "The progressive",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*She was reading the letter when the phone rang* puts the reading around the moment of the call. *Be* plus a gerund-participle presents the situation as in progress at the relevant time, viewed from within, durative and dynamic. The progressive does more than add duration; it changes the viewpoint, and the change has consequences for what the clause entails."
+        },
+        {
+          "type": "paragraph",
+          "text": "Entailment and implicature pull in different directions. *I was working* entails *I worked*: an activity in progress has really happened. *She was writing a novel* does not entail that she finished it, though it usually implicates as much. *The train was arriving* stretches a punctual achievement into an approach. Context can cancel the implicatures, but it cannot cancel the entailment."
+        },
+        {
+          "type": "paragraph",
+          "text": "States generally resist the progressive, which is why *The flag is being red* sounds wrong. The restriction is not absolute, since context can present a state as temporary or dynamic. Nor is the progressive always aspectual. It can supply narrative background, make an interpretation explicit (*I was referring to you*), or present a future arrangement (*We’re meeting tomorrow*)."
+        },
+        {
+          "type": "examples",
+          "title": "What the progressive does",
+          "items": [
+            {
+              "text": "She was writing a novel.",
+              "mark": "ok",
+              "note": "Accomplishment in progress: completion is not entailed."
+            },
+            {
+              "text": "I was working.",
+              "mark": "ok",
+              "note": "Activity in progress: the activity did take place."
+            },
+            {
+              "text": "The train was arriving.",
+              "mark": "ok",
+              "note": "An achievement presented as an approach."
+            },
+            {
+              "text": "I was referring to you.",
+              "mark": "ok",
+              "note": "Interpretive use: the progressive clarifies what the earlier words meant."
+            }
+          ]
+        },
+        {
+          "type": "diagnostic",
+          "title": "Ask what the progressive adds",
+          "steps": [
+            "Identify the situation type: state, activity, accomplishment or achievement.",
+            "Ask whether the progressive presents an internal phase or a complete event.",
+            "Check whether completion is entailed or only implicated.",
+            "Look for a non-aspectual use: background, interpretation, arrangement or politeness."
+          ],
+          "conclusion": "The progressive is not a general marker of ongoing time. Its meaning depends on the situation and on the surrounding discourse."
+        }
+      ],
+      "check": {
+        "prompt": "What does She was writing a novel typically implicate?",
+        "options": [
+          {
+            "id": "a",
+            "text": "That she had not finished the novel at that time",
+            "feedback": "The progressive selects a mid-interval before the terminal phase."
+          },
+          {
+            "id": "b",
+            "text": "That she finished the novel",
+            "feedback": "Completion is not entailed by the progressive accomplishment."
+          },
+          {
+            "id": "c",
+            "text": "That she never wrote a novel",
+            "feedback": "The activity did occur; only completion is in question."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "mood-modality",
+      "title": "Mood and modality",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*I wish she were here* preserves a fossil: *were* is a residual irrealis form, almost the last inflectional mood English has. The main system is analytic, carried by modals such as *can*, *may*, *must*, *will* and *shall*. Modality itself is broader than those auxiliaries, reaching into adjectives, adverbs, verbs, nouns, clause type and past tense."
+        },
+        {
+          "type": "paragraph",
+          "text": "Three dimensions organise modal meaning. Strength sets necessity against possibility. Kind separates deontic modality (obligation, permission, prohibition), epistemic modality (commitment to truth) and dynamic modality (ability, disposition and other participant properties). Degree measures how strong the judgement is, and modals can reinforce or clash with one another in modal harmony."
+        },
+        {
+          "type": "paragraph",
+          "text": "Negation shows how much scope matters. *You mustn’t eat it all* puts the negation inside the modal: it is necessary that you not eat it. *You needn’t eat it all* puts it outside: it is not necessary that you eat it. *May not* and *can’t* repeat the contrast, and the perfect raises the same question in *may have left*."
+        },
+        {
+          "type": "table",
+          "title": "Three dimensions of modality",
+          "columns": [
+            "Dimension",
+            "Contrast",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Strength",
+              "Necessity vs possibility",
+              "must vs may"
+            ],
+            [
+              "Kind",
+              "Deontic, epistemic, dynamic",
+              "You must go; It must be true; She can swim"
+            ],
+            [
+              "Degree",
+              "Strong, medium, weak",
+              "must, should, might"
+            ],
+            [
+              "Scope",
+              "Modal over negation vs negation over modal",
+              "mustn’t vs needn’t"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Three kinds of modal meaning",
+          "items": [
+            {
+              "text": "You must come in immediately.",
+              "mark": "ok",
+              "note": "Deontic: obligation."
+            },
+            {
+              "text": "It must have been a mistake.",
+              "mark": "ok",
+              "note": "Epistemic: inference about the truth of the proposition."
+            },
+            {
+              "text": "Liz can drive better than you.",
+              "mark": "ok",
+              "note": "Dynamic: ability."
+            },
+            {
+              "text": "You needn’t eat it all.",
+              "mark": "ok",
+              "note": "External negation: it is not necessary that you eat it all."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What kind of modality is It must have been a mistake?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Epistemic",
+            "feedback": "The modal qualifies the speaker’s commitment to the truth of the proposition."
+          },
+          {
+            "id": "b",
+            "text": "Deontic",
+            "feedback": "Deontic modality concerns obligation or permission."
+          },
+          {
+            "id": "c",
+            "text": "Dynamic",
+            "feedback": "Dynamic modality concerns ability or disposition."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "modal-auxiliaries",
+      "title": "The modal auxiliaries",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*She may can swim* fails, and the failure reveals a small, tightly behaved class. The core modals are *can*, *may*, *must*, *will* and *shall*, with *ought*, *need* and *dare* at the edges. They lack secondary forms, *must* lacks a preterite, they take a plain-form complement, and they cannot combine with one another in a single Standard English chain. Their meanings overlap, so one form can carry different kinds of modality in different contexts."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Must* carries strong necessity, deontic or epistemic. *May* handles possibility and permission; *can* handles ability, possibility and permission with a strong dynamic bent. *Will* stretches from epistemic prediction through dynamic volition to deontic insistence. *Shall* is mainly deontic and formal, at home in first-person offers and suggestions, while *should* and *ought* sit at medium strength, expressing necessity or expectation."
+        },
+        {
+          "type": "paragraph",
+          "text": "The preterite forms *could*, *might*, *would* and *should* are not simply past tenses. They can mark past time, backshift in reported speech, or modal remoteness. *Could* is the past of *can* in ability contexts, but in *Could you help?* it signals politeness. *Would* can mark habitual past behaviour, a future-in-the-past, or a remote conditional. *Should* has developed idiomatic deontic and evaluative uses that do not reduce to past tense."
+        },
+        {
+          "type": "table",
+          "title": "Core modals and typical meanings",
+          "columns": [
+            "Modal",
+            "Common meaning",
+            "Example"
+          ],
+          "rows": [
+            [
+              "can",
+              "Ability, possibility, permission",
+              "She can swim."
+            ],
+            [
+              "may",
+              "Possibility, permission",
+              "It may rain."
+            ],
+            [
+              "must",
+              "Necessity, strong inference",
+              "You must go; It must be true."
+            ],
+            [
+              "will",
+              "Prediction, volition, insistence",
+              "They will arrive tomorrow."
+            ],
+            [
+              "shall",
+              "Deontic, formal offer or suggestion",
+              "Shall I open the window?"
+            ],
+            [
+              "should",
+              "Medium necessity, expectation",
+              "You should apologise."
+            ],
+            [
+              "ought",
+              "Medium necessity, expectation",
+              "You ought to apologise."
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "One form, several jobs",
+          "items": [
+            {
+              "text": "You must help him.",
+              "mark": "ok",
+              "note": "Deontic necessity: an obligation is imposed."
+            },
+            {
+              "text": "He must have written it himself.",
+              "mark": "ok",
+              "note": "Epistemic necessity: the conclusion is inferred."
+            },
+            {
+              "text": "She can drive better than you.",
+              "mark": "ok",
+              "note": "Dynamic possibility: ability."
+            },
+            {
+              "text": "Could you help?",
+              "mark": "ok",
+              "note": "Preterite form used for politeness, not past time."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "tone": "watch",
+          "title": "Do not read one meaning from the form",
+          "text": "The same modal can be deontic, epistemic or dynamic. The context, the scope of negation and the kind of situation decide which reading is salient. A label such as “modal of obligation” is a description of one use, not the meaning of the form in every sentence."
+        }
+      ],
+      "check": {
+        "prompt": "Why is could not simply the past tense of can in Could you help?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It expresses politeness or modal remoteness, not past time.",
+            "feedback": "The request concerns the present or future."
+          },
+          {
+            "id": "b",
+            "text": "Can has no past tense.",
+            "feedback": "Could is its preterite form, but it has other uses too."
+          },
+          {
+            "id": "c",
+            "text": "Could is not a modal auxiliary.",
+            "feedback": "Could is the preterite form of the modal can."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "modal-scope",
+      "title": "Modal scope, negation, and alternatives",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Scope decides what a negative or a perfect applies to. *She may not have read it* can mean that it is possible she did not read it, with the negation inside the scope of *may*. *She can’t have read it* normally means that it is not possible that she read it, with the negative outside the modal. The words’ tense has not changed; the structure of the judgement has."
+        },
+        {
+          "type": "paragraph",
+          "text": "*She may have left* puts the perfect inside the modal’s scope, so the possibility concerns a past leaving. *She must have been working* makes the judgement about a past progressive situation. Reversing the order is not a stylistic preference; it changes which proposition is modalised."
+        },
+        {
+          "type": "paragraph",
+          "text": "Modal meaning also lives outside the auxiliaries. *Have to*, *have got to*, *be able to*, *be allowed to*, *be likely to* and *be going to* are fixed expressions with modal or future meaning. Lexical verbs such as *permit*, *require* and *insist*, adjectives such as *possible* and *necessary*, adverbs such as *perhaps*, and nouns such as *permission* and *obligation* all belong to the wider modal domain. They differ in register, inflection and syntax even where their meanings overlap with a core modal."
+        },
+        {
+          "type": "table",
+          "title": "Modal alternatives",
+          "columns": [
+            "Expression",
+            "Closest modal meaning",
+            "Special feature"
+          ],
+          "rows": [
+            [
+              "have to",
+              "must",
+              "Takes do-support; common in all registers"
+            ],
+            [
+              "have got to",
+              "must",
+              "Informal; fixed perfect form"
+            ],
+            [
+              "be able to",
+              "can",
+              "Supplies missing forms such as infinitives and perfects"
+            ],
+            [
+              "be allowed to",
+              "may / can",
+              "Explicit permission; full inflectional range"
+            ],
+            [
+              "had better",
+              "should",
+              "Fixed expression with a bare infinitival complement"
+            ],
+            [
+              "be going to",
+              "will",
+              "Future time with present focus or intention"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Scope and lexical alternatives",
+          "items": [
+            {
+              "text": "You mustn’t eat it all.",
+              "mark": "ok",
+              "note": "Internal negation: it is necessary that you not eat it all."
+            },
+            {
+              "text": "You needn’t eat it all.",
+              "mark": "ok",
+              "note": "External negation: it is not necessary that you eat it all."
+            },
+            {
+              "text": "She may have left.",
+              "mark": "ok",
+              "note": "The perfect is within the modal’s scope."
+            },
+            {
+              "text": "She has to leave.",
+              "mark": "ok",
+              "note": "Have to expresses necessity with a lexical verb."
+            }
+          ]
+        },
+        {
+          "type": "diagnostic",
+          "title": "Find the scope",
+          "steps": [
+            "Paraphrase the modal with a lexical expression such as it is necessary or it is possible.",
+            "Decide whether the negative belongs in the subordinate clause or the main clause.",
+            "Check whether a perfect auxiliary falls inside or outside the modal judgement.",
+            "Compare the result with the likely context; modal scope is often disambiguated by discourse."
+          ],
+          "conclusion": "The position of negation and perfect reveals which proposition the modal qualifies."
+        }
+      ],
+      "check": {
+        "prompt": "What is the difference between You mustn’t eat it all and You needn’t eat it all?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Mustn’t places the negation inside the modal; needn’t places it outside.",
+            "feedback": "Mustn’t means it is necessary not to; needn’t means it is not necessary to."
+          },
+          {
+            "id": "b",
+            "text": "They mean exactly the same thing.",
+            "feedback": "The scope difference changes the obligation."
+          },
+          {
+            "id": "c",
+            "text": "Needn’t is past tense; mustn’t is present.",
+            "feedback": "Both concern a present or future obligation."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "future-time",
+      "title": "Future time without a future tense",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "English has no future tense, only a repertoire for talking about future time. Modal *will* and *shall*, *be going to*, the present futurate, the progressive futurate, imperatives, mandative clauses and non-finite complements all do the job. *The match starts tomorrow*, *We’re meeting at six*, *She is going to resign* and *I will call you* place a situation in the future by different means."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Will* is a modal auxiliary, not a tense marker. It expresses epistemic prediction, dynamic volition or deontic insistence, and *would* carries past, backshifted and remote uses. *Be going to* has a stronger present focus: intention, arrangement or imminent development. In the preterite, *was going to* commonly implicates that the intended situation did not happen."
+        },
+        {
+          "type": "paragraph",
+          "text": "The present futurate handles schedules and planned events: *The train leaves at six*. The progressive futurate presents an arrangement as already under way: *We’re flying to Rome tomorrow*. In subordinate clauses the present often carries future meaning: *If she arrives early, we’ll start*. None of these needs a future inflection, because future time is a semantic relation, not a grammatical category in English."
+        },
+        {
+          "type": "table",
+          "title": "Ways to express future time",
+          "columns": [
+            "Construction",
+            "Example",
+            "Typical nuance"
+          ],
+          "rows": [
+            [
+              "will + plain form",
+              "I will call you.",
+              "Prediction, willingness or insistence"
+            ],
+            [
+              "be going to",
+              "She is going to resign.",
+              "Intention, arrangement or present evidence"
+            ],
+            [
+              "Present futurate",
+              "The match starts tomorrow.",
+              "Schedule or fixed plan"
+            ],
+            [
+              "Progressive futurate",
+              "We’re meeting at six.",
+              "Arrangement already in place"
+            ],
+            [
+              "Imperative",
+              "Take this umbrella.",
+              "Directive with future actualisation"
+            ],
+            [
+              "Subordinate present",
+              "If she arrives, we’ll start.",
+              "Future condition"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Future meaning, different forms",
+          "items": [
+            {
+              "text": "The train leaves at six.",
+              "mark": "ok",
+              "note": "Present futurate: a scheduled event."
+            },
+            {
+              "text": "We’re flying to Rome tomorrow.",
+              "mark": "ok",
+              "note": "Progressive futurate: an arrangement."
+            },
+            {
+              "text": "She is going to resign.",
+              "mark": "ok",
+              "note": "Present evidence or intention, with present focus."
+            },
+            {
+              "text": "If she arrives early, we’ll start.",
+              "mark": "ok",
+              "note": "Present tense in a subordinate clause with future reference."
+            }
+          ]
+        },
+        {
+          "type": "diagnostic",
+          "title": "Choose the future expression",
+          "steps": [
+            "Ask whether the sentence presents a prediction, an intention, an arrangement or a schedule.",
+            "Check whether the situation is viewed from the present or from a past reference point.",
+            "Use be going to when present evidence or intention is central; use will for a modal prediction.",
+            "Remember that the present tense can refer to future time in schedules and subordinate clauses."
+          ],
+          "conclusion": "Future time is expressed by a family of constructions, not by a single future tense."
+        }
+      ],
+      "check": {
+        "prompt": "Why is will not a future tense auxiliary?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It behaves syntactically and semantically like a modal auxiliary.",
+            "feedback": "Will shares the modal class and can express prediction, volition or insistence."
+          },
+          {
+            "id": "b",
+            "text": "It cannot refer to future time.",
+            "feedback": "It often does; the point is its grammatical category."
+          },
+          {
+            "id": "c",
+            "text": "It has no preterite form.",
+            "feedback": "Would is its preterite form."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "verb-in-discourse",
+      "title": "The verb in discourse",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Tense and aspect do more in a text than locate events. Narrative uses the preterite to carry the main sequence forward and the progressive to supply background: *She was working in the garden when the police arrived*. The perfect ties a past event to a later reference point and often explains a present state: *The road is closed because a tree has fallen*."
+        },
+        {
+          "type": "paragraph",
+          "text": "The historic present shifts a narrative into the present for immediacy. Backshift anchors a subordinate clause to the reporting time rather than the speaker’s now. Free indirect style moves between these viewpoints without quotation marks. None of these effects needs a new tense form; they arise from tense, aspect and context interacting."
+        },
+        {
+          "type": "paragraph",
+          "text": "Take *Having finished the report, she left*: the perfect participle places the finishing before the leaving. *With the windows open, the room stayed cool* is a verbless clause describing a circumstance. Non-finite and verbless clauses often have no primary tense at all; the matrix clause, the aspect of the non-finite form and the wider discourse supply the temporal interpretation."
+        },
+        {
+          "type": "examples",
+          "title": "Tense and aspect in context",
+          "items": [
+            {
+              "text": "She was working in the garden when the police arrived.",
+              "mark": "ok",
+              "note": "Progressive background; preterite event."
+            },
+            {
+              "text": "The road is closed because a tree has fallen.",
+              "mark": "ok",
+              "note": "Present perfect explains a present state."
+            },
+            {
+              "text": "Having finished the report, she left.",
+              "mark": "ok",
+              "note": "Perfect participle locates the finishing before the leaving."
+            },
+            {
+              "text": "With the windows open, the room stayed cool.",
+              "mark": "ok",
+              "note": "Verbless clause supplies a circumstance."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the main discourse effect of the progressive in She was working when the police arrived?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It presents the working as background around the arrival.",
+            "feedback": "The progressive frames the event rather than advancing the sequence."
+          },
+          {
+            "id": "b",
+            "text": "It makes the working a completed event before the arrival.",
+            "feedback": "The working is presented as in progress at the time of the arrival."
+          },
+          {
+            "id": "c",
+            "text": "It marks the sentence as future.",
+            "feedback": "The preterite and the context locate the situation in the past."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "chapter-review",
+      "title": "Chapter Review",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Four systems organise the English verb. Primary tense contrasts present and preterite; secondary tense contrasts perfect and non-perfect; aspect contrasts progressive and non-progressive; mood contrasts modal and non-modal. Each has its own forms and its own characteristic meaning, and all four meet in the auxiliary chain."
+        },
+        {
+          "type": "paragraph",
+          "text": "That chain runs modal, perfect, progressive, passive, lexical verb. Each auxiliary selects the form of its complement and adds a layer of meaning, while the verb’s subclass decides which complements the clause requires. Tense, aspect and modality are not three names for time; they are separate systems whose interaction produces the temporal and evaluative effects of ordinary prose."
+        },
+        {
+          "type": "paragraph",
+          "text": "A practical method: find the finite verb, list the auxiliaries in order, then ask what each layer contributes. Is the clause modalised? Is the situation perfect or non-perfect, progressive or non-progressive? Is the verb lexical or auxiliary? Is future time carried by *will*, *be going to*, a present futurate or a subordinate present? Answering those questions turns a long verb chain into a readable structure."
+        },
+        {
+          "type": "note",
+          "tone": "why",
+          "title": "A verb checklist",
+          "text": "Find the head of the clause and the auxiliaries that precede it. Check the form selected by each auxiliary. Identify primary tense, then perfect, progressive and mood. Finally, ask what kind of situation the clause describes and how the surrounding discourse anchors it in time."
+        }
+      ],
+      "check": {
+        "prompt": "Which sequence states the auxiliary order correctly?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Modal, perfect, progressive, passive, lexical verb",
+            "feedback": "May have been being checked follows this order, though such chains are often avoided."
+          },
+          {
+            "id": "b",
+            "text": "Perfect, modal, passive, progressive, lexical verb",
+            "feedback": "A modal cannot follow perfect have."
+          },
+          {
+            "id": "c",
+            "text": "Progressive, modal, perfect, passive, lexical verb",
+            "feedback": "Core modals precede the other auxiliaries and do not follow be."
+          }
+        ],
+        "answer": "a"
+      }
+    }
+  ],
+  "worked": [
+    "Take *She may have been reading the report when the call came*. The finite clause is headed by the modal *may*. Its complement is the perfect clause *have been reading the report when the call came*, whose head is *have*. The perfect takes the progressive clause *be reading the report when the call came* as its complement, and progressive *be* takes the gerund-participle *reading*.",
+    "The modal expresses possibility; the perfect locates the reading before the modal judgement; the progressive presents the reading as ongoing at the time of the call. The lexical verb *read* takes the object *the report*, and the adjunct *when the call came* locates the reading in time. Each layer has a distinct job, and the order of the auxiliaries keeps those jobs separate."
+  ],
+  "application": [
+    "When you meet a long verb chain, read it from left to right. Identify the first auxiliary, then check the form of the next verb, and continue until the lexical verb. The first auxiliary carries the clause’s primary tense or mood; the later auxiliaries add perfect, progressive or passive meaning.",
+    "Next, ask what kind of situation the lexical verb describes. An activity, an accomplishment, an achievement and a state interact differently with the progressive and with duration phrases. The same verb can shift category when its object or complement changes, as in *write a novel* and *write novels*.",
+    "Finally, separate form from meaning. A present tense can refer to future time, a preterite can express politeness or remoteness, and a modal can express obligation, inference or ability. The context, the scope of negation and the kind of situation decide which reading is active."
+  ],
+  "reveal": [
+    "In *She may have been reading the report when the call came*, *may* is a modal auxiliary expressing epistemic possibility. *Have* marks the perfect, locating the reading before the modal judgement. *Be* marks the progressive, presenting the reading as ongoing at the time of the call. *Reading* is the lexical verb and takes *the report* as its object."
+  ],
+  "recap": [
+    "Lexical verbs have six inflectional forms; auxiliaries have special paradigms and special syntax. The NICE constructions identify auxiliaries, and do-support supplies an auxiliary when a lexical verb lacks one. Auxiliaries form a fixed chain: modal, perfect, progressive, passive.",
+    "Tense, aspect and mood are separate systems. The perfect is a secondary past tense, the progressive presents an internal view, and modality covers necessity, possibility and related meanings. Future time is expressed by several constructions, not by a dedicated future tense."
+  ],
+  "self_check": [
+    {
+      "question": "Name the six inflectional forms of a lexical verb.",
+      "answer": "Preterite, third singular present, plain present, plain form, gerund-participle and past participle."
+    },
+    {
+      "question": "What are the NICE constructions?",
+      "answer": "Negation, inversion, code and emphasis: the four constructions that distinguish auxiliaries from lexical verbs."
+    },
+    {
+      "question": "What is the difference between the perfect and the progressive?",
+      "answer": "The perfect is a secondary past tense locating a situation before a reference point; the progressive is an aspect presenting a situation as in progress and viewed from within."
+    },
+    {
+      "question": "Why is there no future tense in English?",
+      "answer": "Will and shall are modal auxiliaries, and future time is expressed through several constructions rather than a dedicated tense inflection."
+    },
+    {
+      "question": "What does the preterite often express besides past time?",
+      "answer": "Politeness, backshift in reported speech, and modal remoteness in conditionals and wishes."
+    }
+  ],
+  "opening": [
+    {
+      "prompt": "Which word is the head of the finite clause in She is writing a novel?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Is",
+          "feedback": "The finite auxiliary heads the clause; writing heads the non-finite complement."
+        },
+        {
+          "id": "b",
+          "text": "Writing",
+          "feedback": "Writing is the lexical verb heading the complement clause."
+        },
+        {
+          "id": "c",
+          "text": "Novel",
+          "feedback": "Novel is the head of the object NP."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which property identifies an auxiliary verb?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It can take not and invert with the subject.",
+          "feedback": "These are the negation and inversion parts of the NICE tests."
+        },
+        {
+          "id": "b",
+          "text": "It has a meaning connected with time.",
+          "feedback": "Lexical verbs can also express temporal meaning."
+        },
+        {
+          "id": "c",
+          "text": "It always has a past tense form.",
+          "feedback": "Must lacks a preterite, and modals are defective."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What does the perfect auxiliary have select?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A past participle",
+          "feedback": "Has written, had gone, may have been seen."
+        },
+        {
+          "id": "b",
+          "text": "A gerund-participle",
+          "feedback": "Progressive be selects the gerund-participle."
+        },
+        {
+          "id": "c",
+          "text": "A plain form",
+          "feedback": "A modal or supportive do selects the plain form."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What does the progressive typically present?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A situation as in progress and viewed from within",
+          "feedback": "Progressive aspectuality is an internal, imperfective view."
+        },
+        {
+          "id": "b",
+          "text": "A situation as a completed whole",
+          "feedback": "That is perfective aspectuality, not the progressive."
+        },
+        {
+          "id": "c",
+          "text": "A situation located in future time",
+          "feedback": "Future time is a separate interpretation, though the progressive can be used for future arrangements."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which statement about future time is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "English expresses future time through several constructions, not a dedicated future tense.",
+          "feedback": "Will, be going to, present futurate and other forms all contribute."
+        },
+        {
+          "id": "b",
+          "text": "Will is a future tense inflection.",
+          "feedback": "Will is a modal auxiliary, not an inflection."
+        },
+        {
+          "id": "c",
+          "text": "The present tense can never refer to future time.",
+          "feedback": "The present futurate and subordinate clauses routinely do."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "closing": [
+    {
+      "prompt": "Why can is writing not be analysed as one constituent in She is writing?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Is heads the finite clause and writing heads a non-finite complement.",
+          "feedback": "Each verb heads its own clause layer."
+        },
+        {
+          "id": "b",
+          "text": "Writing is an adjective.",
+          "feedback": "Writing is a gerund-participle verb heading a complement clause."
+        },
+        {
+          "id": "c",
+          "text": "Is is a lexical verb.",
+          "feedback": "Is is an auxiliary."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is the difference between mustn’t and needn’t?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Mustn’t places negation inside the modal; needn’t places it outside.",
+          "feedback": "It is necessary that you not vs it is not necessary that you."
+        },
+        {
+          "id": "b",
+          "text": "They are identical in meaning.",
+          "feedback": "The scope difference changes the obligation."
+        },
+        {
+          "id": "c",
+          "text": "Needn’t is past tense.",
+          "feedback": "Both concern present or future necessity."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which sentence has a continuative perfect?",
+      "options": [
+        {
+          "id": "a",
+          "text": "She has lived here for years.",
+          "feedback": "The situation extends from the past up to now."
+        },
+        {
+          "id": "b",
+          "text": "She has written the report.",
+          "feedback": "This is resultative: the report now exists."
+        },
+        {
+          "id": "c",
+          "text": "She has just left.",
+          "feedback": "This is the perfect of recent past."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which situation is an accomplishment?",
+      "options": [
+        {
+          "id": "a",
+          "text": "She wrote a novel.",
+          "feedback": "The bounded object gives the situation a terminal point."
+        },
+        {
+          "id": "b",
+          "text": "She wrote novels.",
+          "feedback": "That is an activity: atelic and unbounded."
+        },
+        {
+          "id": "c",
+          "text": "She reached the summit.",
+          "feedback": "That is an achievement: punctual."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which construction is a present futurate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The match starts tomorrow.",
+          "feedback": "Present tense with future time reference."
+        },
+        {
+          "id": "b",
+          "text": "She has started the match.",
+          "feedback": "Present perfect with present relevance."
+        },
+        {
+          "id": "c",
+          "text": "She was starting the match.",
+          "feedback": "Past progressive, not a future arrangement."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "stages": {
+    "predict": {
+      "prompt": "Which word is the head of the finite clause in She has been working?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Has",
+          "feedback": "Has is the finite perfect auxiliary heading the clause."
+        },
+        {
+          "id": "b",
+          "text": "Been",
+          "feedback": "Been heads the non-finite progressive complement."
+        },
+        {
+          "id": "c",
+          "text": "Working",
+          "feedback": "Working heads the lexical verb phrase."
+        }
+      ],
+      "answer": "a"
+    },
+    "guided": {
+      "prompt": "In She may have been reading, what form follows progressive be?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The gerund-participle reading",
+          "feedback": "Progressive be selects the -ing form."
+        },
+        {
+          "id": "b",
+          "text": "The past participle read",
+          "feedback": "The past participle follows perfect have or passive be."
+        },
+        {
+          "id": "c",
+          "text": "The plain form read",
+          "feedback": "A modal selects the plain form."
+        }
+      ],
+      "answer": "a"
+    },
+    "transfer": {
+      "prompt": "What does the preterite signal in If I lived there?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Modal remoteness",
+          "feedback": "The hypothesis is presented as less likely or remote, not as past."
+        },
+        {
+          "id": "b",
+          "text": "Past time",
+          "feedback": "The sentence concerns a present or future hypothesis."
+        },
+        {
+          "id": "c",
+          "text": "Perfect aspect",
+          "feedback": "The preterite is not the perfect."
+        }
+      ],
+      "answer": "a"
+    },
+    "exit": {
+      "prompt": "Which expression is a quasi-modal alternative to must?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Have to",
+          "feedback": "Have to expresses necessity but takes do-support and full inflection."
+        },
+        {
+          "id": "b",
+          "text": "Be going to",
+          "feedback": "Be going to is primarily a future-time construction."
+        },
+        {
+          "id": "c",
+          "text": "Be able to",
+          "feedback": "Be able to corresponds to can, not must."
+        }
+      ],
+      "answer": "a"
+    }
+  }
+}

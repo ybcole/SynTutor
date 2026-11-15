@@ -1,342 +1,848 @@
 {
   "title": "Punctuation",
-  "content_version": "2.1.0",
-  "estimated_minutes": 13,
+  "content_version": "3.1.0",
+  "estimated_minutes": 20,
   "outcomes": [
     {
       "id": "o1",
-      "text": "Choose punctuation from the structure of the whole written sentence."
+      "text": "Explain the main ideas in Punctuation."
     },
     {
       "id": "o2",
-      "text": "Set off supplements, parenthetical material and direct speech using a consistent style."
+      "text": "Recognise the patterns in real sentences."
     },
     {
       "id": "o3",
-      "text": "Handle apostrophes, hyphens and terminal punctuation in common editing cases."
+      "text": "Use the ideas when you read and write."
     }
   ],
   "key_terms": [
     {
-      "term": "sentence terminal",
-      "definition": "A mark such as a full stop, question mark or exclamation mark that can end a written sentence."
+      "term": "punctuation",
+      "definition": "The use of marks, spaces and non-segmental modifications to indicate structure and meaning in writing."
+    },
+    {
+      "term": "punctuation indicator",
+      "definition": "A punctuation mark, space, or non-segmental modification such as italics or capitals."
+    },
+    {
+      "term": "segmental",
+      "definition": "Occupying a position in the linear sequence of writing, as marks and spaces do."
+    },
+    {
+      "term": "non-segmental",
+      "definition": "A modification such as italics, bold face or capitalisation that does not occupy a separate position."
+    },
+    {
+      "term": "punctuation mark",
+      "definition": "A written symbol such as a comma, full stop or question mark."
+    },
+    {
+      "term": "character",
+      "definition": "A graphical shape used to realise one or more punctuation indicators."
+    },
+    {
+      "term": "primary terminal",
+      "definition": "A full stop, question mark or exclamation mark marking the end of an orthographic sentence."
+    },
+    {
+      "term": "secondary boundary mark",
+      "definition": "A comma, semicolon or colon marking boundaries within or between clauses."
+    },
+    {
+      "term": "delimiting comma",
+      "definition": "A comma pair enclosing a supplement or parenthetical element."
+    },
+    {
+      "term": "parenthesis",
+      "definition": "A pair of round or square brackets enclosing material."
+    },
+    {
+      "term": "dash",
+      "definition": "A punctuation indicator used for interruption, supplement or range."
+    },
+    {
+      "term": "quotation mark",
+      "definition": "A paired indicator enclosing quoted or highlighted material."
+    },
+    {
+      "term": "capitalisation",
+      "definition": "The use of upper-case letters for sentence beginnings, proper names or emphasis."
+    },
+    {
+      "term": "orthographic sentence",
+      "definition": "A unit of writing beginning with a capital and ending with a primary terminal."
+    },
+    {
+      "term": "orthographic word",
+      "definition": "A minimal unit of writing flanked by spaces or punctuation."
+    },
+    {
+      "term": "hyphen",
+      "definition": "A word-internal mark joining parts of a compound or a line break."
+    },
+    {
+      "term": "long hyphen",
+      "definition": "A mark used in some styles to join coordinated names or relationships."
+    },
+    {
+      "term": "apostrophe",
+      "definition": "A word-internal mark used for omission or the genitive."
+    },
+    {
+      "term": "ellipsis points",
+      "definition": "Three dots marking omission or a trailing off."
+    },
+    {
+      "term": "abbreviation full stop",
+      "definition": "A full stop marking an abbreviation, as in Col. Blimp."
+    },
+    {
+      "term": "slash",
+      "definition": "A mark used for alternatives, fractions, dates or line breaks."
+    },
+    {
+      "term": "light punctuation",
+      "definition": "A style using relatively few optional marks, especially commas."
+    },
+    {
+      "term": "heavy punctuation",
+      "definition": "A style using more optional marks, especially commas."
+    },
+    {
+      "term": "asyndetic",
+      "definition": "Coordination without an overt coordinator."
+    },
+    {
+      "term": "supplement",
+      "definition": "A detached element set off from the clause, often by commas, dashes or parentheses."
     },
     {
       "term": "vocative",
-      "definition": "An expression naming the person being addressed, as in Jo, close the door."
+      "definition": "An expression naming the person addressed, often set off by commas."
     },
     {
       "term": "connective adjunct",
-      "definition": "An expression such as however that links a clause’s meaning to surrounding text."
-    },
-    {
-      "term": "matrix sentence",
-      "definition": "The larger sentence containing an embedded question, quotation or other construction."
+      "definition": "An expression such as however that links a clause to surrounding discourse."
     }
   ],
   "revised_assessment": {
     "required_sections": [
-      "introduction",
-      "concepts",
-      "worked-example",
-      "application",
-      "recap"
+      "domain",
+      "indicators-characters",
+      "rules-variation",
+      "orthographic-units",
+      "functions",
+      "primary-terminals",
+      "secondary-boundaries",
+      "comma-uses",
+      "parentheses-dash",
+      "quotation",
+      "capitalisation",
+      "word-level",
+      "apostrophe-slash",
+      "chapter-review"
     ],
     "opening": [
       {
+        "id": "opening-1",
+        "prompt": "Which is a punctuation indicator?",
         "options": [
           {
             "id": "a",
-            "text": "a question mark",
-            "feedback": "The main clause reports a question. The sentence as a whole is a statement."
+            "text": "A word space",
+            "feedback": "Spaces are segmental punctuation indicators."
           },
           {
             "id": "b",
-            "text": "a full stop",
-            "feedback": "The main clause reports a question. The sentence as a whole is a statement."
+            "text": "A letter’s meaning",
+            "feedback": "Meaning is not a punctuation indicator."
           },
           {
             "id": "c",
-            "text": "a semicolon",
-            "feedback": "The main clause reports a question. The sentence as a whole is a statement."
+            "text": "A syllable",
+            "feedback": "Syllables are phonological, not punctuation."
           }
         ],
-        "prompt": "Choose the ending for the report “Mara asked whether the hall was open___”",
-        "answer": "b",
-        "outcome_ids": [
-          "o1"
-        ],
-        "source_ids": [
-          "CGEL-2002-CH20-P1733"
-        ],
-        "id": "opening-1"
-      },
-      {
-        "options": [
-          {
-            "id": "a",
-            "text": "Mara, check the side gate.",
-            "feedback": "Mara is the person addressed in the command. The other commas interrupt ordinary connections."
-          },
-          {
-            "id": "b",
-            "text": "Mara checked, the gate.",
-            "feedback": "Mara is the person addressed in the command. The other commas interrupt ordinary connections."
-          },
-          {
-            "id": "c",
-            "text": "The gate near Mara, is closed.",
-            "feedback": "Mara is the person addressed in the command. The other commas interrupt ordinary connections."
-          }
-        ],
-        "prompt": "Which line uses a comma for direct address?",
         "answer": "a",
         "outcome_ids": [
-          "o2"
+          "o1"
         ],
         "source_ids": [
-          "CGEL-2002-CH20-P1745"
-        ],
-        "id": "opening-2"
-      },
-      {
-        "options": [
-          {
-            "id": "a",
-            "text": "Two",
-            "feedback": "The abbreviation’s final full stop also supplies the visible end of the statement."
-          },
-          {
-            "id": "b",
-            "text": "Zero",
-            "feedback": "The abbreviation’s final full stop also supplies the visible end of the statement."
-          },
-          {
-            "id": "c",
-            "text": "One",
-            "feedback": "The abbreviation’s final full stop also supplies the visible end of the statement."
-          }
-        ],
-        "prompt": "How many consecutive full stops follow the final C in the statement “The office is in Washington, D.C.”?",
-        "answer": "c",
-        "outcome_ids": [
-          "o3"
-        ],
-        "source_ids": [
+          "CGEL-2002-CH20-P1724",
+          "CGEL-2002-CH20-P1725",
+          "CGEL-2002-CH20-P1726",
+          "CGEL-2002-CH20-P1727",
+          "CGEL-2002-CH20-P1728",
+          "CGEL-2002-CH20-P1729",
+          "CGEL-2002-CH20-P1730",
+          "CGEL-2002-CH20-P1731",
+          "CGEL-2002-CH20-P1732",
+          "CGEL-2002-CH20-P1733",
+          "CGEL-2002-CH20-P1734",
+          "CGEL-2002-CH20-P1735",
+          "CGEL-2002-CH20-P1736",
+          "CGEL-2002-CH20-P1737",
+          "CGEL-2002-CH20-P1738",
+          "CGEL-2002-CH20-P1739",
+          "CGEL-2002-CH20-P1740",
+          "CGEL-2002-CH20-P1741",
+          "CGEL-2002-CH20-P1742",
+          "CGEL-2002-CH20-P1743",
+          "CGEL-2002-CH20-P1744",
+          "CGEL-2002-CH20-P1745",
+          "CGEL-2002-CH20-P1746",
+          "CGEL-2002-CH20-P1747",
+          "CGEL-2002-CH20-P1748",
+          "CGEL-2002-CH20-P1749",
+          "CGEL-2002-CH20-P1750",
+          "CGEL-2002-CH20-P1751",
+          "CGEL-2002-CH20-P1752",
+          "CGEL-2002-CH20-P1753",
+          "CGEL-2002-CH20-P1754",
+          "CGEL-2002-CH20-P1755",
+          "CGEL-2002-CH20-P1756",
+          "CGEL-2002-CH20-P1757",
+          "CGEL-2002-CH20-P1758",
+          "CGEL-2002-CH20-P1759",
+          "CGEL-2002-CH20-P1760",
+          "CGEL-2002-CH20-P1761",
+          "CGEL-2002-CH20-P1762",
           "CGEL-2002-CH20-P1763",
           "CGEL-2002-CH20-P1764"
-        ],
-        "id": "opening-3"
+        ]
       },
       {
+        "id": "opening-2",
+        "prompt": "Which mark is a primary terminal?",
         "options": [
           {
             "id": "a",
-            "text": "The hall: by the old entrance was closed.",
-            "feedback": "The second clause explains the closure. A coordinate list of clauses needs a different boundary pattern."
+            "text": "A full stop",
+            "feedback": "It marks the end of an orthographic sentence."
           },
           {
             "id": "b",
-            "text": "The hall was closed: the caretaker had gone home.",
-            "feedback": "The second clause explains the closure. A coordinate list of clauses needs a different boundary pattern."
+            "text": "A comma",
+            "feedback": "A comma is a secondary boundary mark."
           },
           {
             "id": "c",
-            "text": "The hall opened at nine: the clinic opened at ten: the store opened at eleven.",
-            "feedback": "The second clause explains the closure. A coordinate list of clauses needs a different boundary pattern."
+            "text": "A hyphen",
+            "feedback": "A hyphen is word-internal."
           }
         ],
-        "prompt": "Which line uses a colon to introduce an explanation?",
-        "answer": "b",
+        "answer": "a",
         "outcome_ids": [
           "o1"
         ],
         "source_ids": [
+          "CGEL-2002-CH20-P1724",
+          "CGEL-2002-CH20-P1725",
+          "CGEL-2002-CH20-P1726",
+          "CGEL-2002-CH20-P1727",
+          "CGEL-2002-CH20-P1728",
+          "CGEL-2002-CH20-P1729",
+          "CGEL-2002-CH20-P1730",
+          "CGEL-2002-CH20-P1731",
+          "CGEL-2002-CH20-P1732",
+          "CGEL-2002-CH20-P1733",
+          "CGEL-2002-CH20-P1734",
+          "CGEL-2002-CH20-P1735",
+          "CGEL-2002-CH20-P1736",
           "CGEL-2002-CH20-P1737",
           "CGEL-2002-CH20-P1738",
-          "CGEL-2002-CH20-P1739"
-        ],
-        "id": "opening-4"
+          "CGEL-2002-CH20-P1739",
+          "CGEL-2002-CH20-P1740",
+          "CGEL-2002-CH20-P1741",
+          "CGEL-2002-CH20-P1742",
+          "CGEL-2002-CH20-P1743",
+          "CGEL-2002-CH20-P1744",
+          "CGEL-2002-CH20-P1745",
+          "CGEL-2002-CH20-P1746",
+          "CGEL-2002-CH20-P1747",
+          "CGEL-2002-CH20-P1748",
+          "CGEL-2002-CH20-P1749",
+          "CGEL-2002-CH20-P1750",
+          "CGEL-2002-CH20-P1751",
+          "CGEL-2002-CH20-P1752",
+          "CGEL-2002-CH20-P1753",
+          "CGEL-2002-CH20-P1754",
+          "CGEL-2002-CH20-P1755",
+          "CGEL-2002-CH20-P1756",
+          "CGEL-2002-CH20-P1757",
+          "CGEL-2002-CH20-P1758",
+          "CGEL-2002-CH20-P1759",
+          "CGEL-2002-CH20-P1760",
+          "CGEL-2002-CH20-P1761",
+          "CGEL-2002-CH20-P1762",
+          "CGEL-2002-CH20-P1763",
+          "CGEL-2002-CH20-P1764"
+        ]
       },
       {
+        "id": "opening-3",
+        "prompt": "What defines an orthographic sentence?",
         "options": [
           {
             "id": "a",
-            "text": "The gate, as you may recall was locked.",
-            "feedback": "Paired commas enclose the parenthetical material. A long subject alone needs no comma before was."
+            "text": "A capital at the beginning and a primary terminal at the end",
+            "feedback": "It is a unit of writing."
           },
           {
             "id": "b",
-            "text": "The gate, as you may recall, was locked.",
-            "feedback": "Paired commas enclose the parenthetical material. A long subject alone needs no comma before was."
+            "text": "A clause with a subject and predicate",
+            "feedback": "That is a syntactic definition."
           },
           {
             "id": "c",
-            "text": "The gate near the hall, was locked.",
-            "feedback": "Paired commas enclose the parenthetical material. A long subject alone needs no comma before was."
+            "text": "A paragraph",
+            "feedback": "A paragraph can contain several sentences."
           }
         ],
-        "prompt": "Which sentence sets off the interruption while keeping the subject with its predicate?",
-        "answer": "b",
+        "answer": "a",
         "outcome_ids": [
-          "o2"
+          "o1"
         ],
         "source_ids": [
+          "CGEL-2002-CH20-P1724",
+          "CGEL-2002-CH20-P1725",
+          "CGEL-2002-CH20-P1726",
+          "CGEL-2002-CH20-P1727",
+          "CGEL-2002-CH20-P1728",
+          "CGEL-2002-CH20-P1729",
+          "CGEL-2002-CH20-P1730",
+          "CGEL-2002-CH20-P1731",
+          "CGEL-2002-CH20-P1732",
+          "CGEL-2002-CH20-P1733",
+          "CGEL-2002-CH20-P1734",
+          "CGEL-2002-CH20-P1735",
+          "CGEL-2002-CH20-P1736",
+          "CGEL-2002-CH20-P1737",
+          "CGEL-2002-CH20-P1738",
+          "CGEL-2002-CH20-P1739",
+          "CGEL-2002-CH20-P1740",
+          "CGEL-2002-CH20-P1741",
+          "CGEL-2002-CH20-P1742",
+          "CGEL-2002-CH20-P1743",
           "CGEL-2002-CH20-P1744",
-          "CGEL-2002-CH20-P1745"
+          "CGEL-2002-CH20-P1745",
+          "CGEL-2002-CH20-P1746",
+          "CGEL-2002-CH20-P1747",
+          "CGEL-2002-CH20-P1748",
+          "CGEL-2002-CH20-P1749",
+          "CGEL-2002-CH20-P1750",
+          "CGEL-2002-CH20-P1751",
+          "CGEL-2002-CH20-P1752",
+          "CGEL-2002-CH20-P1753",
+          "CGEL-2002-CH20-P1754",
+          "CGEL-2002-CH20-P1755",
+          "CGEL-2002-CH20-P1756",
+          "CGEL-2002-CH20-P1757",
+          "CGEL-2002-CH20-P1758",
+          "CGEL-2002-CH20-P1759",
+          "CGEL-2002-CH20-P1760",
+          "CGEL-2002-CH20-P1761",
+          "CGEL-2002-CH20-P1762",
+          "CGEL-2002-CH20-P1763",
+          "CGEL-2002-CH20-P1764"
+        ]
+      },
+      {
+        "id": "opening-4",
+        "prompt": "What do delimiting commas do?",
+        "options": [
+          {
+            "id": "a",
+            "text": "They enclose a supplement or parenthetical element.",
+            "feedback": "They mark both boundaries."
+          },
+          {
+            "id": "b",
+            "text": "They mark an abbreviation.",
+            "feedback": "That is an abbreviation full stop."
+          },
+          {
+            "id": "c",
+            "text": "They mark a question.",
+            "feedback": "A question mark does that."
+          }
         ],
-        "id": "opening-5"
+        "answer": "a",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH20-P1724",
+          "CGEL-2002-CH20-P1725",
+          "CGEL-2002-CH20-P1726",
+          "CGEL-2002-CH20-P1727",
+          "CGEL-2002-CH20-P1728",
+          "CGEL-2002-CH20-P1729",
+          "CGEL-2002-CH20-P1730",
+          "CGEL-2002-CH20-P1731",
+          "CGEL-2002-CH20-P1732",
+          "CGEL-2002-CH20-P1733",
+          "CGEL-2002-CH20-P1734",
+          "CGEL-2002-CH20-P1735",
+          "CGEL-2002-CH20-P1736",
+          "CGEL-2002-CH20-P1737",
+          "CGEL-2002-CH20-P1738",
+          "CGEL-2002-CH20-P1739",
+          "CGEL-2002-CH20-P1740",
+          "CGEL-2002-CH20-P1741",
+          "CGEL-2002-CH20-P1742",
+          "CGEL-2002-CH20-P1743",
+          "CGEL-2002-CH20-P1744",
+          "CGEL-2002-CH20-P1745",
+          "CGEL-2002-CH20-P1746",
+          "CGEL-2002-CH20-P1747",
+          "CGEL-2002-CH20-P1748",
+          "CGEL-2002-CH20-P1749",
+          "CGEL-2002-CH20-P1750",
+          "CGEL-2002-CH20-P1751",
+          "CGEL-2002-CH20-P1752",
+          "CGEL-2002-CH20-P1753",
+          "CGEL-2002-CH20-P1754",
+          "CGEL-2002-CH20-P1755",
+          "CGEL-2002-CH20-P1756",
+          "CGEL-2002-CH20-P1757",
+          "CGEL-2002-CH20-P1758",
+          "CGEL-2002-CH20-P1759",
+          "CGEL-2002-CH20-P1760",
+          "CGEL-2002-CH20-P1761",
+          "CGEL-2002-CH20-P1762",
+          "CGEL-2002-CH20-P1763",
+          "CGEL-2002-CH20-P1764"
+        ]
+      },
+      {
+        "id": "opening-5",
+        "prompt": "Why are apostrophe and single quotation mark distinct indicators?",
+        "options": [
+          {
+            "id": "a",
+            "text": "They have different functions even when realised by the same character.",
+            "feedback": "The apostrophe marks omission or genitive; the quotation mark marks quotation."
+          },
+          {
+            "id": "b",
+            "text": "They always use different characters.",
+            "feedback": "They can share a character."
+          },
+          {
+            "id": "c",
+            "text": "They are both non-segmental.",
+            "feedback": "Both are segmental."
+          }
+        ],
+        "answer": "a",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH20-P1724",
+          "CGEL-2002-CH20-P1725",
+          "CGEL-2002-CH20-P1726",
+          "CGEL-2002-CH20-P1727",
+          "CGEL-2002-CH20-P1728",
+          "CGEL-2002-CH20-P1729",
+          "CGEL-2002-CH20-P1730",
+          "CGEL-2002-CH20-P1731",
+          "CGEL-2002-CH20-P1732",
+          "CGEL-2002-CH20-P1733",
+          "CGEL-2002-CH20-P1734",
+          "CGEL-2002-CH20-P1735",
+          "CGEL-2002-CH20-P1736",
+          "CGEL-2002-CH20-P1737",
+          "CGEL-2002-CH20-P1738",
+          "CGEL-2002-CH20-P1739",
+          "CGEL-2002-CH20-P1740",
+          "CGEL-2002-CH20-P1741",
+          "CGEL-2002-CH20-P1742",
+          "CGEL-2002-CH20-P1743",
+          "CGEL-2002-CH20-P1744",
+          "CGEL-2002-CH20-P1745",
+          "CGEL-2002-CH20-P1746",
+          "CGEL-2002-CH20-P1747",
+          "CGEL-2002-CH20-P1748",
+          "CGEL-2002-CH20-P1749",
+          "CGEL-2002-CH20-P1750",
+          "CGEL-2002-CH20-P1751",
+          "CGEL-2002-CH20-P1752",
+          "CGEL-2002-CH20-P1753",
+          "CGEL-2002-CH20-P1754",
+          "CGEL-2002-CH20-P1755",
+          "CGEL-2002-CH20-P1756",
+          "CGEL-2002-CH20-P1757",
+          "CGEL-2002-CH20-P1758",
+          "CGEL-2002-CH20-P1759",
+          "CGEL-2002-CH20-P1760",
+          "CGEL-2002-CH20-P1761",
+          "CGEL-2002-CH20-P1762",
+          "CGEL-2002-CH20-P1763",
+          "CGEL-2002-CH20-P1764"
+        ]
       }
     ],
     "closing": [
       {
+        "id": "closing-1",
+        "prompt": "Why are spaces part of punctuation?",
         "options": [
           {
             "id": "a",
-            "text": "’",
-            "feedback": "The omission mark has the shape of a closing single quotation mark."
+            "text": "They are segmental units that separate words in writing.",
+            "feedback": "They occupy positions in the linear sequence."
           },
           {
             "id": "b",
-            "text": "“",
-            "feedback": "The omission mark has the shape of a closing single quotation mark."
+            "text": "They are non-segmental.",
+            "feedback": "Spaces are segmental."
           },
           {
             "id": "c",
-            "text": "‘",
-            "feedback": "The omission mark has the shape of a closing single quotation mark."
+            "text": "They mark sentence boundaries only.",
+            "feedback": "They mark word boundaries too."
           }
         ],
-        "prompt": "Which directional apostrophe indicates the missing letters before n in rock ’n’ roll?",
-        "answer": "a",
-        "outcome_ids": [
-          "o3"
-        ],
-        "source_ids": [
-          "CGEL-2002-CH20-P1725"
-        ],
-        "id": "closing-1"
-      },
-      {
-        "options": [
-          {
-            "id": "a",
-            "text": "an",
-            "feedback": "Read the parenthesised words too. Unusually immediately follows the article in speech and begins with a vowel sound."
-          },
-          {
-            "id": "b",
-            "text": "a",
-            "feedback": "Read the parenthesised words too. Unusually immediately follows the article in speech and begins with a vowel sound."
-          },
-          {
-            "id": "c",
-            "text": "No article is possible.",
-            "feedback": "Read the parenthesised words too. Unusually immediately follows the article in speech and begins with a vowel sound."
-          }
-        ],
-        "prompt": "Which article fits before “(unusually detailed) manual” when the whole phrase is read aloud?",
         "answer": "a",
         "outcome_ids": [
           "o2"
         ],
         "source_ids": [
-          "CGEL-2002-CH20-P1748"
-        ],
-        "id": "closing-2"
-      },
-      {
-        "options": [
-          {
-            "id": "a",
-            "text": "Mara said, “The hall is closed.” And turned the key.",
-            "feedback": "The matrix sentence continues after the quotation, so the quoted full stop is dropped there."
-          },
-          {
-            "id": "b",
-            "text": "Mara said, “The hall is closed” and turned the key.",
-            "feedback": "The matrix sentence continues after the quotation, so the quoted full stop is dropped there."
-          },
-          {
-            "id": "c",
-            "text": "Mara said, “The hall is closed.” and turned the key.",
-            "feedback": "The matrix sentence continues after the quotation, so the quoted full stop is dropped there."
-          }
-        ],
-        "prompt": "Which version avoids a quoted full stop inside a continuing sentence?",
-        "answer": "b",
-        "outcome_ids": [
-          "o3"
-        ],
-        "source_ids": [
+          "CGEL-2002-CH20-P1724",
+          "CGEL-2002-CH20-P1725",
+          "CGEL-2002-CH20-P1726",
+          "CGEL-2002-CH20-P1727",
+          "CGEL-2002-CH20-P1728",
+          "CGEL-2002-CH20-P1729",
+          "CGEL-2002-CH20-P1730",
+          "CGEL-2002-CH20-P1731",
+          "CGEL-2002-CH20-P1732",
+          "CGEL-2002-CH20-P1733",
+          "CGEL-2002-CH20-P1734",
+          "CGEL-2002-CH20-P1735",
+          "CGEL-2002-CH20-P1736",
+          "CGEL-2002-CH20-P1737",
+          "CGEL-2002-CH20-P1738",
+          "CGEL-2002-CH20-P1739",
+          "CGEL-2002-CH20-P1740",
+          "CGEL-2002-CH20-P1741",
+          "CGEL-2002-CH20-P1742",
+          "CGEL-2002-CH20-P1743",
+          "CGEL-2002-CH20-P1744",
+          "CGEL-2002-CH20-P1745",
+          "CGEL-2002-CH20-P1746",
+          "CGEL-2002-CH20-P1747",
+          "CGEL-2002-CH20-P1748",
+          "CGEL-2002-CH20-P1749",
+          "CGEL-2002-CH20-P1750",
+          "CGEL-2002-CH20-P1751",
+          "CGEL-2002-CH20-P1752",
           "CGEL-2002-CH20-P1753",
           "CGEL-2002-CH20-P1754",
-          "CGEL-2002-CH20-P1755"
-        ],
-        "id": "closing-3"
-      },
-      {
-        "options": [
-          {
-            "id": "a",
-            "text": "Nothing more",
-            "feedback": "The internal question mark is retained and the external full stop is suppressed."
-          },
-          {
-            "id": "b",
-            "text": "An additional full stop",
-            "feedback": "The internal question mark is retained and the external full stop is suppressed."
-          },
-          {
-            "id": "c",
-            "text": "A second question mark",
-            "feedback": "The internal question mark is retained and the external full stop is suppressed."
-          }
-        ],
-        "prompt": "A quoted question ends the report “Mara asked, ‘Is the hall open?’” What follows the closing quotation mark?",
-        "answer": "a",
-        "outcome_ids": [
-          "o2"
-        ],
-        "source_ids": [
-          "CGEL-2002-CH20-P1753",
-          "CGEL-2002-CH20-P1754",
-          "CGEL-2002-CH20-P1755"
-        ],
-        "id": "closing-4"
-      },
-      {
-        "options": [
-          {
-            "id": "a",
-            "text": "the hall’s door / a two-day closure",
-            "feedback": "The genitive takes an apostrophe and the pre-head measure compound takes a hyphen with singular day."
-          },
-          {
-            "id": "b",
-            "text": "the hall’s door / a two-days closure",
-            "feedback": "The genitive takes an apostrophe and the pre-head measure compound takes a hyphen with singular day."
-          },
-          {
-            "id": "c",
-            "text": "the halls door / a two day closure",
-            "feedback": "The genitive takes an apostrophe and the pre-head measure compound takes a hyphen with singular day."
-          }
-        ],
-        "prompt": "Which pair uses the usual word punctuation in both phrases?",
-        "answer": "a",
-        "outcome_ids": [
-          "o3"
-        ],
-        "source_ids": [
+          "CGEL-2002-CH20-P1755",
+          "CGEL-2002-CH20-P1756",
+          "CGEL-2002-CH20-P1757",
+          "CGEL-2002-CH20-P1758",
+          "CGEL-2002-CH20-P1759",
+          "CGEL-2002-CH20-P1760",
           "CGEL-2002-CH20-P1761",
-          "CGEL-2002-CH20-P1763"
+          "CGEL-2002-CH20-P1762",
+          "CGEL-2002-CH20-P1763",
+          "CGEL-2002-CH20-P1764"
+        ]
+      },
+      {
+        "id": "closing-2",
+        "prompt": "What is the difference between light and heavy punctuation?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Light uses fewer optional marks; heavy uses more.",
+            "feedback": "The difference concerns optional commas and similar marks."
+          },
+          {
+            "id": "b",
+            "text": "Light is grammatical; heavy is ungrammatical.",
+            "feedback": "Both are conventional styles."
+          },
+          {
+            "id": "c",
+            "text": "Heavy uses no full stops.",
+            "feedback": "Full stops are required in both."
+          }
         ],
-        "id": "closing-5"
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH20-P1724",
+          "CGEL-2002-CH20-P1725",
+          "CGEL-2002-CH20-P1726",
+          "CGEL-2002-CH20-P1727",
+          "CGEL-2002-CH20-P1728",
+          "CGEL-2002-CH20-P1729",
+          "CGEL-2002-CH20-P1730",
+          "CGEL-2002-CH20-P1731",
+          "CGEL-2002-CH20-P1732",
+          "CGEL-2002-CH20-P1733",
+          "CGEL-2002-CH20-P1734",
+          "CGEL-2002-CH20-P1735",
+          "CGEL-2002-CH20-P1736",
+          "CGEL-2002-CH20-P1737",
+          "CGEL-2002-CH20-P1738",
+          "CGEL-2002-CH20-P1739",
+          "CGEL-2002-CH20-P1740",
+          "CGEL-2002-CH20-P1741",
+          "CGEL-2002-CH20-P1742",
+          "CGEL-2002-CH20-P1743",
+          "CGEL-2002-CH20-P1744",
+          "CGEL-2002-CH20-P1745",
+          "CGEL-2002-CH20-P1746",
+          "CGEL-2002-CH20-P1747",
+          "CGEL-2002-CH20-P1748",
+          "CGEL-2002-CH20-P1749",
+          "CGEL-2002-CH20-P1750",
+          "CGEL-2002-CH20-P1751",
+          "CGEL-2002-CH20-P1752",
+          "CGEL-2002-CH20-P1753",
+          "CGEL-2002-CH20-P1754",
+          "CGEL-2002-CH20-P1755",
+          "CGEL-2002-CH20-P1756",
+          "CGEL-2002-CH20-P1757",
+          "CGEL-2002-CH20-P1758",
+          "CGEL-2002-CH20-P1759",
+          "CGEL-2002-CH20-P1760",
+          "CGEL-2002-CH20-P1761",
+          "CGEL-2002-CH20-P1762",
+          "CGEL-2002-CH20-P1763",
+          "CGEL-2002-CH20-P1764"
+        ]
+      },
+      {
+        "id": "closing-3",
+        "prompt": "What do the commas do in My father, who retired last year, now lives in Florida?",
+        "options": [
+          {
+            "id": "a",
+            "text": "They delimit a supplementary relative clause.",
+            "feedback": "The relative adds information rather than restricting."
+          },
+          {
+            "id": "b",
+            "text": "They mark a coordination.",
+            "feedback": "There is no coordination."
+          },
+          {
+            "id": "c",
+            "text": "They mark an abbreviation.",
+            "feedback": "No abbreviation is involved."
+          }
+        ],
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH20-P1724",
+          "CGEL-2002-CH20-P1725",
+          "CGEL-2002-CH20-P1726",
+          "CGEL-2002-CH20-P1727",
+          "CGEL-2002-CH20-P1728",
+          "CGEL-2002-CH20-P1729",
+          "CGEL-2002-CH20-P1730",
+          "CGEL-2002-CH20-P1731",
+          "CGEL-2002-CH20-P1732",
+          "CGEL-2002-CH20-P1733",
+          "CGEL-2002-CH20-P1734",
+          "CGEL-2002-CH20-P1735",
+          "CGEL-2002-CH20-P1736",
+          "CGEL-2002-CH20-P1737",
+          "CGEL-2002-CH20-P1738",
+          "CGEL-2002-CH20-P1739",
+          "CGEL-2002-CH20-P1740",
+          "CGEL-2002-CH20-P1741",
+          "CGEL-2002-CH20-P1742",
+          "CGEL-2002-CH20-P1743",
+          "CGEL-2002-CH20-P1744",
+          "CGEL-2002-CH20-P1745",
+          "CGEL-2002-CH20-P1746",
+          "CGEL-2002-CH20-P1747",
+          "CGEL-2002-CH20-P1748",
+          "CGEL-2002-CH20-P1749",
+          "CGEL-2002-CH20-P1750",
+          "CGEL-2002-CH20-P1751",
+          "CGEL-2002-CH20-P1752",
+          "CGEL-2002-CH20-P1753",
+          "CGEL-2002-CH20-P1754",
+          "CGEL-2002-CH20-P1755",
+          "CGEL-2002-CH20-P1756",
+          "CGEL-2002-CH20-P1757",
+          "CGEL-2002-CH20-P1758",
+          "CGEL-2002-CH20-P1759",
+          "CGEL-2002-CH20-P1760",
+          "CGEL-2002-CH20-P1761",
+          "CGEL-2002-CH20-P1762",
+          "CGEL-2002-CH20-P1763",
+          "CGEL-2002-CH20-P1764"
+        ]
+      },
+      {
+        "id": "closing-4",
+        "prompt": "What is the difference between parentheses and dashes in supplements?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Parentheses tend to background; dashes tend to foreground or interrupt.",
+            "feedback": "The effect is stylistic and rhetorical."
+          },
+          {
+            "id": "b",
+            "text": "Parentheses are grammatical; dashes are ungrammatical.",
+            "feedback": "Both are grammatical."
+          },
+          {
+            "id": "c",
+            "text": "Dashes mark abbreviations.",
+            "feedback": "That is a different function."
+          }
+        ],
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH20-P1724",
+          "CGEL-2002-CH20-P1725",
+          "CGEL-2002-CH20-P1726",
+          "CGEL-2002-CH20-P1727",
+          "CGEL-2002-CH20-P1728",
+          "CGEL-2002-CH20-P1729",
+          "CGEL-2002-CH20-P1730",
+          "CGEL-2002-CH20-P1731",
+          "CGEL-2002-CH20-P1732",
+          "CGEL-2002-CH20-P1733",
+          "CGEL-2002-CH20-P1734",
+          "CGEL-2002-CH20-P1735",
+          "CGEL-2002-CH20-P1736",
+          "CGEL-2002-CH20-P1737",
+          "CGEL-2002-CH20-P1738",
+          "CGEL-2002-CH20-P1739",
+          "CGEL-2002-CH20-P1740",
+          "CGEL-2002-CH20-P1741",
+          "CGEL-2002-CH20-P1742",
+          "CGEL-2002-CH20-P1743",
+          "CGEL-2002-CH20-P1744",
+          "CGEL-2002-CH20-P1745",
+          "CGEL-2002-CH20-P1746",
+          "CGEL-2002-CH20-P1747",
+          "CGEL-2002-CH20-P1748",
+          "CGEL-2002-CH20-P1749",
+          "CGEL-2002-CH20-P1750",
+          "CGEL-2002-CH20-P1751",
+          "CGEL-2002-CH20-P1752",
+          "CGEL-2002-CH20-P1753",
+          "CGEL-2002-CH20-P1754",
+          "CGEL-2002-CH20-P1755",
+          "CGEL-2002-CH20-P1756",
+          "CGEL-2002-CH20-P1757",
+          "CGEL-2002-CH20-P1758",
+          "CGEL-2002-CH20-P1759",
+          "CGEL-2002-CH20-P1760",
+          "CGEL-2002-CH20-P1761",
+          "CGEL-2002-CH20-P1762",
+          "CGEL-2002-CH20-P1763",
+          "CGEL-2002-CH20-P1764"
+        ]
+      },
+      {
+        "id": "closing-5",
+        "prompt": "Which statement correctly describes punctuation?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It is a writing system using marks, spaces and non-segmental modifications.",
+            "feedback": "It is not a direct transcription of speech."
+          },
+          {
+            "id": "b",
+            "text": "It is exactly the same as prosody.",
+            "feedback": "Punctuation and prosody are related but distinct."
+          },
+          {
+            "id": "c",
+            "text": "It has no optional conventions.",
+            "feedback": "Light and heavy styles show optional variation."
+          }
+        ],
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH20-P1724",
+          "CGEL-2002-CH20-P1725",
+          "CGEL-2002-CH20-P1726",
+          "CGEL-2002-CH20-P1727",
+          "CGEL-2002-CH20-P1728",
+          "CGEL-2002-CH20-P1729",
+          "CGEL-2002-CH20-P1730",
+          "CGEL-2002-CH20-P1731",
+          "CGEL-2002-CH20-P1732",
+          "CGEL-2002-CH20-P1733",
+          "CGEL-2002-CH20-P1734",
+          "CGEL-2002-CH20-P1735",
+          "CGEL-2002-CH20-P1736",
+          "CGEL-2002-CH20-P1737",
+          "CGEL-2002-CH20-P1738",
+          "CGEL-2002-CH20-P1739",
+          "CGEL-2002-CH20-P1740",
+          "CGEL-2002-CH20-P1741",
+          "CGEL-2002-CH20-P1742",
+          "CGEL-2002-CH20-P1743",
+          "CGEL-2002-CH20-P1744",
+          "CGEL-2002-CH20-P1745",
+          "CGEL-2002-CH20-P1746",
+          "CGEL-2002-CH20-P1747",
+          "CGEL-2002-CH20-P1748",
+          "CGEL-2002-CH20-P1749",
+          "CGEL-2002-CH20-P1750",
+          "CGEL-2002-CH20-P1751",
+          "CGEL-2002-CH20-P1752",
+          "CGEL-2002-CH20-P1753",
+          "CGEL-2002-CH20-P1754",
+          "CGEL-2002-CH20-P1755",
+          "CGEL-2002-CH20-P1756",
+          "CGEL-2002-CH20-P1757",
+          "CGEL-2002-CH20-P1758",
+          "CGEL-2002-CH20-P1759",
+          "CGEL-2002-CH20-P1760",
+          "CGEL-2002-CH20-P1761",
+          "CGEL-2002-CH20-P1762",
+          "CGEL-2002-CH20-P1763",
+          "CGEL-2002-CH20-P1764"
+        ]
       }
     ]
   },
   "preview_sources": [
+    {
+      "id": "CGEL-2002-CH20-P1724",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1724,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
     {
       "id": "CGEL-2002-CH20-P1725",
       "book": "Cambridge",
@@ -352,6 +858,104 @@
       "reviewed_on": "2026-11-14"
     },
     {
+      "id": "CGEL-2002-CH20-P1726",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1726,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH20-P1727",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1727,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH20-P1728",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1728,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH20-P1729",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1729,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH20-P1730",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1730,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH20-P1731",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1731,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH20-P1732",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1732,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
       "id": "CGEL-2002-CH20-P1733",
       "book": "Cambridge",
       "title": "The Cambridge Grammar of the English Language",
@@ -364,6 +968,48 @@
       "independent_review": true,
       "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
       "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH20-P1734",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1734,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH20-P1735",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1735,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH20-P1736",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1736,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
     },
     {
       "id": "CGEL-2002-CH20-P1737",
@@ -406,6 +1052,20 @@
       "independent_review": true,
       "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
       "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH20-P1740",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1740,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
     },
     {
       "id": "CGEL-2002-CH20-P1741",
@@ -478,6 +1138,34 @@
       "reviewed_on": "2026-11-14"
     },
     {
+      "id": "CGEL-2002-CH20-P1746",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1746,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH20-P1747",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1747,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
       "id": "CGEL-2002-CH20-P1748",
       "book": "Cambridge",
       "title": "The Cambridge Grammar of the English Language",
@@ -492,6 +1180,20 @@
       "reviewed_on": "2026-11-14"
     },
     {
+      "id": "CGEL-2002-CH20-P1749",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1749,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
       "id": "CGEL-2002-CH20-P1750",
       "book": "Cambridge",
       "title": "The Cambridge Grammar of the English Language",
@@ -504,6 +1206,34 @@
       "independent_review": true,
       "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
       "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH20-P1751",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1751,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH20-P1752",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1752,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
     },
     {
       "id": "CGEL-2002-CH20-P1753",
@@ -548,6 +1278,76 @@
       "reviewed_on": "2026-11-14"
     },
     {
+      "id": "CGEL-2002-CH20-P1756",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1756,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH20-P1757",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1757,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH20-P1758",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1758,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH20-P1759",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1759,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
+      "id": "CGEL-2002-CH20-P1760",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1760,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
+    },
+    {
       "id": "CGEL-2002-CH20-P1761",
       "book": "Cambridge",
       "title": "The Cambridge Grammar of the English Language",
@@ -560,6 +1360,20 @@
       "independent_review": true,
       "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
       "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH20-P1762",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1762,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true
     },
     {
       "id": "CGEL-2002-CH20-P1763",

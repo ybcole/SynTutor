@@ -1,0 +1,1433 @@
+{
+  "title": "Adjectives and adverbs",
+  "description": "Learn how adjectives and adverbs modify, grade, compare and focus, and how their phrases fit into the clause.",
+  "example": "The surprisingly early arrival made the already nervous organisers even more anxious.",
+  "key_terms": [
+    {
+      "term": "adjective",
+      "definition": "A lexical category whose members typically modify nouns and denote properties."
+    },
+    {
+      "term": "adverb",
+      "definition": "A lexical category whose members characteristically modify verbs and other categories except nouns."
+    },
+    {
+      "term": "attributive",
+      "definition": "The function of an adjective phrase used as a pre-head modifier inside a nominal."
+    },
+    {
+      "term": "predicative complement",
+      "definition": "A complement that ascribes a property to a predicand, often realised by an AdjP."
+    },
+    {
+      "term": "postpositive",
+      "definition": "The function of an adjective phrase used as a post-head modifier inside an NP."
+    },
+    {
+      "term": "gradable",
+      "definition": "Able to denote a property in varying degrees, as with happy, happier, very happy."
+    },
+    {
+      "term": "non-gradable",
+      "definition": "A use of an adjective that does not readily accept degree modification or comparison."
+    },
+    {
+      "term": "degree adverb",
+      "definition": "An adverb such as very, too, quite or enough that indicates the degree of a property."
+    },
+    {
+      "term": "comparative",
+      "definition": "The grade form used to compare two or more entities, as in happier or more useful."
+    },
+    {
+      "term": "superlative",
+      "definition": "The grade form used to single out the highest degree, as in happiest or most useful."
+    },
+    {
+      "term": "adjective phrase",
+      "definition": "A phrase headed by an adjective, with optional modifiers and complements."
+    },
+    {
+      "term": "adverb phrase",
+      "definition": "A phrase headed by an adverb, with optional modifiers and complements."
+    },
+    {
+      "term": "complement",
+      "definition": "A dependent licensed by the head, such as of dogs in afraid of dogs."
+    },
+    {
+      "term": "modifier",
+      "definition": "A dependent that adds information without being required by the head."
+    },
+    {
+      "term": "attributive-only adjective",
+      "definition": "An adjective restricted to attributive function, such as former or mere."
+    },
+    {
+      "term": "never-attributive adjective",
+      "definition": "An adjective excluded from attributive function, such as asleep or alone."
+    },
+    {
+      "term": "flat adverb",
+      "definition": "An adverb with the same form as an adjective, such as fast or hard."
+    },
+    {
+      "term": "adjunct",
+      "definition": "A modifier in clause structure, such as a manner or time expression."
+    },
+    {
+      "term": "VP-oriented adjunct",
+      "definition": "An adjunct that modifies the predicate, such as manner or frequency."
+    },
+    {
+      "term": "clause-oriented adjunct",
+      "definition": "An adjunct that modifies the clause’s applicability, such as evaluation or modality."
+    },
+    {
+      "term": "focusing modifier",
+      "definition": "An adverb such as only or also that highlights a particular constituent."
+    },
+    {
+      "term": "scopal focus",
+      "definition": "The element that a focusing modifier applies to semantically."
+    },
+    {
+      "term": "stacked modification",
+      "definition": "A sequence in which one modifier is itself modified, as in only very rarely."
+    },
+    {
+      "term": "submodification",
+      "definition": "A structure in which a modifier modifies another modifier, as in quite remarkably well."
+    }
+  ],
+  "intro": [
+    "*The surprisingly early arrival made the already nervous organisers even more anxious.* Three adverbs are at work in that sentence, and none is doing quite the same job: *surprisingly* modifies an adjective inside the subject, *already* modifies an adjective inside the object, and *even* modifies a comparative at the end. Adjectives and adverbs do this kind of fine-grained work, and their syntax is what licenses it.",
+    "The chapter starts with the criteria that identify an adjective, then takes up the structure of adjective phrases, grading and comparison, and the adjectives restricted to one function or one sense. It turns to adverbs next: how the category is bounded against prepositions, pronouns and determinatives, how adverb phrases are built, where they sit in the clause, and how focusing words such as *only* and *also* pick out an element to highlight.",
+    "Modification is the thread. A modifier is never just an optional word: it has a category, a position and a scope, and those three properties decide what it affects and how the sentence is read. The same adjective can sit before a noun or after a verb; the same adverb can describe a manner or comment on a whole clause; the same focusing adverb can highlight different things in different sentences."
+  ],
+  "sections": [
+    {
+      "id": "preliminaries",
+      "title": "Adjectives, adverbs, and modification",
+      "advances": "predict",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Heavy rain* and *rain fell heavily* describe the same downpour, but the modifier has moved and changed shape. In one, it sits inside the noun phrase; in the other, it attaches to the verb. English marks that difference with two categories, and the useful question is not what to call them but what each one is allowed to modify."
+        },
+        {
+          "type": "paragraph",
+          "text": "*The rain was heavy* and *They are young* put an adjective phrase in complement position after *be*, where it supplies the main semantic content of the predicate. The predicative use is just as important as the attributive one. So *be* plus adjective often matches a single lexical verb: *she was awake* is close to *she awoke*, and *she was dead* to *she died*."
+        },
+        {
+          "type": "paragraph",
+          "text": "Each category needs only one phrase layer above it. There is no analogue of the subject or determiner functions that justify separating clause from verb phrase, or noun phrase from nominal. The architecture stays shallow, even where the internal modification is intricate."
+        },
+        {
+          "type": "table",
+          "title": "What modifies what",
+          "columns": [
+            "Modifier",
+            "Head category",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Adjective",
+              "Noun",
+              "heavy rain"
+            ],
+            [
+              "Adverb",
+              "Verb",
+              "fell heavily"
+            ],
+            [
+              "Adverb",
+              "Adjective",
+              "unnecessarily long"
+            ],
+            [
+              "Adverb",
+              "Adverb",
+              "unnecessarily harshly"
+            ],
+            [
+              "Adverb",
+              "Clause",
+              "Fortunately, nobody was hurt."
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Two categories at work",
+          "items": [
+            {
+              "text": "Heavy rain fell.",
+              "mark": "ok",
+              "note": "Heavy is an attributive adjective modifying rain."
+            },
+            {
+              "text": "Rain fell heavily.",
+              "mark": "ok",
+              "note": "Heavily is an adverb modifying fell."
+            },
+            {
+              "text": "Their response was unnecessarily long.",
+              "mark": "ok",
+              "note": "Unnecessarily modifies the adjective long."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the primary basis for distinguishing adjectives from adverbs?",
+        "options": [
+          {
+            "id": "a",
+            "text": "What they can modify: adjectives modify nouns; adverbs modify other categories.",
+            "feedback": "The -ly ending is common but not decisive; function is primary."
+          },
+          {
+            "id": "b",
+            "text": "Adjectives have more syllables.",
+            "feedback": "Length is irrelevant."
+          },
+          {
+            "id": "c",
+            "text": "Adverbs always end in -ly.",
+            "feedback": "Fast, hard and early are adverbs without -ly."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "criterial-properties",
+      "title": "What makes an adjective",
+      "advances": "understand",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Take *happy* and put it to work. It modifies a noun (*happy people*), it serves as a complement after *be* (*they are happy*), and it can follow a compound determinative (*someone happy*). It also grades — *happier*, *happiest* — and it accepts adverbs such as *very* and *remarkably*. Those five behaviours together are what make it a central adjective."
+        },
+        {
+          "type": "paragraph",
+          "text": "Nouns and verbs can be gradable, and adverbs modify verbs and clauses as readily as adjectives modify nouns. None of the adjective properties is unique on its own. What sets adjectives apart is the combination: the three functions, the grading constructions, and the absence of number and tense inflection. Adjectives also normally refuse noun phrase complements, which separates them from verbs."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Mere*, *former* and *main* are attributive-only; *asleep*, *alone* and *awake* never appear before a noun; *elect* and *galore* occur only after it. The three functions are not equally open to every adjective. These are restrictions on uses and senses rather than on spelling, and a single adjective can behave differently in different meanings."
+        },
+        {
+          "type": "table",
+          "title": "Properties of central adjectives",
+          "columns": [
+            "Property",
+            "Test",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Attributive",
+              "Pre-head modifier in NP",
+              "happy people"
+            ],
+            [
+              "Predicative",
+              "Complement of be, seem, become",
+              "They are happy."
+            ],
+            [
+              "Postpositive",
+              "Post-head modifier in NP",
+              "someone happy"
+            ],
+            [
+              "Gradable",
+              "Degree modifier or comparative",
+              "very happy; happier"
+            ],
+            [
+              "Adverb-dependent",
+              "Modified by an adverb",
+              "remarkably happy"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Function and form",
+          "items": [
+            {
+              "text": "my new job",
+              "mark": "ok",
+              "note": "New is an attributive adjective."
+            },
+            {
+              "text": "This is new.",
+              "mark": "ok",
+              "note": "New is a predicative complement."
+            },
+            {
+              "text": "something important",
+              "mark": "ok",
+              "note": "Important is postpositive after a compound determinative."
+            },
+            {
+              "text": "a very useful report",
+              "mark": "ok",
+              "note": "Useful is gradable and modified by very."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is gradability not by itself a sufficient definition of adjective?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Some nouns and verbs are also gradable.",
+            "feedback": "Success and love can be graded, but they do not have the adjective’s syntactic profile."
+          },
+          {
+            "id": "b",
+            "text": "All adjectives are non-gradable.",
+            "feedback": "Most central adjectives are gradable."
+          },
+          {
+            "id": "c",
+            "text": "Only adverbs are gradable.",
+            "feedback": "Adverbs are gradable too, and so are some nouns and verbs."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "category-boundaries",
+      "title": "Adjectives and their neighbours",
+      "advances": "worked",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Nouns inflect for number and case, combine with determiners, and head phrases that serve as subjects and objects. Adjectives do none of that. Nouns and adjectives diverge in inflection and function. The one place an adjective can head a phrase on its own is the fused construction — *the rich*, *the younger of the two* — and even there the determiner is doing part of the work."
+        },
+        {
+          "type": "paragraph",
+          "text": "*The*, *this* and *some* occupy determiner or modifier positions inside the phrase and generally do not grade. Determinatives are a closer neighbour to adjectives. Adjectives modify nominals and ascribe properties. Words such as *other* and *certain* sit awkwardly between the two, and the only reliable way to place them is to look at the full range of syntactic behaviour rather than a single context."
+        },
+        {
+          "type": "paragraph",
+          "text": "Verbs differ in inflection and complementation, and past participles are where the boundary gets interesting. *Broken* is verbal in *The vase was broken deliberately*, which describes an event and allows an agent-oriented *by* phrase. It is adjectival in *The vase looked broken*, which describes a state and accepts degree modification. The same spelling, two different categories, and the syntax decides between them."
+        },
+        {
+          "type": "examples",
+          "title": "Boundary cases",
+          "items": [
+            {
+              "text": "the rich",
+              "mark": "ok",
+              "note": "A fused modifier-head NP; rich is an adjective functioning as head."
+            },
+            {
+              "text": "this report",
+              "mark": "ok",
+              "note": "This is a determinative functioning as determiner, not an adjective."
+            },
+            {
+              "text": "The vase was broken deliberately.",
+              "mark": "ok",
+              "note": "Broken is a passive verb form: an event is described."
+            },
+            {
+              "text": "The vase looked broken.",
+              "mark": "ok",
+              "note": "Broken is an adjective: a state is described."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which test helps distinguish a passive verb from a predicative adjective?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Whether the form describes an event or a state and accepts degree modifiers.",
+            "feedback": "A passive verb can take a by phrase; an adjective describes a state and may be gradable."
+          },
+          {
+            "id": "b",
+            "text": "Whether the word ends in -ed.",
+            "feedback": "Both passive verbs and participial adjectives can end in -ed."
+          },
+          {
+            "id": "c",
+            "text": "Whether the clause contains be.",
+            "feedback": "Both constructions can contain be."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "adjp-complementation",
+      "title": "Complements inside adjective phrases",
+      "advances": "guided",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Many adjectives come with an appetite for a particular dependent. *Afraid of dogs*, *keen to take part*, *glad that you came*, *busy marking essays*: the complement can be a preposition phrase, an infinitival, a finite clause or a gerund-participial. What licenses it is the adjective itself, not the verb that the adjective phrase happens to modify."
+        },
+        {
+          "type": "paragraph",
+          "text": "Most of these complements can be left out without producing an ungrammatical clause. *He was afraid* is perfectly good, though it may need context to say what of. Others are obligatory for a given sense: *mindful of the danger* loses its point if reduced to *mindful*, and *tantamount to a confession* cannot drop its preposition phrase at all."
+        },
+        {
+          "type": "paragraph",
+          "text": "Plenty of adjectives license nothing. *Bald*, *red*, *young* and *enormous* take no complements, and the ones that do select their prepositions with care: *angry about*, *good at*, *responsible for*, *different from*, *interested in*, *afraid of*, *dependent on*, *similar to*, *familiar with*. Those patterns belong to the lexical entry of each adjective and have to be learned with it."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Worth considering*, *like her mother*, *unlike his brother* and *due attention* show the rare adjectives that take an NP complement. Noun phrase complements are rare enough to count as exceptions. Elsewhere a noun is mediated by a preposition: *fond of animals*, never *fond animals*."
+        },
+        {
+          "type": "table",
+          "title": "Adjective complement types",
+          "columns": [
+            "Complement",
+            "Example",
+            "Head adjective"
+          ],
+          "rows": [
+            [
+              "PP",
+              "afraid of dogs",
+              "afraid"
+            ],
+            [
+              "To-infinitival",
+              "keen to take part",
+              "keen"
+            ],
+            [
+              "Finite content clause",
+              "glad that you came",
+              "glad"
+            ],
+            [
+              "Gerund-participial",
+              "busy marking essays",
+              "busy"
+            ],
+            [
+              "NP (rare)",
+              "worth considering",
+              "worth"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Licensed complements",
+          "items": [
+            {
+              "text": "She was afraid of dogs.",
+              "mark": "ok",
+              "note": "Of dogs is a PP complement licensed by afraid."
+            },
+            {
+              "text": "He was keen to take part.",
+              "mark": "ok",
+              "note": "To take part is an infinitival complement."
+            },
+            {
+              "text": "I’m glad that you came.",
+              "mark": "ok",
+              "note": "That you came is a declarative content clause."
+            },
+            {
+              "text": "The offer is worth considering.",
+              "mark": "ok",
+              "note": "A rare hollow gerund-participial complement."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is of dogs a complement rather than a modifier in afraid of dogs?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Afraid licenses the PP; the preposition is part of its lexical requirements.",
+            "feedback": "The adjective selects the complement pattern."
+          },
+          {
+            "id": "b",
+            "text": "It follows the adjective.",
+            "feedback": "Position alone does not make a dependent a complement."
+          },
+          {
+            "id": "c",
+            "text": "It can be omitted.",
+            "feedback": "Optional complements are still complements if licensed by the head."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "adjp-modification",
+      "title": "Modification, degree, and comparison",
+      "advances": "transfer",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "An adjective rarely stands alone for long. *Very*, *rather* and *extremely* gather in front of it, *enough* follows behind, and *more* and *most* build its comparatives and superlatives. The sequences can themselves be layered. *Only very rarely* is stacked modification, with *only* applying to an already modified *very rarely*; *quite remarkably well* is submodification, where one modifier intensifies another."
+        },
+        {
+          "type": "paragraph",
+          "text": "Gradability belongs to senses rather than to lexemes. *Public* resists degree in *public highway* but accepts it in *a very public quarrel*. So-called absolute adjectives behave the same way once context supplies a scale: *complete*, *perfect* and *unique* all turn up with degree modifiers — *a more perfect rake*, *a rather unique situation* — without losing their meaning."
+        },
+        {
+          "type": "paragraph",
+          "text": "Comparison itself comes in two forms. Short adjectives inflect (*flat*, *flatter*, *flattest*), longer ones use *more* and *most* (*useful*, *more useful*, *most useful*), and a few adverbs inflect too (*soon*, *sooner*, *soonest*). Syllable counting alone often gives the wrong answer."
+        },
+        {
+          "type": "paragraph",
+          "text": "Placement of *enough* follows the head category. It comes after adjectives, adverbs and verbs (*old enough*, *clearly enough*, *care enough*) and before nouns (*enough time*). When the adjective has a complement, *enough* normally lands between the two: *keen enough on the idea*."
+        },
+        {
+          "type": "table",
+          "title": "Grading patterns",
+          "columns": [
+            "Pattern",
+            "Example",
+            "Placement"
+          ],
+          "rows": [
+            [
+              "Degree modifier",
+              "very helpful",
+              "Before adjective"
+            ],
+            [
+              "Inflectional comparative",
+              "flatter, sooner",
+              "Suffix -er"
+            ],
+            [
+              "Analytic comparative",
+              "more useful",
+              "More before adjective"
+            ],
+            [
+              "Superlative",
+              "flattest, most useful",
+              "Suffix or most"
+            ],
+            [
+              "Enough",
+              "old enough",
+              "After adjective or adverb"
+            ],
+            [
+              "Enough with noun",
+              "enough time",
+              "Before noun"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Degree and comparison",
+          "items": [
+            {
+              "text": "She was very helpful.",
+              "mark": "ok",
+              "note": "Very modifies the adjective helpful."
+            },
+            {
+              "text": "This report is more useful than the last one.",
+              "mark": "ok",
+              "note": "Analytic comparative with more."
+            },
+            {
+              "text": "He wasn’t old enough.",
+              "mark": "ok",
+              "note": "Enough follows the adjective."
+            },
+            {
+              "text": "He wasn’t keen enough on the idea.",
+              "mark": "ok",
+              "note": "Enough sits between the adjective and its PP complement."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Where does enough normally occur with an adjective that has a PP complement?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Between the adjective and its complement",
+            "feedback": "Keen enough on the idea, not enough keen on the idea."
+          },
+          {
+            "id": "b",
+            "text": "Before the adjective",
+            "feedback": "Enough old is not the normal order."
+          },
+          {
+            "id": "c",
+            "text": "After the PP complement",
+            "feedback": "Keen on the idea enough is marked or unacceptable."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "restricted-adjectives",
+      "title": "Adjectives with restricted functions",
+      "advances": "exit",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Former*, *main*, *mere*, *utter* and *late* in the sense “recently deceased” stay attributive; *asleep*, *alone*, *awake* and *glad* in the sense “happy” never do. Most adjectives are free to appear before a noun, after *be* and after the noun. Some are not. A small group occurs only postpositively, with *elect* and *galore* as the standard examples."
+        },
+        {
+          "type": "paragraph",
+          "text": "The restrictions usually come with meaning differences. *The late queen* is the recently deceased queen, while *she is late* is a comment on her schedule. *My old school* is the one I used to attend, while *this school is old* is about the building. *A hard worker* works hard; *the work is hard* is difficult."
+        },
+        {
+          "type": "paragraph",
+          "text": "Attributive-only adjectives also behave differently in what they entail and what they can modify. *Tom is a shy man* entails *Tom is a man*, and *shy* can stand in for the noun in *the shy one*. *Tom is the putative father* entails nothing of the kind, and *an utter disgrace* does not become *an utter one*. The restriction is syntactic, and it shows up in reasoning as well as in position."
+        },
+        {
+          "type": "table",
+          "title": "Restricted adjective functions",
+          "columns": [
+            "Restriction",
+            "Examples",
+            "Diagnostic"
+          ],
+          "rows": [
+            [
+              "Attributive-only",
+              "former, main, mere, utter",
+              "No ordinary predicative use"
+            ],
+            [
+              "Never-attributive",
+              "asleep, alone, awake, glad",
+              "No ordinary attributive use"
+            ],
+            [
+              "Postpositive-only",
+              "elect, galore",
+              "Occurs after the head"
+            ],
+            [
+              "Meaning-restricted",
+              "late, old, hard",
+              "Attributive and predicative senses differ"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Restriction and meaning",
+          "items": [
+            {
+              "text": "the late queen",
+              "mark": "ok",
+              "note": "Late means recently deceased in this attributive use."
+            },
+            {
+              "text": "the child was asleep",
+              "mark": "ok",
+              "note": "Asleep is predicative; an asleep child is not ordinary."
+            },
+            {
+              "text": "the president elect",
+              "mark": "ok",
+              "note": "Elect is postpositive-only in this use."
+            },
+            {
+              "text": "a mere child",
+              "mark": "ok",
+              "note": "Mere is attributive-only and does not denote a subset of children."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which adjective is attributive-only?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Mere",
+            "feedback": "A mere child, but not The child is mere."
+          },
+          {
+            "id": "b",
+            "text": "Asleep",
+            "feedback": "Asleep is never-attributive: the child was asleep."
+          },
+          {
+            "id": "c",
+            "text": "Happy",
+            "feedback": "Happy occurs in all three central functions."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "adverbs",
+      "title": "Adverbs and the boundaries of the category",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Fast*, *hard*, *early* and *late* are adverbs without *-ly*; *likely*, *friendly* and *lovely* are adjectives with it. Adverbs characteristically modify verbs and the categories other than nouns, especially adjectives and adverbs. The *-ly* ending is a useful hint and a poor test. What decides the category is what the word can modify, not how it is spelled."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Very* and *too* modify adjectives and adverbs but not verbs or noun phrases; *moreover* and *nevertheless* modify clauses; *only* and *even* range across noun phrases, preposition phrases, clauses and verb phrases. The class is genuinely heterogeneous. A description of any one adverb has to say which categories it can take, not merely that it belongs to the class."
+        },
+        {
+          "type": "paragraph",
+          "text": "This grammar also shrinks the traditional adverb category by reassigning words elsewhere. *Outside* and *according to* head preposition phrases, so they are prepositions; *today* and *yesterday* are pronouns functioning as noun phrases; *all*, *any* and *enough* are determinatives. What remains is a more coherent class, even if the boundaries still need argument in individual cases."
+        },
+        {
+          "type": "examples",
+          "title": "Adverb or another category?",
+          "items": [
+            {
+              "text": "They arrived early.",
+              "mark": "ok",
+              "note": "Early is a flat adverb modifying arrived."
+            },
+            {
+              "text": "They are outside.",
+              "mark": "ok",
+              "note": "Outside is a preposition with no complement, functioning as a predicative complement."
+            },
+            {
+              "text": "They arrived yesterday.",
+              "mark": "ok",
+              "note": "Yesterday is a pronoun in an NP functioning as an adjunct."
+            },
+            {
+              "text": "Almost all the candidates failed.",
+              "mark": "ok",
+              "note": "Almost modifies a determinative."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is outside analysed as a preposition rather than an adverb in They are outside?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It heads a PP and can take complements; it occurs as a complement of be.",
+            "feedback": "The category is based on syntax, not on the traditional label."
+          },
+          {
+            "id": "b",
+            "text": "It ends in -side.",
+            "feedback": "Morphology alone does not decide the category."
+          },
+          {
+            "id": "c",
+            "text": "It modifies the verb are.",
+            "feedback": "It is a complement of be, not a modifier."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "advp-structure",
+      "title": "Inside adverb phrases",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Independently of*, *similarly to*, *differently from* show the few adverbs that license dependents of their own. Adverb phrases are usually lean: an adverb, perhaps a degree word, little else. The complement is selected by the adverb, and it often echoes the requirements of the adjective it was built from."
+        },
+        {
+          "type": "paragraph",
+          "text": "Evaluative adverbs take a *for* phrase naming the person affected: *Fortunately for me, the train was late*. The adjective base need not license the same phrase, which shows that the pattern belongs to the adverb. *Directly* and *immediately* go further and take declarative content clauses: *Directly he arrived, the meeting began*."
+        },
+        {
+          "type": "paragraph",
+          "text": "Inside the phrase, modification looks much as it does with adjectives. Degree adverbs modify other adverbs, determinatives such as *this*, *that*, *much* and *enough* can do the same, and measure phrases attach to *early*, *late* and *soon*. Strings of *-ly* adverbs are grammatical, but the repeated ending quickly becomes heavy on the page."
+        },
+        {
+          "type": "table",
+          "title": "AdvP dependents",
+          "columns": [
+            "Dependent",
+            "Example",
+            "Head"
+          ],
+          "rows": [
+            [
+              "PP complement",
+              "independently of the result",
+              "independently"
+            ],
+            [
+              "For phrase",
+              "fortunately for me",
+              "fortunately"
+            ],
+            [
+              "Content clause",
+              "directly he arrived",
+              "directly"
+            ],
+            [
+              "Degree modifier",
+              "quite remarkably",
+              "remarkably"
+            ],
+            [
+              "Measure NP",
+              "two hours late",
+              "late"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Adverb phrase structure",
+          "items": [
+            {
+              "text": "The decision was made independently of the review.",
+              "mark": "ok",
+              "note": "Of the review is a complement licensed by independently."
+            },
+            {
+              "text": "Fortunately for me, the train was late.",
+              "mark": "ok",
+              "note": "For me identifies the person affected by the evaluation."
+            },
+            {
+              "text": "Directly he arrived, the meeting began.",
+              "mark": "ok",
+              "note": "Directly takes a content-clause complement."
+            },
+            {
+              "text": "She works surprisingly slowly.",
+              "mark": "ok",
+              "note": "Surprisingly modifies the adverb slowly."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which adverb takes a complement in independently of the review?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Independently",
+            "feedback": "The PP of the review is licensed by the adverb."
+          },
+          {
+            "id": "b",
+            "text": "Review",
+            "feedback": "Review is the complement of of, not the licensor."
+          },
+          {
+            "id": "c",
+            "text": "The decision",
+            "feedback": "That is the subject of the clause."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "adverb-position",
+      "title": "Where adverbs go in the clause",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "An adverb phrase rarely appears as a complement. A handful of verbs (*word your reply carefully*, *treat us leniently*) and a few prepositions (*until recently*) are the exceptions. Everywhere else it works as an adjunct, and where it sits is bound up with what it means."
+        },
+        {
+          "type": "paragraph",
+          "text": "Three positions matter: front, before the subject; central, between subject and verb or after the auxiliary; and end, after the verb and its dependents. Front position tends to turn a manner adverb into a comment on the whole situation, while central position keeps it tied to the action. The same word can therefore evaluate a state of affairs in one sentence and describe how something was done in another."
+        },
+        {
+          "type": "paragraph",
+          "text": "Adjuncts oriented to the predicate — manner, means, degree, frequency, temporal location — favour central or end position. Adjuncts oriented to the clause — evaluation, modality, domain, speech act — favour the front. The correlation is strong without being absolute, and style, prosody and context all pull placement in different directions."
+        },
+        {
+          "type": "table",
+          "title": "VP-oriented and clause-oriented adjuncts",
+          "columns": [
+            "Orientation",
+            "Semantic types",
+            "Typical position"
+          ],
+          "rows": [
+            [
+              "VP-oriented",
+              "Manner, means, degree, frequency, duration",
+              "Central or end"
+            ],
+            [
+              "Clause-oriented",
+              "Evaluation, modality, domain, speech act",
+              "Front or central"
+            ],
+            [
+              "Detached",
+              "Any adjunct set off prosodically",
+              "Supplement"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Position changes meaning",
+          "items": [
+            {
+              "text": "Happily, they watched TV.",
+              "mark": "ok",
+              "note": "Evaluation: the speaker is happy about the situation."
+            },
+            {
+              "text": "They happily watched TV.",
+              "mark": "ok",
+              "note": "Manner: they watched in a happy manner."
+            },
+            {
+              "text": "They watched TV happily.",
+              "mark": "ok",
+              "note": "Manner in end position."
+            },
+            {
+              "text": "Frankly, I’m not interested.",
+              "mark": "ok",
+              "note": "Speech-act comment, not a manner adjunct."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why does Happily, they watched TV differ from They happily watched TV?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Front position gives an evaluation reading; central position gives a manner reading.",
+            "feedback": "The same form has different orientation and scope."
+          },
+          {
+            "id": "b",
+            "text": "Happily is an adjective in the first sentence.",
+            "feedback": "It is an adverb in both."
+          },
+          {
+            "id": "c",
+            "text": "The second sentence has no verb.",
+            "feedback": "Both contain watched."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "focusing-adverbs",
+      "title": "Focusing adverbs: only, also, and scope",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Only* restricts and *also* adds, and both of them highlight something. *You can only exit from this lane* is a small masterpiece of ambiguity: it can mean that exiting is the only thing you may do, or that this lane is the only place you may exit from. Position alone does not tell you which reading is intended."
+        },
+        {
+          "type": "paragraph",
+          "text": "Two notions separate here. The scope is the stretch of clause whose meaning the adverb affects; the focus is the element inside that scope which is contrasted. In *Only Kim resigned*, the scope is the whole clause and the focus is *Kim*. The sentence takes it for granted that Kim resigned and asserts that nobody else did."
+        },
+        {
+          "type": "paragraph",
+          "text": "Focusing adverbs combine with noun phrases, preposition phrases, adjective and adverb phrases, verb phrases, content clauses and non-finite clauses. They do not normally modify a main clause beyond an imperative, and they leave nouns and nominals alone. *Only* usually precedes its focus, but *for your eyes only* shows that it can follow it."
+        },
+        {
+          "type": "examples",
+          "title": "Different foci",
+          "items": [
+            {
+              "text": "We found only one mistake.",
+              "mark": "ok",
+              "note": "Only precedes and is adjacent to its focus, one mistake."
+            },
+            {
+              "text": "We only found one mistake.",
+              "mark": "ok",
+              "note": "Only modifies the VP; the focus is still one mistake."
+            },
+            {
+              "text": "Technology alone cannot solve these problems.",
+              "mark": "ok",
+              "note": "Alone follows its focus and restricts it."
+            },
+            {
+              "text": "Jill also attended the history seminar.",
+              "mark": "ok",
+              "note": "Also is additive; context determines which element is in focus."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the focus of only in Only Kim resigned?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Kim",
+            "feedback": "The restriction excludes everyone other than Kim."
+          },
+          {
+            "id": "b",
+            "text": "Resigned",
+            "feedback": "The predicate is presupposed, not the focus."
+          },
+          {
+            "id": "c",
+            "text": "The whole clause",
+            "feedback": "The scope is the clause, but the focus is Kim."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "modifier-style",
+      "title": "Modifiers in prose",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Practically totally incomprehensibly* is possible, but no editor would keep it. Choosing a modifier is a stylistic act as well as a grammatical one. Adjectives stack more comfortably, though a long run of attributive adjectives can also outrun a reader’s memory."
+        },
+        {
+          "type": "paragraph",
+          "text": "Placement carries information structure. A fronted evaluation announces the speaker’s attitude before the proposition arrives; a central manner adverb keeps the description close to the verb; an end-position adverb often carries the newest information. Moving a modifier without changing its category can therefore change what the sentence puts in the foreground."
+        },
+        {
+          "type": "paragraph",
+          "text": "The analysis stays structural. Find the head, decide whether the dependent is licensed or optional, then work out its scope. An adjective may be attributive, predicative, postpositive or fused; an adverb may modify a verb, an adjective, another adverb, a noun phrase, a preposition phrase or a clause. The label tells you very little until you know what the word is attached to."
+        }
+      ],
+      "check": {
+        "prompt": "Why can a sequence of -ly adverbs be grammatical but still weak stylistically?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The structure is possible, but the repeated form can be hard to process and sound clumsy.",
+            "feedback": "Grammaticality and stylistic effectiveness are separate."
+          },
+          {
+            "id": "b",
+            "text": "Adverbs cannot modify other adverbs.",
+            "feedback": "They can: surprisingly slowly."
+          },
+          {
+            "id": "c",
+            "text": "All -ly words are adjectives.",
+            "feedback": "Many -ly words are adverbs; some are adjectives."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "chapter-review",
+      "title": "Chapter Review",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Before the noun, after *be*, after the noun: the central adjectives are the flexible ones, gradable and open to adverb modifiers. Around them sit the restrictions — attributive-only, never-attributive, postpositive-only. Adjective phrases take complements and modifiers, preposition phrases and clauses commonly, noun phrases rarely."
+        },
+        {
+          "type": "paragraph",
+          "text": "Grading belongs to senses rather than to lexemes. Degree adverbs, inflectional comparatives, analytic comparatives and superlatives each have their own syntax, and *enough* follows adjectives, adverbs and verbs while usually preceding nouns. The restricted adjectives show how tightly function and meaning are tied together."
+        },
+        {
+          "type": "paragraph",
+          "text": "Predicate-oriented adjuncts favour central or end position; clause-oriented ones the front. Adverbs modify verbs and the categories other than nouns. Adverb phrases contain modifiers and, for a few adverbs, complements. Focusing adverbs add a scope and a focus, and context and placement are what let a hearer find them."
+        },
+        {
+          "type": "note",
+          "tone": "why",
+          "title": "A modifier checklist",
+          "text": "Identify the head. Decide whether the dependent is a complement or a modifier. For adjectives, check attributive, predicative, postpositive or fused function. For adverbs, check what category is modified and whether the adjunct is VP-oriented or clause-oriented. For focusing adverbs, identify both scope and focus."
+        }
+      ],
+      "check": {
+        "prompt": "Which statement correctly distinguishes adjectives and adverbs?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Adjectives modify nouns; adverbs characteristically modify other categories except nouns.",
+            "feedback": "The difference is functional, not simply a matter of -ly."
+          },
+          {
+            "id": "b",
+            "text": "All adverbs end in -ly.",
+            "feedback": "Fast and hard are adverbs without -ly."
+          },
+          {
+            "id": "c",
+            "text": "Adjectives cannot be predicative.",
+            "feedback": "They commonly are: She is happy."
+          }
+        ],
+        "answer": "a"
+      }
+    }
+  ],
+  "worked": [
+    "Take *The surprisingly early arrival made the already nervous organisers even more anxious*. The subject NP is *The surprisingly early arrival*: *early* is an attributive adjective modified by *surprisingly*. The object NP is *the already nervous organisers*, with *nervous* modified by *already*. The predicative complement is *even more anxious*, an AdjP with the analytic comparative *more anxious* modified by *even*.",
+    "The example shows three layers of modification at once: an adverb modifying an attributive adjective, an adverb modifying another attributive adjective, and a degree modifier modifying a comparative AdjP. Each modifier has its own scope, and the categories are determined by what they modify, not by their endings alone."
+  ],
+  "application": [
+    "When you analyse a modifier, first identify the head. If the head is a noun, the modifier is likely an adjective; if it is a verb, adjective, adverb, PP or clause, the modifier is likely an adverb. Then decide whether the dependent is licensed by the head or merely adds information.",
+    "Next, check function. An adjective may be attributive, predicative, postpositive, predeterminer or fused. An adverb may be a complement, an adjunct, a supplement or a focusing modifier. Position and intonation often distinguish these roles more reliably than the word’s form.",
+    "Finally, check scope. In *Only Kim resigned*, the scope is the clause and the focus is Kim. In *Happily, they left*, the adverb comments on the clause; in *They left happily*, it describes the manner. The same form can change the interpretation when its position or scope changes."
+  ],
+  "reveal": [
+    "In *The surprisingly early arrival made the already nervous organisers even more anxious*, *surprisingly* modifies the adjective *early*, *already* modifies *nervous*, and *even* modifies the comparative AdjP *more anxious*. The clause is complex-transitive: *the organisers* is object and *even more anxious* is an object-oriented predicative complement."
+  ],
+  "recap": [
+    "Adjectives modify nouns and have attributive, predicative and postpositive functions. They grade through degree modifiers, inflection and analytic comparison, and take PP or clausal complements. Some adjectives are restricted to particular functions or senses.",
+    "Adverbs modify verbs and other categories except nouns. AdvPs may contain complements and modifiers, and their clause positions reflect VP or clause orientation. Focusing adverbs add scope and focus, which are not always marked by surface order."
+  ],
+  "self_check": [
+    {
+      "question": "What three functions do central adjectives typically have?",
+      "answer": "Attributive, predicative and postpositive."
+    },
+    {
+      "question": "Why is gradability not a sufficient definition of adjective?",
+      "answer": "Some nouns and verbs are gradable too; adjectives are distinguished by the combination of functions and grading constructions."
+    },
+    {
+      "question": "What is the difference between an attributive-only and a never-attributive adjective?",
+      "answer": "Attributive-only adjectives occur before the noun but not predicatively; never-attributive adjectives occur predicatively but not before the noun."
+    },
+    {
+      "question": "What is the difference between VP-oriented and clause-oriented adjuncts?",
+      "answer": "VP-oriented adjuncts modify the predicate and favour central or end position; clause-oriented adjuncts modify the clause’s applicability and favour front position."
+    },
+    {
+      "question": "What is the focus of a focusing adverb?",
+      "answer": "The element within its scope that is highlighted or contrasted, as Kim is in Only Kim resigned."
+    }
+  ],
+  "opening": [
+    {
+      "prompt": "Which category typically modifies nouns?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Adjectives",
+          "feedback": "Adjectives modify nominals and denote properties."
+        },
+        {
+          "id": "b",
+          "text": "Adverbs",
+          "feedback": "Adverbs characteristically modify categories other than nouns."
+        },
+        {
+          "id": "c",
+          "text": "Prepositions",
+          "feedback": "Prepositions head PPs; they do not modify nouns in this way."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which function is a predicative adjective performing?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Acting as a complement that ascribes a property",
+          "feedback": "In She is happy, happy is a predicative complement."
+        },
+        {
+          "id": "b",
+          "text": "Modifying a following noun",
+          "feedback": "That is the attributive function."
+        },
+        {
+          "id": "c",
+          "text": "Heading a preposition phrase",
+          "feedback": "Prepositions head PPs."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which adjective is never-attributive?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Asleep",
+          "feedback": "The child was asleep, but not an asleep child in ordinary use."
+        },
+        {
+          "id": "b",
+          "text": "Happy",
+          "feedback": "Happy occurs attributively and predicatively."
+        },
+        {
+          "id": "c",
+          "text": "Former",
+          "feedback": "Former is attributive-only."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What does an adverb characteristically modify?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Verbs and categories other than nouns",
+          "feedback": "Adverbs also modify adjectives, adverbs, PPs and clauses."
+        },
+        {
+          "id": "b",
+          "text": "Only nouns",
+          "feedback": "That is the adjective’s characteristic function."
+        },
+        {
+          "id": "c",
+          "text": "Only verbs",
+          "feedback": "Adverbs also modify adjectives, adverbs, PPs and clauses."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What does a focusing adverb highlight?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Its focus within its scope",
+          "feedback": "Only in Only Kim resigned highlights Kim."
+        },
+        {
+          "id": "b",
+          "text": "The entire sentence equally",
+          "feedback": "A focus selects a particular element within the scope."
+        },
+        {
+          "id": "c",
+          "text": "The following noun only",
+          "feedback": "Focusing adverbs can modify many categories."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "closing": [
+    {
+      "prompt": "Why is of dogs a complement in afraid of dogs?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Afraid licenses the PP complement.",
+          "feedback": "The adjective’s lexical entry selects the preposition."
+        },
+        {
+          "id": "b",
+          "text": "It follows the adjective.",
+          "feedback": "Position alone does not determine complement status."
+        },
+        {
+          "id": "c",
+          "text": "It can be omitted.",
+          "feedback": "Optional complements are still licensed."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Where does enough normally occur with an adjective?",
+      "options": [
+        {
+          "id": "a",
+          "text": "After the adjective",
+          "feedback": "Old enough, not enough old."
+        },
+        {
+          "id": "b",
+          "text": "Before the adjective",
+          "feedback": "Enough old is not the normal order."
+        },
+        {
+          "id": "c",
+          "text": "Before the determiner",
+          "feedback": "Enough has its own placement rules."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which adjective is attributive-only?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Utter",
+          "feedback": "Utter nonsense, but not The nonsense is utter in ordinary use."
+        },
+        {
+          "id": "b",
+          "text": "Awake",
+          "feedback": "Awake is never-attributive."
+        },
+        {
+          "id": "c",
+          "text": "Happy",
+          "feedback": "Happy occurs in all three central functions."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Why is outside a preposition in They are outside?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It heads a PP and can occur as a complement of be.",
+          "feedback": "The category is based on syntax, not the traditional label."
+        },
+        {
+          "id": "b",
+          "text": "It modifies the verb are.",
+          "feedback": "It is a complement, not a modifier."
+        },
+        {
+          "id": "c",
+          "text": "It ends in -side.",
+          "feedback": "Morphology alone does not decide."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Why does Happily, they watched TV differ from They happily watched TV?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Front position gives an evaluation reading; central position gives a manner reading.",
+          "feedback": "Position affects scope and orientation."
+        },
+        {
+          "id": "b",
+          "text": "Happily is an adjective in the first sentence.",
+          "feedback": "It is an adverb in both."
+        },
+        {
+          "id": "c",
+          "text": "The second sentence has no subject.",
+          "feedback": "They is the subject."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "stages": {
+    "predict": {
+      "prompt": "Which function is happy performing in They are happy?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Predicative complement",
+          "feedback": "It ascribes a property to the subject."
+        },
+        {
+          "id": "b",
+          "text": "Attributive modifier",
+          "feedback": "That would be happy people."
+        },
+        {
+          "id": "c",
+          "text": "Postpositive modifier",
+          "feedback": "That would be someone happy."
+        }
+      ],
+      "answer": "a"
+    },
+    "guided": {
+      "prompt": "What kind of complement is of dogs in afraid of dogs?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A PP complement licensed by afraid",
+          "feedback": "The adjective selects the preposition."
+        },
+        {
+          "id": "b",
+          "text": "An object",
+          "feedback": "Adjectives do not normally take objects."
+        },
+        {
+          "id": "c",
+          "text": "A modifier",
+          "feedback": "It is licensed by the adjective."
+        }
+      ],
+      "answer": "a"
+    },
+    "transfer": {
+      "prompt": "Where does enough go in old enough?",
+      "options": [
+        {
+          "id": "a",
+          "text": "After the adjective",
+          "feedback": "Enough follows adjectives, adverbs and verbs."
+        },
+        {
+          "id": "b",
+          "text": "Before the adjective",
+          "feedback": "Enough old is not ordinary."
+        },
+        {
+          "id": "c",
+          "text": "Before the determiner",
+          "feedback": "Enough has its own placement."
+        }
+      ],
+      "answer": "a"
+    },
+    "exit": {
+      "prompt": "Why is Happily fronted in Happily, they watched TV?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It is a clause-oriented evaluation, which favours front position.",
+          "feedback": "The adverb comments on the whole situation."
+        },
+        {
+          "id": "b",
+          "text": "It is a manner adjunct in end position.",
+          "feedback": "In front position it is an evaluation."
+        },
+        {
+          "id": "c",
+          "text": "It modifies the subject they.",
+          "feedback": "It modifies the clause, not the subject."
+        }
+      ],
+      "answer": "a"
+    }
+  }
+}

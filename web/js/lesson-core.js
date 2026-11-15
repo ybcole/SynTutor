@@ -40,7 +40,7 @@ export function validateCourse(course) {
       const assessment = lesson.revised_assessment;
       const required = assessment.required_sections;
       const revisedIdentity = (lesson.track === 'foundations' && /^br-(0[1-9]|1[01])$/.test(lesson.lesson_id))
-        || (lesson.track === 'grammar' && /^cgel-ch\d+$/.test(lesson.lesson_id));
+        || (lesson.track === 'grammar' && (lesson.lesson_id === 'cgel-clauses' || /^cgel-ch\d+$/.test(lesson.lesson_id)));
       if (!revisedIdentity ||
           lesson.content_version === '1.0.0' || !Array.isArray(required) || !required.length ||
           new Set(required).size !== required.length ||

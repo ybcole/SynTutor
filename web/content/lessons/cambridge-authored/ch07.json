@@ -1,0 +1,1528 @@
+{
+  "title": "Prepositions and preposition phrases",
+  "description": "See why prepositions are phrase heads, how their complements and modifiers work, and how English uses them for place, time, grammar and style.",
+  "example": "The keys were left just inside the drawer, behind a pile of old photographs.",
+  "key_terms": [
+    {
+      "term": "preposition",
+      "definition": "A word that heads a preposition phrase and typically takes a complement."
+    },
+    {
+      "term": "preposition phrase",
+      "definition": "A phrase headed by a preposition, with an optional complement and optional modifiers."
+    },
+    {
+      "term": "complement",
+      "definition": "A dependent licensed by the head, such as the drawer in inside the drawer."
+    },
+    {
+      "term": "modifier",
+      "definition": "A dependent that adds information without being required by the head."
+    },
+    {
+      "term": "intransitive preposition",
+      "definition": "A preposition used without a complement, such as outside in She is outside."
+    },
+    {
+      "term": "stranding",
+      "definition": "The use of a preposition without its complement in the normal post-head position, as in What are you looking at?"
+    },
+    {
+      "term": "pied-piping",
+      "definition": "Fronting a preposition together with its complement, as in To whom are you speaking?"
+    },
+    {
+      "term": "grammaticised preposition",
+      "definition": "A preposition selected by a grammatical construction rather than chosen for its independent meaning."
+    },
+    {
+      "term": "oblique",
+      "definition": "An NP related to a head through a preposition rather than directly."
+    },
+    {
+      "term": "object of a preposition",
+      "definition": "The NP complement of a transitive preposition, as in the garden in in the garden."
+    },
+    {
+      "term": "predicative complement",
+      "definition": "A complement related to a predicand, as in as treasurer."
+    },
+    {
+      "term": "adjunct",
+      "definition": "A modifier in clause structure, often realised by a PP."
+    },
+    {
+      "term": "trajector",
+      "definition": "The entity whose location or movement is specified in a spatial relation."
+    },
+    {
+      "term": "landmark",
+      "definition": "The reference point or area relative to which a trajector is located."
+    },
+    {
+      "term": "source",
+      "definition": "The starting point of a path or change of location, often marked by from or off."
+    },
+    {
+      "term": "goal",
+      "definition": "The endpoint of a path or change of location, often marked by to or into."
+    },
+    {
+      "term": "location",
+      "definition": "A static spatial relation, often marked by at, on or in."
+    },
+    {
+      "term": "idiom",
+      "definition": "An expression whose meaning is not fully predictable from its parts."
+    },
+    {
+      "term": "fossilised expression",
+      "definition": "A fixed expression with limited internal variation, often headed by a preposition."
+    },
+    {
+      "term": "complement clause",
+      "definition": "A clause functioning as the complement of a preposition or other head."
+    },
+    {
+      "term": "subordinator",
+      "definition": "A marker introducing a subordinate clause, such as whether, if or that."
+    },
+    {
+      "term": "transitive preposition",
+      "definition": "A preposition that takes an object NP complement."
+    },
+    {
+      "term": "preposing",
+      "definition": "Movement of a constituent to a position before the nucleus clause."
+    },
+    {
+      "term": "supplement",
+      "definition": "A detached element related to an anchor without being a syntactic dependent."
+    }
+  ],
+  "intro": [
+    "Ask a room of students what a preposition is and someone will offer *in*, *on*, *under* — little words that say where or when. That list is a reasonable start, and almost everything interesting about the category lies in how quickly it breaks down. *In* in *She stayed in* has no noun after it at all. *Because* in *Because it rained* carries a whole clause. *From behind the curtain* puts one preposition phrase inside another. Small words, yes; simple, no.",
+    "The change of perspective is to treat a preposition as a head. It projects a phrase, takes a complement, tolerates modifiers, and can stand alone when nothing needs saying. Once *because* and *outside* and *downstairs* count as heads of phrases, the class grows well beyond the traditional short list, and its membership stops looking arbitrary. What matters is the structure a word builds, not the size of the word itself.",
+    "From there the account works outward: membership first, then the complements and modifiers a preposition can carry, then the curious business of stranding — the preposition left behind when its complement moves to the front. Idioms, phrase functions, grammaticised uses, spatial and temporal meaning, and finally the stylistic question of when to strand and when to front."
+  ],
+  "sections": [
+    {
+      "id": "prepositions-heads",
+      "title": "Prepositions as phrase heads",
+      "advances": "predict",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Max sent a photograph of his new house to his parents.* Two phrases in that clause are doing work no single word could do: *of his new house* picks out which photograph, *to his parents* says where it went. Each begins with a preposition, and each preposition relates what follows to something already established — *of* ties the house to the photograph, *to* ties the parents to the sending."
+        },
+        {
+          "type": "paragraph",
+          "text": "*From behind the curtain* puts a PP inside a PP; *on whether we should call the police* puts an interrogative clause after the preposition; *until recently* puts an adverb phrase there. The relation survives when the complement is not a noun phrase at all. This is the same head–complement pattern that links a verb to its object, and it is what makes the preposition a head rather than a mere linker. The filler varies; the structure does not."
+        },
+        {
+          "type": "paragraph",
+          "text": "Modification follows from the same analysis. In *just inside the penalty area*, *just* narrows a location that *inside* has already fixed; in *two years after their divorce*, the measure phrase sets a distance in time. Neither modifier is selected by the head, so neither is a complement. Drop them and the phrase survives, thinner but intact."
+        },
+        {
+          "type": "table",
+          "title": "A preposition phrase",
+          "columns": [
+            "Part",
+            "Example",
+            "Function"
+          ],
+          "rows": [
+            [
+              "Head",
+              "in",
+              "Preposition"
+            ],
+            [
+              "Complement",
+              "the drawer",
+              "Object of the preposition"
+            ],
+            [
+              "Modifier",
+              "just",
+              "Focus or degree modifier"
+            ],
+            [
+              "Nested PP",
+              "from behind the curtain",
+              "PP complement"
+            ],
+            [
+              "Clause complement",
+              "on whether we should go",
+              "Interrogative clause"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Heads and dependents",
+          "items": [
+            {
+              "text": "the photograph of his new house",
+              "mark": "ok",
+              "note": "Of heads a PP complement inside the NP."
+            },
+            {
+              "text": "from behind the curtain",
+              "mark": "ok",
+              "note": "One PP is nested inside another."
+            },
+            {
+              "text": "until recently",
+              "mark": "ok",
+              "note": "Until takes an AdvP complement."
+            },
+            {
+              "text": "just inside the penalty area",
+              "mark": "ok",
+              "note": "Just modifies the PP inside the penalty area."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is from behind the curtain evidence that prepositions are heads?",
+        "options": [
+          {
+            "id": "a",
+            "text": "One PP is embedded as the complement of another preposition.",
+            "feedback": "The pattern parallels head-complement structure in other phrases."
+          },
+          {
+            "id": "b",
+            "text": "From is an adverb.",
+            "feedback": "From heads a PP and takes a PP complement."
+          },
+          {
+            "id": "c",
+            "text": "Behind has no complement.",
+            "feedback": "Behind the curtain is a PP complement of from."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "category-membership",
+      "title": "Who belongs to the preposition category",
+      "advances": "understand",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Of*, *to*, *in*, *on*, *at*, *by*, *for*, *with*, *from*, *between*: the familiar core, every one of them taking a noun phrase and building a phrase that slots into a clause as complement or adjunct. Around that core sit words doing the same structural work while looking less like prepositions — *after* with a clause, *outside* with no complement, *provided* with a condition attached. Membership is decided by the work, not the appearance."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Because it rained* is a phrase headed by *because* whose complement is a finite clause, exactly parallel to *in the garden*. Most of what older grammars call subordinating conjunctions are prepositions here. The traditional label tracks meaning and clause-linking; the analysis tracks heads and complements, and the second test is the one that groups words together. Three items stay outside the class — *whether*, interrogative *if*, and the *that* which introduces clauses — because they mark a clause without heading a phrase."
+        },
+        {
+          "type": "paragraph",
+          "text": "*She is outside.* Nothing follows the preposition, and the sentence is complete. *I haven’t seen her since* and *put it downstairs* show the same intransitive use. A missing complement does not change the category, any more than a missing object turns a verb into something else; that is why *outside* counts as a preposition in *They are outside* while *locally*, an adverb, cannot take its place."
+        },
+        {
+          "type": "paragraph",
+          "text": "New prepositions do appear, but English has no productive suffix or compounding pattern that manufactures them, so the list grows slowly and by borrowing rather than by rule. The class is relatively closed. Closure does not mean uniformity: many members have grammaticised uses in which a construction selects the preposition and its spatial or temporal meaning fades. The *by* of the passive, the *of* in *the destruction of the city*, the *to* in *give it to Kim* are chosen by grammar, not by the speaker’s picture of the scene."
+        },
+        {
+          "type": "table",
+          "title": "Members and near-members",
+          "columns": [
+            "Type",
+            "Examples",
+            "Why included"
+          ],
+          "rows": [
+            [
+              "Central prepositions",
+              "of, to, in, on, at",
+              "Take NP complements; head PPs"
+            ],
+            [
+              "Clause-taking prepositions",
+              "after, because, provided",
+              "Take finite clause complements"
+            ],
+            [
+              "Intransitive prepositions",
+              "outside, since, downstairs",
+              "Occur without complements"
+            ],
+            [
+              "Subordinators",
+              "whether, interrogative if, that",
+              "Mark clauses rather than head PPs"
+            ],
+            [
+              "Grammaticised uses",
+              "by, of, to, with",
+              "Selected by grammatical constructions"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is since a preposition in I haven’t seen her since?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It heads a PP without a complement, like other intransitive prepositions.",
+            "feedback": "Complements are optional for some prepositions."
+          },
+          {
+            "id": "b",
+            "text": "It takes an NP complement in this sentence.",
+            "feedback": "There is no overt complement here."
+          },
+          {
+            "id": "c",
+            "text": "It modifies the verb seen.",
+            "feedback": "It is a complement of the clause, not a modifier of seen."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "category-contrasts",
+      "title": "Prepositions and their neighbours",
+      "advances": "worked",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Ahead of the ship, there was a small island* locates the island and says nothing about anyone’s state of mind. Replace the PP with an adjective phrase and the sentence commits itself: *Tired of the ship, the captain saw an island* attributes the tiredness to the captain. A fronted AdjP of that kind is predicative and needs a predicand; a PP in the same slot is a plain adjunct, free of the commitment."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Go*, *went*, *gone*: verbs mark tense by inflection. *In*, *into*, *inside*: prepositions do not. Complementation is a softer test. Both categories take objects, and a PP can be fronted with its object intact — *the knife with which she cut it* — while a verb cannot drag its object forward the same way."
+        },
+        {
+          "type": "paragraph",
+          "text": "*I put it in the drawer* cannot shrink to *I put it*; the locative is required, and *Jill is in the office* resists *Jill is* for the same reason. An *-ly* adverb does not fill that slot. *Jill is locally* does not give *be* the complement it needs, which is why adverbs serve as complements only in restricted cases while many prepositions head obligatory ones."
+        },
+        {
+          "type": "paragraph",
+          "text": "Some words sit on the boundary. *Worth* takes a noun phrase complement like a preposition — *worth the effort* — but predicates and modifies like an adjective, so the label depends on which part of the pattern you weight. *Owing* is a preposition in *owing to the weather* and a participle in *owing money to the bank*. *Opposite* goes both ways. No single resemblance settles these cases; the whole distribution does."
+        },
+        {
+          "type": "table",
+          "title": "Category contrasts",
+          "columns": [
+            "Contrast",
+            "Preposition",
+            "Other category"
+          ],
+          "rows": [
+            [
+              "Function",
+              "Ahead of the ship, there was an island.",
+              "Tired of the ship, the captain left."
+            ],
+            [
+              "Inflection",
+              "in, into, inside",
+              "verb: go, went, gone"
+            ],
+            [
+              "Complement",
+              "I put it in the drawer.",
+              "I put it."
+            ],
+            [
+              "Modification",
+              "right under the bed",
+              "very happy"
+            ],
+            [
+              "Fronting",
+              "with which she cut it",
+              "adjective cannot front with complement"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "items": [
+            {
+              "text": "Ahead of the ship, there was a small island.",
+              "mark": "ok",
+              "note": "The PP is an adjunct: it locates the island without predicating anything of a subject."
+            },
+            {
+              "text": "Tired of the ship, the captain saw an island.",
+              "mark": "ok",
+              "note": "The fronted AdjP is predicative and ascribes tiredness to the captain."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which property most clearly distinguishes prepositions from adjectives?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Prepositions can head non-predicative adjuncts.",
+            "feedback": "An AdjP adjunct is normally predicated of the subject; a PP need not be."
+          },
+          {
+            "id": "b",
+            "text": "Prepositions have more syllables.",
+            "feedback": "Length is not a syntactic criterion."
+          },
+          {
+            "id": "c",
+            "text": "Adjectives cannot be complements.",
+            "feedback": "Adjectives can be predicative complements."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "pp-complementation",
+      "title": "Complements inside preposition phrases",
+      "advances": "guided",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*In the garden*, *to Paris*, *with my sister*. The default shape is a preposition plus a noun phrase, and the noun phrase is the object of the preposition, which makes the preposition transitive in the ordinary sense. *In* is transitive in *She stayed in the house* and intransitive in *She stayed in*, with no change in the word itself."
+        },
+        {
+          "type": "paragraph",
+          "text": "Beyond the noun phrase the range widens. *From* takes a PP in *from behind the curtain*; *until* takes an adverb phrase in *until recently*. Both are ordinary head–complement structures with unusual fillers, and the complement type belongs to the head’s lexical entry as much as it does for a verb."
+        },
+        {
+          "type": "paragraph",
+          "text": "*I regard their behaviour as outrageous.* The adjective phrase after *as* describes the behaviour, not the regarding, so it is a predicative complement and *as* is the preposition that licenses it. *For* does similar work after *take* and *pass*: *I took him for harmless*, *He passed for dead*. Most other prepositions take ordinary objects, and the object/predicative line inside a PP is the same line that runs through verb complementation."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Apart from Jill* and *since before the war* look alike and are not. In the first, *apart* selects *from*; the two form a fixed combination. In the second, *since* does not select *before* — *before* makes its own contribution, which is why *since after the war* contrasts with it. Specified versus unspecified prepositions: that is the distinction at work."
+        },
+        {
+          "type": "table",
+          "title": "PP complement types",
+          "columns": [
+            "Complement",
+            "Example",
+            "Head"
+          ],
+          "rows": [
+            [
+              "Object NP",
+              "in the garden",
+              "in"
+            ],
+            [
+              "PP",
+              "from behind the curtain",
+              "from"
+            ],
+            [
+              "AdvP",
+              "until recently",
+              "until"
+            ],
+            [
+              "Interrogative clause",
+              "on whether we should go",
+              "on"
+            ],
+            [
+              "Predicative AdjP",
+              "for dead",
+              "for"
+            ],
+            [
+              "Predicative NP",
+              "as treasurer",
+              "as"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Licensed complements",
+          "items": [
+            {
+              "text": "She stayed in the house.",
+              "mark": "ok",
+              "note": "The house is the object of in."
+            },
+            {
+              "text": "The magician emerged from behind the curtain.",
+              "mark": "ok",
+              "note": "Behind the curtain is a PP complement of from."
+            },
+            {
+              "text": "We can’t agree on whether we should go.",
+              "mark": "ok",
+              "note": "An interrogative clause complement."
+            },
+            {
+              "text": "I took him for harmless.",
+              "mark": "ok",
+              "note": "For takes a predicative complement related to him."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "In I regard their behaviour as outrageous, what is as outrageous?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A PP with a predicative complement related to their behaviour",
+            "feedback": "As licenses a predicative complement, not an ordinary object."
+          },
+          {
+            "id": "b",
+            "text": "A PP with an object NP",
+            "feedback": "Outrageous is an AdjP, not an NP object."
+          },
+          {
+            "id": "c",
+            "text": "An adjective phrase functioning as subject",
+            "feedback": "The subject is I."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "pp-modification",
+      "title": "Modification and the shape of PPs",
+      "advances": "transfer",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Two years after their divorce* and *just inside the penalty area* both place something before the preposition, but the somethings do different work. The measure phrase sets a distance in time; the focus adverb narrows a location. *Very much in control* adds degree, *right under the bed* adds emphasis. Where the modifier sits depends on what it takes scope over."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Right* and *straight* are unusually choosy. They modify spatial and temporal prepositions — *right under the bed*, *straight upstairs* — and refuse verbs, adjectives and adverbs. The choosiness is a test. If *right* can stand in front of a word, that word is probably heading a PP, which is how *in*, *inside* and *upstairs* separate themselves from adverbs of identical shape."
+        },
+        {
+          "type": "paragraph",
+          "text": "PPs nest productively. *From behind the curtain*, *out of the box*, *next to her sister*: in each, a PP sits inside a PP, and the inner preposition contributes a relation while the outer one selects or adjusts it. *Out of the box* is not a wordier *outside the box*; it is *out* taking *of the box* as its complement. The recursion is syntactic, not a quirk of individual idioms."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Notwithstanding the weather* and *the weather notwithstanding* show a preposition that may follow its complement. Head before complement is the norm, so the exceptions stand out. A different pattern appears in *spoonful by spoonful*, *day by day*, *piece by piece*, where a repeated form distributes a situation over time or quantity rather than locating it once."
+        },
+        {
+          "type": "table",
+          "title": "PP modification",
+          "columns": [
+            "Modifier type",
+            "Example",
+            "Effect"
+          ],
+          "rows": [
+            [
+              "Measure",
+              "two years after the divorce",
+              "Specifies distance in time"
+            ],
+            [
+              "Degree",
+              "very much in control",
+              "Intensifies the relation"
+            ],
+            [
+              "Focus",
+              "just inside the area",
+              "Narrows the location"
+            ],
+            [
+              "Restricted adverb",
+              "right under the bed",
+              "Spatial emphasis"
+            ],
+            [
+              "Reduplicative",
+              "day by day",
+              "Distributive sequence"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Modifiers and order",
+          "items": [
+            {
+              "text": "She died two years after their divorce.",
+              "mark": "ok",
+              "note": "Two years modifies the PP after their divorce."
+            },
+            {
+              "text": "They pushed it right under the bed.",
+              "mark": "ok",
+              "note": "Right is a restricted modifier of the spatial PP."
+            },
+            {
+              "text": "the weather notwithstanding",
+              "mark": "ok",
+              "note": "The complement precedes the head in this construction."
+            },
+            {
+              "text": "The pain eased day by day.",
+              "mark": "ok",
+              "note": "A reduplicative PP expressing gradual change."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is right under the bed evidence for a PP?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Right is a modifier restricted to prepositions, including those without complements.",
+            "feedback": "It does not modify verbs, adjectives or adverbs in Standard English."
+          },
+          {
+            "id": "b",
+            "text": "Right is an adjective.",
+            "feedback": "Here it is an adverb modifying a preposition."
+          },
+          {
+            "id": "c",
+            "text": "Under has no complement.",
+            "feedback": "It has the bed as its complement."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "stranding-order",
+      "title": "Stranding and the order of complement and head",
+      "advances": "exit",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*What was she referring to?* The preposition sits at the end, its complement has moved to the front, and the sentence is unremarkable. English does this constantly — in questions, relatives, exclamatives, comparatives, hollow clauses and passives — leaving the preposition behind and co-indexing the gap with the fronted phrase. Head before complement, as in *with pride*, is the default order, not the only possible one."
+        },
+        {
+          "type": "paragraph",
+          "text": "In some of those constructions the preposition can travel with its complement instead: *To whom are you speaking?*, *the article to which I referred*. This is pied-piping, and the choice between it and stranding is partly structural, partly a matter of register."
+        },
+        {
+          "type": "paragraph",
+          "text": "The old prohibition on ending a sentence with a preposition has no basis in the grammar. Stranding has been standard for centuries and is unremarkable in most registers. Fronting often sounds formal, and it sounds pedantic when the stranded version is what any speaker would say. What is at stake is a choice between constructions, not a verdict on correctness."
+        },
+        {
+          "type": "paragraph",
+          "text": "A handful of prepositions allow the complement before the head: *the weather notwithstanding* alongside *notwithstanding the weather*. The complement is still present, so this is not stranding; it is an alternative order inside the PP. Preposing a whole PP is a third phenomenon: *To your father I’m even more deeply indebted* moves preposition and complement together."
+        },
+        {
+          "type": "table",
+          "title": "Order and displacement",
+          "columns": [
+            "Construction",
+            "Example",
+            "What happens"
+          ],
+          "rows": [
+            [
+              "Stranding",
+              "What are you looking at?",
+              "Complement fronted; preposition stranded"
+            ],
+            [
+              "Pied-piping",
+              "At what are you looking?",
+              "Preposition fronts with complement"
+            ],
+            [
+              "Postposed complement",
+              "the weather notwithstanding",
+              "Complement precedes head"
+            ],
+            [
+              "PP preposing",
+              "To your father I’m indebted.",
+              "Whole PP moves to the front"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Stranding and fronting",
+          "items": [
+            {
+              "text": "What was she referring to?",
+              "mark": "ok",
+              "note": "The complement what is fronted; to is stranded."
+            },
+            {
+              "text": "To whom are you speaking?",
+              "mark": "ok",
+              "note": "The preposition fronts with its complement in formal style."
+            },
+            {
+              "text": "the article she was referring to",
+              "mark": "ok",
+              "note": "A relative clause with a stranded preposition."
+            },
+            {
+              "text": "the weather notwithstanding",
+              "mark": "ok",
+              "note": "The complement precedes the head; not a stranded preposition."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the difference between What are you looking at? and At what are you looking?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The first strands the preposition; the second fronts it with its complement.",
+            "feedback": "Both are grammatical; the difference is construction and register."
+          },
+          {
+            "id": "b",
+            "text": "Only the first is grammatical.",
+            "feedback": "Both are grammatical in Standard English."
+          },
+          {
+            "id": "c",
+            "text": "The second has no preposition.",
+            "feedback": "At is fronted with what."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "idiomatic-pps",
+      "title": "Idiomatic and fossilised PPs",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*For the sake of the children* has a recognisable shape and a meaning you cannot compute from its parts. *At odds with the evidence*, *on the grounds that the evidence is unreliable*, *up against a deadline*, *in brief*: each is headed by a preposition, each is more or less fixed, and none is fully predictable from the words inside it."
+        },
+        {
+          "type": "paragraph",
+          "text": "Fixed does not mean unstructured. *For the sake of* still takes a noun phrase complement; *on the grounds that* still takes a content clause; *at odds with* still takes a PP. The idiom is a lexical unit built out of ordinary syntax, which is why a complement can appear inside it and why a modifier can sometimes squeeze in without breaking it."
+        },
+        {
+          "type": "paragraph",
+          "text": "*In brief* and *of old* have petrified further. The element after the preposition looks adjectival, but there is no predicand for it and no reason to call it predicative; the phrase has hardened into a single unit. *What with* behaves differently again, introducing a reason adjunct and taking a coordination of PPs or clauses after it."
+        },
+        {
+          "type": "examples",
+          "title": "Fixed expressions with structure",
+          "items": [
+            {
+              "text": "for the sake of the children",
+              "mark": "ok",
+              "note": "For the sake of takes an NP complement."
+            },
+            {
+              "text": "at odds with the evidence",
+              "mark": "ok",
+              "note": "At odds with takes a PP complement."
+            },
+            {
+              "text": "on the grounds that the evidence is unreliable",
+              "mark": "ok",
+              "note": "On the grounds that takes a content clause."
+            },
+            {
+              "text": "in brief",
+              "mark": "ok",
+              "note": "A fossilised PP with an adjective-like complement."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is on the grounds that an idiomatic PP rather than a simple word?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It is a fixed expression headed by a preposition and taking a clause complement.",
+            "feedback": "The idiom has internal phrase structure and a licensed complement."
+          },
+          {
+            "id": "b",
+            "text": "It contains no preposition.",
+            "feedback": "On heads the expression."
+          },
+          {
+            "id": "c",
+            "text": "It cannot take a complement.",
+            "feedback": "It takes the content clause that the evidence is unreliable."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "pp-functions",
+      "title": "What PPs do in larger constructions",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Rely on the evidence* and *before breakfast* both contain a PP, and only the first is required by the word it attaches to. Complements are licensed — by a verb, noun, adjective or preposition, as in *rely on*, *a reliance on*, *keen on*, *inside of*. Adjuncts such as *in the garden* or *with great care* attach to the clause and add information. One PP can be a complement in one clause and an adjunct in another."
+        },
+        {
+          "type": "paragraph",
+          "text": "Phrases also take PP modifiers: *proud of her* modifies an adjective, *independently of the result* an adverb, *the woman in the garden* a noun, *from behind the curtain* another PP. Some PPs stand outside the clause as supplements, as *In short, the plan failed* shows. A few can even be subjects — *From here to London is over fifty miles*."
+        },
+        {
+          "type": "paragraph",
+          "text": "Meaning does not settle the function. *On the table* is a complement in *The report is on the table* and an adjunct in *She read it on the table*, with the same preposition and the same kind of complement. What changes is what the verb requires: *be* needs the locative, *read* does not. Clause structure then decides whether the phrase counts as complement or adjunct."
+        },
+        {
+          "type": "table",
+          "title": "PP functions",
+          "columns": [
+            "Function",
+            "Example",
+            "Licensor or anchor"
+          ],
+          "rows": [
+            [
+              "Complement of verb",
+              "rely on the evidence",
+              "rely"
+            ],
+            [
+              "Complement of noun",
+              "a reliance on the evidence",
+              "reliance"
+            ],
+            [
+              "Complement of adjective",
+              "keen on opera",
+              "keen"
+            ],
+            [
+              "Adjunct",
+              "before breakfast",
+              "Clause"
+            ],
+            [
+              "Modifier",
+              "the woman in the garden",
+              "woman"
+            ],
+            [
+              "Supplement",
+              "In short, the plan failed.",
+              "Clause"
+            ],
+            [
+              "Subject",
+              "From here to London is fifty miles.",
+              "Clause"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "One form, several functions",
+          "items": [
+            {
+              "text": "She relied on the report.",
+              "mark": "ok",
+              "note": "On the report is a complement of relied."
+            },
+            {
+              "text": "She read it on the train.",
+              "mark": "ok",
+              "note": "On the train is a locative adjunct."
+            },
+            {
+              "text": "the woman in the garden",
+              "mark": "ok",
+              "note": "In the garden modifies the nominal woman."
+            },
+            {
+              "text": "From here to London is fifty miles.",
+              "mark": "ok",
+              "note": "A PP functioning as subject."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "In She read it on the train, what is on the train?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A locative adjunct",
+            "feedback": "It is not required by read; it locates the event."
+          },
+          {
+            "id": "b",
+            "text": "A complement of read",
+            "feedback": "Read does not license on the train."
+          },
+          {
+            "id": "c",
+            "text": "The direct object",
+            "feedback": "The direct object is it."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "grammaticised",
+      "title": "Grammaticised prepositions",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*The plan was approved by the boss.* Nothing in *by* means “agent”; the passive puts it there. This is what it means for a preposition to be grammaticised: the construction selects it, and its contribution is relational rather than spatial or temporal. *Of* in *the destruction of the city*, *to* in *give it to Kim*, *with* in *pleased with the result* work the same way, as required markers rather than free lexical choices."
+        },
+        {
+          "type": "paragraph",
+          "text": "The passive *by* is the clearest case because the correspondence with the active is so tight. *By the boss* is the internalised version of the active subject, and the same *by* marks an agent inside a noun phrase — *the approval of the plan by the boss* — although the NP construction is not a passive clause with its pieces rearranged."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Of* is the default linker between a noun or adjective and its complement: *the destruction of the city*, *proud of her achievements*. Where the head prefers something else, the preference is a lexical fact — *marriage to Pat*, *a ban on smoking*, *keen on opera*. There is no route from meaning to preposition here; the pattern has to be learned with the word."
+        },
+        {
+          "type": "paragraph",
+          "text": "Comparison grammaticises *as* and *than*, and *as* also heads predicative complements — *I regard her as my best friend*. *At*, *for*, *from*, *in*, *on* and *with* each carry clusters of grammaticised uses beside their spatial and temporal ones. The same preposition can be a free choice in one construction and a required marker in another."
+        },
+        {
+          "type": "table",
+          "title": "Common grammaticised uses",
+          "columns": [
+            "Preposition",
+            "Construction",
+            "Example"
+          ],
+          "rows": [
+            [
+              "by",
+              "Passive agent",
+              "approved by the boss"
+            ],
+            [
+              "of",
+              "Noun complement",
+              "the destruction of the city"
+            ],
+            [
+              "to",
+              "Recipient",
+              "gave it to Kim"
+            ],
+            [
+              "with",
+              "Adjective complement",
+              "pleased with the result"
+            ],
+            [
+              "as",
+              "Predicative complement",
+              "regard her as a friend"
+            ],
+            [
+              "than",
+              "Comparison",
+              "taller than Pat"
+            ],
+            [
+              "on",
+              "Selected complement",
+              "rely on the evidence"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Grammaticised and free uses",
+          "items": [
+            {
+              "text": "The plan was approved by the boss.",
+              "mark": "ok",
+              "note": "By marks the agent in the passive construction."
+            },
+            {
+              "text": "the destruction of the city",
+              "mark": "ok",
+              "note": "Of relates the city to the noun destruction."
+            },
+            {
+              "text": "I gave the key to Kim.",
+              "mark": "ok",
+              "note": "To marks the recipient."
+            },
+            {
+              "text": "I left the parcel by the door.",
+              "mark": "ok",
+              "note": "By has its ordinary locative meaning here."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What makes by grammaticised in The plan was approved by the boss?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It is selected by the passive construction to mark the agent.",
+            "feedback": "Its role is grammatical rather than a free choice of spatial meaning."
+          },
+          {
+            "id": "b",
+            "text": "It means “near”.",
+            "feedback": "That is its locative use, not the passive marker."
+          },
+          {
+            "id": "c",
+            "text": "It has no complement.",
+            "feedback": "It takes the boss as complement."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "space-time",
+      "title": "Location, source, goal, and time",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*The pen is on the table.* Two entities, one relation: the pen is located, the table locates it. Cognitive semantics calls the located entity the trajector and the reference point the landmark, and the labels earn their keep once the relation stops being static, since a trajector can move from a source, along a path, to a goal."
+        },
+        {
+          "type": "paragraph",
+          "text": "English divides the basic spatial work among a small set of contrasts. *At* locates, *to* marks a goal, *from* marks a source; *on* pairs with *off* and *in* with *out*; *into* and *onto* mark goals while *off* and *out of* mark sources. *Away* can mark source with or without *from*, which is one reason the system is better handled as a set of oppositions than as a list of translations."
+        },
+        {
+          "type": "paragraph",
+          "text": "Time borrows the spatial vocabulary almost wholesale. *At three o’clock* marks a point, *on Monday* a day, *in July* a month, each with the preposition that suits its granularity. *Before the meeting* and *after lunch* use path relations; *since 2020* marks a source; *for two hours* marks extent. The mapping holds because time is construed as a line and situations as points or regions along it."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Between* and *among* are not divided by number. *Between* treats the members individually, as boundary points; *among* treats them as a collective. Both *between the trees* and *among the trees* are grammatical, but *between my toes* is normal and *among my toes* is not, because toes present themselves as individual boundaries rather than as a mass."
+        },
+        {
+          "type": "table",
+          "title": "Spatial and temporal relations",
+          "columns": [
+            "Relation",
+            "Spatial",
+            "Temporal"
+          ],
+          "rows": [
+            [
+              "Location",
+              "at the station",
+              "at six o’clock"
+            ],
+            [
+              "Location",
+              "on the table",
+              "on Monday"
+            ],
+            [
+              "Location",
+              "in the box",
+              "in July"
+            ],
+            [
+              "Goal",
+              "to Paris",
+              "until Friday"
+            ],
+            [
+              "Source",
+              "from London",
+              "since 2020"
+            ],
+            [
+              "Duration",
+              "for two miles",
+              "for two hours"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Space and time",
+          "items": [
+            {
+              "text": "The pen is on the table.",
+              "mark": "ok",
+              "note": "Static location: on contrasts with off."
+            },
+            {
+              "text": "She walked from the station to the hotel.",
+              "mark": "ok",
+              "note": "Source and goal in one path."
+            },
+            {
+              "text": "We met at six o’clock on Monday.",
+              "mark": "ok",
+              "note": "At marks a point in time; on marks a day."
+            },
+            {
+              "text": "I have lived here since 2020.",
+              "mark": "ok",
+              "note": "Since marks a temporal source."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is between preferred to among in between my toes?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The toes are treated as individual boundary points.",
+            "feedback": "Between construes the members individually; among construes them collectively."
+          },
+          {
+            "id": "b",
+            "text": "There are only two toes.",
+            "feedback": "The contrast is not simply the number of entities."
+          },
+          {
+            "id": "c",
+            "text": "Among cannot be used with body parts.",
+            "feedback": "The issue is the construal, not the semantic field."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "preposition-style",
+      "title": "Prepositions in style and argument",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Who did you speak to?* or *To whom did you speak?* Both are grammatical; they belong to different registers. A writer who avoids stranding everywhere produces prose that feels stiff, and a writer who fronts without control sounds archaic. Choose according to the occasion, not according to a blanket rule."
+        },
+        {
+          "type": "paragraph",
+          "text": "Idioms need more care, because their meaning is not compositional. *For the sake of* is not a paraphrase of “for the reason of”; *at odds with* is not a spatial relation; *on the grounds that* carries a fixed evidential force. Change the preposition and the idiom changes, or collapses."
+        },
+        {
+          "type": "paragraph",
+          "text": "Preposition choice also encodes lexical patterns that a dictionary has to record. *Depend on*, *rely on*, *keen on*, *a reliance on* share a preposition because each head selects it. *Different from*, *different to* and *different than* vary by dialect and register. Meaning alone will not tell you which form a head takes."
+        }
+      ],
+      "check": {
+        "prompt": "Which statement best describes the status of preposition stranding?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It is fully grammatical and normal in most registers.",
+            "feedback": "The old prohibition is prescriptive folklore, not a rule of English syntax."
+          },
+          {
+            "id": "b",
+            "text": "It is always ungrammatical.",
+            "feedback": "It occurs throughout Standard English."
+          },
+          {
+            "id": "c",
+            "text": "It is limited to informal speech.",
+            "feedback": "It occurs in formal writing too, though fronting is often more formal."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "chapter-review",
+      "title": "Chapter Review",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Everything here follows from one move: a preposition heads a phrase. It takes complements of several categories, accepts modifiers, and can occur without one. The class includes many traditional subordinating conjunctions and a subset of traditional adverbs, and it is closed without being small."
+        },
+        {
+          "type": "paragraph",
+          "text": "PPs serve as complements, adjuncts, modifiers, supplements and, occasionally, subjects. Their complements range over NPs, PPs, AdvPs, AdjPs and clauses, and the object/predicative distinction applies inside the phrase. Stranding, pied-piping and the rare complement-before-head order are structural options, not errors."
+        },
+        {
+          "type": "paragraph",
+          "text": "Grammaticised prepositions — *by*, *of*, *to*, *with* — are selected by constructions and often behave like case markers. Spatial meanings extend into time and abstraction. Style is a matter of choosing the construction that fits the register, not of applying a blanket prohibition."
+        },
+        {
+          "type": "note",
+          "tone": "why",
+          "title": "A PP checklist",
+          "text": "Find the preposition and its complement. Decide whether the complement is an object, predicative, PP, AdvP or clause. Check for modifiers and nesting. Then identify the PP’s function in the larger construction: complement, adjunct, modifier or supplement."
+        }
+      ],
+      "check": {
+        "prompt": "Which statement about prepositions is correct?",
+        "options": [
+          {
+            "id": "a",
+            "text": "They are heads of phrases and may occur without complements.",
+            "feedback": "Outside and since can head PPs without complements."
+          },
+          {
+            "id": "b",
+            "text": "They always take an NP complement.",
+            "feedback": "They can take PPs, AdvPs, AdjPs and clauses too."
+          },
+          {
+            "id": "c",
+            "text": "They cannot be modified.",
+            "feedback": "Right under and two years after show modification."
+          }
+        ],
+        "answer": "a"
+      }
+    }
+  ],
+  "worked": [
+    "Take *The keys were left just inside the drawer, behind a pile of old photographs*. The main PP *just inside the drawer* is headed by *inside*, modified by *just* and complemented by *the drawer*. The second PP *behind a pile of old photographs* is an adjunct locating the keys relative to another landmark.",
+    "The example shows the layered structure of PPs: a head, a modifier, a complement and a nested NP. It also shows that a PP can function as an adjunct in clause structure without being predicated of the subject. The keys are not “behind” in any inherent sense; the PP merely locates them."
+  ],
+  "application": [
+    "When you analyse a PP, find its head and complement first. Then decide whether any other expression is a modifier or a second complement. A nested PP such as from behind the curtain has its own head and complement inside the larger phrase.",
+    "Next, identify the PP’s function. Is it required by a verb, noun, adjective or preposition? Is it an adjunct, a modifier, a supplement or a subject? The same PP can have different functions in different clauses, and the function determines whether it is a complement or an adjunct.",
+    "Finally, consider order and register. Stranding is normal, fronting is often formal, and a few prepositions allow their complement to precede them. Idiomatic PPs have fixed internal patterns, and grammaticised prepositions are selected by the construction rather than chosen freely."
+  ],
+  "reveal": [
+    "In *The keys were left just inside the drawer, behind a pile of old photographs*, *inside* heads the PP *just inside the drawer* and takes *the drawer* as its object. *Just* modifies that PP. *Behind a pile of old photographs* is a separate PP adjunct with *a pile of old photographs* as its complement."
+  ],
+  "recap": [
+    "Prepositions are phrase heads and take a wide range of complements. The category includes clause-taking and intransitive prepositions, and excludes whether, interrogative if and clause-introducing that. PPs can be nested, modified and used in all major syntactic functions.",
+    "Stranding and pied-piping are both grammatical. Grammaticised prepositions mark grammatical relations, while spatial meanings extend into time and other domains. The main analytical task is to identify the head, complement and function of each PP."
+  ],
+  "self_check": [
+    {
+      "question": "Why are prepositions analysed as heads rather than as words that merely precede nouns?",
+      "answer": "They take complements of several categories, can be modified, can occur without complements, and head phrases that function as complements, adjuncts and modifiers."
+    },
+    {
+      "question": "Which traditional subordinating conjunctions are excluded from the preposition category?",
+      "answer": "Whether, interrogative if, and clause-introducing that are treated as subordinators."
+    },
+    {
+      "question": "What is the difference between stranding and pied-piping?",
+      "answer": "Stranding leaves the preposition in place while its complement is fronted; pied-piping fronts the preposition together with its complement."
+    },
+    {
+      "question": "What is a grammaticised preposition?",
+      "answer": "A preposition selected by a grammatical construction, such as by in a passive or of in a noun complement."
+    },
+    {
+      "question": "How do between and among differ?",
+      "answer": "Between treats members individually or as boundary points; among treats them collectively."
+    }
+  ],
+  "opening": [
+    {
+      "prompt": "What is the head of the PP in the drawer?",
+      "options": [
+        {
+          "id": "a",
+          "text": "In",
+          "feedback": "In heads the PP and takes the drawer as its object."
+        },
+        {
+          "id": "b",
+          "text": "The drawer",
+          "feedback": "The drawer is the complement of in."
+        },
+        {
+          "id": "c",
+          "text": "Drawer",
+          "feedback": "Drawer is the head of the NP complement."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which is an intransitive preposition?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Outside in She is outside",
+          "feedback": "It occurs without a complement."
+        },
+        {
+          "id": "b",
+          "text": "Of in the destruction of the city",
+          "feedback": "Of takes an NP complement."
+        },
+        {
+          "id": "c",
+          "text": "To in to Paris",
+          "feedback": "To takes an NP complement."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which expression is a PP complement?",
+      "options": [
+        {
+          "id": "a",
+          "text": "from behind the curtain",
+          "feedback": "Behind the curtain is a PP complement of from."
+        },
+        {
+          "id": "b",
+          "text": "the curtain",
+          "feedback": "The curtain is an NP complement of behind."
+        },
+        {
+          "id": "c",
+          "text": "behind",
+          "feedback": "Behind is the head of the inner PP."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What does preposition stranding leave behind?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A preposition without its complement in the normal post-head position",
+          "feedback": "The complement is fronted or otherwise displaced."
+        },
+        {
+          "id": "b",
+          "text": "A complement without a preposition",
+          "feedback": "The preposition remains overt."
+        },
+        {
+          "id": "c",
+          "text": "An adjective phrase",
+          "feedback": "Stranding concerns prepositions and their complements."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which preposition is grammaticised in a passive clause?",
+      "options": [
+        {
+          "id": "a",
+          "text": "By",
+          "feedback": "By marks the internalised complement corresponding to the active subject."
+        },
+        {
+          "id": "b",
+          "text": "Under",
+          "feedback": "Under is an ordinary lexical preposition."
+        },
+        {
+          "id": "c",
+          "text": "Near",
+          "feedback": "Near is a spatial preposition, not a passive marker."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "closing": [
+    {
+      "prompt": "Why is from behind the curtain evidence for prepositions as heads?",
+      "options": [
+        {
+          "id": "a",
+          "text": "One PP is the complement of another preposition.",
+          "feedback": "This is ordinary head-complement structure."
+        },
+        {
+          "id": "b",
+          "text": "From is an adverb.",
+          "feedback": "From heads a PP."
+        },
+        {
+          "id": "c",
+          "text": "Behind has no complement.",
+          "feedback": "Behind the curtain is a PP."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is the difference between What are you looking at? and At what are you looking?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The first strands at; the second fronts it with what.",
+          "feedback": "Both are grammatical."
+        },
+        {
+          "id": "b",
+          "text": "Only the first is grammatical.",
+          "feedback": "Both are Standard English."
+        },
+        {
+          "id": "c",
+          "text": "The second has no preposition.",
+          "feedback": "At is fronted with what."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is on the train in She read it on the train?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A locative adjunct",
+          "feedback": "It is not licensed by read."
+        },
+        {
+          "id": "b",
+          "text": "A complement of read",
+          "feedback": "Read does not select on the train."
+        },
+        {
+          "id": "c",
+          "text": "The direct object",
+          "feedback": "The direct object is it."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Why is by grammaticised in The plan was approved by the boss?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The passive construction selects it to mark the agent.",
+          "feedback": "It is not a free locative choice."
+        },
+        {
+          "id": "b",
+          "text": "It means “near”.",
+          "feedback": "That is the ordinary locative meaning."
+        },
+        {
+          "id": "c",
+          "text": "It has no complement.",
+          "feedback": "It takes the boss as complement."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Why is between preferred in between my toes?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The toes are treated as individual boundary points.",
+          "feedback": "Between construes the members individually."
+        },
+        {
+          "id": "b",
+          "text": "There are only two toes.",
+          "feedback": "The contrast is not a simple count."
+        },
+        {
+          "id": "c",
+          "text": "Among is not a preposition.",
+          "feedback": "Among is a preposition too."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "stages": {
+    "predict": {
+      "prompt": "Which word heads the PP in the drawer?",
+      "options": [
+        {
+          "id": "a",
+          "text": "In",
+          "feedback": "In heads the PP and takes the drawer as object."
+        },
+        {
+          "id": "b",
+          "text": "The drawer",
+          "feedback": "The drawer is the complement."
+        },
+        {
+          "id": "c",
+          "text": "Drawer",
+          "feedback": "Drawer heads the NP complement."
+        }
+      ],
+      "answer": "a"
+    },
+    "guided": {
+      "prompt": "What kind of complement is behind the curtain in from behind the curtain?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A PP complement",
+          "feedback": "Behind the curtain is a PP headed by behind."
+        },
+        {
+          "id": "b",
+          "text": "An NP object",
+          "feedback": "The NP object is the curtain."
+        },
+        {
+          "id": "c",
+          "text": "A clause",
+          "feedback": "No clause is present."
+        }
+      ],
+      "answer": "a"
+    },
+    "transfer": {
+      "prompt": "Why is right under the bed evidence for a PP?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Right is a modifier restricted to prepositions.",
+          "feedback": "It does not modify verbs, adjectives or adverbs in Standard English."
+        },
+        {
+          "id": "b",
+          "text": "Right is an adjective.",
+          "feedback": "Here it modifies a PP."
+        },
+        {
+          "id": "c",
+          "text": "Under has no complement.",
+          "feedback": "It has the bed as complement."
+        }
+      ],
+      "answer": "a"
+    },
+    "exit": {
+      "prompt": "What is the difference between stranding and pied-piping?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stranding leaves the preposition in place; pied-piping fronts it with its complement.",
+          "feedback": "Both are grammatical constructions."
+        },
+        {
+          "id": "b",
+          "text": "Stranding is ungrammatical; pied-piping is correct.",
+          "feedback": "Both are grammatical."
+        },
+        {
+          "id": "c",
+          "text": "Pied-piping removes the preposition.",
+          "feedback": "It fronts the preposition along with its complement."
+        }
+      ],
+      "answer": "a"
+    }
+  }
+}

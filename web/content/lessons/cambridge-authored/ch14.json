@@ -1,0 +1,1621 @@
+{
+  "title": "Non-finite and verbless clauses",
+  "description": "Explore infinitival, gerund-participial, past-participial and verbless clauses, their subjects, complements, modifiers and catenative chains.",
+  "example": "She wanted to arrange for the committee to review the proposal before the deadline.",
+  "key_terms": [
+    {
+      "term": "non-finite clause",
+      "definition": "A clause whose verb is infinitival or participial rather than a primary finite form."
+    },
+    {
+      "term": "infinitival clause",
+      "definition": "A non-finite clause with a plain-form verb, either with to or bare."
+    },
+    {
+      "term": "to-infinitival",
+      "definition": "An infinitival clause introduced by the subordinator to."
+    },
+    {
+      "term": "bare infinitival",
+      "definition": "An infinitival clause with a plain-form verb and no to."
+    },
+    {
+      "term": "gerund-participial clause",
+      "definition": "A non-finite clause headed by a gerund-participle in -ing."
+    },
+    {
+      "term": "past-participial clause",
+      "definition": "A non-finite clause headed by a past participle."
+    },
+    {
+      "term": "for-infinitival",
+      "definition": "A to-infinitival with an overt subject introduced by for."
+    },
+    {
+      "term": "hollow clause",
+      "definition": "A non-finite clause missing a non-subject element that is recovered from context."
+    },
+    {
+      "term": "subjectless non-finite",
+      "definition": "A non-finite clause with no overt subject, interpreted from context."
+    },
+    {
+      "term": "catenative construction",
+      "definition": "A construction in which a verb takes a non-finite complement, often recursively."
+    },
+    {
+      "term": "catenative verb",
+      "definition": "A verb that licenses a catenative complement."
+    },
+    {
+      "term": "catenative complement",
+      "definition": "A non-finite complement that cannot be reduced to an object, predicative complement or PP complement."
+    },
+    {
+      "term": "simple catenative",
+      "definition": "A catenative construction with no intervening NP between the matrix and subordinate verbs."
+    },
+    {
+      "term": "complex catenative",
+      "definition": "A catenative construction with an intervening NP between the matrix and subordinate verbs."
+    },
+    {
+      "term": "plain-complex construction",
+      "definition": "A complex catenative construction with an intervening NP that is not introduced by a preposition."
+    },
+    {
+      "term": "for-complex construction",
+      "definition": "A complex catenative construction in which for introduces the subject of the infinitival."
+    },
+    {
+      "term": "oblique-complex construction",
+      "definition": "A complex catenative construction in which the intervening NP is the complement of a preposition."
+    },
+    {
+      "term": "concealed passive",
+      "definition": "A gerund-participial complement with a passive meaning, as in The house needs painting."
+    },
+    {
+      "term": "raised complement",
+      "definition": "An intervening NP that is syntactically associated with the matrix verb but semantically associated with the subordinate verb."
+    },
+    {
+      "term": "tough construction",
+      "definition": "A construction such as John is easy to please, with a hollow infinitival complement."
+    },
+    {
+      "term": "extraposed subject",
+      "definition": "A non-finite or finite clause placed after dummy it in subject function."
+    },
+    {
+      "term": "extraposed object",
+      "definition": "A clause placed after dummy it in object function."
+    },
+    {
+      "term": "predicative complement",
+      "definition": "A complement ascribing a property to a predicand, which can be a non-finite clause."
+    },
+    {
+      "term": "interrogative infinitival",
+      "definition": "An infinitival clause with interrogative type, as in whether to go."
+    },
+    {
+      "term": "relative infinitival",
+      "definition": "An infinitival clause functioning as a relative modifier, as in a place to stay."
+    },
+    {
+      "term": "verbless clause",
+      "definition": "A clause with no verb, often functioning as an adjunct or supplement."
+    },
+    {
+      "term": "attributive VP",
+      "definition": "A verb phrase used before a noun that does not constitute a full non-finite clause."
+    },
+    {
+      "term": "control",
+      "definition": "The interpretation of an understood subject through another expression in the construction."
+    }
+  ],
+  "intro": [
+    "Take *She wanted to arrange for the committee to review the proposal before the deadline*. One sentence, several verbs, and only the first is finite. *Wanted* carries tense; *to arrange* and *to review* do not, and the subject of *review* is never spelled out. The rest of the sentence is built from clauses that have subjects, objects and complements but no primary tense.",
+    "This chapter starts with that finite/non-finite divide and with the three non-finite form-types. It then follows *to* and *for*, the auxiliaries that non-finites do and do not admit, subjectless and hollow clauses, and the catenative construction in its simple and complex shapes. Later sections turn to non-catenative complements, complements of adjectives, nouns and prepositions, modifiers, supplements and verbless clauses.",
+    "The catenative chain is the thread to hold on to. A catenative verb takes a non-finite complement, and the pattern can nest: *She intends to try to persuade him to help her redecorate*. Each verb heads a layer, and every intervening NP has to be attached to the right one."
+  ],
+  "sections": [
+    {
+      "id": "finite-nonfinite",
+      "title": "Finite and non-finite clauses",
+      "advances": "predict",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Compare *She left* with *She wanted to leave*. The first has a verb with primary tense; the second has one too, but its complement does not. *I remember locking the door* and *He got charged* likewise contain clauses with verbs, subjects and objects but no primary tense. The plain form is the tricky case, because it appears on both sides of the line."
+        },
+        {
+          "type": "paragraph",
+          "text": "A plain form can be imperative (*Be patient*), subjunctive (*It is essential that he be careful*) or infinitival (*It is important for him to be careful*), yet only the last is non-finite. *To*, the absence of *do*-support, the embedding and the subject form separate the three."
+        },
+        {
+          "type": "paragraph",
+          "text": "Infinitivals normally carry *to*, except after modals and supportive *do*. Negation goes before *to*, not through *do*: *It’s important not to be late*, never *to don’t be late*. They are typically embedded, and when a subject appears it is accusative or plain, often behind *for*."
+        },
+        {
+          "type": "table",
+          "title": "Finite and non-finite plain forms",
+          "columns": [
+            "Construction",
+            "Example",
+            "Status"
+          ],
+          "rows": [
+            [
+              "Imperative",
+              "Be patient.",
+              "Finite"
+            ],
+            [
+              "Subjunctive",
+              "It is essential that he be careful.",
+              "Finite"
+            ],
+            [
+              "To-infinitival",
+              "It is important for him to be careful.",
+              "Non-finite"
+            ],
+            [
+              "Bare infinitival",
+              "They helped him move.",
+              "Non-finite"
+            ],
+            [
+              "Gerund-participial",
+              "I remember locking the door.",
+              "Non-finite"
+            ],
+            [
+              "Past-participial",
+              "He got charged.",
+              "Non-finite"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is It is important for him to be careful non-finite?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It is an infinitival clause, not an imperative or subjunctive.",
+            "feedback": "The plain form is infinitival, marked by to and the for subject."
+          },
+          {
+            "id": "b",
+            "text": "It contains no verb.",
+            "feedback": "It contains be."
+          },
+          {
+            "id": "c",
+            "text": "It has a nominative subject.",
+            "feedback": "The subject him is accusative."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "form-types",
+      "title": "Three non-finite form-types",
+      "advances": "understand",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The verb form sorts non-finite clauses into three types. *Max wanted to change his name* is infinitival; *I remember locking the door* is gerund-participial; *His father got charged with manslaughter* is past-participial. The label comes from the verb, not from the function the clause performs."
+        },
+        {
+          "type": "paragraph",
+          "text": "Infinitivals split again. *They forced me to sign* has *to*; *They helped me move the furniture* does not. The to-infinitival appears across a wide range of constructions, while the bare form is largely confined to complements of a small verb class, modals and supportive *do* included."
+        },
+        {
+          "type": "paragraph",
+          "text": "The old gerund/present participle split does not survive inspection. The gerund-participle is one verb form, whether it appears in a progressive construction or heads a non-finite clause. Two labels for one form hide the syntax they share."
+        },
+        {
+          "type": "table",
+          "title": "Non-finite form-types",
+          "columns": [
+            "Form-type",
+            "Verb form",
+            "Example"
+          ],
+          "rows": [
+            [
+              "To-infinitival",
+              "Plain form with to",
+              "to change his name"
+            ],
+            [
+              "Bare infinitival",
+              "Plain form without to",
+              "help me move"
+            ],
+            [
+              "Gerund-participial",
+              "Gerund-participle",
+              "locking the door"
+            ],
+            [
+              "Past-participial",
+              "Past participle",
+              "charged with manslaughter"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Form-types in context",
+          "items": [
+            {
+              "text": "Max wanted to change his name.",
+              "mark": "ok",
+              "note": "To-infinitival complement."
+            },
+            {
+              "text": "They helped me move the furniture.",
+              "mark": "ok",
+              "note": "Bare infinitival complement."
+            },
+            {
+              "text": "I remember locking the door.",
+              "mark": "ok",
+              "note": "Gerund-participial complement."
+            },
+            {
+              "text": "His father got charged with manslaughter.",
+              "mark": "ok",
+              "note": "Past-participial complement."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What form-type is locking the door?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Gerund-participial",
+            "feedback": "The verb is in the -ing form."
+          },
+          {
+            "id": "b",
+            "text": "To-infinitival",
+            "feedback": "There is no to."
+          },
+          {
+            "id": "c",
+            "text": "Past-participial",
+            "feedback": "The verb is not a past participle."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "infinitival-structure",
+      "title": "To, bare infinitivals, and for",
+      "advances": "worked",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*To* is the default marker of the infinitival, and *for* is what lets it have an overt subject: *For them to take the children could endanger the mission*. *For* cannot appear without a subject, and that subject is accusative or plain — *for him to go*, not *for he to go*."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bare infinitivals drop *to*. They follow modals (*can go*), supportive *do* (*did go*), and lexical verbs such as *help*, *make*, *let* and *see*: *They made him apologise*, *We saw her leave*. A few idiomatic constructions use the bare form too."
+        },
+        {
+          "type": "paragraph",
+          "text": "Whether *to* appears is not free variation. Some verbs take only to-infinitivals, some only bare ones, and some take both with a meaning difference. *I helped him move* and *I helped him to move* are near synonyms; *I made him move* and *I made him to move* are not."
+        },
+        {
+          "type": "examples",
+          "title": "To and for",
+          "items": [
+            {
+              "text": "For them to take the children could endanger the mission.",
+              "mark": "ok",
+              "note": "For introduces the subject of the to-infinitival."
+            },
+            {
+              "text": "They forced me to sign the petition.",
+              "mark": "ok",
+              "note": "To-infinitival complement of forced."
+            },
+            {
+              "text": "They helped me move the furniture.",
+              "mark": "ok",
+              "note": "Bare infinitival complement."
+            },
+            {
+              "text": "We saw her leave.",
+              "mark": "ok",
+              "note": "Bare infinitival after a perception verb."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is for required in For them to take the children could endanger the mission?",
+        "options": [
+          {
+            "id": "a",
+            "text": "For introduces the overt subject of the to-infinitival.",
+            "feedback": "The subject them needs the subordinator for."
+          },
+          {
+            "id": "b",
+            "text": "The clause is finite.",
+            "feedback": "It is a non-finite infinitival."
+          },
+          {
+            "id": "c",
+            "text": "Take requires for.",
+            "feedback": "For belongs to the infinitival construction, not the verb take."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "auxiliaries-voice",
+      "title": "Auxiliaries and voice in non-finites",
+      "advances": "guided",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Modals and supportive *do* are shut out of non-finite clauses. The other auxiliaries are not. *I expect to have finished*, *I expect to be working* and *I expect to be interviewed* show perfect *have*, progressive *be* and passive *be* inside an infinitival."
+        },
+        {
+          "type": "paragraph",
+          "text": "Gerund-participials admit perfect *have* and passive *be* — *I regret having told them*, *I resent being given so little notice* — but not productive progressive *be*. *I remember being working* is not an established construction; the progressive meaning is carried by the simple *-ing* form itself."
+        },
+        {
+          "type": "paragraph",
+          "text": "Past participles do two jobs in non-finite clauses. The perfect participle follows auxiliary *have* and can stack with progressive or passive *be*: *has seen*, *has been seeing*, *has been seen*. The passive participle heads a clause that takes no auxiliaries at all: *He had it checked by the manager*."
+        },
+        {
+          "type": "table",
+          "title": "Auxiliaries in non-finite form-types",
+          "columns": [
+            "Form-type",
+            "Perfect have",
+            "Progressive be",
+            "Passive be"
+          ],
+          "rows": [
+            [
+              "To-infinitival",
+              "to have finished",
+              "to be working",
+              "to be interviewed"
+            ],
+            [
+              "Gerund-participial",
+              "having told",
+              "not productive",
+              "being given"
+            ],
+            [
+              "Past-participial (perfect)",
+              "has seen",
+              "has been seeing",
+              "has been seen"
+            ],
+            [
+              "Past-participial (passive)",
+              "no",
+              "no",
+              "checked by the manager"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Auxiliary combinations",
+          "items": [
+            {
+              "text": "I expect to have finished soon.",
+              "mark": "ok",
+              "note": "Perfect have in a to-infinitival."
+            },
+            {
+              "text": "I expect to be working all weekend.",
+              "mark": "ok",
+              "note": "Progressive be in a to-infinitival."
+            },
+            {
+              "text": "I expect to be interviewed by the police.",
+              "mark": "ok",
+              "note": "Passive be in a to-infinitival."
+            },
+            {
+              "text": "I resent being given so little notice.",
+              "mark": "ok",
+              "note": "Passive be in a gerund-participial."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which auxiliary is not productive in gerund-participial clauses?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Progressive be",
+            "feedback": "Being working is not an established construction."
+          },
+          {
+            "id": "b",
+            "text": "Perfect have",
+            "feedback": "Having told is grammatical."
+          },
+          {
+            "id": "c",
+            "text": "Passive be",
+            "feedback": "Being given is grammatical."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "subjectless-hollow",
+      "title": "Subjectless and hollow clauses",
+      "advances": "transfer",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Most non-finite clauses say nothing about their subject. *Kim was glad to reach home*, *It has been a pleasure meeting you*, *Anyone living nearby will be evacuated* and *The sum spent on gambling was extraordinary* all leave the subject to context. That absence is normal, not a defect."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Kim was glad to reach home* and *Anyone living nearby will be evacuated* both contain clauses without an overt subject. They are still clauses: a VP heads each one, and the missing subject is supplied by interpretation. The exception is the attributive VP inside an NP — *our rapidly approaching deadline*, *a poorly drafted report* — which allows far less structure."
+        },
+        {
+          "type": "paragraph",
+          "text": "*The letter isn’t legible enough for you to read* is missing the object of *read*, understood as *the letter*. *I don’t think they are worth spending much time on* is missing the complement of *on*, understood as *they*. Hollow clauses lack an internal element rather than a subject."
+        },
+        {
+          "type": "examples",
+          "title": "Subjectless and hollow",
+          "items": [
+            {
+              "text": "Kim was glad to reach home.",
+              "mark": "ok",
+              "note": "Subjectless infinitival; Kim is understood as the one reaching home."
+            },
+            {
+              "text": "Anyone living nearby will be evacuated.",
+              "mark": "ok",
+              "note": "Subjectless gerund-participial modifying anyone."
+            },
+            {
+              "text": "The letter isn’t legible enough for you to read.",
+              "mark": "ok",
+              "note": "Hollow infinitival; the object of read is the letter."
+            },
+            {
+              "text": "They are worth spending much time on.",
+              "mark": "ok",
+              "note": "Hollow infinitival; the complement of on is they."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What makes The letter isn’t legible enough for you to read a hollow clause?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The object of read is missing and recovered as the letter.",
+            "feedback": "Hollow clauses lack a non-subject element supplied by context."
+          },
+          {
+            "id": "b",
+            "text": "It has no subject.",
+            "feedback": "The subject you is present."
+          },
+          {
+            "id": "c",
+            "text": "It contains no verb.",
+            "feedback": "It contains read."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "catenative-simple",
+      "title": "Simple catenative constructions",
+      "advances": "exit",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Watch what happens when one verb takes another as its complement: *I wanted to arrange for Kim to do it*, *She intends to try to persuade him to help her redecorate*. The verbs stack, each heading its own layer, and the stack can keep growing. That stacking is the catenative construction."
+        },
+        {
+          "type": "paragraph",
+          "text": "In the simple pattern no NP comes between the verbs. *I hope to finish soon*, *I helped wash up*, *I stopped worrying about it* and *I got arrested* all attach the non-finite complement directly to the matrix verb."
+        },
+        {
+          "type": "paragraph",
+          "text": "*She wants a holiday* and *She wants to leave* look like the same verb with different fillers, but the second complement is a clause, not an object. The test is the verb’s range: *want* takes both, and neither reduces to the other. That is the catenative relation."
+        },
+        {
+          "type": "examples",
+          "title": "Simple catenative chains",
+          "items": [
+            {
+              "text": "I hope to finish soon.",
+              "mark": "ok",
+              "note": "Simple to-infinitival catenative."
+            },
+            {
+              "text": "I helped wash up.",
+              "mark": "ok",
+              "note": "Simple bare infinitival catenative."
+            },
+            {
+              "text": "I stopped worrying about it.",
+              "mark": "ok",
+              "note": "Simple gerund-participial catenative."
+            },
+            {
+              "text": "I got arrested.",
+              "mark": "ok",
+              "note": "Simple past-participial catenative."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What makes I hope to finish soon a simple catenative construction?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The non-finite complement follows the matrix verb with no intervening NP.",
+            "feedback": "The construction is simple because there is no NP between hope and finish."
+          },
+          {
+            "id": "b",
+            "text": "It contains an object.",
+            "feedback": "To finish soon is a catenative complement, not an object."
+          },
+          {
+            "id": "c",
+            "text": "It has no subject.",
+            "feedback": "The matrix clause has the subject I."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "catenative-complex",
+      "title": "Complex catenative constructions",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Add an NP between the verbs and the construction becomes complex. *I advised you to sell it* and *I made them apologise* both have an intervening NP, and that NP may lean semantically towards the matrix verb or towards the subordinate one. Which way it leans changes the reading."
+        },
+        {
+          "type": "paragraph",
+          "text": "The plain-complex pattern leaves the NP bare: *I persuaded Liz to go*, *I intended Liz to go*. The for-complex pattern introduces it with *for*: *I arranged for her to go by bus*. The oblique-complex pattern makes it the complement of a preposition: *I signalled to her to move off the road*."
+        },
+        {
+          "type": "paragraph",
+          "text": "Gerund-participial complexes show the same tension. *I caught him doing it* and *I resented him doing it* differ in where *him* belongs semantically, and *I saw him doing it* adds the perception verb’s own interpretive pattern. The surface shape is identical; the argument structure is not."
+        },
+        {
+          "type": "table",
+          "title": "Complex catenative subtypes",
+          "columns": [
+            "Subtype",
+            "Example",
+            "Intervening NP"
+          ],
+          "rows": [
+            [
+              "Plain-complex",
+              "I persuaded Liz to go.",
+              "Bare NP"
+            ],
+            [
+              "Plain-complex",
+              "I intended Liz to go.",
+              "Bare NP; semantically with go"
+            ],
+            [
+              "For-complex",
+              "I arranged for her to go by bus.",
+              "Subject introduced by for"
+            ],
+            [
+              "Oblique-complex",
+              "I signalled to her to move off.",
+              "Complement of to"
+            ],
+            [
+              "Gerund complex",
+              "I caught him doing it.",
+              "Bare NP with gerund-participial"
+            ],
+            [
+              "Perception complex",
+              "I saw him doing it.",
+              "Bare NP with perception verb"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Intervening NPs",
+          "items": [
+            {
+              "text": "I persuaded Liz to go.",
+              "mark": "ok",
+              "note": "Plain-complex: Liz is object of persuaded and understood subject of go."
+            },
+            {
+              "text": "I intended Liz to go.",
+              "mark": "ok",
+              "note": "Plain-complex: Liz is semantically the one who goes."
+            },
+            {
+              "text": "I arranged for her to go by bus.",
+              "mark": "ok",
+              "note": "For-complex: for introduces the subject of the infinitival."
+            },
+            {
+              "text": "I signalled to her to move off the road.",
+              "mark": "ok",
+              "note": "Oblique-complex: her is the complement of to."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What distinguishes the for-complex construction?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The subject of the infinitival is introduced by for.",
+            "feedback": "For her to go by bus."
+          },
+          {
+            "id": "b",
+            "text": "There is no intervening NP.",
+            "feedback": "For her is the intervening subject."
+          },
+          {
+            "id": "c",
+            "text": "The complement is finite.",
+            "feedback": "It is a to-infinitival."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "catenative-analysis",
+      "title": "Why catenative complements are distinct",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Why not call the non-finite complement an object? Because the same verb takes ordinary objects elsewhere without the two behaving alike. *She wants a holiday* has an object; *She wants to leave* has a clause. The clause has its own auxiliaries and its own internal structure, none of which an NP object brings."
+        },
+        {
+          "type": "paragraph",
+          "text": "Auxiliaries fit the same analysis. In *She may like it*, *may* takes the non-finite complement *like it*, which makes it a catenative verb. Treating auxiliaries this way — the catenative-auxiliary analysis — explains the layering in *may have been seen*, where each auxiliary heads its own layer."
+        },
+        {
+          "type": "paragraph",
+          "text": "The traditional gerund/participle distinction plays no role here. *Gerund-participle* names the form; *gerund-participial* names the clause type. The same form appears in progressive constructions and in non-finite complements, and one description covers both more economically than two."
+        },
+        {
+          "type": "examples",
+          "title": "Catenative and non-catenative complements",
+          "items": [
+            {
+              "text": "She wants a holiday.",
+              "mark": "ok",
+              "note": "Object complement."
+            },
+            {
+              "text": "She wants to leave.",
+              "mark": "ok",
+              "note": "Catenative complement."
+            },
+            {
+              "text": "She may like it.",
+              "mark": "ok",
+              "note": "Modal auxiliary as a catenative verb."
+            },
+            {
+              "text": "She is working.",
+              "mark": "ok",
+              "note": "Progressive auxiliary with a gerund-participial complement."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is to leave in She wants to leave a catenative complement rather than an object?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Want occurs with objects elsewhere, but the non-finite complement has its own clausal structure.",
+            "feedback": "The complement is a clause, not an NP object."
+          },
+          {
+            "id": "b",
+            "text": "It follows the verb.",
+            "feedback": "Objects also follow the verb."
+          },
+          {
+            "id": "c",
+            "text": "It has no subject.",
+            "feedback": "Subjectless complements are still clauses."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "catenative-classes",
+      "title": "Classes of catenative verbs",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Catenative verbs sort into three classes by where they occur. Class 1 is simple only: *hope*, *seem*, *stop*, *get*. Class 2 is both: *want*, *help*, *see*. Class 3 is complex only: *persuade*, *advise*, *arrange*."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Hope* occurs only in the simple construction, *persuade* only in the complex one, and *want* in both. These are complement patterns, not semantic essences. A verb can shift class with its sense, and the classification describes what it licenses, not what kind of verb it is."
+        },
+        {
+          "type": "paragraph",
+          "text": "Form-type cuts across the classes. Some verbs take to-infinitivals, some gerund-participials, some bare infinitivals, and some take more than one with a difference. *Remember locking* looks back; *remember to lock* looks forward. *Stop smoking* and *stop to smoke* differ in how the complement relates to the matrix event."
+        },
+        {
+          "type": "examples",
+          "title": "Catenative classes",
+          "items": [
+            {
+              "text": "I hope to finish.",
+              "mark": "ok",
+              "note": "Class 1: simple only."
+            },
+            {
+              "text": "I want to finish.",
+              "mark": "ok",
+              "note": "Class 2: simple; also I want you to finish."
+            },
+            {
+              "text": "I persuaded Liz to go.",
+              "mark": "ok",
+              "note": "Class 3: complex only."
+            },
+            {
+              "text": "I remember locking the door.",
+              "mark": "ok",
+              "note": "Gerund-participial complement with past orientation."
+            },
+            {
+              "text": "Remember to lock the door.",
+              "mark": "ok",
+              "note": "To-infinitival complement with future orientation."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is a Class 3 catenative verb?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A verb occurring only in the complex construction",
+            "feedback": "Persuade requires an intervening NP: persuade Liz to go."
+          },
+          {
+            "id": "b",
+            "text": "A verb occurring only in the simple construction",
+            "feedback": "That is Class 1."
+          },
+          {
+            "id": "c",
+            "text": "A verb with no non-finite complement",
+            "feedback": "Catenative verbs take non-finite complements."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "hollow-clauses",
+      "title": "Hollow non-finite clauses",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The gap in *John is easy to please* is easy to miss. Nothing is missing from the subject position; what is missing is the object of *please*, and the sentence supplies John. Compare *They are worth spending time on*, where the complement of *on* is the gap and the matrix subject fills it. The gap is internal; the subject is not what is missing."
+        },
+        {
+          "type": "paragraph",
+          "text": "*John is easy to please* has no overt object of *please*; *The letter isn’t legible enough to read* has no overt object of *read*. A subjectless clause has no overt subject, while a hollow clause has no overt object or other internal dependent. The missing element can be an object, a prepositional complement or another internal dependent."
+        },
+        {
+          "type": "paragraph",
+          "text": "The pattern clusters around adjectives such as *easy*, *difficult*, *ready* and *worth*, and around *enough* and *too*. What fills the gap depends on the matrix subject or object, and the relation is not always a simple copy of an NP."
+        },
+        {
+          "type": "examples",
+          "title": "Hollow clauses",
+          "items": [
+            {
+              "text": "John is easy to please.",
+              "mark": "ok",
+              "note": "Missing object of please understood as John."
+            },
+            {
+              "text": "The letter isn’t legible enough to read.",
+              "mark": "ok",
+              "note": "Missing object of read understood as the letter."
+            },
+            {
+              "text": "They are worth spending much time on.",
+              "mark": "ok",
+              "note": "Missing complement of on understood as they."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is missing in John is easy to please?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The object of please",
+            "feedback": "The missing object is understood as John."
+          },
+          {
+            "id": "b",
+            "text": "The subject of please",
+            "feedback": "The understood subject is the one doing the pleasing, not John."
+          },
+          {
+            "id": "c",
+            "text": "The verb please",
+            "feedback": "Please is present."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "control-raising",
+      "title": "Understood subjects: control and raising",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Kim wants to go* and *Kim persuaded Pat to go* both leave the goer unspoken, but they point to different people: Kim in the first, Pat in the second. *Kim seems to like them* adds a third relation, where Kim is the subject of *seems* and the liker at once."
+        },
+        {
+          "type": "paragraph",
+          "text": "When another expression supplies that subject, the relation is control. *Want* is a subject-control verb: the matrix subject controls. *Persuade* is object-control: the matrix object controls. *Promise* is subject control despite a prominent object — *Kim promised Pat to go* means Kim goes."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Kim seems to like them* and *Kim wants to like them* look alike, but Kim has a different relation to each verb. In the first, Kim is the subject of *seems* and is not a semantic argument of *seem*; the paraphrase *It seems that Kim likes them* shows the split. In the second, Kim supplies the subject of *like*. Surface similarity hides the difference between sharing a subject and supplying one."
+        },
+        {
+          "type": "paragraph",
+          "text": "Some subjectless clauses take a generic subject instead: *To err is human*, *It is important to be careful*. Nobody in the matrix supplies the missing subject; people in general do. Context and the matrix predicate decide whether the subject is controlled, raised, arbitrary or recovered from discourse."
+        }
+      ],
+      "examples": {
+        "title": "Control, raising, and arbitrary subjects",
+        "items": [
+          {
+            "text": "Kim wants to go.",
+            "mark": "ok",
+            "note": "Subject control: Kim is understood as the one who goes."
+          },
+          {
+            "text": "Kim persuaded Pat to go.",
+            "mark": "ok",
+            "note": "Object control: Pat is understood as the one who goes."
+          },
+          {
+            "text": "Kim seems to like them.",
+            "mark": "ok",
+            "note": "Raising: Kim is syntactically the subject of seems and semantically associated with like."
+          },
+          {
+            "text": "To err is human.",
+            "mark": "ok",
+            "note": "Arbitrary or generic understood subject."
+          }
+        ]
+      },
+      "check": {
+        "prompt": "What is the difference between control and raising?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Control supplies the understood subject from a matrix NP; raising associates a matrix NP semantically with the subordinate verb.",
+            "feedback": "Both leave the non-finite subject unexpressed, but the relations differ."
+          },
+          {
+            "id": "b",
+            "text": "Control clauses are finite; raising clauses are non-finite.",
+            "feedback": "Both are non-finite."
+          },
+          {
+            "id": "c",
+            "text": "Raising always has an overt subject.",
+            "feedback": "The raised NP is the matrix subject, not an overt subordinate subject."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "noncatenative",
+      "title": "Non-catenative complements in clause structure",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*To underestimate her would be foolish* shows an infinitival in subject position, and *I call that taking liberties* shows a gerund-participial clause as a predicative complement. Objects are open too: *I found talking to her quite helpful*. Non-finite clauses take the ordinary clause functions, not only the catenative one."
+        },
+        {
+          "type": "paragraph",
+          "text": "They extrapose as well. *It was natural to be worried* has an extraposed subject, and *I found it distressing to see her so ill* has an extraposed object. Dummy *it* holds the core position while the clause sits after the predicate."
+        },
+        {
+          "type": "paragraph",
+          "text": "So the catenative/non-catenative line is functional, not formal. The same clause can be a catenative complement with one verb and a subject or object with another. The matrix construction decides."
+        },
+        {
+          "type": "table",
+          "title": "Non-finite complements in clause structure",
+          "columns": [
+            "Function",
+            "Example",
+            "Matrix"
+          ],
+          "rows": [
+            [
+              "Subject",
+              "To underestimate her would be foolish.",
+              "would be"
+            ],
+            [
+              "Object",
+              "I found talking to her quite helpful.",
+              "found"
+            ],
+            [
+              "Predicative complement",
+              "I call that taking liberties.",
+              "call"
+            ],
+            [
+              "Extraposed subject",
+              "It was natural to be worried.",
+              "be"
+            ],
+            [
+              "Extraposed object",
+              "I found it distressing to see her so ill.",
+              "found"
+            ],
+            [
+              "Catenative complement",
+              "She hopes to hear from them.",
+              "hopes"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the function of to be worried in It was natural to be worried?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Extraposed subject",
+            "feedback": "Dummy it fills the subject position; the clause is semantically the subject."
+          },
+          {
+            "id": "b",
+            "text": "Direct object",
+            "feedback": "The predicate is be + natural."
+          },
+          {
+            "id": "c",
+            "text": "Catenative complement",
+            "feedback": "Natural is an adjective, not a catenative verb."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "other-complements",
+      "title": "Complements of adjectives, nouns, and prepositions",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Non-finite complements attach to more than verbs. Adjectives take them (*keen to regain control*), nouns take them (*the opportunity to have my say*), and prepositions take them (*in order to catch the train*). Some are licensed by the adjacent word, others indirectly by the larger matrix."
+        },
+        {
+          "type": "paragraph",
+          "text": "Interrogative and relative infinitivals extend the range: *I can’t decide whether to go*, *He doesn’t know how to placate her*, *funds with which to conduct a survey*, *a place to stay*. Non-finite syntax here meets interrogative or relative syntax."
+        },
+        {
+          "type": "paragraph",
+          "text": "Function depends on the governing construction, not on meaning alone. *She left at six to catch the train* has a purpose modifier in clause structure; *in order to catch the train* has a complement inside a PP. Both express purpose; they do not occupy the same slot."
+        },
+        {
+          "type": "examples",
+          "title": "Adjective, noun, and PP complements",
+          "items": [
+            {
+              "text": "She is keen to regain control.",
+              "mark": "ok",
+              "note": "Complement of the adjective keen."
+            },
+            {
+              "text": "I’ve missed the opportunity to have my say.",
+              "mark": "ok",
+              "note": "Complement of the noun opportunity."
+            },
+            {
+              "text": "She left in order to catch the train.",
+              "mark": "ok",
+              "note": "Complement in PP structure."
+            },
+            {
+              "text": "I can’t decide whether to go.",
+              "mark": "ok",
+              "note": "Interrogative to-infinitival complement."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is to catch the train in in order to catch the train a complement rather than a clause-level modifier?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It is licensed inside the PP in order to, not directly by the matrix clause.",
+            "feedback": "The PP structure determines its function."
+          },
+          {
+            "id": "b",
+            "text": "It expresses purpose.",
+            "feedback": "Purpose meaning alone does not decide the function."
+          },
+          {
+            "id": "c",
+            "text": "It is finite.",
+            "feedback": "It is a to-infinitival."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "modifiers-supplements",
+      "title": "Non-finite modifiers and supplements",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*I’ve found a box to keep the tapes in* embeds an infinitival inside the NP; *She left at six to catch the early train* attaches one to the clause. Both modify rather than complement. Non-finite clauses can hang from a nominal or from a whole clause, and the two relations are not interchangeable."
+        },
+        {
+          "type": "paragraph",
+          "text": "*He’s a charlatan, to put it bluntly* adds a supplement. It comments on the clause or on the act of speaking rather than filling a slot, and it is prosodically detached — usually set off by a comma."
+        },
+        {
+          "type": "paragraph",
+          "text": "*She left at six to catch the early train* and *He’s a charlatan, to put it bluntly* both use a non-finite clause, but one modifies the event and the other comments on the act of speaking. The range of meanings is wider than finite content clauses allow in the same positions: purpose, result, condition, concession or comment. Syntax identifies the relation; semantics has to say which one."
+        },
+        {
+          "type": "examples",
+          "title": "Modifiers and supplements",
+          "items": [
+            {
+              "text": "I’ve found a box to keep the tapes in.",
+              "mark": "ok",
+              "note": "Infinitival modifier inside the NP."
+            },
+            {
+              "text": "She left at six to catch the early train.",
+              "mark": "ok",
+              "note": "Purpose modifier in clause structure."
+            },
+            {
+              "text": "He’s a charlatan, to put it bluntly.",
+              "mark": "ok",
+              "note": "Supplement commenting on the clause."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the function of to put it bluntly in He’s a charlatan, to put it bluntly?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A supplement",
+            "feedback": "It is detached and comments on the clause."
+          },
+          {
+            "id": "b",
+            "text": "A catenative complement",
+            "feedback": "Charlatan is not a catenative verb."
+          },
+          {
+            "id": "c",
+            "text": "An object",
+            "feedback": "The clause is not transitive here."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "verbless-clauses",
+      "title": "Verbless clauses",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Some clauses have no verb at all: *With the windows open, the room stayed cool*, *Although tired, she kept working*, *The meeting over, everyone left*. The missing verb is understood, and the construction still has internal structure and a relation to the matrix."
+        },
+        {
+          "type": "paragraph",
+          "text": "*With the windows open* describes a circumstance; *The meeting over* gives a temporal relation. Neither contains a verb, which is why verbless clauses are not a fourth non-finite type: the three non-finite types are defined by verb form. A verbless clause usually contains a subject and a predicative complement or a PP."
+        },
+        {
+          "type": "paragraph",
+          "text": "*With the windows open* and *The meeting over* show how common the pattern is with *with* and *without* and in supplement-like absolutes. "
+        },
+        {
+          "type": "examples",
+          "title": "Verbless clauses",
+          "items": [
+            {
+              "text": "With the windows open, the room stayed cool.",
+              "mark": "ok",
+              "note": "Verbless clause expressing circumstance."
+            },
+            {
+              "text": "Although tired, she kept working.",
+              "mark": "ok",
+              "note": "Verbless concessive clause."
+            },
+            {
+              "text": "The meeting over, everyone left.",
+              "mark": "ok",
+              "note": "Verbless absolute with a temporal relation."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is a verbless clause not a fourth non-finite form-type?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It has no verb, so it is not defined by a verb inflection.",
+            "feedback": "The three non-finite form-types are defined by verb form."
+          },
+          {
+            "id": "b",
+            "text": "It is always finite.",
+            "feedback": "It has no finite verb."
+          },
+          {
+            "id": "c",
+            "text": "It cannot function as an adjunct.",
+            "feedback": "It commonly functions as an adjunct."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "chapter-review",
+      "title": "Chapter Review",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*To leave*, *having left* and *left* show the three non-finite verb forms in action: infinitival, gerund-participial and past-participial. *For* and *to* mark subjects and infinitival status, and modals and supportive *do* are excluded from the non-finite system."
+        },
+        {
+          "type": "paragraph",
+          "text": "Non-finite clauses can be subjectless, hollow or catenative. Hollow clauses lack a non-subject element recovered from context; catenative constructions chain verbs through non-finite complements, either directly or across an intervening NP."
+        },
+        {
+          "type": "paragraph",
+          "text": "Beyond catenative use, non-finite clauses serve as subjects, objects, predicative complements, complements of adjectives, nouns and prepositions, modifiers and supplements. Verbless clauses form a separate construction, identified by the absence of a verb rather than by a verb inflection."
+        },
+        {
+          "type": "note",
+          "tone": "why",
+          "title": "A non-finite checklist",
+          "text": "Identify the verb form and the clause boundaries. Decide whether the clause is infinitival, gerund-participial or past-participial. Check for for and to, an overt or understood subject, and any missing non-subject element. Then identify its function in the matrix."
+        }
+      ],
+      "check": {
+        "prompt": "Which statement correctly distinguishes hollow from subjectless clauses?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A hollow clause lacks a non-subject element; a subjectless clause lacks an overt subject.",
+            "feedback": "The missing elements are different."
+          },
+          {
+            "id": "b",
+            "text": "A hollow clause has no verb.",
+            "feedback": "Hollow clauses have verbs."
+          },
+          {
+            "id": "c",
+            "text": "A subjectless clause is always finite.",
+            "feedback": "Subjectless non-finites are non-finite."
+          }
+        ],
+        "answer": "a"
+      }
+    }
+  ],
+  "worked": [
+    "Take *She wanted to arrange for the committee to review the proposal before the deadline*. The matrix clause is *She wanted ...*; its catenative complement is *to arrange for the committee to review the proposal before the deadline*. The verb *arrange* then takes the for-complex complement *for the committee to review the proposal*.",
+    "Inside that complement, *for* introduces the subject *the committee* of the to-infinitival *to review the proposal*. The example contains a catenative chain of three verbs, a for-complex construction, and a subjectless infinitival inside the for-clause. Each layer has its own head and complement structure."
+  ],
+  "application": [
+    "Find each verb and the non-finite clause it licenses. Identify the form-type: to-infinitival, bare infinitival, gerund-participial or past-participial. Check whether there is an overt subject, a for phrase, or an intervening NP.",
+    "Decide whether the construction is simple or complex catenative. In a simple construction the non-finite complement follows the matrix verb directly. In a complex construction an NP intervenes and may belong with either verb.",
+    "Then identify the clause’s function in the larger structure: catenative complement, subject, object, predicative complement, adjective/noun/PP complement, modifier or supplement. Check for hollow elements and for verbless clauses, which lack a verb altogether."
+  ],
+  "reveal": [
+    "In *She wanted to arrange for the committee to review the proposal before the deadline*, *wanted* takes the to-infinitival complement *to arrange ...*. *Arrange* takes the for-complex complement *for the committee to review the proposal*. *For* introduces the subject of the infinitival, and *review* takes *the proposal* as object."
+  ],
+  "recap": [
+    "Non-finite clauses have three main form-types: infinitival, gerund-participial and past-participial. Infinitivals can be to or bare, and for introduces an overt subject. Modal auxiliaries and supportive do are excluded from non-finite clauses.",
+    "Catenative constructions chain verbs through non-finite complements. Hollow clauses lack a non-subject element, subjectless clauses lack an overt subject, and verbless clauses lack a verb. Non-finite clauses also function as ordinary subjects, objects, complements, modifiers and supplements."
+  ],
+  "self_check": [
+    {
+      "question": "What are the three main non-finite form-types?",
+      "answer": "Infinitival, gerund-participial and past-participial."
+    },
+    {
+      "question": "What is the difference between a to-infinitival and a bare infinitival?",
+      "answer": "A to-infinitival contains the subordinator to; a bare infinitival has a plain-form verb without to."
+    },
+    {
+      "question": "What is a hollow clause?",
+      "answer": "A non-finite clause missing a non-subject element that is recovered from the matrix or context."
+    },
+    {
+      "question": "What is a catenative complement?",
+      "answer": "A non-finite complement licensed by a verb, forming a chain of verb clauses."
+    },
+    {
+      "question": "Why are verbless clauses not a non-finite form-type?",
+      "answer": "They have no verb, so they are not defined by a verb inflection."
+    }
+  ],
+  "opening": [
+    {
+      "prompt": "Which clause is non-finite?",
+      "options": [
+        {
+          "id": "a",
+          "text": "to change his name",
+          "feedback": "It is a to-infinitival."
+        },
+        {
+          "id": "b",
+          "text": "It is essential that he be careful.",
+          "feedback": "That is a finite subjunctive clause."
+        },
+        {
+          "id": "c",
+          "text": "Be patient.",
+          "feedback": "That is a finite imperative."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which form-type is locking the door?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Gerund-participial",
+          "feedback": "The verb is in the -ing form."
+        },
+        {
+          "id": "b",
+          "text": "To-infinitival",
+          "feedback": "There is no to."
+        },
+        {
+          "id": "c",
+          "text": "Past-participial",
+          "feedback": "It is not a past participle."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which auxiliary is excluded from non-finite clauses?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A modal auxiliary",
+          "feedback": "Modals cannot occur in non-finite clauses."
+        },
+        {
+          "id": "b",
+          "text": "Perfect have",
+          "feedback": "To have finished is grammatical."
+        },
+        {
+          "id": "c",
+          "text": "Passive be",
+          "feedback": "To be interviewed is grammatical."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is a hollow clause?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A non-finite clause missing a non-subject element",
+          "feedback": "The missing element is recovered from context."
+        },
+        {
+          "id": "b",
+          "text": "A clause with no verb",
+          "feedback": "That is a verbless clause."
+        },
+        {
+          "id": "c",
+          "text": "A clause with no subject",
+          "feedback": "That is a subjectless clause."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is a catenative construction?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A verb with a non-finite complement, often forming a chain",
+          "feedback": "The construction can recur recursively."
+        },
+        {
+          "id": "b",
+          "text": "A coordination of verbs",
+          "feedback": "Coordination is a different relation."
+        },
+        {
+          "id": "c",
+          "text": "A verbless clause",
+          "feedback": "Verbless clauses have no verb."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "closing": [
+    {
+      "prompt": "Why is It is important for him to be careful non-finite?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It is an infinitival clause with a for subject.",
+          "feedback": "The plain form is infinitival, not imperative or subjunctive."
+        },
+        {
+          "id": "b",
+          "text": "It has no verb.",
+          "feedback": "It contains be."
+        },
+        {
+          "id": "c",
+          "text": "It has a nominative subject.",
+          "feedback": "The subject him is accusative."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which auxiliary is not productive in gerund-participial clauses?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Progressive be",
+          "feedback": "Being working is not established."
+        },
+        {
+          "id": "b",
+          "text": "Perfect have",
+          "feedback": "Having told is grammatical."
+        },
+        {
+          "id": "c",
+          "text": "Passive be",
+          "feedback": "Being given is grammatical."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What makes The letter isn’t legible enough for you to read hollow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The object of read is missing and recovered as the letter.",
+          "feedback": "Hollow clauses lack a non-subject element."
+        },
+        {
+          "id": "b",
+          "text": "It has no subject.",
+          "feedback": "The subject you is present."
+        },
+        {
+          "id": "c",
+          "text": "It has no verb.",
+          "feedback": "It contains read."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What distinguishes the for-complex construction?",
+      "options": [
+        {
+          "id": "a",
+          "text": "For introduces the subject of the infinitival.",
+          "feedback": "For her to go by bus."
+        },
+        {
+          "id": "b",
+          "text": "There is no intervening NP.",
+          "feedback": "For her is the intervening subject."
+        },
+        {
+          "id": "c",
+          "text": "The complement is finite.",
+          "feedback": "It is a to-infinitival."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Why are verbless clauses not a non-finite form-type?",
+      "options": [
+        {
+          "id": "a",
+          "text": "They have no verb, so they are not defined by a verb inflection.",
+          "feedback": "The three form-types are defined by verb form."
+        },
+        {
+          "id": "b",
+          "text": "They are always finite.",
+          "feedback": "They have no finite verb."
+        },
+        {
+          "id": "c",
+          "text": "They cannot be adjuncts.",
+          "feedback": "They commonly are."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "stages": {
+    "predict": {
+      "prompt": "Which clause is non-finite?",
+      "options": [
+        {
+          "id": "a",
+          "text": "to change his name",
+          "feedback": "It is a to-infinitival."
+        },
+        {
+          "id": "b",
+          "text": "It is essential that he be careful.",
+          "feedback": "That is a finite subjunctive."
+        },
+        {
+          "id": "c",
+          "text": "Be patient.",
+          "feedback": "That is a finite imperative."
+        }
+      ],
+      "answer": "a"
+    },
+    "guided": {
+      "prompt": "Which form-type is locking the door?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Gerund-participial",
+          "feedback": "The verb is in the -ing form."
+        },
+        {
+          "id": "b",
+          "text": "To-infinitival",
+          "feedback": "There is no to."
+        },
+        {
+          "id": "c",
+          "text": "Past-participial",
+          "feedback": "It is not a past participle."
+        }
+      ],
+      "answer": "a"
+    },
+    "transfer": {
+      "prompt": "What is a hollow clause?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A non-finite clause missing a non-subject element",
+          "feedback": "The missing element is recovered from context."
+        },
+        {
+          "id": "b",
+          "text": "A clause with no verb",
+          "feedback": "That is a verbless clause."
+        },
+        {
+          "id": "c",
+          "text": "A clause with no subject",
+          "feedback": "That is a subjectless clause."
+        }
+      ],
+      "answer": "a"
+    },
+    "exit": {
+      "prompt": "What distinguishes the for-complex construction?",
+      "options": [
+        {
+          "id": "a",
+          "text": "For introduces the subject of the infinitival.",
+          "feedback": "For her to go by bus."
+        },
+        {
+          "id": "b",
+          "text": "There is no intervening NP.",
+          "feedback": "For her is the intervening subject."
+        },
+        {
+          "id": "c",
+          "text": "The complement is finite.",
+          "feedback": "It is a to-infinitival."
+        }
+      ],
+      "answer": "a"
+    }
+  }
+}

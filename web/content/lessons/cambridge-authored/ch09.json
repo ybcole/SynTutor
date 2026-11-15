@@ -1,0 +1,1629 @@
+{
+  "title": "Negation",
+  "description": "Understand clausal and subclausal negation, scope and focus, polarity-sensitive items, multiple negation and negative concord.",
+  "example": "He didn’t read the report, not even the summary.",
+  "key_terms": [
+    {
+      "term": "polarity",
+      "definition": "The contrast between positive and negative clauses."
+    },
+    {
+      "term": "clausal negation",
+      "definition": "Negation that makes the whole clause negative."
+    },
+    {
+      "term": "subclausal negation",
+      "definition": "Negation that affects a constituent without making the whole clause negative."
+    },
+    {
+      "term": "verbal negation",
+      "definition": "Negation marked in association with the verb, often with not or n’t."
+    },
+    {
+      "term": "non-verbal negation",
+      "definition": "Negation marked on a dependent rather than on the verb."
+    },
+    {
+      "term": "analytic negation",
+      "definition": "Negation marked by a dedicated negative word such as not or no."
+    },
+    {
+      "term": "synthetic negation",
+      "definition": "Negation marked by a word or affix with another function as well, such as never or un-."
+    },
+    {
+      "term": "absolute negator",
+      "definition": "A negator meaning zero or none, such as no, none, never, neither or nor."
+    },
+    {
+      "term": "approximate negator",
+      "definition": "A word located towards the negative end of a scale, such as few, hardly or rarely."
+    },
+    {
+      "term": "affixal negation",
+      "definition": "Negation marked by a prefix or suffix, such as un-, non- or -less."
+    },
+    {
+      "term": "metalinguistic negation",
+      "definition": "Negation used to reject a formulation, implicature or pronunciation rather than the truth of a proposition."
+    },
+    {
+      "term": "scope of negation",
+      "definition": "The part of the meaning that is negated."
+    },
+    {
+      "term": "focus of negation",
+      "definition": "The part of the scope that is most prominently negated."
+    },
+    {
+      "term": "negative polarity item",
+      "definition": "An expression such as any, ever or at all that is favoured in negative or non-affirmative contexts."
+    },
+    {
+      "term": "positive polarity item",
+      "definition": "An expression such as some or already that is favoured in positive contexts."
+    },
+    {
+      "term": "non-affirmative context",
+      "definition": "A question, conditional, comparative or other context that is not a positive assertion."
+    },
+    {
+      "term": "negative idiom",
+      "definition": "An idiom with a negative meaning that is not simply a polarity-sensitive item, such as not lift a finger."
+    },
+    {
+      "term": "negative concord",
+      "definition": "The marking of a single semantic negation more than once, as in non-standard I didn’t say nothing."
+    },
+    {
+      "term": "pleonastic negation",
+      "definition": "A negative marker that adds no separate semantic negation."
+    },
+    {
+      "term": "subordinate negation",
+      "definition": "Negation understood in an embedded clause even when marked in the matrix."
+    },
+    {
+      "term": "reversed polarity tag",
+      "definition": "A tag whose polarity is opposite to that of the clause it follows."
+    },
+    {
+      "term": "negative retort",
+      "definition": "A reduced negative response that rejects a proposition or proposal."
+    },
+    {
+      "term": "anaphoric not",
+      "definition": "Not used as a pro-form for a negative clause, as in I think not."
+    },
+    {
+      "term": "litotes",
+      "definition": "A negative expression used to convey a positive meaning indirectly, as in not uncommon."
+    }
+  ],
+  "intro": [
+    "*He didn’t read the report, not even the summary.* Take the second half away and the sentence still stands; keep it, and the denial reaches down to the smallest item. That one small word can do more than deny a proposition. It can cancel an implication, reject a pronunciation, or stand in for a whole clause that nobody wants to repeat.",
+    "The description begins with the tests that separate a negative clause from a positive one, then sorts negation along four contrasts: verbal and non-verbal, analytic and synthetic, clausal and subclausal, ordinary and metalinguistic. From there it turns to approximate and affixal negators, to the items that live only in negative or non-affirmative company, and to the questions of scope and focus that decide what a negative actually denies. Multiple negation, negative concord, metalinguistic correction, responses with *so* and *not*, and the rhetorical use of negation bring the chapter to a close.",
+    "The question worth asking is not whether a word is negative. It is how far the negative reaches, which element it throws into relief, and whether it turns the whole clause or only a phrase inside it."
+  ],
+  "sections": [
+    {
+      "id": "polarity-tests",
+      "title": "Polarity and its tests",
+      "advances": "predict",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Set *It is raining* beside *It isn’t raining* and the difference looks like one word. The two clauses then part company in ways that have nothing to do with weather: they accept different continuations, different tags, different connectives. Positive is the simpler case, the one a description can take for granted; almost everything interesting happens on the negative side."
+        },
+        {
+          "type": "paragraph",
+          "text": "Four continuations expose the difference. A negative clause tolerates a *not even* supplement and takes *neither* or *nor* where a positive clause wants *so*. Its tag reverses polarity, and a negative constituent moved to the front drags the auxiliary with it. The table below sets the four side by side, each row pairing a negative clause with its positive counterpart."
+        },
+        {
+          "type": "paragraph",
+          "text": "No single test settles the matter. Inversion also follows *so* and *only*, and same-polarity tags turn up with their own pragmatic point. The tests are strongest as a set, and strongest of all when a clause is placed next to its positive counterpart and the two are made to behave differently."
+        },
+        {
+          "type": "table",
+          "title": "Tests for clause polarity",
+          "columns": [
+            "Test",
+            "Negative clause",
+            "Positive clause"
+          ],
+          "rows": [
+            [
+              "Not even continuation",
+              "He didn’t read it, not even the abstract.",
+              "He read it, not even the abstract."
+            ],
+            [
+              "Connective",
+              "He didn’t read it; neither did I.",
+              "He read it; so did I."
+            ],
+            [
+              "Reversed tag",
+              "He didn’t read it, did he?",
+              "He read it, didn’t he?"
+            ],
+            [
+              "Inversion",
+              "Not once did he read it.",
+              "After lunch he read it."
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which continuation is grammatical after a negative clause?",
+        "options": [
+          {
+            "id": "a",
+            "text": "He didn’t read it, and neither did I.",
+            "feedback": "Negative clauses take neither or nor in the connective construction."
+          },
+          {
+            "id": "b",
+            "text": "He didn’t read it, and so did I.",
+            "feedback": "So follows a positive clause."
+          },
+          {
+            "id": "c",
+            "text": "He didn’t read it, and I didn’t too.",
+            "feedback": "The connective form is either, not too, in this negative clause."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "negation-types",
+      "title": "Four contrasts in negation",
+      "advances": "understand",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*He doesn’t dine out* and *He never dines out* deny the same habit, but the negative has moved: in the first it hangs on the auxiliary, in the second on the adverb. That is one contrast among several. A description of negation needs more than one axis; the one used here has four."
+        },
+        {
+          "type": "paragraph",
+          "text": "*He doesn’t dine out* puts the negative on the auxiliary; *He never dines out* puts it on a dependent. Two of the axes concern form. Verbal negation attaches *not* or *n’t* to the verb or its auxiliary and calls on *do* when no auxiliary is there; non-verbal negation puts the negative on a dependent, as *never* and *nothing* do. Analytic negation uses a marker whose only job is negation, while synthetic negation uses a word or affix that does something else as well — *never* carries time, *un-* builds an adjective. The axes cross: *He never dines out* is non-verbal and synthetic at once."
+        },
+        {
+          "type": "paragraph",
+          "text": "*We were friends at no time* denies a friendship and behaves like any negative clause. *We were friends in no time* says the friendship formed quickly, and the clause itself is positive, because the negative is walled up inside a phrase. The other two axes concern meaning. Ordinary negation denies that something is so. Metalinguistic negation objects to how something was put: *Max hasn’t got four children, he’s got five* does not deny the four so much as the suggestion that four is the end of the count."
+        },
+        {
+          "type": "table",
+          "title": "Four contrasts",
+          "columns": [
+            "Contrast",
+            "First type",
+            "Second type"
+          ],
+          "rows": [
+            [
+              "Form",
+              "Verbal: He doesn’t dine out.",
+              "Non-verbal: He never dines out."
+            ],
+            [
+              "Form",
+              "Analytic: The report is not complete.",
+              "Synthetic: The report isn’t complete."
+            ],
+            [
+              "Meaning",
+              "Clausal: We were friends at no time.",
+              "Subclausal: We were friends in no time."
+            ],
+            [
+              "Meaning",
+              "Ordinary: Max hasn’t got four children; he’s got three.",
+              "Metalinguistic: Max hasn’t got four children; he’s got five."
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Contrasts in context",
+          "items": [
+            {
+              "text": "He doesn’t dine out.",
+              "mark": "ok",
+              "note": "Verbal negation with supportive do."
+            },
+            {
+              "text": "He never dines out.",
+              "mark": "ok",
+              "note": "Non-verbal synthetic negation with never."
+            },
+            {
+              "text": "The report isn’t complete.",
+              "mark": "ok",
+              "note": "Synthetic verbal negation marked by n’t."
+            },
+            {
+              "text": "We were friends in no time.",
+              "mark": "ok",
+              "note": "Subclausal negation: the clause itself is positive."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is We were friends in no time not a negative clause?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It means “very quickly” and does not pass the clause-polarity tests.",
+            "feedback": "The negation is confined to the phrase in no time."
+          },
+          {
+            "id": "b",
+            "text": "It contains no negative word.",
+            "feedback": "It contains no, but the negation is subclausal."
+          },
+          {
+            "id": "c",
+            "text": "It has a positive tag.",
+            "feedback": "The tag is a consequence of the subclausal meaning, not the reason."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "verbal-negation",
+      "title": "Verbal negation",
+      "advances": "worked",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "English verbs do not inflect for negation. There is no form *readn’t*, no negative ending on *read*. What the grammar does instead is attach *not* to the first auxiliary, and when a clause has no auxiliary it presses *do* into service to carry tense and agreement: *He is not ready*, *They have not finished*, *He didn’t read it*."
+        },
+        {
+          "type": "paragraph",
+          "text": "The imperative makes its own arrangements. *Be late* has no auxiliary, yet its negative is *Don’t be late*; *Be not late* survives only as archaism or literary flourish. Negative imperatives are a construction in their own right, not declaratives with the subject deleted."
+        },
+        {
+          "type": "paragraph",
+          "text": "Non-finite clauses take *not* without *do*. In a *to*-infinitival the marker normally comes before *to*, though a split infinitive puts it after; gerund-participials and subjunctives place it before the verb. None of these constructions accepts dummy *do*, and the examples below show the three shapes."
+        },
+        {
+          "type": "examples",
+          "title": "Not in non-finite clauses",
+          "items": [
+            {
+              "text": "It seemed unwise not to answer.",
+              "mark": "ok",
+              "note": "Not precedes the to-infinitival."
+            },
+            {
+              "text": "Not having read the report, she said nothing.",
+              "mark": "ok",
+              "note": "Gerund-participial with initial not."
+            },
+            {
+              "text": "It is essential that he not be told.",
+              "mark": "ok",
+              "note": "Subjunctive with not before the plain verb."
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "title": "Three kinds of verbal negation",
+          "columns": [
+            "Type",
+            "Example",
+            "Marking"
+          ],
+          "rows": [
+            [
+              "Primary",
+              "He didn’t read it.",
+              "Finite auxiliary or dummy do"
+            ],
+            [
+              "Imperative",
+              "Don’t be late.",
+              "Do even with be"
+            ],
+            [
+              "Secondary",
+              "Not to bend it is important.",
+              "Not before a non-finite verb"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Verbal negation in context",
+          "items": [
+            {
+              "text": "She isn’t ready.",
+              "mark": "ok",
+              "note": "Primary negation marked on the auxiliary."
+            },
+            {
+              "text": "She did not read the report.",
+              "mark": "ok",
+              "note": "Dummy do supplies the finite auxiliary."
+            },
+            {
+              "text": "Don’t be late.",
+              "mark": "ok",
+              "note": "Imperative negation with do."
+            },
+            {
+              "text": "It is important not to bend it.",
+              "mark": "ok",
+              "note": "Secondary negation in a to-infinitival."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why does Don’t be late require do?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Imperative negation uses do even when the positive contains be.",
+            "feedback": "The imperative is a distinct negative construction."
+          },
+          {
+            "id": "b",
+            "text": "Be is a lexical verb.",
+            "feedback": "Be is an auxiliary even in its copula use."
+          },
+          {
+            "id": "c",
+            "text": "Late is an adverb.",
+            "feedback": "The complement does not determine do-support here."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "nonverbal-negation",
+      "title": "Non-verbal negation and absolute negators",
+      "advances": "guided",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Not happy* is the clearest case: the negative sits on an adjective, and the clause around it can stay positive. The same marker can be aimed at a quantifier, at an adverb, or at a preposition phrase, leaving the rest of the clause untouched. *No* works differently, doing negation and determination at once, which is why *no money* and *no excuses* need no separate *not*."
+        },
+        {
+          "type": "paragraph",
+          "text": "The absolute negators mean zero or none, and they differ more in grammar than in meaning. *No* is a determinative. *None* stands alone, often as a fused head, as in *None of them came*. *Nobody*, *nothing* and *nowhere* are compounds. *Never* belongs here too, though its meaning leans on time and frequency as much as on absence."
+        },
+        {
+          "type": "paragraph",
+          "text": "Some of these forms negate a clause and some only a phrase, and the surface does not show which. *I saw nothing* denies that any seeing took place, exactly as *I didn’t see anything* does. *We were friends in no time* contains the same negative word but describes a quick friendship; the clause passes the tests for a positive, because the negative is sealed inside the phrase."
+        },
+        {
+          "type": "paragraph",
+          "text": "Between the two lies the idiom. *He is no fool* can deny foolishness outright or offer a wry compliment, and only context and intonation decide which. Here the negator is doing lexical work, not clause-level work."
+        },
+        {
+          "type": "table",
+          "title": "Absolute negators",
+          "columns": [
+            "Form",
+            "Example",
+            "Function"
+          ],
+          "rows": [
+            [
+              "no",
+              "no money",
+              "Determiner"
+            ],
+            [
+              "none",
+              "None of them came.",
+              "Fused head"
+            ],
+            [
+              "never",
+              "She never calls.",
+              "Temporal or frequency negator"
+            ],
+            [
+              "neither",
+              "Neither answer was correct.",
+              "Disjunctive determiner"
+            ],
+            [
+              "nor",
+              "Nor did I.",
+              "Connective or coordinator"
+            ],
+            [
+              "nobody / nothing",
+              "Nobody came; nothing happened.",
+              "Compound pronoun"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Non-verbal negation",
+          "items": [
+            {
+              "text": "Not many people came.",
+              "mark": "ok",
+              "note": "Not negates the quantifier many."
+            },
+            {
+              "text": "I saw nothing.",
+              "mark": "ok",
+              "note": "Non-verbal clausal negation with nothing."
+            },
+            {
+              "text": "None of them came.",
+              "mark": "ok",
+              "note": "None is a fused head."
+            },
+            {
+              "text": "We were friends in no time.",
+              "mark": "ok",
+              "note": "Subclausal: no time means a very short time."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which sentence has clausal negation?",
+        "options": [
+          {
+            "id": "a",
+            "text": "I saw nothing.",
+            "feedback": "It is equivalent to I didn’t see anything and passes the polarity tests."
+          },
+          {
+            "id": "b",
+            "text": "We were friends in no time.",
+            "feedback": "That is subclausal: it means “very quickly”."
+          },
+          {
+            "id": "c",
+            "text": "He is no fool.",
+            "feedback": "This is typically an idiomatic assessment, often subclausal."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "approximate-affixal",
+      "title": "Approximate and affixal negation",
+      "advances": "transfer",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Not every negative sits at zero. *Few*, *little*, *barely*, *hardly*, *scarcely*, *rarely* and *seldom* place a situation near the bottom of a scale and leave the possibility of some. *Few of them supported her* suggests that a handful did, yet the clause still behaves as negative in the polarity tests; approximation and polarity are separate matters."
+        },
+        {
+          "type": "paragraph",
+          "text": "The indefinite article makes the difference plain. *A few people came* reports that some came; *Few people came* reports that not many did. The same reversal separates *a little* from *little*. "
+        },
+        {
+          "type": "paragraph",
+          "text": "Affixal negation works inside a word: *unhappy*, *intolerant*, *non-negotiable*, *careless*. Because the negative never reaches clause level, the clause itself counts as positive and takes a negative tag. *These terms are non-negotiable, aren’t they?* is therefore normal, while *These terms aren’t negotiable, are they?* belongs to the verbal pattern."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Unhappy* is a lexical item with its own degree and colour, not simply the syntactic negation of *happy*; *not common* and *uncommon* differ in strength and register. Treating an affix as a compressed *not* misses the point. *Not unattractive* shows what happens when a negative is allowed to stand in front of a positive adjective: the result is litotes, an indirect and usually weaker positive."
+        },
+        {
+          "type": "table",
+          "title": "Approximate and affixal forms",
+          "columns": [
+            "Type",
+            "Examples",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "Approximate quantity",
+              "few, little",
+              "Small amount, not zero"
+            ],
+            [
+              "Approximate degree",
+              "barely, hardly, scarcely",
+              "Only just"
+            ],
+            [
+              "Approximate frequency",
+              "rarely, seldom",
+              "Not often"
+            ],
+            [
+              "Affixal",
+              "un-, in-, non-, -less",
+              "Negative lexical item"
+            ],
+            [
+              "Litotes",
+              "not uncommon",
+              "Indirect positive"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Approximation and affixation",
+          "items": [
+            {
+              "text": "Few people came.",
+              "mark": "ok",
+              "note": "Negative orientation: not many came."
+            },
+            {
+              "text": "A few people came.",
+              "mark": "ok",
+              "note": "Positive orientation: some people came."
+            },
+            {
+              "text": "These terms are non-negotiable, aren’t they?",
+              "mark": "ok",
+              "note": "Affixal negation is subclausal; the clause is positive."
+            },
+            {
+              "text": "The result was not uncommon.",
+              "mark": "ok",
+              "note": "Litotes: a negative form conveys a positive assessment."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why does non-negotiable take a negative tag?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Affixal negation is subclausal, so the clause itself remains positive.",
+            "feedback": "The negative is inside the adjective, not in the clause polarity."
+          },
+          {
+            "id": "b",
+            "text": "Non- is a clause-level negator.",
+            "feedback": "It is a prefix, not a clause marker."
+          },
+          {
+            "id": "c",
+            "text": "Negotiable is a negative word.",
+            "feedback": "Negotiable is positive."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "npis",
+      "title": "Negative polarity items",
+      "advances": "exit",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*I didn’t see anything* is unremarkable. *I saw anything* is not English. The word *any* seems to need a negative or a question somewhere near it, and the same holds for *ever*, *yet*, *at all*, *any longer* and idioms such as *lift a finger* and *sleep a wink*. These are negative polarity items, and they are not equally strong: *any* is the weakest, *at all* adds emphasis, and the idioms are more emphatic still."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Any* turns up in questions, conditionals, comparatives, *before* clauses, *only*, *few*, and the complements of *doubt*, *deny* and *surprise*, not just under negation. Negation is only the most conspicuous licensor. What unites these contexts is not a single negative word but a shared failure to assert: each leaves a proposition open, denied, or merely supposed. The examples below arrange several of them side by side."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Not lift a finger* has a fixed negative meaning and very little internal variation; *any* is a quantifier with a wide distribution across contexts. An idiom is not just a strong NPI. One is a lexical item with a negative cast, the other a polarity-sensitive word that the grammar licenses."
+        },
+        {
+          "type": "table",
+          "title": "Polarity-sensitive items",
+          "columns": [
+            "Item",
+            "Positive context",
+            "Negative context"
+          ],
+          "rows": [
+            [
+              "some / any",
+              "I bought some bread.",
+              "I didn’t buy any bread."
+            ],
+            [
+              "already / yet",
+              "She has already left.",
+              "She hasn’t left yet."
+            ],
+            [
+              "somewhat",
+              "It was somewhat useful.",
+              "It wasn’t any use at all."
+            ],
+            [
+              "ever",
+              "She is happier than ever.",
+              "She hardly ever calls."
+            ],
+            [
+              "at all",
+              "I liked it a lot.",
+              "I didn’t like it at all."
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Licensing NPIs",
+          "items": [
+            {
+              "text": "I didn’t see anything.",
+              "mark": "ok",
+              "note": "Any is licensed by clausal negation."
+            },
+            {
+              "text": "Did you see anything?",
+              "mark": "ok",
+              "note": "A question is a non-affirmative context."
+            },
+            {
+              "text": "If you need any help, call me.",
+              "mark": "ok",
+              "note": "A conditional licenses any."
+            },
+            {
+              "text": "Few people said anything.",
+              "mark": "ok",
+              "note": "Few has negative orientation."
+            },
+            {
+              "text": "She didn’t lift a finger.",
+              "mark": "ok",
+              "note": "A negative idiom with a fixed negative meaning."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which context licenses any in I didn’t buy any bread?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Clausal negation",
+            "feedback": "The negative clause provides a non-affirmative context."
+          },
+          {
+            "id": "b",
+            "text": "The past tense",
+            "feedback": "Tense alone does not license any."
+          },
+          {
+            "id": "c",
+            "text": "The noun bread",
+            "feedback": "The lexical noun does not license the quantifier."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "ppis-nonaffirmative",
+      "title": "Positive polarity and non-affirmative contexts",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*I have already eaten* passes without comment. *I haven’t already eaten* does not; it wants a contrast, a correction, or a very specific tone. *Already* is a positive polarity item, and it keeps company with *some*, *still*, *somewhat*, *rather* and *pretty*. The restriction is a strong tendency, not an absolute law, and a cooperative context can override it."
+        },
+        {
+          "type": "paragraph",
+          "text": "Put a PPI under negation and it usually needs a special reading. *I don’t have some money* is odd unless *some* is contrastive: not money in general, but some particular sum. *She isn’t still here* is easier, because *still* can fall under the scope of the negative and yield the reading ‘she is no longer here’. The label matters less than the scope relation."
+        },
+        {
+          "type": "paragraph",
+          "text": "Questions, conditionals, comparatives, *before* clauses, *only*, *few*, and the complements of *doubt*, *deny* and *surprise* all qualify as non-affirmative. The wider environment is easier to list than to define. These contexts resemble one another family by family rather than sharing a single semantic feature."
+        },
+        {
+          "type": "table",
+          "title": "PPIs and their alternatives",
+          "columns": [
+            "PPI",
+            "Affirmative",
+            "Negative or non-affirmative alternative"
+          ],
+          "rows": [
+            [
+              "some",
+              "I bought some bread.",
+              "I didn’t buy any bread."
+            ],
+            [
+              "already",
+              "She has already left.",
+              "She hasn’t left yet."
+            ],
+            [
+              "still",
+              "She is still here.",
+              "She isn’t here any more."
+            ],
+            [
+              "somewhat",
+              "It was somewhat useful.",
+              "It wasn’t at all useful."
+            ],
+            [
+              "rather",
+              "It was rather good.",
+              "It wasn’t very good."
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "PPIs and alternatives",
+          "items": [
+            {
+              "text": "I have already eaten.",
+              "mark": "ok",
+              "note": "Already favours a positive context."
+            },
+            {
+              "text": "I haven’t eaten yet.",
+              "mark": "ok",
+              "note": "Yet is the negative-context counterpart."
+            },
+            {
+              "text": "She is still here.",
+              "mark": "ok",
+              "note": "Still is positive-oriented."
+            },
+            {
+              "text": "She isn’t here any more.",
+              "mark": "ok",
+              "note": "Any more supplies the negative-context counterpart."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which pair correctly contrasts a PPI with its negative-context counterpart?",
+        "options": [
+          {
+            "id": "a",
+            "text": "already / yet",
+            "feedback": "Already favours positive contexts; yet favours negative and interrogative ones."
+          },
+          {
+            "id": "b",
+            "text": "some / some",
+            "feedback": "Some is not its own negative counterpart."
+          },
+          {
+            "id": "c",
+            "text": "still / still",
+            "feedback": "Still is not its own negative counterpart."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "scope-focus",
+      "title": "Scope and focus of negation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Liz didn’t delete the backup file* denies a whole event: no deletion of that file by Liz took place. The scope of the negative is the proposition, and the focus is the part the denial lands on hardest. Stress can move that focus without changing the syntax: *Liz* didn’t delete the file, or she didn’t delete *the backup file*."
+        },
+        {
+          "type": "paragraph",
+          "text": "Removing the negative gives a rough test. The positive counterpart of the sentence is *Liz deleted the backup file*, and the negative denies exactly that. Apply the same procedure to *Not many people came* and the result differs: what is denied is the size of the crowd, not the arrival of any people at all. Two negatives, two scopes."
+        },
+        {
+          "type": "paragraph",
+          "text": "Scope also shifts under quantifiers, modals and reason clauses. *Not all the students passed* denies a universal; *All the students didn’t pass* can deny the universal or report a universal failure, depending on where the negative is understood. A *because* clause is just as slippery: *I didn’t buy it because it was expensive* can give the reason for not buying or deny that the price was the reason."
+        },
+        {
+          "type": "examples",
+          "title": "Scope and focus",
+          "items": [
+            {
+              "text": "Liz didn’t delete the backup file.",
+              "mark": "ok",
+              "note": "The negative denies the whole proposition."
+            },
+            {
+              "text": "Not many people came.",
+              "mark": "ok",
+              "note": "The negative applies to the quantifier many."
+            },
+            {
+              "text": "I didn’t buy it because it was expensive.",
+              "mark": "ok",
+              "note": "Ambiguous: reason for not buying or scope over the reason."
+            },
+            {
+              "text": "I didn’t buy it because it was cheap.",
+              "mark": "ok",
+              "note": "The reason reading is strongly favoured."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the scope of negation in Not many people came?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The quantifier many",
+            "feedback": "The sentence means that the number was small, not that zero people came."
+          },
+          {
+            "id": "b",
+            "text": "The entire clause",
+            "feedback": "The negative does not deny that any people came."
+          },
+          {
+            "id": "c",
+            "text": "The noun people",
+            "feedback": "The noun is not the negated element."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "specificity",
+      "title": "Increased specificity and subordinate negation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Mary doesn’t like you* usually means something stronger than its literal content: that Mary dislikes you. Strictly, it is true if she has no feelings either way, and a flat denial can cancel the inference. *He doesn’t have many friends* works the same way, implicating a small circle without quite saying so. Negative clauses tend to be read towards the more specific, more informative end of what they allow."
+        },
+        {
+          "type": "paragraph",
+          "text": "Medium-strength predicates produce a related effect. *I don’t want to hear about it* is normally heard as *I want not to hear about it*, with the negative transplanted into the subordinate clause. *I don’t think she’s coming* leans towards *I think she isn’t coming*. In both, the negative is written in the matrix and understood in the complement."
+        },
+        {
+          "type": "paragraph",
+          "text": "The effect depends on strength. *I’m not willing to be included* entails *I’m willing not to be included*, so no implicature is needed. *I don’t insist on being included* does not suggest *I insist on not being included*; *insist* is too strong to let the negative slide downward. *Want*, *advise*, *likely*, *think*, *believe* and *seem* occupy the middle ground, while *know* and *insist* sit outside it."
+        },
+        {
+          "type": "paragraph",
+          "text": "Modals can build subordinate negation into their meaning rather than leaving it to inference. *You mustn’t tell anyone* says that you are obliged not to tell, with the negative inside the complement of *must*. *You needn’t tell anyone* says that no obligation applies, with the negative outside. Scope explains the contrast, and it survives even when the two forms sound equally forbidding."
+        },
+        {
+          "type": "examples",
+          "title": "Specificity and subordinate negation",
+          "items": [
+            {
+              "text": "Mary doesn’t like you.",
+              "mark": "ok",
+              "note": "Implicates that Mary dislikes you, but does not entail it."
+            },
+            {
+              "text": "I don’t want to hear about it.",
+              "mark": "ok",
+              "note": "Implicates that I want not to hear about it."
+            },
+            {
+              "text": "You mustn’t tell anyone.",
+              "mark": "ok",
+              "note": "Internal negation: obligated not to tell."
+            },
+            {
+              "text": "You needn’t tell anyone.",
+              "mark": "ok",
+              "note": "External negation: not obligated to tell."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What does I don’t want to hear about it typically implicate?",
+        "options": [
+          {
+            "id": "a",
+            "text": "I want not to hear about it.",
+            "feedback": "The matrix negation is interpreted in the subordinate clause as a medium-strength implicature."
+          },
+          {
+            "id": "b",
+            "text": "I am indifferent about hearing it.",
+            "feedback": "That is one way the sentence could be true, but it is not the usual implicature."
+          },
+          {
+            "id": "c",
+            "text": "I insist on not hearing about it.",
+            "feedback": "Want is medium strength; insist is stronger."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "multiple-negation",
+      "title": "Multiple negation and negative concord",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Two negative words in one clause can mean two denials or one. *I didn’t say I didn’t want it* contains two separate negations, one in the matrix and one in the complement, and they do not cancel. Non-standard *He didn’t say nothing* contains two negative markers but a single denial: he said nothing. The first pattern is multiple semantic negation; the second is negative concord."
+        },
+        {
+          "type": "paragraph",
+          "text": "Standard English has small pockets of concord of its own. *Neither illegal nor immoral* marks both coordinates and negates once. A negative parenthetical can double the marking without doubling the meaning, as in *They aren’t here, I don’t think*. And a subordinate clause after *I wouldn’t be surprised if* may carry a negative that adds nothing at all, a pleonastic marker rather than a second denial."
+        },
+        {
+          "type": "paragraph",
+          "text": "Cockney and African American Vernacular English regularly use *He didn’t say nothing* for a single negation. Concord is regular in many non-standard varieties, and it is not a lapse in logic. The rule that two negatives cancel belongs to semantic negation, not to the number of negative words a grammar allows. Italian and Spanish mark a single negation more than once in much the same way."
+        },
+        {
+          "type": "table",
+          "title": "Multiple negation and concord",
+          "columns": [
+            "Pattern",
+            "Example",
+            "Semantic negations"
+          ],
+          "rows": [
+            [
+              "Multiple semantic negation",
+              "I didn’t say I didn’t want it.",
+              "Two"
+            ],
+            [
+              "Standard concord",
+              "Neither illegal nor immoral.",
+              "One"
+            ],
+            [
+              "Parenthetical concord",
+              "They aren’t here, I don’t think.",
+              "One"
+            ],
+            [
+              "Pleonastic negation",
+              "I wouldn’t be surprised if it didn’t rain.",
+              "One in the relevant reading"
+            ],
+            [
+              "Non-standard concord",
+              "He didn’t say nothing.",
+              "One"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Counting negations",
+          "items": [
+            {
+              "text": "I didn’t say I didn’t want it.",
+              "mark": "ok",
+              "note": "Two semantic negations: I didn’t say that I didn’t want it."
+            },
+            {
+              "text": "Neither illegal nor immoral.",
+              "mark": "ok",
+              "note": "One semantic negation marked on both coordinates."
+            },
+            {
+              "text": "He didn’t say nothing.",
+              "mark": "bad",
+              "note": "Non-standard negative concord: one semantic negation."
+            },
+            {
+              "text": "I wouldn’t be surprised if it didn’t rain.",
+              "mark": "ok",
+              "note": "Can contain a pleonastic subordinate negative."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is negative concord not illogical?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The multiple negative words mark one semantic negation; the logical cancellation rule applies to semantic negation.",
+            "feedback": "Grammar and logic are separate levels."
+          },
+          {
+            "id": "b",
+            "text": "Two negatives always make a positive in English.",
+            "feedback": "That is true only for multiple semantic negation, not concord."
+          },
+          {
+            "id": "c",
+            "text": "Non-standard dialects have no grammar.",
+            "feedback": "Negative concord is a regular grammatical pattern."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "metalinguistic",
+      "title": "Metalinguistic negation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*She didn’t have lunch with my old man: she had lunch with my father.* The denial is not aimed at the lunch. It objects to the phrase *my old man*, and the correction supplies a more acceptable wording. This is metalinguistic negation: a negative that rejects a formulation, an implicature or a pronunciation rather than the truth of a proposition."
+        },
+        {
+          "type": "paragraph",
+          "text": "The classic case targets an implicature. *Max hasn’t got four children: he’s got five* would contradict itself if *not* denied the proposition outright, because a man with five children has four as well. What is rejected is the suggestion that four is the upper limit. *Max hasn’t got four children: he’s got three* is ordinary negation by comparison, denying the count itself."
+        },
+        {
+          "type": "paragraph",
+          "text": "Metalinguistic negatives tend to sound different. They carry a marked intonation, often a fall-rise on the offending item, and they invite a correction. The target can be a word, a pronunciation, a register or a presupposition, and the negative is doing corrective work rather than descriptive work."
+        },
+        {
+          "type": "examples",
+          "title": "Ordinary and metalinguistic negation",
+          "items": [
+            {
+              "text": "Max hasn’t got four children: he’s got three.",
+              "mark": "ok",
+              "note": "Ordinary negation of the proposition."
+            },
+            {
+              "text": "Max hasn’t got four children: he’s got five.",
+              "mark": "ok",
+              "note": "Metalinguistic denial of the implicature “no more than four”."
+            },
+            {
+              "text": "She didn’t have lunch with your ‘old man’: she had lunch with your father.",
+              "mark": "ok",
+              "note": "Rejection of a formulation, not the truth of the meeting."
+            },
+            {
+              "text": "She doesn’t live in a /kæsl/; she lives in a /kɑːsl/.",
+              "mark": "ok",
+              "note": "Rejection of a pronunciation."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which example is metalinguistic negation?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Max hasn’t got four children: he’s got five.",
+            "feedback": "It rejects the implicature that four is the upper limit."
+          },
+          {
+            "id": "b",
+            "text": "Max hasn’t got four children: he’s got three.",
+            "feedback": "That is ordinary negation of the proposition."
+          },
+          {
+            "id": "c",
+            "text": "Max doesn’t have any children.",
+            "feedback": "That is ordinary negation."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "responses",
+      "title": "Responses and anaphoric so and not",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Isn’t it ready?* can be answered with *Yes* to confirm readiness or *No* to deny it, and the same words can confirm or reject depending on which proposition the speaker takes as the anchor. Answers to polar questions are shaped by the polarity of the question and by what the answerer wants to do with it. Agreement and disagreement are not the same as yes and no."
+        },
+        {
+          "type": "paragraph",
+          "text": "*So* and *not* work as pro-forms for whole clauses. *I think so* stands in for a positive complement; *I think not* stands in for a negative one. *I was told so* and *I was told not* show the same division. In these uses *not* is a complement, not a modifier hovering near the verb."
+        },
+        {
+          "type": "paragraph",
+          "text": "Preposed adverbs and preposition phrases can accompany the pro-form, but not symmetrically. *Apparently so* and *Apparently not* both work. *On the whole not* is possible; *On the whole so* is not. The difference follows from the different syntactic status of the two pro-forms in reduced clauses."
+        },
+        {
+          "type": "examples",
+          "title": "Anaphoric responses",
+          "items": [
+            {
+              "text": "Are they reliable? I think so.",
+              "mark": "ok",
+              "note": "So stands for the positive proposition."
+            },
+            {
+              "text": "Are they reliable? I think not.",
+              "mark": "ok",
+              "note": "Not stands for the negative proposition."
+            },
+            {
+              "text": "Apparently so.",
+              "mark": "ok",
+              "note": "An adverb can accompany so."
+            },
+            {
+              "text": "On the whole not.",
+              "mark": "ok",
+              "note": "A PP can accompany not, but not so in the same way."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What does not stand for in I think not?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A negative clausal complement",
+            "feedback": "It is the negative counterpart of so."
+          },
+          {
+            "id": "b",
+            "text": "A negative verb modifier",
+            "feedback": "It functions as a complement, not as a modifier of think."
+          },
+          {
+            "id": "c",
+            "text": "A negative NP",
+            "feedback": "It stands for a clause, not an NP."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "negation-style",
+      "title": "Negation in argument and style",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*I didn’t buy it because it was expensive* can give the price as the reason for not buying, or deny that the price was the reason. Negation is a reliable source of ambiguity in writing because its scope is often invisible. *All that glitters is not gold* can mean that nothing glittering is gold or that not everything glittering is. Word order alone does not settle either case; scope and focus do."
+        },
+        {
+          "type": "paragraph",
+          "text": "Negative concord attracts social judgement out of proportion to its linguistic interest. It is a regular feature of many dialects and follows its own rules. Formal Standard English can use multiple semantic negation for emphasis or contradiction, but the result needs a context strong enough to keep the two denials apart."
+        },
+        {
+          "type": "paragraph",
+          "text": "Litotes turns negation into indirect praise or criticism: *not uncommon*, *not unattractive*, *not a little worried*. The figure softens a claim or shades it with irony, and its effect depends on the scale and on what the reader expects. Pushed too far, the negative goes vague, and the reader stops being able to measure the positive behind it."
+        },
+        {
+          "type": "examples",
+          "title": "Scope and style",
+          "items": [
+            {
+              "text": "All that glitters is not gold.",
+              "mark": "ok",
+              "note": "Ambiguous between universal and non-universal scope."
+            },
+            {
+              "text": "I didn’t buy it because it was expensive.",
+              "mark": "ok",
+              "note": "The reason clause can fall inside or outside the scope of negation."
+            },
+            {
+              "text": "The result was not uncommon.",
+              "mark": "ok",
+              "note": "Litotes: an indirect way of saying it was fairly common."
+            },
+            {
+              "text": "He didn’t say nothing.",
+              "mark": "bad",
+              "note": "Non-standard negative concord; standard English has He didn’t say anything."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why can All that glitters is not gold be ambiguous?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The negative can take scope over the universal or over the predicate.",
+            "feedback": "The two readings are “nothing that glitters is gold” and “not everything that glitters is gold”."
+          },
+          {
+            "id": "b",
+            "text": "Gold is a negative word.",
+            "feedback": "Gold is not negative."
+          },
+          {
+            "id": "c",
+            "text": "The sentence contains negative concord.",
+            "feedback": "There is only one negative marker."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "chapter-review",
+      "title": "Chapter Review",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The four contrasts — verbal and non-verbal, analytic and synthetic, clausal and subclausal, ordinary and metalinguistic — give the description its axes. Nothing about negation is settled by a single word. The polarity tests decide whether a clause as a whole is negative."
+        },
+        {
+          "type": "paragraph",
+          "text": "Verbal negation puts *not* or *n’t* on a primary verb and uses *do*-support where no auxiliary exists. Non-verbal negation covers *not* with a constituent, absolute negators such as *no* and *never*, approximate negators such as *few* and *hardly*, and affixes. Polarity-sensitive items distribute across positive, negative and non-affirmative contexts, and those contexts form a family rather than a single class."
+        },
+        {
+          "type": "paragraph",
+          "text": "Scope and focus explain how one negative form can deny different things, and multiple negation divides into separate denials and concord. Metalinguistic negation corrects formulations and implicatures rather than facts. *So* and *not* supply pro-forms for the clauses that would otherwise have to be repeated."
+        },
+        {
+          "type": "note",
+          "tone": "why",
+          "title": "A negation checklist",
+          "text": "Identify the negative marker. Decide whether it is verbal or non-verbal, analytic or synthetic. Test whether the clause is negative or only a constituent. Then identify the scope and focus, and check whether the negation is ordinary or metalinguistic."
+        }
+      ],
+      "check": {
+        "prompt": "Which statement correctly describes clausal negation?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It makes the whole clause negative and passes the polarity tests.",
+            "feedback": "Subclausal negation does not make the clause negative."
+          },
+          {
+            "id": "b",
+            "text": "It is always marked by an affix.",
+            "feedback": "Affixal negation is subclausal."
+          },
+          {
+            "id": "c",
+            "text": "It always contains two negative words.",
+            "feedback": "One negative marker is enough."
+          }
+        ],
+        "answer": "a"
+      }
+    }
+  ],
+  "worked": [
+    "Take *He didn’t read the report, not even the summary*. The finite clause is negative: it takes the *not even* continuation, would take *neither* rather than *so*, and takes the reversed tag *did he?*. The negative is verbal, marked on the auxiliary *did*, and it has scope over the proposition that he read the report.",
+    "The phrase *not even the summary* is a detached supplement, not part of the core clause. It identifies a more specific focus for the negation: the report was not read, and even the summary was not read. The example shows how a negative clause can combine clause-level polarity with a focused supplement."
+  ],
+  "application": [
+    "Start with the negative marker and identify what it is attached to. If it is on the verb or an auxiliary, the negation is verbal. If it is on an NP, AdjP, AdvP or PP, it may be non-verbal and possibly subclausal.",
+    "Next, test the clause. Does it allow not even? Does it take neither or so? Which tag does it take? Does a prenuclear negative trigger inversion? These tests separate clausal from subclausal negation.",
+    "Then identify scope and focus. Remove the negative and compare the positive counterpart. Decide which part of the proposition is denied and which element is most prominent. Finally, check whether the negation is ordinary or metalinguistic, and whether multiple negative markers express one semantic negation or several."
+  ],
+  "reveal": [
+    "In *He didn’t read the report, not even the summary*, the negative is verbal and clausal: it is marked on the auxiliary *did* and denies the proposition that he read the report. *Not even the summary* is a focused supplement that strengthens the negation by extending it to a minimal case."
+  ],
+  "recap": [
+    "Polarity is a clause-level property with syntactic tests. Negation can be verbal or non-verbal, analytic or synthetic, clausal or subclausal, ordinary or metalinguistic. Scope and focus determine what the negative actually denies.",
+    "NPIs and PPIs are licensed by positive, negative and non-affirmative contexts. Multiple negative markers can express several negations or a single negation with concord. Metalinguistic negation rejects formulations and implicatures rather than truth."
+  ],
+  "self_check": [
+    {
+      "question": "Name the four tests for clause polarity.",
+      "answer": "Not even continuation, neither/nor versus so, reversed-polarity tags, and inversion with a prenuclear negative."
+    },
+    {
+      "question": "What is the difference between clausal and subclausal negation?",
+      "answer": "Clausal negation makes the whole clause negative and passes the polarity tests; subclausal negation affects a constituent without making the clause negative."
+    },
+    {
+      "question": "What is the difference between an NPI and a negative idiom?",
+      "answer": "An NPI is licensed by negative or non-affirmative contexts; a negative idiom has a fixed negative meaning and limited variation."
+    },
+    {
+      "question": "What is negative concord?",
+      "answer": "The marking of a single semantic negation more than once, as in non-standard He didn’t say nothing."
+    },
+    {
+      "question": "What is metalinguistic negation?",
+      "answer": "Negation used to reject a formulation, implicature or pronunciation rather than the truth of a proposition."
+    }
+  ],
+  "opening": [
+    {
+      "prompt": "Which continuation follows a negative clause?",
+      "options": [
+        {
+          "id": "a",
+          "text": "He didn’t read it, and neither did I.",
+          "feedback": "Negative clauses take neither or nor."
+        },
+        {
+          "id": "b",
+          "text": "He didn’t read it, and so did I.",
+          "feedback": "So follows a positive clause."
+        },
+        {
+          "id": "c",
+          "text": "He didn’t read it, and I didn’t too.",
+          "feedback": "The connective form is either, not too."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which sentence has subclausal negation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "We were friends in no time.",
+          "feedback": "It means “very quickly” and the clause is positive."
+        },
+        {
+          "id": "b",
+          "text": "We were friends at no time.",
+          "feedback": "That is clausal negation."
+        },
+        {
+          "id": "c",
+          "text": "I saw nothing.",
+          "feedback": "That is clausal negation with nothing."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which form is an absolute negator?",
+      "options": [
+        {
+          "id": "a",
+          "text": "never",
+          "feedback": "It means “at no time” and is an absolute negator."
+        },
+        {
+          "id": "b",
+          "text": "hardly",
+          "feedback": "Hardly is an approximate negator."
+        },
+        {
+          "id": "c",
+          "text": "unhappy",
+          "feedback": "Unhappy contains affixal negation."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which item is a negative polarity item?",
+      "options": [
+        {
+          "id": "a",
+          "text": "any",
+          "feedback": "Any is favoured in negative and non-affirmative contexts."
+        },
+        {
+          "id": "b",
+          "text": "some",
+          "feedback": "Some is a positive polarity item."
+        },
+        {
+          "id": "c",
+          "text": "already",
+          "feedback": "Already is positive-oriented."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is negative concord?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Several negative markers expressing one semantic negation",
+          "feedback": "Non-standard He didn’t say nothing is an example."
+        },
+        {
+          "id": "b",
+          "text": "Two semantic negations cancelling out",
+          "feedback": "That is multiple semantic negation, not concord."
+        },
+        {
+          "id": "c",
+          "text": "A negative clause followed by a positive tag",
+          "feedback": "That is a reversed-polarity tag."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "closing": [
+    {
+      "prompt": "Why is We were friends in no time not a negative clause?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It means “very quickly” and does not pass the clause-polarity tests.",
+          "feedback": "The negation is confined to the phrase."
+        },
+        {
+          "id": "b",
+          "text": "It contains no negative word.",
+          "feedback": "It contains no, but the negation is subclausal."
+        },
+        {
+          "id": "c",
+          "text": "It has a positive tag.",
+          "feedback": "The tag reflects the subclausal meaning."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Why does Don’t be late require do?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Imperative negation uses do even when the positive contains be.",
+          "feedback": "The imperative is a distinct construction."
+        },
+        {
+          "id": "b",
+          "text": "Be is a lexical verb.",
+          "feedback": "Be is an auxiliary even as a copula."
+        },
+        {
+          "id": "c",
+          "text": "Late is an adverb.",
+          "feedback": "The complement does not determine do-support."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Why does non-negotiable take a negative tag?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Affixal negation is subclausal, so the clause remains positive.",
+          "feedback": "The negative is inside the adjective."
+        },
+        {
+          "id": "b",
+          "text": "Non- is a clause-level negator.",
+          "feedback": "It is a prefix."
+        },
+        {
+          "id": "c",
+          "text": "Negotiable is negative.",
+          "feedback": "Negotiable is positive."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What does I don’t want to hear about it typically implicate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "I want not to hear about it.",
+          "feedback": "This is the medium-strength subordinate negation implicature."
+        },
+        {
+          "id": "b",
+          "text": "I am indifferent about hearing it.",
+          "feedback": "That is compatible with the sentence but not the usual implicature."
+        },
+        {
+          "id": "c",
+          "text": "I insist on not hearing about it.",
+          "feedback": "Insist is stronger than want."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which example is metalinguistic negation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Max hasn’t got four children: he’s got five.",
+          "feedback": "It rejects the implicature that four is the upper limit."
+        },
+        {
+          "id": "b",
+          "text": "Max hasn’t got four children: he’s got three.",
+          "feedback": "That is ordinary negation."
+        },
+        {
+          "id": "c",
+          "text": "Max doesn’t have any children.",
+          "feedback": "That is ordinary negation."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "stages": {
+    "predict": {
+      "prompt": "Which continuation follows a negative clause?",
+      "options": [
+        {
+          "id": "a",
+          "text": "neither did I",
+          "feedback": "Negative clauses take neither or nor."
+        },
+        {
+          "id": "b",
+          "text": "so did I",
+          "feedback": "So follows a positive clause."
+        },
+        {
+          "id": "c",
+          "text": "I did too",
+          "feedback": "Too is positive-oriented; the negative counterpart is either."
+        }
+      ],
+      "answer": "a"
+    },
+    "guided": {
+      "prompt": "Which sentence has subclausal negation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "We were friends in no time.",
+          "feedback": "It means “very quickly”."
+        },
+        {
+          "id": "b",
+          "text": "We were friends at no time.",
+          "feedback": "That is clausal negation."
+        },
+        {
+          "id": "c",
+          "text": "I saw nothing.",
+          "feedback": "That is clausal negation."
+        }
+      ],
+      "answer": "a"
+    },
+    "transfer": {
+      "prompt": "Which pair contrasts an NPI with a PPI?",
+      "options": [
+        {
+          "id": "a",
+          "text": "any / some",
+          "feedback": "Any is negative-oriented; some is positive-oriented."
+        },
+        {
+          "id": "b",
+          "text": "some / some",
+          "feedback": "These are the same item."
+        },
+        {
+          "id": "c",
+          "text": "never / no",
+          "feedback": "Both are negative."
+        }
+      ],
+      "answer": "a"
+    },
+    "exit": {
+      "prompt": "What is negative concord?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Several negative markers expressing one semantic negation",
+          "feedback": "He didn’t say nothing is the classic non-standard example."
+        },
+        {
+          "id": "b",
+          "text": "Two semantic negations cancelling out",
+          "feedback": "That is multiple semantic negation."
+        },
+        {
+          "id": "c",
+          "text": "A negative clause with a positive tag",
+          "feedback": "That is a reversed tag."
+        }
+      ],
+      "answer": "a"
+    }
+  }
+}

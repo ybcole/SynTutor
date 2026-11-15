@@ -1,0 +1,1730 @@
+{
+  "title": "Clause type and illocutionary force",
+  "description": "Explore declaratives, interrogatives, exclamatives and imperatives, and the difference between grammatical form and what a speaker is doing.",
+  "example": "Would you mind closing the window?",
+  "key_terms": [
+    {
+      "term": "clause type",
+      "definition": "The grammatical system whose major terms are declarative, closed interrogative, open interrogative, exclamative and imperative."
+    },
+    {
+      "term": "declarative",
+      "definition": "The default clause type, lacking the special properties of the other major types."
+    },
+    {
+      "term": "closed interrogative",
+      "definition": "An interrogative clause with a closed set of answers, typically yes or no."
+    },
+    {
+      "term": "open interrogative",
+      "definition": "An interrogative clause containing an interrogative phrase that asks for a missing value."
+    },
+    {
+      "term": "exclamative",
+      "definition": "A clause type with an initial what or how phrase, characteristically used for exclamatory statements."
+    },
+    {
+      "term": "imperative",
+      "definition": "A clause type with a plain-form verb and an omissible second-person subject, characteristically used for directives."
+    },
+    {
+      "term": "illocutionary force",
+      "definition": "The speech act performed by an utterance, such as stating, asking or directing."
+    },
+    {
+      "term": "indirect speech act",
+      "definition": "A speech act performed by a clause whose literal form is characteristic of another act."
+    },
+    {
+      "term": "directive",
+      "definition": "A cover term for requests, commands, instructions and similar acts."
+    },
+    {
+      "term": "question",
+      "definition": "A semantic or pragmatic category concerned with seeking information, not a clause type."
+    },
+    {
+      "term": "polar question",
+      "definition": "A question with a closed set of answers, typically yes and no."
+    },
+    {
+      "term": "alternative question",
+      "definition": "A question offering a stated set of alternatives."
+    },
+    {
+      "term": "variable question",
+      "definition": "A question asking for the value of a variable, typically with a wh-phrase."
+    },
+    {
+      "term": "direction question",
+      "definition": "A question asking for a direction or route."
+    },
+    {
+      "term": "biased question",
+      "definition": "A question that conveys an expectation or preference about the answer."
+    },
+    {
+      "term": "echo question",
+      "definition": "A question that repeats part of a preceding utterance in order to question or clarify it."
+    },
+    {
+      "term": "tag",
+      "definition": "A short interrogative clause attached to a preceding clause, typically seeking confirmation."
+    },
+    {
+      "term": "parenthetical",
+      "definition": "A detached expression commenting on or qualifying the clause, such as I think."
+    },
+    {
+      "term": "presupposition",
+      "definition": "A proposition treated as already assumed in an utterance."
+    },
+    {
+      "term": "Q–A presupposition",
+      "definition": "A presupposition carried by a question and reflected in the form of its answers."
+    },
+    {
+      "term": "interrogative phrase",
+      "definition": "A phrase based on an interrogative word, such as which one or how much."
+    },
+    {
+      "term": "fronting",
+      "definition": "Placement of a constituent in prenuclear position."
+    },
+    {
+      "term": "in situ",
+      "definition": "In the position normally occupied by the corresponding element in a declarative clause."
+    },
+    {
+      "term": "unbounded dependency",
+      "definition": "A relation in which a fronted phrase is co-indexed with a gap that may be deeply embedded."
+    },
+    {
+      "term": "exclamatory statement",
+      "definition": "The characteristic use of an exclamative clause, distinct from exclamation as a general meaning."
+    },
+    {
+      "term": "let-imperative",
+      "definition": "An imperative beginning with let, often used for first-person inclusive suggestions."
+    },
+    {
+      "term": "vocative",
+      "definition": "An NP used to address someone directly, distinct from an imperative subject."
+    },
+    {
+      "term": "minor clause type",
+      "definition": "A conventionalised clause-like expression that does not fit the major type system neatly."
+    }
+  ],
+  "intro": [
+    "*Would you mind closing the window?* has the shape of a question and the force of a request. Nothing in its grammar says ‘request’; the interrogative form asks about willingness, and the situation does the rest. English is full of clauses whose grammatical type and practical job pull apart, and the space between them is what this chapter maps.",
+    "It begins with the five major clause types and the syntax that distinguishes them. It then separates illocutionary force from grammatical form, examines indirect speech acts and the main kinds of question, and follows the layers that adjust force: bias, echo questions, tags, parentheticals and presuppositions. Interrogative words, exclamatives, imperatives and the minor clause-like expressions close the account.",
+    "Two questions are worth asking of every clause: what type is it, and what is the speaker doing with it? Often the answers match. The cases where they diverge are the ones that repay attention."
+  ],
+  "sections": [
+    {
+      "id": "clause-type-system",
+      "title": "Clause type as a grammatical system",
+      "advances": "predict",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Change *You are generous* into a question and the auxiliary jumps in front of the subject. Recast it with an initial *how* and it becomes an exclamation: *How generous you are!* English sorts clauses into five major types, and the differences between them are syntactic, not decorative: each type has its own order, its own markers, its own restrictions."
+        },
+        {
+          "type": "paragraph",
+          "text": "*You are generous*, *Are you generous?*, *How generous are you?*, *How generous you are!* and *Be generous* show the five types in action: declarative, closed interrogative, open interrogative, exclamative and imperative. The table below gives the paradigm. Each type has a characteristic use — statement, closed question, open question, exclamatory statement, directive — but characteristic is not definitional. *Passengers are requested to remain seated* is declarative in form and directive in effect. *Would you mind opening the door?* is a closed interrogative doing polite directive work. The form is stable; the use bends."
+        },
+        {
+          "type": "paragraph",
+          "text": "Types belong to clauses, not to sentences. *Come around six, or is that too early for you?* puts an imperative and a closed interrogative in one sentence, and the sentence as a whole is neither. Any description that assigns a single type to the sentence will have to distort one of its clauses."
+        },
+        {
+          "type": "table",
+          "title": "The five major clause types",
+          "columns": [
+            "Type",
+            "Example",
+            "Characteristic use"
+          ],
+          "rows": [
+            [
+              "Declarative",
+              "You are generous.",
+              "Statement"
+            ],
+            [
+              "Closed interrogative",
+              "Are you generous?",
+              "Closed question"
+            ],
+            [
+              "Open interrogative",
+              "How generous are you?",
+              "Open question"
+            ],
+            [
+              "Exclamative",
+              "How generous you are!",
+              "Exclamatory statement"
+            ],
+            [
+              "Imperative",
+              "Be generous.",
+              "Directive"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is clause type not the same as sentence type?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A sentence can contain clauses of different types and need not belong to any one type.",
+            "feedback": "The type system classifies individual clauses."
+          },
+          {
+            "id": "b",
+            "text": "Sentences have no grammar.",
+            "feedback": "Sentences are composed of grammatical clauses."
+          },
+          {
+            "id": "c",
+            "text": "Only subordinate clauses have types.",
+            "feedback": "Main clauses have types too."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "form-force",
+      "title": "Form, use, and illocutionary force",
+      "advances": "understand",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Say *I apologise for the delay* and the words do not report an apology; they perform one. Stating, asking, ordering, promising, apologising and conceding are acts of the same kind, and the act an utterance performs is its illocutionary force. Clause type is a grammatical classification; force is what the speaker is doing. The two are linked by convention, not by identity."
+        },
+        {
+          "type": "paragraph",
+          "text": "An indirect speech act exploits that link. *Would you like to close the window?* is a closed interrogative about willingness, but in a cold room it is a request. *I promise to be home by six* is declarative in form and a promise in force. The literal meaning is not cancelled; it is the route by which the hearer reaches the act."
+        },
+        {
+          "type": "paragraph",
+          "text": "Context, intonation and institutional role do the rest. *You’re leaving?* can be a question, an expression of surprise or a challenge. *Sleep well* is imperative in form and often a wish rather than an order. Form, meaning and use have to be kept apart if any of these descriptions is to be accurate."
+        },
+        {
+          "type": "table",
+          "title": "Form and force",
+          "columns": [
+            "Clause type",
+            "Typical force",
+            "Other possible force"
+          ],
+          "rows": [
+            [
+              "Declarative",
+              "Statement",
+              "Promise, request, warning"
+            ],
+            [
+              "Closed interrogative",
+              "Polar question",
+              "Directive, offer, challenge"
+            ],
+            [
+              "Open interrogative",
+              "Variable question",
+              "Exclamation, rhetorical question"
+            ],
+            [
+              "Exclamative",
+              "Exclamatory statement",
+              "Evaluation, emphasis"
+            ],
+            [
+              "Imperative",
+              "Directive",
+              "Wish, permission, advice"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Form and force diverge",
+          "items": [
+            {
+              "text": "Passengers are requested to remain seated.",
+              "mark": "ok",
+              "note": "Declarative form, directive force."
+            },
+            {
+              "text": "Would you mind opening the door?",
+              "mark": "ok",
+              "note": "Closed interrogative form, polite directive force."
+            },
+            {
+              "text": "Sleep well.",
+              "mark": "ok",
+              "note": "Imperative form, wish force."
+            },
+            {
+              "text": "You’re leaving?",
+              "mark": "ok",
+              "note": "Declarative form, question or challenge force."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the clause type of Would you mind opening the door?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Closed interrogative",
+            "feedback": "The form is interrogative even when the force is directive."
+          },
+          {
+            "id": "b",
+            "text": "Imperative",
+            "feedback": "It has no imperative verb form."
+          },
+          {
+            "id": "c",
+            "text": "Declarative",
+            "feedback": "The auxiliary precedes the subject."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "declarative-interrogative",
+      "title": "Declaratives and interrogatives",
+      "advances": "worked",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*You are generous* has subject before predicator, no interrogative or exclamative phrase, and no imperative verb. The declarative is the shape a clause takes when nothing special is demanded of it. That negative definition is the standard one, and it is useful: the other types are recognised by the special properties the declarative lacks."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Are you generous?* and *Did they see her?* show the two markers of a closed interrogative: subject-auxiliary inversion and tensed verb. When no auxiliary is present, *do* carries the inversion. Inversion is not unique to interrogatives — a fronted negative, *only*, or connective *so* can trigger it too — so the type has to be identified from the whole bundle of properties, not from inversion alone."
+        },
+        {
+          "type": "paragraph",
+          "text": "Open interrogatives contain an interrogative phrase built on *who*, *what*, *which*, *when*, *where*, *how* or a related word. A non-subject phrase is normally fronted, and in a main clause it brings the auxiliary with it: *Which one did he choose?* The phrase can also stay where it belongs: *So you told him what, exactly?* Fronting is the norm, not a requirement."
+        },
+        {
+          "type": "paragraph",
+          "text": "The type also appears in reduced and embedded forms. *Why make such a fuss?* is infinitival; *Which one?* is no more than the interrogative phrase. Embed one and the inversion usually disappears: *I know which one he chose*. Subordinate interrogatives keep the phrase and lose the main-clause order."
+        },
+        {
+          "type": "table",
+          "title": "Declarative and interrogative properties",
+          "columns": [
+            "Type",
+            "Order",
+            "Auxiliary",
+            "Tensed"
+          ],
+          "rows": [
+            [
+              "Declarative",
+              "Subject before predicator",
+              "No special auxiliary",
+              "Usually"
+            ],
+            [
+              "Closed interrogative",
+              "Auxiliary before subject",
+              "Do-support if needed",
+              "Always"
+            ],
+            [
+              "Open interrogative",
+              "Interrogative phrase fronted or in situ",
+              "Inversion in main clauses",
+              "Usually, but can be infinitival"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Interrogative patterns",
+          "items": [
+            {
+              "text": "Is it true?",
+              "mark": "ok",
+              "note": "Closed interrogative with auxiliary inversion."
+            },
+            {
+              "text": "Did they see her?",
+              "mark": "ok",
+              "note": "Do-support supplies the inverted auxiliary."
+            },
+            {
+              "text": "Which one did he choose?",
+              "mark": "ok",
+              "note": "Non-subject interrogative phrase fronted and inverted."
+            },
+            {
+              "text": "Who broke the window?",
+              "mark": "ok",
+              "note": "Interrogative phrase is subject; no inversion."
+            },
+            {
+              "text": "Why make such a fuss?",
+              "mark": "ok",
+              "note": "Infinitival open interrogative."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is there no inversion in Who broke the window?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The interrogative phrase is the subject.",
+            "feedback": "Subject interrogative phrases occupy the same position as declarative subjects."
+          },
+          {
+            "id": "b",
+            "text": "The clause is subordinate.",
+            "feedback": "It is a main clause."
+          },
+          {
+            "id": "c",
+            "text": "Who is not an interrogative word.",
+            "feedback": "Who is an interrogative word."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "exclamative-imperative",
+      "title": "Exclamatives and imperatives",
+      "advances": "guided",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Exclamatives begin with a *what* or *how* phrase and put it first: *What a disaster it was!*, *How generous you are!* The normal order keeps the subject before the predicator, but the type tolerates subject postposing and inversion, as in *How great would be their embarrassment!* At its thinnest, the clause is just the exclamative phrase: *What a disaster!*"
+        },
+        {
+          "type": "paragraph",
+          "text": "*Sit down*, *Be careful* and *Don’t be late* share a plain-form verb and an omissible second-person subject. Imperatives are built that way and are normally main-clause constructions. Negation and emphatic polarity call for supportive *do*, even with *be*. With an overt subject, the usual negative order is *don’t* before *you*: *Don’t you forget it*."
+        },
+        {
+          "type": "paragraph",
+          "text": "*You sit down* has an overt subject; *Kim, sit down* has a vocative. The subject can be omitted, and in *Kim, sit down* it is. Overt subjects appear for emphasis or contrast, which is why they sound pointed."
+        },
+        {
+          "type": "examples",
+          "title": "Exclamative and imperative form",
+          "items": [
+            {
+              "text": "What a disaster it was!",
+              "mark": "ok",
+              "note": "Exclamative with an initial what phrase."
+            },
+            {
+              "text": "How happy would he be!",
+              "mark": "ok",
+              "note": "Exclamative with subject-auxiliary inversion."
+            },
+            {
+              "text": "Don’t be late.",
+              "mark": "ok",
+              "note": "Imperative negation with do even with be."
+            },
+            {
+              "text": "You sit down.",
+              "mark": "ok",
+              "note": "Overt imperative subject for emphasis."
+            },
+            {
+              "text": "Kim, sit down.",
+              "mark": "ok",
+              "note": "Kim is a vocative, not the subject."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why does Don’t be late require do?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Imperative negation uses supportive do even when the positive contains be.",
+            "feedback": "The imperative is a distinct construction."
+          },
+          {
+            "id": "b",
+            "text": "Be is a lexical verb.",
+            "feedback": "Be is an auxiliary even as a copula."
+          },
+          {
+            "id": "c",
+            "text": "Late is an adverb.",
+            "feedback": "The complement does not determine do-support."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "indirect-speech-acts",
+      "title": "Indirect speech acts",
+      "advances": "transfer",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "An indirect speech act uses one clause type to do the work of another. *Can you pass the salt?* asks about ability and functions as a request. *I was wondering whether you could help* is declarative and equally a request. In each case the literal act is available and the practical act is inferred from it."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Would you mind closing the window?* is a recognised polite request; *Is the window capable of being closed?* is not, even though it describes the same situation. These acts are conventional, not arbitrary. What makes the first work is a shared habit of interpretation, not the logical content alone."
+        },
+        {
+          "type": "paragraph",
+          "text": "Tags, parentheticals and intonation adjust the force further. *You’re coming, aren’t you?* seeks confirmation. *You’re coming, are you?* can express surprise or challenge, and the same words with a different contour can sound like a threat. The clause type stays constant while the act shifts."
+        },
+        {
+          "type": "examples",
+          "title": "Indirect acts",
+          "items": [
+            {
+              "text": "Can you pass the salt?",
+              "mark": "ok",
+              "note": "Closed interrogative form, request force."
+            },
+            {
+              "text": "I was wondering whether you could help.",
+              "mark": "ok",
+              "note": "Declarative form, polite request force."
+            },
+            {
+              "text": "You’re coming, aren’t you?",
+              "mark": "ok",
+              "note": "Tag seeks confirmation."
+            },
+            {
+              "text": "You’re coming, are you?",
+              "mark": "ok",
+              "note": "Same-polarity tag can express surprise or challenge."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What makes Can you pass the salt? an indirect speech act?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It has interrogative form but typically performs a request.",
+            "feedback": "Form and force do not coincide."
+          },
+          {
+            "id": "b",
+            "text": "It contains no subject.",
+            "feedback": "It contains the subject you."
+          },
+          {
+            "id": "c",
+            "text": "It is not grammatical.",
+            "feedback": "It is perfectly grammatical."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "kinds-questions",
+      "title": "Kinds of question",
+      "advances": "exit",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*The door is open?* with a rising contour asks a question, and it contains none of the syntax of an interrogative. Question is a category of meaning and use; interrogative is a clause type. They overlap often enough to hide the difference, but they are not the same thing."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Is the door open?* expects yes or no; *Would you like tea or coffee?* offers a choice; *Which door is open?* asks for a value; *Which way did they go?* asks for a route. These are the main semantic kinds: polar, alternative, variable and direction. The table below sets them beside the answers they invite."
+        },
+        {
+          "type": "paragraph",
+          "text": "Questions can also be biased, carrying an expectation or preference about the answer. *Isn’t it already finished?* expects agreement; *Is it really finished?* voices doubt. Negative interrogative form, declarative form, polarity-sensitive words and context can all supply the bias."
+        },
+        {
+          "type": "table",
+          "title": "Kinds of question",
+          "columns": [
+            "Kind",
+            "Example",
+            "Answer type"
+          ],
+          "rows": [
+            [
+              "Polar",
+              "Is the door open?",
+              "Yes or no"
+            ],
+            [
+              "Alternative",
+              "Is the door open or closed?",
+              "One of the stated alternatives"
+            ],
+            [
+              "Variable",
+              "Which door is open?",
+              "A value for which"
+            ],
+            [
+              "Direction",
+              "Which way did they go?",
+              "A direction or route"
+            ],
+            [
+              "Biased",
+              "Isn’t the door open?",
+              "Expectation of yes"
+            ],
+            [
+              "Echo",
+              "They went which way?",
+              "Repetition or clarification"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which question is alternative rather than polar?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Would you like tea or coffee?",
+            "feedback": "It offers a stated choice between alternatives."
+          },
+          {
+            "id": "b",
+            "text": "Would you like tea?",
+            "feedback": "That is a polar question."
+          },
+          {
+            "id": "c",
+            "text": "What would you like?",
+            "feedback": "That is a variable question."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "polar-alternative",
+      "title": "Polar and alternative questions",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Polar questions have a closed answer set, prototypically yes and no. They are usually closed interrogatives — *Is the door open?* — but a declarative with a rising contour can do the same job: *The door is open?* What makes the question polar is the answer system it sets up, not the clause type alone."
+        },
+        {
+          "type": "paragraph",
+          "text": "Alternative questions present the answers rather than leaving them open: *Is the door open or closed?*, *Would you like tea or coffee?* The alternatives are often coordinated noun phrases or clauses, and the hearer is asked to select one. This is not a polar question with an extra option; the set itself is the content."
+        },
+        {
+          "type": "paragraph",
+          "text": "Prosody separates the readings. *Would you like tea or coffee?* with a final fall offers a choice between two drinks; with a final rise it can ask whether the hearer wants either. The words are identical, and the contour does the disambiguating."
+        },
+        {
+          "type": "examples",
+          "title": "Polar and alternative",
+          "items": [
+            {
+              "text": "Is the door open?",
+              "mark": "ok",
+              "note": "Polar: yes or no."
+            },
+            {
+              "text": "Is the door open or closed?",
+              "mark": "ok",
+              "note": "Alternative: choose one of the stated options."
+            },
+            {
+              "text": "Would you like tea or coffee?",
+              "mark": "ok",
+              "note": "Can be alternative or polar depending on prosody and context."
+            },
+            {
+              "text": "The door is open?",
+              "mark": "ok",
+              "note": "Declarative form used as a polar question."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What distinguishes an alternative question from a polar question?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It offers a stated set of alternatives rather than a yes/no choice.",
+            "feedback": "The answer is selected from the alternatives."
+          },
+          {
+            "id": "b",
+            "text": "It always begins with a wh-word.",
+            "feedback": "Alternative questions often begin with an auxiliary."
+          },
+          {
+            "id": "c",
+            "text": "It has no intonation.",
+            "feedback": "Intonation is important for distinguishing readings."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "variable-direction",
+      "title": "Variable and direction questions",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Variable questions ask for the value of a missing element. They usually carry an interrogative phrase — *Who broke the window?*, *Which one did he choose?* — and the missing element can be subject, object, adjunct, complement or predicative. The phrase names the role; the answer fills it."
+        },
+        {
+          "type": "paragraph",
+          "text": "Direction questions ask for a route or orientation: *Which way did they go?*, *How do I get to the station?* They are a subtype of variable question, but the answer is specifically a path rather than any value. The interrogative phrase is spatial, and the answer is expected to be spatial too."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Who did she say he thought had won?* links the fronted phrase to a gap several clauses deep. Variable questions are unbounded dependency constructions. The interrogative phrase sits in the prenucleus and is co-indexed with that gap; wherever it falls, it carries the function the fronted phrase would have had in a declarative."
+        },
+        {
+          "type": "examples",
+          "title": "Variable and direction",
+          "items": [
+            {
+              "text": "Who broke the window?",
+              "mark": "ok",
+              "note": "Variable question with the interrogative phrase as subject."
+            },
+            {
+              "text": "Which one did he choose?",
+              "mark": "ok",
+              "note": "Variable question with a fronted object phrase."
+            },
+            {
+              "text": "Which way did they go?",
+              "mark": "ok",
+              "note": "Direction question asking for a route."
+            },
+            {
+              "text": "Who did she say he thought had won?",
+              "mark": "ok",
+              "note": "The gap is several clauses deep."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the function of the gap in Which one did he choose?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It marks the object position of choose, co-indexed with which one.",
+            "feedback": "The fronted phrase is understood as the object."
+          },
+          {
+            "id": "b",
+            "text": "It marks the subject position.",
+            "feedback": "The subject is he."
+          },
+          {
+            "id": "c",
+            "text": "It marks a missing auxiliary.",
+            "feedback": "The auxiliary did is overt."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "biased-questions",
+      "title": "Biased questions",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A biased question does more than request information; it leans. *Isn’t it already finished?* expects a positive answer. *Is it really finished?* suggests that the evidence is doubtful. *You do want to come with us, don’t you?* makes agreement the easy response and disagreement the marked one."
+        },
+        {
+          "type": "paragraph",
+          "text": "The bias can be epistemic, evidential or deontic. Epistemic bias concerns what the speaker believes about the likelihood of an answer; evidential bias concerns what the evidence points to; deontic bias concerns what the speaker wants or thinks appropriate. Negative interrogatives often carry a positive epistemic bias, which is why *Isn’t it finished?* sounds like a prediction."
+        },
+        {
+          "type": "paragraph",
+          "text": "Polarity-sensitive items carry bias too. *Did someone call?* leans towards yes, while *Did anyone call?* is neutral or leans towards no. The choice between *some* and *any* is grammatical, but it is also a signal of the speaker’s orientation."
+        },
+        {
+          "type": "examples",
+          "title": "Biased readings",
+          "items": [
+            {
+              "text": "Isn’t it already finished?",
+              "mark": "ok",
+              "note": "Negative interrogative with a positive expectation."
+            },
+            {
+              "text": "Is it really finished?",
+              "mark": "ok",
+              "note": "Evidential bias: the evidence seems doubtful."
+            },
+            {
+              "text": "Did someone call?",
+              "mark": "ok",
+              "note": "Some suggests a positive answer."
+            },
+            {
+              "text": "Did anyone call?",
+              "mark": "ok",
+              "note": "Any is more neutral or negative-oriented."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What bias does Isn’t it already finished? typically convey?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The speaker expects that it is finished.",
+            "feedback": "The negative interrogative often carries a positive epistemic bias."
+          },
+          {
+            "id": "b",
+            "text": "The speaker expects that it is not finished.",
+            "feedback": "That would be the opposite expectation."
+          },
+          {
+            "id": "c",
+            "text": "The speaker has no expectation.",
+            "feedback": "The form is biased rather than neutral."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "echo-questions",
+      "title": "Echo questions",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "If someone says *Give it to Angela* and the name does not land, the natural reply is *Give it to who?* The clause repeats the shape of the original and turns the doubtful part into a question. Echo questions are not a sixth clause type; the echo feature is laid over an imperative, an interrogative, a declarative or a fragment."
+        },
+        {
+          "type": "paragraph",
+          "text": "Variable echo questions usually leave the interrogative phrase where the doubtful material was: *You saw who?*, *She bought what?* They tend to rise, and they sound surprised or incredulous. Polar echo questions repeat the proposition with a high rise: *You’re leaving?*"
+        },
+        {
+          "type": "paragraph",
+          "text": "An echo can ask for repetition or for clarification. *You saw who?* may mean ‘I didn’t catch the name’ or ‘I can’t believe you saw that person’. The same form does both jobs, and context decides which. Echoes can also challenge a presupposition, which is why they are useful in argument."
+        },
+        {
+          "type": "examples",
+          "title": "Echo questions",
+          "items": [
+            {
+              "text": "Give it to who?",
+              "mark": "ok",
+              "note": "Echo question superimposed on an imperative."
+            },
+            {
+              "text": "Did I use a what?",
+              "mark": "ok",
+              "note": "Echo question superimposed on a closed interrogative."
+            },
+            {
+              "text": "You saw who?",
+              "mark": "ok",
+              "note": "Variable echo with the interrogative phrase in situ."
+            },
+            {
+              "text": "You’re leaving?",
+              "mark": "ok",
+              "note": "Polar echo with declarative form and high rise."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is an echo question not a separate clause type?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The echo feature can be superimposed on different clause types.",
+            "feedback": "It is a cross-cutting construction, not a mutually exclusive type."
+          },
+          {
+            "id": "b",
+            "text": "Echo questions have no syntax.",
+            "feedback": "They have ordinary clause structure with an echo feature."
+          },
+          {
+            "id": "c",
+            "text": "Echo questions are always imperatives.",
+            "feedback": "They can occur with several clause types."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "tags-parentheticals",
+      "title": "Tags and parentheticals",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*You’re coming, aren’t you?* and *You’re not coming, are you?* show the usual pattern: a short auxiliary-plus-pronoun tag hung on the end, reversing the polarity of its anchor. A positive clause takes a negative tag; a negative clause takes a positive one."
+        },
+        {
+          "type": "paragraph",
+          "text": "Reversed tags seek confirmation. Same-polarity tags do something else: *You’re coming, are you?* can express surprise, challenge or disapproval. The words are nearly the same as the confirmation tag, and the intonation and context carry the difference."
+        },
+        {
+          "type": "paragraph",
+          "text": "*I think*, *I suppose*, *you know* and *she said* comment on the clause from a detached position. Parentheticals are detached expressions. They can carry negation of their own: *They aren’t here, I don’t think* marks the negative twice and means it once, which makes the construction a small lesson in the difference between form and meaning."
+        },
+        {
+          "type": "examples",
+          "title": "Tags and parentheticals",
+          "items": [
+            {
+              "text": "You’re coming, aren’t you?",
+              "mark": "ok",
+              "note": "Positive anchor with negative tag seeking confirmation."
+            },
+            {
+              "text": "You’re not coming, are you?",
+              "mark": "ok",
+              "note": "Negative anchor with positive tag."
+            },
+            {
+              "text": "You’re coming, are you?",
+              "mark": "ok",
+              "note": "Same-polarity tag with a marked pragmatic effect."
+            },
+            {
+              "text": "They aren’t here, I don’t think.",
+              "mark": "ok",
+              "note": "Parenthetical concord with one semantic negation."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the usual polarity relation between a clause and its confirmation tag?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The tag reverses the polarity of the anchor.",
+            "feedback": "Positive anchors take negative tags and vice versa."
+          },
+          {
+            "id": "b",
+            "text": "The tag always matches the anchor’s polarity.",
+            "feedback": "Same-polarity tags occur but are pragmatically marked."
+          },
+          {
+            "id": "c",
+            "text": "The tag has no polarity.",
+            "feedback": "Tags are positive or negative."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "question-presuppositions",
+      "title": "The presuppositions of questions",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Who broke the window?* takes for granted that someone broke it. That assumption is not asserted; it is presupposed, and it survives in the background of the question. An alternative question presupposes that one of its alternatives holds, or at least that the alternatives are the relevant set."
+        },
+        {
+          "type": "paragraph",
+          "text": "Questions also carry Q–A presuppositions: the form of the question constrains the form of its answers. A negative polar question can presuppose or implicate a particular orientation, which is one reason *Isn’t she coming?* is not a neutral request for information. Such presuppositions can be rejected or cancelled, especially by an echo or a metalinguistic comment."
+        },
+        {
+          "type": "paragraph",
+          "text": "*If anyone broke the window, who did it?* treats a breaker as a live possibility without claiming that one exists. Presupposition is not entailment. A question does not assert what it presupposes, and the assumption can survive under negation or inside a conditional."
+        },
+        {
+          "type": "examples",
+          "title": "Question presuppositions",
+          "items": [
+            {
+              "text": "Who broke the window?",
+              "mark": "ok",
+              "note": "Presupposes that someone broke the window."
+            },
+            {
+              "text": "Which one did he choose?",
+              "mark": "ok",
+              "note": "Presupposes a set of candidates and a choice."
+            },
+            {
+              "text": "Is the door open or closed?",
+              "mark": "ok",
+              "note": "Presents two alternatives as the relevant set."
+            },
+            {
+              "text": "Who broke the window? Nobody did!",
+              "mark": "ok",
+              "note": "The presupposition can be rejected in context."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What does Who broke the window? presuppose?",
+        "options": [
+          {
+            "id": "a",
+            "text": "That someone broke the window",
+            "feedback": "The variable question presupposes a value for who."
+          },
+          {
+            "id": "b",
+            "text": "That nobody broke the window",
+            "feedback": "That rejects the presupposition."
+          },
+          {
+            "id": "c",
+            "text": "That the window is open",
+            "feedback": "That is not part of the question’s presupposition."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "interrogative-words",
+      "title": "Interrogative words and phrases",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Who*, *whom*, *whose*, *which*, *what*, *when*, *where*, *why* and *how* each head a phrase that can serve as subject, object, complement, adjunct or predicative. These are the interrogative words. *Which* selects from a set, *whose* asks about possession, and *who* and *whom* preserve a case distinction in formal style."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Which one did he choose?* has a gap in object position; *Who broke it?* has the interrogative phrase in subject position and no gap at all. Interrogative phrases are unbounded dependency constructions. The phrase occupies the prenucleus and is co-indexed with a gap in the nucleus, and the gap preserves the function of the questioned element."
+        },
+        {
+          "type": "paragraph",
+          "text": "The words can be modified and combined: *how much*, *how many*, *which one*, *whose car*, *what on earth*. The interrogative feature passes from the word to the phrase, which is why the whole phrase fronts as a unit and why the gap is interpreted as a phrase rather than a bare word."
+        },
+        {
+          "type": "table",
+          "title": "Interrogative words",
+          "columns": [
+            "Word",
+            "Typical question",
+            "Function"
+          ],
+          "rows": [
+            [
+              "who / whom",
+              "Who called? / Whom did you see?",
+              "Person; subject or object"
+            ],
+            [
+              "whose",
+              "Whose car is this?",
+              "Possessor"
+            ],
+            [
+              "which",
+              "Which one do you want?",
+              "Selection from a set"
+            ],
+            [
+              "what",
+              "What happened?",
+              "Thing or proposition"
+            ],
+            [
+              "when",
+              "When did they leave?",
+              "Time"
+            ],
+            [
+              "where",
+              "Where are they?",
+              "Place"
+            ],
+            [
+              "why",
+              "Why did they leave?",
+              "Reason"
+            ],
+            [
+              "how",
+              "How did they do it?",
+              "Manner, degree or means"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the function of the gap in Which one did he choose?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Object of choose",
+            "feedback": "The fronted phrase is understood as the object."
+          },
+          {
+            "id": "b",
+            "text": "Subject of choose",
+            "feedback": "The subject is he."
+          },
+          {
+            "id": "c",
+            "text": "Adjunct of time",
+            "feedback": "Which one is not a time expression."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "exclamatives",
+      "title": "Exclamatives and exclamations",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*What a disaster it was!* and *How generous you are!* begin with an exclamative phrase. Exclamatives are a clause type with an initial *what* or *how* phrase. *What* usually modifies a nominal; *how* modifies an adjective, adverb or determiner. The exclamative phrase is fronted, and the clause may show subject postposing or inversion."
+        },
+        {
+          "type": "paragraph",
+          "text": "The type also appears in reduced form. *What a disaster!* and *How wonderful!* are verbless exclamatives understood predicatively, and their meaning is an exclamatory statement: surprise, admiration or dismay delivered as a whole."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Get the hell out of here!* is imperative in form; *What on earth are you doing?* is an open interrogative. Not every exclamation is an exclamative. Exclamatory meaning can be added to almost any clause type, so the grammatical category has to be identified by the *what*/*how* syntax rather than by the punctuation."
+        },
+        {
+          "type": "examples",
+          "title": "Exclamative syntax",
+          "items": [
+            {
+              "text": "What a disaster it was!",
+              "mark": "ok",
+              "note": "What modifies a nominal; exclamative phrase fronted."
+            },
+            {
+              "text": "How generous you are!",
+              "mark": "ok",
+              "note": "How modifies an adjective."
+            },
+            {
+              "text": "How great would be their embarrassment!",
+              "mark": "ok",
+              "note": "Subject postposing in an exclamative."
+            },
+            {
+              "text": "What a disaster!",
+              "mark": "ok",
+              "note": "Reduced verbless exclamative."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which sentence is an exclamative?",
+        "options": [
+          {
+            "id": "a",
+            "text": "How generous you are!",
+            "feedback": "It has the initial how phrase characteristic of exclamatives."
+          },
+          {
+            "id": "b",
+            "text": "Get out of here!",
+            "feedback": "That is imperative in form."
+          },
+          {
+            "id": "c",
+            "text": "What on earth are you doing?",
+            "feedback": "That is an open interrogative in form."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "imperatives-directives",
+      "title": "Imperatives and directives",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Sit down*, *Be careful*, *Don’t be late* and *Let’s go* all have a plain-form verb and an omissible second-person subject. Imperatives are plain in form and characteristically directive. They differ in how much structure they carry."
+        },
+        {
+          "type": "paragraph",
+          "text": "*You sit down* and *You be careful* use an overt subject for emphasis or contrast. It is not the same as a vocative. *Kim, sit down* addresses Kim without making Kim the subject, and the ordinary imperative still has no subject at all."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Let*-imperatives are first-person inclusive: *Let’s go*, *Let us consider the evidence*. They negate in two ways — *Don’t let’s go* and *Let’s not go* — and they take their own tags, as in *Let’s go, shall we?* Open *let*-imperatives such as *Let them eat cake* are a different matter; they are not first-person inclusive, and they are not suggestions."
+        },
+        {
+          "type": "paragraph",
+          "text": "An imperative can express a wish, grant permission, offer advice or set up a condition, as well as issue a command. The directive use is characteristic, not exhaustive. The examples below separate those uses from the plain command."
+        },
+        {
+          "type": "examples",
+          "title": "Imperatives beyond commands",
+          "items": [
+            {
+              "text": "Have a nice day.",
+              "mark": "ok",
+              "note": "A wish rather than a directive."
+            },
+            {
+              "text": "Help yourself.",
+              "mark": "ok",
+              "note": "Permission."
+            },
+            {
+              "text": "Take the train.",
+              "mark": "ok",
+              "note": "Advice."
+            },
+            {
+              "text": "Take one more step and I’ll shoot.",
+              "mark": "ok",
+              "note": "Conditional interpretation."
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "title": "Imperative subtypes and uses",
+          "columns": [
+            "Form or use",
+            "Example",
+            "Effect"
+          ],
+          "rows": [
+            [
+              "Ordinary imperative",
+              "Sit down.",
+              "Directive"
+            ],
+            [
+              "Overt subject",
+              "You sit down.",
+              "Emphasis or contrast"
+            ],
+            [
+              "Negative imperative",
+              "Don’t be late.",
+              "Prohibition"
+            ],
+            [
+              "Let-imperative",
+              "Let’s go.",
+              "First-person inclusive suggestion"
+            ],
+            [
+              "Conditional use",
+              "Take one more step and I’ll shoot.",
+              "Condition and consequence"
+            ],
+            [
+              "Wish",
+              "Have a nice day.",
+              "Well-wishing"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the difference between You sit down and Kim, sit down?",
+        "options": [
+          {
+            "id": "a",
+            "text": "You is the imperative subject; Kim is a vocative.",
+            "feedback": "The vocative addresses the hearer but does not fill the subject function."
+          },
+          {
+            "id": "b",
+            "text": "Kim is the subject and you is a vocative.",
+            "feedback": "The subject is the element that can be omitted and controls the verb."
+          },
+          {
+            "id": "c",
+            "text": "Neither has a subject.",
+            "feedback": "The overt you is the subject."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "minor-clause-types",
+      "title": "Minor clause types and fragments",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Some clause-like expressions do not fit the five types at all. *What about the others?* has interrogative force without interrogative syntax. *Out with it!* issues a directive without an imperative verb. Expressions of this kind — *Thanks*, *The sooner the better* — are conventionalised fragments, and forcing them into the major system would obscure what they do."
+        },
+        {
+          "type": "paragraph",
+          "text": "Verbless clauses can still be classified when they keep a clear interrogative or exclamative meaning. *What about the others?* is an open interrogative fragment; *What a disaster!* is an exclamative fragment. Others are better described as formulae, learnt as units and interpreted against the major patterns."
+        },
+        {
+          "type": "paragraph",
+          "text": "Minor types do not weaken the major system. The five types remain mutually exclusive for full clauses, and fragments are understood by reference to them. The grammar’s job is to describe the conventionalised forms and their uses, not to force every expression into one of five boxes."
+        },
+        {
+          "type": "examples",
+          "title": "Fragments and formulae",
+          "items": [
+            {
+              "text": "What about the others?",
+              "mark": "ok",
+              "note": "Open interrogative fragment."
+            },
+            {
+              "text": "What a disaster!",
+              "mark": "ok",
+              "note": "Exclamative fragment."
+            },
+            {
+              "text": "Out with it!",
+              "mark": "ok",
+              "note": "Conventionalised minor clause with directive force."
+            },
+            {
+              "text": "Thanks.",
+              "mark": "ok",
+              "note": "Formulaic fragment, not a major clause type."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why are minor clause types compatible with the five-type system?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The five types classify full clauses; fragments are conventionalised expressions interpreted against those patterns.",
+            "feedback": "Minor types do not add a sixth member to the major system."
+          },
+          {
+            "id": "b",
+            "text": "Minor clauses are ungrammatical.",
+            "feedback": "They are grammatical conventional expressions."
+          },
+          {
+            "id": "c",
+            "text": "Every fragment is an imperative.",
+            "feedback": "Fragments have various forms and uses."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "chapter-review",
+      "title": "Chapter Review",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The five types — declarative, closed interrogative, open interrogative, exclamative and imperative — each have their own syntax and their own characteristic use. The classification applies to clauses rather than sentences, and for full clauses the five are mutually exclusive."
+        },
+        {
+          "type": "paragraph",
+          "text": "A declarative can request; an interrogative can direct; an imperative can wish. A clause’s type does not fix what its speaker is doing. Illocutionary force, the act the utterance performs, is related to type by characteristic use but not determined by it. Indirect speech acts use one form to do another act, and tags, parentheticals, intonation and context keep shifting the force without touching the grammar."
+        },
+        {
+          "type": "paragraph",
+          "text": "Questions form a semantic and pragmatic category with polar, alternative, variable, direction, biased and echo varieties. Presuppositions and Q–A constraints add another layer. Exclamatives and imperatives have their own syntax and ranges of use, and the minor types cover the conventionalised fragments that the five-term system leaves over."
+        },
+        {
+          "type": "note",
+          "tone": "why",
+          "title": "A clause-type checklist",
+          "text": "Identify the clause boundaries. Determine the type from its syntax. Then ask what act the speaker is performing. Check for fronting, inversion, tags, bias and presupposition. Keep form, meaning and use separate."
+        }
+      ],
+      "check": {
+        "prompt": "Which statement correctly distinguishes clause type from illocutionary force?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Clause type is grammatical form; illocutionary force is the act performed.",
+            "feedback": "The two are related by characteristic use but are not identical."
+          },
+          {
+            "id": "b",
+            "text": "Every declarative makes a statement.",
+            "feedback": "Declaratives can also issue requests or promises."
+          },
+          {
+            "id": "c",
+            "text": "Every imperative is a command.",
+            "feedback": "Imperatives can express wishes, advice or permission."
+          }
+        ],
+        "answer": "a"
+      }
+    }
+  ],
+  "worked": [
+    "Take *Would you mind opening the door?* It is a closed interrogative in form: the auxiliary *would* precedes the subject *you*. Its literal meaning asks about willingness, but its characteristic use is a polite directive. The embedded gerund-participial *opening the door* names the requested action.",
+    "The example shows why form and force must be kept apart. The clause is not imperative, yet it performs a directive. A reply such as *No, not at all* addresses the literal question, while opening the door addresses the intended request. Both responses are coherent because both layers of meaning are available."
+  ],
+  "application": [
+    "Begin with the clause boundaries and the verb. Check whether the subject precedes the predicator, whether an auxiliary is inverted, whether an interrogative or exclamative phrase is fronted, and whether the verb is imperative. These features identify the clause type.",
+    "Then ask what act the speaker is performing. Is the clause making a statement, asking a question, issuing a directive, expressing a wish or performing a promise? The answer may differ from the characteristic use of the type.",
+    "Finally, examine the layers that modify force: tags, parentheticals, intonation, bias, presupposition and context. A question can be neutral or biased; a tag can seek confirmation or challenge; an exclamative can express surprise or evaluation."
+  ],
+  "reveal": [
+    "In *Would you mind opening the door?*, the clause is a closed interrogative with subject-auxiliary inversion. Its literal content asks whether the hearer would mind opening the door, but its conventional force is a polite request. The gerund-participial clause *opening the door* is the complement of *mind*."
+  ],
+  "recap": [
+    "Clause type is a five-term grammatical system applying to clauses. Declarative is the default; closed interrogatives invert; open interrogatives contain an interrogative phrase; exclamatives begin with what or how; imperatives have a plain verb and an omissible subject.",
+    "Illocutionary force is the act performed, not the clause type. Questions form a semantic and pragmatic category with polar, alternative, variable, direction, biased and echo subtypes. Tags, parentheticals and presuppositions add further structure."
+  ],
+  "self_check": [
+    {
+      "question": "Name the five major clause types.",
+      "answer": "Declarative, closed interrogative, open interrogative, exclamative and imperative."
+    },
+    {
+      "question": "Why is clause type not the same as illocutionary force?",
+      "answer": "Clause type is grammatical form; illocutionary force is the act performed. A declarative can issue a request and an interrogative can make a directive."
+    },
+    {
+      "question": "What distinguishes a closed interrogative from an open interrogative?",
+      "answer": "A closed interrogative has a closed set of answers and subject-auxiliary inversion; an open interrogative contains an interrogative phrase asking for a value."
+    },
+    {
+      "question": "What is an echo question?",
+      "answer": "A question that repeats part of a preceding utterance to request repetition or clarification; the echo feature cuts across clause types."
+    },
+    {
+      "question": "What is a Q–A presupposition?",
+      "answer": "A presupposition carried by a question and reflected in the form of its answers, such as the existence of a value in Who broke the window?"
+    }
+  ],
+  "opening": [
+    {
+      "prompt": "Which clause type is Are you generous?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Closed interrogative",
+          "feedback": "It has subject-auxiliary inversion and a yes/no answer set."
+        },
+        {
+          "id": "b",
+          "text": "Open interrogative",
+          "feedback": "It contains no interrogative phrase."
+        },
+        {
+          "id": "c",
+          "text": "Declarative",
+          "feedback": "The auxiliary precedes the subject."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which clause type is How generous you are!",
+      "options": [
+        {
+          "id": "a",
+          "text": "Exclamative",
+          "feedback": "It has an initial how phrase."
+        },
+        {
+          "id": "b",
+          "text": "Open interrogative",
+          "feedback": "The order and force are exclamatory, not interrogative."
+        },
+        {
+          "id": "c",
+          "text": "Imperative",
+          "feedback": "The verb is not in the imperative form."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is the characteristic use of an imperative?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Directive",
+          "feedback": "Imperatives typically issue requests, commands or instructions."
+        },
+        {
+          "id": "b",
+          "text": "Statement",
+          "feedback": "That is characteristic of declaratives."
+        },
+        {
+          "id": "c",
+          "text": "Open question",
+          "feedback": "That is characteristic of open interrogatives."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is illocutionary force?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The act performed by an utterance",
+          "feedback": "It is distinct from the clause type used to perform it."
+        },
+        {
+          "id": "b",
+          "text": "The subject-auxiliary order",
+          "feedback": "That is a syntactic property."
+        },
+        {
+          "id": "c",
+          "text": "The number of clauses in a sentence",
+          "feedback": "Force concerns use, not clause count."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Why is an echo question not a sixth clause type?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It can be superimposed on different clause types.",
+          "feedback": "Echo is a cross-cutting construction."
+        },
+        {
+          "id": "b",
+          "text": "It has no interrogative meaning.",
+          "feedback": "It questions a preceding utterance."
+        },
+        {
+          "id": "c",
+          "text": "It is always imperative.",
+          "feedback": "It can occur with several clause types."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "closing": [
+    {
+      "prompt": "Why is there no inversion in Who broke the window?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The interrogative phrase is the subject.",
+          "feedback": "Subject interrogative phrases occupy the declarative subject position."
+        },
+        {
+          "id": "b",
+          "text": "The clause is subordinate.",
+          "feedback": "It is a main clause."
+        },
+        {
+          "id": "c",
+          "text": "Who is not interrogative.",
+          "feedback": "Who is an interrogative word."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What makes Would you mind opening the door? an indirect speech act?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It has interrogative form but typically performs a request.",
+          "feedback": "Form and force diverge."
+        },
+        {
+          "id": "b",
+          "text": "It is ungrammatical.",
+          "feedback": "It is grammatical."
+        },
+        {
+          "id": "c",
+          "text": "It has no subject.",
+          "feedback": "The subject is you."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What bias does Isn’t it already finished? typically convey?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The speaker expects that it is finished.",
+          "feedback": "Negative interrogatives often carry a positive epistemic bias."
+        },
+        {
+          "id": "b",
+          "text": "The speaker expects that it is not finished.",
+          "feedback": "That is the opposite expectation."
+        },
+        {
+          "id": "c",
+          "text": "The speaker has no expectation.",
+          "feedback": "The form is biased."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Why is Don’t be late an imperative with do-support?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Imperative negation uses do even when the positive contains be.",
+          "feedback": "The imperative is a distinct construction."
+        },
+        {
+          "id": "b",
+          "text": "Be is lexical.",
+          "feedback": "Be is an auxiliary."
+        },
+        {
+          "id": "c",
+          "text": "Late is a verb.",
+          "feedback": "Late is an adjective."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which sentence is an exclamative?",
+      "options": [
+        {
+          "id": "a",
+          "text": "How generous you are!",
+          "feedback": "It has the initial how phrase of an exclamative."
+        },
+        {
+          "id": "b",
+          "text": "Get out of here!",
+          "feedback": "That is imperative."
+        },
+        {
+          "id": "c",
+          "text": "What on earth are you doing?",
+          "feedback": "That is an open interrogative."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "stages": {
+    "predict": {
+      "prompt": "Which clause type is Are you generous?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Closed interrogative",
+          "feedback": "It has subject-auxiliary inversion."
+        },
+        {
+          "id": "b",
+          "text": "Open interrogative",
+          "feedback": "There is no interrogative phrase."
+        },
+        {
+          "id": "c",
+          "text": "Declarative",
+          "feedback": "The auxiliary precedes the subject."
+        }
+      ],
+      "answer": "a"
+    },
+    "guided": {
+      "prompt": "Which clause type is How generous you are!",
+      "options": [
+        {
+          "id": "a",
+          "text": "Exclamative",
+          "feedback": "It begins with an exclamative how phrase."
+        },
+        {
+          "id": "b",
+          "text": "Open interrogative",
+          "feedback": "The order and use are exclamatory."
+        },
+        {
+          "id": "c",
+          "text": "Imperative",
+          "feedback": "The verb is not imperative."
+        }
+      ],
+      "answer": "a"
+    },
+    "transfer": {
+      "prompt": "What is the clause type of Would you mind opening the door?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Closed interrogative",
+          "feedback": "It is interrogative in form, directive in force."
+        },
+        {
+          "id": "b",
+          "text": "Imperative",
+          "feedback": "It has no imperative verb."
+        },
+        {
+          "id": "c",
+          "text": "Declarative",
+          "feedback": "The auxiliary precedes the subject."
+        }
+      ],
+      "answer": "a"
+    },
+    "exit": {
+      "prompt": "Which question is alternative rather than polar?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Would you like tea or coffee?",
+          "feedback": "It offers a stated choice."
+        },
+        {
+          "id": "b",
+          "text": "Would you like tea?",
+          "feedback": "That is polar."
+        },
+        {
+          "id": "c",
+          "text": "What would you like?",
+          "feedback": "That is variable."
+        }
+      ],
+      "answer": "a"
+    }
+  }
+}

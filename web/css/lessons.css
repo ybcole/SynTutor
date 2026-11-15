@@ -487,6 +487,66 @@
   margin-inline:auto;
 }
 .lesson-reader .constituent-page { min-width:0; width:100%; }
+
+/* Cambridge chapter components */
+.lesson-object-language { font-style:italic; }
+.lesson-example-set { display:grid; gap:6px; margin:18px 0; padding-left:1.5rem; }
+.lesson-example { padding:0; border:0; border-radius:0; background:none; }
+.lesson-example p { margin:0; }
+.lesson-example .lesson-example-sentence {
+  font:inherit;
+  font-style:normal;
+  font-weight:400;
+  line-height:1.65;
+}
+.lesson-example .lesson-example-note {
+  margin-top:2px;
+  color:var(--muted);
+  font-size:.9rem;
+  font-style:normal;
+  font-weight:400;
+}
+.lesson-comparison-table {
+  width:100%;
+  border-collapse:collapse;
+  margin:18px 0;
+  font-size:.95rem;
+}
+.lesson-comparison-table th {
+  text-align:left;
+  font-weight:650;
+  padding:8px 18px 8px 0;
+  border-bottom:1px solid var(--border);
+  white-space:nowrap;
+}
+.lesson-comparison-table td {
+  padding:8px 18px 8px 0;
+  border-bottom:1px solid var(--border);
+  vertical-align:top;
+  line-height:1.55;
+}
+.lesson-comparison-table :is(th,td):last-child { padding-right:0; }
+.lesson-diagnostic {
+  margin:22px 0;
+  padding:0;
+  border:0;
+  background:none;
+}
+.lesson-diagnostic h4 { margin:0 0 8px; font-size:1rem; }
+.lesson-diagnostic ol { margin:8px 0 0; padding-left:1.25rem; }
+.lesson-diagnostic li { margin:.35rem 0; line-height:1.6; }
+.lesson-watch,.lesson-why {
+  margin:20px 0;
+  padding:0;
+  border:0;
+  background:none;
+}
+.lesson-watch h4,.lesson-why h4 { margin:0 0 6px; font-size:1rem; }
+.curriculum-view h1 { border:0; }
+.curriculum-view h1:focus,
+.curriculum-view h1:focus-visible { outline:none; border:0; }
+.lesson-section-sidebar { align-self:start; overscroll-behavior:contain; }
+
 .lesson-section-sidebar {
   position:sticky;
   top:0;
@@ -509,11 +569,7 @@
   overflow-wrap:anywhere;
 }
 .lesson-section-link small { color:var(--muted); font-size:.78rem; }
-.lesson-section-link[aria-current] {
-  background:var(--accent-soft);
-  box-shadow:inset 3px 0 var(--accent);
-  font-weight:650;
-}
+.lesson-section-link[aria-current] { font-weight:650; }
 .lesson-section-link[aria-disabled] { color:var(--muted); }
 a.lesson-section-link:hover { text-decoration:underline; }
 a.lesson-section-link:focus-visible { outline:2px solid var(--accent); outline-offset:-2px; }

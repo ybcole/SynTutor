@@ -134,7 +134,50 @@ def parse_lesson(header, body):
     self_check = subs.get("Self-check", [])
     for key, lines in subs.items():
         if key.startswith("Concept: "):
-            concepts.append([key[len("Concept: "):].strip(), text_of(lines)])
+            concept_title = key[len("Concept: "):].strip()
+            content_lines = [line for line in lines if line.strip()]
+            if any(line.strip().startswith("- idea:") for line in content_lines):
+                content = {"idea": "", "examples": [], "check": None}
+                index = 0
+                while index < len(content_lines):
+                    line = content_lines[index].strip()
+                    if line.startswith("- idea:"):
+                        content["idea"] = line[len("- idea:"):].strip()
+                    elif line.startswith("- example:") or line.startswith("- counterexample:"):
+                        label, _, value = line.partition(":")
+                        text, _, note = value.partition("—")
+                        content["examples"].append({"text": text.strip(), "note": note.strip(),
+                                                    "good": not label.startswith("- counterexample")})
+                    elif line == "- check:":
+                        check = {"prompt": "", "options": [], "answer": ""}
+                        index += 1
+                        while index < len(content_lines):
+                            check_line = content_lines[index].strip()
+                            if check_line.startswith("- prompt:"):
+                                check["prompt"] = check_line[len("- prompt:"):].strip()
+                            elif check_line.startswith("- answer:"):
+                                check["answer"] = check_line[len("- answer:"):].strip()
+                            elif check_line.startswith("- id:"):
+                                option = {"id": check_line[len("- id:"):].strip(), "text": "", "feedback": ""}
+                                check["options"].append(option)
+                            elif check_line.startswith("text:") and check["options"]:
+                                check["options"][-1]["text"] = check_line[len("text:"):].strip()
+                            elif check_line.startswith("feedback:") and check["options"]:
+                                check["options"][-1]["feedback"] = check_line[len("feedback:"):].strip()
+                            elif check_line.startswith("- ") and not check_line.startswith(("- prompt:", "- answer:", "- id:")):
+                                break
+                            index += 1
+                        content["check"] = check
+                        continue
+                    index += 1
+                concepts.append([concept_title, content])
+            else:
+                paragraphs = []
+                for block in re.split(r"\n\s*\n", "\n".join(lines)):
+                    text = text_of(block.splitlines())
+                    if text:
+                        paragraphs.append(text)
+                concepts.append([concept_title, paragraphs])
         elif key.startswith("Contrast: "):
             contrast = [key[len("Contrast: "):].strip(), bullets_of(lines)]
         elif key == "Application":
@@ -333,6 +376,15 @@ def apply() -> int:
         prefix + "export const lessonKeyTerms = "
         + json.dumps(existing_terms, indent=2, ensure_ascii=False) + ";\n" + suffix,
         encoding="utf-8")
+    def sort_key(lesson):
+        return (lesson.get("chapter") or 0, lesson.get("lesson_id", ""))
+    course["lessons"] = [
+        lesson for track in ("foundations", "grammar")
+        for lesson in sorted(
+            [item for item in course["lessons"] if item.get("track") == track],
+            key=sort_key,
+        )
+    ]
     COURSE.write_text(json.dumps(course, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"applied {len(lessons)} Cambridge lessons")
     return 0

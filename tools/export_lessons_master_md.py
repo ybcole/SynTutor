@@ -124,11 +124,62 @@ def lesson_md(lesson, rich, pilot, bank_items, js_terms=None):
         source = source_map.get(source_id, {})
         lines.append(f"- {source_id} (p.{source.get('printed_page', '?')})")
     lines.append("")
-    if rich:
+    if rich and rich.get("sections"):
+        lines.append("## Chapter article")
+        for section in rich["sections"]:
+            lines.append(f"### Section: {section.get('title')}")
+            for block in section.get("blocks") or []:
+                kind = block.get("type")
+                if kind == "subheading":
+                    lines.append(f"#### {block.get('text')}")
+                elif kind == "paragraph":
+                    lines.append(block.get("text", ""))
+                    lines.append("")
+                elif kind == "examples":
+                    if block.get("title"):
+                        lines.append(f"#### {block.get('title')}")
+                    for item in block.get("items") or []:
+                        label = "counterexample" if item.get("mark") == "bad" else "example"
+                        lines.append(f"- {label}: {item.get('text')} — {item.get('note', '')}")
+                    lines.append("")
+                elif kind == "table":
+                    if block.get("title"):
+                        lines.append(f"#### {block.get('title')}")
+                    lines.append("| " + " | ".join(block.get("columns") or []) + " |")
+                    lines.append("|" + "---|" * len(block.get("columns") or []) )
+                    for row in block.get("rows") or []:
+                        lines.append("| " + " | ".join(str(cell) for cell in row) + " |")
+                    lines.append("")
+                elif kind == "diagnostic":
+                    lines.append(f"#### {block.get('title')}")
+                    for step in block.get("steps") or []:
+                        lines.append(f"- {step}")
+                    if block.get("conclusion"):
+                        lines.append(block["conclusion"])
+                    lines.append("")
+                elif kind == "note":
+                    lines.append(f"#### {block.get('title')}")
+                    lines.append(block.get("text", ""))
+                    lines.append("")
+            if section.get("check"):
+                check = section["check"]
+                lines.append("#### Quick check")
+                lines.append(f"- prompt: {check.get('prompt')}")
+                lines.append("  - options:")
+                for option in check.get("options") or []:
+                    lines.append(f"    - id: {option.get('id')}")
+                    lines.append(f"      text: {option.get('text')}")
+                    lines.append(f"      feedback: {option.get('feedback', '')}")
+                lines.append(f"  - answer: {check.get('answer')}")
+                lines.append("")
+    elif rich:
         lines.append("## Chapter article")
         lines.append("### Introduction")
-        lines.append(rich.get("intro", ""))
-        lines.append("")
+        intro = rich.get("intro", "")
+        for paragraph in (intro if isinstance(intro, list) else [intro]):
+            if paragraph:
+                lines.append(paragraph)
+                lines.append("")
         lines.append("### Topics")
         for topic in rich.get("topics", []):
             lines.append(f"- {topic}")
@@ -144,7 +195,31 @@ def lesson_md(lesson, rich, pilot, bank_items, js_terms=None):
         lines.append("")
         for title, text in rich.get("concepts", []):
             lines.append(f"### Concept: {title}")
-            lines.append(text)
+            if isinstance(text, dict):
+                if text.get("paragraphs"):
+                    for paragraph in text["paragraphs"]:
+                        lines.append(paragraph)
+                        lines.append("")
+                if text.get("idea"):
+                    lines.append(f"- idea: {text['idea']}")
+                for example in text.get("examples") or []:
+                    label = "counterexample" if example.get("good") is False else "example"
+                    lines.append(f"- {label}: {example.get('text')} — {example.get('note', '')}")
+                check = text.get("check")
+                if check:
+                    lines.append("- check:")
+                    lines.append(f"  - prompt: {check.get('prompt')}")
+                    lines.append("  - options:")
+                    for option in check.get("options") or []:
+                        lines.append(f"    - id: {option.get('id')}")
+                        lines.append(f"      text: {option.get('text')}")
+                        lines.append(f"      feedback: {option.get('feedback', '')}")
+                    lines.append(f"  - answer: {check.get('answer')}")
+            else:
+                paragraphs = text if isinstance(text, list) else [text]
+                for paragraph in paragraphs:
+                    lines.append(paragraph)
+                    lines.append("")
             lines.append("")
         contrast = rich.get("contrast") or ["", []]
         lines.append(f"### Contrast: {contrast[0]}")
@@ -152,22 +227,41 @@ def lesson_md(lesson, rich, pilot, bank_items, js_terms=None):
             lines.append(f"- {item}")
         lines.append("")
         lines.append("### Application")
-        lines.append(f"- example: {rich.get('applyExample', '')}")
-        for title, text in rich.get("apply", []):
-            lines.append(f"- **{title}** — {text}")
+        if rich.get("application"):
+            for paragraph in rich["application"]:
+                lines.append(paragraph)
+                lines.append("")
+        else:
+            lines.append(f"- example: {rich.get('applyExample', '')}")
+            for title, text in rich.get("apply", []):
+                lines.append(f"- **{title}** — {text}")
         lines.append("")
         reveal = rich.get("reveal") or ["", ""]
-        lines.append(f"### Reveal: {reveal[0]}")
-        lines.append(reveal[1] if len(reveal) > 1 else "")
+        if isinstance(reveal, list) and reveal and isinstance(reveal[0], str) and len(reveal) > 1 and isinstance(reveal[1], str):
+            lines.append(f"### Reveal: {reveal[0]}")
+            lines.append(reveal[1])
+        else:
+            lines.append("### Reveal")
+            for paragraph in (reveal if isinstance(reveal, list) else [reveal]):
+                lines.append(paragraph)
         lines.append("")
         lines.append("### Recap")
-        lines.append(rich.get("recapSummary", ""))
-        for item in rich.get("recap", []):
-            lines.append(f"- {item}")
+        if rich.get("recap") and not rich.get("recapSummary"):
+            for paragraph in rich["recap"]:
+                lines.append(paragraph)
+                lines.append("")
+        else:
+            lines.append(rich.get("recapSummary", ""))
+            for item in rich.get("recap", []):
+                lines.append(f"- {item}")
         lines.append("")
         lines.append("### Self-check")
         for item in rich.get("selfCheck", []):
-            lines.append(f"- {item}")
+            if isinstance(item, dict):
+                lines.append(f"- question: {item.get('question')}")
+                lines.append(f"  answer: {item.get('answer')}")
+            else:
+                lines.append(f"- {item}")
         lines.append("")
     lines.append("## Teaching blocks")
     for index, block in enumerate(lesson.get("teaching") or [], start=1):
@@ -263,7 +357,8 @@ def main() -> int:
         lines.append("---")
         lines.append("")
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    text = "\n".join(line.rstrip() for line in lines).rstrip() + "\n"
+    OUT.write_text(text, encoding="utf-8")
     print(f"wrote {OUT} ({OUT.stat().st_size} bytes)")
     return 0
 

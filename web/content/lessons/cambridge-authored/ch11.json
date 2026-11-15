@@ -1,0 +1,1482 @@
+{
+  "title": "Content clauses and reported speech",
+  "description": "Learn how subordinate content clauses are marked, classified, embedded and reported, from that-clauses and whether-clauses to mandative and free indirect speech.",
+  "example": "She said that the committee would announce its decision after the report had been published.",
+  "key_terms": [
+    {
+      "term": "subordinate clause",
+      "definition": "A clause that characteristically functions as dependent within a larger construction."
+    },
+    {
+      "term": "main clause",
+      "definition": "A clause that functions as head of the construction containing it."
+    },
+    {
+      "term": "finite clause",
+      "definition": "A clause headed by a primary verb form, including subjunctive clauses."
+    },
+    {
+      "term": "non-finite clause",
+      "definition": "A clause headed by a gerund-participle, past participle or infinitival plain form."
+    },
+    {
+      "term": "content clause",
+      "definition": "The default class of finite subordinate clause, lacking the special properties of relative and comparative clauses."
+    },
+    {
+      "term": "declarative content clause",
+      "definition": "A content clause with declarative clause type."
+    },
+    {
+      "term": "interrogative content clause",
+      "definition": "A content clause with closed or open interrogative type."
+    },
+    {
+      "term": "exclamative content clause",
+      "definition": "A content clause with exclamative type, based on what or how."
+    },
+    {
+      "term": "subordinator",
+      "definition": "A marker such as that, whether or if that introduces a subordinate clause."
+    },
+    {
+      "term": "expanded declarative",
+      "definition": "A declarative content clause introduced by that."
+    },
+    {
+      "term": "bare declarative",
+      "definition": "A declarative content clause without that."
+    },
+    {
+      "term": "non-expandable declarative",
+      "definition": "A declarative content clause whose governing item excludes that."
+    },
+    {
+      "term": "extraposition",
+      "definition": "Placement of a clause after dummy it rather than in subject position."
+    },
+    {
+      "term": "mandative construction",
+      "definition": "A construction expressing requirement or recommendation, often with a subjunctive or should."
+    },
+    {
+      "term": "subjunctive",
+      "definition": "A finite clause construction using the plain form, as in that he be told."
+    },
+    {
+      "term": "modal preterite",
+      "definition": "A past-tense form used to mark modal remoteness rather than past time."
+    },
+    {
+      "term": "irrealis",
+      "definition": "The residual mood form were used in hypothetical or counterfactual clauses."
+    },
+    {
+      "term": "factivity",
+      "definition": "The property of a predicate that treats its complement as factive, presupposing its truth."
+    },
+    {
+      "term": "dubitative",
+      "definition": "A construction expressing doubt about a question or its answer."
+    },
+    {
+      "term": "whether",
+      "definition": "A subordinator introducing closed interrogative content clauses."
+    },
+    {
+      "term": "if",
+      "definition": "A conditional preposition or subordinator; in content clauses it introduces interrogatives only under restricted conditions."
+    },
+    {
+      "term": "exhaustive conditional",
+      "definition": "A conditional construction quantifying over a set of alternatives, such as whether he comes or not."
+    },
+    {
+      "term": "reported speech",
+      "definition": "The reporting of another utterance, either directly or indirectly."
+    },
+    {
+      "term": "indirect reported speech",
+      "definition": "A report of what was said using a content clause, often with backshift and deixis shifts."
+    },
+    {
+      "term": "direct reported speech",
+      "definition": "A report that quotes the original utterance."
+    },
+    {
+      "term": "free indirect speech",
+      "definition": "A blend of indirect report and the original speaker’s perspective or wording."
+    },
+    {
+      "term": "backshift",
+      "definition": "The use of past tense in reported speech to mark anteriority relative to the report."
+    },
+    {
+      "term": "deictic shift",
+      "definition": "The adjustment of pronouns, time and place expressions in indirect report."
+    }
+  ],
+  "intro": [
+    "Start with *She said that the committee would announce its decision*, then drop the *that*: *She said the committee would announce its decision*. The words are almost the same, the meaning is the same, and the grammar has quietly changed shape. In both versions the clause after *said* does the work of a single complement: it names what was said, and it cannot stand on its own.",
+    "The clause is not tied to reporting. The same shape appears as the subject of *That they were lying is obvious* and, with a change of host, as the complement of an adjective in *I’m glad that she is right*. What holds these together is not a shared meaning but a shared job: each clause fills a slot that the surrounding construction has opened for it.",
+    "This chapter treats the content clause as one construction with several faces: declarative, interrogative and exclamative; subject, object and adjunct; mandative, factive and hypothetical. Once those distinctions are in place, reported speech stops looking like a separate topic. It is what happens when the same clause carries someone else’s words into a new time and a new speaker’s mouth."
+  ],
+  "sections": [
+    {
+      "id": "subordination",
+      "title": "Subordinate and main clauses",
+      "advances": "predict",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Begin with *He knows that she is right*, then try to say *that she is right* on its own. It will not stand: the clause needs a host to lean on. The same dependence shows up when the clause modifies a noun, as in *the report she recommended*, or leans on a connective, as in *Although the paper is poorly written*."
+        },
+        {
+          "type": "examples",
+          "title": "Clauses that need a host",
+          "items": [
+            {
+              "text": "He knows that she is right.",
+              "mark": "ok",
+              "note": "The content clause is complement of knows."
+            },
+            {
+              "text": "the report she recommended",
+              "mark": "ok",
+              "note": "The relative clause modifies report."
+            },
+            {
+              "text": "Although the paper is poorly written",
+              "mark": "ok",
+              "note": "The concessive clause is complement of although."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Containment alone tells you nothing. In *Although the paper is poorly written, it contains some good ideas*, the second clause sits inside the sentence but heads the construction. Status is a job, not a location."
+        },
+        {
+          "type": "paragraph",
+          "text": "Subordinate clauses often advertise themselves. *That* opens a declarative content clause, a missing object opens a relative, and a fronted interrogative phrase with subject-predicator order opens an open interrogative. But the advertisement is optional. *He knows she is right* contains a subordinate clause with the internal shape of a main clause, and only the matrix tells you which is which."
+        },
+        {
+          "type": "paragraph",
+          "text": "Finite subordinates fall into three classes. Relative clauses carry a gap tied to a nominal, comparatives carry a reduced measure tied to *than* or *as*, and content clauses carry neither special feature. That makes content the default class, the one whose internal grammar most closely resembles a main clause. Non-finite subordinates form a separate system and wait for another chapter."
+        },
+        {
+          "type": "table",
+          "title": "Main and subordinate",
+          "columns": [
+            "Status",
+            "Function",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Main",
+              "Head of the containing construction",
+              "It contains some good ideas."
+            ],
+            [
+              "Subordinate",
+              "Dependent complement",
+              "He knows that she is right."
+            ],
+            [
+              "Subordinate",
+              "Relative modifier",
+              "the report she recommended"
+            ],
+            [
+              "Subordinate",
+              "Comparative complement",
+              "more copies than I wanted"
+            ],
+            [
+              "Subordinate form",
+              "Elliptical answer or supplement",
+              "That the workers be reinstated."
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is it contains some good ideas a main clause in Although the paper is poorly written, it contains some good ideas?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It functions as the head of the containing construction.",
+            "feedback": "Containment alone does not make a clause subordinate."
+          },
+          {
+            "id": "b",
+            "text": "It contains no subordinate marker.",
+            "feedback": "The absence of a marker is not the criterion."
+          },
+          {
+            "id": "c",
+            "text": "It is the second clause in the sentence.",
+            "feedback": "Order does not decide main or subordinate status."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "finite-classes",
+      "title": "Finite clauses and the content class",
+      "advances": "understand",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*He insists that she be here* looks like a piece of a sentence that has lost its tense. There is no *-s*, no past marker, nothing to agree with *she*. Yet the clause is finite, because the plain form here is the subjunctive, and subjunctives count as primary verb forms. *He thinks that she is here* is finite for the ordinary reason; the two belong to the same class. Non-finite clauses, by contrast, are headed by a gerund-participle, past participle or infinitival plain form, and they lie outside this system."
+        },
+        {
+          "type": "paragraph",
+          "text": "What separates the three finite subordinate classes is not meaning but what the clause is missing. A relative clause has a gap that takes its interpretation from a nominal. A comparative clause has a reduced measure that takes its interpretation from *than* or *as*. A content clause has neither: it arrives with the full complement structure of a main clause, or with a marker such as *that* or *whether* doing the subordinating."
+        },
+        {
+          "type": "paragraph",
+          "text": "Content clauses are therefore the ones that look least subordinate. In *I know she is right* nothing inside the clause announces its dependent status; the matrix verb *know* does all the work. Calling the clause subordinate is a statement about its function, not about its shape."
+        },
+        {
+          "type": "table",
+          "title": "Three classes of finite subordinate clause",
+          "columns": [
+            "Class",
+            "Special feature",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Relative",
+              "Modifies a nominal; contains a gap",
+              "the report she recommended"
+            ],
+            [
+              "Comparative",
+              "Complement of than or as; reduced measure",
+              "more copies than I wanted"
+            ],
+            [
+              "Content",
+              "Default; no relative or comparative feature",
+              "that she is right; whether she is right"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Classifying finite subordinates",
+          "items": [
+            {
+              "text": "the report she recommended",
+              "mark": "ok",
+              "note": "Relative clause modifying report."
+            },
+            {
+              "text": "more copies than I wanted",
+              "mark": "ok",
+              "note": "Comparative clause complement of than."
+            },
+            {
+              "text": "I know she is right.",
+              "mark": "ok",
+              "note": "Bare declarative content clause."
+            },
+            {
+              "text": "I wonder whether she is right.",
+              "mark": "ok",
+              "note": "Closed interrogative content clause."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is I know she is right a content clause?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It is the default finite subordinate class and lacks relative or comparative features.",
+            "feedback": "Its internal form is like a main clause; its subordinate status comes from its function."
+          },
+          {
+            "id": "b",
+            "text": "It contains that.",
+            "feedback": "It is bare; there is no that."
+          },
+          {
+            "id": "c",
+            "text": "It modifies right.",
+            "feedback": "It is the complement of know."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "content-clause-type",
+      "title": "Clause type in content clauses",
+      "advances": "worked",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Try to report an order with a content clause and the construction resists. *He said be quiet* does not work as a subordinate construction; an imperative cannot be subordinated that way. Declarative, closed interrogative, open interrogative and exclamative clauses all can. The missing type is a fact about the system, not an accident of vocabulary."
+        },
+        {
+          "type": "paragraph",
+          "text": "The declarative is the unmarked option, and it comes in two guises: with *that* and without. Closed interrogatives take *whether* or *if*, open interrogatives front a wh-phrase, and exclamatives front *what* or *how*. The clause type is visible in the clause itself, which is why the matrix verb can select for it."
+        },
+        {
+          "type": "paragraph",
+          "text": "One consequence is easy to miss. Subordinate interrogatives keep subject-predicator order: *I wonder what he does*, never *I wonder what does he do*. A main-clause question inverts; an embedded one does not."
+        },
+        {
+          "type": "examples",
+          "title": "Content clause types",
+          "items": [
+            {
+              "text": "He says that they are in Paris.",
+              "mark": "ok",
+              "note": "Declarative content clause."
+            },
+            {
+              "text": "He asked whether she was ill.",
+              "mark": "ok",
+              "note": "Closed interrogative content clause."
+            },
+            {
+              "text": "I wonder what he does.",
+              "mark": "ok",
+              "note": "Open interrogative content clause with subject-predicator order."
+            },
+            {
+              "text": "You know what a liar he is.",
+              "mark": "ok",
+              "note": "Exclamative content clause."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is there no inversion in I wonder what he does?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It is a subordinate interrogative, which normally has subject-predicator order.",
+            "feedback": "Main-clause questions invert; subordinate interrogatives usually do not."
+          },
+          {
+            "id": "b",
+            "text": "Does is not an auxiliary.",
+            "feedback": "Does is an auxiliary."
+          },
+          {
+            "id": "c",
+            "text": "What is the subject.",
+            "feedback": "The subject is he."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "that-declaratives",
+      "title": "That-clauses and bare declaratives",
+      "advances": "guided",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*He knows that you are here* and *He knows you are here* say the same thing. With *that*, the boundary between matrix and subordinate clause is marked; without it, the listener infers it."
+        },
+        {
+          "type": "paragraph",
+          "text": "Some hosts will not tolerate the marker at all. *If* and *before* take bare declaratives, as in *I’ll do it if you pay me* and *He left before she died*. These are non-expandable. Others are more permissive: *provided* allows both *provided that you pay me* and *provided you pay me*."
+        },
+        {
+          "type": "paragraph",
+          "text": "Where both forms exist, the choice carries information about register and processing. *That* is likelier in formal prose, after longer or rarer verbs, when the clause is separated from its verb, and when the clause has been moved to the front. Omission is likelier after everyday verbs of thinking and saying, especially in speech."
+        },
+        {
+          "type": "table",
+          "title": "That and bare declaratives",
+          "columns": [
+            "Context",
+            "That",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Common verb of cognition",
+              "Optional",
+              "I think (that) it’s a good idea."
+            ],
+            [
+              "Subject position",
+              "Obligatory",
+              "That they were lying is obvious."
+            ],
+            [
+              "Adjunct",
+              "Obligatory",
+              "He appealed to us that justice might be done."
+            ],
+            [
+              "After if or before",
+              "Excluded",
+              "if you pay me; before she died"
+            ],
+            [
+              "After provided",
+              "Optional",
+              "provided (that) you pay me"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Expanded and bare",
+          "items": [
+            {
+              "text": "He knows that you are here.",
+              "mark": "ok",
+              "note": "Expanded declarative."
+            },
+            {
+              "text": "He knows you are here.",
+              "mark": "ok",
+              "note": "Bare declarative."
+            },
+            {
+              "text": "I’ll do it if you pay me.",
+              "mark": "ok",
+              "note": "If excludes that."
+            },
+            {
+              "text": "I’ll do it provided that you pay me.",
+              "mark": "ok",
+              "note": "Provided allows that."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is that obligatory in That they were lying is obvious?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The content clause is subject and precedes the matrix predicator.",
+            "feedback": "The marker is needed to signal the subordinate clause at the start."
+          },
+          {
+            "id": "b",
+            "text": "The clause is negative.",
+            "feedback": "Negation is not relevant here."
+          },
+          {
+            "id": "c",
+            "text": "The verb is passive.",
+            "feedback": "The matrix predicate is be + obvious."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "that-omission",
+      "title": "When that must or may be omitted",
+      "advances": "transfer",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Move a content clause to the front and the marker stops being optional. *That he really intended to cheat us I still can’t believe* is grammatical; drop *that* and the opening becomes unparseable until the reader reaches *I*. The same demand arises when the clause is an adjunct, and when it follows comparative *than* or *as* and would otherwise be mistaken for a comparative clause."
+        },
+        {
+          "type": "paragraph",
+          "text": "At the other extreme, *that* can be impossible. *Who does she think is the ringleader?* is fine; *Who does she think that is the ringleader?* is not. The subject of the content clause is a gap, and the fronted *who* must reach it. *That* would sit between the two halves of a single dependency, and the dependency cannot survive the interruption."
+        },
+        {
+          "type": "paragraph",
+          "text": "Elsewhere the marker comes and goes. Common verbs such as *think*, *say* and *know*, short matrix clauses and casual style all favour omission. Complex vocabulary, distance between verb and clause, and coordination where a second *that* prevents a main-clause reading all favour retention. Nothing in the grammar forces the choice; usage, rhythm and clarity do."
+        },
+        {
+          "type": "examples",
+          "title": "Obligatory, excluded, optional",
+          "items": [
+            {
+              "text": "That he really intended to cheat us I still can’t believe.",
+              "mark": "ok",
+              "note": "The clause is preposed; that is obligatory."
+            },
+            {
+              "text": "He appealed to us that justice might be done.",
+              "mark": "ok",
+              "note": "The content clause is an adjunct; that is obligatory."
+            },
+            {
+              "text": "Who does she think is the ringleader?",
+              "mark": "ok",
+              "note": "The subject of the content clause is a gap; that must be omitted."
+            },
+            {
+              "text": "I think it’s a good idea.",
+              "mark": "ok",
+              "note": "Common verb and informal style favour omission."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is that impossible in Who does she think is the ringleader?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The subject of the content clause is a gap linked to who.",
+            "feedback": "That cannot intervene between the gap and its antecedent."
+          },
+          {
+            "id": "b",
+            "text": "Think never takes that.",
+            "feedback": "Think takes that in other constructions."
+          },
+          {
+            "id": "c",
+            "text": "The clause is interrogative.",
+            "feedback": "The content clause is declarative in form."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "functions-subject",
+      "title": "Content clauses as subject and extraposed subject",
+      "advances": "exit",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*That they were lying is obvious* is grammatical, and almost nobody says it. English prefers to park a dummy *it* in subject position and send the clause to the end: *It is obvious that they were lying*. The preference grows stronger as the clause gets longer or the predicate gets shorter."
+        },
+        {
+          "type": "paragraph",
+          "text": "The moved clause is still the subject in meaning. *It* is an empty placeholder, and the clause supplies what the predicate is about."
+        },
+        {
+          "type": "paragraph",
+          "text": "The same dummy can appear in object position. *They made it clear that the meeting was cancelled* has *it* as object and the clause as an extraposed object; *made* takes *it* as its object, and the clause is related to that object rather than selected directly by the verb."
+        },
+        {
+          "type": "examples",
+          "title": "Subject and extraposition",
+          "items": [
+            {
+              "text": "That they were lying is obvious.",
+              "mark": "ok",
+              "note": "Content clause as subject."
+            },
+            {
+              "text": "It is obvious that they were lying.",
+              "mark": "ok",
+              "note": "Extraposed subject with dummy it."
+            },
+            {
+              "text": "They made it clear that the meeting was cancelled.",
+              "mark": "ok",
+              "note": "Extraposed object with dummy it."
+            },
+            {
+              "text": "It seems that nobody was informed.",
+              "mark": "ok",
+              "note": "Extraposed subject with seem."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the function of that they were lying in It is obvious that they were lying?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Extraposed subject",
+            "feedback": "Dummy it fills the subject position; the clause is semantically the subject."
+          },
+          {
+            "id": "b",
+            "text": "Direct object",
+            "feedback": "The predicate is be + obvious, not transitive."
+          },
+          {
+            "id": "c",
+            "text": "Adjunct",
+            "feedback": "The clause is not optional scene-setting."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "functions-complements",
+      "title": "Complements of verbs, nouns, adjectives, and prepositions",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*He knows that she is right* is the easy case: a verb taking a clause complement. Change the host and the same clause keeps its shape while its label changes. A noun can take it in *the belief that she is right*, an adjective in *I’m glad that she is right*. A preposition can take an interrogative version, as in *We agreed on whether to go*. The clause does not care; the host decides what the function is."
+        },
+        {
+          "type": "paragraph",
+          "text": "Not every content clause is selected. *He appealed to us that justice might be done* contains a clause expressing a desired outcome, and here *that* is obligatory. The *so ... that* construction is a different special case: *It was so cold that the lake froze* pairs a degree expression with a clause stating its consequence."
+        },
+        {
+          "type": "paragraph",
+          "text": "“Object clause” survives in older descriptions, but it fits only a minority of the examples. A content clause can be subject, complement of a noun, adjective or preposition, extraposed, or an adjunct. The function has to be read off the matrix construction; the label cannot be carried over from Latin grammar and applied wholesale."
+        },
+        {
+          "type": "table",
+          "title": "Functions of content clauses",
+          "columns": [
+            "Function",
+            "Example",
+            "Licensor"
+          ],
+          "rows": [
+            [
+              "Subject",
+              "That she was right is clear.",
+              "Matrix predicate"
+            ],
+            [
+              "Extraposed subject",
+              "It is clear that she was right.",
+              "Dummy it"
+            ],
+            [
+              "Verb complement",
+              "He knows that she is right.",
+              "know"
+            ],
+            [
+              "Noun complement",
+              "the belief that she is right",
+              "belief"
+            ],
+            [
+              "Adjective complement",
+              "I’m glad that she is right.",
+              "glad"
+            ],
+            [
+              "Preposition complement",
+              "We agreed on whether to go.",
+              "on"
+            ],
+            [
+              "Adjunct",
+              "He appealed to us that justice might be done.",
+              "Matrix clause"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is object clause an inadequate label for content clauses?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Content clauses can function as subjects, complements of adjectives or nouns, prepositions, or adjuncts.",
+            "feedback": "Only some content clauses are objects."
+          },
+          {
+            "id": "b",
+            "text": "Content clauses never follow verbs.",
+            "feedback": "They often do."
+          },
+          {
+            "id": "c",
+            "text": "Objects are always clauses.",
+            "feedback": "Objects are usually NPs."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "interrogative-content",
+      "title": "Interrogative content clauses",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*He asked whether she was ill* and *He asked if she was ill* are both closed interrogative content clauses. The difference is the marker, not the clause type. Open interrogatives work differently: they front a wh-phrase and leave the rest of the clause in declarative order."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Whether* and *if* overlap, but only one of them travels well. *Whether* survives after a preposition (*We discussed whether to go*), in subject position (*Whether he comes is uncertain*), and in exhaustive conditionals (*whether you like it or not*). *If* is barred from those positions in Standard English. The restriction is grammatical, not a matter of tone."
+        },
+        {
+          "type": "paragraph",
+          "text": "Beyond complements, interrogative clauses appear as supplements, as complements of adjectives such as *uncertain*, and in infinitival form after verbs like *know* and *decide* (*I don’t know what to do*). They also occur ungoverned, as in *Whether you like it or not, we’re going*, where the clause quantifies over alternatives and the matrix holds whichever one obtains. Dubitatives such as *I doubt whether he will come* put the same clause to work expressing doubt."
+        },
+        {
+          "type": "examples",
+          "title": "Whether and if",
+          "items": [
+            {
+              "text": "He asked whether she was ill.",
+              "mark": "ok",
+              "note": "Closed interrogative content clause."
+            },
+            {
+              "text": "He asked if she was ill.",
+              "mark": "ok",
+              "note": "If is possible as a complement of ask."
+            },
+            {
+              "text": "We discussed whether to go.",
+              "mark": "ok",
+              "note": "Whether after a preposition; if is not possible here."
+            },
+            {
+              "text": "Whether he comes is uncertain.",
+              "mark": "ok",
+              "note": "Whether as subject; if is excluded."
+            },
+            {
+              "text": "Whether you like it or not, we’re going.",
+              "mark": "ok",
+              "note": "Exhaustive conditional adjunct."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is whether possible but if excluded in We discussed whether to go?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Whether can follow a preposition; if cannot in this construction.",
+            "feedback": "The distribution of whether and if is not identical."
+          },
+          {
+            "id": "b",
+            "text": "If is not a subordinator.",
+            "feedback": "If introduces interrogative content clauses in other positions."
+          },
+          {
+            "id": "c",
+            "text": "Whether is more formal.",
+            "feedback": "The difference is grammatical, not merely stylistic."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "interrogative-constructions",
+      "title": "Constructions with subordinate interrogatives",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The same interrogative clause can point in two directions. *I asked whether she was coming* leaves the issue open; *I know whether she is coming* closes it, naming an answer the speaker already has. Verbs of asking and wondering tend one way, verbs of knowing the other."
+        },
+        {
+          "type": "paragraph",
+          "text": "Doubt has its own construction. *I doubt whether he will come* and *It’s doubtful whether they can finish* present the embedded question as unresolved, and the doubt attaches to the clause rather than to a negative answer. Infinitival interrogatives are common after *know*, *decide*, *wonder* and *ask*, as in *She asked how to apply*."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Whether you like it or not, we’re going* has no governing predicate at all. The clause is an adjunct, and it quantifies over two alternatives: the matrix clause is presented as holding under either. This is a conditional use of an interrogative clause, not a complement, and it is why the construction can stand at the front of the sentence with nothing to license it."
+        },
+        {
+          "type": "examples",
+          "title": "Question-oriented and answer-oriented",
+          "items": [
+            {
+              "text": "I asked whether she was coming.",
+              "mark": "ok",
+              "note": "Question-oriented: the issue is open."
+            },
+            {
+              "text": "I know whether she is coming.",
+              "mark": "ok",
+              "note": "Answer-oriented: the speaker knows the answer."
+            },
+            {
+              "text": "I doubt whether he will come.",
+              "mark": "ok",
+              "note": "Dubitative: the issue is doubtful."
+            },
+            {
+              "text": "I don’t know what to do.",
+              "mark": "ok",
+              "note": "Infinitival interrogative complement."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the difference between I asked whether she was coming and I know whether she is coming?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The first is question-oriented; the second is answer-oriented.",
+            "feedback": "Ask presents the issue as open; know presents the answer as known."
+          },
+          {
+            "id": "b",
+            "text": "The first is ungrammatical.",
+            "feedback": "Both are grammatical."
+          },
+          {
+            "id": "c",
+            "text": "The second contains no content clause.",
+            "feedback": "Both contain a whether-clause."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "exclamative-content",
+      "title": "Exclamative content clauses",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*You know what a liar he is* contains a *what*, but nothing is being asked. The clause reports an exclamation, and the matrix verb *know* presents it as something the addressee already appreciates. Verbs of realizing, remembering and reporting license the same pattern, and the clause stays close to an open interrogative in form while differing from it in meaning and distribution."
+        },
+        {
+          "type": "paragraph",
+          "text": "Inside the clause the exclamative phrase moves to the front. In *You know what a liar he is*, *what a liar* occupies the prenuclear position and *he is* follows as the nucleus. The clause is subordinate, but its exclamative type is intact."
+        },
+        {
+          "type": "paragraph",
+          "text": "Exclamative content clauses tend to appear after factive or semi-factive predicates. *I know how difficult it was* presupposes that it was difficult; *I wonder how difficult it was* does not. The predicate decides whether the exclamation is offered as shared knowledge or left as an open question."
+        },
+        {
+          "type": "examples",
+          "title": "Exclamative content",
+          "items": [
+            {
+              "text": "You know what a liar he is.",
+              "mark": "ok",
+              "note": "What a liar is fronted in an exclamative content clause."
+            },
+            {
+              "text": "I realize how difficult this must be.",
+              "mark": "ok",
+              "note": "How difficult is fronted in an exclamative content clause."
+            },
+            {
+              "text": "She told me what a mess the office was in.",
+              "mark": "ok",
+              "note": "Exclamative content clause as object of told."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What distinguishes an exclamative content clause from an open interrogative content clause?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The exclamative presents the content as an exclamatory statement, not as a request for a value.",
+            "feedback": "Form and predicate help distinguish the two."
+          },
+          {
+            "id": "b",
+            "text": "The exclamative contains no wh-word.",
+            "feedback": "It contains what or how."
+          },
+          {
+            "id": "c",
+            "text": "The interrogative is always finite.",
+            "feedback": "Both can be finite."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "mood-factivity",
+      "title": "Mood, tense, and factivity",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Mandative constructions take a requirement and put it in a clause. *It is important that she be told* uses the subjunctive; *It is important that she should be told* uses *should*; *It is important that she is told* uses the indicative. Verbs such as *insist*, *demand* and *recommend* behave the same way, and the choice among the three forms is partly regional and partly stylistic."
+        },
+        {
+          "type": "paragraph",
+          "text": "The subjunctive is easy to misclassify because the verb looks bare. *She be told* has no agreement and no tense ending, but the clause is finite: the plain form is the subjunctive marker, and subjunctive clauses belong with finite clauses, not with infinitivals. The absence of inflection is the signal, not the absence of finiteness."
+        },
+        {
+          "type": "paragraph",
+          "text": "Tense can also be used for distance rather than time. *I wish she were here* puts *were* in a clause about the present, and *If he knew, he would tell us* uses a past form to mark a hypothesis. Present tense can point to the future in a content clause, as in *I hope she arrives tomorrow*. Factivity is a separate dimension: *I know that she left* presupposes that she left, while *I believe that she left* leaves the question open."
+        },
+        {
+          "type": "table",
+          "title": "Mood and factivity",
+          "columns": [
+            "Pattern",
+            "Example",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "Mandative subjunctive",
+              "It is important that she be told.",
+              "Requirement"
+            ],
+            [
+              "Mandative should",
+              "It is important that she should be told.",
+              "Requirement with should"
+            ],
+            [
+              "Modal preterite",
+              "I wish she were here.",
+              "Remote or hypothetical"
+            ],
+            [
+              "Present for future",
+              "I hope she arrives tomorrow.",
+              "Future time with present form"
+            ],
+            [
+              "Factive",
+              "I know that she left.",
+              "Presupposes the complement"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is that she be informed a finite clause?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It is a subjunctive content clause, which belongs to the finite class.",
+            "feedback": "The plain form is the subjunctive marker here, not a non-finite form."
+          },
+          {
+            "id": "b",
+            "text": "It contains that.",
+            "feedback": "The subordinator is not what makes it finite."
+          },
+          {
+            "id": "c",
+            "text": "It has a past tense.",
+            "feedback": "The verb is a plain form."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "reported-speech-indirect",
+      "title": "Indirect reported speech",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*She said that the committee would announce its decision* reports words without reproducing them. There is a reporting verb, a content clause, and a set of adjustments: the tense, the pronouns, and the time and place words all shift to fit the reporter’s position. Nothing is quoted."
+        },
+        {
+          "type": "paragraph",
+          "text": "Backshift is the most conspicuous adjustment. *She said she was tired* uses a past tense even if the tiredness was present when she spoke; the past marks the report’s perspective, not necessarily past time. Deixis shifts with it: *now* becomes *then*, *today* becomes *that day*, *here* becomes *there*, and *I* becomes *she*."
+        },
+        {
+          "type": "paragraph",
+          "text": "Backshift is not a mechanical rule. *She said she is tired* is fine when the state still holds; the choice depends on how the speaker frames the report."
+        },
+        {
+          "type": "examples",
+          "title": "Direct and indirect report",
+          "items": [
+            {
+              "text": "She said, ‘I am tired.’",
+              "mark": "ok",
+              "note": "Direct report: the original words are quoted."
+            },
+            {
+              "text": "She said that she was tired.",
+              "mark": "ok",
+              "note": "Indirect report with backshift and pronoun shift."
+            },
+            {
+              "text": "She said she is tired.",
+              "mark": "ok",
+              "note": "Present tense can be retained when the state is still current."
+            },
+            {
+              "text": "She said she would arrive the next day.",
+              "mark": "ok",
+              "note": "Future-in-the-past and deictic shift."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is backshift in indirect reported speech?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The use of a past tense to mark anteriority relative to the report.",
+            "feedback": "It is a perspective shift, not a simple change of event time."
+          },
+          {
+            "id": "b",
+            "text": "The use of quotation marks.",
+            "feedback": "Quotation marks are characteristic of direct report."
+          },
+          {
+            "id": "c",
+            "text": "The omission of that.",
+            "feedback": "That is optional in many reports but not the definition of backshift."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "reported-speech-direct",
+      "title": "Direct and free indirect speech",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*She said, ‘I am tired.’* keeps the original words and the original deictic centre. *I* still means the person who spoke, *now* still means the time of speaking, and *here* still means the place. Quotation marks are the visible sign of that retention, but the pronouns and adverbs are what do the work."
+        },
+        {
+          "type": "paragraph",
+          "text": "Free indirect speech drops the reporting clause and lets the character’s perspective leak into third-person past narration. *She was tired. Tomorrow she would leave.* The pronouns and tense are the narrator’s; the evaluation and the deictic orientation are the character’s. The effect is a voice that belongs to neither fully."
+        },
+        {
+          "type": "paragraph",
+          "text": "Free direct speech keeps more of the original wording, often without quotation marks. The boundary between it and free indirect style is a matter of degree, and the choice controls how close the reader stands to the character."
+        },
+        {
+          "type": "examples",
+          "title": "Three report styles",
+          "items": [
+            {
+              "text": "She said, ‘I am tired.’",
+              "mark": "ok",
+              "note": "Direct report with the original deictic centre."
+            },
+            {
+              "text": "She said that she was tired.",
+              "mark": "ok",
+              "note": "Indirect report with backshift and third person."
+            },
+            {
+              "text": "She was tired. Tomorrow she would leave.",
+              "mark": "ok",
+              "note": "Free indirect style: third-person narration with the character’s perspective."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which feature is characteristic of direct reported speech?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It retains the original speaker’s deictic centre.",
+            "feedback": "I, now and here refer to the original utterance."
+          },
+          {
+            "id": "b",
+            "text": "It always uses that.",
+            "feedback": "Direct report quotes rather than taking a that-clause."
+          },
+          {
+            "id": "c",
+            "text": "It always uses backshift.",
+            "feedback": "Direct report is not normally backshifted."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "chapter-review",
+      "title": "Chapter Review",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "By now the content clause should look less like a single construction than like a family. Its members can be declarative, interrogative or exclamative, but never imperative; they can be marked by *that*, *whether*, *if*, a fronted phrase, or nothing at all; and they can serve as subject, complement, adjunct or supplement."
+        },
+        {
+          "type": "paragraph",
+          "text": "*That* is required when the clause is subject, preposed or an adjunct, impossible when a subject gap is linked to a fronted phrase, and optional elsewhere. Interrogatives divide into question-oriented, answer-oriented and dubitative uses; exclamatives follow factive or semi-factive predicates."
+        },
+        {
+          "type": "paragraph",
+          "text": "Mood and factivity decide how the content is presented. Mandatives choose among subjunctive, *should* and indicative; modal preterite and irrealis mark distance; factive predicates presuppose their complements. Reported speech then adds a further layer, since indirect report shifts deixis and tense, direct report preserves them, and free indirect style holds both in suspension."
+        },
+        {
+          "type": "note",
+          "tone": "why",
+          "title": "A content-clause checklist",
+          "text": "Identify the clause boundaries and its function in the matrix. Decide whether it is declarative, interrogative or exclamative. Check whether that is present, optional or excluded. Then examine mood, factivity and the deictic shifts of reported speech."
+        }
+      ],
+      "check": {
+        "prompt": "Which statement correctly describes content clauses?",
+        "options": [
+          {
+            "id": "a",
+            "text": "They are the default finite subordinate class and can be declarative, interrogative or exclamative.",
+            "feedback": "Imperative content clauses do not occur."
+          },
+          {
+            "id": "b",
+            "text": "They are always introduced by that.",
+            "feedback": "Bare declaratives and whether/if clauses are also content clauses."
+          },
+          {
+            "id": "c",
+            "text": "They can only function as objects.",
+            "feedback": "They can be subjects, complements, adjuncts and supplements."
+          }
+        ],
+        "answer": "a"
+      }
+    }
+  ],
+  "worked": [
+    "Take *She said that the committee would announce its decision after the report had been published*. The matrix clause is *She said that ...*; its complement is the declarative content clause *that the committee would announce its decision after the report had been published*. The clause is expanded with that and functions as the object of said.",
+    "Inside the content clause, the past-tense *would* is a future-in-the-past form, and *had been published* is a past perfect locating the publication before the announcement. The report is indirect: the original speaker’s words are not quoted, and the deictic centre has shifted to the narrator’s past perspective."
+  ],
+  "application": [
+    "Find the subordinate clause and identify its function in the matrix. Then classify its type: declarative, closed interrogative, open interrogative or exclamative. Check whether it is finite or non-finite and whether it is marked by that, whether, if or a fronted phrase.",
+    "Next, examine the marker. Is that obligatory, optional or excluded? Does the clause function as subject, extraposed subject, complement of a verb, noun, adjective or preposition, or adjunct? The position and the governing item determine the possibilities.",
+    "Finally, interpret mood and report. Is the clause mandative, modal, factive or hypothetical? If it reports speech, identify the deictic shifts and whether the report is direct, indirect or free indirect. The same content can be presented from different perspectives."
+  ],
+  "reveal": [
+    "In *She said that the committee would announce its decision after the report had been published*, the content clause is declarative and functions as the object of said. It is expanded with that. Would is a future-in-the-past modal, and had been published is a past perfect marking anteriority to the announcement."
+  ],
+  "recap": [
+    "Content clauses are the default finite subordinate class. They carry declarative, interrogative or exclamative type and function as subjects, complements, adjuncts or supplements. That is obligatory in some positions, excluded in others, and optional in the default case.",
+    "Interrogative content clauses use whether or if and occur in question-oriented, answer-oriented and dubitative constructions. Exclamative content clauses use what or how. Mood, factivity and reported speech shape how the content is interpreted and attributed."
+  ],
+  "self_check": [
+    {
+      "question": "What are the three classes of finite subordinate clause?",
+      "answer": "Relative, comparative and content clauses. Content is the default class."
+    },
+    {
+      "question": "When is that obligatory in a content clause?",
+      "answer": "When the clause is subject or preposed, when it is an adjunct, and when it is the complement of comparative than or as and needs to be distinguished from a comparative clause."
+    },
+    {
+      "question": "When must that be omitted?",
+      "answer": "When the subject of the content clause is realised by a gap in an unbounded dependency construction."
+    },
+    {
+      "question": "What is the difference between whether and if in content clauses?",
+      "answer": "Both can introduce closed interrogative content clauses, but whether occurs after prepositions and as subject, where if is excluded."
+    },
+    {
+      "question": "What is backshift in reported speech?",
+      "answer": "The use of a past tense to mark anteriority relative to the reporting time, often with shifts in pronouns and time or place expressions."
+    }
+  ],
+  "opening": [
+    {
+      "prompt": "Which clause is a content clause?",
+      "options": [
+        {
+          "id": "a",
+          "text": "that she is right in He knows that she is right",
+          "feedback": "It is a declarative content clause complement of knows."
+        },
+        {
+          "id": "b",
+          "text": "the report she recommended",
+          "feedback": "That is a relative clause."
+        },
+        {
+          "id": "c",
+          "text": "more copies than I wanted",
+          "feedback": "That is a comparative clause."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which clause type is I wonder what he does?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Open interrogative content clause",
+          "feedback": "It contains the interrogative phrase what."
+        },
+        {
+          "id": "b",
+          "text": "Declarative content clause",
+          "feedback": "It is interrogative in type."
+        },
+        {
+          "id": "c",
+          "text": "Imperative content clause",
+          "feedback": "Imperative content clauses do not occur."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Why is that obligatory in That they were lying is obvious?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The content clause is subject and precedes the matrix predicator.",
+          "feedback": "The marker signals the subordinate clause at the start."
+        },
+        {
+          "id": "b",
+          "text": "The clause is negative.",
+          "feedback": "Negation is irrelevant."
+        },
+        {
+          "id": "c",
+          "text": "The matrix verb is passive.",
+          "feedback": "The matrix predicate is be + obvious."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which predicate is factive?",
+      "options": [
+        {
+          "id": "a",
+          "text": "know in I know that she left",
+          "feedback": "It presupposes that she left."
+        },
+        {
+          "id": "b",
+          "text": "believe in I believe that she left",
+          "feedback": "Belief does not presuppose truth."
+        },
+        {
+          "id": "c",
+          "text": "say in I say that she left",
+          "feedback": "Saying does not presuppose truth."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is backshift?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The use of a past tense to mark anteriority relative to the report",
+          "feedback": "It is a perspective shift in reported speech."
+        },
+        {
+          "id": "b",
+          "text": "The use of quotation marks",
+          "feedback": "That is direct report."
+        },
+        {
+          "id": "c",
+          "text": "The omission of that",
+          "feedback": "That-omission is a separate choice."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "closing": [
+    {
+      "prompt": "Why is there no inversion in I wonder what he does?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It is a subordinate interrogative, which normally has subject-predicator order.",
+          "feedback": "Main-clause questions invert; subordinate interrogatives usually do not."
+        },
+        {
+          "id": "b",
+          "text": "Does is not an auxiliary.",
+          "feedback": "Does is an auxiliary."
+        },
+        {
+          "id": "c",
+          "text": "What is the subject.",
+          "feedback": "The subject is he."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Why is that impossible in Who does she think is the ringleader?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The subject of the content clause is a gap linked to who.",
+          "feedback": "That cannot intervene between the gap and its antecedent."
+        },
+        {
+          "id": "b",
+          "text": "Think never takes that.",
+          "feedback": "Think takes that elsewhere."
+        },
+        {
+          "id": "c",
+          "text": "The clause is interrogative.",
+          "feedback": "The content clause is declarative in form."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is that they were lying in It is obvious that they were lying?",
+      "options": [
+        {
+          "id": "a",
+          "text": "An extraposed subject",
+          "feedback": "Dummy it fills the subject position."
+        },
+        {
+          "id": "b",
+          "text": "A direct object",
+          "feedback": "The predicate is be + obvious."
+        },
+        {
+          "id": "c",
+          "text": "An adjunct",
+          "feedback": "The clause is not optional scene-setting."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Why is whether possible but if excluded in We discussed whether to go?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Whether can follow a preposition; if cannot.",
+          "feedback": "Their distributions differ."
+        },
+        {
+          "id": "b",
+          "text": "If is not a subordinator.",
+          "feedback": "If introduces content clauses elsewhere."
+        },
+        {
+          "id": "c",
+          "text": "Whether is more formal.",
+          "feedback": "The difference is grammatical."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which feature is characteristic of direct reported speech?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It retains the original speaker’s deictic centre.",
+          "feedback": "I, now and here refer to the original utterance."
+        },
+        {
+          "id": "b",
+          "text": "It always uses that.",
+          "feedback": "Direct report quotes rather than taking a that-clause."
+        },
+        {
+          "id": "c",
+          "text": "It always uses backshift.",
+          "feedback": "Direct report is not normally backshifted."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "stages": {
+    "predict": {
+      "prompt": "Which clause is a content clause?",
+      "options": [
+        {
+          "id": "a",
+          "text": "that she is right",
+          "feedback": "It is a declarative content clause."
+        },
+        {
+          "id": "b",
+          "text": "the report she recommended",
+          "feedback": "That is a relative clause."
+        },
+        {
+          "id": "c",
+          "text": "more copies than I wanted",
+          "feedback": "That is a comparative clause."
+        }
+      ],
+      "answer": "a"
+    },
+    "guided": {
+      "prompt": "Which clause type is I wonder what he does?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Open interrogative content clause",
+          "feedback": "It contains an interrogative phrase."
+        },
+        {
+          "id": "b",
+          "text": "Declarative content clause",
+          "feedback": "It is interrogative."
+        },
+        {
+          "id": "c",
+          "text": "Exclamative content clause",
+          "feedback": "It asks for a value, not an exclamation."
+        }
+      ],
+      "answer": "a"
+    },
+    "transfer": {
+      "prompt": "When is that obligatory in a content clause?",
+      "options": [
+        {
+          "id": "a",
+          "text": "When the clause is subject or preposed",
+          "feedback": "The marker is needed to signal subordination."
+        },
+        {
+          "id": "b",
+          "text": "After every verb",
+          "feedback": "That is optional after many verbs."
+        },
+        {
+          "id": "c",
+          "text": "When the clause is a bare declarative",
+          "feedback": "A bare declarative by definition lacks that."
+        }
+      ],
+      "answer": "a"
+    },
+    "exit": {
+      "prompt": "What is backshift in reported speech?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The use of a past tense to mark anteriority relative to the report",
+          "feedback": "It is a perspective shift."
+        },
+        {
+          "id": "b",
+          "text": "The use of quotation marks",
+          "feedback": "That is direct report."
+        },
+        {
+          "id": "c",
+          "text": "The omission of that",
+          "feedback": "That-omission is separate."
+        }
+      ],
+      "answer": "a"
+    }
+  }
+}

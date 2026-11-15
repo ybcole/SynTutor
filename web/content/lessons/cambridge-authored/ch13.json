@@ -1,0 +1,1576 @@
+{
+  "title": "Comparative constructions",
+  "description": "Explore scalar and non-scalar comparison, comparative clauses, than/as phrases, non-scalar likeness, and comparative and superlative set comparison.",
+  "example": "The new bridge is slightly longer than the old one, but it is not as beautiful as the stone bridge upstream.",
+  "key_terms": [
+    {
+      "term": "comparison",
+      "definition": "A construction relating two or more things or quantities on a scale or by identity and likeness."
+    },
+    {
+      "term": "scalar comparison",
+      "definition": "Comparison of relative position on a gradable scale, as in older than or as old as."
+    },
+    {
+      "term": "non-scalar comparison",
+      "definition": "Comparison concerned with identity, likeness or difference rather than degree."
+    },
+    {
+      "term": "equality",
+      "definition": "A comparison presenting two values as equal or at least equal, typically with as."
+    },
+    {
+      "term": "inequality",
+      "definition": "A comparison presenting values as unequal, typically with than or less."
+    },
+    {
+      "term": "superiority",
+      "definition": "Scalar inequality in which the primary term is higher on the scale."
+    },
+    {
+      "term": "inferiority",
+      "definition": "Scalar inequality in which the primary term is lower on the scale."
+    },
+    {
+      "term": "scale orientation",
+      "definition": "The direction of a scale determined by lexical meaning, as with old versus young."
+    },
+    {
+      "term": "term comparison",
+      "definition": "Comparison between a primary term and a secondary term."
+    },
+    {
+      "term": "set comparison",
+      "definition": "Comparison among members of a set, often with a superlative."
+    },
+    {
+      "term": "primary term",
+      "definition": "The term expressed in the matrix clause of a term comparison."
+    },
+    {
+      "term": "secondary term",
+      "definition": "The term expressed in the subordinate comparative clause or phrase."
+    },
+    {
+      "term": "comparative clause",
+      "definition": "A subordinate clause complement of than or as, with part of its interpretation supplied by the matrix."
+    },
+    {
+      "term": "comparative governor",
+      "definition": "The expression that licenses a comparative complement, such as more, less, as or than."
+    },
+    {
+      "term": "comparative phrase",
+      "definition": "The phrase containing the comparative marker and its complement or modifier."
+    },
+    {
+      "term": "comparative form",
+      "definition": "The inflectional or analytic form marking scalar superiority, as in bigger or more useful."
+    },
+    {
+      "term": "superlative",
+      "definition": "The form marking the extreme of a scale within a set, as in biggest or most useful."
+    },
+    {
+      "term": "metalinguistic comparison",
+      "definition": "A comparison that measures how well a description fits rather than comparing the things themselves."
+    },
+    {
+      "term": "analytic comparative",
+      "definition": "A comparative formed with more or less rather than an inflection."
+    },
+    {
+      "term": "inflectional comparative",
+      "definition": "A comparative formed with the suffix -er."
+    },
+    {
+      "term": "non-scalar equality",
+      "definition": "Identity or likeness expressed with same, similar or as."
+    },
+    {
+      "term": "non-scalar inequality",
+      "definition": "Difference or unlikeness expressed with different, other, else or unlike."
+    },
+    {
+      "term": "likeness",
+      "definition": "A relation of similarity rather than identity, often expressed by like or similar."
+    },
+    {
+      "term": "identity",
+      "definition": "The relation of being the same entity or set, often expressed by same."
+    },
+    {
+      "term": "correlative comparative",
+      "definition": "The construction the more ..., the merrier, with paired comparative phrases."
+    },
+    {
+      "term": "absolute superlative",
+      "definition": "A superlative use expressing a very high degree without comparison to a set."
+    },
+    {
+      "term": "relative superlative",
+      "definition": "A superlative use locating the extreme within a comparison set."
+    },
+    {
+      "term": "comparison set",
+      "definition": "The set of entities over which a superlative or set comparison ranges."
+    }
+  ],
+  "intro": [
+    "*The new bridge is slightly longer than the old one* does one kind of work; *it is not as beautiful as the stone bridge upstream* does another. Both are comparisons, and both draw on the same small set of markers, yet one ranks two values on a scale while the other says the new bridge falls short on a different scale. English also compares for identity (*the same bus as last time*) and for likeness (*similar to the old one*), where no scale is involved at all.",
+    "The chapter follows two distinctions that cut across each other: scalar versus non-scalar, and equality versus inequality. From there it moves to term and set comparison, to the governors that license comparative clauses, and to the *than*/*as* phrases that carry the secondary term. Later sections take up *as*, *like* and *unlike*, and the comparative and superlative forms that rank a member within a set.",
+    "A question worth asking of every example: what is being compared, and on what dimension? A degree, an identity, a likeness, a rank within a group — the syntax can look alike while the interpretation shifts. The sections that follow keep returning to that question."
+  ],
+  "sections": [
+    {
+      "id": "comparison-preliminaries",
+      "title": "Comparison and grade",
+      "advances": "predict",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Take *She is much bigger than she was then*. The word *bigger* carries a grade inflection, and the clause *than she was then* is a comparative clause — one of the three major kinds of finite subordinate clause in English. *She went to the same school as I went to* contains the same kind of subordinate clause, though nothing is being graded."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Very big*, *quite big* and *rather big* turn the volume up on a property, but they do not bring a second term along. *Bigger than* does: it sets two values against each other on a scale. The two systems overlap in the adjectives they use, and that overlap is exactly what makes them easy to confuse."
+        },
+        {
+          "type": "paragraph",
+          "text": "*I took the same bus as last time* compares two buses for identity, and *I took a different bus from last time* compares them for difference. Neither ranks anything. They borrow *as* and *than* from the scalar system — *different than* turns up in some varieties — but the question they answer is whether the terms are the same, not how much they differ."
+        },
+        {
+          "type": "table",
+          "title": "Comparison and adjacent systems",
+          "columns": [
+            "Construction",
+            "Example",
+            "What it does"
+          ],
+          "rows": [
+            [
+              "Degree grading",
+              "very big; rather useful",
+              "Grades a property without a second term"
+            ],
+            [
+              "Scalar comparison",
+              "bigger than; as big as",
+              "Compares values on a scale"
+            ],
+            [
+              "Non-scalar equality",
+              "the same bus as",
+              "Compares for identity or likeness"
+            ],
+            [
+              "Non-scalar inequality",
+              "different from",
+              "Compares for difference"
+            ],
+            [
+              "Set comparison",
+              "the biggest of the three",
+              "Ranks a member within a set"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What distinguishes bigger than from very big?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Bigger than compares two values on a scale; very big only grades one value.",
+            "feedback": "Comparative constructions have a secondary term or comparison set."
+          },
+          {
+            "id": "b",
+            "text": "Very big is non-scalar.",
+            "feedback": "Very big is scalar but not comparative."
+          },
+          {
+            "id": "c",
+            "text": "Bigger than contains no adjective.",
+            "feedback": "Bigger is the comparative form of big."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "scalar-non-scalar",
+      "title": "Scalar and non-scalar comparison",
+      "advances": "understand",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Kim is as old as Pat* and *Kim is older than Pat* both ask us to place two ages on a scale. The first puts them at the same point or above it; the second puts Kim higher. What makes the comparison scalar is the gradable expression — *old*, *heavy*, *careful* — and the marker says where the terms sit."
+        },
+        {
+          "type": "paragraph",
+          "text": "*I took the same bus as last time* asks whether the bus is the same one; *I took a different bus from last time* asks whether it is not. Nothing gradable is at stake, and no ranking follows."
+        },
+        {
+          "type": "paragraph",
+          "text": "*As* marks equality in both types, which is why the parallel is tempting. *Than* marks scalar inequality and some non-scalar inequality, as in *other than* or, in some varieties, *different than*. Sharing a marker is not sharing a meaning: the scalar use locates values, the non-scalar use sorts entities."
+        },
+        {
+          "type": "table",
+          "title": "Four types of comparison",
+          "columns": [
+            "",
+            "Equality",
+            "Inequality"
+          ],
+          "rows": [
+            [
+              "Scalar",
+              "Kim is as old as Pat.",
+              "Kim is older than Pat."
+            ],
+            [
+              "Non-scalar",
+              "I took the same bus as last time.",
+              "I took a different bus from last time."
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Scalar and non-scalar",
+          "items": [
+            {
+              "text": "Kim is as old as Pat.",
+              "mark": "ok",
+              "note": "Scalar equality: at least equal on the age scale."
+            },
+            {
+              "text": "Kim is older than Pat.",
+              "mark": "ok",
+              "note": "Scalar superiority."
+            },
+            {
+              "text": "I took the same bus as last time.",
+              "mark": "ok",
+              "note": "Non-scalar equality: identity of bus."
+            },
+            {
+              "text": "I took a different bus from last time.",
+              "mark": "ok",
+              "note": "Non-scalar inequality: difference of bus."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is the same bus as last time a non-scalar comparison?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It compares buses for identity, not for position on a scale.",
+            "feedback": "Bus is not being graded by degree."
+          },
+          {
+            "id": "b",
+            "text": "It contains no comparative marker.",
+            "feedback": "It contains as."
+          },
+          {
+            "id": "c",
+            "text": "It is a superlative.",
+            "feedback": "Same is not a superlative form."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "term-set",
+      "title": "Term and set comparison",
+      "advances": "worked",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "In *Ed is more tolerant than he used to be*, two degrees of tolerance are held up against each other: Ed now, Ed then. Call the one in the matrix clause the primary term and the one in the comparative clause the secondary term. The labels matter less than the split, since each term belongs to a different clause layer."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Ed made the most mistakes of them all* works differently. There is no second term to pair with Ed; instead a set — *them all* — provides the field, and Ed is placed at the top of it. *It sold for the highest price ever paid for a Cézanne* does the same with a set of prices."
+        },
+        {
+          "type": "paragraph",
+          "text": "The secondary term can go unsaid when context supplies it: *Ed was difficult then, but now he’s more tolerant* leaves *than he was then* to be recovered. Set comparisons often rewrite as term comparisons — *Ed made more mistakes than all the others* — which is a useful check on what the set actually contains."
+        },
+        {
+          "type": "table",
+          "title": "Term and set comparison",
+          "columns": [
+            "Type",
+            "Example",
+            "Terms or set"
+          ],
+          "rows": [
+            [
+              "Term",
+              "Ed is more tolerant than he used to be.",
+              "Present Ed vs past Ed"
+            ],
+            [
+              "Term",
+              "Kim’s version is superior to Pat’s.",
+              "Kim’s version vs Pat’s"
+            ],
+            [
+              "Set",
+              "Ed made the most mistakes of them all.",
+              "All members of the group"
+            ],
+            [
+              "Set",
+              "the highest price ever paid",
+              "All prices in the relevant set"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the comparison set in Ed made the most mistakes of them all?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The group referred to by them all",
+            "feedback": "Ed is ranked against the other members of that group."
+          },
+          {
+            "id": "b",
+            "text": "Ed alone",
+            "feedback": "The set includes the other members."
+          },
+          {
+            "id": "c",
+            "text": "The mistakes",
+            "feedback": "The mistakes are the dimension of comparison, not the set."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "governors-phrases",
+      "title": "Comparative governors and phrases",
+      "advances": "guided",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Something in the matrix has to license the comparison. *More*, *less*, *as*, *so*, *such*, *than*, *superior*, *inferior*, *prefer* and *rather* all do that work; call them comparative governors. What separates them is the complement each one allows: a clause, an NP or a phrase."
+        },
+        {
+          "type": "paragraph",
+          "text": "The governor and its complement form a comparative phrase. In *much bigger than she was*, *much* modifies *bigger* and *than she was* completes it; in *as careful as her sister*, the phrase is *as careful* and the complement is *as her sister*. The modifier sits inside the phrase, the complement outside the head."
+        },
+        {
+          "type": "paragraph",
+          "text": "Treating *than* and *as* as prepositions rather than subordinating conjunctions changes where the clause sits: it becomes the complement of the preposition. That analysis survives reduction. *Bob is as generous as Sue* has a one-word complement, and the missing material — *as Sue is generous* — is recovered from the matrix rather than spelled out."
+        },
+        {
+          "type": "table",
+          "title": "Governors and complements",
+          "columns": [
+            "Governor",
+            "Complement type",
+            "Example"
+          ],
+          "rows": [
+            [
+              "more",
+              "than clause or phrase",
+              "more careful than before"
+            ],
+            [
+              "less",
+              "than clause or phrase",
+              "less careful than before"
+            ],
+            [
+              "as",
+              "as clause or phrase",
+              "as careful as before"
+            ],
+            [
+              "so",
+              "as clause",
+              "so careful as to check twice"
+            ],
+            [
+              "superior",
+              "to phrase",
+              "superior to the old model"
+            ],
+            [
+              "prefer",
+              "to phrase or clause",
+              "prefer tea to coffee"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Comparative phrases",
+          "items": [
+            {
+              "text": "much bigger than she was",
+              "mark": "ok",
+              "note": "Much modifies bigger; than she was is the complement."
+            },
+            {
+              "text": "as careful as her sister",
+              "mark": "ok",
+              "note": "As careful is the comparative phrase; as her sister is the complement."
+            },
+            {
+              "text": "superior to the old model",
+              "mark": "ok",
+              "note": "Superior takes a to phrase."
+            },
+            {
+              "text": "prefer tea to coffee",
+              "mark": "ok",
+              "note": "Prefer takes a to phrase."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is than a preposition in this analysis?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It heads a phrase and takes the comparative clause as its complement.",
+            "feedback": "The clause is the complement of than, not a clause introduced by a conjunction."
+          },
+          {
+            "id": "b",
+            "text": "It always precedes an NP.",
+            "feedback": "It can take a clause complement."
+          },
+          {
+            "id": "c",
+            "text": "It has no meaning.",
+            "feedback": "It marks comparison."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "comparative-clauses",
+      "title": "Comparative clauses and reduction",
+      "advances": "transfer",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*She is much bigger than she was then* leaves us to supply the complement of *was*: we hear it as *big*. That gap is not sloppiness. The clause borrows structure from the matrix, which is why the comparison can be reduced and still understood."
+        },
+        {
+          "type": "paragraph",
+          "text": "Reduction has limits. *She wrote more plays than he wrote novels* is fine with the measure after *more* left empty. Put the measure in — *She wrote more plays than he wrote five novels* — and the sentence collapses. The comparative clause cannot spell out the very quantity that the comparison is measuring."
+        },
+        {
+          "type": "paragraph",
+          "text": "Reduction can go further, down to one remnant: *Bob is as generous as Sue*, *She is taller than him*. That remnant identifies the secondary term, and everything else comes from the matrix. Which element survives is decided by what the comparison needs to pick out."
+        },
+        {
+          "type": "examples",
+          "title": "Reduced comparative clauses",
+          "items": [
+            {
+              "text": "She is much bigger than she was then.",
+              "mark": "ok",
+              "note": "The comparative clause lacks the repeated adjective big."
+            },
+            {
+              "text": "She wrote more plays than he wrote novels.",
+              "mark": "ok",
+              "note": "The measure after more is left empty."
+            },
+            {
+              "text": "Bob is as generous as Sue.",
+              "mark": "ok",
+              "note": "The comparative clause is reduced to Sue."
+            },
+            {
+              "text": "She is taller than him.",
+              "mark": "ok",
+              "note": "The secondary term is a single pronoun."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is She wrote more plays than he wrote five novels ungrammatical?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The measure corresponding to more must be left empty in the comparative clause.",
+            "feedback": "The comparative clause is structurally reduced."
+          },
+          {
+            "id": "b",
+            "text": "Novels is a plural noun.",
+            "feedback": "Plurality is not the problem."
+          },
+          {
+            "id": "c",
+            "text": "Than cannot take a clause.",
+            "feedback": "Than takes comparative clauses."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "than-as-single",
+      "title": "Than/as with a single element",
+      "advances": "exit",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The remnant after *than* or *as* is usually an NP or a pronoun. *Bob is as generous as Sue* and *She is taller than him* each supply just enough to identify the second term, while the rest of the clause is understood."
+        },
+        {
+          "type": "paragraph",
+          "text": "*She is taller than I* and *She is taller than me* identify the same secondary term, but they wear their clause structure differently. Formal writing favours the nominative when a subject is understood; informal speech uses the accusative. The nominative makes the clausal source more visible."
+        },
+        {
+          "type": "paragraph",
+          "text": "The remnant can also be a phrase: *more quickly than before*, *as often as ever*. *Than before* is read as *than she was before*, *as ever* as *as she ever was*. The governor and the matrix decide what the fragment is understood to contain."
+        },
+        {
+          "type": "examples",
+          "title": "Single-element complements",
+          "items": [
+            {
+              "text": "Bob is as generous as Sue.",
+              "mark": "ok",
+              "note": "Sue is the secondary term."
+            },
+            {
+              "text": "She is taller than I.",
+              "mark": "ok",
+              "note": "Formal nominative in the reduced clause."
+            },
+            {
+              "text": "She is taller than me.",
+              "mark": "ok",
+              "note": "Informal accusative in the reduced clause."
+            },
+            {
+              "text": "more quickly than before",
+              "mark": "ok",
+              "note": "The complement is a temporal phrase."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why are both She is taller than I and She is taller than me possible?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The reduced clause allows nominative in formal style and accusative in informal style.",
+            "feedback": "The case reflects how much of the clause is explicitly represented."
+          },
+          {
+            "id": "b",
+            "text": "One of them is ungrammatical.",
+            "feedback": "Both occur in standard usage."
+          },
+          {
+            "id": "c",
+            "text": "Taller takes an object.",
+            "feedback": "The pronoun is the secondary term, not an object of taller."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "likeness-contrast",
+      "title": "Likeness, contrast, and the comparative phrase",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Comparison does not always set values against each other. *She looks like her mother* asserts likeness; *She looks different from her mother* asserts contrast. The complement can be an NP, a PP or a clause depending on the governor — *like her mother*, *different from her mother*, *the same as her mother*."
+        },
+        {
+          "type": "paragraph",
+          "text": "*More apparent than real* is stranger than it looks. Nothing is more apparent than something else; the sentence measures how well the description *apparent* fits against the description *real*. The syntax is comparative, but the comparison is between labels, not between degrees of a property."
+        },
+        {
+          "type": "paragraph",
+          "text": "*More apparent than real* sounds fine; *more apparent than the surface* does not. The reduced clause has to match the matrix category by category and function by function. A poor match leaves the comparison odd or ambiguous, which is why a sentence can be grammatical and still hard to read."
+        },
+        {
+          "type": "examples",
+          "title": "Likeness and metalinguistic comparison",
+          "items": [
+            {
+              "text": "She looks like her mother.",
+              "mark": "ok",
+              "note": "Likeness between two people."
+            },
+            {
+              "text": "She looks different from her mother.",
+              "mark": "ok",
+              "note": "Contrast between two people."
+            },
+            {
+              "text": "The recovery is more apparent than real.",
+              "mark": "ok",
+              "note": "Metalinguistic comparison of descriptions."
+            },
+            {
+              "text": "He is more lucky than skilful.",
+              "mark": "ok",
+              "note": "Comparison of two descriptions of the same person."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is metalinguistic about more apparent than real?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It compares how well two descriptions apply, not two degrees of a property.",
+            "feedback": "The comparison is about the aptness of apparent and real."
+          },
+          {
+            "id": "b",
+            "text": "It contains no comparative form.",
+            "feedback": "It contains more."
+          },
+          {
+            "id": "c",
+            "text": "It compares two people.",
+            "feedback": "No two people are mentioned."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "scalar-inequality",
+      "title": "Scalar inequality: more, less, and superior",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Scalar inequality comes in two directions. *Bigger than* and *more careful than* mark superiority; *less big than* and *less careful than* mark inferiority. Only superiority has an inflectional form. Equality and inferiority are built with separate words."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Older than* and *younger than* are both superiority comparatives: each says the primary term is further along its scale. The scales run opposite ways, so *younger* moves towards zero while *older* moves away from it. Superiority is a grammatical relation, not a compass direction."
+        },
+        {
+          "type": "paragraph",
+          "text": "*More* and *less* also quantify nouns and combine with degree determinatives: *more mistakes*, *fewer mistakes*, *less money*, *much more useful*. *Rather*, *prefer*, *superior* and *inferior* are peripheral governors with their own complements — *prefer tea to coffee*, *superior to the old model* — and they select *to* rather than *than*."
+        },
+        {
+          "type": "table",
+          "title": "Scalar inequality",
+          "columns": [
+            "Relation",
+            "Marker",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Superiority",
+              "-er or more",
+              "bigger than; more careful than"
+            ],
+            [
+              "Inferiority",
+              "less",
+              "less big than; less careful than"
+            ],
+            [
+              "Superiority with nouns",
+              "more / fewer",
+              "more mistakes; fewer mistakes"
+            ],
+            [
+              "Inferiority with nouns",
+              "less / fewer",
+              "less money; fewer coins"
+            ],
+            [
+              "Less central governor",
+              "prefer / superior",
+              "prefer tea to coffee; superior to"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Superiority and inferiority",
+          "items": [
+            {
+              "text": "She is taller than her brother.",
+              "mark": "ok",
+              "note": "Superiority on the height scale."
+            },
+            {
+              "text": "She is less tall than her brother.",
+              "mark": "ok",
+              "note": "Inferiority on the same scale."
+            },
+            {
+              "text": "He made more mistakes than I did.",
+              "mark": "ok",
+              "note": "More with a count noun."
+            },
+            {
+              "text": "He made fewer mistakes than I did.",
+              "mark": "ok",
+              "note": "Fewer with a count noun."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is younger than a comparison of superiority?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It is grammatically comparative, even though its scale is oriented towards youth.",
+            "feedback": "Superiority is grammatical; orientation is lexical."
+          },
+          {
+            "id": "b",
+            "text": "It means older than.",
+            "feedback": "It means less old."
+          },
+          {
+            "id": "c",
+            "text": "It contains less.",
+            "feedback": "It contains the comparative suffix -er."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "scalar-equality",
+      "title": "Scalar equality: as, so, and such",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Kim is as old as Pat* is true if Kim is older; it only rules out Kim being younger. Equality is usually a floor, not an exact match. Negate it — *Kim isn’t as old as Pat* — and the floor disappears, leaving inferiority."
+        },
+        {
+          "type": "paragraph",
+          "text": "Why the lower-bound reading? Most scales resist precise measurement, so exact equality is rarely the issue. *He made as many as eighteen mistakes* leans towards exactness because the number is explicit; *He made as many mistakes as I did* does not."
+        },
+        {
+          "type": "paragraph",
+          "text": "*So* and *such* handle neighbouring jobs: *so careful as to check twice*, *such a careful worker as Pat*. *As* is the general equality marker across scalar and non-scalar comparison, while *so* is more restricted and usually pulls a result or degree clause along with it."
+        },
+        {
+          "type": "table",
+          "title": "Scalar equality",
+          "columns": [
+            "Pattern",
+            "Example",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "as ... as",
+              "Kim is as old as Pat.",
+              "At least equal"
+            ],
+            [
+              "Negative as ... as",
+              "Kim isn’t as old as Pat.",
+              "Inferior"
+            ],
+            [
+              "so ... as",
+              "so careful as to check twice",
+              "Degree and result"
+            ],
+            [
+              "such ... as",
+              "such a worker as Pat",
+              "Equality of kind or degree"
+            ],
+            [
+              "as many as",
+              "as many as eighteen",
+              "At least or exact, context-dependent"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Equality and its lower bound",
+          "items": [
+            {
+              "text": "Jill is as clever as Liz.",
+              "mark": "ok",
+              "note": "Compatible with Jill being cleverer."
+            },
+            {
+              "text": "Jill isn’t as clever as Liz.",
+              "mark": "ok",
+              "note": "Entails that Jill is less clever."
+            },
+            {
+              "text": "He made as many as eighteen mistakes.",
+              "mark": "ok",
+              "note": "Strongly suggests exact equality."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What does Jill is as clever as Liz ordinarily mean?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Jill is at least as clever as Liz.",
+            "feedback": "Scalar equality normally gives a lower bound."
+          },
+          {
+            "id": "b",
+            "text": "Jill is exactly as clever as Liz.",
+            "feedback": "Exact equality is not entailed."
+          },
+          {
+            "id": "c",
+            "text": "Jill is less clever than Liz.",
+            "feedback": "That is the negative reading."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "modification-correlative",
+      "title": "Modification and the correlative comparative",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Degree modifiers adjust the gap between the two terms: *much bigger*, *far more useful*, *slightly less expensive*, *rather better*. *Very* is the odd one out — *very bigger* fails, though *very much bigger* works, because *very* modifies the adjective rather than the comparative."
+        },
+        {
+          "type": "paragraph",
+          "text": "*The* can attach to a comparative and turn it into a selector: *the bigger of the two*, *the more useful option*. It picks one alternative out of two, or one member out of a small set. That is close to superlative work but stops short of ranking an entire set."
+        },
+        {
+          "type": "paragraph",
+          "text": "The correlative comparative pairs two of these phrases: *The more you practise, the better you become*. The first sets a degree or condition, the second reports what varies with it. *The sooner, the better* is the same construction with both halves trimmed."
+        },
+        {
+          "type": "examples",
+          "title": "Modification and correlation",
+          "items": [
+            {
+              "text": "much bigger than before",
+              "mark": "ok",
+              "note": "Much modifies the comparative degree."
+            },
+            {
+              "text": "the bigger of the two",
+              "mark": "ok",
+              "note": "The article selects one of two alternatives."
+            },
+            {
+              "text": "The more you practise, the better you become.",
+              "mark": "ok",
+              "note": "Correlative comparative: degree correlates with result."
+            },
+            {
+              "text": "The sooner, the better.",
+              "mark": "ok",
+              "note": "Reduced correlative comparative."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What does The more you practise, the better you become express?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A correlation between increased practice and increased improvement",
+            "feedback": "The two comparative phrases are correlated."
+          },
+          {
+            "id": "b",
+            "text": "A comparison between two people",
+            "feedback": "The construction is about degrees, not two people."
+          },
+          {
+            "id": "c",
+            "text": "A superlative ranking",
+            "feedback": "It is a correlative comparative, not a superlative."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "non-scalar",
+      "title": "Non-scalar comparison: same, similar, different",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The non-scalar family sorts into three relations. *Same* claims identity, or at least exact correspondence; *similar* claims likeness without identity; *different* claims non-identity. The examples below show how little the nouns matter: a bus, a design, a person. None of these comparisons ranks anything."
+        },
+        {
+          "type": "paragraph",
+          "text": "Each governor brings its own complement pattern: *same as*, *similar to*, *different from*, *different than* in some varieties, *other than*, *else*. *Like* takes an NP and expresses likeness; *unlike* expresses contrast. None of these ranks two values, even when *as* or *than* appears."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Such* compares kind or quality — *such a report as this*, *such reports as these*. *Other* and *else* mark difference or exclusion — *someone other than Kim*, *nothing else*. The governor dictates what can follow it, and the relation follows the governor."
+        },
+        {
+          "type": "table",
+          "title": "Non-scalar comparison",
+          "columns": [
+            "Relation",
+            "Markers",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Identity",
+              "same ... as",
+              "the same bus as last time"
+            ],
+            [
+              "Likeness",
+              "similar to; like",
+              "similar to the old one; like her mother"
+            ],
+            [
+              "Difference",
+              "different from; other than; else",
+              "different from the old one; someone else"
+            ],
+            [
+              "Kind or quality",
+              "such ... as",
+              "such a report as this"
+            ],
+            [
+              "Contrast",
+              "unlike",
+              "unlike her mother"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Identity, likeness, difference",
+          "items": [
+            {
+              "text": "I took the same bus as last time.",
+              "mark": "ok",
+              "note": "Identity of bus."
+            },
+            {
+              "text": "This design is similar to the old one.",
+              "mark": "ok",
+              "note": "Likeness, not identity."
+            },
+            {
+              "text": "This design is different from the old one.",
+              "mark": "ok",
+              "note": "Difference."
+            },
+            {
+              "text": "She looks like her mother.",
+              "mark": "ok",
+              "note": "Likeness with like."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the difference between same as and similar to?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Same expresses identity or exact correspondence; similar expresses likeness without identity.",
+            "feedback": "The comparison is non-scalar in both cases, but the relation differs."
+          },
+          {
+            "id": "b",
+            "text": "Same is scalar; similar is non-scalar.",
+            "feedback": "Both are non-scalar."
+          },
+          {
+            "id": "c",
+            "text": "They are interchangeable.",
+            "feedback": "Identity and likeness are different relations."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "as-like-unlike",
+      "title": "As, like, and unlike",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*As* is the busiest of the markers. It carries scalar equality in *as old as*, non-scalar identity in *the same as*, and exemplification in *such as*. Its complement may be a clause or a reduced phrase, which is one reason it spreads across so many constructions."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Like* is a preposition of likeness — *She looks like her mother* — but it also takes finite clauses in some constructions: *It looks like it’s going to rain*. *As* can introduce a comparison or a supplement: *As you know, the deadline is Friday*. Its territory is wider than equality alone."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Unlike* is not merely *not like*. It sets the subject against the complement, often in a detached supplement: *Unlike her sister, she stayed calm*. The relation is contrast between entities, not a position on a scale."
+        },
+        {
+          "type": "examples",
+          "title": "As, like, unlike",
+          "items": [
+            {
+              "text": "She is as tall as her brother.",
+              "mark": "ok",
+              "note": "As marks scalar equality."
+            },
+            {
+              "text": "She looks like her mother.",
+              "mark": "ok",
+              "note": "Like marks likeness."
+            },
+            {
+              "text": "Unlike her mother, she enjoys publicity.",
+              "mark": "ok",
+              "note": "Unlike marks contrast."
+            },
+            {
+              "text": "It looks like it’s going to rain.",
+              "mark": "ok",
+              "note": "Like with a finite clause complement."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What relation does unlike express?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Contrast or non-likeness",
+            "feedback": "It presents the subject as different from the complement."
+          },
+          {
+            "id": "b",
+            "text": "Scalar inferiority",
+            "feedback": "It does not rank values on a scale."
+          },
+          {
+            "id": "c",
+            "text": "Identity",
+            "feedback": "That is same, not unlike."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "set-comparison",
+      "title": "Scalar set comparison: comparative and superlative",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Set comparison needs a set. With two members, the comparative does the work: *the bigger of the two*. With more, the superlative picks out the extreme: *the biggest of the three*, *the most useful option*."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Biggest* and *most useful* both mark the extreme of a set, but they do it by different means: one inflects, the other uses *most*. And *most* has a second life meaning “very” in *a most interesting article*. Context separates the absolute reading, which intensifies, from the relative reading, which ranks."
+        },
+        {
+          "type": "paragraph",
+          "text": "The set can be spelled out with *of* or *in* — *the best of the three*, *the tallest in the class* — or left to context, as in *She is the tallest*. Relative superlatives normally take *the*, the definite article anchoring the ranking."
+        },
+        {
+          "type": "table",
+          "title": "Grade in set comparison",
+          "columns": [
+            "Form",
+            "Example",
+            "Use"
+          ],
+          "rows": [
+            [
+              "Plain",
+              "big",
+              "No comparison"
+            ],
+            [
+              "Comparative",
+              "bigger",
+              "Two members or a restricted set"
+            ],
+            [
+              "Superlative",
+              "biggest",
+              "Extreme of a set"
+            ],
+            [
+              "Analytic superlative",
+              "most useful",
+              "Longer adjectives"
+            ],
+            [
+              "Absolute most",
+              "a most interesting article",
+              "Very, not superlative ranking"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Comparative and superlative sets",
+          "items": [
+            {
+              "text": "the bigger of the two",
+              "mark": "ok",
+              "note": "Comparative with a two-member set."
+            },
+            {
+              "text": "the biggest of the three",
+              "mark": "ok",
+              "note": "Superlative with an explicit set."
+            },
+            {
+              "text": "the most useful option",
+              "mark": "ok",
+              "note": "Analytic superlative."
+            },
+            {
+              "text": "a most interesting article",
+              "mark": "ok",
+              "note": "Absolute most: very interesting."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the difference between the most useful option and a most interesting article?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The first is a relative superlative; the second is an absolute use meaning “very”.",
+            "feedback": "Context and the definite article help distinguish the readings."
+          },
+          {
+            "id": "b",
+            "text": "The first is comparative; the second is superlative.",
+            "feedback": "Both contain most, but their uses differ."
+          },
+          {
+            "id": "c",
+            "text": "They are identical in meaning.",
+            "feedback": "One ranks within a set; the other intensifies."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "chapter-review",
+      "title": "Chapter Review",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Two distinctions organise everything in this chapter: scalar versus non-scalar, and equality versus inequality. Scalar comparison places values on a scale; non-scalar comparison asks about identity, likeness or difference. Cutting across them is the difference between term comparison, which pairs a primary and a secondary term, and set comparison, which ranks a member within a group."
+        },
+        {
+          "type": "paragraph",
+          "text": "Comparative governors decide what kind of complement appears. *Than* and *as* take clauses or reduced phrases, and those clauses are incomplete by design. Superiority may be inflectional or analytic; inferiority and equality are analytic. Scalar equality sets a lower bound rather than an exact value."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Same*, *similar*, *different*, *other*, *else*, *as*, *like* and *unlike* cover the non-scalar ground, while comparative and superlative forms handle sets, with *most* split between absolute and relative readings. Because the markers recur across types, the construction and the context have to settle what is being compared."
+        },
+        {
+          "type": "note",
+          "tone": "why",
+          "title": "A comparison checklist",
+          "text": "Identify the primary term and the secondary term or set. Decide whether the comparison is scalar or non-scalar, equality or inequality. Find the governor and its complement. Then check whether the clause is reduced and whether the reading is metalinguistic, absolute or relative."
+        }
+      ],
+      "check": {
+        "prompt": "Which statement correctly describes scalar equality?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It normally means “at least equal” and excludes inferiority.",
+            "feedback": "It is compatible with superiority unless context suggests exact equality."
+          },
+          {
+            "id": "b",
+            "text": "It always means exact equality.",
+            "feedback": "Exact equality is not entailed."
+          },
+          {
+            "id": "c",
+            "text": "It is marked by than.",
+            "feedback": "Than marks inequality; as marks equality."
+          }
+        ],
+        "answer": "a"
+      }
+    }
+  ],
+  "worked": [
+    "Take *The new bridge is slightly longer than the old one, but it is not as beautiful as the stone bridge upstream*. The first comparison is scalar inequality: *longer than* expresses superiority on the length scale, modified by *slightly*. The secondary term is *the old one*.",
+    "The second comparison is scalar equality under negation: *not as beautiful as the stone bridge upstream* entails that the new bridge is less beautiful. The comparison set is the two bridges, and the scale is beauty. The example contrasts superiority and inferiority using the same comparative system."
+  ],
+  "application": [
+    "Find the governor: more, less, as, than, same, similar, different, like or a superlative. Identify the primary term and the secondary term or set. Then decide whether the comparison is scalar or non-scalar and whether it expresses equality or inequality.",
+    "For a comparative clause, reconstruct the omitted material from the matrix. Check whether the reduction is to a single element, a phrase or a full clause. Then identify the function of the gap or remnant inside the comparative clause.",
+    "For a superlative, identify the comparison set and decide whether the reading is relative or absolute. For non-scalar comparison, decide whether the relation is identity, likeness, difference or exclusion. The markers overlap, but the interpretations do not."
+  ],
+  "reveal": [
+    "In *The new bridge is slightly longer than the old one, but it is not as beautiful as the stone bridge upstream*, *longer than* is a scalar superiority comparison and *not as beautiful as* is a negated scalar equality entailing inferiority. The secondary terms are *the old one* and *the stone bridge upstream*."
+  ],
+  "recap": [
+    "Scalar comparison ranks values on a scale; non-scalar comparison concerns identity, likeness and difference. Term comparison relates two terms; set comparison ranks a member within a set. Comparative clauses are reduced and interpreted through the matrix.",
+    "More, less, as, than, same, similar, different, like and unlike are comparative governors with different complement patterns. Scalar equality gives a lower bound, and superlatives can be relative or absolute."
+  ],
+  "self_check": [
+    {
+      "question": "What are the two cross-cutting distinctions in comparative constructions?",
+      "answer": "Scalar versus non-scalar, and equality versus inequality."
+    },
+    {
+      "question": "What is the difference between term and set comparison?",
+      "answer": "Term comparison relates a primary and secondary term; set comparison ranks a member within a set."
+    },
+    {
+      "question": "Why is a comparative clause structurally reduced?",
+      "answer": "Material recoverable from the matrix is omitted, leaving a clause or remnant interpreted through the matrix."
+    },
+    {
+      "question": "What does scalar equality ordinarily mean?",
+      "answer": "At least equal; it excludes inferiority but is compatible with superiority."
+    },
+    {
+      "question": "What is the difference between a relative and an absolute superlative?",
+      "answer": "A relative superlative ranks the extreme within a set; an absolute superlative expresses a very high degree without ranking."
+    }
+  ],
+  "opening": [
+    {
+      "prompt": "Which comparison is non-scalar?",
+      "options": [
+        {
+          "id": "a",
+          "text": "I took the same bus as last time.",
+          "feedback": "It compares for identity, not degree."
+        },
+        {
+          "id": "b",
+          "text": "Kim is older than Pat.",
+          "feedback": "That is scalar superiority."
+        },
+        {
+          "id": "c",
+          "text": "Kim is as old as Pat.",
+          "feedback": "That is scalar equality."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is the primary term in Ed is more tolerant than he used to be?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ed’s present tolerance",
+          "feedback": "It is expressed in the matrix clause."
+        },
+        {
+          "id": "b",
+          "text": "Ed’s past tolerance",
+          "feedback": "That is the secondary term."
+        },
+        {
+          "id": "c",
+          "text": "Ed",
+          "feedback": "Ed is the subject, but the comparison is between degrees of tolerance."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What does than take as its complement?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A comparative clause or reduced phrase",
+          "feedback": "Than is analysed as a preposition taking the comparative complement."
+        },
+        {
+          "id": "b",
+          "text": "An NP only",
+          "feedback": "It can take a clause."
+        },
+        {
+          "id": "c",
+          "text": "A finite clause only",
+          "feedback": "It can take reduced phrases."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What does Jill is as clever as Liz ordinarily mean?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Jill is at least as clever as Liz.",
+          "feedback": "Scalar equality gives a lower bound."
+        },
+        {
+          "id": "b",
+          "text": "Jill is exactly as clever as Liz.",
+          "feedback": "Exact equality is not entailed."
+        },
+        {
+          "id": "c",
+          "text": "Jill is less clever than Liz.",
+          "feedback": "That is the negative reading."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which expression marks non-scalar likeness?",
+      "options": [
+        {
+          "id": "a",
+          "text": "similar to",
+          "feedback": "Similarity is likeness without identity."
+        },
+        {
+          "id": "b",
+          "text": "bigger than",
+          "feedback": "That is scalar superiority."
+        },
+        {
+          "id": "c",
+          "text": "less than",
+          "feedback": "That is scalar inferiority."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "closing": [
+    {
+      "prompt": "Why is the same bus as last time non-scalar?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It compares for identity, not degree on a scale.",
+          "feedback": "Bus is not graded."
+        },
+        {
+          "id": "b",
+          "text": "It contains no as.",
+          "feedback": "It contains as."
+        },
+        {
+          "id": "c",
+          "text": "It is a superlative.",
+          "feedback": "Same is not a superlative."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Why is She wrote more plays than he wrote five novels ungrammatical?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The measure after more must be left empty in the comparative clause.",
+          "feedback": "Comparative clauses are structurally reduced."
+        },
+        {
+          "id": "b",
+          "text": "Plays is plural.",
+          "feedback": "Plurality is not the issue."
+        },
+        {
+          "id": "c",
+          "text": "Than cannot take a clause.",
+          "feedback": "Than takes comparative clauses."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Why is younger than a superiority comparison?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It is grammatically comparative; the scale orientation is lexical.",
+          "feedback": "Superiority is grammatical, orientation is meaning."
+        },
+        {
+          "id": "b",
+          "text": "It means older than.",
+          "feedback": "It means less old."
+        },
+        {
+          "id": "c",
+          "text": "It contains less.",
+          "feedback": "It contains -er."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is metalinguistic about more apparent than real?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It compares how well descriptions apply, not two degrees of a property.",
+          "feedback": "The comparison is about the aptness of apparent and real."
+        },
+        {
+          "id": "b",
+          "text": "It contains no comparative.",
+          "feedback": "It contains more."
+        },
+        {
+          "id": "c",
+          "text": "It compares two people.",
+          "feedback": "No two people are compared."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is the difference between a relative and an absolute superlative?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Relative ranks within a set; absolute expresses a very high degree.",
+          "feedback": "A most interesting article is absolute; the most useful option is relative."
+        },
+        {
+          "id": "b",
+          "text": "Relative uses -er; absolute uses -est.",
+          "feedback": "Both can use most."
+        },
+        {
+          "id": "c",
+          "text": "They are identical.",
+          "feedback": "The readings differ."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "stages": {
+    "predict": {
+      "prompt": "Which comparison is non-scalar?",
+      "options": [
+        {
+          "id": "a",
+          "text": "I took the same bus as last time.",
+          "feedback": "It compares for identity."
+        },
+        {
+          "id": "b",
+          "text": "Kim is older than Pat.",
+          "feedback": "That is scalar superiority."
+        },
+        {
+          "id": "c",
+          "text": "Kim is as old as Pat.",
+          "feedback": "That is scalar equality."
+        }
+      ],
+      "answer": "a"
+    },
+    "guided": {
+      "prompt": "What is the comparison set in Ed made the most mistakes of them all?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The group referred to by them all",
+          "feedback": "Ed is ranked against that group."
+        },
+        {
+          "id": "b",
+          "text": "Ed alone",
+          "feedback": "The set includes the others."
+        },
+        {
+          "id": "c",
+          "text": "The mistakes",
+          "feedback": "Mistakes are the dimension, not the set."
+        }
+      ],
+      "answer": "a"
+    },
+    "transfer": {
+      "prompt": "Why is She wrote more plays than he wrote five novels ungrammatical?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The measure after more must be left empty in the comparative clause.",
+          "feedback": "The clause is structurally reduced."
+        },
+        {
+          "id": "b",
+          "text": "Plays is plural.",
+          "feedback": "Plurality is not the issue."
+        },
+        {
+          "id": "c",
+          "text": "Than cannot take a clause.",
+          "feedback": "Than takes comparative clauses."
+        }
+      ],
+      "answer": "a"
+    },
+    "exit": {
+      "prompt": "What does Jill is as clever as Liz ordinarily mean?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Jill is at least as clever as Liz.",
+          "feedback": "Scalar equality gives a lower bound."
+        },
+        {
+          "id": "b",
+          "text": "Jill is exactly as clever as Liz.",
+          "feedback": "Exact equality is not entailed."
+        },
+        {
+          "id": "c",
+          "text": "Jill is less clever than Liz.",
+          "feedback": "That is the negative reading."
+        }
+      ],
+      "answer": "a"
+    }
+  }
+}

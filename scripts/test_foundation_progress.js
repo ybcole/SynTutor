@@ -3,7 +3,7 @@ import { execFileSync } from 'node:child_process';
 import { validateCourse } from '../web/js/lesson-core.js';
 import { createFoundationStore } from '../web/js/foundation-progress.js';
 
-const course = validateCourse(JSON.parse(execFileSync('python3', ['scripts/test_foundation_fixture.py'])));
+const course = validateCourse(JSON.parse(execFileSync('python3', ['scripts/test_foundation_fixture.py'], { maxBuffer: 32 * 1024 * 1024 })));
 const chapter = course.lessons.find(l => l.revised_assessment);
 const { closing, required_sections: sections } = chapter.revised_assessment;
 const attempt = (id, correct) => ({

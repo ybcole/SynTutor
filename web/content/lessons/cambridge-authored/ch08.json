@@ -1,0 +1,1686 @@
+{
+  "title": "The clause: adjuncts",
+  "description": "Map the meanings and positions of adjuncts, from manner and place to condition, concession and speech-act comment.",
+  "example": "Fortunately, the train left on time, although the platform was crowded.",
+  "key_terms": [
+    {
+      "term": "adjunct",
+      "definition": "A modifier in clause or VP structure, together with related supplements."
+    },
+    {
+      "term": "complement",
+      "definition": "A dependent licensed by a head and closely integrated into its structure."
+    },
+    {
+      "term": "manner",
+      "definition": "The way in which a process is carried out, as in She spoke quietly."
+    },
+    {
+      "term": "means",
+      "definition": "The method by which something is achieved, as in by breaking the door down."
+    },
+    {
+      "term": "instrument",
+      "definition": "An entity used to carry out an action, as in with a hammer."
+    },
+    {
+      "term": "act-related",
+      "definition": "An adjunct that evaluates or qualifies the act performed rather than its manner."
+    },
+    {
+      "term": "location",
+      "definition": "A static spatial or temporal relation, as in in the garden or at six."
+    },
+    {
+      "term": "source",
+      "definition": "The starting point of a path or change, as in from the station."
+    },
+    {
+      "term": "goal",
+      "definition": "The endpoint of a path or change, as in to the station."
+    },
+    {
+      "term": "path",
+      "definition": "An intermediate route between source and goal, as in through the tunnel."
+    },
+    {
+      "term": "direction",
+      "definition": "The orientation of movement, as in towards the door."
+    },
+    {
+      "term": "extent",
+      "definition": "The measured size or reach of a situation, as in five miles or two hours."
+    },
+    {
+      "term": "duration",
+      "definition": "The temporal extent of a situation, as in for two hours."
+    },
+    {
+      "term": "bounding",
+      "definition": "Presenting a situation as having a terminal point or complete extent."
+    },
+    {
+      "term": "frequency",
+      "definition": "How often a situation occurs, as in twice or every day."
+    },
+    {
+      "term": "degree",
+      "definition": "The intensity or extent of a property or process, as in very much."
+    },
+    {
+      "term": "purpose",
+      "definition": "The intended result of an action, as in in order to help."
+    },
+    {
+      "term": "reason",
+      "definition": "The explanation for a situation, as in because of the strike."
+    },
+    {
+      "term": "result",
+      "definition": "The outcome of a situation, as in so that the hills glowed."
+    },
+    {
+      "term": "concession",
+      "definition": "A contrast in which a circumstance might lead one to expect the opposite of the main clause."
+    },
+    {
+      "term": "conditional",
+      "definition": "A construction in which one situation is presented as dependent on another."
+    },
+    {
+      "term": "protasis",
+      "definition": "The subordinate clause expressing the condition in a conditional construction."
+    },
+    {
+      "term": "apodosis",
+      "definition": "The matrix clause expressing the consequence in a conditional construction."
+    },
+    {
+      "term": "open conditional",
+      "definition": "A conditional that leaves the fulfilment of the condition open."
+    },
+    {
+      "term": "remote conditional",
+      "definition": "A conditional using modal preterite or irrealis marking to present the condition as remote."
+    },
+    {
+      "term": "domain",
+      "definition": "The sphere or field within which a clause is claimed to hold, as in politically."
+    },
+    {
+      "term": "modality",
+      "definition": "The qualification of a proposition for possibility, probability or necessity."
+    },
+    {
+      "term": "evaluation",
+      "definition": "A comment on the value or fortunate status of a situation."
+    },
+    {
+      "term": "speech act",
+      "definition": "The act performed in speaking, such as asserting, asking or conceding."
+    },
+    {
+      "term": "connective",
+      "definition": "An adjunct that links a clause to the surrounding discourse."
+    },
+    {
+      "term": "supplement",
+      "definition": "A prosodically detached element related to an anchor without being a modifier."
+    }
+  ],
+  "intro": [
+    "*They left.* Grammatical, complete, and almost empty. Add *quietly*, *at noon*, *because the train was cancelled*, *fortunately*, *according to Kim*, and the same three words become a situated event, a reported cause, an evaluation and a hedge. Everything added is an adjunct: optional from the verb’s point of view, and doing very different work from one another.",
+    "This chapter sorts that work. It starts with the complement/adjunct boundary, then moves through manner and instrument, space, time and duration, frequency and degree, cause and result, concession and condition. The later sections take up the categories that sit further out — domain, modality, evaluation, speech act, discourse connection — and the positions that help tell them apart.",
+    "Two questions recur. How tightly is the dependent bound into the clause? And what kind of meaning does it contribute? The answers are related but not identical. A manner phrase is usually bound tight; an evaluation usually floats free as a supplement. A reason can belong to the proposition or comment on why the speaker is asserting it — same words, different scope."
+  ],
+  "sections": [
+    {
+      "id": "adjuncts-map",
+      "title": "Adjuncts and the shape of the clause",
+      "advances": "predict",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*She presented her case very eloquently.* Remove the adverb and the clause still works: something is lost, nothing is missing. *She put the file in the drawer* behaves differently. Take out *in the drawer* and *She put the file* leaves a hole the verb itself has opened. The first dependent is an adjunct, the second a complement, and the predicator — the verb phrase — licenses only the second."
+        },
+        {
+          "type": "paragraph",
+          "text": "Manner, means, instrument, act-related evaluation, place, time, extent, duration, aspect, frequency, serial order, degree, purpose, reason, result, concession, condition, domain, modality, evaluation, speech act, discourse connection: that is a wide range. A list that long is a reminder that “adjunct” names a structural position, not one semantic job."
+        },
+        {
+          "type": "paragraph",
+          "text": "Categories overlap in practice. *If you must know* has the form of a condition and the function of a speech-act comment. *Because her light is off* can give the reason she went home or the reason I can assert that she did. Same string, two scopes, two categories — which is why the analysis keeps asking what a dependent takes scope over rather than what it looks like."
+        },
+        {
+          "type": "table",
+          "title": "A semantic map of adjuncts",
+          "columns": [
+            "Category",
+            "Example",
+            "Typical question"
+          ],
+          "rows": [
+            [
+              "Manner",
+              "She spoke quietly.",
+              "How?"
+            ],
+            [
+              "Instrument",
+              "She cut it with a knife.",
+              "With what?"
+            ],
+            [
+              "Location",
+              "They met in the garden.",
+              "Where?"
+            ],
+            [
+              "Duration",
+              "They stayed for two hours.",
+              "How long?"
+            ],
+            [
+              "Frequency",
+              "She visits every week.",
+              "How often?"
+            ],
+            [
+              "Reason",
+              "They left because of the strike.",
+              "Why?"
+            ],
+            [
+              "Condition",
+              "We’ll go if it’s fine.",
+              "Under what condition?"
+            ],
+            [
+              "Evaluation",
+              "Fortunately, nobody was hurt.",
+              "What is the speaker’s attitude?"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "items": [
+            {
+              "text": "She presented her case very eloquently.",
+              "mark": "ok",
+              "note": "Adjunct: the clause survives without it."
+            },
+            {
+              "text": "She put the file in the drawer.",
+              "mark": "ok",
+              "note": "Complement: put requires a locative."
+            },
+            {
+              "text": "She put the file.",
+              "mark": "bad",
+              "note": "The required locative is missing; the clause is incomplete."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which expression is an adjunct rather than a complement in She put the file in the drawer?",
+        "options": [
+          {
+            "id": "a",
+            "text": "There is no adjunct; in the drawer is a complement of put.",
+            "feedback": "Put requires a goal complement in this sense."
+          },
+          {
+            "id": "b",
+            "text": "The file is an adjunct.",
+            "feedback": "The file is the direct object."
+          },
+          {
+            "id": "c",
+            "text": "She is an adjunct.",
+            "feedback": "She is the subject."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "parameters",
+      "title": "Six parameters for analysing adjuncts",
+      "advances": "understand",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*It was yesterday that he returned* sounds fine; *It was fortunately that he returned* does not. Both are adverbs in the same position, so the difference is not positional. *Yesterday* can be the focus of a cleft, an alternative question or contrastive negation — *Did he return yesterday or on Tuesday?* — and *fortunately* cannot. Focus potential is the first of six parameters."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Yesterday* restricts truth: if he returned the day before, the sentence is false. *Fortunately* does not — the return can have happened and the sentence still be true when it was not fortunate at all. Restrictiveness is the second parameter. Evaluations are typically non-restrictive."
+        },
+        {
+          "type": "paragraph",
+          "text": "*When* and *where* question temporal and locative adjuncts, *why* questions purpose and reason. The remaining four parameters are questioning, scope, bounding and realisation. Scope decides whether an adjunct applies inside or outside negation, or inside or outside another adjunct. Bounding explains why *She ran to the station* goes with *in twenty minutes* rather than *for twenty minutes*. Realisation is the internal form: AdvP, PP, NP, clause."
+        },
+        {
+          "type": "table",
+          "title": "Parameters of analysis",
+          "columns": [
+            "Parameter",
+            "Question",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Focus",
+              "Can it be clefted or contrastively questioned?",
+              "It was yesterday that he left."
+            ],
+            [
+              "Restrictiveness",
+              "Does it affect truth conditions?",
+              "yesterday vs fortunately"
+            ],
+            [
+              "Questioning",
+              "Which interrogative word fits?",
+              "When? Where? Why?"
+            ],
+            [
+              "Scope",
+              "What does it take scope over?",
+              "not ... because"
+            ],
+            [
+              "Bounding",
+              "Does it bound the situation?",
+              "to the station, two miles"
+            ],
+            [
+              "Realisation",
+              "What is its internal form?",
+              "AdvP, PP, NP, clause"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Focus and scope",
+          "items": [
+            {
+              "text": "It was yesterday that he returned.",
+              "mark": "ok",
+              "note": "A temporal adjunct can be focused in a cleft."
+            },
+            {
+              "text": "Fortunately, he returned.",
+              "mark": "ok",
+              "note": "An evaluation is a non-restrictive supplement."
+            },
+            {
+              "text": "I didn’t buy it because it was too expensive.",
+              "mark": "ok",
+              "note": "The reason adjunct has scope over the negation."
+            },
+            {
+              "text": "I didn’t appoint him just because he was my son.",
+              "mark": "ok",
+              "note": "The negation has scope over the reason adjunct."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is fortunately different from yesterday in focus potential?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Unlike yesterday, fortunately cannot be the focus of a cleft or alternative question.",
+            "feedback": "It is a non-restrictive evaluation, not an integrated temporal modifier."
+          },
+          {
+            "id": "b",
+            "text": "Fortunately is a complement.",
+            "feedback": "It is an adjunct, typically a supplement."
+          },
+          {
+            "id": "c",
+            "text": "Yesterday cannot be questioned.",
+            "feedback": "Yesterday can be questioned with when."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "manner-means-instrument",
+      "title": "Manner, means, and instrument",
+      "advances": "worked",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*She walked slowly away*, *He got in by breaking the door down*, *I broke the nut with a hammer*. Each answers *how*, and each answers differently. The first describes how the walking was done; the second names the method that achieved the entry; the third names the thing used. Manner, means, instrument, in that order."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Carefully*, *hastily*, *raucously* are gradable *-ly* adverbs, but the category is functional, not morphological. PPs do the same job in *with great care*, *without much consideration*, *in a studiously nonchalant manner*. AdvP and PP manner expressions coordinate freely, as in *She handled the situation skilfully and with great tact*, which is one sign that they share a function."
+        },
+        {
+          "type": "paragraph",
+          "text": "*She behaved outrageously* and *They treated her shabbily* need the manner expression for the intended sense, and *word* and *dress* pattern the same way. Some manner dependents are complements. With most verbs the manner phrase is optional and qualifies a predicate that is already complete."
+        },
+        {
+          "type": "paragraph",
+          "text": "Manner can reach into the result. *He sealed the window hermetically* describes how the sealing was done and implies that the window ended up sealed that way. *They painted the house badly* can describe the process, the finished appearance, or both at once."
+        },
+        {
+          "type": "examples",
+          "title": "Three ways of answering how",
+          "items": [
+            {
+              "text": "She departed very hastily.",
+              "mark": "ok",
+              "note": "Manner: the departure was hasty."
+            },
+            {
+              "text": "He got in by breaking the door down.",
+              "mark": "ok",
+              "note": "Means: the method used to get in."
+            },
+            {
+              "text": "I broke the nut with a hammer.",
+              "mark": "ok",
+              "note": "Instrument: the hammer was used."
+            },
+            {
+              "text": "She behaved outrageously.",
+              "mark": "ok",
+              "note": "A manner complement required by the verb’s sense."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which sentence contains an instrument adjunct?",
+        "options": [
+          {
+            "id": "a",
+            "text": "I broke the nut with a hammer.",
+            "feedback": "The hammer is the entity used to break the nut."
+          },
+          {
+            "id": "b",
+            "text": "I broke the nut by hitting it.",
+            "feedback": "That is means: the method used."
+          },
+          {
+            "id": "c",
+            "text": "I broke the nut carefully.",
+            "feedback": "That is manner."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "act-related",
+      "title": "Act-related adjuncts",
+      "advances": "guided",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*He spoke to them rudely* and *Rudely, he spoke only to her husband* are not the same claim. The first says the speaking was rude. The second says the act of speaking only to the husband was rude — he might have been perfectly polite to the husband while cutting everyone else. Position turns a manner adverb into an act-related one."
+        },
+        {
+          "type": "paragraph",
+          "text": "Act-related adjuncts come in subjective and volitional kinds. Subjective ones give the speaker’s evaluation of the act: *foolishly*, *wisely*, *tactfully*, *carelessly*. Volitional ones give the agent’s intention or willingness: *deliberately*, *reluctantly*, *accidentally*, *voluntarily*. PPs join in, as in *with his usual tact*, *on purpose*, *under duress*."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Foolishly, he answered two questions* evaluates the act; *He answered the question foolishly* describes the answer. Position is the usual clue: front position favours the act-related reading, end position the manner reading. Central position can be genuinely ambiguous, or it can lean one way or the other depending on the adverb."
+        },
+        {
+          "type": "examples",
+          "title": "Act-related and manner readings",
+          "items": [
+            {
+              "text": "Rudely, he spoke only to her husband.",
+              "mark": "ok",
+              "note": "The act of speaking only to the husband was rude."
+            },
+            {
+              "text": "He spoke to them rudely.",
+              "mark": "ok",
+              "note": "The manner of speaking was rude."
+            },
+            {
+              "text": "Foolishly, he answered two questions.",
+              "mark": "ok",
+              "note": "The act of answering two questions was foolish."
+            },
+            {
+              "text": "He answered the question foolishly.",
+              "mark": "ok",
+              "note": "The answer itself was foolish."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What does Rudely, he spoke only to her husband evaluate?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The act of speaking only to the husband",
+            "feedback": "The manner of speaking could still have been polite."
+          },
+          {
+            "id": "b",
+            "text": "The manner of his speech",
+            "feedback": "That is the end-position reading."
+          },
+          {
+            "id": "c",
+            "text": "The husband’s behaviour",
+            "feedback": "The adjunct evaluates the subject’s act."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "space",
+      "title": "Location, source, goal, path, and direction",
+      "advances": "transfer",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*We met under the station clock* locates the meeting; *The key is on the table* locates the key. Both are spatial, but only the second is a complement of *be*. Location can be either complement or adjunct — *put* and *be* select it, *have breakfast* does not — and the same phrase can change role with the verb."
+        },
+        {
+          "type": "paragraph",
+          "text": "Motion adds structure. *John ran from the attic to the kitchen* gives source and goal in one path. *She took her passport out of the drawer* gives only the source; *Kim put the key under the mat* only the goal. *We drove through the tunnel* traces an intermediate path, and *She ran towards the house* gives direction without arrival."
+        },
+        {
+          "type": "paragraph",
+          "text": "Locatives attach to different things. *I saw your father in London* locates the event; *I saw your father at the window* locates your father. *She carried the child on her shoulders* locates the object carried. English does not mark these readings with different forms, so context and the choice of landmark do the work."
+        },
+        {
+          "type": "paragraph",
+          "text": "*She poked him in the ribs*; *He patted her on the shoulder*: these relate to *She poked his ribs* and *He patted her shoulder*, but they are not simple locatives — the person is affected, not merely positioned. A special case is the affected body part. Locatives also extend metaphorically into *in Smith’s class*, *in our family*, *in medicine*, where the “place” is social or conceptual rather than physical."
+        },
+        {
+          "type": "table",
+          "title": "Spatial categories",
+          "columns": [
+            "Category",
+            "Example",
+            "Meaning"
+          ],
+          "rows": [
+            [
+              "Location",
+              "under the clock",
+              "Static position"
+            ],
+            [
+              "Source",
+              "from the attic",
+              "Starting point"
+            ],
+            [
+              "Goal",
+              "to the kitchen",
+              "Endpoint"
+            ],
+            [
+              "Path",
+              "through the tunnel",
+              "Intermediate route"
+            ],
+            [
+              "Direction",
+              "towards the house",
+              "Orientation of movement"
+            ],
+            [
+              "Theme location",
+              "at the window",
+              "Location of a participant"
+            ],
+            [
+              "Affected body part",
+              "in the ribs",
+              "Part of the patient affected"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "In John ran from the attic to the kitchen, what is to the kitchen?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A goal adjunct or complement",
+            "feedback": "It marks the endpoint of the path."
+          },
+          {
+            "id": "b",
+            "text": "A source",
+            "feedback": "The source is from the attic."
+          },
+          {
+            "id": "c",
+            "text": "A path",
+            "feedback": "A path would be through the tunnel."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "time-duration",
+      "title": "Time, extent, and duration",
+      "advances": "exit",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Yesterday* is read off the moment of utterance, *on 3 May* off the calendar, *after the meeting* off another situation. Deictic, calendar-based, anaphoric: three ways of locating a situation in time. Temporal location is usually an adjunct, though some verbs take it as a complement — *The meeting is tomorrow*, *I’ve scheduled it for Tuesday*."
+        },
+        {
+          "type": "paragraph",
+          "text": "*For two hours*, *all week*, *from Monday until Thursday*, *since 2020*: these measure duration either overall or by terminal points. Duration is extent in time. The preposition matters: *for* marks overall duration, *in* marks the time taken to reach a terminus. *She wrote it in two days* and *She studied for two days* differ in aspect, not in the calendar."
+        },
+        {
+          "type": "paragraph",
+          "text": "*She ran for ten minutes* presents an unbounded activity; add a goal and the situation closes — *She ran to the station in ten minutes* supports the accomplishment reading. Bounding is where the aspectual difference shows. Some clauses allow either construal, because the same situation can be viewed perfectively or imperfectively."
+        },
+        {
+          "type": "paragraph",
+          "text": "Aspectual adjuncts — *already*, *still*, *yet*, *any more*, *no longer* — are polarity-sensitive. They say where a situation stands in its own history: beginning, continuing, ending. Which of them can appear depends on the clause’s polarity and viewpoint, not simply on when the event happened."
+        },
+        {
+          "type": "table",
+          "title": "Temporal categories",
+          "columns": [
+            "Category",
+            "Example",
+            "Question"
+          ],
+          "rows": [
+            [
+              "Temporal location",
+              "I read it last week.",
+              "When?"
+            ],
+            [
+              "Duration",
+              "She stayed for two hours.",
+              "How long?"
+            ],
+            [
+              "Starting point",
+              "She has been here since Monday.",
+              "Since when?"
+            ],
+            [
+              "Endpoint",
+              "She stayed until Friday.",
+              "Until when?"
+            ],
+            [
+              "Bounding duration",
+              "She wrote it in two days.",
+              "How long did it take?"
+            ],
+            [
+              "Aspectuality",
+              "She has already left.",
+              "What is the situation’s phase?"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the difference between for two hours and in two hours?",
+        "options": [
+          {
+            "id": "a",
+            "text": "For marks duration; in marks the time taken to reach an endpoint.",
+            "feedback": "The choice reflects bounding and aspectual viewpoint."
+          },
+          {
+            "id": "b",
+            "text": "They are always interchangeable.",
+            "feedback": "She ran for two hours and She ran to the station in two hours differ in aspect."
+          },
+          {
+            "id": "c",
+            "text": "In two hours is always future.",
+            "feedback": "It can also measure completion time in the past."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "frequency-degree",
+      "title": "Frequency, serial order, and degree",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Frequency adjuncts quantify situations much as determiners quantify entities. *She lectured twice* is the verbal counterpart of *two lectures*, *She always wins* of *every match*, *People sometimes misunderstand this* of *some people*. The parallel is not decorative. Both kinds of expression make a predicate or a noun countable, universal or partial."
+        },
+        {
+          "type": "paragraph",
+          "text": "Frequency splits into bounding and non-bounding. *She lectured ten times* gives a total, and the situation becomes perfective. *She lectured regularly*, *every day*, *quite frequently* give a rate rather than a total, and the situation stays imperfective. *Three times a week* belongs with the rates: it says how often, not how many."
+        },
+        {
+          "type": "paragraph",
+          "text": "Serial order — *first*, *next*, *finally*, *for the third time* — places a situation in a sequence. Degree — *very much*, *greatly*, *somewhat*, *a lot* — measures intensity or extent. The two interact with frequency, and the interaction shows in scope: *I always proofread an article three times* has a non-bounding *always* over a bounding *three times*."
+        },
+        {
+          "type": "examples",
+          "title": "Frequency and degree",
+          "items": [
+            {
+              "text": "She lectured ten times.",
+              "mark": "ok",
+              "note": "Bounding frequency: a total count."
+            },
+            {
+              "text": "She lectured every day.",
+              "mark": "ok",
+              "note": "Non-bounding frequency: a recurring pattern."
+            },
+            {
+              "text": "I always proofread an article three times.",
+              "mark": "ok",
+              "note": "Non-bounding always has scope over bounding three times."
+            },
+            {
+              "text": "I enjoyed it very much.",
+              "mark": "ok",
+              "note": "A degree adjunct modifying the verb phrase."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which expression is a bounding frequency adjunct?",
+        "options": [
+          {
+            "id": "a",
+            "text": "ten times",
+            "feedback": "It specifies a total number of occurrences."
+          },
+          {
+            "id": "b",
+            "text": "every day",
+            "feedback": "It specifies a recurring rate, not a total number."
+          },
+          {
+            "id": "c",
+            "text": "regularly",
+            "feedback": "It is non-bounding: it gives a pattern rather than a count."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "cause-result",
+      "title": "Cause, purpose, reason, and result",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*They had to walk because of the bus strike*, *He left the door open in order to let the cat in*, *She spoke so softly that nobody could hear her*, *He died of pneumonia*. Reason, purpose, result, cause. The labels are close enough to blur in ordinary talk and distinct enough to matter in analysis."
+        },
+        {
+          "type": "paragraph",
+          "text": "Purpose looks forward, presenting an intended outcome. Reason looks back, explaining why a situation occurred or why the speaker says it did. Result is the outcome itself, often signalled by *so that* or *such that*. The same marker can shift category with scope — *because her light is off* can be an ordinary reason or a reason for asserting that she has gone home."
+        },
+        {
+          "type": "paragraph",
+          "text": "Negation exposes the difference. *I didn’t buy it because it was too expensive* normally means the expense explains the not buying. *I didn’t appoint him just because he was my son* means he was appointed, but not for that reason. Same negative, different scope, and the two readings are not interchangeable."
+        },
+        {
+          "type": "table",
+          "title": "Cause and result categories",
+          "columns": [
+            "Category",
+            "Example",
+            "Direction"
+          ],
+          "rows": [
+            [
+              "Cause",
+              "He died of pneumonia.",
+              "Source of the situation"
+            ],
+            [
+              "Reason",
+              "They walked because of the strike.",
+              "Explanation"
+            ],
+            [
+              "Purpose",
+              "She left to catch the train.",
+              "Intended future outcome"
+            ],
+            [
+              "Result",
+              "She spoke so softly that no one heard.",
+              "Consequence"
+            ],
+            [
+              "Speech-act reason",
+              "She’s gone home, because her light is off.",
+              "Reason for the assertion"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Scope and direction",
+          "items": [
+            {
+              "text": "I didn’t buy it because it was too expensive.",
+              "mark": "ok",
+              "note": "The reason adjunct has scope over the negation."
+            },
+            {
+              "text": "I didn’t appoint him just because he was my son.",
+              "mark": "ok",
+              "note": "The negation has scope over the reason adjunct."
+            },
+            {
+              "text": "She left early to catch the train.",
+              "mark": "ok",
+              "note": "Purpose: the intended outcome."
+            },
+            {
+              "text": "She spoke so softly that nobody heard.",
+              "mark": "ok",
+              "note": "Result: the consequence of the manner."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What does I didn’t appoint him just because he was my son implicate?",
+        "options": [
+          {
+            "id": "a",
+            "text": "He did appoint him, but not for that reason.",
+            "feedback": "The negation has scope over the reason adjunct."
+          },
+          {
+            "id": "b",
+            "text": "He did not appoint him.",
+            "feedback": "That is the other scope reading."
+          },
+          {
+            "id": "c",
+            "text": "He appointed him solely because he was his son.",
+            "feedback": "Just because is under the scope of the negative."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "concession",
+      "title": "Concession",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Sonia doesn’t speak French although she grew up in Paris.* The subordinate clause is conceded as true. It also raises an expectation — that someone raised in Paris would speak French — and the main clause denies it. That expectation is an implicature, not an entailment, which is why the sentence stays true when the expectation is unreasonable."
+        },
+        {
+          "type": "paragraph",
+          "text": "Reverse the clauses and the truth conditions hold while the packaging changes: *Sonia grew up in Paris although she doesn’t speak French*. Split the same content into coordinated clauses — *Sonia doesn’t speak French; nevertheless, she grew up in Paris* — and the concession becomes a separate act of assertion."
+        },
+        {
+          "type": "paragraph",
+          "text": "The markers differ in what they take. *Although* and *though* take finite or reduced clauses; *despite* takes an NP or a gerund-participial; *notwithstanding* can follow its complement; *for all* is informal; *albeit* is formal and compressed. Concessives resist direct questioning and usually fall outside the scope of matrix negation, which is part of why they sit with the less integrated adjuncts."
+        },
+        {
+          "type": "examples",
+          "title": "Concessive constructions",
+          "items": [
+            {
+              "text": "Although Sam was extremely rude to her, Beth defended him.",
+              "mark": "ok",
+              "note": "The subordinate clause is entailed; the expectation is cancelled."
+            },
+            {
+              "text": "Despite the recession, travel agents are doing well.",
+              "mark": "ok",
+              "note": "Despite takes an NP complement."
+            },
+            {
+              "text": "Notwithstanding Ed’s reservations, the agreement was accepted.",
+              "mark": "ok",
+              "note": "Notwithstanding takes an NP complement."
+            },
+            {
+              "text": "Sonia grew up in Paris although she doesn’t speak French.",
+              "mark": "ok",
+              "note": "Reversed concession: information packaging changes."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which meaning component is essential to concession?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The subordinate clause is entailed and creates a contrary-to-expectation contrast.",
+            "feedback": "The main clause holds despite what the subordinate clause would lead one to expect."
+          },
+          {
+            "id": "b",
+            "text": "The subordinate clause is false.",
+            "feedback": "Concession entails the subordinate clause in the central case."
+          },
+          {
+            "id": "c",
+            "text": "The main clause is a consequence of the subordinate clause.",
+            "feedback": "That is closer to cause or result."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "conditionals-open",
+      "title": "Open conditionals",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*If you touch that wire, you will get a shock.* Two clauses, one conditional: *you touch that wire* states the condition — the protasis — and *you will get a shock* states the consequence, the apodosis. The conditional adjunct is the *if* together with its complement clause."
+        },
+        {
+          "type": "paragraph",
+          "text": "An open conditional leaves the condition genuinely open. Its invariant meaning is narrow: it excludes the combination of a true protasis with a false apodosis. Everything else the sentence suggests is implicature — that the apodosis follows from the protasis, that it fails when the protasis fails, that the speaker does not know either way. None of the three is an entailment, and the last two can be cancelled outright."
+        },
+        {
+          "type": "paragraph",
+          "text": "The consequence can be causal or inferential. Touch the wire and the shock is caused; *If the key is not in my pocket, I left it in the door* reasons from absence to a conclusion. The only-if implicature can be cancelled outright — *If it’s fine I’m going to the beach, and in fact I’ll probably go even if it’s wet* — and the don’t-know implicature disappears when the condition is already established."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Only* and *even* focus the condition rather than creating new conditional types. *Only if you apologise will I help* makes the condition necessary; *Even if it rains, I’m going* presents the apodosis as holding across a range of conditions that includes rain. What changes is the set of conditions quantified over, not the if-then structure."
+        },
+        {
+          "type": "table",
+          "title": "Components of an open conditional",
+          "columns": [
+            "Component",
+            "Example",
+            "Status"
+          ],
+          "rows": [
+            [
+              "Protasis",
+              "if it rains",
+              "Condition"
+            ],
+            [
+              "Apodosis",
+              "we’ll cancel the match",
+              "Consequence"
+            ],
+            [
+              "Invariant meaning",
+              "P true and Q false is excluded",
+              "Entailment"
+            ],
+            [
+              "Consequence",
+              "Q follows from P",
+              "Implicature"
+            ],
+            [
+              "Only-if",
+              "if not P, then not Q",
+              "Cancellable implicature"
+            ],
+            [
+              "Don’t-know",
+              "speaker does not know whether P",
+              "Cancellable implicature"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Open conditional readings",
+          "items": [
+            {
+              "text": "If you touch that wire, you will get a shock.",
+              "mark": "ok",
+              "note": "Causal consequence."
+            },
+            {
+              "text": "If the key is not in my pocket, I left it in the door.",
+              "mark": "ok",
+              "note": "Inferential consequence."
+            },
+            {
+              "text": "If it’s fine, I’m going to the beach, and I’ll probably go even if it’s wet.",
+              "mark": "ok",
+              "note": "The only-if implicature is explicitly cancelled."
+            },
+            {
+              "text": "If you need help, Helen is willing to lend a hand.",
+              "mark": "ok",
+              "note": "A relevance protasis: the help is available regardless."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the invariant meaning of an open if conditional?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The case where the protasis is true and the apodosis false is excluded.",
+            "feedback": "Other relations such as consequence and only-if are implicatures."
+          },
+          {
+            "id": "b",
+            "text": "The protasis is always false.",
+            "feedback": "Open conditionals leave the condition open."
+          },
+          {
+            "id": "c",
+            "text": "The apodosis causes the protasis.",
+            "feedback": "The usual direction is protasis to apodosis."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "conditionals-remote",
+      "title": "Remote conditionals and other conditional forms",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*If you got it right, you’d win $100.* The past tense does not put the winning in the past. It puts the condition at a distance — remote, unlikely, contrary to fact. *If Ed were here, he could come too* uses irrealis *were* for the same effect, with a modal in the apodosis to match."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Unless* introduces a negative condition: *Unless you hurry, we’ll be late* is roughly *If you do not hurry, we’ll be late*. It is not a general synonym for *if not*, because it is restricted to conditions whose non-fulfilment would lead to the apodosis. *Even if* and *only if* shift the focus and the range of conditions without touching the underlying structure."
+        },
+        {
+          "type": "paragraph",
+          "text": "Exhaustive conditionals quantify over a set. *Whether you like it or not, we’re going* covers both alternatives; *Whoever comes, the door will be locked* quantifies over people. In the governed construction the conditional contains an interrogative clause; in the ungoverned one it contains a free relative or a conditional phrase."
+        },
+        {
+          "type": "paragraph",
+          "text": "Conditionals stack, focus and take scope. *If it rains, we’ll stay in, but if it clears, we’ll go out* sets two conditions in contrast. *Only* and *even* can select one condition over another. Prosody and word order help the reader recover which relation is intended."
+        },
+        {
+          "type": "examples",
+          "title": "Remote and exhaustive conditionals",
+          "items": [
+            {
+              "text": "If you got it right, you’d win $100.",
+              "mark": "ok",
+              "note": "Remote: modal preterite in the protasis and would in the apodosis."
+            },
+            {
+              "text": "If Ed were here, he could come too.",
+              "mark": "ok",
+              "note": "Irrealis were marks the remote condition."
+            },
+            {
+              "text": "Unless you hurry, we’ll be late.",
+              "mark": "ok",
+              "note": "A negative condition."
+            },
+            {
+              "text": "Whether you like it or not, we’re going.",
+              "mark": "ok",
+              "note": "An exhaustive conditional covering both alternatives."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What marks a remote conditional?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A modal preterite or irrealis in the protasis and a modal in the apodosis",
+            "feedback": "The past-tense form signals remoteness, not past time."
+          },
+          {
+            "id": "b",
+            "text": "A present-tense verb in both clauses",
+            "feedback": "That is typical of an open conditional."
+          },
+          {
+            "id": "c",
+            "text": "The word unless",
+            "feedback": "Unless marks a negative condition, not remoteness."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "domain-modality",
+      "title": "Domain and modal adjuncts",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Technically, he did not commit an offence.* The claim is not that he acted in a technical manner; *technically* restricts the domain in which the claim holds. *Politically, the decision was a disaster* and *In medicine, mistakes can be fatal* do the same: they say where the proposition applies, not how anything was done."
+        },
+        {
+          "type": "paragraph",
+          "text": "Modal adjuncts qualify commitment: *probably*, *certainly*, *perhaps*, *possibly*, *necessarily*. They overlap in meaning with modal auxiliaries while differing in syntax. *He probably left* comes close to *He may have left* in epistemic effect, but the adverb and the auxiliary occupy different positions and carry different force."
+        },
+        {
+          "type": "paragraph",
+          "text": "They favour front or central position and typically outscope frequency and manner adjuncts. Both kinds are clause-oriented. *He probably sees them regularly* means it is probable that he sees them regularly, not that his seeing them is regularly probable."
+        },
+        {
+          "type": "examples",
+          "title": "Domain and modality",
+          "items": [
+            {
+              "text": "Technically, he did not commit an offence.",
+              "mark": "ok",
+              "note": "Domain: the claim holds within a technical classification."
+            },
+            {
+              "text": "Politically, the decision was a disaster.",
+              "mark": "ok",
+              "note": "Domain: the judgement is political, not necessarily personal."
+            },
+            {
+              "text": "He probably sees them regularly.",
+              "mark": "ok",
+              "note": "Probably has scope over the frequency adjunct."
+            },
+            {
+              "text": "Perhaps she misunderstood.",
+              "mark": "ok",
+              "note": "A modal adjunct qualifying the proposition."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What kind of adjunct is technically in Technically, he did not commit an offence?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A domain adjunct",
+            "feedback": "It specifies the sphere within which the claim holds."
+          },
+          {
+            "id": "b",
+            "text": "A manner adjunct",
+            "feedback": "It does not describe how the act was performed."
+          },
+          {
+            "id": "c",
+            "text": "A temporal adjunct",
+            "feedback": "It does not locate the situation in time."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "evaluation-speech-connective",
+      "title": "Evaluation, speech acts, and connectives",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Fortunately, we got there on time.* Reply *That’s not true* and you are denying that we got there on time, not disputing that it was fortunate. Evaluative adjuncts comment on the value or fortunate status of a situation, and they sit outside the proposition they comment on. *Sadly, the plan failed* works the same way."
+        },
+        {
+          "type": "paragraph",
+          "text": "Speech-act adjuncts comment on the saying rather than on the situation. *Frankly, I’m disappointed* does not describe a frank manner of being disappointed; it qualifies the assertion. *Honestly, I don’t know* and *If you must know, I’ve already left* qualify an admission or a refusal in the same way."
+        },
+        {
+          "type": "paragraph",
+          "text": "Connective adjuncts work between clauses: *Moreover*, *However*, *Therefore*, *Nevertheless*, *Then*. They organise an argument or a narrative rather than modifying an event. Like evaluations, they are normally supplements, and they resist focusing and questioning."
+        },
+        {
+          "type": "examples",
+          "title": "Comment and connection",
+          "items": [
+            {
+              "text": "Fortunately, we got there on time.",
+              "mark": "ok",
+              "note": "Evaluation of the situation as fortunate."
+            },
+            {
+              "text": "Frankly, I’m disappointed.",
+              "mark": "ok",
+              "note": "Speech-act comment: I am speaking frankly."
+            },
+            {
+              "text": "Moreover, nobody had warned us.",
+              "mark": "ok",
+              "note": "Connective: adds a further point to the argument."
+            },
+            {
+              "text": "However, the plan still failed.",
+              "mark": "ok",
+              "note": "Connective of contrast."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What kind of adjunct is frankly in Frankly, I’m disappointed?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Speech-act-related",
+            "feedback": "It comments on the speaker’s act of stating the disappointment."
+          },
+          {
+            "id": "b",
+            "text": "Manner",
+            "feedback": "It does not describe how the disappointment was felt."
+          },
+          {
+            "id": "c",
+            "text": "Evaluation",
+            "feedback": "It evaluates the act of speaking, not the situation."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "position",
+      "title": "Linear position and integration",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Happily, they watched TV* and *They watched TV happily* contain the same words in a different order and make different claims. The first evaluates the situation; the second describes the manner. Front, central and end positions map onto orientations well enough to be a useful first test."
+        },
+        {
+          "type": "paragraph",
+          "text": "VP-oriented adjuncts — manner, means, degree, frequency, duration, temporal location — modify the predicate and prefer central or end position. Clause-oriented ones — domain, modality, evaluation, speech act, connective — modify the applicability of the clause and prefer front position. The correlation is strong, not absolute."
+        },
+        {
+          "type": "paragraph",
+          "text": "Detachment turns an adjunct into a supplement. A fronted evaluation is normally set off prosodically; a central interpolation is detached from the clause around it; an end-position manner adjunct is normally integrated. Writing signals the difference with commas, though usage is not uniform, and the same string can shift reading when the intonation changes."
+        },
+        {
+          "type": "table",
+          "title": "Position and orientation",
+          "columns": [
+            "Position",
+            "Typical adjuncts",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Front",
+              "Evaluation, modality, domain, connective",
+              "Fortunately, they left."
+            ],
+            [
+              "Central",
+              "Frequency, modality, act-related",
+              "They often leave early."
+            ],
+            [
+              "End",
+              "Manner, place, time, purpose",
+              "They left quietly at noon."
+            ],
+            [
+              "Detached",
+              "Evaluation, speech act, supplement",
+              "They left, fortunately."
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Position changes interpretation",
+          "items": [
+            {
+              "text": "Happily, they watched TV.",
+              "mark": "ok",
+              "note": "Evaluation in front position."
+            },
+            {
+              "text": "They happily watched TV.",
+              "mark": "ok",
+              "note": "Manner in central position."
+            },
+            {
+              "text": "They watched TV happily.",
+              "mark": "ok",
+              "note": "Manner in end position."
+            },
+            {
+              "text": "They watched TV, happily.",
+              "mark": "ok",
+              "note": "Detached supplement, often evaluative."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why does position matter for adjunct interpretation?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It correlates with orientation: clause-oriented adjuncts favour front, VP-oriented ones favour central or end.",
+            "feedback": "Prosody and scope also help distinguish the readings."
+          },
+          {
+            "id": "b",
+            "text": "Front position always makes an adjunct a complement.",
+            "feedback": "Complements are licensed by heads, not by position alone."
+          },
+          {
+            "id": "c",
+            "text": "End position always makes an adjunct an evaluation.",
+            "feedback": "End position favours manner, place, time and purpose."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "chapter-review",
+      "title": "Chapter Review",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The same repertoire of meanings keeps returning: manner, means, instrument, place, time, duration, frequency, degree, cause, purpose, reason, result, concession, condition, domain, modality, evaluation, speech act, discourse connection. What varies is how tightly each is bound into the clause."
+        },
+        {
+          "type": "paragraph",
+          "text": "The licensing test separates complements from adjuncts, and six parameters sharpen the boundary: focus, restrictiveness, questioning, scope, bounding, realisation. Adjuncts can be AdvPs, PPs, NPs, finite clauses, non-finite clauses or verbless clauses, and position often tracks orientation."
+        },
+        {
+          "type": "paragraph",
+          "text": "The later categories sit further out. Domain, modality, evaluation, speech act and connective adjuncts take scope over the proposition or over the act of speaking rather than over the verb alone. Conditionals and concessives add layered relations between situations, expectations and alternatives."
+        },
+        {
+          "type": "note",
+          "tone": "why",
+          "title": "An adjunct checklist",
+          "text": "Identify the dependent and ask whether the verb licenses it. Classify its meaning. Check focus, truth-restrictiveness, questioning and scope. Then locate it in front, central or end position and decide whether it is integrated or detached."
+        }
+      ],
+      "check": {
+        "prompt": "Which pair correctly matches an adjunct type with its example?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Concession: although she grew up in Paris",
+            "feedback": "It presents a contrary-to-expectation contrast."
+          },
+          {
+            "id": "b",
+            "text": "Manner: because of the strike",
+            "feedback": "That is a reason adjunct."
+          },
+          {
+            "id": "c",
+            "text": "Domain: with a hammer",
+            "feedback": "That is an instrument adjunct."
+          }
+        ],
+        "answer": "a"
+      }
+    }
+  ],
+  "worked": [
+    "Take *Fortunately, the train left on time, although the platform was crowded*. *Fortunately* is an evaluative supplement: it comments on the situation but does not restrict its truth. *On time* is a temporal adjunct locating the departure. *Although the platform was crowded* is a concessive adjunct: it entails that the platform was crowded and presents that fact as contrary to the expectation that the train might be delayed.",
+    "The example shows three levels of integration. The temporal adjunct is a modifier inside the clause; the concessive is a subordinate clause in a PP; the evaluation is a detached supplement. All three are adjuncts, but they do not have the same scope, focus potential or position."
+  ],
+  "application": [
+    "When you meet an adjunct, first ask what the verb licenses. If the dependent is required by the verb’s sense, it is a complement. If it merely adds information, it is an adjunct. Then classify the meaning: manner, place, time, reason, condition and so on.",
+    "Next, test its integration. Can it be focused in a cleft? Does it affect the truth of the clause? Can it be questioned? What does it take scope over? These tests separate integrated modifiers from supplements and clause-level comments.",
+    "Finally, consider position and prosody. A fronted evaluation is not the same construction as an end-position manner adverb, even when the form is identical. The position signals orientation, scope and information structure."
+  ],
+  "reveal": [
+    "In *Fortunately, the train left on time, although the platform was crowded*, *fortunately* is an evaluative supplement, *on time* is a temporal adjunct, and *although the platform was crowded* is a concessive adjunct. The concessive clause is entailed and creates a contrary-to-expectation contrast with the main clause."
+  ],
+  "recap": [
+    "Adjuncts cover a wide range of semantic categories, from manner and space to condition and speech acts. They differ in focus potential, restrictiveness, scope, bounding effect and syntactic realisation.",
+    "Position correlates with orientation: VP-oriented adjuncts favour central or end position, while clause-oriented adjuncts favour front position. Supplements are detached and typically non-restrictive."
+  ],
+  "self_check": [
+    {
+      "question": "What are the six parameters for analysing adjuncts?",
+      "answer": "Focus potential, restrictiveness, questioning, scope, bounding potential and syntactic realisation."
+    },
+    {
+      "question": "What is the difference between manner and act-related adjuncts?",
+      "answer": "Manner describes how an act is performed; act-related evaluates or qualifies the act itself."
+    },
+    {
+      "question": "What is the difference between a bounding and a non-bounding frequency adjunct?",
+      "answer": "A bounding adjunct gives a total number of occurrences; a non-bounding one gives a rate or recurring pattern."
+    },
+    {
+      "question": "What are the three components of concessive meaning?",
+      "answer": "The subordinate clause is entailed, it creates an expectation that the main clause is false, and the main clause nevertheless holds."
+    },
+    {
+      "question": "What distinguishes an open from a remote conditional?",
+      "answer": "A remote conditional uses modal preterite or irrealis in the protasis and a modal in the apodosis; an open conditional leaves the condition open."
+    }
+  ],
+  "opening": [
+    {
+      "prompt": "Which expression is an adjunct in She put the file in the drawer?",
+      "options": [
+        {
+          "id": "a",
+          "text": "None: in the drawer is a complement of put.",
+          "feedback": "Put requires a goal complement in this sense."
+        },
+        {
+          "id": "b",
+          "text": "The file",
+          "feedback": "The file is the direct object."
+        },
+        {
+          "id": "c",
+          "text": "She",
+          "feedback": "She is the subject."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which adjunct type answers the question How?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Manner",
+          "feedback": "Manner describes how a process is carried out."
+        },
+        {
+          "id": "b",
+          "text": "Reason",
+          "feedback": "Reason answers why."
+        },
+        {
+          "id": "c",
+          "text": "Duration",
+          "feedback": "Duration answers how long."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which expression is an instrument?",
+      "options": [
+        {
+          "id": "a",
+          "text": "with a hammer",
+          "feedback": "The hammer is used to perform the action."
+        },
+        {
+          "id": "b",
+          "text": "by breaking the door down",
+          "feedback": "That is means."
+        },
+        {
+          "id": "c",
+          "text": "carefully",
+          "feedback": "That is manner."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which adjunct is a supplement?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Fortunately, nobody was hurt.",
+          "feedback": "The evaluation is detached from the clause."
+        },
+        {
+          "id": "b",
+          "text": "She left yesterday.",
+          "feedback": "Yesterday is an integrated temporal modifier."
+        },
+        {
+          "id": "c",
+          "text": "He spoke quietly.",
+          "feedback": "Quietly is an integrated manner adverb."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is a protasis?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The subordinate clause expressing the condition",
+          "feedback": "The apodosis expresses the consequence."
+        },
+        {
+          "id": "b",
+          "text": "The main clause expressing the consequence",
+          "feedback": "That is the apodosis."
+        },
+        {
+          "id": "c",
+          "text": "A concessive contrast",
+          "feedback": "Concession is a different relation."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "closing": [
+    {
+      "prompt": "What is the difference between for two hours and in two hours?",
+      "options": [
+        {
+          "id": "a",
+          "text": "For marks duration; in marks time taken to reach an endpoint.",
+          "feedback": "The distinction is aspectual and bounding."
+        },
+        {
+          "id": "b",
+          "text": "They are always interchangeable.",
+          "feedback": "She studied for two hours and She finished in two hours differ."
+        },
+        {
+          "id": "c",
+          "text": "In two hours is always future.",
+          "feedback": "It can measure completion in the past."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which expression is a bounding frequency adjunct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "ten times",
+          "feedback": "It gives a total count."
+        },
+        {
+          "id": "b",
+          "text": "every day",
+          "feedback": "It gives a rate or recurring pattern."
+        },
+        {
+          "id": "c",
+          "text": "regularly",
+          "feedback": "It is non-bounding."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What does I didn’t appoint him just because he was my son implicate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "He did appoint him, but not for that reason.",
+          "feedback": "The negation has scope over the reason adjunct."
+        },
+        {
+          "id": "b",
+          "text": "He did not appoint him.",
+          "feedback": "That is the other scope reading."
+        },
+        {
+          "id": "c",
+          "text": "He appointed him solely because he was his son.",
+          "feedback": "That contradicts just because under negation."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is essential to concession?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The subordinate clause is entailed and creates a contrary-to-expectation contrast.",
+          "feedback": "The main clause holds despite that expectation."
+        },
+        {
+          "id": "b",
+          "text": "The subordinate clause is false.",
+          "feedback": "Concession entails the subordinate clause in the central case."
+        },
+        {
+          "id": "c",
+          "text": "The main clause is a consequence of the subordinate clause.",
+          "feedback": "That is cause or result."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What marks a remote conditional?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Modal preterite or irrealis in the protasis and a modal in the apodosis",
+          "feedback": "The past-tense form signals remoteness."
+        },
+        {
+          "id": "b",
+          "text": "Present tense in both clauses",
+          "feedback": "That is typical of an open conditional."
+        },
+        {
+          "id": "c",
+          "text": "The word unless",
+          "feedback": "Unless marks a negative condition."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "stages": {
+    "predict": {
+      "prompt": "Which expression is an adjunct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "in the garden in They met in the garden",
+          "feedback": "It locates the event and is not licensed by met."
+        },
+        {
+          "id": "b",
+          "text": "the file in She put the file in the drawer",
+          "feedback": "The file is the object; in the drawer is a complement of put."
+        },
+        {
+          "id": "c",
+          "text": "She in She left",
+          "feedback": "She is the subject."
+        }
+      ],
+      "answer": "a"
+    },
+    "guided": {
+      "prompt": "What kind of adjunct is with a hammer in I broke it with a hammer?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Instrument",
+          "feedback": "The hammer is the entity used."
+        },
+        {
+          "id": "b",
+          "text": "Means",
+          "feedback": "Means would be by hitting it."
+        },
+        {
+          "id": "c",
+          "text": "Manner",
+          "feedback": "Manner would be carefully."
+        }
+      ],
+      "answer": "a"
+    },
+    "transfer": {
+      "prompt": "What is to the kitchen in John ran from the attic to the kitchen?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A goal",
+          "feedback": "It marks the endpoint of the path."
+        },
+        {
+          "id": "b",
+          "text": "A source",
+          "feedback": "The source is from the attic."
+        },
+        {
+          "id": "c",
+          "text": "A path",
+          "feedback": "A path would be through the tunnel."
+        }
+      ],
+      "answer": "a"
+    },
+    "exit": {
+      "prompt": "What is the difference between an open and a remote conditional?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Remote uses modal preterite or irrealis in the protasis and a modal in the apodosis.",
+          "feedback": "Open leaves the condition open."
+        },
+        {
+          "id": "b",
+          "text": "Open uses only if; remote uses unless.",
+          "feedback": "Only and unless are separate focus and polarity constructions."
+        },
+        {
+          "id": "c",
+          "text": "Remote conditionals have no apodosis.",
+          "feedback": "Every conditional construction has a protasis and an apodosis."
+        }
+      ],
+      "answer": "a"
+    }
+  }
+}

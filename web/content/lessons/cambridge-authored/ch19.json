@@ -1,0 +1,1803 @@
+{
+  "title": "Lexical word-formation",
+  "description": "Explore established and potential words, bases and affixes, clipping, blending, conversion, compounding, derivation, nominalisation and numerals.",
+  "example": "The editor’s useful guide was republished after a surprisingly readable rewrite.",
+  "key_terms": [
+    {
+      "term": "lexical word-formation",
+      "definition": "The creation of new lexemes from bases by derivation, compounding or other processes."
+    },
+    {
+      "term": "established word",
+      "definition": "A word recognised as part of the vocabulary and listed in standard dictionaries."
+    },
+    {
+      "term": "potential word",
+      "definition": "A morphologically grammatical word that is not established."
+    },
+    {
+      "term": "nonce-word",
+      "definition": "A word used on a particular occasion but not established in the vocabulary."
+    },
+    {
+      "term": "complex word",
+      "definition": "A word analysable into smaller morphological units."
+    },
+    {
+      "term": "simple word",
+      "definition": "A word not analysable into smaller morphological units."
+    },
+    {
+      "term": "base",
+      "definition": "A morphological unit to which affixes attach."
+    },
+    {
+      "term": "affix",
+      "definition": "A bound morpheme attached to a base, either as a prefix or suffix."
+    },
+    {
+      "term": "bound base",
+      "definition": "A base that cannot stand alone as a word, such as dur- in durable."
+    },
+    {
+      "term": "combining form",
+      "definition": "A bound base of classical origin used in compounds, such as electro-."
+    },
+    {
+      "term": "constituent structure",
+      "definition": "The hierarchical organisation of bases and affixes within a complex word."
+    },
+    {
+      "term": "lexical base",
+      "definition": "A base that is not part of a larger base formed by lexical word-formation."
+    },
+    {
+      "term": "productivity",
+      "definition": "The availability of a word-formation pattern for creating new words."
+    },
+    {
+      "term": "lexicalisation",
+      "definition": "The establishment of a formation as a lexical item with its own meaning."
+    },
+    {
+      "term": "manufacture",
+      "definition": "The invention of a new word without morphological structure, often a brand name."
+    },
+    {
+      "term": "initialism",
+      "definition": "A word formed from the initial letters of a phrase, pronounced letter by letter or as a word."
+    },
+    {
+      "term": "clipping",
+      "definition": "The shortening of a word without changing its meaning, as in advertisement → ad."
+    },
+    {
+      "term": "blending",
+      "definition": "The fusion of parts of two words, as in smoke and fog → smog."
+    },
+    {
+      "term": "back-formation",
+      "definition": "The creation of a word by removing an affix from an existing word, as in edit from editor."
+    },
+    {
+      "term": "conversion",
+      "definition": "A change of word class without a change of form, as in Google → to google."
+    },
+    {
+      "term": "compound",
+      "definition": "A word formed from two or more bases."
+    },
+    {
+      "term": "neo-classical compound",
+      "definition": "A compound formed from classical combining forms, such as biography."
+    },
+    {
+      "term": "derivation",
+      "definition": "Word formation by adding an affix to a base."
+    },
+    {
+      "term": "prefix",
+      "definition": "An affix attached before the base."
+    },
+    {
+      "term": "suffix",
+      "definition": "An affix attached after the base."
+    },
+    {
+      "term": "nominalisation",
+      "definition": "The formation of a noun from a verb, adjective or other base."
+    },
+    {
+      "term": "adjectivalisation",
+      "definition": "The formation of an adjective from another base."
+    },
+    {
+      "term": "verbalisation",
+      "definition": "The formation of a verb from another base."
+    },
+    {
+      "term": "numeral",
+      "definition": "A word expressing number, such as cardinal, ordinal or fractional forms."
+    },
+    {
+      "term": "diminutive",
+      "definition": "An affix or formation expressing smallness or endearment."
+    }
+  ],
+  "intro": [
+    "Say *ungentlemanly* slowly and you can feel the seams: a negative prefix outside, an adjective-making suffix within, a compound underneath that. English keeps building words this way, and speakers keep accepting some of the results while letting others pass. Lexical word-formation is the study of that construction — the shaping of new bases and new lexemes — where inflection only reshapes words that already exist.",
+    "The account opens with the gap between a word a dictionary lists and a word the grammar merely permits, then examines the internal anatomy of complex words and the reasons why one pattern keeps minting new items while another survives only in what it has already made. From there it works through the minor processes — clipping, blending, back-formation, conversion — before settling into compounding and the affixation patterns that do most of the labour: negation, evaluation, gender, place, nominalisation, adjectivalisation, verbalisation, numerals.",
+    "Two questions run underneath everything. Is the form grammatical, and is it established? They have different answers and different kinds of evidence, and holding them apart is most of the analytical discipline the chapter asks for."
+  ],
+  "sections": [
+    {
+      "id": "established-potential",
+      "title": "Established, potential, and nonce-words",
+      "advances": "predict",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Kingdom* and *bishopric* sit in the dictionary, and so do *unfaithfulness* and *infidelity*, even though those two look nothing alike inside. These are established words: items a speaker knows individually and a dictionary lists. The match is imperfect: dictionaries also carry multiword expressions whose meaning is idiomatic, so dictionary entries and morphological words are not the same inventory."
+        },
+        {
+          "type": "paragraph",
+          "text": "Now try *policeability*. Nothing in it is strange — *police* takes *-able*, and *-able* takes a nominalising suffix — yet it will not be in the dictionary. That is a potential word: morphologically well formed, not established. *Priestric* and *pick-basket* fail differently. The *-ric* of *bishopric* no longer forms new words, and the verb-plus-object pattern behind *pick-basket* is closed as well, so these strings are not merely unused but unavailable."
+        },
+        {
+          "type": "paragraph",
+          "text": "A nonce-word goes one step further into use: coined on a particular occasion, understood in context, never adopted. Every nonce-word is a potential word, but most potential words have never been uttered at all. And disliking a well-formed coinage settles nothing about its grammar. That is a judgement of taste, not of morphology."
+        },
+        {
+          "type": "table",
+          "title": "Word status",
+          "columns": [
+            "Status",
+            "Example",
+            "Explanation"
+          ],
+          "rows": [
+            [
+              "Established",
+              "kingdom",
+              "Familiar vocabulary item"
+            ],
+            [
+              "Potential",
+              "policeability",
+              "Well formed but not established"
+            ],
+            [
+              "Nonce",
+              "a one-off coinage",
+              "Used but not established"
+            ],
+            [
+              "Ungrammatical",
+              "priestric",
+              "Does not conform to current rules"
+            ],
+            [
+              "Multiword dictionary item",
+              "give in",
+              "Listed but not a morphological word"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is a potential word?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A morphologically grammatical word that is not established",
+            "feedback": "Policeability is a potential word."
+          },
+          {
+            "id": "b",
+            "text": "A word that is in every dictionary",
+            "feedback": "That is an established word."
+          },
+          {
+            "id": "c",
+            "text": "A word that cannot be pronounced",
+            "feedback": "Pronunciation is not the criterion."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "morphological-structure",
+      "title": "Bases, affixes, and combining forms",
+      "advances": "understand",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Mouse-trap*, *child-care* and *elephant-tusk* come apart into two bases each; *entrap*, *childish* and *elephantine* come apart into a base plus an affix. That is the first cut to make. A complex word can be analysed into smaller units, a simple word cannot, and the units doing the central work are bases — with affixes as the bound elements that attach to them."
+        },
+        {
+          "type": "paragraph",
+          "text": "Most English bases stand alone, which is exactly why the bound ones are easy to miss. *Dur-* in *durable*, *aggress-* in *aggressive*, the bases of *pre-empt* and *disperse*. None stands alone, yet each fills the base slot and takes the affixes a base takes. Their Latin and French provenance explains the oddity: they arrived already attached."
+        },
+        {
+          "type": "paragraph",
+          "text": "Classical combining forms are the strangest members of the family: *anglo-*, *aster-*, *auto-*, *electro-*, *pseudo-*. They are bound, so they cannot stand alone, and they lean towards affix-like behaviour. But they pair with other combining forms, as in *electrolysis*, or with free bases, as in *electromagnet*, and they bring lexical meaning of their own rather than grammatical modification."
+        },
+        {
+          "type": "table",
+          "title": "Morphological units",
+          "columns": [
+            "Unit",
+            "Example",
+            "Status"
+          ],
+          "rows": [
+            [
+              "Free base",
+              "trap, child",
+              "Can stand alone"
+            ],
+            [
+              "Bound base",
+              "dur-, aggress-",
+              "Cannot stand alone"
+            ],
+            [
+              "Combining form",
+              "electro-, pseudo-",
+              "Classical bound base"
+            ],
+            [
+              "Prefix",
+              "en-, un-, pre-",
+              "Before the base"
+            ],
+            [
+              "Suffix",
+              "-ish, -ly, -able",
+              "After the base"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is dur- in durable a base rather than an affix?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It fills the central base role and takes the same affixes as free bases.",
+            "feedback": "It is bound, but it is not an affix."
+          },
+          {
+            "id": "b",
+            "text": "It can stand alone as a word.",
+            "feedback": "It cannot."
+          },
+          {
+            "id": "c",
+            "text": "It is a suffix.",
+            "feedback": "The suffix is -able."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "constituent-structure",
+      "title": "Constituent structure and lexical bases",
+      "advances": "worked",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Where does the first cut fall in *ungentlemanly*? Not between *ungentleman* and *ly*, since there is no such base, but between *un* and *gentlemanly*. *Gentlemanly* divides again into *gentleman* + *ly*, and *gentleman* into *gentle* + *man*. Only one ordering matches how the word is built, and only that ordering predicts which pieces behave alike."
+        },
+        {
+          "type": "paragraph",
+          "text": "That ordering is the word’s constituent structure, and it tells you what sort of base each layer is. *Gentleman* is a compound base, because its immediate constituents are bases; *gentlemanly* is a derivative base, because one immediate constituent is an affix; *gentle* and *man* are simple. A lexical base, finally, is not contained in any larger base formed by word-formation."
+        },
+        {
+          "type": "paragraph",
+          "text": "The same string changes job with its surroundings. *Gentleman* is a word in *He behaves like a gentleman*, but inside *gentlemanly* it is only a base; *gentle* and *man* are bases within *gentleman* and are not words there. Wordhood belongs to a use, not to a permanent label attached to a sequence of letters."
+        },
+        {
+          "type": "examples",
+          "title": "Layers in complex words",
+          "items": [
+            {
+              "text": "un + gentlemanly",
+              "mark": "ok",
+              "note": "The first division is prefix plus derivative base."
+            },
+            {
+              "text": "gentleman + ly",
+              "mark": "ok",
+              "note": "Gentlemanly is a derivative base."
+            },
+            {
+              "text": "gentle + man",
+              "mark": "ok",
+              "note": "Gentleman is a compound base."
+            },
+            {
+              "text": "dis + interested + ness",
+              "mark": "ok",
+              "note": "Layered derivation with a compound-like base."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What are the immediate constituents of ungentlemanly?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Un + gentlemanly",
+            "feedback": "The prefix attaches to the whole adjective gentlemanly."
+          },
+          {
+            "id": "b",
+            "text": "Ungentleman + ly",
+            "feedback": "There is no base ungentleman."
+          },
+          {
+            "id": "c",
+            "text": "Un + gentle + man + ly",
+            "feedback": "That is not the hierarchical structure."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "productivity",
+      "title": "Productivity and lexicalisation",
+      "advances": "guided",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Why does *policeability* feel available while *priestric* feels shut? Both are assembled from real pieces. The difference is productivity: *-able* and *-ness* still recruit new bases, whereas *-ric* survives only in formations already made. Availability, not shape, is what a productive pattern offers."
+        },
+        {
+          "type": "paragraph",
+          "text": "Establishment can also bury a formation’s parts. Anyone can parse *blackmail* into *black* and *mail*, and nobody predicts its sense from them. *Blackguard* has travelled further still: the compound is no longer recoverable, so the word is now a simple base. Lexicalisation names that drift — a formation settling into a lexical item with a meaning and history of its own."
+        },
+        {
+          "type": "paragraph",
+          "text": "Patterns run from wide open through semi-productive to a closed list of survivors; productivity is not a switch. Blocking can keep a well-formed newcomer out when an established synonym already covers the ground. Frequency, register and fashion sort the remainder."
+        },
+        {
+          "type": "examples",
+          "title": "Productive and lexicalised formations",
+          "items": [
+            {
+              "text": "police + able + ity",
+              "mark": "ok",
+              "note": "Potential word formed by productive suffixes."
+            },
+            {
+              "text": "bishop + ric",
+              "mark": "ok",
+              "note": "Established word with a non-productive suffix."
+            },
+            {
+              "text": "blackmail",
+              "mark": "ok",
+              "note": "Morphologically analysable but semantically opaque."
+            },
+            {
+              "text": "blackguard",
+              "mark": "ok",
+              "note": "Historically compound, now a simple base."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is priestric not a potential word?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The -ric pattern is no longer productive for new words.",
+            "feedback": "Established bishopric does not license new formations."
+          },
+          {
+            "id": "b",
+            "text": "It contains no base.",
+            "feedback": "Priest is a base."
+          },
+          {
+            "id": "c",
+            "text": "It is too long.",
+            "feedback": "Length is not the issue."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "minor-processes",
+      "title": "Minor word-formation processes",
+      "advances": "transfer",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Some new words arrive without any morphology worth the name. *Kodak* was invented outright; *Xerox* began as a brand. Initialisms press the opening letters of a phrase into service, whether read letter by letter, as in *BBC*, or as a word, as in *NATO* and *aids*. Clipping simply cuts: *advertisement* to *ad*, *gymnasium* to *gym*, *influenza* to *flu*."
+        },
+        {
+          "type": "paragraph",
+          "text": "Clipping can also dress up what it leaves. *Comfortable* becomes *comfy*, *television* becomes *telly*, a suffix or a fresh ending doing the cosmetic work. Blending welds two words at the seam — *smoke* and *fog* give *smog*, *breakfast* and *lunch* give *brunch* — while back-formation runs derivation backwards and strips an affix that was never really an affix: *editor* yields *edit*, *burglar* yields *burgle*."
+        },
+        {
+          "type": "paragraph",
+          "text": "A smaller set works on sound rather than structure. *Teeny* trims and raises *tiny*; *flip-flop* and *ping-pong* echo themselves. These sit at the margin of derivation and compounding, and yet each is productive in its own narrow domain."
+        },
+        {
+          "type": "table",
+          "title": "Minor processes",
+          "columns": [
+            "Process",
+            "Example",
+            "Description"
+          ],
+          "rows": [
+            [
+              "Manufacture",
+              "Kodak",
+              "Invented brand name"
+            ],
+            [
+              "Initialism",
+              "BBC",
+              "Initial letters"
+            ],
+            [
+              "Clipping",
+              "ad",
+              "Shortened word"
+            ],
+            [
+              "Embellished clipping",
+              "comfy",
+              "Clipping plus ending"
+            ],
+            [
+              "Blending",
+              "smog",
+              "Parts of two words"
+            ],
+            [
+              "Back-formation",
+              "edit",
+              "Remove an affix"
+            ],
+            [
+              "Phonological modification",
+              "teeny",
+              "Sound change"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is back-formation?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Creating a word by removing an affix from an existing word",
+            "feedback": "Edit from editor."
+          },
+          {
+            "id": "b",
+            "text": "Blending two words",
+            "feedback": "That is blending."
+          },
+          {
+            "id": "c",
+            "text": "Shortening a word",
+            "feedback": "That is clipping."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "conversion",
+      "title": "Conversion",
+      "advances": "exit",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Nothing is added and nothing removed. *Google* becomes *to google*, *email* becomes *to email*, *empty* becomes *to empty*: the written form holds still while the category and the meaning move. Conversion, as the name says, moves a word from one class to another with no affix to show for it."
+        },
+        {
+          "type": "paragraph",
+          "text": "Direction shapes the sense. Nouns turning into verbs usually gain an activity or instrument reading — *to bottle*, *to shelve*, *to network* — and verbs turning into nouns often name an instance or a result: *a run*, *a build*, *a reply*. Adjective-to-noun conversion can be fully institutionalised, as with *the poor*, or flicker in and out of context, as with *the rich*."
+        },
+        {
+          "type": "paragraph",
+          "text": "Pronunciation sometimes carries a contrast that spelling hides. The noun *permit* and the verb *permit* look identical on the page, and *record* behaves the same way; in speech the stress differs, and with the stress goes the grammar. The change is lexical and syntactic, not inflectional; no paradigm is involved."
+        },
+        {
+          "type": "examples",
+          "title": "Conversion pairs",
+          "items": [
+            {
+              "text": "Google → to google",
+              "mark": "ok",
+              "note": "Noun to verb."
+            },
+            {
+              "text": "bottle → to bottle",
+              "mark": "ok",
+              "note": "Noun to verb."
+            },
+            {
+              "text": "run → a run",
+              "mark": "ok",
+              "note": "Verb to noun."
+            },
+            {
+              "text": "empty → to empty",
+              "mark": "ok",
+              "note": "Adjective to verb."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is conversion?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A change of word class without a change of form",
+            "feedback": "Google and to google share a form but differ in category."
+          },
+          {
+            "id": "b",
+            "text": "Adding an affix",
+            "feedback": "That is derivation."
+          },
+          {
+            "id": "c",
+            "text": "Joining two bases",
+            "feedback": "That is compounding."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "compound-nouns",
+      "title": "Compound nouns",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Two bases can fuse into a single lexical unit whose meaning is narrower than its parts suggest. *Bedroom*, *blackbird*, *language teacher*, *passer-by*: a *blackbird* names a species, not any bird that happens to be black. The compound names a category, which is not the same as describing a scene."
+        },
+        {
+          "type": "paragraph",
+          "text": "Most compound nouns are built around a noun head — *bedroom*, *mouse-trap*, *child-care* — but verbs get in as well. *Pickpocket*, *breakwater* and *drawbridge* each contain one, and *pickpocket* names a person rather than a thing, which is the compound’s own doing rather than anything the head predicts. The head still fixes the category and usually the core meaning."
+        },
+        {
+          "type": "paragraph",
+          "text": "Spelling will not settle compound status. The same formation may be written solid, hyphenated or open, and the choice shifts with fashion. Stress and meaning are better guides. *A blackbird* takes its main stress on the first element; *a black bird* takes it on the adjective: one is a word, the other a phrase."
+        },
+        {
+          "type": "examples",
+          "title": "Compound nouns",
+          "items": [
+            {
+              "text": "bedroom",
+              "mark": "ok",
+              "note": "Noun-centred compound."
+            },
+            {
+              "text": "mouse-trap",
+              "mark": "ok",
+              "note": "Noun-centred compound with a trap head."
+            },
+            {
+              "text": "pickpocket",
+              "mark": "ok",
+              "note": "Verb-object compound naming a person."
+            },
+            {
+              "text": "passer-by",
+              "mark": "ok",
+              "note": "Compound with a verb-derived head."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the head of bedroom?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Room",
+            "feedback": "Bedroom is a kind of room."
+          },
+          {
+            "id": "b",
+            "text": "Bed",
+            "feedback": "Bed modifies room."
+          },
+          {
+            "id": "c",
+            "text": "The whole compound",
+            "feedback": "The head is the element that determines the category."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "compound-adjectives",
+      "title": "Compound adjectives, verbs, and neo-classical compounds",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "In *well-known*, *heart-breaking* and *blue-eyed*, the second element is an adjective or a participle and the first modifies or completes it. Compound verbs are thinner on the ground and usually formed by conversion or back-formation from nouns: *to babysit*, *to proofread*, *to overdo*."
+        },
+        {
+          "type": "paragraph",
+          "text": "Neo-classical compounds assemble scientific and technical vocabulary out of classical combining forms: *biography*, *geology*, *telephone*, *photograph*. The forms are bound, but in composition they behave like bases, which is why the pattern keeps turning out new technical terms."
+        },
+        {
+          "type": "paragraph",
+          "text": "One last group takes its cue from rhythm rather than grammar. *Flip-flop*, *ping-pong* and *tick-tock* pair their halves by sound, and what results is a lexical item with a fixed sense rather than a transparent relation between two parts."
+        },
+        {
+          "type": "examples",
+          "title": "Other compound types",
+          "items": [
+            {
+              "text": "well-known",
+              "mark": "ok",
+              "note": "Compound adjective."
+            },
+            {
+              "text": "blue-eyed",
+              "mark": "ok",
+              "note": "Compound adjective with a participial head."
+            },
+            {
+              "text": "to babysit",
+              "mark": "ok",
+              "note": "Compound verb."
+            },
+            {
+              "text": "biography",
+              "mark": "ok",
+              "note": "Neo-classical compound."
+            },
+            {
+              "text": "ping-pong",
+              "mark": "ok",
+              "note": "Phonologically motivated compound."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is a neo-classical compound?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A compound formed from classical combining forms",
+            "feedback": "Biography and telephone are examples."
+          },
+          {
+            "id": "b",
+            "text": "A compound with a verb head",
+            "feedback": "That is a verb-centred compound."
+          },
+          {
+            "id": "c",
+            "text": "A clipped word",
+            "feedback": "Clipping is a different process."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "compound-headedness",
+      "title": "Headedness and compound interpretation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Most English compounds are headed, and the head normally comes last. *Bedroom* is a kind of room, *blackbird* a kind of bird, *well-known* an adjective because *known* is. Remove the head and the category goes with it, which is the quickest test for finding one."
+        },
+        {
+          "type": "paragraph",
+          "text": "What the head cannot tell you is how the parts relate. *A language teacher* teaches a language, or speaks several; the string alone does not choose. *A coffee table* is not made of coffee. Conventional knowledge and context settle what the grammar leaves open."
+        },
+        {
+          "type": "paragraph",
+          "text": "Some compounds refuse the pattern altogether. *Pickpocket* denotes a person, not a pocket; *turncoat* denotes a person, not a coat. These are exocentric: the whole is not a kind of its head. Meanings of this sort are learned rather than computed, which is why they tend to fossilise."
+        },
+        {
+          "type": "examples",
+          "title": "Compound interpretation",
+          "items": [
+            {
+              "text": "bedroom",
+              "mark": "ok",
+              "note": "Endocentric: a kind of room."
+            },
+            {
+              "text": "blackbird",
+              "mark": "ok",
+              "note": "A kind of bird, not simply a black bird."
+            },
+            {
+              "text": "pickpocket",
+              "mark": "ok",
+              "note": "Exocentric: a person, not a pocket."
+            },
+            {
+              "text": "turncoat",
+              "mark": "ok",
+              "note": "Exocentric: a person who changes allegiance."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is pickpocket exocentric?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The whole denotes a person, not a kind of pocket.",
+            "feedback": "The head does not determine the category of the whole."
+          },
+          {
+            "id": "b",
+            "text": "It contains no head.",
+            "feedback": "Pocket is the formal head, but the meaning is exocentric."
+          },
+          {
+            "id": "c",
+            "text": "It is a verb.",
+            "feedback": "It is a noun."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "affixation",
+      "title": "Affixation and derivation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "English derivation runs mostly on affixation. Prefixes normally rework meaning and leave the category alone — *unkind*, *rewrite*, *preview* — while suffixes usually change category as well: *kindness*, *modernise*, *readable*. The tendency is a useful first guess, not a rule."
+        },
+        {
+          "type": "paragraph",
+          "text": "Class I affixes attach close to the base and often disturb its phonology; Class II affixes sit further out, behave more like independent words, and leave stress where they found it. Hence *electric* beside *electricity*, *photograph* beside *photography*, with the stress migrating in each pair. The division is gradient, but its predictions are testable."
+        },
+        {
+          "type": "paragraph",
+          "text": "Derivation drags spelling along with it. *Happy* becomes *happiness* with *y* turning to *i*; *able* becomes *ability* with one suffix replacing another. Seen from outside these look like irregularity. Seen by affix class, they are the ordinary behaviour of the forms involved."
+        },
+        {
+          "type": "examples",
+          "title": "Affixation patterns",
+          "items": [
+            {
+              "text": "un-kind",
+              "mark": "ok",
+              "note": "Prefix changes meaning."
+            },
+            {
+              "text": "kind-ness",
+              "mark": "ok",
+              "note": "Suffix changes category."
+            },
+            {
+              "text": "read-able",
+              "mark": "ok",
+              "note": "Adjective-forming suffix."
+            },
+            {
+              "text": "electric → electricity",
+              "mark": "ok",
+              "note": "Morphophonological alternation with a Class I suffix."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the difference between a prefix and a suffix?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A prefix precedes the base; a suffix follows it.",
+            "feedback": "Un-kind versus kind-ness."
+          },
+          {
+            "id": "b",
+            "text": "A prefix changes category; a suffix never does.",
+            "feedback": "Prefixes often do not change category; suffixes often do."
+          },
+          {
+            "id": "c",
+            "text": "They are the same.",
+            "feedback": "Their position differs."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "derivational-alternations",
+      "title": "Morphophonology and spelling in derivation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Electric* ends in a /k/ and *electricity* in an /s/; *photograph* stresses its first syllable and *photography* its second. Neither shift is a slip. Each follows regularly from adding a particular suffix to a particular base."
+        },
+        {
+          "type": "paragraph",
+          "text": "Class I suffixes characteristically retune the base — its vowels, its consonants, its stress — and Class II suffixes characteristically leave it alone. *-ity* and *-ic* belong with the retuners; *-ness* and *-less* do not. The classification is gradient, but it earns its keep by predicting where alternations fall."
+        },
+        {
+          "type": "paragraph",
+          "text": "Spelling keeps pace. *Happy* → *happiness* turns *y* into *i*, *hope* → *hopeful* keeps its *e*, *make* → *making* drops one before *-ing*. Whole suffixes can be swapped as well: *able* → *ability*, *curious* → *curiosity*. Once the affix class is known, none of this needs a list of exceptions."
+        },
+        {
+          "type": "examples",
+          "title": "Derivational alternations",
+          "items": [
+            {
+              "text": "electric → electricity",
+              "mark": "ok",
+              "note": "Final /k/ alternates with /s/."
+            },
+            {
+              "text": "photograph → photography",
+              "mark": "ok",
+              "note": "Stress shift with a Class I suffix."
+            },
+            {
+              "text": "happy → happiness",
+              "mark": "ok",
+              "note": "Y changes to i."
+            },
+            {
+              "text": "able → ability",
+              "mark": "ok",
+              "note": "Affix replacement."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is electricity not simply electric + ity in form?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The final consonant and suffix shape alternate in the derived form.",
+            "feedback": "The morphophonological alternation is regular for the class."
+          },
+          {
+            "id": "b",
+            "text": "It is irregular.",
+            "feedback": "The pattern is regular for Class I suffixes."
+          },
+          {
+            "id": "c",
+            "text": "It contains no base.",
+            "feedback": "Electric is the base."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "evaluative-gender",
+      "title": "Evaluative, gender, and locative morphology",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "English can make a thing smaller or dearer with a suffix. *-let* gives *booklet*, *-ling* gives *duckling*, *-ette* gives *kitchenette*, *-y* gives *doggy*. Augmentation is less grammaticalised: *mega-*, *super-* and *over-* do that work, often with a borrowed air."
+        },
+        {
+          "type": "paragraph",
+          "text": "Gender marking is vestigial. *Actor/actress*, *waiter/waitress*, *hero/heroine* are pairs inherited from a system English no longer runs, and they are lexical and stylistic rather than grammatical. Many have been abandoned for neutral forms, and that abandonment is a social decision as much as a linguistic one."
+        },
+        {
+          "type": "paragraph",
+          "text": "Place and time get their own small inventory of affixes: *fore-*, *pre-*, *post-*, *sub-*, *inter-*, and the suffix *-ward*. *Forecast*, *preview*, *postpone*, *submarine*, *international*, *homeward* each locate something in space or in time, productively but not without limit."
+        },
+        {
+          "type": "examples",
+          "title": "Evaluative and locative forms",
+          "items": [
+            {
+              "text": "booklet",
+              "mark": "ok",
+              "note": "Diminutive with -let."
+            },
+            {
+              "text": "duckling",
+              "mark": "ok",
+              "note": "Diminutive with -ling."
+            },
+            {
+              "text": "actress",
+              "mark": "ok",
+              "note": "Feminine suffix, now often replaced."
+            },
+            {
+              "text": "preview",
+              "mark": "ok",
+              "note": "Temporal prefix pre-."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which form is a diminutive?",
+        "options": [
+          {
+            "id": "a",
+            "text": "booklet",
+            "feedback": "The suffix -let expresses smallness."
+          },
+          {
+            "id": "b",
+            "text": "preview",
+            "feedback": "That is a temporal prefix formation."
+          },
+          {
+            "id": "c",
+            "text": "actress",
+            "feedback": "That is a gender-marked form."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "negatives",
+      "title": "Negatives and reversatives",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "English denies with a family of prefixes that overlap without being interchangeable: *un-* in *unhappy*, *in-* in *impossible*, *non-* in *non-negotiable*, *dis-* in *dishonest*, *a-* in *atypical*. Which one attaches where is largely a matter of the lexeme’s history, and the members of the family differ in how freely they recruit new bases."
+        },
+        {
+          "type": "paragraph",
+          "text": "Not every such prefix denies a property. Reversatives undo an action — *unlock*, *untie*, *devalue*, *disconnect* — and removal prefixes take something away, as in *defrost*, *dethrone*, *unmask*. Opposition prefixes set one thing against another: *anti-war*, *counter-argument*, *pro-choice*."
+        },
+        {
+          "type": "paragraph",
+          "text": "The categories leak into one another and the base decides the reading. *Dis-* can deny, reverse or oppose; *un-* can negate a quality or undo an act. So one prefix may be fully productive in one use and fossilised in another, and no single gloss will cover both."
+        },
+        {
+          "type": "examples",
+          "title": "Negative and reversative forms",
+          "items": [
+            {
+              "text": "unhappy",
+              "mark": "ok",
+              "note": "Negative un-."
+            },
+            {
+              "text": "non-negotiable",
+              "mark": "ok",
+              "note": "Negative non-."
+            },
+            {
+              "text": "unlock",
+              "mark": "ok",
+              "note": "Reversative un-."
+            },
+            {
+              "text": "anti-war",
+              "mark": "ok",
+              "note": "Oppositional anti-."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the difference between negative and reversative un-?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Negative un- negates a property; reversative un- reverses an action.",
+            "feedback": "Unhappy vs unlock."
+          },
+          {
+            "id": "b",
+            "text": "They are identical.",
+            "feedback": "Their meanings differ."
+          },
+          {
+            "id": "c",
+            "text": "Reversative un- only occurs with nouns.",
+            "feedback": "It occurs with verbs: unlock, untie."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "proper-name-derivatives",
+      "title": "Words based on proper names",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Names slide into ordinary vocabulary with surprising ease. *Shakespearean*, *Victorian*, *Darwinian*, *Thatcherite*, *Londoner*: the suffix contributes ‘relating to’ or ‘a person associated with’, and the result can drift well beyond the name’s original bearer."
+        },
+        {
+          "type": "paragraph",
+          "text": "Derivatives from places form a large and untidy family — *American*, *European*, *Asian*, *African* — serving as adjectives or nouns, and their formation resists a single rule. *-an*, *-ian*, *-ese*, *-ish*, *-ic* and a bare zero ending all occur, and which ending a name takes is a fact about that name."
+        },
+        {
+          "type": "paragraph",
+          "text": "Some derivatives shed the name almost entirely. *A sandwich*, *a boycott*, *a diesel*, *a hoover* began as eponyms and now name ordinary things. Etymology records where they came from; morphology describes what they are now, and the two accounts must not be folded together."
+        },
+        {
+          "type": "examples",
+          "title": "Proper-name derivatives",
+          "items": [
+            {
+              "text": "Shakespearean",
+              "mark": "ok",
+              "note": "Adjective from a proper name."
+            },
+            {
+              "text": "Londoner",
+              "mark": "ok",
+              "note": "Noun from a place name."
+            },
+            {
+              "text": "European",
+              "mark": "ok",
+              "note": "Adjective or noun from a continent name."
+            },
+            {
+              "text": "sandwich",
+              "mark": "ok",
+              "note": "Lexicalised common noun from a proper name."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What does Londoner mean?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A person associated with London",
+            "feedback": "The suffix -er forms a personal noun."
+          },
+          {
+            "id": "b",
+            "text": "A place near London",
+            "feedback": "That would be a different formation."
+          },
+          {
+            "id": "c",
+            "text": "An adjective meaning “London-like”",
+            "feedback": "Londoner is a noun."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "nominalisation",
+      "title": "Nominalisation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Verbs and adjectives turn into nouns by several routes. *-er*, *-or* and *-ant* typically name a person or an instrument — *driver*, *actor*, *assistant* — while *-tion*, *-ment*, *-ance*, *-ness* and *-ity* name an action, a state or a process: *destruction*, *movement*, *performance*, *happiness*, *ability*."
+        },
+        {
+          "type": "paragraph",
+          "text": "Some nominalisations stay transparent to their base and some do not. *Happiness* is see-through. *Destruction* is related to *destroy* but has its own shape and its own history. Meaning can drift as well, which is why *a building* usually names a structure rather than the act of building it."
+        },
+        {
+          "type": "paragraph",
+          "text": "Academic and technical prose leans on nominalisation heavily, and the habit has costs. Packing an action into a noun makes the writing abstract and slows the reader. Choosing between *they decided* and *the decision* is a rhetorical decision as much as a morphological one, and worth making on purpose."
+        },
+        {
+          "type": "examples",
+          "title": "Nominalisation types",
+          "items": [
+            {
+              "text": "driver",
+              "mark": "ok",
+              "note": "Person nominalisation with -er."
+            },
+            {
+              "text": "actor",
+              "mark": "ok",
+              "note": "Person nominalisation with -or."
+            },
+            {
+              "text": "destruction",
+              "mark": "ok",
+              "note": "Action nominalisation with -tion."
+            },
+            {
+              "text": "happiness",
+              "mark": "ok",
+              "note": "State nominalisation with -ness."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What kind of nominalisation is driver?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Person nominalisation",
+            "feedback": "It names a person who drives."
+          },
+          {
+            "id": "b",
+            "text": "Action nominalisation",
+            "feedback": "That would be driving or a drive."
+          },
+          {
+            "id": "c",
+            "text": "Adjectivalisation",
+            "feedback": "That forms an adjective."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "adjectivalisation-verbalisation",
+      "title": "Adjectivalisation and verbalisation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Adjectives come from nouns and verbs through a familiar set of suffixes: *childish*, *hopeful*, *readable*, *economic*, with *-ish*, *-ful*, *-able*, *-ic*, *-ous* and *-al* doing the work. What comes out may be gradable, relational or classificatory, and the difference shows in what the adjective will combine with."
+        },
+        {
+          "type": "paragraph",
+          "text": "Verbs form the same way from nouns and adjectives: *modernise*, *legalise*, *simplify*, *strengthen*, *computerise*, using *-ise/-ize*, *-ify*, *-en* or no affix at all. The usual sense is ‘make or become’ whatever the base names, though the details vary from suffix to suffix."
+        },
+        {
+          "type": "paragraph",
+          "text": "Conversion and derivation meet at this point. *To empty* adds nothing to *empty*; *to modernise* adds a suffix. Both produce verbs, yet a question about the productivity of one is not a question about the other."
+        },
+        {
+          "type": "examples",
+          "title": "Adjectival and verbal formations",
+          "items": [
+            {
+              "text": "childish",
+              "mark": "ok",
+              "note": "Adjective from a noun with -ish."
+            },
+            {
+              "text": "readable",
+              "mark": "ok",
+              "note": "Adjective from a verb with -able."
+            },
+            {
+              "text": "modernise",
+              "mark": "ok",
+              "note": "Verb from an adjective with -ise."
+            },
+            {
+              "text": "strengthen",
+              "mark": "ok",
+              "note": "Verb from an adjective with -en."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What process forms modernise from modern?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Verbalisation with a suffix",
+            "feedback": "-Ise forms a verb meaning “make modern”."
+          },
+          {
+            "id": "b",
+            "text": "Conversion",
+            "feedback": "Conversion has no affix."
+          },
+          {
+            "id": "c",
+            "text": "Compounding",
+            "feedback": "No second base is added."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "numerals",
+      "title": "Numerals",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Cardinals name numbers — *one*, *two*, *three*, *ten*, *hundred*, *thousand* — and they combine recursively into *three hundred and forty-two* or *two thousand five hundred*. The system generates indefinitely and still has to be learned in places."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ordinals rank (*first*, *second*, *third*, *fourth*), fractions divide (*half*, *quarter*, *third*, *two-fifths*), and dates run numerals together with calendar convention: *the third of May*, *May 3rd*, *twenty twenty-six*."
+        },
+        {
+          "type": "paragraph",
+          "text": "Numerals also enter compounds. *Two-door*, *three-piece*, *four-wheel-drive*, *ten-year-old* use the numeral as a modifier, and the unit noun stays singular inside: *a ten-year-old child*, never *a ten-years-old child*. The compound has frozen the singular while the meaning stays plural."
+        },
+        {
+          "type": "examples",
+          "title": "Numeral forms",
+          "items": [
+            {
+              "text": "three hundred and forty-two",
+              "mark": "ok",
+              "note": "Composite cardinal numeral."
+            },
+            {
+              "text": "first, second, third",
+              "mark": "ok",
+              "note": "Ordinal numerals."
+            },
+            {
+              "text": "two-fifths",
+              "mark": "ok",
+              "note": "Fraction."
+            },
+            {
+              "text": "a ten-year-old child",
+              "mark": "ok",
+              "note": "Numerical compound with singular year."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is ten-year-old singular in a ten-year-old child?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The numeral compound uses a fixed singular form before the head.",
+            "feedback": "The compound is lexicalised with year, not years."
+          },
+          {
+            "id": "b",
+            "text": "The child is ten years old.",
+            "feedback": "That is the meaning, but the compound form is singular."
+          },
+          {
+            "id": "c",
+            "text": "Year is a non-count noun.",
+            "feedback": "Year is countable."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "neologisms",
+      "title": "Neologisms and vocabulary change",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Vocabulary grows along several routes at once. Borrowing takes a word from another language, semantic change gives an old word a new sense, coinage invents a form outright, and word-formation builds one from pieces already in the language. These routes interact, and a single item may travel more than one of them."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Policeability* is well formed and unlisted. Whether it becomes established depends on usage — frequency, acceptance, fashion — not on its morphology. A nonce-word may never spread. Dictionaries record what has been established; they do not fix the limits of what is possible."
+        },
+        {
+          "type": "paragraph",
+          "text": "Productivity itself moves. *-ric* built *bishopric* and then stopped; *-able* and *-ness* are still in service. Borrowed patterns behave the same way, with foreign plurals persisting, fading or settling into a division of labour with native forms."
+        },
+        {
+          "type": "examples",
+          "title": "Routes into the vocabulary",
+          "items": [
+            {
+              "text": "policeability",
+              "mark": "ok",
+              "note": "Potential word from productive suffixes."
+            },
+            {
+              "text": "priestric",
+              "mark": "bad",
+              "note": "Not admitted because -ric is no longer productive."
+            },
+            {
+              "text": "smog",
+              "mark": "ok",
+              "note": "Blend that became established."
+            },
+            {
+              "text": "sandwich",
+              "mark": "ok",
+              "note": "Lexicalised common noun from a proper name."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why does policeability differ from priestric?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Policeability follows productive patterns; priestric uses a non-productive suffix.",
+            "feedback": "Productivity, not subjective elegance, is the morphological issue."
+          },
+          {
+            "id": "b",
+            "text": "Policeability is shorter.",
+            "feedback": "Length is irrelevant."
+          },
+          {
+            "id": "c",
+            "text": "Priestric is a blend.",
+            "feedback": "It is not a blend."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "borrowing-classical",
+      "title": "Borrowing and classical vocabulary",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "English has taken words from Latin, French, Greek, Norse and many other sources, and the borrowed forms do not stay foreign. *Nation* supports *national*, *nationalise* and *nationalisation*, running through productive English patterns like any native base. Borrowing is not itself a morphological process, but it supplies the material that morphology works on."
+        },
+        {
+          "type": "paragraph",
+          "text": "Classical combining forms carry much of the technical vocabulary: *bio-*, *geo-*, *tele-*, *photo-*, *graph-*, *-ology*, *-graphy*. They pair with one another in *biography* and *geology* and with free bases in *photograph* and *telephone*. Their meanings are usually more specific than those of native affixes, which is why they suit technical coinage."
+        },
+        {
+          "type": "paragraph",
+          "text": "Borrowed plurals and derivational patterns can be irregular or semi-productive. *Formulae*, *curricula* and *phenomena* keep their foreign plurals while other borrowings have been anglicised, and one and the same item may support both forms with a difference of register or sense."
+        },
+        {
+          "type": "examples",
+          "title": "Borrowed and classical forms",
+          "items": [
+            {
+              "text": "nation → national → nationalise",
+              "mark": "ok",
+              "note": "Borrowed base in productive derivation."
+            },
+            {
+              "text": "biography",
+              "mark": "ok",
+              "note": "Neo-classical compound."
+            },
+            {
+              "text": "geology",
+              "mark": "ok",
+              "note": "Classical combining forms."
+            },
+            {
+              "text": "formulae / formulas",
+              "mark": "ok",
+              "note": "Foreign and anglicised plurals."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why does a borrowed form like nation support English derivation?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Once borrowed, it functions as a base for productive English affixes.",
+            "feedback": "National, nationalise and nationalisation are formed from it."
+          },
+          {
+            "id": "b",
+            "text": "It remains Latin.",
+            "feedback": "It is integrated into English."
+          },
+          {
+            "id": "c",
+            "text": "It cannot take affixes.",
+            "feedback": "It does."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "chapter-review",
+      "title": "Chapter Review",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Three questions organise everything in this chapter. Is the form grammatical? Is it established? And if it is both, what internal structure does it have? *Kingdom* is established, *policeability* is grammatical without being established, and a nonce-word is the second kind, used once and dropped. None of those verdicts is about taste."
+        },
+        {
+          "type": "paragraph",
+          "text": "Complex words are bases and affixes arranged in layers, and the arrangement explains behaviour that a flat list of pieces cannot. Productivity and lexicalisation account for the gap between a pattern that still makes words and a formation surviving only in what it has already made. Around the edges sit manufacture, initialism, clipping, blending, back-formation and phonological modification."
+        },
+        {
+          "type": "paragraph",
+          "text": "Conversion shifts a word between categories without changing its form. Compounding joins bases into nouns, adjectives and verbs, classical combining forms included. Derivation supplies negation, evaluation, gender, location, nominalisation, adjectivalisation, verbalisation and the numeral patterns — most of the vocabulary-building machinery English has."
+        },
+        {
+          "type": "note",
+          "tone": "why",
+          "title": "A word-formation checklist",
+          "text": "Identify the base and the process: conversion, compounding, derivation, clipping, blending or back-formation. Check whether the pattern is productive and whether the result is established, potential or nonce. Then analyse the constituent structure and the meaning relation between the parts."
+        }
+      ],
+      "check": {
+        "prompt": "Which statement correctly distinguishes established and potential words?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Established words are familiar vocabulary items; potential words are grammatical but not established.",
+            "feedback": "Policeability is potential; kingdom is established."
+          },
+          {
+            "id": "b",
+            "text": "Potential words are always ungrammatical.",
+            "feedback": "They are grammatical."
+          },
+          {
+            "id": "c",
+            "text": "Established words are always morphologically simple.",
+            "feedback": "Many are complex."
+          }
+        ],
+        "answer": "a"
+      }
+    }
+  ],
+  "worked": [
+    "Take *The editor’s useful guide was republished after a surprisingly readable rewrite*. *Editor* is an established person nominalisation; *useful* is an adjective formed with *-ful*; *republished* contains the prefix *re-*; *readable* is a potential or established adjective formed with *-able*; *rewrite* is a conversion from verb to noun with the prefix *re-*.",
+    "The example shows several word-formation processes at once: derivation, prefixation, conversion and nominalisation. Each form has a base and an affix or a converted category, and each contributes to the meaning of the sentence. The distinction between established and potential words matters for deciding which forms belong to the vocabulary and which are merely possible."
+  ],
+  "application": [
+    "Identify the base and the process. Is the word simple or complex? Is it formed by conversion, compounding, derivation, clipping, blending or back-formation? Then analyse the constituent structure and the meaning relation between the parts.",
+    "Decide whether the formation is established, potential or nonce. Check whether the pattern is productive and whether an established synonym blocks it. Do not confuse a stylistic preference with a morphological ungrammaticality.",
+    "For derivation, identify the affix class and any morphophonological or spelling alternation. For compounds, identify the head and the relation between the elements. For numerals and proper-name derivatives, check the conventional patterns and any lexicalised meanings."
+  ],
+  "reveal": [
+    "In *The editor’s useful guide was republished after a surprisingly readable rewrite*, *editor* is a person nominalisation, *useful* is an adjective with *-ful*, *republished* contains *re-*, *readable* contains *-able*, and *rewrite* is a converted noun. The forms illustrate derivation, prefixation, conversion and nominalisation."
+  ],
+  "recap": [
+    "Lexical word-formation creates new lexemes. Established, potential and nonce-words differ in vocabulary status, not simply in grammaticality. Complex words have hierarchical base-affix structure, and productivity determines which patterns can create new forms.",
+    "Minor processes, conversion and compounding extend the vocabulary alongside derivation. Affixation covers negation, evaluation, gender, location, nominalisation, adjectivalisation, verbalisation and numerals. Morphological analysis must distinguish form, meaning, productivity and lexical status."
+  ],
+  "self_check": [
+    {
+      "question": "What is a potential word?",
+      "answer": "A morphologically grammatical word that is not established in the vocabulary."
+    },
+    {
+      "question": "What is the difference between a bound base and an affix?",
+      "answer": "A bound base fills the central base role and takes affixes; an affix attaches to a base and cannot stand alone."
+    },
+    {
+      "question": "What is conversion?",
+      "answer": "A change of word class without a change of form, as in Google → to google."
+    },
+    {
+      "question": "What is back-formation?",
+      "answer": "Creating a word by removing an affix from an existing word, as in edit from editor."
+    },
+    {
+      "question": "What is the difference between a prefix and a suffix?",
+      "answer": "A prefix precedes the base; a suffix follows it."
+    }
+  ],
+  "opening": [
+    {
+      "prompt": "Which word is established?",
+      "options": [
+        {
+          "id": "a",
+          "text": "kingdom",
+          "feedback": "It is a familiar vocabulary item."
+        },
+        {
+          "id": "b",
+          "text": "priestric",
+          "feedback": "It is not formed by a productive pattern."
+        },
+        {
+          "id": "c",
+          "text": "policeability",
+          "feedback": "It is potential, not established."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which process forms edit from editor?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Back-formation",
+          "feedback": "The suffix is removed."
+        },
+        {
+          "id": "b",
+          "text": "Clipping",
+          "feedback": "Clipping shortens a word without removing a suffix."
+        },
+        {
+          "id": "c",
+          "text": "Blending",
+          "feedback": "Blending fuses two words."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is conversion?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A change of word class without a change of form",
+          "feedback": "Google → to google."
+        },
+        {
+          "id": "b",
+          "text": "Adding an affix",
+          "feedback": "That is derivation."
+        },
+        {
+          "id": "c",
+          "text": "Joining two bases",
+          "feedback": "That is compounding."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which form is a compound?",
+      "options": [
+        {
+          "id": "a",
+          "text": "bedroom",
+          "feedback": "Bed and room are both bases."
+        },
+        {
+          "id": "b",
+          "text": "kindness",
+          "feedback": "That is derivation."
+        },
+        {
+          "id": "c",
+          "text": "ad",
+          "feedback": "That is a clipping."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which process forms smog from smoke and fog?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Blending",
+          "feedback": "Parts of two words are fused."
+        },
+        {
+          "id": "b",
+          "text": "Clipping",
+          "feedback": "Clipping shortens one word."
+        },
+        {
+          "id": "c",
+          "text": "Conversion",
+          "feedback": "Conversion changes category without adding form."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "closing": [
+    {
+      "prompt": "What is a potential word?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A morphologically grammatical word that is not established",
+          "feedback": "Policeability is potential."
+        },
+        {
+          "id": "b",
+          "text": "A word in every dictionary",
+          "feedback": "That is established."
+        },
+        {
+          "id": "c",
+          "text": "A word that cannot be pronounced",
+          "feedback": "Pronunciation is not the criterion."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Why is dur- in durable a base rather than an affix?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It fills the central base role and takes affixes.",
+          "feedback": "It is bound, but not an affix."
+        },
+        {
+          "id": "b",
+          "text": "It can stand alone.",
+          "feedback": "It cannot."
+        },
+        {
+          "id": "c",
+          "text": "It is a suffix.",
+          "feedback": "The suffix is -able."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What are the immediate constituents of ungentlemanly?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Un + gentlemanly",
+          "feedback": "The prefix attaches to the whole adjective."
+        },
+        {
+          "id": "b",
+          "text": "Ungentleman + ly",
+          "feedback": "There is no base ungentleman."
+        },
+        {
+          "id": "c",
+          "text": "Un + gentle + man + ly",
+          "feedback": "That is not the hierarchical structure."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is the difference between a prefix and a suffix?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A prefix precedes the base; a suffix follows it.",
+          "feedback": "Un-kind versus kind-ness."
+        },
+        {
+          "id": "b",
+          "text": "A prefix changes category; a suffix never does.",
+          "feedback": "Prefixes often do not change category; suffixes often do."
+        },
+        {
+          "id": "c",
+          "text": "They are the same.",
+          "feedback": "Their position differs."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which statement correctly distinguishes established and potential words?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Established words are familiar vocabulary items; potential words are grammatical but not established.",
+          "feedback": "Kingdom is established; policeability is potential."
+        },
+        {
+          "id": "b",
+          "text": "Potential words are always ungrammatical.",
+          "feedback": "They are grammatical."
+        },
+        {
+          "id": "c",
+          "text": "Established words are always simple.",
+          "feedback": "Many are complex."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "stages": {
+    "predict": {
+      "prompt": "Which word is established?",
+      "options": [
+        {
+          "id": "a",
+          "text": "kingdom",
+          "feedback": "It is a familiar vocabulary item."
+        },
+        {
+          "id": "b",
+          "text": "priestric",
+          "feedback": "It is not formed by a productive pattern."
+        },
+        {
+          "id": "c",
+          "text": "policeability",
+          "feedback": "It is potential, not established."
+        }
+      ],
+      "answer": "a"
+    },
+    "guided": {
+      "prompt": "Which process forms edit from editor?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Back-formation",
+          "feedback": "The suffix is removed."
+        },
+        {
+          "id": "b",
+          "text": "Clipping",
+          "feedback": "Clipping shortens a word without removing a suffix."
+        },
+        {
+          "id": "c",
+          "text": "Blending",
+          "feedback": "Blending fuses two words."
+        }
+      ],
+      "answer": "a"
+    },
+    "transfer": {
+      "prompt": "Which form is a compound?",
+      "options": [
+        {
+          "id": "a",
+          "text": "bedroom",
+          "feedback": "Bed and room are bases."
+        },
+        {
+          "id": "b",
+          "text": "kindness",
+          "feedback": "That is derivation."
+        },
+        {
+          "id": "c",
+          "text": "ad",
+          "feedback": "That is clipping."
+        }
+      ],
+      "answer": "a"
+    },
+    "exit": {
+      "prompt": "Which process forms smog from smoke and fog?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Blending",
+          "feedback": "Parts of two words are fused."
+        },
+        {
+          "id": "b",
+          "text": "Clipping",
+          "feedback": "Clipping shortens one word."
+        },
+        {
+          "id": "c",
+          "text": "Conversion",
+          "feedback": "Conversion changes category without adding form."
+        }
+      ],
+      "answer": "a"
+    }
+  }
+}

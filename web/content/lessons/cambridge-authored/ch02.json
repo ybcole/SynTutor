@@ -1,0 +1,2081 @@
+{
+  "title": "Syntactic overview",
+  "description": "See how clauses, phrases, words and meanings fit together before later chapters examine each part in detail.",
+  "key_terms": [
+    {
+      "term": "syntax",
+      "definition": "The study of how words combine into phrases, clauses and sentences."
+    },
+    {
+      "term": "clause",
+      "definition": "A construction built around a predicate, typically with a subject and predicate."
+    },
+    {
+      "term": "sentence",
+      "definition": "A unit of text, usually realised by a clause or a coordination of clauses."
+    },
+    {
+      "term": "canonical clause",
+      "definition": "A basic positive declarative active main clause that is not coordinated."
+    },
+    {
+      "term": "non-canonical clause",
+      "definition": "A clause differing from a canonical counterpart in polarity, clause type, information packaging, subordination or coordination."
+    },
+    {
+      "term": "counterpart",
+      "definition": "A clause differing from another on one dimension while keeping the rest constant."
+    },
+    {
+      "term": "prenucleus",
+      "definition": "The position before the nucleus clause, occupied by a fronted element such as a wh-phrase or auxiliary."
+    },
+    {
+      "term": "gap",
+      "definition": "An abstract position co-indexed with a fronted element, showing the function that element would fill in the nucleus."
+    },
+    {
+      "term": "auxiliary verb",
+      "definition": "A verb that can take not and invert with the subject, such as be, have, do, will or can."
+    },
+    {
+      "term": "finite clause",
+      "definition": "A clause headed by a primary verb form, or by a plain form in an imperative or subjunctive."
+    },
+    {
+      "term": "complement",
+      "definition": "A dependent closely related to a head and licensed by that head."
+    },
+    {
+      "term": "predicative complement",
+      "definition": "A complement that ascribes a property to the subject or object rather than naming a participant."
+    },
+    {
+      "term": "determiner",
+      "definition": "The NP function that marks definiteness or indefiniteness."
+    },
+    {
+      "term": "determinative",
+      "definition": "A lexical category such as the, a, this, three or much."
+    },
+    {
+      "term": "nominal",
+      "definition": "The unit between NP and noun, containing the head noun and its internal dependents."
+    },
+    {
+      "term": "fused head",
+      "definition": "A word that performs the head function and a dependent function at the same time."
+    },
+    {
+      "term": "adjunct",
+      "definition": "A modifier in clause or VP structure, or a related supplement."
+    },
+    {
+      "term": "content clause",
+      "definition": "The default finite subordinate clause, lacking the special features of relatives and comparatives."
+    },
+    {
+      "term": "catenative complement",
+      "definition": "A non-finite clause complement licensed by a verb, often forming recursive verb chains."
+    },
+    {
+      "term": "coordination",
+      "definition": "A construction joining two or more elements of equal syntactic status."
+    },
+    {
+      "term": "supplement",
+      "definition": "A prosodically detached element related to an anchor without being a syntactic dependent."
+    },
+    {
+      "term": "information packaging",
+      "definition": "A non-canonical construction that changes how content is presented rather than its truth conditions."
+    },
+    {
+      "term": "deixis",
+      "definition": "Reference fixed by features of the utterance, such as speaker, time and place."
+    },
+    {
+      "term": "anaphora",
+      "definition": "The relation in which an expression receives its interpretation from an antecedent."
+    }
+  ],
+  "intro": [
+    "Begin with three words in search of a sentence: *Jill*, *seems*, *friendly*. Add a little and they make a clause; embed that clause inside another and it stops being a sentence without losing its internal shape. English is built from a small number of relations — headedness, complementation, embedding, coordination — reapplied at every level.",
+    "This overview maps those relations before the detail arrives. It starts with the difference between a sentence and a clause, then separates canonical clauses from the non-canonical constructions built on them. From the verb it moves outwards: complements, noun phrases, adjectives and adverbs, prepositions, adjuncts, negation, clause type, subordination, coordination and information packaging. It ends with deixis and anaphora, two relations that cut across word classes.",
+    "Read the examples for structure, not for labels. The question to keep asking is always the same: what is the head, what does it require, and what has been added, moved or left out? The terminology exists to answer that question the same way every time."
+  ],
+  "sections": [
+    {
+      "id": "grammar-map",
+      "title": "A map of the grammar",
+      "advances": "predict",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Take *Jill seems quite friendly* and put it inside *I think Jill seems quite friendly*. The words are unchanged, and so is their internal grammar, but the clause has lost its standing as a sentence. A string can be well formed at one level and dependent at another. Syntax studies the levels in between: words into phrases, phrases into clauses, clauses into sentences. Morphology looks inside the word; the relations between whole sentences in a conversation or an essay belong to discourse."
+        },
+        {
+          "type": "paragraph",
+          "text": "Embedding separates the two units. A clause is a construction organised around a predicate, and it can be contained inside a larger clause; a sentence is a unit of text, at home in sequence with other sentences and not normally contained inside one. That is why *Jill seems quite friendly* counts as both when it stands alone, only as a clause once *I think* precedes it, and why two clauses joined by *but* make a single sentence with neither one subordinate."
+        },
+        {
+          "type": "paragraph",
+          "text": "Tree diagrams therefore label clauses, not sentences. A sentence may have the form of a clause or the form of a coordination of clauses, and calling the whole coordination a sentence would say nothing about its internal shape. It would also leave mixed coordinations — an NP coordinated with a clause — without a category that fits both coordinates."
+        },
+        {
+          "type": "examples",
+          "title": "What embedding and coordination do to a clause",
+          "items": [
+            {
+              "text": "Jill seems quite friendly.",
+              "mark": "ok",
+              "note": "A sentence and a clause."
+            },
+            {
+              "text": "I think Jill seems quite friendly.",
+              "mark": "ok",
+              "note": "One sentence; the Jill clause is embedded as the complement of think."
+            },
+            {
+              "text": "Jill seems quite friendly, but her husband is extremely shy.",
+              "mark": "ok",
+              "note": "One sentence made of two coordinated clauses."
+            },
+            {
+              "text": "You must find out the cost and whether you can pay by card.",
+              "mark": "ok",
+              "note": "A coordination of an NP and a clause; the whole belongs to neither category."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "tone": "why",
+          "title": "Why the sentence is not a tree label",
+          "text": "A sentence is defined by its place in a text, while a clause is defined by its internal grammatical structure. Tree diagrams represent structure inside a construction, so they label the clause. The sentence remains useful for punctuation and for talking about sequences of utterances."
+        }
+      ],
+      "check": {
+        "prompt": "Which unit appears as the topmost syntactic category in a clause tree?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The clause",
+            "feedback": "A clause has the internal subject-predicate structure that a tree represents."
+          },
+          {
+            "id": "b",
+            "text": "The sentence",
+            "feedback": "A sentence is a unit of text and may be a clause or a coordination of clauses."
+          },
+          {
+            "id": "c",
+            "text": "The paragraph",
+            "feedback": "Paragraphs organise written text, not syntactic structure."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "sentence-clause",
+      "title": "Sentence, clause, and coordination",
+      "advances": "understand",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Traditional grammar calls a sentence simple, complex or compound, and the scheme quietly mixes two questions: whether a clause is embedded, and whether clauses are coordinated. A single sentence can do both at once. The clearer contrast sets a non-compound sentence, whose form is a clause, against a compound sentence, whose form is a coordination."
+        },
+        {
+          "type": "paragraph",
+          "text": "Coordination joins equals, and the whole takes its category from what is joined: *Jill and her husband* is an NP-coordination, *Jill seems friendly but her husband is shy* is a clause-coordination, and an NP coordinated with a clause gives a mixed coordination. What must match is function rather than category, which is why an NP and a PP can coordinate when both serve as temporal adjuncts."
+        },
+        {
+          "type": "paragraph",
+          "text": "Embedding works differently. A subordinate clause sits inside a matrix clause, and the relation can repeat: *I think he said that Liz was ill* wraps a clause inside a clause inside a clause. The matrix is simply whichever clause contains the subordinate one, and it may itself be subordinate to something larger. That recursion is how a finite set of rules yields an unlimited supply of sentences."
+        },
+        {
+          "type": "table",
+          "title": "Units and constructions",
+          "columns": [
+            "Unit",
+            "What it is",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Sentence",
+              "A unit of text, not normally contained in another sentence",
+              "Jill seems friendly."
+            ],
+            [
+              "Clause",
+              "A subject-predicate construction, embeddable in a larger clause",
+              "I think [Jill seems friendly]."
+            ],
+            [
+              "Clause-coordination",
+              "Two or more clauses joined as equals",
+              "[Jill seems friendly] but [her husband is shy]."
+            ],
+            [
+              "NP-coordination",
+              "Two or more NPs joined as equals",
+              "Jill and her husband"
+            ],
+            [
+              "Mixed coordination",
+              "Coordinates of different categories with the same function",
+              "the cost and whether you can pay"
+            ]
+          ]
+        },
+        {
+          "type": "note",
+          "tone": "watch",
+          "title": "Coordination is not a clause",
+          "text": "A clause-coordination is not itself a clause, because it does not have the subject-predicate structure of its coordinates. Treating the whole coordination as a clause obscures the very relation that coordination creates."
+        }
+      ],
+      "check": {
+        "prompt": "What is the category of Jill seems friendly, but her husband is shy?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A clause-coordination",
+            "feedback": "Two clauses are joined as equals by but."
+          },
+          {
+            "id": "b",
+            "text": "A single clause with two subjects",
+            "feedback": "Each coordinate has its own subject and predicate."
+          },
+          {
+            "id": "c",
+            "text": "An NP-coordination",
+            "feedback": "The coordinates are clauses, not noun phrases."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "canonical-clauses",
+      "title": "Canonical and non-canonical clauses",
+      "advances": "worked",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "English offers so many clause constructions that describing them all at once would produce a fog of qualifications. The way through is a baseline: a canonical clause is positive, declarative, active, main and non-coordinate. It is not a better clause, only a reference point that makes every departure easier to state."
+        },
+        {
+          "type": "paragraph",
+          "text": "A clause can leave that baseline along five independent dimensions: it can be negated, it can change clause type as a statement becomes a question, it can repackage information as the active becomes passive, it can be subordinated inside a larger clause, or it can be coordinated with another."
+        },
+        {
+          "type": "paragraph",
+          "text": "*I can’t understand why I have not been questioned by the police* is negative, interrogative, passive and subordinate all at once, and each description leaves the others standing. That independence is what makes the canonical baseline useful rather than merely convenient."
+        },
+        {
+          "type": "table",
+          "title": "Five dimensions of non-canonical structure",
+          "columns": [
+            "Dimension",
+            "Canonical",
+            "Non-canonical",
+            "What changes"
+          ],
+          "rows": [
+            [
+              "Polarity",
+              "Kim referred to the report.",
+              "Kim did not refer to the report.",
+              "Negation, often with dummy do"
+            ],
+            [
+              "Clause type",
+              "She was still working.",
+              "Was she still working?",
+              "Declarative becomes interrogative; subject and auxiliary invert"
+            ],
+            [
+              "Information packaging",
+              "Pat solved the problem.",
+              "The problem was solved by Pat.",
+              "Active becomes passive; functions are realigned"
+            ],
+            [
+              "Subordination",
+              "Liz was ill.",
+              "He said that Liz was ill.",
+              "The clause is embedded in a matrix clause"
+            ],
+            [
+              "Coordination",
+              "He has forgotten the appointment.",
+              "Either he has overslept or he has forgotten the appointment.",
+              "A coordinate clause is added"
+            ]
+          ]
+        },
+        {
+          "type": "diagnostic",
+          "title": "Place a clause on the five dimensions",
+          "steps": [
+            "Is the clause positive or negative?",
+            "Is it declarative, interrogative, exclamative or imperative?",
+            "Is it active or passive, and does it present the information in a marked order?",
+            "Is it main or subordinate?",
+            "Is it coordinate or non-coordinate?"
+          ],
+          "conclusion": "A clause can be non-canonical on several dimensions at once; describe each dimension separately rather than forcing the clause into one label."
+        }
+      ],
+      "check": {
+        "prompt": "Which dimension distinguishes Pat solved the problem from The problem was solved by Pat?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Information packaging",
+            "feedback": "The active and passive present the same proposition with different syntactic functions."
+          },
+          {
+            "id": "b",
+            "text": "Clause type",
+            "feedback": "Both clauses are declarative."
+          },
+          {
+            "id": "c",
+            "text": "Polarity",
+            "feedback": "Both clauses are positive."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "counterparts-processes",
+      "title": "Counterparts and descriptive processes",
+      "advances": "guided",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*It wasn’t written by Sue* has an active counterpart, *Sue didn’t write it*, which stays negative, and a positive counterpart, *It was written by Sue*, which stays passive. Each counterpart isolates one difference, and holding everything else constant is what makes the comparison informative."
+        },
+        {
+          "type": "paragraph",
+          "text": "Not every non-canonical clause has a well-formed counterpart, and the gaps are instructive. A negative clause may lack a positive version; a question may lack a declarative with the same meaning; a passive may lack an active; an existential may have no non-existential equivalent; a conditional fragment may have no main-clause counterpart. Process terms such as passivisation and inversion therefore describe differences between constructions, not steps a speaker performs."
+        },
+        {
+          "type": "examples",
+          "title": "Clauses with no well-formed counterpart",
+          "items": [
+            {
+              "text": "I can’t stay any longer.",
+              "mark": "ok",
+              "note": "No positive counterpart: *I can stay any longer* is not grammatical."
+            },
+            {
+              "text": "Have they finished yet?",
+              "mark": "ok",
+              "note": "No declarative *They have finished yet* with the same meaning."
+            },
+            {
+              "text": "Kim was said to be the culprit.",
+              "mark": "ok",
+              "note": "No active counterpart."
+            },
+            {
+              "text": "There was an accident.",
+              "mark": "ok",
+              "note": "No non-existential counterpart."
+            },
+            {
+              "text": "If it hadn’t been for you ...",
+              "mark": "ok",
+              "note": "No main-clause counterpart."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Fronted elements need a representation that keeps their function visible. In *I wonder what Liz bought*, *what* occupies the prenucleus and the object position inside *Liz bought* is a gap co-indexed with it. Calling *what* the object would lose the fact that it is the object of *bought*, not of *wonder*. The gap can sit several clauses down: in *I can’t remember what Max said Liz bought*, *what* is understood as the object of *bought*, inside the clause embedded under *said*."
+        },
+        {
+          "type": "examples",
+          "title": "Prenucleus, nucleus, and gap",
+          "items": [
+            {
+              "text": "I wonder what Liz bought.",
+              "mark": "ok",
+              "note": "What is prenuclear; the object of bought is a gap."
+            },
+            {
+              "text": "I can’t remember what Max said Liz bought.",
+              "mark": "ok",
+              "note": "The gap sits inside a clause embedded under said."
+            },
+            {
+              "text": "Is he ill?",
+              "mark": "ok",
+              "note": "The auxiliary is prenuclear; the predicator position is a gap co-indexed with it."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "tone": "why",
+          "title": "Process language without derivations",
+          "text": "Saying that a clause involves subject-auxiliary inversion names a difference in order. It does not assert that the speaker first produced the declarative and then reversed it. The static description is enough: the auxiliary occupies the prenucleus and the nucleus has a gap in the predicator position."
+        }
+      ],
+      "check": {
+        "prompt": "Why is what not simply labelled the object in I wonder what Liz bought?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It is the object of bought, and the gap shows that relation inside the nucleus.",
+            "feedback": "The label object belongs to the relation between bought and its object position."
+          },
+          {
+            "id": "b",
+            "text": "It is the subject of wonder.",
+            "feedback": "The subject of wonder is I."
+          },
+          {
+            "id": "c",
+            "text": "It has no grammatical function at all.",
+            "feedback": "It is understood as the object of bought, but from the prenucleus position."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "verb-head",
+      "title": "The verb at the centre",
+      "advances": "transfer",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Every clause has a verb at the centre, and what that verb requires shapes the rest. The predicate is realised by a VP, and the VP is headed by a verb, which makes the verb the ultimate head of the clause. Most verbs have six inflectional forms: preterite, third singular present, plain present, plain form, gerund-participle and past participle. *Be* is the exception, with two preterite forms and three present forms, and *were* in *I wish she were here* is a residual irrealis."
+        },
+        {
+          "type": "paragraph",
+          "text": "The plain form does a lot of work: imperative, subjunctive, to-infinitival, bare infinitival. Those are clause constructions, not extra inflectional forms, and the same caution applies to finiteness. A finite clause is headed by a primary verb form, or by a plain form in an imperative or subjunctive. A non-finite clause is headed by a gerund-participle, a past participle, or a plain form in an infinitival."
+        },
+        {
+          "type": "paragraph",
+          "text": "*They are cheap* carries no auxiliary meaning, yet *be* still takes *not* and inverts with the subject: *They are not cheap*, *Are they cheap?* That behaviour is the test, and it makes *be* an auxiliary even when it is a copula. Lexical verbs have to borrow dummy *do* for the same jobs. Auxiliaries are heads, not dependents: in *She is writing a novel*, *is* heads the clause and *writing a novel* is its non-finite complement, so *is writing* is not a constituent."
+        },
+        {
+          "type": "paragraph",
+          "text": "Form and time part company here. *She took the file* places the taking in the past; *If I took the file* uses the same preterite for a present hypothesis. English marks primary tense by inflection and a secondary perfect by *have*, and since *will* and *shall* are modal auxiliaries, it has no future tense. Aspect contrasts progressive with non-progressive; mood is carried chiefly by modals and residual *were*. Modal meaning divides into deontic, epistemic and dynamic uses, all of which verbs, adjectives, adverbs and nouns can equally express."
+        },
+        {
+          "type": "table",
+          "title": "Forms and grammatical categories",
+          "columns": [
+            "Form or category",
+            "Example",
+            "What it shows"
+          ],
+          "rows": [
+            [
+              "Preterite",
+              "She took the file.",
+              "Primary tense form"
+            ],
+            [
+              "Plain present",
+              "They take the file.",
+              "Primary tense form"
+            ],
+            [
+              "Plain form",
+              "Take the file.",
+              "Used in imperative, subjunctive and infinitival constructions"
+            ],
+            [
+              "Gerund-participle",
+              "She is taking the file.",
+              "Non-finite form in -ing"
+            ],
+            [
+              "Past participle",
+              "She has taken the file.",
+              "Non-finite form used with have and be"
+            ],
+            [
+              "Perfect",
+              "She has taken the file.",
+              "Secondary tense marked by have"
+            ],
+            [
+              "Progressive",
+              "She is taking the file.",
+              "Aspect marked by be"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Heads inside the verb phrase",
+          "items": [
+            {
+              "text": "She is writing a novel.",
+              "mark": "ok",
+              "note": "Is heads the clause; writing a novel is a non-finite complement."
+            },
+            {
+              "text": "She had been ill.",
+              "mark": "ok",
+              "note": "Preterite had combines with the perfect; been is the past participle."
+            },
+            {
+              "text": "They are cheap.",
+              "mark": "ok",
+              "note": "Be is an auxiliary even in its copula use: They are not cheap; Are they cheap?"
+            }
+          ]
+        },
+        {
+          "type": "diagnostic",
+          "title": "Find the finite head",
+          "steps": [
+            "Locate the verb that carries primary tense, or the plain form in an imperative or subjunctive.",
+            "Ask whether that verb can take not and invert with the subject.",
+            "If it cannot, check whether dummy do is required.",
+            "Treat any following non-finite verb as the head of a subordinate clause, not as part of the same verb."
+          ],
+          "conclusion": "The finite auxiliary is the clause-level head; a following participle or infinitive heads its own non-finite complement."
+        }
+      ],
+      "check": {
+        "prompt": "Why does English have no future tense?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Will and shall are modal auxiliaries, not tense auxiliaries.",
+            "feedback": "Future time can be expressed, but it is not marked by a dedicated tense inflection."
+          },
+          {
+            "id": "b",
+            "text": "English has no way to talk about the future.",
+            "feedback": "Future time is expressed in many ways; the claim concerns grammatical tense."
+          },
+          {
+            "id": "c",
+            "text": "The future is always expressed by the present tense.",
+            "feedback": "Present forms can refer to future time, but that is not the whole story."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "complements",
+      "title": "Complements and clause patterns",
+      "advances": "exit",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Compare *She put the file in the drawer* with *She read the file in the drawer*. The same phrase follows the verb in both, but only the first collapses without it: *She put the file* leaves us waiting for something, while *She read the file* does not. Some dependents are required by the verb’s sense and others merely add. The required ones are complements, and the verb’s subclass decides which it allows. The subject is an external complement, obligatory in canonical clauses; the object is an internal complement, licensed by some verbs and not others. Hence the intransitive, monotransitive and ditransitive patterns, though most verbs appear in more than one."
+        },
+        {
+          "type": "paragraph",
+          "text": "A preposition phrase like *to me* can carry the meaning of an indirect object without being one. In *They gave the key to me* it is not an indirect object, even though the meaning matches *They gave me the key*; it is a PP complement. Objects normally take the form of NPs, and that mismatch is what makes the pattern easy to misread. Prepositional verbs select a particular preposition — *refer to*, *blame on* — and some PP complements are predicative, as in *They regard me as a liability*."
+        },
+        {
+          "type": "paragraph",
+          "text": "In *This seems a good idea* the property attaches to the subject; in *I consider this a good idea* it attaches to the object, and in neither case does the complement name a participant. That is what makes it predicative. *Be* splits into ascriptive and specifying uses: *This is a good idea* ascribes a property, while *The only problem is the cost* identifies a value and normally allows subject and complement to be reversed."
+        },
+        {
+          "type": "table",
+          "title": "Major clause patterns",
+          "columns": [
+            "Pattern",
+            "Structure",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Intransitive",
+              "Subject + predicator",
+              "She smiled."
+            ],
+            [
+              "Monotransitive",
+              "Subject + predicator + direct object",
+              "He washed the car."
+            ],
+            [
+              "Ditransitive",
+              "Subject + predicator + indirect object + direct object",
+              "They gave me the key."
+            ],
+            [
+              "Complex-intransitive",
+              "Subject + predicator + predicative complement",
+              "This seems a good idea."
+            ],
+            [
+              "Complex-transitive",
+              "Subject + predicator + object + predicative complement",
+              "I consider this a good idea."
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Objects, complements and particles",
+          "items": [
+            {
+              "text": "They gave me the key.",
+              "mark": "ok",
+              "note": "Me is the indirect object; the key is the direct object."
+            },
+            {
+              "text": "They gave the key to me.",
+              "mark": "ok",
+              "note": "To me is a PP complement, not an indirect object."
+            },
+            {
+              "text": "I consider this a good idea.",
+              "mark": "ok",
+              "note": "A good idea is a predicative complement describing this."
+            },
+            {
+              "text": "She took off the label.",
+              "mark": "ok",
+              "note": "Off is a particle: it can precede or follow the direct object."
+            },
+            {
+              "text": "She jumped off the wall.",
+              "mark": "ok",
+              "note": "Off the wall is one PP complement, not a particle plus object."
+            }
+          ]
+        },
+        {
+          "type": "diagnostic",
+          "title": "Object or predicative complement?",
+          "steps": [
+            "Can the dependent be replaced by an adjective such as fair or ready?",
+            "Does it describe a property of the subject or object rather than name a participant?",
+            "Does the verb allow the subject and complement to reverse?",
+            "If the dependent is an NP that names a participant, treat it as an object."
+          ],
+          "conclusion": "A predicative complement ascribes a property; an object names a participant. Form alone does not decide, because both can be NPs."
+        }
+      ],
+      "check": {
+        "prompt": "In They gave the key to me, what is to me?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A PP complement",
+            "feedback": "It is a preposition phrase, not an NP object."
+          },
+          {
+            "id": "b",
+            "text": "An indirect object",
+            "feedback": "The indirect object in the related pattern is me: They gave me the key."
+          },
+          {
+            "id": "c",
+            "text": "A predicative complement",
+            "feedback": "To me does not ascribe a property to the key."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "nouns-noun-phrases",
+      "title": "Nouns and noun phrases",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A noun phrase turns up as subject, object and predicative complement without changing its category, and a prototypical one is headed by a noun. Common nouns, proper nouns and pronouns are subcategories of noun, not separate primary categories. A pronoun is a noun that behaves in a particular way, not a different part of speech."
+        },
+        {
+          "type": "paragraph",
+          "text": "Inside the NP sits a determiner and a head nominal, and inside the nominal sits the head noun with its own dependents. The hierarchy NP > nominal > noun mirrors clause > VP > verb. Attributive modifiers precede the head; complements such as *of the dark* in *his fear of the dark* are licensed by the noun. With very restricted exceptions, an attributive modifier cannot carry a post-head dependent of its own."
+        },
+        {
+          "type": "paragraph",
+          "text": "*The* in *the report* and *the minister’s* in *the minister’s behaviour* are doing the same job in the noun phrase, though only one of them is a determinative. Determiner names the job; determinative names the word class. Determiners mark definiteness or indefiniteness, while determinatives may take other functions — *three* in *these three reports*, for instance. Some NPs fuse the two: in *I need screws but can’t find any*, *any* is head and determiner at once."
+        },
+        {
+          "type": "paragraph",
+          "text": "Case and number cut across that hierarchy. A few pronouns have four case forms, while most nouns contrast genitive with plain. Genitive case attaches to the last word of the NP, which may be the head or the final word of a post-head dependent. Number normally follows the head noun, and the verb agrees with the subject NP, but the agreement is not mechanical: *A number of boys were absent* and *Three eggs is plenty* follow meaning as well as form."
+        },
+        {
+          "type": "table",
+          "title": "Layers inside phrases",
+          "columns": [
+            "Larger unit",
+            "Head level",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Clause",
+              "VP",
+              "She wrote the letter."
+            ],
+            [
+              "NP",
+              "Nominal",
+              "the young woman"
+            ],
+            [
+              "Nominal",
+              "Noun",
+              "young woman"
+            ],
+            [
+              "AdjP",
+              "Adjective",
+              "very good"
+            ],
+            [
+              "AdvP",
+              "Adverb",
+              "quite well"
+            ],
+            [
+              "PP",
+              "Preposition",
+              "before lunch"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Determiners, nominals, and fused heads",
+          "items": [
+            {
+              "text": "the young woman",
+              "mark": "ok",
+              "note": "NP > nominal > noun; young is an attributive modifier."
+            },
+            {
+              "text": "his fear of the dark",
+              "mark": "ok",
+              "note": "Of the dark is a complement licensed by fear."
+            },
+            {
+              "text": "I need screws but can’t find any.",
+              "mark": "ok",
+              "note": "Any fuses the head and determiner functions."
+            },
+            {
+              "text": "the minister’s behaviour",
+              "mark": "ok",
+              "note": "The genitive NP is a subject-determiner."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "tone": "watch",
+          "title": "Function is not category",
+          "text": "Determiner is a job inside the NP; determinative is a word class. A genitive NP can do the determiner job even though it is not a determinative. Keeping function and category apart prevents a long list of false equivalences."
+        }
+      ],
+      "check": {
+        "prompt": "Which term names a function rather than a word class?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Determiner",
+            "feedback": "Determiner is the NP function; determinative is the category."
+          },
+          {
+            "id": "b",
+            "text": "Determinative",
+            "feedback": "Determinative is a lexical category, such as the or three."
+          },
+          {
+            "id": "c",
+            "text": "Noun",
+            "feedback": "Noun is a lexical category."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "adjective-adverb-preposition",
+      "title": "Adjectives, adverbs, and prepositions",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*The child was asleep* is ordinary; *an asleep child* is not. *A sole parent* is ordinary; *The parent was sole* is not. Adjectives do two main jobs: attributive modifier inside an NP and predicative complement in a clause. Most manage both, some do not. A few are postpositive, as in *the money available* or *the minister responsible for the decision*."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Kim was unhappy* works; *Kim was unhappily* does not. Adverbs generally modify rather than complement, and they never serve as predicative complements. Adjective phrases are simple: an adjective head with modifiers and complements, the complements following the head. That is why complements are rare in attributive position and common in postpositives. They modify verbs, adjectives, adverbs and NPs, though not every adverb combines with every category."
+        },
+        {
+          "type": "subheading",
+          "text": "Prepositions as heads"
+        },
+        {
+          "type": "paragraph",
+          "text": "*Before lunch*, *before he left* and *I hadn’t seen him before* all have *before* doing the same job: heading a phrase, with or without a complement. Prepositions head preposition phrases, and their complements can be NPs, adverb phrases or clauses. Some take no complement at all. Under this analysis many traditional adverbs and most traditional subordinating conjunctions turn out to be prepositions. Central prepositions can also be stranded, leaving a gap: *Who was she talking to?*"
+        },
+        {
+          "type": "table",
+          "title": "Three categories at work",
+          "columns": [
+            "Category",
+            "Typical function",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Adjective",
+              "Modify a nominal; act as predicative complement",
+              "an excellent result; the result was excellent"
+            ],
+            [
+              "Adverb",
+              "Modify a verb, adjective, adverb or NP",
+              "She almost died; an almost inaudible response"
+            ],
+            [
+              "Preposition",
+              "Head a PP; take an NP, AdvP, clause or no complement",
+              "before lunch; before he left; afterwards"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Where the categories separate",
+          "items": [
+            {
+              "text": "The child was asleep.",
+              "mark": "ok",
+              "note": "Predicative use; an asleep child is not ordinary."
+            },
+            {
+              "text": "the minister responsible for the decision",
+              "mark": "ok",
+              "note": "A postpositive adjective with its PP complement."
+            },
+            {
+              "text": "Who was she talking to?",
+              "mark": "ok",
+              "note": "The preposition is stranded; its complement is a gap."
+            },
+            {
+              "text": "I saw him before he left.",
+              "mark": "ok",
+              "note": "Before heads a PP with a clause complement."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is before analysed as a preposition in I saw him before he left?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It heads a phrase with a clause complement.",
+            "feedback": "Prepositions can take clauses as complements."
+          },
+          {
+            "id": "b",
+            "text": "It is followed by a pronoun.",
+            "feedback": "The complement here is the clause he left."
+          },
+          {
+            "id": "c",
+            "text": "It can be replaced by an adjective.",
+            "feedback": "Before does not modify a nominal like an adjective."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "adjuncts",
+      "title": "Adjuncts at the edge of complementation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Take *I spoke to her in the garden*: the locative phrase can be dropped and the sentence survives intact. *They treated us badly* is different; the manner phrase cannot go, because *treat* without it has another sense. One is an adjunct, the other a complement, and the difference is not simply necessary versus optional. Adjunct is the wider label, covering modifiers in clause or VP structure together with related supplements. With verbs of motion, source and goal expressions are generally complements, as in *Kim drove from Berlin to Bonn*."
+        },
+        {
+          "type": "paragraph",
+          "text": "Temporal location, duration, frequency, degree, purpose, reason, result, concession, condition: these are the meanings adjuncts express, and the labels help description. They do not replace structural tests. A phrase can look like a familiar semantic type and still be a complement if the verb requires it."
+        },
+        {
+          "type": "paragraph",
+          "text": "The word *Unhappily* in *Unhappily, the letter arrived too late* comments on the clause without depending on the verb. The interrupting clause in *Her father — he’s the guy talking to the Mayor — has agreed to finance the deal* is an interpolation. Supplements are detached from the clause they relate to. A supplement has an anchor, but the relation is not headedness."
+        },
+        {
+          "type": "examples",
+          "title": "Complement, adjunct, supplement",
+          "items": [
+            {
+              "text": "They treated us badly.",
+              "mark": "ok",
+              "note": "Badly is a complement; without it treat has another sense."
+            },
+            {
+              "text": "Kim drove from Berlin to Bonn.",
+              "mark": "ok",
+              "note": "Source and goal are complements of the motion verb."
+            },
+            {
+              "text": "Unhappily, the letter arrived too late.",
+              "mark": "ok",
+              "note": "Unhappily is a supplement, not a required dependent."
+            }
+          ]
+        },
+        {
+          "type": "diagnostic",
+          "title": "Complement or adjunct?",
+          "steps": [
+            "Remove the dependent and ask whether the verb still has the same meaning.",
+            "Compare the verb with a closely related sense that requires the dependent.",
+            "Check whether the expression identifies a source or goal with a verb of motion.",
+            "If the dependent is detached by intonation or punctuation and comments on the clause, treat it as a supplement."
+          ],
+          "conclusion": "Meaning alone is not enough: the verb’s requirements decide whether a dependent is a complement."
+        }
+      ],
+      "check": {
+        "prompt": "Which expression is a complement in They treated us badly?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Badly",
+            "feedback": "Without badly, treat has a different sense; the dependent is obligatory."
+          },
+          {
+            "id": "b",
+            "text": "Us",
+            "feedback": "Us is the object, not the manner expression under discussion."
+          },
+          {
+            "id": "c",
+            "text": "They",
+            "feedback": "They is the subject."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "negation-polarity",
+      "title": "Negation and polarity",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Negative clauses differ from positive ones in their distribution, not only in their meaning. They accept a *not even* continuation, they take *nor* or *neither* where a positive clause takes *so*, and they take a positive confirmation tag. Positive clauses reverse all three, and the table sets the tests side by side."
+        },
+        {
+          "type": "paragraph",
+          "text": "A negative word inside a constituent does not make the clause negative. In *They were rather unfriendly* the negation is subclausal, and the clause behaves as positive: it rejects *not even*, takes *so* rather than *nor*, and takes a negative tag. *Not for the first time, she found his behaviour offensive* works the same way, and so does *We’ll do it in no time*."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Any longer*, *any*, *ever*, *yet* and *at all* favour negative or other non-affirmative contexts, questions and conditionals included. *Somewhat*, *some*, *already* and *still* favour positive ones. Some expressions are polarity-sensitive. The relevant class is wider than negation, since a non-affirmative clause is any clause not used to make a positive assertion."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Not many members answered* and *Many members did not answer* contain the same words in a different arrangement, and they do not mean the same. Negation reaches over a different stretch of the sentence in each, and that stretch is its scope. Linear order does not always settle the matter: *You need not answer* puts *need* inside the scope of *not*, while *You must not answer* puts *must* outside it. *I didn’t go to the party because I wanted to see Kim* stays ambiguous until intonation or context fixes the reach of the *because* clause."
+        },
+        {
+          "type": "table",
+          "title": "Three tests for clausal negation",
+          "columns": [
+            "Test",
+            "Negative clause",
+            "Positive clause"
+          ],
+          "rows": [
+            [
+              "Not even continuation",
+              "He didn’t read it, not even the summary.",
+              "He read it, not even the summary."
+            ],
+            [
+              "Connective",
+              "He didn’t read it, and nor did his son.",
+              "He read it, and so did his son."
+            ],
+            [
+              "Confirmation tag",
+              "He didn’t read it, did he?",
+              "He read it, didn’t he?"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Clausal and subclausal negation",
+          "items": [
+            {
+              "text": "He didn’t read the report, not even the summary.",
+              "mark": "ok",
+              "note": "Clausal negation: not even is possible."
+            },
+            {
+              "text": "They were rather unfriendly.",
+              "mark": "ok",
+              "note": "Subclausal negation: the clause still behaves as positive."
+            },
+            {
+              "text": "You need not answer.",
+              "mark": "ok",
+              "note": "Need is inside the scope of not."
+            },
+            {
+              "text": "You must not answer.",
+              "mark": "ok",
+              "note": "Must is outside the scope of not."
+            }
+          ]
+        },
+        {
+          "type": "diagnostic",
+          "title": "Is the whole clause negative?",
+          "steps": [
+            "Try continuing with not even.",
+            "Try the connective nor or neither.",
+            "Check which confirmation tag the clause takes.",
+            "If the clause behaves positively despite a negative word, treat the negation as subclausal."
+          ],
+          "conclusion": "Distribution, not the presence of a negative word, decides whether a clause is negative."
+        }
+      ],
+      "check": {
+        "prompt": "In You must not answer, where does the negation apply?",
+        "options": [
+          {
+            "id": "a",
+            "text": "To the answer, not to must",
+            "feedback": "Must is outside the scope: it is necessary that you not answer."
+          },
+          {
+            "id": "b",
+            "text": "To must itself",
+            "feedback": "That would mean there is no obligation to answer."
+          },
+          {
+            "id": "c",
+            "text": "To both must and answer equally",
+            "feedback": "The interpretation is not a simple negation of the whole clause."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "clause-type-force",
+      "title": "Clause type and illocutionary force",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*She is a good player* is declarative. Invert subject and auxiliary and it becomes a closed interrogative; put a wh-phrase in front and it becomes an open interrogative; reshape it with *what* and it is exclamative. *Play well!* is imperative. Clause type is a matter of form, and those are the major categories."
+        },
+        {
+          "type": "paragraph",
+          "text": "Form does not determine use. *You’re leaving?* is declarative in form and a question in use when spoken with rising intonation. Questions themselves divide by the answers they allow: polar questions expect yes or no, alternative questions offer a stated choice, and variable questions ask for a value. Those are semantic categories, not additional clause types."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Would you like to close the window?* has the form of a closed interrogative and the force of a polite request. Force is the speech act an utterance performs — statement, question, order, promise, apology — and it is not tied to clause type. The force typically associated with imperatives is directive, covering requests, orders, instructions and entreaties, but a declarative can promise, as in *I promise to be home by six*. An interrogative used to direct is an indirect speech act: its literal form is a question, its likely force a request."
+        },
+        {
+          "type": "table",
+          "title": "Form and typical force",
+          "columns": [
+            "Clause type",
+            "Example",
+            "Typical use"
+          ],
+          "rows": [
+            [
+              "Declarative",
+              "She is a good player.",
+              "Statement"
+            ],
+            [
+              "Closed interrogative",
+              "Is she a good player?",
+              "Polar question"
+            ],
+            [
+              "Open interrogative",
+              "How good a player is she?",
+              "Variable question"
+            ],
+            [
+              "Exclamative",
+              "What a good player she is!",
+              "Exclamation"
+            ],
+            [
+              "Imperative",
+              "Play well!",
+              "Directive"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "When form and use diverge",
+          "items": [
+            {
+              "text": "You’re leaving?",
+              "mark": "ok",
+              "note": "Declarative form, question use with rising intonation."
+            },
+            {
+              "text": "Would you like to close the window?",
+              "mark": "ok",
+              "note": "Closed interrogative form, likely directive force."
+            },
+            {
+              "text": "I promise to be home by six.",
+              "mark": "ok",
+              "note": "Declarative form, promise force."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "tone": "why",
+          "title": "Keep form and force apart",
+          "text": "A clause type is a syntactic category, while illocutionary force is a category of use. Calling an imperative a command confuses the two. The same imperative can advise, invite, instruct or warn, and a question can perform a request."
+        }
+      ],
+      "check": {
+        "prompt": "What is the clause type of Would you like to close the window?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Closed interrogative",
+            "feedback": "It has interrogative form even when used as a request."
+          },
+          {
+            "id": "b",
+            "text": "Imperative",
+            "feedback": "It has no imperative verb form."
+          },
+          {
+            "id": "c",
+            "text": "Exclamative",
+            "feedback": "It does not have the form of an exclamative."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "subordinate-clauses",
+      "title": "Content, relative, and comparative clauses",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Finite subordinate clauses split three ways: relative, comparative and content. Content clauses are the default, lacking the special features of the other two. A subordinate clause may also be non-finite. The traditional labels noun clause, adjective clause and adverb clause are avoided here, because analogy with word classes does not classify clauses reliably, and many traditional adverb clauses are PPs with a content clause complement."
+        },
+        {
+          "type": "subheading",
+          "text": "The default subordinate clause"
+        },
+        {
+          "type": "paragraph",
+          "text": "Content clauses carry clause type, and all four types appear in subordinate form. There is no subordinate imperative. The mandative construction is a special declarative, as in *It is important that she be told*, with alternants using *should* or a tensed verb."
+        },
+        {
+          "type": "examples",
+          "title": "Clause type inside content clauses",
+          "items": [
+            {
+              "text": "They say that she is a good player.",
+              "mark": "ok",
+              "note": "Declarative content clause."
+            },
+            {
+              "text": "They didn’t say whether she is a good player.",
+              "mark": "ok",
+              "note": "Closed interrogative content clause."
+            },
+            {
+              "text": "I wonder how good a player she is.",
+              "mark": "ok",
+              "note": "Open interrogative content clause."
+            },
+            {
+              "text": "I’ll tell them what a good player she is.",
+              "mark": "ok",
+              "note": "Exclamative content clause."
+            }
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Relatives and the missing object"
+        },
+        {
+          "type": "paragraph",
+          "text": "A central relative clause modifies a nominal head, and it comes in three shapes: with a relative word such as *which* or *who*, with the subordinator *that*, or with no marker at all. In each, the object position is a gap co-indexed with the antecedent. Integrated relatives are dependents in a larger construction; supplementary relatives are detached, as in *We invited Jill, who had just returned from Spain*. The traditional restrictive/non-restrictive contrast misleads, since integrated relatives are not always semantically restrictive."
+        },
+        {
+          "type": "paragraph",
+          "text": "Relatives belong to the class of unbounded dependency constructions, along with open interrogatives and exclamatives. In *Here’s the note which I think he said she wrote*, *which* is understood as the object of *wrote* although the gap is several clauses down. Nothing in the grammar sets an upper limit on that embedding. That is all “unbounded” means."
+        },
+        {
+          "type": "subheading",
+          "text": "What comparatives leave out"
+        },
+        {
+          "type": "paragraph",
+          "text": "*She wrote more plays than he wrote novels* leaves the measure corresponding to *more* empty; supply it and the clause collapses — *She wrote more plays than he wrote five novels* is ungrammatical. Comparative clauses are complements of *than*, *as* or *like*, and they are structurally reduced. In *He is as old as I am* the measure and the repeated adjective both go missing. *More* is a determinative in the first example and an adverb in *more expensive*, and *less* behaves the same way."
+        },
+        {
+          "type": "examples",
+          "title": "Three kinds of subordinate clause",
+          "items": [
+            {
+              "text": "Ed said that he would do it in his own time.",
+              "mark": "ok",
+              "note": "Indirect reported speech: a content clause."
+            },
+            {
+              "text": "the note she wrote",
+              "mark": "ok",
+              "note": "A bare relative; the object of wrote is a gap."
+            },
+            {
+              "text": "She wrote more plays than he wrote novels.",
+              "mark": "ok",
+              "note": "The measure after than stays empty."
+            },
+            {
+              "text": "We invited Jill, who had just returned from Spain.",
+              "mark": "ok",
+              "note": "A supplementary relative, detached from the anchor."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "tone": "watch",
+          "title": "That is not always a pronoun",
+          "text": "In a that relative, that is the same subordinator found in declarative content clauses. It does not stand for the antecedent or fill the object gap. The object position remains empty, which is why the relative can also appear as a bare relative with no that at all."
+        }
+      ],
+      "check": {
+        "prompt": "Which clause type is the note she wrote?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A bare relative clause",
+            "feedback": "It modifies the nominal note and has no relative marker."
+          },
+          {
+            "id": "b",
+            "text": "A content clause",
+            "feedback": "A content clause is the default finite subordinate, without the special relative feature."
+          },
+          {
+            "id": "c",
+            "text": "A comparative clause",
+            "feedback": "It contains no comparison with than, as or like."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "nonfinite-catenative",
+      "title": "Non-finite clauses and catenative chains",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Classify a non-finite clause by the form of its verb and five kinds emerge: to-infinitival, bare infinitival, gerund-participial, past-participial and verbless. Most have no overt subject, so the understood subject has to be recovered from context. When a to-infinitival does have one, *for* introduces it, as in *For them to take the children could endanger the mission*; *for* is a clause subordinator, not part of the verb."
+        },
+        {
+          "type": "paragraph",
+          "text": "*John is easy to please* has a missing object of *please* understood as John; *This idea is worth giving some thought to* has the complement of *to* understood as this idea. Some non-finite clauses are hollow: a non-subject NP is missing and is understood from an earlier expression. A hollow clause is not a clause with an omitted subject — what is missing is the object."
+        },
+        {
+          "type": "paragraph",
+          "text": "*She intends to try to persuade him to help her redecorate her flat* strings one non-finite complement after another, each licensed by the verb before it. That is a catenative chain, and verbs such as *seem*, *intend*, *believe* and *ask* are its usual sources. In the simple construction the complement follows the catenative verb directly; in the complex construction an NP intervenes, as in *Everyone believed Kim to be guilty*."
+        },
+        {
+          "type": "paragraph",
+          "text": "Take *Max seemed to like them*. Max is syntactically the subject of *seemed* but semantically belongs with *like*, as the paraphrase *It seemed that Max liked them* makes plain. *Jill intended to join the army* is different: nobody is raised, because Jill is both the one who intends and the one who joins. Auxiliaries that take non-finite complements are special cases of catenative verbs."
+        },
+        {
+          "type": "table",
+          "title": "Non-finite clause classes",
+          "columns": [
+            "Class",
+            "Example",
+            "Test"
+          ],
+          "rows": [
+            [
+              "To-infinitival",
+              "It was Kim’s idea to invite them all.",
+              "Plain form with to"
+            ],
+            [
+              "Bare infinitival",
+              "She helped them prepare their defence.",
+              "Plain form without to"
+            ],
+            [
+              "Gerund-participial",
+              "Calling in the police was a serious mistake.",
+              "Verb in -ing"
+            ],
+            [
+              "Past-participial",
+              "This is the proposal recommended by the manager.",
+              "Past participle"
+            ],
+            [
+              "Verbless",
+              "He was standing with his back to the wall.",
+              "No verb in the clause"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Hollow and raised complements",
+          "items": [
+            {
+              "text": "John is easy to please.",
+              "mark": "ok",
+              "note": "Hollow clause: the missing object is understood as John."
+            },
+            {
+              "text": "Max seemed to like them.",
+              "mark": "ok",
+              "note": "Max is raised: subject of seemed, understood semantically with like."
+            },
+            {
+              "text": "Jill intended to join the army.",
+              "mark": "ok",
+              "note": "Jill is not raised; she is semantically the one who joins."
+            },
+            {
+              "text": "For them to take the children could endanger the mission.",
+              "mark": "ok",
+              "note": "For introduces the overt subject of the to-infinitival."
+            }
+          ]
+        },
+        {
+          "type": "diagnostic",
+          "title": "Follow the chain",
+          "steps": [
+            "Find the first verb and ask whether it takes a non-finite complement.",
+            "Identify the form of the complement: to-infinitive, bare infinitive, -ing or past participle.",
+            "If an NP sits between the verbs, decide whether it belongs semantically with the higher or lower verb.",
+            "Repeat until the chain ends; the last verb heads the most deeply embedded clause."
+          ],
+          "conclusion": "A catenative chain is a sequence of clauses, not a single flat verb phrase."
+        }
+      ],
+      "check": {
+        "prompt": "Why is John a hollow-clause element in John is easy to please?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The missing object of please is understood as John.",
+            "feedback": "The clause lacks a non-subject NP that is recovered from the main subject."
+          },
+          {
+            "id": "b",
+            "text": "John is the subject of please.",
+            "feedback": "The clause has no overt subject either, but the missing element is the object."
+          },
+          {
+            "id": "c",
+            "text": "Please has no complement.",
+            "feedback": "Please requires an object, which is supplied by the hollow clause."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "coordination-supplementation",
+      "title": "Coordination and supplementation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Two coordinates of equal status, usually linked by *and*, *or* or *but*, make a third thing of a different category. *She wants to go with them but she can’t afford it* is a clause-coordination, not a clause; *the manager and her husband* is an NP-coordination. What must match is function rather than category, which is why an NP and a PP can coordinate when both serve as temporal adjuncts."
+        },
+        {
+          "type": "paragraph",
+          "text": "Coordination can occur almost anywhere in structure, and there is no grammatical limit on the number of coordinates. Once a function can be filled by an X, it can generally be filled by an X-coordination. A description therefore needs no separate rule for each coordinated position."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Her father — he’s the guy talking to the Mayor — has agreed to finance the deal* contains an interpolated supplement, and supplementary relatives belong here too, commenting on an anchor rather than restricting it. Supplementation is a different relation. A supplement relates semantically to an anchor but is not integrated as a dependent; it is prosodically detached, often as an interpolation or an appendage."
+        },
+        {
+          "type": "examples",
+          "title": "Coordination and detachment",
+          "items": [
+            {
+              "text": "She’ll be arriving tomorrow or on Friday.",
+              "mark": "ok",
+              "note": "An NP/PP-coordination: same function, different categories."
+            },
+            {
+              "text": "Kim bought and sold two houses.",
+              "mark": "ok",
+              "note": "A coordination of verbs inside the VP."
+            },
+            {
+              "text": "Her father — he’s the guy talking to the Mayor — has agreed to finance the deal.",
+              "mark": "ok",
+              "note": "An interpolated supplement, not a dependent of finance."
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "title": "Two non-headed relations",
+          "columns": [
+            "Relation",
+            "Parts",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Coordination",
+              "Coordinates of equal status, usually with a coordinator",
+              "the manager and her husband"
+            ],
+            [
+              "Supplementation",
+              "Anchor plus a detached supplement",
+              "Jill, who had just returned from Spain"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is tomorrow or on Friday not simply an NP or a PP?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It coordinates an NP with a PP that performs the same function.",
+            "feedback": "The whole is an NP/PP-coordination, a category different from either coordinate."
+          },
+          {
+            "id": "b",
+            "text": "It contains no coordinator.",
+            "feedback": "Or is the coordinator."
+          },
+          {
+            "id": "c",
+            "text": "It is a clause-coordination.",
+            "feedback": "The coordinates are phrases, not clauses."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "information-packaging",
+      "title": "Information packaging and the passive",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Not every non-canonical construction changes what a clause means or does. Some leave truth conditions and illocutionary force untouched and change only how the information is presented. These are information-packaging constructions. Preposing, postposing and inversion mainly reorder; existential, extraposition, cleft and passive constructions also realign syntactic functions."
+        },
+        {
+          "type": "paragraph",
+          "text": "*This one I’m giving to Jill* presents the same proposition as its basic counterpart with the object moved to the front. Preposing is the mildest. Existential and extraposition constructions go further: a dummy *there* or *it* takes the subject position while the real content is displaced. *There is one guard outside* has *one guard* as displaced subject; *It’s clear that it’s a forgery* has the content clause as extraposed subject."
+        },
+        {
+          "type": "paragraph",
+          "text": "Clefts split a single proposition in two. *It was a bee that stung me* foregrounds *a bee* as complement of *be* and backgrounds the rest in a relative clause; the pseudo-cleft *What stung me was a bee* does the same work with a fused relative."
+        },
+        {
+          "type": "paragraph",
+          "text": "In a passive clause the active object becomes subject, the active subject becomes the complement of *by*, and the clause carries auxiliary *be* with a past-participial complement. The *by* phrase is the internalised complement and is optional, which gives long and short passives. Packaging is constrained in discourse by familiarity and weight: old information tends to come early, and postposing generally needs a relatively heavy constituent."
+        },
+        {
+          "type": "table",
+          "title": "Packaging constructions",
+          "columns": [
+            "Construction",
+            "Basic counterpart",
+            "What changes"
+          ],
+          "rows": [
+            [
+              "Preposing",
+              "I’m giving this one to Jill.",
+              "Order of elements"
+            ],
+            [
+              "Postposing",
+              "He gave all the money she had left him to charity.",
+              "Order, with a heavy constituent at the end"
+            ],
+            [
+              "Inversion",
+              "Two knives were in the bag.",
+              "Order of subject and locative"
+            ],
+            [
+              "Existential",
+              "One guard is outside.",
+              "Dummy there; displaced subject"
+            ],
+            [
+              "Extraposition",
+              "That it’s a forgery is clear.",
+              "Dummy it; extraposed subject"
+            ],
+            [
+              "Cleft",
+              "A bee stung me.",
+              "Foregrounded complement plus relative clause"
+            ],
+            [
+              "Passive",
+              "Their dog attacked me.",
+              "Object becomes subject; by phrase added"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Different presentations of the same content",
+          "items": [
+            {
+              "text": "This one I’m giving to Jill.",
+              "mark": "ok",
+              "note": "Preposing changes order, not truth conditions."
+            },
+            {
+              "text": "There is one guard outside.",
+              "mark": "ok",
+              "note": "Existential: dummy there is subject; one guard is displaced subject."
+            },
+            {
+              "text": "It’s clear that it’s a forgery.",
+              "mark": "ok",
+              "note": "Extraposition: dummy it is subject; the content clause is extraposed subject."
+            },
+            {
+              "text": "It was a bee that stung me.",
+              "mark": "ok",
+              "note": "Cleft: a bee is foregrounded; the rest is backgrounded."
+            },
+            {
+              "text": "What stung me was a bee.",
+              "mark": "ok",
+              "note": "Pseudo-cleft: a fused relative backgrounds the rest of the proposition."
+            },
+            {
+              "text": "I was attacked by their dog.",
+              "mark": "ok",
+              "note": "Passive: the active object becomes subject; their dog is the by phrase."
+            }
+          ]
+        },
+        {
+          "type": "diagnostic",
+          "title": "Order change or function change?",
+          "steps": [
+            "Compare the construction with its basic counterpart.",
+            "If only the linear order differs, classify it as preposing, postposing or inversion.",
+            "If a dummy subject or extraposed element is introduced, classify it as existential, extraposition or cleft.",
+            "If the active object becomes subject and the active subject becomes a by phrase, classify it as passive."
+          ],
+          "conclusion": "Packaging changes presentation; the underlying proposition can remain the same."
+        }
+      ],
+      "check": {
+        "prompt": "Which construction changes syntactic functions rather than only order?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The passive",
+            "feedback": "The active object becomes subject and the active subject becomes the by phrase."
+          },
+          {
+            "id": "b",
+            "text": "Preposing",
+            "feedback": "Preposing changes the order of elements only."
+          },
+          {
+            "id": "c",
+            "text": "Postposing",
+            "feedback": "Postposing changes order; the functions remain the same."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "deixis-anaphora",
+      "title": "Deixis and anaphora",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Here*, *tomorrow*, *you*: none of these can be interpreted without knowing who is speaking, where, and when. Expressions of that kind are deictic, their reference fixed by the act of utterance. *Now*, *yesterday*, *today* and *tomorrow* depend on when the words are spoken; *here* and *there* on where; *this* and *that* on proximity; *I*, *we* and *you* on who is addressing whom. Primary tense belongs here too, since it anchors a situation relative to the time of speaking."
+        },
+        {
+          "type": "paragraph",
+          "text": "In *Jill has left her car in the road*, *her* gets its interpretation from *Jill*, and co-indexing makes the relation visible. That relation is anaphora, holding between an anaphor and its antecedent. Anaphors include personal pronouns and other pro-forms such as *so*, *do so* and *one*, as well as gaps in elliptical constructions. An anaphor usually follows its antecedent, though under restricted conditions it can precede it, as in *If you can, please come a little earlier next week*."
+        },
+        {
+          "type": "examples",
+          "title": "Reference from context and from an antecedent",
+          "items": [
+            {
+              "text": "I’ll meet you here tomorrow.",
+              "mark": "ok",
+              "note": "Here and tomorrow are deictic: their reference depends on the utterance."
+            },
+            {
+              "text": "Jill has left her car in the road.",
+              "mark": "ok",
+              "note": "Her is anaphoric; Jill is its antecedent."
+            },
+            {
+              "text": "Grapes are expensive, and likely to remain so.",
+              "mark": "ok",
+              "note": "So is a pro-form standing for expensive."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "tone": "why",
+          "title": "Why these relations cut across categories",
+          "text": "Deixis and anaphora are not word classes. They are ways of interpreting expressions, and they can involve pronouns, adverbs, determinatives, tense and gaps. That is why they need a chapter of their own rather than a place inside the noun or verb chapters."
+        }
+      ],
+      "check": {
+        "prompt": "In Jill has left her car in the road, what is the antecedent of her?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Jill",
+            "feedback": "The pronoun receives its interpretation from Jill."
+          },
+          {
+            "id": "b",
+            "text": "The road",
+            "feedback": "The road is a locative phrase, not the antecedent."
+          },
+          {
+            "id": "c",
+            "text": "The car",
+            "feedback": "The car is what Jill left, not the antecedent of her."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "chapter-review",
+      "title": "Chapter Review",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The overview reduces to a short set of questions. What is the clause? What is its verb, and which complements does that verb require? What are the categories of the dependents, and what functions do they perform? Is the clause canonical, or has it changed in polarity, clause type, packaging, subordination or coordination? What is presented as old or new, and what does the surrounding discourse supply?"
+        },
+        {
+          "type": "paragraph",
+          "text": "The method runs from the smallest unit outward. Start with the verb, because it determines complementation; then identify subject and predicate, then internal complements and adjuncts. Check whether a dependent is an object, a predicative complement, a PP complement or a particle. Inside the NP, separate determiner from determinative and nominal from noun. At the level of meaning, keep form, function and use apart."
+        },
+        {
+          "type": "paragraph",
+          "text": "The apparent variety of English syntax comes from a small set of relations applied recursively. Clauses embed, coordinate and package information; phrases have heads and dependents; subordination can place a gap many clauses away from the element it relates to. Once those relations are visible, the detailed chapters that follow are variations on a familiar pattern rather than a new subject."
+        },
+        {
+          "type": "note",
+          "tone": "why",
+          "title": "A checklist for a new sentence",
+          "text": "Find the finite verb. Mark the clause boundaries. Identify the subject and predicate. Ask which dependents the verb licenses. Then name categories and functions separately. Finally, ask whether the clause is canonical, and if not, which dimension has changed."
+        }
+      ],
+      "check": {
+        "prompt": "What is the best first step when analysing an unfamiliar sentence?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Find the finite verb and the clause boundaries.",
+            "feedback": "The verb identifies the clause head and helps reveal its complementation."
+          },
+          {
+            "id": "b",
+            "text": "Label every word with a traditional part of speech.",
+            "feedback": "Word labels alone do not show clause structure or function."
+          },
+          {
+            "id": "c",
+            "text": "Decide whether the sentence sounds formal.",
+            "feedback": "Register is separate from syntactic analysis."
+          }
+        ],
+        "answer": "a"
+      }
+    }
+  ],
+  "worked": [
+    "Take *I can’t understand why I have not been questioned by the police*. The matrix clause is negative and has *I* as subject. Its complement is the content clause *why I have not been questioned by the police*. That clause is interrogative, negative and passive, and it is subordinate to *understand*.",
+    "The passive clause has *I* as subject, *have not been questioned* as the verb chain, and *by the police* as the internalised complement. Its active counterpart would be *why the police have not questioned me*. The example shows that non-canonical features combine independently: the clause is interrogative, negative, passive and subordinate at once."
+  ],
+  "application": [
+    "When a sentence looks complicated, reduce it to clause-sized pieces. Find each finite verb, mark the clause it heads, and ask what the higher clause requires. Then examine the internal order: is the subject before the predicator, is an auxiliary fronted, and is any element detached?",
+    "Next, separate category from function. A noun phrase can be a subject, object or predicative complement; a clause can be a complement or an adjunct; a preposition phrase can be a complement or an adjunct. The same category can do several jobs, and the same job can be done by several categories.",
+    "Finally, ask what the construction is doing in context. A passive may foreground the affected participant, a cleft may foreground a contrast, and a supplement may add a comment without integrating it into the clause. Structure and presentation are separate layers of description."
+  ],
+  "reveal": [
+    "In *I can’t understand why I have not been questioned by the police*, the matrix clause is negative and declarative, while the embedded clause is interrogative, negative, passive and subordinate. The active counterpart of the embedded clause is *why the police have not questioned me*; the passive promotes *me* to subject and places the agent in the *by* phrase."
+  ],
+  "recap": [
+    "A clause is the basic syntactic unit; a sentence is a unit of text. Canonical clauses provide the reference point for describing polarity, clause type, information packaging, subordination and coordination. Counterparts isolate one difference at a time, and gaps preserve the function of fronted elements.",
+    "The verb determines complementation. Nouns, adjectives, adverbs and prepositions head their own phrases, with functions and categories kept apart. Negation, clause type, subordination, coordination and packaging each add a distinct dimension. Deixis and anaphora show how interpretation depends on context and on earlier expressions."
+  ],
+  "self_check": [
+    {
+      "question": "Explain the difference between a sentence and a clause.",
+      "answer": "A sentence is a unit of text, usually realised by a clause or a coordination of clauses. A clause is a subject-predicate construction that can be embedded inside a larger clause."
+    },
+    {
+      "question": "Name the five dimensions on which a clause can be non-canonical.",
+      "answer": "Polarity, clause type, information packaging, subordination and coordination."
+    },
+    {
+      "question": "Why can a fronted wh-phrase not simply be labelled the object?",
+      "answer": "The object is a relation between the verb and its complement inside the nucleus. A co-indexed gap shows that relation while the wh-phrase occupies the prenucleus."
+    },
+    {
+      "question": "What is the difference between a determiner and a determinative?",
+      "answer": "Determiner is an NP function; determinative is a lexical category such as the, a, this or three."
+    },
+    {
+      "question": "What does it mean to say that a dependency is unbounded?",
+      "answer": "The gap can be embedded arbitrarily deeply inside the clause while still being co-indexed with the fronted element."
+    }
+  ],
+  "opening": [
+    {
+      "prompt": "Which unit can be embedded inside a larger one?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A clause",
+          "feedback": "A clause can serve as a complement or modifier inside a matrix clause."
+        },
+        {
+          "id": "b",
+          "text": "A sentence",
+          "feedback": "Sentences occur in sequence in a text and are not normally contained inside one another."
+        },
+        {
+          "id": "c",
+          "text": "A paragraph",
+          "feedback": "A paragraph is a unit of writing, not a syntactic construction."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which clause is canonical?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kim referred to the report.",
+          "feedback": "It is positive, declarative, active, main and non-coordinate."
+        },
+        {
+          "id": "b",
+          "text": "Kim did not refer to the report.",
+          "feedback": "It is negative."
+        },
+        {
+          "id": "c",
+          "text": "Was Kim referring to the report?",
+          "feedback": "It is interrogative."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What does a gap represent in a fronted construction?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The position whose function is filled by the fronted element",
+          "feedback": "The gap is co-indexed with the prenuclear element."
+        },
+        {
+          "id": "b",
+          "text": "A missing word that makes the sentence ungrammatical",
+          "feedback": "A gap is an abstract element in the analysis, not an error."
+        },
+        {
+          "id": "c",
+          "text": "A pause in speech",
+          "feedback": "The gap is syntactic, not phonetic."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which verb is an auxiliary in She has finished?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Has",
+          "feedback": "It takes not and inverts with the subject: She hasn’t finished; Has she finished?"
+        },
+        {
+          "id": "b",
+          "text": "Finished",
+          "feedback": "Finished is the past participle heading the non-finite complement."
+        },
+        {
+          "id": "c",
+          "text": "She",
+          "feedback": "She is the subject, not a verb."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Why is will not a future tense auxiliary?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It is a modal auxiliary; English has no dedicated future tense.",
+          "feedback": "Future time can be expressed, but not by a distinct tense inflection."
+        },
+        {
+          "id": "b",
+          "text": "It cannot refer to the future.",
+          "feedback": "It often does; the point is grammatical classification."
+        },
+        {
+          "id": "c",
+          "text": "It has no past form.",
+          "feedback": "Would is historically related, but the classification rests on its modal syntax."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "closing": [
+    {
+      "prompt": "What is the category of Jill seems friendly but her husband is shy?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A clause-coordination",
+          "feedback": "Two clauses are coordinated by but."
+        },
+        {
+          "id": "b",
+          "text": "A sentence",
+          "feedback": "It is a sentence, but the question asks for its syntactic category."
+        },
+        {
+          "id": "c",
+          "text": "An NP-coordination",
+          "feedback": "The coordinates are clauses."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which dimension does the passive belong to?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Information packaging",
+          "feedback": "The passive changes how the proposition is presented."
+        },
+        {
+          "id": "b",
+          "text": "Polarity",
+          "feedback": "Polarity concerns positive versus negative."
+        },
+        {
+          "id": "c",
+          "text": "Clause type",
+          "feedback": "Clause type concerns declarative, interrogative, exclamative and imperative."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "In They gave the key to me, what is to me?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A PP complement",
+          "feedback": "It is a preposition phrase, not an NP object."
+        },
+        {
+          "id": "b",
+          "text": "An indirect object",
+          "feedback": "The indirect object is me in They gave me the key."
+        },
+        {
+          "id": "c",
+          "text": "A predicative complement",
+          "feedback": "It does not ascribe a property."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which pair correctly separates function from category?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Determiner is a function; determinative is a category.",
+          "feedback": "A determinative can serve as determiner, but a genitive NP can too."
+        },
+        {
+          "id": "b",
+          "text": "Determiner is a category; determinative is a function.",
+          "feedback": "The terms are the other way round."
+        },
+        {
+          "id": "c",
+          "text": "Both terms name the same word class.",
+          "feedback": "They belong to different levels of description."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is the likely illocutionary force of Would you like to close the window?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A polite directive",
+          "feedback": "The interrogative form is used to make a request."
+        },
+        {
+          "id": "b",
+          "text": "A literal question about preference only",
+          "feedback": "That is the literal reading, but the likely use is a request."
+        },
+        {
+          "id": "c",
+          "text": "An imperative command",
+          "feedback": "The clause is interrogative in form."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "stages": {
+    "predict": {
+      "prompt": "Which unit is the basic syntactic category used in clause structure?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The clause",
+          "feedback": "Clauses can be embedded, coordinated and described by their internal structure."
+        },
+        {
+          "id": "b",
+          "text": "The sentence",
+          "feedback": "A sentence is a unit of text, not the category used in tree structure."
+        },
+        {
+          "id": "c",
+          "text": "The paragraph",
+          "feedback": "Paragraphs organise text, not syntax."
+        }
+      ],
+      "answer": "a"
+    },
+    "guided": {
+      "prompt": "In I wonder what Liz bought, what is the function of the gap?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It marks the object position of bought, co-indexed with what.",
+          "feedback": "The gap preserves the object relation inside the nucleus."
+        },
+        {
+          "id": "b",
+          "text": "It marks a missing subject.",
+          "feedback": "Liz is the subject of bought."
+        },
+        {
+          "id": "c",
+          "text": "It marks a pause after wonder.",
+          "feedback": "The gap is syntactic, not a pause."
+        }
+      ],
+      "answer": "a"
+    },
+    "transfer": {
+      "prompt": "In They gave the key to me, why is to me not an indirect object?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It is a PP complement, while objects are normally NPs.",
+          "feedback": "The related ditransitive pattern is They gave me the key."
+        },
+        {
+          "id": "b",
+          "text": "It is the direct object.",
+          "feedback": "The direct object is the key."
+        },
+        {
+          "id": "c",
+          "text": "It is a predicative complement.",
+          "feedback": "It does not ascribe a property."
+        }
+      ],
+      "answer": "a"
+    },
+    "exit": {
+      "prompt": "Which construction changes syntactic functions rather than only word order?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The passive",
+          "feedback": "The active object becomes subject and the active subject becomes the by phrase."
+        },
+        {
+          "id": "b",
+          "text": "Preposing",
+          "feedback": "Preposing changes order."
+        },
+        {
+          "id": "c",
+          "text": "Postposing",
+          "feedback": "Postposing changes order."
+        }
+      ],
+      "answer": "a"
+    }
+  },
+  "example": "I can’t understand why I have not been questioned by the police."
+}

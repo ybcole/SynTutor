@@ -1,0 +1,1632 @@
+{
+  "title": "Deixis and anaphora",
+  "description": "Explore how utterances anchor reference to speaker, place and time, and how anaphors, pronouns, pro-forms and reduced clauses depend on antecedents.",
+  "example": "She left her keys here yesterday, but now they are over there.",
+  "key_terms": [
+    {
+      "term": "deixis",
+      "definition": "Reference determined by features of the utterance-act, such as speaker, addressee, time and place."
+    },
+    {
+      "term": "deictic expression",
+      "definition": "An expression whose reference is fixed in relation to the utterance-act."
+    },
+    {
+      "term": "deictic marker",
+      "definition": "The word within a larger expression that carries the deictic meaning."
+    },
+    {
+      "term": "indexing act",
+      "definition": "A gesture, gaze or written device that helps identify a deictic referent."
+    },
+    {
+      "term": "deictic centre",
+      "definition": "The perspective from which deictic expressions are interpreted, usually the speaker’s."
+    },
+    {
+      "term": "person deixis",
+      "definition": "Deixis involving the speaker, addressee or third parties, expressed by personal pronouns."
+    },
+    {
+      "term": "locative deixis",
+      "definition": "Deixis of place, expressed by here, there, this, that and related expressions."
+    },
+    {
+      "term": "temporal deixis",
+      "definition": "Deixis of time, expressed by now, then, yesterday and tense."
+    },
+    {
+      "term": "anaphora",
+      "definition": "The relation in which an expression receives its interpretation from an antecedent."
+    },
+    {
+      "term": "anaphor",
+      "definition": "An expression interpreted through an antecedent."
+    },
+    {
+      "term": "antecedent",
+      "definition": "The expression that supplies the interpretation of an anaphor."
+    },
+    {
+      "term": "retrospective anaphora",
+      "definition": "Anaphora in which the anaphor follows its antecedent."
+    },
+    {
+      "term": "anticipatory anaphora",
+      "definition": "Anaphora in which the anaphor precedes its antecedent."
+    },
+    {
+      "term": "pro-form",
+      "definition": "A reduced expression that stands for a larger expression or clause."
+    },
+    {
+      "term": "reflexive pronoun",
+      "definition": "A form such as herself or themselves used for local anaphora or emphasis."
+    },
+    {
+      "term": "reciprocal pronoun",
+      "definition": "A form such as each other or one another expressing a mutual relation."
+    },
+    {
+      "term": "demonstrative",
+      "definition": "A determinative or pronoun such as this or that used for deixis or anaphora."
+    },
+    {
+      "term": "pro-nominal one",
+      "definition": "The pronoun one used to stand for a nominal expression."
+    },
+    {
+      "term": "fused head",
+      "definition": "An expression that performs the head function together with a dependent function."
+    },
+    {
+      "term": "ellipsis",
+      "definition": "Omission of material that is recoverable from context."
+    },
+    {
+      "term": "auxiliary stranding",
+      "definition": "Use of an auxiliary alone as a reduced predicate, as in I could."
+    },
+    {
+      "term": "do so",
+      "definition": "A pro-form replacing a verb phrase, as in She left and I did so too."
+    },
+    {
+      "term": "do it",
+      "definition": "A pro-form with a pronoun object, often referring to a specific action."
+    },
+    {
+      "term": "anaphoric so",
+      "definition": "So used as a pro-form for a clause or proposition."
+    },
+    {
+      "term": "gapping",
+      "definition": "Ellipsis of a repeated verb in a coordination, as in Kim likes tea and Pat coffee."
+    },
+    {
+      "term": "spatial deixis",
+      "definition": "Deixis of location and movement, as with here, there, come and go."
+    },
+    {
+      "term": "temporal anaphora",
+      "definition": "Interpretation of a time expression through an antecedent time in the discourse."
+    },
+    {
+      "term": "deictic-centre shift",
+      "definition": "A shift of the deictic perspective from speaker to addressee or a reported participant."
+    },
+    {
+      "term": "generic pronoun",
+      "definition": "A pronoun used for people in general rather than a specific referent, as in You can’t tell."
+    }
+  ],
+  "intro": [
+    "Stand in a cluttered room and say *Put this with those boxes over there*. Every italicised word asks the listener to look outward: *this* and *those* divide the space by distance from the speaker, while *there* points beyond immediate reach. Quote the same sentence in an email and the instructions lose their targets. That dependence on who is speaking, where and when is deixis. A pronoun such as *they* can instead send the listener back to an earlier phrase, and that backward dependence is anaphora. The two relations often meet in a single form.",
+    "The chapter begins with that contrast, then follows it through personal pronouns, reflexives, reciprocals and demonstratives. Reduced noun phrases and verb phrases come next, including *one*, *do so* and *so*, together with ellipsis and gapping. The closing sections turn to spatial and temporal deixis, and to what happens when the deictic centre shifts from speaker to addressee or to a reported participant.",
+    "The question to keep asking is where an interpretation comes from: from the utterance situation, from an earlier expression, or from material omitted but recoverable. The interesting cases draw on more than one source."
+  ],
+  "sections": [
+    {
+      "id": "deixis",
+      "title": "The concept of deixis",
+      "advances": "predict",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Could you pick this up and put it with those boxes?* The request works only if you know who is being addressed, which object *this* picks out, and which boxes *those* marks as relatively distant. Person, place and time all enter the interpretation. When reference depends on such features of the utterance-act, the expression is deictic."
+        },
+        {
+          "type": "paragraph",
+          "text": "Deictic expressions change referent from utterance to utterance, but they do so systematically: the first person pronoun belongs to whoever is speaking, a place adverb such as *here* names a region containing the speaker, and *yesterday* picks out the day before the utterance. *I bought a new stereo yesterday* shows person and time working together in one short sentence. A proper name can vary in reference too, yet its meaning does not build in that relation to the utterance-act."
+        },
+        {
+          "type": "paragraph",
+          "text": "A deictic expression may contain a smaller deictic marker. The whole noun phrase *those boxes* is the expression, while *those* carries the meaning ‘relatively distant from the speaker’. *Last week* splits the same way: the phrase locates a span, and *last* supplies the orientation."
+        },
+        {
+          "type": "table",
+          "title": "Types of deixis",
+          "columns": [
+            "Type",
+            "Examples",
+            "Anchored to"
+          ],
+          "rows": [
+            [
+              "Person",
+              "I, you, we, they",
+              "Speaker and addressee"
+            ],
+            [
+              "Place",
+              "here, there, this, that",
+              "Location of utterance"
+            ],
+            [
+              "Time",
+              "now, then, yesterday, tomorrow",
+              "Time of utterance"
+            ],
+            [
+              "Discourse",
+              "this point, the following section",
+              "Position in the text"
+            ],
+            [
+              "Social",
+              "you, sir, madam",
+              "Social relation and addressee"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is here deictic but Paris is not?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Here is interpreted relative to the place of utterance; Paris has a place-based meaning independent of the utterance.",
+            "feedback": "Deictic meaning is systematically tied to the utterance-act."
+          },
+          {
+            "id": "b",
+            "text": "Paris is a proper name and proper names are never deictic.",
+            "feedback": "A proper name can be used deictically in some contexts, but its meaning is not inherently utterance-anchored."
+          },
+          {
+            "id": "c",
+            "text": "Here is a preposition.",
+            "feedback": "Here is a locative expression, not a preposition."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "anaphora",
+      "title": "Anaphora, antecedents, and pro-forms",
+      "advances": "understand",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Max claims he wasn’t told.* Who is *he*? The natural answer is Max, and that answer comes not from the situation but from an earlier expression in the same sentence. The pronoun is an anaphor, *Max* its antecedent, and the relation between them is anaphora."
+        },
+        {
+          "type": "paragraph",
+          "text": "The antecedent need not sit in the same clause, or even the same sentence. In *I’ve just been talking to Max. I understand that Ed has told Frank that the report has exonerated him*, the pronoun could point to Max, Ed or Frank. Grammar leaves the options open; context, emphasis and careful writing close them down. A reader who has to stop and ask who *him* is has met the cost of an unresolved chain."
+        },
+        {
+          "type": "paragraph",
+          "text": "Order matters. Put the pronoun after its antecedent — *When the headmaster saw the damage, he called the police* — and resolution is immediate. Put it first, as in *When he saw the damage, the headmaster called the police*, and the listener must hold a pronoun in mind until the noun arrives. The second pattern, anticipatory anaphora, is possible but more restricted."
+        },
+        {
+          "type": "table",
+          "title": "Anaphora and related terms",
+          "columns": [
+            "Term",
+            "Example",
+            "Interpretation"
+          ],
+          "rows": [
+            [
+              "Anaphor",
+              "he in Max claims he left",
+              "Interpreted through Max"
+            ],
+            [
+              "Antecedent",
+              "Max in Max claims he left",
+              "Supplies the interpretation"
+            ],
+            [
+              "Retrospective",
+              "Max left because he was tired.",
+              "Anaphor follows antecedent"
+            ],
+            [
+              "Anticipatory",
+              "Because he was tired, Max left.",
+              "Anaphor precedes antecedent"
+            ],
+            [
+              "Pro-form",
+              "so in I think so",
+              "Stands for a clause or proposition"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is anticipatory anaphora?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Anaphora in which the anaphor precedes its antecedent",
+            "feedback": "Because he was tired, Max left."
+          },
+          {
+            "id": "b",
+            "text": "Anaphora in which the antecedent is omitted",
+            "feedback": "The antecedent is present later."
+          },
+          {
+            "id": "c",
+            "text": "Deixis anchored to the speaker",
+            "feedback": "That is person deixis."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "personal-pronouns",
+      "title": "Personal pronouns: first and second person",
+      "advances": "worked",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Say *I’ll be there* and *I* picks out whoever is speaking; say *You left it there* and *you* picks out the addressee. These are the primary uses of the first and second person. The first person covers *I*, *me*, *my*, *mine*, *myself* and the plurals *we*, *us*, *our*, *ours*, *ourselves*; the second covers *you*, *your*, *yours*, *yourself* and *yourselves*. Everything else falls into the third person, the unmarked category."
+        },
+        {
+          "type": "paragraph",
+          "text": "Both persons stretch beyond their primary use. An authorial *we* may include the writer and exclude the reader, or invite the reader in; *We’re going to be late* can do either. *You* can mean people in general, as in *You can’t tell these days*. The examples below keep those secondary uses visible."
+        },
+        {
+          "type": "paragraph",
+          "text": "*She said, ‘I am tired’* keeps *I* with the original speaker; *She said she was tired* shifts the pronoun to the reporter’s perspective. Because first and second person are anchored to the utterance, they move when speech is reported. The deictic centre is not always the current speaker, and free indirect style exploits exactly that instability."
+        },
+        {
+          "type": "examples",
+          "title": "First and second person",
+          "items": [
+            {
+              "text": "I bought a new stereo.",
+              "mark": "ok",
+              "note": "I refers to the speaker."
+            },
+            {
+              "text": "You can’t tell these days.",
+              "mark": "ok",
+              "note": "Generic you: people in general."
+            },
+            {
+              "text": "We’re going to be late.",
+              "mark": "ok",
+              "note": "We may include or exclude the addressee."
+            },
+            {
+              "text": "She said, ‘I am tired.’",
+              "mark": "ok",
+              "note": "I refers to the original speaker in direct report."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is generic you in You can’t tell these days?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A use referring to people in general rather than a specific addressee",
+            "feedback": "It is a secondary use of the second person."
+          },
+          {
+            "id": "b",
+            "text": "A deictic use referring to the current addressee",
+            "feedback": "That is the primary use."
+          },
+          {
+            "id": "c",
+            "text": "A third-person pronoun",
+            "feedback": "You is second person."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "third-person",
+      "title": "Third person and semantic relations",
+      "advances": "guided",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*They say it will rain.* Who are they? No identifiable group need be involved. The pronoun is neither pointing to a situation nor picking up an antecedent; it is generic. Third person is the default category, and it can also be anaphoric, as in *Max left because he was tired*, or deictic, as in *He’s the one over there*. The form alone does not settle the relation."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Max thinks he is clever* normally has *he* mean Max; *Max thinks his brother is clever* does not. Where an antecedent is available, the semantic link can be identity, inclusion or exclusion. *His* can include Max in the possessive relation, but the person said to be clever is the brother. Number and gender narrow the search, yet neither determines it."
+        },
+        {
+          "type": "paragraph",
+          "text": "*When he saw the damage, the headmaster called the police* is acceptable; pushing the pronoun deeper into embedded structure makes the sentence harder to process. Anticipatory anaphora is permitted under narrower conditions, especially when the pronoun sits in a subordinate clause and its antecedent in the matrix. Syntax, discourse structure and the type of pronoun all bear on the result."
+        },
+        {
+          "type": "examples",
+          "title": "Third-person relations",
+          "items": [
+            {
+              "text": "Max left because he was tired.",
+              "mark": "ok",
+              "note": "Anaphoric he refers to Max."
+            },
+            {
+              "text": "He’s the one over there.",
+              "mark": "ok",
+              "note": "Deictic he refers to a person in the situation."
+            },
+            {
+              "text": "They say it will rain.",
+              "mark": "ok",
+              "note": "Generic they; no specific antecedent."
+            },
+            {
+              "text": "When he saw the damage, the headmaster called the police.",
+              "mark": "ok",
+              "note": "Anticipatory anaphora under restricted conditions."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which use of they is non-anaphoric and non-deictic?",
+        "options": [
+          {
+            "id": "a",
+            "text": "They say it will rain.",
+            "feedback": "Generic they refers to people in general."
+          },
+          {
+            "id": "b",
+            "text": "The students left because they were tired.",
+            "feedback": "They is anaphoric to the students."
+          },
+          {
+            "id": "c",
+            "text": "They are over there.",
+            "feedback": "They is deictic to people in the situation."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "anticipatory",
+      "title": "Order of anaphor and antecedent",
+      "advances": "transfer",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "English prefers to name a referent before pronominalising it. *When the headmaster saw the damage, he called the police* runs with that preference: the noun phrase arrives first, and *he* collects it. Reverse the two, as in *When he saw the damage, the headmaster called the police*, and the sentence still works, but the listener must wait for the noun to settle who *he* is."
+        },
+        {
+          "type": "paragraph",
+          "text": "*When he saw the damage, the headmaster called the police* is easy enough; bury the pronoun deeper and the sentence becomes harder to process. The reversed order is not free. Anticipatory anaphora is easiest when the pronoun is in a subordinate clause and the antecedent in the matrix. The type of antecedent matters too: a definite noun phrase in a prominent position is easier to anticipate than an indefinite one buried in a modifier."
+        },
+        {
+          "type": "paragraph",
+          "text": "Processing pressure explains part of the pattern. A retrospective pronoun resolves against material already heard; an anticipatory one creates a temporary gap that the rest of the sentence must fill. Writers exploit it when syntax narrows the possibilities sharply enough to make the delay safe."
+        },
+        {
+          "type": "examples",
+          "title": "Retrospective and anticipatory",
+          "items": [
+            {
+              "text": "When the headmaster saw the damage, he called the police.",
+              "mark": "ok",
+              "note": "Retrospective: he follows the headmaster."
+            },
+            {
+              "text": "When he saw the damage, the headmaster called the police.",
+              "mark": "ok",
+              "note": "Anticipatory: he precedes the headmaster."
+            },
+            {
+              "text": "Because she was tired, the manager went home.",
+              "mark": "ok",
+              "note": "Anticipatory anaphora in a subordinate clause."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which example is anticipatory anaphora?",
+        "options": [
+          {
+            "id": "a",
+            "text": "When he saw the damage, the headmaster called the police.",
+            "feedback": "The pronoun precedes its antecedent."
+          },
+          {
+            "id": "b",
+            "text": "When the headmaster saw the damage, he called the police.",
+            "feedback": "That is retrospective."
+          },
+          {
+            "id": "c",
+            "text": "The headmaster called the police.",
+            "feedback": "There is no anaphor."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "special-it",
+      "title": "Special uses of it",
+      "advances": "exit",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*It’s raining.* What is *it*? Nothing in the situation answers the question, and no earlier phrase supplies a referent. Weather *it* is a subject without an entity behind it. The same form does refer in *I found the key and put it in my pocket*, where it picks up *the key*, and it can name an abstract situation in *It was a mistake*."
+        },
+        {
+          "type": "paragraph",
+          "text": "*It is clear that he’s guilty* gives *it* no referent of its own. The clause *that he’s guilty* is the extraposed subject, and *it* merely holds the subject slot until the clause arrives. Clefts use the same pronoun for a different job: *It was Kim who called* foregrounds Kim by splitting one proposition into two parts."
+        },
+        {
+          "type": "paragraph",
+          "text": "Anaphoric *it* needs an antecedent; weather *it* does not; dummy *it* has no referent at all and exists because the clause requires a subject. These uses are not interchangeable."
+        },
+        {
+          "type": "examples",
+          "title": "Uses of it",
+          "items": [
+            {
+              "text": "I found the key and put it in my pocket.",
+              "mark": "ok",
+              "note": "Anaphoric it refers to the key."
+            },
+            {
+              "text": "It’s raining.",
+              "mark": "ok",
+              "note": "Weather it."
+            },
+            {
+              "text": "It is clear that he’s guilty.",
+              "mark": "ok",
+              "note": "Dummy it with extraposed subject."
+            },
+            {
+              "text": "It was Kim who called.",
+              "mark": "ok",
+              "note": "Cleft it."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which use of it has no referent?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Dummy it in It is clear that he’s guilty",
+            "feedback": "It fills the subject position but does not refer."
+          },
+          {
+            "id": "b",
+            "text": "Anaphoric it in I found the key and put it in my pocket",
+            "feedback": "It refers to the key."
+          },
+          {
+            "id": "c",
+            "text": "Weather it in It’s raining",
+            "feedback": "It is a non-referential subject, but the question asks for the dummy use."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "reflexives",
+      "title": "Reflexive pronouns",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*She hurt herself* and *She hurt her* differ by more than emphasis. The reflexive points back to the subject of its own clause; the ordinary pronoun points elsewhere. English uses *myself*, *yourself*, *himself*, *herself*, *itself*, *ourselves*, *yourselves* and *themselves* for this local anaphora, typically in complement function."
+        },
+        {
+          "type": "paragraph",
+          "text": "The antecedent normally sits in the same local domain, often the same clause. *She hurt herself* satisfies that condition; *She said that I hurt herself* does not, because *herself* would need an antecedent within the embedded clause, and *I* cannot supply it. Noun phrases and dual-head constructions can be domains too, so proximity on the page does not decide the boundary."
+        },
+        {
+          "type": "paragraph",
+          "text": "Some reflexives appear where a plain pronoun would be expected. *They elected the president himself* and *The manager spoke to Kim and myself* add emphasis or mark a particular point of view; these are override reflexives. Emphatic reflexives form a related but distinct pattern, as in *She herself wrote the letter*, where the reflexive reinforces a noun phrase rather than filling a complement."
+        },
+        {
+          "type": "examples",
+          "title": "Reflexive uses",
+          "items": [
+            {
+              "text": "She hurt herself.",
+              "mark": "ok",
+              "note": "Basic reflexive with a local antecedent."
+            },
+            {
+              "text": "They blamed themselves.",
+              "mark": "ok",
+              "note": "Reflexive complement with plural antecedent."
+            },
+            {
+              "text": "She herself wrote the letter.",
+              "mark": "ok",
+              "note": "Emphatic reflexive."
+            },
+            {
+              "text": "The manager spoke to Kim and myself.",
+              "mark": "ok",
+              "note": "Override reflexive in a coordinated phrase."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the difference between basic and emphatic reflexives?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Basic reflexives fill a complement role; emphatic reflexives add emphasis.",
+            "feedback": "She hurt herself vs She herself wrote the letter."
+          },
+          {
+            "id": "b",
+            "text": "Basic reflexives are always plural.",
+            "feedback": "Myself and herself are singular."
+          },
+          {
+            "id": "c",
+            "text": "Emphatic reflexives have no antecedent.",
+            "feedback": "They are linked to an antecedent."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "binding-domains",
+      "title": "Binding and local domains",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*She hurt herself* is grammatical because the reflexive and its antecedent share a clause. *She said that I hurt herself* fails because *herself* looks for an antecedent inside the embedded clause, and the only candidate there is *I*. Binding is easiest to see in that contrast."
+        },
+        {
+          "type": "paragraph",
+          "text": "*The teacher spoke to the student about herself* can point to the teacher or the student, depending on context and structure. The antecedent is often the subject of the local domain, but not always. Syntax constrains the search without always producing one answer."
+        },
+        {
+          "type": "paragraph",
+          "text": "Override reflexives sit outside the basic pattern. They occur where a non-reflexive pronoun would be expected, as in *They elected the president himself* or *The manager spoke to Kim and myself*, and they usually add emphasis or signal a point of view. Emphatic reflexives such as *She herself wrote the letter* are a separate use, related by form rather than by complement structure."
+        },
+        {
+          "type": "examples",
+          "title": "Binding and override",
+          "items": [
+            {
+              "text": "She hurt herself.",
+              "mark": "ok",
+              "note": "Reflexive bound within the local clause."
+            },
+            {
+              "text": "She said that I hurt myself.",
+              "mark": "ok",
+              "note": "Myself is bound by I within the embedded clause."
+            },
+            {
+              "text": "They elected the president himself.",
+              "mark": "ok",
+              "note": "Override reflexive adding emphasis."
+            },
+            {
+              "text": "She herself wrote the letter.",
+              "mark": "ok",
+              "note": "Emphatic reflexive."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is herself possible in She hurt herself?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The reflexive is bound by the subject in the same local domain.",
+            "feedback": "The antecedent and reflexive are in the same clause."
+          },
+          {
+            "id": "b",
+            "text": "Herself is a deictic pronoun.",
+            "feedback": "It is anaphoric, not deictic."
+          },
+          {
+            "id": "c",
+            "text": "Hurt always takes a reflexive.",
+            "feedback": "Hurt can take an ordinary object."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "reciprocals",
+      "title": "Reciprocal pronouns",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*They helped each other* describes a relation running in both directions: each member of the group helped and was helped. *Each other* and *one another* are the reciprocal pronouns, and both require a plural or group antecedent. The relation holds among members of that group, not between one antecedent and one anaphor."
+        },
+        {
+          "type": "paragraph",
+          "text": "Reciprocals occupy many of the positions reflexives do: object (*They distrust each other*), prepositional complement (*They spoke to each other*), and genitive (*They read each other’s work*)."
+        },
+        {
+          "type": "paragraph",
+          "text": "*They followed each other* can describe a line in which each person follows the one ahead, not a pair who follow one another simultaneously. Mutuality is not always symmetrical. The predicate and the context decide whether the relation is pairwise, collective or sequential, which is why reciprocal meaning cannot be read off the pronoun alone."
+        },
+        {
+          "type": "examples",
+          "title": "Reciprocal uses",
+          "items": [
+            {
+              "text": "They helped each other.",
+              "mark": "ok",
+              "note": "Pairwise mutual help."
+            },
+            {
+              "text": "The two theories support one another.",
+              "mark": "ok",
+              "note": "Mutual support between the theories."
+            },
+            {
+              "text": "They read each other’s work.",
+              "mark": "ok",
+              "note": "Reciprocal genitive."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What does each other express?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A mutual relation among members of a group",
+            "feedback": "They helped each other."
+          },
+          {
+            "id": "b",
+            "text": "A reflexive relation with a singular antecedent",
+            "feedback": "Reciprocals require a plural or group antecedent."
+          },
+          {
+            "id": "c",
+            "text": "A deictic relation to the speaker",
+            "feedback": "Reciprocals are anaphoric, not deictic."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "demonstratives",
+      "title": "Demonstratives",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Put two bowls on a table and say *This bowl holds more than that one*. The demonstratives divide the space around the speaker: *this* is relatively close, *that* relatively distant. The same forms also point backward in discourse. *He wants $30, but that’s too much* uses *that* for the price just mentioned, not for an object in the room."
+        },
+        {
+          "type": "paragraph",
+          "text": "*This report* uses a demonstrative as a determiner; *This is important* uses one as a pronoun. *These* and *those* agree with plural nouns, and the deictic meaning can be spatial, temporal or discourse-based."
+        },
+        {
+          "type": "paragraph",
+          "text": "Even anaphoric demonstratives keep a trace of that spatial meaning. *That* can suggest distance from the speaker’s current focus; *this* can suggest closeness. Grammar does not dictate the choice. It tells the reader how the speaker is positioning the referent, and that positioning is part of the meaning."
+        },
+        {
+          "type": "examples",
+          "title": "Deictic and anaphoric demonstratives",
+          "items": [
+            {
+              "text": "This bowl holds more than that one.",
+              "mark": "ok",
+              "note": "Spatial deixis: near versus far."
+            },
+            {
+              "text": "He wants $30, but that’s too much.",
+              "mark": "ok",
+              "note": "Anaphoric that refers to the price."
+            },
+            {
+              "text": "These reports are ready.",
+              "mark": "ok",
+              "note": "Plural determiner use."
+            },
+            {
+              "text": "This is important.",
+              "mark": "ok",
+              "note": "Pronoun use."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which use of that is anaphoric?",
+        "options": [
+          {
+            "id": "a",
+            "text": "He wants $30, but that’s too much.",
+            "feedback": "That refers to the price just mentioned."
+          },
+          {
+            "id": "b",
+            "text": "That bowl is cracked.",
+            "feedback": "That is deictic, pointing to a bowl in the situation."
+          },
+          {
+            "id": "c",
+            "text": "That’s my coat over there.",
+            "feedback": "That is deictic to an object in the situation."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "reduced-nps",
+      "title": "Pro-nominal one, other, and fused heads",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*I need a pen; do you have one?* The second *one* does not introduce a new pen; it stands for the kind of thing already mentioned. This is the pro-nominal use of *one*, an anaphoric device that often appears in fused-head constructions such as *the red one* or *a good one*. *One* can also be a numeral or a generic pronoun, so the construction has to be identified before the meaning is fixed."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Other* has a similar double life. In *I’ll take this one and you take the other*, it is pro-nominal and depends on an antecedent set; in *Other people disagreed*, it is a determinative modifying a noun. The pro-nominal use typically contrasts one member or subset with another."
+        },
+        {
+          "type": "paragraph",
+          "text": "*The rich* packs two functions into one form; *I’ll take the red one* leaves a gap for context to fill. Fused heads and ellipsis are related but not identical. In a fused head, one expression performs the head function together with a dependent function. In ellipsis, material is left out but recovered."
+        },
+        {
+          "type": "examples",
+          "title": "Reduced NPs",
+          "items": [
+            {
+              "text": "I need a pen; do you have one?",
+              "mark": "ok",
+              "note": "Pro-nominal one stands for a pen."
+            },
+            {
+              "text": "I’ll take this one and you take the other.",
+              "mark": "ok",
+              "note": "One and other are pro-nominal."
+            },
+            {
+              "text": "The rich are not always happy.",
+              "mark": "ok",
+              "note": "Fused modifier-head NP."
+            },
+            {
+              "text": "I’ll take the red one.",
+              "mark": "ok",
+              "note": "One is a pro-nominal; red modifies it."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is one in I need a pen; do you have one?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A pro-nominal standing for a pen",
+            "feedback": "It is anaphoric to the antecedent pen."
+          },
+          {
+            "id": "b",
+            "text": "A numeral",
+            "feedback": "It does not count one pen here."
+          },
+          {
+            "id": "c",
+            "text": "A deictic pronoun",
+            "feedback": "It is anaphoric, not deictic."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "reduced-vps",
+      "title": "Reduced verb phrases and pro-forms",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A stranded auxiliary can carry a whole predicate. Ask *Can you finish by Friday?* and the answer *I could* means *I could finish by Friday*. The auxiliary remains, the rest of the verb phrase disappears, and the context supplies what is missing. *She has* and *They won’t* work the same way."
+        },
+        {
+          "type": "paragraph",
+          "text": "*She left and I did so too* lets *did so* carry the earlier verb phrase. *Do it* and *do that* contain a pronoun object and usually point to a specific action, as in *I’ll do it tomorrow*. The forms look similar, but they differ in what they can replace and in how specific their reference is."
+        },
+        {
+          "type": "paragraph",
+          "text": "*I think so*, *I hope so* and *They said so* use *so* as a pro-form for a clause or proposition. It has other lives too: deictic in *Hold it just so*, connective in *So we left*. Only the construction tells you which *so* you are dealing with."
+        },
+        {
+          "type": "examples",
+          "title": "Reduced predicates",
+          "items": [
+            {
+              "text": "I could.",
+              "mark": "ok",
+              "note": "Auxiliary stranding for a full predicate."
+            },
+            {
+              "text": "She left and I did so too.",
+              "mark": "ok",
+              "note": "Do so replaces the verb phrase."
+            },
+            {
+              "text": "I’ll do it tomorrow.",
+              "mark": "ok",
+              "note": "Do it with a specific action pronoun."
+            },
+            {
+              "text": "I think so.",
+              "mark": "ok",
+              "note": "So is a clause pro-form."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What does do so replace in She left and I did so too?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The verb phrase left",
+            "feedback": "Do so stands for the earlier predicate."
+          },
+          {
+            "id": "b",
+            "text": "The subject she",
+            "feedback": "The subject is I in the second clause."
+          },
+          {
+            "id": "c",
+            "text": "The whole sentence",
+            "feedback": "It replaces the predicate, not the whole sentence."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "ellipsis",
+      "title": "Ellipsis and gapping",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Hope you’re well* drops *I* and the auxiliary from the start of a main clause. An open interrogative can shrink to *Why?*, a declarative response to *Me too*, and a coordination to *Kim likes tea and Pat coffee*. In each case the missing material is recoverable from context."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Kim likes tea and Pat coffee* is understood as *Kim likes tea and Pat likes coffee*: the verb is absent from the second conjunct, while its subject and object remain. Gapping is the coordination case. Listeners restore the verb from the structure of the coordination."
+        },
+        {
+          "type": "paragraph",
+          "text": "A pro-form supplies an overt replacement; ellipsis leaves a gap. Ellipsis is not the same as a pro-form. The two can combine when an auxiliary is stranded and the rest of the predicate is ellipted, as in *I could*."
+        },
+        {
+          "type": "examples",
+          "title": "Ellipsis types",
+          "items": [
+            {
+              "text": "Hope you’re well.",
+              "mark": "ok",
+              "note": "Ellipsis of the initial subject and auxiliary."
+            },
+            {
+              "text": "Why?",
+              "mark": "ok",
+              "note": "Radical ellipsis in an open interrogative."
+            },
+            {
+              "text": "Me too.",
+              "mark": "ok",
+              "note": "Radical ellipsis in a response."
+            },
+            {
+              "text": "Kim likes tea and Pat coffee.",
+              "mark": "ok",
+              "note": "Gapping: the verb is omitted from the second coordinate."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is gapping?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Omission of a repeated verb in a coordination",
+            "feedback": "Kim likes tea and Pat coffee."
+          },
+          {
+            "id": "b",
+            "text": "Replacement of a verb phrase by do so",
+            "feedback": "That is a pro-form, not gapping."
+          },
+          {
+            "id": "c",
+            "text": "A deictic use of so",
+            "feedback": "Deictic so is a different use."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "spatial-deixis",
+      "title": "Spatial deixis: here, there, come and go",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*I was born in London and have lived here all my life.* The *here* refers to London, but not because *here* means London. It means a place containing the speaker at the time of speaking, and the antecedent supplies London as the value. The expression is deictic in its meaning and anaphoric in its resolution."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Come* and *go* carry a similar orientation. *Come here* describes movement towards the speaker or addressee; *Go there* describes movement away. Which end counts as the centre depends on who is speaking and who is being addressed, so the same verb can reverse direction when the perspective changes."
+        },
+        {
+          "type": "paragraph",
+          "text": "Spatial expressions can also take their source from the discourse. *She lived too far away* means away from the speaker, or away from a place already mentioned; the context decides. The expression keeps its relational meaning even when the reference point is recovered anaphorically."
+        },
+        {
+          "type": "examples",
+          "title": "Spatial deixis",
+          "items": [
+            {
+              "text": "I live here.",
+              "mark": "ok",
+              "note": "Here includes the speaker’s location."
+            },
+            {
+              "text": "Put it over there.",
+              "mark": "ok",
+              "note": "There is relatively distant from the speaker."
+            },
+            {
+              "text": "Come here.",
+              "mark": "ok",
+              "note": "Come describes movement towards the speaker."
+            },
+            {
+              "text": "She lived too far away.",
+              "mark": "ok",
+              "note": "Away is interpreted relative to a contextually supplied source."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What does here refer to in I live here?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A place including the speaker’s location",
+            "feedback": "Here is locative deixis."
+          },
+          {
+            "id": "b",
+            "text": "A place far from the speaker",
+            "feedback": "That is there."
+          },
+          {
+            "id": "c",
+            "text": "A specific named place",
+            "feedback": "Here does not name the place."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "temporal-deixis",
+      "title": "Temporal deixis and shift of centre",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*I’ll do it now* places the action at a time that includes the utterance. *Now* and *then* are the basic temporal deictics — *then* pointing to a time relatively distant or supplied by the discourse — and they are joined by *today*, *yesterday*, *tomorrow*, *last week* and *ago*, all of which locate a time relative to the moment of speaking."
+        },
+        {
+          "type": "paragraph",
+          "text": "Temporal expressions can also be anaphoric. *She was stunned, but soon recovered* interprets *soon* relative to the being stunned, not to the utterance. *He left at least a week ago* may be measured from the utterance or from a reported perspective."
+        },
+        {
+          "type": "paragraph",
+          "text": "The deictic centre can shift. A public notice reading *Now wash your hands* means the time of reading, not the time of writing; reported speech can locate temporal expressions at the reported participant’s viewpoint. Once the centre moves, every deictic in the sentence may move with it."
+        },
+        {
+          "type": "examples",
+          "title": "Temporal deixis and shift",
+          "items": [
+            {
+              "text": "I’ll do it now.",
+              "mark": "ok",
+              "note": "Now includes the utterance time."
+            },
+            {
+              "text": "She was stunned, but soon recovered.",
+              "mark": "ok",
+              "note": "Soon is interpreted relative to being stunned."
+            },
+            {
+              "text": "Now wash your hands.",
+              "mark": "ok",
+              "note": "In a public notice, now refers to reading time."
+            },
+            {
+              "text": "She realised Ed must have left at least a week ago.",
+              "mark": "ok",
+              "note": "Ago can be interpreted relative to her realisation."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why does now refer to reading time in a public notice?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The deictic centre shifts from the writer to the reader.",
+            "feedback": "The notice is interpreted at the time and place of reading."
+          },
+          {
+            "id": "b",
+            "text": "Now is not deictic.",
+            "feedback": "Now is a temporal deictic."
+          },
+          {
+            "id": "c",
+            "text": "The notice is a question.",
+            "feedback": "It is an imperative."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "comparatives-reduced",
+      "title": "Comparatives as reduced clauses",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*She is taller than her brother* contains more than it appears to. The comparative clause *than her brother* is reduced: it is understood as *than her brother is tall*, with the adjective and its degree recovered from the matrix. The single noun phrase stands in for a whole clause, and the missing material is supplied by the matrix rather than guessed from context."
+        },
+        {
+          "type": "paragraph",
+          "text": "Reduction can leave only a single element. *Bob is as generous as Sue* keeps just the second term, and *She is taller than him* does the same. Case forms vary: formal writing may prefer *than I*, informal speech usually has *than me*, and both are interpreted through the reduced clause."
+        },
+        {
+          "type": "paragraph",
+          "text": "Not every comparative clause can be filled out. *She wrote more plays than he wrote five novels* fails because the measure corresponding to *more* must stay empty in the comparative clause; the clause is structurally reduced, not a full clause with a numeral added."
+        },
+        {
+          "type": "examples",
+          "title": "Reduced comparative clauses",
+          "items": [
+            {
+              "text": "She is taller than her brother.",
+              "mark": "ok",
+              "note": "Understood as than her brother is tall."
+            },
+            {
+              "text": "Bob is as generous as Sue.",
+              "mark": "ok",
+              "note": "Reduced to a single NP."
+            },
+            {
+              "text": "She is taller than I.",
+              "mark": "ok",
+              "note": "Formal nominative in the reduced clause."
+            },
+            {
+              "text": "She is taller than me.",
+              "mark": "ok",
+              "note": "Informal accusative in the reduced clause."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is She wrote more plays than he wrote five novels ungrammatical?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The measure after more must be left empty in the comparative clause.",
+            "feedback": "Comparative clauses are structurally reduced."
+          },
+          {
+            "id": "b",
+            "text": "Novels is plural.",
+            "feedback": "Plurality is not the problem."
+          },
+          {
+            "id": "c",
+            "text": "Than cannot take a clause.",
+            "feedback": "Than takes comparative clauses."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "discourse-location",
+      "title": "Discourse location and reference tracking",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Two letters arrived for Jill; she will pick them up.* The pronoun *she* reaches back to Jill, and *them* to the letters. Reference here is not confined to one sentence: it is a thread running through the discourse, and the reader follows it by keeping track of what has already been introduced."
+        },
+        {
+          "type": "paragraph",
+          "text": "*She* and *them* are enough once Jill and the letters are established. Discourse-old information is easy to pronominalise. Discourse-new information usually needs a fuller noun phrase, especially when it is the focus of the sentence. A writer who pronominalises too early leaves the reader searching for an antecedent that has not yet arrived."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ambiguity appears when several antecedents remain available. *I’ve just been talking to Max. I understand that Ed has told Frank that the report has exonerated him* allows Max, Ed or Frank. Grammar permits all three; context may favour one."
+        },
+        {
+          "type": "paragraph",
+          "text": "Topic and focus shape the choice as well. A pronoun is easiest to resolve when its antecedent is the current topic or a salient participant. A change of topic often calls for a full noun phrase, and a long-distance pronoun can stay ambiguous even when syntax permits only one structural antecedent."
+        }
+      ],
+      "examples": {
+        "title": "Reference across discourse",
+        "items": [
+          {
+            "text": "Two letters arrived for Jill; she will pick them up.",
+            "mark": "ok",
+            "note": "She and them are discourse-old pronouns."
+          },
+          {
+            "text": "I’ve just been talking to Max. I understand that Ed has told Frank that the report has exonerated him.",
+            "mark": "ok",
+            "note": "Him has several possible antecedents."
+          },
+          {
+            "text": "A woman entered the room. She was carrying a parcel.",
+            "mark": "ok",
+            "note": "She is anaphoric to a woman."
+          }
+        ]
+      },
+      "check": {
+        "prompt": "Why is him ambiguous in the Max/Ed/Frank example?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Several preceding NPs are grammatically available as antecedents.",
+            "feedback": "Context and careful writing are needed to disambiguate."
+          },
+          {
+            "id": "b",
+            "text": "Him has no possible antecedent.",
+            "feedback": "Several are possible."
+          },
+          {
+            "id": "c",
+            "text": "The pronoun is deictic, not anaphoric.",
+            "feedback": "It is anaphoric."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "chapter-review",
+      "title": "Chapter Review",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A pronoun can look outward to the situation or backward to a phrase, and the difference between those directions organises the chapter. Deixis anchors reference to the utterance-act: person, place and time. A deictic expression may contain a smaller marker, an indexing act may help identify the referent, and the deictic centre normally sits with the speaker — though it can move to the addressee or a reported participant."
+        },
+        {
+          "type": "paragraph",
+          "text": "The relation is retrospective when the anaphor follows its antecedent, anticipatory when it precedes it. Anaphora can also coexist with deixis, as *here* does when it means the place just named. Personal pronouns, reflexives, reciprocals and demonstratives each bring their own patterns of local and long-distance dependence."
+        },
+        {
+          "type": "paragraph",
+          "text": "Reduced noun phrases and verb phrases rely on pro-forms and ellipsis. *One*, *other*, *do so*, *do it* and *so* stand in for larger expressions; ellipsis omits recoverable material, including the gapped verb of a coordination. Spatial and temporal deixis complete the system, with *here* and *there*, *come* and *go*, *now* and *then*, and the shifts of centre that keep the apparatus flexible."
+        },
+        {
+          "type": "note",
+          "tone": "why",
+          "title": "A reference checklist",
+          "text": "Ask where the interpretation comes from: the utterance situation (deixis), an antecedent (anaphora), or omitted recoverable material (ellipsis). Identify the deictic centre and any indexing act. For anaphora, locate the antecedent and decide whether the relation is retrospective or anticipatory."
+        }
+      ],
+      "check": {
+        "prompt": "Which statement correctly distinguishes deixis from anaphora?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Deixis is anchored to the utterance-act; anaphora is anchored to an antecedent.",
+            "feedback": "The two can overlap, but their sources of interpretation differ."
+          },
+          {
+            "id": "b",
+            "text": "Deixis always involves pronouns; anaphora never does.",
+            "feedback": "Both can involve pronouns."
+          },
+          {
+            "id": "c",
+            "text": "Anaphora is always retrospective.",
+            "feedback": "Anticipatory anaphora is also possible."
+          }
+        ],
+        "answer": "a"
+      }
+    }
+  ],
+  "worked": [
+    "Take *She left her keys here yesterday, but now they are over there*. *She* and *her* are anaphoric to a contextually salient person; *here* and *there* are locative deictics; *yesterday* and *now* are temporal deictics. *They* is anaphoric to *her keys*.",
+    "The example shows deixis and anaphora interacting. *Here* is deictic because it is anchored to the speaker’s location, and it may also be anaphoric if the discourse has established a place. *Now* contrasts with *yesterday* deictically, while *they* depends on the antecedent *her keys*. The interpretation requires both the utterance situation and the discourse context."
+  ],
+  "application": [
+    "For each referring expression, ask where its interpretation comes from. If it depends on the speaker, addressee, time or place of utterance, it is deictic. If it depends on an antecedent, it is anaphoric. If it depends on omitted recoverable material, it is elliptical or a pro-form.",
+    "Identify the deictic centre and any shift. In ordinary conversation it is the speaker; in a notice it may be the reader; in reported speech it may be a reported participant. Check for indexing acts such as gestures or written arrows.",
+    "For anaphora, locate the antecedent and decide whether the relation is retrospective or anticipatory. For reflexives and reciprocals, check the local domain and the type of relation. For reduced VPs, identify what the pro-form or ellipsis stands for."
+  ],
+  "reveal": [
+    "In *She left her keys here yesterday, but now they are over there*, *here* and *there* are locative deictics, *yesterday* and *now* are temporal deictics, *she/her* are anaphoric to a salient person, and *they* is anaphoric to *her keys*. The deictic centre is the speaker’s current situation."
+  ],
+  "recap": [
+    "Deixis anchors reference to the utterance-act; anaphora anchors it to an antecedent. Deictic expressions can contain deictic markers, and indexing acts can clarify reference. The deictic centre is usually the speaker but can shift.",
+    "Pronouns, reflexives, reciprocals and demonstratives have distinct anaphoric and deictic uses. Pro-forms and ellipsis reduce NPs and VPs, and spatial and temporal deixis organise location and time around the utterance."
+  ],
+  "self_check": [
+    {
+      "question": "What is deixis?",
+      "answer": "Reference determined by features of the utterance-act, such as speaker, addressee, time and place."
+    },
+    {
+      "question": "What is the difference between anaphora and deixis?",
+      "answer": "Anaphora is interpretation through an antecedent; deixis is interpretation through the utterance situation."
+    },
+    {
+      "question": "What is anticipatory anaphora?",
+      "answer": "Anaphora in which the anaphor precedes its antecedent, as in When he saw the damage, the headmaster called the police."
+    },
+    {
+      "question": "What is the difference between a basic and an emphatic reflexive?",
+      "answer": "A basic reflexive fills a complement role; an emphatic reflexive adds emphasis."
+    },
+    {
+      "question": "What is gapping?",
+      "answer": "Ellipsis of a repeated verb in a coordination, as in Kim likes tea and Pat coffee."
+    }
+  ],
+  "opening": [
+    {
+      "prompt": "Which expression is deictic?",
+      "options": [
+        {
+          "id": "a",
+          "text": "here",
+          "feedback": "Here is interpreted relative to the speaker’s location."
+        },
+        {
+          "id": "b",
+          "text": "Paris",
+          "feedback": "Paris has a place-based meaning independent of the utterance."
+        },
+        {
+          "id": "c",
+          "text": "the day after the exam",
+          "feedback": "That is a non-deictic temporal expression."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is an antecedent?",
+      "options": [
+        {
+          "id": "a",
+          "text": "An expression that supplies the interpretation of an anaphor",
+          "feedback": "Max is the antecedent of he in Max claims he was tired."
+        },
+        {
+          "id": "b",
+          "text": "A deictic marker",
+          "feedback": "That is a different concept."
+        },
+        {
+          "id": "c",
+          "text": "A pro-form",
+          "feedback": "A pro-form is the anaphoric expression, not the antecedent."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which pronoun use is generic?",
+      "options": [
+        {
+          "id": "a",
+          "text": "You can’t tell these days.",
+          "feedback": "Generic you refers to people in general."
+        },
+        {
+          "id": "b",
+          "text": "You left your coat.",
+          "feedback": "That refers to the addressee."
+        },
+        {
+          "id": "c",
+          "text": "She left her coat.",
+          "feedback": "That is third person anaphoric."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which example is anticipatory anaphora?",
+      "options": [
+        {
+          "id": "a",
+          "text": "When he saw the damage, the headmaster called the police.",
+          "feedback": "The pronoun precedes the headmaster."
+        },
+        {
+          "id": "b",
+          "text": "When the headmaster saw the damage, he called the police.",
+          "feedback": "That is retrospective."
+        },
+        {
+          "id": "c",
+          "text": "The headmaster called the police.",
+          "feedback": "There is no anaphor."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What does do so replace?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A verb phrase",
+          "feedback": "She left and I did so too."
+        },
+        {
+          "id": "b",
+          "text": "A noun phrase",
+          "feedback": "Pro-nominal one replaces an NP."
+        },
+        {
+          "id": "c",
+          "text": "A preposition phrase",
+          "feedback": "Do so is a VP pro-form."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "closing": [
+    {
+      "prompt": "Why is here deictic but Paris is not?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Here is interpreted relative to the utterance place; Paris is not.",
+          "feedback": "Deictic meaning is tied to the utterance-act."
+        },
+        {
+          "id": "b",
+          "text": "Paris is a proper name and proper names are never deictic.",
+          "feedback": "Proper names can be used deictically, but their meaning is not utterance-anchored."
+        },
+        {
+          "id": "c",
+          "text": "Here is a preposition.",
+          "feedback": "Here is not a preposition."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is anticipatory anaphora?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Anaphora in which the anaphor precedes its antecedent",
+          "feedback": "When he saw the damage, the headmaster called the police."
+        },
+        {
+          "id": "b",
+          "text": "Anaphora in which the antecedent is omitted",
+          "feedback": "The antecedent is present later."
+        },
+        {
+          "id": "c",
+          "text": "Deixis anchored to the speaker",
+          "feedback": "That is person deixis."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which use of it has no referent?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dummy it in It is clear that he’s guilty",
+          "feedback": "It fills the subject position but does not refer."
+        },
+        {
+          "id": "b",
+          "text": "Anaphoric it in I found the key and put it in my pocket",
+          "feedback": "It refers to the key."
+        },
+        {
+          "id": "c",
+          "text": "Weather it in It’s raining",
+          "feedback": "It is non-referential, but the question targets the dummy use."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What does each other express?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A mutual relation among members of a group",
+          "feedback": "They helped each other."
+        },
+        {
+          "id": "b",
+          "text": "A reflexive relation with a singular antecedent",
+          "feedback": "Reciprocals require a plural or group antecedent."
+        },
+        {
+          "id": "c",
+          "text": "A deictic relation to the speaker",
+          "feedback": "Reciprocals are anaphoric."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What does do so replace in She left and I did so too?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The verb phrase left",
+          "feedback": "Do so stands for the predicate."
+        },
+        {
+          "id": "b",
+          "text": "The subject she",
+          "feedback": "The second subject is I."
+        },
+        {
+          "id": "c",
+          "text": "The whole sentence",
+          "feedback": "It replaces the predicate."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "stages": {
+    "predict": {
+      "prompt": "Which expression is deictic?",
+      "options": [
+        {
+          "id": "a",
+          "text": "here",
+          "feedback": "It is interpreted relative to the speaker’s location."
+        },
+        {
+          "id": "b",
+          "text": "Paris",
+          "feedback": "It is not utterance-anchored."
+        },
+        {
+          "id": "c",
+          "text": "the day after the exam",
+          "feedback": "It is non-deictic."
+        }
+      ],
+      "answer": "a"
+    },
+    "guided": {
+      "prompt": "What is an antecedent?",
+      "options": [
+        {
+          "id": "a",
+          "text": "An expression that supplies the interpretation of an anaphor",
+          "feedback": "Max is the antecedent of he."
+        },
+        {
+          "id": "b",
+          "text": "A deictic marker",
+          "feedback": "That is a different concept."
+        },
+        {
+          "id": "c",
+          "text": "A pro-form",
+          "feedback": "A pro-form is the anaphoric expression."
+        }
+      ],
+      "answer": "a"
+    },
+    "transfer": {
+      "prompt": "Which example is anticipatory anaphora?",
+      "options": [
+        {
+          "id": "a",
+          "text": "When he saw the damage, the headmaster called the police.",
+          "feedback": "The pronoun precedes its antecedent."
+        },
+        {
+          "id": "b",
+          "text": "When the headmaster saw the damage, he called the police.",
+          "feedback": "That is retrospective."
+        },
+        {
+          "id": "c",
+          "text": "The headmaster called the police.",
+          "feedback": "There is no anaphor."
+        }
+      ],
+      "answer": "a"
+    },
+    "exit": {
+      "prompt": "What does do so replace?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A verb phrase",
+          "feedback": "She left and I did so too."
+        },
+        {
+          "id": "b",
+          "text": "A noun phrase",
+          "feedback": "One replaces an NP."
+        },
+        {
+          "id": "c",
+          "text": "A preposition phrase",
+          "feedback": "Do so is a VP pro-form."
+        }
+      ],
+      "answer": "a"
+    }
+  }
+}

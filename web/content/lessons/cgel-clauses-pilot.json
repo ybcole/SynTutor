@@ -1,0 +1,1038 @@
+{
+  "title": "Syntactic overview",
+  "content_version": "3.1.0",
+  "estimated_minutes": 20,
+  "outcomes": [
+    {
+      "id": "o1",
+      "text": "Explain the main ideas in Syntactic overview."
+    },
+    {
+      "id": "o2",
+      "text": "Recognise the patterns in real sentences."
+    },
+    {
+      "id": "o3",
+      "text": "Use the ideas when you read and write."
+    }
+  ],
+  "key_terms": [
+    {
+      "term": "syntax",
+      "definition": "The study of how words combine into phrases, clauses and sentences."
+    },
+    {
+      "term": "clause",
+      "definition": "A construction built around a predicate, typically with a subject and predicate."
+    },
+    {
+      "term": "sentence",
+      "definition": "A unit of text, usually realised by a clause or a coordination of clauses."
+    },
+    {
+      "term": "canonical clause",
+      "definition": "A basic positive declarative active main clause that is not coordinated."
+    },
+    {
+      "term": "non-canonical clause",
+      "definition": "A clause differing from a canonical counterpart in polarity, clause type, information packaging, subordination or coordination."
+    },
+    {
+      "term": "counterpart",
+      "definition": "A clause differing from another on one dimension while keeping the rest constant."
+    },
+    {
+      "term": "prenucleus",
+      "definition": "The position before the nucleus clause, occupied by a fronted element such as a wh-phrase or auxiliary."
+    },
+    {
+      "term": "gap",
+      "definition": "An abstract position co-indexed with a fronted element, showing the function that element would fill in the nucleus."
+    },
+    {
+      "term": "auxiliary verb",
+      "definition": "A verb that can take not and invert with the subject, such as be, have, do, will or can."
+    },
+    {
+      "term": "finite clause",
+      "definition": "A clause headed by a primary verb form, or by a plain form in an imperative or subjunctive."
+    },
+    {
+      "term": "complement",
+      "definition": "A dependent closely related to a head and licensed by that head."
+    },
+    {
+      "term": "predicative complement",
+      "definition": "A complement that ascribes a property to the subject or object rather than naming a participant."
+    },
+    {
+      "term": "determiner",
+      "definition": "The NP function that marks definiteness or indefiniteness."
+    },
+    {
+      "term": "determinative",
+      "definition": "A lexical category such as the, a, this, three or much."
+    },
+    {
+      "term": "nominal",
+      "definition": "The unit between NP and noun, containing the head noun and its internal dependents."
+    },
+    {
+      "term": "fused head",
+      "definition": "A word that performs the head function and a dependent function at the same time."
+    },
+    {
+      "term": "adjunct",
+      "definition": "A modifier in clause or VP structure, or a related supplement."
+    },
+    {
+      "term": "content clause",
+      "definition": "The default finite subordinate clause, lacking the special features of relatives and comparatives."
+    },
+    {
+      "term": "catenative complement",
+      "definition": "A non-finite clause complement licensed by a verb, often forming recursive verb chains."
+    },
+    {
+      "term": "coordination",
+      "definition": "A construction joining two or more elements of equal syntactic status."
+    },
+    {
+      "term": "supplement",
+      "definition": "A prosodically detached element related to an anchor without being a syntactic dependent."
+    },
+    {
+      "term": "information packaging",
+      "definition": "A non-canonical construction that changes how content is presented rather than its truth conditions."
+    },
+    {
+      "term": "deixis",
+      "definition": "Reference fixed by features of the utterance, such as speaker, time and place."
+    },
+    {
+      "term": "anaphora",
+      "definition": "The relation in which an expression receives its interpretation from an antecedent."
+    }
+  ],
+  "revised_assessment": {
+    "required_sections": [
+      "grammar-map",
+      "sentence-clause",
+      "canonical-clauses",
+      "counterparts-processes",
+      "verb-head",
+      "complements",
+      "nouns-noun-phrases",
+      "adjective-adverb-preposition",
+      "adjuncts",
+      "negation-polarity",
+      "clause-type-force",
+      "subordinate-clauses",
+      "nonfinite-catenative",
+      "coordination-supplementation",
+      "information-packaging",
+      "deixis-anaphora",
+      "chapter-review"
+    ],
+    "opening": [
+      {
+        "id": "opening-1",
+        "prompt": "Which unit can be embedded inside a larger one?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A clause",
+            "feedback": "A clause can serve as a complement or modifier inside a matrix clause."
+          },
+          {
+            "id": "b",
+            "text": "A sentence",
+            "feedback": "Sentences occur in sequence in a text and are not normally contained inside one another."
+          },
+          {
+            "id": "c",
+            "text": "A paragraph",
+            "feedback": "A paragraph is a unit of writing, not a syntactic construction."
+          }
+        ],
+        "answer": "a",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH02-P0056",
+          "CGEL-2002-CH02-P0044",
+          "CGEL-2002-CH02-P0045",
+          "CGEL-2002-CH02-P0046",
+          "CGEL-2002-CH02-P0047",
+          "CGEL-2002-CH02-P0048",
+          "CGEL-2002-CH02-P0049",
+          "CGEL-2002-CH02-P0050",
+          "CGEL-2002-CH02-P0051",
+          "CGEL-2002-CH02-P0059",
+          "CGEL-2002-CH02-P0060",
+          "CGEL-2002-CH02-P0061",
+          "CGEL-2002-CH02-P0062",
+          "CGEL-2002-CH02-P0063",
+          "CGEL-2002-CH02-P0064",
+          "CGEL-2002-CH02-P0065",
+          "CGEL-2002-CH02-P0066",
+          "CGEL-2002-CH02-P0067",
+          "CGEL-2002-CH02-P0068",
+          "CGEL-2002-CH02-P0052",
+          "CGEL-2002-CH02-P0053",
+          "CGEL-2002-CH02-P0054",
+          "CGEL-2002-CH02-P0055",
+          "CGEL-2002-CH02-P0057",
+          "CGEL-2002-CH02-P0058",
+          "CGEL-2002-CH02-P0069"
+        ]
+      },
+      {
+        "id": "opening-2",
+        "prompt": "Which clause is canonical?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Kim referred to the report.",
+            "feedback": "It is positive, declarative, active, main and non-coordinate."
+          },
+          {
+            "id": "b",
+            "text": "Kim did not refer to the report.",
+            "feedback": "It is negative."
+          },
+          {
+            "id": "c",
+            "text": "Was Kim referring to the report?",
+            "feedback": "It is interrogative."
+          }
+        ],
+        "answer": "a",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH02-P0056",
+          "CGEL-2002-CH02-P0044",
+          "CGEL-2002-CH02-P0045",
+          "CGEL-2002-CH02-P0046",
+          "CGEL-2002-CH02-P0047",
+          "CGEL-2002-CH02-P0048",
+          "CGEL-2002-CH02-P0049",
+          "CGEL-2002-CH02-P0050",
+          "CGEL-2002-CH02-P0051",
+          "CGEL-2002-CH02-P0059",
+          "CGEL-2002-CH02-P0060",
+          "CGEL-2002-CH02-P0061",
+          "CGEL-2002-CH02-P0062",
+          "CGEL-2002-CH02-P0063",
+          "CGEL-2002-CH02-P0064",
+          "CGEL-2002-CH02-P0065",
+          "CGEL-2002-CH02-P0066",
+          "CGEL-2002-CH02-P0067",
+          "CGEL-2002-CH02-P0068",
+          "CGEL-2002-CH02-P0052",
+          "CGEL-2002-CH02-P0053",
+          "CGEL-2002-CH02-P0054",
+          "CGEL-2002-CH02-P0055",
+          "CGEL-2002-CH02-P0057",
+          "CGEL-2002-CH02-P0058",
+          "CGEL-2002-CH02-P0069"
+        ]
+      },
+      {
+        "id": "opening-3",
+        "prompt": "What does a gap represent in a fronted construction?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The position whose function is filled by the fronted element",
+            "feedback": "The gap is co-indexed with the prenuclear element."
+          },
+          {
+            "id": "b",
+            "text": "A missing word that makes the sentence ungrammatical",
+            "feedback": "A gap is an abstract element in the analysis, not an error."
+          },
+          {
+            "id": "c",
+            "text": "A pause in speech",
+            "feedback": "The gap is syntactic, not phonetic."
+          }
+        ],
+        "answer": "a",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH02-P0056",
+          "CGEL-2002-CH02-P0044",
+          "CGEL-2002-CH02-P0045",
+          "CGEL-2002-CH02-P0046",
+          "CGEL-2002-CH02-P0047",
+          "CGEL-2002-CH02-P0048",
+          "CGEL-2002-CH02-P0049",
+          "CGEL-2002-CH02-P0050",
+          "CGEL-2002-CH02-P0051",
+          "CGEL-2002-CH02-P0059",
+          "CGEL-2002-CH02-P0060",
+          "CGEL-2002-CH02-P0061",
+          "CGEL-2002-CH02-P0062",
+          "CGEL-2002-CH02-P0063",
+          "CGEL-2002-CH02-P0064",
+          "CGEL-2002-CH02-P0065",
+          "CGEL-2002-CH02-P0066",
+          "CGEL-2002-CH02-P0067",
+          "CGEL-2002-CH02-P0068",
+          "CGEL-2002-CH02-P0052",
+          "CGEL-2002-CH02-P0053",
+          "CGEL-2002-CH02-P0054",
+          "CGEL-2002-CH02-P0055",
+          "CGEL-2002-CH02-P0057",
+          "CGEL-2002-CH02-P0058",
+          "CGEL-2002-CH02-P0069"
+        ]
+      },
+      {
+        "id": "opening-4",
+        "prompt": "Which verb is an auxiliary in She has finished?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Has",
+            "feedback": "It takes not and inverts with the subject: She hasn’t finished; Has she finished?"
+          },
+          {
+            "id": "b",
+            "text": "Finished",
+            "feedback": "Finished is the past participle heading the non-finite complement."
+          },
+          {
+            "id": "c",
+            "text": "She",
+            "feedback": "She is the subject, not a verb."
+          }
+        ],
+        "answer": "a",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH02-P0056",
+          "CGEL-2002-CH02-P0044",
+          "CGEL-2002-CH02-P0045",
+          "CGEL-2002-CH02-P0046",
+          "CGEL-2002-CH02-P0047",
+          "CGEL-2002-CH02-P0048",
+          "CGEL-2002-CH02-P0049",
+          "CGEL-2002-CH02-P0050",
+          "CGEL-2002-CH02-P0051",
+          "CGEL-2002-CH02-P0059",
+          "CGEL-2002-CH02-P0060",
+          "CGEL-2002-CH02-P0061",
+          "CGEL-2002-CH02-P0062",
+          "CGEL-2002-CH02-P0063",
+          "CGEL-2002-CH02-P0064",
+          "CGEL-2002-CH02-P0065",
+          "CGEL-2002-CH02-P0066",
+          "CGEL-2002-CH02-P0067",
+          "CGEL-2002-CH02-P0068",
+          "CGEL-2002-CH02-P0052",
+          "CGEL-2002-CH02-P0053",
+          "CGEL-2002-CH02-P0054",
+          "CGEL-2002-CH02-P0055",
+          "CGEL-2002-CH02-P0057",
+          "CGEL-2002-CH02-P0058",
+          "CGEL-2002-CH02-P0069"
+        ]
+      },
+      {
+        "id": "opening-5",
+        "prompt": "Why is will not a future tense auxiliary?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It is a modal auxiliary; English has no dedicated future tense.",
+            "feedback": "Future time can be expressed, but not by a distinct tense inflection."
+          },
+          {
+            "id": "b",
+            "text": "It cannot refer to the future.",
+            "feedback": "It often does; the point is grammatical classification."
+          },
+          {
+            "id": "c",
+            "text": "It has no past form.",
+            "feedback": "Would is historically related, but the classification rests on its modal syntax."
+          }
+        ],
+        "answer": "a",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH02-P0056",
+          "CGEL-2002-CH02-P0044",
+          "CGEL-2002-CH02-P0045",
+          "CGEL-2002-CH02-P0046",
+          "CGEL-2002-CH02-P0047",
+          "CGEL-2002-CH02-P0048",
+          "CGEL-2002-CH02-P0049",
+          "CGEL-2002-CH02-P0050",
+          "CGEL-2002-CH02-P0051",
+          "CGEL-2002-CH02-P0059",
+          "CGEL-2002-CH02-P0060",
+          "CGEL-2002-CH02-P0061",
+          "CGEL-2002-CH02-P0062",
+          "CGEL-2002-CH02-P0063",
+          "CGEL-2002-CH02-P0064",
+          "CGEL-2002-CH02-P0065",
+          "CGEL-2002-CH02-P0066",
+          "CGEL-2002-CH02-P0067",
+          "CGEL-2002-CH02-P0068",
+          "CGEL-2002-CH02-P0052",
+          "CGEL-2002-CH02-P0053",
+          "CGEL-2002-CH02-P0054",
+          "CGEL-2002-CH02-P0055",
+          "CGEL-2002-CH02-P0057",
+          "CGEL-2002-CH02-P0058",
+          "CGEL-2002-CH02-P0069"
+        ]
+      }
+    ],
+    "closing": [
+      {
+        "id": "closing-1",
+        "prompt": "What is the category of Jill seems friendly but her husband is shy?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A clause-coordination",
+            "feedback": "Two clauses are coordinated by but."
+          },
+          {
+            "id": "b",
+            "text": "A sentence",
+            "feedback": "It is a sentence, but the question asks for its syntactic category."
+          },
+          {
+            "id": "c",
+            "text": "An NP-coordination",
+            "feedback": "The coordinates are clauses."
+          }
+        ],
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH02-P0056",
+          "CGEL-2002-CH02-P0044",
+          "CGEL-2002-CH02-P0045",
+          "CGEL-2002-CH02-P0046",
+          "CGEL-2002-CH02-P0047",
+          "CGEL-2002-CH02-P0048",
+          "CGEL-2002-CH02-P0049",
+          "CGEL-2002-CH02-P0050",
+          "CGEL-2002-CH02-P0051",
+          "CGEL-2002-CH02-P0059",
+          "CGEL-2002-CH02-P0060",
+          "CGEL-2002-CH02-P0061",
+          "CGEL-2002-CH02-P0062",
+          "CGEL-2002-CH02-P0063",
+          "CGEL-2002-CH02-P0064",
+          "CGEL-2002-CH02-P0065",
+          "CGEL-2002-CH02-P0066",
+          "CGEL-2002-CH02-P0067",
+          "CGEL-2002-CH02-P0068",
+          "CGEL-2002-CH02-P0052",
+          "CGEL-2002-CH02-P0053",
+          "CGEL-2002-CH02-P0054",
+          "CGEL-2002-CH02-P0055",
+          "CGEL-2002-CH02-P0057",
+          "CGEL-2002-CH02-P0058",
+          "CGEL-2002-CH02-P0069"
+        ]
+      },
+      {
+        "id": "closing-2",
+        "prompt": "Which dimension does the passive belong to?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Information packaging",
+            "feedback": "The passive changes how the proposition is presented."
+          },
+          {
+            "id": "b",
+            "text": "Polarity",
+            "feedback": "Polarity concerns positive versus negative."
+          },
+          {
+            "id": "c",
+            "text": "Clause type",
+            "feedback": "Clause type concerns declarative, interrogative, exclamative and imperative."
+          }
+        ],
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH02-P0056",
+          "CGEL-2002-CH02-P0044",
+          "CGEL-2002-CH02-P0045",
+          "CGEL-2002-CH02-P0046",
+          "CGEL-2002-CH02-P0047",
+          "CGEL-2002-CH02-P0048",
+          "CGEL-2002-CH02-P0049",
+          "CGEL-2002-CH02-P0050",
+          "CGEL-2002-CH02-P0051",
+          "CGEL-2002-CH02-P0059",
+          "CGEL-2002-CH02-P0060",
+          "CGEL-2002-CH02-P0061",
+          "CGEL-2002-CH02-P0062",
+          "CGEL-2002-CH02-P0063",
+          "CGEL-2002-CH02-P0064",
+          "CGEL-2002-CH02-P0065",
+          "CGEL-2002-CH02-P0066",
+          "CGEL-2002-CH02-P0067",
+          "CGEL-2002-CH02-P0068",
+          "CGEL-2002-CH02-P0052",
+          "CGEL-2002-CH02-P0053",
+          "CGEL-2002-CH02-P0054",
+          "CGEL-2002-CH02-P0055",
+          "CGEL-2002-CH02-P0057",
+          "CGEL-2002-CH02-P0058",
+          "CGEL-2002-CH02-P0069"
+        ]
+      },
+      {
+        "id": "closing-3",
+        "prompt": "In They gave the key to me, what is to me?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A PP complement",
+            "feedback": "It is a preposition phrase, not an NP object."
+          },
+          {
+            "id": "b",
+            "text": "An indirect object",
+            "feedback": "The indirect object is me in They gave me the key."
+          },
+          {
+            "id": "c",
+            "text": "A predicative complement",
+            "feedback": "It does not ascribe a property."
+          }
+        ],
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH02-P0056",
+          "CGEL-2002-CH02-P0044",
+          "CGEL-2002-CH02-P0045",
+          "CGEL-2002-CH02-P0046",
+          "CGEL-2002-CH02-P0047",
+          "CGEL-2002-CH02-P0048",
+          "CGEL-2002-CH02-P0049",
+          "CGEL-2002-CH02-P0050",
+          "CGEL-2002-CH02-P0051",
+          "CGEL-2002-CH02-P0059",
+          "CGEL-2002-CH02-P0060",
+          "CGEL-2002-CH02-P0061",
+          "CGEL-2002-CH02-P0062",
+          "CGEL-2002-CH02-P0063",
+          "CGEL-2002-CH02-P0064",
+          "CGEL-2002-CH02-P0065",
+          "CGEL-2002-CH02-P0066",
+          "CGEL-2002-CH02-P0067",
+          "CGEL-2002-CH02-P0068",
+          "CGEL-2002-CH02-P0052",
+          "CGEL-2002-CH02-P0053",
+          "CGEL-2002-CH02-P0054",
+          "CGEL-2002-CH02-P0055",
+          "CGEL-2002-CH02-P0057",
+          "CGEL-2002-CH02-P0058",
+          "CGEL-2002-CH02-P0069"
+        ]
+      },
+      {
+        "id": "closing-4",
+        "prompt": "Which pair correctly separates function from category?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Determiner is a function; determinative is a category.",
+            "feedback": "A determinative can serve as determiner, but a genitive NP can too."
+          },
+          {
+            "id": "b",
+            "text": "Determiner is a category; determinative is a function.",
+            "feedback": "The terms are the other way round."
+          },
+          {
+            "id": "c",
+            "text": "Both terms name the same word class.",
+            "feedback": "They belong to different levels of description."
+          }
+        ],
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH02-P0056",
+          "CGEL-2002-CH02-P0044",
+          "CGEL-2002-CH02-P0045",
+          "CGEL-2002-CH02-P0046",
+          "CGEL-2002-CH02-P0047",
+          "CGEL-2002-CH02-P0048",
+          "CGEL-2002-CH02-P0049",
+          "CGEL-2002-CH02-P0050",
+          "CGEL-2002-CH02-P0051",
+          "CGEL-2002-CH02-P0059",
+          "CGEL-2002-CH02-P0060",
+          "CGEL-2002-CH02-P0061",
+          "CGEL-2002-CH02-P0062",
+          "CGEL-2002-CH02-P0063",
+          "CGEL-2002-CH02-P0064",
+          "CGEL-2002-CH02-P0065",
+          "CGEL-2002-CH02-P0066",
+          "CGEL-2002-CH02-P0067",
+          "CGEL-2002-CH02-P0068",
+          "CGEL-2002-CH02-P0052",
+          "CGEL-2002-CH02-P0053",
+          "CGEL-2002-CH02-P0054",
+          "CGEL-2002-CH02-P0055",
+          "CGEL-2002-CH02-P0057",
+          "CGEL-2002-CH02-P0058",
+          "CGEL-2002-CH02-P0069"
+        ]
+      },
+      {
+        "id": "closing-5",
+        "prompt": "What is the likely illocutionary force of Would you like to close the window?",
+        "options": [
+          {
+            "id": "a",
+            "text": "A polite directive",
+            "feedback": "The interrogative form is used to make a request."
+          },
+          {
+            "id": "b",
+            "text": "A literal question about preference only",
+            "feedback": "That is the literal reading, but the likely use is a request."
+          },
+          {
+            "id": "c",
+            "text": "An imperative command",
+            "feedback": "The clause is interrogative in form."
+          }
+        ],
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH02-P0056",
+          "CGEL-2002-CH02-P0044",
+          "CGEL-2002-CH02-P0045",
+          "CGEL-2002-CH02-P0046",
+          "CGEL-2002-CH02-P0047",
+          "CGEL-2002-CH02-P0048",
+          "CGEL-2002-CH02-P0049",
+          "CGEL-2002-CH02-P0050",
+          "CGEL-2002-CH02-P0051",
+          "CGEL-2002-CH02-P0059",
+          "CGEL-2002-CH02-P0060",
+          "CGEL-2002-CH02-P0061",
+          "CGEL-2002-CH02-P0062",
+          "CGEL-2002-CH02-P0063",
+          "CGEL-2002-CH02-P0064",
+          "CGEL-2002-CH02-P0065",
+          "CGEL-2002-CH02-P0066",
+          "CGEL-2002-CH02-P0067",
+          "CGEL-2002-CH02-P0068",
+          "CGEL-2002-CH02-P0052",
+          "CGEL-2002-CH02-P0053",
+          "CGEL-2002-CH02-P0054",
+          "CGEL-2002-CH02-P0055",
+          "CGEL-2002-CH02-P0057",
+          "CGEL-2002-CH02-P0058",
+          "CGEL-2002-CH02-P0069"
+        ]
+      }
+    ]
+  },
+  "preview_sources": [
+    {
+      "id": "CGEL-2002-CH02-P0056",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 2,
+      "printed_page": 56,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH02-P0044",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "printed_page": 44,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — independent second pass against supplied chapter PDF; original extraction predates this review",
+      "reviewed_on": "2026-11-08",
+      "chapter": 2
+    },
+    {
+      "id": "CGEL-2002-CH02-P0045",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "printed_page": 45,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Codex — independent second pass against supplied chapter PDF; original extraction predates this review",
+      "reviewed_on": "2026-11-08",
+      "chapter": 2
+    },
+    {
+      "id": "CGEL-2002-CH02-P0046",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 2,
+      "printed_page": 46,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH02-P0047",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 2,
+      "printed_page": 47,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH02-P0048",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 2,
+      "printed_page": 48,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH02-P0049",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 2,
+      "printed_page": 49,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH02-P0050",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 2,
+      "printed_page": 50,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH02-P0051",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 2,
+      "printed_page": 51,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH02-P0059",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 2,
+      "printed_page": 59,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH02-P0060",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 2,
+      "printed_page": 60,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH02-P0061",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 2,
+      "printed_page": 61,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH02-P0062",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 2,
+      "printed_page": 62,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH02-P0063",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 2,
+      "printed_page": 63,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH02-P0064",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 2,
+      "printed_page": 64,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH02-P0065",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 2,
+      "printed_page": 65,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH02-P0066",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 2,
+      "printed_page": 66,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH02-P0067",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 2,
+      "printed_page": 67,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH02-P0068",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 2,
+      "printed_page": 68,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH02-P0052",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 2,
+      "printed_page": 52,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH02-P0053",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 2,
+      "printed_page": 53,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH02-P0054",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 2,
+      "printed_page": 54,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH02-P0055",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 2,
+      "printed_page": 55,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH02-P0057",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 2,
+      "printed_page": 57,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH02-P0058",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 2,
+      "printed_page": 58,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    },
+    {
+      "id": "CGEL-2002-CH02-P0069",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 2,
+      "printed_page": 69,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI source check (2026-11-15); not human instructor sign-off",
+      "reviewed_on": "2026-11-15"
+    }
+  ]
+}

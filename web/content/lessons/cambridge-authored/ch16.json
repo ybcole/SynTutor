@@ -1,0 +1,1508 @@
+{
+  "title": "Information packaging",
+  "description": "Learn how preposing, postposing, inversion, existentials, extraposition, dislocation, clefts and the passive reorganise information without changing the basic proposition.",
+  "example": "It was the committee’s decision that surprised everyone, but the report itself was never published.",
+  "key_terms": [
+    {
+      "term": "information packaging",
+      "definition": "The organisation of a clause’s content for discourse, often by non-canonical syntax."
+    },
+    {
+      "term": "canonical counterpart",
+      "definition": "The syntactically more basic version of an information-packaging construction."
+    },
+    {
+      "term": "preposing",
+      "definition": "Placement of a complement in front of the nucleus clause, as in This one she accepted."
+    },
+    {
+      "term": "postposing",
+      "definition": "Placement of a constituent later than its default position, often for weight or focus."
+    },
+    {
+      "term": "subject-dependent inversion",
+      "definition": "Inversion of the subject with a dependent of the verb, as in On board were two nurses."
+    },
+    {
+      "term": "existential construction",
+      "definition": "A construction with dummy there and a displaced subject, as in There is a frog in the pool."
+    },
+    {
+      "term": "displaced subject",
+      "definition": "The NP that follows the verb in an existential construction and corresponds to the basic subject."
+    },
+    {
+      "term": "presentational construction",
+      "definition": "A construction introducing an entity into the discourse, often with here/there + verb + NP."
+    },
+    {
+      "term": "extraposition",
+      "definition": "Placement of a clause after dummy it rather than in its default subject or object position."
+    },
+    {
+      "term": "left dislocation",
+      "definition": "Placement of an NP at the left edge with a resumptive pronoun in the clause."
+    },
+    {
+      "term": "right dislocation",
+      "definition": "Placement of an NP at the right edge after a resumptive pronoun."
+    },
+    {
+      "term": "resumptive pronoun",
+      "definition": "A pronoun in the clause that corresponds to a dislocated NP."
+    },
+    {
+      "term": "it-cleft",
+      "definition": "A cleft construction with foregrounded complement after it was and a relative clause, as in It was Kim who called."
+    },
+    {
+      "term": "pseudo-cleft",
+      "definition": "A specifying construction with a fused relative, as in What helped was closing the valve."
+    },
+    {
+      "term": "reverse pseudo-cleft",
+      "definition": "A pseudo-cleft with the fused relative after be, as in Closing the valve was what helped."
+    },
+    {
+      "term": "passive",
+      "definition": "A construction in which the object of the active becomes subject and the verb is be + past participle."
+    },
+    {
+      "term": "by phrase",
+      "definition": "The optional PP in a passive that expresses the internalised agent."
+    },
+    {
+      "term": "adjectival passive",
+      "definition": "A passive-like form functioning as an adjective, often describing a state."
+    },
+    {
+      "term": "get-passive",
+      "definition": "A passive formed with get rather than be, often with an event or adversative nuance."
+    },
+    {
+      "term": "discourse-old",
+      "definition": "Information already introduced or inferable from the prior discourse."
+    },
+    {
+      "term": "discourse-new",
+      "definition": "Information not yet introduced or inferable from the prior discourse."
+    },
+    {
+      "term": "addressee-old",
+      "definition": "Information the speaker assumes the addressee already knows."
+    },
+    {
+      "term": "focus",
+      "definition": "The constituent bearing the main informational prominence in a clause."
+    },
+    {
+      "term": "focus-frame",
+      "definition": "The open proposition left when the focus is replaced by a variable."
+    },
+    {
+      "term": "presupposition",
+      "definition": "A proposition treated as already assumed in an utterance."
+    },
+    {
+      "term": "reordering",
+      "definition": "A packaging difference that mainly changes linear order, as in preposing and inversion."
+    },
+    {
+      "term": "realignment",
+      "definition": "A packaging difference that changes the alignment of semantic roles and syntactic functions."
+    },
+    {
+      "term": "end weight",
+      "definition": "The tendency to place heavier or more complex constituents later in the clause."
+    }
+  ],
+  "intro": [
+    "Put *Kim wrote the letter* beside *The letter was written by Kim* and nothing in the world has changed: same letter, same writer, same event. What has changed is where the attention falls and which participant gets to be subject. English keeps a whole repertoire of such moves — preposing, postposing, inversion, existentials, extraposition, dislocation, clefts and the passive — and this chapter works through them.",
+    "The repertoire divides roughly in two. Some constructions shuffle the order of elements; others realign the grammatical functions, so that an object becomes a subject or a clause steps out of the subject position. Running alongside that division is a set of information concepts — old and new, focus and presupposition — that explain why a speaker would bother to shuffle anything at all.",
+    "One caution runs throughout. Packaging generally leaves truth conditions and illocutionary force alone, but not always: move a quantifier across a negation and the clause can change what it claims. Nor does every non-canonical version have a comfortable basic counterpart. This is a family of related constructions, not a single transformation applied over and over."
+  ],
+  "sections": [
+    {
+      "id": "packaging-overview",
+      "title": "Information-packaging constructions",
+      "advances": "predict",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Start with two ways of saying one thing. *Kim wrote the letter* and *The letter was written by Kim* report the same event, but the first puts Kim in the subject slot and the second puts the letter there. Set *Two doctors were on the plane* beside *There were two doctors on the plane* and the difference is more than order: a dummy *there* has appeared, and the phrase that would have been subject now follows the verb."
+        },
+        {
+          "type": "paragraph",
+          "text": "The inventory is longer than those two examples suggest. Preposing fronts a complement, postposing holds a heavy constituent back, and subject-dependent inversion puts a dependent first. Existentials, extraposition, left and right dislocation, clefts and the passive each add a twist of their own. The table below sets out each construction with its basic counterpart."
+        },
+        {
+          "type": "paragraph",
+          "text": "A rough division helps. Preposing, postposing and inversion mostly rearrange what is already there. Existential, extraposition, dislocation, cleft and passive add structure or change which participant occupies which function. The line is one of degree rather than a wall: an inversion that introduces a new entity is doing presentational work, and a passive that merely moves the object leftward still reshuffles functions."
+        },
+        {
+          "type": "table",
+          "title": "Packaging constructions and their basic counterparts",
+          "columns": [
+            "Construction",
+            "Example",
+            "Basic counterpart"
+          ],
+          "rows": [
+            [
+              "Preposing",
+              "This one she accepted.",
+              "She accepted this one."
+            ],
+            [
+              "Postposing",
+              "I made without delay all the changes you wanted.",
+              "I made all the changes you wanted without delay."
+            ],
+            [
+              "Inversion",
+              "On board were two nurses.",
+              "Two nurses were on board."
+            ],
+            [
+              "Existential",
+              "There is a frog in the pool.",
+              "A frog is in the pool."
+            ],
+            [
+              "Extraposition",
+              "It is clear that he’s guilty.",
+              "That he’s guilty is clear."
+            ],
+            [
+              "Cleft",
+              "It was you who broke it.",
+              "You broke it."
+            ],
+            [
+              "Passive",
+              "The car was taken by Kim.",
+              "Kim took the car."
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Which construction is primarily a reordering rather than a realignment?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Preposing",
+            "feedback": "It mainly changes the order of a complement."
+          },
+          {
+            "id": "b",
+            "text": "Passive",
+            "feedback": "It realigns subject and object functions."
+          },
+          {
+            "id": "c",
+            "text": "Existential",
+            "feedback": "It adds dummy there and a displaced subject."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "reordering-realignment",
+      "title": "Reordering, realignment, and truth conditions",
+      "advances": "understand",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*This one she accepted* has the same subject and the same object as *She accepted this one*; only the object has moved forward, and every grammatical function stays where it was. That is reordering. Subject-dependent inversion works the same way on the subject and a dependent of the verb, which is why both patterns feel like rearrangements rather than rebuildings."
+        },
+        {
+          "type": "paragraph",
+          "text": "Passivise a clause and something more drastic happens than a change of order: the active object takes over the subject function while the active subject retreats into a *by* phrase or disappears. Form an existential and the basic subject becomes a displaced subject after the verb while dummy *there* occupies the subject slot. The participants are the same; their grammatical jobs are not."
+        },
+        {
+          "type": "paragraph",
+          "text": "The usual claim is that packaging preserves truth conditions and illocutionary force. *Many MPs weren’t in the House* and *There weren’t many MPs in the House* are the exception that keeps the claim honest. The first says that many members were absent; the second says that the number present was small. A quantifier has changed places with a negation, and the scope has changed with it."
+        },
+        {
+          "type": "examples",
+          "title": "Same content, different organisation",
+          "items": [
+            {
+              "text": "Kim wrote the letter. / The letter was written by Kim.",
+              "mark": "ok",
+              "note": "Passive realigns subject and object."
+            },
+            {
+              "text": "This one she accepted.",
+              "mark": "ok",
+              "note": "Preposing changes order."
+            },
+            {
+              "text": "There were two doctors on the plane.",
+              "mark": "ok",
+              "note": "Existential adds dummy there and displaces the subject."
+            },
+            {
+              "text": "Many MPs weren’t in the House.",
+              "mark": "ok",
+              "note": "Many has scope over negation: many were absent."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why can packaging sometimes change truth conditions?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It can change the relative scope of a quantifier and negation.",
+            "feedback": "Many MPs weren’t in the House differs in scope from There weren’t many MPs in the House."
+          },
+          {
+            "id": "b",
+            "text": "It always changes the proposition.",
+            "feedback": "Most examples preserve truth conditions."
+          },
+          {
+            "id": "c",
+            "text": "It removes the subject.",
+            "feedback": "The subject may be replaced, not removed."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "information-concepts",
+      "title": "Old information, focus, and presupposition",
+      "advances": "worked",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Two letters arrived for Jill; she will pick them up.* The phrase *two letters* is discourse-new, introduced for the first time; by the second clause it has become old, already on the table, and *them* points back to it. That is discourse status: not a property of the words themselves but of where they sit in the conversation."
+        },
+        {
+          "type": "paragraph",
+          "text": "Addressee familiarity is a different measure. *The President is giving the State of the Union address* can treat *the President* as known even in a conversation that has never mentioned him, because shared national knowledge supplies the referent. Discourse-old and addressee-old usually coincide, but they are not the same test."
+        },
+        {
+          "type": "paragraph",
+          "text": "Focus is where the informational weight lands. Say *Mary bought RICE yesterday* and the remainder — *Mary bought x yesterday* — becomes the frame against which *rice* stands out. That frame is the focus-frame; the presupposition is what the sentence takes for granted. Different packaging constructions offer different partitions of the same content, which is the whole reason for choosing among them."
+        },
+        {
+          "type": "table",
+          "title": "Information status",
+          "columns": [
+            "Concept",
+            "Question",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Discourse-old",
+              "Has it been introduced or inferred?",
+              "them after two letters"
+            ],
+            [
+              "Discourse-new",
+              "Is it being introduced now?",
+              "two letters"
+            ],
+            [
+              "Addressee-old",
+              "Does the addressee already know it?",
+              "the President"
+            ],
+            [
+              "Focus",
+              "What is most prominent?",
+              "RICE"
+            ],
+            [
+              "Presupposition",
+              "What is taken for granted?",
+              "Mary bought something"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the focus in Mary bought RICE yesterday?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Rice",
+            "feedback": "It bears the main informational prominence."
+          },
+          {
+            "id": "b",
+            "text": "Mary",
+            "feedback": "Mary is part of the focus-frame."
+          },
+          {
+            "id": "c",
+            "text": "Yesterday",
+            "feedback": "Yesterday is part of the focus-frame."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "preposing",
+      "title": "Complement preposing",
+      "advances": "guided",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*This one she accepted.* The object has left its post-verbal home and turned up in front, and the clause still parses because the missing object is understood. Preposing is no mechanical movement rule, though. The fronted phrase does work — linking back, setting a topic, carrying a contrast — and the rest of the clause comments on it."
+        },
+        {
+          "type": "paragraph",
+          "text": "When the preposed element is not the focus, it usually serves as a link or a frame. *That money I gave her, it must have disappeared* opens with a phrase the hearer can locate, and the clause then says something about it. Topic preposing of this kind keeps the sentence tied to what has already been said."
+        },
+        {
+          "type": "paragraph",
+          "text": "Focus preposing puts the weight at the front. *THAT I can believe* works when *that* is the point of contention, and the stress tells the hearer so. Proposition assessment preposing evaluates rather than topicalises: *That she was right I never doubted* passes a verdict on a whole proposition. One syntactic position serves several discourse jobs, and intonation and context sort them out."
+        },
+        {
+          "type": "examples",
+          "title": "Preposing types",
+          "items": [
+            {
+              "text": "This one she accepted.",
+              "mark": "ok",
+              "note": "Object preposed as a topic."
+            },
+            {
+              "text": "That I can believe.",
+              "mark": "ok",
+              "note": "Focus preposing with contrastive stress."
+            },
+            {
+              "text": "That she was right I never doubted.",
+              "mark": "ok",
+              "note": "Proposition assessment preposing."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is preposed in This one she accepted?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The object this one",
+            "feedback": "It occupies the prenucleus but functions as the object of accepted."
+          },
+          {
+            "id": "b",
+            "text": "The subject she",
+            "feedback": "She remains the subject."
+          },
+          {
+            "id": "c",
+            "text": "The verb accepted",
+            "feedback": "The verb remains in the nucleus."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "postposing",
+      "title": "Postposing",
+      "advances": "transfer",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*I made without delay all the changes you wanted* saves its longest phrase for the end and drops a short adjunct into the middle. The object has not changed function; it has simply been held back. The motive is processing: a heavy phrase is easier to unpack when nothing has to follow it."
+        },
+        {
+          "type": "paragraph",
+          "text": "Subjects get postponed too. *There arrived a letter from the bank* leaves the subject after the verb, and the effect is presentational — the letter arrives into the discourse as news. Postposed material is usually newer or heavier than what precedes it, which is another way of saying that the end of the clause is where the informative payload tends to land."
+        },
+        {
+          "type": "paragraph",
+          "text": "Postposing is not extraposition, though the two are easily confused. Extraposition installs dummy *it* or *there* and moves a clause or NP into a later slot; postposing leaves the original function in place and changes only the order. The difference shows when you try to undo them: remove the dummy and extraposition collapses, while a postposed constituent can usually go home."
+        },
+        {
+          "type": "examples",
+          "title": "Postposed constituents",
+          "items": [
+            {
+              "text": "I made without delay all the changes you wanted.",
+              "mark": "ok",
+              "note": "Heavy object postponed to the end."
+            },
+            {
+              "text": "There arrived a letter from the bank.",
+              "mark": "ok",
+              "note": "Subject postponed after the verb."
+            },
+            {
+              "text": "She gave a brilliant performance last night.",
+              "mark": "ok",
+              "note": "The object is in its default position; the adjunct follows."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is all the changes you wanted postponed in I made without delay all the changes you wanted?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It is a heavy constituent placed at the end for processing.",
+            "feedback": "End weight favours postposing."
+          },
+          {
+            "id": "b",
+            "text": "It is the subject.",
+            "feedback": "It is the object."
+          },
+          {
+            "id": "c",
+            "text": "It is a clause.",
+            "feedback": "It is an NP with a relative clause."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "inversion",
+      "title": "Subject-dependent inversion",
+      "advances": "exit",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*On board were two nurses.* The phrase that would normally follow the verb comes first, the subject follows the verb, and no auxiliary is involved. That last point separates this construction from the inversion that forms questions. Here the verb is a full lexical verb, often *be*, *stand*, *sit*, *lie*, *come* or *go*, and the preposed element is a dependent of that verb."
+        },
+        {
+          "type": "paragraph",
+          "text": "The pattern is choosy about context. The fronted dependent usually links to what has just been said or sets a scene, and the subject that follows is usually new. *On the stool was a large parcel* sits comfortably after *I walked into the kitchen*; *On an overcoat was a large parcel* does not, because nothing has prepared the hearer for an overcoat as a location."
+        },
+        {
+          "type": "paragraph",
+          "text": "Inversion of this kind often introduces an entity, which makes it a close relative of the presentational constructions. The verb can be semantically thin — *be* does little beyond holding the position — while the preposed phrase carries the scene and the postposed subject carries the news."
+        },
+        {
+          "type": "examples",
+          "title": "Inversion and scene-setting",
+          "items": [
+            {
+              "text": "On board were two nurses.",
+              "mark": "ok",
+              "note": "Locative dependent preposed; subject postponed."
+            },
+            {
+              "text": "In the corner stood a small table.",
+              "mark": "ok",
+              "note": "Scene-setting inversion with stand."
+            },
+            {
+              "text": "On the stool was a large parcel.",
+              "mark": "ok",
+              "note": "Natural after mention of the kitchen and stool."
+            },
+            {
+              "text": "On an overcoat was a large parcel.",
+              "mark": "bad",
+              "note": "Infelicitous because the relation to the prior scene is not salient."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is On board were two nurses not subject-auxiliary inversion?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The subject is inverted with a dependent of the verb, not with an auxiliary.",
+            "feedback": "This is subject-dependent inversion."
+          },
+          {
+            "id": "b",
+            "text": "It contains no subject.",
+            "feedback": "Two nurses is the subject."
+          },
+          {
+            "id": "c",
+            "text": "It is a question.",
+            "feedback": "It is a declarative presentational clause."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "existential",
+      "title": "Existential and presentational constructions",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*There is a frog in the pool.* Nothing is being pointed at; the clause simply announces that a frog exists in a place. Dummy *there* fills the subject position, *a frog* follows the verb as displaced subject, and the basic counterpart would be *A frog is in the pool*. The existential lets English introduce something without pretending it is the topic."
+        },
+        {
+          "type": "paragraph",
+          "text": "The construction is constrained on both sides. The displaced subject is normally indefinite or quantificational, and a definite NP resists the slot unless context grants it a special reading. In formal standard English, agreement follows the displaced subject: *There are two frogs*, *There is a frog*."
+        },
+        {
+          "type": "paragraph",
+          "text": "Presentational clauses with *here* and *there* are cousins rather than twins. *Here comes the bus* and *There goes the last train* introduce an entity or an event, and they use inversion rather than a dummy subject. The deictic word ties the presentation to the speech situation: *here* towards the speaker, *there* away from the speaker or towards a salient spot."
+        },
+        {
+          "type": "examples",
+          "title": "Existential and presentational",
+          "items": [
+            {
+              "text": "There is a frog in the pool.",
+              "mark": "ok",
+              "note": "Existential with dummy there and displaced subject a frog."
+            },
+            {
+              "text": "There are two frogs in the pool.",
+              "mark": "ok",
+              "note": "Agreement with the displaced subject."
+            },
+            {
+              "text": "Here comes the bus.",
+              "mark": "ok",
+              "note": "Presentational construction with deictic here."
+            },
+            {
+              "text": "There goes the last train.",
+              "mark": "ok",
+              "note": "Presentational construction with there."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the subject in There is a frog in the pool?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Dummy there",
+            "feedback": "A frog is the displaced subject."
+          },
+          {
+            "id": "b",
+            "text": "A frog",
+            "feedback": "A frog is the displaced subject, not the syntactic subject."
+          },
+          {
+            "id": "c",
+            "text": "The pool",
+            "feedback": "The pool is the complement of in."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "extraposition",
+      "title": "Extraposition",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*It is clear that he’s guilty.* The clause carrying the content sits at the end, and a dummy *it* holds the subject position it has vacated. Reverse the operation and you get *That he’s guilty is clear* — grammatical, but heavier, and the weight is exactly why speakers extrapose."
+        },
+        {
+          "type": "paragraph",
+          "text": "The moved material need not be finite. *It was natural to be worried* and *It would help to close the valve* extrapose infinitival clauses, and the pattern reaches objects as well: *I found it distressing to see her so ill*. In each case the extraposed element is semantically the subject or object while the dummy occupies the syntactic slot."
+        },
+        {
+          "type": "paragraph",
+          "text": "Extraposition is favoured when the clause is long and the predicate short: the heavy material goes to the end, where end weight wants it anyway. It also combines with other packaging, as when *It was assumed by everyone that Jill would win* wraps extraposition inside a passive. What it is not is a simple movement, because the dummy *it* is added along the way."
+        },
+        {
+          "type": "examples",
+          "title": "Extraposed subjects and objects",
+          "items": [
+            {
+              "text": "It is clear that he’s guilty.",
+              "mark": "ok",
+              "note": "Extraposed subject."
+            },
+            {
+              "text": "It was natural to be worried.",
+              "mark": "ok",
+              "note": "Infinitival extraposed subject."
+            },
+            {
+              "text": "I found it distressing to see her so ill.",
+              "mark": "ok",
+              "note": "Extraposed object."
+            },
+            {
+              "text": "It was assumed by everyone that Jill would win.",
+              "mark": "ok",
+              "note": "Passive plus extraposition."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the function of that he’s guilty in It is clear that he’s guilty?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Extraposed subject",
+            "feedback": "Dummy it fills the subject position; the clause is semantically the subject."
+          },
+          {
+            "id": "b",
+            "text": "Direct object",
+            "feedback": "The predicate is be + clear."
+          },
+          {
+            "id": "c",
+            "text": "Adjunct",
+            "feedback": "The clause is not optional scene-setting."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "dislocation",
+      "title": "Left and right dislocation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*That money I gave her, it must have disappeared.* The phrase at the front is picked up again inside the clause by a pronoun, and the clause would be grammatical without the phrase. Move it to the other end and you get *They’re still here, the people from next door* — the mirror image, with the NP trailing after the clause. Put the phrase first and you have left dislocation; put it last and you have right dislocation."
+        },
+        {
+          "type": "paragraph",
+          "text": "The pronoun is not decoration. In the left-dislocation example, *it* is the subject of *must have disappeared*, and *that money* is the anchor the pronoun points back to. In the right-dislocation example, *they* is the subject and the trailing NP tells the hearer who *they* are. Take the pronoun away and the construction falls apart."
+        },
+        {
+          "type": "paragraph",
+          "text": "Dislocation is packaging in the plainest sense: it foregrounds or backgrounds an NP without making it a constituent of the clause. Left dislocation tends to set a topic; right dislocation tends to clarify or remind. Both belong to speech more than to formal writing, and both can nest inside other packaging constructions."
+        },
+        {
+          "type": "examples",
+          "title": "Dislocation types",
+          "items": [
+            {
+              "text": "That money I gave her, it must have disappeared.",
+              "mark": "ok",
+              "note": "Left dislocation with resumptive it."
+            },
+            {
+              "text": "They’re still here, the people from next door.",
+              "mark": "ok",
+              "note": "Right dislocation with resumptive they."
+            },
+            {
+              "text": "Kim, I like her.",
+              "mark": "ok",
+              "note": "Left dislocation in a simple clause."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the function of it in That money I gave her, it must have disappeared?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Resumptive subject referring to that money",
+            "feedback": "It fills the subject function; that money is the dislocated anchor."
+          },
+          {
+            "id": "b",
+            "text": "Object of gave",
+            "feedback": "Her is the indirect object and that money is the dislocated anchor."
+          },
+          {
+            "id": "c",
+            "text": "A dummy subject",
+            "feedback": "It refers to the money, unlike existential it."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "clefts",
+      "title": "It-clefts and pseudo-clefts",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*It was Kim who broke it.* The clause splits in two: a foregrounded phrase after *it was*, and a relative clause carrying the background. The basic counterpart, *Kim broke it*, asserts the same thing, but the cleft divides the labour — Kim as focus, the breaking as presupposition."
+        },
+        {
+          "type": "paragraph",
+          "text": "Pseudo-clefts reverse the arrangement with a fused relative. *What helped was closing the valve* makes *what helped* the subject and *closing the valve* the identifying complement; the reverse pseudo-cleft, *Closing the valve was what helped*, puts the fused relative after *be*. The content is stable, but the information structure is not."
+        },
+        {
+          "type": "paragraph",
+          "text": "Presupposition is where clefts earn their keep. An it-cleft with an old presupposition treats the background as already established and spotlights the focus; one with a new presupposition introduces the background too. Pseudo-clefts often present the value as new and the variable as given. Choosing among these shapes is choosing how much the hearer is assumed to know."
+        },
+        {
+          "type": "table",
+          "title": "Cleft constructions",
+          "columns": [
+            "Type",
+            "Example",
+            "Focus"
+          ],
+          "rows": [
+            [
+              "It-cleft",
+              "It was Kim who broke it.",
+              "Kim"
+            ],
+            [
+              "Pseudo-cleft",
+              "What helped was closing the valve.",
+              "closing the valve"
+            ],
+            [
+              "Reverse pseudo-cleft",
+              "Closing the valve was what helped.",
+              "closing the valve"
+            ],
+            [
+              "It-cleft with new presupposition",
+              "It was Kim who broke it, not Pat.",
+              "Kim, with background introduced"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the focus of It was Kim who broke it?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Kim",
+            "feedback": "Kim is foregrounded after it was."
+          },
+          {
+            "id": "b",
+            "text": "Who broke it",
+            "feedback": "That is the backgrounded relative clause."
+          },
+          {
+            "id": "c",
+            "text": "It",
+            "feedback": "It is a dummy subject."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "passive-syntax",
+      "title": "The syntax of the passive",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Kim took the car* becomes *The car was taken by Kim*: the object climbs into the subject position, the subject drops into a *by* phrase, and the verb takes *be* plus a past participle. Leave the *by* phrase out and you have the short passive, much the commoner form in real text."
+        },
+        {
+          "type": "paragraph",
+          "text": "The *by* phrase sits outside the passive verb phrase, which is why it can be dropped without breaking anything. The construction does not stop at ordinary transitive objects. Prepositional passives promote the object of a preposition — *The bed was slept in* — and ditransitives let either object take the subject role: *Pat was given the key* beside *The key was given to Pat*."
+        },
+        {
+          "type": "paragraph",
+          "text": "Not every passive is the same passive. *The vase was broken deliberately* describes an event and takes an agent-oriented adverb comfortably; *The vase looked broken* describes a state and behaves like an adjective. *Get*-passives add a third flavour by using *get* in place of *be*: *He got arrested* often suggests an event that befalls its subject, sometimes with an adversative edge."
+        },
+        {
+          "type": "examples",
+          "title": "Passive forms",
+          "items": [
+            {
+              "text": "The car was taken by Kim.",
+              "mark": "ok",
+              "note": "Long passive with by phrase."
+            },
+            {
+              "text": "The car was taken.",
+              "mark": "ok",
+              "note": "Short passive without by phrase."
+            },
+            {
+              "text": "The bed was slept in.",
+              "mark": "ok",
+              "note": "Prepositional passive."
+            },
+            {
+              "text": "He got arrested.",
+              "mark": "ok",
+              "note": "Get-passive."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What happens to the active object in a passive clause?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It becomes the passive subject.",
+            "feedback": "The car in Kim took the car becomes subject in The car was taken by Kim."
+          },
+          {
+            "id": "b",
+            "text": "It becomes the by phrase.",
+            "feedback": "The by phrase corresponds to the active subject."
+          },
+          {
+            "id": "c",
+            "text": "It is deleted.",
+            "feedback": "It is promoted to subject."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "passive-pragmatics",
+      "title": "Adjectival and get-passives; choosing active or passive",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*The door was very opened* is odd in a way that *The door was wide open* is not, and the oddness is a clue. Degree modifiers like *very* attach to adjectives, so a passive that tolerates them is behaving adjectivally. *The vase was broken* can go either way, and the company it keeps — a *by* phrase, *deliberately*, a degree word — tells you which reading is intended."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Get*-passives belong mostly to informal English and typically report an event that changes the subject’s situation: *He got arrested*, *She got promoted*. They can sound adversative, and they suggest that something happened to someone rather than that someone did something. They are not freely interchangeable with *be*-passives."
+        },
+        {
+          "type": "paragraph",
+          "text": "Why choose a passive at all? Because it lets the speaker put the affected participant first and leave the agent out or push it to the end. That is useful when the agent is unknown, unimportant or already recoverable, and when the patient is what the discourse is about. End weight and the flow of given and new information pull in the same direction."
+        },
+        {
+          "type": "examples",
+          "title": "Passive choice",
+          "items": [
+            {
+              "text": "The vase was broken deliberately.",
+              "mark": "ok",
+              "note": "Verbal passive: an event with an agent."
+            },
+            {
+              "text": "The vase looked broken.",
+              "mark": "ok",
+              "note": "Adjectival passive: a state."
+            },
+            {
+              "text": "He got promoted.",
+              "mark": "ok",
+              "note": "Get-passive with a change of state."
+            },
+            {
+              "text": "The report was leaked.",
+              "mark": "ok",
+              "note": "Agent omitted because unknown or unimportant."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why might a writer choose The report was leaked rather than Someone leaked the report?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The agent is unknown or unimportant, and the report is the topic.",
+            "feedback": "Passive packaging backgrounds the agent."
+          },
+          {
+            "id": "b",
+            "text": "The passive always sounds more formal.",
+            "feedback": "Register is only one factor."
+          },
+          {
+            "id": "c",
+            "text": "The active has no subject.",
+            "feedback": "The active has someone as subject."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "presentational",
+      "title": "Presentational and here/there clauses",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*Here comes the bus.* The deictic word points, the verb of motion follows, and the subject arrives last — the opposite of ordinary declarative order. That shape is what makes the clause presentational: it does not so much describe a state of affairs as announce something into the scene."
+        },
+        {
+          "type": "paragraph",
+          "text": "The deictic element does the anchoring. *Here* points towards the speaker and *there* away from the speaker or towards a salient location, and the verb is usually one of motion, existence or appearance. The postposed NP is typically new, which is why the construction suits arrivals, discoveries and announcements."
+        },
+        {
+          "type": "paragraph",
+          "text": "Presentational clauses are not existentials, though the two are easy to confuse. The existential puts dummy *there* in the subject position and a displaced subject after the verb; the presentational clause uses a deictic adverb and a postposed subject. *There is a bus coming* is existential; *Here comes the bus* is presentational, and the difference is audible in the first word."
+        },
+        {
+          "type": "examples",
+          "title": "Presentational clauses",
+          "items": [
+            {
+              "text": "Here comes the bus.",
+              "mark": "ok",
+              "note": "Deictic here with a postposed subject."
+            },
+            {
+              "text": "There goes the last train.",
+              "mark": "ok",
+              "note": "Deictic there with a postposed subject."
+            },
+            {
+              "text": "Here is your coffee.",
+              "mark": "ok",
+              "note": "Presentational here with be."
+            },
+            {
+              "text": "There is a bus coming.",
+              "mark": "ok",
+              "note": "Existential, not the same construction."
+            }
+          ]
+        },
+        {
+          "type": "check",
+          "prompt": "What distinguishes Here comes the bus from There is a bus coming?",
+          "options": [
+            {
+              "id": "a",
+              "text": "The first is a presentational construction with deictic here; the second is existential with dummy there.",
+              "feedback": "The deictic adverb and the subject position differ."
+            },
+            {
+              "id": "b",
+              "text": "The first contains no subject.",
+              "feedback": "The bus is the postposed subject."
+            },
+            {
+              "id": "c",
+              "text": "The second is a question.",
+              "feedback": "It is a declarative existential."
+            }
+          ],
+          "answer": "a"
+        }
+      ]
+    },
+    {
+      "id": "cleft-presupposition",
+      "title": "Cleft presuppositions and discourse status",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*It was Kim who broke it* divides a proposition into a focus and a background, and the background arrives as a presupposition: someone broke it is taken for granted, and Kim is asserted as the someone. Whether that background is old or new in the conversation changes what the cleft accomplishes."
+        },
+        {
+          "type": "paragraph",
+          "text": "When the presupposition is old, the cleft is little more than a spotlight. Say *It was KIM who broke it* after the window has already been discussed, and the only new information is the identity. When the presupposition is new, the cleft must establish the background and the focus at once: *It was Kim who broke it, not Pat* can introduce the event and the contrast together."
+        },
+        {
+          "type": "paragraph",
+          "text": "Pseudo-clefts often run the information the other way. *What helped was closing the valve* puts the value last, as new, and treats *what helped* as the given variable. The reverse pseudo-cleft, *Closing the valve was what helped*, can shift the emphasis back to the variable, which is useful when the hearer knows what was done but not why it mattered."
+        },
+        {
+          "type": "examples",
+          "title": "Cleft information structure",
+          "items": [
+            {
+              "text": "It was KIM who broke it.",
+              "mark": "ok",
+              "note": "Focus on Kim; the breaking is presupposed."
+            },
+            {
+              "text": "It was Kim who broke it, not Pat.",
+              "mark": "ok",
+              "note": "Contrastive focus with the background introduced."
+            },
+            {
+              "text": "What helped was closing the valve.",
+              "mark": "ok",
+              "note": "Pseudo-cleft with the value as complement."
+            },
+            {
+              "text": "Closing the valve was what helped.",
+              "mark": "ok",
+              "note": "Reverse pseudo-cleft."
+            }
+          ]
+        },
+        {
+          "type": "check",
+          "prompt": "What does It was Kim who broke it presuppose?",
+          "options": [
+            {
+              "id": "a",
+              "text": "That someone broke it",
+              "feedback": "The relative clause is backgrounded as a presupposition."
+            },
+            {
+              "id": "b",
+              "text": "That Kim broke it",
+              "feedback": "That is the asserted focus, not the presupposition."
+            },
+            {
+              "id": "c",
+              "text": "That Pat broke it",
+              "feedback": "Pat is not mentioned."
+            }
+          ],
+          "answer": "a"
+        }
+      ]
+    },
+    {
+      "id": "combinations",
+      "title": "Combinations and structural constraints",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Packaging constructions can stack when their requirements do not conflict. *Some of them she found offensive, my mother* preposes an object and then adds a right-dislocated NP; *It was assumed by everyone that Jill would win* wraps extraposition inside a passive. Each layer does its own work, and the result is still a single clause."
+        },
+        {
+          "type": "paragraph",
+          "text": "Other combinations fail, and the failures are informative. Existential formation needs a non-clausal displaced subject, while subject extraposition needs a clause in the subject position; put the two requirements together and nothing can satisfy both. *There is that he is guilty clear* is not so much a bad sentence as an impossible assembly."
+        },
+        {
+          "type": "paragraph",
+          "text": "Combination is therefore a probe in its own right. *Kim it was who had been interviewed by the police* stacks passive, cleft and preposing: the passive realigns the functions, the cleft foregrounds Kim, and the preposing moves her to the front. The order in which the layers apply shapes the final sentence, which is why some orders work and others collapse."
+        },
+        {
+          "type": "examples",
+          "title": "Combining constructions",
+          "items": [
+            {
+              "text": "Some of them she found offensive, my mother.",
+              "mark": "ok",
+              "note": "Preposing plus right dislocation."
+            },
+            {
+              "text": "It was assumed by everyone that Jill would win.",
+              "mark": "ok",
+              "note": "Passive plus extraposition."
+            },
+            {
+              "text": "Kim it was who had been interviewed by the police.",
+              "mark": "ok",
+              "note": "Passive plus cleft plus preposing."
+            }
+          ]
+        },
+        {
+          "type": "check",
+          "prompt": "Why can existential and subject extraposition not combine?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Existential needs a non-clausal displaced subject, while extraposition needs a clause in subject position.",
+              "feedback": "Their structural requirements are incompatible."
+            },
+            {
+              "id": "b",
+              "text": "They are the same construction.",
+              "feedback": "They are distinct constructions."
+            },
+            {
+              "id": "c",
+              "text": "Existentials never contain verbs.",
+              "feedback": "They contain be or another verb."
+            }
+          ],
+          "answer": "a"
+        }
+      ]
+    },
+    {
+      "id": "chapter-review",
+      "title": "Chapter Review",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The family is familiar by now: preposing, postposing, subject-dependent inversion, existential, extraposition, dislocation, cleft and passive. Some reorder, others realign, and most preserve truth conditions and illocutionary force."
+        },
+        {
+          "type": "paragraph",
+          "text": "Discourse status drives the choices. Old and new information, addressee familiarity, focus and presupposition explain why a speaker fronts a phrase, holds one back, introduces an entity with *there*, or splits a clause into focus and background. End weight and the flow of the surrounding text do the rest."
+        },
+        {
+          "type": "paragraph",
+          "text": "The passive earns its prominence: it realigns subject and object, comes in verbal, adjectival and *get* varieties, and is chosen for topicality, agent recoverability, weight and register. Constructions combine where their structures allow it, and the places where they refuse to combine are as revealing as the places where they do."
+        },
+        {
+          "type": "note",
+          "tone": "why",
+          "title": "A packaging checklist",
+          "text": "Identify the basic counterpart. Decide whether the construction changes order or realigns functions. Check what is old or new, what is focused, and what is presupposed. Then ask whether the difference affects truth conditions, and whether the construction can combine with another packaging type."
+        }
+      ],
+      "check": {
+        "prompt": "Which statement correctly describes information packaging?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It presents the same basic content in different ways, usually without changing truth conditions.",
+            "feedback": "Quantifier scope can be an exception."
+          },
+          {
+            "id": "b",
+            "text": "It always changes the proposition.",
+            "feedback": "Most packaging preserves truth conditions."
+          },
+          {
+            "id": "c",
+            "text": "It only applies to questions.",
+            "feedback": "It applies to declaratives and other clause types."
+          }
+        ],
+        "answer": "a"
+      }
+    }
+  ],
+  "worked": [
+    "Take *It was the committee’s decision that surprised everyone, but the report itself was never published*. The first clause is an it-cleft: *the committee’s decision* is foregrounded, and *that surprised everyone* is the backgrounded relative clause. The second clause is a passive: *the report itself* is subject, and the agent is omitted.",
+    "The example combines cleft and passive packaging. The cleft presents the decision as the focus and presupposes that something surprised everyone. The passive presents the report as topic and backgrounds the publisher. Both constructions reorganise information without changing the basic events."
+  ],
+  "application": [
+    "Find the basic counterpart and compare it with the packaged version. Decide whether the difference is primarily order or alignment of functions. Then identify what is old, new, focused and presupposed.",
+    "For preposing, inversion and postposing, check the discourse link and end weight. For existentials and presentationals, identify the displaced subject. For extraposition and clefts, identify the dummy element and the clause function.",
+    "For passives, identify the active subject and object, the by phrase, and whether the passive is verbal, adjectival or get. Then ask why the writer chose that packaging: topic, agent recoverability, end weight, register or discourse flow."
+  ],
+  "reveal": [
+    "In *It was the committee’s decision that surprised everyone, but the report itself was never published*, the first clause is an it-cleft focusing *the committee’s decision*; the second is a short passive with *the report itself* as subject and the agent omitted."
+  ],
+  "recap": [
+    "Information packaging includes reordering constructions and realignment constructions. It is shaped by discourse familiarity, focus, presupposition and end weight. Truth conditions are usually preserved, but quantifier scope can differ.",
+    "Preposing, postposing, inversion, existentials, extraposition, dislocation, clefts and passives each reorganise the clause in a distinct way. The passive is a central realignment construction with verbal, adjectival and get variants."
+  ],
+  "self_check": [
+    {
+      "question": "Name the main information-packaging constructions.",
+      "answer": "Preposing, postposing, subject-dependent inversion, existential, extraposition, left dislocation, right dislocation, cleft and passive."
+    },
+    {
+      "question": "What is the difference between reordering and realignment?",
+      "answer": "Reordering changes linear order; realignment changes the mapping between semantic roles and syntactic functions."
+    },
+    {
+      "question": "What is the function of dummy there in an existential?",
+      "answer": "It fills the subject position while the displaced subject follows the verb."
+    },
+    {
+      "question": "What is an it-cleft?",
+      "answer": "A construction with it was plus a foregrounded complement and a relative clause, as in It was Kim who called."
+    },
+    {
+      "question": "What happens to the active object and subject in a passive?",
+      "answer": "The object becomes subject; the subject becomes the optional by phrase."
+    }
+  ],
+  "opening": [
+    {
+      "prompt": "Which construction is an existential?",
+      "options": [
+        {
+          "id": "a",
+          "text": "There is a frog in the pool.",
+          "feedback": "Dummy there is subject; a frog is displaced subject."
+        },
+        {
+          "id": "b",
+          "text": "The frog is in the pool.",
+          "feedback": "That is the basic counterpart."
+        },
+        {
+          "id": "c",
+          "text": "In the pool is a frog.",
+          "feedback": "That is subject-dependent inversion."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which construction is a cleft?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It was Kim who broke it.",
+          "feedback": "It-cleft with foregrounded Kim."
+        },
+        {
+          "id": "b",
+          "text": "Kim broke it.",
+          "feedback": "That is the basic clause."
+        },
+        {
+          "id": "c",
+          "text": "The car was taken by Kim.",
+          "feedback": "That is passive."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is the subject in There is a frog in the pool?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dummy there",
+          "feedback": "A frog is the displaced subject."
+        },
+        {
+          "id": "b",
+          "text": "A frog",
+          "feedback": "A frog is displaced."
+        },
+        {
+          "id": "c",
+          "text": "The pool",
+          "feedback": "The pool is the complement of in."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is the focus of It was Kim who broke it?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kim",
+          "feedback": "Kim is foregrounded."
+        },
+        {
+          "id": "b",
+          "text": "Who broke it",
+          "feedback": "That is backgrounded."
+        },
+        {
+          "id": "c",
+          "text": "It",
+          "feedback": "It is dummy."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What happens to the active subject in a passive?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It becomes the optional by phrase.",
+          "feedback": "The by phrase expresses the internalised agent."
+        },
+        {
+          "id": "b",
+          "text": "It becomes the subject.",
+          "feedback": "The active object becomes subject."
+        },
+        {
+          "id": "c",
+          "text": "It is always deleted.",
+          "feedback": "It can be omitted, but can also appear in by."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "closing": [
+    {
+      "prompt": "Why can packaging sometimes change truth conditions?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It can change the relative scope of a quantifier and negation.",
+          "feedback": "Many MPs weren’t in the House differs in scope from There weren’t many MPs in the House."
+        },
+        {
+          "id": "b",
+          "text": "It always changes the proposition.",
+          "feedback": "Most packaging preserves truth conditions."
+        },
+        {
+          "id": "c",
+          "text": "It removes the subject.",
+          "feedback": "The subject may be replaced."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Why is On board were two nurses not subject-auxiliary inversion?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The subject is inverted with a dependent of the verb, not an auxiliary.",
+          "feedback": "This is subject-dependent inversion."
+        },
+        {
+          "id": "b",
+          "text": "It has no subject.",
+          "feedback": "Two nurses is the subject."
+        },
+        {
+          "id": "c",
+          "text": "It is a question.",
+          "feedback": "It is a declarative."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is the function of that he’s guilty in It is clear that he’s guilty?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Extraposed subject",
+          "feedback": "Dummy it fills the subject position."
+        },
+        {
+          "id": "b",
+          "text": "Direct object",
+          "feedback": "The predicate is be + clear."
+        },
+        {
+          "id": "c",
+          "text": "Adjunct",
+          "feedback": "The clause is not scene-setting."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is the function of it in That money I gave her, it must have disappeared?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Resumptive subject referring to that money",
+          "feedback": "It fills the subject function."
+        },
+        {
+          "id": "b",
+          "text": "Object of gave",
+          "feedback": "Her is the indirect object."
+        },
+        {
+          "id": "c",
+          "text": "A dummy subject",
+          "feedback": "It refers to the money."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Why might a writer choose The report was leaked rather than Someone leaked the report?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The agent is unknown or unimportant, and the report is the topic.",
+          "feedback": "Passive packaging backgrounds the agent."
+        },
+        {
+          "id": "b",
+          "text": "The passive always sounds more formal.",
+          "feedback": "Register is only one factor."
+        },
+        {
+          "id": "c",
+          "text": "The active has no subject.",
+          "feedback": "The active has someone as subject."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "stages": {
+    "predict": {
+      "prompt": "Which construction is an existential?",
+      "options": [
+        {
+          "id": "a",
+          "text": "There is a frog in the pool.",
+          "feedback": "Dummy there is subject."
+        },
+        {
+          "id": "b",
+          "text": "The frog is in the pool.",
+          "feedback": "That is the basic counterpart."
+        },
+        {
+          "id": "c",
+          "text": "In the pool is a frog.",
+          "feedback": "That is subject-dependent inversion."
+        }
+      ],
+      "answer": "a"
+    },
+    "guided": {
+      "prompt": "What is preposed in This one she accepted?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The object this one",
+          "feedback": "It functions as object of accepted."
+        },
+        {
+          "id": "b",
+          "text": "The subject she",
+          "feedback": "She remains the subject."
+        },
+        {
+          "id": "c",
+          "text": "The verb accepted",
+          "feedback": "The verb remains in the nucleus."
+        }
+      ],
+      "answer": "a"
+    },
+    "transfer": {
+      "prompt": "Why is all the changes you wanted postponed in I made without delay all the changes you wanted?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It is a heavy constituent placed at the end for processing.",
+          "feedback": "End weight favours postposing."
+        },
+        {
+          "id": "b",
+          "text": "It is the subject.",
+          "feedback": "It is the object."
+        },
+        {
+          "id": "c",
+          "text": "It is a clause.",
+          "feedback": "It is an NP with a relative clause."
+        }
+      ],
+      "answer": "a"
+    },
+    "exit": {
+      "prompt": "What is the focus of It was Kim who broke it?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kim",
+          "feedback": "Kim is foregrounded."
+        },
+        {
+          "id": "b",
+          "text": "Who broke it",
+          "feedback": "That is backgrounded."
+        },
+        {
+          "id": "c",
+          "text": "It",
+          "feedback": "It is dummy."
+        }
+      ],
+      "answer": "a"
+    }
+  }
+}

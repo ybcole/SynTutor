@@ -1,0 +1,1394 @@
+{
+  "title": "Relative constructions and unbounded dependencies",
+  "description": "Explore wh, that and bare relatives, integrated and supplementary clauses, fused relatives, and the long-distance gaps that connect them.",
+  "example": "The report that the committee finally published confirmed what everyone had suspected.",
+  "key_terms": [
+    {
+      "term": "relative construction",
+      "definition": "A cover term for relative clauses and fused relatives, including NP and PP types."
+    },
+    {
+      "term": "relative clause",
+      "definition": "A clause containing an overt or covert element interpreted through an antecedent."
+    },
+    {
+      "term": "antecedent",
+      "definition": "The expression that supplies the interpretation of a relative word or gap."
+    },
+    {
+      "term": "relativised element",
+      "definition": "The element in a relative clause that is linked anaphorically to the antecedent."
+    },
+    {
+      "term": "gap",
+      "definition": "An abstract empty position in a relative clause, co-indexed with the antecedent or relative phrase."
+    },
+    {
+      "term": "wh relative",
+      "definition": "A relative clause containing a relative word such as who, which or whose."
+    },
+    {
+      "term": "that relative",
+      "definition": "A non-wh relative introduced by the subordinator that."
+    },
+    {
+      "term": "bare relative",
+      "definition": "A non-wh relative with no relative word or that."
+    },
+    {
+      "term": "integrated relative",
+      "definition": "A relative clause integrated into the nominal it modifies, prototypically restricting its denotation."
+    },
+    {
+      "term": "supplementary relative",
+      "definition": "A prosodically detached relative clause adding information about an antecedent."
+    },
+    {
+      "term": "cleft relative",
+      "definition": "The relative clause following the foregrounded element in an it-cleft."
+    },
+    {
+      "term": "fused relative",
+      "definition": "A relative construction in which antecedent and relative clause are fused into one phrase."
+    },
+    {
+      "term": "relative phrase",
+      "definition": "The initial phrase in a wh relative, containing the relative word and any material that percolates with it."
+    },
+    {
+      "term": "relative word",
+      "definition": "A word such as who, whom, whose, which, where or when used in a relative construction."
+    },
+    {
+      "term": "upward percolation",
+      "definition": "The spread of a relative feature from a word to the larger phrase containing it."
+    },
+    {
+      "term": "complex relative phrase",
+      "definition": "A relative phrase containing more than the relative word itself, such as whose house or with which."
+    },
+    {
+      "term": "restrictive",
+      "definition": "A relative use that delimits the set denoted by the head nominal."
+    },
+    {
+      "term": "non-restrictive",
+      "definition": "A relative use that adds information without restricting the antecedent’s denotation."
+    },
+    {
+      "term": "supplement",
+      "definition": "A detached element related to an anchor without being a syntactic dependent."
+    },
+    {
+      "term": "infinitival relative",
+      "definition": "A relative clause with an infinitival verb, such as a place to watch the procession from."
+    },
+    {
+      "term": "hollow clause",
+      "definition": "A non-finite clause with an understood non-subject element supplied by context."
+    },
+    {
+      "term": "fused relative NP",
+      "definition": "A fused relative phrase headed by what, whoever or whichever and functioning as an NP."
+    },
+    {
+      "term": "fused relative PP",
+      "definition": "A fused relative phrase based on where or when and functioning as a PP."
+    },
+    {
+      "term": "open interrogative",
+      "definition": "An interrogative clause asking for a value, contrasting with a fused relative."
+    },
+    {
+      "term": "unbounded dependency",
+      "definition": "A relation in which a gap can be embedded arbitrarily deeply inside the clause."
+    },
+    {
+      "term": "parasitic gap",
+      "definition": "A gap that is licensed by another gap in the same construction."
+    },
+    {
+      "term": "antecedent-contained deletion",
+      "definition": "A construction in which an elided VP is interpreted through an antecedent containing the elided material."
+    }
+  ],
+  "intro": [
+    "*The things that your father was saying* and *what your father was saying* pick out the same set of remarks. One is a noun phrase with a clause attached; the other is a single phrase in which the antecedent and the clause have fused. The pair is a good place to begin, because the difference between them is the difference between a relative clause and a relative construction.",
+    "Relative constructions come in several shapes. A relative word can carry the link, a subordinator can accompany a gap, or the gap can stand alone. The clause can be integrated into a nominal, detached as a supplement, or built into a cleft.",
+    "Behind all the variety is one question: how does the missing or anaphoric element get interpreted? A wh relative links a relative word to an antecedent and leaves a gap to mark the original function. A bare relative leaves only the gap. A fused relative folds antecedent and relativised element into one phrase. The rest of the chapter works through the consequences."
+  ],
+  "sections": [
+    {
+      "id": "relative-constructions",
+      "title": "Relative constructions: clauses and phrases",
+      "advances": "predict",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*I agree with most of the things that your father was saying* contains a relative clause modifying *things*. Replace the noun phrase and the clause with *what your father was saying* and the meaning survives, but the grammar changes: *what* now does the work of both the antecedent and the relativised element. That is a fused relative."
+        },
+        {
+          "type": "paragraph",
+          "text": "The traditional term *relative clause* is too narrow for the whole family. *What your father was saying* is a noun phrase, not a clause, and the corresponding forms based on *where* and *when* are prepositional phrases. *Relative construction* is the cover term that lets the clause and phrase types sit together."
+        },
+        {
+          "type": "paragraph",
+          "text": "The syntactic difference matters. A relative clause can be separated from its antecedent, which is what makes *the things [that your father was saying]* analyzable as two pieces. A fused relative cannot be split that way, because *what* is holding both pieces at once. That is why the fused type needs its own analysis rather than a footnote under relatives."
+        },
+        {
+          "type": "table",
+          "title": "Clause and phrase relatives",
+          "columns": [
+            "Type",
+            "Example",
+            "Category"
+          ],
+          "rows": [
+            [
+              "Relative clause",
+              "the things that your father was saying",
+              "Clause modifying an NP"
+            ],
+            [
+              "Fused relative",
+              "what your father was saying",
+              "NP"
+            ],
+            [
+              "Fused relative",
+              "where you found it",
+              "PP"
+            ],
+            [
+              "Cleft relative",
+              "who wanted Pat as treasurer",
+              "Clause in a cleft"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is what your father was saying not a relative clause?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It is an NP corresponding to the antecedent plus relative clause.",
+            "feedback": "The antecedent and relativised element are fused."
+          },
+          {
+            "id": "b",
+            "text": "It contains no verb.",
+            "feedback": "It contains the verb was saying."
+          },
+          {
+            "id": "c",
+            "text": "It has no antecedent.",
+            "feedback": "It corresponds semantically to the things that your father was saying."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "formal-types",
+      "title": "Formal types: wh, that, and bare relatives",
+      "advances": "understand",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Take *the toys you don’t want*. Nothing in the clause marks it as relative: no wh-word, no *that*, just a gap where *toys* would be understood. Add *that* and the clause has a subordinator; add *which* and it has a relative pronoun. English offers three formal routes to the same relation, and they are not interchangeable in every position."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Which* in *the toys which you don’t want* is a pronoun linked to *toys*. Replace it with *that* and the word is no longer a pronoun: it is the subordinator familiar from content clauses, and the object position is a gap. Remove both and the gap has no company at all."
+        },
+        {
+          "type": "paragraph",
+          "text": "Position constrains the choice. A subject relative in the non-wh form needs *that*; an object relative tolerates all three forms, which is why *the advice my neighbour gave me* sounds unremarkable."
+        },
+        {
+          "type": "table",
+          "title": "Formal types of relative clause",
+          "columns": [
+            "Type",
+            "Example",
+            "Relativised element"
+          ],
+          "rows": [
+            [
+              "Wh relative",
+              "the toys which you don’t want",
+              "Overt relative pronoun which"
+            ],
+            [
+              "That relative",
+              "the toys that you don’t want",
+              "Subordinator that plus gap"
+            ],
+            [
+              "Bare relative",
+              "the toys you don’t want",
+              "Gap only"
+            ],
+            [
+              "Subject wh relative",
+              "the letter which drew our attention",
+              "Relative pronoun as subject"
+            ],
+            [
+              "Subject that relative",
+              "the letter that drew our attention",
+              "That plus subject gap"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Three formal types",
+          "items": [
+            {
+              "text": "the toys which you don’t want",
+              "mark": "ok",
+              "note": "Wh relative with which as object."
+            },
+            {
+              "text": "the toys that you don’t want",
+              "mark": "ok",
+              "note": "That relative with a gap in object position."
+            },
+            {
+              "text": "the toys you don’t want",
+              "mark": "ok",
+              "note": "Bare relative with a gap in object position."
+            },
+            {
+              "text": "the letter that drew our attention",
+              "mark": "ok",
+              "note": "Subject relativisation; that is required in the non-wh form."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is that not a relative pronoun in the toys that you don’t want?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It is the same subordinator found in content clauses; the object position is a gap.",
+            "feedback": "That marks subordination rather than filling the object function."
+          },
+          {
+            "id": "b",
+            "text": "It refers to toys.",
+            "feedback": "The gap, not that, carries the relation to toys."
+          },
+          {
+            "id": "c",
+            "text": "It is optional in all relative clauses.",
+            "feedback": "It is required in subject relatives."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "relational-types",
+      "title": "Integrated, supplementary, cleft, and fused relatives",
+      "advances": "worked",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Begin with two sentences that look alike but behave differently. *The boys who defaced the statue were expelled* uses its clause to narrow the set of boys; *My father, who retired last year, now lives in Florida* uses its clause to add a fact about a man already identified. The first is integrated, the second supplementary. Two further relational types complete the set: the cleft relative, which follows the foregrounded element in an *it*-cleft, and the fused relative, which combines antecedent and clause in a single phrase."
+        },
+        {
+          "type": "paragraph",
+          "text": "Integration is primarily a matter of information structure. The boys who defaced the statue are a subset of the boys, and the clause is what tells you which subset. A supplementary relative does not narrow anything: *my father* already picks out one person, and *who retired last year* adds a fact about him. The clause adds; it does not select."
+        },
+        {
+          "type": "paragraph",
+          "text": "Cleft relatives belong to the cleft construction rather than to the nominal system, and their internal structure differs in ways that are easy to overlook. Fused relatives are further removed again: they are phrases, not clauses, and their antecedent is not a separate word at all but part of the same phrase."
+        },
+        {
+          "type": "table",
+          "title": "Relational types",
+          "columns": [
+            "Type",
+            "Example",
+            "Relation to larger structure"
+          ],
+          "rows": [
+            [
+              "Integrated",
+              "The boys who defaced the statue were expelled.",
+              "Modifier inside the NP"
+            ],
+            [
+              "Supplementary",
+              "My father, who retired last year, now lives in Florida.",
+              "Detached supplement"
+            ],
+            [
+              "Cleft",
+              "It was Kim who wanted Pat as treasurer.",
+              "Relative in a cleft"
+            ],
+            [
+              "Fused",
+              "What you say is quite right.",
+              "Phrase combining antecedent and relative"
+            ]
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What distinguishes a supplementary relative from an integrated one?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The supplementary relative is detached and adds information rather than restricting the antecedent.",
+            "feedback": "Prosody, punctuation and information structure distinguish the two."
+          },
+          {
+            "id": "b",
+            "text": "The supplementary relative contains no relative word.",
+            "feedback": "It often contains who or which."
+          },
+          {
+            "id": "c",
+            "text": "The integrated relative always follows a comma.",
+            "feedback": "Integrated relatives are normally not detached."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "relativisation-gaps",
+      "title": "Relativisation and the gap",
+      "advances": "guided",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "In *the letter that drew our attention*, nothing sits in the subject position after *that*. The clause has a hole, and the antecedent *letter* supplies what belongs there. That hole is the gap, and the element it stands for is the relativised element. In a wh relative a relative word makes that element visible; in a non-wh relative the gap does all the pointing. Either way the gap keeps the grammatical function the element would have had: subject, object, complement of a preposition, adjunct or predicative."
+        },
+        {
+          "type": "paragraph",
+          "text": "In *I accepted the advice which my neighbour gave me*, *which* sits at the front and the gap sits after *gave*, where the object belongs. The pronoun is interpreted as object because the gap is an object. Put the gap in subject position, as in *the letter that drew our attention*, and the clause has no overt subject at all."
+        },
+        {
+          "type": "paragraph",
+          "text": "The gap is what separates a relative clause from a content clause. *The suggestion that Kim made* has one; *the suggestion that Kim cheated* does not. The words *that Kim* appear in both, which is why the gap has to be diagnosed rather than heard."
+        },
+        {
+          "type": "examples",
+          "title": "Locating the gap",
+          "items": [
+            {
+              "text": "the advice which my neighbour gave me",
+              "mark": "ok",
+              "note": "Which is linked to the object gap after gave."
+            },
+            {
+              "text": "the letter that drew our attention",
+              "mark": "ok",
+              "note": "The gap is in subject position."
+            },
+            {
+              "text": "the suggestion that Kim made",
+              "mark": "ok",
+              "note": "Relative: a gap follows made."
+            },
+            {
+              "text": "the suggestion that Kim cheated",
+              "mark": "ok",
+              "note": "Content clause: no gap; that introduces the clause."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What distinguishes the suggestion that Kim made from the suggestion that Kim cheated?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The first contains an object gap and is relative; the second is a content clause.",
+            "feedback": "The gap is the structural marker of the relative construction."
+          },
+          {
+            "id": "b",
+            "text": "The first contains that and the second does not.",
+            "feedback": "Both contain that."
+          },
+          {
+            "id": "c",
+            "text": "The first is not grammatical.",
+            "feedback": "Both are grammatical."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "relative-phrases",
+      "title": "Relative phrases and upward percolation",
+      "advances": "transfer",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "In *the people whose house we are renting*, the relative word does not arrive alone: it brings *house* with it. A wh relative begins with a phrase, and that phrase may be a single word such as *which* or a longer one such as *whose house* or *the result of which*. The extra material travels with the relative word to the front of the clause, even though only the word itself is linked to the antecedent."
+        },
+        {
+          "type": "paragraph",
+          "text": "The relative feature percolates upward from the word to the phrase that contains it. *Whose* lends its relative status to the noun phrase *whose house*; *which* lends it to the prepositional phrase *with which*. The whole phrase is fronted, but the antecedent relation runs through the word, not through the phrase as a whole."
+        },
+        {
+          "type": "paragraph",
+          "text": "The patterns are systematic rather than arbitrary: a prepositional complement can pass the feature to a PP, a PP complement of a noun can pass it to an NP, and genitive *whose* or determinative *which* can pass it to a larger NP. Infinitival and gerund-participial clauses provide two more routes. The table sets out all seven; percolation, not fronting alone, explains why such long phrases can open a relative clause."
+        },
+        {
+          "type": "table",
+          "title": "Percolation patterns",
+          "columns": [
+            "From",
+            "To",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Complement of preposition",
+              "PP",
+              "behind which"
+            ],
+            [
+              "PP complement of noun",
+              "NP",
+              "the result of which"
+            ],
+            [
+              "PP",
+              "AdjP",
+              "prominent among which"
+            ],
+            [
+              "NP",
+              "Infinitival",
+              "to refute which"
+            ],
+            [
+              "NP",
+              "Gerund-participial",
+              "passing which"
+            ],
+            [
+              "Genitive whose",
+              "NP",
+              "whose essay"
+            ],
+            [
+              "Determinative which",
+              "NP",
+              "which suggestion"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Simple and complex relative phrases",
+          "items": [
+            {
+              "text": "the article which he recommended",
+              "mark": "ok",
+              "note": "Simple relative phrase which."
+            },
+            {
+              "text": "the people whose house we are renting",
+              "mark": "ok",
+              "note": "Complex phrase whose house; whose is linked to people."
+            },
+            {
+              "text": "the skill with which she handled the situation",
+              "mark": "ok",
+              "note": "Complex phrase with which; the gap is a PP."
+            },
+            {
+              "text": "the result of which we expect next week",
+              "mark": "ok",
+              "note": "Complex phrase the result of which."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "In the people whose house we are renting, what is the relativised element?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Whose, linked to people",
+            "feedback": "The whole phrase whose house is fronted, but whose is the relative word."
+          },
+          {
+            "id": "b",
+            "text": "House",
+            "feedback": "House is part of the fronted phrase, not the relativised word."
+          },
+          {
+            "id": "c",
+            "text": "We",
+            "feedback": "We is the subject of the relative clause."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "relativisation-range",
+      "title": "What can be relativised",
+      "advances": "exit",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Relativisation reaches most grammatical functions. Subjects relativise in *the letter that drew our attention* and objects in *the advice which my neighbour gave me*; genitive determiners relativise too, though the relative word has to change to *whose*. Complements of prepositions, adjuncts and predicatives are also available, with more constraints."
+        },
+        {
+          "type": "paragraph",
+          "text": "The dependency can cross clause boundaries. In *the man who she said had won*, the gap is the subject of *had won*, inside the content clause that *said* takes as complement. *Who* is linked to a position several clauses down, and nothing in the grammar sets a limit on how far down it can go."
+        },
+        {
+          "type": "paragraph",
+          "text": "Some functions are harder to reach than others. Adjunct relativisation usually wants a wh-phrase or a preposition, as in *the day when we met* or *the place where they stayed*. Manner and reason relatives are more restricted still. What licenses the gap depends on the relative word, the antecedent and the function the gap fills."
+        },
+        {
+          "type": "examples",
+          "title": "Relativising different functions",
+          "items": [
+            {
+              "text": "the letter that drew our attention",
+              "mark": "ok",
+              "note": "Subject relativisation."
+            },
+            {
+              "text": "the advice which my neighbour gave me",
+              "mark": "ok",
+              "note": "Object relativisation."
+            },
+            {
+              "text": "the people whose house we are renting",
+              "mark": "ok",
+              "note": "Genitive determiner relativisation."
+            },
+            {
+              "text": "the man who she said had won",
+              "mark": "ok",
+              "note": "The gap is the subject of an embedded clause."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is relativised in the man who she said had won?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The subject of had won, inside the embedded clause",
+            "feedback": "Who is linked to a gap several clauses down."
+          },
+          {
+            "id": "b",
+            "text": "The object of said",
+            "feedback": "Said takes the content clause as complement, not who as object."
+          },
+          {
+            "id": "c",
+            "text": "The subject of said",
+            "feedback": "The subject of said is she."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "integrated-relatives",
+      "title": "Integrated relatives",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*The boys were expelled* says something about all the boys. Add *who defaced the statue* and the claim narrows to a subset. That narrowing is the characteristic work of an integrated relative: it sits inside the nominal, shares its prosody, and helps fix what the nominal refers to."
+        },
+        {
+          "type": "paragraph",
+          "text": "The clause usually sits right against its head: *the boys who defaced the statue*, not *the boys were expelled who defaced the statue*. That adjacency is part of how the antecedent is identified. The pattern has extensions: a relative can modify a superlative, as in *the fattest he has ever been*, or an interrogative pronoun, as in *Where can we eat that isn’t too expensive?* These are peripheral, but they show that nominal head plus clause is a prototype rather than a rule."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Restrictive* is the traditional label, and it is close to *integrated* without being identical. An integrated relative can fail to restrict when the head is already unique or when the clause only adds a comment. Integration is structural; restrictiveness is interpretive, and the two can come apart."
+        },
+        {
+          "type": "examples",
+          "title": "Integrated relatives",
+          "items": [
+            {
+              "text": "The boys who defaced the statue were expelled.",
+              "mark": "ok",
+              "note": "The relative restricts the set of boys."
+            },
+            {
+              "text": "the fattest he has ever been",
+              "mark": "ok",
+              "note": "Integrated relative modifying a superlative."
+            },
+            {
+              "text": "Where can we eat that isn’t too expensive?",
+              "mark": "ok",
+              "note": "Relative clause modifying an interrogative preposition."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is the central function of an integrated relative?",
+        "options": [
+          {
+            "id": "a",
+            "text": "To modify a nominal and typically restrict its denotation",
+            "feedback": "The relative clause is part of the NP."
+          },
+          {
+            "id": "b",
+            "text": "To add a detached comment",
+            "feedback": "That is the supplementary type."
+          },
+          {
+            "id": "c",
+            "text": "To form a fused phrase",
+            "feedback": "That is the fused relative."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "supplementary-relatives",
+      "title": "Supplementary relatives",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*My father, who retired last year, now lives in Florida* says two things at once, and the commas mark the seam. The clause is detached, its antecedent is already identified, and what it contributes is information rather than a restriction. Remove it and the sentence still makes a complete claim."
+        },
+        {
+          "type": "paragraph",
+          "text": "Detachment widens the range of possible antecedents. A supplementary relative can attach to an adjective phrase, as in *Pat is afraid of snakes, which I’m sure Kim is too*, or to a whole clause, as in *Pat is afraid of snakes, which doesn’t surprise me*. It comments on its anchor instead of narrowing it, which is why such loose attachment is possible."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Non-restrictive* is the usual contrast term, but it names an interpretation rather than a structure. Supplementary relatives are detached and informationally secondary; they are not always non-restrictive in meaning, and integrated relatives are not always restrictive. The two distinctions overlap without coinciding."
+        },
+        {
+          "type": "examples",
+          "title": "Supplementary relatives",
+          "items": [
+            {
+              "text": "My father, who retired last year, now lives in Florida.",
+              "mark": "ok",
+              "note": "Detached relative adding information about my father."
+            },
+            {
+              "text": "Pat is afraid of snakes, which I’m sure Kim is too.",
+              "mark": "ok",
+              "note": "The antecedent is an AdjP."
+            },
+            {
+              "text": "Pat is afraid of snakes, which doesn’t surprise me.",
+              "mark": "ok",
+              "note": "The antecedent is a clause."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why can a supplementary relative modify a whole clause?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It is detached and can take a wide range of antecedents, including clauses.",
+            "feedback": "Its supplementary relation allows a broader anchor than an integrated relative."
+          },
+          {
+            "id": "b",
+            "text": "It contains no relative word.",
+            "feedback": "It often contains which."
+          },
+          {
+            "id": "c",
+            "text": "It is always fused.",
+            "feedback": "Fused relatives are a different type."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "relative-position",
+      "title": "Linear position and detachment",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Move a relative away from its head and the listener has to work harder to find the antecedent. That is why an integrated relative normally follows its head nominal immediately: adjacency is one of the cues that identifies what the clause modifies. Postposing for emphasis or ease of processing is possible, but the relation stays with the head nominal rather than wandering to whatever noun happens to precede."
+        },
+        {
+          "type": "paragraph",
+          "text": "Supplementary relatives have more freedom and less tolerance. *My father, who retired last year, now lives in Florida* interrupts the main clause cleanly. Move the same clause to the end, as in *My father now lives in Florida, who retired last year*, and the result is awkward: the relative is separated from its antecedent and lands where a new predication is expected."
+        },
+        {
+          "type": "paragraph",
+          "text": "Coordination creates genuine ambiguity. *The students and the teachers who attended the meeting* can mean the teachers who attended, or the students and teachers who both attended; the clause can attach to the second coordinate or to the whole coordination."
+        },
+        {
+          "type": "examples",
+          "title": "Position and attachment",
+          "items": [
+            {
+              "text": "the report that the committee published",
+              "mark": "ok",
+              "note": "Integrated relative immediately after the head."
+            },
+            {
+              "text": "My father, who retired last year, now lives in Florida.",
+              "mark": "ok",
+              "note": "Interpolated supplementary relative."
+            },
+            {
+              "text": "The students and the teachers who attended the meeting",
+              "mark": "ok",
+              "note": "Attachment ambiguous between the teachers and the whole coordination."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "Why is The students and the teachers who attended the meeting ambiguous?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The relative clause can attach to the second coordinate or to the whole coordination.",
+            "feedback": "Linear position and coordination create an attachment ambiguity."
+          },
+          {
+            "id": "b",
+            "text": "The clause contains no relative word.",
+            "feedback": "It contains who."
+          },
+          {
+            "id": "c",
+            "text": "The clause is fused.",
+            "feedback": "It is an ordinary relative clause."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "infinitival-relatives",
+      "title": "Infinitival relatives",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*A good place from which to watch the procession* and *a good place to watch the procession from* describe the same spot. In the first, the preposition is fronted with *which*; in the second it is stranded at the end and the relative phrase is missing altogether. Both are infinitival relatives, and both leave something understood."
+        },
+        {
+          "type": "paragraph",
+          "text": "Infinitival relatives are hollow clauses: a non-subject element is missing and gets its interpretation from the head nominal. In *a place to watch the procession from*, the complement of *from* is understood as the place. The head supplies the content; the clause supplies the frame."
+        },
+        {
+          "type": "paragraph",
+          "text": "The construction is more restricted than its finite counterparts. It clusters after nouns such as *place*, *time*, *way* and *thing*, and it often carries a purpose-like or availability-like meaning: a place to sit, work to do, a way to escape. The interpretation is predictable enough that the missing element rarely needs to be spelled out."
+        },
+        {
+          "type": "examples",
+          "title": "Infinitival relatives",
+          "items": [
+            {
+              "text": "a good place from which to watch the procession",
+              "mark": "ok",
+              "note": "Wh infinitival relative."
+            },
+            {
+              "text": "a good place to watch the procession from",
+              "mark": "ok",
+              "note": "Bare infinitival relative with a stranded preposition."
+            },
+            {
+              "text": "She has a lot of work to do.",
+              "mark": "ok",
+              "note": "Hollow infinitival relative modifying work."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What is hollow about a place to watch the procession from?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The complement of from is understood as the place.",
+            "feedback": "The head nominal supplies the missing element."
+          },
+          {
+            "id": "b",
+            "text": "The clause has no verb.",
+            "feedback": "It contains the infinitival verb watch."
+          },
+          {
+            "id": "c",
+            "text": "The subject is omitted.",
+            "feedback": "The missing element is the object of from, not the subject."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "fused-relatives",
+      "title": "Fused relatives",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*What he did was outrageous* contains no separate antecedent for *what*. The word does two jobs at once: it stands for the thing, and it marks the relativised element inside the clause. *Whoever devised this plan* and *whichever car appeals to you* work the same way, each fusing antecedent and clause into a single noun phrase."
+        },
+        {
+          "type": "paragraph",
+          "text": "*Where* and *when* produce fused relatives of a different category. *Put it back where you found it* and *He calls his parents whenever he is in trouble* function as prepositional phrases, not noun phrases, even though their meaning is relative in the ordinary sense. The category follows the word, not the meaning."
+        },
+        {
+          "type": "paragraph",
+          "text": "A fused relative can look exactly like an open interrogative, and the difference is not always visible in the string. *What he did was outrageous* asserts something about a deed; *What did he do?* asks for the deed. The fused relative has no separate antecedent and functions as a noun phrase, while the interrogative asks for a value. The surrounding predicate usually decides which reading is available."
+        },
+        {
+          "type": "table",
+          "title": "Fused relatives",
+          "columns": [
+            "Type",
+            "Example",
+            "Category"
+          ],
+          "rows": [
+            [
+              "Fused NP",
+              "what he did",
+              "NP"
+            ],
+            [
+              "Fused NP",
+              "whoever devised this plan",
+              "NP"
+            ],
+            [
+              "Fused NP",
+              "whichever car appeals to you",
+              "NP"
+            ],
+            [
+              "Fused PP",
+              "where you found it",
+              "PP"
+            ],
+            [
+              "Fused PP",
+              "whenever he is in trouble",
+              "PP"
+            ]
+          ]
+        },
+        {
+          "type": "examples",
+          "title": "Fused and interrogative",
+          "items": [
+            {
+              "text": "What he did was outrageous.",
+              "mark": "ok",
+              "note": "Fused relative NP functioning as subject."
+            },
+            {
+              "text": "What did he do?",
+              "mark": "ok",
+              "note": "Open interrogative asking for a value."
+            },
+            {
+              "text": "Put it back where you found it.",
+              "mark": "ok",
+              "note": "Fused relative PP functioning as an adjunct."
+            },
+            {
+              "text": "Whoever devised this plan must be naive.",
+              "mark": "ok",
+              "note": "Fused relative NP with whoever."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What distinguishes what he did from what did he do?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The first is a fused relative; the second is an open interrogative.",
+            "feedback": "The fused relative has no separate antecedent and functions as an NP."
+          },
+          {
+            "id": "b",
+            "text": "The first is interrogative; the second is relative.",
+            "feedback": "The labels are the other way round."
+          },
+          {
+            "id": "c",
+            "text": "Both are fused relatives.",
+            "feedback": "The second is a question."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "unbounded-dependencies",
+      "title": "Unbounded dependencies",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "*The man who she said had won* puts *who* at the front and its gap inside a clause that is itself inside another clause. The link crosses two boundaries without difficulty, and another layer could be added without breaking it. That is what *unbounded* means: the distance between the fronted phrase and its gap is not fixed by the grammar."
+        },
+        {
+          "type": "paragraph",
+          "text": "The gap keeps its own function. In *the man who she said had won*, it is the subject of *had won*; in *the report which he claimed she had written*, it is the object of *written*. The relative phrase is interpreted through the gap, not through the matrix verb, which is why *said* and *claimed* contribute nothing to the relativised role."
+        },
+        {
+          "type": "paragraph",
+          "text": "The same machinery operates outside relatives. *Who did she say had won?* has the same long-distance relation as its relative counterpart, and exclamatives and comparatives use it too. Parasitic gaps and antecedent-contained deletion are further cases where one gap depends on another, or where an elided verb phrase is recovered from material that contains it."
+        },
+        {
+          "type": "examples",
+          "title": "Long-distance gaps",
+          "items": [
+            {
+              "text": "the man who she said had won",
+              "mark": "ok",
+              "note": "The gap is subject of had won, inside the content clause."
+            },
+            {
+              "text": "the report which he claimed she had written",
+              "mark": "ok",
+              "note": "The gap is object of written, two clauses down."
+            },
+            {
+              "text": "Who did she say had won?",
+              "mark": "ok",
+              "note": "The interrogative phrase has the same long-distance relation."
+            }
+          ]
+        }
+      ],
+      "check": {
+        "prompt": "What does unbounded mean in unbounded dependency?",
+        "options": [
+          {
+            "id": "a",
+            "text": "The gap can be embedded arbitrarily deeply while remaining linked to the fronted phrase.",
+            "feedback": "There is no grammatical upper limit on the embedding."
+          },
+          {
+            "id": "b",
+            "text": "The clause has no boundary.",
+            "feedback": "Clause boundaries are still present."
+          },
+          {
+            "id": "c",
+            "text": "The relative word can occur anywhere.",
+            "feedback": "The relative phrase occupies the prenucleus."
+          }
+        ],
+        "answer": "a"
+      }
+    },
+    {
+      "id": "chapter-review",
+      "title": "Chapter Review",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The family of relative constructions is wider than the name *relative clause* suggests. It includes wh, that and bare clauses, fused noun phrases and prepositional phrases, and the relatives that appear in clefts. What unites them is a link between a clause-internal position and an antecedent, whether that antecedent is a separate phrase or folded into the relative word itself."
+        },
+        {
+          "type": "paragraph",
+          "text": "Relational labels describe where the clause sits and what it does there. Integrated relatives modify a nominal and typically restrict it; supplementary relatives are detached and add information about a wider range of anchors; cleft relatives belong to the cleft construction; fused relatives combine antecedent and clause in a single phrase. Infinitival relatives are hollow clauses whose missing element comes from the head."
+        },
+        {
+          "type": "paragraph",
+          "text": "The mechanics are consistent across the types. A relative phrase can be simple or complex, with the relative feature percolating upward from the word to the larger phrase; relativisation can target subjects, objects, genitives, adjuncts and deeply embedded positions; and the gap always preserves the grammatical function of the element the antecedent interprets."
+        },
+        {
+          "type": "note",
+          "tone": "why",
+          "title": "A relative-construction checklist",
+          "text": "Find the antecedent and the relative phrase. Identify the gap and its function. Decide whether the relative is integrated or supplementary, and whether it is wh, that or bare. Then check for fused, cleft or infinitival structure."
+        }
+      ],
+      "check": {
+        "prompt": "Which statement correctly describes the gap in a relative clause?",
+        "options": [
+          {
+            "id": "a",
+            "text": "It is an abstract position co-indexed with the antecedent or relative phrase.",
+            "feedback": "The gap preserves the function of the relativised element."
+          },
+          {
+            "id": "b",
+            "text": "It is always filled by that.",
+            "feedback": "That is a subordinator, not the gap."
+          },
+          {
+            "id": "c",
+            "text": "It only occurs in subject position.",
+            "feedback": "Gaps can be objects, complements, adjuncts and embedded elements."
+          }
+        ],
+        "answer": "a"
+      }
+    }
+  ],
+  "worked": [
+    "Take *The report that the committee finally published confirmed what everyone had suspected*. The subject NP is *The report that the committee finally published*. Its head is *report* and the that relative clause modifies it; the gap is the object of published, co-indexed with report.",
+    "The object of confirmed is the fused relative NP *what everyone had suspected*. What combines the antecedent and relative word, and the gap after suspected is its object. The example shows an integrated relative inside the subject and a fused relative inside the object, both relying on a gap for interpretation."
+  ],
+  "application": [
+    "Start with the antecedent. Identify the relative phrase or gap and the function it has inside the relative clause. Then decide whether the relative is wh, that or bare, and whether it is integrated, supplementary, cleft or fused.",
+    "For a complex relative phrase, trace the percolation from the relative word to the larger phrase. In whose house, whose is linked to the antecedent and the whole NP is fronted. In with which, which is linked to the antecedent and the PP is fronted.",
+    "For a fused relative, do not look for a separate antecedent. The phrase itself functions as an NP or PP, and the relative word combines the antecedent and the relativised function. Check whether the form is a fused relative or an open interrogative from the syntax and the surrounding predicate."
+  ],
+  "reveal": [
+    "In *The report that the committee finally published confirmed what everyone had suspected*, the that clause is an integrated relative modifying report; its gap is the object of published. The fused relative what everyone had suspected is the object of confirmed, and its gap is the object of suspected."
+  ],
+  "recap": [
+    "Relative constructions include wh, that and bare clauses, plus fused NP and PP relatives. Integrated relatives modify nominals; supplementary relatives are detached; cleft relatives occur in clefts; fused relatives combine antecedent and relative.",
+    "Relativisation involves a gap or relative word linked to an antecedent. Complex relative phrases arise by upward percolation, and the dependency can be unbounded. Infinitival relatives are hollow clauses, and fused relatives must be distinguished from open interrogatives."
+  ],
+  "self_check": [
+    {
+      "question": "What is the difference between a relative clause and a fused relative?",
+      "answer": "A relative clause is a clause that modifies an antecedent; a fused relative is a phrase in which antecedent and relative clause are combined, functioning as an NP or PP."
+    },
+    {
+      "question": "What is the difference between a wh relative and a that relative?",
+      "answer": "A wh relative contains a relative word such as which or who; a that relative contains the subordinator that and a gap."
+    },
+    {
+      "question": "Why is that not a relative pronoun?",
+      "answer": "It is the same subordinator found in content clauses; the relativised element is a gap, not that."
+    },
+    {
+      "question": "What is upward percolation?",
+      "answer": "The spread of a relative feature from a relative word to the larger phrase containing it, as in whose house or with which."
+    },
+    {
+      "question": "What is an unbounded dependency?",
+      "answer": "A relation in which a gap can be embedded arbitrarily deeply while remaining linked to the fronted relative phrase."
+    }
+  ],
+  "opening": [
+    {
+      "prompt": "Which expression is a fused relative?",
+      "options": [
+        {
+          "id": "a",
+          "text": "what your father was saying",
+          "feedback": "It is an NP combining antecedent and relative."
+        },
+        {
+          "id": "b",
+          "text": "the things that your father was saying",
+          "feedback": "That is an NP with a relative clause."
+        },
+        {
+          "id": "c",
+          "text": "who wanted Pat as treasurer",
+          "feedback": "That is a cleft relative clause."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which formal type is the toys you don’t want?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bare relative",
+          "feedback": "It has no relative word and no that."
+        },
+        {
+          "id": "b",
+          "text": "Wh relative",
+          "feedback": "It contains no wh word."
+        },
+        {
+          "id": "c",
+          "text": "That relative",
+          "feedback": "It contains no that."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "Which relative type is My father, who retired last year, now lives in Florida?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Supplementary",
+          "feedback": "The relative is detached and adds information."
+        },
+        {
+          "id": "b",
+          "text": "Integrated",
+          "feedback": "It is not part of the nominal’s restrictive structure."
+        },
+        {
+          "id": "c",
+          "text": "Fused",
+          "feedback": "It has a separate antecedent, my father."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is the relativised element in the people whose house we are renting?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Whose",
+          "feedback": "Whose is linked to people; the whole phrase whose house is fronted."
+        },
+        {
+          "id": "b",
+          "text": "House",
+          "feedback": "House is part of the fronted phrase."
+        },
+        {
+          "id": "c",
+          "text": "We",
+          "feedback": "We is the subject."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What distinguishes a fused relative from an open interrogative?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The fused relative functions as an NP or PP with no separate antecedent; the interrogative asks for a value.",
+          "feedback": "Syntax and the surrounding predicate distinguish them."
+        },
+        {
+          "id": "b",
+          "text": "The fused relative always contains that.",
+          "feedback": "Fused relatives are wh type."
+        },
+        {
+          "id": "c",
+          "text": "The interrogative has no gap.",
+          "feedback": "Open interrogatives also contain gaps."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "closing": [
+    {
+      "prompt": "Why is that not a relative pronoun in the toys that you don’t want?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It is a subordinator; the object position is a gap.",
+          "feedback": "That marks subordination rather than filling the object function."
+        },
+        {
+          "id": "b",
+          "text": "It refers to toys.",
+          "feedback": "The gap carries the relation to toys."
+        },
+        {
+          "id": "c",
+          "text": "It is optional in subject relatives.",
+          "feedback": "It is required in subject relatives."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What distinguishes the suggestion that Kim made from the suggestion that Kim cheated?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The first is relative with an object gap; the second is a content clause.",
+          "feedback": "The gap distinguishes the relative construction."
+        },
+        {
+          "id": "b",
+          "text": "The first lacks that.",
+          "feedback": "Both contain that."
+        },
+        {
+          "id": "c",
+          "text": "The second is ungrammatical.",
+          "feedback": "Both are grammatical."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is relativised in the man who she said had won?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The subject of had won in the embedded clause",
+          "feedback": "Who is linked to a deeply embedded gap."
+        },
+        {
+          "id": "b",
+          "text": "The object of said",
+          "feedback": "Said takes the content clause as complement."
+        },
+        {
+          "id": "c",
+          "text": "The subject of said",
+          "feedback": "The subject is she."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What is hollow about a place to watch the procession from?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The complement of from is understood as the place.",
+          "feedback": "The head nominal supplies the missing element."
+        },
+        {
+          "id": "b",
+          "text": "The clause has no verb.",
+          "feedback": "It contains watch."
+        },
+        {
+          "id": "c",
+          "text": "The subject is omitted.",
+          "feedback": "The missing element is the object of from."
+        }
+      ],
+      "answer": "a"
+    },
+    {
+      "prompt": "What does unbounded mean in unbounded dependency?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The gap can be embedded arbitrarily deeply while still linked to the fronted phrase.",
+          "feedback": "There is no grammatical upper limit."
+        },
+        {
+          "id": "b",
+          "text": "The clause has no boundaries.",
+          "feedback": "Clause boundaries remain."
+        },
+        {
+          "id": "c",
+          "text": "The relative word can occur anywhere.",
+          "feedback": "The relative phrase is in the prenucleus."
+        }
+      ],
+      "answer": "a"
+    }
+  ],
+  "stages": {
+    "predict": {
+      "prompt": "Which expression is a fused relative?",
+      "options": [
+        {
+          "id": "a",
+          "text": "what your father was saying",
+          "feedback": "It is an NP combining antecedent and relative."
+        },
+        {
+          "id": "b",
+          "text": "the things that your father was saying",
+          "feedback": "That is an NP with a relative clause."
+        },
+        {
+          "id": "c",
+          "text": "who wanted Pat as treasurer",
+          "feedback": "That is a cleft relative clause."
+        }
+      ],
+      "answer": "a"
+    },
+    "guided": {
+      "prompt": "Which formal type is the toys you don’t want?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bare relative",
+          "feedback": "It has no relative word and no that."
+        },
+        {
+          "id": "b",
+          "text": "Wh relative",
+          "feedback": "It has no wh word."
+        },
+        {
+          "id": "c",
+          "text": "That relative",
+          "feedback": "It has no that."
+        }
+      ],
+      "answer": "a"
+    },
+    "transfer": {
+      "prompt": "What is the relativised element in the people whose house we are renting?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Whose",
+          "feedback": "Whose is linked to people."
+        },
+        {
+          "id": "b",
+          "text": "House",
+          "feedback": "House is part of the fronted phrase."
+        },
+        {
+          "id": "c",
+          "text": "We",
+          "feedback": "We is the subject."
+        }
+      ],
+      "answer": "a"
+    },
+    "exit": {
+      "prompt": "What distinguishes a fused relative from an open interrogative?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The fused relative functions as an NP or PP; the interrogative asks for a value.",
+          "feedback": "The fused relative has no separate antecedent."
+        },
+        {
+          "id": "b",
+          "text": "The fused relative contains that.",
+          "feedback": "Fused relatives are wh type."
+        },
+        {
+          "id": "c",
+          "text": "The interrogative has no gap.",
+          "feedback": "Open interrogatives also contain gaps."
+        }
+      ],
+      "answer": "a"
+    }
+  }
+}
