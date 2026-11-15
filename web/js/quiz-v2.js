@@ -1,4 +1,5 @@
 import { reviewed, rng, shuffled, randomSeed, MAX_QUIZ_ITEMS } from './quiz-core.js';
+import {isRelevantAssessmentQuestion} from './quiz-scope.js';
 
 export const GENERAL_POLICY = Object.freeze({ minimum: 5, perTopic: 1 });
 // An additive crosswalk: published content and answer keys remain unchanged.
@@ -27,7 +28,7 @@ export function eligibleQuestions(bank, curriculum, trackId, tier = 'reviewed') 
   const sources = new Map(bank.sources.map(s => [s.id, s]));
   const published = bank.items.filter(q => {
     const meta = questionMetadata(q, curriculum);
-    return meta?.track_id === trackId && reviewed(q) && q.publication_status === 'published'
+    return meta?.track_id === trackId && isRelevantAssessmentQuestion(q) && reviewed(q) && q.publication_status === 'published'
       && q.source_ids?.length && q.source_ids.every(id => {
         const s = sources.get(id);
         return reviewed(s) && s.status === 'approved' && s.book === (trackId === 'syntax' ? 'B-R' : 'Cambridge')
@@ -37,7 +38,7 @@ export function eligibleQuestions(bank, curriculum, trackId, tier = 'reviewed') 
   if(tier==='lesson-assessment'){
     return [...published,...(bank.assessment_items||[]).filter(q=>{
       const meta=questionMetadata(q,curriculum);
-      return meta?.track_id===trackId&&q.publication_status==='assessment_draft'
+      return meta?.track_id===trackId&&isRelevantAssessmentQuestion(q)&&q.publication_status==='assessment_draft'
         &&q.assessment_format==='independent'&&q.review_status==='UNREVIEWED'&&q.independent_review===false;
     })];
   }

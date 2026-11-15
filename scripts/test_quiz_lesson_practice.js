@@ -51,7 +51,7 @@ for(const track of curriculum){
   const counts=track.chapters.map(c=>itemsFor(bank,master).filter(q=>q.lesson_id===c.id).length);
   assert.ok(counts.every(Boolean));assert.ok(Math.max(...counts)-Math.min(...counts)<=1);
 }
-assert.equal(topics,329);assert.equal(generals,31);
+assert.equal(topics,317);assert.equal(generals,30);
 // Missing content is never padded with duplicate or synthetic approval records.
 const none={...bank,items:[],practice_items:[]};
 assert.throws(()=>selectQuestions(none,curriculum,{track:'syntax',chapter:'br-03',topic:'concepts',mode:'topic',content_tier:'lesson-practice'},{},1),/0\/5/);
@@ -79,4 +79,4 @@ assert.equal((await reloaded.submit(started.attempt_id)).earned,0);
 assert.equal((await reloaded.submit(started.attempt_id)).earned,0);assert.equal(xpCalls,0);
 assert.ok(Number.isInteger(reloaded.attempts[started.attempt_id].correct),'practice score survives a later content archive');
 assert.equal(Object.keys(createQuizStore(bank,{storage,userId:'other-user'}).attempts).length,0);
-console.log(`PASS lesson practice: ${bank.practice_items.length} explicitly unreviewed source-grounded questions, all ${topics} topics/31 General quizzes/both Masters, deterministic reload, track-specific personalized exclusions, review opt-in, zero XP and identity isolation.`);
+console.log(`PASS lesson practice compatibility: ${bank.practice_items.length} source-grounded questions, all ${topics} assessable topics/${generals} General quizzes/both Masters, deterministic reload, track-specific personalized exclusions, review opt-in, zero XP and identity isolation.`);

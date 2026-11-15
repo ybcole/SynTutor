@@ -8,6 +8,7 @@ import {loadActiveCourse,quizCurriculum} from './lesson-curriculum.js';
 import {selectQuestions,specKey,eligibleQuestions,publishedBlueprint,questionMetadata} from './quiz-v2.js';
 import {makeLessonPractice,validateLessonPractice} from './quiz-lesson-practice.js';
 import {makeAssessmentItems,validateAssessmentItems} from './quiz-assessment-items.js';
+import {applyQuizScope} from './quiz-scope.js';
 let host,config={},bank,store,curriculum,current=null,trackId='syntax',busy=false,message='',generation=0;
 const el=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
 const button=(text,fn,cls='')=>{const b=el('button',text,cls);b.type='button';b.addEventListener('click',fn);return b;};
@@ -87,7 +88,7 @@ async function loadContent(){
    const cached=JSON.parse(localStorage.getItem(cacheKey));
    const nextBank=validateBank(cached.bank);
    if(cached.curriculum?.length!==2||!cached.curriculum.every(t=>t.chapters?.length&&t.chapters.every(c=>c.topics?.length)))throw error;
-    bank=nextBank;curriculum=cached.curriculum;
+     bank=nextBank;curriculum=applyQuizScope(cached.curriculum);
      bank.practice_items=validateLessonPractice(makeLessonPractice(curriculum,cached.syntaxSource),curriculum);
      bank.assessment_items=validateAssessmentItems(makeAssessmentItems(bank.practice_items),curriculum);
      return 'Offline content: using the last successfully downloaded curriculum and question sources. Quiz scores are saved locally; account XP requires server verification.';

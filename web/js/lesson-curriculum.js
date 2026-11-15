@@ -12,6 +12,7 @@ import { nonFinitePilot } from './non-finite-pilot.js';
 import { grammarPilot } from './grammar-pilot.js';
 import { cambridgeChapterData } from './cambridge-chapter-data.js?v=2026.11.16c';
 import { composeLessonPreview } from './lesson-preview.js';
+import { applyQuizScope } from './quiz-scope.js';
 
 export const pilotArticles = {
   'br-01': constituentsPilot, 'br-02': functionsPilot, 'br-03': categoriesPilot,
@@ -35,7 +36,7 @@ export async function loadActiveCourse(fetcher = fetch) {
   return composeLessonPreview(catalog, overlays);
 }
 export function quizCurriculum(course) {
-  return [
+  return applyQuizScope([
     { id: 'syntax', lessonTrack: 'foundations', title: 'Syntax', subtitle: 'Burton-Roberts' },
     { id: 'cambridge', lessonTrack: 'grammar', title: 'Cambridge', subtitle: 'Cambridge Grammar' },
   ].map(track => ({
@@ -52,5 +53,5 @@ export function quizCurriculum(course) {
       return [{ id: lesson.lesson_id, title: lesson.title, chapter: lesson.chapter, content_version: lesson.content_version,
         outcomes: lesson.outcomes, topics: topics.map(s => ({ id: s.id, title: s.title })) }];
     }),
-  }));
+  })));
 }

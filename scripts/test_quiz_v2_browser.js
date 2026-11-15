@@ -78,10 +78,12 @@ try{
   assert.equal(await quiz.locator('.quiz-chapter').count(),11);
   assert.deepEqual((await quiz.locator('.quiz-chapter > summary').allTextContents()).map(t=>t.replace(/^Chapter \d+: /,'')),syntaxLessons);
   await quiz.getByRole('button',{name:'Cambridge — Cambridge Grammar',exact:true}).click();
-  assert.equal(await quiz.locator('.quiz-chapter').count(),20);
-  assert.deepEqual((await quiz.locator('.quiz-chapter > summary').allTextContents()).map(t=>t.replace(/^Chapter \d+: /,'')),cambridgeLessons);
+  assert.equal(await quiz.locator('.quiz-chapter').count(),19);
+  assert.deepEqual((await quiz.locator('.quiz-chapter > summary').allTextContents()).map(t=>t.replace(/^Chapter \d+: /,'')),cambridgeLessons.filter(t=>t!=='Preliminaries'));
+  assert.ok(!/preliminaries/i.test(await quiz.innerText()),'Preliminaries must not appear anywhere in the rendered Cambridge Quiz tab');
   assert.equal(await quiz.locator('[data-assessment^="quiz-br-"]').count(),0,'Syntax assessments do not leak into Cambridge');
   const cambridgeMaster=quiz.locator('.quiz-practice').filter({has:page.getByRole('heading',{name:'Cambridge Master Quiz',exact:true})});
+  assert.equal(await cambridgeMaster.getByRole('spinbutton').getAttribute('min'),'19');
   await cambridgeMaster.getByRole('spinbutton').fill('25');
   await cambridgeMaster.getByRole('button',{name:'Start quiz',exact:true}).click();
   await quiz.getByRole('heading',{name:'Question 1 of 25',exact:true}).waitFor();
@@ -122,10 +124,19 @@ try{
   const draft=Object.values(saved.attempts).find(t=>!t.submitted_at);
   assert.equal(draft.assessment_id,'quiz-br-03','matching topic uses unchanged published XP blueprint');
   // The shell/assets still load normally; simulate unavailable content services.
+  await page.evaluate(()=>{
+    const key='syntutor:quiz-v2:public-content:2',cache=JSON.parse(localStorage.getItem(key));
+    cache.curriculum.find(t=>t.id==='cambridge').chapters.unshift({id:'cgel-ch01',title:'Preliminaries',topics:[{id:'overview',title:'Course overview'}]});
+    localStorage.setItem(key,JSON.stringify(cache));
+  });
   await page.route('**/content/**',route=>route.abort());
   await page.reload();await nav('quizzes');
   await quiz.getByText(/Offline content: using the last successfully downloaded/).waitFor();
   await page.unroute('**/content/**');
+  await quiz.getByRole('button',{name:'Cambridge — Cambridge Grammar',exact:true}).click();
+  assert.equal(await quiz.locator('.quiz-chapter').count(),19);
+  assert.ok(!/preliminaries/i.test(await quiz.innerText()),'an old offline catalog cannot reintroduce Preliminaries');
+  await quiz.getByRole('button',{name:'Syntax — Burton-Roberts',exact:true}).click();
   await quiz.locator('[data-chapter="br-03"] > summary').click();
   await quiz.locator('[data-chapter="br-03"]').getByRole('button',{name:'Resume quiz',exact:true}).click();
   const restored=await page.evaluate(()=>JSON.parse(localStorage.getItem('syntutor:assessments:v1:guest')));
@@ -164,9 +175,11 @@ try{
     await page.setViewportSize({width,height:900});
     await page.evaluate(theme=>document.documentElement.setAttribute('data-theme',theme),theme);
     await quiz.getByRole('heading',{name:'Assess your understanding.'}).waitFor();
+    await quiz.getByRole('button',{name:'Cambridge — Cambridge Grammar',exact:true}).click();
+    assert.ok(!/preliminaries/i.test(await quiz.innerText()),`${width}px ${theme}: no rendered Preliminaries`);
     const overflow=await quiz.evaluate(n=>n.scrollWidth>n.clientWidth+2);
     assert.equal(overflow,false,`${width}px ${theme}: no horizontal page overflow`);
   }
   assert.deepEqual(errors,[]);
-  console.log('PASS formal quiz browser: live Lessons chapter names/order match both tabs, implemented Preliminaries verified, no cross-track published cards, no pre-submit scores/keys/explanations/feedback, post-submit score/key/explanations, topic/Master/personalized modes, offline replay, XP isolation and mobile/desktop themes; no page errors.');
+  console.log('PASS formal quiz browser: Preliminaries remains in Lessons but is absent from Cambridge Quiz (including stale offline cache and mobile/desktop themes), 19-chapter Master minimum, no cross-track published cards, no pre-submit feedback/keys, post-submit scores/explanations, topic/Master/personalized modes, offline replay and XP isolation; no page errors.');
 }finally{await browser.close();await new Promise(resolve=>server.close(resolve));}

@@ -1,5 +1,6 @@
 // Versioned formal questions. Historical lesson-practice items remain unchanged
 // for review/replay, but are not offered as new formal assessment questions.
+import {isRelevantAssessmentQuestion} from './quiz-scope.js';
 export function makeAssessmentItems(lessonItems) {
   const items=lessonItems.flatMap(q=>{
     let prompt=q.prompt,options=q.options.map(o=>({...o})),answer=q.answer,kind=q.kind;
@@ -35,6 +36,8 @@ export function makeAssessmentItems(lessonItems) {
     ['br-01','application','Two analyses keep all the same words in the same order but attach a PP to different constituents. What can differ?','The interpretation of which constituent the PP modifies','Necessarily the spelling of the words','Necessarily the number of verbs','Constituent grouping and attachment can change interpretation without changing the surface word sequence.'],
     ['cgel-ch06','modifier-style','An editor finds a long sequence of -ly adverbs awkward. Does that observation alone establish that the sequence is ungrammatical?','No; grammatical structure and stylistic effectiveness are distinct','Yes; every awkward sequence violates grammar','Yes; adverbs cannot modify other adverbs','A grammatical modifier sequence may still be difficult to process or ineffective in its context.'],
     ['cgel-ch06','modifier-style','What should an analyst establish before deciding the scope of a modifier?','Which head or construction the modifier is attached to','Only whether the word ends in -ly','Only the number of syllables in the word','Modifier interpretation depends on structural attachment and scope, not just its category label or spelling.'],
+    ['br-07','application','In “Someone beside the fountain waved”, what does “beside the fountain” modify on the NP-internal reading?','The referent of someone','The tense of waved','The manner of waving','The PP narrows the reference of the indefinite pronoun inside the subject NP; it does not describe how the waving occurred.'],
+    ['br-07','application','Which phrase follows the position of an adjective modifying an indefinite pronoun taught in this lesson?','something fragile','fragile something','fragile very something','An adjective modifying an indefinite pronoun such as something follows it: something fragile. This differs from ordinary pre-nominal modification, as in a fragile vase.'],
   ];
   for(const [index,[chapter,topic,prompt,correct,first,second,rationale]] of additions.entries()){
     const basis=lessonItems.find(q=>q.chapter_id===chapter&&q.subtopic_id===topic);
@@ -47,13 +50,14 @@ export function makeAssessmentItems(lessonItems) {
       practice_family:`${chapter}:${topic}:formal-application-${index}`,practice_example_ids:[],
     });
   }
-  return items;
+  return items.filter(isRelevantAssessmentQuestion);
 }
 export function validateAssessmentItems(items,curriculum){
   const ids=new Set();
   for(const q of items){
     const chapter=curriculum.find(t=>t.id===q.track_id)?.chapters.find(c=>c.id===q.chapter_id);
     if(!chapter?.topics.some(t=>t.id===q.subtopic_id)||ids.has(q.item_id)
+      ||!isRelevantAssessmentQuestion(q)
       ||q.lesson_id!==q.chapter_id||q.lesson_reference!==`#lesson/${q.chapter_id}/${q.subtopic_id}`
       ||q.source_metadata?.section_id!==q.subtopic_id
       ||q.assessment_format!=='independent'||q.publication_status!=='assessment_draft'

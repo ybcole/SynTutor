@@ -9,9 +9,9 @@ const course = await loadActiveCourse(async p => ({ok:true,json:async()=>json('w
 const curriculum = quizCurriculum(course);
 const bank = validateBank(json('web/content/quizzes/bank.json'));
 assert.deepEqual(curriculum.map(t=>t.id), ['syntax','cambridge']);
-assert.deepEqual(curriculum.map(t=>t.chapters.length),[11,20]);
+assert.deepEqual(curriculum.map(t=>t.chapters.length),[11,19]);
 for(const track of curriculum){
-  const lessons=course.lessons.filter(l=>l.track===track.lessonTrack);
+  const lessons=course.lessons.filter(l=>l.track===track.lessonTrack&&l.lesson_id!=='cgel-ch01');
   assert.deepEqual(track.chapters.map(c=>[c.id,c.title,c.chapter]),lessons.map(l=>[l.lesson_id,l.title,l.chapter]));
   for(const chapter of track.chapters){
     assert.ok(chapter.topics.length);
