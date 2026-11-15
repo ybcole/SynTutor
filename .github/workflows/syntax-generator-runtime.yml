@@ -73,6 +73,7 @@ jobs:
           python scripts/audit_cgel_overlap_probes.py --role-object-evaluation > artifacts/cgel-role-object-evaluation.json
           python scripts/evaluate_cgel_passive_make.py > artifacts/cgel-passive-make-evaluation.json
           python scripts/evaluate_cgel_passive_make.py evaluation/cgel_passive_make_modifiers_heldout.json > artifacts/cgel-passive-make-modifiers-heldout.json
+          python scripts/evaluate_cgel_modal_complement.py > artifacts/cgel-modal-complement-heldout.json
       - name: Upload Cambridge overlap evidence
         uses: actions/upload-artifact@v4
         with:
@@ -86,6 +87,7 @@ jobs:
             artifacts/cgel-role-object-evaluation.json
             artifacts/cgel-passive-make-evaluation.json
             artifacts/cgel-passive-make-modifiers-heldout.json
+            artifacts/cgel-modal-complement-heldout.json
           if-no-files-found: error
       - name: Run parser-backed Syntax Generator tests
         working-directory: server
