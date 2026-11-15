@@ -482,7 +482,9 @@ export function boot() {
   setActiveNav(workspaceView);
   initSyntaxBuilder({ onStatusChange: (msg) => log(msg), setWorkspaceView, userId: () => activeUserId });
   initQuizzes({ userId: () => activeUserId, client: () => supabase, onExit: enterTutorMode, onLesson: enterLessonsMode, onNavigate: enterAssessmentMode });
-  initLessons({ userId: () => activeUserId, client: () => supabase, onNavigate: enterLessonsMode, onExit: enterTutorMode, mountBuilder: mountEmbeddedBuilder });
+  window.addEventListener('syntutor:quiz-progress', refreshSidebarProgress);
+  initLessons({ userId: () => activeUserId, client: () => supabase, onNavigate: enterLessonsMode, onExit: enterTutorMode, mountBuilder: mountEmbeddedBuilder, onProgress: refreshSidebarProgress });
+  window.addEventListener('focus', refreshSidebarProgress);
   initResizers();
   syncInputClearBtn();
   // The one auth modal: the sidebar login and the lessons gateway both land
@@ -1103,6 +1105,7 @@ function setCanvasInteractive(flag) {
 }
 
 function updateAuthState() {
+  refreshSidebarProgress();
   // Publish the session state: the lesson catalog, the achievements and the
   // history all follow it (locks, progress, migration).
   setAuthState({
@@ -1975,6 +1978,26 @@ async function loadPlayerProgress() {
     console.warn('Failed to load player progress:', error.message);
     return null;
   }
+}
+
+let sidebarProgressRequest = 0;
+async function refreshSidebarProgress() {
+  const label = document.getElementById('sidebarProgressLabel');
+  const bar = document.getElementById('sidebarProgressBar');
+  const remaining = document.getElementById('sidebarProgressRemaining');
+  if (!label || !bar || !remaining) return;
+  const request = ++sidebarProgressRequest, user = activeUserId, client = supabase;
+  label.textContent = progressAvailable() ? 'Loading verified XP…' : 'Sign in for verified XP.';
+  bar.value = 0;
+  remaining.textContent = 'Local or pending progress is not verified XP.';
+  if (!progressAvailable()) return;
+  const stats = await loadPlayerProgress();
+  if (request !== sidebarProgressRequest || user !== activeUserId || client !== supabase) return;
+  if (!stats) { label.textContent = 'Verified XP unavailable.'; return; }
+  const level = levelFromXp(stats.xp);
+  label.textContent = `Level ${level.level} · ${level.xp} verified XP`;
+  bar.max = level.span; bar.value = level.into;
+  remaining.textContent = `${level.into}/${level.span} XP · ${level.next-level.xp} to next level`;
 }
 
 async function loadAchievementBadges() {

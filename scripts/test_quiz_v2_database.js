@@ -1,0 +1,42 @@
+import {PGlite} from '@electric-sql/pglite';
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {makeV2Attempt} from '../web/js/quiz-v2.js';
+import {loadActiveCourse,quizCurriculum} from '../web/js/lesson-curriculum.js';
+const file=p=>fs.readFileSync(new URL('../'+p,import.meta.url),'utf8');
+const bank=JSON.parse(file('web/content/quizzes/bank.json'));
+const curriculum=quizCurriculum(await loadActiveCourse(async p=>({ok:true,json:async()=>JSON.parse(file('web'+p))})));
+const db=new PGlite();
+await db.exec(`create role anon;create role authenticated;create schema auth;
+create function auth.jwt() returns jsonb language sql stable as $$select coalesce(nullif(current_setting('request.jwt.claims',true),'')::jsonb,'{}'::jsonb)$$;
+grant usage on schema auth to anon,authenticated;grant execute on function auth.jwt() to anon,authenticated;`);
+for(const name of ['20261013000000_player_stats.sql','20261108000000_versioned_lessons.sql','20261108000001_lesson_catalog.sql','20261108000002_independent_quizzes.sql','20261108000003_quiz_catalog.sql','20261116000000_quiz_practice_v2.sql'])await db.exec(file('supabase/migrations/'+name));
+async function identity(id,role='authenticated'){
+  await db.exec('reset role');await db.query("select set_config('request.jwt.claims',$1,false)",[JSON.stringify(id?{sub:id}:{})]);await db.exec(`set role ${role}`);
+}
+const t=makeV2Attempt(bank,curriculum,{track:'syntax',mode:'master',count:15},{},42);
+const insert=(user,payload=t)=>db.query('insert into public.quiz_practice_v2(user_id,attempt_id,payload) values($1,$2,$3::jsonb)',[user,payload.attempt_id,JSON.stringify(payload)]);
+const update=payload=>db.query('update public.quiz_practice_v2 set payload=$1::jsonb where attempt_id=$2',[JSON.stringify(payload),t.attempt_id]);
+await identity(null,'anon');await assert.rejects(()=>insert('user_clerk_a'),/row-level security/);
+await identity('user_clerk_a');await assert.rejects(()=>insert('user_clerk_b'),/row-level security/);
+await insert('user_clerk_a');
+assert.equal((await db.query('select payload from public.quiz_practice_v2')).rows.length,1);
+await identity('user_clerk_b');assert.equal((await db.query('select * from public.quiz_practice_v2')).rows.length,0);
+await assert.rejects(()=>insert('user_clerk_a'),/row-level security/);
+await identity('user_clerk_a');
+await assert.rejects(()=>update({...t,presented:[...t.presented].reverse()}),/immutable/);
+const submitted={...t,submitted_at:new Date().toISOString()};
+await update(submitted);
+await assert.rejects(()=>update({...submitted,responses:{forged:'a'}}),/immutable/);
+const invalid=makeV2Attempt(bank,curriculum,{track:'syntax',mode:'master',count:15},{},43);
+delete invalid.practice;await assert.rejects(()=>insert('user_clerk_a',invalid),/check constraint/);
+// A forged client score can never enter a verified assessment or ledger.
+const forged={...makeV2Attempt(bank,curriculum,{track:'syntax',mode:'master',count:15},{},44),correct:15,xp:999999};
+await insert('user_clerk_a',forged);
+await assert.rejects(()=>db.query('select public.save_quiz_attempt($1::jsonb,true)',[JSON.stringify(forged)]),/Invalid assessment payload/);
+assert.equal((await db.query('select count(*)::int as n from public.quiz_xp_events_v1')).rows[0].n,0);
+await assert.rejects(()=>db.exec("insert into public.quiz_xp_events_v1 values ('user_clerk_a','00000000-0000-0000-0000-000000000001','x','1.0.0',10,now())"),/permission denied/);
+await identity('user_clerk_legacy','anon');const legacyRole=makeV2Attempt(bank,curriculum,{track:'syntax',mode:'master',count:15},{},45);await insert('user_clerk_legacy',legacyRole);
+assert.equal((await db.query('select count(*)::int as n from public.quiz_practice_v2')).rows[0].n,1);
+await db.close();
+console.log('PASS Quiz V2 PostgreSQL: Clerk text identities, guest denial, owner RLS, private manifest sync, immutable manifests/submissions, required unscored policy, forged variable-length XP rejection and ledger isolation.');

@@ -38,7 +38,11 @@ export function itemsFor(bank,attempt) {
   return attempt.presented.map(ref=>{const q=bank.items.find(q=>q.item_id===ref.item_id&&q.content_version===ref.content_version);if(!q)throw new Error('Assessment content version is unavailable.');return q;});
 }
 export function validateAttempt(bank,attempt) {
-  if(!attempt||!Array.isArray(attempt.presented)||attempt.presented.length!==5||new Set(attempt.presented.map(r=>r.item_id)).size!==5)throw new Error('Exactly five distinct question versions are required.');
+  const v2 = attempt?.quiz_v2 === true;
+  if (v2 && (!attempt.practice || attempt.xp_policy !== 'unscored-v2' || attempt.content_version !== '2.0.0')) throw Error('Quiz V2 is unscored practice only.');
+  const count = attempt?.presented?.length;
+  if(!attempt||!Array.isArray(attempt.presented)||!Number.isInteger(count)||count<1||count>1000||(!v2&&count!==5)||new Set(attempt.presented.map(r=>r.item_id)).size!==count)throw new Error('Distinct question versions are required (five for published assessments).');
+  if(v2 && (['topic','personalized'].includes(attempt.spec?.mode) && count!==5)) throw Error('This quiz requires five questions.');
   const items=itemsFor(bank,attempt);
   if(!attempt.practice){
     const a=bank.assessments.find(a=>quizKey(a)===quizKey(attempt));if(!a)throw new Error('Unknown assessment version.');
@@ -56,7 +60,7 @@ export function validateAttempt(bank,attempt) {
   }
   if(!attempt.responses||typeof attempt.responses!=='object'||Array.isArray(attempt.responses)||Object.keys(attempt.responses).some(id=>!items.some(q=>q.item_id===id)))throw new Error('Unexpected answer IDs.');
   for(const q of items)if(attempt.responses[q.item_id]!=null&&!q.options.some(o=>o.id===attempt.responses[q.item_id]))throw new Error('Unknown answer.');
-  if(!Number.isInteger(attempt.position)||attempt.position<0||attempt.position>4)throw new Error('Invalid question position.');
+  if(!Number.isInteger(attempt.position)||attempt.position<0||attempt.position>=count)throw new Error('Invalid question position.');
   return items;
 }
 export function canReviewAttempt(bank, attempt) {
@@ -72,7 +76,7 @@ export function gradeAttempt(bank,attempt) {
   const results=items.map(q=>({item_id:q.item_id,content_version:q.content_version,pool_id:q.pool_id,lesson_id:q.lesson_id,concept_ids:q.concept_ids,outcome_ids:q.outcome_ids,
     response:attempt.responses[q.item_id]??null,answer:q.answer,correct:attempt.responses[q.item_id]===q.answer}));
   const correct=results.filter(r=>r.correct).length;
-  return {correct,incorrect:5-correct,target_xp:attempt.practice?0:targetXp(correct),results};
+  return {correct,incorrect:items.length-correct,target_xp:attempt.practice?0:targetXp(correct),results};
 }
 export function summaryFor(bank,attempts,assessment) {
   const rows=Object.values(attempts).filter(t=>!t.practice&&!t.retired&&t.submitted_at&&quizKey(t)===quizKey(assessment)&&canReviewAttempt(bank,t));

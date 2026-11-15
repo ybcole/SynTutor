@@ -5,17 +5,7 @@ import { createLessonStore } from './lesson-progress.js';
 import { createFoundationStore } from './foundation-progress.js';
 import { renderFoundationCheck } from './foundation-check.js';
 import { addFoundationsBookCoverage } from './lesson-presentation.js';
-import { constituentsPilot } from './constituents-pilot.js';
-import { functionsPilot } from './functions-pilot.js';
-import { categoriesPilot } from './categories-pilot.js';
-import { basicVpPilot } from './basic-vp-pilot.js';
-import { adverbialsPilot } from './adverbials-pilot.js';
-import { auxiliariesPilot } from './auxiliaries-pilot.js';
-import { nounPhrasesPilot } from './noun-phrases-pilot.js';
-import { embeddedClausesPilot } from './embedded-clauses-pilot.js';
-import { whClausesPilot } from './wh-clauses-pilot.js';
-import { nonFinitePilot } from './non-finite-pilot.js';
-import { grammarPilot } from './grammar-pilot.js';
+import { pilotArticles, cambridgePilotIds } from './lesson-curriculum.js';
 import { requestEvidence, renderEvidence } from './explanation-evidence.js';
 import { subscribeAuthState } from './auth.js';
 import { enableCanvasView } from './canvas-view.js';
@@ -56,24 +46,6 @@ const legacyArticleSections = [
   { id: 'application' },
   { id: 'recap', advances: 'worked', references: true },
   { id: 'closing-check', assessment: true },
-];
-const pilotArticles = {
-  'br-01': constituentsPilot,
-  'br-02': functionsPilot,
-  'br-03': categoriesPilot,
-  'br-04': basicVpPilot,
-  'br-05': adverbialsPilot,
-  'br-06': auxiliariesPilot,
-  'br-07': nounPhrasesPilot,
-  'br-08': embeddedClausesPilot,
-  'br-09': whClausesPilot,
-  'br-10': nonFinitePilot,
-  'br-11': grammarPilot,
-};
-const cambridgePilotIds = [
-  'cgel-clauses', 'cgel-ch01', 'cgel-ch03', 'cgel-ch04', 'cgel-ch05', 'cgel-ch06',
-  'cgel-ch07', 'cgel-ch08', 'cgel-ch09', 'cgel-ch10', 'cgel-ch11', 'cgel-ch12', 'cgel-ch13', 'cgel-ch14', 'cgel-ch15',
-  'cgel-ch16', 'cgel-ch17', 'cgel-ch18', 'cgel-ch19', 'cgel-ch20',
 ];
 const previewMode = () => {
   if (!['localhost', '127.0.0.1', '[::1]'].includes(location.hostname)) return null;
@@ -501,7 +473,7 @@ function recordFoundationVisit(lesson, section) {
 }
 async function act(event, afterSave) {
   if (busy) return;const token=generation;const focused=document.activeElement;const focusName=focused?.name,focusValue=focused?.value;let saved;busy=true;render();
-  try { const result=await store.act(currentLesson(),event);if(token!==generation)return;saved=progressFor(currentLesson());notice=result.earned ? (store.status === 'Synced to your account'
+   try { const result=await store.act(currentLesson(),event);if(token!==generation)return;if(result.earned)options.onProgress?.();saved=progressFor(currentLesson());notice=result.earned ? (store.status === 'Synced to your account'
       ? 'Lesson complete. 15 lesson XP awarded for this content version.'
       : 'Lesson complete. 15 lesson XP awarded on this device. Verified account XP requires account sync.') : ''; }
   catch(error) { if(token!==generation)return;notice=error.message; }
@@ -998,6 +970,7 @@ function articleScreen(lesson, p, article) {
         clearDraft();
         if (token !== generation || articlePage !== page || host.hidden) return;
         notice = result.earned > 0 ? `+${result.earned} lesson XP` : '';
+        if(result.earned)options.onProgress?.();
         render();
         host.querySelector('.lesson-assessment [role="status"]')?.focus();
       },

@@ -1,0 +1,99 @@
+{
+  "schema_version": "2.0.0-draft",
+  "publication_status": "draft",
+  "review_status": "UNREVIEWED",
+  "independent_review": false,
+  "note": "Original examples awaiting linguistic and source review. Not loaded by the production quiz bank; no approval or textbook exercise attribution is claimed.",
+  "items": [
+    {
+      "item_id": "v2-br03-nouns-01", "content_version": "2.0.0", "track_id": "syntax", "chapter_id": "br-03", "subtopic_id": "concepts",
+      "concept_ids": ["br03-noun-head"], "outcome_ids": ["o1"], "lesson_id": "br-03",
+      "lesson_reference": "#lesson/br-03/concepts", "source_metadata": {"kind": "original_example", "basis": "active SynTutor lesson"},
+      "publication_status": "draft", "review_status": "UNREVIEWED", "independent_review": false,
+      "prompt": "In the NP “those copper lanterns”, which word is the noun head?",
+      "options": [{"id": "a", "text": "lanterns", "rationale": "The phrase denotes lanterns; this noun heads the NP."}, {"id": "b", "text": "those", "rationale": "This determiner does not name the kind of thing."}, {"id": "c", "text": "copper", "rationale": "This pre-head modifier is not the head of this NP."}],
+      "answer": "a", "rationale": "Lanterns is the noun head; do not confuse the whole NP with its head."
+    },
+    {
+      "item_id": "v2-br03-nouns-02", "content_version": "2.0.0", "track_id": "syntax", "chapter_id": "br-03", "subtopic_id": "concepts",
+      "concept_ids": ["br03-noun-head"], "outcome_ids": ["o1"], "lesson_id": "br-03",
+      "lesson_reference": "#lesson/br-03/concepts", "source_metadata": {"kind": "original_example", "basis": "active SynTutor lesson"},
+      "publication_status": "draft", "review_status": "UNREVIEWED", "independent_review": false,
+      "prompt": "Which complete group can be replaced by “they” in “The curious otters vanished”?",
+      "options": [{"id": "a", "text": "The curious otters", "rationale": "The pronoun replaces the complete subject NP."}, {"id": "b", "text": "curious", "rationale": "The adjective alone is not the subject NP."}, {"id": "c", "text": "otters vanished", "rationale": "This crosses the subject–predicate boundary."}],
+      "answer": "a", "rationale": "They vanished preserves the predicate and replaces the whole NP."
+    },
+    {
+      "item_id": "v2-br03-nouns-03", "content_version": "2.0.0", "track_id": "syntax", "chapter_id": "br-03", "subtopic_id": "concepts",
+      "concept_ids": ["br03-noun-head"], "outcome_ids": ["o1"], "lesson_id": "br-03",
+      "lesson_reference": "#lesson/br-03/concepts", "source_metadata": {"kind": "original_example", "basis": "active SynTutor lesson"},
+      "publication_status": "draft", "review_status": "UNREVIEWED", "independent_review": false,
+      "prompt": "In “Leena smiled”, what is the phrasal category of “Leena”?",
+      "options": [{"id": "a", "text": "NP", "rationale": "A name can form a one-word noun phrase."}, {"id": "b", "text": "VP", "rationale": "Smiled, not Leena, forms the predicate VP."}, {"id": "c", "text": "Subject is its phrasal category", "rationale": "Subject names a function, not a category."}],
+      "answer": "a", "rationale": "A phrase need not contain several words; NP and subject answer different questions."
+    },
+    {
+      "item_id": "v2-br03-nouns-04", "content_version": "2.0.0", "track_id": "syntax", "chapter_id": "br-03", "subtopic_id": "concepts",
+      "concept_ids": ["br03-noun-head"], "outcome_ids": ["o1"], "lesson_id": "br-03",
+      "lesson_reference": "#lesson/br-03/concepts", "source_metadata": {"kind": "original_example", "basis": "active SynTutor lesson"},
+      "publication_status": "draft", "review_status": "UNREVIEWED", "independent_review": false,
+      "prompt": "Compare “a wooden bridge” and “several wooden bridges”. Which pair shows the noun's singular/plural contrast?",
+      "options": [{"id": "a", "text": "bridge / bridges", "rationale": "These are singular and plural forms of the noun."}, {"id": "b", "text": "a / wooden", "rationale": "These are different words, not noun number forms."}, {"id": "c", "text": "wooden / wooden", "rationale": "The modifier has not changed number."}],
+      "answer": "a", "rationale": "The count noun head changes from bridge to bridges."
+    },
+    {
+      "item_id": "v2-br03-nouns-05", "content_version": "2.0.0", "track_id": "syntax", "chapter_id": "br-03", "subtopic_id": "concepts",
+      "concept_ids": ["br03-noun-head"], "outcome_ids": ["o1"], "lesson_id": "br-03",
+      "lesson_reference": "#lesson/br-03/concepts", "source_metadata": {"kind": "original_example", "basis": "active SynTutor lesson"},
+      "publication_status": "draft", "review_status": "UNREVIEWED", "independent_review": false,
+      "prompt": "In “The gardener collected seeds”, does the category NP determine whether a phrase is subject or object?",
+      "options": [{"id": "a", "text": "No: both “the gardener” and “seeds” are NPs with different functions.", "rationale": "Category and grammatical function are distinct."}, {"id": "b", "text": "Yes: every NP is a subject.", "rationale": "Seeds is an object NP here."}, {"id": "c", "text": "Yes: every NP is an object.", "rationale": "The gardener is the subject NP here."}],
+      "answer": "a", "rationale": "The same phrasal category can serve different grammatical functions."
+    },
+    {
+      "item_id": "v2-cgel03-forms-01", "content_version": "2.0.0", "track_id": "cambridge", "chapter_id": "cgel-ch03", "subtopic_id": "verb-forms",
+      "concept_ids": ["cgel03-verb-form"], "outcome_ids": ["o1", "o2"], "lesson_id": "cgel-ch03",
+      "lesson_reference": "#lesson/cgel-ch03/verb-forms", "source_metadata": {"kind": "original_example", "basis": "active SynTutor lesson"},
+      "publication_status": "draft", "review_status": "UNREVIEWED", "independent_review": false,
+      "prompt": "Which form of “write” occurs after perfect “has” in “Nadia has written a note”?",
+      "options": [{"id": "a", "text": "Past participle", "rationale": "Perfect have selects a past-participial complement."}, {"id": "b", "text": "Preterite", "rationale": "The preterite form is wrote."}, {"id": "c", "text": "Plain form", "rationale": "The plain form is write."}],
+      "answer": "a", "rationale": "Written is the past participle, distinct from preterite wrote."
+    },
+    {
+      "item_id": "v2-cgel03-forms-02", "content_version": "2.0.0", "track_id": "cambridge", "chapter_id": "cgel-ch03", "subtopic_id": "verb-forms",
+      "concept_ids": ["cgel03-verb-form"], "outcome_ids": ["o1", "o2"], "lesson_id": "cgel-ch03",
+      "lesson_reference": "#lesson/cgel-ch03/verb-forms", "source_metadata": {"kind": "original_example", "basis": "active SynTutor lesson"},
+      "publication_status": "draft", "review_status": "UNREVIEWED", "independent_review": false,
+      "prompt": "In “The kestrel flew away”, which inflectional form is “flew”?",
+      "options": [{"id": "a", "text": "Preterite", "rationale": "Flew is the preterite form of fly."}, {"id": "b", "text": "Past participle", "rationale": "The past participle is flown."}, {"id": "c", "text": "Gerund-participle", "rationale": "The gerund-participle is flying."}],
+      "answer": "a", "rationale": "Flew, flown and flying are distinct inflectional forms."
+    },
+    {
+      "item_id": "v2-cgel03-forms-03", "content_version": "2.0.0", "track_id": "cambridge", "chapter_id": "cgel-ch03", "subtopic_id": "verb-forms",
+      "concept_ids": ["cgel03-verb-form"], "outcome_ids": ["o1", "o2"], "lesson_id": "cgel-ch03",
+      "lesson_reference": "#lesson/cgel-ch03/verb-forms", "source_metadata": {"kind": "original_example", "basis": "active SynTutor lesson"},
+      "publication_status": "draft", "review_status": "UNREVIEWED", "independent_review": false,
+      "prompt": "Which form appears after “may” in “The lock may freeze tonight”?",
+      "options": [{"id": "a", "text": "Plain form", "rationale": "Modal may selects the plain form freeze."}, {"id": "b", "text": "Third-person singular present", "rationale": "That form is freezes, which is not selected after may."}, {"id": "c", "text": "Preterite", "rationale": "The preterite is froze."}],
+      "answer": "a", "rationale": "Freeze here is a plain form selected by a modal auxiliary."
+    },
+    {
+      "item_id": "v2-cgel03-forms-04", "content_version": "2.0.0", "track_id": "cambridge", "chapter_id": "cgel-ch03", "subtopic_id": "verb-forms",
+      "concept_ids": ["cgel03-verb-form"], "outcome_ids": ["o1", "o2"], "lesson_id": "cgel-ch03",
+      "lesson_reference": "#lesson/cgel-ch03/verb-forms", "source_metadata": {"kind": "original_example", "basis": "active SynTutor lesson"},
+      "publication_status": "draft", "review_status": "UNREVIEWED", "independent_review": false,
+      "prompt": "What is the form of “swimming” in “The seals are swimming”?",
+      "options": [{"id": "a", "text": "Gerund-participle", "rationale": "Cambridge uses this form name for the verb's -ing form."}, {"id": "b", "text": "Past participle", "rationale": "The past participle is swum."}, {"id": "c", "text": "Plain present", "rationale": "Swimming is not the plain present swim."}],
+      "answer": "a", "rationale": "The progressive uses be with a gerund-participial complement."
+    },
+    {
+      "item_id": "v2-cgel03-forms-05", "content_version": "2.0.0", "track_id": "cambridge", "chapter_id": "cgel-ch03", "subtopic_id": "verb-forms",
+      "concept_ids": ["cgel03-verb-form"], "outcome_ids": ["o1", "o2"], "lesson_id": "cgel-ch03",
+      "lesson_reference": "#lesson/cgel-ch03/verb-forms", "source_metadata": {"kind": "original_example", "basis": "active SynTutor lesson"},
+      "publication_status": "draft", "review_status": "UNREVIEWED", "independent_review": false,
+      "prompt": "Compare “We cut the ribbon yesterday” and “We have cut the ribbon”. Must identical spelling mean identical inflectional form?",
+      "options": [{"id": "a", "text": "No: the first is preterite, the second past participle.", "rationale": "Different forms can share their spelling and pronunciation."}, {"id": "b", "text": "Yes: both are necessarily preterites.", "rationale": "Perfect have selects a past participle."}, {"id": "c", "text": "Yes: both are necessarily plain forms.", "rationale": "The contexts distinguish the relevant forms."}],
+      "answer": "a", "rationale": "Form identity cannot be inferred from spelling alone; these forms are syncretic."
+    }
+  ]
+}

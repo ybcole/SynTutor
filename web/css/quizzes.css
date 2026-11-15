@@ -13,3 +13,10 @@
 .quiz-review-card p { overflow-wrap:anywhere; }
 .quiz-next button { margin-right:10px; margin-bottom:10px; }
 @media(max-width:760px){.quiz-question,.quiz-review-card{padding:16px;}}
+.quiz-chapter { margin: 16px 0; }
+.quiz-chapter > summary, .quiz-published > summary { cursor: pointer; font-size: 1.1rem; font-weight: 650; padding: 12px 0; }
+.quiz-chapter[open] > summary { margin-bottom: 16px; }
+.quiz-topic-card h3 { font-size: 1rem; line-height: 1.5; }
+.quiz-view button:disabled { opacity: .65; cursor: not-allowed; }
+.quiz-view input[type=number] { width: 7rem; max-width: 100%; margin: 8px; padding: 8px; color: var(--text); background: var(--panel); border: 1px solid var(--border); border-radius: 6px; }
+.quiz-view summary:focus-visible { outline: 2px solid var(--accent-strong); outline-offset: 4px; }

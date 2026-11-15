@@ -146,6 +146,11 @@ button:disabled {
   --subpanel-w: 336px;
 }
 .app-shell:has(.app-sidebar.expanded) { --rail-w: 240px; }
+.sidebar-progress { padding: 6px; font-size: 11px; line-height: 1.5; color: var(--muted); overflow-wrap: anywhere; }
+.sidebar-progress progress { display: block; width: 100%; height: 8px; margin: 6px 0; accent-color: var(--accent-strong); }
+.sidebar-progress small { display: block; }
+#appSidebar:not(.expanded) .sidebar-progress { font-size: 9px; text-align: center; }
+#appSidebar:not(.expanded) .sidebar-progress small { display: none; }
 
 /* --------------------------------------------------------------------------
    Left rail: one uniform width transition
