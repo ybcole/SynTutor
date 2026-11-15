@@ -116,9 +116,9 @@ export const functionsPilot = {
   ],
   sections: [
     { id: 'introduction', title: 'Two groups, two functions' },
-    { id: 'concepts', title: 'Find the complete subject' },
+    { id: 'concepts', title: 'Subject, predicate, NP and VP' },
     { id: 'worked-example', title: 'Read and repair the top split' },
-    { id: 'application', title: 'Read relations between sisters' },
+    { id: 'application', title: 'Heads, modifiers and complements' },
     { id: 'recap', title: 'Chapter recap', references: true },
     { id: 'closing-check', title: 'Check what you learned', assessment: true },
   ],

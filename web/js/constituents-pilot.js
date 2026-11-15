@@ -52,7 +52,7 @@ export const constituentsPilot = {
   ],
   sections: [
     { id: 'introduction', title: 'Words form groups' },
-    { id: 'concepts', title: 'Test a group in context' },
+    { id: 'concepts', title: 'Structure and constituent tests' },
     { id: 'worked-example', title: 'Read and repair a phrase marker' },
     { id: 'application', title: 'Explain two readings' },
     { id: 'recap', title: 'Chapter recap', references: true },

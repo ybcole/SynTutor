@@ -38,6 +38,16 @@ const persuaded = tree('They persuaded Ivo to wait', node('main', 'S', np('subje
   node('predicate', 'VP', word('persuade', 'V(II)', 'persuaded', 'past'), np('controller', 'Ivo', 1),
     sbar(silent('lower-subject', 1), wait))));
 
+const request = tree('a request to move the crates', node('np', 'NP',
+  node('det', 'DET', word('article', 'ART', 'a')), node('nom', 'NOM', word('noun', 'N', 'request'),
+    sbar(silent('lower-subject'),
+      infinitive(word('move', 'V', 'move', 'trans'), np('object', 'the crates'))))));
+const crates = tree('the crates to move', node('np', 'NP',
+  node('det', 'DET', word('article', 'ART', 'the')), node('nom', 'NOM',
+    { ...node('inner-nom', 'NOM', word('noun', 'N', 'crates')), index: 1 },
+    node('relative', 'S-dbar', node('c2', 'C2', { id: 'wh-gap', gap: true, index: 1 }),
+      sbar(silent('lower-subject'), infinitive(word('move', 'V', 'move', 'trans'), silent('object', 1)))))));
+
 const labels = ['S-bar', 'C1', 'S', 'NP', 'VP', 'V', '△', '•', 'Index'];
 const repair = {
   buildTitle: 'Attach the lexical VP beside infinitival “to”',
@@ -54,16 +64,18 @@ export const nonFinitePilot = {
   references: [
     'Chapter 10, printed pp. 224–229, [6], [11], [14a], [17], [21–22] · Non-finite forms and subjects',
     'Printed pp. 229–232, [26–33] and Discussion 1, p. 244 · Complementisers and wh-phrases',
-    'Printed pp. 232–236, [40–65] and Discussion 2, p. 244 · Clause functions',
-    'Printed pp. 239–243, [98–102] · Type I and Type II complements',
+    'Printed pp. 232–236, [38c], [40–65] and Discussion 2, p. 244 · Clause functions and non-finite NP modifiers',
+    'Printed pp. 236–244, [66–102] · Verb selection and Type I and Type II complements',
   ],
   sections: [
     { id: 'introduction', title: 'Where does tense belong?' },
     { id: 'concepts', title: 'Identify the four non-finite forms', notationLabels: ['S', 'NP', 'VP', 'V', '△', '•', 'Index'], notationFeatures: ['trans', '-tense'] },
     { id: 'worked-example', title: 'Trace and repair the infinitival VP', notationLabels: ['VP', 'V', 'NP', '△'], notationFeatures: ['-tense', 'trans'] },
-    { id: 'subjects-and-control', title: 'Find the subject and its controller', notationLabels: [...labels, 'S-dbar', 'C2', 'PP'], notationFeatures: ['-tense', 'trans', 'pres', 'past', 'intrans'] },
-    { id: 'clause-functions', title: 'Ask what job the clause does' },
-    { id: 'verb-complements', title: 'Compare Type I and Type II', notationLabels: [...labels, 'V(I)', 'V(II)'], notationFeatures: ['-tense', 'past', 'intrans'] },
+    { id: 'subjects-and-control', title: 'Complementisers and wh-phrases', notationLabels: [...labels, 'S-dbar', 'C2', 'PP'], notationFeatures: ['-tense', 'trans', 'pres', 'past', 'intrans'] },
+    { id: 'clause-functions', title: 'Subjects, complements and adverbials' },
+    { id: 'noun-clause-functions', title: 'Non-finite clauses in noun phrases',
+      notationLabels: [...labels, 'DET', 'ART', 'NOM', 'N', 'S-dbar', 'C2'], notationFeatures: ['-tense', 'trans'] },
+    { id: 'verb-complements', title: 'Verb complements and Type I and II', notationLabels: [...labels, 'V(I)', 'V(II)'], notationFeatures: ['-tense', 'past', 'intrans'] },
     { id: 'application', title: 'Apply the two analyses' },
     { id: 'recap', title: 'Chapter recap', references: true },
     { id: 'closing-check', title: 'Check what you learned', assessment: true },
@@ -155,7 +167,15 @@ export const nonFinitePilot = {
         example('Nia insisted on [checking the ropes].');
         p('The clause completes the preposition “on”. That makes it the complement of P inside the PP. Here, P takes S directly.');
         example('Nia paused [to check the ropes].');
-        p('The clause tells why someone paused. It works as an adverbial of purpose. A non-finite clause can also complete an adjective or a noun. Look at “eager to help” and “a request to speak”. In “the crates stacked by the door”, the participle clause describes the crates.');
+        p('The clause tells why someone paused. It works as an adverbial of purpose. An adjective can also select a non-finite clause, as “eager” does in “eager to help”. Next, compare the two ways a non-finite clause can belong to an NP.');
+        break;
+      case 'noun-clause-functions':
+        p('Ask what the clause tells you about the noun. In “a request to move the crates”, it gives the request’s content. In “the crates to move”, it tells which crates, and there is an object gap after “move”.');
+        trace('Compare a noun complement and a NOM modifier', [
+          ['Read the complement of N', request, 'embedded', '“To move the crates” is the content of the request. It joins N within NOM.'],
+          ['Read the relative beside NOM', crates, 'inner-nom', '“To move” helps identify the crates. The smaller NOM and the relative S″ join under a larger NOM.'],
+          ['Follow the silent wh-expression', crates, 'object-dot', 'Index 1 connects the crates, the silent wh-expression in C2, and the object gap after “move”. The separate silent subject names no particular mover in this phrase.'],
+        ]);
         break;
       case 'verb-complements':
         p('Two sentences can look alike but group differently. “Expect” is a Type I verb here. It takes one clause with its own overt subject. “Persuade” is Type II here. It takes an object and a clause with a covert subject.');

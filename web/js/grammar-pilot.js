@@ -17,10 +17,10 @@ export const grammarPilot = {
   ],
   sections: [
     { id: 'introduction', title: 'What does a grammar describe?' },
-    { id: 'concepts', title: 'Compare a list with a rule' },
+    { id: 'concepts', title: 'Languages and how to describe them' },
     { id: 'worked-example', title: 'Trace two applications', notationLabels: ['S', '△'] },
     { id: 'apply-the-rule', title: 'Apply the rule' },
-    { id: 'rule-and-structure', title: 'Explain what the rules license' },
+    { id: 'rule-and-structure', title: 'Grammar and sentence analysis' },
     { id: 'application', title: 'Derive a new sentence' },
     { id: 'recap', title: 'Chapter recap', references: true },
     { id: 'closing-check', title: 'Check what you learned', assessment: true },

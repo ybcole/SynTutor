@@ -73,10 +73,10 @@ export const adverbialsPilot = {
   ],
   sections: [
     { id: 'introduction', title: 'What does the extra phrase modify?' },
-    { id: 'concepts', title: 'Find the basic VP', notationLabels: [...vpLevels, 'PP'], notationFeatures: ['trans', 'complex'] },
+    { id: 'concepts', title: 'Adjuncts and levels of VP', notationLabels: [...vpLevels, 'PP'], notationFeatures: ['trans', 'complex'] },
     { id: 'worked-example', title: 'Trace and attach an adjunct', notationLabels: [...vpLevels, 'VP3', 'AdvP', 'PP'], notationFeatures: ['trans'] },
     { id: 'mobility', title: 'Check what can move', notationLabels: [...vpLevels, 'AdvP'], notationFeatures: ['trans'] },
-    { id: 'particles', title: 'Separate particles from prepositions', notationLabels: [...phraseLabels, 'VP', 'Prt', 'PP', 'P'], notationFeatures: ['trans', 'phrasal'] },
+    { id: 'particles', title: 'Phrasal verbs and ellipsis', notationLabels: [...phraseLabels, 'VP', 'Prt', 'PP', 'P'], notationFeatures: ['trans', 'phrasal'] },
     { id: 'ellipsis', title: 'Read an understood complement', notationLabels: [...phraseLabels, 'VP', 'E'], notationFeatures: ['ditrans'] },
     { id: 'application', title: 'Choose the scope', notationLabels: ['S', 'NP', 'VP', 'AdvP', '△'] },
     { id: 'recap', title: 'Chapter recap', references: true },

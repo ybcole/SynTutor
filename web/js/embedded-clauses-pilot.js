@@ -55,10 +55,10 @@ export const embeddedClausesPilot = {
   ],
   sections: [
     { id: 'introduction', title: 'How can one clause contain another?' },
-    { id: 'concepts', title: 'Find the clause within the clause' },
+    { id: 'concepts', title: 'Embedding and complementisers' },
     { id: 'worked-example', title: 'Read C and S', notationLabels: labels },
-    { id: 'clausal-subjects-and-objects', title: 'Follow the clause as subject or object', notationLabels: [...labels, 'NP', 'VP', 'V'], notationFeatures: ['trans', 'past'] },
-    { id: 'clausal-complements', title: 'Find the head the clause completes', notationLabels: [...labels, 'AP', 'A', 'NP', 'DET', 'ART', 'NOM', 'N', 'PP', 'P'] },
+    { id: 'clausal-subjects-and-objects', title: 'Clausal subjects and verb complements', notationLabels: [...labels, 'NP', 'VP', 'V'], notationFeatures: ['trans', 'past'] },
+    { id: 'clausal-complements', title: 'Clauses inside AP, NP and PP', notationLabels: [...labels, 'AP', 'A', 'NP', 'DET', 'ART', 'NOM', 'N', 'PP', 'P'] },
     { id: 'adverbial-clauses', title: 'Distinguish two ways to add a clause', notationLabels: [...labels, 'NP', 'VP', 'PP', 'P'] },
     { id: 'application', title: 'Trace two levels of embedding' },
     { id: 'recap', title: 'Chapter recap', references: true },

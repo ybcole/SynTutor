@@ -1,27 +1,45 @@
 # Syntax Foundations full-book revision master plan
 
-**Purpose.** Use this file as the implementation brief for a later revision of SynTutor's Syntax Foundations lessons. Cover the full teaching sequence of Chapters 1–11, with a traceable place for each book subsection, its substantive distinctions, and the skills developed in its exercises. Use the same lesson UI and page layout.
+**Purpose.** Use this file to implement and review SynTutor's Syntax Foundations lessons. Cover the full teaching sequence of Chapters 1–11, with a traceable place for each book subsection, its substantive distinctions, and the skills developed in its exercises. Use the same lesson UI and page layout.
 
-**Source.** Noel Burton-Roberts, *Analysing Sentences: An Introduction to English Syntax*, third edition, Pearson, 2011, ISBN 9781408233740. The matrix uses printed pages. I checked the third-edition contents and chapter text against the revised pilot articles, their closing checks, and the preceding coverage audit. Division names within the tables are paraphrased for planning. Use the existing book-aligned chapter titles in the catalog and learner-friendly headings inside the chapters. [Reference copy](https://fliphtml5.com/nvdvc/grsk/Analysing_sentences___an_introduction_to_English_syntax/) · [Edition and source manifest](../../sources/burton_roberts/source_manifest_2026-11-08.json)
+**Source.** Noel Burton-Roberts, *Analysing Sentences: An Introduction to English Syntax*, third edition, Pearson, 2011, ISBN 9781408233740. The matrix uses printed pages. The uploaded third-edition PDF supplies the contents, chapter text, figures, and exercise discussions. Printed pages 6–268 correspond to PDF pages 21–283 in that copy. Division names within the tables are paraphrased for planning. Use the existing book-aligned chapter titles in the catalog and learner-friendly headings inside the chapters. [Reference copy](https://fliphtml5.com/nvdvc/grsk/Analysing_sentences___an_introduction_to_English_syntax/) · [Edition and source manifest](../../sources/burton_roberts/source_manifest_2026-11-08.json)
 
 **App baseline.** `feat/lessons/revision-integration` at `bf60d8b`, including the plain-language revisions and chapter introductions. The regular Lessons entry point loads the `br-01`–`br-11` overlays and the corresponding article modules. Plan against the composed chapter, including its interactive blocks and assessments. The base catalog and legacy articles can describe earlier versions. Main and the revision branch had diverged when this plan was written. Recheck both tips before implementation and bring forward the newer Foundations prose. Work within the Syntax Foundations track.
 
-**Implementation.** The baseline ratings below record what was available before this revision. All 99 coverage IDs map to teaching and feedback in [the Foundations coverage blocks](../../web/js/foundations-book-content.js). Each ID is attached to a specific lesson page and is also the heading ID in the reader. The existing recaps include the additional distinctions. Chapter 7 has a dedicated appendix page in the normal navigation. Chapters 5, 6 and 7 use the existing tree controls for the new VP-layer, passive-question and pro-NOM comparisons. Added practice is unscored, so the saved completion requirements, graded questions and XP rules can keep their existing versions.
+**Implementation.** The baseline ratings below record what was available before the earlier coverage revision. The grouped route table reflects the current implementation. All 100 coverage IDs map to teaching and feedback in [the Foundations coverage blocks](../../web/js/foundations-book-content.js). Each ID is attached to a specific lesson page and is also the heading ID in the reader. The existing recaps include the additional distinctions. Chapter 7 has a dedicated appendix page in the normal navigation. Chapters 5, 6, 7 and 10 use the existing tree controls for the VP-layer, passive-question, pro-NOM and non-finite relative comparisons. Added practice is unscored, so the saved completion requirements, graded questions and XP rules can keep their existing versions.
 
 ## How to use the coverage matrix
 
 - **Taught** means an explanation and a usable example exist. Retain them, check the linked practice, and add only what the row calls for.
 - **Partial** means the page mentions the topic, combines it with another topic, or teaches only some of the source's cases. The action column names what learners still need.
 - **Missing** means the baseline lacks a usable explanation for that source topic. Add it and validate the corresponding example and practice.
-- A printed subsection gets an explicit heading or identifiable block in the chapter. Combine closely related blocks on one page when the reading still flows. Every teaching row needs an original example, an explanation of how to read it, and a way to apply the method. One practice item may cover multiple rows if its feedback explains each distinction. Use integrated walkthroughs and optional practice for depth. All source topics must be reachable from the normal chapter, including the Chapter 7 appendix and Chapter 9's further applications.
+- A printed subsection gets an explicit heading or identifiable block in the chapter. Group two to four related teaching subsections on each reading page when they share a question or diagnostic. Use a single-topic page for a substantial trace, proof, or practice that needs room. Keep existing routes for opening, hands-on work, recaps, and closing checks. Teach the subsection blocks before the worked activity so learners use what they have just read. Every teaching row needs an original example, an explanation of how to read it, and a way to apply the method. One practice item may cover multiple rows if its feedback explains each distinction. Use integrated walkthroughs and optional practice for depth. All source topics must be reachable from the normal chapter, including the Chapter 7 appendix and Chapter 9's further applications.
 - The page ranges and patterns below seed the implementation inventory. Before editing each chapter, read its body, figures, in-text tasks, answer discussions, and further exercises. Record distinct cases taught inside them, even where there is no printed heading. Split a matrix row if its cases need different teaching blocks. Finish only when the checked inventory maps every distinct case to rendered content and evidence. A source figure or ambiguous passage needs page-level review before claiming its coverage.
 - Introduce notation and terms in the explanation at first use. Maintain general definitions in the existing introduction's Key terms box. Open chapters with a question or situation tied to the chapter topic, and put the example on the same page as its explanation. Teach with short sentences and concrete comparisons while retaining technical terms. Keep the book attribution and page or figure references in the existing recap disclosure.
 - Preserve the sidebar, mobile contents disclosure, current page chrome, typography, themed spacing, navigation, key-terms box, canvas controls and Builder layout. Use existing examples, traces, practice and disclosure components. Include **Read tree as text** above **Tree notation** for each applicable lesson tree. Add content pages through existing registration only when needed for readable pacing. Keep Chapter 11's written synthesis activities.
 - Book pp. 1–5 supply course orientation. Add one short orientation in Chapter 1 about studying sentence structure, trying a diagnosis before looking at a worked answer, and revisiting earlier chapters for notation. Prefaces, reading list and index can be referenced from the course documentation. The conceptual and exercise coverage requirement applies to Chapters 1–11, including their appendix and summaries.
 
+## Grouped reading pages
+
+Use the page IDs below for navigation and the coverage IDs for subheadings. The table shows source order within each reading group. Introductions, worked traces, and existing transfer activities can stay on their own routes. Where the book has a summary and worked exercise discussions, adapt them into the recap and original practice with feedback.
+
+| Chapter | Lesson page and subsections in order |
+| --- | --- |
+| 1 | **Structure and constituent tests** (`concepts`): structure and hierarchy, then ways to establish constituents (BR01-01–02). **Read and repair a phrase marker** (`worked-example`): phrase vs. constituent, brackets, dominance and triangles (BR01-03). **Explain two readings** (`application`): exercise and further-exercise skills (BR01-P). |
+| 2 | **Subject, predicate, NP and VP** (`concepts`): subject and predicate, then the categories of the two phrases (BR02-01–02). **Read and repair the top split** retains the guided practice. **Heads, modifiers and complements** (`application`): dependency and function, heads, modifier–head, and head–complement (BR02-03–06). **Recap**: summary and mixed worked exercise (BR02-P). |
+| 3 | **Nouns and noun phrases** (`concepts`): noun tests and subclasses, then lexical vs. phrasal categories (BR03-01–02). **Adjectives, adverbs and their phrases** (`worked-example`): word categories, then AP/AdvP (BR03-03–04). **Prepositional phrases and coordination** (`prepositions-and-coordination`): P/PP, then coordinated words and phrases (BR03-05–06). **Application**: diagrams, exercise skills and feedback (BR03-P). |
+| 4 | **Lexical verbs, complements and transitivity** (`concepts`): verb forms, complement selection, transitive verbs and intransitive verbs (BR04-01–04). **Follow both objects**: ditransitives and their NP/PP alternatives (BR04-05). **Intensive and complex transitive verbs** (`predicatives`): subject and object predicatives (BR04-06–07). **Compare three uses of PPs**: prepositional verbs alongside contrasting PP functions (BR04-08). **Application and recap**: six-pattern table and practice (BR04-P). |
+| 5 | **Adjuncts and levels of VP** (`concepts`): VP adjuncts and levels of VP (BR05-01–02). **Worked example** retains the multi-layer trace and repair. **Mobility** (BR05-03) and **Phrasal verbs and ellipsis** (`particles`, BR05-04–05) follow, with the existing `ellipsis` page for tracing an understood complement. **Application**: VP vs. sentence adverbials and mixed practice (BR05-06, BR05-P). |
+| 6 | **Tense, lexical verbs and modals** (`concepts`): tense/time, the lexical–auxiliary contrast and MOD (BR06-01–03). **Perfect, progressive and passive auxiliaries** (`chain`): PERF, PROG, PASS and auxiliary VP structure (BR06-04–07). **Adverbials** bridge to Part II (BR06-08). **Passive** and **negation** retain separate constructions and traces (BR06-09–10). **Questions and uses of have and be** (`questions`): fronting and the lexical/auxiliary contrast (BR06-11–12). **Recap**: practice in both parts (BR06-P). |
+| 7 | **Determiners and pre-determiners** (`concepts`): DET/NOM and the larger PRE-DET construction (BR07-01–02). **Worked example** retains the NP trace and repair. **Pre-modifiers**: pre-modifier overview, QA, PartP, and N (BR07-03–06). **NOM layers and post-modifiers** (`post-modifiers`): recursion, PPs and APs (BR07-07–09). **Application**: modified pronouns, ellipted heads and mixed practice (BR07-10, BR07-P). **Appendix**: the pro-NOM diagnostic and worked practice (BR07-11–12). |
+| 8 | **Embedding and complementisers** (`concepts`): clause nesting and abbreviated analysis, then `that`, `whether` and `if` (BR08-01–02). **Worked example** retains the C/S trace. **Clausal subjects and verb complements**: extraposition and V complements (BR08-03–04). **Clauses inside AP, NP and PP** (`clausal-complements`): A, N and P complements (BR08-05–07). **Adverbial clauses** and **Application**: adverbial clause types and mixed practice (BR08-08, BR08-P). |
+| 9 | **Main questions** and **Worked example** introduce fronting (BR09-01). **Embedded interrogatives**: subordinate clause types and their question construction (BR09-02–03). **Relatives, omitted wh-phrases and that** (`relatives-and-complements`): relative vs. noun complement, omission, and relative `that` (BR09-04–06). **Relative scope**: restrictive vs. non-restrictive analysis (BR09-07). **Application**: exercise discussions, deeper questions and relative attachment (BR09-P, BR09-08–09). |
+| 10 | **Introduction**: non-finiteness and overt, free and controlled subjects (BR10-01). **Forms**: the four non-finite forms (BR10-02–05), then the existing infinitival VP repair. **Complementisers and wh-phrases** (`subjects-and-control`): C1 and C2 (BR10-06–07). **Subjects, complements and adverbials** (`clause-functions`): subject/extraposition, A complement, P complement and adverbial (BR10-08–11). **Non-finite clauses in noun phrases** (`noun-clause-functions`): N complements and NOM modifiers (BR10-12–13). **Verb complements**: clause selection, then Type I/II (BR10-15 and BR10-14). **Application**: mixed analysis and passive tests (BR10-P). |
+| 11 | **Languages and how to describe them** (`concepts`): varieties and the task of describing a language (BR11-01–02). **Worked example**: finite rules for unbounded sets (BR11-03), then apply the recursion rule. **Grammar and sentence analysis** (`rule-and-structure`): what a grammar specifies and how it assigns structure (BR11-04–05). **Application** keeps written synthesis. |
+
 ## 1 · Sentence structure: constituents (pp. 6–23)
 
-**Current route.** Words form groups → Test a group in context → Read and repair a phrase marker → Explain two readings → recap and checks. Open with the existing landmark example.
+**Baseline route.** Words form groups → Test a group in context → Read and repair a phrase marker → Explain two readings → recap and checks. Open with the existing landmark example.
 
 | ID / printed page | Source topic | Baseline | Revision and evidence |
 | --- | --- | --- | --- |
@@ -32,7 +50,7 @@
 
 ## 2 · Sentence structure: functions (pp. 24–45)
 
-**Current route.** Two groups, two functions → Find the complete subject → Read and repair the top split → Read relations between sisters → recap and checks.
+**Baseline route.** Two groups, two functions → Find the complete subject → Read and repair the top split → Read relations between sisters → recap and checks.
 
 | ID / printed page | Source topic | Baseline | Revision and evidence |
 | --- | --- | --- | --- |
@@ -46,7 +64,7 @@
 
 ## 3 · Sentence structure: categories (pp. 46–66)
 
-**Current route.** Words and phrases have categories → Find the noun and the whole phrase → Read an AP and its adverb phrase → Join two prepositional phrases → transfer, recap and checks.
+**Baseline route.** Words and phrases have categories → Find the noun and the whole phrase → Read an AP and its adverb phrase → Join two prepositional phrases → transfer, recap and checks.
 
 | ID / printed page | Source topic | Baseline | Revision and evidence |
 | --- | --- | --- | --- |
@@ -78,7 +96,7 @@
 
 ## 5 · Adverbials and other matters (pp. 87–110)
 
-**Current route.** Basic VP → attach an adjunct → mobility → particles → understood material → scope.
+**Baseline route.** Basic VP → attach an adjunct → mobility → particles → understood material → scope.
 
 | ID / printed page | Source topic | Baseline | Revision and evidence |
 | --- | --- | --- | --- |
@@ -92,7 +110,7 @@
 
 ## 6 · More on verbs: auxiliary VPs (pp. 111–140)
 
-**Current route.** Auxiliary heads and chain → adverbials → passive → negation → questions. Preserve the book's Part I (form and structure) before Part II (constructions).
+**Baseline route.** Auxiliary heads and chain → adverbials → passive → negation → questions. Preserve the book's Part I (form and structure) before Part II (constructions).
 
 | ID / printed page | Source topic | Baseline | Revision and evidence |
 | --- | --- | --- | --- |
@@ -112,7 +130,7 @@
 
 ## 7 · The structure of Noun Phrases (pp. 141–170)
 
-**Current route.** DET/NOM → build the basic NP → modifiers before and after the head → transfer. The appendix adds a diagnostic and refines the earlier analysis.
+**Baseline route.** DET/NOM → build the basic NP → modifiers before and after the head → transfer. The appendix adds a diagnostic and refines the earlier analysis.
 
 | ID / printed page | Source topic | Baseline | Revision and evidence |
 | --- | --- | --- | --- |
@@ -132,7 +150,7 @@
 
 ## 8 · Sentences within sentences (pp. 171–195)
 
-**Current route.** Find nested clauses → read C and S → subjects and objects → heads and complements → adverbial clauses → trace deeper embedding.
+**Baseline route.** Find nested clauses → read C and S → subjects and objects → heads and complements → adverbial clauses → trace deeper embedding.
 
 | ID / printed page | Source topic | Baseline | Revision and evidence |
 | --- | --- | --- | --- |
@@ -148,7 +166,7 @@
 
 ## 9 · Wh-clauses (pp. 196–223)
 
-**Current route.** Main questions → trace an object question → embedded interrogatives → relative versus content clause → attachment and scope.
+**Baseline route.** Main questions → trace an object question → embedded interrogatives → relative versus content clause → attachment and scope.
 
 | ID / printed page | Source topic | Baseline | Revision and evidence |
 | --- | --- | --- | --- |
@@ -156,8 +174,8 @@
 | BR09-02 · 202 | Subordinate wh-clauses | Taught | State the two major branches of the chapter at the transition: embedded interrogatives and relatives. Use the same wh-word to show how the construction and its host change the interpretation. |
 | BR09-03 · 202–204 | Embedded wh-interrogatives | Partial | Compare C1 and C2 with a matched main question. Add host and function variety and trace a gap across a deeper clause boundary. |
 | BR09-04 · 204–207 | Relatives and N complements | Partial | Keep the noun-content contrast. Add the `one` diagnostic from Chapter 7, and explain the sister-of-N versus sister-of-NOM structures and how a relative gap is linked back. |
-| BR09-05 · 207 | Omitted wh-expression | Partial | Show an object omission and a subject restriction with original examples. Keep the gap and link visible in the structure. |
-| BR09-06 · 207–208 | Relative `that` | Partial | Compare complementiser `that` in a noun complement with `that` in a relative, including which front position is filled and which is covert under this convention. |
+| BR09-05 · 207 | Omitted wh-expression | Partial | Show object omission, then the restrictions with a subject gap and with a wh-expression that moved along with a P or a noun. Keep the gap and link visible in the structure. |
+| BR09-06 · 207–208 | Relative `that` | Partial | Compare complementiser `that` in a noun complement with `that` in a relative, showing relative `that` in C2 in the adopted analysis and explaining the C1 alternative separately. |
 | BR09-07 · 208–211 | Restrictive and non-restrictive relatives | Partial | Retain the two attachments. Compare subset versus parenthetical meaning, commas, antecedent scope, and restrictions on `that` and omission. Finish with the three attachment sites N, NOM and NP. |
 | BR09-P · 211–220 | Worked discussion and main practice | Partial | Add original transformations for fronting and clause type, plus a three-tree comparison for noun complement, restrictive relative and non-restrictive relative. |
 | BR09-08 · 220–221 | Further question and interrogative applications | Partial | Add a full long-distance derivation, showing the category and position of each gap. Include a source-supported contrast involving subject-question C1 where the reading needs it. |
@@ -165,7 +183,7 @@
 
 ## 10 · Non-finite clauses (pp. 224–253)
 
-**Current route.** Four forms → infinitival VP repair → subjects and control → clause functions → Type I versus Type II → transfer. Preserve Part I before Part II.
+**Baseline route.** Four forms → infinitival VP repair → subjects and control → clause functions → Type I versus Type II → transfer. Preserve Part I before Part II.
 
 | ID / printed page | Source topic | Baseline | Revision and evidence |
 | --- | --- | --- | --- |
@@ -182,12 +200,13 @@
 | BR10-11 · 234–235 | Non-finite adverbials | Partial | Compare purpose and participial adjuncts, source-supported overt and covert subject cases, and which controller is available. |
 | BR10-12 · 235 | N complements | Partial | Show a noun whose complement states the content of a plan, request or similar meaning. Contrast it with a restrictive NP modifier. |
 | BR10-13 · 235–236 | NP modification | Partial | Add full examples of infinitival, `-ing` and passive-participial relatives licensed by the source. Show restrictive attachment and trace the covert wh-expression and its gap. |
-| BR10-14 · 236–244 | V complements and Type I/II | Partial | Teach the source's single-clause patterns, covert-subject patterns and the intervening NP ambiguity. Walk through evidence from predicate selection, expletive `there`, and subject-control `promise` versus object control. Use the book's categories consistently. |
+| BR10-15 · 236–239 | Verb complements and selection | Partial | Compare finite and non-finite complements, accepted forms, embedded interrogatives and meaning changes when the same verb selects a different form. |
+| BR10-14 · 239–244 | Intervening NPs and Type I/II | Partial | Compare overt embedded subject with higher direct object and covert subject. Use expletive `there`, semantic selection and subject-control `promise`; explain why pronoun case or an understood subject alone does not settle the analysis. |
 | BR10-P · 244–253 | Diagrams, discussion and further practice | Partial | Add original abbreviated analyses that mark each missing item and controller, including a multi-reading AP case and a comparison of Type I and II. Include ambiguity resolved by indexing alone, a diagnostic contrasting a referring pronoun and a gap, and the p. 253 passive-paraphrase test for Type I versus Type II. Explain why changing the lower subject preserves the believed situation in a Type I example but can change the addressee or acceptability with Type II. |
 
 ## 11 · Languages, sentences and grammars (pp. 254–268)
 
-**Current route.** Compare lists and rules → recursive trace → rule application → licensed structures → derive a new sentence. Keep the existing written synthesis route and add depth through rule exercises.
+**Baseline route.** Compare lists and rules → recursive trace → rule application → licensed structures → derive a new sentence. Keep the existing written synthesis route and add depth through rule exercises.
 
 | ID / printed page | Source topic | Baseline | Revision and evidence |
 | --- | --- | --- | --- |

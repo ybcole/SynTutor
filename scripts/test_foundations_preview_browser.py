@@ -112,14 +112,21 @@ try:
                 open_lesson(preview + f'{id}/{section}')
                 expect(view).to_contain_text('Chapter pilot · progress saved on this device')
                 assert page.url.endswith(f'#lesson/{id}/{section}')
-                for topic_id, title, example, explanation, prompt, answer in topics.get(section, []):
+                entries = topics.get(section, [])
+                assert len(entries) <= 4, (id, section)
+                expect(view.locator('article > h3[id^="br"]')).to_have_count(len(entries))
+                if entries:
+                    view.get_by_text('Practice and feedback', exact=True).press('Enter')
+                for topic_id, title, example, explanation, prompt, answer in entries:
                     selector = f'#{topic_id.lower()}'
                     heading = view.locator(selector)
                     expect(heading).to_have_text(title)
                     expect(view.locator(f'{selector} + p')).to_have_text(example)
-                    expect(view.locator(f'{selector} + p + p')).to_have_text(explanation)
-                    expect(view.locator(f'{selector} + p + p + p')).to_have_text(prompt)
-                    practice = view.locator(f'{selector} + p + p + p + details')
+                    for index, paragraph in enumerate(explanation.split('\n\n'), start=2):
+                        expect(view.locator(selector + ' + p' * index)).to_have_text(paragraph)
+                    exercise = view.locator(f'{selector}-practice')
+                    expect(exercise.locator(':scope > p')).to_have_text(prompt)
+                    practice = exercise.locator('details')
                     expect(practice).not_to_have_attribute('open', '')
                     practice.locator('summary').press('Enter')
                     expect(practice.locator('p')).to_have_text(answer)

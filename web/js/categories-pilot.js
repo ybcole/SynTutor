@@ -29,9 +29,9 @@ export const categoriesPilot = {
   ],
   sections: [
     { id: 'introduction', title: 'Words and phrases have categories' },
-    { id: 'concepts', title: 'Find the noun and the whole phrase', notationLabels: ['NP', 'name', 'pronoun'] },
-    { id: 'worked-example', title: 'Read an AP and its adverb phrase', notationLabels: ['AP', 'A', 'AdvP', 'Adv', 'DEG'] },
-    { id: 'prepositions-and-coordination', title: 'Join two prepositional phrases', notationLabels: ['PP', 'P', 'NP', '△'] },
+    { id: 'concepts', title: 'Nouns and noun phrases', notationLabels: ['NP', 'name', 'pronoun'] },
+    { id: 'worked-example', title: 'Adjectives, adverbs and their phrases', notationLabels: ['AP', 'A', 'AdvP', 'Adv', 'DEG'] },
+    { id: 'prepositions-and-coordination', title: 'Prepositional phrases and coordination', notationLabels: ['PP', 'P', 'NP', '△'] },
     { id: 'application', title: 'Try a new coordination' },
     { id: 'recap', title: 'Chapter recap', references: true },
     { id: 'closing-check', title: 'Check what you learned', assessment: true },

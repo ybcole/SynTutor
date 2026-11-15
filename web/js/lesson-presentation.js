@@ -23,15 +23,27 @@ export function addIntroExample(body, el, context, example, explanation) {
 
 export function addFoundationsBookCoverage(body, el, lessonId, sectionId) {
   const entries = foundationsBookContent[lessonId]?.[sectionId] ?? [];
+  const recap = sectionId === 'recap' && foundationsBookRecaps[lessonId];
+  if (recap) body.append(el('p', recap));
+  if (!entries.length) return;
+
+  const practice = el('details', undefined, 'lesson-sources');
+  practice.append(el('summary', 'Practice and feedback'));
   for (const [id, title, example, explanation, prompt, feedback] of entries) {
     const heading = el('h3', title);
     heading.id = id.toLowerCase();
-    const answer = el('details', undefined, 'lesson-sources');
+    const paragraphs = explanation.split('\n\n').map(text => el('p', text));
+    body.append(heading, lessonExample(el, example), ...paragraphs);
+
+    const exercise = el('section');
+    exercise.id = `${heading.id}-practice`;
+    exercise.setAttribute('aria-label', title);
+    const answer = el('details');
     answer.append(el('summary', 'Check your answer'), el('p', feedback));
-    body.append(heading, lessonExample(el, example), el('p', explanation), el('p', prompt), answer);
+    exercise.append(el('h4', title), el('p', prompt), answer);
+    practice.append(exercise);
   }
-  const recap = sectionId === 'recap' && foundationsBookRecaps[lessonId];
-  if (recap) body.append(el('p', recap));
+  return practice;
 }
 
 export function setTreeStepLabel(control, el, label, number) {

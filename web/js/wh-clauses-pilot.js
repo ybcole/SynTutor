@@ -85,7 +85,7 @@ export const whClausesPilot = {
     { id: 'concepts', title: 'Find what the question asks for', notationLabels: [...questionLabels, 'PP', 'P'], notationFeatures: ['pres', 'trans'] },
     { id: 'worked-example', title: 'Trace and repair the object question', notationLabels: questionLabels, notationFeatures: ['pres', 'trans'] },
     { id: 'embedded-interrogatives', title: 'Read an embedded wh-question', notationLabels: questionLabels, notationFeatures: ['pres', 'past', 'trans'] },
-    { id: 'relatives-and-complements', title: 'Compare a relative with a noun complement', notationLabels: [...relativeLabels, 'V'], notationFeatures: ['trans', 'past'] },
+    { id: 'relatives-and-complements', title: 'Relatives, omitted wh-phrases and that', notationLabels: [...relativeLabels, 'V'], notationFeatures: ['trans', 'past'] },
     { id: 'relative-scope', title: 'Check what the relative modifies', notationLabels: relativeLabels },
     { id: 'application', title: 'Explain a new relative clause' },
     { id: 'recap', title: 'Chapter recap', references: true },

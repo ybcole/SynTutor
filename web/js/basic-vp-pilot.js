@@ -84,9 +84,9 @@ export const basicVpPilot = {
   ],
   sections: [
     { id: 'introduction', title: 'What belongs inside a verb phrase?' },
-    { id: 'concepts', title: 'Find the verb and its complements', notationLabels: sentenceLabels, notationFeatures: ['trans', 'intrans'] },
+    { id: 'concepts', title: 'Lexical verbs, complements and transitivity', notationLabels: sentenceLabels, notationFeatures: ['trans', 'intrans'] },
     { id: 'worked-example', title: 'Follow both objects', notationLabels: [...sentenceLabels, 'PP'], notationFeatures: ['ditrans'] },
-    { id: 'predicatives', title: 'Find what the phrase describes', notationLabels: [...sentenceLabels, 'AP'], notationFeatures: ['intens', 'trans', 'complex'] },
+    { id: 'predicatives', title: 'Intensive and complex transitive verbs', notationLabels: [...sentenceLabels, 'AP'], notationFeatures: ['intens', 'trans', 'complex'] },
     { id: 'prepositional-complements', title: 'Compare three uses of PPs', notationLabels: [...sentenceLabels, 'PP'], notationFeatures: ['prep', 'intens'] },
     { id: 'application', title: 'Explain two verb patterns' },
     { id: 'recap', title: 'Chapter recap', references: true },

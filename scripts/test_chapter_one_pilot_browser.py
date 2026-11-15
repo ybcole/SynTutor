@@ -67,7 +67,7 @@ try:
         page.screenshot(path=OUT / 'intro-desktop.png', full_page=True)
 
         view.get_by_role('button', name='Next →', exact=True).click()
-        expect(view.get_by_role('heading', name='Test a group in context')).to_be_visible()
+        expect(view.get_by_role('heading', name='Structure and constituent tests')).to_be_visible()
         expect(view.get_by_text('Mina paused near the stone arch.', exact=True)).to_be_visible()
         view.get_by_role('button', name='Next →', exact=True).click()
         for label, caption in [('Trace the landmark', 'exactly three words'), ('Trace the outer phrase', 'another branch down')]:

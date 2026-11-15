@@ -53,10 +53,10 @@ export const nounPhrasesPilot = {
   ],
   sections: [
     { id: 'introduction', title: 'What is inside a noun phrase?' },
-    { id: 'concepts', title: 'Find DET and NOM', notationLabels: [...coreLabels, 'ART', 'DEM', 'pronoun'] },
+    { id: 'concepts', title: 'Determiners and pre-determiners', notationLabels: [...coreLabels, 'ART', 'DEM', 'pronoun'] },
     { id: 'worked-example', title: 'Build the basic NP', notationLabels: [...coreLabels, 'DEM', 'PRE-DET'] },
     { id: 'pre-modifiers', title: 'Add modifiers inside NOM', notationLabels: [...coreLabels, 'ART', 'AP', 'A'] },
-    { id: 'post-modifiers', title: 'Compare modifier attachments', notationLabels: [...coreLabels, 'ART', 'AP', 'A', 'PP', '△'] },
+    { id: 'post-modifiers', title: 'NOM layers and post-modifiers', notationLabels: [...coreLabels, 'ART', 'AP', 'A', 'PP', '△'] },
     { id: 'application', title: 'Apply the distinction', notationLabels: ['NP', 'pronoun', 'PP', '△'] },
     { id: 'nom-appendix', title: 'Appendix: Test NOM with one', notationLabels: [...coreLabels, 'ART', 'PP', '△'] },
     { id: 'recap', title: 'Chapter recap', references: true },

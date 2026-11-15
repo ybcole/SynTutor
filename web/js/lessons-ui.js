@@ -885,6 +885,10 @@ function articleScreen(lesson, p, article) {
   frame.append(articleSectionNav(lesson, p, sections), layout);
   host.append(frame);
 
+  const teachBookTopics = () => addFoundationsBookCoverage(body, el, lesson.lesson_id, section.id);
+  const bookBeforeActivity = revised && !['introduction', 'application', 'recap'].includes(section.id);
+  let bookPractice = bookBeforeActivity ? teachBookTopics() : undefined;
+
   article.teach(body, page, {
     el, button, lesson, section, userId: revised ? revisedScope() : readingScope(),
     getWorkedExample: id => course.lessons.find(item => item.lesson_id === id).worked_example,
@@ -937,10 +941,11 @@ function articleScreen(lesson, p, article) {
     },
   });
 
-  if (revised) addFoundationsBookCoverage(body, el, lesson.lesson_id, section.id);
+  if (revised && !bookBeforeActivity) bookPractice = teachBookTopics();
 
   const diagram = [...body.querySelectorAll('.constituent-diagram')].at(-1);
   if (diagram) diagram.after(lessonNotation(lesson, page, el, section.notationLabels, section.notationFeatures));
+  if (bookPractice) body.append(bookPractice);
 
   if (section.id === 'introduction') {
     addLessonKeyTerms(body, el, lesson.lesson_id, article.keyTerms);
