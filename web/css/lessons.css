@@ -120,6 +120,45 @@
 }
 .constituent-page .lesson-stage-body > ul { padding-inline-start:1.35em; }
 .constituent-page .lesson-stage-body > ul li { padding-inline-start:.15em; margin-block:.35em; }
+.curriculum-view .constituent-page button.lesson-dictionary-term {
+  max-inline-size:100%;
+  padding:0;
+  border:0;
+  border-radius:2px;
+  background:transparent;
+  color:inherit;
+  font:inherit;
+  line-height:inherit;
+  text-align:start;
+  text-decoration:underline dotted var(--muted);
+  text-underline-offset:.19em;
+  cursor:help;
+}
+.curriculum-view .constituent-page .lesson-dictionary-term:is(:hover,[aria-expanded="true"]) {
+  color:var(--accent-strong);
+}
+.lesson-dictionary-panel {
+  position:fixed;
+  z-index:8;
+  display:grid;
+  gap:5px;
+  box-sizing:border-box;
+  inline-size:min(19rem,calc(100vw - 24px));
+  overflow:auto;
+  padding:12px 14px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:var(--panel);
+  color:var(--ink);
+  box-shadow:0 8px 24px rgb(0 0 0 / .16);
+  font-size:.9rem;
+  line-height:1.45;
+}
+.lesson-dictionary-panel a {
+  margin-block-start:4px;
+  color:var(--accent-strong);
+  text-underline-offset:.15em;
+}
 .constituent-page h3 { margin:clamp(28px,5vw,40px) 0 10px; font-size:1.125rem; line-height:1.35; letter-spacing:-.018em; }
 .constituent-page .lesson-question + .lesson-question { margin-top:30px; }
 .constituent-page .lesson-sources {
