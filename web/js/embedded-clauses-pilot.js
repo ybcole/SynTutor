@@ -79,18 +79,18 @@ export const embeddedClausesPilot = {
 
     switch (section.id) {
       case 'introduction': {
-        p('A sentence can tell you what someone said or thought. If Leo reports that Nora is inspecting the bridge, part of his report has a subject and predicate of its own. This chapter looks at how one clause fits inside another and what jobs the smaller clause can do.');
-        addIntroExample(body, el, 'The brackets mark everything Leo says. Look inside them for another subject and predicate.',
+        p('A clause is a grammatical unit built around a predicate. It often has a subject of its own. An embedded clause fits inside a larger phrase or clause. This chapter looks at how one clause fits inside another and what jobs the smaller clause can do.');
+        addIntroExample(body, el, 'In the example below, the brackets mark what Leo reports. Look inside them for another subject and predicate.',
           'Leo says [that Nora is inspecting the bridge].',
           '“Nora” is the subject inside the brackets. “Is inspecting the bridge” is its predicate. The word “that” starts this embedded clause, a clause inside a larger structure. The main clause begins with “Leo” and includes the whole report.');
-        body.append(el('h3', 'What you’ll see in this chapter'));
+        body.append(el('h3', 'What you’ll learn in this chapter'));
         const list = el('ul');
         for (const outcome of lesson.outcomes) list.append(el('li', outcome.text));
         body.append(list);
         break;
       }
       case 'concepts':
-        p('In a report, first find the reporting verb. Then find the smaller clause that tells what was reported.');
+        p('A complementiser is a word that introduces a subordinate clause. “That” can introduce a statement, and “whether” can introduce a yes/no question. In the report below, find the reporting verb and then the clause that tells what was reported.');
         example('Leo says [that Nora is inspecting the bridge].');
         p('Compare “Leo spoke and Nora inspected the bridge”. Here “and” joins two clauses at the same level. Each describes a separate event.');
         p('A clause inside a report can hold another clause. Start with the innermost brackets in this example. Work outward from one report to the next.');
@@ -98,10 +98,10 @@ export const embeddedClausesPilot = {
         p('Start with what Nora did. Leo “said” she closed something. The group starting at “Leo” tells what Maya “thinks”. The main clause begins at “Maya” and holds both smaller reports.');
         break;
       case 'worked-example': {
-        p('Start with a complete statement: “Nora is inspecting the bridge.” “Nora” is the subject, and “is inspecting the bridge” is the predicate. In a tree, S is the node that groups that subject and predicate.');
+        p('C labels the position for the complementiser. S labels the part with the subject and predicate. S′, read “S-bar”, groups C and S as one clause. To see why the tree needs both layers, start with the complete statement “Nora is inspecting the bridge”. “Nora” is the subject, and “is inspecting the bridge” is the predicate. In a tree, S is the node that groups that subject and predicate.');
         example('Leo says [that [Nora is inspecting the bridge]].');
         p('Now Leo is reporting that statement. Ask “What does Leo say?” The answer is the whole outer bracket, “that Nora is inspecting the bridge”. The inner bracket still contains the same subject and predicate, so it remains S.');
-        p('The word “that” introduces the statement as part of Leo’s report. A word that introduces a subordinate clause in this way is called a complementiser. C is the position it fills. S′, read “S-bar”, joins C to the inner S and covers the full embedded clause. Read the tree from the inside out: S holds the statement, and S′ includes its introducer.');
+        p('In the report, the complementiser “that” fills C. Follow the two branches down from S′. One reaches “that” through C. The other reaches “Nora is inspecting the bridge” through S. Together they make the full embedded clause, which is the complement of “says”.');
         p('Compare “Leo says that Nora is inspecting the bridge” with “Leo says Nora is inspecting the bridge”. Both reports contain the same inner S. In the second, C is still drawn but has no spoken word. In “Nora is inspecting that bridge”, “that” instead helps identify which bridge, so it belongs inside the NP “that bridge”.');
         const overt = lesson.worked_example.tree;
         trace('Compare three ways to introduce an embedded clause', [
@@ -117,7 +117,7 @@ export const embeddedClausesPilot = {
         break;
       }
       case 'clausal-subjects-and-objects':
-        p('An S′ can do different jobs. In the first example, the bracketed clause tells what surprised Mina. It is a clausal subject, so it sits inside the subject NP.');
+        p('A clausal subject is a clause that fills the subject role. Extraposition places the clause later and uses “it” in the subject position. In the first example below, the bracketed S′ tells what surprised Mina. It is a clausal subject, so it sits inside the subject NP.');
         example('[That the latch jammed] surprised Mina.');
         p('You can move the subject clause to the end and fill the subject spot with dummy “it”. “It” fills the spot without naming anything. The clause at the end is an extraposed subject.');
         example('It surprised Mina [that the latch jammed].');
@@ -130,7 +130,7 @@ export const embeddedClausesPilot = {
         ]);
         break;
       case 'clausal-complements':
-        p('Keep the same event in mind: the latch jammed. Now change how the sentence presents the event. An adjective can describe someone’s reaction to it, a noun can name a claim about it, and a preposition can introduce a question about it. Find the head word in each example before you decide where the clause attaches.');
+        p('A clausal complement fills a role made available by a head. That head can be a verb (V), an adjective (A), a noun (N), or a preposition (P). Keep the same event in mind: the latch jammed. Now change how the sentence presents the event. An adjective can describe someone’s reaction to it, a noun can name a claim about it, and a preposition can introduce a question about it. Find the head word in each example before you decide where the clause attaches.');
         example('Certain [that the latch jammed] · the claim [that the latch jammed] · about [whether the latch jammed]');
         p('Put the fragments back into sentences. “Mina was certain that the latch jammed” tells what she was certain about. “Mina checked the claim that the latch jammed” tells what the claim said. “Mina asked about whether the latch jammed” puts the question after the preposition “about”. The bracketed clause joins the head word whose meaning it completes in each construction.');
         trace('Find the host of each clausal complement', [
@@ -141,7 +141,7 @@ export const embeddedClausesPilot = {
         p('A clause can also be a subject predicative. In “The question is whether the latch jammed”, the clause tells what the question is. S′ sits right beside “is” inside VP.');
         break;
       case 'adverbial-clauses': {
-        p('A clause can help tell when or why something happened. Look at the first word to see how the expression is built.');
+        p('An adverbial clause contributes information such as time or reason. In the first example, the time word “after” is a preposition, so its node is P. It takes a clause as its complement inside PP.');
         example('Mina waited [after the gate closed].');
         example('Mina waited [because the gate jammed].');
         p('Here, “after” tells when something happened. It is a preposition that takes S as its complement. Together they make a PP. “Because” is a subordinating conjunction. It fills C and introduces an adverbial clause that tells why something happened.');

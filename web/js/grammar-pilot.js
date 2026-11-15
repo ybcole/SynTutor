@@ -39,17 +39,17 @@ export const grammarPilot = {
     switch (section.id) {
       case 'introduction': {
         p('The earlier chapters used trees to show how a sentence is built. But how can people make sense of a sentence they’ve never heard before? A grammar is a set of rules for building sentences. This chapter shows how a few rules can describe many different sentences.');
-        addIntroExample(body, el, 'Start with two short sentences. The brackets show the two groups that “and” joins.',
+        addIntroExample(body, el, 'In the example below, the brackets show two short sentences. The rule joins them with “and” to make a larger sentence. The tree labels each sentence S.',
           '[Iris rests] and [Leo waits].',
           '“Iris rests” and “Leo waits” join to make a new sentence. You can use that new sentence in the same rule and join it to another one. Using the result of a rule in that rule again is called recursion. You’ll trace the steps in a tree.');
-        body.append(el('h3', 'What you’ll see in this chapter'));
+        body.append(el('h3', 'What you’ll learn in this chapter'));
         const list = el('ul');
         for (const outcome of lesson.outcomes) list.append(el('li', outcome.text));
         body.append(list);
         break;
       }
       case 'concepts':
-        p('Ask which word orders make sentences in a language. English speakers use different patterns in different varieties. A grammar describes the patterns of the variety it is built for.');
+        p('A language variety is a way of using a language shared by a group of speakers. English speakers use different patterns in different varieties. A grammar describes which patterns make sentences in the variety being studied.');
         p('Imagine a made-up language with only three sentences. They are “Iris rests”, “Leo waits”, and “Mina waves”. Its list tells you exactly which sentences belong. “Iris rests and Leo waits” is missing from the list.');
         example('S → S and S');
         p('Keep the three sentences and add a rule. Join two sentences, each marked S, to make a new S. Then you can use that new S in the same rule again. This is recursion. Each sentence ends, but the rule gives no limit on how long a sentence can grow.');

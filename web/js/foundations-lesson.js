@@ -68,8 +68,8 @@ export function addWorkedExample(body, ui, labels, {
       if (compare) {
         observation.querySelector('.constituent-selection')?.remove();
         showDiagram(diagram, comparison.tree, {
-          focusId: comparison.focusId, highlightWords: true, stackFeatures: true,
-        }).after(observation);
+          focusId: comparison.focusId, highlightWords: true, stackFeatures: true, observation,
+        });
         caption.textContent = comparison.caption;
       } else {
         select(0);

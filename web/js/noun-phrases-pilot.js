@@ -78,18 +78,18 @@ export const nounPhrasesPilot = {
 
     switch (section.id) {
       case 'introduction': {
-        p('Earlier trees often used a triangle to stand for a whole noun phrase (NP). Now open up that triangle. Think about “those baskets” and “my baskets”. Both are about baskets, but the first word helps you work out which ones. In this chapter, you’ll see where that word goes and how other words add detail to the noun.');
-        addIntroExample(body, el, 'Imagine someone pointing at baskets. The brackets mark the two parts of the phrase they use.',
+        p('Earlier trees often used a triangle to stand for a whole noun phrase (NP). Now open up that triangle. A determiner helps identify what a noun phrase refers to. The nominal is the part built around the noun. In this chapter, you’ll see where that word goes and how other words add detail to the noun.');
+        addIntroExample(body, el, 'In the example below, imagine someone pointing at baskets. The first bracket shows how they pick them out. The second shows what they are pointing at.',
           '[Those] [baskets]',
           '“Those” tells which baskets. It fills the determiner position (DET). “Baskets” is the head noun. It fills the nominal (NOM) on its own here. If you add a word like “woven”, it goes with “baskets” inside NOM.');
-        body.append(el('h3', 'What you’ll see in this chapter'));
+        body.append(el('h3', 'What you’ll learn in this chapter'));
         const list = el('ul');
         for (const outcome of lesson.outcomes) list.append(el('li', outcome.text));
         body.append(list);
         break;
       }
       case 'concepts': {
-        p('Keep “baskets” and change the first word. “The” is an article, “those” is a demonstrative, “some” is a quantifier, and “my” is a possessive. Each fills DET here. The nominal stays the same.');
+        p('A determiner fills DET, beside NOM in the tree. A pre-determiner comes before that slot and is marked PRE-DET. In the examples below, keep “baskets” and change the determiner. “The” is an article (ART), “those” is a demonstrative (DEM), “some” is a quantifier, and “my” is a possessive. Each fills DET here. The nominal stays the same.');
         example('The baskets · those baskets · some baskets · my baskets');
         p('Sometimes no word fills DET. “Baskets” is a bare plural NP in “Baskets were stacked by the door”. You could say “the baskets”. The tree shows an empty DET in the bare plural. A mass noun like “sand” can also have empty DET.');
         trace('Compare three ways to build an NP', [
@@ -116,7 +116,7 @@ export const nounPhrasesPilot = {
         break;
       }
       case 'pre-modifiers':
-        p('A pre-modifier goes before the head. Group “red” and “kite” first. The AP “red” and the noun “kite” make a NOM. Then “new” goes with all of “red kite”. Now you have a larger NOM.');
+        p('A pre-modifier adds information before the head. The label depends on its category. In the example below, “red” is an AP and “kite” is N. Group them first. The AP “red” and the noun “kite” make a NOM. Then “new” goes with all of “red kite”. Now you have a larger NOM.');
         example('A [new [red kite]]');
         trace('Build the two nominal layers', [
           ['Read the smaller NOM', kite, 'inner', '“Red kite” is the smaller nominal. “Red” is an AP beside N.'],
@@ -158,7 +158,7 @@ export const nounPhrasesPilot = {
         p('Try one or ones to see which words form a NOM. A noun complement stays inside the NOM that the pro-form replaces. An adjunct can stay outside and describe the pro-form.');
         break;
       case 'nom-appendix':
-        p('Suppose two maps show the same island. If one map has a red border, you can ask for “one with a red border”. Follow which words one replaces and which remain.');
+        p('A pro-form is a word that stands in for a larger group. The pro-form “one” can stand in for a NOM. Suppose two maps show the same island. If one map has a red border, you can ask for “one with a red border”. Follow which words one replaces and which remain.');
         p('Try two replies: “I want one with a red border” and “I want one of the island”. In the first, the border can describe the map after “one” replaces the nominal. In the second, the intended map-content reading is hard to keep, because “of the island” goes with the head “map”. That contrast helps locate the complement and the modifier.');
         trace('Compare a noun complement and a NOM modifier', [
           ['Find the noun complement', map, 'content', '“Of the island” tells what the map depicts. It attaches beside N inside the smaller NOM.'],

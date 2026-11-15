@@ -1,4 +1,4 @@
-import { addIntroExample, addTreeTrace, lessonExample } from './lesson-presentation.js';
+import { addExplanationPractice, addIntroExample, addTreeTrace, lessonExample } from './lesson-presentation.js';
 import { addBranchExercise } from './lesson-tree-exercise.js';
 
 const branch = (id, label, children) => ({ id, label, children });
@@ -50,28 +50,10 @@ function transfer(body, { el, button, userId, lesson }) {
   body.append(hint);
 
   const key = `syntutor:lesson-transfer:${userId}:${lesson.lesson_id}@${lesson.content_version}:application`;
-  const label = el('label', 'Your explanation');
-  label.htmlFor = 'chapter-four-transfer';
-  const input = el('textarea');
-  input.id = label.htmlFor;
-  input.rows = 3;
-  input.maxLength = 1200;
-  try { input.value = localStorage.getItem(key) || ''; } catch { /* Practice remains available without storage. */ }
-  const feedback = el('div', undefined, 'lesson-tree-observation');
-  feedback.setAttribute('aria-live', 'polite');
-  const answer = el('p');
-  feedback.append(answer);
-  const reveal = button('Compare your explanation', () => {
-    answer.textContent = 'With “showed”, “Ren” is the recipient and indirect object, and “the map” is the direct object. With “found”, “the map” is still the direct object. “Useful” is an object predicative that describes it.';
+  addExplanationPractice(body, { el, button }, {
+    key, id: 'chapter-four-transfer',
+    explanation: 'With “showed”, “Ren” is the recipient and indirect object, and “the map” is the direct object. With “found”, “the map” is still the direct object. “Useful” is an object predicative that describes it.',
   });
-  reveal.disabled = !input.value.trim();
-  input.addEventListener('input', () => {
-    reveal.disabled = !input.value.trim();
-    try { localStorage.setItem(key, input.value); } catch { /* Keep the current response in the field. */ }
-  });
-  const practice = el('div', undefined, 'lesson-pilot-transfer');
-  practice.append(label, input, reveal, feedback);
-  body.append(practice);
 }
 
 export const basicVpPilot = {
@@ -109,16 +91,17 @@ export const basicVpPilot = {
     const trace = (label, steps) => addTreeTrace(body, ui, label, steps);
 
     if (section.id === 'introduction') {
-      p('Chapter 3 showed how the head helps you name a phrase. Now look at the words that go with a verb. “Nora waited” makes sense with just the verb in its predicate. What goes with “inspected”? In this chapter, you’ll compare verbs by the groups they take and the jobs those groups do.');
-      addIntroExample(body, el, 'The brackets mark the whole predicate. First find the word that gives the main action. Then look for what Nora inspected.',
+      p('Chapter 3 showed how the head helps you name a phrase. Now look at the words that go with a verb. A lexical verb supplies the main action, state, or relation in a VP. A complement is a group that fills a role the verb makes available in that use. Some verbs can make a basic VP on their own. In this chapter, you’ll compare verbs by the groups they take and the jobs those groups do.');
+      addIntroExample(body, el, 'In the example below, the brackets mark the whole predicate. First find the word that gives the main action. Then look for what Nora inspected.',
         'Nora [inspected the bridge].',
-        '“Inspected” gives the main action, so it is the lexical verb and the head of this VP. “The bridge” fills a role that “inspected” calls for here. That makes it a complement. Its job is direct object because it tells what Nora inspected.');
-      heading('What you’ll see in this chapter');
+        '“Inspected” gives the main action, so it is the lexical verb and the head of this VP. “The bridge” fills a role that “inspected” calls for here. That makes it a complement. Its job is direct object because it tells what Nora inspected. The verb’s use is transitive, so its node is V [trans].');
+      heading('What you’ll learn in this chapter');
       const list = el('ul');
       for (const outcome of lesson.outcomes) list.append(el('li', outcome.text));
       body.append(list);
     }
     if (section.id === 'concepts') {
+      p('A transitive verb takes one direct object and is marked V [trans]. An intransitive verb takes no complements and is marked V [intrans]. Count the complements in the basic VP to tell the patterns apart.');
       example('[Nora] [inspected the bridge].');
       p('Find “Nora” right under S. That NP is the subject. Inside VP, “the bridge” is the direct object. It tells what Nora inspected, and “it” can replace the whole NP. Here, “inspected” takes one direct object, so V has the transitive feature [trans].');
       p('In “Nora waited”, the verb alone makes the VP. “Waited” takes no object, so it is intransitive [intrans]. A verb can fit more than one pattern. Compare “The window opened” with “Rina opened the window”. Only the second has an object.');
@@ -135,7 +118,7 @@ export const basicVpPilot = {
       addBranchExercise(body, ui, repair);
     }
     if (section.id === 'worked-example') {
-      p('A transitive verb like “inspected” takes one direct object. A ditransitive verb takes two complements. The direct object can name the thing given. The indirect object can name the person who gets it or benefits from it.');
+      p('A ditransitive verb takes two complements and is labelled V [ditrans]. In the first example below, the direct object names the thing given, and the indirect object names who gets it.');
       example('Mara handed [Leo] [a map].');
       example('Mara handed [a map] [to Leo].');
       p('Mara hands over “a map” in both sentences. Leo is the recipient, the person who gets it. In the second sentence, the prepositional phrase (PP) “to Leo” names him.');
@@ -152,7 +135,7 @@ export const basicVpPilot = {
       example('Mina met [a coach].');
       p('Look at “a coach” in both sentences. In the first, it tells what Mina became. In the second, it is the direct object. It tells whom Mina met.');
       example('The rain left [the steps] [slippery].');
-      p('What became slippery? The steps did. “Slippery” is an object predicative because it describes the direct object. When the verb has both of these complements, it is complex transitive [complex]. A subject or object predicative can be an NP, an adjective phrase (AP), or a PP.');
+      p('What became slippery? The steps did. “Slippery” is an object predicative because it describes the direct object. When the verb has both of these complements, it is complex transitive and is marked V [complex]. A subject or object predicative can be an NP, an adjective phrase (AP), or a PP.');
       p('Compare “The steps became slippery” with “The rain left the steps slippery”. The description is about the steps in both. In the first sentence, the steps are the subject, so “slippery” is a subject predicative. In the second, the steps are the direct object, so the same AP is an object predicative.');
       trace('Compare subject and object predicatives', [
         ['Identify the subject', became, 'description', '“A coach” identifies Mina. The NP is a subject predicative beside V [intens].'],
@@ -161,7 +144,7 @@ export const basicVpPilot = {
       ]);
     }
     if (section.id === 'prepositional-complements') {
-      p('A PP can also fill a role that a verb calls for. In “relied on her notes”, the “on” phrase tells what Mina relied on. The verb “relied” calls for an “on” phrase here. We call it a prepositional complement and mark V with [prep].');
+      p('A prepositional verb selects a PP as its complement and is marked V [prep]. In the example below, the “on” phrase tells what Mina relied on. The verb “relied” calls for an “on” phrase here. We call it a prepositional complement and mark V with [prep].');
       example('Mina relied [on her notes].');
       example('Mina was [in the studio].');
       trace('Compare two PP complements', [

@@ -1,4 +1,4 @@
-import { foundationsBookContent, foundationsBookRecaps } from './foundations-book-content.js';
+import { foundationsBookContent, foundationsBookRecaps, foundationsRecapPoints } from './foundations-book-content.js';
 
 export function hasExampleBrackets(text) {
   return /\[[^\]]+\]/.test(text);
@@ -21,19 +21,57 @@ export function addIntroExample(body, el, context, example, explanation) {
   body.append(panel);
 }
 
+export function addExplanationPractice(body, { el, button }, { key, id, explanation }) {
+  const practice = el('div', undefined, 'lesson-pilot-transfer');
+  const label = el('label', 'Your explanation');
+  label.htmlFor = id;
+  const editor = el('div', undefined, 'lesson-explanation-editor');
+  const input = el('textarea');
+  input.id = id;
+  input.rows = 3;
+  input.maxLength = 1200;
+  try { input.value = localStorage.getItem(key) || ''; } catch { /* Practice remains available without storage. */ }
+
+  const feedback = el('div', undefined, 'lesson-tree-observation lesson-explanation-result');
+  feedback.id = `${id}-answer`;
+  feedback.setAttribute('aria-live', 'polite');
+  const reveal = button('Compare your explanation', () => {
+    feedback.replaceChildren(el('h4', 'Explanation'), el('p', explanation));
+    reveal.setAttribute('aria-expanded', 'true');
+  });
+  reveal.setAttribute('aria-controls', feedback.id);
+  reveal.setAttribute('aria-expanded', 'false');
+  reveal.disabled = !input.value.trim();
+  input.addEventListener('input', () => {
+    reveal.disabled = !input.value.trim();
+    try { localStorage.setItem(key, input.value); } catch { /* Keep the current response in the field. */ }
+  });
+  const actions = el('div', undefined, 'lesson-explanation-actions');
+  actions.append(reveal);
+  editor.append(input, actions);
+  practice.append(label, editor, feedback);
+  body.append(practice);
+}
+
 export function addFoundationsBookCoverage(body, el, lessonId, sectionId) {
   const entries = foundationsBookContent[lessonId]?.[sectionId] ?? [];
   const recap = sectionId === 'recap' && foundationsBookRecaps[lessonId];
-  if (recap) body.append(el('p', recap));
+  if (recap) {
+    const list = el('ul', undefined, 'constituent-recap');
+    for (const point of foundationsRecapPoints[lessonId]) list.append(el('li', point));
+    body.append(el('p', recap), el('h3', 'Key takeaways'), list);
+  }
   if (!entries.length) return;
 
   const practice = el('details', undefined, 'lesson-sources');
   practice.append(el('summary', 'Practice and feedback'));
-  for (const [id, title, example, explanation, prompt, feedback] of entries) {
+  for (const [id, title, example, explanation, prompt, feedback, definition] of entries) {
     const heading = el('h3', title);
     heading.id = id.toLowerCase();
     const paragraphs = explanation.split('\n\n').map(text => el('p', text));
-    body.append(heading, lessonExample(el, example), ...paragraphs);
+    body.append(heading);
+    if (definition) body.append(el('p', definition));
+    body.append(lessonExample(el, example), ...paragraphs);
 
     const exercise = el('section');
     exercise.id = `${heading.id}-practice`;
@@ -124,10 +162,10 @@ export function addTreeTrace(body, ui, label, steps, options = {}) {
   note.append(caption);
   function show(index) {
     const [, tree, focusId, explanation] = steps[index];
-    showDiagram(canvas, tree, { focusId, highlightWords: true, wordBaseline: 3, ...options });
+    showDiagram(canvas, tree, { focusId, highlightWords: true, wordBaseline: 3, ...options, observation: note });
     caption.textContent = explanation;
   }
-  figure.append(guide.controls, canvas, note);
+  figure.append(guide.controls, canvas);
   body.append(figure);
   show(0);
 }

@@ -319,7 +319,7 @@ try:
   view.locator('.lesson-module').nth(1).get_by_role('button',name='Start lesson',exact=True).click()
   expect(part_heading).to_have_text('Introduction to Subject and Predicate')
   expect(view.locator('.lesson-intro-example > p').first).to_contain_text('brackets')
-  preview=view.get_by_role('heading',name='What you’ll see in this chapter')
+  preview=view.get_by_role('heading',name='What you’ll learn in this chapter')
   expect(preview).to_be_visible()
   expect(preview.locator('+ ol > li')).to_have_count(3)
   expect(preview.locator('+ ol + .lesson-key-terms dt')).to_have_text(['Subject','Predicate','Category','Function'])
@@ -559,7 +559,7 @@ try:
    expect(view.get_by_role('heading',name='What this chapter covers')).to_be_visible()
    if ident=='br-03':
     expect(view.locator('.lesson-intro-example')).to_contain_text('An adjective phrase (AP) is a phrase built around an adjective.')
-   expect(view.get_by_role('heading',name='What you’ll see in this chapter')).to_be_visible()
+   expect(view.get_by_role('heading',name='What you’ll learn in this chapter')).to_be_visible()
    key_terms=view.locator('article > ul + .lesson-key-terms')
    expect(key_terms.get_by_role('heading',name='Key terms')).to_be_visible()
    assert key_terms.locator('dt').count() in (3,4)

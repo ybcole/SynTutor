@@ -104,18 +104,18 @@ export const nonFinitePilot = {
 
     switch (section.id) {
       case 'introduction': {
-        p('Chapter 6 showed which verb carries tense in a verb chain. Now compare “Nora planned” with “Nora plans”. The main verb changes from past to present. Do the words that say what Nora plans to do have to change too? This chapter looks at clauses without tense of their own, and how to work out who does the action in them.');
-        addIntroExample(body, el, 'The brackets mark what Nora planned to do. Try changing “planned” to “plans” and read the words in brackets again.',
+        p('Chapter 6 showed which verb carries tense in a verb chain. A non-finite clause has no tense of its own. It can still describe an action or state, and you can often work out its subject from the larger sentence. This chapter looks at clauses without tense of their own, and how to work out who does the action in them.');
+        addIntroExample(body, el, 'In the example below, the brackets mark what Nora planned to do. Try changing “planned” to “plans” and see which words keep their form.',
           'Nora planned [to inspect the bridge].',
-          '“Planned” carries past tense, so it is finite. The smaller clause, “to inspect the bridge”, stays the same. It is non-finite because it has no tense of its own. Nora is still the person who would do the inspecting, even though her name is outside the brackets.');
-        body.append(el('h3', 'What you’ll see in this chapter'));
+          '“Planned” carries past tense, so it is finite. The smaller clause, “to inspect the bridge”, stays the same. It is non-finite. In the tree, “to” carries the feature [-tense]. Nora is still the person who would do the inspecting, even though her name is outside the brackets.');
+        body.append(el('h3', 'What you’ll learn in this chapter'));
         const list = el('ul');
         for (const outcome of lesson.outcomes) list.append(el('li', outcome.text));
         body.append(list);
         break;
       }
       case 'concepts':
-        p('Read [-tense] as “minus tense”. It marks the untensed verb or auxiliary. See which branch has that mark in each example.');
+        p('Infinitives and participles are forms that lack tense. Read [-tense] as “minus tense”. In the trees on this page, it marks the untensed verb or auxiliary. See which branch has that mark in each example.');
         example('The crew made Ivo [wait].');
         p('“Wait” is a bare infinitive. It uses the plain verb form without “to”. Put [-tense] on V.');
         example('Nora planned [to inspect the bridge].');
@@ -130,7 +130,7 @@ export const nonFinitePilot = {
         p('In this -ing participle clause, put [-tense] on “knowing”. Compare “is checking”. There, “is” carries tense, so the progressive is finite.');
         break;
       case 'worked-example': {
-        p('Look at the smaller VP in the inspection tree. The node above “to” has [-tense]. Its sister is the lexical VP “inspect the bridge”.');
+        p('A to-infinitive uses “to” followed by a verb in its base form. In the inspection tree below, “to” bears [-tense] and sits beside the lexical VP “inspect the bridge”.');
         p('Say “Nora plans to inspect the bridge”, then change “plans” to “planned”. The time changes on the higher verb, but “to inspect the bridge” keeps its form. Inside the smaller VP, “to” bears [-tense] and takes “inspect the bridge” as its VP complement. In that lowest VP, “the bridge” belongs with “inspect”.');
         example('Nora plans [to inspect the bridge].');
         const fragment = lesson.worked_example.tree;
@@ -181,7 +181,7 @@ export const nonFinitePilot = {
         ]);
         break;
       case 'verb-complements':
-        p('Two sentences can look alike but group differently. “Expect” is a Type I verb here. It takes one clause with its own overt subject. “Persuade” is Type II here. It takes an object and a clause with a covert subject.');
+        p('With a Type I verb, labelled V(I), the non-finite clause is one complement with its own subject. With a Type II verb, labelled V(II), the higher verb takes an object and a separate non-finite clause. In the examples below, “expect” is Type I. It takes one clause with its own overt subject. “Persuade” is Type II here. It takes an object and a clause with a covert subject.');
         example('They expected [Ivo to wait].');
         example('They persuaded [Ivo] [to wait].');
         check('type-two-object', 'What is “Ivo” in the sentence with “persuaded”?',

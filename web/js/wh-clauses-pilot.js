@@ -110,18 +110,18 @@ export const whClausesPilot = {
 
     switch (section.id) {
       case 'introduction': {
-        p('Chapter 8 showed how to put a question inside a larger sentence. Now start with a question that asks for one missing piece of information. If someone asks what Nora is inspecting, you can look at a possible answer to find the job of “what”. In this chapter, you’ll trace that link in questions and use it to read relative clauses.');
-        addIntroExample(body, el, 'Start with a possible answer. The brackets show the part the question asks for.',
+        p('Chapter 8 showed how to put a question inside a larger sentence. Now look at questions that ask for a missing piece of information. A wh-expression is a question word or group such as “what” or “which bridge”. You can use a possible answer to find the job of that expression. In this chapter, you’ll trace that link in questions and use it to read relative clauses.');
+        addIntroExample(body, el, 'In the example below, the brackets mark the part of a possible answer that “What is Nora inspecting?” asks for.',
           'Nora is inspecting [the bridge].',
-          'In “What is Nora inspecting?”, “what” asks for the direct object, “the bridge”. A word or group like “what” is called a wh-expression. It appears at the front of the question. A dot marks the gap after “inspecting”, where the direct object would go.');
-        body.append(el('h3', 'What you’ll see in this chapter'));
+          'In “What is Nora inspecting?”, “what” asks for the direct object, “the bridge”. In the tree the wh-expression “what” appears in the front position labelled C2. A dot marks the gap after “inspecting”, where the direct object would go.');
+        body.append(el('h3', 'What you’ll learn in this chapter'));
         const list = el('ul');
         for (const outcome of lesson.outcomes) list.append(el('li', outcome.text));
         body.append(list);
         break;
       }
       case 'concepts':
-        p('Imagine that Nora is inspecting the bridge with Ivo. Both questions below ask who is with her. In one, “with” stays inside the clause. In the other, the whole PP moves to the front.');
+        p('Wh-fronting places the question word or phrase in C2 near the front of a clause. Imagine that Nora is inspecting the bridge with Ivo. Both examples below ask who is with her. In one, “with” stays inside the clause. In the other, the whole PP moves to the front.');
         example('[Who] is Nora inspecting the bridge with?');
         example('[With whom] is Nora inspecting the bridge?');
         trace('Compare three positions for a wh-gap', [

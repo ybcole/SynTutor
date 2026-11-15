@@ -114,17 +114,25 @@ try:
                 open_lesson(preview + f'{id}/{section}')
                 expect(view).to_contain_text('Chapter pilot · progress saved on this device')
                 assert page.url.endswith(f'#lesson/{id}/{section}')
+                if section == 'introduction':
+                    expect(view.get_by_role('heading', name='What you’ll learn in this chapter')).to_be_visible()
+                    expect(view.locator('.lesson-intro-example > p').first).to_contain_text('below')
+                if section == 'recap':
+                    expect(view.get_by_role('heading', name='Key takeaways')).to_be_visible()
+                    assert view.locator('article > ul.constituent-recap > li').count() >= 3
                 entries = topics.get(section, [])
                 assert len(entries) <= 4, (id, section)
                 expect(view.locator('article > h3[id^="br"]')).to_have_count(len(entries))
                 if entries:
                     view.get_by_text('Practice and feedback', exact=True).press('Enter')
-                for topic_id, title, example, explanation, prompt, answer in entries:
+                for topic_id, title, example, explanation, prompt, answer, *definition in entries:
                     selector = f'#{topic_id.lower()}'
                     heading = view.locator(selector)
                     expect(heading).to_have_text(title)
-                    expect(view.locator(f'{selector} + p')).to_have_text(example)
-                    for index, paragraph in enumerate(explanation.split('\n\n'), start=2):
+                    if definition:
+                        expect(view.locator(f'{selector} + p')).to_have_text(definition[0])
+                    expect(view.locator(selector + ' + p' * (1 + len(definition)))).to_have_text(example)
+                    for index, paragraph in enumerate(explanation.split('\n\n'), start=2 + len(definition)):
                         expect(view.locator(selector + ' + p' * index)).to_have_text(paragraph)
                     exercise = view.locator(f'{selector}-practice')
                     expect(exercise.locator(':scope > p')).to_have_text(prompt)
@@ -140,8 +148,10 @@ try:
                     expect(view.locator('.lesson-notation').first).to_be_visible()
                     assert canvases.evaluate_all("""nodes => nodes.every(canvas => {
                       const outline = canvas.querySelector('.lesson-tree-text');
+                      const observation = canvas.querySelector('.lesson-tree-observation');
                       const notation = canvas.closest('article').querySelector('.lesson-notation');
-                      return !outline.open && Boolean(outline.compareDocumentPosition(notation) & Node.DOCUMENT_POSITION_FOLLOWING);
+                      return !outline.open && (!observation || observation.nextElementSibling === outline)
+                        && Boolean(outline.compareDocumentPosition(notation) & Node.DOCUMENT_POSITION_FOLLOWING);
                     })""")
                     disclosure = canvases.first.locator('details.lesson-tree-text')
                     disclosure.locator('summary').press('Enter')

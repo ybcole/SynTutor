@@ -1,4 +1,4 @@
-import { addIntroExample, lessonExample, addTreeTrace } from './lesson-presentation.js';
+import { addExplanationPractice, addIntroExample, lessonExample, addTreeTrace } from './lesson-presentation.js';
 import { addEmbeddedTreeExercise } from './lesson-tree-exercise.js';
 import { addPhrase, addWordsFromText, childrenOf, connect, createModel, roots } from './syntax-builder.js';
 
@@ -116,21 +116,21 @@ export const functionsPilot = {
     const example = text => body.append(lessonExample(el, text));
 
     if (page === 0) {
-      p('In Chapter 1, you tested which words belong together. Now you’ll use those groups to take a sentence apart. Start with a sentence about a glowing lantern. Which words pick out the lantern? Which words tell you what it is doing?');
-      addIntroExample(body, el, 'Read each bracketed group on its own. See which one names the lantern and which one tells you what it is doing.',
+      p('In Chapter 1, you tested which words belong together. Now you’ll use those groups to take a sentence apart. A grammatical function is the job a word or group does in a sentence. First you’ll identify the subject and predicate. Then you’ll look inside phrases to find complements, the groups that fill roles made available by a head.');
+      addIntroExample(body, el, 'In the example below, read each bracketed group on its own. See which one names the lantern and which one tells you what it is doing.',
         '[The lantern by the stairs] [is glowing].',
         '“The lantern by the stairs” is the subject. “Is glowing” is the predicate. Those names tell you each group’s function, or job. The category tells you what kind of phrase it is. You’ll use a yes/no question to check where the whole subject ends.');
-      heading('What you’ll see in this chapter');
+      heading('What you’ll learn in this chapter');
       const list = el('ul');
       for (const outcome of lesson.outcomes) list.append(el('li', outcome.text));
       body.append(list);
     }
     if (page === 1) {
-      p('A subject can be longer than one word. Compare the statement with its yes/no question to find where the subject ends.');
+      p('The subject is the group a predicate says something about. In a basic statement tree, the subject and predicate share a parent, S. Compare the statement and yes/no question below to find where the whole subject ends.');
       p('In “The lantern by the stairs is glowing”, “lantern” alone names the object, but it does not include the words that identify which lantern. In the question, “the lantern by the stairs” moves as a group relative to “is”. Use the whole group when you mark the subject.');
       example(`${lantern}.`);
       example('Is the lantern by the stairs glowing?');
-      p('In the question, “is” comes before the whole subject and “glowing” comes after it. In the statement, “is glowing” is the whole predicate. Pick the last word of the subject in the statement.');
+      p('In the question, “is” comes before the whole subject and “glowing” comes after it. In the statement, “is glowing” is the whole predicate.');
       const words = el('div', undefined, 'lesson-tree-steps');
       const feedback = el('div', undefined, 'lesson-tree-observation');
       feedback.setAttribute('role', 'status');
@@ -148,10 +148,12 @@ export const functionsPilot = {
         choice.setAttribute('aria-pressed', 'false');
         words.append(choice);
       }
-      body.append(words, feedback);
+      const exercise = el('section', undefined, 'lesson-practice-panel');
+      exercise.append(el('p', 'Pick the last word of the subject in the statement.'), words, feedback);
+      body.append(exercise);
     }
     if (page === 2) {
-      p('A noun phrase (NP) is built around a noun, such as “lantern”. A verb phrase (VP) is built around a verb. In the first tree, both phrases sit right under S, the sentence node. S is their parent. Nodes that share a parent are sisters.');
+      p('A noun phrase is built around a noun and is labelled NP. A verb phrase is built around a verb and is labelled VP. In the example “Mira checked the lantern”, “lantern” heads the NP “the lantern”, and “checked” heads the VP “checked the lantern”. In the short sentence tree below, the subject NP and predicate VP share S as their parent. Nodes that share a parent are sisters.');
       p('Next, look at a sentence with two NPs. Follow one branch up from each NP. Its parent helps show what job the NP does.');
       p('Think of category as the kind of group and function as its job here. In “Mira checked the lantern”, both “Mira” and “the lantern” are NPs. Switch them in “The lantern startled Mira” and both categories stay the same, while “Mira” is now the object. A tree shows the difference by placing the two NPs under different parents.');
       trace(body, ui);
@@ -161,12 +163,12 @@ export const functionsPilot = {
       repair(body, ui);
     }
     if (page === 3) {
-      p('Inside a phrase, the head is the main word. It gives the phrase its category, or type. To see what the other parts do, try leaving out one part at a time.');
+      p('A head is the word that gives a phrase its category. A modifier adds information about the head or its group. A complement fills a role the head makes available in a particular use. A verb can take an object as its complement, and a preposition can take a group that names a landmark. In the examples below, try leaving out one part at a time to see how the roles differ.');
       example('Tessa repaired a loose hinge.');
       p('In “a loose hinge”, “hinge” is the head. “Loose” is a modifier because it adds a detail. “Tessa repaired a hinge” still makes sense without it. The whole NP “a loose hinge” is a complement of “repaired”. It tells what Tessa repaired.');
       example('Ava slipped beside the counter.');
       p('“Beside” and “the counter” share a parent. You can leave out the whole location. If you keep “beside” with this meaning, “the counter” fills the complement role. It tells what the location is beside.');
-      p('Use the omission test at two levels. In “Tessa slipped beside the counter”, you can leave out the entire location and still have “Tessa slipped”. Inside the location phrase, “the counter” is needed to say what the person was beside. A group can be optional as a whole while containing parts that depend on each other.');
+      p('Use the omission test at two levels. In the example about Ava, you can leave out the entire location and still have “Ava slipped”. Inside the location phrase, “the counter” is needed to say what the person was beside. A group can be optional as a whole while containing parts that depend on each other.');
       heading('Try a new sentence');
       example('Leo tightened a loose bolt.');
       p('Write the subject and predicate. Then say which word “loose” describes and which group tells what Leo tightened.');
@@ -174,28 +176,10 @@ export const functionsPilot = {
       hint.append(el('summary', 'Hint'), el('p', 'Compare “Leo tightened a bolt” with the original. Which word can disappear while the thing being tightened is still named?'));
       body.append(hint);
       const key = `syntutor:lesson-transfer:${ui.userId}:br-02@${lesson.content_version}:application`;
-      const label = el('label', 'Your explanation');
-      label.htmlFor = 'chapter-two-transfer';
-      const input = el('textarea');
-      input.id = label.htmlFor;
-      input.rows = 3;
-      input.maxLength = 1200;
-      try { input.value = localStorage.getItem(key) || ''; } catch { /* The exercise still works. */ }
-      const feedback = el('div', undefined, 'lesson-tree-observation');
-      feedback.setAttribute('role', 'status');
-      const answer = el('p');
-      feedback.append(answer);
-      const reveal = button('Compare your explanation', () => {
-        answer.textContent = '“Leo” is the subject. “Tightened a loose bolt” is the predicate. “Loose” modifies “bolt”, and “a loose bolt” is the full complement of “tightened”.';
+      addExplanationPractice(body, ui, {
+        key, id: 'chapter-two-transfer',
+        explanation: '“Leo” is the subject. “Tightened a loose bolt” is the predicate. “Loose” modifies “bolt”, and “a loose bolt” is the full complement of “tightened”.',
       });
-      reveal.disabled = !input.value.trim();
-      input.addEventListener('input', () => {
-        reveal.disabled = !input.value.trim();
-        try { localStorage.setItem(key, input.value); } catch { /* Keep the current response in the field. */ }
-      });
-      const practice = el('div', undefined, 'lesson-pilot-transfer');
-      practice.append(label, input, reveal, feedback);
-      body.append(practice);
     }
     if (page === 4) {
       p('Find the biggest groups first. Use a yes/no question to check where the subject ends. Then go back to the statement to find the whole predicate.');

@@ -154,17 +154,17 @@ export const auxiliariesPilot = {
     };
 
     if (section.id === 'introduction') {
-      p('A verb phrase can have more than one verb. Compare “studies” with “is studying”. Both describe studying, and “is” helps show that the action is in progress. This chapter looks at how helping verbs fit into a tree and how they help form questions and negative statements.');
+      p('An auxiliary is a helping verb. It heads a VP and takes another VP as its complement. A lexical verb supplies the main action or state. This chapter looks at how helping verbs fit into a tree and how they help form questions and negative statements.');
       addIntroExample(body, el, 'In the sentence below, the first brackets mark the helping verb. The second mark the group that tells what Monsieur Blanc is doing.',
         'Monsieur Blanc [is] [studying the menu].',
-        '“Is” is a helping verb called a progressive auxiliary. It heads its own VP. The lexical VP “studying the menu” is its complement. Only “is” carries tense here. You’ll follow the same pattern when there is more than one auxiliary.');
-      heading('What you’ll see in this chapter');
+        'In the example, “is” is the progressive auxiliary, labelled PROG. It shows the activity is in progress and heads its own VP. The lexical VP “studying the menu” is its complement. Only “is” carries tense here, so PROG also has the feature [pres] for present tense. You’ll follow the same pattern when there is more than one auxiliary.');
+      heading('What you’ll learn in this chapter');
       const list = el('ul');
       for (const outcome of lesson.outcomes) list.append(el('li', outcome.text));
       body.append(list);
     }
     if (section.id === 'concepts') {
-      p('Find the lexical verb at the end of the chain. It heads the innermost VP, which holds any complements of that verb. Work back from there. Each auxiliary heads a bigger VP that holds the one you just found.');
+      p('The first verb carries tense in an auxiliary chain. The tree uses [pres] for present and [past] for past. Find the lexical verb at the end of the chain. It heads the innermost VP, which holds any complements of that verb. Work back from there. Each auxiliary heads a bigger VP that holds the one you just found.');
       example('Mara [should] [have] [packed the lantern].');
       const feedback = status();
       body.append(practiceQuestion('chain-heads', 'In “should have packed the lantern”, which verb carries tense?', [
@@ -184,7 +184,7 @@ export const auxiliariesPilot = {
       addBranchExercise(body, ui, repair);
     }
     if (section.id === 'chain') {
-      p('Count the auxiliaries in “should have packed”. “Should” and “have” each head a VP. “Packed” heads the lexical VP inside them. That makes three VPs. Only the first verb carries tense.');
+      p('Each auxiliary adds a layer of VP. MOD marks a modal, PERF marks perfect “have”, PROG marks progressive “be”, and PASS marks passive “be”. Count the auxiliaries in the example below. “Should” and “have” each head a VP. “Packed” heads the lexical VP inside them. That makes three VPs. Only the first verb carries tense.');
       example('Mara [should] [have] [packed the lantern].');
       p('Follow the steps to see how each VP fits inside the one above it.');
       trace('Trace each auxiliary layer', [
@@ -212,7 +212,7 @@ export const auxiliariesPilot = {
       p('In “They were going to India next week last week”, start with “next week”. It tells when the trip was set to happen and goes with the lexical VP. “Last week” tells when that plan held. It goes with the higher past-tense PROG VP. What a time phrase means can help you find its scope.');
     }
     if (section.id === 'passive') {
-      p('Passive “be” heads its own VP. It takes another VP as its complement. Look for “the statue” in both sentences.');
+      p('In a passive construction, the active object can become the subject. Passive “be” is labelled PASS and heads a VP with another VP as its complement. Look for “the statue” in both sentences below.');
       example('The curator moved [the statue].');
       example('[The statue] was moved by the curator.');
       p('“The statue” is the object in the active sentence and the subject in the passive sentence. A dot marks the empty object position in the passive tree. “Moved” still has [trans]. The optional “by” phrase tells who moved the statue.');

@@ -66,7 +66,7 @@ try:
         expect(view.get_by_text('Maya thinks [Leo said [Nora closed the gate]].', exact=True)).to_be_visible()
         next_page.click()
         expect(view.get_by_text('In a tree, S is the node that groups that subject and predicate.', exact=False)).to_be_visible()
-        expect(view.get_by_text('S′ includes its introducer.', exact=False)).to_be_visible()
+        expect(view.get_by_text('S′, read “S-bar”, groups C and S as one clause.', exact=False)).to_be_visible()
         expect(view.get_by_text('Was Nora inspecting the bridge? · Leo asked [whether [Nora was inspecting the bridge]].', exact=True)).to_be_visible()
         note = view.locator('.constituent-diagram .lesson-tree-observation')
         outline = view.locator('.lesson-tree-outline')

@@ -1,5 +1,5 @@
 import { addConstituentTreeBuilder } from './constituent-tree-builder.js';
-import { addIntroExample, addTreeTrace } from './lesson-presentation.js';
+import { addExplanationPractice, addIntroExample, addTreeTrace } from './lesson-presentation.js';
 
 const sentence = 'Mina paused near the stone arch.';
 const word = (text, index) => ({ id: `word-${index}`, word: text });
@@ -31,11 +31,11 @@ function comparison(body, { el, button, showDiagram }, name, views) {
   function select(index) {
     const { tree, focusId, caption } = views[index];
     buttons.forEach((item, i) => item.setAttribute('aria-pressed', String(i === index)));
-    showDiagram(canvas, tree, { focusId, highlightWords: true });
+    showDiagram(canvas, tree, { focusId, highlightWords: true, observation });
     captionText.textContent = caption;
   }
   controls.append(...buttons);
-  figure.append(controls, canvas, observation);
+  figure.append(controls, canvas);
   body.append(figure);
   select(0);
 }
@@ -74,17 +74,17 @@ export const constituentsPilot = {
     };
 
     if (page === 0) {
-      paragraph('When you read a sentence, some words make sense as a group. How can you tell which words go together? In this chapter, you’ll test groups by leaving words out, swapping them for a single word, and asking what question they answer.');
-      addIntroExample(body, el, 'Read the sentence below. The outer brackets mark where Mina paused. The inner brackets mark the landmark inside that location.',
+      paragraph('When you read a sentence, some words work together as one unit. A word or group with that job is called a constituent. How can you tell which words go together? In this chapter, you’ll test groups by leaving words out, swapping them for a single word, and asking what question they answer.');
+      addIntroExample(body, el, 'In the example below, the outer brackets mark where Mina paused. The inner brackets mark the landmark inside that location.',
         'Mina paused [near [the stone arch]].',
-        '“The stone arch” names the landmark. Add “near” and the whole phrase tells where Mina paused. A constituent is a word or group that works as one unit. Both bracketed groups are constituents. The way one group fits inside the other is called hierarchy.');
-      heading('What you’ll see in this chapter');
+        '“The stone arch” names the landmark. Add “near” and the whole phrase tells where Mina paused. Both bracketed groups work as units, so both are constituents. The way one group fits inside the other is called hierarchy.');
+      heading('What you’ll learn in this chapter');
       const list = el('ul');
       for (const outcome of lesson.outcomes) list.append(el('li', outcome.text));
       body.append(list);
     }
     if (page === 1) {
-      paragraph('The brackets suggest two groups. Try changing one group at a time to see which words belong together.');
+      paragraph('A constituency test checks whether a stretch of words works as a unit. The brackets in the example below suggest two groups. Try changing one group at a time to check them.');
       paragraph('A useful test changes one group while keeping the rest of the sentence steady. If one word such as “there” can stand for the whole location, that is evidence that those words work together. Try a second test when the first one is uncertain. A group can be a constituent even if the sentence needs it.');
       example(sentence);
       heading('Omit the location or replace it');
@@ -97,7 +97,7 @@ export const constituentsPilot = {
       disclosure('Try the question test', 'Where did Mina pause? “Near the stone arch that spans the canal.” The longer landmark sits inside the longer location phrase.');
     }
     if (page === 2) {
-      paragraph('A phrase marker is a tree that shows which words belong together. A node is a point on the tree. It can have a label and branches below it. Here, PHRASE-a labels the big group. PHRASE-b labels the smaller group inside it.');
+      paragraph('A phrase marker is a tree that shows which words belong together. A node is a point on the tree. It can have a label and branches below it. In the example below, PHRASE-a labels the whole location. In the nested tree, PHRASE-b labels the landmark inside it.');
       example(sentence);
       paragraph('A node dominates everything its branches reach below it. It immediately dominates anything it reaches in one branch. In each tree, look for a node that reaches just the three words naming the landmark.');
       paragraph('Start at PHRASE-a and follow just one branch. In the nested drawing, you can reach “near” or the PHRASE-b node in one move. You need another move to reach “arch”. That is why PHRASE-a dominates “arch” without immediately dominating it.');
@@ -131,30 +131,10 @@ export const constituentsPilot = {
       paragraph('Explain both meanings. In each one, which group does “with a pencil” belong to?');
       disclosure('Hint', 'Ask whether the pencil explains how the sketch was made or helps identify the guide.');
       const key = `syntutor:lesson-transfer:${ui.userId}:br-01@${lesson.content_version}:application`;
-      const label = el('label', 'Your explanation');
-      label.htmlFor = 'chapter-one-transfer';
-      const response = el('textarea');
-      response.id = label.htmlFor;
-      response.rows = 3;
-      response.maxLength = 1200;
-      try { response.value = localStorage.getItem(key) || ''; }
-      catch { /* The learner can still write an explanation. */ }
-      response.addEventListener('input', () => {
-        try { localStorage.setItem(key, response.value); }
-        catch { /* Keep the current response in the field. */ }
+      addExplanationPractice(body, ui, {
+        key, id: 'chapter-one-transfer',
+        explanation: 'When “with a pencil” joins the sketching group, Ivo used it to draw. When it joins “the guide”, the guide is the person with the pencil.',
       });
-      const feedback = el('div', undefined, 'lesson-tree-observation');
-      const answer = el('p');
-      feedback.append(answer);
-      answer.setAttribute('role', 'status');
-      const reveal = ui.button('Compare your explanation', () => {
-        answer.textContent = 'When “with a pencil” joins the sketching group, Ivo used it to draw. When it joins “the guide”, the guide is the person with the pencil.';
-      });
-      reveal.disabled = !response.value.trim();
-      response.addEventListener('input', () => { reveal.disabled = !response.value.trim(); });
-      const practice = el('div', undefined, 'lesson-pilot-transfer');
-      practice.append(label, response, reveal, feedback);
-      body.append(practice);
     }
     if (page === 4) {
       paragraph('Start with a group you think belongs together. Try leaving it out, replacing it, moving it, or asking a question it answers. Check what happens in that sentence.');

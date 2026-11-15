@@ -650,7 +650,7 @@ function question(lesson,key,p,locked,onAnswer = answer => act({type:'answer',an
   return section;
 }
 
-function mountLessonCanvas(host, tree, options, textOpen = false) {
+function mountLessonCanvas(host, tree, { observation, ...options }, textOpen = false) {
   const treeView = renderLessonTree(tree, { ...options, lessonCanvas: true });
   const canvas = el('div', undefined, 'lesson-tree-canvas');
   canvas.append(treeView);
@@ -658,6 +658,7 @@ function mountLessonCanvas(host, tree, options, textOpen = false) {
   lessonCanvases.set(host, enableCanvasView(canvas, treeView));
   const text = treeView.querySelector('.lesson-tree-text');
   text.open = textOpen;
+  if (observation) canvas.append(observation);
   canvas.append(text);
   return canvas;
 }
@@ -745,15 +746,13 @@ function appendWorkedTree(aside, worked, { focusId, blank = null, comparisonTree
     wordBaseline: comparisonTree ? 2 : 0,
     highlightWords: highlightWords || Boolean(comparisonTree),
     tracePath,
+    observation: inline ? observation ?? selectedWords : null,
   }, textOpen);
   if (inline) {
     if (selected) describeSelection(selected);
     if (observation) {
       observation.querySelector('.constituent-selection')?.remove();
       observation.prepend(selectedWords);
-      canvas.after(observation);
-    } else {
-      canvas.append(selectedWords);
     }
   } else {
     aside.append(el('p', worked.origin, 'lesson-origin'));
@@ -919,10 +918,9 @@ function articleScreen(lesson, p, article) {
       const textOpen = clearLessonDiagram(figure);
       if (flatTree) {
         const canvas = mountLessonCanvas(figure, flatTree, {
-          focusId: flatTree.root.id, wordBaseline: 2, highlightWords: true,
+          focusId: flatTree.root.id, wordBaseline: 2, highlightWords: true, observation,
         }, textOpen);
         observation.querySelector('.constituent-selection')?.remove();
-        canvas.after(observation);
         return canvas;
       }
       const worked = lesson.worked_example;

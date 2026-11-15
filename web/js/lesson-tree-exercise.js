@@ -9,11 +9,8 @@ export function addEmbeddedTreeExercise(body, { el, button, mountBuilder }, { la
   guidance.hidden = true;
   const status = el('p', undefined, 'first-tree-feedback');
   status.setAttribute('role', 'status');
-  const checkStatus = el('p', undefined, 'first-tree-feedback');
-  checkStatus.setAttribute('role', 'status');
-  function showFeedback(message, target = status) {
-    (target === status ? checkStatus : status).textContent = '';
-    target.textContent = message;
+  function showFeedback(message) {
+    status.textContent = message;
   }
   for (const [index, step] of guide.entries()) {
     const item = el('li');
@@ -48,8 +45,8 @@ export function addEmbeddedTreeExercise(body, { el, button, mountBuilder }, { la
   toolbar.append(help, undo);
 
   const footer = el('div', undefined, 'first-tree-footer');
-  footer.append(checkStatus, button('Check my tree', () => showFeedback(editor.check(), checkStatus), 'lesson-primary'));
-  workspace.append(toolbar, guidance, status, stage, footer);
+  footer.append(status, button('Check my tree', () => showFeedback(editor.check()), 'lesson-primary'));
+  workspace.append(toolbar, guidance, stage, footer);
   body.append(workspace);
   const editor = mountBuilder(stage, exercise);
 }

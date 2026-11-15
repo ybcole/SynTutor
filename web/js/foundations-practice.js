@@ -1,7 +1,7 @@
 import { lessonExample } from './lesson-presentation.js';
 
 export function addWordPractice(body, { el, button }, steps) {
-  const section = el('section', undefined, 'lesson-transfer');
+  const section = el('section', undefined, 'lesson-transfer lesson-practice-panel');
   const heading = el('h3', 'Try it yourself');
   const progress = el('p');
   const prompt = el('p');
@@ -91,7 +91,7 @@ export function addWordPractice(body, { el, button }, steps) {
 }
 
 export function addCombinationPractice(body, { el, button }, basic, incomplete, { showDerivation = false } = {}) {
-  const section = el('section', undefined, 'lesson-transfer');
+  const section = el('section', undefined, 'lesson-transfer lesson-practice-panel');
   const heading = el('h3', 'Try it yourself');
   const prompt = el('p', 'Join two complete sentences. Try the unfinished input to see why it fails.');
   const inputs = [el('select'), el('select')];

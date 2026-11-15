@@ -98,7 +98,7 @@ const chapters = {
   'br-05': {
     topics: ['Adjuncts and Two Levels of VP', 'Complements and Time Adjuncts', 'Reading and Building the VP Layers', 'Finding an Adjunct in a New Sentence'],
     intro: 'Chapter 4 grouped a verb with its direct object. This chapter keeps that group intact and asks where a time phrase fits when it is added to the sentence.',
-    exampleContext: 'The first bracket marks what Nora did. The second marks when the inspection happened.',
+    exampleContext: 'In the inspection example below, the first bracket marks what Nora did. The second marks when the inspection happened.',
     example: 'Nora [inspected the bridge] [in June].',
     introExample: 'An adjunct adds information such as time, place, or manner to a group. “In June” adds the time of the inspection. The tree shows this by joining it to the whole group “inspected the bridge”.',
     preview: ['Find the verb and its object before adding the time phrase.', 'Trace and build the inner and outer VP.', 'Use omission and replacement to check the grouping in a new sentence.'],
@@ -174,7 +174,7 @@ export const phraseStructureArticles = Object.fromEntries(Object.entries(chapter
     if (page === 0) {
       sections([['What this chapter covers', chapter.intro]]);
       addIntroExample(body, el, chapter.exampleContext, chapter.example, chapter.introExample);
-      body.append(el('h3', 'What you’ll see in this chapter'));
+      body.append(el('h3', 'What you’ll learn in this chapter'));
       list('ul', chapter.preview);
     }
     if (page === 1) {

@@ -99,18 +99,18 @@ export const adverbialsPilot = {
 
     switch (section.id) {
       case 'introduction': {
-        p('Chapter 4 looked at the groups a verb takes as complements. Now try adding a detail to an event you already know. If Nora inspected the bridge in June, would taking out the time change what she did? In this chapter, you’ll use questions like this to tell a complement from an extra detail and decide where each one goes in a tree.');
-        addIntroExample(body, el, 'The first brackets mark the action. The second mark the group that says when it happened.',
+        p('Chapter 4 looked at the groups a verb takes as complements. An adverbial gives information such as when, where, or how something happened. An adjunct is an optional modifier. Now try adding an adjunct to an event you already know. In this chapter, you’ll use questions like this to tell a complement from an extra detail and decide where each one goes in a tree.');
+        addIntroExample(body, el, 'In the example below, the first brackets mark the action. The second mark the group that says when it happened. Try reading the sentence without that second group.',
           'Nora [inspected the bridge] [in June].',
           '“In June” is a prepositional phrase (PP). It does the job of an adverbial because it tells when the inspection happened. “Nora inspected the bridge” still works on its own. Here the PP is an adjunct, an optional detail that modifies the whole verb phrase.');
-        heading('What you’ll see in this chapter');
+        heading('What you’ll learn in this chapter');
         const list = el('ul');
         for (const outcome of lesson.outcomes) list.append(el('li', outcome.text));
         body.append(list);
         break;
       }
       case 'concepts': {
-        p('In “Nora inspected the bridge in June”, you can leave out “in June” and still tell what Nora did. Try leaving out the PP in the next two sentences. What changes?');
+        p('A VP adjunct adds a detail to a verb phrase. In the Chapter 5 opening example, you can leave out “in June” and still tell what Nora did. Try leaving out the PP in the next two sentences. What changes?');
         example('Mina repaired the tools [in the shed].');
         example('Mina put the tools [in the shed].');
         p('With “repaired”, the shed is where the work happened. With “put”, the shed is where the tools ended up. The place completes the meaning of “put” here. A phrase that tells where an object ends up or what it becomes can be an object predicative.');
@@ -131,7 +131,7 @@ export const adverbialsPilot = {
         break;
       }
       case 'worked-example': {
-        p('Look at the inspection again. Find the verb and its complement inside VP₁. Then find VP₂. It holds all of VP₁ plus the time adjunct.');
+        p('The basic verb phrase contains the verb and its complements. The tree below labels that layer VP₁. The outer verb phrase, VP₂, contains VP₁ plus the time adjunct.');
         example('Nora [inspected the bridge] [in June].');
         const inspection = numberedInspection(lesson.worked_example.tree);
         const [, outer] = inspection.root.children;
@@ -161,7 +161,7 @@ export const adverbialsPilot = {
         p('An NP can add a time, too. In “Mara checked the latch last night”, “last night” is an NP. In these trees, the adjunct sits next to the whole phrase it modifies. Other positions can work differently.');
         break;
       case 'particles':
-        p('When you see “off”, ask which words it goes with. In “turned off”, “off” is a particle. It joins a verb to make a phrasal verb meaning “switch off”. In “off the bus”, “off” is a preposition. It joins “the bus” to show the path.');
+        p('A phrasal verb combines a verb with a particle. The tree labels the particle Prt and adds [phrasal] to V. Compare the two examples below. “Off” combines with “turned” to mean “switched off”. In the second sentence, P labels “off” because it heads the PP “off the bus”, which shows the path.');
         example('Lea [turned off] the lamp.');
         example('Lea stepped [off the bus].');
         p('Replace “the lamp” with “it”. In “Lea turned it off”, “it” fits before the particle. In “Lea stepped off it”, “it” stays after the preposition.');
@@ -171,7 +171,7 @@ export const adverbialsPilot = {
         ]);
         break;
       case 'ellipsis':
-        p('You can leave out an adjunct because it adds an extra detail. Ellipsis works differently. The words are missing, but the listener can still work out the role they would fill.');
+        p('Ellipsis leaves words unspoken when their role can still be understood. In the tree below, E marks an understood recipient inside NP. An adjunct can also be left out because it adds an optional detail to the event.');
         p('Compare “Mina gave the map to Ren” with “Mina gave the map” in a conversation where Ren was receiving supplies. The recipient can be understood from context, so the shorter wording can leave that role unspoken. In “Mina gave the map after lunch”, the time phrase tells when, without supplying the missing recipient.');
         p('Suppose Mina gives supplies to Ren. The people talking already know that Ren gets the supplies.');
         example('Mina gave Ren a map.');

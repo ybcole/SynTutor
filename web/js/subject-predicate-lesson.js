@@ -146,7 +146,7 @@ function addTreeComparison(body, ui) {
       showWorkedTree(diagram, focusId, { highlightWords: true, onSelect, observation });
     } else {
       observation.querySelector('.constituent-selection')?.remove();
-      showDiagram(diagram, tree, { focusId, highlightWords: true, onSelectNode: onSelect }).after(observation);
+      showDiagram(diagram, tree, { focusId, highlightWords: true, onSelectNode: onSelect, observation });
     }
     describe(index, answer);
   }
@@ -196,7 +196,9 @@ function addSubjectBoundary(body, { el, button }) {
     }
   }
   choices.append(...controls);
-  body.append(el('p', prompt), choices, response);
+  const exercise = el('section', undefined, 'lesson-practice-panel');
+  exercise.append(el('p', prompt), choices, response);
+  body.append(exercise);
 }
 
 function addClosingWarmup(body, { el }) {
@@ -224,10 +226,10 @@ export function addSubjectPredicateTeaching(body, page, ui) {
     section('What this chapter covers',
       'In Chapter 1, you learned how words form groups. Here you’ll see how two groups work together in a simple statement. In these simple statements, the subject is the group that the sentence says something about. The predicate tells what the subject does or what state it is in.');
     addIntroExample(body, el,
-      'Read this statement about the robins. The brackets show its subject and predicate as two separate groups.',
+      'Read the example below about the robins. The brackets show its subject and predicate as two separate groups.',
       `[${np}] [${vp}].`,
       `“${np}” is a noun phrase that serves as the subject. “${vp}” is a verb phrase that serves as the predicate. Noun phrase and verb phrase name the kinds of groups. Subject and predicate name their jobs in this sentence.`);
-    section('What you’ll see in this chapter');
+    section('What you’ll learn in this chapter');
     const preview = el('ol');
     for (const [topic, example] of [
       ['Find the complete subject and predicate.', 'Use a yes/no question and a replacement test to check the split.'],
