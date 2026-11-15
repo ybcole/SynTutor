@@ -11435,26 +11435,26 @@
       "reference_tree_ids": [
         "ch2-33"
       ],
-      "prompt": "In Iris says that Luca waits., can the subordinate subject–predicate string be a clause without being a separate sentence of this text?",
+      "prompt": "Read “Jo waited. Mira noticed that the gate was open.” How many written sentences are there?",
       "options": [
         {
           "id": "a",
-          "text": "Yes",
+          "text": "Three",
           "rationale": "Central clauses can be embedded inside a larger text sentence."
         },
         {
           "id": "b",
-          "text": "No",
+          "text": "Two",
           "rationale": "For “No”: Central clauses can be embedded inside a larger text sentence. Distinguish text-level units from embedded syntax."
         },
         {
           "id": "c",
-          "text": "Only if it contains no verb",
+          "text": "One",
           "rationale": "For “Only if it contains no verb”: Central clauses can be embedded inside a larger text sentence. Distinguish text-level units from embedded syntax."
         }
       ],
-      "answer": "a",
-      "rationale": "Central clauses can be embedded inside a larger text sentence.",
+      "answer": "b",
+      "rationale": "The full stop after waited closes the first sentence. The second contains two clauses within its written boundary.",
       "answer_tree": null,
       "publication_status": "published",
       "review_status": "INDEPENDENTLY_REVIEWED",
@@ -11494,26 +11494,26 @@
       "reference_tree_ids": [
         "ch2-33"
       ],
-      "prompt": "Compare “Iris rests.” with “Ren knows that Iris rests.” How does Iris rests function in the second text?",
+      "prompt": "“The buses stopped.” Now read “I saw that the buses stopped.” What has changed?",
       "options": [
         {
           "id": "a",
-          "text": "As a separate text sentence",
+          "text": "The observation is a separate sentence in both cases.",
           "rationale": "For “As a separate text sentence”: The second occurrence is embedded within the larger sentence. The same subject–predicate string need not form an independent text sentence."
         },
         {
           "id": "b",
-          "text": "As an embedded clause",
+          "text": "The words have lost their subject and predicate.",
           "rationale": "The second occurrence is embedded within the larger sentence."
         },
         {
           "id": "c",
-          "text": "As a single word",
+          "text": "The observation is embedded in a larger clause.",
           "rationale": "For “As a single word”: The second occurrence is embedded within the larger sentence. The same subject–predicate string need not form an independent text sentence."
         }
       ],
-      "answer": "b",
-      "rationale": "The second occurrence is embedded within the larger sentence.",
+      "answer": "c",
+      "rationale": "The buses and stopped still supply a subject and predicate inside the longer sentence.",
       "answer_tree": null,
       "publication_status": "published",
       "review_status": "INDEPENDENTLY_REVIEWED",
@@ -11553,26 +11553,26 @@
       "reference_tree_ids": [
         "ch2-33"
       ],
-      "prompt": "For the single text sentence Iris thinks that Ren smiles., which sequence illustrates an embedded central clause?",
+      "prompt": "In “I noticed that the back door was open”, what is the subject of the embedded clause?",
       "options": [
         {
           "id": "a",
-          "text": "Iris thinks",
+          "text": "the back door",
           "rationale": "For “Iris thinks”: Ren smiles supplies the embedded subject–predicate construction. Look for the subordinate subject and predicate together."
         },
         {
           "id": "b",
-          "text": "Ren smiles",
+          "text": "I",
           "rationale": "Ren smiles supplies the embedded subject–predicate construction."
         },
         {
           "id": "c",
-          "text": "thinks that",
+          "text": "the back door was open",
           "rationale": "For “thinks that”: Ren smiles supplies the embedded subject–predicate construction. Look for the subordinate subject and predicate together."
         }
       ],
-      "answer": "b",
-      "rationale": "Ren smiles supplies the embedded subject–predicate construction.",
+      "answer": "a",
+      "rationale": "I is the main subject. Inside the observation, the back door is the subject of was open.",
       "answer_tree": null,
       "publication_status": "published",
       "review_status": "INDEPENDENTLY_REVIEWED",
@@ -11612,26 +11612,26 @@
       "reference_tree_ids": [
         "ch2-33"
       ],
-      "prompt": "Does identifying a subject–predicate clause require it to stand alone as a separate text sentence?",
+      "prompt": "How are the clauses related in “The latch clicked, but the door stayed shut”?",
       "options": [
         {
           "id": "a",
-          "text": "Yes",
+          "text": "The second clause is the object of clicked.",
           "rationale": "For “Yes”: Cambridge permits central clauses inside larger constructions. Do not impose text independence as a clause requirement."
         },
         {
           "id": "b",
-          "text": "Only after punctuation",
+          "text": "They are coordinates in one sentence.",
           "rationale": "For “Only after punctuation”: Cambridge permits central clauses inside larger constructions. Do not impose text independence as a clause requirement."
         },
         {
           "id": "c",
-          "text": "No, central clauses may be embedded",
+          "text": "The first clause is embedded in the second.",
           "rationale": "Cambridge permits central clauses inside larger constructions."
         }
       ],
-      "answer": "c",
-      "rationale": "Cambridge permits central clauses inside larger constructions.",
+      "answer": "b",
+      "rationale": "But joins two complete clauses at the same level. The written sentence includes both.",
       "answer_tree": null,
       "publication_status": "published",
       "review_status": "INDEPENDENTLY_REVIEWED",
@@ -11671,26 +11671,26 @@
       "reference_tree_ids": [
         "ch2-33"
       ],
-      "prompt": "Which revision corrects “every clause must be a separate text sentence” within the reviewed scope?",
+      "prompt": "Which line contains two clauses within one written sentence?",
       "options": [
         {
           "id": "a",
-          "text": "Central clauses may be embedded in a larger sentence",
+          "text": "Ren finished the job.",
           "rationale": "Embedding is compatible with the central subject–predicate clause description."
         },
         {
           "id": "b",
-          "text": "All B-R S labels must become CLAUSE",
+          "text": "Ren checked the tools and the locks.",
           "rationale": "For “All B-R S labels must become CLAUSE”: Embedding is compatible with the central subject–predicate clause description. This classification does not rename B-R nodes or judge whole-sentence grammaticality."
         },
         {
           "id": "c",
-          "text": "Clauses never have subjects",
+          "text": "Ren thinks the job is finished.",
           "rationale": "For “Clauses never have subjects”: Embedding is compatible with the central subject–predicate clause description. This classification does not rename B-R nodes or judge whole-sentence grammaticality."
         }
       ],
-      "answer": "a",
-      "rationale": "Embedding is compatible with the central subject–predicate clause description.",
+      "answer": "c",
+      "rationale": "In the first line, Ren thinks takes the embedded clause the job is finished.",
       "answer_tree": null,
       "publication_status": "published",
       "review_status": "INDEPENDENTLY_REVIEWED",
@@ -11730,26 +11730,26 @@
       "reference_tree_ids": [
         "ch2-33"
       ],
-      "prompt": "In Felix says that Nell waits., can the subordinate subject–predicate string be a clause without being a separate sentence of this text?",
+      "prompt": "In “The log says that the lift failed”, what is the main-clause subject?",
       "options": [
         {
           "id": "a",
-          "text": "Yes",
+          "text": "the log",
           "rationale": "Central clauses can be embedded inside a larger text sentence."
         },
         {
           "id": "b",
-          "text": "No",
+          "text": "the lift",
           "rationale": "For “No”: Central clauses can be embedded inside a larger text sentence. Distinguish text-level units from embedded syntax."
         },
         {
           "id": "c",
-          "text": "Only if it contains no verb",
+          "text": "that the lift failed",
           "rationale": "For “Only if it contains no verb”: Central clauses can be embedded inside a larger text sentence. Distinguish text-level units from embedded syntax."
         }
       ],
       "answer": "a",
-      "rationale": "Central clauses can be embedded inside a larger text sentence.",
+      "rationale": "The log is what says something. The lift is the subject inside what the log says.",
       "answer_tree": null,
       "publication_status": "published",
       "review_status": "INDEPENDENTLY_REVIEWED",
@@ -11789,26 +11789,26 @@
       "reference_tree_ids": [
         "ch2-33"
       ],
-      "prompt": "Compare “Felix rests.” with “Ren knows that Felix rests.” How does Felix rests function in the second text?",
+      "prompt": "In “I heard that the lift had stopped”, which words form the predicate inside the embedded clause?",
       "options": [
         {
           "id": "a",
-          "text": "As a separate text sentence",
+          "text": "had stopped",
           "rationale": "For “As a separate text sentence”: The second occurrence is embedded within the larger sentence. The same subject–predicate string need not form an independent text sentence."
         },
         {
           "id": "b",
-          "text": "As an embedded clause",
+          "text": "the lift had stopped",
           "rationale": "The second occurrence is embedded within the larger sentence."
         },
         {
           "id": "c",
-          "text": "As a single word",
+          "text": "heard",
           "rationale": "For “As a single word”: The second occurrence is embedded within the larger sentence. The same subject–predicate string need not form an independent text sentence."
         }
       ],
-      "answer": "b",
-      "rationale": "The second occurrence is embedded within the larger sentence.",
+      "answer": "a",
+      "rationale": "The lift is the embedded subject. Had stopped is what the clause says about it.",
       "answer_tree": null,
       "publication_status": "published",
       "review_status": "INDEPENDENTLY_REVIEWED",
@@ -11848,26 +11848,26 @@
       "reference_tree_ids": [
         "ch2-33"
       ],
-      "prompt": "For the single text sentence Felix thinks that Ren smiles., which sequence illustrates an embedded central clause?",
+      "prompt": "In “Rae knew the road was blocked”, which words express what Rae knew?",
       "options": [
         {
           "id": "a",
-          "text": "Felix thinks",
+          "text": "was blocked",
           "rationale": "For “Felix thinks”: Ren smiles supplies the embedded subject–predicate construction. Look for the subordinate subject and predicate together."
         },
         {
           "id": "b",
-          "text": "Ren smiles",
+          "text": "Rae knew",
           "rationale": "Ren smiles supplies the embedded subject–predicate construction."
         },
         {
           "id": "c",
-          "text": "thinks that",
+          "text": "the road was blocked",
           "rationale": "For “thinks that”: Ren smiles supplies the embedded subject–predicate construction. Look for the subordinate subject and predicate together."
         }
       ],
-      "answer": "b",
-      "rationale": "Ren smiles supplies the embedded subject–predicate construction.",
+      "answer": "c",
+      "rationale": "The entire embedded clause supplies the content of the knowledge, even without that.",
       "answer_tree": null,
       "publication_status": "published",
       "review_status": "INDEPENDENTLY_REVIEWED",
@@ -11907,26 +11907,26 @@
       "reference_tree_ids": [
         "ch2-33"
       ],
-      "prompt": "Does identifying a subject–predicate clause require it to stand alone as a separate text sentence?",
+      "prompt": "What does but connect in “Mina phoned, but the line was busy”?",
       "options": [
         {
           "id": "a",
-          "text": "Yes",
+          "text": "Two subjects of phoned",
           "rationale": "For “Yes”: Cambridge permits central clauses inside larger constructions. Do not impose text independence as a clause requirement."
         },
         {
           "id": "b",
-          "text": "Only after punctuation",
+          "text": "Two clauses",
           "rationale": "For “Only after punctuation”: Cambridge permits central clauses inside larger constructions. Do not impose text independence as a clause requirement."
         },
         {
           "id": "c",
-          "text": "No, central clauses may be embedded",
+          "text": "A verb and its object",
           "rationale": "Cambridge permits central clauses inside larger constructions."
         }
       ],
-      "answer": "c",
-      "rationale": "Cambridge permits central clauses inside larger constructions.",
+      "answer": "b",
+      "rationale": "Mina phoned and the line was busy each have a subject and a predicate.",
       "answer_tree": null,
       "publication_status": "published",
       "review_status": "INDEPENDENTLY_REVIEWED",
@@ -11966,26 +11966,26 @@
       "reference_tree_ids": [
         "ch2-33"
       ],
-      "prompt": "Which revision corrects “every clause must be a separate text sentence” within the reviewed scope?",
+      "prompt": "Which wording puts the delivery report into the content of someone’s speech?",
       "options": [
         {
           "id": "a",
-          "text": "Central clauses may be embedded in a larger sentence",
+          "text": "The crate arrived. Rae called.",
           "rationale": "Embedding is compatible with the central subject–predicate clause description."
         },
         {
           "id": "b",
-          "text": "All B-R S labels must become CLAUSE",
+          "text": "Rae said the crate had arrived.",
           "rationale": "For “All B-R S labels must become CLAUSE”: Embedding is compatible with the central subject–predicate clause description. This classification does not rename B-R nodes or judge whole-sentence grammaticality."
         },
         {
           "id": "c",
-          "text": "Clauses never have subjects",
+          "text": "The crate had arrived, and Rae smiled.",
           "rationale": "For “Clauses never have subjects”: Embedding is compatible with the central subject–predicate clause description. This classification does not rename B-R nodes or judge whole-sentence grammaticality."
         }
       ],
-      "answer": "a",
-      "rationale": "Embedding is compatible with the central subject–predicate clause description.",
+      "answer": "b",
+      "rationale": "The clause the crate had arrived fills the content slot after said.",
       "answer_tree": null,
       "publication_status": "published",
       "review_status": "INDEPENDENTLY_REVIEWED",

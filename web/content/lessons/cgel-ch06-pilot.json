@@ -1,0 +1,372 @@
+{
+  "title": "Enough, and accustomed to",
+  "content_version": "2.1.0",
+  "estimated_minutes": 9,
+  "outcomes": [
+    {
+      "id": "o1",
+      "text": "Place enough according to the expression it modifies."
+    },
+    {
+      "id": "o2",
+      "text": "Recognise prepositional to after accustomed and contrast it with infinitival to."
+    },
+    {
+      "id": "o3",
+      "text": "Explain the choices in a sentence that contains both constructions."
+    }
+  ],
+  "key_terms": [
+    {
+      "term": "degree",
+      "definition": "How far a quality or activity reaches, as in bright enough."
+    },
+    {
+      "term": "prepositional to",
+      "definition": "The to in accustomed to the schedule or accustomed to working late."
+    },
+    {
+      "term": "infinitival marker",
+      "definition": "The to before a plain verb in an infinitival clause, as in to work late."
+    }
+  ],
+  "revised_assessment": {
+    "required_sections": [
+      "introduction",
+      "concepts",
+      "worked-example",
+      "application",
+      "recap"
+    ],
+    "opening": [
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "enough",
+            "feedback": "Degree enough follows the adjective quiet."
+          },
+          {
+            "id": "b",
+            "text": "with enough",
+            "feedback": "Degree enough follows the adjective quiet."
+          },
+          {
+            "id": "c",
+            "text": "of enough",
+            "feedback": "Degree enough follows the adjective quiet."
+          }
+        ],
+        "prompt": "Finish “The room was quiet ___ to record in.”",
+        "answer": "a",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH06-P0534"
+        ],
+        "id": "opening-1"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Jo plans to work late.",
+            "feedback": "Accustomed takes prepositional to with a gerund-participial complement. Plans to expresses an intention."
+          },
+          {
+            "id": "b",
+            "text": "Jo is accustomed to work late.",
+            "feedback": "Accustomed takes prepositional to with a gerund-participial complement. Plans to expresses an intention."
+          },
+          {
+            "id": "c",
+            "text": "Jo is accustomed to working late.",
+            "feedback": "Accustomed takes prepositional to with a gerund-participial complement. Plans to expresses an intention."
+          }
+        ],
+        "prompt": "Which phrase says that late work is already familiar to Jo?",
+        "answer": "c",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH06-P0545"
+        ],
+        "id": "opening-2"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Both are infinitival constructions.",
+            "feedback": "The first choice is about modifier position. The second depends on which kind of to is present."
+          },
+          {
+            "id": "b",
+            "text": "Enough follows the adjective it grades. To after accustomed licenses the -ing clause.",
+            "feedback": "The first choice is about modifier position. The second depends on which kind of to is present."
+          },
+          {
+            "id": "c",
+            "text": "Both need a plain verb after to.",
+            "feedback": "The first choice is about modifier position. The second depends on which kind of to is present."
+          }
+        ],
+        "prompt": "Why do “warm enough” and “accustomed to working” call for different form choices?",
+        "answer": "b",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH06-P0534",
+          "CGEL-2002-CH06-P0545"
+        ],
+        "id": "opening-3"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "enough",
+            "feedback": "The blank is before chairs, the ordinary position for enough when it specifies the amount."
+          },
+          {
+            "id": "b",
+            "text": "chairs were enough",
+            "feedback": "The blank is before chairs, the ordinary position for enough when it specifies the amount."
+          },
+          {
+            "id": "c",
+            "text": "chairs enough",
+            "feedback": "The blank is before chairs, the ordinary position for enough when it specifies the amount."
+          }
+        ],
+        "prompt": "Complete “We had ___ chairs for everyone.”",
+        "answer": "a",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH06-P0534"
+        ],
+        "id": "opening-4"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "accustomed to following the schedule",
+            "feedback": "Accustomed to the new schedule preserves the prepositional frame."
+          },
+          {
+            "id": "b",
+            "text": "planning to follow the schedule",
+            "feedback": "Accustomed to the new schedule preserves the prepositional frame."
+          },
+          {
+            "id": "c",
+            "text": "hoping to follow the schedule",
+            "feedback": "Accustomed to the new schedule preserves the prepositional frame."
+          }
+        ],
+        "prompt": "Which phrase lets you replace the activity with “the new schedule” without changing the frame?",
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH06-P0545"
+        ],
+        "id": "opening-5"
+      }
+    ],
+    "closing": [
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "We enough tested the microphone.",
+            "feedback": "The short direct object stays next to tested, with enough after it."
+          },
+          {
+            "id": "b",
+            "text": "We tested enough the microphone.",
+            "feedback": "The short direct object stays next to tested, with enough after it."
+          },
+          {
+            "id": "c",
+            "text": "We tested the microphone enough.",
+            "feedback": "The short direct object stays next to tested, with enough after it."
+          }
+        ],
+        "prompt": "Keep the direct object in “We tested the microphone” and add enough.",
+        "answer": "c",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH06-P0535"
+        ],
+        "id": "closing-1"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "The number of songs",
+            "feedback": "Enough measures the action. The song identifies what was practised."
+          },
+          {
+            "id": "b",
+            "text": "The quality of the song itself",
+            "feedback": "Enough measures the action. The song identifies what was practised."
+          },
+          {
+            "id": "c",
+            "text": "The extent of the practice",
+            "feedback": "Enough measures the action. The song identifies what was practised."
+          }
+        ],
+        "prompt": "What is enough about in “We practised the song enough”?",
+        "answer": "c",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH06-P0534"
+        ],
+        "id": "closing-2"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "planned to stay late",
+            "feedback": "The infinitival marker is followed by the plain verb stay. The other uses take a prepositional complement."
+          },
+          {
+            "id": "b",
+            "text": "accustomed to the late shift",
+            "feedback": "The infinitival marker is followed by the plain verb stay. The other uses take a prepositional complement."
+          },
+          {
+            "id": "c",
+            "text": "accustomed to staying late",
+            "feedback": "The infinitival marker is followed by the plain verb stay. The other uses take a prepositional complement."
+          }
+        ],
+        "prompt": "Which expression contains infinitival to?",
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH06-P0545"
+        ],
+        "id": "closing-3"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "It belongs to accustomed.",
+            "feedback": "Enough and time form a noun phrase that measures an amount."
+          },
+          {
+            "id": "b",
+            "text": "It modifies the adjective late.",
+            "feedback": "Enough and time form a noun phrase that measures an amount."
+          },
+          {
+            "id": "c",
+            "text": "It specifies the amount of time.",
+            "feedback": "Enough and time form a noun phrase that measures an amount."
+          }
+        ],
+        "prompt": "In “We’re accustomed to staying late, but we don’t have enough time”, why does enough go first in its phrase?",
+        "answer": "c",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH06-P0534",
+          "CGEL-2002-CH06-P0545"
+        ],
+        "id": "closing-4"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "care about enough it / care about it enough",
+            "feedback": "With care, enough can precede or follow the whole about phrase."
+          },
+          {
+            "id": "b",
+            "text": "enough care about it / care about enough it",
+            "feedback": "With care, enough can precede or follow the whole about phrase."
+          },
+          {
+            "id": "c",
+            "text": "care enough about it / care about it enough",
+            "feedback": "With care, enough can precede or follow the whole about phrase."
+          }
+        ],
+        "prompt": "Which pair shows two possible positions with a prepositional complement of care?",
+        "answer": "c",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH06-P0535"
+        ],
+        "id": "closing-5"
+      }
+    ]
+  },
+  "preview_sources": [
+    {
+      "id": "CGEL-2002-CH06-P0534",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 534,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0535",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 535,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH06-P0545",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 6,
+      "printed_page": 545,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    }
+  ]
+}

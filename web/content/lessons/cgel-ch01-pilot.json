@@ -1,0 +1,356 @@
+{
+  "title": "Contractions with coordinated subjects",
+  "content_version": "2.1.0",
+  "estimated_minutes": 8,
+  "outcomes": [
+    {
+      "id": "o1",
+      "text": "Find the full subject before deciding whether to contract a form of be."
+    },
+    {
+      "id": "o2",
+      "text": "Distinguish coordinated noun phrases from coordinated clauses."
+    },
+    {
+      "id": "o3",
+      "text": "Explain why contractions are possible in some sentences that contain and."
+    }
+  ],
+  "key_terms": [
+    {
+      "term": "contraction",
+      "definition": "A reduced form written with an apostrophe, as in you’re for you are."
+    },
+    {
+      "term": "coordinated subject",
+      "definition": "One subject made up of coordinated expressions, as in Maya and you."
+    },
+    {
+      "term": "auxiliary reduction",
+      "definition": "The shortening of a form such as are to ’re and its attachment to the preceding word."
+    }
+  ],
+  "revised_assessment": {
+    "required_sections": [
+      "introduction",
+      "concepts",
+      "worked-example",
+      "application",
+      "recap"
+    ],
+    "opening": [
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "you",
+            "feedback": "The one predicate applies to the entire coordinated subject."
+          },
+          {
+            "id": "b",
+            "text": "you are",
+            "feedback": "The one predicate applies to the entire coordinated subject."
+          },
+          {
+            "id": "c",
+            "text": "Maya and you",
+            "feedback": "The one predicate applies to the entire coordinated subject."
+          }
+        ],
+        "prompt": "Which words form the subject in “Maya and you are on the list”?",
+        "answer": "c",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH01-P0010"
+        ],
+        "id": "opening-1"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Two predicates with the same subject",
+            "feedback": "Each side has a subject and its own predicate."
+          },
+          {
+            "id": "b",
+            "text": "Two clauses",
+            "feedback": "Each side has a subject and its own predicate."
+          },
+          {
+            "id": "c",
+            "text": "Two pronouns in one subject",
+            "feedback": "Each side has a subject and its own predicate."
+          }
+        ],
+        "prompt": "What does and join in “I’m at the desk, and you’re at the door”?",
+        "answer": "b",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH01-P0010"
+        ],
+        "id": "opening-2"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "After the break, you are next.",
+            "feedback": "You is the full subject only in the first wording. In the other two it is part of Jo and you."
+          },
+          {
+            "id": "b",
+            "text": "Jo and you are next.",
+            "feedback": "You is the full subject only in the first wording. In the other two it is part of Jo and you."
+          },
+          {
+            "id": "c",
+            "text": "I think Jo and you are next.",
+            "feedback": "You is the full subject only in the first wording. In the other two it is part of Jo and you."
+          }
+        ],
+        "prompt": "In which line can you reduce “you are” to “you’re” without reorganising the clause?",
+        "answer": "a",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH01-P0010"
+        ],
+        "id": "opening-3"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Sam waved, and you were near the exit.",
+            "feedback": "Sam and you is a coordinated subject of the single predicate were near the exit."
+          },
+          {
+            "id": "b",
+            "text": "Sam was near the exit, and you were there too.",
+            "feedback": "Sam and you is a coordinated subject of the single predicate were near the exit."
+          },
+          {
+            "id": "c",
+            "text": "Sam and you were near the exit.",
+            "feedback": "Sam and you is a coordinated subject of the single predicate were near the exit."
+          }
+        ],
+        "prompt": "Which version keeps one shared predicate for Sam and the listener?",
+        "answer": "c",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH01-P0010"
+        ],
+        "id": "opening-4"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "at ready after Lea",
+            "feedback": "Lea is ready is already a complete clause. The second clause starts with its own subject, you."
+          },
+          {
+            "id": "b",
+            "text": "at too",
+            "feedback": "Lea is ready is already a complete clause. The second clause starts with its own subject, you."
+          },
+          {
+            "id": "c",
+            "text": "at you’re",
+            "feedback": "Lea is ready is already a complete clause. The second clause starts with its own subject, you."
+          }
+        ],
+        "prompt": "In “Lea is ready, and you’re ready too”, where does the second clause begin?",
+        "answer": "c",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH01-P0010"
+        ],
+        "id": "opening-5"
+      }
+    ],
+    "closing": [
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Tess and you’re both on duty.",
+            "feedback": "The full are can follow Tess and you and begin the shared predicate."
+          },
+          {
+            "id": "b",
+            "text": "Tess and you are on duty.",
+            "feedback": "The full are can follow Tess and you and begin the shared predicate."
+          },
+          {
+            "id": "c",
+            "text": "Tess is on duty, and you’re on duty.",
+            "feedback": "The full are can follow Tess and you and begin the shared predicate."
+          }
+        ],
+        "prompt": "A volunteer writes “Tess and you’re on duty”, meaning Tess and the reader have the same assignment. Which repair keeps a single clause?",
+        "answer": "b",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH01-P0010"
+        ],
+        "id": "closing-1"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "the usher",
+            "feedback": "The relevant subject is inside the clause after that, and it includes both pronouns."
+          },
+          {
+            "id": "b",
+            "text": "I and you",
+            "feedback": "The relevant subject is inside the clause after that, and it includes both pronouns."
+          },
+          {
+            "id": "c",
+            "text": "you alone",
+            "feedback": "The relevant subject is inside the clause after that, and it includes both pronouns."
+          }
+        ],
+        "prompt": "In “The usher says that I and you are on the list”, what controls are?",
+        "answer": "b",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH01-P0010"
+        ],
+        "id": "closing-2"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "The list names Jo and you’re.",
+            "feedback": "In the first example, Jo checked the door already has a predicate. You is the full subject after and."
+          },
+          {
+            "id": "b",
+            "text": "Jo and you’re checking the window.",
+            "feedback": "In the first example, Jo checked the door already has a predicate. You is the full subject after and."
+          },
+          {
+            "id": "c",
+            "text": "Jo checked the door, and you’re checking the window.",
+            "feedback": "In the first example, Jo checked the door already has a predicate. You is the full subject after and."
+          }
+        ],
+        "prompt": "Which example has a valid contraction after and because a new clause starts there?",
+        "answer": "c",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH01-P0010"
+        ],
+        "id": "closing-3"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Are is chosen only because we is the nearest word.",
+            "feedback": "One shared predicate tells us something about both parts of the subject."
+          },
+          {
+            "id": "b",
+            "text": "Are follows the coordinated subject she and we.",
+            "feedback": "One shared predicate tells us something about both parts of the subject."
+          },
+          {
+            "id": "c",
+            "text": "We are the only people described as ready.",
+            "feedback": "One shared predicate tells us something about both parts of the subject."
+          }
+        ],
+        "prompt": "Which explanation fits “She and we are ready”?",
+        "answer": "b",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH01-P0010"
+        ],
+        "id": "closing-4"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "The second coordinates two subjects of leaving.",
+            "feedback": "In the second example Kim has the predicate is staying, while you has are leaving."
+          },
+          {
+            "id": "b",
+            "text": "The first coordinates noun phrases and the second coordinates clauses.",
+            "feedback": "In the second example Kim has the predicate is staying, while you has are leaving."
+          },
+          {
+            "id": "c",
+            "text": "Both coordinate clauses.",
+            "feedback": "In the second example Kim has the predicate is staying, while you has are leaving."
+          }
+        ],
+        "prompt": "How do “Kim and you are leaving” and “Kim is staying, and you’re leaving” differ?",
+        "answer": "b",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH01-P0010"
+        ],
+        "id": "closing-5"
+      }
+    ]
+  },
+  "preview_sources": [
+    {
+      "id": "CGEL-2002-CH01-P0009",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 1,
+      "printed_page": 9,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH01-P0010",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 1,
+      "printed_page": 10,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    }
+  ]
+}

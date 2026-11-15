@@ -1,0 +1,356 @@
+{
+  "title": "Time words and connecting words",
+  "content_version": "2.1.0",
+  "estimated_minutes": 8,
+  "outcomes": [
+    {
+      "id": "o1",
+      "text": "Identify what can follow before and related prepositions introducing clauses."
+    },
+    {
+      "id": "o2",
+      "text": "Put ago and elapsed-time on after the duration phrase."
+    },
+    {
+      "id": "o3",
+      "text": "Distinguish backward counting from the present from forward counting from an earlier event."
+    }
+  ],
+  "key_terms": [
+    {
+      "term": "preposition",
+      "definition": "A word that heads a preposition phrase. In the Cambridge analysis it can take a noun phrase or clause as complement, among other possibilities."
+    },
+    {
+      "term": "content clause",
+      "definition": "A clause such as the siren rang, which can serve as a complement inside a larger construction."
+    },
+    {
+      "term": "reference point",
+      "definition": "The time from which an expression counts backward or forward."
+    }
+  ],
+  "revised_assessment": {
+    "required_sections": [
+      "introduction",
+      "concepts",
+      "worked-example",
+      "application",
+      "recap"
+    ],
+    "opening": [
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "before the bell",
+            "feedback": "The bell is the subject and rang is its predicate. Together they form the complement of before."
+          },
+          {
+            "id": "b",
+            "text": "the bell rang",
+            "feedback": "The bell is the subject and rang is its predicate. Together they form the complement of before."
+          },
+          {
+            "id": "c",
+            "text": "the bell",
+            "feedback": "The bell is the subject and rang is its predicate. Together they form the complement of before."
+          }
+        ],
+        "prompt": "Which part of “We left before the bell rang” is a clause inside the before phrase?",
+        "answer": "b",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH07-P0604"
+        ],
+        "id": "opening-1"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "I saw it three weeks ago.",
+            "feedback": "Ago follows the complete duration phrase."
+          },
+          {
+            "id": "b",
+            "text": "I saw it ago three weeks.",
+            "feedback": "Ago follows the complete duration phrase."
+          },
+          {
+            "id": "c",
+            "text": "I saw it three ago weeks.",
+            "feedback": "Ago follows the complete duration phrase."
+          }
+        ],
+        "prompt": "Choose the usual wording for a memory from three weeks earlier.",
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH07-P0632"
+        ],
+        "id": "opening-2"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Two years after the reader sees the text",
+            "feedback": "On counts forward from the closure mentioned in the first sentence."
+          },
+          {
+            "id": "b",
+            "text": "2016",
+            "feedback": "On counts forward from the closure mentioned in the first sentence."
+          },
+          {
+            "id": "c",
+            "text": "2020",
+            "feedback": "On counts forward from the closure mentioned in the first sentence."
+          }
+        ],
+        "prompt": "In “The bridge closed in 2018. Two years on, it reopened”, when did it reopen?",
+        "answer": "c",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH07-P0632"
+        ],
+        "id": "opening-3"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "before that the rain started",
+            "feedback": "Before permits the content clause without that and with ordinary subject–verb order."
+          },
+          {
+            "id": "b",
+            "text": "before the rain started",
+            "feedback": "Before permits the content clause without that and with ordinary subject–verb order."
+          },
+          {
+            "id": "c",
+            "text": "before did the rain start",
+            "feedback": "Before permits the content clause without that and with ordinary subject–verb order."
+          }
+        ],
+        "prompt": "Choose the ordinary clause after before.",
+        "answer": "b",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH07-P0604"
+        ],
+        "id": "opening-4"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "The time of speaking or writing",
+            "feedback": "Ago ordinarily counts backward from the speaker or writer’s present."
+          },
+          {
+            "id": "b",
+            "text": "Any date mentioned in an earlier sentence",
+            "feedback": "Ago ordinarily counts backward from the speaker or writer’s present."
+          },
+          {
+            "id": "c",
+            "text": "The time when the bridge first closed",
+            "feedback": "Ago ordinarily counts backward from the speaker or writer’s present."
+          }
+        ],
+        "prompt": "What is the default reference point in “The bridge reopened two years ago”?",
+        "answer": "a",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH07-P0632"
+        ],
+        "id": "opening-5"
+      }
+    ],
+    "closing": [
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "We waited before (that) the gate shut.",
+            "feedback": "Know permits either form. The time prepositions in the other examples do not take the extra marker in those uses."
+          },
+          {
+            "id": "b",
+            "text": "We left after (that) the bells rang.",
+            "feedback": "Know permits either form. The time prepositions in the other examples do not take the extra marker in those uses."
+          },
+          {
+            "id": "c",
+            "text": "We know (that) the gate is shut.",
+            "feedback": "Know permits either form. The time prepositions in the other examples do not take the extra marker in those uses."
+          }
+        ],
+        "prompt": "Which pair permits the same clause with or without that?",
+        "answer": "c",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH07-P0604"
+        ],
+        "id": "closing-1"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "five years ago",
+            "feedback": "Elapsed-time on follows the duration and measures forward from a reference point."
+          },
+          {
+            "id": "b",
+            "text": "on five years",
+            "feedback": "Elapsed-time on follows the duration and measures forward from a reference point."
+          },
+          {
+            "id": "c",
+            "text": "five years on",
+            "feedback": "Elapsed-time on follows the duration and measures forward from a reference point."
+          }
+        ],
+        "prompt": "Which expression can mean “five years later”?",
+        "answer": "c",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH07-P0632"
+        ],
+        "id": "closing-2"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "2022",
+            "feedback": "Four years before 2026 is 2022."
+          },
+          {
+            "id": "b",
+            "text": "2030",
+            "feedback": "Four years before 2026 is 2022."
+          },
+          {
+            "id": "c",
+            "text": "2024",
+            "feedback": "Four years before 2026 is 2022."
+          }
+        ],
+        "prompt": "A diary written in 2026 reads, “The store closed four years ago.” What year does the writer mean?",
+        "answer": "a",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH07-P0632"
+        ],
+        "id": "closing-3"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "We left after that the roads flooded.",
+            "feedback": "Provided allows the marker. Before and after in these time-clause constructions do not."
+          },
+          {
+            "id": "b",
+            "text": "You can come provided that the roads are clear.",
+            "feedback": "Provided allows the marker. Before and after in these time-clause constructions do not."
+          },
+          {
+            "id": "c",
+            "text": "We left before that the roads flooded.",
+            "feedback": "Provided allows the marker. Before and after in these time-clause constructions do not."
+          }
+        ],
+        "prompt": "Which line shows a preposition that can take a that-clause in the construction given?",
+        "answer": "b",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH07-P0604"
+        ],
+        "id": "closing-4"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "on",
+            "feedback": "Ten years is the duration phrase placed before elapsed-time on."
+          },
+          {
+            "id": "b",
+            "text": "ten years",
+            "feedback": "Ten years is the duration phrase placed before elapsed-time on."
+          },
+          {
+            "id": "c",
+            "text": "still empty",
+            "feedback": "Ten years is the duration phrase placed before elapsed-time on."
+          }
+        ],
+        "prompt": "In “Ten years on, the harbour was still empty”, which words supply the duration?",
+        "answer": "b",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH07-P0632"
+        ],
+        "id": "closing-5"
+      }
+    ]
+  },
+  "preview_sources": [
+    {
+      "id": "CGEL-2002-CH07-P0604",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 7,
+      "printed_page": 604,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH07-P0632",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 7,
+      "printed_page": 632,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    }
+  ]
+}

@@ -1,0 +1,647 @@
+{
+  "title": "Pronouns and pro-forms",
+  "content_version": "2.1.0",
+  "estimated_minutes": 18,
+  "outcomes": [
+    {
+      "id": "o1",
+      "text": "Trace reflexives and reciprocals to the expressions that license them."
+    },
+    {
+      "id": "o2",
+      "text": "Choose between repeating a noun and using one, a fused head or a demonstrative."
+    },
+    {
+      "id": "o3",
+      "text": "Explain what is recoverable when a verb phrase or other material is left out."
+    }
+  ],
+  "key_terms": [
+    {
+      "term": "antecedent",
+      "definition": "An expression that supplies the interpretation for another expression, as doors supplies the noun understood in the red one."
+    },
+    {
+      "term": "reflexive",
+      "definition": "A form such as herself or themselves. It can point back to a local antecedent or add emphasis in a separate use."
+    },
+    {
+      "term": "reciprocal",
+      "definition": "A form such as each other that represents a relation holding in both directions or among members of a group."
+    },
+    {
+      "term": "ellipsis",
+      "definition": "A construction where material is unexpressed but can be recovered from the context."
+    }
+  ],
+  "revised_assessment": {
+    "required_sections": [
+      "introduction",
+      "concepts",
+      "worked-example",
+      "application",
+      "recap"
+    ],
+    "opening": [
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Either person equally",
+            "feedback": "Jo is the subject of the clause containing the reflexive object."
+          },
+          {
+            "id": "b",
+            "text": "Jo",
+            "feedback": "Jo is the subject of the clause containing the reflexive object."
+          },
+          {
+            "id": "c",
+            "text": "Mira",
+            "feedback": "Jo is the subject of the clause containing the reflexive object."
+          }
+        ],
+        "prompt": "Who does herself ordinarily refer to in “Mira said Jo had reminded herself”?",
+        "answer": "b",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH17-P1488"
+        ],
+        "id": "opening-1"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "the blue one",
+            "feedback": "One supplies the nominal head and blue identifies the lantern."
+          },
+          {
+            "id": "b",
+            "text": "the blue equipment",
+            "feedback": "One supplies the nominal head and blue identifies the lantern."
+          },
+          {
+            "id": "c",
+            "text": "the one blue",
+            "feedback": "One supplies the nominal head and blue identifies the lantern."
+          }
+        ],
+        "prompt": "The intended antecedent is the count noun lantern. Which phrase avoids repeating it?",
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH17-P1512",
+          "CGEL-2002-CH17-P1515"
+        ],
+        "id": "opening-2"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "So haven’t I.",
+            "feedback": "Neither introduces the ordinary negative additive reply. The auxiliary precedes the subject."
+          },
+          {
+            "id": "b",
+            "text": "So have I.",
+            "feedback": "Neither introduces the ordinary negative additive reply. The auxiliary precedes the subject."
+          },
+          {
+            "id": "c",
+            "text": "Neither have I.",
+            "feedback": "Neither introduces the ordinary negative additive reply. The auxiliary precedes the subject."
+          }
+        ],
+        "prompt": "Respond to “I haven’t checked the lens” by adding the same negative statement about yourself.",
+        "answer": "c",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH17-P1539"
+        ],
+        "id": "opening-3"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "It is the object Mira checked.",
+            "feedback": "The lens is the object. The reflexive emphasises that Mira did the checking."
+          },
+          {
+            "id": "b",
+            "text": "It emphasises Mira.",
+            "feedback": "The lens is the object. The reflexive emphasises that Mira did the checking."
+          },
+          {
+            "id": "c",
+            "text": "It names a second person.",
+            "feedback": "The lens is the object. The reflexive emphasises that Mira did the checking."
+          }
+        ],
+        "prompt": "What does herself do in “Mira herself checked the lens”?",
+        "answer": "b",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH17-P1497",
+          "CGEL-2002-CH17-P1499"
+        ],
+        "id": "opening-4"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "three",
+            "feedback": "The numeral can carry the head function alone. Three spare ones has a different structure with an intervening modifier."
+          },
+          {
+            "id": "b",
+            "text": "three lantern",
+            "feedback": "The numeral can carry the head function alone. Three spare ones has a different structure with an intervening modifier."
+          },
+          {
+            "id": "c",
+            "text": "three ones",
+            "feedback": "The numeral can carry the head function alone. Three spare ones has a different structure with an intervening modifier."
+          }
+        ],
+        "prompt": "Which short phrase works after “We have two lanterns but we need ___”?",
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH17-P1512"
+        ],
+        "id": "opening-5"
+      }
+    ],
+    "closing": [
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Mira and Jo each helped themselves.",
+            "feedback": "The reciprocal links members of the subject and makes the helping mutual."
+          },
+          {
+            "id": "b",
+            "text": "Only Mira helped Jo.",
+            "feedback": "The reciprocal links members of the subject and makes the helping mutual."
+          },
+          {
+            "id": "c",
+            "text": "Mira helped Jo, and Jo helped Mira.",
+            "feedback": "The reciprocal links members of the subject and makes the helping mutual."
+          }
+        ],
+        "prompt": "Who helps whom in “Mira and Jo helped each other”?",
+        "answer": "c",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH17-P1502",
+          "CGEL-2002-CH17-P1503",
+          "CGEL-2002-CH17-P1505"
+        ],
+        "id": "closing-1"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "the ones",
+            "feedback": "Nonpointing that can refer back to equipment in this formal construction. One ordinarily needs a count reading."
+          },
+          {
+            "id": "b",
+            "text": "the one",
+            "feedback": "Nonpointing that can refer back to equipment in this formal construction. One ordinarily needs a count reading."
+          },
+          {
+            "id": "c",
+            "text": "that",
+            "feedback": "Nonpointing that can refer back to equipment in this formal construction. One ordinarily needs a count reading."
+          }
+        ],
+        "prompt": "Which phrase can recover the mass noun equipment in “the equipment on this floor and ___ on the next”?",
+        "answer": "c",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH17-P1509",
+          "CGEL-2002-CH17-P1512",
+          "CGEL-2002-CH17-P1515"
+        ],
+        "id": "closing-2"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "cleaned the lens",
+            "feedback": "The auxiliary stays overt, and its complement is recovered from the first clause."
+          },
+          {
+            "id": "b",
+            "text": "Jo has",
+            "feedback": "The auxiliary stays overt, and its complement is recovered from the first clause."
+          },
+          {
+            "id": "c",
+            "text": "the lens by itself",
+            "feedback": "The auxiliary stays overt, and its complement is recovered from the first clause."
+          }
+        ],
+        "prompt": "What is recovered after the final has in “Mira has cleaned the lens, and Jo has too”?",
+        "answer": "a",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH17-P1524",
+          "CGEL-2002-CH17-P1528"
+        ],
+        "id": "closing-3"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Did so always requires a new direct object.",
+            "feedback": "The do so construction recovers the verb and its complement together."
+          },
+          {
+            "id": "b",
+            "text": "Do so picks up cleaned the lens as a whole.",
+            "feedback": "The do so construction recovers the verb and its complement together."
+          },
+          {
+            "id": "c",
+            "text": "So stands for lens alone.",
+            "feedback": "The do so construction recovers the verb and its complement together."
+          }
+        ],
+        "prompt": "Why can “Jo did so too” follow “Mira cleaned the lens” in the same-action reading?",
+        "answer": "b",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH17-P1530"
+        ],
+        "id": "closing-4"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "else something",
+            "feedback": "Else follows its head in something else. In a comparable count noun phrase use another lantern or the other lantern."
+          },
+          {
+            "id": "b",
+            "text": "something else",
+            "feedback": "Else follows its head in something else. In a comparable count noun phrase use another lantern or the other lantern."
+          },
+          {
+            "id": "c",
+            "text": "else lantern",
+            "feedback": "Else follows its head in something else. In a comparable count noun phrase use another lantern or the other lantern."
+          }
+        ],
+        "prompt": "Which phrase uses else in its ordinary position?",
+        "answer": "b",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH17-P1548"
+        ],
+        "id": "closing-5"
+      }
+    ]
+  },
+  "preview_sources": [
+    {
+      "id": "CGEL-2002-CH17-P1457",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 17,
+      "printed_page": 1457,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH17-P1488",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 17,
+      "printed_page": 1488,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH17-P1497",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 17,
+      "printed_page": 1497,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH17-P1499",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 17,
+      "printed_page": 1499,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH17-P1500",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 17,
+      "printed_page": 1500,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH17-P1501",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 17,
+      "printed_page": 1501,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH17-P1502",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 17,
+      "printed_page": 1502,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH17-P1503",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 17,
+      "printed_page": 1503,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH17-P1505",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 17,
+      "printed_page": 1505,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH17-P1508",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 17,
+      "printed_page": 1508,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH17-P1509",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 17,
+      "printed_page": 1509,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH17-P1512",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 17,
+      "printed_page": 1512,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH17-P1515",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 17,
+      "printed_page": 1515,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH17-P1516",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 17,
+      "printed_page": 1516,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH17-P1518",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 17,
+      "printed_page": 1518,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH17-P1520",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 17,
+      "printed_page": 1520,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH17-P1524",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 17,
+      "printed_page": 1524,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH17-P1528",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 17,
+      "printed_page": 1528,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH17-P1530",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 17,
+      "printed_page": 1530,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH17-P1539",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 17,
+      "printed_page": 1539,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH17-P1541",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 17,
+      "printed_page": 1541,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH17-P1548",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 17,
+      "printed_page": 1548,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    }
+  ]
+}

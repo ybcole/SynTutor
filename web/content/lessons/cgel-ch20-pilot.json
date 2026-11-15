@@ -1,0 +1,593 @@
+{
+  "title": "Punctuation",
+  "content_version": "2.1.0",
+  "estimated_minutes": 13,
+  "outcomes": [
+    {
+      "id": "o1",
+      "text": "Choose punctuation from the structure of the whole written sentence."
+    },
+    {
+      "id": "o2",
+      "text": "Set off supplements, parenthetical material and direct speech using a consistent style."
+    },
+    {
+      "id": "o3",
+      "text": "Handle apostrophes, hyphens and terminal punctuation in common editing cases."
+    }
+  ],
+  "key_terms": [
+    {
+      "term": "sentence terminal",
+      "definition": "A mark such as a full stop, question mark or exclamation mark that can end a written sentence."
+    },
+    {
+      "term": "vocative",
+      "definition": "An expression naming the person being addressed, as in Jo, close the door."
+    },
+    {
+      "term": "connective adjunct",
+      "definition": "An expression such as however that links a clause’s meaning to surrounding text."
+    },
+    {
+      "term": "matrix sentence",
+      "definition": "The larger sentence containing an embedded question, quotation or other construction."
+    }
+  ],
+  "revised_assessment": {
+    "required_sections": [
+      "introduction",
+      "concepts",
+      "worked-example",
+      "application",
+      "recap"
+    ],
+    "opening": [
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "a question mark",
+            "feedback": "The main clause reports a question. The sentence as a whole is a statement."
+          },
+          {
+            "id": "b",
+            "text": "a full stop",
+            "feedback": "The main clause reports a question. The sentence as a whole is a statement."
+          },
+          {
+            "id": "c",
+            "text": "a semicolon",
+            "feedback": "The main clause reports a question. The sentence as a whole is a statement."
+          }
+        ],
+        "prompt": "Choose the ending for the report “Mara asked whether the hall was open___”",
+        "answer": "b",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH20-P1733"
+        ],
+        "id": "opening-1"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Mara, check the side gate.",
+            "feedback": "Mara is the person addressed in the command. The other commas interrupt ordinary connections."
+          },
+          {
+            "id": "b",
+            "text": "Mara checked, the gate.",
+            "feedback": "Mara is the person addressed in the command. The other commas interrupt ordinary connections."
+          },
+          {
+            "id": "c",
+            "text": "The gate near Mara, is closed.",
+            "feedback": "Mara is the person addressed in the command. The other commas interrupt ordinary connections."
+          }
+        ],
+        "prompt": "Which line uses a comma for direct address?",
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH20-P1745"
+        ],
+        "id": "opening-2"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Two",
+            "feedback": "The abbreviation’s final full stop also supplies the visible end of the statement."
+          },
+          {
+            "id": "b",
+            "text": "Zero",
+            "feedback": "The abbreviation’s final full stop also supplies the visible end of the statement."
+          },
+          {
+            "id": "c",
+            "text": "One",
+            "feedback": "The abbreviation’s final full stop also supplies the visible end of the statement."
+          }
+        ],
+        "prompt": "How many consecutive full stops follow the final C in the statement “The office is in Washington, D.C.”?",
+        "answer": "c",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH20-P1763",
+          "CGEL-2002-CH20-P1764"
+        ],
+        "id": "opening-3"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "The hall: by the old entrance was closed.",
+            "feedback": "The second clause explains the closure. A coordinate list of clauses needs a different boundary pattern."
+          },
+          {
+            "id": "b",
+            "text": "The hall was closed: the caretaker had gone home.",
+            "feedback": "The second clause explains the closure. A coordinate list of clauses needs a different boundary pattern."
+          },
+          {
+            "id": "c",
+            "text": "The hall opened at nine: the clinic opened at ten: the store opened at eleven.",
+            "feedback": "The second clause explains the closure. A coordinate list of clauses needs a different boundary pattern."
+          }
+        ],
+        "prompt": "Which line uses a colon to introduce an explanation?",
+        "answer": "b",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH20-P1737",
+          "CGEL-2002-CH20-P1738",
+          "CGEL-2002-CH20-P1739"
+        ],
+        "id": "opening-4"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "The gate, as you may recall was locked.",
+            "feedback": "Paired commas enclose the parenthetical material. A long subject alone needs no comma before was."
+          },
+          {
+            "id": "b",
+            "text": "The gate, as you may recall, was locked.",
+            "feedback": "Paired commas enclose the parenthetical material. A long subject alone needs no comma before was."
+          },
+          {
+            "id": "c",
+            "text": "The gate near the hall, was locked.",
+            "feedback": "Paired commas enclose the parenthetical material. A long subject alone needs no comma before was."
+          }
+        ],
+        "prompt": "Which sentence sets off the interruption while keeping the subject with its predicate?",
+        "answer": "b",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH20-P1744",
+          "CGEL-2002-CH20-P1745"
+        ],
+        "id": "opening-5"
+      }
+    ],
+    "closing": [
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "’",
+            "feedback": "The omission mark has the shape of a closing single quotation mark."
+          },
+          {
+            "id": "b",
+            "text": "“",
+            "feedback": "The omission mark has the shape of a closing single quotation mark."
+          },
+          {
+            "id": "c",
+            "text": "‘",
+            "feedback": "The omission mark has the shape of a closing single quotation mark."
+          }
+        ],
+        "prompt": "Which directional apostrophe indicates the missing letters before n in rock ’n’ roll?",
+        "answer": "a",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH20-P1725"
+        ],
+        "id": "closing-1"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "an",
+            "feedback": "Read the parenthesised words too. Unusually immediately follows the article in speech and begins with a vowel sound."
+          },
+          {
+            "id": "b",
+            "text": "a",
+            "feedback": "Read the parenthesised words too. Unusually immediately follows the article in speech and begins with a vowel sound."
+          },
+          {
+            "id": "c",
+            "text": "No article is possible.",
+            "feedback": "Read the parenthesised words too. Unusually immediately follows the article in speech and begins with a vowel sound."
+          }
+        ],
+        "prompt": "Which article fits before “(unusually detailed) manual” when the whole phrase is read aloud?",
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH20-P1748"
+        ],
+        "id": "closing-2"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Mara said, “The hall is closed.” And turned the key.",
+            "feedback": "The matrix sentence continues after the quotation, so the quoted full stop is dropped there."
+          },
+          {
+            "id": "b",
+            "text": "Mara said, “The hall is closed” and turned the key.",
+            "feedback": "The matrix sentence continues after the quotation, so the quoted full stop is dropped there."
+          },
+          {
+            "id": "c",
+            "text": "Mara said, “The hall is closed.” and turned the key.",
+            "feedback": "The matrix sentence continues after the quotation, so the quoted full stop is dropped there."
+          }
+        ],
+        "prompt": "Which version avoids a quoted full stop inside a continuing sentence?",
+        "answer": "b",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH20-P1753",
+          "CGEL-2002-CH20-P1754",
+          "CGEL-2002-CH20-P1755"
+        ],
+        "id": "closing-3"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Nothing more",
+            "feedback": "The internal question mark is retained and the external full stop is suppressed."
+          },
+          {
+            "id": "b",
+            "text": "An additional full stop",
+            "feedback": "The internal question mark is retained and the external full stop is suppressed."
+          },
+          {
+            "id": "c",
+            "text": "A second question mark",
+            "feedback": "The internal question mark is retained and the external full stop is suppressed."
+          }
+        ],
+        "prompt": "A quoted question ends the report “Mara asked, ‘Is the hall open?’” What follows the closing quotation mark?",
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH20-P1753",
+          "CGEL-2002-CH20-P1754",
+          "CGEL-2002-CH20-P1755"
+        ],
+        "id": "closing-4"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "the hall’s door / a two-day closure",
+            "feedback": "The genitive takes an apostrophe and the pre-head measure compound takes a hyphen with singular day."
+          },
+          {
+            "id": "b",
+            "text": "the hall’s door / a two-days closure",
+            "feedback": "The genitive takes an apostrophe and the pre-head measure compound takes a hyphen with singular day."
+          },
+          {
+            "id": "c",
+            "text": "the halls door / a two day closure",
+            "feedback": "The genitive takes an apostrophe and the pre-head measure compound takes a hyphen with singular day."
+          }
+        ],
+        "prompt": "Which pair uses the usual word punctuation in both phrases?",
+        "answer": "a",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH20-P1761",
+          "CGEL-2002-CH20-P1763"
+        ],
+        "id": "closing-5"
+      }
+    ]
+  },
+  "preview_sources": [
+    {
+      "id": "CGEL-2002-CH20-P1725",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1725,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH20-P1733",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1733,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH20-P1737",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1737,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH20-P1738",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1738,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH20-P1739",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1739,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH20-P1741",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1741,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH20-P1742",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1742,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH20-P1743",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1743,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH20-P1744",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1744,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH20-P1745",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1745,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH20-P1748",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1748,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH20-P1750",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1750,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH20-P1753",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1753,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH20-P1754",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1754,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH20-P1755",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1755,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH20-P1761",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1761,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH20-P1763",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1763,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH20-P1764",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 20,
+      "printed_page": 1764,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    }
+  ]
+}

@@ -1,0 +1,516 @@
+{
+  "title": "Word formation and inflection",
+  "content_version": "2.1.0",
+  "estimated_minutes": 12,
+  "outcomes": [
+    {
+      "id": "o1",
+      "text": "Distinguish a new word built from a base from an inflected form of an existing word."
+    },
+    {
+      "id": "o2",
+      "text": "Build and spell familiar compounds, derivatives and inhabitant names."
+    },
+    {
+      "id": "o3",
+      "text": "Read a composite numeral or fraction from the inside out."
+    }
+  ],
+  "key_terms": [
+    {
+      "term": "derivation",
+      "definition": "Word formation that creates a new word from a base, as in drive and driver."
+    },
+    {
+      "term": "compound",
+      "definition": "A word formed from two or more bases, as in passer-by."
+    },
+    {
+      "term": "multiplier",
+      "definition": "The part giving the number of hundreds, thousands or other powers in a composite numeral."
+    }
+  ],
+  "revised_assessment": {
+    "required_sections": [
+      "introduction",
+      "concepts",
+      "worked-example",
+      "application",
+      "recap"
+    ],
+    "opening": [
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "a four-night stay",
+            "feedback": "Four-night is a pre-head modifier built with singular night."
+          },
+          {
+            "id": "b",
+            "text": "a stay of four nights",
+            "feedback": "Four-night is a pre-head modifier built with singular night."
+          },
+          {
+            "id": "c",
+            "text": "the stay lasted four nights",
+            "feedback": "Four-night is a pre-head modifier built with singular night."
+          }
+        ],
+        "prompt": "Which phrase uses a measure compound to describe a stay?",
+        "answer": "a",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH19-P1655",
+          "CGEL-2002-CH19-P1660"
+        ],
+        "id": "opening-1"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "passer-bys",
+            "feedback": "The plural ending goes on passer in this established compound."
+          },
+          {
+            "id": "b",
+            "text": "passer’s-by",
+            "feedback": "The plural ending goes on passer in this established compound."
+          },
+          {
+            "id": "c",
+            "text": "passers-by",
+            "feedback": "The plural ending goes on passer in this established compound."
+          }
+        ],
+        "prompt": "Which plural is established for passer-by?",
+        "answer": "c",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH19-P1655"
+        ],
+        "id": "opening-2"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "The denominator",
+            "feedback": "Five tells how many hundreds there are. Three is added afterward."
+          },
+          {
+            "id": "b",
+            "text": "The multiplier of hundred",
+            "feedback": "Five tells how many hundreds there are. Three is added afterward."
+          },
+          {
+            "id": "c",
+            "text": "The addition after hundred",
+            "feedback": "Five tells how many hundreds there are. Three is added afterward."
+          }
+        ],
+        "prompt": "What is the role of five in “five hundred and three”?",
+        "answer": "b",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH19-P1717",
+          "CGEL-2002-CH19-P1718"
+        ],
+        "id": "opening-3"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "driver / drove",
+            "feedback": "Driver is a derived noun. Drove is the past tense of the verb."
+          },
+          {
+            "id": "b",
+            "text": "drove / driver",
+            "feedback": "Driver is a derived noun. Drove is the past tense of the verb."
+          },
+          {
+            "id": "c",
+            "text": "drives / drove",
+            "feedback": "Driver is a derived noun. Drove is the past tense of the verb."
+          }
+        ],
+        "prompt": "Which pair shows a new word followed by an inflected form of drive?",
+        "answer": "a",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH19-P1675",
+          "CGEL-2002-CH19-P1676"
+        ],
+        "id": "opening-4"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "changeible",
+            "feedback": "Change keeps e in changeable before -able."
+          },
+          {
+            "id": "b",
+            "text": "changable",
+            "feedback": "Change keeps e in changeable before -able."
+          },
+          {
+            "id": "c",
+            "text": "changeable",
+            "feedback": "Change keeps e in changeable before -able."
+          }
+        ],
+        "prompt": "Which spelling keeps the e that helps preserve a soft g before a suffix?",
+        "answer": "c",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH19-P1676",
+          "CGEL-2002-CH19-P1677"
+        ],
+        "id": "opening-5"
+      }
+    ],
+    "closing": [
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "four hundreds / hundred of people",
+            "feedback": "Hundred is uninflected within the numeral. Hundreds takes of in the quantity phrase."
+          },
+          {
+            "id": "b",
+            "text": "four hundred / hundreds of people",
+            "feedback": "Hundred is uninflected within the numeral. Hundreds takes of in the quantity phrase."
+          },
+          {
+            "id": "c",
+            "text": "four hundred of people / hundreds people",
+            "feedback": "Hundred is uninflected within the numeral. Hundreds takes of in the quantity phrase."
+          }
+        ],
+        "prompt": "Which line distinguishes an exact numeral from an approximate quantity?",
+        "answer": "b",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH19-P1717"
+        ],
+        "id": "closing-1"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "illegal",
+            "feedback": "Im- is the spelling of the negative prefix in impossible. The others show other established forms."
+          },
+          {
+            "id": "b",
+            "text": "impossible",
+            "feedback": "Im- is the spelling of the negative prefix in impossible. The others show other established forms."
+          },
+          {
+            "id": "c",
+            "text": "irregular",
+            "feedback": "Im- is the spelling of the negative prefix in impossible. The others show other established forms."
+          }
+        ],
+        "prompt": "Which adjective contains the negative form im-?",
+        "answer": "b",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH19-P1687"
+        ],
+        "id": "closing-2"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Australian / Australian",
+            "feedback": "Swedish modifies a noun. Swede names an inhabitant."
+          },
+          {
+            "id": "b",
+            "text": "Swiss / Swiss",
+            "feedback": "Swedish modifies a noun. Swede names an inhabitant."
+          },
+          {
+            "id": "c",
+            "text": "Swedish / Swede",
+            "feedback": "Swedish modifies a noun. Swede names an inhabitant."
+          }
+        ],
+        "prompt": "Which pair uses an adjective and a distinct inhabitant noun?",
+        "answer": "c",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH19-P1694",
+          "CGEL-2002-CH19-P1695"
+        ],
+        "id": "closing-3"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "twenty-first",
+            "feedback": "The final cardinal element one takes the ordinal form first."
+          },
+          {
+            "id": "b",
+            "text": "twenty-oneth",
+            "feedback": "The final cardinal element one takes the ordinal form first."
+          },
+          {
+            "id": "c",
+            "text": "twentieth-one",
+            "feedback": "The final cardinal element one takes the ordinal form first."
+          }
+        ],
+        "prompt": "Which is the ordinary ordinal for 21?",
+        "answer": "a",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH19-P1718",
+          "CGEL-2002-CH19-P1719"
+        ],
+        "id": "closing-4"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "three fifths",
+            "feedback": "Three is the numerator and the denominator takes the plural form fifths."
+          },
+          {
+            "id": "b",
+            "text": "third fives",
+            "feedback": "Three is the numerator and the denominator takes the plural form fifths."
+          },
+          {
+            "id": "c",
+            "text": "three fifth",
+            "feedback": "Three is the numerator and the denominator takes the plural form fifths."
+          }
+        ],
+        "prompt": "Which wording expresses a numerator of three and a denominator of five?",
+        "answer": "a",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH19-P1719"
+        ],
+        "id": "closing-5"
+      }
+    ]
+  },
+  "preview_sources": [
+    {
+      "id": "CGEL-2002-CH19-P1655",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 19,
+      "printed_page": 1655,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH19-P1660",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 19,
+      "printed_page": 1660,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH19-P1675",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 19,
+      "printed_page": 1675,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH19-P1676",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 19,
+      "printed_page": 1676,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH19-P1677",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 19,
+      "printed_page": 1677,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH19-P1687",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 19,
+      "printed_page": 1687,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH19-P1694",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 19,
+      "printed_page": 1694,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH19-P1695",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 19,
+      "printed_page": 1695,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH19-P1696",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 19,
+      "printed_page": 1696,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH19-P1709",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 19,
+      "printed_page": 1709,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH19-P1717",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 19,
+      "printed_page": 1717,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH19-P1718",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 19,
+      "printed_page": 1718,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH19-P1719",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 19,
+      "printed_page": 1719,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    }
+  ]
+}
