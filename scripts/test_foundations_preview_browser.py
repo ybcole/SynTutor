@@ -124,7 +124,7 @@ try:
                 assert len(entries) <= 4, (id, section)
                 expect(view.locator('article > h3[id^="br"]')).to_have_count(len(entries))
                 if entries:
-                    view.get_by_text('Practice and feedback', exact=True).press('Enter')
+                    expect(view.get_by_role('heading', name='Practice and feedback')).to_be_visible()
                 for topic_id, title, example, explanation, prompt, answer, *definition in entries:
                     selector = f'#{topic_id.lower()}'
                     heading = view.locator(selector)
@@ -135,12 +135,10 @@ try:
                     for index, paragraph in enumerate(explanation.split('\n\n'), start=2 + len(definition)):
                         expect(view.locator(selector + ' + p' * index)).to_have_text(paragraph)
                     exercise = view.locator(f'{selector}-practice')
-                    expect(exercise.locator(':scope > p')).to_have_text(prompt)
-                    practice = exercise.locator('details')
-                    expect(practice).not_to_have_attribute('open', '')
-                    practice.locator('summary').press('Enter')
-                    expect(practice.locator('p')).to_have_text(answer)
-                    expect(practice.locator('p')).to_be_visible()
+                    expect(exercise.locator(':scope > .lesson-practice-prompt')).to_have_text(prompt)
+                    feedback = exercise.locator(':scope > .lesson-practice-feedback')
+                    expect(feedback).to_have_text(answer)
+                    expect(feedback).to_be_visible()
                 canvases = view.locator('.lesson-tree-canvas')
                 if canvases.count():
                     tree_pages += 1

@@ -1323,7 +1323,10 @@ function wireEvents() {
   // Single-click editing (empty input / single sentence / active sentence /
   // blank space): this listener is registered before activateSentenceAtCaret,
   // so once readOnly flips false the sentence-nav click short-circuits.
-  ta.addEventListener('click', () => enterEditMode());
+  ta.addEventListener('click', () => {
+    if (workspaceView === 'builder') return;
+    enterEditMode();
+  });
   ta.addEventListener('scroll', syncHighlightScroll);
   ta.addEventListener('input', () => {
     historySpans = [];
@@ -1331,7 +1334,7 @@ function wireEvents() {
     syncInputClearBtn();
     // A correction is open: re-parse as the learner types so the tree (and
     // the re-check of the error) follow the edit.
-    if (focus) scheduleLiveReparse();
+    if (focus && workspaceView !== 'builder') scheduleLiveReparse();
   });
   // Locked passages (session.sentences.length > 1) render one interactive
   // span per sentence in the highlight overlay. Inspecting a different
@@ -1342,6 +1345,7 @@ function wireEvents() {
   // the click.
   const layer = document.querySelector('#inputHighlights');
   layer?.addEventListener('mousedown', (e) => {
+    if (workspaceView === 'builder') return;
     if (ta.readOnly !== true) return;
     const span = e.target.closest?.('.sentence-span');
     if (!span) return;
@@ -1358,6 +1362,7 @@ function wireEvents() {
     runPipeline({ index: idx, isSentenceNav: true });
   });
   layer?.addEventListener('dblclick', (e) => {
+    if (workspaceView === 'builder') return;
     if (ta.readOnly === true && e.target.closest?.('.sentence-span')) enterEditMode();
   });
   ta.addEventListener('blur', () => {
@@ -1377,8 +1382,11 @@ function wireEvents() {
     // the correction belongs to, otherwise the error could not be re-checked.
     if (changed) runPipeline(focus ? { index: focus.sentenceIndex } : {});
   });
-  ta.addEventListener('click', activateSentenceAtCaret);
+  ta.addEventListener('click', () => {
+    if (workspaceView !== 'builder') activateSentenceAtCaret();
+  });
   ta.addEventListener('keydown', (e) => {
+    if (workspaceView === 'builder') return;
     if (e.key === 'Escape' && ta.readOnly === false) {
       // Exit edit mode: blur re-locks the textarea and the blur handler
       // reruns the pipeline only when the text actually changed.
@@ -1653,6 +1661,21 @@ function showCanonicalTree(payload) {
     + 'Dots with matching subscripts (•₁, •₂) mark unpronounced positions linked to a moved '
     + 'word or auxiliary; they are part of the analysis, not errors.';
   host.append(legend, visual);
+  const textDetails = visual.querySelector('.lesson-tree-text');
+  if (textDetails) {
+    const summary = textDetails.querySelector('summary');
+    if (summary) summary.hidden = true;
+    const textButton = document.createElement('button');
+    textButton.type = 'button';
+    textButton.className = 'tree-text-toggle';
+    textButton.textContent = 'Read the tree as text';
+    textButton.setAttribute('aria-expanded', 'false');
+    textButton.addEventListener('click', () => {
+      textDetails.open = !textDetails.open;
+      textButton.setAttribute('aria-expanded', String(textDetails.open));
+    });
+    legend.append(' ', textButton);
+  }
   host.hidden = false;
   // Moves the SVG into a pannable/zoomable viewport; everything below queries
   // the host, so selection keeps working on the moved SVG.

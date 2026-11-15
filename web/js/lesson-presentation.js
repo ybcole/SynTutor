@@ -63,8 +63,8 @@ export function addFoundationsBookCoverage(body, el, lessonId, sectionId) {
   }
   if (!entries.length) return;
 
-  const practice = el('details', undefined, 'lesson-sources');
-  practice.append(el('summary', 'Practice and feedback'));
+  const practice = el('section', undefined, 'lesson-sources lesson-practice-prose');
+  practice.append(el('h3', 'Practice and feedback'));
   for (const [id, title, example, explanation, prompt, feedback, definition] of entries) {
     const heading = el('h3', title);
     heading.id = id.toLowerCase();
@@ -73,21 +73,24 @@ export function addFoundationsBookCoverage(body, el, lessonId, sectionId) {
     if (definition) body.append(el('p', definition));
     body.append(lessonExample(el, example), ...paragraphs);
 
-    const exercise = el('section');
+    const exercise = el('div', undefined, 'lesson-practice-item');
     exercise.id = `${heading.id}-practice`;
     exercise.setAttribute('aria-label', title);
-    const answer = el('details');
-    answer.append(el('summary', 'Check your answer'), el('p', feedback));
-    exercise.append(el('h4', title), el('p', prompt), answer);
+    exercise.append(
+      el('h4', title),
+      el('p', prompt, 'lesson-practice-prompt'),
+      el('p', feedback, 'lesson-practice-feedback'),
+    );
     practice.append(exercise);
   }
   return practice;
 }
 
 export function treeStepGuide({ el, button }, label, labels, onSelect) {
-  const controls = el('div', undefined, 'lesson-tree-steps lesson-tree-guide');
-  controls.setAttribute('role', 'group');
-  controls.setAttribute('aria-label', label);
+  const navigation = el('div', undefined, 'lesson-tree-navigation');
+  const guide = el('div', undefined, 'lesson-tree-steps lesson-tree-guide');
+  guide.setAttribute('role', 'group');
+  guide.setAttribute('aria-label', label);
   const title = el('span', undefined, 'lesson-tree-step-title');
   const picker = el('details', undefined, 'lesson-tree-step-picker');
   const step = el(labels.length > 1 ? 'summary' : 'div', undefined, 'lesson-tree-step-label');
@@ -104,6 +107,7 @@ export function treeStepGuide({ el, button }, label, labels, onSelect) {
     step.setAttribute('aria-label', `Step ${index + 1} of ${labels.length}: ${labels[index]}${labels.length > 1 ? ' · Choose a step' : ''}`);
     title.textContent = labels[index];
     arrow.textContent = atEnd ? '←' : '→';
+    arrow.dataset.direction = atEnd ? 'previous' : 'next';
     arrow.setAttribute('aria-label', atEnd ? 'Previous step' : 'Next step');
     arrow.title = arrow.getAttribute('aria-label');
     for (const [i, choice] of Array.from(choices.children).entries()) {
@@ -133,8 +137,9 @@ export function treeStepGuide({ el, button }, label, labels, onSelect) {
     picker.addEventListener('focusout', event => {
       if (!picker.contains(event.relatedTarget)) picker.open = false;
     });
-    controls.append(picker, arrow);
-    controls.addEventListener('keydown', event => {
+    guide.append(picker);
+    navigation.append(guide, arrow);
+    navigation.addEventListener('keydown', event => {
       if (event.key === 'Escape' && picker.open) {
         event.preventDefault();
         picker.open = false;
@@ -145,10 +150,11 @@ export function treeStepGuide({ el, button }, label, labels, onSelect) {
       }
     });
   } else {
-    controls.append(step);
+    guide.append(step);
+    navigation.append(guide);
   }
   update(0);
-  return { controls, update };
+  return { controls: navigation, guide, arrow, update };
 }
 
 export function addTreeTrace(body, ui, label, steps, options = {}) {

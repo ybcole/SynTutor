@@ -23,6 +23,7 @@ function articleForChapter(chapter) {
     references: [],
     teach(body, page, ui) {
       const { el } = ui;
+      const pendingChecks = [];
       const paragraphs = value => (Array.isArray(value) ? value : [value]).filter(Boolean);
       const rich = (parent, text, tag = 'p') => {
         const node = el(tag);
@@ -39,21 +40,21 @@ function articleForChapter(chapter) {
       };
       const renderCheck = check => {
         if (!check) return;
-        const details = el('details');
-        details.append(el('summary', 'Quick check'));
-        details.append(el('p', check.prompt));
+        const section = el('section', undefined, 'lesson-quick-check');
+        section.append(el('h3', 'Quick check'));
+        section.append(el('p', check.prompt));
         const list = el('ul');
         for (const option of check.options || []) {
           list.append(el('li', option.text + (option.feedback ? ' — ' + option.feedback : '')));
         }
-        details.append(list);
-        body.append(details);
+        section.append(list);
+        body.append(section);
       };
       const renderConcept = (title, content) => {
         body.append(el('h3', title));
         if (content && typeof content === 'object' && !Array.isArray(content)) {
           for (const paragraph of paragraphs(content.paragraphs)) rich(body, paragraph);
-          renderCheck(content.check);
+          if (content.check) pendingChecks.push(content.check);
           return;
         }
         for (const paragraph of paragraphs(content)) rich(body, paragraph);
@@ -145,6 +146,7 @@ function articleForChapter(chapter) {
         for (const paragraph of paragraphs(chapter.intro)) body.append(el('p', paragraph));
       } else if (page === 1) {
         sections(chapter.concepts);
+        for (const check of pendingChecks) renderCheck(check);
       } else if (page === 2) {
         const worked = lesson.worked_example || {};
         if (worked.sentence) body.append(el('p', worked.sentence, 'lesson-example-sentence'));

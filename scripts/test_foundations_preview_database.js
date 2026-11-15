@@ -10,9 +10,9 @@ import { makeAttempt } from '../web/js/quiz-core.js';
 const root = new URL('../', import.meta.url);
 const cwd = fileURLToPath(root);
 const read = path => readFileSync(new URL(path, root), 'utf8');
-const candidate = execFileSync(process.execPath, ['scripts/compose_foundations_preview.js'], { cwd });
+const candidate = execFileSync(process.execPath, ['scripts/compose_foundations_preview.js'], { cwd, maxBuffer: 16 * 1024 * 1024 });
 const renderSeed = input => execFileSync('python3', ['scripts/seed_foundations.py', '--course', '-'],
-  { input, cwd, encoding: 'utf8' });
+  { input, cwd, encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 });
 const seed = renderSeed(candidate);
 const course = JSON.parse(candidate);
 const published = JSON.parse(read('web/content/lessons/course.json'));

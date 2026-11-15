@@ -3,7 +3,7 @@ import {builderProfile,NODE,addPhrase,addWordsFromText,addSpecial,connect,discon
 import {subscribeAuthState} from './auth.js';
 const el=(tag,text)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;return n;};
 export function createBuilderTools(config){
- let host,session,identity,selected='',course,active=false,message='',hintStep=0,collapsed=false,lessonPractice=null,previousDraft=null,inline=null;
+ let host,session,identity,selected='',course,active=false,message='',hintStep=0,collapsed=false,lessonPractice=null,previousDraft=null,inline=null,headless=false;
  const snapshot=()=>({version:1,model:config.state.model,profile:config.state.canonicalProfile||builderProfile(),targetId:config.state.targetId||null,view:config.state.view});
  function restore(d){
   config.state.model=d.model;
@@ -46,7 +46,7 @@ export function createBuilderTools(config){
  function select(name,options,value){const n=el('select');n.setAttribute('aria-label',name);for(const [v,label] of options){const o=el('option',label);o.value=v;n.append(o);}n.value=value??'';return n;}
  function input(name,value=''){const n=el('input');n.setAttribute('aria-label',name);n.value=value;return n;}
  function render(){
-  if(!active||inline)return;const open=host?.querySelector('details[data-edit]')?.open,io=host?.querySelector('[data-builder-json]')?.value||'';
+  if(!active||inline||headless||!host)return;const open=host?.querySelector('details[data-edit]')?.open,io=host?.querySelector('[data-builder-json]')?.value||'';
   const practiceOpen=host.querySelector('details[data-practice]')?.open??Boolean(lessonPractice);
   const conventionsOpen=host.querySelector('details[data-conventions]')?.open??false;
   host.replaceChildren();const heading=el('h2','Build a B-R tree');host.append(heading,button(collapsed?'Show editing controls':'Hide editing controls',()=>{collapsed=!collapsed;render();config.fit();}));
@@ -152,11 +152,17 @@ export function createBuilderTools(config){
   config.reset();initSession(true);render();
  });
  return {
- open({recover=true,practice=null,embedded=null}={}){
-  active=true;lessonPractice=practice;inline=embedded;
+ open({recover=true,practice=null,embedded=null,headless:headlessMode=false}={}){
+  active=true;lessonPractice=practice;inline=embedded;headless=Boolean(headlessMode)&&!embedded;
   previousDraft=practice||inline?snapshot():null;
   if(practice||inline)collapsed=false;
   message='';hintStep=0;
+  if(headless){
+   host=null;
+   initSession(recover);
+   config.fit();
+   return;
+  }
   if(inline){
    if(host)host.hidden=true;
    initSession(recover);
@@ -175,7 +181,7 @@ export function createBuilderTools(config){
   });
  },
  close(){
-  record();active=false;if(previousDraft)restore(previousDraft);
+  record();active=false;headless=false;if(previousDraft)restore(previousDraft);
   previousDraft=null;lessonPractice=null;inline=null;if(host)host.hidden=true;
  },
  record,render,select(id){selected=id;render();},

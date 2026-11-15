@@ -40,6 +40,53 @@ const NODE_H = 34;
 const TUTOR_PLACEHOLDER = 'Click the panel to write a sentence. SynTutor builds its syntax tree and analysis automatically.';
 const BUILDER_PLACEHOLDER = 'Words typed on the canvas will appear here...';
 
+// Plain-English expansions for the canonical node codes shown in the
+// right-click selection view. Keys are the labels from the shared inventory.
+const LABEL_EXPANSIONS = {
+  Sentence: 'sentence',
+  Phrase: 'phrase',
+  PHRASE: 'phrase',
+  S: 'sentence',
+  NP: 'noun phrase',
+  VP: 'verb phrase',
+  N: 'noun',
+  A: 'adjective',
+  AP: 'adjective phrase',
+  DEG: 'degree word',
+  Adv: 'adverb',
+  AdvP: 'adverb phrase',
+  P: 'preposition',
+  PP: 'prepositional phrase',
+  name: 'name',
+  pronoun: 'pronoun',
+  V: 'verb',
+  Prt: 'particle',
+  E: 'empty or elided position',
+  MOD: 'modal auxiliary',
+  PERF: 'perfect auxiliary',
+  PROG: 'progressive auxiliary',
+  PASS: 'passive auxiliary',
+  TENSE: 'tense',
+  'S-bar': 'subordinate clause (S-bar)',
+  C: 'clause marker',
+  DET: 'determiner',
+  ART: 'article',
+  DEM: 'demonstrative determiner',
+  Q: 'quantifier',
+  POSS: 'possessive',
+  'PRE-DET': 'pre-determiner',
+  NOM: 'nominal',
+  PartP: 'participle phrase',
+  'V-part': 'participle',
+  QA: 'quantifying adjective',
+  'S-dbar': 'clause with a fronted phrase (S-double-bar)',
+  C1: 'clause marker (C1)',
+  C2: 'fronted phrase position (C2)',
+  AUX: 'auxiliary',
+  'V(I)': 'verb, class I',
+  'V(II)': 'verb, class II',
+};
+
 // The affordance hints that float in the upper-left of the canvas. The
 // practice stage invites the learner to build; the quiz stage asks for a
 // tree that matches SynTutor's parse.
@@ -100,6 +147,9 @@ const state = {
   selection: new Set(),
   reject: null,
   challenge: null,
+  editMode: false,
+  inputSyncTimer: 0,
+  syncingInput: false,
   onStatus: () => {},
   onComplete: null,
   setWorkspaceView: null,
@@ -133,6 +183,167 @@ function currentPalette() {
     ? { labels: embedded.labels || ['PHRASE-a', 'PHRASE-b', 'PHRASE-c'], features: [] }
     : paletteFor(state.canonicalProfile || builderProfile());
 }
+
+function wireBuilderInput() {
+  const input = document.getElementById('inputText');
+  if (!input || input.dataset.builderInput) return;
+  input.dataset.builderInput = 'true';
+  input.addEventListener('input', onBuilderInput);
+}
+
+function wireBuilderToolbar() {  const bar = document.getElementById('builderToolbar');
+  if (!bar || bar.dataset.wired) return;
+  bar.dataset.wired = 'true';
+  const zoom = (factor) => {
+    state.view.scale = Math.max(0.15, Math.min(4, state.view.scale * factor));
+    draw();
+  };
+  bar.querySelector('[data-builder-zoom="out"]')?.addEventListener('click', () => zoom(0.8));
+  bar.querySelector('[data-builder-zoom="in"]')?.addEventListener('click', () => zoom(1.25));
+  bar.querySelector('[data-builder-zoom="fit"]')?.addEventListener('click', () => {
+    if (!state.editMode && Object.keys(state.model.nodes).length) {
+      state.snapped = true;
+      if (!applyTreeLayout({ fit: true })) fitBuilderView();
+    } else {
+      fitBuilderView();
+    }
+    draw();
+  });
+  bar.querySelector('[data-builder-edit]')?.addEventListener('click',
+    () => setBuilderEditMode(!state.editMode));
+}
+
+function fitBuilderView() {
+  const nodes = Object.values(state.model.nodes);
+  if (!nodes.length) {
+    state.view = { ox: 60, oy: 60, scale: 1 };
+    return;
+  }
+  let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+  for (const node of nodes) {
+    const w = node.w || (node.kind === NODE.WORD ? measureWord(node.text) : measurePhrase(nodeLabelText(node)));
+    const h = node.h || NODE_H;
+    minX = Math.min(minX, node.x);
+    minY = Math.min(minY, node.y);
+    maxX = Math.max(maxX, node.x + w);
+    maxY = Math.max(maxY, node.y + h);
+  }
+  const cw = state.canvas?.clientWidth || 800;
+  const ch = state.canvas?.clientHeight || 600;
+  const top = document.body.classList.contains('builder-standalone') ? 110 : 24;
+  const totalW = Math.max(maxX - minX, 1);
+  const totalH = Math.max(maxY - minY, 1);
+  const scale = Math.max(0.15, Math.min((cw - 48) / totalW, (ch - top - 24) / totalH, 1.35));
+  state.view.scale = scale;
+  state.view.ox = (cw - totalW * scale) / 2 - minX * scale;
+  state.view.oy = top + (ch - top - 24 - totalH * scale) / 2 - minY * scale;
+}
+
+function setBuilderEditMode(value, { silent = false } = {}) {
+  if (embedded) return;
+  clearTimeout(state.inputSyncTimer);
+  state.editMode = Boolean(value);
+  const button = document.querySelector('[data-builder-edit]');
+  if (button) {
+    button.textContent = state.editMode ? 'Done editing' : 'Edit mode';
+    button.setAttribute('aria-pressed', String(state.editMode));
+  }
+  const input = document.getElementById('inputText');
+  if (input) {
+    input.readOnly = false;
+    input.placeholder = state.editMode
+      ? 'Type a sentence; its words appear on the canvas.'
+      : 'Type a sentence; its words appear on the canvas. Click Edit mode to move them.';
+  }
+  const clear = document.getElementById('builderClear');
+  const snap = document.getElementById('builderSnap');
+  if (clear) clear.hidden = !state.editMode;
+  if (snap) snap.hidden = true;
+  closeMenu();
+  closeEditor();
+  state.link = null;
+  state.drag = null;
+  state.pan = null;
+  state.marquee = null;
+  state.hover = null;
+  state.hoverTarget = null;
+  state.hoverEndpoint = null;
+  clearSelection();
+  if (state.editMode) {
+    document.getElementById('explainNode')?.replaceChildren();
+    setCanvasHint('Type a sentence in the box, or double-click the canvas. Right-click for categories; drag a dot to connect.');
+    draw();
+    input?.focus?.();
+  } else {
+    inferCanonicalFeatures();
+    if (Object.keys(state.model.nodes).length) {
+      let layout = null;
+      try { layout = applyTreeLayout({ fit: true }); } catch { layout = null; }
+      if (!layout) fitBuilderView();
+      state.snapped = Boolean(layout);
+    }
+    draw();
+    syncCanvasToInput();
+    setCanvasHint('');
+    state.treeCorrect = treeIsComplete();
+  }
+  if (!silent) {
+    state.onStatus(state.editMode
+      ? 'Editing the tree. Click “Done editing” to snap and view it.'
+      : 'Tree view — click a node for its explanation.');
+  }
+}
+
+function onBuilderInput() {
+  if (!isBuilderOpen() || embedded || state.syncingInput) return;
+  clearTimeout(state.inputSyncTimer);
+  state.inputSyncTimer = setTimeout(syncInputToCanvas, 180);
+}
+
+function layoutWordRow(nodes, startX, y) {
+  let cursor = startX;
+  for (const node of nodes) {
+    node.w = measureWord(node.text);
+    node.x = cursor;
+    node.y = y;
+    cursor += node.w + 12;
+  }
+}
+
+function syncInputToCanvas() {
+  if (!isBuilderOpen() || embedded) return;
+  const input = document.getElementById('inputText');
+  if (!input) return;
+  const text = input.value.trim();
+  const words = text ? text.split(/\s+/).filter(Boolean) : [];
+  const wordNodes = Object.values(state.model.nodes)
+    .filter((node) => node.kind === NODE.WORD)
+    .sort((a, b) => a.x - b.x || (a.order ?? 0) - (b.order ?? 0));
+  const current = wordNodes.map((node) => node.text);
+  if (words.join(' ') === current.join(' ')) return;
+  const phrases = Object.values(state.model.nodes)
+    .filter((node) => node.kind === NODE.PHRASE);
+  let added = [];
+  if (!phrases.length) {
+    for (const node of wordNodes) removeNode(state.model, node.id);
+    added = addWordsFromText(state.model, text, 60, 240);
+    layoutWordRow(added, 60, 240);
+  } else if (words.length > current.length
+      && words.slice(0, current.length).join(' ') === current.join(' ')) {
+    const last = wordNodes.at(-1);
+    const startX = last ? last.x + last.w + 12 : 60;
+    added = addWordsFromText(state.model, words.slice(current.length).join(' '), startX, 240);
+    layoutWordRow(added, startX, 240);
+  } else {
+    state.onStatus('Clear the canvas or remove phrase nodes before changing the word list.');
+    syncCanvasToInput();
+    return;
+  }
+  if (added.length) validateWords(added);
+  changed();
+  fitBuilderView();
+  draw();
+}
 export function initSyntaxBuilder({ onStatusChange, setWorkspaceView, userId } = {}) {
   state.onStatus = onStatusChange || (() => {});
   state.setWorkspaceView = setWorkspaceView || null;
@@ -153,6 +364,8 @@ export function initSyntaxBuilder({ onStatusChange, setWorkspaceView, userId } =
     },
     evaluate:buildTree,select:(id,explain=false)=>{selectOnly(id);draw();if(explain)explainSelected();},
     showModel:tree=>{const container=document.getElementById('explainNode');if(container){container.replaceChildren(renderLessonTree(tree));}}});
+  wireBuilderToolbar();
+  wireBuilderInput();
 }
 
 export function builderModel() {
@@ -183,10 +396,15 @@ function syncCanvasToInput() {
   const input = document.getElementById('inputText');
   if (!input) return sentence;
   if (input.value === sentence) return sentence;
-  input.value = sentence;
-  const highlights = document.getElementById('inputHighlights');
-  if (highlights) highlights.textContent = sentence;
-  input.dispatchEvent(new Event('input', { bubbles: true }));
+  state.syncingInput = true;
+  try {
+    input.value = sentence;
+    const highlights = document.getElementById('inputHighlights');
+    if (highlights) highlights.textContent = sentence;
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+  } finally {
+    state.syncingInput = false;
+  }
   return sentence;
 }
 
@@ -213,6 +431,9 @@ export function clearBuilder() {
 // normal workspace and its draft available for the next standalone visit.
 export function mountEmbeddedBuilder(stage, exercise) {
   ensureWired();
+  state.editMode = true;
+  document.getElementById('builderToolbar')?.setAttribute('hidden', '');
+  document.body.classList.remove('builder-standalone');
   const canvas = state.canvas;
   const home = canvas.parentElement;
   embedded = exercise;
@@ -246,16 +467,22 @@ export function mountEmbeddedBuilder(stage, exercise) {
 }
 
 export function openBuilderView(opts = {}) {
-  state.canonicalProfile = opts.canonicalTree?.convention_profile || state.canonicalProfile || builderProfile();
+  state.canonicalProfile = opts.canonicalTree?.convention_profile
+    || (opts.challenge ? state.canonicalProfile : builderProfile())
+    || builderProfile();
   if (opts.canonicalTree) {state.model = fromCanonicalEnvelope(opts.canonicalTree);state.targetId=null;resetTransientState();}
   document.querySelector('#appSidebarBackdrop')?.classList.remove('active');
   const bar = document.getElementById('canvasControls');
   const canvas = document.getElementById('builderCanvas');
   const treeCanvas = document.getElementById('treeCanvas');
   if (!bar || !canvas) return;
+  const toolbar = document.getElementById('builderToolbar');
+  if (toolbar) toolbar.hidden = Boolean(opts.challenge);
   ensureWired();
   canvas.hidden = false;
   if (treeCanvas) treeCanvas.hidden = true;
+  document.getElementById('generatorTreeOutline')?.setAttribute('hidden', '');
+  document.getElementById('canonicalTreeView')?.setAttribute('hidden', '');
   document.getElementById('emptyTreeState')?.classList.add('hidden');
   // The shared canvas overlay (e.g. "No analyzable sentence" from the parser)
   // belongs to the main tree view, not the builder — clear it so it never
@@ -269,6 +496,7 @@ export function openBuilderView(opts = {}) {
   state.challenge = opts.challenge || null;
   state.onComplete = opts.onComplete || null;
   state.solved = false;
+  if (state.challenge) state.editMode = true;
   if (opts.reset) newModel();
   if (opts.model) {
     // A caller may supply a fully seeded model (e.g. a deliberately broken
@@ -296,6 +524,7 @@ export function openBuilderView(opts = {}) {
   // The builder owns the input panel now: it mirrors the canvas, so it gets
   // the builder's prompt and stays read-only.
   document.body.classList.add('builder-active');
+  document.body.classList.toggle('builder-standalone', !state.challenge);
   document.body.classList.remove('lesson-model');
   setInputPlaceholder(BUILDER_PLACEHOLDER);
   const target = document.getElementById('builderTarget');
@@ -352,7 +581,26 @@ export function openBuilderView(opts = {}) {
     applyTreeLayout({ fit: true });
     syncCanvasToInput();
   }
-  if(!state.challenge)tools?.open({recover:!opts.canonicalTree&&!opts.model&&!opts.reset,practice:opts.lessonPractice});
+  if (!state.challenge) {
+    document.getElementById('builderTools')?.remove();
+    // Load the saved draft and enable undo/redo without showing the old
+    // floating control panel.
+    tools?.open({
+      recover: !opts.canonicalTree && !opts.model && !opts.reset,
+      headless: true,
+    });
+    // The standalone builder offers the complete free-analysis inventory
+    // unless a caller supplied a specific canonical tree or model.
+    if (!opts.canonicalTree && !opts.model) state.canonicalProfile = builderProfile();
+    setBuilderEditMode(false, { silent: true });
+    if (!treeIsComplete()) {
+      setCanvasHint(Object.keys(state.model.nodes).length
+        ? 'Click “Edit mode” to continue building, or type in the box to add words.'
+        : 'Type a sentence in the box to place its words, then click “Edit mode” to move them.');
+    }
+  } else {
+    document.getElementById('builderToolbar')?.setAttribute('hidden', '');
+  }
   canvas.focus();
   explainSelected();
   state.treeCorrect = treeIsComplete();
@@ -394,7 +642,11 @@ function measureWords(nodes) {
 
 export function closeBuilderView() {
   evidenceRequest += 1;
+  clearTimeout(state.inputSyncTimer);
   tools?.close();
+  state.editMode = false;
+  document.getElementById('builderToolbar')?.setAttribute('hidden', '');
+  document.getElementById('builderTools')?.remove();
   const bar = document.getElementById('canvasControls');
   const canvas = document.getElementById('builderCanvas');
   const treeCanvas = document.getElementById('treeCanvas');
@@ -413,7 +665,10 @@ export function closeBuilderView() {
   if (treeCanvas) treeCanvas.hidden = false;
   // The Grammar Tutor takes the input panel back, with its own prompt.
   document.body.classList.remove('builder-active');
+  document.body.classList.remove('builder-standalone');
   setInputPlaceholder(TUTOR_PLACEHOLDER);
+  const input = document.getElementById('inputText');
+  if (input) input.readOnly = true;
   state.challenge = null;
   state.onComplete = null;
   onBuilderClose();
@@ -476,6 +731,8 @@ function markSidebar(view) {
 // ---------------------------------------------------------------------------
 let wired = false;
 function ensureWired() {
+  wireBuilderToolbar();
+  wireBuilderInput();
   if (wired) return;
   wired = true;
   state.canvas = document.getElementById('builderCanvas');
@@ -599,6 +856,27 @@ function onMouseDown(e) {
   const { sx, sy } = eventPos(e);
   const w = toWorld(sx, sy);
 
+  // View mode: a node click opens its XAI explanation; empty space pans.
+  // Nothing can be created, moved, connected, or deleted.
+  if (!state.editMode) {
+    e.preventDefault();
+    if (e.button === 0) {
+      const node = nodeHit(state.model, w.x, w.y);
+      if (node) {
+        selectOnly(node.id);
+        draw();
+        explainSelected();
+      } else {
+        clearSelection();
+        state.pan = { sx, sy, ox: state.view.ox, oy: state.view.oy };
+        state.canvas.style.cursor = 'grabbing';
+        draw();
+        explainSelected();
+      }
+    }
+    return;
+  }
+
   // Right-click: short click opens the add-node menu; hold starts multi-selection.
   if (e.button === 2) {
     if (state.rightHoldTimer) clearTimeout(state.rightHoldTimer);
@@ -700,6 +978,18 @@ function onMouseMove(e) {
   const { sx, sy } = eventPos(e);
   const w = toWorld(sx, sy);
 
+  if (!state.editMode) {
+    if (state.pan) {
+      state.view.ox = state.pan.ox + (sx - state.pan.sx);
+      state.view.oy = state.pan.oy + (sy - state.pan.sy);
+      state.canvas.style.cursor = 'grabbing';
+      draw();
+      return;
+    }
+    state.canvas.style.cursor = nodeHit(state.model, w.x, w.y) ? 'pointer' : 'grab';
+    return;
+  }
+
   if (state.drag) {
     const dx = w.x - state.drag.start.x;
     const dy = w.y - state.drag.start.y;
@@ -753,6 +1043,15 @@ function onMouseMove(e) {
 }
 
 function onMouseUp(e) {
+  if (!state.editMode) {
+    state.pan = null;
+    state.canvas.style.cursor = '';
+    if (state.rightHoldTimer) { clearTimeout(state.rightHoldTimer); state.rightHoldTimer = null; }
+    state.rightDownStart = null;
+    state.holdingRight = false;
+    state.marquee = null;
+    return;
+  }
   if (e.button === 2) {
     if (state.rightHoldTimer) {
       clearTimeout(state.rightHoldTimer);
@@ -866,6 +1165,7 @@ function flashRejected(id) {
 }
 
 function onDoubleClick(e) {
+  if (!state.editMode) return;
   const { sx, sy } = eventPos(e);
   const w = toWorld(sx, sy);
   const node = nodeHit(state.model, w.x, w.y);
@@ -936,6 +1236,7 @@ function onWheel(e) {
 }
 
 function onKeyDown(e) {
+  if (!state.editMode) return;
   if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'){e.preventDefault();e.shiftKey?tools?.redo():tools?.undo();return;}
   if (e.key === 'Escape') {
     closeMenu();
@@ -1066,7 +1367,8 @@ function openMenu(clientX, clientY, world, node) {
     const f = filter.trim().toLowerCase();
     let shown = 0;
     for (const section of sections) {
-      const types = section.types.filter((t) => t.toLowerCase().includes(f));
+      const types = section.types.filter((t) =>
+        `${t} ${LABEL_EXPANSIONS[t] || ''}`.toLowerCase().includes(f));
       if (!types.length) continue;
       const head = document.createElement('div');
       head.className = 'builder-menu-head';
@@ -1149,7 +1451,18 @@ function menuItem(label, node, world) {
   btn.className = 'builder-menu-item';
   const isPhrase = currentPalette().labels.includes(label);
   if (isPhrase) btn.classList.add('is-phrase');
-  btn.textContent = label;
+  const expansion = LABEL_EXPANSIONS[label];
+  const code = document.createElement('span');
+  code.className = 'builder-menu-code';
+  code.textContent = label;
+  btn.append(code);
+  if (expansion) {
+    const name = document.createElement('span');
+    name.className = 'builder-menu-name';
+    name.textContent = expansion;
+    btn.append(name);
+  }
+  btn.setAttribute('aria-label', expansion ? `${label} — ${expansion}` : label);
   if (node && node.type === label) btn.classList.add('is-current');
   btn.addEventListener('click', (ev) => {
     ev.stopPropagation();
@@ -1220,6 +1533,179 @@ function nodeLeafText(id) {
   return out.join(' ');
 }
 
+// Canonical feature inference for hand-built trees. The generator labels a
+// verb as V [trans] [past], a modal as MOD [past], a tense slot as TENSE
+// [pres], and an infinitival marker as AUX [-tense]; the builder should show
+// the same annotations once the learner leaves edit mode.
+const PAST_WORDS = new Set([
+  'was', 'were', 'had', 'did', 'could', 'would', 'should', 'might', 'must',
+  'gave', 'saw', 'went', 'came', 'took', 'made', 'said', 'found', 'thought',
+  'told', 'became', 'left', 'felt', 'brought', 'began', 'kept', 'held', 'wrote',
+  'stood', 'heard', 'meant', 'met', 'ran', 'paid', 'sat', 'spoke', 'led',
+  'read', 'grew', 'lost', 'fell', 'sent', 'built', 'understood', 'drew',
+  'broke', 'spent', 'rose', 'drove', 'bought', 'wore', 'chose', 'ate', 'sang',
+  'swam', 'threw', 'caught', 'taught', 'fought', 'sought', 'shook', 'shone',
+]);
+const PRES_WORDS = new Set([
+  'am', 'is', 'are', 'have', 'has', 'do', 'does', 'can', 'will', 'shall',
+  'may', 'must', 'need', 'dare',
+]);
+const FRAME_FEATURES = new Set([
+  'trans', 'intrans', 'ditrans', 'intens', 'complex', 'prep', 'phrasal',
+  'past', 'pres', '-tense',
+]);
+const FEATURE_BEARING = new Set([
+  'V', 'V(I)', 'V(II)', 'MOD', 'TENSE', 'AUX', 'PERF', 'PROG', 'PASS',
+]);
+const BE_FORMS = new Set(['be', 'am', 'is', 'are', 'was', 'were', 'been', 'being']);
+
+function wordLeaves(nodeId) {
+  const out = [];
+  const walk = (id) => {
+    const children = childrenOf(state.model, id);
+    if (!children.length) {
+      const node = state.model.nodes[id];
+      if (node && node.kind === NODE.WORD) out.push(node);
+      return;
+    }
+    for (const child of children) walk(child.id);
+  };
+  walk(nodeId);
+  return out;
+}
+
+function headWordOf(node) {
+  const leaves = wordLeaves(node.id);
+  if (leaves.length) return leaves[0];
+  const parent = state.model.nodes[node.parent];
+  if (parent) {
+    const siblings = childrenOf(state.model, parent.id)
+      .filter((child) => child.kind === NODE.WORD);
+    const verb = siblings.find((word) => /^(VB|MD)/.test(String(word.tag || '')))
+      || siblings[0];
+    if (verb) return verb;
+  }
+  const words = node.canonicalData?.words;
+  if (Array.isArray(words) && words.length) {
+    return { text: String(words[0]), tag: null };
+  }
+  return null;
+}
+
+function tenseOfWord(word) {
+  if (!word) return null;
+  const low = String(word.text || '').toLowerCase();
+  if (PAST_WORDS.has(low)) return 'past';
+  if (PRES_WORDS.has(low)) return 'pres';
+  const tag = String(word.tag || '').toUpperCase();
+  if (tag === 'VBD') return 'past';
+  if (tag === 'VBP' || tag === 'VBZ') return 'pres';
+  if (tag === 'MD') return 'pres';
+  // The word validator is asynchronous; while a tag is still pending, use the
+  // regular past/3sg endings as a safe fallback.
+  if (!tag) {
+    if (/ed$/.test(low) && low.length > 3) return 'past';
+    if (/s$/.test(low) && !/ss$/.test(low) && low.length > 2) return 'pres';
+  }
+  return null;
+}
+
+function firstLeafText(node) {
+  const leaves = wordLeaves(node.id);
+  if (leaves.length) return leaves[0].text;
+  const words = node.canonicalData?.words;
+  return Array.isArray(words) && words.length ? String(words[0]) : '';
+}
+
+function inferVerbFrame(node) {
+  const parent = state.model.nodes[node.parent];
+  const scope = parent && parent.type === 'VP'
+    ? childrenOf(state.model, parent.id)
+    : childrenOf(state.model, node.id);
+  const siblings = scope.filter((child) => child.id !== node.id);
+  const types = siblings.map((child) =>
+    child.kind === NODE.PHRASE ? child.type : (child.tag || ''));
+  const np = types.filter((type) => type === 'NP').length;
+  const pps = siblings.filter((child) => child.type === 'PP');
+  const ap = types.includes('AP');
+  const sbar = types.includes('S-bar');
+  const vp = types.includes('VP');
+  const head = headWordOf(node);
+  const low = String(head?.text || '').toLowerCase();
+  const frames = [];
+  if (types.includes('Prt')) frames.push('phrasal');
+  let base = null;
+  if (BE_FORMS.has(low) && (np || ap || pps.length)) base = 'intens';
+  else if (np >= 2) base = 'ditrans';
+  else if (np === 1) {
+    if (ap) base = 'complex';
+    else if (pps.some((pp) => ['to', 'for'].includes(
+      String(firstLeafText(pp)).toLowerCase()))) base = 'ditrans';
+    else base = 'trans';
+  } else if (sbar) base = 'trans';
+  else if (pps.length) base = 'prep';
+  else if (vp) base = null;
+  else if (ap) base = 'intens';
+  else base = 'intrans';
+  if (base) frames.push(base);
+  if (!frames.length) return [];
+  if (frames.length === 1 && frames[0] === 'phrasal') frames.push('intrans');
+  return [...new Set(frames)];
+}
+
+function tenseForTenseNode(node) {
+  const parent = state.model.nodes[node.parent];
+  if (parent) {
+    for (const leaf of wordLeaves(parent.id)) {
+      const tense = tenseOfWord(leaf);
+      if (tense) return tense;
+    }
+  }
+  for (const leaf of wordLeaves(node.id)) {
+    const tense = tenseOfWord(leaf);
+    if (tense) return tense;
+  }
+  return null;
+}
+
+function inferCanonicalFeatures() {
+  // Feature inference targets the free-analysis FINAL-D1 inventory. Chapter
+  // lesson profiles keep the features supplied by their own source tree.
+  if ((state.canonicalProfile || builderProfile()).version !== 'FINAL') return;
+  for (const node of Object.values(state.model.nodes)) {
+    if (node.kind !== NODE.PHRASE || !FEATURE_BEARING.has(node.type)) continue;
+    const features = new Set((node.canonicalFeatures || [])
+      .filter((feature) => !FRAME_FEATURES.has(feature)));
+    if (node.type === 'V' || node.type === 'V(I)' || node.type === 'V(II)') {
+      if (node.type === 'V') {
+        for (const frame of inferVerbFrame(node)) features.add(frame);
+      }
+      const tense = tenseOfWord(headWordOf(node));
+      if (tense) features.add(tense);
+    } else if (node.type === 'MOD') {
+      const tense = tenseOfWord(headWordOf(node));
+      if (tense) features.add(tense);
+    } else if (node.type === 'TENSE') {
+      const tense = tenseForTenseNode(node);
+      if (tense) features.add(tense);
+    } else if (node.type === 'AUX') {
+      const head = headWordOf(node);
+      const low = String(head?.text || '').toLowerCase();
+      if (low === 'to') {
+        features.add('-tense');
+      } else {
+        const tense = tenseOfWord(head);
+        if (tense) features.add(tense);
+      }
+    } else if (node.type === 'PERF' || node.type === 'PROG'
+        || node.type === 'PASS') {
+      const tense = tenseOfWord(headWordOf(node)) || tenseForTenseNode(node);
+      if (tense) features.add(tense);
+    }
+    node.canonicalFeatures = [...features];
+  }
+}
+
 // Build a node-detail record shaped like the tutor's payload.node_details[id].
 function describeNode(node) {
   // A Build-tree validation error takes priority so selecting a red node shows
@@ -1269,6 +1755,7 @@ function describeNode(node) {
 let evidenceRequest = 0;
 let lastEvidenceSnapshot = null;
 async function showBuilderEvidence(nodeId = null) {
+  if (state.editMode || embedded) return;
   const version = ++evidenceRequest;
   try {
     const tree = toCanonicalEnvelope(state.model, state.canonicalProfile);
@@ -1276,22 +1763,30 @@ async function showBuilderEvidence(nodeId = null) {
     lastEvidenceSnapshot = snapshot;
     const data = await requestEvidence(tree, nodeId);
     if (snapshot !== JSON.stringify(toCanonicalEnvelope(state.model, state.canonicalProfile))) return;
-    if (version === evidenceRequest && isBuilderOpen()) renderEvidence(data);
+    if (version === evidenceRequest && isBuilderOpen()) {
+      const node = nodeId ? state.model.nodes[nodeId] : null;
+      const detail = node ? describeNode(node) : null;
+      const host = document.querySelector('#explainNode');
+      host?.replaceChildren();
+      renderEvidence(data, host, {
+        nodeId,
+        legacyDetail: detail?.status === 'error' ? detail : null,
+      });
+    }
   } catch (error) {
     if (version === evidenceRequest && isBuilderOpen()) renderEvidence({ status: "ANALYSIS_UNRESOLVED", diagnostics: [{ message: error.message }], channels: {} });
   }
 }
 
 function explainSelected() {
-  if (embedded) return;
+  if (embedded || state.editMode) return;
   const ids = [...state.selection];
   const node = ids.length ? state.model.nodes[ids[ids.length - 1]] : null;
   if (!node) {
-    renderNodeDetail(null, null, null);
+    document.getElementById('explainNode')?.replaceChildren();
     return;
   }
   loadInfo().then(() => {
-    renderNodeDetail(null, describeNode(node), node);
     showBuilderEvidence(node.id);
     document.getElementById('explainNode')
       ?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
@@ -1675,8 +2170,17 @@ function computeTreeLayout() {
     if (!n) continue;
     maxLeafW = Math.max(maxLeafW, state.ctx.measureText(n.text || n.type || '').width + H_PAD * 2);
   }
+  // Footer-style features ([trans] [past], [pres], [-tense]) make phrase labels
+  // wider than the bare category; size the uniform slot for the widest label.
+  state.ctx.font = PHRASE_FONT;
+  let maxPhraseW = maxLeafW;
+  for (const n of nodes) {
+    if (n.kind !== NODE.PHRASE) continue;
+    maxPhraseW = Math.max(maxPhraseW,
+      state.ctx.measureText(nodeLabelText(n)).width + H_PAD * 2);
+  }
   state.ctx.restore();
-  const SLOT = maxLeafW + GAP;
+  const SLOT = maxPhraseW + GAP;
 
   // Bottom-up span (leaf range each node covers).
   const span = new Map();
@@ -1751,7 +2255,7 @@ function applyTreeLayout({ fit = true } = {}) {
     const rect=!embedded&&toolsPanel&&!toolsPanel.hidden?toolsPanel.getBoundingClientRect():null;
     const left=rect&&innerWidth>760?Math.min(rect.width+30,cw*.48):0;
     const bottom=rect&&innerWidth<=760?rect.height+20:0;
-    const top=60,availableW=Math.max(100,cw-left),availableH=Math.max(120,ch-bottom-top);
+    const top=document.body.classList.contains('builder-standalone')?110:60,availableW=Math.max(100,cw-left),availableH=Math.max(120,ch-bottom-top);
     const scale=Math.max(.15,Math.min((availableW-pad*2)/totalW,(availableH-pad*2)/totalH,1.35));
     state.view.scale=scale;
     state.view.ox=left+(availableW-totalW*scale)/2-minX*scale;
@@ -1896,10 +2400,19 @@ function measurePhrase(type) {
   return Math.max(30, state.ctx.measureText(type || '').width + 16);
 }
 
+function nodeLabelText(n) {
+  if (n.kind === NODE.WORD) {
+    return `${n.text || '...'}${n.kind === NODE.SPECIAL && n.canonicalIndex != null ? ' ' + n.canonicalIndex : ''}${n.canonicalData?.elided ? ' (elided)' : ''}`;
+  }
+  const label = n.canonicalData?.unlabelled
+    || (n.type === 'AUX' && n.canonicalFeatures?.includes('-tense')) ? '' : n.type;
+  return `${label}${(n.canonicalFeatures || []).map((feature) => ` [${feature}]`).join('')}${n.canonicalIndex != null ? ' ' + n.canonicalIndex : ''}`;
+}
+
 // Keep each box's measured size in sync with its label (used for hit-testing).
 function sizeNode(n) {
   n.h = NODE_H;
-  n.w = n.kind === NODE.PHRASE ? measurePhrase(n.type) : measureWord(n.text);
+  n.w = n.kind === NODE.PHRASE ? measurePhrase(nodeLabelText(n)) : measureWord(n.text);
 }
 
 // Order nodes so parents are painted after children (roots last) — matches the
@@ -2047,8 +2560,7 @@ function drawNode(ctx, n) {
   if (isPhrase) {
     ctx.fillStyle = color;
     ctx.font = '600 16px Inter, system-ui, sans-serif';
-    const label=n.canonicalData?.unlabelled||n.type==='AUX'&&n.canonicalFeatures?.includes('-tense')?'':n.type;
-    ctx.fillText(`${label}${n.canonicalFeatures?.length?' ['+n.canonicalFeatures.join(', ')+']':''}${n.canonicalIndex!=null?' '+n.canonicalIndex:''}`, cx, cy + 3);
+    ctx.fillText(nodeLabelText(n), cx, cy + 3);
   } else {
     ctx.fillStyle = color;
     ctx.font = WORD_FONT;
@@ -2067,7 +2579,7 @@ function drawNode(ctx, n) {
 
   // Endpoint handle (connected child) — revealed on hover so the clean tree
   // look matches the grammar tutor.
-  if (n.parent && hovered) {
+  if (state.editMode && n.parent && hovered) {
     const ep = { x: cx, y: n.y };
     ctx.beginPath();
     ctx.arc(ep.x, ep.y, 4, 0, Math.PI * 2);
@@ -2076,7 +2588,7 @@ function drawNode(ctx, n) {
   }
   // Connector dot (phrase) — drag it to start a new connection. Always shown so
   // the connect target is easy to find and click.
-  if (isPhrase) {
+  if (state.editMode && isPhrase) {
     const d = { x: cx, y: n.y + n.h + 6 };
     ctx.beginPath();
     ctx.arc(d.x, d.y, 5, 0, Math.PI * 2);
