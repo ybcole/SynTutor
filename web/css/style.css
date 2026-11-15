@@ -1364,20 +1364,36 @@ body.lesson-view #explainNode:empty { display: none; }
   border-color: var(--accent);
   background: var(--accent-soft, var(--surface));
 }
-.tree-text-toggle {
-  margin-inline-start: 8px;
-  padding: 2px 8px;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  background: var(--surface);
-  color: var(--ink);
-  font: inherit;
+.canonical-tree-view > .lesson-tree-text {
+  position: static;
+  flex: 0 0 auto;
+  margin: 4px 0 0;
+  max-width: 100%;
+  padding: 4px 0 0;
+  border: 0;
+  border-top: 1px solid var(--border);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.canonical-tree-view > .lesson-tree-text > summary {
+  min-block-size: 28px;
+  align-content: center;
+  font-weight: 600;
   cursor: pointer;
 }
-.tree-text-toggle:hover { border-color: var(--accent); }
-body.builder-standalone #canvasControls { top: 62px; }
+.canonical-tree-view > .lesson-tree-text[open] {
+  max-height: none;
+  overflow: visible;
+}
+#explainNode:not(:empty) + #emptyExplainState { display: none; }
+body.builder-standalone #canvasControls { display: none !important; }
 body.builder-standalone .builder-hint,
-body.builder-standalone .builder-hint.with-actions { top: 108px; }
+body.builder-standalone .builder-hint.with-actions {
+  top: auto;
+  bottom: 14px;
+  left: 16px;
+}
 .tree-authority-notice {
   position: absolute;
   z-index: 5;
@@ -1411,13 +1427,14 @@ body.builder-standalone .builder-hint.with-actions { top: 108px; }
   display: flex;
   flex-direction: column;
   padding: 12px clamp(12px, 3vw, 22px) 14px;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   background: var(--panel);
 }
 /* Pan/zoom viewport: the canonical tree behaves like the parser canvas. */
 .canonical-viewport {
   position: relative;
-  flex: 1 1 auto;
+  flex: 1 0 auto;
   min-height: 240px;
   overflow: hidden;
   border: 1px solid var(--border);
