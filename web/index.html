@@ -222,8 +222,10 @@
           <div id="treeAuthorityNotice" class="tree-authority-notice" role="status" aria-live="polite" hidden></div>
           <section id="canonicalTreeView" class="canonical-tree-view" aria-label="Validated Burton-Roberts syntax tree" hidden></section>
           <canvas id="treeCanvas" tabindex="0" aria-label="Interactive syntax tree; click a node, or use arrow keys and Enter"></canvas>
+          <div id="builderTopLeft" class="builder-top-left" hidden>
+            <button id="builderClearTop" type="button" data-builder-clear>Clear</button>
+          </div>
           <div id="builderToolbar" class="builder-toolbar canonical-zoom" role="group" aria-label="Tree zoom and edit mode" hidden>
-            <button type="button" data-builder-clear>Clear</button>
             <button type="button" data-builder-edit aria-pressed="false">Edit mode</button>
             <button type="button" data-builder-zoom="in" aria-label="Zoom in on syntax tree">+</button>
             <button type="button" data-builder-zoom="out" aria-label="Zoom out of syntax tree">&minus;</button>

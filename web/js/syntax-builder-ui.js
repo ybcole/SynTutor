@@ -201,7 +201,7 @@ function wireBuilderInput() {
 function wireBuilderToolbar() {  const bar = document.getElementById('builderToolbar');
   if (!bar || bar.dataset.wired) return;
   bar.dataset.wired = 'true';
-  bar.querySelector('[data-builder-clear]')?.addEventListener('click', clearBuilder);
+  document.querySelector('[data-builder-clear]')?.addEventListener('click', clearBuilder);
   const zoom = (factor) => {
     state.view.scale = Math.max(0.15, Math.min(4, state.view.scale * factor));
     draw();
@@ -441,6 +441,7 @@ export function mountEmbeddedBuilder(stage, exercise) {
   ensureWired();
   state.editMode = true;
   document.getElementById('builderToolbar')?.setAttribute('hidden', '');
+  document.getElementById('builderTopLeft')?.setAttribute('hidden', '');
   document.body.classList.remove('builder-standalone');
   const canvas = state.canvas;
   const home = canvas.parentElement;
@@ -486,6 +487,8 @@ export function openBuilderView(opts = {}) {
   if (!bar || !canvas) return;
   const toolbar = document.getElementById('builderToolbar');
   if (toolbar) toolbar.hidden = Boolean(opts.challenge);
+  const topLeft = document.getElementById('builderTopLeft');
+  if (topLeft) topLeft.hidden = Boolean(opts.challenge);
   ensureWired();
   canvas.hidden = false;
   if (treeCanvas) treeCanvas.hidden = true;
@@ -611,6 +614,7 @@ export function openBuilderView(opts = {}) {
     }
   } else {
     document.getElementById('builderToolbar')?.setAttribute('hidden', '');
+    document.getElementById('builderTopLeft')?.setAttribute('hidden', '');
   }
   canvas.focus();
   explainSelected();
@@ -657,6 +661,7 @@ export function closeBuilderView() {
   tools?.close();
   state.editMode = false;
   document.getElementById('builderToolbar')?.setAttribute('hidden', '');
+  document.getElementById('builderTopLeft')?.setAttribute('hidden', '');
   document.getElementById('builderTools')?.remove();
   const bar = document.getElementById('canvasControls');
   const canvas = document.getElementById('builderCanvas');
@@ -1225,6 +1230,15 @@ async function validateWords(nodes) {
     state.onStatus(`Not in SynTutor's model: ${bad.join(', ')} — fix or delete to connect them.`);
   }
   draw();
+  // Tags often arrive after the learner has already left edit mode. Re-run
+  // feature inference so tense appears as soon as the validator responds.
+  if (!state.editMode && isBuilderOpen()) {
+    inferCanonicalFeatures();
+    if (state.snapped) {
+      try { applyTreeLayout({ fit: true }); } catch { /* keep current layout */ }
+    }
+    draw();
+  }
 }
 
 function onContextMenu(e) {
@@ -1621,6 +1635,19 @@ function tenseOfWord(word) {
   return null;
 }
 
+function verbTense(word) {
+  const tense = tenseOfWord(word);
+  if (tense) return tense;
+  const low = String(word?.text || '').toLowerCase();
+  if (!low) return null;
+  const tag = String(word?.tag || '').toUpperCase();
+  if (tag && !/^(VB|VBP|VBZ|VBD|MD)$/.test(tag)) return null;
+  if (/(ing|ed)$/.test(low)) return null;
+  // A finite base verb with no tag yet ("walk", "read") is present; the
+  // validator will refine it when its tag arrives.
+  return 'pres';
+}
+
 function firstLeafText(node) {
   const leaves = wordLeaves(node.id);
   if (leaves.length) return leaves[0].text;
@@ -1705,7 +1732,7 @@ function inferCanonicalFeatures() {
       if (node.type === 'V') {
         for (const frame of inferVerbFrame(node)) features.add(frame);
       }
-      const tense = tenseOfWord(headWordOf(node)) || clauseTense(node);
+      const tense = verbTense(headWordOf(node)) || clauseTense(node);
       if (tense) features.add(tense);
     } else if (node.type === 'MOD') {
       const tense = tenseOfWord(headWordOf(node));

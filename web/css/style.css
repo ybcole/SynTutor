@@ -1360,6 +1360,25 @@ body.lesson-view #explainNode:empty { display: none; }
 }
 .builder-toolbar[hidden] { display: none; }
 #builderToolbar { z-index: 9; }
+.builder-top-left {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 9;
+}
+.builder-top-left[hidden] { display: none; }
+.builder-top-left button {
+  min-width: 34px;
+  min-height: 34px;
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+}
+.builder-top-left button:hover { border-color: var(--accent); }
 .builder-toolbar button[aria-pressed="true"] {
   border-color: var(--accent);
   background: var(--accent-soft, var(--surface));
