@@ -1,0 +1,501 @@
+{
+  "title": "Non-finite clauses",
+  "content_version": "2.1.0",
+  "estimated_minutes": 11,
+  "outcomes": [
+    {
+      "id": "o1",
+      "text": "Identify the expressed or understood subject of a non-finite clause."
+    },
+    {
+      "id": "o2",
+      "text": "Choose the form of the infinitival in active, passive and interrogative constructions."
+    },
+    {
+      "id": "o3",
+      "text": "Apply auxiliary order and recognise a participial modifier without adding a relative marker."
+    }
+  ],
+  "key_terms": [
+    {
+      "term": "non-finite clause",
+      "definition": "A clause whose verb is an infinitival or participial form, as in to check the gauge or checking the gauge."
+    },
+    {
+      "term": "bare infinitival",
+      "definition": "An infinitival with a plain-form verb and without the marker to."
+    },
+    {
+      "term": "expressed subject",
+      "definition": "A subject present as words in the clause, as him is in for him to speak."
+    }
+  ],
+  "revised_assessment": {
+    "required_sections": [
+      "introduction",
+      "concepts",
+      "worked-example",
+      "application",
+      "recap"
+    ],
+    "opening": [
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "they",
+            "feedback": "Him is the expressed subject of the infinitival after for."
+          },
+          {
+            "id": "b",
+            "text": "him",
+            "feedback": "Him is the expressed subject of the infinitival after for."
+          },
+          {
+            "id": "c",
+            "text": "an unexpressed third person",
+            "feedback": "Him is the expressed subject of the infinitival after for."
+          }
+        ],
+        "prompt": "Who is understood to speak in “They arranged for him to speak first”?",
+        "answer": "b",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH14-P1182",
+          "CGEL-2002-CH14-P1183"
+        ],
+        "id": "opening-1"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "We were made to wait.",
+            "feedback": "Passive causative make selects a to-infinitival."
+          },
+          {
+            "id": "b",
+            "text": "We were made waited.",
+            "feedback": "Passive causative make selects a to-infinitival."
+          },
+          {
+            "id": "c",
+            "text": "We were made wait.",
+            "feedback": "Passive causative make selects a to-infinitival."
+          }
+        ],
+        "prompt": "Which is the ordinary passive counterpart of “They made us wait”?",
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH14-P1234"
+        ],
+        "id": "opening-2"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "who checking",
+            "feedback": "Checking heads a participial modifier. That is checking would be a finite relative."
+          },
+          {
+            "id": "b",
+            "text": "that is checking",
+            "feedback": "Checking heads a participial modifier. That is checking would be a finite relative."
+          },
+          {
+            "id": "c",
+            "text": "checking",
+            "feedback": "Checking heads a participial modifier. That is checking would be a finite relative."
+          }
+        ],
+        "prompt": "Choose a non-finite modifier for “the technician ___ the meter”.",
+        "answer": "c",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH14-P1264",
+          "CGEL-2002-CH14-P1265"
+        ],
+        "id": "opening-3"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "It’s essential for she to check the reading.",
+            "feedback": "The order is for, accusative subject her, then the to-infinitival predicate."
+          },
+          {
+            "id": "b",
+            "text": "It’s essential for her to check the reading.",
+            "feedback": "The order is for, accusative subject her, then the to-infinitival predicate."
+          },
+          {
+            "id": "c",
+            "text": "It’s essential for the reading her to check.",
+            "feedback": "The order is for, accusative subject her, then the to-infinitival predicate."
+          }
+        ],
+        "prompt": "Which order fits the infinitival after essential?",
+        "answer": "b",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH14-P1182",
+          "CGEL-2002-CH14-P1183"
+        ],
+        "id": "opening-4"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Expressed subject of call",
+            "feedback": "The caller is understood. Who asks which person should receive the call."
+          },
+          {
+            "id": "b",
+            "text": "Understood object of call",
+            "feedback": "The caller is understood. Who asks which person should receive the call."
+          },
+          {
+            "id": "c",
+            "text": "Subject of asked",
+            "feedback": "The caller is understood. Who asks which person should receive the call."
+          }
+        ],
+        "prompt": "What role does who have in “They asked who to call”?",
+        "answer": "b",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH14-P1264"
+        ],
+        "id": "opening-5"
+      }
+    ],
+    "closing": [
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Nina believed herself to be ready.",
+            "feedback": "Believe takes the overt object herself in this frame, and she is used in the finite alternative she was ready."
+          },
+          {
+            "id": "b",
+            "text": "Nina believed she to be ready.",
+            "feedback": "Believe takes the overt object herself in this frame, and she is used in the finite alternative she was ready."
+          },
+          {
+            "id": "c",
+            "text": "Nina believed to be ready.",
+            "feedback": "Believe takes the overt object herself in this frame, and she is used in the finite alternative she was ready."
+          }
+        ],
+        "prompt": "Choose the ordinary active infinitival construction with believe to describe Nina’s view of herself.",
+        "answer": "a",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH14-P1203"
+        ],
+        "id": "closing-1"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "check again",
+            "feedback": "The active causative takes a bare infinitival. The to form appears in the passive counterpart."
+          },
+          {
+            "id": "b",
+            "text": "to check again",
+            "feedback": "The active causative takes a bare infinitival. The to form appears in the passive counterpart."
+          },
+          {
+            "id": "c",
+            "text": "made Jen",
+            "feedback": "The active causative takes a bare infinitival. The to form appears in the passive counterpart."
+          }
+        ],
+        "prompt": "In “The supervisor made Jen check again”, which words form the lower predicate?",
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH14-P1234"
+        ],
+        "id": "closing-2"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "to has been checking",
+            "feedback": "In the infinitival, plain have selects been, and progressive been selects checking."
+          },
+          {
+            "id": "b",
+            "text": "to have been checking",
+            "feedback": "In the infinitival, plain have selects been, and progressive been selects checking."
+          },
+          {
+            "id": "c",
+            "text": "to be having checked",
+            "feedback": "In the infinitival, plain have selects been, and progressive been selects checking."
+          }
+        ],
+        "prompt": "Which order puts perfect have before progressive be?",
+        "answer": "b",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH14-P1214",
+          "CGEL-2002-CH14-P1219"
+        ],
+        "id": "closing-3"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "They asked what Mara should check.",
+            "feedback": "The finite question can express Mara as subject. The third option is grammatical but leaves the subject understood."
+          },
+          {
+            "id": "b",
+            "text": "They asked what for Mara to check.",
+            "feedback": "The finite question can express Mara as subject. The third option is grammatical but leaves the subject understood."
+          },
+          {
+            "id": "c",
+            "text": "They asked what to check.",
+            "feedback": "The finite question can express Mara as subject. The third option is grammatical but leaves the subject understood."
+          }
+        ],
+        "prompt": "Choose the finite wording if Mara must be named as the person who checks something.",
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH14-P1264"
+        ],
+        "id": "closing-4"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "the worker holding the spare meter",
+            "feedback": "Holding the spare meter is participial and can modify worker without a relative marker."
+          },
+          {
+            "id": "b",
+            "text": "the worker who holding the spare meter",
+            "feedback": "Holding the spare meter is participial and can modify worker without a relative marker."
+          },
+          {
+            "id": "c",
+            "text": "the worker who is holding the spare meter",
+            "feedback": "Holding the spare meter is participial and can modify worker without a relative marker."
+          }
+        ],
+        "prompt": "Which version directly modifies the noun with a non-finite clause?",
+        "answer": "a",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH14-P1264",
+          "CGEL-2002-CH14-P1265"
+        ],
+        "id": "closing-5"
+      }
+    ]
+  },
+  "preview_sources": [
+    {
+      "id": "CGEL-2002-CH14-P1182",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 14,
+      "printed_page": 1182,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH14-P1183",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 14,
+      "printed_page": 1183,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH14-P1203",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 14,
+      "printed_page": 1203,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH14-P1214",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 14,
+      "printed_page": 1214,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH14-P1215",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 14,
+      "printed_page": 1215,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH14-P1216",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 14,
+      "printed_page": 1216,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH14-P1217",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 14,
+      "printed_page": 1217,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH14-P1218",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 14,
+      "printed_page": 1218,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH14-P1219",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 14,
+      "printed_page": 1219,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH14-P1234",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 14,
+      "printed_page": 1234,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH14-P1264",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 14,
+      "printed_page": 1264,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH14-P1265",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 14,
+      "printed_page": 1265,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    }
+  ]
+}

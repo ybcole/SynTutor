@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import { validateCourse, STAGES, emptyProgress, reduceProgress, lessonKey, lessonXp, prerequisitesMet } from '../web/js/lesson-core.js';
 import { createLessonStore } from '../web/js/lesson-progress.js';
 const course=validateCourse(JSON.parse(fs.readFileSync(new URL('../web/content/lessons/course.json',import.meta.url))));
-assert.equal(course.lessons.length,12);
+assert.ok(course.lessons.length>=12);
 function complete(lesson) {
  let p=emptyProgress();
  for(const stage of STAGES){
@@ -44,7 +44,7 @@ let calls=[];const rpc={rpc:async(name,args)=>{calls.push({name,args});return {e
 const offline=createLessonStore(course,{storage,userId:'user_offline',client:rpc});await offline.act(first,{type:'answer',answer:'a'});
 assert.match(offline.status,/sync unavailable/i);assert.equal(calls.length,1);assert.equal(calls[0].name,'save_lesson_progress');
 assert.deepEqual(Object.keys(calls[0].args).sort(),['p_content_version','p_lesson_id','p_state']);
-console.log('PASS: all 12 lessons, stage/answer/review gates, prerequisite/version isolation, persistence, replay/concurrent idempotency and offline account sync.');
+console.log(`PASS: all ${course.lessons.length} lessons, stage/answer/review gates, prerequisite/version isolation, persistence, replay/concurrent idempotency and offline account sync.`);
 // A completion already awarded by another device must not be reported as a new server award.
 const synced=createLessonStore(course,{storage,userId:'user_synced',client:{rpc:async(_name,args)=>({data:{...args.p_state,
  completed_at:args.p_state.visited.length===6 ? '2026-11-08T00:00:00Z' : null,earned:0},error:null})}});

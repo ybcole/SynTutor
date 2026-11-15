@@ -111,16 +111,16 @@ insert into public.quiz_items_v1 (item_id,content_version,pool_id,answer,option_
 ('br-11-p3-2','1.0.0','br-11-p3','b','["a","b","c"]'::jsonb,true),
 ('br-11-p4-2','1.0.0','br-11-p4','b','["a","b","c"]'::jsonb,true),
 ('br-11-p5-2','1.0.0','br-11-p5','b','["a","b","c"]'::jsonb,true),
-('cgel-clauses-p1-1','1.0.0','cgel-clauses-p1','a','["a","b","c"]'::jsonb,true),
-('cgel-clauses-p2-1','1.0.0','cgel-clauses-p2','b','["a","b","c"]'::jsonb,true),
-('cgel-clauses-p3-1','1.0.0','cgel-clauses-p3','b','["a","b","c"]'::jsonb,true),
-('cgel-clauses-p4-1','1.0.0','cgel-clauses-p4','c','["a","b","c"]'::jsonb,true),
-('cgel-clauses-p5-1','1.0.0','cgel-clauses-p5','a','["a","b","c"]'::jsonb,true),
+('cgel-clauses-p1-1','1.0.0','cgel-clauses-p1','b','["a","b","c"]'::jsonb,true),
+('cgel-clauses-p2-1','1.0.0','cgel-clauses-p2','c','["a","b","c"]'::jsonb,true),
+('cgel-clauses-p3-1','1.0.0','cgel-clauses-p3','a','["a","b","c"]'::jsonb,true),
+('cgel-clauses-p4-1','1.0.0','cgel-clauses-p4','b','["a","b","c"]'::jsonb,true),
+('cgel-clauses-p5-1','1.0.0','cgel-clauses-p5','c','["a","b","c"]'::jsonb,true),
 ('cgel-clauses-p1-2','1.0.0','cgel-clauses-p1','a','["a","b","c"]'::jsonb,true),
-('cgel-clauses-p2-2','1.0.0','cgel-clauses-p2','b','["a","b","c"]'::jsonb,true),
-('cgel-clauses-p3-2','1.0.0','cgel-clauses-p3','b','["a","b","c"]'::jsonb,true),
-('cgel-clauses-p4-2','1.0.0','cgel-clauses-p4','c','["a","b","c"]'::jsonb,true),
-('cgel-clauses-p5-2','1.0.0','cgel-clauses-p5','a','["a","b","c"]'::jsonb,true)
+('cgel-clauses-p2-2','1.0.0','cgel-clauses-p2','a','["a","b","c"]'::jsonb,true),
+('cgel-clauses-p3-2','1.0.0','cgel-clauses-p3','c','["a","b","c"]'::jsonb,true),
+('cgel-clauses-p4-2','1.0.0','cgel-clauses-p4','b','["a","b","c"]'::jsonb,true),
+('cgel-clauses-p5-2','1.0.0','cgel-clauses-p5','b','["a","b","c"]'::jsonb,true)
 on conflict (item_id,content_version) do nothing;
 insert into public.quiz_catalog_v1 (assessment_id,content_version,item_version,pool_ids,published) values
 ('quiz-br-01','1.0.0','1.0.0','["br-01-p1","br-01-p2","br-01-p3","br-01-p4","br-01-p5"]'::jsonb,true),

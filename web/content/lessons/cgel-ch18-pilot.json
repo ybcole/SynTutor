@@ -1,0 +1,486 @@
+{
+  "title": "Morphology and spelling",
+  "content_version": "2.1.0",
+  "estimated_minutes": 11,
+  "outcomes": [
+    {
+      "id": "o1",
+      "text": "Apply common spelling changes when adding an inflectional suffix."
+    },
+    {
+      "id": "o2",
+      "text": "Distinguish ordinary noun plurals, surname plurals and genitives."
+    },
+    {
+      "id": "o3",
+      "text": "Use sound or clause position to choose between forms such as a and an or am not and aren’t."
+    }
+  ],
+  "key_terms": [
+    {
+      "term": "inflection",
+      "definition": "A form change that marks a grammatical distinction such as past tense or plural."
+    },
+    {
+      "term": "base",
+      "definition": "The form to which a suffix is attached, such as fit in fitted."
+    },
+    {
+      "term": "genitive",
+      "definition": "A form that marks a relation such as possession, as in the guests’ coats."
+    }
+  ],
+  "revised_assessment": {
+    "required_sections": [
+      "introduction",
+      "concepts",
+      "worked-example",
+      "application",
+      "recap"
+    ],
+    "opening": [
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "fited",
+            "feedback": "Fit meets the conditions for doubling t before -ed."
+          },
+          {
+            "id": "b",
+            "text": "fittted",
+            "feedback": "Fit meets the conditions for doubling t before -ed."
+          },
+          {
+            "id": "c",
+            "text": "fitted",
+            "feedback": "Fit meets the conditions for doubling t before -ed."
+          }
+        ],
+        "prompt": "What is the ordinary past-tense spelling of fit in “They ___ a new latch”?",
+        "answer": "c",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH18-P1575"
+        ],
+        "id": "opening-1"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "the Brady’s",
+            "feedback": "Surname Brady retains y in its ordinary plural. An apostrophe would signal a different construction."
+          },
+          {
+            "id": "b",
+            "text": "the Bradys",
+            "feedback": "Surname Brady retains y in its ordinary plural. An apostrophe would signal a different construction."
+          },
+          {
+            "id": "c",
+            "text": "the Bradies",
+            "feedback": "Surname Brady retains y in its ordinary plural. An apostrophe would signal a different construction."
+          }
+        ],
+        "prompt": "Which phrase names the Brady family in the plural without showing possession?",
+        "answer": "b",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH18-P1585",
+          "CGEL-2002-CH18-P1595"
+        ],
+        "id": "opening-2"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "a",
+            "feedback": "Unit begins with a consonant sound even though its first written letter is a vowel."
+          },
+          {
+            "id": "b",
+            "text": "an",
+            "feedback": "Unit begins with a consonant sound even though its first written letter is a vowel."
+          },
+          {
+            "id": "c",
+            "text": "both equally in the same pronunciation",
+            "feedback": "Unit begins with a consonant sound even though its first written letter is a vowel."
+          }
+        ],
+        "prompt": "Which article fits “___ unit” in ordinary pronunciation?",
+        "answer": "a",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH18-P1618"
+        ],
+        "id": "opening-3"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "hopping / hopeing",
+            "feedback": "Hop doubles p. Hope drops silent e."
+          },
+          {
+            "id": "b",
+            "text": "hoping / hopping",
+            "feedback": "Hop doubles p. Hope drops silent e."
+          },
+          {
+            "id": "c",
+            "text": "hopping / hoping",
+            "feedback": "Hop doubles p. Hope drops silent e."
+          }
+        ],
+        "prompt": "Which pair correctly distinguishes hop from hope in the -ing forms?",
+        "answer": "c",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH18-P1575",
+          "CGEL-2002-CH18-P1576"
+        ],
+        "id": "opening-4"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "the guest’s seats",
+            "feedback": "The regular plural guests has an apostrophe after its s in the genitive."
+          },
+          {
+            "id": "b",
+            "text": "the guests seats",
+            "feedback": "The regular plural guests has an apostrophe after its s in the genitive."
+          },
+          {
+            "id": "c",
+            "text": "the guests’ seats",
+            "feedback": "The regular plural guests has an apostrophe after its s in the genitive."
+          }
+        ],
+        "prompt": "Which form refers to seats belonging to several guests?",
+        "answer": "c",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH18-P1595",
+          "CGEL-2002-CH18-P1596"
+        ],
+        "id": "opening-5"
+      }
+    ],
+    "closing": [
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "isn’t I",
+            "feedback": "Aren’t I is widely established in inversion. A statement instead uses I’m not or I am not."
+          },
+          {
+            "id": "b",
+            "text": "aren’t I",
+            "feedback": "Aren’t I is widely established in inversion. A statement instead uses I’m not or I am not."
+          },
+          {
+            "id": "c",
+            "text": "I aren’t",
+            "feedback": "Aren’t I is widely established in inversion. A statement instead uses I’m not or I am not."
+          }
+        ],
+        "prompt": "Choose the ordinary inverted tag after “I’m on the list”.",
+        "answer": "b",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH18-P1612"
+        ],
+        "id": "closing-1"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "tieing",
+            "feedback": "A base ending in ie changes to y before -ing in this pattern."
+          },
+          {
+            "id": "b",
+            "text": "tying",
+            "feedback": "A base ending in ie changes to y before -ing in this pattern."
+          },
+          {
+            "id": "c",
+            "text": "tiing",
+            "feedback": "A base ending in ie changes to y before -ing in this pattern."
+          }
+        ],
+        "prompt": "Which form fits “She’s ___ the cable” if the base is tie?",
+        "answer": "b",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH18-P1577",
+          "CGEL-2002-CH18-P1579"
+        ],
+        "id": "closing-2"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "the Jones",
+            "feedback": "The plural adds -es. A genitive apostrophe is a separate matter."
+          },
+          {
+            "id": "b",
+            "text": "the Jones’s",
+            "feedback": "The plural adds -es. A genitive apostrophe is a separate matter."
+          },
+          {
+            "id": "c",
+            "text": "the Joneses",
+            "feedback": "The plural adds -es. A genitive apostrophe is a separate matter."
+          }
+        ],
+        "prompt": "Which plural preserves the ending of the surname Jones?",
+        "answer": "c",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH18-P1595"
+        ],
+        "id": "closing-3"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Visit cannot take -ed.",
+            "feedback": "The general doubling pattern depends on final stress as well as letters."
+          },
+          {
+            "id": "b",
+            "text": "Visit has earlier stress, while the single syllable in fit is stressed.",
+            "feedback": "The general doubling pattern depends on final stress as well as letters."
+          },
+          {
+            "id": "c",
+            "text": "Fit ends in a silent e.",
+            "feedback": "The general doubling pattern depends on final stress as well as letters."
+          }
+        ],
+        "prompt": "Why is it “visited” but “fitted”?",
+        "answer": "b",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH18-P1575"
+        ],
+        "id": "closing-4"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "an hour / an one-off event",
+            "feedback": "Hour starts with a vowel sound. One starts with a consonant sound."
+          },
+          {
+            "id": "b",
+            "text": "an hour / a one-off event",
+            "feedback": "Hour starts with a vowel sound. One starts with a consonant sound."
+          },
+          {
+            "id": "c",
+            "text": "a hour / an one-off event",
+            "feedback": "Hour starts with a vowel sound. One starts with a consonant sound."
+          }
+        ],
+        "prompt": "Which pair follows the sound rule in both places?",
+        "answer": "b",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH18-P1618"
+        ],
+        "id": "closing-5"
+      }
+    ]
+  },
+  "preview_sources": [
+    {
+      "id": "CGEL-2002-CH18-P1575",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1575,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH18-P1576",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1576,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH18-P1577",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1577,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH18-P1579",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1579,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH18-P1585",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1585,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH18-P1595",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1595,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH18-P1596",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1596,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH18-P1598",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1598,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH18-P1603",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1603,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH18-P1612",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1612,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH18-P1618",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 18,
+      "printed_page": 1618,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    }
+  ]
+}

@@ -1,0 +1,479 @@
+{
+  "title": "Information packaging",
+  "content_version": "2.1.0",
+  "estimated_minutes": 12,
+  "outcomes": [
+    {
+      "id": "o1",
+      "text": "Choose an available word order for particles, recipients and extraposed subjects."
+    },
+    {
+      "id": "o2",
+      "text": "Use a cleft to highlight the information a reader is looking for."
+    },
+    {
+      "id": "o3",
+      "text": "Identify which clause becomes passive and choose the required complement form."
+    }
+  ],
+  "key_terms": [
+    {
+      "term": "extraposition",
+      "definition": "A construction with it in the usual subject position and a clause later, as in It would help to close the valve."
+    },
+    {
+      "term": "it-cleft",
+      "definition": "A construction such as It was Maya who closed the valve, which singles out a value for a role."
+    },
+    {
+      "term": "pseudo-cleft",
+      "definition": "A specifying construction such as What helped was closing the valve, with a fused relative as one part."
+    },
+    {
+      "term": "passive",
+      "definition": "A construction that can make the affected participant the subject, as in The valve was closed by Maya."
+    }
+  ],
+  "revised_assessment": {
+    "required_sections": [
+      "introduction",
+      "concepts",
+      "worked-example",
+      "application",
+      "recap"
+    ],
+    "opening": [
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Maya brought them back.",
+            "feedback": "The unstressed object pronoun comes before the particle."
+          },
+          {
+            "id": "b",
+            "text": "Maya brought back them.",
+            "feedback": "The unstressed object pronoun comes before the particle."
+          },
+          {
+            "id": "c",
+            "text": "Maya them brought back.",
+            "feedback": "The unstressed object pronoun comes before the particle."
+          }
+        ],
+        "prompt": "Choose the ordinary particle order when the direct object is unstressed them.",
+        "answer": "a",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH16-P1383",
+          "CGEL-2002-CH16-P1384"
+        ],
+        "id": "opening-1"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Maya closed the valve.",
+            "feedback": "The cleft places Maya in the identifying slot before the relative."
+          },
+          {
+            "id": "b",
+            "text": "What helped was closing the valve.",
+            "feedback": "The cleft places Maya in the identifying slot before the relative."
+          },
+          {
+            "id": "c",
+            "text": "It was Maya who closed the valve.",
+            "feedback": "The cleft places Maya in the identifying slot before the relative."
+          }
+        ],
+        "prompt": "Which line specifically answers “Who closed the valve?” with an it-cleft?",
+        "answer": "c",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH16-P1419"
+        ],
+        "id": "opening-2"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "The clause headed by saw",
+            "feedback": "We saw is active. Maya undergoes the splashing in the lower clause."
+          },
+          {
+            "id": "b",
+            "text": "The lower splashing clause",
+            "feedback": "We saw is active. Maya undergoes the splashing in the lower clause."
+          },
+          {
+            "id": "c",
+            "text": "Both clauses",
+            "feedback": "We saw is active. Maya undergoes the splashing in the lower clause."
+          }
+        ],
+        "prompt": "Which clause is passive in “We saw Maya get splashed”?",
+        "answer": "b",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH16-P1442",
+          "CGEL-2002-CH16-P1443"
+        ],
+        "id": "opening-3"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Would it help to close the valve?",
+            "feedback": "It goes in the subject position and the infinitival comes later."
+          },
+          {
+            "id": "b",
+            "text": "Would the valve close?",
+            "feedback": "It goes in the subject position and the infinitival comes later."
+          },
+          {
+            "id": "c",
+            "text": "Would to close the valve help?",
+            "feedback": "It goes in the subject position and the infinitival comes later."
+          }
+        ],
+        "prompt": "Which question uses extraposition?",
+        "answer": "a",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH16-P1406",
+          "CGEL-2002-CH16-P1407"
+        ],
+        "id": "opening-4"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "What helped was closing the valve.",
+            "feedback": "What helped sets up a value, and closing the valve specifies it."
+          },
+          {
+            "id": "b",
+            "text": "It was Maya who closed the valve.",
+            "feedback": "What helped sets up a value, and closing the valve specifies it."
+          },
+          {
+            "id": "c",
+            "text": "Closing the valve helped.",
+            "feedback": "What helped sets up a value, and closing the valve specifies it."
+          }
+        ],
+        "prompt": "Which pseudo-cleft names the action that helped?",
+        "answer": "a",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH16-P1422",
+          "CGEL-2002-CH16-P1423"
+        ],
+        "id": "opening-5"
+      }
+    ],
+    "closing": [
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "We sent to Jo a reminder.",
+            "feedback": "The direct-object-first wording uses a recipient to phrase."
+          },
+          {
+            "id": "b",
+            "text": "We sent a reminder Jo.",
+            "feedback": "The direct-object-first wording uses a recipient to phrase."
+          },
+          {
+            "id": "c",
+            "text": "We sent a reminder to Jo.",
+            "feedback": "The direct-object-first wording uses a recipient to phrase."
+          }
+        ],
+        "prompt": "Reword “We sent Jo a reminder” so that the reminder comes before Jo.",
+        "answer": "c",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH16-P1383",
+          "CGEL-2002-CH16-P1384"
+        ],
+        "id": "closing-1"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "I believe it Maya who closed the valve.",
+            "feedback": "The raised-object cleft construction uses be. I believe that it was Maya would use a different frame."
+          },
+          {
+            "id": "b",
+            "text": "I believe Maya who closed the valve.",
+            "feedback": "The raised-object cleft construction uses be. I believe that it was Maya would use a different frame."
+          },
+          {
+            "id": "c",
+            "text": "I believe it to be Maya who closed the valve.",
+            "feedback": "The raised-object cleft construction uses be. I believe that it was Maya would use a different frame."
+          }
+        ],
+        "prompt": "Which wording keeps the raised it-cleft after “I believe”?",
+        "answer": "c",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH16-P1419"
+        ],
+        "id": "closing-2"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Maya was seen to close the valve.",
+            "feedback": "When see is passive in this frame, to appears before close."
+          },
+          {
+            "id": "b",
+            "text": "They saw Maya get splashed.",
+            "feedback": "When see is passive in this frame, to appears before close."
+          },
+          {
+            "id": "c",
+            "text": "Maya was seen close the valve.",
+            "feedback": "When see is passive in this frame, to appears before close."
+          }
+        ],
+        "prompt": "Make see passive in “They saw Maya close the valve”.",
+        "answer": "a",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH16-P1432"
+        ],
+        "id": "closing-3"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Who called was Jo.",
+            "feedback": "The one provides an overt head for the relative. The last line uses an embedded question instead."
+          },
+          {
+            "id": "b",
+            "text": "I know who called.",
+            "feedback": "The one provides an overt head for the relative. The last line uses an embedded question instead."
+          },
+          {
+            "id": "c",
+            "text": "The one who called was Jo.",
+            "feedback": "The one provides an overt head for the relative. The last line uses an embedded question instead."
+          }
+        ],
+        "prompt": "Which sentence specifies the identity of the person, using a subject noun phrase with an integrated relative?",
+        "answer": "c",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH16-P1422",
+          "CGEL-2002-CH16-P1423"
+        ],
+        "id": "closing-4"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "We saw Maya splash water. / We saw Maya run.",
+            "feedback": "Get splashed and the bare splashed by a wave both present Maya as undergoing the event."
+          },
+          {
+            "id": "b",
+            "text": "Maya was seen to splash water. / We saw Maya splash water.",
+            "feedback": "Get splashed and the bare splashed by a wave both present Maya as undergoing the event."
+          },
+          {
+            "id": "c",
+            "text": "We saw Maya get splashed. / We saw Maya splashed by a wave.",
+            "feedback": "Get splashed and the bare splashed by a wave both present Maya as undergoing the event."
+          }
+        ],
+        "prompt": "Which pair keeps see active but makes the lower event passive?",
+        "answer": "c",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH16-P1442",
+          "CGEL-2002-CH16-P1443"
+        ],
+        "id": "closing-5"
+      }
+    ]
+  },
+  "preview_sources": [
+    {
+      "id": "CGEL-2002-CH16-P1383",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 16,
+      "printed_page": 1383,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH16-P1384",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 16,
+      "printed_page": 1384,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH16-P1406",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 16,
+      "printed_page": 1406,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH16-P1407",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 16,
+      "printed_page": 1407,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH16-P1419",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 16,
+      "printed_page": 1419,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH16-P1422",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 16,
+      "printed_page": 1422,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH16-P1423",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 16,
+      "printed_page": 1423,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH16-P1432",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 16,
+      "printed_page": 1432,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH16-P1442",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 16,
+      "printed_page": 1442,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH16-P1443",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 16,
+      "printed_page": 1443,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    }
+  ]
+}

@@ -1,0 +1,404 @@
+{
+  "title": "Coordination and supplementary clauses",
+  "content_version": "2.1.0",
+  "estimated_minutes": 10,
+  "outcomes": [
+    {
+      "id": "o1",
+      "text": "Test whether two proposed coordinates can serve the same function in context."
+    },
+    {
+      "id": "o2",
+      "text": "Recognise restrictions on coordinating clause forms and nouns under one determiner."
+    },
+    {
+      "id": "o3",
+      "text": "Trace a supplementary relative clause to its anchor."
+    }
+  ],
+  "key_terms": [
+    {
+      "term": "coordinate",
+      "definition": "One member of a pair or series joined at the same structural level."
+    },
+    {
+      "term": "supplement",
+      "definition": "An expression set apart from the main structure that adds information about an anchor."
+    },
+    {
+      "term": "anchor",
+      "definition": "The expression, person, thing or situation a supplement comments on."
+    }
+  ],
+  "revised_assessment": {
+    "required_sections": [
+      "introduction",
+      "concepts",
+      "worked-example",
+      "application",
+      "recap"
+    ],
+    "opening": [
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Both are subjects of arrived.",
+            "feedback": "Each expression can supply a circumstance of the arrival."
+          },
+          {
+            "id": "b",
+            "text": "Both are objects of arrived.",
+            "feedback": "Each expression can supply a circumstance of the arrival."
+          },
+          {
+            "id": "c",
+            "text": "They are adjuncts to arrived.",
+            "feedback": "Each expression can supply a circumstance of the arrival."
+          }
+        ],
+        "prompt": "In “The crates arrived yesterday and without warning”, what job do the coordinates share?",
+        "answer": "c",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH15-P1323",
+          "CGEL-2002-CH15-P1324"
+        ],
+        "id": "opening-1"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Labelling or to photograph the crates would help.",
+            "feedback": "The two clauses in this subject coordination have the same form."
+          },
+          {
+            "id": "b",
+            "text": "Labelling or photographing the crates would help.",
+            "feedback": "The two clauses in this subject coordination have the same form."
+          },
+          {
+            "id": "c",
+            "text": "To label or photographing the crates would help.",
+            "feedback": "The two clauses in this subject coordination have the same form."
+          }
+        ],
+        "prompt": "Which pair makes an ordinary coordination in subject position?",
+        "answer": "b",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH15-P1324"
+        ],
+        "id": "opening-2"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "the large crate",
+            "feedback": "The relative adds an origin detail about the crate."
+          },
+          {
+            "id": "b",
+            "text": "Manila",
+            "feedback": "The relative adds an origin detail about the crate."
+          },
+          {
+            "id": "c",
+            "text": "was heavy",
+            "feedback": "The relative adds an origin detail about the crate."
+          }
+        ],
+        "prompt": "What is the anchor of the supplement in “The large crate, which came from Manila, was heavy”?",
+        "answer": "a",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH15-P1353"
+        ],
+        "id": "opening-3"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "the corridor",
+            "feedback": "Without hesitation can modify spoke independently, just as softly can."
+          },
+          {
+            "id": "b",
+            "text": "her voice",
+            "feedback": "Without hesitation can modify spoke independently, just as softly can."
+          },
+          {
+            "id": "c",
+            "text": "without hesitation",
+            "feedback": "Without hesitation can modify spoke independently, just as softly can."
+          }
+        ],
+        "prompt": "Which second coordinate fits “She spoke softly and ___” as another manner adjunct?",
+        "answer": "c",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH15-P1323",
+          "CGEL-2002-CH15-P1324"
+        ],
+        "id": "opening-4"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "these cups and saucers",
+            "feedback": "Repeating the singular determiner creates two full phrases. The last option describes plurals."
+          },
+          {
+            "id": "b",
+            "text": "this cup and that saucer",
+            "feedback": "Repeating the singular determiner creates two full phrases. The last option describes plurals."
+          },
+          {
+            "id": "c",
+            "text": "these cup and saucer",
+            "feedback": "Repeating the singular determiner creates two full phrases. The last option describes plurals."
+          }
+        ],
+        "prompt": "Which version names one cup and one saucer with two separate noun phrases?",
+        "answer": "b",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH15-P1334",
+          "CGEL-2002-CH15-P1335"
+        ],
+        "id": "opening-5"
+      }
+    ],
+    "closing": [
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "sturdy and in good condition",
+            "feedback": "An adjective phrase and a preposition phrase can each describe the parcel after was in the first option."
+          },
+          {
+            "id": "b",
+            "text": "sturdy and the lobby",
+            "feedback": "An adjective phrase and a preposition phrase can each describe the parcel after was in the first option."
+          },
+          {
+            "id": "c",
+            "text": "at the depot and yesterday morning arrived",
+            "feedback": "An adjective phrase and a preposition phrase can each describe the parcel after was in the first option."
+          }
+        ],
+        "prompt": "Which pair can both serve after “The parcel was ___”?",
+        "answer": "a",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH15-P1323",
+          "CGEL-2002-CH15-P1324"
+        ],
+        "id": "closing-1"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "The parcel arrived undamaged, which was a relief.",
+            "feedback": "The relief comes from the safe arrival, so the preceding clause provides the anchor."
+          },
+          {
+            "id": "b",
+            "text": "The parcel which arrived undamaged went upstairs.",
+            "feedback": "The relief comes from the safe arrival, so the preceding clause provides the anchor."
+          },
+          {
+            "id": "c",
+            "text": "The parcel, which arrived undamaged, went upstairs.",
+            "feedback": "The relief comes from the safe arrival, so the preceding clause provides the anchor."
+          }
+        ],
+        "prompt": "Which sentence has a supplementary relative about the whole reported situation?",
+        "answer": "a",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH15-P1353"
+        ],
+        "id": "closing-2"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "These can select only singular nouns.",
+            "feedback": "The number condition applies to the grammatical head. There can be two objects in the real world and still be two singular nouns in the coordination."
+          },
+          {
+            "id": "b",
+            "text": "The two singular nouns do not make a plural head that these can select.",
+            "feedback": "The number condition applies to the grammatical head. There can be two objects in the real world and still be two singular nouns in the coordination."
+          },
+          {
+            "id": "c",
+            "text": "The problem is a missing relative clause.",
+            "feedback": "The number condition applies to the grammatical head. There can be two objects in the real world and still be two singular nouns in the coordination."
+          }
+        ],
+        "prompt": "Why does “these cup and saucer” fail in the shared-determiner construction?",
+        "answer": "b",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH15-P1334",
+          "CGEL-2002-CH15-P1335"
+        ],
+        "id": "closing-3"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Which had been relabelled, arrived first.",
+            "feedback": "The supplement is set off after its anchor. The integrated alternative can help identify which crate."
+          },
+          {
+            "id": "b",
+            "text": "The crate which had been relabelled arrived first.",
+            "feedback": "The supplement is set off after its anchor. The integrated alternative can help identify which crate."
+          },
+          {
+            "id": "c",
+            "text": "The blue crate, which had been relabelled, arrived first.",
+            "feedback": "The supplement is set off after its anchor. The integrated alternative can help identify which crate."
+          }
+        ],
+        "prompt": "Which wording treats “which had been relabelled” as an added comment about an already identified crate?",
+        "answer": "c",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH15-P1353"
+        ],
+        "id": "closing-4"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Check that both phrases have the same spelling pattern.",
+            "feedback": "The independent readings show that both can serve as adjuncts."
+          },
+          {
+            "id": "b",
+            "text": "Look for a separate subject in each part.",
+            "feedback": "The independent readings show that both can serve as adjuncts."
+          },
+          {
+            "id": "c",
+            "text": "Read each part after arrived on its own.",
+            "feedback": "The independent readings show that both can serve as adjuncts."
+          }
+        ],
+        "prompt": "What should you try first when testing “yesterday and at the station” after arrived?",
+        "answer": "c",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH15-P1323",
+          "CGEL-2002-CH15-P1324"
+        ],
+        "id": "closing-5"
+      }
+    ]
+  },
+  "preview_sources": [
+    {
+      "id": "CGEL-2002-CH15-P1323",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 15,
+      "printed_page": 1323,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH15-P1324",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 15,
+      "printed_page": 1324,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH15-P1334",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 15,
+      "printed_page": 1334,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH15-P1335",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 15,
+      "printed_page": 1335,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH15-P1353",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 15,
+      "printed_page": 1353,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    }
+  ]
+}

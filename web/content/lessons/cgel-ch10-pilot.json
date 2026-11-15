@@ -1,0 +1,563 @@
+{
+  "title": "Clause types and questions",
+  "content_version": "2.1.0",
+  "estimated_minutes": 13,
+  "outcomes": [
+    {
+      "id": "o1",
+      "text": "Choose clause order for an ordinary direct question or its embedded counterpart."
+    },
+    {
+      "id": "o2",
+      "text": "Recognise special question patterns and form response-seeking tags."
+    },
+    {
+      "id": "o3",
+      "text": "Distinguish a command, an exclamation and a question by their grammar."
+    }
+  ],
+  "key_terms": [
+    {
+      "term": "closed interrogative",
+      "definition": "A question clause with a limited set of answers, typically yes or no."
+    },
+    {
+      "term": "open interrogative",
+      "definition": "A question clause that asks for missing information, commonly with who, what, where or how."
+    },
+    {
+      "term": "question tag",
+      "definition": "A short auxiliary-and-pronoun question attached to a clause, as in aren’t they?"
+    },
+    {
+      "term": "imperative",
+      "definition": "A clause type commonly used for instructions, with a plain-form verb and often an understood subject."
+    }
+  ],
+  "revised_assessment": {
+    "required_sections": [
+      "introduction",
+      "concepts",
+      "worked-example",
+      "application",
+      "recap"
+    ],
+    "opening": [
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Did Nora took the keys?",
+            "feedback": "Did carries the past tense. Take follows in the plain form."
+          },
+          {
+            "id": "b",
+            "text": "Nora did took the keys?",
+            "feedback": "Did carries the past tense. Take follows in the plain form."
+          },
+          {
+            "id": "c",
+            "text": "Did Nora take the keys?",
+            "feedback": "Did carries the past tense. Take follows in the plain form."
+          }
+        ],
+        "prompt": "Which is an ordinary direct question about whether Nora took the keys?",
+        "answer": "c",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH10-P0856",
+          "CGEL-2002-CH10-P0857"
+        ],
+        "id": "opening-1"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "didn’t they",
+            "feedback": "Are and the plural subject the cases give aren’t they in the ordinary reversed-polarity tag."
+          },
+          {
+            "id": "b",
+            "text": "aren’t they",
+            "feedback": "Are and the plural subject the cases give aren’t they in the ordinary reversed-polarity tag."
+          },
+          {
+            "id": "c",
+            "text": "isn’t it",
+            "feedback": "Are and the plural subject the cases give aren’t they in the ordinary reversed-polarity tag."
+          }
+        ],
+        "prompt": "Which tag fits “The cases are empty, ___?”",
+        "answer": "b",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH10-P0892",
+          "CGEL-2002-CH10-P0893"
+        ],
+        "id": "opening-2"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Everybody bring a pencil.",
+            "feedback": "The imperative uses the plain verb even with an overt subject."
+          },
+          {
+            "id": "b",
+            "text": "Everybody brings a pencil.",
+            "feedback": "The imperative uses the plain verb even with an overt subject."
+          },
+          {
+            "id": "c",
+            "text": "Everybody brought a pencil.",
+            "feedback": "The imperative uses the plain verb even with an overt subject."
+          }
+        ],
+        "prompt": "Which wording gives a direct instruction to everyone in the group?",
+        "answer": "a",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH10-P0934"
+        ],
+        "id": "opening-3"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Where did someone move the chair?",
+            "feedback": "Who replaces someone in the subject slot. In the others, the fronted phrase asks about a different part."
+          },
+          {
+            "id": "b",
+            "text": "What did Jo move?",
+            "feedback": "Who replaces someone in the subject slot. In the others, the fronted phrase asks about a different part."
+          },
+          {
+            "id": "c",
+            "text": "Who moved the chair?",
+            "feedback": "Who replaces someone in the subject slot. In the others, the fronted phrase asks about a different part."
+          }
+        ],
+        "prompt": "Which question asks for the subject of “Someone moved the chair”?",
+        "answer": "c",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH10-P0874"
+        ],
+        "id": "opening-4"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "How come did Jo leave early?",
+            "feedback": "The clause after how come retains ordinary subject–verb order."
+          },
+          {
+            "id": "b",
+            "text": "How come left Jo early?",
+            "feedback": "The clause after how come retains ordinary subject–verb order."
+          },
+          {
+            "id": "c",
+            "text": "How come Jo left early?",
+            "feedback": "The clause after how come retains ordinary subject–verb order."
+          }
+        ],
+        "prompt": "Which order fits after the fixed question expression how come?",
+        "answer": "c",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH10-P0909"
+        ],
+        "id": "opening-5"
+      }
+    ],
+    "closing": [
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "where left Rowan the key",
+            "feedback": "The embedded question keeps subject–verb order and has no supportive did here."
+          },
+          {
+            "id": "b",
+            "text": "where Rowan left the key",
+            "feedback": "The embedded question keeps subject–verb order and has no supportive did here."
+          },
+          {
+            "id": "c",
+            "text": "where did Rowan leave the key",
+            "feedback": "The embedded question keeps subject–verb order and has no supportive did here."
+          }
+        ],
+        "prompt": "Choose the ordinary embedded question after “I wonder”.",
+        "answer": "b",
+        "outcome_ids": [
+          "o1"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH10-P0874"
+        ],
+        "id": "closing-1"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "What mess we made!",
+            "feedback": "Exclamative what goes before a in this singular count phrase."
+          },
+          {
+            "id": "b",
+            "text": "What a mess we made!",
+            "feedback": "Exclamative what goes before a in this singular count phrase."
+          },
+          {
+            "id": "c",
+            "text": "What an mess we made!",
+            "feedback": "Exclamative what goes before a in this singular count phrase."
+          }
+        ],
+        "prompt": "Which exclamation contains an ordinary singular count phrase after what?",
+        "answer": "b",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH10-P0919",
+          "CGEL-2002-CH10-P0920"
+        ],
+        "id": "closing-2"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "isn’t it",
+            "feedback": "The lexical past called corresponds to did in the tag, and she refers to Jo in this context."
+          },
+          {
+            "id": "b",
+            "text": "hasn’t she",
+            "feedback": "The lexical past called corresponds to did in the tag, and she refers to Jo in this context."
+          },
+          {
+            "id": "c",
+            "text": "didn’t she",
+            "feedback": "The lexical past called corresponds to did in the tag, and she refers to Jo in this context."
+          }
+        ],
+        "prompt": "Which tag completes “Jo called, ___?”",
+        "answer": "c",
+        "outcome_ids": [
+          "o2"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH10-P0892",
+          "CGEL-2002-CH10-P0893"
+        ],
+        "id": "closing-3"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Not to be late.",
+            "feedback": "Negative imperatives use plain do. Not to be late fits inside a reported directive."
+          },
+          {
+            "id": "b",
+            "text": "Don’t be late.",
+            "feedback": "Negative imperatives use plain do. Not to be late fits inside a reported directive."
+          },
+          {
+            "id": "c",
+            "text": "Doesn’t be late.",
+            "feedback": "Negative imperatives use plain do. Not to be late fits inside a reported directive."
+          }
+        ],
+        "prompt": "Which imperative is an ordinary negative warning?",
+        "answer": "b",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH10-P0935",
+          "CGEL-2002-CH10-P0943",
+          "CGEL-2002-CH10-P0944"
+        ],
+        "id": "closing-4"
+      },
+      {
+        "options": [
+          {
+            "id": "a",
+            "text": "Let’s checks the cupboard.",
+            "feedback": "The inclusive let’s construction uses the plain verb and has no overt matrix subject we."
+          },
+          {
+            "id": "b",
+            "text": "Let’s check the cupboard.",
+            "feedback": "The inclusive let’s construction uses the plain verb and has no overt matrix subject we."
+          },
+          {
+            "id": "c",
+            "text": "We let’s check the cupboard.",
+            "feedback": "The inclusive let’s construction uses the plain verb and has no overt matrix subject we."
+          }
+        ],
+        "prompt": "Which is a standard inclusive suggestion using let’s?",
+        "answer": "b",
+        "outcome_ids": [
+          "o3"
+        ],
+        "source_ids": [
+          "CGEL-2002-CH10-P0934",
+          "CGEL-2002-CH10-P0935"
+        ],
+        "id": "closing-5"
+      }
+    ]
+  },
+  "preview_sources": [
+    {
+      "id": "CGEL-2002-CH10-P0856",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 10,
+      "printed_page": 856,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH10-P0857",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 10,
+      "printed_page": 857,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH10-P0874",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 10,
+      "printed_page": 874,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH10-P0885",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 10,
+      "printed_page": 885,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH10-P0892",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 10,
+      "printed_page": 892,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH10-P0893",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 10,
+      "printed_page": 893,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH10-P0903",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 10,
+      "printed_page": 903,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH10-P0909",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 10,
+      "printed_page": 909,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH10-P0910",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 10,
+      "printed_page": 910,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH10-P0911",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 10,
+      "printed_page": 911,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH10-P0919",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 10,
+      "printed_page": 919,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH10-P0920",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 10,
+      "printed_page": 920,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH10-P0934",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 10,
+      "printed_page": 934,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH10-P0935",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 10,
+      "printed_page": 935,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH10-P0943",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 10,
+      "printed_page": 943,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    },
+    {
+      "id": "CGEL-2002-CH10-P0944",
+      "book": "Cambridge",
+      "title": "The Cambridge Grammar of the English Language",
+      "edition": "2002 original edition; Cambridge University Press; ISBN 9780521431460",
+      "chapter": 10,
+      "printed_page": 944,
+      "evidence_status": "IMG",
+      "status": "approved",
+      "review_status": "INDEPENDENTLY_REVIEWED",
+      "independent_review": true,
+      "reviewed_by": "Owner-waived AI content check (2026-11-14); not human instructor sign-off",
+      "reviewed_on": "2026-11-14"
+    }
+  ]
+}

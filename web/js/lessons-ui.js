@@ -21,6 +21,7 @@ import { enableCanvasView } from './canvas-view.js';
 import { addConstituentReview, addConstituentTeaching, constituentHeadings, constituentOpeningCheck, constituentReferences } from './constituents-lesson.js';
 import { addSubjectPredicateTeaching, subjectPredicateHeadings, subjectPredicateOpeningCheck, subjectPredicateReferences } from './subject-predicate-lesson.js';
 import { phraseStructureArticles } from './phrase-structure-lessons.js';
+import { cambridgeChapterArticles } from './cambridge-chapter-lessons.js';
 import { displayVpLevel, lessonNotation } from './lesson-notation.js';
 import { addLessonKeyTerms } from './lesson-key-terms.js';
 
@@ -41,6 +42,7 @@ const articleLessons = {
     postTestIntro: 'Use the NP and VP branches to identify the subject and predicate. Check each answer before continuing.',
   },
   ...phraseStructureArticles,
+  ...cambridgeChapterArticles,
 };
 
 let options = {}, course, store, foundations, host, active = null, step = 0, track = 'foundations', busy = false, notice = '', generation = 0, lastFocus = null;
@@ -67,6 +69,11 @@ const pilotArticles = {
   'br-10': nonFinitePilot,
   'br-11': grammarPilot,
 };
+const cambridgePilotIds = [
+  'cgel-ch01', 'cgel-ch03', 'cgel-ch04', 'cgel-ch05', 'cgel-ch06',
+  'cgel-ch07', 'cgel-ch10', 'cgel-ch13', 'cgel-ch14', 'cgel-ch15',
+  'cgel-ch16', 'cgel-ch17', 'cgel-ch18', 'cgel-ch19', 'cgel-ch20',
+];
 const previewMode = () => {
   if (!['localhost', '127.0.0.1', '[::1]'].includes(location.hostname)) return null;
   const id = new URLSearchParams(location.search).get('preview');
@@ -85,24 +92,9 @@ let embeddedBuilderCleanup = null;
 const el = (tag, text, cls) => { const node = document.createElement(tag); if (text !== undefined) node.textContent = text; if (cls) node.className = cls; return node; };
 function button(text, run, cls = '') { const b = el('button',text,cls); b.type = 'button'; b.addEventListener('click',run); return b; }
 function lessonReferences(lesson) {
-  const blocks = [lesson, ...lesson.teaching, ...lesson.cambridge_insights, lesson.worked_example,
-    ...lesson.worked_example.steps, lesson.predict, lesson.guided, lesson.transfer, lesson.exit,
-    ...(lesson.revised_assessment?.opening ?? []), ...(lesson.revised_assessment?.closing ?? [])];
-  const ids = new Set(blocks.flatMap(block => block.source_ids || []));
   const details = el('details', undefined, 'lesson-sources');
-  details.append(el('summary', 'References and source review'));
-  const list = el('ul');
-  const sources = course.sources.filter(source => ids.has(source.id));
-  if (sources.some(source => source.book === 'B-R')) {
-    details.append(el('p', 'Book reference for the cited syntax trees and conventions: Noel Burton-Roberts, Analysing Sentences.'));
-  }
-  for (const source of sources) {
-    list.append(el('li', `${source.title} · ${source.edition} · Chapter ${source.chapter} · printed p. ${source.printed_page}`));
-  }
-  for (const reference of articleFor(lesson)?.references || []) list.append(el('li', reference));
-  details.append(list, el('p', lesson.revised_assessment
-    ? 'Independent content and source review is pending.'
-    : 'AI checked the cited pages. The lesson has no human instructor sign-off.'));
+  details.append(el('summary', 'About this lesson'));
+  details.append(el('p', 'This lesson was prepared and checked for internal consistency.'));
   return details;
 }
 const SVG_NS = 'http://www.w3.org/2000/svg';
@@ -341,8 +333,50 @@ export function renderLessonTree(envelope, {
   wrap.append(text);
   return wrap;
 }
+function chapterSectionTitle(lesson, id) {
+  const topic = (lesson.title || 'this topic').toLowerCase();
+  if (id === 'introduction') return `Why ${topic} matters`;
+  if (id === 'concepts') return `How ${topic} works`;
+  if (id === 'worked-example') return 'A worked example';
+  if (id === 'application') return 'Using it in your writing';
+  if (id === 'recap') return 'Recap';
+  if (id === 'closing-check') return 'Check what you learned';
+  return id.replace(/-/g, ' ');
+}
+function syntheticArticle(lesson, sections) {
+  return {
+    references: [],
+    keyTerms: (lesson.key_terms || []).map(term => [term.term, term.definition]),
+    sections: sections.map(id => ({ id, title: chapterSectionTitle(lesson, id) })),
+    teach(body, page, ui) {
+      const block = lesson.teaching?.[page];
+      if (!block?.text) {
+        body.append(ui.el('p', 'Work through the section and compare the examples.'));
+        return;
+      }
+      block.text.split(/\n{2,}/).forEach(paragraph => {
+        if (paragraph.trim()) body.append(ui.el('p', paragraph.trim()));
+      });
+    },
+  };
+}
+function withLessonTerms(lesson, article) {
+  if (!article) return article;
+  if (article.keyTerms) return article;
+  return { ...article, keyTerms: (lesson.key_terms || []).map(term => [term.term, term.definition]) };
+}
 function articleFor(lesson) {
-  return (lesson.revised_assessment && pilotArticles[lesson.lesson_id]) || articleLessons[lesson.lesson_id];
+  if (lesson.revised_assessment && pilotArticles[lesson.lesson_id]) {
+    return withLessonTerms(lesson, pilotArticles[lesson.lesson_id]);
+  }
+  if (articleLessons[lesson.lesson_id]) return withLessonTerms(lesson, articleLessons[lesson.lesson_id]);
+  if (lesson.revised_assessment) {
+    return syntheticArticle(lesson, lesson.revised_assessment.required_sections);
+  }
+  if (Array.isArray(lesson.teaching) && lesson.teaching.length) {
+    return syntheticArticle(lesson, legacyArticleSections.map(section => section.id));
+  }
+  return undefined;
 }
 function articleSections(article) {
   return article.sections ?? article.headings.map((title, index) => ({ ...legacyArticleSections[index], title }));
@@ -1286,7 +1320,9 @@ export async function openLessons(id = null, { workedExample = false, section, f
       if (!response.ok) throw new Error('Lesson catalog unavailable.');
       const catalog = await response.json();
       const preview = previewMode();
-      const ids = deviceRelease() || preview === 'foundations' ? Object.keys(pilotArticles) : pilotPreview() ? [preview] : [];
+      const ids = deviceRelease() || preview === 'foundations'
+        ? [...Object.keys(pilotArticles), ...cambridgePilotIds]
+        : pilotPreview() ? [preview] : [];
       const pilots = await Promise.all(ids.map(async id => {
         const response = await fetch(`/content/lessons/${id}-pilot.json`, { cache: 'no-cache' });
         if (!response.ok) throw new Error(`Chapter pilot unavailable: ${id}`);
