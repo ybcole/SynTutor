@@ -24,7 +24,7 @@ import {
   POS_TYPES, NODE, toCanonicalEnvelope, fromCanonicalEnvelope, builderProfile, paletteFor,
   createModel, addWordsFromText, addPhrase, moveNode, setType,
   removeNode, connect, canConnect, disconnect,
-  dotOf, dotHit, nodeHit, endpointOf, endpointHit, toTree, compareTrees, leavesOf, leafText,
+  dotOf, dotHit, nodeHit, endpointOf, endpointHit, parentAnchorOf, childAnchorOf, toTree, compareTrees, leavesOf, leafText,
   seedWords, leavesWithTags, childrenOf, getSentenceFromLeaves as sentenceFromLeaves,
 } from './syntax-builder.js';
 import { renderNodeDetail, renderDiagnostic, clearOverlay } from './ui.js';
@@ -185,10 +185,253 @@ const state = {
 
 let tools;
 let embedded = null;
+let embeddedResizeObserver = null;
+let paletteOpen = true;
+let palettePos = null;
+let nodesTooltipShownForSession = false;
+
+function dismissNodesTooltip() {
+  const tip = document.getElementById('builderNodesTooltip');
+  if (tip) tip.hidden = true;
+}
+
+function maybeShowNodesTooltip() {
+  if (embedded || state.challenge || !state.editMode || !isBuilderOpen()) return;
+  if (paletteOpen || nodesTooltipShownForSession) return;
+  const tip = document.getElementById('builderNodesTooltip');
+  if (!tip) return;
+  nodesTooltipShownForSession = true;
+  tip.hidden = false;
+}
 function currentPalette() {
   return embedded
-    ? { labels: embedded.labels || ['PHRASE-a', 'PHRASE-b', 'PHRASE-c'], features: [] }
+    ? {
+        labels: embedded.labels
+          || (embedded.profile ? paletteFor(embedded.profile).labels : ['PHRASE-a', 'PHRASE-b', 'PHRASE-c']),
+        features: [],
+      }
     : paletteFor(state.canonicalProfile || builderProfile());
+}
+
+function clampPalettePos(host, stage, left, top) {
+  const sw = stage.clientWidth || 800;
+  const sh = stage.clientHeight || 600;
+  const hw = host.offsetWidth || 248;
+  const hh = host.offsetHeight || 280;
+  const minTop = 48;
+  const minLeft = 8;
+  const maxLeft = Math.max(minLeft, sw - hw - 8);
+  const maxTop = Math.max(minTop, sh - hh - 52);
+  return {
+    left: Math.round(Math.min(maxLeft, Math.max(minLeft, left))),
+    top: Math.round(Math.min(maxTop, Math.max(minTop, top))),
+  };
+}
+
+function applyPalettePos(host) {
+  const stage = host?.parentElement;
+  if (!host || !stage || host.hidden) return;
+  if (!palettePos) {
+    host.style.left = '';
+    host.style.top = '';
+    return;
+  }
+  const next = clampPalettePos(host, stage, palettePos.left, palettePos.top);
+  palettePos = next;
+  host.style.left = `${next.left}px`;
+  host.style.top = `${next.top}px`;
+}
+
+function setBuilderPaletteOpen(open) {
+  paletteOpen = Boolean(open);
+  if (paletteOpen) dismissNodesTooltip();
+  syncBuilderPalette();
+}
+
+function visibleViewportInsets() {
+  if (!state.canvas) return { left: 0, right: 0, top: 20, bottom: 20 };
+  if (embedded) return { left: 18, right: 18, top: 18, bottom: 18 };
+  const cw = state.canvas.clientWidth || 0;
+  const ch = state.canvas.clientHeight || 0;
+  const cRect = state.canvas.getBoundingClientRect();
+  let left = 24, right = 24;
+  const top = document.body.classList.contains('builder-standalone') ? 56 : 24;
+  const bottom = state.editMode && !state.challenge ? 54 : 24;
+  if (cw > 680) {
+    const pal = document.getElementById('builderPalette');
+    if (pal && !pal.hidden && !pal.classList.contains('is-collapsed')) {
+      const r = pal.getBoundingClientRect();
+      if (r.width > 0) {
+        const palCenter = (r.left + r.right) / 2 - cRect.left;
+        if (palCenter <= cw * 0.38) {
+          left = Math.max(left, Math.min(r.right - cRect.left + 16, cw * 0.45));
+        } else if (palCenter >= cw * 0.62) {
+          right = Math.max(right, Math.min(cRect.right - r.left + 16, cw * 0.45));
+        }
+      }
+    }
+  }
+  const toolsPanel = document.getElementById('builderTools');
+  if (toolsPanel && !toolsPanel.hidden) {
+    const r = toolsPanel.getBoundingClientRect();
+    if (r.width > 0 && window.innerWidth > 760) {
+      left = Math.max(left, Math.min(r.right - cRect.left + 14, cw * 0.48));
+    }
+  }
+  return { left, right, top: Math.min(top, ch * 0.25), bottom: Math.min(bottom, ch * 0.25) };
+}
+
+function visibleLeftInset() {
+  return visibleViewportInsets().left;
+}
+
+function insertNodeOnCanvas(label) {
+  const nodes = Object.values(state.model.nodes);
+  if (!state.snapped && state.ctx) {
+    for (const n of nodes) sizeNode(n);
+  }
+  const phrases = nodes.filter(n => n.kind === NODE.PHRASE);
+  const cw = state.canvas?.clientWidth || 720;
+  const ch = state.canvas?.clientHeight || 480;
+  const insets = visibleViewportInsets();
+  const scale = state.view.scale || 1;
+  const minWorldX = (insets.left + 16 - state.view.ox) / scale;
+  const maxWorldX = (cw - insets.right - 76 - state.view.ox) / scale;
+  const minWorldY = (insets.top + 12 - state.view.oy) / scale;
+  const maxWorldY = (ch - insets.bottom - 48 - state.view.oy) / scale;
+  const treeLeft = nodes.length ? Math.min(...nodes.map(n => n.x)) : minWorldX + 20;
+  const treeTop = nodes.length ? Math.min(...nodes.map(n => n.y)) : minWorldY + 60;
+  const col = phrases.length % 4;
+  const row = Math.floor(phrases.length / 4) % 3;
+  const rawX = Math.max(minWorldX, treeLeft + col * 76);
+  const x = maxWorldX > minWorldX ? Math.min(rawX, maxWorldX) : rawX;
+  const rawY = Math.max(minWorldY, treeTop - 56 + row * 42);
+  const y = maxWorldY > minWorldY ? Math.min(rawY, maxWorldY) : rawY;
+  const created = addPhrase(state.model, label, x, y);
+  selectOnly(created.id);
+  closeMenu();
+  changed();
+  draw();
+  return created;
+}
+
+function renderBuilderPalette() {
+  const host = document.getElementById('builderPalette');
+  const list = document.getElementById('builderPaletteList');
+  const search = document.getElementById('builderPaletteSearch');
+  const head = document.getElementById('builderPaletteHead');
+  const bottomToggle = document.getElementById('builderNodesToggle');
+  if (!host || !list) return;
+  if (!host.dataset.wired) {
+    host.dataset.wired = 'true';
+    const toggle = document.getElementById('builderPaletteToggle');
+    toggle?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      setBuilderPaletteOpen(false);
+    });
+    bottomToggle?.addEventListener('click', () => {
+      setBuilderPaletteOpen(!paletteOpen);
+    });
+    if (head) {
+      let dragging = null;
+      head.addEventListener('pointerdown', (e) => {
+        if (e.button !== 0 || e.target.closest('button')) return;
+        e.preventDefault();
+        e.stopPropagation();
+        const stage = host.parentElement;
+        if (!stage) return;
+        const hRect = host.getBoundingClientRect();
+        const sRect = stage.getBoundingClientRect();
+        dragging = {
+          id: e.pointerId,
+          startX: e.clientX,
+          startY: e.clientY,
+          baseLeft: hRect.left - sRect.left,
+          baseTop: hRect.top - sRect.top,
+          stage,
+        };
+        host.classList.add('is-dragging');
+        head.setPointerCapture?.(e.pointerId);
+      });
+      head.addEventListener('pointermove', (e) => {
+        if (!dragging || dragging.id !== e.pointerId) return;
+        e.stopPropagation();
+        const rawLeft = dragging.baseLeft + (e.clientX - dragging.startX);
+        const rawTop = dragging.baseTop + (e.clientY - dragging.startY);
+        palettePos = clampPalettePos(host, dragging.stage, rawLeft, rawTop);
+        host.style.left = `${palettePos.left}px`;
+        host.style.top = `${palettePos.top}px`;
+      });
+      const finishDrag = (e) => {
+        if (!dragging || dragging.id !== e.pointerId) return;
+        e.stopPropagation();
+        dragging = null;
+        host.classList.remove('is-dragging');
+        if (head.hasPointerCapture?.(e.pointerId)) head.releasePointerCapture(e.pointerId);
+      };
+      head.addEventListener('pointerup', finishDrag);
+      head.addEventListener('pointercancel', finishDrag);
+    }
+    search?.addEventListener('input', () => renderBuilderPalette());
+    search?.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        search.value = '';
+        renderBuilderPalette();
+        state.canvas?.focus?.();
+      }
+    });
+  }
+  const q = (search?.value || '').trim().toLowerCase();
+  const labels = currentPalette().labels.filter(lbl =>
+    `${lbl} ${LABEL_EXPANSIONS[lbl] || ''}`.toLowerCase().includes(q));
+  list.replaceChildren();
+  if (!labels.length) {
+    const empty = document.createElement('p');
+    empty.className = 'builder-palette-empty';
+    empty.textContent = 'No matching label';
+    list.append(empty);
+    return;
+  }
+  for (const lbl of labels) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'builder-palette-item';
+    btn.dataset.paletteLabel = lbl;
+    const expansion = LABEL_EXPANSIONS[lbl];
+    const code = document.createElement('span');
+    code.className = 'builder-palette-code';
+    code.textContent = lbl;
+    btn.append(code);
+    if (expansion) {
+      const desc = document.createElement('span');
+      desc.className = 'builder-palette-desc';
+      desc.textContent = expansion;
+      btn.append(desc);
+    }
+    btn.setAttribute('aria-label', expansion ? `Add ${lbl} (${expansion})` : `Add ${lbl}`);
+    btn.addEventListener('click', () => insertNodeOnCanvas(lbl));
+    list.append(btn);
+  }
+}
+
+function syncBuilderPalette() {
+  const host = document.getElementById('builderPalette');
+  const bottomToggle = document.getElementById('builderNodesToggle');
+  const constructBtn = document.querySelector('[data-builder-construct]');
+  const editingStandalone = Boolean(state.editMode && !embedded && isBuilderOpen() && !state.challenge);
+  if (constructBtn) constructBtn.hidden = !editingStandalone;
+  if (bottomToggle) {
+    bottomToggle.hidden = !editingStandalone;
+    bottomToggle.setAttribute('aria-expanded', String(editingStandalone && paletteOpen));
+    bottomToggle.textContent = paletteOpen ? 'Nodes' : 'Show Nodes';
+  }
+  if (!host) return;
+  const visible = editingStandalone && paletteOpen;
+  host.hidden = !visible;
+  host.classList.remove('is-collapsed');
+  document.body.classList.toggle('builder-editing', editingStandalone);
+  if (editingStandalone) renderBuilderPalette();
+  if (visible) applyPalettePos(host);
 }
 
 function wireBuilderInput() {
@@ -198,7 +441,9 @@ function wireBuilderInput() {
   input.addEventListener('input', onBuilderInput);
 }
 
-function wireBuilderToolbar() {  const bar = document.getElementById('builderToolbar');
+function wireBuilderToolbar() {
+  const bar = document.getElementById('builderToolbar');
+  const topLeft = document.getElementById('builderTopLeft');
   if (!bar || bar.dataset.wired) return;
   bar.dataset.wired = 'true';
   document.querySelector('[data-builder-clear]')?.addEventListener('click', clearBuilder);
@@ -206,45 +451,66 @@ function wireBuilderToolbar() {  const bar = document.getElementById('builderToo
     state.view.scale = Math.max(0.15, Math.min(4, state.view.scale * factor));
     draw();
   };
+  bar.querySelector('[data-builder-construct]')?.addEventListener('click', buildTree);
   bar.querySelector('[data-builder-zoom="out"]')?.addEventListener('click', () => zoom(0.8));
   bar.querySelector('[data-builder-zoom="in"]')?.addEventListener('click', () => zoom(1.25));
   bar.querySelector('[data-builder-zoom="fit"]')?.addEventListener('click', () => {
-    if (!state.editMode && Object.keys(state.model.nodes).length) {
-      state.snapped = true;
-      if (!applyTreeLayout({ fit: true })) fitBuilderView();
-    } else {
-      fitBuilderView();
-    }
+    fitBuilderView();
     draw();
   });
-  bar.querySelector('[data-builder-edit]')?.addEventListener('click',
+  (topLeft || bar).querySelector('[data-builder-edit]')?.addEventListener('click',
     () => setBuilderEditMode(!state.editMode));
 }
 
-function fitBuilderView() {
+function measureModelBounds() {
   const nodes = Object.values(state.model.nodes);
-  if (!nodes.length) {
-    state.view = { ox: 60, oy: 60, scale: 1 };
-    return;
+  if (!nodes.length) return null;
+  if (!state.snapped && state.ctx) {
+    for (const node of nodes) sizeNode(node);
   }
   let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
   for (const node of nodes) {
-    const w = nodeWidth(node);
-    const h = nodeHeight(node);
+    const w = node.w || nodeWidth(node);
+    const h = node.h || nodeHeight(node);
+    const tagPad = node.kind === NODE.WORD && node.tag ? 20 : 0;
+    const bottomPad = node.kind === NODE.PHRASE
+      ? (node.canonicalTriangle ? 6 : 12)
+      : (node.valid === false ? 20 : 6);
     minX = Math.min(minX, node.x);
-    minY = Math.min(minY, node.y);
+    minY = Math.min(minY, node.y - tagPad);
     maxX = Math.max(maxX, node.x + w);
-    maxY = Math.max(maxY, node.y + h);
+    maxY = Math.max(maxY, node.y + h + bottomPad);
+    if (node.canonicalTriangle) {
+      const kids = childrenOf(state.model, node.id).sort((a, b) => a.x - b.x);
+      if (kids.length) {
+        const left = kids[0];
+        const right = kids.at(-1);
+        const lx = Math.min(left.x - 4, left.x + left.w / 2 - 20);
+        const rx = Math.max(right.x + right.w + 4, right.x + right.w / 2 + 20);
+        minX = Math.min(minX, lx);
+        maxX = Math.max(maxX, rx);
+      }
+    }
   }
-  const cw = state.canvas?.clientWidth || 800;
-  const ch = state.canvas?.clientHeight || 600;
-  const top = document.body.classList.contains('builder-standalone') ? 110 : 24;
-  const totalW = Math.max(maxX - minX, 1);
-  const totalH = Math.max(maxY - minY, 1);
-  const scale = Math.max(0.15, Math.min((cw - 48) / totalW, (ch - top - 24) / totalH, 1.35));
+  return { minX, minY, maxX, maxY, totalW: Math.max(maxX - minX, 1), totalH: Math.max(maxY - minY, 1) };
+}
+
+function fitBuilderView() {
+  const bounds = measureModelBounds();
+  if (!bounds) {
+    state.view = { ox: 60, oy: 60, scale: 1 };
+    return;
+  }
+  const cw = state.canvas?.clientWidth || state.canvas?.parentElement?.clientWidth || 800;
+  const ch = state.canvas?.clientHeight || state.canvas?.parentElement?.clientHeight || 600;
+  const insets = visibleViewportInsets();
+  const pad = 16;
+  const availW = Math.max(100, cw - insets.left - insets.right - pad * 2);
+  const availH = Math.max(100, ch - insets.top - insets.bottom - pad * 2);
+  const scale = Math.max(0.15, Math.min(availW / bounds.totalW, availH / bounds.totalH, 1.4));
   state.view.scale = scale;
-  state.view.ox = (cw - totalW * scale) / 2 - minX * scale;
-  state.view.oy = top + (ch - top - 24 - totalH * scale) / 2 - minY * scale;
+  state.view.ox = insets.left + pad + (availW - bounds.totalW * scale) / 2 - bounds.minX * scale;
+  state.view.oy = insets.top + pad + (availH - bounds.totalH * scale) / 2 - bounds.minY * scale;
 }
 
 function setBuilderEditMode(value, { silent = false } = {}) {
@@ -277,28 +543,22 @@ function setBuilderEditMode(value, { silent = false } = {}) {
   state.hoverTarget = null;
   state.hoverEndpoint = null;
   clearSelection();
+  syncBuilderPalette();
+  setCanvasHint('');
   if (state.editMode) {
     document.getElementById('explainNode')?.replaceChildren();
-    setCanvasHint('Type a sentence in the box, or double-click the canvas. Right-click for categories; drag a dot to connect.');
-    draw();
-    input?.focus?.();
+    nodesTooltipShownForSession = false;
+    maybeShowNodesTooltip();
   } else {
-    inferCanonicalFeatures();
-    if (Object.keys(state.model.nodes).length) {
-      let layout = null;
-      try { layout = applyTreeLayout({ fit: true }); } catch { layout = null; }
-      if (!layout) fitBuilderView();
-      state.snapped = Boolean(layout);
-    }
-    draw();
-    syncCanvasToInput();
-    setCanvasHint('');
-    state.treeCorrect = treeIsComplete();
+    dismissNodesTooltip();
+    nodesTooltipShownForSession = false;
   }
+  draw();
+  syncCanvasToInput();
   if (!silent) {
     state.onStatus(state.editMode
-      ? 'Editing the tree. Click “Done editing” to snap and view it.'
-      : 'Tree view — click a node for its explanation.');
+      ? 'Editing the tree. Drag dots to connect nodes, then click Construct or Done editing.'
+      : 'Viewing the tree. Click Edit mode to make changes or Construct to lay out and check.');
   }
 }
 
@@ -362,12 +622,12 @@ export function initSyntaxBuilder({ onStatusChange, setWorkspaceView, userId } =
         const result=await r.json();if(!r.ok||!result.structure?.valid)throw Error(result.error||result.structure?.errors?.join('; ')||'Invalid canonical tree');
       }finally{clearTimeout(timer);}
     },
-    refresh:()=>{evidenceRequest++;state.nodeErrors=new Map();state.lastEvaluation=null;draw();syncCanvasToInput();},
+    refresh:()=>{evidenceRequest++;state.nodeErrors=new Map();state.lastEvaluation=null;syncBuilderPalette();draw();syncCanvasToInput();},
     zoom:factor=>{state.view.scale=Math.max(.15,Math.min(4,state.view.scale*factor));draw();},
     pan:(dx,dy)=>{state.view.ox+=dx;state.view.oy+=dy;draw();},
     fit:()=>{
       if(embedded)fitEmbeddedView();
-      else if(treeIsComplete()){applyTreeLayout({fit:true});state.snapped=true;}
+      else fitBuilderView();
       draw();
     },
     evaluate:buildTree,select:(id,explain=false)=>{selectOnly(id);draw();if(explain)explainSelected();},
@@ -443,6 +703,7 @@ export function mountEmbeddedBuilder(stage, exercise) {
   document.getElementById('builderToolbar')?.setAttribute('hidden', '');
   document.getElementById('builderTopLeft')?.setAttribute('hidden', '');
   document.body.classList.remove('builder-standalone');
+  syncBuilderPalette();
   const canvas = state.canvas;
   const home = canvas.parentElement;
   embedded = exercise;
@@ -451,8 +712,35 @@ export function mountEmbeddedBuilder(stage, exercise) {
   canvas.hidden = false;
   resize();
   tools.open({ embedded: exercise });
+  fitEmbeddedView();
   draw();
+  let lastW = stage.clientWidth;
+  let lastH = stage.clientHeight;
+  embeddedResizeObserver?.disconnect();
+  embeddedResizeObserver = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(() => {
+    if (!embedded || stage !== canvas.parentElement) return;
+    const nw = stage.clientWidth;
+    const nh = stage.clientHeight;
+    if (!nw || !nh || (nw === lastW && nh === lastH)) return;
+    lastW = nw;
+    lastH = nh;
+    resize();
+    fitEmbeddedView();
+    draw();
+  });
+  embeddedResizeObserver?.observe(stage);
   return {
+    labels: () => currentPalette().labels,
+    addNode: (label) => insertNodeOnCanvas(label),
+    zoom: (factor) => {
+      state.view.scale = Math.max(0.15, Math.min(4, state.view.scale * factor));
+      draw();
+    },
+    fit: () => {
+      resize();
+      fitEmbeddedView();
+      draw();
+    },
     check: () => exercise.check(state.model),
     undo: () => tools.undo(),
     restart: () => tools.restartInline(),
@@ -464,6 +752,8 @@ export function mountEmbeddedBuilder(stage, exercise) {
       return feedback;
     },
     destroy() {
+      embeddedResizeObserver?.disconnect();
+      embeddedResizeObserver = null;
       tools.close();
       closeMenu();
       closeEditor();
@@ -471,6 +761,7 @@ export function mountEmbeddedBuilder(stage, exercise) {
       home.append(canvas);
       canvas.hidden = true;
       embedded = null;
+      syncBuilderPalette();
     },
   };
 }
@@ -607,11 +898,7 @@ export function openBuilderView(opts = {}) {
     // unless a caller supplied a specific canonical tree or model.
     if (!opts.canonicalTree && !opts.model) state.canonicalProfile = builderProfile();
     setBuilderEditMode(false, { silent: true });
-    if (!treeIsComplete()) {
-      setCanvasHint(Object.keys(state.model.nodes).length
-        ? 'Click “Edit mode” to continue building, or type in the box to add words.'
-        : 'Type a sentence in the box to place its words, then click “Edit mode” to move them.');
-    }
+    setCanvasHint('');
   } else {
     document.getElementById('builderToolbar')?.setAttribute('hidden', '');
     document.getElementById('builderTopLeft')?.setAttribute('hidden', '');
@@ -660,6 +947,9 @@ export function closeBuilderView() {
   clearTimeout(state.inputSyncTimer);
   tools?.close();
   state.editMode = false;
+  dismissNodesTooltip();
+  nodesTooltipShownForSession = false;
+  syncBuilderPalette();
   document.getElementById('builderToolbar')?.setAttribute('hidden', '');
   document.getElementById('builderTopLeft')?.setAttribute('hidden', '');
   document.getElementById('builderTools')?.remove();
@@ -765,8 +1055,12 @@ function ensureWired() {
   window.addEventListener('resize', () => {
     if (isBuilderOpen() || embedded) {
       resize();
-      if(embedded)fitEmbeddedView();
-      else if(state.snapped)applyTreeLayout({fit:true});
+      if (embedded) {
+        fitEmbeddedView();
+      } else {
+        applyPalettePos(document.getElementById('builderPalette'));
+        if (state.snapped) applyTreeLayout({ fit: true });
+      }
       draw();
     }
   });
@@ -787,19 +1081,21 @@ function resize() {
 
 // Fitting the lesson canvas keeps the learner’s node positions and branch order.
 function fitEmbeddedView() {
-  const nodes = Object.values(state.model.nodes);
-  if (!nodes.length) return;
-  const left = Math.min(...nodes.map(node => node.x));
-  const right = Math.max(...nodes.map(node => node.x + node.w));
-  const top = Math.min(...nodes.map(node => node.y));
-  const bottom = Math.max(...nodes.map(node => node.y + node.h));
-  const width = state.canvas.clientWidth, height = state.canvas.clientHeight;
-  const scale = Math.max(.15, Math.min(1.2,
-    (width - 36) / (right - left), (height - 36) / (bottom - top)));
+  const bounds = measureModelBounds();
+  if (!bounds) {
+    state.view = { ox: 24, oy: 20, scale: 1 };
+    return;
+  }
+  const width = state.canvas?.clientWidth || state.canvas?.parentElement?.clientWidth || 600;
+  const height = state.canvas?.clientHeight || state.canvas?.parentElement?.clientHeight || 360;
+  const pad = 22;
+  const availW = Math.max(80, width - pad * 2);
+  const availH = Math.max(80, height - pad * 2);
+  const scale = Math.max(0.15, Math.min(1.35, availW / bounds.totalW, availH / bounds.totalH));
   state.view = {
     scale,
-    ox: (width - (right - left) * scale) / 2 - left * scale,
-    oy: (height - (bottom - top) * scale) / 2 - top * scale,
+    ox: pad + (availW - bounds.totalW * scale) / 2 - bounds.minX * scale,
+    oy: pad + (availH - bounds.totalH * scale) / 2 - bounds.minY * scale,
   };
 }
 
@@ -909,13 +1205,15 @@ function onMouseDown(e) {
   }
 
   if (e.button === 0) {
-    const dot = dotHit(state.model, w.x, w.y);
+    const dotPad = Math.max(8, 12 / (state.view.scale || 1));
+    const dot = dotHit(state.model, w.x, w.y, dotPad);
     if (dot) {
       state.link = { parentId: dot.id, childId: null, free: 'child', x: w.x, y: w.y };
       closeMenu();
       return;
     }
-    const endpoint = endpointHit(state.model, w.x, w.y);
+    const epPad = Math.max(6, 8 / (state.view.scale || 1));
+    const endpoint = endpointHit(state.model, w.x, w.y, epPad);
     if (endpoint) {
       const oldParent = endpoint.parent;
       endpoint.parent = null;
@@ -1047,7 +1345,8 @@ function onMouseMove(e) {
   // hover feedback
   const node = nodeHit(state.model, w.x, w.y);
   const id = node ? node.id : null;
-  const epNode = endpointHit(state.model, w.x, w.y);
+  const epPad = Math.max(6, 8 / (state.view.scale || 1));
+  const epNode = endpointHit(state.model, w.x, w.y, epPad);
   const epId = epNode ? epNode.id : (node && node.parent ? node.id : null);
   if (id !== state.hover || epId !== state.hoverEndpoint) {
     state.hover = id;
@@ -2288,7 +2587,6 @@ function applyTreeLayout({ fit = true } = {}) {
   const result = computeTreeLayout();
   if (!result) return null;
   const { layout } = result;
-  let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
   for (const [id, pos] of layout) {
     const n = state.model.nodes[id];
     if (!n) continue;
@@ -2296,39 +2594,24 @@ function applyTreeLayout({ fit = true } = {}) {
     n.y = pos.y - pos.h / 2;
     n.w = pos.w;
     n.h = pos.h;
-    minX = Math.min(minX, n.x);
-    minY = Math.min(minY, n.y);
-    maxX = Math.max(maxX, n.x + n.w);
-    maxY = Math.max(maxY, n.y + n.h);
   }
-  if (!fit) return layout;
-  const cw = state.canvas.clientWidth;
-  const ch = state.canvas.clientHeight;
-  const totalW = Math.max(maxX - minX, 1);
-  const totalH = Math.max(maxY - minY, 1);
-  if (cw && ch) {
-    const pad=24,toolsPanel=document.getElementById('builderTools');
-    const rect=!embedded&&toolsPanel&&!toolsPanel.hidden?toolsPanel.getBoundingClientRect():null;
-    const left=rect&&innerWidth>760?Math.min(rect.width+30,cw*.48):0;
-    const bottom=rect&&innerWidth<=760?rect.height+20:0;
-    const top=document.body.classList.contains('builder-standalone')?110:60,availableW=Math.max(100,cw-left),availableH=Math.max(120,ch-bottom-top);
-    const scale=Math.max(.15,Math.min((availableW-pad*2)/totalW,(availableH-pad*2)/totalH,1.35));
-    state.view.scale=scale;
-    state.view.ox=left+(availableW-totalW*scale)/2-minX*scale;
-    state.view.oy=top+(availableH-totalH*scale)/2-minY*scale;
+  state.snapped = true;
+  state.snappedLayout = layout;
+  if (fit) {
+    if (embedded) fitEmbeddedView();
+    else fitBuilderView();
   }
   return layout;
 }
 
 async function buildTree() {
-  const layout = applyTreeLayout({ fit: true });
+  const layout = computeTreeLayout();
   if (!layout) {
     state.onStatus('Build a connected tree first — drag connector dots to link nodes.');
     return;
   }
   changed();
-  state.snapped = true;
-  state.snappedLayout = layout;
+  applyTreeLayout({ fit: true });
   draw();
   state.treeCorrect = treeIsComplete();
   draw();
@@ -2467,6 +2750,10 @@ function phraseLines(n) {
 function nodeWidth(n) {
   if (!state.ctx) return 30;
   if (n.kind === NODE.WORD) return measureWord(n.text);
+  if (n.kind === NODE.SPECIAL) {
+    const specialText = `${n.text || '…'}${n.canonicalIndex != null ? ' ' + n.canonicalIndex : ''}${n.canonicalData?.elided ? ' (elided)' : ''}`;
+    return measureWord(specialText);
+  }
   const lines = phraseLines(n);
   state.ctx.save();
   let width = 0;
@@ -2482,8 +2769,15 @@ function nodeWidth(n) {
 
 // Keep each box's measured size in sync with its label (used for hit-testing).
 function sizeNode(n) {
-  n.h = nodeHeight(n);
-  n.w = nodeWidth(n);
+  const prevW = n.w;
+  const nextH = nodeHeight(n);
+  const nextW = nodeWidth(n);
+  if (n.canonicalData && !n._measured && prevW && Math.abs(prevW - nextW) > 0.5) {
+    n.x += (prevW - nextW) / 2;
+    n._measured = true;
+  }
+  n.h = nextH;
+  n.w = nextW;
 }
 
 // Order nodes so parents are painted after children (roots last) — matches the
@@ -2539,23 +2833,30 @@ function render() {
     if (!n.parent) continue;
     const parent = state.model.nodes[n.parent];
     if (!parent || parent.canonicalTriangle) continue;
-    const childIsLeaf = childrenOf(state.model, n.id).length === 0;
-    // Stop just above a leaf's POS tag when it has one, otherwise hug the word.
-    const childGap = childIsLeaf && n.tag ? 24 : 12;
     // An edge into a node that failed validation is drawn red, like the tutor.
     const bad = state.nodeErrors.has(n.id);
     drawEdge(ctx,
-      { x: parent.x + parent.w / 2, y: parent.y + parent.h / 2 + 12 },
-      { x: n.x + n.w / 2, y: n.y + n.h / 2 - childGap },
+      parentAnchorOf(parent),
+      childAnchorOf(state.model, n),
       bad ? c.error : undefined);
   }
 
-  for(const parent of nodes.filter(n=>n.canonicalTriangle)){
-    const kids=childrenOf(state.model,parent.id);if(!kids.length)continue;
-    const apex={x:parent.x+parent.w/2,y:parent.y+parent.h/2+12};
-    const left=kids[0],right=kids.at(-1),bottom=Math.min(...kids.map(n=>n.y+n.h/2))-12;
-    const lx=left.x+left.w/2-20,rx=right.x+right.w/2+20;
-    ctx.beginPath();ctx.moveTo(apex.x,apex.y);ctx.lineTo(lx,bottom);ctx.lineTo(rx,bottom);ctx.closePath();ctx.strokeStyle=c.edge;ctx.stroke();
+  for (const parent of nodes.filter(n => n.canonicalTriangle)) {
+    const kids = childrenOf(state.model, parent.id).sort((a, b) => a.x - b.x);
+    if (!kids.length) continue;
+    const apex = parentAnchorOf(parent);
+    const left = kids[0];
+    const right = kids.at(-1);
+    const bottom = Math.min(...kids.map(n => n.y + 4));
+    const lx = Math.min(left.x - 4, left.x + left.w / 2 - 20);
+    const rx = Math.max(right.x + right.w + 4, right.x + right.w / 2 + 20);
+    ctx.beginPath();
+    ctx.moveTo(apex.x, apex.y);
+    ctx.lineTo(lx, bottom);
+    ctx.lineTo(rx, bottom);
+    ctx.closePath();
+    ctx.strokeStyle = c.edge;
+    ctx.stroke();
   }
 
   // rubber-band link being dragged
@@ -2563,13 +2864,11 @@ function render() {
     if (state.link.free === 'parent') {
       const child = state.model.nodes[state.link.childId];
       if (child) {
-        const childIsLeaf = childrenOf(state.model, child.id).length === 0;
-        const childGap = childIsLeaf && child.tag ? 24 : 12;
-        drawEdge(ctx, { x: child.x + child.w / 2, y: child.y + child.h / 2 - childGap }, { x: state.link.x, y: state.link.y });
+        drawEdge(ctx, childAnchorOf(state.model, child), { x: state.link.x, y: state.link.y });
       }
     } else {
       const parent = state.model.nodes[state.link.parentId];
-      if (parent) drawEdge(ctx, { x: parent.x + parent.w / 2, y: parent.y + parent.h / 2 + 12 }, { x: state.link.x, y: state.link.y });
+      if (parent) drawEdge(ctx, parentAnchorOf(parent), { x: state.link.x, y: state.link.y });
     }
   }
 
@@ -2662,23 +2961,31 @@ function drawNode(ctx, n) {
     }
   }
 
-  // Endpoint handle (connected child) — revealed on hover so the clean tree
-  // look matches the grammar tutor.
+  // Endpoint handle (connected child) — positioned on the top branch attachment point.
   if (state.editMode && n.parent && hovered) {
-    const ep = { x: cx, y: n.y };
+    const ep = endpointOf(n, state.model);
     ctx.beginPath();
     ctx.arc(ep.x, ep.y, 4, 0, Math.PI * 2);
     ctx.fillStyle = c.accent;
     ctx.fill();
+    ctx.lineWidth = 1.4;
+    ctx.strokeStyle = c.bg;
+    ctx.stroke();
   }
-  // Connector dot (phrase) — drag it to start a new connection. Always shown so
-  // the connect target is easy to find and click.
-  if (state.editMode && isPhrase) {
-    const d = { x: cx, y: n.y + n.h + 6 };
+  // Connector dot (phrase) — anchored cleanly at the bottom branch junction.
+  if (state.editMode && isPhrase && !n.canonicalTriangle && !n.canonicalData?.empty) {
+    const d = dotOf(n);
+    const active = hovered || selected || state.link?.parentId === n.id;
+    ctx.save();
+    ctx.globalAlpha = active ? 1 : 0.72;
     ctx.beginPath();
-    ctx.arc(d.x, d.y, 5, 0, Math.PI * 2);
+    ctx.arc(d.x, d.y, active ? 4.8 : 3.5, 0, Math.PI * 2);
     ctx.fillStyle = c.accent;
     ctx.fill();
+    ctx.lineWidth = 1.5;
+    ctx.strokeStyle = c.bg;
+    ctx.stroke();
+    ctx.restore();
   }
   ctx.restore();
 }
@@ -2761,9 +3068,8 @@ export function canvasGuideBox(target = {}) {
       const n = phraseOf(target.type);
       if (!n) return null;
       sizeNode(n);
-      const cx = n.x + n.w / 2;
-      const cy = n.y + n.h + 6;
-      return boxOf(cx - 14, cy - 14, cx + 14, cy + 14);
+      const d = dotOf(n);
+      return boxOf(d.x - 14, d.y - 14, d.x + 14, d.y + 14);
     }
     case 'spot': {
       // An empty patch just above the word row (or the view's centre) — where

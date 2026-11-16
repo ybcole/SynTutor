@@ -579,20 +579,67 @@ try {
   assert.ok(Math.abs(stickyMetrics.sidebarTop - stickyMetrics.headerBottom) <= 2, 'Chapter contents top meets lesson header bottom seamlessly');
   assert.ok(Math.abs((stickyMetrics.sidebarTop + stickyMetrics.sidebarHeight) - stickyMetrics.vh) <= 2, 'Chapter contents extends cleanly to viewport bottom with zero footer gap');
 
-  // Achievements: verify earned/locked badges, progress counts, category filter, and removal of redundant XP header bar.
+  // Achievements: verify earned/locked badges, consolidated single category filter bar (no duplicate All), unclipped Cross-framework, compact pills, and removal of redundant XP header bar.
   await nav('achievements');
   await page.locator('[data-achievement="first-lesson"]').waitFor();
   assert.equal(await page.locator('#achievementsProgressLabel').count(), 0, 'redundant XP summary removed from Achievements');
   assert.equal(await page.locator('#achievementsProgressFill').count(), 0, 'redundant XP progress bar removed from Achievements');
+  assert.equal(await page.locator('#achievementsCatTrigger').count(), 0, 'duplicate All dropdown trigger removed');
   assert.equal(await page.locator('.achievement-card').count(), 12);
   const statsText = await page.locator('#achievementsStatsCounter').textContent();
   assert.match(statsText, /^\d+ of 12 achievements earned$/);
+  const achDesktopAudit = await page.evaluate(() => {
+    const view = document.getElementById('achievementsView');
+    const pills = [...document.querySelectorAll('#achievementsCatPills .cat-pill')];
+    const rects = pills.map(p => ({ text: p.textContent.trim(), r: p.getBoundingClientRect(), overflow: p.scrollWidth > p.clientWidth + 1 }));
+    const vRect = view.getBoundingClientRect();
+    return {
+      labels: rects.map(x => x.text),
+      allInsideViewport: rects.every(x => x.r.left >= vRect.left && x.r.right <= vRect.right && !x.overflow),
+      maxHeight: Math.max(...rects.map(x => x.r.height)),
+      singleRowDesktop: new Set(rects.map(x => Math.round(x.r.top))).size === 1,
+      pageOverflow: document.documentElement.scrollWidth - window.innerWidth,
+    };
+  });
+  assert.deepEqual(achDesktopAudit.labels, ['All', 'Learning Path', 'Assessment', 'Syntax Skill', 'Consistency', 'Cross-framework']);
+  assert.equal(achDesktopAudit.allInsideViewport, true, 'All 6 category pills including Cross-framework render completely without clipping');
+  assert.ok(achDesktopAudit.maxHeight <= 32, `Compact filter pill height (got ${achDesktopAudit.maxHeight}px)`);
+  assert.equal(achDesktopAudit.singleRowDesktop, true, 'All category pills sit cleanly on one row on desktop');
+  assert.ok(achDesktopAudit.pageOverflow <= 1, 'No horizontal page overflow on desktop Achievements');
   if (process.env.QUIZ_V2_SCREENSHOT_DIR) await page.screenshot({ path: path.join(process.env.QUIZ_V2_SCREENSHOT_DIR, 'achievements-clean.png') });
-  await page.locator('#achievementsCatTrigger').click();
   await page.locator('.cat-pill[data-category="assessment"]').click();
   await page.waitForFunction(() => document.querySelectorAll('#achievementsGrid .achievement-card').length === 5);
   assert.equal(await page.locator('.achievement-card').count(), 5);
   assert.match(await page.locator('#achievementsStatsCounter').textContent(), /^\d+ of 5 achievements earned$/);
+  await page.locator('.cat-pill[data-category="cross-framework"]').click();
+  await page.waitForFunction(() => document.querySelectorAll('#achievementsGrid .achievement-card').length >= 1);
+  await page.locator('.cat-pill[data-category="all"]').click();
+  await page.waitForFunction(() => document.querySelectorAll('#achievementsGrid .achievement-card').length === 12);
+
+  // Check responsive tablet & mobile dark Achievements filter bar with zero clipping or overflow.
+  for (const vp of [{ width: 820, height: 900, theme: 'light' }, { width: 390, height: 844, theme: 'dark' }]) {
+    await page.setViewportSize({ width: vp.width, height: vp.height });
+    await page.evaluate(t => document.documentElement.setAttribute('data-theme', t), vp.theme);
+    await page.waitForTimeout(80);
+    const resp = await page.evaluate(() => {
+      const view = document.getElementById('achievementsView').getBoundingClientRect();
+      const pills = [...document.querySelectorAll('#achievementsCatPills .cat-pill')];
+      return {
+        allVisibleUnclipped: pills.every(p => {
+          const r = p.getBoundingClientRect();
+          return r.width > 0 && r.left >= view.left && r.right <= view.right && p.scrollWidth <= p.clientWidth + 1;
+        }),
+        pageOverflow: document.documentElement.scrollWidth - window.innerWidth,
+      };
+    });
+    assert.equal(resp.allVisibleUnclipped, true, `All category pills remain unclipped at ${vp.width}px (${vp.theme})`);
+    assert.ok(resp.pageOverflow <= 1, `No page horizontal overflow at ${vp.width}px`);
+    if (vp.width === 390 && process.env.QUIZ_V2_SCREENSHOT_DIR) {
+      await page.screenshot({ path: path.join(process.env.QUIZ_V2_SCREENSHOT_DIR, 'achievements-mobile-dark.png') });
+    }
+  }
+  await page.setViewportSize({ width: 1360, height: 920 });
+  await page.evaluate(() => document.documentElement.setAttribute('data-theme', 'light'));
 
   // Leaderboard: verify minimal fix/UI design, Top Learner podium, 5 standings columns, and zero clutter.
   await nav('leaderboard');

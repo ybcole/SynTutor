@@ -1381,6 +1381,7 @@ function wireEvents() {
     historySpans = [];
     renderInputHighlights(ta.value);
     syncInputClearBtn();
+    if (workspaceView === 'tutor') clearOverlay();
     // A correction is open: re-parse as the learner types so the tree (and
     // the re-check of the error) follow the edit.
     if (focus && workspaceView !== 'builder') scheduleLiveReparse();
@@ -1415,9 +1416,13 @@ function wireEvents() {
     if (ta.readOnly === true && e.target.closest?.('.sentence-span')) enterEditMode();
   });
   ta.addEventListener('blur', () => {
-    // The Syntax Builder owns the workspace: no Grammar Tutor pipeline and
-    // no diagnostics may run while it is open.
-    if (workspaceView === 'builder' || workspaceView === 'lessons' || workspaceView === 'quizzes') return;
+    // Only the Syntax Generator runs its pipeline on blur, and only while editing.
+    if (workspaceView !== 'tutor' || ta.readOnly) return;
+    if (!ta.value.trim()) {
+      returnToLocked();
+      syncCanvasEmptyState();
+      return;
+    }
     if (quizMode) {
       returnToLocked();
       setQuizHintText();
@@ -1432,10 +1437,10 @@ function wireEvents() {
     if (changed) runPipeline(focus ? { index: focus.sentenceIndex } : {});
   });
   ta.addEventListener('click', () => {
-    if (workspaceView !== 'builder') activateSentenceAtCaret();
+    if (workspaceView === 'tutor') activateSentenceAtCaret();
   });
   ta.addEventListener('keydown', (e) => {
-    if (workspaceView === 'builder') return;
+    if (workspaceView !== 'tutor' || e.target !== ta || e.isComposing) return;
     if (e.key === 'Escape' && ta.readOnly === false) {
       // Exit edit mode: blur re-locks the textarea and the blur handler
       // reruns the pipeline only when the text actually changed.
@@ -1443,15 +1448,32 @@ function wireEvents() {
       ta.blur();
       return;
     }
-    if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
-      e.preventDefault();
-      if (workspaceView !== 'builder') runPipeline();
+    if (e.key !== 'Enter') return;
+    if (ta.readOnly) {
+      if (!e.shiftKey) {
+        e.preventDefault();
+        if (e.metaKey || e.ctrlKey) runPipeline();
+        else activateSentenceAtCaret();
+      }
       return;
     }
-    if (e.key === 'Enter' && ta.readOnly) {
-      e.preventDefault();
-      activateSentenceAtCaret();
+    // Shift+Enter inserts a normal newline inside multiline sentence input.
+    if (e.shiftKey && !e.metaKey && !e.ctrlKey) return;
+    e.preventDefault();
+    if (!ta.value.trim()) {
+      showCanvasMessage('error', 'Enter a sentence', ['Type some English text above, then press Enter.']);
+      return;
     }
+    clearOverlay();
+    if (quizMode) {
+      returnToLocked();
+      setQuizHintText();
+      const currentIndex = (session?.payload?.meta?.target_sentence || 1) - 1;
+      analyzeForQuiz(ta.value, currentIndex);
+      return;
+    }
+    returnToLocked();
+    runPipeline(focus ? { index: focus.sentenceIndex } : {});
   });
 
   const drawer = document.querySelector('#historyDrawerBackdrop');
@@ -2158,8 +2180,7 @@ async function executePipeline(opts, request) {
 
   const text = document.querySelector('#inputText').value.trim();
   if (!text) {
-    showCanvasMessage('error', 'No analyzable sentence', ['Enter some English text first, then submit it.']);
-    renderDiagnostic('No analyzable sentence', ['Enter some English text first, then submit it.']);
+    showCanvasMessage('error', 'Enter a sentence', ['Type some English text above, then press Enter.']);
     transition(STATES.IDLE, 'empty input -> back to idle');
     return;
   }

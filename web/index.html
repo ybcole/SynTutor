@@ -240,13 +240,29 @@
           <canvas id="treeCanvas" tabindex="0" aria-label="Interactive syntax tree; click a node, or use arrow keys and Enter"></canvas>
           <div id="builderTopLeft" class="builder-top-left" hidden>
             <button id="builderClearTop" type="button" data-builder-clear>Clear</button>
-          </div>
-          <div id="builderToolbar" class="builder-toolbar canonical-zoom" role="group" aria-label="Tree zoom and edit mode" hidden>
             <button type="button" data-builder-edit aria-pressed="false">Edit mode</button>
+          </div>
+          <div id="builderToolbar" class="builder-toolbar canonical-zoom" role="group" aria-label="Tree zoom and construction controls" hidden>
+            <button type="button" data-builder-construct hidden>Construct</button>
             <button type="button" data-builder-zoom="in" aria-label="Zoom in on syntax tree">+</button>
             <button type="button" data-builder-zoom="out" aria-label="Zoom out of syntax tree">&minus;</button>
             <button type="button" data-builder-zoom="fit" aria-label="Fit syntax tree">Fit</button>
           </div>
+          <aside id="builderPalette" class="builder-palette" aria-label="Nodes palette" hidden>
+            <div id="builderPaletteHead" class="builder-palette-head" title="Drag to move Nodes panel">
+              <div class="builder-palette-title-group">
+                <span class="builder-palette-grip" aria-hidden="true">::</span>
+                <h3>Nodes</h3>
+              </div>
+              <button id="builderPaletteToggle" class="builder-palette-toggle" type="button" aria-expanded="true" aria-label="Hide nodes palette">Hide</button>
+            </div>
+            <div class="builder-palette-body">
+              <input id="builderPaletteSearch" class="builder-palette-search" type="search" placeholder="Search labels…" aria-label="Search node labels" />
+              <div id="builderPaletteList" class="builder-palette-list"></div>
+            </div>
+          </aside>
+          <div id="builderNodesTooltip" class="builder-nodes-tooltip" role="status" aria-live="polite" hidden>Open Nodes to add labels to your tree.</div>
+          <button id="builderNodesToggle" class="builder-nodes-toggle" type="button" aria-expanded="true" aria-controls="builderPalette" hidden>Nodes</button>
           <canvas id="builderCanvas" class="builder-canvas" tabindex="0" aria-label="Syntax builder canvas" hidden></canvas>
           <div id="canvasControls" class="canvas-controls" hidden>
             <button id="builderClear" class="builder-btn" type="button" data-action="clear">Clear</button>
@@ -381,19 +397,14 @@
       </header>
       <div class="achievements-content-wrapper">
         <div class="achievements-toolbar">
-          <!-- The category selector unfurls inline, lessons-catalog style. -->
-          <div class="expanding-cat-wrapper" id="achievementsCatExpander">
-            <button class="cat-trigger-pill" id="achievementsCatTrigger" type="button" aria-expanded="false" aria-haspopup="true">
-              <span class="cat-trigger-label">All</span>
-              <svg class="cat-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
-            </button>
-            <div class="expanding-cat-pills" id="achievementsCatPills">
-              <button class="cat-pill active" type="button" data-category="all">All</button>
-              <button class="cat-pill" type="button" data-category="learning">Learning Path</button>
-              <button class="cat-pill" type="button" data-category="assessment">Assessment</button>
-              <button class="cat-pill" type="button" data-category="syntax">Syntax Skill</button>
-              <button class="cat-pill" type="button" data-category="consistency">Consistency</button>
-              <button class="cat-pill" type="button" data-category="cross-framework">Cross-framework</button>
+          <div class="achievements-filters" id="achievementsCatExpander">
+            <div class="achievements-cat-pills" id="achievementsCatPills" role="group" aria-label="Filter achievements by category">
+              <button class="cat-pill active" type="button" data-category="all" aria-pressed="true">All</button>
+              <button class="cat-pill" type="button" data-category="learning" aria-pressed="false">Learning Path</button>
+              <button class="cat-pill" type="button" data-category="assessment" aria-pressed="false">Assessment</button>
+              <button class="cat-pill" type="button" data-category="syntax" aria-pressed="false">Syntax Skill</button>
+              <button class="cat-pill" type="button" data-category="consistency" aria-pressed="false">Consistency</button>
+              <button class="cat-pill" type="button" data-category="cross-framework" aria-pressed="false">Cross-framework</button>
             </div>
           </div>
           <div class="achievements-stats-counter" id="achievementsStatsCounter" aria-live="polite">Loading achievements…</div>

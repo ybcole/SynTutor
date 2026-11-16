@@ -126,12 +126,13 @@ export function renderLessonTree(envelope, {
   measure.font = '15px system-ui, sans-serif';
   const gap = 18;
   const rowHeight = 72;
-  const top = 35;
+  const top = 38;
   const widths = new Map();
   function widthOf(node) {
     if (widths.has(node)) return widths.get(node);
     const children = node.children || [];
-    const width = Math.max(node.id === focusId ? 122 : 56,
+    const boxed = node.id === focusId || (highlightWords && node.id && onSelectNode);
+    const width = Math.max(boxed ? 122 : 56,
       measure.measureText(visibleLabel(node)).width + 28,
       ...featureRows(node).map(feature => measure.measureText(feature).width + 28),
       measure.measureText(node.words?.join(' ') || '').width + 28,
