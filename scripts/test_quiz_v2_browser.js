@@ -48,8 +48,11 @@ try{
       export const API_BASE='';`});
     if(url.startsWith('https://esm.sh/'))return route.fulfill({contentType:'application/javascript',body:`
       export const createClient=()=>({
-        rpc:(name)=>{const result={data:name==='get_my_progression'?{xp:250,level:2,lesson_xp:250,quiz_xp:0}:[],error:null};
-          return {then:(r,j)=>Promise.resolve(result).then(r,j),abortSignal:async()=>result};},
+        rpc:(name,args)=>{
+          const total=args?.p_attempt?.presented?.length||5;
+          const result={data:name==='get_my_progression'?{xp:250,level:2,lesson_xp:250,quiz_xp:0}:name==='save_quiz_v2_attempt'?{attempt_id:args?.p_attempt?.attempt_id,submitted_at:args?.p_submit?'2026-11-16T00:00:00Z':null,correct:args?.p_submit?total:null,earned:args?.p_submit?total*2:0}:[],error:null};
+          return {then:(r,j)=>Promise.resolve(result).then(r,j),abortSignal:async()=>result};
+        },
         from:()=>({select:()=>({order(){return this},limit(){return this},then:r=>Promise.resolve({data:[],error:null}).then(r)}),
           upsert:async()=>({error:null})})
       });`});
@@ -98,21 +101,43 @@ try{
   assert.equal(await quiz.locator('input:checked').inputValue(),firstMasterQuestion.answer);await assertNoResults();
   await quiz.getByRole('button',{name:'Submit assessment · 24 unanswered',exact:true}).click();
   await quiz.locator('.quiz-score').filter({hasText:'1/25 correct (4%)'}).waitFor();
-  assert.ok(await quiz.getByText(/Question review pending: this quiz has not been independently reviewed/).isVisible());
+  assert.ok(await quiz.getByText(/Verified account totals appear in the sidebar/).first().isVisible());
   assert.ok(await quiz.getByText(/Correct answer:/).first().isVisible());
   await quiz.getByRole('button',{name:'← All quizzes',exact:true}).click();
   await quiz.getByRole('button',{name:'Syntax — Burton-Roberts',exact:true}).click();
   const chapter=quiz.locator('[data-chapter="br-03"]');
   await chapter.locator('summary').focus();await page.keyboard.press('Enter');
   assert.equal(await chapter.getAttribute('open'),'');
-  const formerlyUnavailable=chapter.locator('.quiz-topic-card').filter({has:page.getByRole('heading',{name:'Nouns, noun phrases and lexical categories',exact:true})});
-  assert.ok(await formerlyUnavailable.getByRole('button',{name:'Start quiz',exact:true}).isEnabled());
-  await formerlyUnavailable.getByRole('button',{name:'Start quiz',exact:true}).click();
+  const approvedTopic=chapter.locator('.quiz-topic-card').filter({has:page.getByRole('heading',{name:'Nouns, noun phrases and lexical categories',exact:true})});
+  assert.ok(await approvedTopic.getByRole('button',{name:'Start quiz',exact:true}).isEnabled());
+  assert.ok(await approvedTopic.getByText(/verified account XP eligible/).isVisible());
+  assert.equal(await quiz.getByRole('button',{name:'Questions Under Review',exact:true}).count(),0);
+  await quiz.getByRole('button',{name:'Cambridge — Cambridge Grammar',exact:true}).click();
+  await quiz.locator('[data-chapter="cgel-ch04"] > summary').click();
+  const cambridgeGeneral=quiz.locator('[data-chapter="cgel-ch04"] .quiz-topic-card').filter({has:page.getByRole('heading',{name:'General Quiz',exact:true})});
+  await cambridgeGeneral.getByRole('button',{name:'Start quiz',exact:true}).click();
+  await quiz.getByRole('heading',{name:'Question 1 of 13',exact:true}).waitFor();
+  await assertNoResults();
+  await quiz.getByRole('button',{name:'Submit assessment · 13 unanswered',exact:true}).click();
+  await quiz.locator('.quiz-score').filter({hasText:'0/13'}).waitFor();
+  assert.ok(await quiz.getByText(/Project-approved; independent external review: not conducted/).first().isVisible());
+  await quiz.getByRole('button',{name:'← All quizzes',exact:true}).click();
+  const cambridgePers=quiz.locator('.quiz-topic-card').filter({has:page.getByRole('heading',{name:'Personalized Cambridge Quiz',exact:true})});
+  await cambridgePers.getByRole('button',{name:'Start quiz',exact:true}).click();
+  await quiz.getByRole('heading',{name:'Question 1 of 5',exact:true}).waitFor();
+  await quiz.getByRole('button',{name:'Submit assessment · 5 unanswered',exact:true}).click();
+  await quiz.locator('.quiz-score').filter({hasText:'0/5'}).waitFor();
+  await quiz.getByRole('button',{name:'← All quizzes',exact:true}).click();
+  await quiz.getByRole('button',{name:'Syntax — Burton-Roberts',exact:true}).click();
+  await quiz.locator('[data-chapter="br-02"] > summary').click();
+  const nonBlueprint=quiz.locator('[data-chapter="br-02"] .quiz-topic-card').filter({has:page.getByRole('heading',{name:'Subject and predicate tree exercise',exact:true})});
+  assert.ok(await nonBlueprint.getByRole('button',{name:'Start quiz',exact:true}).isEnabled());
+  await nonBlueprint.getByRole('button',{name:'Start quiz',exact:true}).click();
   await quiz.getByRole('heading',{name:'Question 1 of 5',exact:true}).waitFor();
   await assertNoResults();
   await quiz.getByRole('button',{name:'Submit assessment · 5 unanswered',exact:true}).click();
   await quiz.locator('.quiz-score').filter({hasText:'0/5'}).waitFor();
-  assert.ok(await quiz.getByText(/Independent question review is pending/).first().isVisible());
+  assert.ok(await quiz.getByText(/Project-approved; independent external review: not conducted/).first().isVisible());
   await quiz.getByRole('button',{name:'← All quizzes',exact:true}).click();
   const topic=chapter.locator('.quiz-topic-card').filter({has:page.getByRole('heading',{name:'Adjectives, adverbs, APs and AdvPs',exact:true})});
   await topic.getByRole('button',{name:'Start quiz',exact:true}).click();

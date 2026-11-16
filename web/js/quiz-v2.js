@@ -1,4 +1,4 @@
-import { reviewed, rng, shuffled, randomSeed, MAX_QUIZ_ITEMS } from './quiz-core.js';
+import { approved, reviewed, rng, shuffled, randomSeed, MAX_QUIZ_ITEMS } from './quiz-core.js';
 import {isRelevantAssessmentQuestion} from './quiz-scope.js';
 
 export const GENERAL_POLICY = Object.freeze({ minimum: 5, perTopic: 1 });
@@ -24,7 +24,7 @@ export function questionMetadata(q, curriculum) {
     lesson_reference: q.lesson_reference || `#lesson/${chapter.id}/${topic}`,
     content_version: q.content_version };
 }
-export function eligibleQuestions(bank, curriculum, trackId, tier = 'reviewed') {
+export function eligibleQuestions(bank, curriculum, trackId, tier = 'approved') {
   const sources = new Map(bank.sources.map(s => [s.id, s]));
   const published = bank.items.filter(q => {
     const meta = questionMetadata(q, curriculum);
@@ -35,11 +35,11 @@ export function eligibleQuestions(bank, curriculum, trackId, tier = 'reviewed') 
           && ['resolved', 'compatible'].includes(s.crosswalk_status);
       });
   });
-  if(tier==='lesson-assessment'){
+  if(tier==='approved'||tier==='lesson-assessment'){
     return [...published,...(bank.assessment_items||[]).filter(q=>{
       const meta=questionMetadata(q,curriculum);
-      return meta?.track_id===trackId&&isRelevantAssessmentQuestion(q)&&q.publication_status==='assessment_draft'
-        &&q.assessment_format==='independent'&&q.review_status==='UNREVIEWED'&&q.independent_review===false;
+      return meta?.track_id===trackId&&isRelevantAssessmentQuestion(q)&&q.publication_status==='published'
+        &&q.assessment_format==='independent'&&approved(q);
     })];
   }
   if(tier!=='lesson-practice')return published;
@@ -53,7 +53,7 @@ export function eligibleQuestions(bank, curriculum, trackId, tier = 'reviewed') 
 }
 export function publishedBlueprint(bank, curriculum, spec) {
   if (spec.mode !== 'topic'||['lesson-practice','lesson-assessment'].includes(spec.content_tier)) return null;
-  const eligible = new Set(eligibleQuestions(bank, curriculum, spec.track).filter(q => {
+  const eligible = new Set(eligibleQuestions(bank, curriculum, spec.track, 'reviewed').filter(q => {
     const m = questionMetadata(q, curriculum);
     return m.chapter_id === spec.chapter && m.subtopic_id === spec.topic;
   }).map(q => `${q.item_id}@${q.content_version}`));
@@ -95,8 +95,8 @@ export function topicPerformance(bank, curriculum, attempts, trackId) {
 export function balancedSelection(groups, count, random, preference = () => 0) {
   if (!Number.isInteger(count) || count < groups.length) throw Error(`Choose at least ${groups.length} questions to cover every group.`);
   const pools = shuffled(groups, random).map(g => ({ ...g, items: shuffled(g.items, random).sort((a,b)=>preference(a)-preference(b)), selected: [] }));
-  if (pools.some(g => !g.items.length)) throw Error('Questions Under Review: every required topic or chapter needs reviewed questions.');
-  if (pools.reduce((n,g) => n + g.items.length, 0) < count) throw Error('Not enough distinct reviewed questions for this count.');
+  if (pools.some(g => !g.items.length)) throw Error('Insufficient approved questions: every required topic or chapter needs approved questions.');
+  if (pools.reduce((n,g) => n + g.items.length, 0) < count) throw Error('Not enough distinct approved questions for this count.');
   for (let i = 0; i < count; i++) {
     const available = pools.filter(g => g.items.length).sort((a,b) => a.selected.length - b.selected.length);
     available[0].selected.push(available[0].items.pop());
@@ -143,27 +143,33 @@ export function selectQuestions(bank, curriculum, spec, attempts = {}, seed = ra
     if (spec.mode === 'topic') {
       if (!chapter.topics.some(t => t.id === spec.topic)) throw Error('Unknown instructional topic.');
       const pool = items.filter(q => meta(q).subtopic_id === spec.topic);
-      if (pool.length < 5) throw Error(`Questions Under Review: ${pool.length}/5 distinct reviewed questions available.`);
+      if (pool.length < 5) throw Error(`Insufficient approved questions: ${pool.length}/5 distinct validated questions available.`);
       selection = shuffled(pool, random).slice(0,5);
     } else if (spec.mode === 'general') {
       selection = balancedSelection(chapter.topics.map(t => ({ id: t.id, items: items.filter(q => meta(q).subtopic_id === t.id) })),
         Math.max(GENERAL_POLICY.minimum, chapter.topics.length * GENERAL_POLICY.perTopic), random);
     } else throw Error('Unknown quiz mode.');
   }
-  return { items: shuffled(selection, random), diagnostic, unreviewed:selection.some(q=>q.review_status==='UNREVIEWED') };
+  return { items: shuffled(selection, random), diagnostic, unreviewed:selection.some(q=>!approved(q)) };
 }
 export function makeV2Attempt(bank, curriculum, spec, attempts = {}, seed = randomSeed(), id = crypto.randomUUID()) {
   if (!Number.isInteger(seed) || seed < 0 || seed > 4294967295) throw Error('Invalid seed.');
-  const selected = selectQuestions(bank, curriculum, spec, attempts, seed), random = rng(seed ^ 0xa5a5a5a5);
-  const track = curriculum.find(t => t.id === spec.track), chapter = track.chapters.find(c => c.id === spec.chapter);
-  const title = spec.mode === 'topic' ? chapter.topics.find(t => t.id === spec.topic).title
-    : spec.mode === 'general' ? `${chapter.title} — General Quiz`
-    : spec.mode === 'master' ? `${track.title || spec.track} Master Quiz`
-    : `Personalized ${track.title || spec.track} Quiz${selected.diagnostic ? ' — diagnostic assessment' : ''}`;
-  return { attempt_id: id, assessment_id: specKey(spec), content_version: '2.0.0',
-    quiz_v2: true, spec: { ...spec }, title,
-    diagnostic: selected.diagnostic, includes_unreviewed:selected.unreviewed, seed, practice: true, xp_policy: 'unscored-v2',
-    ...(spec.format==='formal'?{assessment_contract:'quiz-v2-formal-1'}:{}),
+  const isPractice = spec.content_tier === 'lesson-practice';
+  const resolvedSpec = isPractice
+    ? { ...spec, content_tier: 'lesson-practice' }
+    : { ...spec, content_tier: 'lesson-assessment', format: 'formal' };
+  const selected = selectQuestions(bank, curriculum, resolvedSpec, attempts, seed), random = rng(seed ^ 0xa5a5a5a5);
+  const track = curriculum.find(t => t.id === resolvedSpec.track), chapter = track.chapters.find(c => c.id === resolvedSpec.chapter);
+  const title = resolvedSpec.mode === 'topic' ? chapter.topics.find(t => t.id === resolvedSpec.topic).title
+    : resolvedSpec.mode === 'general' ? `${chapter.title} — General Quiz`
+    : resolvedSpec.mode === 'master' ? `${track.title || resolvedSpec.track} Master Quiz`
+    : `Personalized ${track.title || resolvedSpec.track} Quiz${selected.diagnostic ? ' — diagnostic assessment' : ''}`;
+  return { attempt_id: id, assessment_id: specKey(resolvedSpec), content_version: '2.0.0',
+    quiz_v2: true, spec: resolvedSpec, title,
+    diagnostic: selected.diagnostic, includes_unreviewed:selected.unreviewed, seed,
+    practice: isPractice,
+    xp_policy: isPractice ? 'unscored-v2' : 'verified-v2',
+    ...(isPractice ? {} : { assessment_contract: 'quiz-v2-formal-1' }),
     presented: selected.items.map(q => ({ item_id: q.item_id, content_version: q.content_version, option_order: shuffled(q.options.map(o => o.id), random) })),
     responses: {}, position: 0, started_at: new Date().toISOString(), submitted_at: null };
 }

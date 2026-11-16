@@ -32,9 +32,9 @@ assert.deepEqual(a.presented,makeV2Attempt(bank,curriculum,spec,{},42,'test-a').
 assert.equal(new Set(a.presented.map(q=>q.item_id)).size,5);
 assert.ok(new Set(Array.from({length:30},(_,i)=>JSON.stringify(makeV2Attempt(bank,curriculum,spec,{},i*1384921).presented))).size>20);
 assert.ok(new Set(Array.from({length:30},(_,i)=>makeV2Attempt(bank,curriculum,spec,{},i*1384921).presented).flat().map(r=>JSON.stringify(r.option_order))).size>1);
-assert.throws(()=>selectQuestions(bank,curriculum,{...spec,topic:'concepts'}),/Under Review/);
-assert.throws(()=>selectQuestions(bank,curriculum,{...spec,mode:'general'}),/Under Review/);
-assert.throws(()=>selectQuestions(bank,curriculum,{track:'cambridge',mode:'master',count:20}),/Under Review|distinct/);
+assert.throws(()=>selectQuestions(bank,curriculum,{...spec,topic:'concepts'}),/Insufficient approved questions/);
+assert.throws(()=>selectQuestions(bank,curriculum,{...spec,mode:'general'}),/Insufficient approved questions/);
+assert.throws(()=>selectQuestions(bank,curriculum,{track:'cambridge',mode:'master',count:20}),/Insufficient approved questions|distinct/);
 assert.throws(()=>selectQuestions(bank,curriculum,{track:'syntax',mode:'master',count:10}),/at least 11/);
 const master=makeV2Attempt(bank,curriculum,{track:'syntax',mode:'master',count:15},{},55);
 const counts={};for(const ref of master.presented){const q=bank.items.find(q=>q.item_id===ref.item_id);counts[q.lesson_id]=(counts[q.lesson_id]||0)+1;}
@@ -42,7 +42,7 @@ assert.equal(Object.keys(counts).length,11);
 assert.deepEqual(Object.values(counts).sort(),[1,1,1,1,1,1,1,2,2,2,2]);
 assert.equal(gradeAttempt(bank,master).incorrect,15);
 assert.equal(gradeAttempt(bank,master).target_xp,0);
-assert.throws(()=>validateAttempt(bank,{...master,practice:false}),/unscored/);
+assert.throws(()=>validateAttempt(bank,{...master,xp_policy:'unscored-v2'}),/verified-v2/);
 assert.throws(()=>validateAttempt(bank,{...a,presented:a.presented.slice(0,4)}),/five/);
 assert.throws(()=>validateAttempt(bank,{...a,presented:[a.presented[0],...a.presented.slice(0,4)]}),/Distinct/);
 assert.throws(()=>selectQuestions(bank,curriculum,{track:'syntax',mode:'master',count:111}),/distinct/);
@@ -107,12 +107,24 @@ assert.equal(queued.items.length,10);
 for(const q of queued.items){assert.equal(q.review_status,'UNREVIEWED');assert.equal(q.publication_status,'draft');assert.ok(questionMetadata(q,curriculum));assert.ok(!bank.items.some(i=>i.item_id===q.item_id));assert.ok(q.outcome_ids.every(id=>course.lessons.find(l=>l.lesson_id===q.lesson_id).outcomes.some(o=>o.id===id)));}
 // Full persistence, scores, variable navigation, no XP RPC and identity isolation.
 const memory=new Map(),storage={getItem:k=>memory.get(k),setItem:(k,v)=>memory.set(k,v)};
-let upserts=0,rpcs=0;
+let rpcs=0;
 const cloud=new Map();
-const client={rpc:async()=>{rpcs++;throw Error('V2 must never invoke XP RPC');},from:table=>({
-  select:async()=>({data:table==='quiz_practice_v2'?[...cloud.values()].map(payload=>({payload})):[]}),
-  upsert:async row=>{upserts++;cloud.set(row.attempt_id,structuredClone(row.payload));return {};},
-})};
+const client={
+  rpc:async(name,args)=>{
+    if(name!=='save_quiz_v2_attempt')throw Error('Unexpected RPC '+name);
+    rpcs++;
+    const a=args.p_attempt,score=a.presented.filter(r=>a.responses[r.item_id]===bank.items.find(q=>q.item_id===r.item_id).answer).length;
+    const prev=cloud.get(a.attempt_id),submitted_at=args.p_submit?(prev?.submitted_at||'2026-11-16T00:00:00Z'):null;
+    const earned=args.p_submit&&!prev?.submitted_at?score*2:0;
+    const row={...a,started_at:prev?.started_at||'2026-11-16T00:00:00Z',submitted_at,correct:args.p_submit?score:null};
+    cloud.set(a.attempt_id,structuredClone(row));
+    return {data:{attempt_id:a.attempt_id,submitted_at,correct:row.correct,earned},error:null};
+  },
+  from:table=>({
+    select:async()=>({data:table==='quiz_attempts_v2'?[...cloud.values()].map(r=>structuredClone(r)):[]}),
+    upsert:async()=>{throw Error('Scored V2 must use save_quiz_v2_attempt RPC');},
+  }),
+};
 const store=createQuizStore(bank,{storage,userId:'user_a',client});
 const started=await store.startV2(curriculum,{track:'syntax',mode:'master',count:15},71);
 await store.move(started.attempt_id,14);
@@ -121,9 +133,9 @@ const reload=createQuizStore(bank,{storage,userId:'user_a',client});
 assert.equal(reload.draft(started).position,14);
 assert.deepEqual(reload.draft(started).presented,started.presented);
 const done=await reload.submit(started.attempt_id);
-assert.equal(done.grade.correct,15);assert.equal(done.earned,0);
+assert.equal(done.grade.correct,15);assert.equal(done.earned,30);
 assert.equal((await reload.submit(started.attempt_id)).earned,0);
-assert.equal(rpcs,0);assert.ok(upserts>0);
+assert.ok(rpcs>0);
 await assert.rejects(()=>reload.answer(started.attempt_id,started.presented[0].item_id,'a'),/read-only/);
 assert.equal(Object.keys(createQuizStore(bank,{storage,userId:'user_b'}).attempts).length,0);
 const otherDevice=createQuizStore(bank,{userId:'user_a',client});await otherDevice.load();

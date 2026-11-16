@@ -2,14 +2,17 @@
 export const quizKey = q => `${q.assessment_id}@${q.content_version}`;
 export const itemKey = q => `${q.item_id}@${q.content_version}`;
 export const MAX_QUIZ_ITEMS = 1000; // Matches the private practice persistence contract.
-export const targetXp = correct => {
-  if (!Number.isInteger(correct) || correct < 0 || correct > 5) throw new Error('Score must be an integer from 0 to 5.');
-  return Math.max(0,10-2*(5-correct));
+export const targetXp = (correct, total = 5) => {
+  if (!Number.isInteger(total) || total < 1) throw new Error('Question count must be positive.');
+  if (!Number.isInteger(correct) || correct < 0 || correct > total) throw new Error('Score must be an integer from 0 to ' + total + '.');
+  return 2 * correct;
 };
 export function rng(seed) { let x=seed>>>0;return ()=>{x=(1664525*x+1013904223)%4294967296;return x/4294967296;}; }
 export function shuffled(values,random) {const a=[...values];for(let i=a.length-1;i>0;i--){const j=Math.floor(random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 export function randomSeed() { return crypto.getRandomValues(new Uint32Array(1))[0]; }
 export function reviewed(row) { return row?.review_status==='INDEPENDENTLY_REVIEWED' && row.independent_review===true && Boolean(row.reviewed_by && row.reviewed_on); }
+export function projectApproved(row) { return row?.review_status==='PROJECT_APPROVED' && row.independent_review===false && Boolean(row.approved_by); }
+export function approved(row) { return reviewed(row) || projectApproved(row); }
 export function validateBank(bank) {
   if(bank?.schema_version!=='1.0.0'||!bank.items?.length||!bank.assessments?.length)throw new Error('Invalid assessment bank.');
   const sources=new Map(bank.sources.map(s=>[s.id,s]));
@@ -36,10 +39,14 @@ export function makeAttempt(bank,assessment,seed=randomSeed(),id=crypto.randomUU
     responses:{},position:0,started_at:new Date().toISOString(),submitted_at:null,practice:false};
 }
 export function itemsFor(bank,attempt) {
-  const practice=attempt.quiz_v2===true&&attempt.practice===true&&attempt.xp_policy==='unscored-v2'&&attempt.spec?.content_tier==='lesson-practice';
-  const formal=attempt.quiz_v2===true&&attempt.practice===true&&attempt.xp_policy==='unscored-v2'
+  const verifiedFormal = attempt.quiz_v2===true&&attempt.practice===false&&attempt.xp_policy==='verified-v2'
     &&attempt.assessment_contract==='quiz-v2-formal-1'&&attempt.spec?.content_tier==='lesson-assessment';
-  const items=formal?[...bank.items,...(bank.assessment_items||[])]:practice?[...bank.items,...(bank.practice_items||[])]:bank.items;
+  const practice=attempt.quiz_v2===true&&attempt.practice===true&&attempt.xp_policy==='unscored-v2'&&attempt.spec?.content_tier==='lesson-practice';
+  const formalPractice=attempt.quiz_v2===true&&attempt.practice===true&&attempt.xp_policy==='unscored-v2'
+    &&attempt.assessment_contract==='quiz-v2-formal-1'&&attempt.spec?.content_tier==='lesson-assessment';
+  const items=verifiedFormal?[...bank.items,...(bank.assessment_items||[])].filter(q=>approved(q)&&q.publication_status==='published')
+    :formalPractice?[...bank.items,...(bank.assessment_items||[])]
+    :practice?[...bank.items,...(bank.practice_items||[])]:bank.items;
   return attempt.presented.map(ref=>{const q=items.find(q=>q.item_id===ref.item_id&&q.content_version===ref.content_version);if(!q)throw new Error('Assessment content version is unavailable.');return q;});
 }
 // The attempt UI receives a question-only projection: never answer keys,
@@ -58,12 +65,19 @@ export function reviewForLearner(bank,attempt){
 }
 export function validateAttempt(bank,attempt) {
   const v2 = attempt?.quiz_v2 === true;
-  if (v2 && (!attempt.practice || attempt.xp_policy !== 'unscored-v2' || attempt.content_version !== '2.0.0')) throw Error('Quiz V2 is unscored practice only.');
+  if (v2) {
+    const validPractice = attempt.practice === true && attempt.xp_policy === 'unscored-v2';
+    const validVerified = attempt.practice === false && attempt.xp_policy === 'verified-v2'
+      && attempt.assessment_contract === 'quiz-v2-formal-1' && attempt.spec?.content_tier === 'lesson-assessment';
+    if (attempt.content_version !== '2.0.0' || (!validPractice && !validVerified)) {
+      throw Error('Quiz V2 requires verified-v2 policy or valid unscored practice metadata.');
+    }
+  }
   const count = attempt?.presented?.length;
   if(!attempt||!Array.isArray(attempt.presented)||!Number.isInteger(count)||count<1||count>MAX_QUIZ_ITEMS||(!v2&&count!==5)||new Set(attempt.presented.map(r=>r.item_id)).size!==count)throw new Error('Distinct question versions are required (five for published assessments).');
   if(v2 && (['topic','personalized'].includes(attempt.spec?.mode) && count!==5)) throw Error('This quiz requires five questions.');
   const items=itemsFor(bank,attempt);
-  if(!attempt.practice){
+  if(!attempt.practice&&!v2){
     const a=bank.assessments.find(a=>quizKey(a)===quizKey(attempt));if(!a)throw new Error('Unknown assessment version.');
     const expected=makeAttempt(bank,a,attempt.seed,attempt.attempt_id).presented;
     // The full deterministic order is preserved for review and reload.
@@ -95,7 +109,7 @@ export function gradeAttempt(bank,attempt) {
   const results=items.map(q=>({item_id:q.item_id,content_version:q.content_version,pool_id:q.pool_id,lesson_id:q.lesson_id,concept_ids:q.concept_ids,outcome_ids:q.outcome_ids,
     response:attempt.responses[q.item_id]??null,answer:q.answer,correct:attempt.responses[q.item_id]===q.answer}));
   const correct=results.filter(r=>r.correct).length;
-  return {correct,incorrect:items.length-correct,target_xp:attempt.practice?0:targetXp(correct),results};
+  return {correct,incorrect:items.length-correct,target_xp:attempt.practice?0:targetXp(correct,items.length),results};
 }
 export function summaryFor(bank,attempts,assessment) {
   const rows=Object.values(attempts).filter(t=>!t.practice&&!t.retired&&t.submitted_at&&quizKey(t)===quizKey(assessment)&&canReviewAttempt(bank,t));

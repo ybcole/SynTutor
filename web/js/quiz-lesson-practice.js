@@ -1,6 +1,6 @@
 // Source-grounded retrieval practice, NOT independent review or published XP.
 // Every item is tied to one actual instructional section. Nothing is padded by
-// cloning a prompt or changing names in an already-missed question.
+// cloning a prompt, verb-splitting incomplete sentences, or keeping leaky distractors.
 import {cambridgeChapterData} from './cambridge-chapter-data.js?v=2026.11.16c';
 import {practiceExamples} from './quiz-practice-examples.js';
 import {pilotArticles} from './lesson-curriculum.js';
@@ -16,76 +16,135 @@ export const syntaxPracticeDigest = id => {
   return article?hash(JSON.stringify({teach:String(article.teach),sections:article.sections,keyTerms:article.keyTerms,description:article.description})):null;
 };
 const unique = values => [...new Set(values.map(clean).filter(Boolean))];
-const segmenter = new Intl.Segmenter('en',{granularity:'sentence'});
-const uiInstruction = /^(click|tap|select|choose|pick|try|trace|scroll|use the button|open the|look at the tree|find the button|inspect the|check your|your answer|read the brackets)/i;
-function sentenceFacts(texts){
-  const seen=new Set(),facts=[];
-  for(const text of unique(texts))for(const {segment} of segmenter.segment(text)){
-    const sentence=clean(segment);
-    if(sentence.length<65||sentence.length>450||!/[.!?]$/.test(sentence)||uiInstruction.test(sentence)||/^(SNP|NP —|VPV|S″|S′)/.test(sentence))continue;
-    // Complete a meaningful predicate rather than guessing a random missing
-    // word. The task explicitly asks for this section's wording, not a claim
-    // that every alternative is ungrammatical in every possible context.
-    const boundary=/\b(?:is|are|means|marks|labels|contains|takes|take|uses|use|heads|head|describes|describe|expresses|requires|allows|can|does|do|has|have|gives|give|shows|show|lets|let|makes|make)\b/gi;
-    const matches=[...sentence.matchAll(boundary)];
-    const match=matches.find(m=>{
-      if(m.index<10||m.index>sentence.length-24)return false;
-      const prefix=sentence.slice(0,m.index);
-      return (prefix.match(/“/g)||[]).length===(prefix.match(/”/g)||[]).length;
-    });
-    if(!match)continue;
-    const split=match.index+match[0].length;
-    const prefix=sentence.slice(0,split),answer=sentence.slice(split).trim();
-    if(answer.length<18||answer.length>300||seen.has(sentence))continue;
-    seen.add(sentence);facts.push({prefix,answer,sentence});
-  }
-  // A shared prefix with two different continuations would make a completion
-  // ambiguous. Do not turn those source sentences into questions.
-  return facts.filter(f=>facts.filter(other=>other.prefix===f.prefix).length===1);
+const wordsOf = text => [...new Set(clean(text).toLowerCase().replace(/[^a-z0-9’'\s-]/g,' ').split(/\s+/).filter(w=>w.length>=2))];
+
+// Grammatical metalanguage and closed-class scaffolding words allowed across options.
+const grammarMeta = new Set([
+  'the','a','an','and','or','but','not','no','nor','of','in','on','at','to','by','for','from','with','as','into','onto','than','that','this','these','those',
+  'is','are','was','were','be','been','being','has','have','had','do','does','did','can','could','may','might','must','shall','should','will','would',
+  'it','its','he','she','they','them','his','her','their','you','your','we','our','who','whom','whose','which','what','where','when','why','how',
+  'one','two','only','both','all','each','some','any','more','most','same','other','own','such','very',
+  'clause','clauses','sentence','sentences','phrase','phrases','word','words','noun','nouns','verb','verbs','adjective','adjectives','adverb','adverbs',
+  'preposition','prepositions','determiner','determiners','pronoun','pronouns','auxiliary','auxiliaries','complement','complements','object','objects',
+  'subject','subjects','adjunct','adjuncts','modifier','modifiers','head','heads','predicate','predicative','gap','finite','non-finite','infinitival',
+  'bare','relative','content','comparative','declarative','interrogative','imperative','exclamative','active','passive','positive','negative','singular',
+  'plural','tense','present','past','preterite','participle','form','forms','function','category','use','uses','meaning','direct','indirect','core',
+  'non-core','simple','complex','open','closed','main','subordinate','matrix','embedded','fronted','preposed','postposed','extraposed','dummy',
+  'marked','marker','coordination','coordinated','appositive','supplement','nominal','genitive','accusative','nominative','plain','modal','perfect',
+  'progressive','aspect','modality','mood','negation','polarity','deictic','anaphoric','reflexive','reciprocal','quantifier','numeral','compound',
+  'suffix','prefix','base','stem','regular','irregular','standard','informal','formal','style','register','speech','writing','spoken','written',
+  'stress','intonation','punctuation','comma','commas','apostrophe','slash','hyphen','spelling','example','pattern','construction','role','position',
+  'structure','order','reading','sense','scope','reference','referent','antecedent','licensor','elided','ellipsis','omitted','optional','obligatory',
+]);
+
+// Comparison-matrix columns that compare parallel slots rather than naming a distinct classification target.
+const matrixTargetBlacklist = /^(take|want|hit|auxiliary|lexical verb|direct object|indirect object|predicative complement|object|canonical|non-canonical|positive clause|negative clause|positive context|negative context|equality|inequality|first member|second member|first type|second type)$/i;
+
+export function formatTablePrompt(title, columnName, context) {
+  const col = clean(columnName);
+  const lower = col.toLowerCase().replace(/\bnp\b/g, 'NP');
+  if (/^what changes$/i.test(col)) return `In “${title}”, given ${context}, what changes?`;
+  if (/^what it shows$/i.test(col)) return `In “${title}”, given ${context}, what does this example show?`;
+  if (/^what happens$/i.test(col)) return `In “${title}”, given ${context}, what happens?`;
+  if (/^what it does$/i.test(col)) return `In “${title}”, given ${context}, what does this construction do?`;
+  if (/^why included$/i.test(col)) return `In “${title}”, given ${context}, why is it included?`;
+  if (/^anchored to$/i.test(col)) return `In “${title}”, given ${context}, what is it anchored to?`;
+  if (/^temporal$/i.test(col)) return `In “${title}”, given ${context}, which temporal value applies?`;
+  if (/^tensed$/i.test(col)) return `In “${title}”, given ${context}, which tensed-verb pattern applies?`;
+  return `In “${title}”, select the ${lower} matching ${context}.`;
 }
+
+function validExampleChoices(example, examples, blockLex) {
+  if (example.mark && example.mark !== 'ok') return null;
+  const ownText = clean(example.text).toLowerCase();
+  const ownWords = new Set(wordsOf(example.text).filter(w => !grammarMeta.has(w)));
+  const ans = clean(example.note);
+  const ansWords = wordsOf(ans).filter(w => !grammarMeta.has(w));
+  const selfLeak = ansWords.some(w =>
+    ownWords.has(w) && examples.some(o => clean(o.note) !== ans && !clean(o.text).toLowerCase().includes(w))
+  );
+  if (selfLeak) return null;
+
+  const others = [];
+  for (const other of examples) {
+    const otherNote = clean(other.note);
+    if (!otherNote || otherNote === ans || others.includes(otherNote)) continue;
+    const otherTextLower = clean(other.text).toLowerCase();
+    const otherWords = wordsOf(otherNote).filter(w => !grammarMeta.has(w));
+    const foreign = otherWords.some(w => (blockLex.has(w) || otherTextLower.includes(w)) && !ownWords.has(w) && !ownText.includes(w));
+    if (foreign) continue;
+    const foreignCitation = [...String(other.note).matchAll(/\*([^*]+)\*|“([^”]+)”/g)].some(m => {
+      const phrase = clean(m[1] || m[2]).toLowerCase();
+      return phrase && !ownText.includes(phrase) && otherTextLower.includes(phrase);
+    });
+    if (foreignCitation) continue;
+    const initCap = /^([A-Z][a-z’'-]+)\s+(?:is|are|marks|shows|takes|follows|precedes|refers|means|acts|functions|serves|heads)\b/.exec(otherNote);
+    if (initCap) {
+      const tok = initCap[1].toLowerCase();
+      if (!grammarMeta.has(tok) && wordsOf(other.text).includes(tok) && !wordsOf(example.text).includes(tok)) continue;
+    }
+    const initPhrase = /^([A-Z][a-z’'-]+\s+[a-z’'-]+)\s+(?:is|are|marks|shows|takes|follows|precedes|refers|means|acts|functions|serves|heads)\b/.exec(otherNote);
+    if (initPhrase) {
+      const phrase = initPhrase[1].toLowerCase();
+      if (otherTextLower.includes(phrase) && !ownText.includes(phrase)) continue;
+    }
+    others.push(otherNote);
+  }
+  return others.length >= 2 ? others.slice(0, 2) : null;
+}
+
 function sectionQuestions(section){
   const questions=(practiceExamples[`${section.lesson_id}/${section.id}`]||[]).map(([prompt,answer,first,second,evidence],index)=>({
     family:`original-application-${index}`,kind:'rule_application',prompt,answer,others:[first,second],evidence,original:true,
   })),blocks=section.blocks||[];
   for(const [blockIndex,block] of blocks.entries()){
-    if(block.type==='table'&&block.columns?.length>=2&&block.rows?.length>=2){
-      const rows=block.rows.filter(r=>r.length===block.columns.length&&r.every(c=>typeof c==='string'));
+    if(block.type==='table'&&block.columns?.length>=2&&block.rows?.length>=3){
+      if(block.columns.some(c=>!clean(c)))continue;
+      const rows=block.rows.filter(r=>r.length===block.columns.length&&r.every(c=>typeof c==='string'&&clean(c)));
+      const target=[...block.columns.keys()].reverse().find(i=>!matrixTargetBlacklist.test(clean(block.columns[i]))&&unique(rows.map(r=>r[i])).length>=3);
+      if(target===undefined)continue;
       for(const [rowIndex,row] of rows.entries()){
-        // Choose just one question per row, and include ALL other columns to
-        // distinguish repeated labels (e.g. several NP rows with different heads).
-        const target=[...block.columns.keys()].reverse().find(i=>unique(rows.map(r=>r[i])).length>=2);
-        if(target===undefined)continue;
+        const answer=clean(row[target]);
+        if(/^examples?$/i.test(clean(block.columns[target]))&&/^[A-Z][a-z’'-]+$/.test(answer))continue;
+        const ctxCells=row.filter((_,i)=>i!==target).map(clean);
+        if(ctxCells.some(c=>c.toLowerCase()===answer.toLowerCase()))continue;
+        if(rows.some((other,j)=>j!==rowIndex&&other.every((v,i)=>i===target||clean(v)===clean(row[i]))&&clean(other[target])!==answer))continue;
+        const ctxWords=new Set(ctxCells.flatMap(c=>wordsOf(c)).filter(w=>!grammarMeta.has(w)));
+        const ctxLower=ctxCells.join(' ').toLowerCase();
+        const ansWords=wordsOf(answer).filter(w=>!grammarMeta.has(w));
+        const validOthers=[];
+        for(const otherRow of rows){
+          const d=clean(otherRow[target]);
+          if(!d||d===answer||validOthers.includes(d))continue;
+          const dWords=wordsOf(d).filter(w=>!grammarMeta.has(w));
+          const oCtxCells=otherRow.filter((_,i)=>i!==target).map(clean);
+          const oCtxWords=new Set(oCtxCells.flatMap(c=>wordsOf(c)).filter(w=>!grammarMeta.has(w)));
+          const oCtxLower=oCtxCells.join(' ').toLowerCase();
+          if(dWords.some(w=>(oCtxWords.has(w)||oCtxLower.includes(w))&&!ctxWords.has(w)&&!ctxLower.includes(w)))continue;
+          validOthers.push(d);
+        }
+        const others=validOthers.slice(0,2);
+        if(others.length<2)continue;
+        if(ansWords.some(w=>(ctxWords.has(w)||ctxLower.includes(w))&&others.some(d=>!wordsOf(d).includes(w))))continue;
         const context=row.map((value,i)=>i===target?null:`${block.columns[i]}: “${clean(value)}”`).filter(Boolean).join('; ');
-        if(rows.some((other,j)=>j!==rowIndex&&other.every((v,i)=>i===target||clean(v)===clean(row[i]))&&clean(other[target])!==clean(row[target])))continue;
-        const answer=clean(row[target]),others=unique(rows.map(r=>r[target])).filter(v=>v!==answer).slice(0,2);
         questions.push({family:`table-${blockIndex}-${rowIndex}`,kind:'lesson_match',
-          prompt:`In “${section.title}”, the table “${block.title||section.title}” pairs which ${block.columns[target].toLowerCase()} with ${context}?`,
+          prompt:formatTablePrompt(block.title||section.title,block.columns[target],context),
           answer,others,evidence:`${context}; ${block.columns[target]}: ${answer}.`,
           examples:row.filter((value,i)=>/example|illustration|sentence|expression/i.test(block.columns[i]))});
       }
     }
     if(block.type==='examples'){
       const examples=(block.items||[]).filter(e=>e.text&&e.note);
+      const blockLex=new Set(examples.flatMap(e=>wordsOf(e.text)).filter(w=>!grammarMeta.has(w)));
       for(const [index,example] of examples.entries()){
-        const answer=clean(example.note),others=unique(examples.map(e=>e.note)).filter(n=>n!==answer).slice(0,2);
-        if(!others.length)continue;
+        const others=validExampleChoices(example,examples,blockLex);
+        if(!others)continue;
+        const answer=clean(example.note);
         questions.push({family:`example-${blockIndex}-${index}`,kind:'lesson_match',
           prompt:`In “${section.title}”, which explanation is paired with “${clean(example.text)}”?`,
           answer,others,evidence:`The section pairs “${clean(example.text)}” with this explanation: ${answer}`,examples:[clean(example.text)]});
       }
     }
-  }
-  const texts=[
-    ...(section.texts||[]),
-    ...blocks.filter(b=>['paragraph','note'].includes(b.type)).map(b=>b.text).filter(Boolean),
-  ];
-  const facts=sentenceFacts(texts);
-  for(const fact of facts){
-    const others=unique(facts.filter(f=>f.sentence!==fact.sentence).map(f=>f.answer)).filter(a=>a!==fact.answer).slice(0,2);
-    if(!others.length)continue;
-    questions.push({family:`explanation-${hash(fact.sentence)}`,kind:'lesson_recall',
-      prompt:`Complete this explanation from “${section.title}” using the wording in the lesson:\n“${fact.prefix} ____”`,
-      answer:fact.answer,others,evidence:fact.sentence});
   }
   // A real application section with little expository prose: distinct original
   // inputs test recursive coordination, not five rewordings of one question.
@@ -108,14 +167,46 @@ function sectionQuestions(section){
   // A maximum prevents a long section from dominating personalized practice.
   return questions.slice(0,12);
 }
-export function makeLessonPractice(curriculum,syntaxSource){
-  const items=[],ids=new Set();
+
+export function findStaleSyntaxSources(curriculum, syntaxSource) {
+  const stale = [];
+  const syntaxTrack = curriculum.find(t => t.id === 'syntax');
+  if (!syntaxTrack) return stale;
+  for (const chapter of syntaxTrack.chapters) {
+    const expectedDigest = syntaxPracticeDigest(chapter.id);
+    for (const topic of chapter.topics) {
+      const source = syntaxSource?.sections?.find(s => s.lesson_id === chapter.id && s.subtopic_id === topic.id);
+      if (!source) stale.push({ chapter_id: chapter.id, subtopic_id: topic.id, reason: 'missing_section' });
+      else if (source.lesson_version !== chapter.content_version) stale.push({ chapter_id: chapter.id, subtopic_id: topic.id, reason: 'version_mismatch' });
+      else if (source.article_digest !== expectedDigest) stale.push({ chapter_id: chapter.id, subtopic_id: topic.id, reason: 'digest_mismatch' });
+    }
+  }
+  return stale;
+}
+
+export function validateSyntaxPracticeSource(curriculum, syntaxSource) {
+  const stale = findStaleSyntaxSources(curriculum, syntaxSource);
+  if (!stale.length) return syntaxSource;
+  const chapters = [...new Set(stale.map(s => s.chapter_id))].join(', ');
+  throw Error(`Stale syntax practice source for ${chapters}: lesson version or article digest changed. Run scripts/build_quiz_practice.js to regenerate.`);
+}
+
+export function makeLessonPractice(curriculum, syntaxSource, options = {}){
+  const items=[],ids=new Set(),staleTopics=syntaxSource?findStaleSyntaxSources(curriculum,syntaxSource):[];
+  const staleSet=new Set(staleTopics.map(s=>`${s.chapter_id}/${s.subtopic_id}`));
+  if(staleTopics.length){
+    if(typeof options.onStale==='function')options.onStale(staleTopics);
+    else if(options.allowStale!==true)validateSyntaxPracticeSource(curriculum,syntaxSource);
+  }
+  if(!syntaxSource&&options.allowMissingSyntax!==true&&typeof options.onStale!=='function'){
+    throw Error('Syntax practice source is unavailable.');
+  }
   for(const track of curriculum)for(const chapter of track.chapters)for(const topic of chapter.topics){
+    if(track.id==='syntax'&&(!syntaxSource||staleSet.has(`${chapter.id}/${topic.id}`)))continue;
     const source=track.id==='syntax'
       ? syntaxSource?.sections?.find(s=>s.lesson_id===chapter.id&&s.subtopic_id===topic.id)
       : cambridgeChapterData[chapter.id]?.sections.find(s=>s.id===topic.id);
     if(!source)continue;
-    if(track.id==='syntax'&&(source.lesson_version!==chapter.content_version||source.article_digest!==syntaxPracticeDigest(chapter.id)))continue;
     const section={...source,lesson_id:chapter.id,id:topic.id,title:topic.title};
     const markedExamples=(section.blocks||[]).flatMap(b=>[...String(b.text||'').matchAll(/\*([^*]+)\*/g)].map(m=>clean(m[1])))
       .filter(text=>text.includes(' '));
@@ -156,7 +247,8 @@ export function validateLessonPractice(items,curriculum){
     const promptKey=`${q.chapter_id}/${q.subtopic_id}/${q.prompt}`;
     if(!chapter?.topics.some(t=>t.id===q.subtopic_id)||ids.has(q.item_id)||prompts.has(promptKey)
       ||q.review_status!=='UNREVIEWED'||q.independent_review!==false||q.publication_status!=='practice'
-      ||q.options.length<2||new Set(q.options.map(o=>o.text)).size!==q.options.length
+      ||q.options.length<3||new Set(q.options.map(o=>o.text)).size!==q.options.length
+      ||q.options.some(o=>/^[,;:.!?]/.test(o.text.trim()))
       ||!q.options.some(o=>o.id===q.answer)||!q.rationale||!q.source_metadata?.excerpt
       ||q.lesson_reference!==`#lesson/${q.chapter_id}/${q.subtopic_id}`)throw Error('Invalid lesson practice content.');
     ids.add(q.item_id);prompts.add(promptKey);

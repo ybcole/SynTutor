@@ -21,13 +21,17 @@ export function createQuizStore(bank,{storage,userId='guest',client=null,timeout
     }
     for(const id of [...dirty].sort((a,b)=>Number(!!state.attempts[a].quiz_v2)-Number(!!state.attempts[b].quiz_v2)||state.attempts[a].started_at.localeCompare(state.attempts[b].started_at))){
        const t=state.attempts[id];
-       if(t.quiz_v2){
+       if(t.quiz_v2&&t.practice){
          const {error}=await bounded(client.from('quiz_practice_v2').upsert({user_id:userId,attempt_id:id,payload:t},{onConflict:'user_id,attempt_id'}));
          if(error)throw Error('Quiz account sync unavailable; attempts remain saved on this device. Retry when connected.');
          t.synced=true;dirty.delete(id);continue;
        }
-      const payload=Object.fromEntries(['attempt_id','assessment_id','content_version','seed','presented','responses','position'].map(k=>[k,t[k]]));
-      const {data,error}=await bounded(client.rpc('save_quiz_attempt',{p_attempt:payload,p_submit:Boolean(t.submitted_at)}));
+      const keys=t.quiz_v2
+        ? ['attempt_id','assessment_id','content_version','spec','title','diagnostic','seed','presented','responses','position']
+        : ['attempt_id','assessment_id','content_version','seed','presented','responses','position'];
+      const payload=Object.fromEntries(keys.map(k=>[k,t[k]??null]));
+      const rpcName=t.quiz_v2?'save_quiz_v2_attempt':'save_quiz_attempt';
+      const {data,error}=await bounded(client.rpc(rpcName,{p_attempt:payload,p_submit:Boolean(t.submitted_at)}));
       if (error?.code === '22023' && error.message === 'Unknown published assessment version') {
         t.retired = true;
         dirty.delete(id);
@@ -71,6 +75,19 @@ export function createQuizStore(bank,{storage,userId='guest',client=null,timeout
           if(row.submitted_at&&draft?.attempt_id===row.attempt_id)delete state.drafts[quizKey(row)];
           else if(!row.submitted_at&&(!draft||draft.submitted_at||row.started_at>draft.started_at))state.drafts[quizKey(row)]=row.attempt_id;
          }
+         const v2Rows=await bounded(client.from('quiz_attempts_v2').select('attempt_id,assessment_id,content_version,spec,title,diagnostic,seed,presented,responses,position,started_at,submitted_at,correct')).catch(()=>({data:[]}));
+         for(const row of (v2Rows.data||[]).sort((a,b)=>a.started_at.localeCompare(b.started_at))){
+           const restored={...row,quiz_v2:true,practice:false,xp_policy:'verified-v2',assessment_contract:'quiz-v2-formal-1',includes_unreviewed:false,synced:true};
+           if(!canReviewAttempt(bank,restored))continue;
+           const old=state.attempts[restored.attempt_id];
+           if(!old||old.synced||restored.submitted_at){state.attempts[restored.attempt_id]=restored;dirty.delete(restored.attempt_id);}
+           const t=state.attempts[restored.attempt_id];
+           if(t.submitted_at){if(state.drafts[quizKey(t)]===t.attempt_id)delete state.drafts[quizKey(t)];}
+           else{
+             const draft=state.attempts[state.drafts[quizKey(t)]];
+             if(!draft||draft.submitted_at||draft.started_at<t.started_at)state.drafts[quizKey(t)]=t.attempt_id;
+           }
+         }
          const practiceRows=await bounded(client.from('quiz_practice_v2').select('payload')).catch(()=>({data:[]}));
          for(const {payload} of practiceRows.data||[]){
            if(!payload?.quiz_v2||!payload.practice||!canReviewAttempt(bank,payload))continue;
@@ -94,8 +111,9 @@ export function createQuizStore(bank,{storage,userId='guest',client=null,timeout
     move(id,position){return transact(()=>{const t=state.attempts[id];if(!t||!Number.isInteger(position)||position<0||position>=t.presented.length)throw Error('Invalid question position');t.position=position;if(!t.submitted_at){t.synced=false;dirty.add(id);}return t;});},
     submit(id){return transact(()=>{const t=state.attempts[id];if(!t)throw Error('Unknown attempt');
       if(t.submitted_at)return {attempt_id:id,earned:0,grade:gradeAttempt(bank,t)};
-      const a=bank.assessments.find(a=>quizKey(a)===quizKey(t));const before=t.practice?0:summaryFor(bank,state.attempts,a).xp_awarded;
-       const grade=gradeAttempt(bank,t);if(t.quiz_v2)t.correct=grade.correct;t.submitted_at=new Date().toISOString();t.synced=false;dirty.add(id);delete state.drafts[quizKey(t)];
+      const a=bank.assessments.find(a=>quizKey(a)===quizKey(t))||{assessment_id:t.assessment_id,content_version:t.content_version};
+      const before=t.practice?0:summaryFor(bank,state.attempts,a).xp_awarded;
+      const grade=gradeAttempt(bank,t);if(t.quiz_v2)t.correct=grade.correct;t.submitted_at=new Date().toISOString();t.synced=false;dirty.add(id);delete state.drafts[quizKey(t)];
       return {attempt_id:id,earned:t.practice?0:Math.max(0,grade.target_xp-before),grade};});},
     async retry(){blocked=false;await this.load();},
   };

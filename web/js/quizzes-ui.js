@@ -25,22 +25,21 @@ async function action(fn){
 }
 function footer(){const f=el('footer',undefined,'lesson-save-status');f.setAttribute('aria-live','polite');if(message)f.append(el('p',message));f.append(el('p',store.status));if(config.userId?.())f.append(button('Retry account sync',()=>action(()=>store.retry())));host.append(f);}
 function v2Card(parent,title,spec){
- spec={...spec,format:'formal',...(spec.mode==='personalized'?{content_tier:'lesson-assessment'}:{})};
+ const published=publishedBlueprint(bank,curriculum,spec);
+ const activeSpec=published?spec:{...spec,content_tier:'lesson-assessment',format:'formal'};
  const card=el('article',undefined,'curriculum-card quiz-topic-card');
  card.append(el('h3',title));
  let reason='',selection;
- try{selection=selectQuestions(bank,curriculum,spec,store.attempts,0);}catch(e){reason=e.message;}
- if(reason&&spec.content_tier!=='lesson-assessment'){
-  const expandedSpec={...spec,content_tier:'lesson-assessment'};
-  try{selection=selectQuestions(bank,curriculum,expandedSpec,store.attempts,0);spec=expandedSpec;reason='';}catch{}
- }
- const provisional=spec.content_tier==='lesson-assessment';
- const published=publishedBlueprint(bank,curriculum,spec),assessment=published||{assessment_id:specKey(spec),content_version:'2.0.0'},draft=store.draft(assessment);
+ try{selection=selectQuestions(bank,curriculum,activeSpec,store.attempts,0);}catch(e){reason=e.message;}
+ const assessment=published||{assessment_id:specKey(activeSpec),content_version:'2.0.0'},draft=store.draft(assessment);
  const previous=Object.values(store.attempts).filter(t=>quizKey(t)===quizKey(assessment)&&t.submitted_at&&!store.isArchived(t)).sort((a,b)=>a.submitted_at.localeCompare(b.submitted_at));
  if(previous.length){const last=previous.at(-1),best=Math.max(...previous.map(t=>gradeAttempt(bank,t).correct/t.presented.length));card.append(el('p',`Best ${Math.round(best*100)}% · Last ${gradeAttempt(bank,last).correct}/${last.presented.length} · ${previous.length} attempts`));}
- card.append(el('p',reason||`${selection.items.length} questions · ${provisional?'Scored quiz · question review pending · XP not enabled':published?'Published assessment · verified account XP eligible':selection.diagnostic?'Diagnostic quiz (insufficient history) · XP not enabled':'Scored quiz · XP not enabled'}`,'lesson-status'));
- if(published)card.append(el('p',`${store.summary(published).xp_awarded}/10 device XP estimate; account verification required.`));
- const start=button(draft?'Resume quiz':reason?'Questions Under Review':'Start quiz',()=>action(()=>draft||store.startV2(curriculum,spec)),'lesson-primary');
+ card.append(el('p',reason||`${selection.items.length} questions · ${published?'Published assessment':selection.diagnostic?'Diagnostic quiz (initial assessment)':'Scored quiz'} · verified account XP eligible`,'lesson-status'));
+ if(!reason){
+  const maxXp=2*selection.items.length;
+  card.append(el('p',`${store.summary(assessment).xp_awarded}/${maxXp} device XP estimate; account verification required.`));
+ }
+ const start=button(draft?'Resume quiz':reason?'Quiz unavailable':'Start quiz',()=>action(()=>draft||store.startV2(curriculum,activeSpec)),'lesson-primary');
  start.disabled=!!reason&&!draft;card.append(start);parent.append(card);
 }
 function curriculumCatalog(){
@@ -59,19 +58,22 @@ function curriculumCatalog(){
   v2Card(grid,'General Quiz',{track:trackId,mode:'general',chapter:chapter.id});details.append(grid);host.append(details);
  }
  const master=el('section',undefined,'quiz-practice');master.append(el('h2',`${track.title} Master Quiz`));
- const min=track.chapters.length;
- let masterTier='reviewed';
- try{selectQuestions(bank,curriculum,{track:trackId,mode:'master',count:min},store.attempts,0);}catch{masterTier='lesson-assessment';}
+ const min=track.chapters.length,masterTier='lesson-assessment';
  const available=new Set(eligibleQuestions(bank,curriculum,trackId,masterTier).map(q=>q.item_id)).size,max=Math.min(MAX_QUIZ_ITEMS,available);
  const label=el('label','Number of questions '),input=el('input');input.type='number';input.min=String(min);input.max=String(max);input.step='1';input.value=String(masterCounts[trackId]||min);input.disabled=max<min;input.setAttribute('aria-label',`${track.title} Master Quiz question count`);label.append(input);master.append(label);
- master.append(el('p',`Minimum ${min} (one per chapter); ${available} distinct ${masterTier==='reviewed'?'reviewed':'eligible assessment'} questions. All chapters must be represented.${available>MAX_QUIZ_ITEMS?` Maximum ${MAX_QUIZ_ITEMS.toLocaleString()} per attempt.`:''}`));
- const target=el('div');target.setAttribute('aria-live','polite');const update=()=>{masterCounts[trackId]=Number(input.value);target.replaceChildren();if(max<min)target.append(el('p',`Questions Under Review: Master Quiz requires at least ${min} questions and coverage of all ${min} chapters; only ${max} eligible questions are available.`));else if(!input.validity.valid)target.append(el('p','Choose a whole number within the available range.'));else v2Card(target,'Master Quiz',{track:trackId,mode:'master',count:Number(input.value),...(masterTier==='lesson-assessment'?{content_tier:masterTier}:{})});};input.addEventListener('input',update);update();master.append(target);host.append(master);
+ master.append(el('p',`Minimum ${min} (one per chapter); ${available} distinct approved questions. All chapters must be represented.${available>MAX_QUIZ_ITEMS?` Maximum ${MAX_QUIZ_ITEMS.toLocaleString()} per attempt.`:''}`));
+ const target=el('div');target.setAttribute('aria-live','polite');const update=()=>{masterCounts[trackId]=Number(input.value);target.replaceChildren();if(max<min)target.append(el('p',`Master Quiz requires at least ${min} questions and coverage of all ${min} chapters; only ${max} eligible questions are available.`));else if(!input.validity.valid)target.append(el('p','Choose a whole number within the available range.'));else v2Card(target,'Master Quiz',{track:trackId,mode:'master',count:Number(input.value),content_tier:masterTier});};input.addEventListener('input',update);update();master.append(target);host.append(master);
 }
 const expanded=new Set(),masterCounts={};
 async function loadContent(){
  if(bank&&curriculum)return '';
  const cacheKey='syntutor:quiz-v2:public-content:2';
- try{
+  let staleWarning='';
+  const recordStale=stale=>{
+   const chapters=[...new Set(stale.map(s=>s.chapter_id))].join(', ');
+   staleWarning=`Syntax practice source is out of date for ${chapters}. Regenerate syntax-practice-source.json before assessing those chapters.`;
+  };
+  try{
    const [nextBank,course,syntaxSource]=await Promise.all([
    fetch('/content/quizzes/bank.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('Bank unavailable');return r.json();}).then(validateBank),
     loadActiveCourse(),
@@ -80,18 +82,18 @@ async function loadContent(){
   bank=nextBank;curriculum=quizCurriculum(course);
   // Only public, compact curriculum metadata is cached, never the 12MB course.
    try{localStorage.setItem(cacheKey,JSON.stringify({bank,curriculum,syntaxSource}));}catch{}
-    bank.practice_items=validateLessonPractice(makeLessonPractice(curriculum,syntaxSource),curriculum);
-    bank.assessment_items=validateAssessmentItems(makeAssessmentItems(bank.practice_items),curriculum);
-  return '';
+    bank.practice_items=validateLessonPractice(makeLessonPractice(curriculum,syntaxSource,{onStale:recordStale,allowMissingSyntax:true}),curriculum);
+    bank.assessment_items=validateAssessmentItems(makeAssessmentItems(bank.practice_items,curriculum),curriculum);
+  return staleWarning;
  }catch(error){
   try{
    const cached=JSON.parse(localStorage.getItem(cacheKey));
    const nextBank=validateBank(cached.bank);
    if(cached.curriculum?.length!==2||!cached.curriculum.every(t=>t.chapters?.length&&t.chapters.every(c=>c.topics?.length)))throw error;
      bank=nextBank;curriculum=applyQuizScope(cached.curriculum);
-     bank.practice_items=validateLessonPractice(makeLessonPractice(curriculum,cached.syntaxSource),curriculum);
-     bank.assessment_items=validateAssessmentItems(makeAssessmentItems(bank.practice_items),curriculum);
-     return 'Offline content: using the last successfully downloaded curriculum and question sources. Quiz scores are saved locally; account XP requires server verification.';
+     bank.practice_items=validateLessonPractice(makeLessonPractice(curriculum,cached.syntaxSource,{onStale:recordStale,allowMissingSyntax:true}),curriculum);
+     bank.assessment_items=validateAssessmentItems(makeAssessmentItems(bank.practice_items,curriculum),curriculum);
+     return [staleWarning,'Offline content: using the last successfully downloaded curriculum and question sources. Quiz scores are saved locally; account XP requires server verification.'].filter(Boolean).join(' ');
   }catch{throw error;}
  }
 }
@@ -130,8 +132,8 @@ function catalog(){
 }
 function review(t){
  const grade=reviewForLearner(bank,t),a=assessmentFor(t);host.append(el('p','QUIZ RESULTS','lesson-eyebrow'),el('h1',t.title||a?.title||'Quiz'),el('p',`${grade.correct}/${t.presented.length} correct (${Math.round(100*grade.correct/t.presented.length)}%) · ${grade.incorrect} incorrect or unanswered`,'quiz-score'));
- if(t.includes_unreviewed)host.append(el('p','Question review pending: this quiz has not been independently reviewed. Your score is recorded, but this quiz does not award verified account XP.','lesson-status'));
- if(!t.practice){const s=store.summary(a);host.append(el('p',`Best ${s.best_score}/5 · last ${s.last_score}/5 · ${s.xp_awarded}/10 device XP estimate for this version. Verified account totals appear in the sidebar.`));}
+ if(t.includes_unreviewed&&t.practice)host.append(el('p','Historical unscored practice attempt: this quiz did not award account XP.','lesson-status'));
+ if(!t.practice){const summaryTarget=a||{assessment_id:t.assessment_id,content_version:t.content_version};const s=store.summary(summaryTarget);const total=t.presented.length;host.append(el('p',`Best ${s.best_score}/${total} · last ${s.last_score}/${total} · ${s.xp_awarded}/${2*total} device XP estimate for this version. Verified account totals appear in the sidebar.`));}
  host.append(el('p','Review your submitted answers below. A short quiz does not establish mastery.','lesson-lead'));
  const strengths=grade.results.filter(r=>r.correct),needs=grade.results.filter(r=>!r.correct);
  const next=el('section',undefined,'quiz-next');next.append(el('h2','Based on this attempt'),el('p',`${strengths.length} responses matched the answer key; ${needs.length} need another look.`));
@@ -142,8 +144,8 @@ function review(t){
   const response=t.responses[q.item_id]??null,correct=response===q.answer,card=el('article',undefined,'quiz-review-card');card.dataset.reviewItem=q.item_id;
   card.append(el('h2',`${index+1}. ${q.prompt}`),el('p',response===null?'Unanswered':correct?'Correct on this attempt':'Review this response',correct?'lesson-feedback correct':'lesson-feedback retry'));
   card.append(el('p',`Your answer: ${q.options.find(o=>o.id===response)?.text||'No answer'}`));
-    if(['practice','assessment_draft'].includes(q.publication_status)){
-     card.append(el('p',`Correct answer: ${q.options.find(o=>o.id===q.answer).text}`),el('p',q.rationale),el('p','Basis: the corresponding implemented SynTutor lesson section. Independent question review is pending.','lesson-status'));
+    if(q.review_status!=='INDEPENDENTLY_REVIEWED'){
+     card.append(el('p',`Correct answer: ${q.options.find(o=>o.id===q.answer).text}`),el('p',q.rationale),el('p','Basis: the corresponding implemented SynTutor lesson section (Project-approved; independent external review: not conducted).','lesson-status'));
     const link=el('a','Read the lesson section');link.href=q.lesson_reference;card.append(link);
    }else renderEvidence(composeQuizEvidence(q,response,bank),card);
   if(q.answer_tree){
@@ -170,13 +172,13 @@ function review(t){
     details.append(el('summary','Explore the answer tree'),treeView,inspector);
     card.append(details);
   }
-    if(['practice','assessment_draft'].includes(q.publication_status)){host.append(card);continue;}
+    if(q.review_status!=='INDEPENDENTLY_REVIEWED'){host.append(card);continue;}
    const token=generation,controller=new AbortController(),timer=setTimeout(()=>controller.abort(),5000);
   requestQuizEvidence(q,response,{signal:controller.signal}).then(evidence=>{if(token===generation&&card.isConnected)renderEvidence(evidence,card);}).catch(()=>{}).finally(()=>clearTimeout(timer));
   host.append(card);
  }
- if(!t.practice)host.append(button('Try a new attempt',()=>action(()=>store.start(a)),'lesson-primary'));
  if(t.quiz_v2)host.append(button('Try a new attempt',()=>action(()=>store.startV2(curriculum,t.spec)),'lesson-primary'));
+ else if(!t.practice)host.append(button('Try a new attempt',()=>action(()=>store.start(a)),'lesson-primary'));
   host.append(button('Back to quiz selection',()=>{current=null;render();}));
 }
 function attemptScreen(t){
