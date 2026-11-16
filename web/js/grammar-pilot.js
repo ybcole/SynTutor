@@ -1,4 +1,4 @@
-import { addIntroExample, addTreeTrace, lessonExample } from './lesson-presentation.js';
+import { addIntroExample, addTreeTrace, lessonExample, lessonReflection } from './lesson-presentation.js';
 import { addCombinationPractice } from './foundations-practice.js';
 
 const base = ['Iris rests', 'Leo waits', 'Mina waves'];
@@ -78,13 +78,12 @@ export const grammarPilot = {
         p('The first line follows the rule. “The dog” is NP and “waits” is VP, so NP comes first. The second line puts VP first, so this toy grammar has no derivation for it. You can still put brackets around both groups. The rule explains why their order matters.');
         break;
       case 'application': {
-        p('The starting list has “Mina waves” and “Leo waits”. Can the rule build the sentence below? Say which two inputs it needs, then check.');
         example('Mina waves and Leo waits.');
-        const answer = el('details', undefined, 'lesson-sources');
-        answer.append(el('summary', 'Check the derivation'),
-          lessonExample(el, '[S [S Mina waves] and [S Leo waits]]'),
-          el('p', 'Both inputs are on the base list. One rule application builds the new S. Speakers can also recognize many unfamiliar sentences by applying grammatical patterns they know implicitly.'));
-        body.append(answer);
+        body.append(lessonReflection(el,
+          'The toy grammar starts with two short sentences and has a rule that joins sentences with “and”.',
+          'Can the coordination rule build the sentence above? Which two inputs does it need?',
+          'Both inputs are on the base list and count as S. The rule joins them into a larger S in one step. The brackets show both the inputs and the result.',
+          { example: '[S [S Mina waves] and [S Leo waits]]' }));
         break;
       }
       case 'recap':

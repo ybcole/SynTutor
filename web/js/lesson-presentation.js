@@ -1,4 +1,6 @@
-import { foundationsBookContent, foundationsBookRecaps, foundationsRecapPoints } from './foundations-book-content.js';
+import {
+  foundationsBookContent, foundationsBookRecaps, foundationsPracticeIntros, foundationsRecapPoints,
+} from './foundations-book-content.js';
 
 export function hasExampleBrackets(text) {
   return /\[[^\]]+\]/.test(text);
@@ -53,6 +55,17 @@ export function addExplanationPractice(body, { el, button }, { key, id, explanat
   body.append(practice);
 }
 
+export function lessonReflection(el, introduction, prompt, explanation, {
+  example, heading = 'Practice and feedback',
+} = {}) {
+  const reflection = el('div', undefined, 'lesson-reflection');
+  if (heading) reflection.append(el('h3', heading));
+  reflection.append(el('p', introduction, 'lesson-reflection-intro'), el('p', prompt, 'lesson-reflection-prompt'));
+  if (example) reflection.append(lessonExample(el, example));
+  reflection.append(el('p', explanation));
+  return reflection;
+}
+
 export function addFoundationsBookCoverage(body, el, lessonId, sectionId) {
   const entries = foundationsBookContent[lessonId]?.[sectionId] ?? [];
   const recap = sectionId === 'recap' && foundationsBookRecaps[lessonId];
@@ -63,8 +76,11 @@ export function addFoundationsBookCoverage(body, el, lessonId, sectionId) {
   }
   if (!entries.length) return;
 
-  const practice = el('section', undefined, 'lesson-sources lesson-practice-prose');
-  practice.append(el('h3', 'Practice and feedback'));
+  const practice = el('section', undefined, 'lesson-reflections');
+  practice.setAttribute('aria-labelledby', 'lesson-reflections-title');
+  const practiceTitle = el('h3', 'Practice and feedback');
+  practiceTitle.id = 'lesson-reflections-title';
+  practice.append(practiceTitle);
   for (const [id, title, example, explanation, prompt, feedback, definition] of entries) {
     const heading = el('h3', title);
     heading.id = id.toLowerCase();
@@ -73,14 +89,9 @@ export function addFoundationsBookCoverage(body, el, lessonId, sectionId) {
     if (definition) body.append(el('p', definition));
     body.append(lessonExample(el, example), ...paragraphs);
 
-    const exercise = el('div', undefined, 'lesson-practice-item');
+    const exercise = lessonReflection(el, foundationsPracticeIntros[id], prompt, feedback, { heading: null });
     exercise.id = `${heading.id}-practice`;
-    exercise.setAttribute('aria-label', title);
-    exercise.append(
-      el('h4', title),
-      el('p', prompt, 'lesson-practice-prompt'),
-      el('p', feedback, 'lesson-practice-feedback'),
-    );
+    if (entries.length > 1) exercise.prepend(el('h4', title));
     practice.append(exercise);
   }
   return practice;

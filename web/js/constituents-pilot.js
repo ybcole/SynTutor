@@ -1,5 +1,5 @@
 import { addConstituentTreeBuilder } from './constituent-tree-builder.js';
-import { addExplanationPractice, addIntroExample, addTreeTrace } from './lesson-presentation.js';
+import { addExplanationPractice, addIntroExample, addTreeTrace, lessonReflection } from './lesson-presentation.js';
 
 const sentence = 'Mina paused near the stone arch.';
 const word = (text, index) => ({ id: `word-${index}`, word: text });
@@ -67,11 +67,6 @@ export const constituentsPilot = {
     const paragraph = text => body.append(el('p', text));
     const heading = title => body.append(el('h3', title));
     const example = text => body.append(el('p', text, 'lesson-example-sentence'));
-    const disclosure = (title, explanation) => {
-      const details = el('details', undefined, 'lesson-sources');
-      details.append(el('summary', title), el('p', explanation));
-      body.append(details);
-    };
 
     if (page === 0) {
       paragraph('When you read a sentence, some words work together as one unit. A word or group with that job is called a constituent. How can you tell which words go together? In this chapter, you’ll test groups by leaving words out, swapping them for a single word, and asking what question they answer.');
@@ -94,7 +89,10 @@ export const constituentsPilot = {
       heading('Check the same words in a longer sentence');
       example('Mina paused near the stone arch that spans the canal.');
       paragraph('Suppose “that spans the canal” tells which arch Mina paused near. Then the answer to “What did Mina pause near?” is “the stone arch that spans the canal”. The whole location now includes those extra words.');
-      disclosure('Try the question test', 'Where did Mina pause? “Near the stone arch that spans the canal.” The longer landmark sits inside the longer location phrase.');
+      body.append(lessonReflection(el,
+        'Mina paused at an arch. This longer sentence adds words to identify which arch it was.',
+        'Where did Mina pause? Give the whole location, including the words that identify the arch.',
+        '“Near the stone arch that spans the canal” answers where she paused. “The stone arch that spans the canal” answers what she paused near. The two answers show the smaller group inside the larger one.'));
     }
     if (page === 2) {
       paragraph('A phrase marker is a tree that shows which words belong together. A node is a point on the tree. It can have a label and branches below it. In the example below, PHRASE-a labels the whole location. In the nested tree, PHRASE-b labels the landmark inside it.');
@@ -129,7 +127,7 @@ export const constituentsPilot = {
       heading('Try another sentence');
       example('Ivo sketched the guide with a pencil.');
       paragraph('Explain both meanings. In each one, which group does “with a pencil” belong to?');
-      disclosure('Hint', 'Ask whether the pencil explains how the sketch was made or helps identify the guide.');
+      paragraph('Ask whether the pencil explains how the sketch was made or helps identify the guide.');
       const key = `syntutor:lesson-transfer:${ui.userId}:br-01@${lesson.content_version}:application`;
       addExplanationPractice(body, ui, {
         key, id: 'chapter-one-transfer',

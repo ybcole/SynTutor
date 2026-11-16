@@ -1657,32 +1657,20 @@ function showCanonicalTree(payload) {
   canonicalCanvas = null;
   host.replaceChildren();
   const visual = renderLessonTree(envelope, {stackFeatures: true, displayLabels, interactive: true});
-  const legend = document.createElement('p');
-  legend.className = 'lesson-tree-legend';
-  legend.textContent = 'Underlined nodes have a specific explanation. Every node can be selected; '
-    + 'unmarked nodes repeat the explanation of their enclosing phrase. '
-    + 'Dots with matching subscripts (•₁, •₂) mark unpronounced positions linked to a moved '
-    + 'word or auxiliary; they are part of the analysis, not errors.';
-  host.append(legend, visual);
+  host.append(visual);
+  // The text tree is a read-only reference, anchored bottom-left. It is not a
+  // navigation outline.
   const textDetails = visual.querySelector('.lesson-tree-text');
   if (textDetails) {
     const summary = textDetails.querySelector('summary');
-    if (summary) summary.hidden = true;
-    const textButton = document.createElement('button');
-    textButton.type = 'button';
-    textButton.className = 'tree-text-toggle';
-    textButton.textContent = 'Read the tree as text';
-    textButton.setAttribute('aria-expanded', 'false');
-    textButton.addEventListener('click', () => {
-      textDetails.open = !textDetails.open;
-      textButton.setAttribute('aria-expanded', String(textDetails.open));
-    });
-    legend.append(' ', textButton);
+    if (summary) summary.hidden = false;
+    host.append(textDetails);
   }
   host.hidden = false;
   // Moves the SVG into a pannable/zoomable viewport; everything below queries
   // the host, so selection keeps working on the moved SVG.
   canonicalCanvas = enableCanvasView(host, visual);
+  if (!visual.children.length) visual.remove();
   host.querySelector('svg')?.setAttribute('role', 'group');
   const canvas = document.querySelector('#treeCanvas');
   if (canvas) canvas.hidden = true;

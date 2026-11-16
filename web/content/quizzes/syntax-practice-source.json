@@ -7,7 +7,7 @@
       "subtopic_id": "concepts",
       "title": "Structure and constituent tests",
       "lesson_version": "2.0.0",
-      "article_digest": "747cb341",
+      "article_digest": "2429cba6",
       "texts": [
         "Start with the location in the example. The words “the old well” name a landmark, and “beside” uses that whole group to tell where Inez stopped. If you replace the landmark with “the gate”, you get another location with the same structure.",
         "Syntax studies both the order of words and the way they group. Putting “the” after “well” breaks the word order. Drawing all the words as branches at the same level loses the grouping. The inner brackets show the landmark, and the outer brackets show where the landmark fits inside the location. This arrangement of groups within groups is called hierarchy.",
@@ -20,7 +20,16 @@
         "First, leave out “near the stone arch”. “Mina paused” is still a complete sentence. Now put “there” in its place. In “Mina paused there”, one word stands for the whole location.",
         "This time, keep “near”. In “Mina paused near it”, “it” stands for “the stone arch”. Ask “What did Mina pause near?” The answer is “the stone arch”. Ask “Where did Mina pause?” The answer is “near the stone arch”. The second answer includes one more word.",
         "Mina paused near the stone arch that spans the canal.",
-        "Suppose “that spans the canal” tells which arch Mina paused near. Then the answer to “What did Mina pause near?” is “the stone arch that spans the canal”. The whole location now includes those extra words."
+        "Suppose “that spans the canal” tells which arch Mina paused near. Then the answer to “What did Mina pause near?” is “the stone arch that spans the canal”. The whole location now includes those extra words.",
+        "Mina paused at an arch. This longer sentence adds words to identify which arch it was.",
+        "Where did Mina pause? Give the whole location, including the words that identify the arch.",
+        "“Near the stone arch that spans the canal” answers where she paused. “The stone arch that spans the canal” answers what she paused near. The two answers show the smaller group inside the larger one.",
+        "In the stop by the old well, the location includes the name of a landmark.",
+        "What group names the landmark and what larger group gives the location?",
+        "“The old well” names the landmark. “Beside the old well” gives the location.",
+        "The sentence tells both what was placed and where it ended up.",
+        "“Rae placed the jar on the shelf” sounds unfinished without the location. Can “on the shelf” still be a constituent?",
+        "Yes. It answers “Where did Rae place the jar?” A group can be required and still form a constituent."
       ]
     },
     {
@@ -28,7 +37,7 @@
       "subtopic_id": "worked-example",
       "title": "Phrases, constituents and phrase markers",
       "lesson_version": "2.0.0",
-      "article_digest": "747cb341",
+      "article_digest": "2429cba6",
       "texts": [
         "Read the brackets from the inside out. “The old clock” is a phrase. It also functions as a constituent, or structural part, of the larger phrase “under the old clock”. The same group is a phrase in its own right and a constituent of the group that contains it.",
         "On a phrase marker, look for a node that reaches all and only the words in the group. The location node immediately dominates “under” and the landmark phrase. It also dominates “clock”, but through another node. A triangle stands for the whole phrase when its inner branches are left out of the drawing. Expand the triangle when the reasoning depends on those branches.",
@@ -41,7 +50,10 @@
         "1.Add PHRASE-bPlace an inner node above “the red gate”.",
         "2.Connect PHRASE-b to PHRASE-aAttach the smaller group to the outer phrase.",
         "3.Connect “the red gate” to PHRASE-bAttach the three words to the inner node. Leave “beside” under PHRASE-a.",
-        "4.Check the treeSee whether the inner node covers exactly “the red gate”."
+        "4.Check the treeSee whether the inner node covers exactly “the red gate”.",
+        "The clock and the words that identify it form a group inside the location phrase.",
+        "Can one node pick out just “under the old” in this structure?",
+        "No. The location node also reaches “clock”. The landmark node does not reach “under”."
       ]
     },
     {
@@ -49,7 +61,7 @@
       "subtopic_id": "application",
       "title": "Structural ambiguity exercises",
       "lesson_version": "2.0.0",
-      "article_digest": "747cb341",
+      "article_digest": "2429cba6",
       "texts": [
         "The same words can have two meanings when they group in two ways. This is structural ambiguity. In the next example, who might have the binoculars?",
         "The trees show the part where the grouping changes. In each tree, start at PHRASE-c and follow one branch up. See which group contains “with binoculars”.",
@@ -57,8 +69,12 @@
         "The binoculars phrase joins the group that includes “spotted”. It describes how Nina spotted the climber.",
         "PHRASE-aspottedPHRASE-btheclimberPHRASE-cwithbinoculars",
         "Explain both meanings. In each one, which group does “with a pencil” belong to?",
+        "Ask whether the pencil explains how the sketch was made or helps identify the guide.",
         "Zoe greeted the dancer with a wave. Zoe greeted the dancer with a scarf.",
-        "In the first sentence, a wave describes how Zoe greeted the dancer. In the second, a scarf can identify the dancer who wore it. It can also be something Zoe waved to greet the dancer. Read the context before drawing a branch."
+        "In the first sentence, a wave describes how Zoe greeted the dancer. In the second, a scarf can identify the dancer who wore it. It can also be something Zoe waved to greet the dancer. Read the context before drawing a branch.",
+        "The same words leave open who had the scarf during the greeting.",
+        "Bracket both readings, then decide whether “with a scarf” is a constituent in each.",
+        "Compare “greeted [the dancer [with a scarf]]” with “[greeted [the dancer]] [with a scarf]”. The scarf phrase is a constituent in both, attached to different groups."
       ]
     },
     {
@@ -66,7 +82,7 @@
       "subtopic_id": "concepts",
       "title": "Subject, predicate, noun phrases and verb phrases",
       "lesson_version": "2.0.0",
-      "article_digest": "8b430657",
+      "article_digest": "3df78df5",
       "texts": [
         "The subject and predicate are the two main parts of a basic clause. The predicate says what the subject does, what happens to it, or what state it is in. Both are directly under S in the basic tree.",
         "[The bikes near the gate] [were blocking the path].",
@@ -78,7 +94,13 @@
         "The subject is the group a predicate says something about. In a basic statement tree, the subject and predicate share a parent, S. Compare the statement and yes/no question below to find where the whole subject ends.",
         "In “The lantern by the stairs is glowing”, “lantern” alone names the object, but it does not include the words that identify which lantern. In the question, “the lantern by the stairs” moves as a group relative to “is”. Use the whole group when you mark the subject.",
         "In the question, “is” comes before the whole subject and “glowing” comes after it. In the statement, “is glowing” is the whole predicate.",
-        "Pick the last word of the subject in the statement."
+        "Pick the last word of the subject in the statement.",
+        "The door handle is the thing described as loose, and the sentence says which door it belongs to.",
+        "Turn “The handle of the blue door is loose” into a yes/no question. Which words move as the subject?",
+        "“Is the handle of the blue door loose?” The whole NP “the handle of the blue door” changes its position relative to is.",
+        "Switching the two people in the thanking example changes who does the thanking.",
+        "Can “the helper” be paired with “thanked the driver” to make a sentence? What category is “near the driver”?",
+        "Yes: the first group can be the subject NP and the second the predicate VP. “Near the driver” is a PP."
       ]
     },
     {
@@ -86,7 +108,7 @@
       "subtopic_id": "worked-example",
       "title": "Subject and predicate tree exercise",
       "lesson_version": "2.0.0",
-      "article_digest": "8b430657",
+      "article_digest": "3df78df5",
       "texts": [
         "A noun phrase is built around a noun and is labelled NP. A verb phrase is built around a verb and is labelled VP. In the example “Mira checked the lantern”, “lantern” heads the NP “the lantern”, and “checked” heads the VP “checked the lantern”. In the short sentence tree below, the subject NP and predicate VP share S as their parent. Nodes that share a parent are sisters.",
         "Next, look at a sentence with two NPs. Follow one branch up from each NP. Its parent helps show what job the NP does.",
@@ -102,13 +124,14 @@
       "subtopic_id": "application",
       "title": "Dependency and function: heads, modifiers and complements",
       "lesson_version": "2.0.0",
-      "article_digest": "8b430657",
+      "article_digest": "3df78df5",
       "texts": [
         "A head is the word that gives a phrase its category. A modifier adds information about the head or its group. A complement fills a role the head makes available in a particular use. A verb can take an object as its complement, and a preposition can take a group that names a landmark. In the examples below, try leaving out one part at a time to see how the roles differ.",
         "In “a loose hinge”, “hinge” is the head. “Loose” is a modifier because it adds a detail. “Tessa repaired a hinge” still makes sense without it. The whole NP “a loose hinge” is a complement of “repaired”. It tells what Tessa repaired.",
         "“Beside” and “the counter” share a parent. You can leave out the whole location. If you keep “beside” with this meaning, “the counter” fills the complement role. It tells what the location is beside.",
         "Use the omission test at two levels. In the example about Ava, you can leave out the entire location and still have “Ava slipped”. Inside the location phrase, “the counter” is needed to say what the person was beside. A group can be optional as a whole while containing parts that depend on each other.",
         "Write the subject and predicate. Then say which word “loose” describes and which group tells what Leo tightened.",
+        "Compare “Leo tightened a bolt” with the original. Which word can disappear while the thing being tightened is still named?",
         "When you name a function, ask what the group has that function in relation to. In “a letter from Sam”, the PP “from Sam” tells which letter is meant. Inside the PP, “Sam” works as the complement of “from”. These are two different relations at two different levels.",
         "In a tree, sister constituents share an immediate parent. “From” and “Sam” are sisters inside PP. The whole PP then joins the noun group at a higher level. To identify a function, start at the node for the group whose job you are naming and look beside it, at its own level.",
         "Find the element that gives each phrase its basic category. “Street” is a noun, so “a quiet street” is an NP. “Near” is a preposition, so “near a quiet street” is a PP. The PP contains the entire NP as the complement of “near”.",
@@ -119,7 +142,18 @@
         "A modifier can come after the group it describes, as in “the towel on the rack”. Ask which towel the speaker means. The PP “on the rack” narrows the reference. Keep that reading in mind when you test omission, since a word left behind can sometimes serve a different role in another context.",
         "A complement fills a role that a head makes available in a particular use. In the example below, the preposition needs a landmark to express the intended location.",
         "In “Nia waited beside the window”, ask what fills out the meaning of “beside”. The NP “the window” supplies the landmark, so it is the complement of P. Removing either “beside” or “the window” leaves the other unable to express this location. This is a two-way dependency inside the PP.",
-        "Now test the whole PP. “Nia waited” still works, so the location phrase is an optional modifier of the waiting. The same phrase can therefore contain a head–complement relation and take part in a modifier–head relation one level higher. Ask what can be omitted at each level before choosing the function."
+        "Now test the whole PP. “Nia waited” still works, so the location phrase is an optional modifier of the waiting. The same phrase can therefore contain a head–complement relation and take part in a modifier–head relation one level higher. Ask what can be omitted at each level before choosing the function.",
+        "Mia read a letter, and the sentence also identifies who sent it.",
+        "No. From joins Sam inside the PP first. The entire PP then joins the noun group.",
+        "In “very calm”, one word gives the description and the other tells how strongly it applies.",
+        "Find the head of “very calm” and predict the phrase category.",
+        "“Calm” is the adjective head, so “very calm” is an adjective phrase (AP). Try removing “very”. The adjective can still give the whole description in “The child seemed calm”.",
+        "The box has a property and a location. Each detail helps narrow down which box is meant.",
+        "In “the empty box beside the shelf”, find two pieces of additional information about the box.",
+        "“Empty” gives a property. “Beside the shelf” gives a location. Both depend on the noun group they describe.",
+        "The sentence about the team uses “counted on” to mean relied on.",
+        "Does dropping “on the team” from “Nia counted on the team” preserve the same use of counted?",
+        "No. Counted on means relied on. Without the PP, counted can have a different reading, such as saying numbers."
       ]
     },
     {
@@ -127,7 +161,7 @@
       "subtopic_id": "concepts",
       "title": "Nouns, noun phrases and lexical categories",
       "lesson_version": "2.0.0",
-      "article_digest": "25e837b4",
+      "article_digest": "8a4b0094",
       "texts": [
         "A [lamp] glowed. Two [lamps] glowed. Some [light] reached the stairs.",
         "Distribution means the positions a word can fill and the words it can combine with. Lamp is a common count noun: it goes with a and two. Light can be mass in “some light” and count in “two lights” when it means two sources of light. Names such as Inez are proper nouns. Forms such as “the lamp’s shade” give another clue to noun use.",
@@ -136,7 +170,13 @@
         "A noun is a word that can head a noun phrase. Count nouns such as “lamp” often have a plural form that means more than one. In the next example, “lamps” is the head. This noun makes the whole group a noun phrase (NP).",
         "In “They flickered”, the pronoun “they” stands in for a group from the example.",
         "A noun can make a whole NP. In the first tree, “lamps” does this by itself. The name “Mina” also makes a whole NP. A pronoun such as “they” can fill that same spot.",
-        "“Mina” is a name. The NP above it represents the full phrase that functions as the subject."
+        "“Mina” is a name. The NP above it represents the full phrase that functions as the subject.",
+        "The two uses of “glass” describe a material and a set of individual objects.",
+        "Compare “some glass” and “two glasses”. Why can a plural test alone miss nouns?",
+        "Glass is a mass noun when it names a material. Glasses can name countable containers. Both are noun uses.",
+        "Several boats were leaking near one dock, so the subject contains both a plural and a singular noun.",
+        "Replace the subject of “The boats near the dock were leaking”. Which noun gives its number?",
+        "“They were leaking.” Boats is plural and heads the subject NP."
       ]
     },
     {
@@ -144,7 +184,7 @@
       "subtopic_id": "worked-example",
       "title": "Adjectives, adverbs, APs and AdvPs",
       "lesson_version": "2.0.0",
-      "article_digest": "25e837b4",
+      "article_digest": "8a4b0094",
       "texts": [
         "The path was [steep]. It grew [steeper]. Rae climbed [slowly] and stopped [often].",
         "Adjectives can describe a noun or give a property after a verb such as “be”. “A steep path” and “the path was steep” show both positions. Steep is gradable because its degree can vary: “very steep”, “steeper”, “steepest”. Material descriptions such as “wooden” in “a wooden spoon” usually resist those degree tests in their literal reading.",
@@ -155,7 +195,13 @@
         "An adjective phrase (AP) has an adjective as its head. An adverb phrase (AdvP) has an adverb as its head. The tree uses A and Adv for the head words themselves. In the next example, “visible” describes the sign. “Quite clearly” tells how clearly someone could see it.",
         "A degree word tells how much or how strongly a description applies. In this example, DEG labels “quite”. Follow its branch to find the word it modifies.",
         "Read “quite clearly visible” in two passes. First, “quite” tells how clearly, so group it with “clearly” inside AdvP. Next, the whole AdvP modifies “visible”. “Visible” heads the AP, even though the AP contains an adverb phrase of its own.",
-        "“The sign was visible” also works. Here the adjective alone is the whole AP."
+        "“The sign was visible” also works. Here the adjective alone is the whole AP.",
+        "The room example describes a thing. The talking example describes how an action happened.",
+        "What clues distinguish “the quiet room” and “they talked quietly”?",
+        "Quiet describes the room and can vary in degree. Quietly describes how the talking happened and can work as an adverb.",
+        "The wording example contains a description of how something was written, with a degree word inside it.",
+        "In “very clearly worded”, which word heads “very clearly” and which word does the whole AdvP modify?",
+        "Clearly heads the AdvP. The AdvP modifies worded and tells how it was written."
       ]
     },
     {
@@ -163,7 +209,7 @@
       "subtopic_id": "prepositions-and-coordination",
       "title": "Prepositions, prepositional phrases and coordination",
       "lesson_version": "2.0.0",
-      "article_digest": "25e837b4",
+      "article_digest": "8a4b0094",
       "texts": [
         "The parcel is [under the stairs]. The parcel is [there].",
         "In the first sentence, “under” heads a PP. It takes “the stairs” as an NP complement. The NP names a landmark, and “under” tells how the parcel is located in relation to it. In the second sentence, “there” fills the same location slot by itself. In this analysis, locative “there” is P and also forms a whole PP.",
@@ -176,7 +222,13 @@
         "Joining parts with a word like “and” is called coordination. Each part joined is a conjunct. Here, both conjuncts are PPs with their own head and landmark. Together they form a larger PP.",
         "Try covering the shared words in “above and beside the bench”. The coordinator joins the two prepositions, and “the bench” is their shared complement. Now read “above the table and beside the bench”. Each preposition has its own complement, so the coordinator joins two complete PPs.",
         "“Beside” heads the first PP. “The bench” is its NP complement.",
-        "PPPPPbesideNP — the benchandPPPnearNP — the heater"
+        "PPPPPbesideNP — the benchandPPPnearNP — the heater",
+        "“Here” gives the location of the parcel in a single word.",
+        "What category is “here” in “The parcel is here” on this reading?",
+        "“Here” is a one-word location PP in this analysis. Compare “The parcel is under the stairs”. The phrase “under the stairs” fills the same location role as “here”.",
+        "The two bracketings of “small cats and dogs” give “small” a different scope.",
+        "Compare “[small cats] and [dogs]” with “small [cats and dogs]”. Which reading applies small to both?",
+        "The second one. The bracketed coordination groups the two nouns before small modifies them."
       ]
     },
     {
@@ -205,7 +257,19 @@
         "SNP — NoraVPV [trans]inspectedNP — the bridge",
         "Attach “the bridge” so it shares a parent with “inspected”. Drag from that parent’s connection point or choose Guide me. Then select Check my tree.",
         "1.Connect the object NP under VPAttach “the bridge” to VP beside V [trans]. “Nora” stays directly under S.",
-        "2.Check the branchSee whether the groups attach in the intended order."
+        "2.Check the branchSee whether the groups attach in the intended order.",
+        "“Record” refers to an action in one sentence and to something kept in the other.",
+        "Compare “They record birdsong” and “They kept a record”. Which record is a verb?",
+        "The first can change to “recorded” in the same slot. In the second, record is the head noun after “a”.",
+        "Omar lifts a crate, and the last phrase tells where the lifting happened.",
+        "Which words belong to the basic VP in “Omar lifted the crate by the door” if the PP tells where he lifted it?",
+        "“Lifted the crate”. The place PP modifies that VP. If the PP identifies which crate, it belongs inside the object NP instead.",
+        "The recognition sentence uses one pronoun for the person who recognizes and another for the people recognized.",
+        "In “He recognized them”, find the subject and the direct object. What feature belongs on V?",
+        "“He” is the subject NP under S. “Them” is the object NP beside V [trans] inside VP.",
+        "The second gull sentence adds a time to the same arrival.",
+        "Compare “The gull arrived” and “The gull arrived at dusk”. What goes under the basic VP in both?",
+        "Only V [intrans] arrived. “At dusk” attaches outside the basic VP."
       ]
     },
     {
@@ -223,7 +287,10 @@
         "Mara hands over “a map” in both sentences. Leo is the recipient, the person who gets it. In the second sentence, the prepositional phrase (PP) “to Leo” names him.",
         "Try naming the two roles before you look at their order. “A map” answers “What did Mara hand over?” and Leo answers “Who received it?” The construction can put the recipient before the map as an NP or after it as a “to” PP. This is why being first after the verb does not always make a group the direct object.",
         "“Leo” is the indirect object in NP form. It comes before the direct object.",
-        "SNP — MaraVPV [ditrans]handedNP — LeoNP — a map"
+        "SNP — MaraVPV [ditrans]handedNP — LeoNP — a map",
+        "One of the baking phrases names a person connected to the loaf. The other gives a duration.",
+        "Compare “Jules baked a loaf for Inez” and “Jules baked a loaf for an hour”. Which PP has an indirect-object counterpart?",
+        "“For Inez” alternates with the beneficiary NP in “baked Inez a loaf”. “For an hour” is a duration adjunct."
       ]
     },
     {
@@ -242,7 +309,13 @@
         "Look at “a coach” in both sentences. In the first, it tells what Mina became. In the second, it is the direct object. It tells whom Mina met.",
         "What became slippery? The steps did. “Slippery” is an object predicative because it describes the direct object. When the verb has both of these complements, it is complex transitive and is marked V [complex]. A subject or object predicative can be an NP, an adjective phrase (AP), or a PP.",
         "Compare “The steps became slippery” with “The rain left the steps slippery”. The description is about the steps in both. In the first sentence, the steps are the subject, so “slippery” is a subject predicative. In the second, the steps are the direct object, so the same AP is an object predicative.",
-        "“A coach” identifies Mina. The NP is a subject predicative beside V [intens]."
+        "“A coach” identifies Mina. The NP is a subject predicative beside V [intens].",
+        "“A tutor” identifies a role in one sentence and a person someone called in the other.",
+        "What is “a tutor” doing in “Uma became a tutor” and “Uma called a tutor”?",
+        "After became it identifies Uma, so it is a subject predicative. After called it names the person Uma called, so it is a direct object.",
+        "Both club examples have two noun phrases after the verb. Their final noun phrases have different jobs.",
+        "Compare “The club named Jo captain” and “The club sent Jo a badge”. What is the job of the final NP in each?",
+        "“Captain” describes Jo, so it is an object predicative. “A badge” names what was sent, so it is the direct object. Jo is the indirect object in the second sentence."
       ]
     },
     {
@@ -258,7 +331,10 @@
         "A prepositional verb selects a PP as its complement and is marked V [prep]. In the example below, the “on” phrase tells what Mina relied on. The verb “relied” calls for an “on” phrase here. We call it a prepositional complement and mark V with [prep].",
         "“On her notes” names what Mina relied on. The PP is a prepositional complement beside V [prep].",
         "Compare the last statement with “Mina waited”. “Waited” can be the whole predicate. The PP adds a place where she waited. Chapter 5 shows where to attach this kind of optional modifier.",
-        "One way to classify a PP after a verb is to ask what information it supplies. “On her notes” fills the slot selected by “relied”. “In the studio” after “was” describes the subject’s location. “In the studio” after “waited” adds the place where the waiting happened. These three PPs look similar but do different work."
+        "One way to classify a PP after a verb is to ask what information it supplies. “On her notes” fills the slot selected by “relied”. “In the studio” after “was” describes the subject’s location. “In the studio” after “waited” adds the place where the waiting happened. These three PPs look similar but do different work.",
+        "In the last example, the crew’s location follows a form of “be”.",
+        "In “The crew was on the dock”, where does the PP go and what does it do?",
+        "It is a complement beside V [intens] and locates the subject. The form PP is the same as in the location adjunct, but its function is a subject predicative."
       ]
     },
     {
@@ -266,7 +342,7 @@
       "subtopic_id": "concepts",
       "title": "Adjunct adverbials and levels of VP",
       "lesson_version": "2.0.0",
-      "article_digest": "729b0414",
+      "article_digest": "8e4d5cf7",
       "texts": [
         "Lena swept [after lunch], [carefully], [every day].",
         "An adverbial is a grammatical function. It often tells when, where or how an event happened. An adjunct adverbial supplies that detail as a modifier of a VP. In the example, “after lunch” is a PP, “carefully” is an AdvP, and “every day” is an NP. Their categories differ, but each can serve as a VP adjunct.",
@@ -279,7 +355,13 @@
         "VP₁ holds the verb and its complements. VP₂ is the bigger group. It holds VP₁ and the adjunct.",
         "“In the shed” is an adjunct here. The PP is a sister of VP₁ under VP₂.",
         "SNP — MinaVP₂VP₁V [trans]repairedNP — the toolsPP — in the shed",
-        "VP₂VP₁V [trans]repairedNP — the toolsPP — in the shed"
+        "VP₂VP₁V [trans]repairedNP — the toolsPP — in the shed",
+        "The sweeping example uses two words to say when the event happened.",
+        "What is the category and job of “last week” in “Lena swept last week”?",
+        "“Last week” is an NP because “week” is its head noun. Its function is time adjunct: it answers “When did Lena sweep?” and can be left out while “Lena swept” still makes sense.",
+        "Lena and Ivo performed the same action in different ways. “Did so” stands in for the part they share.",
+        "What does “did so” replace in “Lena swept the floor carefully, but Ivo did so hastily”?",
+        "“Swept the floor”. Carefully and hastily are outside the VP that is replaced in this comparison."
       ]
     },
     {
@@ -287,7 +369,7 @@
       "subtopic_id": "worked-example",
       "title": "VP adjunct attachment exercise",
       "lesson_version": "2.0.0",
-      "article_digest": "729b0414",
+      "article_digest": "8e4d5cf7",
       "texts": [
         "The basic verb phrase contains the verb and its complements. The tree below labels that layer VP₁. The outer verb phrase, VP₂, contains VP₁ plus the time adjunct.",
         "“Inspected the bridge” describes the inspection. The object NP joins V inside VP₁.",
@@ -306,7 +388,7 @@
       "subtopic_id": "mobility",
       "title": "Mobility of adverbials",
       "lesson_version": "2.0.0",
-      "article_digest": "729b0414",
+      "article_digest": "8e4d5cf7",
       "texts": [
         "Carefully, Lena lifted the tray. Lena carefully lifted the tray. Lena lifted the tray carefully.",
         "Read the three versions aloud. “Carefully” can follow the VP, come before the verb, or move to the front. In each version, the most natural reading describes the manner of lifting. Its position in the string can change while its job as a VP adjunct stays the same.",
@@ -315,7 +397,10 @@
         "“Quietly” precedes the basic VP. Both share VP₂.",
         "SNP — MaraVP₂AdvP — quietlyVP₁V [trans]checkedNP — the latch",
         "VP₂AdvP — quietlyVP₁V [trans]checkedNP — the latch",
-        "An NP can add a time, too. In “Mara checked the latch last night”, “last night” is an NP. In these trees, the adjunct sits next to the whole phrase it modifies. Other positions can work differently."
+        "An NP can add a time, too. In “Mara checked the latch last night”, “last night” is an NP. In these trees, the adjunct sits next to the whole phrase it modifies. Other positions can work differently.",
+        "Moving “carefully” changes its position while keeping the same tray-lifting event.",
+        "Does moving carefully turn it into a complement of lifted?",
+        "No. It still adds manner to the VP. The tray is the complement that names what Lena lifted."
       ]
     },
     {
@@ -323,7 +408,7 @@
       "subtopic_id": "particles",
       "title": "Phrasal verbs and ellipsis",
       "lesson_version": "2.0.0",
-      "article_digest": "729b0414",
+      "article_digest": "8e4d5cf7",
       "texts": [
         "Lena [wiped off the mark]. Lena [wiped the mark off]. Lena [wiped it off].",
         "In “wiped off the mark”, ask what was wiped. The object is “the mark”. “Off” belongs with “wiped” to form the phrasal verb. It can also appear after the full object in “wiped the mark off”. With a short object pronoun, use “wiped it off”. The particle appears after the pronoun in this pattern.",
@@ -334,7 +419,13 @@
         "A phrasal verb combines a verb with a particle. The tree labels the particle Prt and adds [phrasal] to V. Compare the two examples below. “Off” combines with “turned” to mean “switched off”. In the second sentence, P labels “off” because it heads the PP “off the bus”, which shows the path.",
         "Replace “the lamp” with “it”. In “Lea turned it off”, “it” fits before the particle. In “Lea stepped off it”, “it” stays after the preposition.",
         "“Off” is Prt and follows the object pronoun. V carries [trans] and [phrasal].",
-        "SNP — LeaVPV [trans, phrasal]turnedNP — itPrtoff"
+        "SNP — LeaVPV [trans, phrasal]turnedNP — itPrtoff",
+        "“Off” helps describe switching in one example and a path away from the stage in the other.",
+        "Compare “Mia switched the lamp off” and “Mia walked off the stage”. Which off is a particle?",
+        "The off that can follow “the lamp”. In the second sentence, “off the stage” is a PP.",
+        "In a conversation about donating books, “Jo gave three” leaves some information understood.",
+        "In a conversation about books going to the library, what might be understood in “Jo gave three”? Would “yesterday” supply it?",
+        "The library can be the understood recipient. Yesterday adds time and does not fill that role."
       ]
     },
     {
@@ -342,7 +433,7 @@
       "subtopic_id": "ellipsis",
       "title": "Ellipsis and understood complements",
       "lesson_version": "2.0.0",
-      "article_digest": "729b0414",
+      "article_digest": "8e4d5cf7",
       "texts": [
         "Ellipsis leaves words unspoken when their role can still be understood. In the tree below, E marks an understood recipient inside NP. An adjunct can also be left out because it adds an optional detail to the event.",
         "Compare “Mina gave the map to Ren” with “Mina gave the map” in a conversation where Ren was receiving supplies. The recipient can be understood from context, so the shorter wording can leave that role unspoken. In “Mina gave the map after lunch”, the time phrase tells when, without supplying the missing recipient.",
@@ -357,18 +448,27 @@
       "subtopic_id": "application",
       "title": "Sentence adverbials: disjuncts and conjuncts",
       "lesson_version": "2.0.0",
-      "article_digest": "729b0414",
+      "article_digest": "8e4d5cf7",
       "texts": [
         "An adverbial can tell how something happened. It can also apply to the whole statement. See how “honestly” does both jobs.",
         "“Honestly” describes how Lea answered. The AdvP is beside VP within a higher VP.",
         "SNP — LeaVPVP — answered the questionAdvP — honestly",
         "A disjunct adds the speaker’s comment to a statement. A conjunct links a statement to the words around it. In “The latch broke. Therefore, the gate opened”, “therefore” shows that the opening was a result of the break.",
         "Imagine a witness saying “Honestly, Lea answered the question”. “Honestly” comments on how the witness presents the whole statement. In “Lea answered the question honestly”, it can describe Lea’s manner. Ask whose honesty is at issue before attaching the adverbial.",
+        "The speaker uses “unfortunately” to react to a gate jamming.",
+        "What does “unfortunately” tell you about the jam? Where would its branch go?",
+        "The word gives the speaker’s evaluation of the whole event. Draw it beside S, under a higher S. The two branches show that the comment applies to the entire statement.",
         "A VP adverbial describes the event and joins a VP. A sentence adverbial applies to the whole statement and joins S in the worked trees.",
         "Sadly, the crew left. The crew left sadly. However, the gate stayed open.",
         "The first sadly can give the speaker’s view of the whole event, a disjunct at sentence level. The second can describe the crew’s manner, a VP adjunct. However connects the last statement to another part of the discussion, so it is a conjunct. Sentence adverbials can occur in the middle too. In “The east gate, on the other hand, stayed open”, the contrast is with a preceding statement about another gate. Try a context before deciding which reading is intended.",
         "If Mia did the searching in the kitchen, the PP can be an event adjunct. In another context, the finding is that the puppy was in the kitchen. Then the location describes the object. A context can also make a location pick out which animal is meant.",
-        "A useful check is to ask a question for each reading. “Where did Mia do the finding?” gives an event location. “Where was the puppy when she found it?” gives the puppy’s location. “Which puppy did she find?” can put the location phrase inside the object NP. Match the attachment to the question you mean."
+        "A useful check is to ask a question for each reading. “Where did Mia do the finding?” gives an event location. “Where was the puppy when she found it?” gives the puppy’s location. “Which puppy did she find?” can put the location phrase inside the object NP. Match the attachment to the question you mean.",
+        "The witness’s feelings about the departure can differ from how the crew looked as they left.",
+        "If a witness is relieved the crew left but saw them looking sad, which sadly fits that report?",
+        "Use the manner reading. Sadly describes the crew’s departure, rather than giving the witness’s opinion of the whole statement.",
+        "The kitchen can locate the finding or describe where the puppy was when Mia found it.",
+        "Bracket the event adjunct reading. Then say which group the PP describes on the object-predicative reading.",
+        "Use “[found the puppy] [in the kitchen]” for the event location. In the second reading, the PP locates the puppy and is an object predicative beside the verb and object."
       ]
     },
     {
@@ -393,7 +493,16 @@
         "VPPROG [pres]isVPV [trans]studyingNP — the menu",
         "One branch is missing from the tree. Connect “have packed the lantern” to the VP headed by “should”. Drag from that parent node or choose Guide me. Then select Check my tree.",
         "1.Connect the lower VP under the auxiliary VPAttach “have packed the lantern” under the VP headed by MOD “should”. Only the first verb is tensed.",
-        "2.Check the branchSee whether the groups attach in the intended order."
+        "2.Check the branchSee whether the groups attach in the intended order.",
+        "The same departure appears with a singular subject and then with a plural one.",
+        "Compare “The runner has left” and “The runners have left”. Which form changes with the subject?",
+        "“Has” changes to “have” when the subject changes from one runner to several. “Left” stays the same because it is the untensed participle after the perfect auxiliary.",
+        "“May” and “wants” both come before another verb, but they take different forms after them.",
+        "Why does “Rae may to leave” fail in this pattern?",
+        "May selects the plain stem leave, without infinitival to.",
+        "After “might”, the verb “leave” has to fit the form required by the modal.",
+        "Which fits after “She might”: “leave”, “leaves”, or “left”?",
+        "Leave. The modal is tensed and selects the plain form."
       ]
     },
     {
@@ -422,7 +531,19 @@
         "VPMOD [past]shouldVPPERFhaveVPV [trans]packedNP — the lantern",
         "Read the possible slots in order. Modal (MOD) comes first, then perfect (PERF), progressive (PROG), and passive (PASS). The lexical verb comes last. A sentence can skip any auxiliary slot it does not need.",
         "Look at the verb right after each auxiliary. A modal takes the plain verb form, as in “might write”. Perfect “have” takes a past participle, as in “has written”. Progressive “be” takes an -ing form, as in “is writing”. Passive “be” takes a passive participle, as in “was written”.",
-        "Trace “might have written” from left to right. “Might” takes the plain form “have”, and “have” takes the participle “written”. Try “might write” next. Without perfect “have”, the modal now selects “write” directly. The form of each verb is a clue to which auxiliary selects it."
+        "Trace “might have written” from left to right. “Might” takes the plain form “have”, and “have” takes the participle “written”. Try “might write” next. Without perfect “have”, the modal now selects “write” directly. The form of each verb is a clue to which auxiliary selects it.",
+        "The packing sentence has a modal and perfect “have” before the main verb.",
+        "In “Jo may have packed”, which verb is tensed and why is packed a participle?",
+        "May is the first verb and carries tense. Perfect have selects packed as a participle.",
+        "In the painting example, three helping verbs appear before the action “painting”.",
+        "Find PROG in “The crew may have been painting”. What form follows it?",
+        "“Been” is PROG because it introduces “painting”, the -ing form selected by the progressive. The preceding “have” is the perfect auxiliary, so it selects the participle “been”.",
+        "“Has been painted” combines two helping verbs to describe what happened to the hull.",
+        "In “The hull has been painted”, which type is been?",
+        "PASS. It selects the passive participle painted. Has is PERF and carries tense.",
+        "In the finishing example, you can trace the hull to the verb it belongs with.",
+        "In “The crew might have finished the hull”, which verb is the sister of “the hull”?",
+        "Finished. The object stays inside the lexical VP, below have and might."
       ]
     },
     {
@@ -447,7 +568,10 @@
         "VPPERF [pres]haveVPPROGbeenVPVPV [intrans]complainingPP — for the fun of it",
         "VPPROGbeenVPVPV [intrans]complainingPP — for the fun of it",
         "VPVPV [intrans]complainingPP — for the fun of it",
-        "In “They were going to India next week last week”, start with “next week”. It tells when the trip was set to happen and goes with the lexical VP. “Last week” tells when that plan held. It goes with the higher past-tense PROG VP. What a time phrase means can help you find its scope."
+        "In “They were going to India next week last week”, start with “next week”. It tells when the trip was set to happen and goes with the lexical VP. “Last week” tells when that plan held. It goes with the higher past-tense PROG VP. What a time phrase means can help you find its scope.",
+        "One adverbial places the departure in time. The other describes the way Rae left.",
+        "Compare “Rae may already have left” with “Rae may have left quietly”. Which phrase is read with the lexical action on the usual reading?",
+        "Quietly describes how Rae left. Already has scope over the perfect VP that follows it."
       ]
     },
     {
@@ -464,7 +588,10 @@
         "“The statue” is the object in the active sentence and the subject in the passive sentence. A dot marks the empty object position in the passive tree. “Moved” still has [trans]. The optional “by” phrase tells who moved the statue.",
         "You can read the passive by asking what was moved. The answer is still “the statue”, even though it now stands before “was” as the subject. The optional “by” phrase identifies who moved it. If you omit that phrase, the dot after “moved” still records the original object position.",
         "“The statue” is the object NP beside V in the active VP.",
-        "SNP — The curatorVPV [trans, past]movedNP — the statue"
+        "SNP — The curatorVPV [trans, past]movedNP — the statue",
+        "To form an ordinary passive, first locate the object that could become the subject.",
+        "Can “The crew arrived” form an ordinary object-promoting passive? What becomes the subject in “Jo sent a note to Ari”?",
+        "Arrived has no object in that use. For the second, “A note was sent to Ari” has a note as subject and a gap after sent."
       ]
     },
     {
@@ -481,7 +608,10 @@
         "With a lexical verb like “dance”, English uses do-support if there is no auxiliary. In the tree, the TENSE node holds “do”. “Do” carries tense and goes with “not”. The lexical verb stays untensed.",
         "MOD “would” [past] heads the highest VP. “Not” attaches to it, and “dance” is an untensed lexical verb.",
         "SNP — ByronVPMOD [past] — would notVPV [intrans]dance",
-        "Lexical “be” behaves like an auxiliary here. Use “be” itself in a negative sentence or a question."
+        "Lexical “be” behaves like an auxiliary here. Use “be” itself in a negative sentence or a question.",
+        "The gate-checking sentence already has the helping verb “has”.",
+        "Add not to “Jo has checked the gate”. Do you need do?",
+        "“Jo has not checked the gate.” Has is already a tensed auxiliary."
       ]
     },
     {
@@ -501,7 +631,13 @@
         "S′CwasSNP — ByronVPPROG [past]•VPV [intrans]dancing",
         "SNP — ByronVPPROG [past]•VPV [intrans]dancing",
         "C is the complementiser position. It holds the verb that moves to the front in these questions. The S′ layer, read “S-bar”, groups C with S.",
-        "Use the two parts of S′ to keep track of the question. In “Was Byron dancing?”, C holds the fronted “was”, while S contains the subject “Byron” and the predicate with the old auxiliary position marked by a gap. Chapter 8 uses the same C position for words that introduce embedded clauses."
+        "Use the two parts of S′ to keep track of the question. In “Was Byron dancing?”, C holds the fronted “was”, while S contains the subject “Byron” and the predicate with the old auxiliary position marked by a gap. Chapter 8 uses the same C position for words that introduce embedded clauses.",
+        "The invitation question contains two gaps with different jobs.",
+        "In “Was Jo invited?”, which gap goes with Jo?",
+        "The object gap after invited. Was is linked to the auxiliary position before invited.",
+        "One example is about something Jo completed. The other is about something Jo does not possess.",
+        "Classify have in “Jo hasn’t packed yet” and “Jo doesn’t have a bag”.",
+        "The first is PERF and takes packed as participle. The second have is lexical and takes the NP a bag."
       ]
     },
     {
@@ -509,7 +645,7 @@
       "subtopic_id": "concepts",
       "title": "Determiners and pre-determiners",
       "lesson_version": "2.0.0",
-      "article_digest": "4abc9e43",
+      "article_digest": "c0684c1d",
       "texts": [
         "[The lamp] glowed. [Lamps] glowed. [The visitor’s sister’s lamp] glowed.",
         "A basic branching NP contains DET next to NOM. Articles, demonstratives, possessives and determiners such as some or any can fill DET. These choices compete for the same position in the basic NP. A plural count noun such as lamps or a mass noun such as water can appear with empty DET. Singular count lamp usually needs a determiner.",
@@ -521,7 +657,13 @@
         "Sometimes no word fills DET. “Baskets” is a bare plural NP in “Baskets were stacked by the door”. You could say “the baskets”. The tree shows an empty DET in the bare plural. A mass noun like “sand” can also have empty DET.",
         "“The” is ART under DET. The noun remains under NOM.",
         "A possessive can have several words. In “the maker’s baskets”, start with the NP “the maker”. It joins the possessive ending to make the determiner for “baskets”.",
-        "Try “those baskets” and “the maker’s baskets” side by side. “Those” and “the maker’s” each tell you which baskets and occupy the same DET position in their phrases. Inside “the maker’s”, however, “the maker” is an NP with its own determiner. Follow the branches from the larger NP before naming each DET."
+        "Try “those baskets” and “the maker’s baskets” side by side. “Those” and “the maker’s” each tell you which baskets and occupy the same DET position in their phrases. Inside “the maker’s”, however, “the maker” is an NP with its own determiner. Follow the branches from the larger NP before naming each DET.",
+        "“Water” can refer to a quantity, while “cup” names an individual countable object.",
+        "Why can “water spilled” work where “cup spilled” usually needs a determiner?",
+        "Water can be mass and use empty DET. Cup is singular count in this use, so use “a cup” or “the cup”.",
+        "“These books” already has a determiner. You are checking what can appear before it.",
+        "Which can join before “these books”: both or the?",
+        "Both: “both these books”. The is an article and would compete with these for DET."
       ]
     },
     {
@@ -529,7 +671,7 @@
       "subtopic_id": "worked-example",
       "title": "Determiner and nominal tree exercise",
       "lesson_version": "2.0.0",
-      "article_digest": "4abc9e43",
+      "article_digest": "c0684c1d",
       "texts": [
         "Try the same split with “those lanterns”. “Those” is a demonstrative (DEM) under DET. “Lanterns” goes under NOM.",
         "Attach NOM to the whole NP. Drag from the NP’s connection point or choose Guide me. Then select Check my tree.",
@@ -544,7 +686,7 @@
       "subtopic_id": "pre-modifiers",
       "title": "Pre-modifiers in NOM: quantifying adjectives, participle phrases and nouns",
       "lesson_version": "2.0.0",
-      "article_digest": "4abc9e43",
+      "article_digest": "c0684c1d",
       "texts": [
         "Begin with “the lantern”. “The” fills DET, and “lantern” heads NOM. When you add the pre-modifier “very bright”, it goes inside NOM with the noun. “Very bright” is one AP because “very” modifies “bright”. If you remove “very”, the word “bright” can still form a one-word AP in the same place.",
         "Other expressions can also come before the head noun within NOM. “Three” counts the lanterns, “glowing” describes what they are doing, and “paper” can form a noun compound with “lantern”. The next sections show how to tell a quantifying adjective, a participle phrase and a noun modifier apart.",
@@ -560,7 +702,18 @@
         "Compare “a paper lantern” and “a glowing lantern”. “Paper” is a noun used to name the kind of lantern. “Glowing” is a verb participle and heads a PartP. In “a glowing paper lantern”, the noun compound “paper lantern” stays together and the PartP modifies it from outside.",
         "A pre-modifier adds information before the head. The label depends on its category. In the example below, “red” is an AP and “kite” is N. Group them first. The AP “red” and the noun “kite” make a NOM. Then “new” goes with all of “red kite”. Now you have a larger NOM.",
         "“Red kite” is the smaller nominal. “Red” is an AP beside N.",
-        "Look at three other words that come before a noun. In “those two kites”, “two” is a quantifying adjective (QA). In “the sleeping child”, “sleeping” heads a participle phrase (PartP). In “the paper kite”, “paper” and “kite” make a compound under N."
+        "Look at three other words that come before a noun. In “those two kites”, “two” is a quantifying adjective (QA). In “the sleeping child”, “sleeping” heads a participle phrase (PartP). In “the paper kite”, “paper” and “kite” make a compound under N.",
+        "The lantern description includes both a property and a word that intensifies it.",
+        "No. It marks the degree of bright. The entire AP then modifies the noun group.",
+        "“The five jars” has one word that counts the jars and another that helps identify the set.",
+        "Which group gives quantity inside NOM in “the five jars”?",
+        "“Five” is a quantifying adjective (QA) inside NOM because it tells how many jars. “The” fills DET and helps identify which set of five jars is meant.",
+        "The pipe has two descriptions, one about its age and one about what it is doing.",
+        "Which bracketed modifier contains a degree word in “the [very old] [leaking] pipe”?",
+        "Very old is an AP with very. Leaking can be read as a PartP describing what the pipe is doing.",
+        "The bus example combines the name of a kind of vehicle with an age description.",
+        "Which group is the compound in “the old school bus”? What is its head?",
+        "School bus. Bus is the head, and old modifies the larger noun group."
       ]
     },
     {
@@ -568,7 +721,7 @@
       "subtopic_id": "post-modifiers",
       "title": "NOM structure and post-modifiers: PPs and APs",
       "lesson_version": "2.0.0",
-      "article_digest": "4abc9e43",
+      "article_digest": "c0684c1d",
       "texts": [
         "When two modifiers come before a noun, decide what each describes. In “a small blue lantern”, take “blue lantern” as the kind of lantern under discussion. “Blue” first joins “lantern” to make a small NOM. “Small” then modifies that whole group, so it joins the smaller NOM inside a larger one.",
         "This reuse of a category within itself is recursion. The larger NOM has a modifier and a smaller NOM as its immediate parts. DET “a” joins only the highest NOM. The same layering also helps after a noun: in “[wooden crates] from town”, the final PP joins the whole nominal “wooden crates”.",
@@ -583,7 +736,16 @@
         "The smaller NOM includes the adjective and noun. The origin PP joins that whole NOM.",
         "NPDETARTtheNOMNOMAPAwoodenNcratesPP — from Cebu",
         "An AP can follow a noun when it has a complement of its own. In “the pilot ready for departure”, the whole AP is “ready for departure”.",
-        "First ask what the noun modifier describes. Then ask what the adjective’s complement belongs to. In “the pilot ready for departure”, the whole AP describes the pilot. Inside that AP, “for departure” tells what the pilot is ready for and belongs with “ready”. The outer attachment and the inner attachment do different jobs."
+        "First ask what the noun modifier describes. Then ask what the adjective’s complement belongs to. In “the pilot ready for departure”, the whole AP describes the pilot. Inside that AP, “for departure” tells what the pilot is ready for and belongs with “ready”. The outer attachment and the inner attachment do different jobs.",
+        "The brackets in the chair example show which words combine before the outer modifier is added.",
+        "In “a [new [wooden chair]]”, what does new modify on this reading?",
+        "The smaller NOM wooden chair. It does not just describe the word wooden.",
+        "The box and its contents are two different things that could have come from the shed.",
+        "If “the blue box of tools from the shed” refers to a box taken from the shed, which group does the last PP describe?",
+        "It describes the whole box-of-tools group. If only the tools came from the shed, it belongs inside their NP.",
+        "The runner description includes both “ready” and the phrase that names the event.",
+        "Where does the whole AP “ready for the race” go in the runner NP?",
+        "After the head: “the runner ready for the race”. The PP belongs inside that AP."
       ]
     },
     {
@@ -591,16 +753,24 @@
       "subtopic_id": "application",
       "title": "Pronoun modification and ellipted heads",
       "lesson_version": "2.0.0",
-      "article_digest": "4abc9e43",
+      "article_digest": "c0684c1d",
       "texts": [
-        "The bowls are ceramic and they came from Vigan. Which group does the PP “from Vigan” go with?",
+        "The example describes bowls by their material and where they came from.",
+        "Which group does the PP “from Vigan” describe?",
+        "“Ceramic bowls” forms the smaller NOM. The PP “from Vigan” describes that whole group, so it joins the smaller NOM under a larger one. “Those” stays in DET.",
         "An indefinite pronoun can refer to a person without saying who it is. “Someone” can be a whole NP on its own. When you add the PP in the next example, the pronoun and PP both sit right under NP.",
         "The pronoun “they” forms a complete NP by itself.",
         "Someone [near the entrance] waved. Both [on the left] waved.",
         "The PP in the first sentence gives more information about someone. Indefinite pronouns such as something and anyone also take modifiers after them: “something useful”, not “useful something”. In a context about several teams, “both on the left” can have an understood noun, such as teams. The book treats the second type as an ellipted head rather than treating both as an ordinary pronoun taking a modifier.",
         "The guide’s new box of maps from town is heavy.",
         "Start with possession. “The guide’s” fills DET, and “box” heads the nominal it determines. The pre-modifier “new” tells how old the box is. Then ask what the two PPs describe. “Of maps” tells what the box contains. “From town” could belong inside that PP or attach higher.",
-        "Picture the guide bringing a box purchased in town. Then “from town” describes the box. Now picture the guide using a local box to hold maps printed in town. This time “from town” describes the maps. Decide which reading you intend before you draw either attachment."
+        "Picture the guide bringing a box purchased in town. Then “from town” describes the box. Now picture the guide using a local box to hold maps printed in town. This time “from town” describes the maps. Decide which reading you intend before you draw either attachment.",
+        "The second quantity is understood from the earlier mention of the smaller boxes.",
+        "In “We packed three of the smaller boxes and left two”, what is understood after two?",
+        "Two boxes. The context supplies the nominal content.",
+        "The town phrase could describe the guide’s box or the maps inside it.",
+        "Bracket the reading in which only the maps are from town.",
+        "Use “the guide’s [new [box [of [maps from town]]]]”. The final PP sits inside the maps NP."
       ]
     },
     {
@@ -608,7 +778,7 @@
       "subtopic_id": "nom-appendix",
       "title": "Appendix: NOM and the pro-form one",
       "lesson_version": "2.0.0",
-      "article_digest": "4abc9e43",
+      "article_digest": "c0684c1d",
       "texts": [
         "I need a map of the island. I already have [one] with a red border.",
         "One is a pro-form for NOM. It can replace map of the island, leaving an adjunct such as with a red border outside it. The noun complement of the island sits beside N in the refined analysis. The independent border modifier is sister to NOM. This mirrors the VP distinction from Chapter 5.",
@@ -620,7 +790,13 @@
         "Try two replies: “I want one with a red border” and “I want one of the island”. In the first, the border can describe the map after “one” replaces the nominal. In the second, the intended map-content reading is hard to keep, because “of the island” goes with the head “map”. That contrast helps locate the complement and the modifier.",
         "“Of the island” tells what the map depicts. It attaches beside N inside the smaller NOM.",
         "NPDETARTaNOMNOMNmapPP — of the islandPP — with a red border",
-        "NOMNOMNmapPP — of the islandPP — with a red border"
+        "NOMNOMNmapPP — of the islandPP — with a red border",
+        "“One” stands in for part of a noun phrase when the speaker brings up the island map again.",
+        "Can “one of the island” keep the same noun-complement reading as “map of the island”?",
+        "The ordinary pro-NOM reading replaces map and its complement together. A different partitive reading of “one of…” is a separate construction.",
+        "The route gives the content of the description, and the pencil gives the method used to make it.",
+        "In “a description of the route in pencil”, what can one replace if in pencil is an adjunct?",
+        "One can replace “description of the route”, leaving in pencil attached outside that replaced NOM."
       ]
     },
     {
@@ -628,7 +804,7 @@
       "subtopic_id": "concepts",
       "title": "Clause embedding and the complementisers that and whether",
       "lesson_version": "2.0.0",
-      "article_digest": "64df008c",
+      "article_digest": "f0e707f0",
       "texts": [
         "Each lexical verb helps locate a clause: thinks, said and broke. The outer clause headed by thinks contains the said clause. That clause in turn contains the broke clause. An abbreviated clausal analysis marks their spans and their relations before showing all the branches. Compare “Rae thought and Vic spoke”, where neither clause sits inside the other.",
         "Make a short map before drawing a tree. Mark the main clause as S₁, the report beginning with “Vic” as S₂, and the statement “the lock broke” as S₃. Then give each smaller clause a job: S₃ tells what Vic said, and S₂ tells what Rae thinks. The numbers help you keep track of the clauses when one sits inside another.",
@@ -641,7 +817,13 @@
         "Compare “Leo spoke and Nora inspected the bridge”. Here “and” joins two clauses at the same level. Each describes a separate event.",
         "A clause inside a report can hold another clause. Start with the innermost brackets in this example. Work outward from one report to the next.",
         "Maya thinks [Leo said [Nora closed the gate]].",
-        "Start with what Nora did. Leo “said” she closed something. The group starting at “Leo” tells what Maya “thinks”. The main clause begins at “Maya” and holds both smaller reports."
+        "Start with what Nora did. Leo “said” she closed something. The group starting at “Leo” tells what Maya “thinks”. The main clause begins at “Maya” and holds both smaller reports.",
+        "Rae thinks about Vic’s report, and Vic’s report contains a statement about the lock.",
+        "In “Rae thinks Vic said the lock broke”, which clause directly contains “the lock broke”?",
+        "The immediate host is the clause headed by “said”. “The lock broke” answers “What did Vic say?” The larger clause headed by “thinks” contains Vic’s entire report.",
+        "The question about the gate fills the subject role in both proposed versions.",
+        "Which fits as the initial subject here: “Whether the gate shut remains unclear” or “If the gate shut remains unclear”?",
+        "Whether introduces the subject interrogative. If can work after asked, where the interrogative is a verb complement."
       ]
     },
     {
@@ -649,7 +831,7 @@
       "subtopic_id": "worked-example",
       "title": "Complementiser and clause structure (C and S)",
       "lesson_version": "2.0.0",
-      "article_digest": "64df008c",
+      "article_digest": "f0e707f0",
       "texts": [
         "C labels the position for the complementiser. S labels the part with the subject and predicate. S′, read “S-bar”, groups C and S as one clause. To see why the tree needs both layers, start with the complete statement “Nora is inspecting the bridge”. “Nora” is the subject, and “is inspecting the bridge” is the predicate. In a tree, S is the node that groups that subject and predicate.",
         "Leo says [that [Nora is inspecting the bridge]].",
@@ -669,7 +851,7 @@
       "subtopic_id": "clausal-subjects-and-objects",
       "title": "Clausal subjects, extraposition and verb complements",
       "lesson_version": "2.0.0",
-      "article_digest": "64df008c",
+      "article_digest": "f0e707f0",
       "texts": [
         "A clausal subject is a clause doing the job of a subject. Extraposition places that clause later and puts a dummy “it” in the usual subject position.",
         "[That the gate jammed] surprised Vic. It surprised Vic [that the gate jammed].",
@@ -681,7 +863,13 @@
         "You can move the subject clause to the end and fill the subject spot with dummy “it”. “It” fills the spot without naming anything. The clause at the end is an extraposed subject.",
         "Now look at what Mina noticed. The whole clause is the direct object of “noticed”.",
         "The subject NP contains S′. It is a sister of the predicate VP under main S.",
-        "SNPS′CThatS — the latch jammedVP — surprised Mina"
+        "SNPS′CThatS — the latch jammedVP — surprised Mina",
+        "The gate jam appears at the end of the sentence, after the reaction it caused.",
+        "In “It surprised Vic that the gate jammed”, what information does the final clause supply?",
+        "It says what surprised Vic. Initial it is expletive and does not refer to the gate.",
+        "The statement after “was” spells out what the problem consisted of.",
+        "Classify “that the lock was broken” in “The problem was that the lock was broken”.",
+        "It identifies the problem as the subject predicative of was."
       ]
     },
     {
@@ -689,7 +877,7 @@
       "subtopic_id": "clausal-complements",
       "title": "Clausal complements of adjectives, nouns and prepositions",
       "lesson_version": "2.0.0",
-      "article_digest": "64df008c",
+      "article_digest": "f0e707f0",
       "texts": [
         "First find the AP “glad that the gate opened”. Rae is the subject, and “glad” describes Rae. The that-clause says what Rae is glad about. As a complement of A, the clause is a sister of “glad” inside AP.",
         "Compare “Rae was certain that the key fit” with “It was certain that the key fit” on a dummy-it reading. In the first sentence, the clause completes “certain” in the description of Rae. In the second, the clause gives the content judged to be certain and is analysed as an extraposed subject. Check what the initial subject refers to and whether the final clause belongs inside the AP or directly under the main S.",
@@ -703,7 +891,16 @@
         "Certain [that the latch jammed] · the claim [that the latch jammed] · about [whether the latch jammed]",
         "Put the fragments back into sentences. “Mina was certain that the latch jammed” tells what she was certain about. “Mina checked the claim that the latch jammed” tells what the claim said. “Mina asked about whether the latch jammed” puts the question after the preposition “about”. The bracketed clause joins the head word whose meaning it completes in each construction.",
         "S′ completes “certain”. A and S′ are sisters within AP.",
-        "A clause can also be a subject predicative. In “The question is whether the latch jammed”, the clause tells what the question is. S′ sits right beside “is” inside VP."
+        "A clause can also be a subject predicative. In “The question is whether the latch jammed”, the clause tells what the question is. S′ sits right beside “is” inside VP.",
+        "Rae’s certainty has a specific content, supplied by a clause about the key.",
+        "In “Rae was certain that the key fit”, what word selects the clause?",
+        "Certain, the head adjective. The clause is inside the AP.",
+        "The claim example includes the words that tell what someone believed about the bridge.",
+        "Does “that the bridge was unsafe” tell what the claim says or which action was done to the claim?",
+        "It gives the content of the claim, so it is a noun complement.",
+        "The yes/no question about the key sits inside a phrase headed by “about”.",
+        "In “Rae asked about whether the key fit”, what is the immediate host for the whether-clause?",
+        "The question “whether the key fit” is the complement of the preposition “about”. The whole PP “about whether the key fit” sits inside the VP headed by “asked”."
       ]
     },
     {
@@ -711,7 +908,7 @@
       "subtopic_id": "adverbial-clauses",
       "title": "Adverbial clauses and temporal prepositions",
       "lesson_version": "2.0.0",
-      "article_digest": "64df008c",
+      "article_digest": "f0e707f0",
       "texts": [
         "Rae has worked here since the shop opened. Since the shop was closed, Rae went home.",
         "The first since expresses time and can be treated as a P taking a clause. The second supplies a reason and functions as a subordinating conjunction.",
@@ -720,7 +917,10 @@
         "Here, “after” tells when something happened. It is a preposition that takes S as its complement. Together they make a PP. “Because” is a subordinating conjunction. It fills C and introduces an adverbial clause that tells why something happened.",
         "The PP is a sister of the basic VP. Inside it, P “after” takes S directly.",
         "SNP — MinaVPVP — waitedPPPafterS — the gate closed",
-        "Some adverbial clauses go with the whole statement. In “In case there is any doubt, the gate is locked”, the first clause tells why the speaker says the gate is locked."
+        "Some adverbial clauses go with the whole statement. In “In case there is any doubt, the gate is locked”, the first clause tells why the speaker says the gate is locked.",
+        "The opening clause sets a condition on whether the match can go ahead.",
+        "In “If the weather holds, the match will go ahead”, what does the first clause contribute?",
+        "It gives a condition for the statement that the match will go ahead. If here introduces a conditional, distinct from interrogative if."
       ]
     },
     {
@@ -728,7 +928,7 @@
       "subtopic_id": "concepts",
       "title": "Main wh-questions and fronting",
       "lesson_version": "2.0.0",
-      "article_digest": "cb9d642a",
+      "article_digest": "432f3941",
       "texts": [
         "[Whose bag] did Rae carry [•]? [How heavy] was the bag [•]?",
         "A wh-expression can be a full NP such as whose bag or an AP such as how heavy. When and where can ask for an adverbial. How can ask for a manner or for a predicative: “How did Rae lift it?” and “How was Rae feeling?” Use the answer to decide the category and position of the gap.",
@@ -740,7 +940,10 @@
         "SNP — NoraVPVPPROG [pres]•VPV [trans]inspectingNP — the bridgePPPwithNP•",
         "VPVPPROG [pres]•VPV [trans]inspectingNP — the bridgePPPwithNP•",
         "VPPROG [pres]•VPV [trans]inspectingNP — the bridge",
-        "A question can ask about a whole AP or AdvP. “How tall is the tower?” asks for an AP. “How quickly did the crew leave?” asks for an AdvP."
+        "A question can ask about a whole AP or AdvP. “How tall is the tower?” asks for an AP. “How quickly did the crew leave?” asks for an AdvP.",
+        "The train question begins with a group that asks which vehicle Rae caught.",
+        "What moves in “Which train did Rae catch?” What does only “train” leave out?",
+        "The full object NP “which train” moves. Which belongs inside that NP and moves with its head."
       ]
     },
     {
@@ -748,7 +951,7 @@
       "subtopic_id": "worked-example",
       "title": "Wh-fronting and the object gap",
       "lesson_version": "2.0.0",
-      "article_digest": "cb9d642a",
+      "article_digest": "432f3941",
       "texts": [
         "Find the two front positions in the object question. C2 is higher, under S″. It holds the wh-expression. C1 is lower, under S′. It holds the fronted auxiliary. Each has its own gap inside S.",
         "Start with a possible answer: “Nora is inspecting the bridge.” The answer tells you which words “what” replaces. Mark an object gap after “inspecting”, then put “what” in the higher C2 position. The auxiliary “is” has a separate gap after the subject and moves to the lower C1 position.",
@@ -766,7 +969,7 @@
       "subtopic_id": "embedded-interrogatives",
       "title": "Subordinate wh-clauses and embedded wh-interrogatives",
       "lesson_version": "2.0.0",
-      "article_digest": "cb9d642a",
+      "article_digest": "432f3941",
       "texts": [
         "Rae asked [where Vic left the bag]. Rae found the place [where Vic left the bag].",
         "Both bracketed clauses begin with “where”. After “asked”, the clause supplies the question Rae asked. It is an embedded wh-interrogative and functions as a complement of the verb. In “the place where Vic left the bag”, the clause describes the place. It is a relative clause within the NP.",
@@ -779,7 +982,13 @@
         "S″C2WhatS′C1isSNP — NoraVPPROG [pres]•VPV [trans]inspectingNP•",
         "S′C1isSNP — NoraVPPROG [pres]•VPV [trans]inspectingNP•",
         "SNP — NoraVPPROG [pres]•VPV [trans]inspectingNP•",
-        "A main question can ask for a word group inside a report. Here, “what” asks for the object in the smaller clause. “Did” belongs to the main question. Its gap is under TENSE."
+        "A main question can ask for a word group inside a report. Here, “what” asks for the object in the smaller clause. “Did” belongs to the main question. Its gap is under TENSE.",
+        "The location clause follows a noun that names a place.",
+        "In “Rae found the place where Vic left the bag”, what is the clause’s host?",
+        "It modifies the noun group headed by place. It is a relative clause.",
+        "The embedded question starts with “which book”, and several verbs follow it.",
+        "In “Rae wonders which book Vic said Mina borrowed”, which verb is missing its object?",
+        "Borrowed. The gap is inside the clause headed by borrowed, below said."
       ]
     },
     {
@@ -787,7 +996,7 @@
       "subtopic_id": "relatives-and-complements",
       "title": "Relative clauses, wh-phrase omission and relative that",
       "lesson_version": "2.0.0",
-      "article_digest": "cb9d642a",
+      "article_digest": "432f3941",
       "texts": [
         "A relative clause modifies a noun group, often by identifying which person or thing is meant. A noun complement can supply the content of a report, claim, or similar noun.",
         "I read the report [that the pier had closed]. I read the report [that Vic filed [•]].",
@@ -801,7 +1010,16 @@
         "A noun complement tells what a noun such as “claim” contains. A relative clause modifies a nominal or noun phrase. Ask whether the clause tells what the claim says or which claim the speaker means.",
         "The complete clause “the ferry was late” gives the claim’s content. S′ attaches beside N.",
         "NPDETARTtheNOMNclaimS′C1thatS — the ferry was late",
-        "You can leave out the wh-word in this object relative. Compare the subject relative in “The guide who waved wore a hat”. “Who” is the subject of “waved”. Leaving it out gives “The guide waved wore a hat” and breaks the relative-clause reading."
+        "You can leave out the wh-word in this object relative. Compare the subject relative in “The guide who waved wore a hat”. “Who” is the subject of “waved”. Leaving it out gives “The guide waved wore a hat” and breaks the relative-clause reading.",
+        "The rumor concerns an event, and the following clause spells out what people said happened.",
+        "In “the rumor that the gate shut”, which words give the content? Is there a relative object gap?",
+        "“That the gate shut” says what the rumor was. There is no relative object gap.",
+        "In one relative, the missing phrase would be an object. In the other, it would be the subject.",
+        "Which relative allows omission: “the note which Vic wrote” or “the note which arrived”?",
+        "“The note Vic wrote” works. The missing relative expression corresponds to the object of wrote.",
+        "Both noun groups contain “that”, but only one clause has a missing object.",
+        "Compare “the lamp that Vic fixed” with “the news that Vic fixed the lamp”. Which one lets you replace “that” with “which”, and what job does “which” do?",
+        "“The lamp which Vic fixed” works because “which” is a spoken wh-expression in C2 linked to the missing object of “fixed”. In the news example, “the lamp” already fills the object position and the clause gives the content of the news."
       ]
     },
     {
@@ -809,7 +1027,7 @@
       "subtopic_id": "relative-scope",
       "title": "Restrictive and non-restrictive relative clauses",
       "lesson_version": "2.0.0",
-      "article_digest": "cb9d642a",
+      "article_digest": "432f3941",
       "texts": [
         "A restrictive relative helps identify which people or things are meant. A non-restrictive relative comments on a group that the reader can already identify.",
         "The runners [who trained indoors] finished first. The runners, [who trained indoors], finished first.",
@@ -821,7 +1039,10 @@
         "The lanterns, [which had cracked], were removed.",
         "The relative joins “lanterns” under a larger NOM. “The” determines the whole group “lanterns which had cracked”.",
         "NPDETARTtheNOMNOMNlanternsS″C2whichS′C1 (empty)SNP•VP — had cracked",
-        "NOMNOMNlanternsS″C2whichS′C1 (empty)SNP•VP — had cracked"
+        "NOMNOMNlanternsS″C2whichS′C1 (empty)SNP•VP — had cracked",
+        "The commas make the training clause a comment about runners who have already been identified.",
+        "Can “that trained indoors” or “trained indoors” stand as the same parenthetical relative here?",
+        "Use who for this non-restrictive relative. Relative that and a silent wh-expression are available in appropriate restrictive relatives."
       ]
     },
     {
@@ -829,7 +1050,7 @@
       "subtopic_id": "concepts",
       "title": "Part I: Infinitives and participles",
       "lesson_version": "2.0.0",
-      "article_digest": "26c93d78",
+      "article_digest": "10dbb943",
       "texts": [
         "A bare infinitive uses the base form of the verb without infinitival “to”. The tree can mark the verb with [-tense].",
         "They [open the gate] daily. Rae made [them open the gate].",
@@ -850,7 +1071,18 @@
         "“Packed” is a passive participle. Put [-tense] on V. “The lamps” is the subject of the passive clause, even though the lamps are what someone packed. The object spot is empty.",
         "“The lamps” is the overt subject. It carries index 1.",
         "SNP (1) — the lampsVPV [trans, -tense]packedNP• (1)",
-        "In this -ing participle clause, put [-tense] on “knowing”. Compare “is checking”. There, “is” carries tense, so the progressive is finite."
+        "In this -ing participle clause, put [-tense] on “knowing”. Compare “is checking”. There, “is” carries tense, so the progressive is finite.",
+        "After “was” in the hinge example, the lower action appears in a simple verb form.",
+        "Find the bare infinitive in “All Rae did was loosen the hinge”.",
+        "Loosen. It heads the untensed VP and has the object the hinge.",
+        "The hoped-for action begins with “to”, and the next verb must fit that construction.",
+        "Can is a finite modal. Use an untensed expression such as “to be able to swim”.",
+        "The sealing example names the parcel inside the smaller clause while leaving the person doing the sealing unstated.",
+        "In “We saw the parcel sealed in wax”, does the parcel name the person doing the sealing?",
+        "No. It names what was sealed and is the overt subject of the embedded passive participial clause in this analysis.",
+        "“Remembering the code” is a whole group doing the job of subject.",
+        "In “Remembering the code helps”, is remembering preceded by PROG?",
+        "No. “Remembering the code” is an untensed clause serving as the subject of helps."
       ]
     },
     {
@@ -858,7 +1090,7 @@
       "subtopic_id": "worked-example",
       "title": "To-infinitive verb phrase exercise",
       "lesson_version": "2.0.0",
-      "article_digest": "26c93d78",
+      "article_digest": "10dbb943",
       "texts": [
         "A to-infinitive uses “to” followed by a verb in its base form. In the inspection tree below, “to” bears [-tense] and sits beside the lexical VP “inspect the bridge”.",
         "Say “Nora plans to inspect the bridge”, then change “plans” to “planned”. The time changes on the higher verb, but “to inspect the bridge” keeps its form. Inside the smaller VP, “to” bears [-tense] and takes “inspect the bridge” as its VP complement. In that lowest VP, “the bridge” belongs with “inspect”.",
@@ -875,7 +1107,7 @@
       "subtopic_id": "subjects-and-control",
       "title": "Non-finite complementisers and fronted wh-phrases (C1 and C2)",
       "lesson_version": "2.0.0",
-      "article_digest": "26c93d78",
+      "article_digest": "10dbb943",
       "texts": [
         "[For Rae to leave now] would be risky. Vic wondered [whether to leave].",
         "In “For Rae to leave now would be risky”, “for” fills C1 and introduces a to-infinitival clause with the overt subject “Rae”. In “Vic wondered whether to leave”, “whether” fills C1 and introduces a yes/no choice. The person who would leave is supplied by the higher subject, Vic.",
@@ -892,7 +1124,13 @@
         "[For Ivo to wait outside] seemed unfair. · Nia wondered [whether to wait]. · Nia knew [what to pack].",
         "“For” fills C1. “Ivo” is the overt subject inside S.",
         "S′C1ForSNP — IvoVPVP [-tense]toVPV [intrans]waitPP — outside",
-        "SNP — IvoVPVP [-tense]toVPV [intrans]waitPP — outside"
+        "SNP — IvoVPVP [-tense]toVPV [intrans]waitPP — outside",
+        "Vic is considering a choice, and the clause expressing it contains “to”.",
+        "What kind of clause is “whether to call” in “Vic wondered whether to call”?",
+        "An embedded non-finite yes/no interrogative. Vic is understood as the caller in this context.",
+        "The chair is described by a short relative that ends with the preposition “on”.",
+        "In “a chair to sit on”, where is the relative gap and who is its filler?",
+        "The gap follows on and is linked to chair through the covert wh-expression. The person doing the sitting is the separate covert subject."
       ]
     },
     {
@@ -900,7 +1138,7 @@
       "subtopic_id": "clause-functions",
       "title": "Part II: Non-finite subjects, adjective and preposition complements, and adverbials",
       "lesson_version": "2.0.0",
-      "article_digest": "26c93d78",
+      "article_digest": "10dbb943",
       "texts": [
         "[For Inez to leave early] would help. It would help [for Inez to leave early].",
         "The infinitival clause supplies what would help. It can be initial or follow an expletive it in this sentence. An -ing clause can also be an initial subject, as in “Leaving early would help”. Which forms extrapose naturally depends on the construction.",
@@ -914,7 +1152,19 @@
         "Find the subject and verb first. Then ask what job the whole clause does in the sentence.",
         "The bracketed clause tells what takes time. It is the subject.",
         "The clause completes the preposition “on”. That makes it the complement of P inside the PP. Here, P takes S directly.",
-        "The clause tells why someone paused. It works as an adverbial of purpose. An adjective can also select a non-finite clause, as “eager” does in “eager to help”. Next, compare the two ways a non-finite clause can belong to an NP."
+        "The clause tells why someone paused. It works as an adverbial of purpose. An adjective can also select a non-finite clause, as “eager” does in “eager to help”. Next, compare the two ways a non-finite clause can belong to an NP.",
+        "The clause about Inez leaving appears at the end while “it” fills the usual subject position.",
+        "What does it refer to in “It would help for Inez to leave early”?",
+        "It is an expletive subject. The infinitival clause supplies what would help.",
+        "The box is what someone would carry. The sentence leaves the person unstated.",
+        "Who is understood to carry what in “The box was easy to carry”?",
+        "An unspecified person does the carrying. The box corresponds to the missing object of carry.",
+        "The time expression begins with “after” and includes a group about checking the gate.",
+        "In “Inez left after checking the gate”, what directly takes the -ing clause?",
+        "The temporal preposition after. The whole PP gives the time of leaving.",
+        "One opening clause has no spoken subject. The other begins by naming the gates.",
+        "Compare “Hearing the bell, Rae stopped” with “The gates being locked, Rae headed home”. Who hears the bell? Which words give the subject of “being locked”?",
+        "Rae is understood to hear the bell because the participial clause has a silent subject understood from the main clause. In the second sentence, “the gates” is the overt subject of “being locked” and appears inside the participial clause."
       ]
     },
     {
@@ -922,7 +1172,7 @@
       "subtopic_id": "noun-clause-functions",
       "title": "Non-finite noun complements and NOM modifiers",
       "lesson_version": "2.0.0",
-      "article_digest": "26c93d78",
+      "article_digest": "10dbb943",
       "texts": [
         "A promise has content. In “the promise to check the lock”, the clause tells what was promised, so the whole infinitive is a complement of N within NP. “A decision to wait” and “a request for Rae to call” work similarly. The noun selects content, which can be expressed with an overt or a covert subject depending on the pattern.",
         "Compare “a request to move the crates” with “the crates to move”. The first clause gives the content of a request and includes the object “the crates”. The second helps specify which crates, and “move” has an object gap. Use that gap and the meaning of the clause to distinguish a noun complement from a NOM modifier.",
@@ -935,7 +1185,13 @@
         "NPDETARTaNOMNrequestS′C1 (empty)SNP•VP [-tense]toVPV [trans]moveNP — the crates",
         "NOMNrequestS′C1 (empty)SNP•VP [-tense]toVPV [trans]moveNP — the crates",
         "S′C1 (empty)SNP•VP [-tense]toVPV [trans]moveNP — the crates",
-        "SNP•VP [-tense]toVPV [trans]moveNP — the crates"
+        "SNP•VP [-tense]toVPV [trans]moveNP — the crates",
+        "The infinitive after “decision” tells what someone might have decided to do.",
+        "In “the decision to wait”, does the infinitive give the content or describe a separate reference?",
+        "It gives the content of the decision and complements the noun.",
+        "The two relatives describe a person in relation to a call, with different roles available inside the clause.",
+        "Compare “the person to call” and “the person calling”. Which person is the caller?",
+        "In the usual first reading someone calls the person, who is the object of call. In the second, the person does the calling."
       ]
     },
     {
@@ -943,7 +1199,7 @@
       "subtopic_id": "verb-complements",
       "title": "Non-finite verb complements and Type I and Type II verbs",
       "lesson_version": "2.0.0",
-      "article_digest": "26c93d78",
+      "article_digest": "10dbb943",
       "texts": [
         "Rae [believed Vic to be ready]. Rae [watched Vic working]. Rae [said that Vic was ready].",
         "Believe, watch and say can all take NP objects in some uses. Their clause patterns differ. Believe allows the to-clause in the example, while watch allows an -ing clause or a bare infinitive and say allows a finite that-clause. Wonder selects a question, as in “Rae wondered whether to leave”.",
@@ -957,7 +1213,16 @@
         "The clause is the single complement of V(I). Ivo is its overt subject.",
         "SNP — TheyVPV(I) [past]expectedS′C1 (empty)SNP — IvoVP [-tense]toVPV [intrans]wait",
         "VPV(I) [past]expectedS′C1 (empty)SNP — IvoVP [-tense]toVPV [intrans]wait",
-        "S′C1 (empty)SNP — IvoVP [-tense]toVPV [intrans]wait"
+        "S′C1 (empty)SNP — IvoVP [-tense]toVPV [intrans]wait",
+        "The two versions of the delay sentence use the same smaller clause after different verbs.",
+        "“They expected there to be a delay” uses dummy “there”. Why does replacing “expected” with “persuaded” fail?",
+        "“Expected” can take a smaller clause with dummy “there” as its subject. “Persuaded” needs a higher object that can be persuaded, which dummy “there” cannot supply. With other verbs, look for a controller separately. In “Nia promised Ren to wait”, Nia is the one understood to wait.",
+        "The watching example names another person. The hoping example leaves the person who repairs the gate understood.",
+        "Compare “Rae watched Vic repair the gate” and “Rae hoped to repair the gate”. What form does each verb select, and who repairs?",
+        "Watched takes a bare-infinitival clause with overt subject Vic in this example. Hoped takes a to-infinitival clause, and Rae controls its unspoken subject.",
+        "Vic is understood to wait, and the spoken noun phrase appears immediately after “persuaded”.",
+        "In “Rae persuaded Vic to wait”, which clause contains Vic as an overt NP?",
+        "Vic is the direct object in the higher clause. A linked covert subject is in the lower clause."
       ]
     },
     {
@@ -965,7 +1230,7 @@
       "subtopic_id": "worked-example",
       "title": "Finite rules for infinite languages",
       "lesson_version": "2.0.0",
-      "article_digest": "ff997b10",
+      "article_digest": "e3c5bf67",
       "texts": [
         "Recursion lets a rule apply within its own result. This makes it possible to describe structures with more layers using the same finite set of rules.",
         "The lamp stood by the box [that held the map [that showed the trail]].",
@@ -974,7 +1239,10 @@
         "A derivation shows the steps that build a structure. Join the first two sentences. Then follow that whole group into the next step.",
         "Use the rule S → S and S as a recipe. “Iris rests” and “Leo waits” each already count as S, so they can be the two inputs. The result “Iris rests and Leo waits” also counts as S. You can feed that entire result into the next rule application alongside “Mina waves”.",
         "The rule joins “Iris rests” and “Leo waits”. The result is an S.",
-        "The tree shows one way to build the sentence. You can get the same words in the same order by joining “Leo waits” and “Mina waves” first."
+        "The tree shows one way to build the sentence. You can get the same words in the same order by joining “Leo waits” and “Mina waves” first.",
+        "The box example contains a relative clause with another relative nested inside it.",
+        "How can the relative example grow by one step without adding a new rule?",
+        "Add another relative to a noun phrase already inside it, such as “the trail that led home”."
       ]
     },
     {
@@ -982,7 +1250,7 @@
       "subtopic_id": "apply-the-rule",
       "title": "Recursive coordination exercise",
       "lesson_version": "2.0.0",
-      "article_digest": "ff997b10",
+      "article_digest": "e3c5bf67",
       "texts": [
         "Pick two complete sentences. Join them, then use the result with a third sentence. Try the unfinished choice to see what the rule still needs.",
         "Join two complete sentences. Try the unfinished input to see why it fails."
@@ -993,7 +1261,7 @@
       "subtopic_id": "rule-and-structure",
       "title": "Grammars and sentence analysis",
       "lesson_version": "2.0.0",
-      "article_digest": "ff997b10",
+      "article_digest": "e3c5bf67",
       "texts": [
         "Toy grammar: S → NP VP. NP → Rae or Vic. VP → sings or reads.",
         "These three instructions generate sentences such as Rae reads and Vic sings. They also show how the words combine. Speakers often know whether a pattern works without reciting rules. An analyst makes that knowledge explicit by testing rules against examples. The idea of modeling a speaker’s internal knowledge comes from the generative tradition associated with Noam Chomsky. Explicit rules can reveal an assumption that was hidden in an earlier description.",
@@ -1003,7 +1271,13 @@
         "A phrase marker shows the groups in a string of words. A rule says which groups can go together and which goes first. Try this with a second small grammar.",
         "Keep two questions separate. First, can the grammar build the string? Second, what grouping does the derivation give the string? A tree answers the grouping question for a particular derivation. The rules give you a way to check any new string against the toy grammar.",
         "Here DET can be “the”, N can be “dog”, and V can be “waits”. The first rule places NP before VP.",
-        "The first line follows the rule. “The dog” is NP and “waits” is VP, so NP comes first. The second line puts VP first, so this toy grammar has no derivation for it. You can still put brackets around both groups. The rule explains why their order matters."
+        "The first line follows the rule. “The dog” is NP and “waits” is VP, so NP comes first. The second line puts VP first, so this toy grammar has no derivation for it. You can still put brackets around both groups. The rule explains why their order matters.",
+        "The toy rules give a small set of nouns and verbs and specify how to combine them.",
+        "Does this toy grammar allow “Rae” alone or “Vic sings”? Why?",
+        "It allows “Vic sings”: the NP and VP are licensed, in that order. “Rae” alone lacks the VP required by the S rule.",
+        "The rule can join complete sentences with “and”. Try it on both a complete pair and a pair of smaller parts.",
+        "Which rule blocks “Rae and reads” while keeping “Rae sings and Vic reads”? Explain in writing.",
+        "Require a full S on both sides of and. “Rae” by itself is an NP and “reads” a VP, while the two full clauses each have an NP and VP."
       ]
     }
   ]

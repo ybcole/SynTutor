@@ -61,6 +61,7 @@ try:
         view = page.locator('#curriculumView')
 
         def open_lesson(url, heading=None):
+            page.mouse.move(1, 1)
             page.goto(url, wait_until='domcontentloaded')
             expect(view.locator('h1').first).to_be_visible()
             if heading:
@@ -124,7 +125,7 @@ try:
                 assert len(entries) <= 4, (id, section)
                 expect(view.locator('article > h3[id^="br"]')).to_have_count(len(entries))
                 if entries:
-                    expect(view.get_by_role('heading', name='Practice and feedback')).to_be_visible()
+                    expect(view.locator('#lesson-reflections-title')).to_have_text('Practice and feedback')
                 for topic_id, title, example, explanation, prompt, answer, *definition in entries:
                     selector = f'#{topic_id.lower()}'
                     heading = view.locator(selector)
@@ -135,10 +136,13 @@ try:
                     for index, paragraph in enumerate(explanation.split('\n\n'), start=2 + len(definition)):
                         expect(view.locator(selector + ' + p' * index)).to_have_text(paragraph)
                     exercise = view.locator(f'{selector}-practice')
-                    expect(exercise.locator(':scope > .lesson-practice-prompt')).to_have_text(prompt)
-                    feedback = exercise.locator(':scope > .lesson-practice-feedback')
-                    expect(feedback).to_have_text(answer)
-                    expect(feedback).to_be_visible()
+                    expect(exercise.locator('.lesson-reflection-intro + .lesson-reflection-prompt')).to_be_visible()
+                    assert exercise.locator('.lesson-reflection-intro').inner_text().strip()
+                    expect(exercise.locator('.lesson-reflection-prompt')).to_have_text(prompt)
+                    expect(exercise.locator(':scope > p').last).to_have_text(answer)
+                    expect(exercise.locator(':scope > p').last).to_be_visible()
+                    expect(exercise.locator('details')).to_have_count(0)
+                    expect(exercise).to_have_css('border-inline-start-width', '0px')
                 canvases = view.locator('.lesson-tree-canvas')
                 if canvases.count():
                     tree_pages += 1
@@ -216,6 +220,36 @@ try:
         choose_tree_step(view, 'Reuse the first result')
         expect(disclosure).to_have_attribute('open', '')
         expect(disclosure.locator('.lesson-tree-outline')).to_contain_text('Mina waves')
+
+        open_lesson(preview + 'br-04/concepts')
+        term = view.get_by_role('button', name='Define complement', exact=True).first
+        dictionary = view.get_by_role('region', name='Dictionary definition')
+        term.hover()
+        expect(dictionary).to_contain_text('fills a role')
+        link = dictionary.get_by_role('link', name='Chapter 2', exact=False)
+        link.hover()
+        expect(dictionary).to_be_visible()
+        link.click()
+        expect(page).to_have_url(preview + 'br-02/application')
+        expect(dictionary).to_have_count(0)
+        page.go_back()
+        expect(page).to_have_url(preview + 'br-04/concepts')
+        page.mouse.move(1, 1)
+        term.focus()
+        expect(dictionary).to_be_visible()
+        page.keyboard.press('Tab')
+        expect(link).to_be_focused()
+        page.keyboard.press('Escape')
+        expect(dictionary).to_have_count(0)
+        expect(term).to_be_focused()
+
+        mobile.goto(preview + 'br-04/concepts', wait_until='domcontentloaded')
+        mobile.get_by_role('button', name='Define [trans]', exact=True).first.tap()
+        mobile_dictionary = mobile.get_by_role('region', name='Dictionary definition')
+        expect(mobile_dictionary).to_contain_text('one direct object')
+        assert mobile_dictionary.evaluate('(el) => el.getBoundingClientRect().right <= innerWidth')
+        mobile.locator('.lesson-stage-body > h2').tap()
+        expect(mobile_dictionary).to_have_count(0)
         mobile.close()
 
         open_lesson(base + '/?preview=br-02#lesson/br-02/introduction')
@@ -228,9 +262,25 @@ try:
         expect(view.locator('.lesson-module')).to_have_count(11)
         assert view.locator('.lesson-module h2').all_text_contents() == [pilot['title'] for pilot in PILOTS.values()]
         expect(view.locator('.lesson-total')).to_have_text('0 / 12 lessons completed · 0 lesson XP in this view')
+        open_lesson(base + '/#lesson/br-01/introduction')
+        dictionary_example = view.get_by_role('button', name='Define constituent', exact=True).first
+        dictionary_example.hover()
+        chapter_one_dictionary = view.get_by_role('region', name='Dictionary definition')
+        expect(chapter_one_dictionary).to_contain_text('works as a unit')
+        chapter_one_dictionary.get_by_role('link', name='Chapter 1', exact=False).click()
+        expect(page).to_have_url(base + '/#lesson/br-01/concepts')
+        open_lesson(base + '/#lesson/br-01/recap')
+        expect(view.locator('.lesson-sources').first).to_have_css('border-inline-start-width', '0px')
         open_lesson(base + '/#lesson/br-04/concepts')
         expect(view.locator('#br04-03')).to_be_visible()
         expect(view.locator('#br04-04')).to_be_visible()
+        terms = view.locator('.lesson-dictionary-term')
+        repeats = view.locator('.lesson-dictionary-term-repeat')
+        assert repeats.count() > 0
+        expect(terms.first).to_have_css('text-decoration-line', 'underline')
+        expect(repeats.first).to_have_css('text-decoration-line', 'none')
+        view.get_by_role('button', name='Define complement', exact=True).first.hover()
+        expect(view.get_by_role('region', name='Dictionary definition')).to_contain_text('fills a role')
         open_lesson(base + '/#lesson/br-07/nom-appendix')
         expect(view.locator('#br07-11')).to_be_visible()
         open_lesson(base + '/#lesson/br-02/introduction')

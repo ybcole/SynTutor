@@ -33,6 +33,13 @@ const WORD_FONT = '500 15px Inter, system-ui, sans-serif';
 const TAG_FONT = '600 10px Inter, system-ui, sans-serif';
 const PHRASE_FONT = '600 16px Inter, system-ui, sans-serif';
 const NODE_H = 34;
+const FEATURE_LINE_H = 12;
+
+function nodeHeight(n) {
+  return NODE_H + (n.kind === NODE.PHRASE
+    ? (n.canonicalFeatures?.length || 0) * FEATURE_LINE_H
+    : 0);
+}
 
 // The upper-right input box shows one of two prompts: the Grammar Tutor's
 // while the workspace analyses text, and the builder's while the canvas owns
@@ -194,6 +201,7 @@ function wireBuilderInput() {
 function wireBuilderToolbar() {  const bar = document.getElementById('builderToolbar');
   if (!bar || bar.dataset.wired) return;
   bar.dataset.wired = 'true';
+  document.querySelector('[data-builder-clear]')?.addEventListener('click', clearBuilder);
   const zoom = (factor) => {
     state.view.scale = Math.max(0.15, Math.min(4, state.view.scale * factor));
     draw();
@@ -221,8 +229,8 @@ function fitBuilderView() {
   }
   let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
   for (const node of nodes) {
-    const w = node.w || (node.kind === NODE.WORD ? measureWord(node.text) : measurePhrase(nodeLabelText(node)));
-    const h = node.h || NODE_H;
+    const w = nodeWidth(node);
+    const h = nodeHeight(node);
     minX = Math.min(minX, node.x);
     minY = Math.min(minY, node.y);
     maxX = Math.max(maxX, node.x + w);
@@ -433,6 +441,7 @@ export function mountEmbeddedBuilder(stage, exercise) {
   ensureWired();
   state.editMode = true;
   document.getElementById('builderToolbar')?.setAttribute('hidden', '');
+  document.getElementById('builderTopLeft')?.setAttribute('hidden', '');
   document.body.classList.remove('builder-standalone');
   const canvas = state.canvas;
   const home = canvas.parentElement;
@@ -478,10 +487,11 @@ export function openBuilderView(opts = {}) {
   if (!bar || !canvas) return;
   const toolbar = document.getElementById('builderToolbar');
   if (toolbar) toolbar.hidden = Boolean(opts.challenge);
+  const topLeft = document.getElementById('builderTopLeft');
+  if (topLeft) topLeft.hidden = Boolean(opts.challenge);
   ensureWired();
   canvas.hidden = false;
   if (treeCanvas) treeCanvas.hidden = true;
-  document.getElementById('generatorTreeOutline')?.setAttribute('hidden', '');
   document.getElementById('canonicalTreeView')?.setAttribute('hidden', '');
   document.getElementById('emptyTreeState')?.classList.add('hidden');
   // The shared canvas overlay (e.g. "No analyzable sentence" from the parser)
@@ -583,6 +593,10 @@ export function openBuilderView(opts = {}) {
   }
   if (!state.challenge) {
     document.getElementById('builderTools')?.remove();
+    // The toolbar owns Clear / Edit mode / zoom in the standalone builder.
+    bar.hidden = true;
+    const done = document.getElementById('builderDone');
+    if (done) done.hidden = true;
     // Load the saved draft and enable undo/redo without showing the old
     // floating control panel.
     tools?.open({
@@ -600,6 +614,7 @@ export function openBuilderView(opts = {}) {
     }
   } else {
     document.getElementById('builderToolbar')?.setAttribute('hidden', '');
+    document.getElementById('builderTopLeft')?.setAttribute('hidden', '');
   }
   canvas.focus();
   explainSelected();
@@ -646,6 +661,7 @@ export function closeBuilderView() {
   tools?.close();
   state.editMode = false;
   document.getElementById('builderToolbar')?.setAttribute('hidden', '');
+  document.getElementById('builderTopLeft')?.setAttribute('hidden', '');
   document.getElementById('builderTools')?.remove();
   const bar = document.getElementById('canvasControls');
   const canvas = document.getElementById('builderCanvas');
@@ -678,8 +694,8 @@ let onBuilderClose = () => {};
 export function setBuilderCloseHandler(fn) { onBuilderClose = fn || (() => {}); }
 
 export function isBuilderOpen() {
-  const bar = document.getElementById('canvasControls');
-  return !!bar && !bar.hidden;
+  const canvas = document.getElementById('builderCanvas');
+  return !!canvas && !canvas.hidden;
 }
 
 export function setChallenge(challenge, onComplete) {
@@ -1214,6 +1230,15 @@ async function validateWords(nodes) {
     state.onStatus(`Not in SynTutor's model: ${bad.join(', ')} — fix or delete to connect them.`);
   }
   draw();
+  // Tags often arrive after the learner has already left edit mode. Re-run
+  // feature inference so tense appears as soon as the validator responds.
+  if (!state.editMode && isBuilderOpen()) {
+    inferCanonicalFeatures();
+    if (state.snapped) {
+      try { applyTreeLayout({ fit: true }); } catch { /* keep current layout */ }
+    }
+    draw();
+  }
 }
 
 function onContextMenu(e) {
@@ -1610,6 +1635,34 @@ function tenseOfWord(word) {
   return null;
 }
 
+function verbTag(word) {
+  const tag = String(word?.tag || '').toUpperCase();
+  if (/^(VB|VBP|VBZ|VBD|VBG|VBN|MD)$/.test(tag)) return tag;
+  const low = String(word?.text || '').toLowerCase();
+  if (!low) return tag;
+  if (['will', 'would', 'can', 'could', 'may', 'might', 'shall', 'should',
+       'must'].includes(low)) return 'MD';
+  if (['is', 'are', 'am', 'has', 'does'].includes(low)) return 'VBZ';
+  if (['was', 'were', 'had', 'did'].includes(low)) return 'VBD';
+  if (/ing$/.test(low)) return 'VBG';
+  if (/ed$/.test(low)) return 'VBD';
+  if (/(s|es)$/.test(low) && !/ss$/.test(low)) return 'VBZ';
+  if (PAST_WORDS.has(low)) return 'VBD';
+  return 'VBP';
+}
+
+function verbTense(word) {
+  const tense = tenseOfWord(word);
+  if (tense) return tense;
+  const low = String(word?.text || '').toLowerCase();
+  if (!low) return null;
+  const tag = String(word?.tag || '').toUpperCase();
+  if (tag === 'VBG' || tag === 'VBN' || /ing$/.test(low)) return null;
+  if (/ed$/.test(low)) return 'past';
+  if (/s$/.test(low) && !/ss$/.test(low)) return 'pres';
+  return 'pres';
+}
+
 function firstLeafText(node) {
   const leaves = wordLeaves(node.id);
   if (leaves.length) return leaves[0].text;
@@ -1654,16 +1707,30 @@ function inferVerbFrame(node) {
 }
 
 function tenseForTenseNode(node) {
-  const parent = state.model.nodes[node.parent];
-  if (parent) {
-    for (const leaf of wordLeaves(parent.id)) {
-      const tense = tenseOfWord(leaf);
-      if (tense) return tense;
+  return clauseTense(node) || tenseOfWord(headWordOf(node));
+}
+
+// A non-finite V (e.g. "examining" under "is"/"might") has no tense of its own;
+// the clause's auxiliary carries it. Walk the containing VP/S words so the
+// builder shows the same [past]/[pres] the generator puts on the verb.
+function clauseTense(node) {
+  let current = state.model.nodes[node.parent];
+  for (let depth = 0; current && depth < 6; depth += 1) {
+    const leaves = wordLeaves(current.id);
+    // Prefer words the tagger marks as verbs/auxiliaries; only fall back to
+    // known irregular forms so a plural noun cannot be mistaken for tense.
+    for (const leaf of leaves) {
+      if (/^(VB|MD)/.test(String(leaf.tag || '').toUpperCase())) {
+        const tense = tenseOfWord(leaf);
+        if (tense) return tense;
+      }
     }
-  }
-  for (const leaf of wordLeaves(node.id)) {
-    const tense = tenseOfWord(leaf);
-    if (tense) return tense;
+    for (const leaf of leaves) {
+      const low = String(leaf.text || '').toLowerCase();
+      if (PAST_WORDS.has(low)) return 'past';
+      if (PRES_WORDS.has(low)) return 'pres';
+    }
+    current = state.model.nodes[current.parent];
   }
   return null;
 }
@@ -1677,10 +1744,12 @@ function inferCanonicalFeatures() {
     const features = new Set((node.canonicalFeatures || [])
       .filter((feature) => !FRAME_FEATURES.has(feature)));
     if (node.type === 'V' || node.type === 'V(I)' || node.type === 'V(II)') {
+      const head = headWordOf(node);
+      if (head) head.tag = verbTag(head);
       if (node.type === 'V') {
         for (const frame of inferVerbFrame(node)) features.add(frame);
       }
-      const tense = tenseOfWord(headWordOf(node));
+      const tense = verbTense(head) || clauseTense(node);
       if (tense) features.add(tense);
     } else if (node.type === 'MOD') {
       const tense = tenseOfWord(headWordOf(node));
@@ -1699,7 +1768,8 @@ function inferCanonicalFeatures() {
       }
     } else if (node.type === 'PERF' || node.type === 'PROG'
         || node.type === 'PASS') {
-      const tense = tenseOfWord(headWordOf(node)) || tenseForTenseNode(node);
+      const tense = tenseOfWord(headWordOf(node)) || clauseTense(node)
+        || tenseForTenseNode(node);
       if (tense) features.add(tense);
     }
     node.canonicalFeatures = [...features];
@@ -2153,34 +2223,20 @@ function computeTreeLayout() {
   const leafIndex = new Map();
   leafIds.forEach((id, i) => leafIndex.set(id, i));
 
-  const BOX_H = 34;
+  const maxFeatures = Math.max(0, ...nodes.map(
+    (node) => node.canonicalFeatures?.length || 0));
+  const BOX_H = NODE_H + maxFeatures * FEATURE_LINE_H;
   const MIN_BOX_W = 54;
   const H_PAD = 14;
   const GAP = 26;
   const V_GAP = 40;
   const TOP_PAD = 24;
 
-  // Uniform leaf slot sized from the widest leaf label (matches the generator).
-  let maxLeafW = MIN_BOX_W;
-  state.ctx.save();
-  state.ctx.setTransform(1, 0, 0, 1, 0, 0);
-  state.ctx.font = WORD_FONT;
-  for (const id of leafIds) {
-    const n = state.model.nodes[id];
-    if (!n) continue;
-    maxLeafW = Math.max(maxLeafW, state.ctx.measureText(n.text || n.type || '').width + H_PAD * 2);
-  }
-  // Footer-style features ([trans] [past], [pres], [-tense]) make phrase labels
-  // wider than the bare category; size the uniform slot for the widest label.
-  state.ctx.font = PHRASE_FONT;
-  let maxPhraseW = maxLeafW;
-  for (const n of nodes) {
-    if (n.kind !== NODE.PHRASE) continue;
-    maxPhraseW = Math.max(maxPhraseW,
-      state.ctx.measureText(nodeLabelText(n)).width + H_PAD * 2);
-  }
-  state.ctx.restore();
-  const SLOT = maxPhraseW + GAP;
+  // Uniform slot sized from the widest rendered line (category or a stacked
+  // feature row), so the generator-style labels fit their boxes.
+  let maxNodeW = MIN_BOX_W;
+  for (const n of nodes) maxNodeW = Math.max(maxNodeW, nodeWidth(n));
+  const SLOT = maxNodeW + GAP;
 
   // Bottom-up span (leaf range each node covers).
   const span = new Map();
@@ -2400,19 +2456,34 @@ function measurePhrase(type) {
   return Math.max(30, state.ctx.measureText(type || '').width + 16);
 }
 
-function nodeLabelText(n) {
-  if (n.kind === NODE.WORD) {
-    return `${n.text || '...'}${n.kind === NODE.SPECIAL && n.canonicalIndex != null ? ' ' + n.canonicalIndex : ''}${n.canonicalData?.elided ? ' (elided)' : ''}`;
+function phraseLines(n) {
+  const features = n.canonicalFeatures || [];
+  const core = n.canonicalData?.unlabelled
+    || (n.type === 'AUX' && features.includes('-tense'))
+    ? '' : `${n.type}${n.canonicalIndex != null ? ' ' + n.canonicalIndex : ''}`;
+  return [core, ...features.map((feature) => `[${feature}]`)].filter(Boolean);
+}
+
+function nodeWidth(n) {
+  if (!state.ctx) return 30;
+  if (n.kind === NODE.WORD) return measureWord(n.text);
+  const lines = phraseLines(n);
+  state.ctx.save();
+  let width = 0;
+  for (const line of lines) {
+    const isFeature = line.startsWith('[');
+    state.ctx.setTransform(1, 0, 0, 1, 0, 0);
+    state.ctx.font = isFeature ? '500 11px Inter, system-ui, sans-serif' : PHRASE_FONT;
+    width = Math.max(width, state.ctx.measureText(line).width);
   }
-  const label = n.canonicalData?.unlabelled
-    || (n.type === 'AUX' && n.canonicalFeatures?.includes('-tense')) ? '' : n.type;
-  return `${label}${(n.canonicalFeatures || []).map((feature) => ` [${feature}]`).join('')}${n.canonicalIndex != null ? ' ' + n.canonicalIndex : ''}`;
+  state.ctx.restore();
+  return Math.max(30, width + 16);
 }
 
 // Keep each box's measured size in sync with its label (used for hit-testing).
 function sizeNode(n) {
-  n.h = NODE_H;
-  n.w = n.kind === NODE.PHRASE ? measurePhrase(nodeLabelText(n)) : measureWord(n.text);
+  n.h = nodeHeight(n);
+  n.w = nodeWidth(n);
 }
 
 // Order nodes so parents are painted after children (roots last) — matches the
@@ -2558,9 +2629,23 @@ function drawNode(ctx, n) {
   ctx.textBaseline = 'middle';
 
   if (isPhrase) {
-    ctx.fillStyle = color;
-    ctx.font = '600 16px Inter, system-ui, sans-serif';
-    ctx.fillText(nodeLabelText(n), cx, cy + 3);
+    const features = n.canonicalFeatures || [];
+    const core = n.canonicalData?.unlabelled
+      || (n.type === 'AUX' && features.includes('-tense'))
+      ? '' : `${n.type}${n.canonicalIndex != null ? ' ' + n.canonicalIndex : ''}`;
+    const lines = [];
+    if (core) lines.push({ text: core, font: '600 16px Inter, system-ui, sans-serif', color });
+    for (const feature of features) {
+      lines.push({ text: `[${feature}]`, font: '500 11px Inter, system-ui, sans-serif', color: c.tag });
+    }
+    if (lines.length) {
+      const startY = cy + 3 - ((lines.length - 1) * FEATURE_LINE_H) / 2;
+      lines.forEach((line, index) => {
+        ctx.font = line.font;
+        ctx.fillStyle = line.color;
+        ctx.fillText(line.text, cx, startY + index * FEATURE_LINE_H);
+      });
+    }
   } else {
     ctx.fillStyle = color;
     ctx.font = WORD_FONT;

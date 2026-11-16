@@ -125,7 +125,7 @@ try:
         view.get_by_role('button', name='← All lessons', exact=True).click()
         chapter.get_by_role('button', name='Resume lesson', exact=True).click()
         expect(page).to_have_url(f'{base}/?preview=br-07#lesson/br-07/application')
-        view.get_by_text('Check the attachment').click()
+        expect(view.get_by_text('Which group does the PP “from Vigan” describe?', exact=False)).to_be_visible()
         expect(view.get_by_text('“Ceramic bowls” forms the smaller NOM.', exact=False)).to_be_visible()
         choose_tree_step(view, 'Read the modified pronoun')
         expect(note).to_contain_text('pronoun and PP are sisters under NP')

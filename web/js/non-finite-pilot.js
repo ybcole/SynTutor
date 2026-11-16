@@ -1,4 +1,4 @@
-import { addIntroExample, addTreeTrace, lessonExample } from './lesson-presentation.js';
+import { addIntroExample, addTreeTrace, lessonExample, lessonReflection } from './lesson-presentation.js';
 import { addBranchExercise } from './lesson-tree-exercise.js';
 
 const node = (id, label, ...children) => ({ id, label, children });
@@ -193,19 +193,18 @@ export const nonFinitePilot = {
           ['Find the Type II object', persuaded, 'controller', 'V(II) has two complements. The object NP “Ivo” sits beside the infinitival clause.'],
           ['Trace the silent subject', persuaded, 'lower-subject-dot', 'The dot and the object NP share index 1. Ivo is understood to wait.'],
         ]);
-        const note = el('details', undefined, 'lesson-sources');
-        note.append(el('summary', 'Try a check with “there”'),
-          el('p', '“They expected there to be a delay” allows dummy “there” as the lower subject. “They persuaded there to be a delay” fails in that reading because “persuade” needs an object that can be persuaded. “Promise” has its own control pattern: in “Nia promised Ren to wait”, Nia is understood to wait.'));
-        body.append(note);
+        body.append(lessonReflection(el,
+          'The two versions of the delay sentence use the same smaller clause after different verbs.',
+          '“They expected there to be a delay” uses dummy “there”. Why does replacing “expected” with “persuaded” fail?',
+          '“Expected” can take a smaller clause with dummy “there” as its subject. “Persuaded” needs a higher object that can be persuaded, which dummy “there” cannot supply. With other verbs, look for a controller separately. In “Nia promised Ren to wait”, Nia is the one understood to wait.'));
         break;
       case 'application': {
-        p('Ren is the one who would leave in both examples. Where does the spoken NP “Ren” belong in each sentence? Decide before you reveal the brackets.');
         example('Nia expected Ren to leave. · Nia advised Ren to leave.');
-        const answer = el('details', undefined, 'lesson-sources');
-        answer.append(el('summary', 'Check both analyses'),
-          lessonExample(el, 'Nia expected [Ren to leave]. · Nia advised [Ren] [to leave].'),
-          el('p', 'With “expected”, Ren is the overt lower subject. With “advised”, Ren is the higher object and controls the silent lower subject.'));
-        body.append(answer);
+        body.append(lessonReflection(el,
+          'Nia expects Ren to leave in one sentence and advises Ren to leave in the other.',
+          'Ren would leave in both cases. Which verb takes “Ren to leave” as one group, and which verb takes Ren as its object?',
+          'With “expected”, Ren is the overt lower subject, so “Ren to leave” forms one clause. With “advised”, Ren is the higher object and controls the silent lower subject. That gives “advised” two separate complements.',
+          { example: 'Nia expected [Ren to leave]. · Nia advised [Ren] [to leave].' }));
         break;
       }
       case 'recap':

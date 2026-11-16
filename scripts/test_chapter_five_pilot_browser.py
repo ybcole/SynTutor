@@ -142,7 +142,7 @@ try:
         expect(page).to_have_url(f'{base}/?preview=br-05#lesson/br-05/application')
         choose_tree_step(view, 'Read the speaker’s comment')
         expect(note).to_contain_text('beside S within a higher S')
-        view.get_by_text('Check what “unfortunately” modifies').click()
+        expect(view.get_by_text('What does “unfortunately” tell you about the jam?', exact=False)).to_be_visible()
         expect(view.get_by_text('Draw it beside S, under a higher S.', exact=False)).to_be_visible()
 
         next_page.click()

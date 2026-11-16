@@ -227,21 +227,15 @@
           <div id="treeAuthorityNotice" class="tree-authority-notice" role="status" aria-live="polite" hidden></div>
           <section id="canonicalTreeView" class="canonical-tree-view" aria-label="Validated Burton-Roberts syntax tree" hidden></section>
           <canvas id="treeCanvas" tabindex="0" aria-label="Interactive syntax tree; click a node, or use arrow keys and Enter"></canvas>
+          <div id="builderTopLeft" class="builder-top-left" hidden>
+            <button id="builderClearTop" type="button" data-builder-clear>Clear</button>
+          </div>
           <div id="builderToolbar" class="builder-toolbar canonical-zoom" role="group" aria-label="Tree zoom and edit mode" hidden>
             <button type="button" data-builder-edit aria-pressed="false">Edit mode</button>
             <button type="button" data-builder-zoom="in" aria-label="Zoom in on syntax tree">+</button>
             <button type="button" data-builder-zoom="out" aria-label="Zoom out of syntax tree">&minus;</button>
             <button type="button" data-builder-zoom="fit" aria-label="Fit syntax tree">Fit</button>
           </div>
-          <details id="generatorTreeOutline" class="tree-outline" hidden>
-            <summary>Read and navigate tree</summary>
-            <div class="tree-outline-controls" role="group" aria-label="Tree zoom">
-              <button type="button" data-zoom="in">Zoom in</button>
-              <button type="button" data-zoom="out">Zoom out</button>
-              <button type="button" data-zoom="fit">Fit tree</button>
-            </div>
-            <div class="tree-outline-body"></div>
-          </details>
           <canvas id="builderCanvas" class="builder-canvas" tabindex="0" aria-label="Syntax builder canvas" hidden></canvas>
           <div id="canvasControls" class="canvas-controls" hidden>
             <button id="builderClear" class="builder-btn" type="button" data-action="clear">Clear</button>

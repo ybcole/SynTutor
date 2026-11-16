@@ -125,11 +125,7 @@ try:
         view.get_by_role('button', name='← All lessons', exact=True).click()
         chapter.get_by_role('button', name='Resume lesson', exact=True).click()
         expect(page).to_have_url(f'{base}/?preview=br-08#lesson/br-08/application')
-        view.get_by_role('radio', name='“Ivo” and “the hall”').check()
-        expect(view.get_by_role('status')).to_contain_text('subjects inside the two S nodes')
-        view.get_by_role('radio', name='“that” and “whether”').check()
-        expect(view.get_by_role('status')).to_contain_text('spans end at “open”')
-        view.get_by_text('Check both spans').click()
+        expect(view.get_by_text('Where do the two embedded clauses start and end?', exact=False)).to_be_visible()
         expect(view.get_by_text('Ria heard [that Ivo wondered [whether the hall was open]].', exact=True)).to_be_visible()
 
         next_page.click()
