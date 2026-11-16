@@ -1,4 +1,5 @@
 // Deterministic assessment manifests and grading; independent of lesson progress.
+import { isMixedKind, gradeQuestion } from './quiz-mixed-eval.js';
 export const quizKey = q => `${q.assessment_id}@${q.content_version}`;
 export const itemKey = q => `${q.item_id}@${q.content_version}`;
 export const MAX_QUIZ_ITEMS = 1000; // Matches the private practice persistence contract.
@@ -46,7 +47,7 @@ export function itemsFor(bank,attempt) {
     &&attempt.assessment_contract==='quiz-v2-formal-1'&&attempt.spec?.content_tier==='lesson-assessment';
   const items=verifiedFormal?[...bank.items,...(bank.assessment_items||[])].filter(q=>approved(q)&&q.publication_status==='published')
     :formalPractice?[...bank.items,...(bank.assessment_items||[])]
-    :practice?[...bank.items,...(bank.practice_items||[])]:bank.items;
+    :practice?[...bank.items,...(bank.mixed_items||[]),...(bank.practice_items||[]),...(bank.assessment_items||[])]:bank.items;
   return attempt.presented.map(ref=>{const q=items.find(q=>q.item_id===ref.item_id&&q.content_version===ref.content_version);if(!q)throw new Error('Assessment content version is unavailable.');return q;});
 }
 // The attempt UI receives a question-only projection: never answer keys,
@@ -54,6 +55,25 @@ export function itemsFor(bank,attempt) {
 export function questionForLearner(bank,attempt,index=attempt.position){
   const q=itemsFor(bank,attempt)[index];
   if(!q)throw Error('Unknown question position.');
+  const ref=attempt.presented[index];
+  if(isMixedKind(q.kind)){
+    return {
+      item_id:q.item_id,
+      kind:q.kind,
+      prompt:q.prompt,
+      ...(q.stimulus?{stimulus:{sentence:q.stimulus.sentence}}:{}),
+      ...(q.kind==='sentence_reconstruction'&&Array.isArray(q.tokens)?{
+        tokens:q.tokens,
+        token_order:ref?.token_order||q.tokens.map((_,i)=>i),
+      }:{}),
+      ...(q.kind==='tree_builder'||q.kind==='syntax_correction'?{
+        profile:q.profile||q.expected_tree?.convention_profile,
+        labels:q.labels,
+        seed_tokens:q.seed_tokens,
+        seed_tree:q.seed_tree||null,
+      }:{}),
+    };
+  }
   return {item_id:q.item_id,kind:q.kind,prompt:q.prompt,
     ...(q.stimulus?{stimulus:{sentence:q.stimulus.sentence}}:{}),
     options:q.options.map(o=>({id:o.id,text:o.text,...(o.diagram?{diagram:o.diagram}:{})})),
@@ -88,11 +108,33 @@ export function validateAttempt(bank,attempt) {
     })) throw new Error('Assessment manifest does not match its seed/blueprint.');
   }
   for(let i=0;i<items.length;i++){
+    const q=items[i];
+    if(isMixedKind(q.kind)){
+      if(q.kind==='sentence_reconstruction'){
+        const tOrder=attempt.presented[i].token_order;
+        if(!Array.isArray(tOrder)||tOrder.length!==q.tokens.length||new Set(tOrder).size!==q.tokens.length||tOrder.some(idx=>!Number.isInteger(idx)||idx<0||idx>=q.tokens.length)){
+          throw new Error('Invalid token ordering.');
+        }
+      }
+      continue;
+    }
     const order=attempt.presented[i].option_order;
-    if(!Array.isArray(order)||new Set(order).size!==order.length||order.length!==items[i].options.length||order.some(id=>!items[i].options.some(o=>o.id===id)))throw new Error('Invalid option ordering.');
+    if(!Array.isArray(order)||new Set(order).size!==order.length||order.length!==q.options.length||order.some(id=>!q.options.some(o=>o.id===id)))throw new Error('Invalid option ordering.');
   }
   if(!attempt.responses||typeof attempt.responses!=='object'||Array.isArray(attempt.responses)||Object.keys(attempt.responses).some(id=>!items.some(q=>q.item_id===id)))throw new Error('Unexpected answer IDs.');
-  for(const q of items)if(attempt.responses[q.item_id]!=null&&!q.options.some(o=>o.id===attempt.responses[q.item_id]))throw new Error('Unknown answer.');
+  for(const q of items){
+    const resp=attempt.responses[q.item_id];
+    if(resp==null)continue;
+    if(q.kind==='fill_blank'||q.kind==='grammar_correction'){
+      if(typeof resp!=='string'||resp.length>600)throw new Error('Invalid text answer.');
+    }else if(q.kind==='sentence_reconstruction'){
+      if(!Array.isArray(resp)||resp.length>q.tokens.length||new Set(resp).size!==resp.length||resp.some(idx=>!Number.isInteger(idx)||idx<0||idx>=q.tokens.length))throw new Error('Invalid reconstructed order.');
+    }else if(q.kind==='tree_builder'||q.kind==='syntax_correction'){
+      if(typeof resp!=='object'||Array.isArray(resp)||!resp.model||typeof resp.model.nodes!=='object')throw new Error('Invalid syntax tree answer.');
+    }else if(!q.options.some(o=>o.id===resp)){
+      throw new Error('Unknown answer.');
+    }
+  }
   if(!Number.isInteger(attempt.position)||attempt.position<0||attempt.position>=count)throw new Error('Invalid question position.');
   return items;
 }
@@ -106,8 +148,10 @@ export function canReviewAttempt(bank, attempt) {
 }
 export function gradeAttempt(bank,attempt) {
   const items=validateAttempt(bank,attempt);
-  const results=items.map(q=>({item_id:q.item_id,content_version:q.content_version,pool_id:q.pool_id,lesson_id:q.lesson_id,concept_ids:q.concept_ids,outcome_ids:q.outcome_ids,
-    response:attempt.responses[q.item_id]??null,answer:q.answer,correct:attempt.responses[q.item_id]===q.answer}));
+  const results=items.map(q=>{
+    const graded=gradeQuestion(q,attempt.responses[q.item_id]);
+    return {item_id:q.item_id,content_version:q.content_version,pool_id:q.pool_id,lesson_id:q.lesson_id,concept_ids:q.concept_ids,outcome_ids:q.outcome_ids,...graded};
+  });
   const correct=results.filter(r=>r.correct).length;
   return {correct,incorrect:items.length-correct,target_xp:attempt.practice?0:targetXp(correct,items.length),results};
 }

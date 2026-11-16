@@ -5,11 +5,16 @@ import {composeQuizEvidence,requestQuizEvidence,requestEvidence,renderEvidence} 
 import {renderLessonTree} from './lessons-ui.js';
 import {subscribeAuthState} from './auth.js';
 import {loadActiveCourse,quizCurriculum} from './lesson-curriculum.js';
-import {selectQuestions,specKey,eligibleQuestions,publishedBlueprint,questionMetadata,topicPerformance,MAX_MASTER_QUIZ_ITEMS,DEFAULT_MASTER_QUIZ_ITEMS} from './quiz-v2.js';
+import {selectQuestions,specKey,eligibleQuestions,questionMetadata,topicPerformance,chapterDifficulty,missedTopicsForTrack,DIFFICULTIES,MAX_MASTER_QUIZ_ITEMS,DEFAULT_MASTER_QUIZ_ITEMS} from './quiz-v2.js';
 import {makeLessonPractice,validateLessonPractice} from './quiz-lesson-practice.js';
 import {makeAssessmentItems,validateAssessmentItems} from './quiz-assessment-items.js';
 import {applyQuizScope} from './quiz-scope.js';
-let host,config={},bank,store,curriculum,current=null,trackId='syntax',busy=false,message='',generation=0,pendingConfirmAttempt=null,lastEarned=null;
+import {cambridgeChapterData} from './cambridge-chapter-data.js?v=2026.11.16c';
+import {syntaxMixedItems} from './quiz-mixed-syntax.js';
+import {cambridgeMixedItems} from './quiz-mixed-cambridge.js';
+import {validateMixedItems,isResponseProvided,formatReconstructionAnswer,isMixedKind} from './quiz-mixed-eval.js';
+import {addWordsFromText,createModel,fromCanonicalEnvelope} from './syntax-builder.js';
+let host,config={},bank,store,curriculum,current=null,trackId='syntax',busy=false,message='',generation=0,pendingConfirmAttempt=null,lastEarned=null,unfinishedOpen=false,syntaxSourceCache=null,quizBuilderCleanup=null,flushTextDraft=null;
 const el=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
 const button=(text,fn,cls='')=>{const b=el('button',text,cls);b.type='button';b.addEventListener('click',fn);return b;};
 function iconButton(label,svg,fn,cls='header-icon-btn'){
@@ -22,18 +27,32 @@ function iconButton(label,svg,fn,cls='header-icon-btn'){
 const BACK_ARROW_SVG='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>';
 const PREV_ARROW_SVG='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>';
 const NEXT_ARROW_SVG='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>';
-const FLAG_SVG='<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>';
+const formatDiff=d=>d?d[0].toUpperCase()+d.slice(1):'';
 const shortDate=new Intl.DateTimeFormat(undefined,{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});
 const shortDateSeconds=new Intl.DateTimeFormat(undefined,{month:'short',day:'numeric',hour:'numeric',minute:'2-digit',second:'2-digit'});
 const plural=(n,word)=>`${n} ${n===1?word:word+'s'}`;
-const answeredCount=t=>t.presented.filter(q=>t.responses?.[q.item_id]!==undefined&&t.responses?.[q.item_id]!==null).length;
+const answeredCount=t=>{
+ try{return itemsFor(bank,t).filter(q=>isResponseProvided(q,t.responses?.[q.item_id])).length;}
+ catch{return t.presented.filter(q=>t.responses?.[q.item_id]!==undefined&&t.responses?.[q.item_id]!==null).length;}
+};
+const KIND_LABELS={
+ fill_blank:'Fill in the blanks',
+ grammar_correction:'Grammar error correction',
+ syntax_correction:'Syntax error correction',
+ sentence_reconstruction:'Sentence reconstruction',
+ tree_builder:'Syntax tree builder',
+};
 const trackTabLabel=track=>track.id==='cambridge'?'Grammar':track.title;
 const lessonTitle=lid=>curriculum?.flatMap(t=>t.chapters).find(c=>c.id===lid)?.title||bank?.assessments?.find(a=>a.assessment_id===`quiz-${lid}`)?.title||lid;
 const parseLessonRef=ref=>{const m=/^#lesson\/([^/]+)(?:\/([^/]+))?/.exec(ref||'');return m?{lessonId:m[1],section:m[2]||null}:null;};
 const subtopicTitle=(lid,sid)=>sid?curriculum?.flatMap(t=>t.chapters).find(c=>c.id===lid)?.topics?.find(x=>x.id===sid)?.title||null:null;
 function assessmentFor(t){return bank.assessments.find(a=>quizKey(a)===quizKey(t));}
+function cleanupActiveQuestion(){
+ flushTextDraft?.();flushTextDraft=null;
+ quizBuilderCleanup?.();quizBuilderCleanup=null;
+}
 async function action(fn){
- if(busy)return;const token=generation,focusName=document.activeElement?.name,focusValue=document.activeElement?.value;busy=true;pendingConfirmAttempt=null;host.setAttribute('aria-busy','true');host.querySelectorAll('button,input').forEach(n=>{n.disabled=true;});
+ if(busy)return;flushTextDraft?.();const token=generation,focusName=document.activeElement?.name,focusValue=document.activeElement?.value;busy=true;pendingConfirmAttempt=null;host.setAttribute('aria-busy','true');host.querySelectorAll('button,input,textarea').forEach(n=>{n.disabled=true;});
  try{const result=await fn();if(token!==generation)return;
   if(result?.attempt_id)current=result.attempt_id;
   if(result&&Object.hasOwn(result,'earned')){
@@ -61,47 +80,112 @@ function attemptHistorySummary(assessment){
  const last=previous.at(-1),best=Math.max(...previous.map(t=>gradeAttempt(bank,t).correct/t.presented.length));
  return `Best ${Math.round(best*100)}% · Last ${gradeAttempt(bank,last).correct}/${last.presented.length} · ${plural(previous.length,'attempt')}`;
 }
+const cleanSummaryText=t=>String(t||'').replace(/\*/g,'').replace(/\s+/g,' ').trim();
+function summarizeSectionTexts(texts){
+ for(const raw of texts||[]){
+  const t=cleanSummaryText(raw);
+  if(!t||/^Test (your|it)|^Read |^In (the|this) next/i.test(t))continue;
+  const sentences=t.split(/(?<=[.!?])\s+/).filter(x=>x.length>=30&&!x.endsWith('?')&&!/^(Start with|Look at|Try|Consider|Notice|Take)\b/i.test(x));
+  const hit=sentences.find(x=>x.length<=135)||sentences[0];
+  if(hit)return hit.length>140?hit.slice(0,137).replace(/\s+\S*$/,'')+'…':hit;
+ }
+ for(const raw of texts||[]){
+  const t=cleanSummaryText(raw);
+  const sentences=t.split(/(?<=[.!?])\s+/).filter(x=>x.length>=20&&!x.endsWith('?'));
+  const hit=sentences.find(x=>x.length<=135)||sentences[0];
+  if(hit)return hit.length>140?hit.slice(0,137).replace(/\s+\S*$/,'')+'…':hit;
+ }
+ return '';
+}
+function topicDescription(chapterId,topicId,topicTitle){
+ const syntaxSec=syntaxSourceCache?.sections?.find(s=>s.lesson_id===chapterId&&s.subtopic_id===topicId);
+ if(syntaxSec?.texts?.length){
+  const summary=summarizeSectionTexts(syntaxSec.texts);
+  if(summary)return summary;
+ }
+ const camSec=cambridgeChapterData[chapterId]?.sections?.find(s=>s.id===topicId);
+ if(camSec?.blocks?.length){
+  const texts=camSec.blocks.filter(b=>(b.type==='note'||b.type==='paragraph')&&b.text).map(b=>b.text);
+  const summary=summarizeSectionTexts(texts);
+  if(summary)return summary;
+ }
+ return `Assess concepts from ${topicTitle}.`;
+}
 function v2Card(parent,title,spec,opts={}){
- const published=publishedBlueprint(bank,curriculum,spec);
- const activeSpec=published?spec:{...spec,content_tier:'lesson-assessment',format:'formal'};
  const isPersonalized=spec.mode==='personalized';
  const isGeneral=spec.mode==='general';
- const card=el('article',undefined,`curriculum-card quiz-topic-card${opts.featured?' quiz-featured-card':''}${isGeneral?' is-general':''}`);
+ const isSubtopic=spec.mode==='topic';
+ const activeSpec={...spec,content_tier:'lesson-practice',format:'mixed'};
+ const card=el('article',undefined,`curriculum-card quiz-topic-card${opts.featured?' quiz-featured-card':''}${isPersonalized?' is-review':''}${isGeneral?' is-general':''}${isSubtopic?' is-subtopic':''}`);
  let reason='',selection;
  try{selection=selectQuestions(bank,curriculum,activeSpec,store.attempts,0);}catch(e){reason=e.message;}
- const assessment=published||{assessment_id:specKey(activeSpec),content_version:'2.0.0'},draft=store.draft(assessment);
- const headRow=el('div',undefined,'quiz-card-head');
- headRow.append(el('h3',title));
- if(!reason)headRow.append(el('span',`${selection.items.length} questions`,'quiz-card-count'));
- card.append(headRow);
- if(isPersonalized&&!reason){
-  const perf=topicPerformance(bank,curriculum,store.attempts,spec.track);
-  const desc=selection.diagnostic
-   ?'Baseline quiz across chapters to identify topics for review.'
-   :perf.missed.size>0
-    ?'Targets grammatical concepts from your recent misses.'
-    :'Adapts to your history with unseen questions.';
-  card.append(el('p',desc,'quiz-card-desc'));
+ const assessment={assessment_id:specKey(activeSpec),content_version:'2.0.0'},draft=store.draft(assessment);
+ if(opts.featured){
+  const headRow=el('div',undefined,'quiz-card-head');
+  const titleWrap=el('div',undefined,'quiz-card-title-wrap');
+  titleWrap.append(el(opts.headingTag||'h3',title));
+  if(opts.trackLabel)titleWrap.append(el('span',opts.trackLabel,'quiz-track-tag'));
+  if(opts.difficulty)titleWrap.append(el('span',formatDiff(opts.difficulty),`quiz-difficulty-tag is-${opts.difficulty}`));
+  headRow.append(titleWrap);
+  if(!reason)headRow.append(el('span',`${selection.items.length} questions`,'quiz-card-count'));
+  card.append(headRow);
+  if(isPersonalized){
+   const missed=missedTopicsForTrack(bank,curriculum,store.attempts,spec.track);
+   const topicList=missed.slice(0,2).map(m=>m.title);
+   const desc=!reason&&topicList.length
+    ?`Practice ${topicList.join(' and ')} based on your previous mistakes.`
+    :!reason
+     ?'Practice concepts from your previous missed questions.'
+     :`Submit a ${opts.trackLabel?opts.trackLabel.toLowerCase()+' ':''}quiz with missed questions to unlock error review.`;
+   card.append(el('p',desc,'quiz-card-desc'));
+  }
+  const statusText=reason&&!isPersonalized
+   ?reason
+   :draft
+    ?`In progress · ${answeredCount(draft)}/${draft.presented.length} answered`
+    :attemptHistorySummary(assessment);
+  if(statusText)card.append(el('p',statusText,reason&&!isPersonalized?'quiz-card-error':'quiz-card-status'));
+  const cardFoot=el('div',undefined,'quiz-card-footer');
+  const start=button(draft?'Resume quiz':reason?'Unavailable':'Start quiz',()=>action(()=>draft||store.startV2(curriculum,activeSpec)),'lesson-primary');
+  start.disabled=!!reason&&!draft;
+  cardFoot.append(start);
+  card.append(cardFoot);
+  parent.append(card);
+  return;
  }
+ const mainCol=el('div',undefined,'quiz-row-main');
+ const titleWrap=el('div',undefined,'quiz-card-title-wrap');
+ titleWrap.append(el(opts.headingTag||'h3',title));
+ if(opts.difficulty)titleWrap.append(el('span',formatDiff(opts.difficulty),`quiz-difficulty-tag is-${opts.difficulty}`));
+ mainCol.append(titleWrap);
+ const descText=opts.description||(isGeneral?'Covers every assessable subtopic in this chapter.':'');
+ if(descText)mainCol.append(el('p',descText,'quiz-card-desc'));
  const statusText=reason
   ?reason
   :draft
    ?`In progress · ${answeredCount(draft)}/${draft.presented.length} answered`
    :attemptHistorySummary(assessment);
- if(statusText)card.append(el('p',statusText,reason?'quiz-card-error':'quiz-card-status'));
- const cardFoot=el('div',undefined,'quiz-card-footer');
- const start=button(draft?'Resume quiz':reason?'Quiz unavailable':'Start quiz',()=>action(()=>draft||store.startV2(curriculum,activeSpec)),'lesson-primary');
+ if(statusText)mainCol.append(el('p',statusText,reason?'quiz-card-error':'quiz-card-status'));
+ const sideCol=el('div',undefined,'quiz-row-side');
+ if(!reason)sideCol.append(el('span',`${selection.items.length} questions`,'quiz-card-count'));
+ const start=button(draft?'Resume quiz':reason?'Unavailable':'Start quiz',()=>action(()=>draft||store.startV2(curriculum,activeSpec)),'lesson-primary');
  start.disabled=!!reason&&!draft;
- cardFoot.append(start);
- card.append(cardFoot);
+ sideCol.append(start);
+ card.append(mainCol,sideCol);
  parent.append(card);
 }
 function unfinishedSection(body){
  const unfinished=Object.values(store.attempts).filter(t=>!t.submitted_at&&!store.isArchived(t)).sort((a,b)=>b.started_at.localeCompare(a.started_at));
  if(!unfinished.length)return;
  const details=el('details',undefined,'quiz-unfinished-details');
- details.open=true;
- details.append(el('summary',`Resume unfinished quizzes (${unfinished.length})`));
+ details.open=unfinishedOpen;
+ const sum=el('summary',`Resume unfinished quizzes (${unfinished.length})`);
+ sum.setAttribute('aria-expanded',String(unfinishedOpen));
+ details.addEventListener('toggle',()=>{
+  unfinishedOpen=details.open;
+  sum.setAttribute('aria-expanded',String(details.open));
+ });
+ details.append(sum);
  const minuteKeys=new Map();
  for(const t of unfinished){
   const title=t.title||assessmentFor(t)?.title||'Quiz';
@@ -128,23 +212,43 @@ function unfinishedSection(body){
  body.append(details);
 }
 function masterQuizCard(parent,track){
- const master=el('section',undefined,'curriculum-card quiz-practice quiz-featured-card');
- const min=track.chapters.length,masterTier='lesson-assessment';
- const available=new Set(eligibleQuestions(bank,curriculum,trackId,masterTier).map(q=>q.item_id)).size,max=Math.min(MAX_MASTER_QUIZ_ITEMS,available);
+ const master=el('section',undefined,'curriculum-card quiz-practice quiz-featured-card is-master');
+ const min=track.chapters.length,masterTier='lesson-practice';
+ const available=new Set([
+  ...eligibleQuestions(bank,curriculum,trackId,'lesson-assessment'),
+  ...(bank.mixed_items||[]).filter(q=>questionMetadata(q,curriculum)?.track_id===trackId),
+ ].map(q=>q.item_id)).size,max=Math.min(MAX_MASTER_QUIZ_ITEMS,available);
  const defaultCount=max>=min?Math.min(Math.max(DEFAULT_MASTER_QUIZ_ITEMS,min),max):min;
  const initialCount=masterCounts[trackId]>=min&&masterCounts[trackId]<=max?masterCounts[trackId]:defaultCount;
  const headRow=el('div',undefined,'quiz-card-head');
  headRow.append(el('h2',`${track.title} Master Quiz`),el('span',max>=min?`${min}–${max} questions`:'Unavailable','quiz-card-count'));
  master.append(headRow);
- master.append(el('p','Includes at least one question from every chapter.','quiz-card-desc'));
- const controlRow=el('div',undefined,'quiz-master-control');
+ master.append(el('p','Comprehensive assessment across every chapter.','quiz-card-desc'));
+ const controlRow=el('div',undefined,'quiz-master-controls');
  const label=el('label','Questions ');
  const input=el('input');
  input.type='number';input.min=String(min);input.max=String(max);input.step='1';
  input.value=String(initialCount);input.disabled=max<min;
  input.setAttribute('aria-label',`${track.title} Master Quiz question count`);
  label.append(input);
- controlRow.append(label);
+ const diffGroup=el('div',undefined,'quiz-master-difficulty');
+ diffGroup.setAttribute('role','group');
+ diffGroup.setAttribute('aria-label',`${track.title} Master Quiz difficulty`);
+ const activeDiff=DIFFICULTIES.includes(masterDifficulties[trackId])?masterDifficulties[trackId]:'medium';
+ masterDifficulties[trackId]=activeDiff;
+ const diffButtons=[];
+ for(const diff of DIFFICULTIES){
+  const btn=button(formatDiff(diff),()=>{
+   masterDifficulties[trackId]=diff;
+   for(const b of diffButtons)b.setAttribute('aria-pressed',String(b.dataset.difficulty===diff));
+   update();
+  },'quiz-diff-btn');
+  btn.dataset.difficulty=diff;
+  btn.setAttribute('aria-pressed',String(activeDiff===diff));
+  diffButtons.push(btn);
+  diffGroup.append(btn);
+ }
+ controlRow.append(label,diffGroup);
  master.append(controlRow);
  const target=el('div',undefined,'quiz-master-footer');target.setAttribute('aria-live','polite');
  const update=()=>{
@@ -158,7 +262,7 @@ function masterQuizCard(parent,track){
    target.append(el('p',`Enter a whole number between ${min} and ${max}.`,'quiz-card-error'));
    return;
   }
-  const spec={track:trackId,mode:'master',count:Number(input.value),content_tier:masterTier};
+  const spec={track:trackId,mode:'master',count:Number(input.value),difficulty:masterDifficulties[trackId],content_tier:masterTier,format:'mixed'};
   const assessment={assessment_id:specKey(spec),content_version:'2.0.0'},draft=store.draft(assessment);
   const statusLine=draft?`In progress · ${answeredCount(draft)}/${draft.presented.length} answered`:attemptHistorySummary(assessment);
   if(statusLine)target.append(el('p',statusLine,'quiz-card-status'));
@@ -176,36 +280,52 @@ function curriculumCatalog(){
  host.append(header);
 
  const body=el('div',undefined,'quiz-catalog-body');
- const folder=el('div',undefined,'quiz-folder-panel');
- const nav=el('div',undefined,'lesson-track-tabs');nav.setAttribute('role','group');nav.setAttribute('aria-label','Quiz learning tracks');
- for(const track of curriculum){const b=button(trackTabLabel(track),()=>{trackId=track.id;render();});b.setAttribute('aria-pressed',String(trackId===track.id));nav.append(b);}
- const sheet=el('div',undefined,'quiz-tab-sheet');
- inlineNotice(sheet);
-
- unfinishedSection(sheet);
+ inlineNotice(body);
 
  const track=curriculum.find(t=>t.id===trackId);
- const featured=el('div',undefined,'quiz-featured-grid');
- v2Card(featured,`Personalized ${track.title} Quiz`,{track:trackId,mode:'personalized'},{featured:true});
- masterQuizCard(featured,track);
- sheet.append(featured);
+ const reviewSec=el('section',undefined,'quiz-special-section is-review');
+ reviewSec.setAttribute('aria-label','Review your Errors');
+ v2Card(reviewSec,'Review your Errors',{track:trackId,mode:'personalized'},{featured:true,headingTag:'h2',trackLabel:trackTabLabel(track)});
+ body.append(reviewSec);
 
+ const folder=el('div',undefined,'quiz-folder-panel');
+ const nav=el('div',undefined,'lesson-track-tabs');nav.setAttribute('role','group');nav.setAttribute('aria-label','Quiz learning tracks');
+ for(const trackItem of curriculum){const b=button(trackTabLabel(trackItem),()=>{trackId=trackItem.id;render();});b.setAttribute('aria-pressed',String(trackId===trackItem.id));nav.append(b);}
+ const sheet=el('div',undefined,'quiz-tab-sheet');
+ unfinishedSection(sheet);
+
+ const masterSec=el('section',undefined,'quiz-special-section is-master');
+ masterQuizCard(masterSec,track);
+ sheet.append(masterSec);
+
+ const chaptersSec=el('section',undefined,'quiz-chapters-section');
+ chaptersSec.append(el('h2','Chapter Quizzes','quiz-section-label'));
  const chaptersGroup=el('div',undefined,'quiz-chapters-group');
  for(const chapter of track.chapters){
+  const diff=chapterDifficulty(chapter);
   const details=el('details',undefined,'curriculum-card quiz-chapter');details.dataset.chapter=chapter.id;
   const key=`${trackId}:${chapter.id}`;details.open=expanded.has(key);
   details.addEventListener('toggle',()=>{if(details.open)expanded.add(key);else expanded.delete(key);});
-  details.append(el('summary',`Chapter ${chapter.chapter}: ${chapter.title}`));
-  const grid=el('div',undefined,'curriculum-grid quiz-topic-grid');
-  for(const topic of chapter.topics)v2Card(grid,topic.title,{track:trackId,mode:'topic',chapter:chapter.id,topic:topic.id});
-  v2Card(grid,'General Quiz',{track:trackId,mode:'general',chapter:chapter.id});details.append(grid);chaptersGroup.append(details);
+  const summary=el('summary');
+  summary.append(el('span',`Chapter ${chapter.chapter}: ${chapter.title}`,'quiz-chapter-title'));
+  const summaryMeta=el('span',undefined,'quiz-chapter-meta');
+  summaryMeta.append(el('span',formatDiff(diff),`quiz-difficulty-tag is-${diff}`));
+  summary.append(summaryMeta);
+  details.append(summary);
+  const list=el('div',undefined,'quiz-topic-list');
+  for(const [topicIndex,topic] of chapter.topics.entries()){
+   v2Card(list,`Quiz ${topicIndex+1}: ${topic.title}`,{track:trackId,mode:'topic',chapter:chapter.id,topic:topic.id},{description:topicDescription(chapter.id,topic.id,topic.title)});
+  }
+  v2Card(list,'General Quiz',{track:trackId,mode:'general',chapter:chapter.id},{difficulty:diff,description:'Comprehensive chapter quiz sampling each assessable subtopic.'});
+  details.append(list);chaptersGroup.append(details);
  }
- sheet.append(chaptersGroup);
+ chaptersSec.append(chaptersGroup);
+ sheet.append(chaptersSec);
  folder.append(nav,sheet);
  body.append(folder);
  host.append(body);
 }
-const expanded=new Set(),masterCounts={};
+const expanded=new Set(),masterCounts={},masterDifficulties={};
 async function loadContent(){
  if(bank&&curriculum)return '';
  const cacheKey='syntutor:quiz-v2:public-content:2';
@@ -220,20 +340,22 @@ async function loadContent(){
     loadActiveCourse(),
     fetch('/content/quizzes/syntax-practice-source.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('Practice source unavailable');return r.json();}).catch(()=>null),
   ]);
-  bank=nextBank;curriculum=quizCurriculum(course);
+  bank=nextBank;curriculum=quizCurriculum(course);syntaxSourceCache=syntaxSource;
   // Only public, compact curriculum metadata is cached, never the 12MB course.
    try{localStorage.setItem(cacheKey,JSON.stringify({bank,curriculum,syntaxSource}));}catch{}
     bank.practice_items=validateLessonPractice(makeLessonPractice(curriculum,syntaxSource,{onStale:recordStale,allowMissingSyntax:true}),curriculum);
     bank.assessment_items=validateAssessmentItems(makeAssessmentItems(bank.practice_items,curriculum),curriculum);
+    bank.mixed_items=validateMixedItems([...syntaxMixedItems,...cambridgeMixedItems],curriculum);
   return staleWarning;
  }catch(error){
   try{
    const cached=JSON.parse(localStorage.getItem(cacheKey));
    const nextBank=validateBank(cached.bank);
    if(cached.curriculum?.length!==2||!cached.curriculum.every(t=>t.chapters?.length&&t.chapters.every(c=>c.topics?.length)))throw error;
-     bank=nextBank;curriculum=applyQuizScope(cached.curriculum);
+     bank=nextBank;curriculum=applyQuizScope(cached.curriculum);syntaxSourceCache=cached.syntaxSource||null;
      bank.practice_items=validateLessonPractice(makeLessonPractice(curriculum,cached.syntaxSource,{onStale:recordStale,allowMissingSyntax:true}),curriculum);
      bank.assessment_items=validateAssessmentItems(makeAssessmentItems(bank.practice_items,curriculum),curriculum);
+     bank.mixed_items=validateMixedItems([...syntaxMixedItems,...cambridgeMixedItems],curriculum);
      return [staleWarning,'Offline content: using the last successfully downloaded curriculum and question sources.'].filter(Boolean).join(' ');
   }catch{throw error;}
  }
@@ -241,23 +363,6 @@ async function loadContent(){
 function catalog(){
  curriculumCatalog();
  const sheet=host.querySelector('.quiz-tab-sheet')||host;
- const published=el('details',undefined,'quiz-published');published.append(el('summary','Original 5-question quizzes'));
- const grid=el('div',undefined,'curriculum-grid quiz-topic-grid');
- for(const a of bank.assessments.filter(a=>a.pool_ids.every(pool=>{
-  const items=bank.items.filter(q=>q.pool_id===pool&&q.content_version===a.item_version);
-  return items.length&&items.every(q=>questionMetadata(q,curriculum)?.track_id===trackId);
- }))){
-  const card=el('article',undefined,'curriculum-card quiz-topic-card');card.dataset.assessment=a.assessment_id;const summary=store.summary(a),draft=store.draft(a);
-  const headRow=el('div',undefined,'quiz-card-head');
-  headRow.append(el('h2',a.title),el('span','5 questions','quiz-card-count'));
-  card.append(headRow);
-  const legacyStatus=draft?`In progress · ${answeredCount(draft)}/${draft.presented.length} answered`:(summary.attempt_count>0?`Best ${summary.best_score}/5 · ${plural(summary.attempt_count,'attempt')}`:'');
-  if(legacyStatus)card.append(el('p',legacyStatus,'quiz-card-status'));
-  const foot=el('div',undefined,'quiz-card-footer');
-  foot.append(button(draft?'Resume quiz':'Start quiz',()=>action(async()=>{if(draft)return draft;return store.start(a);}),'lesson-primary'));
-  card.append(foot);grid.append(card);
- }
- published.append(grid);sheet.append(published);
  const history=el('details',undefined,'quiz-history');history.append(el('summary','Attempt history'));const list=el('div',undefined,'quiz-history-list');
  for(const t of Object.values(store.attempts).filter(t=>t.submitted_at || store.isArchived(t)).sort((a,b)=>(b.submitted_at||b.started_at).localeCompare(a.submitted_at||a.started_at))){
   if (store.isArchived(t)) {
@@ -291,7 +396,9 @@ function review(t){
  const summaryCard=el('section',undefined,'quiz-results-summary');
  summaryCard.append(el('p',`${grade.correct}/${total} correct (${pct}%)`,'quiz-score'));
  const metaParts=[];
- if(t.includes_unreviewed&&t.practice){
+ if(t.spec?.format==='mixed'){
+  metaParts.push('Interactive mixed-format · 0 verified XP (server XP verifies MCQ items only)');
+ }else if(t.includes_unreviewed&&t.practice){
   metaParts.push('Practice attempt');
  }else if(!t.practice){
   const summaryTarget=a||{assessment_id:t.assessment_id,content_version:t.content_version};
@@ -311,8 +418,8 @@ function review(t){
  const reviewItems=itemsFor(bank,t);
  const needs=grade.results.filter(r=>!r.correct);
  const missedSectionsByLesson=new Map();
- for(const item of reviewItems){
-  if((t.responses[item.item_id]??null)===item.answer||!item.lesson_id)continue;
+ for(const [idx,item] of reviewItems.entries()){
+  if(grade.results[idx]?.correct||!item.lesson_id)continue;
   const parsed=parseLessonRef(item.lesson_reference);
   const sec=parsed?.section||null;
   const set=missedSectionsByLesson.get(item.lesson_id)||new Set();
@@ -349,31 +456,69 @@ function review(t){
 
  const seenCardRefs=new Set();
  for(const [index,q] of reviewItems.entries()){
-  const response=t.responses[q.item_id]??null,correct=response===q.answer;
+  const res=grade.results[index],response=t.responses[q.item_id]??null,correct=Boolean(res?.correct);
   const card=el('article',undefined,`quiz-review-card ${correct?'is-correct':'is-incorrect'}`);
   card.dataset.reviewItem=q.item_id;
   const titleRow=el('div',undefined,'quiz-review-title-row');
   const mark=el('span',correct?'✓':'✕',`quiz-status-mark ${correct?'is-correct':'is-incorrect'}`);
   mark.setAttribute('aria-hidden','true');
   const qHeading=el('h2',`${index+1}. ${q.prompt}`,'quiz-review-question');
-  const srStatus=el('span',correct?' (Correct)':response===null?' (Unanswered)':' (Incorrect)','sr-only');
+  const srStatus=el('span',correct?' (Correct)':!isResponseProvided(q,response)?' (Unanswered)':' (Incorrect)','sr-only');
   qHeading.append(srStatus);
   titleRow.append(mark,qHeading);
   card.append(titleRow);
   if(q.stimulus?.sentence)card.append(el('p',q.stimulus.sentence,'lesson-example-sentence'));
-  const selectedText=q.options.find(o=>o.id===response)?.text||'No answer';
-  const correctText=q.options.find(o=>o.id===q.answer)?.text||'';
-  const answerLines=el('div',undefined,'quiz-review-answer-lines');
-  const verdictLine=el('p',undefined,'quiz-review-verdict');
-  const ansSpan=el('span',selectedText,correct?'quiz-answer-selected':'quiz-answer-wrong');
-  verdictLine.append(document.createTextNode('Your answer: '),ansSpan);
-  answerLines.append(verdictLine);
-  if(!correct&&correctText){
-   const corrLine=el('p',undefined,'quiz-review-correct');
-   corrLine.append(document.createTextNode('Correct answer: '),el('span',correctText,'quiz-answer-right'));
-   answerLines.append(corrLine);
+  if(q.kind==='fill_blank'||q.kind==='grammar_correction'||q.kind==='sentence_reconstruction'){
+   const answerLines=el('div',undefined,'quiz-review-answer-lines');
+   const submittedText=q.kind==='sentence_reconstruction'
+    ?(formatReconstructionAnswer(q,response)||'No answer')
+    :(typeof response==='string'&&response.trim()?response.trim():'No answer');
+   const verdictLine=el('p',undefined,'quiz-review-verdict');
+   verdictLine.append(document.createTextNode(q.kind==='grammar_correction'?'Your correction: ':'Your answer: '),el('span',submittedText,correct?'quiz-answer-selected':'quiz-answer-wrong'));
+   answerLines.append(verdictLine);
+   if(!correct){
+    const primary=q.display_answer||q.accepted_answers?.[0]||'';
+    const alts=[...new Set((q.accepted_answers||[]).filter(a=>a&&a!==primary))];
+    const corrLine=el('p',undefined,'quiz-review-correct');
+    corrLine.append(document.createTextNode(q.kind==='grammar_correction'?'Accepted correction: ':'Accepted answer: '),el('span',primary,'quiz-answer-right'));
+    if(alts.length)corrLine.append(document.createTextNode(` (also accepted: ${alts.join(' / ')})`));
+    answerLines.append(corrLine);
+   }
+   card.append(answerLines);
+   if(res?.reason)card.append(el('p',res.reason,'quiz-review-diff-note'));
+  }else if(q.kind==='tree_builder'||q.kind==='syntax_correction'){
+   const treeCols=el('div',undefined,'quiz-review-trees');
+   const subCol=el('div',undefined,'quiz-review-tree-col');
+   subCol.append(el('strong','Your submitted structure'));
+   if(res?.evaluated_tree?.root){
+    subCol.append(renderLessonTree(res.evaluated_tree,{zoomControls:false,stackFeatures:true}));
+   }else{
+    subCol.append(el('p',res?.reason||'No connected tree submitted.','quiz-review-diff-note'));
+   }
+   treeCols.append(subCol);
+   if(!correct&&q.expected_tree?.root){
+    const expCol=el('div',undefined,'quiz-review-tree-col');
+    expCol.append(el('strong','Expected structure'));
+    expCol.append(renderLessonTree(q.expected_tree,{zoomControls:false,stackFeatures:true}));
+    treeCols.append(expCol);
+   }
+   card.append(treeCols);
+   if(res?.reason&&res?.evaluated_tree?.root)card.append(el('p',res.reason,'quiz-review-diff-note'));
+  }else{
+   const selectedText=q.options.find(o=>o.id===response)?.text||'No answer';
+   const correctText=q.options.find(o=>o.id===q.answer)?.text||'';
+   const answerLines=el('div',undefined,'quiz-review-answer-lines');
+   const verdictLine=el('p',undefined,'quiz-review-verdict');
+   const ansSpan=el('span',selectedText,correct?'quiz-answer-selected':'quiz-answer-wrong');
+   verdictLine.append(document.createTextNode('Your answer: '),ansSpan);
+   answerLines.append(verdictLine);
+   if(!correct&&correctText){
+    const corrLine=el('p',undefined,'quiz-review-correct');
+    corrLine.append(document.createTextNode('Correct answer: '),el('span',correctText,'quiz-answer-right'));
+    answerLines.append(corrLine);
+   }
+   card.append(answerLines);
   }
-  card.append(answerLines);
   if(q.review_status!=='INDEPENDENTLY_REVIEWED'){
    card.append(el('p',q.rationale,'quiz-review-rationale'));
    if(!correct&&q.lesson_reference&&!consolidatedLessons.has(q.lesson_id)&&!seenCardRefs.has(q.lesson_reference)){
@@ -430,9 +575,7 @@ function review(t){
  host.append(body);
 }
 function attemptScreen(t){
- const a=assessmentFor(t),q=questionForLearner(bank,t),ref=t.presented[t.position],count=t.presented.length;
- const flaggedSet=new Set(Array.isArray(t.flagged)?t.flagged:[]);
- const isFlagged=flaggedSet.has(q.item_id);
+ const a=assessmentFor(t),allItems=itemsFor(bank,t),q=questionForLearner(bank,t),fullQ=allItems[t.position],ref=t.presented[t.position],count=t.presented.length;
  const header=el('header',undefined,'view-header curriculum-header');
  const titleGroup=el('div',undefined,'view-header-title-group');
  titleGroup.append(iconButton('All quizzes',BACK_ARROW_SVG,()=>{current=null;pendingConfirmAttempt=null;message='';render();}));
@@ -444,33 +587,21 @@ function attemptScreen(t){
  inlineNotice(body);
  const layout=el('div',undefined,'quiz-attempt-layout');
  const main=el('div',undefined,'quiz-attempt-main');
- const answered=answeredCount(t),allAnswered=answered===count;
-
- const panel=el('section',undefined,'quiz-question');panel.dataset.quizItem=q.item_id;
+ const isBuilderQ=q.kind==='tree_builder'||q.kind==='syntax_correction';
+ const panel=el('section',undefined,`quiz-question${isBuilderQ?' is-builder-question':''}`);
+ panel.dataset.quizItem=q.item_id;
+ panel.dataset.quizKind=q.kind||'mcq';
  const panelBar=el('div',undefined,'quiz-question-bar');
- panelBar.append(el('h2',`Question ${t.position+1} of ${count}`,'quiz-question-number'));
+ const numWrap=el('div',undefined,'quiz-question-title-wrap');
+ numWrap.append(el('h2',`Question ${t.position+1} of ${count}`,'quiz-question-number'));
+ if(KIND_LABELS[q.kind])numWrap.append(el('span',KIND_LABELS[q.kind],'quiz-format-badge'));
+ panelBar.append(numWrap);
  const panelActions=el('div',undefined,'quiz-question-actions');
- const hasAnswer=t.responses?.[q.item_id]!==undefined&&t.responses?.[q.item_id]!==null;
- if(hasAnswer){
-  panelActions.append(button('Clear choice',()=>action(()=>store.clearAnswer(t.attempt_id,q.item_id)),'quiz-clear-btn'));
- }
- const flagBtn=button('',()=>action(()=>store.toggleFlag(t.attempt_id,q.item_id)),`quiz-flag-btn${isFlagged?' is-flagged':''}`);
- flagBtn.setAttribute('aria-pressed',String(isFlagged));
- flagBtn.setAttribute('aria-label',isFlagged?'Remove flag from this question':'Flag this question for review');
- flagBtn.innerHTML=FLAG_SVG;
- flagBtn.append(el('span',isFlagged?'Flagged':'Flag'));
- panelActions.append(flagBtn);
  panelBar.append(panelActions);
  panel.append(panelBar);
 
  const qContent=el('div',undefined,'quiz-question-content');
  if(q.stimulus)qContent.append(el('p',q.stimulus.sentence,'lesson-example-sentence'));
- const field=el('fieldset');field.append(el('legend',q.prompt));const choices=el('div',undefined,q.kind==='tree_choice'?'quiz-tree-options':'quiz-options');
- for(const id of ref.option_order){const option=q.options.find(o=>o.id===id),label=el('label',undefined,'lesson-option'),radio=el('input');radio.type='radio';radio.name=q.item_id;radio.value=id;radio.checked=t.responses[q.item_id]===id;
-  radio.addEventListener('change',()=>action(()=>store.answer(t.attempt_id,q.item_id,id)));label.append(radio,el('span',option.text));
-  const group=el('div',undefined,'quiz-choice');group.append(label);if(option.diagram){const diagram=renderLessonTree(option.diagram);diagram.classList.add('quiz-candidate');diagram.querySelector('svg')?.setAttribute('aria-label',`Candidate ${id}: ${option.text}`);group.append(diagram);}choices.append(group);
- }
- field.append(choices);qContent.append(field);panel.append(qContent);
 
  const controls=el('div',undefined,'quiz-attempt-controls');
  const nav=el('nav',undefined,'lesson-step-controls');nav.setAttribute('aria-label','Question navigation');
@@ -478,51 +609,289 @@ function attemptScreen(t){
  const next=iconButton('Next question',NEXT_ARROW_SVG,()=>action(()=>store.move(t.attempt_id,t.position+1)),'quiz-step-btn');next.disabled=t.position===count-1;
  nav.append(back,next);
  controls.append(nav);
- if(allAnswered){
-  const submitBtn=button('Submit',()=>{
-   const live=store.attempts[t.attempt_id];
-   if(!live||live.presented.some(item=>live.responses?.[item.item_id]===undefined||live.responses?.[item.item_id]===null)){
-    render();
-    return;
-   }
-   action(()=>store.submit(t.attempt_id,{requireComplete:true}));
-  },'lesson-primary');
-  controls.append(submitBtn);
- }
- panel.append(controls);
- main.append(panel);
 
  const navigator=el('aside',undefined,'quiz-navigator');
  navigator.setAttribute('aria-label','Question navigator');
  const navHead=el('div',undefined,'quiz-nav-head');
- navHead.append(el('h2','Questions'),el('span',`${answered}/${count} answered`,'quiz-nav-summary'));
+ const navSummary=el('span','','quiz-nav-summary');
+ navHead.append(el('h2','Questions'),navSummary);
  navigator.append(navHead);
  const numGrid=el('div',undefined,'quiz-nav-grid');
+ const navButtons=[];
  for(let i=0;i<count;i++){
-  const itemRef=t.presented[i];
-  const isCurrent=i===t.position;
-  const isAnswered=t.responses?.[itemRef.item_id]!==undefined&&t.responses?.[itemRef.item_id]!==null;
-  const isItemFlagged=flaggedSet.has(itemRef.item_id);
-  const numBtn=button(String(i+1),()=>action(()=>store.move(t.attempt_id,i)),`quiz-nav-num${isCurrent?' is-current':''}${isAnswered?' is-answered':''}${isItemFlagged?' is-flagged':''}`);
-  if(isCurrent)numBtn.setAttribute('aria-current','step');
-  const states=[isCurrent?'current':null,isAnswered?'answered':'unanswered',isItemFlagged?'flagged for review':null].filter(Boolean);
-  numBtn.setAttribute('aria-label',`Question ${i+1}, ${states.join(', ')}`);
+  const numBtn=button(String(i+1),()=>action(()=>store.move(t.attempt_id,i)),'quiz-nav-num');
+  if(i===t.position)numBtn.setAttribute('aria-current','step');
   numGrid.append(numBtn);
+  navButtons.push(numBtn);
  }
  navigator.append(numGrid);
- const legend=el('div',undefined,'quiz-nav-legend');
- const addLegend=(cls,text)=>{const item=el('span',undefined,'quiz-nav-legend-item');item.append(el('span',undefined,`quiz-nav-dot ${cls}`),el('span',text));legend.append(item);};
- addLegend('is-current','Current');
- addLegend('is-answered','Answered');
- addLegend('is-flagged','Flagged');
- navigator.append(legend);
+
+ let onClearCurrent=()=>action(()=>store.clearAnswer(t.attempt_id,q.item_id)),mountBuilderNow=null;
+ let submitBtn=null;
+ let draftResponses={...(store.attempts[t.attempt_id]?.responses||t.responses||{})};
+ const syncChrome=()=>{
+  const live=store.attempts[t.attempt_id]||t;
+  const responses={...(live.responses||{}),...draftResponses};
+  let answered=0;
+  for(let i=0;i<count;i++){
+   const item=allItems[i];
+   const ok=isResponseProvided(item,responses[item.item_id]);
+   if(ok)answered++;
+   const btn=navButtons[i];
+   const isCurrent=i===t.position;
+   btn.className=`quiz-nav-num${isCurrent?' is-current':''}${ok?' is-answered':''}`;
+   btn.setAttribute('aria-label',`Question ${i+1}, ${[isCurrent?'current':null,ok?'answered':'unanswered'].filter(Boolean).join(', ')}`);
+  }
+  navSummary.textContent=`${answered}/${count} answered`;
+  const curVal=responses[q.item_id];
+  const hasCurrent=curVal!==undefined&&curVal!==null&&(typeof curVal!=='string'||curVal.trim().length>0)&&(!Array.isArray(curVal)||curVal.length>0);
+  panelActions.replaceChildren();
+  if(hasCurrent){
+   panelActions.append(button(isMixedKind(q.kind)?'Clear answer':'Clear choice',()=>onClearCurrent(),'quiz-clear-btn'));
+  }
+  const allDone=answered===count;
+  if(allDone&&!submitBtn){
+   submitBtn=button('Submit',()=>{
+    flushTextDraft?.();
+    const fresh=store.attempts[t.attempt_id];
+    if(!fresh||allItems.some(item=>!isResponseProvided(item,fresh.responses?.[item.item_id]))){
+     draftResponses={...(fresh?.responses||draftResponses)};
+     syncChrome();return;
+    }
+    action(()=>store.submit(t.attempt_id,{requireComplete:true}));
+   },'lesson-primary');
+   controls.append(submitBtn);
+  }else if(!allDone&&submitBtn){
+   submitBtn.remove();
+   submitBtn=null;
+  }
+ };
+
+ let saveTimer=null;
+ const setDraftResponse=value=>{
+  draftResponses={...draftResponses,[q.item_id]:value};
+  t.responses=draftResponses;
+ };
+ const quietSave=(value)=>{
+  setDraftResponse(value);
+  clearTimeout(saveTimer);
+  const persist=()=>{
+   clearTimeout(saveTimer);saveTimer=null;
+   flushTextDraft=null;
+   if(value===null||value===undefined||(typeof value==='string'&&value==='')){
+    store.clearAnswer(t.attempt_id,q.item_id).catch(()=>{});
+   }else{
+    store.answer(t.attempt_id,q.item_id,value).catch(()=>{});
+   }
+  };
+  flushTextDraft=persist;
+  saveTimer=setTimeout(persist,150);
+  syncChrome();
+ };
+
+ if(q.kind==='fill_blank'){
+  qContent.append(el('p',q.prompt,'quiz-prompt-text'));
+  const wrap=el('div',undefined,'quiz-text-wrap');
+  const lbl=el('label','Your answer','quiz-text-label');
+  const inp=document.createElement('input');
+  inp.type='text';inp.className='quiz-text-input';
+  inp.placeholder='Type the missing word or phrase…';
+  inp.autocomplete='off';inp.spellcheck=false;
+  inp.value=typeof t.responses[q.item_id]==='string'?t.responses[q.item_id]:'';
+  inp.addEventListener('input',()=>quietSave(inp.value));
+  inp.addEventListener('blur',()=>flushTextDraft?.());
+  lbl.append(inp);
+  wrap.append(lbl);
+  qContent.append(wrap);
+  onClearCurrent=()=>{inp.value='';flushTextDraft=null;clearTimeout(saveTimer);setDraftResponse(null);syncChrome();action(()=>store.clearAnswer(t.attempt_id,q.item_id));};
+ }else if(q.kind==='grammar_correction'){
+  qContent.append(el('p',q.prompt,'quiz-prompt-text'));
+  const wrap=el('div',undefined,'quiz-text-wrap');
+  const lbl=el('label','Corrected sentence','quiz-text-label');
+  const area=document.createElement('textarea');
+  area.className='quiz-textarea';area.rows=3;
+  area.placeholder='Write the corrected sentence…';
+  area.spellcheck=false;
+  area.value=typeof t.responses[q.item_id]==='string'?t.responses[q.item_id]:'';
+  area.addEventListener('input',()=>quietSave(area.value));
+  area.addEventListener('blur',()=>flushTextDraft?.());
+  lbl.append(area);
+  wrap.append(lbl);
+  qContent.append(wrap);
+  onClearCurrent=()=>{area.value='';flushTextDraft=null;clearTimeout(saveTimer);setDraftResponse(null);syncChrome();action(()=>store.clearAnswer(t.attempt_id,q.item_id));};
+ }else if(q.kind==='sentence_reconstruction'){
+  qContent.append(el('p',q.prompt,'quiz-prompt-text'));
+  const reconBox=el('div',undefined,'quiz-recon-section');
+  let order=Array.isArray(t.responses[q.item_id])?[...t.responses[q.item_id]]:[];
+  let dragPos=null;
+  const updateRecon=nextOrder=>{
+   order=nextOrder;
+   setDraftResponse(order.length?[...order]:null);
+   renderRecon();
+   syncChrome();
+   if(order.length)store.answer(t.attempt_id,q.item_id,order).catch(()=>{});
+   else store.clearAnswer(t.attempt_id,q.item_id).catch(()=>{});
+  };
+  const renderRecon=()=>{
+   reconBox.replaceChildren();
+   const trayLabel=el('p','Your reconstructed sentence','quiz-recon-label');
+   const tray=el('div',undefined,'quiz-recon-tray');
+   tray.setAttribute('role','region');tray.setAttribute('aria-label','Your reconstructed sentence');
+   if(!order.length){
+    tray.append(el('span','Select or drag components below in order…','quiz-recon-placeholder'));
+   }else{
+    for(const [pos,tokIdx] of order.entries()){
+     const chip=el('div',undefined,'quiz-recon-chip');
+     chip.draggable=true;
+     chip.dataset.tokenIdx=String(tokIdx);
+     chip.addEventListener('dragstart',()=>{dragPos=pos;chip.classList.add('is-dragging');});
+     chip.addEventListener('dragend',()=>{dragPos=null;chip.classList.remove('is-dragging');});
+     chip.addEventListener('dragover',e=>e.preventDefault());
+     chip.addEventListener('drop',e=>{
+      e.preventDefault();
+      if(dragPos===null||dragPos===pos)return;
+      const nextOrd=[...order];
+      const [moved]=nextOrd.splice(dragPos,1);
+      nextOrd.splice(pos,0,moved);
+      updateRecon(nextOrd);
+     });
+     chip.append(el('span',q.tokens[tokIdx],'quiz-recon-token'));
+     const actRow=el('span',undefined,'quiz-recon-chip-actions');
+     if(pos>0){
+      const leftB=button('←',()=>{const n=[...order];[n[pos-1],n[pos]]=[n[pos],n[pos-1]];updateRecon(n);},'quiz-recon-move');
+      leftB.setAttribute('aria-label',`Move “${q.tokens[tokIdx]}” left`);
+      actRow.append(leftB);
+     }
+     if(pos<order.length-1){
+      const rightB=button('→',()=>{const n=[...order];[n[pos+1],n[pos]]=[n[pos],n[pos+1]];updateRecon(n);},'quiz-recon-move');
+      rightB.setAttribute('aria-label',`Move “${q.tokens[tokIdx]}” right`);
+      actRow.append(rightB);
+     }
+     const remB=button('×',()=>updateRecon(order.filter((_,i)=>i!==pos)),'quiz-recon-remove');
+     remB.setAttribute('aria-label',`Remove “${q.tokens[tokIdx]}”`);
+     actRow.append(remB);
+     chip.append(actRow);
+     tray.append(chip);
+    }
+   }
+   const poolLabel=el('p','Available words / constituents','quiz-recon-label');
+   const pool=el('div',undefined,'quiz-recon-pool');
+   pool.setAttribute('role','group');pool.setAttribute('aria-label','Available words or constituents');
+   const remaining=(q.token_order||q.tokens.map((_,i)=>i)).filter(idx=>!order.includes(idx));
+   if(!remaining.length){
+    pool.append(el('span','All components placed.','quiz-recon-placeholder'));
+   }else{
+    for(const tokIdx of remaining){
+     const btn=button(q.tokens[tokIdx],()=>updateRecon([...order,tokIdx]),'quiz-recon-avail');
+     btn.dataset.tokenIdx=String(tokIdx);
+     pool.append(btn);
+    }
+   }
+   reconBox.append(trayLabel,tray,poolLabel,pool);
+  };
+  renderRecon();
+  qContent.append(reconBox);
+  onClearCurrent=()=>updateRecon([]);
+ }else if(isBuilderQ){
+  qContent.append(el('p',q.prompt,'quiz-prompt-text'));
+  if(typeof config.mountBuilder==='function'){
+   const wrap=el('div',undefined,'quiz-builder-wrap');
+   const toolbar=el('div',undefined,'first-tree-toolbar quiz-builder-toolbar');
+   const ws=el('div',undefined,'first-tree-workspace quiz-builder-workspace');
+   const stage=el('div',undefined,'first-tree-stage');
+   const palette=el('aside',undefined,'first-tree-palette');
+   palette.setAttribute('aria-label','Add a node');
+   const paletteHead=el('div',undefined,'first-tree-palette-head');
+   paletteHead.append(el('h4','Add a node'));
+   const paletteList=el('div',undefined,'first-tree-palette-list');
+   let editor=null;
+   const paletteToggle=button('Hide',()=>{
+    const collapsed=palette.classList.toggle('is-collapsed');
+    paletteList.hidden=collapsed;
+    paletteToggle.textContent=collapsed?'Show':'Hide';
+    paletteToggle.setAttribute('aria-expanded',String(!collapsed));
+    ws.classList.toggle('is-palette-collapsed',collapsed);
+    editor?.fit?.();
+   },'first-tree-palette-toggle');
+   paletteToggle.setAttribute('aria-expanded','true');
+   paletteHead.append(paletteToggle);
+   palette.append(paletteHead,paletteList);
+   ws.append(stage,palette);
+   const leftGrp=el('div',undefined,'first-tree-help');
+   const resetBtn=button('Reset starting tree',()=>{
+    editor?.restart?.();
+    flushTextDraft=null;clearTimeout(saveTimer);
+    setDraftResponse(null);
+    syncChrome();
+    store.clearAnswer(t.attempt_id,q.item_id).catch(()=>{});
+   });
+   leftGrp.append(resetBtn);
+   const ctrlGrp=el('div',undefined,'first-tree-controls');
+   ctrlGrp.append(
+    button('↶',()=>editor?.undo?.(),'first-tree-undo'),
+    button('−',()=>editor?.zoom?.(0.8),'first-tree-zoom-btn'),
+    button('+',()=>editor?.zoom?.(1.25),'first-tree-zoom-btn'),
+    button('Fit',()=>editor?.fit?.(),'first-tree-fit-btn'),
+   );
+   toolbar.append(leftGrp,ctrlGrp);
+   wrap.append(toolbar,ws);
+   qContent.append(wrap);
+   const exercise={
+    id:`quiz:${t.attempt_id}:${q.item_id}`,
+    profile:q.profile,
+    labels:q.labels,
+    seed:()=>{
+     const saved=t.responses?.[q.item_id];
+     if(saved?.model?.nodes)return JSON.parse(JSON.stringify(saved.model));
+     if(q.seed_tree)return fromCanonicalEnvelope(q.seed_tree);
+     const m=createModel();
+     addWordsFromText(m,q.seed_tokens||'',24,210);
+     return m;
+    },
+    onChange:model=>{
+     quietSave({schema:'builder-tree-1',touched:true,model:JSON.parse(JSON.stringify(model))});
+    },
+   };
+   mountBuilderNow=()=>{
+    editor=config.mountBuilder(stage,exercise);
+    for(const nodeLabel of (q.labels||editor.labels?.()||[])){
+     const addBtn=button(nodeLabel,()=>editor.addNode?.(nodeLabel),'first-tree-node-btn');
+     addBtn.dataset.nodeLabel=nodeLabel;
+     addBtn.setAttribute('aria-label',`Add ${nodeLabel} node`);
+     paletteList.append(addBtn);
+    }
+    if(typeof window!=='undefined'&&window.innerWidth<=760){
+     palette.classList.add('is-collapsed');paletteList.hidden=true;paletteToggle.textContent='Show';paletteToggle.setAttribute('aria-expanded','false');ws.classList.add('is-palette-collapsed');
+    }
+    editor?.fit?.();
+    quizBuilderCleanup=()=>{try{editor?.destroy?.();}catch{}quizBuilderCleanup=null;};
+   };
+   onClearCurrent=()=>resetBtn.click();
+  }else{
+   qContent.append(el('p','Interactive tree builder is unavailable in this environment.','quiz-card-error'));
+  }
+ }else{
+  const field=el('fieldset');field.append(el('legend',q.prompt));const choices=el('div',undefined,q.kind==='tree_choice'?'quiz-tree-options':'quiz-options');
+  for(const id of ref.option_order){const option=q.options.find(o=>o.id===id),label=el('label',undefined,'lesson-option'),radio=el('input');radio.type='radio';radio.name=q.item_id;radio.value=id;radio.checked=t.responses[q.item_id]===id;
+   radio.addEventListener('change',()=>action(()=>store.answer(t.attempt_id,q.item_id,id)));label.append(radio,el('span',option.text));
+   const group=el('div',undefined,'quiz-choice');group.append(label);if(option.diagram){const diagram=renderLessonTree(option.diagram);diagram.classList.add('quiz-candidate');diagram.querySelector('svg')?.setAttribute('aria-label',`Candidate ${id}: ${option.text}`);group.append(diagram);}choices.append(group);
+  }
+  field.append(choices);qContent.append(field);
+ }
+
+ panel.append(qContent);
+ syncChrome();
+ panel.append(controls);
+ main.append(panel);
 
  layout.append(main,navigator);
  body.append(layout);
  host.append(body);
+ mountBuilderNow?.();
 }
 function render(){
  if(!host||host.hidden||!store||!bank)return;const scroll=host.scrollTop;
+ cleanupActiveQuestion();
  host.replaceChildren();
  if(current){
   const t=store.attempts[current];
@@ -539,6 +908,8 @@ export function initQuizzes(options={}){
  const route=()=>{const match=/^#quiz\/([a-z0-9-]+)$/.exec(location.hash);if(match)config.onNavigate?.(match[1]);};window.addEventListener('hashchange',route);if(/^#quiz\//.test(location.hash))queueMicrotask(route);
 }
 export async function openQuizzes(id=null){
+ unfinishedOpen=false;
+ cleanupActiveQuestion();
  host.hidden=false;host.setAttribute('aria-busy','false');document.body.classList.add('curriculum-open','quizzes-open');const token=++generation;
   showCurriculumState(host, { message: 'Loading quizzes…' });
  try{
@@ -561,4 +932,4 @@ export async function openQuizzes(id=null){
    });
  }
 }
-export function closeQuizzes(){generation++;busy=false;current=null;pendingConfirmAttempt=null;if(host){host.hidden=true;host.replaceChildren();}document.body.classList.remove('quizzes-open','curriculum-open');}
+export function closeQuizzes(){cleanupActiveQuestion();generation++;busy=false;current=null;pendingConfirmAttempt=null;if(host){host.hidden=true;host.replaceChildren();}document.body.classList.remove('quizzes-open','curriculum-open');}

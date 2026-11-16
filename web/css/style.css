@@ -146,23 +146,59 @@ button:disabled {
   --subpanel-w: 336px;
 }
 .app-shell:has(.app-sidebar.expanded) { --rail-w: 240px; }
-.sidebar-progress {
-  padding: 8px 10px;
-  margin: 2px 0 4px;
-  border-radius: 8px;
-  background: var(--surface, var(--panel));
-  border: 1px solid var(--border);
-  font-size: 11.5px;
-  line-height: 1.4;
-  color: var(--text-muted);
-  overflow-wrap: break-word;
+.profile-identity-meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+  min-width: 0;
+  flex: 1 1 auto;
+  text-align: left;
 }
-.sidebar-progress-label { display: block; font-weight: 600; color: var(--text); }
+.profile-identity-name {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 650;
+  line-height: 1.25;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sidebar-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  font-size: 10.5px;
+  line-height: 1.2;
+  color: var(--text-muted);
+}
+.sidebar-progress-label {
+  display: block;
+  align-self: flex-end;
+  max-width: 100%;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sidebar-progress.is-guest .sidebar-progress-label {
+  align-self: flex-start;
+  text-align: left;
+}
 .sidebar-progress progress {
+  appearance: none;
   display: block;
   width: 100%;
-  height: 6px;
-  margin: 6px 0 4px;
+  height: 4px;
+  margin: 0;
   border: 0;
   border-radius: 999px;
   background: var(--border);
@@ -172,18 +208,7 @@ button:disabled {
 .sidebar-progress progress::-webkit-progress-bar { background: var(--border); border-radius: 999px; }
 .sidebar-progress progress::-webkit-progress-value { background: var(--accent); border-radius: 999px; }
 .sidebar-progress progress::-moz-progress-bar { background: var(--accent); border-radius: 999px; }
-.sidebar-progress progress[hidden],
-.sidebar-progress small[hidden] { display: none; }
-.sidebar-progress small { display: block; font-size: 11px; color: var(--text-muted); }
-.sidebar-progress.is-guest {
-  background: transparent;
-  border-color: transparent;
-  padding: 4px 10px 6px;
-}
-.sidebar-progress.is-guest .sidebar-progress-label {
-  font-weight: 500;
-  color: var(--text-muted);
-}
+.sidebar-progress progress[hidden] { display: none; }
 @media (min-width: 761px) {
   #appSidebar:not(.expanded) .sidebar-progress { display: none; }
 }
@@ -393,6 +418,15 @@ button:disabled {
   }
   #appSidebar .profile-chip {
     justify-content: flex-start;
+  }
+  #appSidebar.expanded .profile-chip {
+    height: auto;
+    min-height: 52px;
+    padding: 6px 10px 6px 0;
+    align-items: center;
+  }
+  #appSidebar.expanded .profile-identity-meta {
+    padding-left: 8px;
   }
   /* The account avatar: a 32px circle inside the same 40px lane. */
   #appSidebar .profile-icon {
@@ -696,6 +730,51 @@ button:disabled {
 .identity-avatar.guest {
   background: color-mix(in srgb, var(--header-text) 12%, transparent);
   color: var(--header-text);
+}
+.profile-icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.identity-level-badge {
+  position: absolute;
+  right: 1px;
+  bottom: 1px;
+  min-width: 15px;
+  height: 15px;
+  padding: 0 3.5px;
+  border-radius: 999px;
+  background: var(--panel, #fff);
+  color: var(--accent);
+  border: 1.5px solid var(--accent);
+  font-size: 9.5px;
+  font-weight: 800;
+  line-height: 12px;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+.identity-level-badge[hidden] {
+  display: none;
+}
+@media (max-width: 760px) {
+  #appSidebar .profile-chip {
+    width: 100%;
+    height: auto;
+    min-height: 48px;
+    padding: 6px 10px 6px 4px;
+    gap: 10px;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .identity-level-badge {
+    right: -4px;
+    bottom: -4px;
+  }
 }
 
 @media (max-width: 520px) {

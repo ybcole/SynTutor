@@ -489,7 +489,7 @@ export function boot() {
     if (activeWorkspaceView === 'achievements') renderAchievements();
     if (activeWorkspaceView === 'leaderboard') leaderboardView?.open();
   };
-  initQuizzes({ userId: () => activeUserId, client: () => supabase, onExit: enterTutorMode, onLesson: enterLessonsMode, onNavigate: enterAssessmentMode });
+  initQuizzes({ userId: () => activeUserId, client: () => supabase, onExit: enterTutorMode, onLesson: enterLessonsMode, onNavigate: enterAssessmentMode, mountBuilder: mountEmbeddedBuilder });
   window.addEventListener('syntutor:quiz-progress', handleLearningProgress);
   window.addEventListener('syntutor:lesson-progress', handleLearningProgress);
   initLessons({ userId: () => activeUserId, client: () => supabase, onNavigate: enterLessonsMode, onExit: enterTutorMode, mountBuilder: mountEmbeddedBuilder, onProgress: handleLearningProgress });
@@ -2041,24 +2041,33 @@ async function refreshSidebarProgress() {
   const box = document.getElementById('sidebarProgress');
   const label = document.getElementById('sidebarProgressLabel');
   const bar = document.getElementById('sidebarProgressBar');
-  const remaining = document.getElementById('sidebarProgressRemaining');
-  if (!label || !bar || !remaining) return;
+  const levelBadge = document.getElementById('identityLevelBadge');
+  const chip = document.getElementById('identityChip');
+  if (!label || !bar) return;
   const request = ++sidebarProgressRequest, user = activeUserId, client = supabase;
   const signedIn = progressAvailable();
   box?.classList.toggle('is-guest', !signedIn);
   if (!signedIn) {
-    label.textContent = 'Sign in to earn verified XP.';
+    label.textContent = 'Sign in for verified XP.';
     bar.value = 0;
     bar.hidden = true;
-    remaining.textContent = '';
-    remaining.hidden = true;
+    if (levelBadge) {
+      levelBadge.textContent = '';
+      levelBadge.hidden = true;
+    }
+    if (chip && isGuest) {
+      chip.title = 'Log In / Sign Up';
+      chip.setAttribute('aria-label', 'Log In / Sign Up');
+    }
     return;
   }
   label.textContent = 'Loading verified XP…';
   bar.value = 0;
   bar.hidden = true;
-  remaining.textContent = '';
-  remaining.hidden = true;
+  if (levelBadge) {
+    levelBadge.textContent = '';
+    levelBadge.hidden = true;
+  }
   const stats = await loadPlayerProgress();
   if (request !== sidebarProgressRequest || user !== activeUserId || client !== supabase) return;
   if (!stats) {
@@ -2066,10 +2075,20 @@ async function refreshSidebarProgress() {
     return;
   }
   const level = levelFromXp(stats.xp);
-  label.textContent = `Level ${level.level} · ${level.xp} verified XP`;
-  bar.max = level.span; bar.value = level.into; bar.hidden = false;
-  remaining.textContent = `${level.into}/${level.span} XP · ${level.next - level.xp} to next level`;
-  remaining.hidden = false;
+  label.textContent = `${level.xp} verified XP`;
+  bar.max = level.span;
+  bar.value = level.into;
+  bar.hidden = false;
+  bar.setAttribute('aria-label', `Level ${level.level}: ${level.into} of ${level.span} XP toward Level ${level.level + 1}`);
+  if (levelBadge) {
+    levelBadge.textContent = String(level.level);
+    levelBadge.hidden = false;
+  }
+  if (chip && !isGuest && clerk?.session) {
+    const name = playerDisplayName();
+    chip.title = `${name} · Level ${level.level}`;
+    chip.setAttribute('aria-label', `${name}, Level ${level.level}, ${level.xp} verified XP`);
+  }
 }
 
 async function loadAchievementBadges() {

@@ -445,7 +445,9 @@ try {
   const lessons = page.locator('#curriculumView');
   await lessons.locator('.lesson-module').first().waitFor();
   assert.ok(!(await lessons.locator('.lesson-total').textContent()).includes('in this view'), 'signed-in lesson total reflects account, not device-only preview');
-  assert.equal(await lessons.locator('.lesson-module-description, .lesson-module-objective, .lesson-prerequisite').count(), 0, 'overview cards omit descriptions, objectives, and prerequisite notes');
+  assert.equal(await lessons.locator('.lesson-prerequisite').count(), 0, 'overview cards omit prerequisite notes');
+  assert.equal(await lessons.locator('.lesson-module-description').count(), 11, 'Syntax overview cards display restored chapter descriptions');
+  assert.equal(await lessons.locator('.lesson-module-objective').count(), 11, 'Syntax overview cards display restored learning objectives');
   const br01Card = lessons.locator('[data-lesson-card="br-01"]');
   const br09Card = lessons.locator('[data-lesson-card="br-09"]');
   assert.equal(await br01Card.getByRole('button').innerText(), 'Start lesson');
@@ -455,7 +457,9 @@ try {
 
   // Grammar tab shows identical compact card layout + independent chapter-list scroll down to Ch. 20 while header/tabs/panels stay stationary.
   await lessons.getByRole('button', { name: 'Grammar and Analysis', exact: true }).click();
-  assert.equal(await lessons.locator('.lesson-module-description, .lesson-module-objective, .lesson-prerequisite').count(), 0, 'Grammar cards omit descriptions and objectives');
+  assert.equal(await lessons.locator('.lesson-prerequisite').count(), 0, 'Grammar cards omit prerequisite notes');
+  assert.equal(await lessons.locator('.lesson-module-description').count(), 20, 'Grammar overview cards display restored chapter descriptions');
+  assert.equal(await lessons.locator('.lesson-module-objective').count(), 20, 'Grammar overview cards display restored learning objectives');
   assert.equal(await lessons.locator('[data-lesson-card="cgel-ch01"]').getByRole('button').innerText(), 'Review lesson');
   const scrollMetricsBefore = await lessons.evaluate(() => ({
     outerScroll: document.querySelector('#curriculumView').scrollHeight > document.querySelector('#curriculumView').clientHeight + 2,

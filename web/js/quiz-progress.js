@@ -1,4 +1,5 @@
-import { makeAttempt,validateAttempt,canReviewAttempt,gradeAttempt,summaryFor,quizKey,reinforcement } from './quiz-core.js';
+import { makeAttempt,validateAttempt,canReviewAttempt,gradeAttempt,summaryFor,quizKey,reinforcement,itemsFor } from './quiz-core.js';
+import { isResponseProvided } from './quiz-mixed-eval.js';
 import { makeV2Attempt, publishedBlueprint } from './quiz-v2.js';
 export function createQuizStore(bank,{storage,userId='guest',client=null,timeoutMs=5000}={}) {
   const key=`syntutor:assessments:v1:${userId}`;
@@ -116,7 +117,7 @@ export function createQuizStore(bank,{storage,userId='guest',client=null,timeout
     toggleFlag(id,itemId){return transact(()=>{const t=state.attempts[id];if(!t||t.submitted_at)throw Error('This attempt cannot be modified.');if(!t.presented.some(r=>r.item_id===itemId))throw Error('Unknown question.');const current=Array.isArray(t.flagged)?t.flagged:[];const flagged=current.includes(itemId)?current.filter(x=>x!==itemId):[...current,itemId];const next={...t,flagged};state.attempts[id]=next;return next;});},
     submit(id,{requireComplete=false}={}){return transact(()=>{const t=state.attempts[id];if(!t)throw Error('Unknown attempt');
       if(t.submitted_at)return {attempt_id:id,earned:0,grade:gradeAttempt(bank,t)};
-      if(requireComplete&&t.presented.some(r=>t.responses?.[r.item_id]===undefined||t.responses?.[r.item_id]===null))throw Error('Answer every question before submitting.');
+      if(requireComplete&&itemsFor(bank,t).some(q=>!isResponseProvided(q,t.responses?.[q.item_id])))throw Error('Answer every question before submitting.');
       const a=bank.assessments.find(a=>quizKey(a)===quizKey(t))||{assessment_id:t.assessment_id,content_version:t.content_version};
       const before=t.practice?0:summaryFor(bank,state.attempts,a).xp_awarded;
       const grade=gradeAttempt(bank,t);if(t.quiz_v2)t.correct=grade.correct;t.submitted_at=new Date().toISOString();t.synced=false;dirty.add(id);delete state.drafts[quizKey(t)];

@@ -114,11 +114,6 @@
              the rail animates. -->
         <div class="app-sidebar-foot">
           <span class="rail-divider" aria-hidden="true"></span>
-          <section id="sidebarProgress" class="sidebar-progress is-guest" aria-label="Verified account progression" aria-live="polite">
-            <span id="sidebarProgressLabel" class="sidebar-progress-label">Sign in to earn verified XP.</span>
-            <progress id="sidebarProgressBar" value="0" max="100" aria-label="XP toward next level" hidden></progress>
-            <small id="sidebarProgressRemaining" hidden></small>
-          </section>
           <button id="themeToggleBtn" class="sidebar-item" type="button" aria-label="Toggle dark mode" title="Dark / Light mode">
             <span class="sidebar-icon" aria-hidden="true">
               <svg id="themeIcon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -136,8 +131,15 @@
                     <circle cx="12" cy="7" r="4"></circle>
                   </svg>
                 </span>
+                <span id="identityLevelBadge" class="identity-level-badge" hidden>0</span>
               </span>
-              <span id="identityLabel" class="sidebar-label">Guest</span>
+              <span class="sidebar-label profile-identity-meta">
+                <span id="identityLabel" class="profile-identity-name">Guest</span>
+                <span id="sidebarProgress" class="sidebar-progress is-guest" aria-label="Verified account progression" aria-live="polite">
+                  <progress id="sidebarProgressBar" value="0" max="100" aria-label="XP toward next level" hidden></progress>
+                  <span id="sidebarProgressLabel" class="sidebar-progress-label">Sign in for verified XP.</span>
+                </span>
+              </span>
             </button>
           </span>
         </div>

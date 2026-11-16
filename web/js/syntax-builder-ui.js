@@ -741,7 +741,8 @@ export function mountEmbeddedBuilder(stage, exercise) {
       fitEmbeddedView();
       draw();
     },
-    check: () => exercise.check(state.model),
+    check: () => exercise.check?.(state.model),
+    model: () => state.model,
     undo: () => tools.undo(),
     restart: () => tools.restartInline(),
     edit(action) {
@@ -2188,6 +2189,7 @@ function changed() {
   // standalone builder keeps its existing Build-tree validation instead.
   if (state.challenge) flagStructuralIssues();
   tools?.record();tools?.render();
+  embedded?.onChange?.(state.model);
 }
 
 // Paint disconnected nodes and empty phrase boxes. Skipped while the model is
