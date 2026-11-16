@@ -45,6 +45,7 @@ export function makeAssessmentItems(lessonItems, curriculum = null) {
       ||lessonItems.find(q=>q.chapter_id===chapter);
     const trackId=basis?.track_id||(chapter.startsWith('br-')?'syntax':'cambridge');
     const chapterMeta=curriculum?.find(t=>t.id===trackId)?.chapters.find(c=>c.id===chapter);
+    if(curriculum&&!chapterMeta?.topics?.some(t=>t.id===topic))return;
     const outcomes=basis?.outcome_ids||chapterMeta?.outcomes?.map(o=>o.id)||[];
     const sourceMeta=basis?.source_metadata||{
       kind:'syntutor_lesson_section',

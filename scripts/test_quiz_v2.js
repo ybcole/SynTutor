@@ -9,13 +9,13 @@ const course = await loadActiveCourse(async p => ({ok:true,json:async()=>json('w
 const curriculum = quizCurriculum(course);
 const bank = validateBank(json('web/content/quizzes/bank.json'));
 assert.deepEqual(curriculum.map(t=>t.id), ['syntax','cambridge']);
-assert.deepEqual(curriculum.map(t=>t.chapters.length),[11,19]);
+assert.deepEqual(curriculum.map(t=>t.chapters.length),[11,20]);
 for(const track of curriculum){
-  const lessons=course.lessons.filter(l=>l.track===track.lessonTrack&&l.lesson_id!=='cgel-ch01');
+  const lessons=course.lessons.filter(l=>l.track===track.lessonTrack);
   assert.deepEqual(track.chapters.map(c=>[c.id,c.title,c.chapter]),lessons.map(l=>[l.lesson_id,l.title,l.chapter]));
   for(const chapter of track.chapters){
     assert.ok(chapter.topics.length);
-    assert.ok(chapter.topics.every(t=>!['introduction','recap','closing-check','chapter-review'].includes(t.id)));
+    assert.ok(chapter.topics.every(t=>!['introduction','recap','closing-check','chapter-review','what-this-course-covers'].includes(t.id)));
     if(pilotArticles[chapter.id])assert.ok(chapter.topics.every(t=>pilotArticles[chapter.id].sections.some(s=>s.id===t.id&&s.title===t.title)));
   }
 }
@@ -45,8 +45,11 @@ assert.equal(gradeAttempt(bank,master).target_xp,0);
 assert.throws(()=>validateAttempt(bank,{...master,xp_policy:'unscored-v2'}),/verified-v2/);
 assert.throws(()=>validateAttempt(bank,{...a,presented:a.presented.slice(0,4)}),/five/);
 assert.throws(()=>validateAttempt(bank,{...a,presented:[a.presented[0],...a.presented.slice(0,4)]}),/Distinct/);
-assert.throws(()=>selectQuestions(bank,curriculum,{track:'syntax',mode:'master',count:111}),/distinct/);
-for(const count of [11,22,110])assert.equal(selectQuestions(bank,curriculum,{track:'syntax',mode:'master',count},{},42).items.length,count);
+assert.throws(()=>selectQuestions(bank,curriculum,{track:'syntax',mode:'master',count:51}),/50/);
+for(const count of [11,25,50])assert.equal(selectQuestions(bank,curriculum,{track:'syntax',mode:'master',count},{},42).items.length,count);
+// Historical Master attempts over 50 remain readable and gradable cleanly without breakage.
+const historicalMaster={...master,presented:bank.items.filter(q=>questionMetadata(q,curriculum)?.track_id==='syntax').slice(0,60).map(q=>({item_id:q.item_id,content_version:q.content_version,option_order:q.options.map(o=>o.id)}))};
+validateAttempt(bank,historicalMaster);assert.equal(gradeAttempt(bank,historicalMaster).incorrect,60);
 for(const groupCount of [3,5,7]){
   const groups=Array.from({length:groupCount},(_,g)=>({id:g,items:Array.from({length:10},(_,i)=>({g,i}))}));
   const selected=balancedSelection(groups,Math.max(GENERAL_POLICY.minimum,groupCount),rng(42));

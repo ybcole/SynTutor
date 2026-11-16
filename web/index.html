@@ -114,6 +114,11 @@
              the rail animates. -->
         <div class="app-sidebar-foot">
           <span class="rail-divider" aria-hidden="true"></span>
+          <section id="sidebarProgress" class="sidebar-progress is-guest" aria-label="Verified account progression" aria-live="polite">
+            <span id="sidebarProgressLabel" class="sidebar-progress-label">Sign in to earn verified XP.</span>
+            <progress id="sidebarProgressBar" value="0" max="100" aria-label="XP toward next level" hidden></progress>
+            <small id="sidebarProgressRemaining" hidden></small>
+          </section>
           <button id="themeToggleBtn" class="sidebar-item" type="button" aria-label="Toggle dark mode" title="Dark / Light mode">
             <span class="sidebar-icon" aria-hidden="true">
               <svg id="themeIcon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -135,11 +140,6 @@
               <span id="identityLabel" class="sidebar-label">Guest</span>
             </button>
           </span>
-          <section id="sidebarProgress" class="sidebar-progress" aria-label="Verified account progression" aria-live="polite">
-            <span id="sidebarProgressLabel">Sign in for verified XP.</span>
-            <progress id="sidebarProgressBar" value="0" max="100" aria-label="XP toward next level"></progress>
-            <small id="sidebarProgressRemaining">Local practice is not verified XP.</small>
-          </section>
         </div>
       </aside>
 
@@ -330,35 +330,59 @@
     <div id="leaderboardView" class="workspace-view" aria-hidden="true">
       <header class="view-header leaderboard-header">
         <h2 class="view-title">Leaderboard</h2>
+        <div class="leaderboard-xp-tracker">
+          <p id="leaderboardLifetime" class="xp-tracker-label">Sign in to see your private lifetime XP.</p>
+        </div>
       </header>
       <div class="leaderboard-content-wrapper">
-        <p id="leaderboardLifetime">Sign in to see your private lifetime XP.</p>
-        <label for="leaderboardPeriod">Ranking period</label>
-        <select id="leaderboardPeriod">
-          <option value="weekly">This week</option>
-          <option value="seasonal">This season</option>
-        </select>
-        <p id="leaderboardStatus" class="empty-note" role="status">Public rankings are paused.</p>
-        <p id="leaderboardRank"></p>
-        <div class="standings-table-container" id="leaderboardStandings" hidden>
-          <table class="standings-table" aria-label="Public XP rankings">
-            <thead><tr><th scope="col">Rank</th><th scope="col">Alias</th><th scope="col">Period XP</th></tr></thead>
-            <tbody id="leaderboardEntries"></tbody>
-          </table>
+        <div class="leaderboard-toolbar">
+          <div class="leaderboard-period-control">
+            <label for="leaderboardPeriod">Ranking period</label>
+            <select id="leaderboardPeriod" class="leaderboard-select">
+              <option value="weekly">This week</option>
+              <option value="seasonal">This season</option>
+            </select>
+          </div>
+          <div class="leaderboard-meta">
+            <span id="leaderboardRank" class="leaderboard-rank-pill"></span>
+            <p id="leaderboardStatus" class="empty-note leaderboard-status-note" role="status">Public rankings are paused.</p>
+          </div>
         </div>
-        <section aria-labelledby="leaderboardPrivacyTitle">
-          <h3 id="leaderboardPrivacyTitle">Participation and privacy</h3>
-          <p>Joining publishes your chosen alias, rank, and verified XP earned after you join. Use a nickname. You can leave at any time and keep your private progress.</p>
-          <form id="leaderboardConsent" hidden>
-            <label for="leaderboardAlias">Public alias</label>
-            <input id="leaderboardAlias" name="alias" required minlength="3" maxlength="24"
-              pattern="[A-Za-z][A-Za-z0-9_\-]{2,23}" placeholder="TreeLearner" autocomplete="off"
-              aria-describedby="leaderboardAliasHelp">
-            <p id="leaderboardAliasHelp">Start with a letter. Use 3–24 letters, numbers, underscores, or hyphens.</p>
-            <button id="leaderboardJoin" type="submit">Join public rankings</button>
+        <div class="podium-grid" id="leaderboardPodium" hidden></div>
+        <section class="standings-section" id="leaderboardStandings" hidden>
+          <h3 class="standings-title">Standings</h3>
+          <div class="standings-table-container">
+            <table class="standings-table" aria-label="Public XP rankings">
+              <thead>
+                <tr>
+                  <th scope="col">Rank</th>
+                  <th scope="col">Learner</th>
+                  <th scope="col" class="num">Period XP</th>
+                </tr>
+              </thead>
+              <tbody id="leaderboardEntries"></tbody>
+            </table>
+          </div>
+        </section>
+        <section class="leaderboard-privacy-card" aria-labelledby="leaderboardPrivacyTitle">
+          <h3 id="leaderboardPrivacyTitle" class="standings-title">Participation and privacy</h3>
+          <p class="leaderboard-privacy-copy">Joining publishes your chosen alias, rank, and verified XP earned after you join. Use a nickname. You can leave at any time and keep your private progress.</p>
+          <form id="leaderboardConsent" class="leaderboard-form" hidden>
+            <div class="leaderboard-form-field">
+              <label for="leaderboardAlias">Public alias</label>
+              <input id="leaderboardAlias" class="leaderboard-input" name="alias" required minlength="3" maxlength="24"
+                pattern="[A-Za-z][A-Za-z0-9_\-]{2,23}" placeholder="TreeLearner" autocomplete="off"
+                aria-describedby="leaderboardAliasHelp">
+              <p id="leaderboardAliasHelp" class="leaderboard-help">Start with a letter. Use 3–24 letters, numbers, underscores, or hyphens.</p>
+            </div>
+            <div class="leaderboard-actions">
+              <button id="leaderboardJoin" class="leaderboard-btn-primary" type="submit">Join public rankings</button>
+            </div>
           </form>
-          <button id="leaderboardLeave" type="button" hidden>Leave public rankings</button>
-          <p id="leaderboardPreferenceStatus" role="status"></p>
+          <div class="leaderboard-actions">
+            <button id="leaderboardLeave" class="leaderboard-btn-secondary" type="button" hidden>Leave public rankings</button>
+          </div>
+          <p id="leaderboardPreferenceStatus" class="leaderboard-pref-status" role="status"></p>
         </section>
       </div>
     </div>

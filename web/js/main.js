@@ -481,9 +481,16 @@ export function boot() {
   // The rail starts on the Syntax Generator: exactly one active destination.
   setActiveNav(workspaceView);
   initSyntaxBuilder({ onStatusChange: (msg) => log(msg), setWorkspaceView, userId: () => activeUserId });
+  const handleLearningProgress = () => {
+    refreshSidebarProgress();
+    if (progressAvailable()) loadAchievementBadges();
+    if (activeWorkspaceView === 'achievements') renderAchievements();
+    if (activeWorkspaceView === 'leaderboard') leaderboardView?.open();
+  };
   initQuizzes({ userId: () => activeUserId, client: () => supabase, onExit: enterTutorMode, onLesson: enterLessonsMode, onNavigate: enterAssessmentMode });
-  window.addEventListener('syntutor:quiz-progress', refreshSidebarProgress);
-  initLessons({ userId: () => activeUserId, client: () => supabase, onNavigate: enterLessonsMode, onExit: enterTutorMode, mountBuilder: mountEmbeddedBuilder, onProgress: refreshSidebarProgress });
+  window.addEventListener('syntutor:quiz-progress', handleLearningProgress);
+  window.addEventListener('syntutor:lesson-progress', handleLearningProgress);
+  initLessons({ userId: () => activeUserId, client: () => supabase, onNavigate: enterLessonsMode, onExit: enterTutorMode, mountBuilder: mountEmbeddedBuilder, onProgress: handleLearningProgress });
   window.addEventListener('focus', refreshSidebarProgress);
   initResizers();
   syncInputClearBtn();
@@ -1970,22 +1977,38 @@ async function loadPlayerProgress() {
 
 let sidebarProgressRequest = 0;
 async function refreshSidebarProgress() {
+  const box = document.getElementById('sidebarProgress');
   const label = document.getElementById('sidebarProgressLabel');
   const bar = document.getElementById('sidebarProgressBar');
   const remaining = document.getElementById('sidebarProgressRemaining');
   if (!label || !bar || !remaining) return;
   const request = ++sidebarProgressRequest, user = activeUserId, client = supabase;
-  label.textContent = progressAvailable() ? 'Loading verified XP…' : 'Sign in for verified XP.';
+  const signedIn = progressAvailable();
+  box?.classList.toggle('is-guest', !signedIn);
+  if (!signedIn) {
+    label.textContent = 'Sign in to earn verified XP.';
+    bar.value = 0;
+    bar.hidden = true;
+    remaining.textContent = '';
+    remaining.hidden = true;
+    return;
+  }
+  label.textContent = 'Loading verified XP…';
   bar.value = 0;
-  remaining.textContent = 'Local or pending progress is not verified XP.';
-  if (!progressAvailable()) return;
+  bar.hidden = true;
+  remaining.textContent = '';
+  remaining.hidden = true;
   const stats = await loadPlayerProgress();
   if (request !== sidebarProgressRequest || user !== activeUserId || client !== supabase) return;
-  if (!stats) { label.textContent = 'Verified XP unavailable.'; return; }
+  if (!stats) {
+    label.textContent = 'Verified XP unavailable.';
+    return;
+  }
   const level = levelFromXp(stats.xp);
   label.textContent = `Level ${level.level} · ${level.xp} verified XP`;
-  bar.max = level.span; bar.value = level.into;
-  remaining.textContent = `${level.into}/${level.span} XP · ${level.next-level.xp} to next level`;
+  bar.max = level.span; bar.value = level.into; bar.hidden = false;
+  remaining.textContent = `${level.into}/${level.span} XP · ${level.next - level.xp} to next level`;
+  remaining.hidden = false;
 }
 
 async function loadAchievementBadges() {

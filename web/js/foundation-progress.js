@@ -42,6 +42,7 @@ export function createFoundationStore(course, { storage, userId, client, localOn
   let records = {};
   let queue = Promise.resolve();
   let blocked = false;
+  let status = account ? 'Saved on this device; account sync pending' : 'Saved on this device';
 
   function read() {
     try {
@@ -110,13 +111,19 @@ export function createFoundationStore(course, { storage, userId, client, localOn
       }
       write();
       for (const lesson of lessons) await sync(lesson);
-    } catch { blocked = true; }
+      status = 'Synced to your account';
+    } catch {
+      blocked = true;
+      status = 'Account sync unavailable; progress is saved on this device.';
+    }
   }
   read();
   return {
     progress,
     get pending() { return account && lessons.some(lesson => entry(lesson).pending.length > 0); },
+    get status() { return status; },
     load: () => serial(load),
+    retry: () => serial(load),
     act(lesson, event) {
       return serial(async () => {
         const item = entry(lesson);
@@ -129,8 +136,15 @@ export function createFoundationStore(course, { storage, userId, client, localOn
           write();
         }
         let earned = account ? 0 : projected.xp - previous.xp;
-        try { earned += await sync(lesson); }
-        catch { blocked = true; }
+        if (account) {
+          try {
+            earned += await sync(lesson);
+            if (!blocked && !entry(lesson).pending.length) status = 'Synced to your account';
+          } catch {
+            blocked = true;
+            status = 'Account sync unavailable; progress is saved on this device.';
+          }
+        }
         return { earned, progress: progress(lesson) };
       });
     },

@@ -70,7 +70,7 @@ for(const track of curriculum){
   const counts=track.chapters.map(c=>itemsFor(bank,master).filter(q=>q.lesson_id===c.id).length);
   assert.ok(counts.every(Boolean));assert.ok(Math.max(...counts)-Math.min(...counts)<=1);
 }
-assert.equal(topics,317);assert.ok(availableTopics>80&&unavailableTopics>0);assert.ok(generals>0&&unavailableGenerals>0);
+assert.equal(topics,327);assert.ok(availableTopics>80&&unavailableTopics>0);assert.ok(generals>0&&unavailableGenerals>0);
 // Missing content is never padded with duplicate or synthetic approval records.
 const none={...bank,items:[],practice_items:[]};
 assert.throws(()=>selectQuestions(none,curriculum,{track:'syntax',chapter:'br-03',topic:'concepts',mode:'topic',content_tier:'lesson-practice'},{},1),/0\/5/);

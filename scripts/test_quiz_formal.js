@@ -12,24 +12,26 @@ const course=await loadActiveCourse(async p=>({ok:true,json:async()=>json('web'+
 const curriculum=quizCurriculum(course),bank=validateBank(json('web/content/quizzes/bank.json'));
 bank.practice_items=makeLessonPractice(curriculum,json('web/content/quizzes/syntax-practice-source.json'));
 bank.assessment_items=validateAssessmentItems(makeAssessmentItems(bank.practice_items,curriculum),curriculum);
-// Taught content is not automatically assessable: keep Lessons unchanged.
+// Non-assessable orientation topics stay excluded while genuine Chapter 1 topics are assessed; Lessons unchanged.
 const prelim=course.lessons.find(l=>l.lesson_id==='cgel-ch01');
 assert.equal(prelim.title,'Preliminaries');
 assert.ok(prelim.revised_assessment.opening.length&&prelim.revised_assessment.closing.length);
-assert.equal(curriculum[1].chapters.some(c=>c.id==='cgel-ch01'),false);
-assert.deepEqual(curriculum.map(t=>t.chapters.length),[11,19]);
+const ch01Quiz=curriculum[1].chapters.find(c=>c.id==='cgel-ch01');
+assert.ok(ch01Quiz&&ch01Quiz.topics.length===10);
+assert.equal(ch01Quiz.topics.some(t=>t.id==='what-this-course-covers'),false);
+assert.deepEqual(curriculum.map(t=>t.chapters.length),[11,20]);
 assert.equal(curriculum[0].chapters.find(c=>c.id==='br-11').topics.some(t=>t.id==='concepts'),false);
-assert.equal(bank.practice_items.some(q=>q.lesson_id==='cgel-ch01'),false);
-assert.equal(bank.assessment_items.some(q=>q.lesson_id==='cgel-ch01'),false);
+assert.equal(bank.practice_items.some(q=>q.lesson_id==='cgel-ch01'&&q.subtopic_id==='what-this-course-covers'),false);
+assert.equal(bank.assessment_items.some(q=>q.lesson_id==='cgel-ch01'&&q.subtopic_id==='what-this-course-covers'),false);
 assert.ok(bank.items.every(isRelevantAssessmentQuestion),'screen the immutable published bank as well as generated questions');
 assert.ok(bank.assessment_items.every(isRelevantAssessmentQuestion));
 assert.equal(isRelevantAssessmentQuestion({kind:'mcq',prompt:'Which page introduces the passive?'}),false);
 assert.equal(isRelevantAssessmentQuestion({kind:'concept_completion',prompt:'The book treats the second type as ____'}),false);
 assert.equal(isRelevantAssessmentQuestion({kind:'analysis',prompt:'Choose the Chapter 3 B-R diagram for quite gentle.'}),true);
-for(const track of curriculum)assert.deepEqual(track.chapters.map(c=>[c.id,c.title]),course.lessons.filter(l=>l.track===track.lessonTrack&&l.lesson_id!=='cgel-ch01').map(l=>[l.lesson_id,l.title]));
+for(const track of curriculum)assert.deepEqual(track.chapters.map(c=>[c.id,c.title]),course.lessons.filter(l=>l.track===track.lessonTrack).map(l=>[l.lesson_id,l.title]));
 const stale=structuredClone(curriculum);
-stale[1].chapters.unshift({id:'cgel-ch01',title:'Preliminaries',topics:[{id:'overview',title:'Course overview'}]});
-assert.equal(applyQuizScope(stale)[1].chapters.some(c=>c.id==='cgel-ch01'),false,'scope also filters old offline catalogs');
+stale[1].chapters[0].topics.unshift({id:'what-this-course-covers',title:'What this course covers'});
+assert.equal(applyQuizScope(stale)[1].chapters[0].topics.some(t=>t.id==='what-this-course-covers'),false,'scope also filters non-assessable intro from old offline catalogs');
 assert.ok(course.lessons.some(l=>l.lesson_id==='cgel-ch01'),'the course was not mutated');
 // Book-only / planned / unimplemented additions cannot create a quiz.
 const phantom={...prelim,lesson_id:'cgel-book-only',title:'Unsupported preliminary chapter'};
@@ -37,7 +39,7 @@ const extra=quizCurriculum({...course,lessons:[...course.lessons,phantom],planne
 assert.equal(extra[1].chapters.some(c=>c.id===phantom.lesson_id),false);
 const removed=quizCurriculum({...course,lessons:course.lessons.filter(l=>l.lesson_id!=='cgel-ch01')});
 assert.equal(removed[1].chapters.some(c=>c.id==='cgel-ch01'),false);
-assert.equal(makeAssessmentItems(makeLessonPractice(removed,json('web/content/quizzes/syntax-practice-source.json'))).some(q=>q.chapter_id==='cgel-ch01'),false);
+assert.equal(makeAssessmentItems(makeLessonPractice(removed,json('web/content/quizzes/syntax-practice-source.json')),removed).some(q=>q.chapter_id==='cgel-ch01'),false);
 assert.equal(eligibleQuestions(bank,curriculum,'cambridge','reviewed').length,10,'independently reviewed filter remains distinct');
 assert.ok(bank.assessment_items.length>1500);
 assert.ok(bank.assessment_items.every(q=>['analysis','rule_application'].includes(q.kind)),'retired verb-split concept_completion items');
@@ -96,8 +98,8 @@ for(const track of curriculum){
   const master=makeV2Attempt(bank,curriculum,{track:track.id,mode:'master',count:track.chapters.length+4,content_tier:'lesson-assessment',format:'formal'},{},17);
   assert.equal(new Set(itemsFor(bank,master).map(q=>q.lesson_id)).size,track.chapters.length);
 }
-assert.equal(topics,317);assert.equal(availableTopics,317);assert.equal(unavailableTopics,0);
-assert.equal(generals,30);assert.equal(unavailableGenerals,0);
+assert.equal(topics,327);assert.equal(availableTopics,327);assert.equal(unavailableTopics,0);
+assert.equal(generals,31);assert.equal(unavailableGenerals,0);
 const missedLegacy=makeV2Attempt(bank,curriculum,{track:'syntax',chapter:'br-03',topic:'worked-example',mode:'topic',content_tier:'lesson-practice'},{},21);
 missedLegacy.submitted_at=new Date().toISOString();
 const performance=topicPerformance(bank,curriculum,{missedLegacy},'syntax');
@@ -120,8 +122,9 @@ await store.answer(saved.attempt_id,first.item_id,first.answer);
 assert.throws(()=>reviewForLearner(bank,store.attempts[saved.attempt_id]),/Submit/);
 const reload=createQuizStore(bank,{storage});
 assert.deepEqual(reload.draft(saved).presented,saved.presented);
+await assert.rejects(()=>reload.submit(saved.attempt_id,{requireComplete:true}),/Answer every question/);
 const result=await reload.submit(saved.attempt_id);
 assert.equal(result.grade.correct,1);assert.equal(result.grade.incorrect,4);assert.equal(result.earned,2);
 assert.equal(reviewForLearner(bank,reload.attempts[saved.attempt_id]).correct,1);
 assert.equal((await reload.submit(saved.attempt_id)).earned,0);
-console.log(`PASS formal quizzes: ${bank.assessment_items.length} validated PROJECT_APPROVED items (independent_review=false), ${availableTopics}/${topics} topics playable, ${generals}/30 General quizzes & both Masters, Preliminaries excluded, defective-template regression gates, question-only projection, submission-gated results, verified XP best-score delta and reload.`);
+console.log(`PASS formal quizzes: ${bank.assessment_items.length} validated PROJECT_APPROVED items (independent_review=false), ${availableTopics}/${topics} topics playable, ${generals}/31 General quizzes & both Masters, Preliminaries assessable topics covered (orientation excluded), defective-template regression gates, question-only projection, submission-gated results, verified XP best-score delta and reload.`);

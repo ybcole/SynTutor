@@ -2,6 +2,8 @@ import { approved, reviewed, rng, shuffled, randomSeed, MAX_QUIZ_ITEMS } from '.
 import {isRelevantAssessmentQuestion} from './quiz-scope.js';
 
 export const GENERAL_POLICY = Object.freeze({ minimum: 5, perTopic: 1 });
+export const MAX_MASTER_QUIZ_ITEMS = 50;
+export const DEFAULT_MASTER_QUIZ_ITEMS = 25;
 // An additive crosswalk: published content and answer keys remain unchanged.
 // These narrow pools do NOT claim coverage of every topic in their chapter.
 const legacyTopics = {
@@ -135,7 +137,7 @@ export function selectQuestions(bank, curriculum, spec, attempts = {}, seed = ra
       selection = eligible.sort((a,b) => rank(b) - rank(a)).slice(0,5);
     }
   } else if (spec.mode === 'master') {
-    if(spec.count>MAX_QUIZ_ITEMS)throw Error(`Choose no more than ${MAX_QUIZ_ITEMS} questions per attempt.`);
+    if(spec.count>MAX_MASTER_QUIZ_ITEMS)throw Error(`Choose no more than ${MAX_MASTER_QUIZ_ITEMS} questions per attempt.`);
     selection = balancedSelection(track.chapters.map(c => ({ id: c.id, items: all.filter(q => meta(q).chapter_id === c.id) })), spec.count, random);
   } else {
     if (!chapter) throw Error('Unknown chapter.');

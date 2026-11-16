@@ -68,19 +68,20 @@ export function createQuizStore(bank,{storage,userId='guest',client=null,timeout
         if(error)throw error;
          for(const row of (data||[]).sort((a,b)=>a.started_at.localeCompare(b.started_at))){
           const old=state.attempts[row.attempt_id];
-          if(!old||row.submitted_at)state.attempts[row.attempt_id]={...row,practice:false,synced:true};
+          if(!old||row.submitted_at)state.attempts[row.attempt_id]={...row,practice:false,synced:true,...(old?.flagged?.length?{flagged:old.flagged}:{})};
           if (row.submitted_at) dirty.delete(row.attempt_id);
           if (archived(state.attempts[row.attempt_id])) continue;
           const draft=state.attempts[state.drafts[quizKey(row)]];
           if(row.submitted_at&&draft?.attempt_id===row.attempt_id)delete state.drafts[quizKey(row)];
           else if(!row.submitted_at&&(!draft||draft.submitted_at||row.started_at>draft.started_at))state.drafts[quizKey(row)]=row.attempt_id;
          }
-         const v2Rows=await bounded(client.from('quiz_attempts_v2').select('attempt_id,assessment_id,content_version,spec,title,diagnostic,seed,presented,responses,position,started_at,submitted_at,correct')).catch(()=>({data:[]}));
-         for(const row of (v2Rows.data||[]).sort((a,b)=>a.started_at.localeCompare(b.started_at))){
+         const v2Rows=await bounded(client.from('quiz_attempts_v2').select('attempt_id,assessment_id,content_version,spec,title,diagnostic,seed,presented,responses,position,started_at,submitted_at,correct'));
+         if(v2Rows?.error)throw v2Rows.error;
+         for(const row of (v2Rows?.data||[]).sort((a,b)=>a.started_at.localeCompare(b.started_at))){
            const restored={...row,quiz_v2:true,practice:false,xp_policy:'verified-v2',assessment_contract:'quiz-v2-formal-1',includes_unreviewed:false,synced:true};
            if(!canReviewAttempt(bank,restored))continue;
            const old=state.attempts[restored.attempt_id];
-           if(!old||old.synced||restored.submitted_at){state.attempts[restored.attempt_id]=restored;dirty.delete(restored.attempt_id);}
+           if(!old||old.synced||restored.submitted_at){state.attempts[restored.attempt_id]={...restored,...(old?.flagged?.length?{flagged:old.flagged}:{})};dirty.delete(restored.attempt_id);}
            const t=state.attempts[restored.attempt_id];
            if(t.submitted_at){if(state.drafts[quizKey(t)]===t.attempt_id)delete state.drafts[quizKey(t)];}
            else{
@@ -88,8 +89,9 @@ export function createQuizStore(bank,{storage,userId='guest',client=null,timeout
              if(!draft||draft.submitted_at||draft.started_at<t.started_at)state.drafts[quizKey(t)]=t.attempt_id;
            }
          }
-         const practiceRows=await bounded(client.from('quiz_practice_v2').select('payload')).catch(()=>({data:[]}));
-         for(const {payload} of practiceRows.data||[]){
+         const practiceRows=await bounded(client.from('quiz_practice_v2').select('payload'));
+         if(practiceRows?.error)throw practiceRows.error;
+         for(const {payload} of practiceRows?.data||[]){
            if(!payload?.quiz_v2||!payload.practice||!canReviewAttempt(bank,payload))continue;
            const old=state.attempts[payload.attempt_id];
            if(!old||old.synced||payload.submitted_at){state.attempts[payload.attempt_id]={...payload,synced:true};dirty.delete(payload.attempt_id);}
@@ -108,9 +110,13 @@ export function createQuizStore(bank,{storage,userId='guest',client=null,timeout
     practice(seed){return transact(()=>{const t=reinforcement(bank,state.attempts,seed);state.attempts[t.attempt_id]=t;return t;});},
     answer(id,itemId,answer){return transact(()=>{const t=state.attempts[id];if(!t||t.submitted_at)throw Error('This attempt is read-only. Start a new attempt to retry.');
       const next={...t,synced:false,responses:{...t.responses,[itemId]:answer}};validateAttempt(bank,next);state.attempts[id]=next;dirty.add(id);return next;});},
+    clearAnswer(id,itemId){return transact(()=>{const t=state.attempts[id];if(!t||t.submitted_at)throw Error('This attempt is read-only. Start a new attempt to retry.');
+      const responses={...t.responses};delete responses[itemId];const next={...t,synced:false,responses};validateAttempt(bank,next);state.attempts[id]=next;dirty.add(id);return next;});},
     move(id,position){return transact(()=>{const t=state.attempts[id];if(!t||!Number.isInteger(position)||position<0||position>=t.presented.length)throw Error('Invalid question position');t.position=position;if(!t.submitted_at){t.synced=false;dirty.add(id);}return t;});},
-    submit(id){return transact(()=>{const t=state.attempts[id];if(!t)throw Error('Unknown attempt');
+    toggleFlag(id,itemId){return transact(()=>{const t=state.attempts[id];if(!t||t.submitted_at)throw Error('This attempt cannot be modified.');if(!t.presented.some(r=>r.item_id===itemId))throw Error('Unknown question.');const current=Array.isArray(t.flagged)?t.flagged:[];const flagged=current.includes(itemId)?current.filter(x=>x!==itemId):[...current,itemId];const next={...t,flagged};state.attempts[id]=next;return next;});},
+    submit(id,{requireComplete=false}={}){return transact(()=>{const t=state.attempts[id];if(!t)throw Error('Unknown attempt');
       if(t.submitted_at)return {attempt_id:id,earned:0,grade:gradeAttempt(bank,t)};
+      if(requireComplete&&t.presented.some(r=>t.responses?.[r.item_id]===undefined||t.responses?.[r.item_id]===null))throw Error('Answer every question before submitting.');
       const a=bank.assessments.find(a=>quizKey(a)===quizKey(t))||{assessment_id:t.assessment_id,content_version:t.content_version};
       const before=t.practice?0:summaryFor(bank,state.attempts,a).xp_awarded;
       const grade=gradeAttempt(bank,t);if(t.quiz_v2)t.correct=grade.correct;t.submitted_at=new Date().toISOString();t.synced=false;dirty.add(id);delete state.drafts[quizKey(t)];

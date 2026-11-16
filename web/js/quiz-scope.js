@@ -1,7 +1,10 @@
 // Lessons determines what is taught; this policy determines what is assessed.
 // These exclusions NEVER alter the Lessons catalog, content or progress.
-const excludedChapters = new Set(['cgel-ch01']); // Preliminaries: orientation, not a Quiz chapter.
-const excludedTopics = new Set(['br-11/concepts']); // Language varieties/description, not grammatical analysis.
+const excludedChapters = new Set();
+const excludedTopics = new Set([
+  'br-11/concepts', // Language varieties/description, not grammatical analysis.
+  'cgel-ch01/what-this-course-covers', // Non-assessable introductory course scope overview.
+]);
 
 export function applyQuizScope(curriculum) {
   return curriculum.map(track=>({...track,chapters:track.chapters
