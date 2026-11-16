@@ -62,6 +62,31 @@ class NonFiniteSubjectProjectionTest(unittest.TestCase):
     def test_ordinary_np_subject_is_not_misread_as_a_clause(self):
         self.assert_projected('Running water keeps him healthy.')
 
+    def test_gerund_temporal_adjunct_uses_vp_layer_and_covert_p(self):
+        payload, analysis = self.canonical('Running every morning keeps him healthy.')
+        root = analysis['tree']['root']
+
+        def nodes(node):
+            yield node
+            for child in node.get('children', []):
+                yield from nodes(child)
+
+        all_nodes = list(nodes(root))
+        running = next(n for n in all_nodes
+                       if n.get('label') == 'V'
+                       and any(c.get('word') == 'Running' for c in n.get('children', [])))
+        self.assertEqual(running.get('features'), ['intrans', '-tense'])
+        pp = next(n for n in all_nodes if n.get('label') == 'PP')
+        self.assertEqual(pp['children'][0]['label'], 'P')
+        covert = pp['children'][0]['children'][0]
+        self.assertEqual(covert['label'], 'E')
+        self.assertTrue(covert.get('empty'))
+        # The temporal PP is a sister of the lexical VP, inside a higher VP.
+        vp_with_pp = next(n for n in all_nodes
+                          if n.get('label') == 'VP'
+                          and any(c.get('label') == 'PP' for c in n.get('children', [])))
+        self.assertEqual(vp_with_pp['children'][0]['label'], 'VP')
+
     def test_case_error_in_object_predicative_subject(self):
         payload, _ = self.canonical('Running every morning keeps he healthy.')
         self.assertEqual(payload['summary'].get('verdict'), 'ungrammatical')

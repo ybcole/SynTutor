@@ -44,7 +44,9 @@ PRONOUNS = {
 POSSESSIVE_PRONOUNS = {"mine", "yours", "his", "hers", "ours", "theirs"}
 SUBORDINATORS = {"if", "unless", "because", "although", "though", "while", "whereas", "when", "once", "as", "until", "before", "after", "since", "than"}
 TEMPORAL_P = {"after", "before", "until"}
-TIME_NOUNS = {"today", "tomorrow", "yesterday", "tonight", "night", "week", "year", "day", "time", "moment"}
+TIME_NOUNS = {"today", "tomorrow", "yesterday", "tonight", "night", "week", "year",
+              "day", "time", "moment", "morning", "afternoon", "evening", "month",
+              "weekend", "spring", "summer", "autumn", "winter"}
 LOCATIVE_WORDS = {"here", "there", "upstairs", "downstairs", "outside", "inside"}
 TEMPORAL_P_WORDS = {"now", "then"}
 LOCATIVE_PREPOSITIONS = {"above", "across", "against", "along", "at", "behind", "below", "beside",
@@ -634,6 +636,10 @@ class Projection:
     def adjunct(self, node):
         if tag(node) == "S" and self.is_nonfinite(node):
             return self.nonfinite(node)
+        if tag(node) == "NP" and self.is_time_np(node):
+            # Ch5: an adjunct adverbial is a sister of VP inside a higher VP.
+            # A bare time NP is realised as a PP with a covert P (Ch5 pp.100–102).
+            return self.temporal_pp(node)
         return self.phrase(node)
 
     def attach(self, tree, label, leading=(), trailing=()):
@@ -1097,6 +1103,11 @@ class Projection:
 
     def clause(self, node, incoming=None):
         label, parts = tag(node), kids(node)
+        # Terminal punctuation is part of the sentence/token stream but not a
+        # phrase-marker constituent. Drop it from the grammatical projection
+        # only; the envelope keeps the original token and its offsets.
+        while parts and tag(parts[-1]) in {".", "!", "?"}:
+            parts = parts[:-1]
         if label in {"ROOT", "TOP"} and len(parts) == 1:
             return self.clause(parts[0], incoming)
         if label in {"S", "SQ"} and incoming is None and self.is_question_tag(node):
@@ -1178,7 +1189,8 @@ class Projection:
             return branch("S", TOPIC, self.phrase(parts[0]), self.clause(parts[1]))
         if len(parts) == 1 and tag(parts[0]) == "VP" and incoming is None:
             vp_parts = kids(parts[0])
-            if vp_parts and leaf(vp_parts[0]) and tag(vp_parts[0]) == "VB" and lemma(vp_parts[0]) == word(vp_parts[0]):
+            if vp_parts and leaf(vp_parts[0]) and tag(vp_parts[0]) == "VB" \
+                    and lemma(vp_parts[0]).lower() == word(vp_parts[0]).lower():
                 imperative = ("Ch3 p. 66; Ch10 pp. 224–225",)
                 subject = branch("NP", imperative, {"gap": True})
                 return branch("S", imperative, subject, self.vp(vp_parts, "untensed", subject))
