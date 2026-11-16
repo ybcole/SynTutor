@@ -1700,9 +1700,7 @@ async function postParse(text, index = null, variety = null) {
 // diagnostic instead of silently displaying a fake B-R tree.
 // A raw parser diagnostic is NOT a Burton-Roberts tree. Keep it opt-in;
 // never silently make Penn/Benepar the primary learner-facing analysis.
-const visibleParserDiagnostics = new WeakSet();
 let canonicalCanvas = null;
-
 function clearCanonicalTree() {
   const host = document.querySelector('#canonicalTreeView');
   if (host && !host.hidden) {
@@ -1909,26 +1907,17 @@ function setTreeAuthorityNotice(payload) {
     return;
   }
   if (workspaceView === 'tutor' && !quizMode) {
-    notice.textContent = status === 'normalized' ? 'B-R display labels are unavailable. The raw parser diagnostic is hidden by default.'
-      : `B-R analysis remains unresolved; raw parser labels are hidden by default.${detail ? ` ${detail}` : ''}`;
+    // The generator never presents a Penn/Benepar parse as a B-R tree, and the
+    // old opt-in "Show parser diagnostic" control is gone. Unsupported
+    // constructions stay fail-closed with a short status instead.
+    notice.textContent = status === 'normalized'
+      ? 'A Burton-Roberts tree is not available for this construction.'
+      : `A Burton-Roberts tree is not available for this construction.${detail ? ` ${detail}` : ''}`;
+    notice.hidden = false;
+    document.querySelector('#toggleParserDiagnostic')?.remove();
     const canvas = document.querySelector('#treeCanvas');
-    const toggle = document.createElement('button');
-    toggle.type = 'button';
-    toggle.id = 'toggleParserDiagnostic';
-    const refresh = () => {
-      const shown = visibleParserDiagnostics.has(payload);
-      if (canvas) canvas.hidden = !shown;
-      toggle.textContent = shown ? 'Hide parser diagnostic' : 'Show parser diagnostic';
-      toggle.setAttribute('aria-expanded', String(shown));
-      if (shown) requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
-    };
-    toggle.addEventListener('click', () => {
-      if (visibleParserDiagnostics.has(payload)) visibleParserDiagnostics.delete(payload);
-      else visibleParserDiagnostics.add(payload);
-      refresh();
-    });
-    refresh();
-    notice.append(document.createElement('br'), toggle);
+    if (canvas) canvas.hidden = true;
+    return;
   } else {
     notice.textContent = 'Benepar parser diagnostic';
   }

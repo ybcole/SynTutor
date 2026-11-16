@@ -167,6 +167,8 @@ def main():
     print(f"  canonical trees resolved: {len(valid) - len(unresolved)}/{len(valid)}")
     print(f"  triangles in resolved trees: {len(triangles)}")
     print(f"  nodes missing an explanation: {len(uncovered)} sentences")
+    print("  generic C-UNLISTED explanations: "
+          f"{sum(item['generic_fallbacks'] for item in valid)}")
     print("invalid sentences:")
     print(f"  rejected: {len(invalid) - len(false_positives)}/{len(invalid)}")
     print(f"  false positives: {len(false_positives)}")

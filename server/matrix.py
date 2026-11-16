@@ -1784,6 +1784,19 @@ class MatrixEvaluator:
 
     def _classify(self, parent, child, grandparent=None):
         pt, ct = parent['type'], child['type']
+        if pt == 'NP' and ct == 'EX':
+            return ('valid', 'C-SUBJECT-ROLE',
+                    f"The word '{self._p(child)}' is the dummy subject of "
+                    f"'{self._p(parent)}'; it holds the subject position for the "
+                    'displaced content.')
+        if pt == 'VP' and ct == 'RB' and _lower(child.get('surface', '')) in {'not', "n't"}:
+            return ('valid', 'C-ADVERBIAL',
+                    f"'{self._p(child)}' negates the predicate in "
+                    f"'{self._p(parent)}'.")
+        if pt == 'VP' and ct == 'PRT':
+            return ('valid', 'C-PARTICLE',
+                    f"'{self._p(child)}' is the particle that completes the "
+                    f"verb in '{self._p(parent)}'.")
         if pt == 'S':
             if ct == 'NP':
                 return self._s_subject(parent, child)
@@ -1922,6 +1935,68 @@ class MatrixEvaluator:
                             f"'{self._p(child)}' is the verb part of "
                             f"'{self._p(parent)}' — it tells what the subject "
                             'does or is.')
+        # Explicit coverage for the remaining clause/notational edges: these
+        # are valid constructions, not unrated fallbacks.
+        if pt == 'NP' and ct == 'EX':
+            return ('valid', 'C-SUBJECT-ROLE',
+                    f"The word '{self._p(child)}' is the dummy subject of "
+                    f"'{self._p(parent)}'; it holds the subject position for the "
+                    'displaced content.')
+        if pt == 'S' and ct == 'S':
+            return ('valid', 'C-SUBJECT-ROLE',
+                    f"The clause '{self._p(child)}' is the subject of "
+                    f"'{self._p(parent)}'.")
+        if pt == 'S' and ct == 'VB' and _lower(child.get('surface', '')) == 'please':
+            return ('valid', 'C-ADVERBIAL',
+                    f"'{self._p(child)}' is a politeness marker before the "
+                    f"command in '{self._p(parent)}'.")
+        if pt == 'VP' and ct == 'RB' and _lower(child.get('surface', '')) in {'not', "n't"}:
+            return ('valid', 'C-ADVERBIAL',
+                    f"'{self._p(child)}' negates the predicate in "
+                    f"'{self._p(parent)}'.")
+        if pt == 'VP' and ct == 'PRT':
+            return ('valid', 'C-PARTICLE',
+                    f"'{self._p(child)}' is the particle that completes the "
+                    f"verb in '{self._p(parent)}'.")
+        if pt == 'PRT' and ct == 'RP':
+            return ('valid', 'C-PARTICLE',
+                    f"'{self._p(child)}' is a verb particle.")
+        if pt == 'ADJP' and ct == 'ADVP':
+            return ('valid', 'C-COMPARATIVE-STRUCT',
+                    f"'{self._p(child)}' carries the comparison in "
+                    f"'{self._p(parent)}'.")
+        if pt == 'ADJP' and ct == 'SBAR':
+            return ('valid', 'C-COMPARATIVE-STRUCT',
+                    f"'{self._p(child)}' supplies the compared clause in "
+                    f"'{self._p(parent)}'.")
+        if pt == 'ADJP' and ct == 'CC':
+            return ('valid', 'C-COORDINATOR',
+                    f"'{self._p(child)}' coordinates the two describing words "
+                    f"in '{self._p(parent)}'.")
+        if pt == 'ADVP' and ct == 'DT':
+            return ('valid', 'C-COMPARATIVE-STRUCT',
+                    f"'{self._p(child)}' introduces the comparative phrase "
+                    f"'{self._p(parent)}'.")
+        if pt == 'SBARQ' and ct in {'WHNP', 'WHADVP'}:
+            return ('valid', 'C-CLAUSE-SUBJECT',
+                    f"'{self._p(child)}' is the fronted question phrase in "
+                    f"'{self._p(parent)}'.")
+        if pt == 'SBARQ' and ct == 'SQ':
+            return ('valid', 'C-CLAUSAL-COMPLEMENT',
+                    f"'{self._p(child)}' is the inverted clause at the centre "
+                    f"of '{self._p(parent)}'.")
+        if pt == 'SQ' and ct in {'VBD', 'VBP', 'VBZ', 'MD'}:
+            return ('valid', 'C-AUXILIARY',
+                    f"'{self._p(child)}' is the inverted auxiliary of "
+                    f"'{self._p(parent)}'.")
+        if pt == 'SINV' and ct == 'ADVP':
+            return ('valid', 'C-ADVERBIAL',
+                    f"'{self._p(child)}' is the fronted adverbial that triggers "
+                    f"inversion in '{self._p(parent)}'.")
+        if pt == 'SINV' and ct in {'VBD', 'VBP', 'VBZ', 'MD'}:
+            return ('valid', 'C-AUXILIARY',
+                    f"'{self._p(child)}' is the fronted auxiliary in "
+                    f"'{self._p(parent)}'.")
         return self._unlisted(parent, child)
 
     def _unlisted(self, parent, child):

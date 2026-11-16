@@ -48,6 +48,31 @@ class FalsePositiveRegressionTest(unittest.TestCase):
     def test_adverb_inside_is_licensed(self):
         self.assertEqual(self.verdict('If it rains, we will stay inside.'), 'grammatical')
 
+    def test_covered_constructions_do_not_fall_back_to_unlisted(self):
+        sentences = [
+            'There are many reasons to celebrate.',
+            'What did you buy at the market?',
+            'Where are the keys?',
+            'Why is she laughing?',
+            'Never have I seen such a beautiful sunset.',
+            'Please close the door.',
+            'Do not touch the paintings.',
+            'Running every morning keeps him healthy.',
+            'To learn a language requires patience.',
+            'The more you practice, the better you become.',
+            'The city where I grew up has changed.',
+            'Mathematics is difficult but rewarding.',
+        ]
+        for sentence in sentences:
+            with self.subTest(sentence=sentence):
+                payload = build_payload(sentence)
+                fallbacks = [
+                    detail for detail in (payload.get('node_details') or {}).values()
+                    if detail.get('constraint') == 'C-UNLISTED'
+                    or detail.get('status') == 'unlisted'
+                ]
+                self.assertEqual(fallbacks, [])
+
 
 if __name__ == '__main__':
     unittest.main()
