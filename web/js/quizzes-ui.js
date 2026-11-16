@@ -9,7 +9,7 @@ import {selectQuestions,specKey,eligibleQuestions,publishedBlueprint,questionMet
 import {makeLessonPractice,validateLessonPractice} from './quiz-lesson-practice.js';
 import {makeAssessmentItems,validateAssessmentItems} from './quiz-assessment-items.js';
 import {applyQuizScope} from './quiz-scope.js';
-let host,config={},bank,store,curriculum,current=null,trackId='syntax',busy=false,message='',generation=0,pendingConfirmAttempt=null;
+let host,config={},bank,store,curriculum,current=null,trackId='syntax',busy=false,message='',generation=0,pendingConfirmAttempt=null,lastEarned=null;
 const el=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
 const button=(text,fn,cls='')=>{const b=el('button',text,cls);b.type='button';b.addEventListener('click',fn);return b;};
 function iconButton(label,svg,fn,cls='header-icon-btn'){
@@ -19,50 +19,47 @@ function iconButton(label,svg,fn,cls='header-icon-btn'){
  b.innerHTML=svg;
  return b;
 }
-const BACK_ARROW_SVG='<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>';
-const PREV_ARROW_SVG='<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>';
-const NEXT_ARROW_SVG='<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>';
+const BACK_ARROW_SVG='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>';
+const PREV_ARROW_SVG='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>';
+const NEXT_ARROW_SVG='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>';
 const FLAG_SVG='<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>';
 const shortDate=new Intl.DateTimeFormat(undefined,{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});
 const shortDateSeconds=new Intl.DateTimeFormat(undefined,{month:'short',day:'numeric',hour:'numeric',minute:'2-digit',second:'2-digit'});
 const plural=(n,word)=>`${n} ${n===1?word:word+'s'}`;
 const answeredCount=t=>t.presented.filter(q=>t.responses?.[q.item_id]!==undefined&&t.responses?.[q.item_id]!==null).length;
 const trackTabLabel=track=>track.id==='cambridge'?'Grammar':track.title;
+const lessonTitle=lid=>curriculum?.flatMap(t=>t.chapters).find(c=>c.id===lid)?.title||bank?.assessments?.find(a=>a.assessment_id===`quiz-${lid}`)?.title||lid;
+const parseLessonRef=ref=>{const m=/^#lesson\/([^/]+)(?:\/([^/]+))?/.exec(ref||'');return m?{lessonId:m[1],section:m[2]||null}:null;};
+const subtopicTitle=(lid,sid)=>sid?curriculum?.flatMap(t=>t.chapters).find(c=>c.id===lid)?.topics?.find(x=>x.id===sid)?.title||null:null;
 function assessmentFor(t){return bank.assessments.find(a=>quizKey(a)===quizKey(t));}
 async function action(fn){
  if(busy)return;const token=generation,focusName=document.activeElement?.name,focusValue=document.activeElement?.value;busy=true;pendingConfirmAttempt=null;host.setAttribute('aria-busy','true');host.querySelectorAll('button,input').forEach(n=>{n.disabled=true;});
  try{const result=await fn();if(token!==generation)return;
   if(result?.attempt_id)current=result.attempt_id;
-  if(result&&Object.hasOwn(result,'earned'))window.dispatchEvent(new Event('syntutor:quiz-progress'));
-  message=result&&Object.hasOwn(result,'earned')?(store.attempts[result.attempt_id]?.practice?`Quiz submitted. Score: ${result.grade.correct}/${result.grade.results.length}.`:`${result.earned} new quiz XP earned.`):'';
+  if(result&&Object.hasOwn(result,'earned')){
+   lastEarned={attempt_id:result.attempt_id,earned:result.earned};
+   window.dispatchEvent(new Event('syntutor:quiz-progress'));
+  }
+  message='';
  }catch(e){if(token===generation)message=e.message;}
  finally{if(token===generation){busy=false;host.setAttribute('aria-busy','false');render();if(focusName)host.querySelector(`input[name="${CSS.escape(focusName)}"][value="${focusValue}"]`)?.focus();}}
 }
-function footer(){
+function inlineNotice(parent){
  const signedIn=Boolean(config.userId?.());
  const syncFailed=signedIn&&store.status!=='Synced to your account';
- if(!message&&!signedIn)return;
- const f=el('footer',undefined,'lesson-save-status');
- f.setAttribute('aria-live','polite');
- if(message)f.append(el('p',message));
- if(signedIn&&(!message||syncFailed)){
-  f.append(el('p',store.status));
- }
- if(syncFailed)f.append(button('Retry account sync',()=>action(()=>store.retry())));
- host.append(f);
+ const text=message||(syncFailed?store.status:'');
+ if(!text&&!syncFailed)return;
+ const bar=el('div',undefined,'quiz-notice');
+ bar.setAttribute('role','status');
+ if(text)bar.append(el('p',text));
+ if(syncFailed)bar.append(button('Retry sync',()=>action(()=>store.retry())));
+ (parent||host).append(bar);
 }
 function attemptHistorySummary(assessment){
  const previous=Object.values(store.attempts).filter(t=>quizKey(t)===quizKey(assessment)&&t.submitted_at&&!store.isArchived(t)).sort((a,b)=>a.submitted_at.localeCompare(b.submitted_at));
  if(!previous.length)return null;
  const last=previous.at(-1),best=Math.max(...previous.map(t=>gradeAttempt(bank,t).correct/t.presented.length));
  return `Best ${Math.round(best*100)}% · Last ${gradeAttempt(bank,last).correct}/${last.presented.length} · ${plural(previous.length,'attempt')}`;
-}
-function xpMeter(awarded,maxXp){
- if(!awarded||awarded<=0||!maxXp)return null;
- const wrap=el('div',undefined,'quiz-xp-meter');
- const bar=el('progress');bar.value=Math.min(awarded,maxXp);bar.max=maxXp;bar.setAttribute('aria-label',`${awarded} of ${maxXp} XP earned`);
- wrap.append(bar,el('span',`${awarded}/${maxXp} XP`,'quiz-xp-label'));
- return wrap;
 }
 function v2Card(parent,title,spec,opts={}){
  const published=publishedBlueprint(bank,curriculum,spec);
@@ -80,23 +77,19 @@ function v2Card(parent,title,spec,opts={}){
  if(isPersonalized&&!reason){
   const perf=topicPerformance(bank,curriculum,store.attempts,spec.track);
   const desc=selection.diagnostic
-   ?'Builds a short baseline across chapters. Complete 5 questions in this track so future quizzes can target weaker concepts.'
+   ?'Baseline quiz across chapters to identify topics for review.'
    :perf.missed.size>0
-    ?'Prioritizes weaker grammatical concepts from your previous results and excludes questions you missed.'
-    :'Adapts to your completed quiz history and selects unseen questions across topics.';
+    ?'Targets grammatical concepts from your recent misses.'
+    :'Adapts to your history with unseen questions.';
   card.append(el('p',desc,'quiz-card-desc'));
  }
  const statusText=reason
   ?reason
   :draft
-   ?`In progress · ${answeredCount(draft)} of ${draft.presented.length} answered`
-   :(attemptHistorySummary(assessment)||'Not started');
- card.append(el('p',statusText,reason?'quiz-card-error':'quiz-card-status'));
+   ?`In progress · ${answeredCount(draft)}/${draft.presented.length} answered`
+   :attemptHistorySummary(assessment);
+ if(statusText)card.append(el('p',statusText,reason?'quiz-card-error':'quiz-card-status'));
  const cardFoot=el('div',undefined,'quiz-card-footer');
- if(!reason){
-  const meter=xpMeter(store.summary(assessment).xp_awarded,2*selection.items.length);
-  if(meter)cardFoot.append(meter);
- }
  const start=button(draft?'Resume quiz':reason?'Quiz unavailable':'Start quiz',()=>action(()=>draft||store.startV2(curriculum,activeSpec)),'lesson-primary');
  start.disabled=!!reason&&!draft;
  cardFoot.append(start);
@@ -143,7 +136,7 @@ function masterQuizCard(parent,track){
  const headRow=el('div',undefined,'quiz-card-head');
  headRow.append(el('h2',`${track.title} Master Quiz`),el('span',max>=min?`${min}–${max} questions`:'Unavailable','quiz-card-count'));
  master.append(headRow);
- master.append(el('p',`Covers every chapter in ${track.title} with at least one question per chapter.`,'quiz-card-desc'));
+ master.append(el('p','Includes at least one question from every chapter.','quiz-card-desc'));
  const controlRow=el('div',undefined,'quiz-master-control');
  const label=el('label','Questions ');
  const input=el('input');
@@ -151,7 +144,7 @@ function masterQuizCard(parent,track){
  input.value=String(initialCount);input.disabled=max<min;
  input.setAttribute('aria-label',`${track.title} Master Quiz question count`);
  label.append(input);
- controlRow.append(label,el('span',`Minimum ${min} · Maximum ${max}`,'quiz-master-hint'));
+ controlRow.append(label);
  master.append(controlRow);
  const target=el('div',undefined,'quiz-master-footer');target.setAttribute('aria-live','polite');
  const update=()=>{
@@ -167,11 +160,9 @@ function masterQuizCard(parent,track){
   }
   const spec={track:trackId,mode:'master',count:Number(input.value),content_tier:masterTier};
   const assessment={assessment_id:specKey(spec),content_version:'2.0.0'},draft=store.draft(assessment);
-  const statusLine=draft?`In progress · ${answeredCount(draft)} of ${draft.presented.length} answered`:(attemptHistorySummary(assessment)||'Ready');
-  target.append(el('p',statusLine,'quiz-card-status'));
+  const statusLine=draft?`In progress · ${answeredCount(draft)}/${draft.presented.length} answered`:attemptHistorySummary(assessment);
+  if(statusLine)target.append(el('p',statusLine,'quiz-card-status'));
   const foot=el('div',undefined,'quiz-card-footer');
-  const meter=xpMeter(store.summary(assessment).xp_awarded,2*Number(input.value));
-  if(meter)foot.append(meter);
   foot.append(button(draft?'Resume quiz':'Start quiz',()=>action(()=>draft||store.startV2(curriculum,spec)),'lesson-primary'));
   target.append(foot);
  };
@@ -181,7 +172,7 @@ function masterQuizCard(parent,track){
 }
 function curriculumCatalog(){
  const header=el('header',undefined,'view-header curriculum-header');
- header.append(el('h1','Assess your understanding.','view-title'));
+ header.append(el('h1','Quizzes','view-title'));
  host.append(header);
 
  const body=el('div',undefined,'quiz-catalog-body');
@@ -189,11 +180,7 @@ function curriculumCatalog(){
  const nav=el('div',undefined,'lesson-track-tabs');nav.setAttribute('role','group');nav.setAttribute('aria-label','Quiz learning tracks');
  for(const track of curriculum){const b=button(trackTabLabel(track),()=>{trackId=track.id;render();});b.setAttribute('aria-pressed',String(trackId===track.id));nav.append(b);}
  const sheet=el('div',undefined,'quiz-tab-sheet');
- const signedIn=Boolean(config.userId?.());
- const introText=signedIn
-  ?'Scores and explanations unlock after submission.'
-  :'Scores and explanations unlock after submission. Sign in to save verified account XP.';
- sheet.append(el('p',introText,'lesson-lead quiz-xp-notice'));
+ inlineNotice(sheet);
 
  unfinishedSection(sheet);
 
@@ -254,7 +241,7 @@ async function loadContent(){
 function catalog(){
  curriculumCatalog();
  const sheet=host.querySelector('.quiz-tab-sheet')||host;
- const published=el('details',undefined,'quiz-published');published.append(el('summary','Original 5-question quizzes · prior scores & XP'),el('p','These original five-question chapter quizzes retain their existing scores and verified XP progress.'));
+ const published=el('details',undefined,'quiz-published');published.append(el('summary','Original 5-question quizzes'));
  const grid=el('div',undefined,'curriculum-grid quiz-topic-grid');
  for(const a of bank.assessments.filter(a=>a.pool_ids.every(pool=>{
   const items=bank.items.filter(q=>q.pool_id===pool&&q.content_version===a.item_version);
@@ -263,15 +250,15 @@ function catalog(){
   const card=el('article',undefined,'curriculum-card quiz-topic-card');card.dataset.assessment=a.assessment_id;const summary=store.summary(a),draft=store.draft(a);
   const headRow=el('div',undefined,'quiz-card-head');
   headRow.append(el('h2',a.title),el('span','5 questions','quiz-card-count'));
-  card.append(headRow,el('p',`Best ${summary.best_score}/5 · Last ${summary.last_score===null?'—':summary.last_score+'/5'} · ${plural(summary.attempt_count,'attempt')}`,'quiz-card-status'));
+  card.append(headRow);
+  const legacyStatus=draft?`In progress · ${answeredCount(draft)}/${draft.presented.length} answered`:(summary.attempt_count>0?`Best ${summary.best_score}/5 · ${plural(summary.attempt_count,'attempt')}`:'');
+  if(legacyStatus)card.append(el('p',legacyStatus,'quiz-card-status'));
   const foot=el('div',undefined,'quiz-card-footer');
-  const meter=xpMeter(summary.xp_awarded,10);
-  if(meter)foot.append(meter);
-  foot.append(button(draft?'Resume assessment':'Start assessment',()=>action(async()=>{if(draft)return draft;return store.start(a);}), 'lesson-primary'));
+  foot.append(button(draft?'Resume quiz':'Start quiz',()=>action(async()=>{if(draft)return draft;return store.start(a);}),'lesson-primary'));
   card.append(foot);grid.append(card);
  }
  published.append(grid);sheet.append(published);
- const history=el('details',undefined,'quiz-history');history.append(el('summary','Your attempt history'));const list=el('div',undefined,'quiz-history-list');
+ const history=el('details',undefined,'quiz-history');history.append(el('summary','Attempt history'));const list=el('div',undefined,'quiz-history-list');
  for(const t of Object.values(store.attempts).filter(t=>t.submitted_at || store.isArchived(t)).sort((a,b)=>(b.submitted_at||b.started_at).localeCompare(a.submitted_at||a.started_at))){
   if (store.isArchived(t)) {
    const score = Number.isInteger(t.correct) ? ` · ${t.correct}/${t.presented?.length||5} recorded` : '';
@@ -288,7 +275,7 @@ function catalog(){
  history.append(list);sheet.append(history);
 }
 function review(t){
- const grade=reviewForLearner(bank,t),a=assessmentFor(t);
+ const grade=reviewForLearner(bank,t),a=assessmentFor(t),total=t.presented.length,pct=Math.round(100*grade.correct/total);
  const header=el('header',undefined,'view-header curriculum-header');
  const titleGroup=el('div',undefined,'view-header-title-group');
  titleGroup.append(iconButton('All quizzes',BACK_ARROW_SVG,()=>{current=null;message='';render();}));
@@ -299,48 +286,110 @@ function review(t){
  host.append(header);
 
  const body=el('div',undefined,'quiz-review-body');
+ inlineNotice(body);
  const shell=el('div',undefined,'quiz-review-shell');
  const summaryCard=el('section',undefined,'quiz-results-summary');
- const summaryMain=el('div',undefined,'quiz-results-main');
- summaryMain.append(
-  el('p','QUIZ RESULTS','lesson-eyebrow quiz-results-eyebrow'),
-  el('p',`${grade.correct}/${t.presented.length} correct (${Math.round(100*grade.correct/t.presented.length)}%)`,'quiz-score')
- );
- summaryCard.append(summaryMain);
- const summaryMeta=el('div',undefined,'quiz-results-meta');
- if(t.includes_unreviewed&&t.practice)summaryMeta.append(el('p','Unscored practice attempt','quiz-card-status'));
- if(!t.practice){
+ summaryCard.append(el('p',`${grade.correct}/${total} correct (${pct}%)`,'quiz-score'));
+ const metaParts=[];
+ if(t.includes_unreviewed&&t.practice){
+  metaParts.push('Practice attempt');
+ }else if(!t.practice){
   const summaryTarget=a||{assessment_id:t.assessment_id,content_version:t.content_version};
-  const s=store.summary(summaryTarget),total=t.presented.length;
-  summaryMeta.append(
-   el('p',`Best ${s.best_score}/${total} · Last ${s.last_score}/${total} · ${s.xp_awarded}/${2*total} XP`,'quiz-results-stats'),
-   el('p','Verified account totals appear in the sidebar.','quiz-card-status')
-  );
- }
- if(summaryMeta.childElementCount)summaryCard.append(summaryMeta);
- shell.append(summaryCard);
- const strengths=grade.results.filter(r=>r.correct),needs=grade.results.filter(r=>!r.correct);
- const next=el('section',undefined,'quiz-next');next.append(el('h2','Based on this attempt'),el('p',`${strengths.length} ${strengths.length===1?'response':'responses'} matched the answer key; ${needs.length} ${needs.length===1?'needs':'need'} another look.`));
- const topicTitle=lid=>bank.assessments.find(a=>a.assessment_id===`quiz-${lid}`)?.title||lid;
- if(strengths.length)next.append(el('p',`Matched topics: ${[...new Set(strengths.map(r=>r.lesson_id))].map(topicTitle).join('; ')}.`));
- if(needs.length){
-  const revisitRow=el('div',undefined,'quiz-revisit-row');
-  for(const lid of [...new Set(needs.map(r=>r.lesson_id))])revisitRow.append(button(`Revisit: ${topicTitle(lid)}`,()=>config.onLesson?.(lid)));
-  next.append(revisitRow);
- }
- shell.append(next);
- for(const [index,q] of itemsFor(bank,t).entries()){
-  const response=t.responses[q.item_id]??null,correct=response===q.answer,card=el('article',undefined,'quiz-review-card');card.dataset.reviewItem=q.item_id;
-  const cardHead=el('div',undefined,'quiz-review-head');
-  cardHead.append(el('h2',`${index+1}. ${q.prompt}`),el('span',response===null?'Unanswered':correct?'Correct on this attempt':'Review this response',correct?'lesson-feedback correct':'lesson-feedback retry'));
-  card.append(cardHead);
-  const answerGrid=el('div',undefined,'quiz-review-answers');
-  answerGrid.append(el('p',`Your answer: ${q.options.find(o=>o.id===response)?.text||'No answer'}`),el('p',`Correct answer: ${q.options.find(o=>o.id===q.answer).text}`));
-  if(q.review_status!=='INDEPENDENTLY_REVIEWED'){
-   card.append(answerGrid,el('p',q.rationale,'quiz-review-rationale'));
-   const link=el('a','Read the lesson section');link.href=q.lesson_reference;card.append(link);
+  const s=store.summary(summaryTarget);
+  const signedIn=Boolean(config.userId?.());
+  const attemptXp=Number.isFinite(t.server_awarded)?t.server_awarded:(lastEarned?.attempt_id===t.attempt_id?lastEarned.earned:null);
+  if(s.attempt_count>1&&s.best_score>grade.correct)metaParts.push(`Best ${s.best_score}/${total}`);
+  if(attemptXp!==null){
+   metaParts.push(`${attemptXp>0?`+${attemptXp}`:'0'} ${signedIn&&t.synced?'verified XP':signedIn?'XP (pending sync)':'XP earned (local)'}`);
   }else{
-   card.append(el('p',`Your answer: ${q.options.find(o=>o.id===response)?.text||'No answer'}`));
+   metaParts.push(`${s.xp_awarded}/${2*total} ${signedIn&&t.synced?'verified XP':'XP (local)'}`);
+  }
+ }
+ if(metaParts.length)summaryCard.append(el('p',metaParts.join(' · '),'quiz-results-stats'));
+ shell.append(summaryCard);
+
+ const reviewItems=itemsFor(bank,t);
+ const needs=grade.results.filter(r=>!r.correct);
+ const missedSectionsByLesson=new Map();
+ for(const item of reviewItems){
+  if((t.responses[item.item_id]??null)===item.answer||!item.lesson_id)continue;
+  const parsed=parseLessonRef(item.lesson_reference);
+  const sec=parsed?.section||null;
+  const set=missedSectionsByLesson.get(item.lesson_id)||new Set();
+  if(sec)set.add(sec);
+  missedSectionsByLesson.set(item.lesson_id,set);
+ }
+ const missedLessons=[...missedSectionsByLesson.keys()];
+ const consolidatedLessons=new Set();
+ if(needs.length&&missedLessons.length){
+  const next=el('section',undefined,'quiz-next');
+  const openTarget=lid=>{
+   const secs=[...(missedSectionsByLesson.get(lid)||[])];
+   config.onLesson?.(lid,secs.length===1?{section:secs[0]}:undefined);
+  };
+  if(missedLessons.length===1){
+   const lid=missedLessons[0];
+   if((missedSectionsByLesson.get(lid)?.size||0)<=1)consolidatedLessons.add(lid);
+   next.append(el('strong',`Review: ${lessonTitle(lid)}`,'quiz-next-title'));
+   const revisitRow=el('div',undefined,'quiz-revisit-row');
+   revisitRow.append(button('Open lesson',()=>openTarget(lid)));
+   next.append(revisitRow);
+  }else{
+   next.append(el('strong','Review lessons','quiz-next-title'));
+   const revisitRow=el('div',undefined,'quiz-revisit-row');
+   for(const lid of missedLessons.slice(0,4)){
+    if((missedSectionsByLesson.get(lid)?.size||0)<=1)consolidatedLessons.add(lid);
+    revisitRow.append(button(lessonTitle(lid),()=>openTarget(lid)));
+   }
+   if(missedLessons.length>4)revisitRow.append(el('span',`+${missedLessons.length-4} more`,'quiz-card-status'));
+   next.append(revisitRow);
+  }
+  shell.append(next);
+ }
+
+ const seenCardRefs=new Set();
+ for(const [index,q] of reviewItems.entries()){
+  const response=t.responses[q.item_id]??null,correct=response===q.answer;
+  const card=el('article',undefined,`quiz-review-card ${correct?'is-correct':'is-incorrect'}`);
+  card.dataset.reviewItem=q.item_id;
+  const titleRow=el('div',undefined,'quiz-review-title-row');
+  const mark=el('span',correct?'✓':'✕',`quiz-status-mark ${correct?'is-correct':'is-incorrect'}`);
+  mark.setAttribute('aria-hidden','true');
+  const qHeading=el('h2',`${index+1}. ${q.prompt}`,'quiz-review-question');
+  const srStatus=el('span',correct?' (Correct)':response===null?' (Unanswered)':' (Incorrect)','sr-only');
+  qHeading.append(srStatus);
+  titleRow.append(mark,qHeading);
+  card.append(titleRow);
+  if(q.stimulus?.sentence)card.append(el('p',q.stimulus.sentence,'lesson-example-sentence'));
+  const selectedText=q.options.find(o=>o.id===response)?.text||'No answer';
+  const correctText=q.options.find(o=>o.id===q.answer)?.text||'';
+  const answerLines=el('div',undefined,'quiz-review-answer-lines');
+  const verdictLine=el('p',undefined,'quiz-review-verdict');
+  const ansSpan=el('span',selectedText,correct?'quiz-answer-selected':'quiz-answer-wrong');
+  verdictLine.append(document.createTextNode('Your answer: '),ansSpan);
+  answerLines.append(verdictLine);
+  if(!correct&&correctText){
+   const corrLine=el('p',undefined,'quiz-review-correct');
+   corrLine.append(document.createTextNode('Correct answer: '),el('span',correctText,'quiz-answer-right'));
+   answerLines.append(corrLine);
+  }
+  card.append(answerLines);
+  if(q.review_status!=='INDEPENDENTLY_REVIEWED'){
+   card.append(el('p',q.rationale,'quiz-review-rationale'));
+   if(!correct&&q.lesson_reference&&!consolidatedLessons.has(q.lesson_id)&&!seenCardRefs.has(q.lesson_reference)){
+    seenCardRefs.add(q.lesson_reference);
+    const parsed=parseLessonRef(q.lesson_reference);
+    const label=subtopicTitle(parsed?.lessonId||q.lesson_id,parsed?.section);
+    const link=el('a',label?`Lesson: ${label}`:'Lesson section','quiz-lesson-link');
+    link.href=q.lesson_reference;
+    link.addEventListener('click',e=>{
+     if(e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+     e.preventDefault();
+     config.onLesson?.(parsed?.lessonId||q.lesson_id,parsed?.section?{section:parsed.section}:undefined);
+    });
+    card.append(link);
+   }
+  }else{
    renderEvidence(composeQuizEvidence(q,response,bank),card);
   }
   if(q.answer_tree){
@@ -387,41 +436,41 @@ function attemptScreen(t){
  const header=el('header',undefined,'view-header curriculum-header');
  const titleGroup=el('div',undefined,'view-header-title-group');
  titleGroup.append(iconButton('All quizzes',BACK_ARROW_SVG,()=>{current=null;pendingConfirmAttempt=null;message='';render();}));
- const titleRow=el('div',undefined,'quiz-header-side-by-side');
- titleRow.append(
-  el('span',t.title||a?.title||'Quiz','quiz-header-name'),
-  el('h1',`Question ${t.position+1} of ${count}`,'view-title')
- );
- titleGroup.append(titleRow);
+ titleGroup.append(el('h1',t.title||a?.title||'Quiz','view-title'));
  header.append(titleGroup);
  host.append(header);
 
  const body=el('div',undefined,'quiz-attempt-body');
+ inlineNotice(body);
  const layout=el('div',undefined,'quiz-attempt-layout');
  const main=el('div',undefined,'quiz-attempt-main');
  const answered=answeredCount(t),allAnswered=answered===count;
 
  const panel=el('section',undefined,'quiz-question');panel.dataset.quizItem=q.item_id;
  const panelBar=el('div',undefined,'quiz-question-bar');
+ panelBar.append(el('h2',`Question ${t.position+1} of ${count}`,'quiz-question-number'));
+ const panelActions=el('div',undefined,'quiz-question-actions');
  const hasAnswer=t.responses?.[q.item_id]!==undefined&&t.responses?.[q.item_id]!==null;
  if(hasAnswer){
-  panelBar.append(button('Clear choice',()=>action(()=>store.clearAnswer(t.attempt_id,q.item_id)),'quiz-clear-btn'));
+  panelActions.append(button('Clear choice',()=>action(()=>store.clearAnswer(t.attempt_id,q.item_id)),'quiz-clear-btn'));
  }
  const flagBtn=button('',()=>action(()=>store.toggleFlag(t.attempt_id,q.item_id)),`quiz-flag-btn${isFlagged?' is-flagged':''}`);
  flagBtn.setAttribute('aria-pressed',String(isFlagged));
  flagBtn.setAttribute('aria-label',isFlagged?'Remove flag from this question':'Flag this question for review');
  flagBtn.innerHTML=FLAG_SVG;
  flagBtn.append(el('span',isFlagged?'Flagged':'Flag'));
- panelBar.append(flagBtn);
+ panelActions.append(flagBtn);
+ panelBar.append(panelActions);
  panel.append(panelBar);
 
- if(q.stimulus)panel.append(el('p',q.stimulus.sentence,'lesson-example-sentence'));
+ const qContent=el('div',undefined,'quiz-question-content');
+ if(q.stimulus)qContent.append(el('p',q.stimulus.sentence,'lesson-example-sentence'));
  const field=el('fieldset');field.append(el('legend',q.prompt));const choices=el('div',undefined,q.kind==='tree_choice'?'quiz-tree-options':'quiz-options');
  for(const id of ref.option_order){const option=q.options.find(o=>o.id===id),label=el('label',undefined,'lesson-option'),radio=el('input');radio.type='radio';radio.name=q.item_id;radio.value=id;radio.checked=t.responses[q.item_id]===id;
   radio.addEventListener('change',()=>action(()=>store.answer(t.attempt_id,q.item_id,id)));label.append(radio,el('span',option.text));
   const group=el('div',undefined,'quiz-choice');group.append(label);if(option.diagram){const diagram=renderLessonTree(option.diagram);diagram.classList.add('quiz-candidate');diagram.querySelector('svg')?.setAttribute('aria-label',`Candidate ${id}: ${option.text}`);group.append(diagram);}choices.append(group);
  }
- field.append(choices);panel.append(field);main.append(panel);
+ field.append(choices);qContent.append(field);panel.append(qContent);
 
  const controls=el('div',undefined,'quiz-attempt-controls');
  const nav=el('nav',undefined,'lesson-step-controls');nav.setAttribute('aria-label','Question navigation');
@@ -440,7 +489,8 @@ function attemptScreen(t){
   },'lesson-primary');
   controls.append(submitBtn);
  }
- main.append(controls);
+ panel.append(controls);
+ main.append(panel);
 
  const navigator=el('aside',undefined,'quiz-navigator');
  navigator.setAttribute('aria-label','Question navigator');
@@ -481,7 +531,7 @@ function render(){
   else if(t.submitted_at)review(t);
   else attemptScreen(t);
  }else catalog();
- footer();host.scrollTop=scroll;
+ host.scrollTop=scroll;
 }
 export function initQuizzes(options={}){
  config=options;host=el('section',undefined,'curriculum-view quiz-view');host.id='quizzesView';host.hidden=true;host.setAttribute('aria-label','Independent quizzes');document.body.append(host);

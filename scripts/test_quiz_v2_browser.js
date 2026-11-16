@@ -77,9 +77,13 @@ try{
     assert.equal(await quiz.locator('a[href^="#lesson/"]').count(),0,'no lesson-answer links during an attempt');
     assert.ok(!/Correct answer:|Your answer:/.test(await quiz.innerText()));
   };
-  await quiz.getByRole('heading',{name:'Assess your understanding.'}).waitFor();
+  const snap=async name=>{if(process.env.QUIZ_V2_SCREENSHOT_DIR)await page.screenshot({path:path.join(process.env.QUIZ_V2_SCREENSHOT_DIR,name)});};
+  await quiz.getByRole('heading',{name:'Quizzes',exact:true}).waitFor();
+  assert.equal(await quiz.locator('.lesson-save-status').count(),0,'no XP footer on quiz selection');
+  assert.ok(!(await quiz.innerText()).includes('Scores and explanations unlock after submission.'),'redundant intro text removed');
   assert.equal(await quiz.locator('.quiz-chapter').count(),11);
   assert.deepEqual((await quiz.locator('.quiz-chapter > summary').allTextContents()).map(t=>t.replace(/^Chapter \d+: /,'')),syntaxLessons);
+  await snap('quiz-selection-desktop.png');
   await quiz.getByRole('button',{name:'Grammar',exact:true}).click();
   assert.equal(await quiz.locator('.quiz-chapter').count(),20);
   assert.deepEqual((await quiz.locator('.quiz-chapter > summary').allTextContents()).map(t=>t.replace(/^Chapter \d+: /,'')),cambridgeLessons);
@@ -95,6 +99,16 @@ try{
   await cambridgeMaster.getByRole('button',{name:'Start quiz',exact:true}).click();
   await quiz.getByRole('heading',{name:'Question 1 of 25',exact:true}).waitFor();
   await assertNoResults();
+  assert.equal(await quiz.locator('.lesson-save-status').count(),0,'no XP footer while taking quiz');
+  assert.equal(await quiz.locator('.quiz-question .quiz-attempt-controls .quiz-step-btn').count(),2,'Previous/Next sit inside the question panel');
+  const qHeaderText=await quiz.locator('header h1').innerText();
+  assert.ok(!/Question \d+ of \d+/.test(qHeaderText),'outer page header focuses on quiz title without duplicating question number');
+  const backBtnStyle=await quiz.locator('.header-icon-btn').evaluate(n=>{const s=getComputedStyle(n);return {border:s.borderTopWidth,bg:s.backgroundColor};});
+  assert.equal(backBtnStyle.border,'0px','back button has no permanent border box');
+  assert.equal(backBtnStyle.bg,'rgba(0, 0, 0, 0)','back button has transparent idle background');
+  const numBox=await quiz.locator('.quiz-question .quiz-question-number').boundingBox();
+  const flagBox=await quiz.locator('.quiz-question .quiz-flag-btn').boundingBox();
+  assert.ok(numBox.x<flagBox.x&&Math.abs((numBox.y+numBox.height/2)-(flagBox.y+flagBox.height/2))<=8,'Question X of Y sits top-left aligned horizontally with top-right Flag');
   const firstMasterId=await quiz.locator('[data-quiz-item]').getAttribute('data-quiz-item');
   const firstMasterQuestion=fixtureQuestions.find(q=>q.item_id===firstMasterId);
   await quiz.locator(`input[value="${firstMasterQuestion.answer}"]`).check();
@@ -147,8 +161,32 @@ try{
   }
   await quiz.getByRole('button',{name:'Submit',exact:true}).click();
   await quiz.locator('.quiz-score').filter({hasText:'1/25 correct (4%)'}).waitFor();
-  assert.ok(await quiz.getByText(/Verified account totals appear in the sidebar/).first().isVisible());
-  assert.ok(await quiz.getByText(/Correct answer:/).first().isVisible());
+  assert.equal(await quiz.locator('.lesson-save-status').count(),0,'no XP footer on quiz results');
+  assert.equal(await quiz.getByText('QUIZ RESULTS',{exact:true}).count(),0,'redundant eyebrow removed');
+  assert.equal(await quiz.getByText(/Verified account totals appear in the sidebar/).count(),0,'redundant sidebar note removed');
+  assert.ok(await quiz.locator('.quiz-results-summary').innerText().then(t=>t.includes('XP earned (local)')));
+  const summaryStyle=await quiz.locator('.quiz-results-summary').evaluate(n=>{
+    const s=getComputedStyle(n);
+    const sc=n.querySelector('.quiz-score')?.getBoundingClientRect();
+    const st=n.querySelector('.quiz-results-stats')?.getBoundingClientRect();
+    return {border:s.borderTopWidth,bg:s.backgroundColor,shadow:s.boxShadow,scoreLeft:sc?.left,statsLeft:st?.left};
+  });
+  assert.equal(summaryStyle.border,'0px','Results summary has no border container');
+  assert.equal(summaryStyle.bg,'rgba(0, 0, 0, 0)','Results summary has transparent background');
+  assert.equal(summaryStyle.shadow,'none','Results summary has no card shadow');
+  assert.ok(summaryStyle.scoreLeft<summaryStyle.statsLeft,'Score sits left and XP sits right on the same row');
+  const reviewWidths=await quiz.evaluate(()=>{
+    const body=document.querySelector('.quiz-review-body'),shell=document.querySelector('.quiz-review-shell');
+    const bs=getComputedStyle(body),avail=body.clientWidth-parseFloat(bs.paddingLeft)-parseFloat(bs.paddingRight);
+    return {avail,shell:shell.getBoundingClientRect().width};
+  });
+  assert.ok(reviewWidths.shell>=reviewWidths.avail-2,`Results shell fills full workspace width (${reviewWidths.shell} >= ${reviewWidths.avail - 2})`);
+  const firstReviewText=await quiz.locator('[data-review-item]').first().innerText();
+  assert.ok(firstReviewText.includes('Your answer:')&&!firstReviewText.includes('Correct answer:')&&!firstReviewText.includes('Needs review'),'correct answer shows answer once without repeating Correct answer');
+  const secondReviewText=await quiz.locator('[data-review-item]').nth(1).innerText();
+  assert.ok(secondReviewText.includes('Your answer:')&&secondReviewText.includes('Correct answer:')&&!secondReviewText.includes('Needs review'),'incorrect item shows selected and correct answers cleanly without repetitive Needs review text');
+  assert.ok(await quiz.locator('.quiz-next').innerText().then(t=>t.includes('Review lessons')),'multi-lesson Master Quiz shows consolidated Review lessons bar');
+  await snap('quiz-results-desktop.png');
   await quiz.getByRole('button',{name:'All quizzes',exact:true}).click();
   await quiz.getByRole('button',{name:'Syntax',exact:true}).click();
   const chapter=quiz.locator('[data-chapter="br-03"]');
@@ -165,7 +203,9 @@ try{
   await assertNoResults();
   await answerAllAndSubmit(13);
   await quiz.locator('.quiz-score').filter({hasText:'0/13'}).waitFor();
-  assert.ok(await quiz.getByText(/Read the lesson section/).first().isVisible());
+  assert.ok(await quiz.locator('.quiz-next').innerText().then(t=>t.includes('Review:')),'single-chapter General quiz shows consolidated Review: chapter');
+  assert.ok(await quiz.locator('.quiz-lesson-link').count()>=1,'multi-topic General quiz retains distinct per-subtopic lesson links');
+  assert.equal(await quiz.locator('.quiz-lesson-link').count(),new Set(await quiz.locator('.quiz-lesson-link').evaluateAll(els=>els.map(a=>a.getAttribute('href')))).size,'per-card subtopic links are never duplicated');
   await quiz.getByRole('button',{name:'All quizzes',exact:true}).click();
   const cambridgePers=quiz.locator('.quiz-topic-card').filter({has:page.getByRole('heading',{name:'Personalized Cambridge Quiz',exact:true})});
   await cambridgePers.getByRole('button',{name:'Start quiz',exact:true}).click();
@@ -182,10 +222,57 @@ try{
   await assertNoResults();
   await answerAllAndSubmit(5);
   await quiz.locator('.quiz-score').filter({hasText:'0/5'}).waitFor();
-  assert.ok(await quiz.getByText(/Read the lesson section/).first().isVisible());
+  assert.ok(await quiz.locator('.quiz-next').innerText().then(t=>t.includes('Review:')&&t.includes('Open lesson')),'single-lesson tree quiz consolidates recommendation into one Open lesson control');
+  assert.equal(await quiz.locator('.quiz-lesson-link').count(),0,'consolidated single-lesson quiz does not repeat Read the lesson section under every card');
   await quiz.getByRole('button',{name:'All quizzes',exact:true}).click();
+  await quiz.getByRole('button',{name:'Grammar',exact:true}).click();
+  if((await quiz.locator('[data-chapter="cgel-ch01"]').getAttribute('open'))===null){
+   await quiz.locator('[data-chapter="cgel-ch01"] > summary').click();
+  }
+  await quiz.locator('[data-chapter="cgel-ch01"] .quiz-topic-card').filter({has:page.getByRole('heading',{name:'Prescriptive and descriptive approaches',exact:true})}).getByRole('button',{name:'Start quiz',exact:true}).click();
+  await quiz.getByRole('heading',{name:'Question 1 of 5',exact:true}).waitFor();
+  const stdHeights=[],navYs=[];
+  for(let step=0;step<5;step++){
+   await quiz.getByRole('heading',{name:`Question ${step+1} of 5`,exact:true}).waitFor();
+   await page.waitForFunction(()=>document.querySelector('#quizzesView')?.getAttribute('aria-busy')==='false');
+   stdHeights.push((await quiz.locator('.quiz-question').boundingBox()).height);
+   navYs.push((await quiz.locator('.quiz-attempt-controls .quiz-step-btn').first().boundingBox()).y);
+   if(step===0)await snap('quiz-attempt-standard.png');
+   if(step<4)await quiz.getByRole('button',{name:'Next question',exact:true}).click();
+  }
+  const minH=Math.min(...stdHeights),maxH=Math.max(...stdHeights);
+  assert.ok(minH>=440,`question panel maintains consistent minimum height (${minH}px)`);
+  assert.ok(maxH-minH<=1,`standard question panel keeps identical outer height across all 5 questions (${stdHeights.join(', ')})`);
+  assert.ok(Math.max(...navYs)-Math.min(...navYs)<=1,`bottom Previous/Next arrows stay at fixed Y position (${navYs.join(', ')})`);
+  await answerAllAndSubmit(5,{correctCount:2});
+  await quiz.locator('.quiz-score').filter({hasText:'2/5 correct (40%)'}).waitFor();
+  assert.ok(await quiz.locator('.quiz-next').innerText().then(t=>t.includes('Review: Preliminaries')&&t.includes('Open lesson')));
+  assert.equal(await quiz.locator('.quiz-lesson-link').count(),0,'single-topic Cambridge quiz avoids repeating identical Read the lesson section links');
+  assert.equal(await quiz.locator('.quiz-revisit-row button').innerText(),'Open lesson');
+  await snap('quiz-results-compact.png');
+
+  await quiz.getByRole('button',{name:'All quizzes',exact:true}).click();
+  await quiz.getByRole('button',{name:'Syntax',exact:true}).click();
   const topic=chapter.locator('.quiz-topic-card').filter({has:page.getByRole('heading',{name:'Adjectives, adverbs, APs and AdvPs',exact:true})});
   await topic.getByRole('button',{name:'Start quiz',exact:true}).click();
+  await quiz.getByRole('heading',{name:'Question 1 of 5',exact:true}).waitFor();
+  let sawInternalScroll=false;
+  const mixedHeights=[];
+  for(let step=0;step<5;step++){
+   await quiz.getByRole('heading',{name:`Question ${step+1} of 5`,exact:true}).waitFor();
+   await page.waitForFunction(()=>document.querySelector('#quizzesView')?.getAttribute('aria-busy')==='false');
+   mixedHeights.push((await quiz.locator('.quiz-question').boundingBox()).height);
+   const ov=await quiz.locator('.quiz-question-content').evaluate(el=>({scroll:el.scrollHeight,client:el.clientHeight}));
+   if(ov.scroll>ov.client){
+    sawInternalScroll=true;
+    await snap('quiz-attempt-desktop.png');
+   }
+   if(step<4)await quiz.getByRole('button',{name:'Next question',exact:true}).click();
+  }
+  assert.ok(sawInternalScroll,'long tree-choice question scrolls internally without resizing outer panel');
+  assert.ok(Math.max(...mixedHeights)-Math.min(...mixedHeights)<=1,`mixed tree/text question panel maintains identical outer height (${mixedHeights.join(', ')})`);
+  assert.equal(mixedHeights[0],stdHeights[0],'tree-choice and standard text questions keep identical outer panel height');
+  await quiz.locator('.quiz-navigator').getByRole('button',{name:/^Question 1,/}).click();
   await quiz.getByRole('heading',{name:'Question 1 of 5',exact:true}).waitFor();
   await quiz.locator('input[type=radio]').first().check();
   await page.waitForFunction(()=>document.querySelector('#quizzesView').getAttribute('aria-busy')==='false');
@@ -236,7 +323,7 @@ try{
   assert.equal(await quiz.getByRole('button',{name:'Submit',exact:true}).count(),0,'resumed unfinished Master Quiz hides Submit');
   await answerAllAndSubmit(15);
   await quiz.locator('.quiz-score').filter({hasText:'0/15'}).waitFor();
-  assert.ok(await quiz.getByText('QUIZ RESULTS',{exact:true}).isVisible());
+  assert.ok(await quiz.locator('.quiz-next').innerText().then(t=>t.includes('Review lessons')));
   await quiz.getByRole('button',{name:'All quizzes',exact:true}).click();
   const personalized=quiz.locator('.quiz-topic-card').filter({has:page.getByRole('heading',{name:'Personalized Syntax Quiz',exact:true})});
   await personalized.getByRole('button',{name:'Start quiz',exact:true}).click();
@@ -262,11 +349,12 @@ try{
   for(const width of [390,1360])for(const theme of ['dark','light']){
     await page.setViewportSize({width,height:900});
     await page.evaluate(theme=>document.documentElement.setAttribute('data-theme',theme),theme);
-    await quiz.getByRole('heading',{name:'Assess your understanding.'}).waitFor();
+    await quiz.getByRole('heading',{name:'Quizzes',exact:true}).waitFor();
     await quiz.getByRole('button',{name:'Grammar',exact:true}).click();
     assert.equal(await quiz.locator('.quiz-chapter').count(),20,`${width}px ${theme}: all 20 Grammar chapters rendered`);
     const overflow=await quiz.evaluate(n=>n.scrollWidth>n.clientWidth+2);
     assert.equal(overflow,false,`${width}px ${theme}: no horizontal page overflow`);
+    if(width===390&&theme==='dark')await snap('quiz-mobile-dark.png');
   }
   assert.deepEqual(errors,[]);
   console.log('PASS formal quiz browser: Preliminaries assessable topics available cleanly in Grammar Quiz (with orientation excluded even on offline cache and mobile/desktop themes), 20-chapter Master minimum & 25 default / 50 max, no cross-track published cards, no pre-submit feedback/keys, post-submit scores/explanations, topic/Master/personalized modes, offline replay and XP isolation; no page errors.');

@@ -66,6 +66,7 @@ export function createFoundationStore(course, { storage, userId, client, localOn
     return {
       ...result,
       verified_xp: account ? confirmed.xp : result.xp,
+      verified_completed_at: account ? confirmed.completed_at : result.completed_at,
       pending: account && pending.length > 0,
     };
   }

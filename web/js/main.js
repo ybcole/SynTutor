@@ -5,7 +5,7 @@ import { shouldCollapseExplanation } from './explanation-dedupe.js';
 import { findCanonicalNode, canonicalNodeFacts } from './canonical-view.js';
 import { mapLegacyDetailsToCanonical } from './legacy-node-map.js';
 import { enableCanvasView } from './canvas-view.js';
-import { loadClerk, createSupabaseClient, currentUserEmail, isAccountSession, setAuthState, initAuthModal, openAuthModal } from './auth.js';
+import { loadClerk, createSupabaseClient, currentUserEmail, currentVerifiedUserEmail, deriveLeaderboardAlias, isAccountSession, setAuthState, initAuthModal, openAuthModal } from './auth.js';
 import { API_BASE } from './config.js';
 import { TreeRenderer } from './renderer.js';
 import { getSavedTheme, setTheme } from './theme.js';
@@ -466,9 +466,11 @@ export function boot() {
   // The full-bleed views wire their dismissal first, so Escape leaves a view
   // before anything else reacts to it.
   leaderboardView = createLeaderboardView(document.getElementById('leaderboardView'), {
+    settingsRoot: document.getElementById('leaderboardSettingsModal'),
     client: () => supabase,
     account: () => progressAvailable() ? supabase : null,
-    lifetime: loadPlayerProgress,
+    beforeLoad: ensureLeaderboardParticipation,
+    suggestedAlias: () => deriveLeaderboardAlias(currentVerifiedUserEmail(clerk)),
   });
   initWorkspaceViews();
   // The achievements category selector: picking a category re-filters the
@@ -926,18 +928,12 @@ let achievementsRender = 0;
 async function renderAchievements() {
   const grid = document.getElementById('achievementsGrid');
   const counter = document.getElementById('achievementsStatsCounter');
-  const fill = document.getElementById('achievementsProgressFill');
-  const label = document.getElementById('achievementsProgressLabel');
   const renderId = ++achievementsRender;
   const client = supabase;
   const signedIn = progressAvailable();
-  if (label) label.textContent = signedIn ? 'Loading verified XP…' : 'Sign in to track your progress.';
-  if (fill) fill.style.width = '0%';
   if (grid) grid.replaceChildren();
   if (counter) counter.textContent = 'Loading achievements…';
-  const [rows, stats] = await Promise.all([
-    loadAchievementBadges(), signedIn ? loadPlayerProgress() : null,
-  ]);
+  const rows = await loadAchievementBadges();
   if (client !== supabase || renderId !== achievementsRender) return;
 
   const category = activeAchievementCategory();
@@ -946,15 +942,8 @@ async function renderAchievements() {
   if (counter) {
     const shown = visible.filter(achievement => achievement.unlocked_at).length;
     counter.textContent = !rows ? 'Achievements unavailable. Reopen this view to retry.'
-      : signedIn ? `${shown} of ${visible.length} unlocked`
-        : 'Sign in to earn these badges.';
-  }
-  if (stats) {
-    const level = levelFromXp(stats.xp);
-    if (fill) fill.style.width = `${(level.into / level.span) * 100}%`;
-    if (label) label.textContent = `Level ${stats.level} · ${stats.xp} verified XP (${stats.lesson_xp} lesson + ${stats.quiz_xp} quiz) · ${level.next - level.xp} XP to Level ${stats.level + 1}`;
-  } else if (signedIn && label) {
-    label.textContent = 'Verified XP is unavailable. Reopen this view to retry.';
+      : signedIn ? `${shown} of ${visible.length} achievements earned`
+        : `${visible.length} achievements · Sign in to track yours`;
   }
   if (!grid || !rows) return;
   grid.innerHTML = '';
@@ -1111,8 +1100,53 @@ function setCanvasInteractive(flag) {
   renderer?.setInteractive(flag !== false);
 }
 
+let leaderboardEnrolledSession = null;
+let leaderboardEnrollmentPromise = null;
+
+function ensureLeaderboardParticipation() {
+  if (!progressAvailable()) {
+    leaderboardEnrolledSession = null;
+    leaderboardEnrollmentPromise = null;
+    return Promise.resolve();
+  }
+  const client = supabase;
+  const user = activeUserId;
+  const sessionKey = `${user}:${activeSessionId || ''}`;
+  if (leaderboardEnrolledSession === sessionKey && leaderboardEnrollmentPromise) {
+    return leaderboardEnrollmentPromise;
+  }
+  leaderboardEnrolledSession = sessionKey;
+  const preferredAlias = deriveLeaderboardAlias(currentVerifiedUserEmail(clerk));
+  leaderboardEnrollmentPromise = (async () => {
+    try {
+      let { error } = await client
+        .rpc('ensure_leaderboard_participation', { p_preferred_alias: preferredAlias })
+        .abortSignal(AbortSignal.timeout(6000));
+      // Backward compatibility: hosted Supabase deployments still running 0-arg 20261116000006
+      // return PGRST202 for { p_preferred_alias }; fall back cleanly to 0-arg RPC.
+      if (error?.code === 'PGRST202') {
+        ({ error } = await client
+          .rpc('ensure_leaderboard_participation')
+          .abortSignal(AbortSignal.timeout(6000)));
+      }
+      if (error) throw error;
+      if (activeWorkspaceView === 'leaderboard' && client === supabase && user === activeUserId) {
+        leaderboardView?.open();
+      }
+    } catch (err) {
+      if (leaderboardEnrolledSession === sessionKey) {
+        leaderboardEnrolledSession = null;
+        leaderboardEnrollmentPromise = null;
+      }
+      console.warn('Leaderboard participation sync skipped:', err?.message || err);
+    }
+  })();
+  return leaderboardEnrollmentPromise;
+}
+
 function updateAuthState() {
   refreshSidebarProgress();
+  ensureLeaderboardParticipation();
   // Publish the session state: the lesson catalog, the achievements and the
   // history all follow it (locks, progress, migration).
   setAuthState({
@@ -1160,6 +1194,7 @@ function renderProfileMenu() {
     const el = document.querySelector(id);
     if (el) el.hidden = hidden;
   };
+  setHidden('#profileLeaderboardSettings', !auth);
   setHidden('#profileAddAccount', !auth);
   setHidden('#profileSwitchAccount', !auth);
   setHidden('#profileMenuDivider', !auth);
@@ -1283,6 +1318,10 @@ async function openProfileAccounts() {
 }
 
 function initProfileMenu() {
+  document.querySelector('#profileLeaderboardSettings')?.addEventListener('click', () => {
+    setProfileMenu(false);
+    leaderboardView?.openSettings();
+  });
   document.querySelector('#profileAddAccount')?.addEventListener('click', () => {
     setProfileMenu(false);
     // A second account: the same modal, framed for a signed-in learner.

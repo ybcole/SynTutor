@@ -1,5 +1,7 @@
 import { accountUserId, bindSessionToken } from './session-scope.js';
+import { deriveLeaderboardAlias } from './leaderboard-alias.js';
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+export { deriveLeaderboardAlias };
 import { CLERK_CONFIG, SUPABASE_CONFIG } from './config.js';
 
 // js/config.js is git-ignored (see .gitignore); a fresh checkout boots without
@@ -340,6 +342,20 @@ export function currentUserEmail(clerkInstance) {
   const addresses = user.emailAddresses || [];
   const primary = addresses.find((a) => a.id === user.primaryEmailAddressId) || addresses[0];
   return primary?.emailAddress || user.email || '';
+}
+
+// Only a Clerk-verified email address may suggest an automatic Leaderboard
+// alias. Returns '' when unverified or missing so enrollment falls back safely.
+export function currentVerifiedUserEmail(clerkInstance) {
+  const clerk = clerkInstance || window.Clerk;
+  const user = clerk?.user;
+  if (!user) return '';
+  const addresses = Array.isArray(user.emailAddresses) ? user.emailAddresses : [];
+  const primary = addresses.find((a) => a.id === user.primaryEmailAddressId) || user.primaryEmailAddress || null;
+  const isVerified = (addr) => Boolean(addr?.emailAddress) && addr?.verification?.status === 'verified';
+  if (isVerified(primary)) return primary.emailAddress;
+  const fallback = addresses.find(isVerified);
+  return fallback?.emailAddress || '';
 }
 
 // ── Supabase client authenticated with the Clerk session token ──

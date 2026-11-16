@@ -2566,7 +2566,7 @@ body.workspace-view-open .app-main { display: none; }
 .view-header-title-group {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 8px;
   min-width: 0;
   flex: 1 1 auto;
 }
@@ -2618,33 +2618,6 @@ body.workspace-view-open .app-main { display: none; }
   min-width: 0;
 }
 /* The overall completion stats, next to the title. */
-/* The level tracker in the top-right corner of the achievements header. */
-/* The level tracker in the top-right corner of the header. */
-.achievements-xp-tracker {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 6px;
-}
-.xp-tracker-label {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-muted);
-  white-space: nowrap;
-}
-.xp-progress-bar-track {
-  width: 220px;
-  height: 6px;
-  background: var(--border);
-  border-radius: 999px;
-  overflow: hidden;
-}
-.xp-progress-bar-fill {
-  height: 100%;
-  background: var(--accent);
-  border-radius: 999px;
-  transition: width 0.3s ease;
-}
 .view-toolbar-filters {
   display: flex;
   align-items: center;
@@ -2829,20 +2802,23 @@ body.workspace-view-open .app-main { display: none; }
   font-weight: 600;
 }
 .podium-card.is-1 .podium-tag {
-  background: rgba(234, 179, 8, 0.12);
-  color: #facc15;
-  border: 1px solid rgba(234, 179, 8, 0.25);
+  background: rgba(234, 179, 8, 0.14);
+  color: #a16207;
+  border: 1px solid rgba(234, 179, 8, 0.35);
 }
 .podium-card.is-2 .podium-tag {
-  background: rgba(148, 163, 184, 0.12);
-  color: #cbd5e1;
-  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: rgba(148, 163, 184, 0.14);
+  color: #475569;
+  border: 1px solid rgba(148, 163, 184, 0.35);
 }
 .podium-card.is-3 .podium-tag {
-  background: rgba(217, 119, 6, 0.12);
-  color: #f0a05a;
-  border: 1px solid rgba(217, 119, 6, 0.25);
+  background: rgba(217, 119, 6, 0.14);
+  color: #b45309;
+  border: 1px solid rgba(217, 119, 6, 0.35);
 }
+[data-theme="dark"] .podium-card.is-1 .podium-tag { color: #facc15; }
+[data-theme="dark"] .podium-card.is-2 .podium-tag { color: #cbd5e1; }
+[data-theme="dark"] .podium-card.is-3 .podium-tag { color: #f0a05a; }
 /* An empty podium slot: a dashed card that invites the next learner. */
 .podium-card.is-open {
   align-items: center;
@@ -2887,7 +2863,8 @@ body.workspace-view-open .app-main { display: none; }
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 12px;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   width: 100%;
   box-sizing: border-box;
 }
@@ -3298,35 +3275,13 @@ body.workspace-view-open .app-main { display: none; }
   min-height: 0;
 }
 
-/* Leaderboard toolbar, header lifetime tracker, and privacy participation card */
-.leaderboard-xp-tracker {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  min-width: 0;
-}
-.leaderboard-xp-tracker .xp-tracker-label {
-  margin: 0;
-  text-align: right;
-}
-.leaderboard-toolbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px 18px;
-}
 .leaderboard-period-control {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-muted);
 }
 .leaderboard-select {
   appearance: none;
-  padding: 7px 30px 7px 12px;
+  padding: 7px 30px 7px 14px;
   border-radius: 999px;
   border: 1px solid var(--border);
   background: var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239aa0a6' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") no-repeat right 11px center;
@@ -3336,21 +3291,22 @@ body.workspace-view-open .app-main { display: none; }
   cursor: pointer;
 }
 .leaderboard-select:focus-visible,
-.leaderboard-input:focus-visible,
-.leaderboard-btn-primary:focus-visible,
-.leaderboard-btn-secondary:focus-visible {
+.leaderboard-btn-secondary:focus-visible,
+.leaderboard-retry-btn:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
-.leaderboard-meta {
+.leaderboard-status-note {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
+  margin: 0;
+  font-size: 13.5px;
 }
-.leaderboard-rank-pill {
-  display: inline-flex;
-  align-items: center;
+.leaderboard-status-note[hidden] {
+  display: none;
+}
+.leaderboard-retry-btn {
   padding: 5px 12px;
   border-radius: 999px;
   border: 1px solid var(--border);
@@ -3358,85 +3314,100 @@ body.workspace-view-open .app-main { display: none; }
   color: var(--text);
   font-size: 12px;
   font-weight: 600;
+  cursor: pointer;
 }
-.leaderboard-status-note {
-  margin: 0;
-  font-size: 13px;
-}
-.leaderboard-privacy-card {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  padding: 20px 22px;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  background: var(--surface);
-}
-.leaderboard-privacy-copy {
-  margin: 0;
-  font-size: 13px;
-  line-height: 1.55;
-  color: var(--text-muted);
-}
-.leaderboard-form {
-  display: flex;
-  align-items: flex-end;
-  flex-wrap: wrap;
-  gap: 12px 16px;
-}
-.leaderboard-form-field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  flex: 1 1 240px;
-  min-width: 0;
-}
-.leaderboard-form-field label {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text);
-}
-.leaderboard-input {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 9px 12px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  background: var(--bg);
-  color: var(--text);
-  font-size: 14px;
+.leaderboard-retry-btn:hover {
+  border-color: var(--accent);
 }
 .leaderboard-help {
-  margin: 0;
+  margin: 4px 0 0;
   font-size: 12px;
   color: var(--text-muted);
 }
-.leaderboard-actions {
+.leaderboard-alias-label-row {
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
+  gap: 8px;
 }
-.leaderboard-actions:empty,
-.leaderboard-actions:has(> [hidden]:only-child) {
+.leaderboard-random-btn {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.leaderboard-random-btn:hover {
+  text-decoration: underline;
+}
+.leaderboard-alias-suggestion {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid color-mix(in srgb, var(--accent) 32%, var(--border));
+  background: color-mix(in srgb, var(--accent) 7%, var(--surface));
+}
+.leaderboard-alias-suggestion[hidden] {
   display: none;
 }
-.leaderboard-btn-primary,
+.leaderboard-suggestion-copy {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--text);
+}
+.leaderboard-adopt-btn {
+  align-self: flex-start;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.leaderboard-adopt-btn:hover:not(:disabled) {
+  filter: brightness(1.06);
+}
+.leaderboard-adopt-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+.leaderboard-adopt-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.auth-leaderboard-disclosure {
+  margin: 4px 0 0;
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--text-muted);
+  text-align: center;
+}
+.leaderboard-settings-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 .leaderboard-btn-secondary {
-  padding: 9px 16px;
+  width: 100%;
+  padding: 10px 16px;
   border-radius: 8px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
 }
-.leaderboard-btn-primary {
-  border: 1px solid transparent;
-  background: var(--accent);
-  color: #fff;
-}
-.leaderboard-btn-secondary {
-  border: 1px solid var(--border);
-  background: transparent;
-  color: var(--text);
+.leaderboard-btn-secondary:hover {
+  border-color: var(--accent);
 }
 .leaderboard-pref-status {
   margin: 0;
@@ -3454,16 +3425,6 @@ body.workspace-view-open .app-main { display: none; }
     padding-bottom: 10px;
     gap: 8px;
   }
-  .leaderboard-xp-tracker .xp-tracker-label,
-  .achievements-xp-tracker .xp-tracker-label {
-    white-space: normal;
-    text-align: left;
-  }
-  .achievements-xp-tracker {
-    width: 100%;
-    align-items: flex-start;
-  }
-  .xp-progress-bar-track { max-width: 100%; }
   .achievements-toolbar {
     flex-wrap: wrap;
     gap: 10px 12px;

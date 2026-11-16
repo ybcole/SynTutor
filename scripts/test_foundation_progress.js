@@ -46,6 +46,7 @@ assert.equal(account.progress(chapter).xp, 0, 'Guest progress does not transfer 
 const saved = await account.act(chapter, attempt('account-1', 3));
 assert.equal(saved.earned, 0);
 assert.equal(saved.progress.verified_xp, 0);
+assert.equal(saved.progress.verified_completed_at, null);
 assert.equal(saved.progress.pending, true);
 assert.equal(saved.progress.last_correct, 3);
 account = createFoundationStore(course, config);
