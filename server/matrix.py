@@ -2006,6 +2006,14 @@ class MatrixEvaluator:
                 'it is accepted.')
 
     def _s_subject(self, parent, child):
+        leaves = _leaves_list(child)
+        if any(_lower(leaf.get('surface', '')) == 'there'
+               and leaf.get('type') == 'EX' for leaf in leaves):
+            return ('valid', 'C-SUBJECT-ROLE',
+                    f"'{self._p(child)}' is the expletive subject of "
+                    f"'{self._p(parent)}'. 'There' holds the subject position but "
+                    'does not name a person or thing; the content follows the '
+                    'verb.')
         return ('valid', 'C-SUBJECT-ROLE',
                 f"'{self._p(child)}' is the subject of "
                 f"'{self._p(parent)}' — the person or thing the sentence is "

@@ -357,6 +357,13 @@ class Projection:
     def np(self, nodes, nonrestrictive=()):
         if not nodes:
             raise ProjectionUnavailable("Empty overt noun phrase")
+        if len(nodes) == 1 and tag(nodes[0]) == "EX" \
+                and word(nodes[0]).lower() == "there":
+            # Expletive there fills the subject NP (Ch2 pp.26–27; Ch10 p.242).
+            # The pages establish its subject function; the direct word/NP
+            # representation is a SynTutor application, not a printed label.
+            refs = ("Ch2 pp. 26–27; Ch10 p. 242",)
+            return branch("NP", refs, word_node(nodes[0]))
         focus = next((i for i in range(len(nodes) - 1)
                       if leaf(nodes[i]) and word(nodes[i]) == "not"
                       and leaf(nodes[i + 1]) and word(nodes[i + 1]) == "even"), None)
@@ -1512,6 +1519,16 @@ class Projection:
             return self.wh_clause([raw("WHNP", [parts[0]]), parts[1]], relative=True)
         if len(parts) != 1 or tag(parts[0]) != "S":
             raise ProjectionUnavailable("Unsupported relative clause")
+        if self.is_nonfinite(parts[0]):
+            # Ch9: non-finite relatives have a covert wh in C2 and no finite
+            # subject; the relativised position is a gap.
+            link = self.gap("object")
+            body = self.nonfinite(parts[0], incoming=link, wrap=False)
+            if not link.used:
+                raise ProjectionUnavailable("Non-finite relative has no uniquely identified gap")
+            operator = branch("C2", WH, {"gap": True, "index": link.index})
+            operator["index"] = link.index
+            return branch("S″", WH, operator, branch("S′", WH, branch("C1", WH), body))
         # A zero relative with an overt subject can introduce an object gap.
         link = self.gap("object")
         body = self.clause(parts[0], link)
