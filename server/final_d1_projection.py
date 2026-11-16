@@ -371,10 +371,13 @@ class Projection:
             result["notes"] = ["The focusing adverb modifies the following NP."]
             return result
         if len(nodes) == 3 and tag(nodes[1]) == "CC":
-            left = self.temporal_pp(nodes[0])
-            right = self.temporal_pp(nodes[2])
-            if left is not None and right is not None:
-                return branch("PP", COORD, left, word_node(nodes[1]), right)
+            left = self.temporal_adjunct(nodes[0])
+            right = self.temporal_adjunct(nodes[2])
+            if left is not None and right is not None \
+                    and left.get("label") == right.get("label"):
+                # Ch5 p.93 keeps temporal NPs as NPs; coordination keeps the
+                # shared category instead of forcing a PP.
+                return branch(left["label"], COORD, left, word_node(nodes[1]), right)
         if (len(nodes) > 3 and leaf(nodes[0]) and tag(nodes[0]) == "CC"
                 and word(nodes[0]) in {"either", "neither"}):
             # Correlative subject: CC + NP + CC + NP. The leading either/
@@ -636,9 +639,11 @@ class Projection:
     def adjunct(self, node):
         if tag(node) == "S" and self.is_nonfinite(node):
             return self.nonfinite(node)
+        # Ch5 p.88 / p.93: a temporal NP is itself an adverbial and an NP
+        # adjunct. Preserve the NP category; do not invent a covert P.
         if tag(node) == "NP" and self.is_time_np(node):
-            # Ch5: an adjunct adverbial is a sister of VP inside a higher VP.
-            # A bare time NP is realised as a PP with a covert P (Ch5 pp.100–102).
+            if self.temporal_np_is_nominal(node):
+                return self.phrase(node)
             return self.temporal_pp(node)
         return self.phrase(node)
 
@@ -1025,6 +1030,9 @@ class Projection:
         return self.attach(branch("VP", refs, v, *complement), "VP", trailing=tail)
 
     def temporal_pp(self, node):
+        # Legacy representation retained only for single-word temporal
+        # adverbs whose nominal structure is not established (today,
+        # tomorrow, yesterday, tonight). Multi-word temporal NPs keep NP.
         if tag(node) == "PP":
             return self.phrase(node)
         if tag(node) == "NP" and self.is_time_np(node):
@@ -1034,13 +1042,30 @@ class Projection:
                           self.phrase(node))
         return None
 
+    @staticmethod
+    def temporal_np_is_nominal(node):
+        words = leaves(node)
+        if len(words) > 1:
+            return True
+        return any(tag(child) in {"DET", "NOM", "AP"} for child in kids(node))
+
+    def temporal_adjunct(self, node):
+        """A temporal adjunct keeps its category when the NP is nominal."""
+        if tag(node) == "PP":
+            return self.phrase(node)
+        if tag(node) == "NP" and self.is_time_np(node):
+            if self.temporal_np_is_nominal(node):
+                return self.phrase(node)
+            return self.temporal_pp(node)
+        return None
+
     def is_temporal_coordination(self, node):
         if tag(node) != "NP":
             return False
         parts = kids(node)
         return (len(parts) == 3 and tag(parts[1]) == "CC"
-                and self.temporal_pp(parts[0]) is not None
-                and self.temporal_pp(parts[2]) is not None)
+                and self.temporal_adjunct(parts[0]) is not None
+                and self.temporal_adjunct(parts[2]) is not None)
 
     def is_time_np(self, node):
         words = leaves(node)
