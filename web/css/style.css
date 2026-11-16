@@ -718,10 +718,8 @@ body.lessons-overlay-open .pane-input { visibility: hidden; }
 
 /* While the Syntax Builder is open, the input box is a mirror of the canvas:
    it shows the words that are on the canvas and stays read-only, so it reads
-   as a live readout rather than a second editing surface. */
-body.builder-active .input-editor {
-  background: color-mix(in srgb, var(--accent) 5%, transparent);
-}
+   as a live readout rather than a second editing surface. It carries no fill
+   of its own — the words should read as plain text over the pane. */
 body.builder-active #inputText { cursor: default; }
 
 /* The editor fills the upper-right pane edge-to-edge — no card chrome, no
@@ -2250,6 +2248,14 @@ body:has(#correctionPanel:not([hidden])) #emptyExplainState { display: none; }
   border-color: var(--accent-strong, var(--accent));
   color: #fff;
 }
+.explore-builder-btn {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  z-index: 8;
+  box-shadow: 0 6px 18px rgb(15 23 42 / 18%);
+}
+.explore-builder-btn[hidden] { display: none; }
 
 .builder-canvas {
   position: absolute;
@@ -3278,6 +3284,17 @@ body.workspace-view-open .app-main { display: none; }
 .canonical-tree-view [data-node-id][data-xai7-focus="sibling"] > text,
 .lesson-tree-wrap [data-node-id][data-xai7-focus="sibling"] > text {
   font-weight: 650;
+}
+/* Local tree relation shown on every selection: the parent is underlined and
+   the selected node's sisters are bold, alongside the evidence focus above. */
+.canonical-tree-view [data-node-id][data-tree-parent] > text,
+.lesson-tree-wrap [data-node-id][data-tree-parent] > text {
+  text-decoration: underline;
+  text-underline-offset: .18em;
+}
+.canonical-tree-view [data-node-id][data-tree-sibling] > text,
+.lesson-tree-wrap [data-node-id][data-tree-sibling] > text {
+  font-weight: 700;
 }
 .canonical-tree-view [data-node-id][data-xai7-issue] > text,
 .lesson-tree-wrap [data-node-id][data-xai7-issue] > text {

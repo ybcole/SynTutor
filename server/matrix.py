@@ -76,6 +76,13 @@ PREP_CLASS = {'IN', 'TO', 'POS', 'RP'}
 NOUN_PLURAL = {'NNS', 'NNPS'}
 NOUN_PLURAL_SET = {'police','people','children','men','women','feet','teeth','mice','data','cattle'}
 NOUN_SINGULAR = {'NN', 'NNP', 'NML', 'NX'}
+# Nouns ending in -s that are grammatically singular (the parser tags several
+# of them NNS).  They must not trigger subject-verb agreement errors.
+SINGULAR_S_NOUNS = {
+    'mathematics', 'physics', 'economics', 'politics', 'ethics', 'linguistics',
+    'statistics', 'athletics', 'gymnastics', 'news', 'measles', 'billiards',
+    'series', 'species', 'means', 'headquarters',
+}
 
 PRP_KEY = {
     'i': ('1', 'sg'), 'we': ('1', 'pl'), 'you': ('2', None),
@@ -220,6 +227,9 @@ NONCOUNT_NOUNS = {
     'chess', 'geography', 'chemistry', 'biology', 'ecology', 'economics',
     'politics', 'statistics', 'linguistics', 'gymnastics', 'athletics',
     'fashion', 'literature', 'philosophy', 'psychology',
+    # academic subjects and professional fields studied without an article
+    'medicine', 'law', 'engineering', 'nursing', 'dentistry', 'pharmacy',
+    'architecture', 'journalism', 'business', 'accounting', 'finance',
     # workplace / abstract mass nouns flagged by the corpus
     'progress', 'help', 'cooperation', 'assistance', 'support', 'staff',
     'paperwork', 'feedback', 'homework', 'housework', 'workload',
@@ -1162,6 +1172,8 @@ def num_of(leaf):
     """Grammatical number of a nominal leaf, or None if unmarked."""
     pos = leaf['type']
     surface = _lower(leaf.get('surface',''))
+    if surface in SINGULAR_S_NOUNS:
+        return 'sg'
     if pos in NOUN_PLURAL or surface in NOUN_PLURAL_SET:
         return 'pl'
     if pos in NOUN_SINGULAR:

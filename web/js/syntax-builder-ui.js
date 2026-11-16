@@ -7,8 +7,8 @@ import { requestEvidence, renderEvidence } from './explanation-evidence.js';
 // also drives the Matrix Quiz's "rebuild the tree" questions.
 //
 // Controls:
-//   double-click empty canvas -> bare inline text box; type words, Enter drops
-//     them as movable word boxes (no popup, no chrome)
+//   click empty canvas        -> type words straight into a bare inline box
+//   double-click empty canvas -> the same inline text box
 //   right-click empty canvas  -> compact menu of phrase labels; pick one to drop
 //     a phrase box (NP, VP, S, ...)
 //   drag a phrase's connector dot -> a rubber-band link; release on a word or
@@ -24,7 +24,7 @@ import {
   POS_TYPES, NODE, toCanonicalEnvelope, fromCanonicalEnvelope, builderProfile, paletteFor,
   createModel, addWordsFromText, addPhrase, moveNode, setType,
   removeNode, connect, canConnect, disconnect,
-  dotOf, dotHit, nodeHit, endpointOf, endpointHit, toTree, compareTrees, leavesOf, leafText,
+  dotOf, dotHit, nodeHit, endpointOf, endpointHit, phraseConnectorYs, toTree, compareTrees, leavesOf, leafText,
   seedWords, leavesWithTags, childrenOf, getSentenceFromLeaves as sentenceFromLeaves,
 } from './syntax-builder.js';
 import { renderNodeDetail, renderDiagnostic, clearOverlay } from './ui.js';
@@ -45,7 +45,7 @@ function nodeHeight(n) {
 // while the workspace analyses text, and the builder's while the canvas owns
 // the words.
 const TUTOR_PLACEHOLDER = 'Click the panel to write a sentence. SynTutor builds its syntax tree and analysis automatically.';
-const BUILDER_PLACEHOLDER = 'Words typed on the canvas will appear here...';
+const BUILDER_PLACEHOLDER = 'Words typed on the canvas will appear here. Click the canvas to edit or input words.';
 
 // Plain-English expansions for the canonical node codes shown in the
 // right-click selection view. Keys are the labels from the shared inventory.
@@ -155,6 +155,7 @@ const state = {
   reject: null,
   challenge: null,
   editMode: false,
+  canvasActive: false,
   inputSyncTimer: 0,
   syncingInput: false,
   onStatus: () => {},
@@ -217,8 +218,6 @@ function wireBuilderToolbar() {  const bar = document.getElementById('builderToo
     }
     draw();
   });
-  bar.querySelector('[data-builder-edit]')?.addEventListener('click',
-    () => setBuilderEditMode(!state.editMode));
 }
 
 function fitBuilderView() {
@@ -247,25 +246,22 @@ function fitBuilderView() {
   state.view.oy = top + (ch - top - 24 - totalH * scale) / 2 - minY * scale;
 }
 
-function setBuilderEditMode(value, { silent = false } = {}) {
+// The standalone builder is always in edit mode: there is no separate view
+// state to toggle into. Opening or importing a tree normalizes its layout once,
+// then every later edit keeps that structure in place until the canvas loses
+// focus.
+function beginBuilderEditing() {
   if (embedded) return;
   clearTimeout(state.inputSyncTimer);
-  state.editMode = Boolean(value);
-  const button = document.querySelector('[data-builder-edit]');
-  if (button) {
-    button.textContent = state.editMode ? 'Done editing' : 'Edit mode';
-    button.setAttribute('aria-pressed', String(state.editMode));
-  }
+  state.editMode = true;
   const input = document.getElementById('inputText');
   if (input) {
     input.readOnly = false;
-    input.placeholder = state.editMode
-      ? 'Type a sentence; its words appear on the canvas.'
-      : 'Type a sentence; its words appear on the canvas. Click Edit mode to move them.';
+    input.placeholder = BUILDER_PLACEHOLDER;
   }
   const clear = document.getElementById('builderClear');
   const snap = document.getElementById('builderSnap');
-  if (clear) clear.hidden = !state.editMode;
+  if (clear) clear.hidden = false;
   if (snap) snap.hidden = true;
   closeMenu();
   closeEditor();
@@ -277,29 +273,18 @@ function setBuilderEditMode(value, { silent = false } = {}) {
   state.hoverTarget = null;
   state.hoverEndpoint = null;
   clearSelection();
-  if (state.editMode) {
-    document.getElementById('explainNode')?.replaceChildren();
-    setCanvasHint('Type a sentence in the box, or double-click the canvas. Right-click for categories; drag a dot to connect.');
-    draw();
-    input?.focus?.();
-  } else {
-    inferCanonicalFeatures();
-    if (Object.keys(state.model.nodes).length) {
-      let layout = null;
-      try { layout = applyTreeLayout({ fit: true }); } catch { layout = null; }
-      if (!layout) fitBuilderView();
-      state.snapped = Boolean(layout);
-    }
+  inferCanonicalFeatures();
+  if (Object.keys(state.model.nodes).length) {
+    let layout = null;
+    try { layout = applyTreeLayout({ fit: true }); } catch { layout = null; }
+    if (!layout) fitBuilderView();
+    state.snapped = Boolean(layout);
+    state.snappedLayout = layout;
     draw();
     syncCanvasToInput();
-    setCanvasHint('');
-    state.treeCorrect = treeIsComplete();
   }
-  if (!silent) {
-    state.onStatus(state.editMode
-      ? 'Editing the tree. Click “Done editing” to snap and view it.'
-      : 'Tree view — click a node for its explanation.');
-  }
+  setCanvasHint('');
+  draw();
 }
 
 function onBuilderInput() {
@@ -583,17 +568,19 @@ export function openBuilderView(opts = {}) {
   // The hint steps below the action cluster whenever that cluster is up.
   setHintBelowActions(!bar.hidden);
   resize();
-  if (opts.model) {
+  if (opts.model || opts.canonicalTree) {
     const words = Object.values(state.model.nodes)
       .filter((n) => n.kind === NODE.WORD)
       .sort((a, b) => a.x - b.x || (a.order??0)-(b.order??0));
     if (words.length) measureWords(words);
-    applyTreeLayout({ fit: true });
+    const layout = applyTreeLayout({ fit: true });
+    state.snapped = Boolean(layout);
+    state.snappedLayout = layout;
     syncCanvasToInput();
   }
   if (!state.challenge) {
     document.getElementById('builderTools')?.remove();
-    // The toolbar owns Clear / Edit mode / zoom in the standalone builder.
+    // The toolbar owns Clear / zoom in the standalone builder.
     bar.hidden = true;
     const done = document.getElementById('builderDone');
     if (done) done.hidden = true;
@@ -606,11 +593,11 @@ export function openBuilderView(opts = {}) {
     // The standalone builder offers the complete free-analysis inventory
     // unless a caller supplied a specific canonical tree or model.
     if (!opts.canonicalTree && !opts.model) state.canonicalProfile = builderProfile();
-    setBuilderEditMode(false, { silent: true });
+    beginBuilderEditing();
     if (!treeIsComplete()) {
       setCanvasHint(Object.keys(state.model.nodes).length
-        ? 'Click “Edit mode” to continue building, or type in the box to add words.'
-        : 'Type a sentence in the box to place its words, then click “Edit mode” to move them.');
+        ? 'Click the canvas to add words, right-click for categories, or drag a connector dot to link boxes.'
+        : 'Click the canvas to input words, or right-click for categories.');
     }
   } else {
     document.getElementById('builderToolbar')?.setAttribute('hidden', '');
@@ -660,6 +647,7 @@ export function closeBuilderView() {
   clearTimeout(state.inputSyncTimer);
   tools?.close();
   state.editMode = false;
+  state.canvasActive = false;
   document.getElementById('builderToolbar')?.setAttribute('hidden', '');
   document.getElementById('builderTopLeft')?.setAttribute('hidden', '');
   document.getElementById('builderTools')?.remove();
@@ -832,6 +820,24 @@ function wireCanvas(canvas) {
   canvas.addEventListener('contextmenu', onContextMenu);
   canvas.addEventListener('wheel', onWheel, { passive: false });
   canvas.addEventListener('keydown', onKeyDown);
+  // Connectors belong to the editing session, not to the resting tree.
+  // Leaving the canvas snaps the tree and removes them; hovering a label in
+  // the unfocused view never brings them back.
+  canvas.addEventListener('blur', () => {
+    window.setTimeout(() => {
+      if (document.activeElement === canvas) return;
+      deactivateBuilderCanvas();
+    }, 150);
+  });
+  // A pointer press anywhere outside the canvas ends the editing session even
+  // when the canvas never held DOM focus (mouse editing does not always move
+  // focus). Menu and inline-editor presses are part of the session.
+  document.addEventListener('pointerdown', (event) => {
+    if (!state.canvasActive) return;
+    if (event.target === canvas) return;
+    if (event.target.closest?.('.builder-menu, .builder-inline-input')) return;
+    deactivateBuilderCanvas();
+  }, true);
 
   // In the compact labelled exercise, a hold opens the same menu as right-click.
   let touch = null;
@@ -871,6 +877,10 @@ function wireCanvas(canvas) {
 function onMouseDown(e) {
   const { sx, sy } = eventPos(e);
   const w = toWorld(sx, sy);
+  if (!state.canvasActive) {
+    state.canvasActive = true;
+    draw();
+  }
 
   // View mode: a node click opens its XAI explanation; empty space pans.
   // Nothing can be created, moved, connected, or deleted.
@@ -894,8 +904,7 @@ function onMouseDown(e) {
   }
 
   // Right-click: short click opens the add-node menu; hold starts multi-selection.
-  if (e.button === 2) {
-    if (state.rightHoldTimer) clearTimeout(state.rightHoldTimer);
+  if (e.button === 2) {    if (state.rightHoldTimer) clearTimeout(state.rightHoldTimer);
     state.rightDownStart = { sx, sy, clientX: e.clientX, clientY: e.clientY };
     state.holdingRight = false;
     state.rightHoldTimer = setTimeout(() => {
@@ -911,17 +920,16 @@ function onMouseDown(e) {
   if (e.button === 0) {
     const dot = dotHit(state.model, w.x, w.y);
     if (dot) {
-      state.link = { parentId: dot.id, childId: null, free: 'child', x: w.x, y: w.y };
+      state.link = { parentId: dot.id, childId: null, free: 'child', x: w.x, y: w.y, startX: w.x, startY: w.y, moved: false };
       closeMenu();
       return;
     }
     const endpoint = endpointHit(state.model, w.x, w.y);
     if (endpoint) {
       const oldParent = endpoint.parent;
-      endpoint.parent = null;
       state.link = {
         parentId: null, childId: endpoint.id, free: 'parent',
-        originalParent: oldParent, x: w.x, y: w.y,
+        originalParent: oldParent, x: w.x, y: w.y, startX: w.x, startY: w.y, moved: false,
       };
       selectOnly(endpoint.id);
       closeMenu();
@@ -955,7 +963,7 @@ function onMouseDown(e) {
     // Empty space: hold left-click and drag to move within the canvas (pan).
     closeMenu();
     clearSelection();
-    state.pan = { sx, sy, ox: state.view.ox, oy: state.view.oy };
+    state.pan = { sx, sy, ox: state.view.ox, oy: state.view.oy, moved: false, world: { x: w.x, y: w.y } };
     state.canvas.style.cursor = 'grabbing';
     draw();
     explainSelected();
@@ -1025,6 +1033,7 @@ function onMouseMove(e) {
     return;
   }
   if (state.pan) {
+    if (Math.hypot(sx - state.pan.sx, sy - state.pan.sy) > 3) state.pan.moved = true;
     state.view.ox = state.pan.ox + (sx - state.pan.sx);
     state.view.oy = state.pan.oy + (sy - state.pan.sy);
     state.canvas.style.cursor = 'grabbing';
@@ -1034,6 +1043,9 @@ function onMouseMove(e) {
   if (state.link) {
     state.link.x = w.x;
     state.link.y = w.y;
+    if (Math.hypot(w.x - state.link.startX, w.y - state.link.startY) > 3) {
+      state.link.moved = true;
+    }
     if (state.link.free === 'parent') {
       const hit = nodeHit(state.model, w.x, w.y);
       state.hoverTarget = (hit && canConnect(state.model, hit.id, state.link.childId)) ? hit.id : null;
@@ -1115,19 +1127,35 @@ function onMouseUp(e) {
 
   const { sx, sy } = eventPos(e);
   const w = toWorld(sx, sy);
-  if (state.link) {
+  if (state.link && !state.link.moved) {
+    // A plain click on a connector (or on the line above a word) never edits
+    // the tree: drop the preview and leave every connection intact.
+    state.link = null;
+    state.hoverTarget = null;
+    draw();
+  } else if (state.link) {
     if (state.link.free === 'parent') {
-      const hit = nodeHit(state.model, w.x, w.y);
+      const hit = nearestConnectable(w.x, w.y, { childId: state.link.childId });
       if (hit && canConnect(state.model, hit.id, state.link.childId)) {
         connect(state.model, hit.id, state.link.childId);
         state.onStatus?.(`Connected “${nodeLabel(hit)}” → “${nodeLabel(state.model.nodes[state.link.childId])}”.`);
       } else {
-        // Dropped on empty space (or an invalid target): the connection was
-        // already detached on mouse-down, so it stays removed.
-        state.onStatus?.('Connection removed.');
+        // No new parent nearby. If the learner dragged the edge well away from
+        // its current parent, remove the connection; otherwise keep it.
+        const original = state.link.originalParent
+          ? state.model.nodes[state.link.originalParent] : null;
+        const away = !original
+          || Math.hypot(w.x - dotOf(original).x, w.y - dotOf(original).y)
+            > 120 / Math.max(state.view.scale, 0.2);
+        if (away) {
+          disconnect(state.model, state.link.childId);
+          state.onStatus?.('Connection removed.');
+        } else {
+          state.onStatus?.('Connection kept.');
+        }
       }
     } else {
-      const tgt = nodeHit(state.model, w.x, w.y);
+      const tgt = nearestConnectable(w.x, w.y, { parentId: state.link.parentId });
       if (tgt && canConnect(state.model, state.link.parentId, tgt.id)) {
         connect(state.model, state.link.parentId, tgt.id);
       } else if (tgt) {
@@ -1158,10 +1186,22 @@ function onMouseUp(e) {
   // A word dragged sideways can change the reading order, so the input panel
   // follows once the drag ends.
   const dragged = state.drag;
+  const panned = state.pan;
   state.drag = null;
   state.pan = null;
   state.canvas.style.cursor = '';
   if (dragged?.moved) {syncCanvasToInput();tools?.record();tools?.render();}
+  if (!dragged?.moved && state.selection.size && !panned?.moved) explainSelected();
+  // A plain click on empty canvas starts a new word box straight away — the
+  // standalone builder has no separate "edit mode" to enter first.
+  if (panned && !panned.moved && e.button === 0 && !state.challenge && !embedded) {
+    openInlineEditor(panned.world, e.clientX, e.clientY, '', (text) => {
+      if (!text.trim()) return;
+      const made = addWordsFromText(state.model, text, panned.world.x, panned.world.y);
+      validateWords(made);
+      changed();
+    });
+  }
 }
 
 function nodeLabel(node) {
@@ -1178,6 +1218,28 @@ function flashRejected(id) {
       draw();
     }
   }, 950);
+}
+
+// Nearest node that can accept the link when the pointer is released. Distance
+// is measured to the node's own connector dot, so releasing right next to a dot
+// snaps to it even from a slightly loose drag.
+function nearestConnectable(x, y, { parentId = null, childId = null } = {}) {
+  const limit = 140 / Math.max(state.view.scale, 0.2);
+  let best = null;
+  let bestDistance = Infinity;
+  for (const n of Object.values(state.model.nodes)) {
+    const ok = parentId
+      ? canConnect(state.model, parentId, n.id)
+      : childId ? canConnect(state.model, n.id, childId) : false;
+    if (!ok) continue;
+    const anchor = parentId ? endpointOf(n) : dotOf(n);
+    const distance = Math.hypot(x - anchor.x, y - anchor.y);
+    if (distance < bestDistance) {
+      bestDistance = distance;
+      best = n;
+    }
+  }
+  return bestDistance <= limit ? best : null;
 }
 
 function onDoubleClick(e) {
@@ -1233,7 +1295,11 @@ async function validateWords(nodes) {
   // Tags often arrive after the learner has already left edit mode. Re-run
   // feature inference so tense appears as soon as the validator responds.
   if (!state.editMode && isBuilderOpen()) {
-    inferCanonicalFeatures();
+  // Imported trees (canonical envelope or the generator's display tree) keep
+  // exactly the labels and features they came with. Inference is only for
+  // trees the learner builds from scratch: it must never add a POS tag such as
+  // VBZ that the generator's tree does not show.
+  if (!state.model.canonicalBase && !state.model.displayImport) inferCanonicalFeatures();
     if (state.snapped) {
       try { applyTreeLayout({ fit: true }); } catch { /* keep current layout */ }
     }
@@ -1825,7 +1891,7 @@ function describeNode(node) {
 let evidenceRequest = 0;
 let lastEvidenceSnapshot = null;
 async function showBuilderEvidence(nodeId = null) {
-  if (state.editMode || embedded) return;
+  if (embedded || state.challenge) return;
   const version = ++evidenceRequest;
   try {
     const tree = toCanonicalEnvelope(state.model, state.canonicalProfile);
@@ -1849,7 +1915,7 @@ async function showBuilderEvidence(nodeId = null) {
 }
 
 function explainSelected() {
-  if (embedded || state.editMode) return;
+  if (embedded || state.challenge) return;
   const ids = [...state.selection];
   const node = ids.length ? state.model.nodes[ids[ids.length - 1]] : null;
   if (!node) {
@@ -1871,10 +1937,9 @@ function explainSelected() {
 // re-check the tree automatically so there is no "Check" button.
 function changed() {
   evidenceRequest++;state.lastEvaluation=null;
-  // Any structural edit after a snap leaves the snapped layout, so the builder
-  // falls back to measuring boxes from their content.
-  state.snapped = false;
-  state.snappedLayout = null;
+  // Keep the normalized layout across edits: adding or renaming a box must not
+  // reflow the tree the learner is already looking at. The layout is recomputed
+  // only when the canvas loses focus (or Build tree is pressed).
   // The user edited the tree, so stale Build-tree validation errors no longer
   // apply — clear them and let the words fall back to their lexical colouring.
   state.nodeErrors = new Map();
@@ -2204,81 +2269,167 @@ function computeTreeLayout() {
   }
   if (!root) return null;
 
-  // Depth + leaf order (DFS from the chosen root only).
+  // Depth + DFS leaf order from the chosen root only.
+  const childrenOfNode = (n) => (kidsOf.get(n.id) || []).slice()
+    .sort((a, b) => a.x - b.x || (a.order??0)-(b.order??0));
   const depth = new Map();
   const leafIds = [];
-  let maxDepth = 0;
   const visited = new Set();
+  let maxDepth = 0;
   const walk = (n, d) => {
     if (!n || visited.has(n.id)) return;
     visited.add(n.id);
     maxDepth = Math.max(maxDepth, d);
     depth.set(n.id, d);
-    const kids = (kidsOf.get(n.id) || []).slice().sort((a, b) => a.x - b.x || (a.order??0)-(b.order??0));
+    const kids = childrenOfNode(n);
     if (!kids.length) leafIds.push(n.id);
     for (const c of kids) walk(c, d + 1);
   };
   walk(root, 0);
 
-  const leafIndex = new Map();
-  leafIds.forEach((id, i) => leafIndex.set(id, i));
+  // Canonical B-R trees are drawn by the generator as an SVG with its own
+  // metrics: 15px system-ui labels, 18px gaps, 72px rows, 35px top padding and
+  // an 18px row for each stacked feature. Mirror them exactly.
+  if (state.model.canonicalBase) {
+    const GAP = 18;
+    const ROW = 72;
+    const TOP_PAD = 35;
+    const MIN_BOX_W = 56;
+    const PAD = 28;
+    const FONT = '15px system-ui, sans-serif';
+    const measureLabel = (text) => {
+      if (!text) return 0;
+      state.ctx.save();
+      state.ctx.setTransform(1, 0, 0, 1, 0, 0);
+      state.ctx.font = FONT;
+      const width = state.ctx.measureText(text).width;
+      state.ctx.restore();
+      return width;
+    };
+    const coreOf = (n) => {
+      if (n.canonicalDisplay?.length) return n.canonicalDisplay[0];
+      const name = n.type === 'AUX' || n.canonicalData?.unlabelled ? '' : n.type;
+      return `${name}${n.canonicalIndex != null ? ` (${n.canonicalIndex})` : ''}`;
+    };
+    const rowsOf = (n) => n.canonicalDisplay?.length
+      ? n.canonicalDisplay.slice(1)
+      : (n.canonicalFeatures || []).map((feature) => `[${feature}]`);
+    const labelWidth = (n) => {
+      let width = MIN_BOX_W;
+      const core = coreOf(n);
+      if (core) width = Math.max(width, measureLabel(core) + PAD);
+      for (const row of rowsOf(n)) width = Math.max(width, measureLabel(row) + PAD);
+      return width;
+    };
+    const sizes = new Map();
+    const measureSubtree = (n) => {
+      const label = labelWidth(n);
+      const kids = childrenOfNode(n);
+      let childrenWidth = 0;
+      kids.forEach((child, index) => {
+        childrenWidth += measureSubtree(child) + (index ? GAP : 0);
+      });
+      const width = Math.max(label, childrenWidth);
+      sizes.set(n.id, { label, childrenWidth, width, rows: rowsOf(n).length });
+      return width;
+    };
+    const rootWidth = measureSubtree(root);
+    const layout = new Map();
+    let bottom = 0;
+    const place = (n, left, baseline) => {
+      const info = sizes.get(n.id);
+      const x = left + info.width / 2;
+      const h = NODE_H + info.rows * 18;
+      layout.set(n.id, {
+        x, y: baseline - 17 + h / 2, w: info.label, h, baseline, rows: info.rows,
+      });
+      bottom = Math.max(bottom, baseline + info.rows * 18 + 35);
+      let childLeft = x - info.childrenWidth / 2;
+      for (const child of childrenOfNode(n)) {
+        place(child, childLeft, baseline + ROW + info.rows * 18);
+        childLeft += sizes.get(child.id).width + GAP;
+      }
+    };
+    place(root, 0, TOP_PAD);
+    return {
+      layout, maxDepth, TOP_PAD, BOX_H: NODE_H,
+      ROW, GAP, totalW: rootWidth, totalH: Math.max(bottom, 160),
+      notation: 'canonical',
+    };
+  }
 
-  const maxFeatures = Math.max(0, ...nodes.map(
-    (node) => node.canonicalFeatures?.length || 0));
-  const BOX_H = NODE_H + maxFeatures * FEATURE_LINE_H;
+  // Geometry constants mirror renderer.js createLayout exactly: same gap,
+  // row height, label padding and minimum box width. Widths are per label,
+  // not uniform slots, so the builder's angles and spacing match the
+  // generator's tree.
+  const GAP = state.canvas.clientWidth < 600 || leafIds.length >= 8 ? 16 : 18;
+  const ROW = NODE_H + (leafIds.length >= 8 ? 28 : 30);
+  const TOP_PAD = 24;
+  const SIDE_PAD = 24;
   const MIN_BOX_W = 54;
   const H_PAD = 14;
-  const GAP = 26;
-  const V_GAP = 40;
-  const TOP_PAD = 24;
-
-  // Uniform slot sized from the widest rendered line (category or a stacked
-  // feature row), so the generator-style labels fit their boxes.
-  let maxNodeW = MIN_BOX_W;
-  for (const n of nodes) maxNodeW = Math.max(maxNodeW, nodeWidth(n));
-  const SLOT = maxNodeW + GAP;
-
-  // Bottom-up span (leaf range each node covers).
-  const span = new Map();
-  const collectSpan = (id) => {
-    if (span.has(id)) return span.get(id);
-    const kids = kidsOf.get(id) || [];
-    if (!kids.length) {
-      const s = [leafIndex.get(id), leafIndex.get(id)];
-      span.set(id, s);
-      return s;
-    }
-    let lo = Infinity, hi = -Infinity;
-    for (const c of kids) {
-      const cs = collectSpan(c.id);
-      lo = Math.min(lo, cs[0]);
-      hi = Math.max(hi, cs[1]);
-    }
-    const s = [lo, hi];
-    span.set(id, s);
-    return s;
+  const LAYOUT_FONT = '600 16px Inter, system-ui, sans-serif';
+  const FEATURE_FONT = '500 11px Inter, system-ui, sans-serif';
+  const measureLabel = (text, font = LAYOUT_FONT) => {
+    if (!text) return 0;
+    state.ctx.save();
+    state.ctx.setTransform(1, 0, 0, 1, 0, 0);
+    state.ctx.font = font;
+    const width = state.ctx.measureText(text).width;
+    state.ctx.restore();
+    return width;
   };
-  collectSpan(root.id);
-
-  // Lay out every node reachable from the root only; leave orphans untouched.
-  const layout = new Map();
-  for (const n of nodes) {
-    if (!visited.has(n.id)) continue;
-    const d = depth.get(n.id) || 0;
-    const y = TOP_PAD + d * (BOX_H + V_GAP) + BOX_H / 2;
-    const kids = kidsOf.get(n.id) || [];
-    if (!kids.length) {
-      const i = leafIndex.get(n.id);
-      layout.set(n.id, { x: SLOT * i + SLOT / 2, y, w: SLOT, h: BOX_H });
-    } else {
-      const s = span.get(n.id);
-      const x = ((s[0] + s[1]) / 2 + 0.5) * SLOT;
-      const w = (s[1] - s[0] + 1) * SLOT;
-      layout.set(n.id, { x, y, w, h: BOX_H });
+  const wordText = (n) => `${n.text || '...'}${
+    n.kind === NODE.SPECIAL && n.canonicalIndex != null ? ' ' + n.canonicalIndex : ''}${
+    n.canonicalData?.elided ? ' (elided)' : ''}`;
+  const labelWidth = (n) => {
+    if (n.kind === NODE.PHRASE) {
+      let width = MIN_BOX_W;
+      for (const line of phraseLines(n)) {
+        const isFeature = line.startsWith('[');
+        width = Math.max(width,
+          measureLabel(line, isFeature ? FEATURE_FONT : LAYOUT_FONT) + (isFeature ? 16 : H_PAD * 2));
+      }
+      return width;
     }
-  }
+    let width = Math.max(MIN_BOX_W, measureLabel(wordText(n)) + H_PAD * 2);
+    return width;
+  };
+
+  // Bottom-up subtree widths, then the generator's centre-over-children
+  // placement. Each node keeps its own label width for edges and hit tests.
+  const sizes = new Map();
+  const measureSubtree = (n) => {
+    const label = labelWidth(n);
+    const kids = childrenOfNode(n);
+    let childrenWidth = 0;
+    kids.forEach((child, index) => {
+      childrenWidth += measureSubtree(child) + (index ? GAP : 0);
+    });
+    const width = Math.max(label, childrenWidth);
+    sizes.set(n.id, { label, childrenWidth, width });
+    return width;
+  };
+  const rootWidth = measureSubtree(root);
+
+  const layout = new Map();
+  const place = (n, left, d) => {
+    const info = sizes.get(n.id);
+    const y = TOP_PAD + d * ROW + NODE_H / 2;
+    const x = left + info.width / 2;
+    layout.set(n.id, { x, y, w: info.label, h: NODE_H });
+    let childLeft = x - info.childrenWidth / 2;
+    for (const child of childrenOfNode(n)) {
+      place(child, childLeft, d + 1);
+      childLeft += sizes.get(child.id).width + GAP;
+    }
+  };
+  const totalW = Math.max(rootWidth + SIDE_PAD * 2, 320);
+  place(root, (totalW - rootWidth) / 2, 0);
+  const totalH = Math.max(TOP_PAD + maxDepth * ROW + NODE_H + SIDE_PAD * 2, 160);
+
   if (!layout.size) return null;
-  return { layout, SLOT, maxDepth, TOP_PAD, BOX_H, V_GAP };
+  return { layout, maxDepth, TOP_PAD, BOX_H: NODE_H, ROW, GAP, totalW, totalH };
 }
 
 // Re-arrange every node into the hierarchical syntax-tree layout so it matches
@@ -2287,7 +2438,7 @@ function computeTreeLayout() {
 function applyTreeLayout({ fit = true } = {}) {
   const result = computeTreeLayout();
   if (!result) return null;
-  const { layout } = result;
+  const { layout, totalW, totalH } = result;
   let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
   for (const [id, pos] of layout) {
     const n = state.model.nodes[id];
@@ -2304,20 +2455,53 @@ function applyTreeLayout({ fit = true } = {}) {
   if (!fit) return layout;
   const cw = state.canvas.clientWidth;
   const ch = state.canvas.clientHeight;
-  const totalW = Math.max(maxX - minX, 1);
-  const totalH = Math.max(maxY - minY, 1);
-  if (cw && ch) {
-    const pad=24,toolsPanel=document.getElementById('builderTools');
-    const rect=!embedded&&toolsPanel&&!toolsPanel.hidden?toolsPanel.getBoundingClientRect():null;
-    const left=rect&&innerWidth>760?Math.min(rect.width+30,cw*.48):0;
-    const bottom=rect&&innerWidth<=760?rect.height+20:0;
-    const top=document.body.classList.contains('builder-standalone')?110:60,availableW=Math.max(100,cw-left),availableH=Math.max(120,ch-bottom-top);
-    const scale=Math.max(.15,Math.min((availableW-pad*2)/totalW,(availableH-pad*2)/totalH,1.35));
-    state.view.scale=scale;
-    state.view.ox=left+(availableW-totalW*scale)/2-minX*scale;
-    state.view.oy=top+(availableH-totalH*scale)/2-minY*scale;
+  if (!cw || !ch) return layout;
+  if (!state.challenge && !embedded) {
+    // Standalone builder: the generator's own fit — same padded bounds,
+    // same scale ceiling, same centring.
+    const pad = Math.min(24, cw / 8, ch / 8);
+    const scale = Math.max(0.2, Math.min((cw - pad * 2) / totalW, (ch - pad * 2) / totalH, 1.7));
+    state.view.scale = scale;
+    state.view.ox = (cw - totalW * scale) / 2;
+    state.view.oy = (ch - totalH * scale) / 2;
+    return layout;
   }
+  const totalSpanW = Math.max(maxX - minX, 1);
+  const totalSpanH = Math.max(maxY - minY, 1);
+  const pad=24,toolsPanel=document.getElementById('builderTools');
+  const rect=!embedded&&toolsPanel&&!toolsPanel.hidden?toolsPanel.getBoundingClientRect():null;
+  const left=rect&&innerWidth>760?Math.min(rect.width+30,cw*.48):0;
+  const bottom=rect&&innerWidth<=760?rect.height+20:0;
+  const top=document.body.classList.contains('builder-standalone')?110:60,availableW=Math.max(100,cw-left),availableH=Math.max(120,ch-bottom-top);
+  const scale=Math.max(.15,Math.min((availableW-pad*2)/totalSpanW,(availableH-pad*2)/totalSpanH,1.35));
+  state.view.scale=scale;
+  state.view.ox=left+(availableW-totalSpanW*scale)/2-minX*scale;
+  state.view.oy=top+(availableH-totalSpanH*scale)/2-minY*scale;
   return layout;
+}
+
+// Normalize the canvas after focus leaves it. The learner keeps every box and
+// connection they made; only the geometry is snapped back into the generator's
+// hierarchical layout, so an unfinished box never leaves the tree crooked.
+function normalizeBuilderLayout() {
+  if (embedded || state.challenge || !isBuilderOpen()) return;
+  if (!treeIsComplete()) return;
+  const layout = applyTreeLayout({ fit: true });
+  if (!layout) return;
+  state.snapped = true;
+  state.snappedLayout = layout;
+  draw();
+}
+
+// Leaving the canvas ends the editing session: connectors disappear, and a
+// complete tree snaps back into the generator's notation.
+function deactivateBuilderCanvas() {
+  if (!state.canvasActive) return;
+  state.canvasActive = false;
+  if (!state.editor && !state.menu && !state.link && !state.drag && !state.marquee) {
+    normalizeBuilderLayout();
+  }
+  draw();
 }
 
 async function buildTree() {
@@ -2522,11 +2706,25 @@ function render() {
   ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr); // clear background
 
   // Measure boxes before applying the view transform — measuring resets the
-  // canvas transform, so it must happen first. When the tree has been snapped
-  // into the generator layout, keep the snapped slot sizes instead.
+  // canvas transform, so it must happen first. Nodes that already belong to the
+  // normalized layout keep their slot sizes, so adding a box never resizes or
+  // shifts the rest of the tree; only newly added boxes are measured here.
   const nodes = paintOrder();
-  if (!state.snapped) {
-    for (const n of nodes) sizeNode(n);
+  if (!nodes.length) {
+    ctx.save();
+    ctx.fillStyle = getCss('--muted', '#77708f');
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.font = '500 14px Inter, system-ui, sans-serif';
+    const width = canvas.width / dpr;
+    const height = canvas.height / dpr;
+    ctx.fillText('Click the canvas to focus and start a tree.', width / 2, height / 2 - 12);
+    ctx.fillText('Right-click to open the node menu.', width / 2, height / 2 + 12);
+    ctx.restore();
+  }
+  const locked = state.snapped ? state.snappedLayout : null;
+  for (const n of nodes) {
+    if (!locked || !locked.has(n.id)) sizeNode(n);
   }
 
   ctx.save();
@@ -2539,15 +2737,25 @@ function render() {
     if (!n.parent) continue;
     const parent = state.model.nodes[n.parent];
     if (!parent || parent.canonicalTriangle) continue;
-    const childIsLeaf = childrenOf(state.model, n.id).length === 0;
-    // Stop just above a leaf's POS tag when it has one, otherwise hug the word.
-    const childGap = childIsLeaf && n.tag ? 24 : 12;
-    // An edge into a node that failed validation is drawn red, like the tutor.
+    // Same attachment gaps as the generator: 20px above and below every raw
+    // label, and the canonical SVG anchors: 18px below the parent's last
+    // feature row, 18px above the child baseline.
     const bad = state.nodeErrors.has(n.id);
-    drawEdge(ctx,
-      { x: parent.x + parent.w / 2, y: parent.y + parent.h / 2 + 12 },
-      { x: n.x + n.w / 2, y: n.y + n.h / 2 - childGap },
-      bad ? c.error : undefined);
+    if (n.canonicalNotation) {
+      const parentRows = parent.canonicalDisplay?.length
+        ? Math.max(0, parent.canonicalDisplay.length - 1)
+        : (parent.canonicalFeatures || []).length;
+      drawEdge(ctx,
+        { x: parent.x + parent.w / 2, y: parent.y + 17 + 18 + parentRows * 18 },
+        { x: n.x + n.w / 2, y: n.y + 17 - 18 },
+        bad ? c.error : getCss('--muted', '#64748b'));
+    } else {
+      const childGap = 20;
+      drawEdge(ctx,
+        { x: parent.x + parent.w / 2, y: parent.y + parent.h / 2 + 20 },
+        { x: n.x + n.w / 2, y: n.y + n.h / 2 - childGap },
+        bad ? c.error : undefined);
+    }
   }
 
   for(const parent of nodes.filter(n=>n.canonicalTriangle)){
@@ -2563,13 +2771,27 @@ function render() {
     if (state.link.free === 'parent') {
       const child = state.model.nodes[state.link.childId];
       if (child) {
-        const childIsLeaf = childrenOf(state.model, child.id).length === 0;
-        const childGap = childIsLeaf && child.tag ? 24 : 12;
-        drawEdge(ctx, { x: child.x + child.w / 2, y: child.y + child.h / 2 - childGap }, { x: state.link.x, y: state.link.y });
+        if (child.canonicalNotation) {
+          drawEdge(ctx,
+            { x: child.x + child.w / 2, y: child.y + 17 - 18 },
+            { x: state.link.x, y: state.link.y },
+            getCss('--muted', '#64748b'));
+        } else {
+          const childGap = 20;
+          drawEdge(ctx, { x: child.x + child.w / 2, y: child.y + child.h / 2 - childGap }, { x: state.link.x, y: state.link.y });
+        }
       }
     } else {
       const parent = state.model.nodes[state.link.parentId];
-      if (parent) drawEdge(ctx, { x: parent.x + parent.w / 2, y: parent.y + parent.h / 2 + 12 }, { x: state.link.x, y: state.link.y });
+      if (parent) {
+        const y = parent.canonicalNotation
+          ? parent.y + 17 + 18 + (parent.canonicalDisplay?.length
+            ? Math.max(0, parent.canonicalDisplay.length - 1)
+            : (parent.canonicalFeatures || []).length) * 18
+          : parent.y + parent.h / 2 + 20;
+        drawEdge(ctx, { x: parent.x + parent.w / 2, y }, { x: state.link.x, y: state.link.y },
+          parent.canonicalNotation ? getCss('--muted', '#64748b') : undefined);
+      }
     }
   }
 
@@ -2615,11 +2837,16 @@ function drawNode(ctx, n) {
   // an unknown word and the tree is not yet structurally complete.
   const invalid = state.nodeErrors.has(n.id)
     || (n.kind === NODE.WORD && n.valid === false && !state.treeCorrect);
+  const canonical = Boolean(n.canonicalNotation);
 
-  let color = c.text;
+  let color = canonical ? getCss('--ink', '#1e2029') : c.text;
   if (invalid || rejected) color = c.error;
-  if (hovered) color = c.accent;
-  if (selected) color = c.selected;
+  if (canonical) {
+    if (selected) color = getCss('--accent-strong', '#6d5ae6');
+  } else {
+    if (hovered) color = c.accent;
+    if (selected) color = c.selected;
+  }
 
   const cx = n.x + n.w / 2;
   const cy = n.y + n.h / 2;
@@ -2628,7 +2855,30 @@ function drawNode(ctx, n) {
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
 
-  if (isPhrase) {
+  if (canonical) {
+    // Same typography as the generator's canonical SVG: 15px system-ui, plain
+    // weight, baseline-anchored, with one 18px row per stacked feature.
+    const baseline = n.y + 17;
+    ctx.textBaseline = 'alphabetic';
+    ctx.fillStyle = color;
+    ctx.font = selected ? '700 15px system-ui, sans-serif' : '400 15px system-ui, sans-serif';
+    if (isPhrase) {
+      const core = n.canonicalDisplay?.length
+        ? n.canonicalDisplay[0]
+        : `${n.type === 'AUX' || n.canonicalData?.unlabelled ? '' : n.type}${
+          n.canonicalIndex != null ? ` (${n.canonicalIndex})` : ''}`;
+      if (core) ctx.fillText(core, cx, baseline);
+      const rows = n.canonicalDisplay?.length
+        ? n.canonicalDisplay.slice(1)
+        : (n.canonicalFeatures || []).map((feature) => `[${feature}]`);
+      rows.forEach((row, index) => {
+        ctx.fillText(row, cx, baseline + (index + 1) * 18);
+      });
+    } else {
+      ctx.fillText(`${n.text || ''}${
+        n.canonicalData?.elided ? ' (elided)' : ''}`, cx, baseline);
+    }
+  } else if (isPhrase) {
     const features = n.canonicalFeatures || [];
     const core = n.canonicalData?.unlabelled
       || (n.type === 'AUX' && features.includes('-tense'))
@@ -2650,11 +2900,6 @@ function drawNode(ctx, n) {
     ctx.fillStyle = color;
     ctx.font = WORD_FONT;
     ctx.fillText(`${n.text||'…'}${n.kind===NODE.SPECIAL&&n.canonicalIndex!=null?' '+n.canonicalIndex:''}${n.canonicalData?.elided?' (elided)':''}`, cx, cy + 3);
-    if (n.tag) {
-      ctx.fillStyle = invalid ? c.error : c.tag;
-      ctx.font = TAG_FONT;
-      ctx.fillText(n.tag, cx, cy - 14);
-    }
     if (invalid && n.suggestion) {
       ctx.fillStyle = c.tag;
       ctx.font = '500 11px Inter, system-ui, sans-serif';
@@ -2662,23 +2907,29 @@ function drawNode(ctx, n) {
     }
   }
 
-  // Endpoint handle (connected child) — revealed on hover so the clean tree
-  // look matches the grammar tutor.
-  if (state.editMode && n.parent && hovered) {
-    const ep = { x: cx, y: n.y };
-    ctx.beginPath();
-    ctx.arc(ep.x, ep.y, 4, 0, Math.PI * 2);
-    ctx.fillStyle = c.accent;
-    ctx.fill();
-  }
-  // Connector dot (phrase) — drag it to start a new connection. Always shown so
-  // the connect target is easy to find and click.
-  if (state.editMode && isPhrase) {
-    const d = { x: cx, y: n.y + n.h + 6 };
-    ctx.beginPath();
-    ctx.arc(d.x, d.y, 5, 0, Math.PI * 2);
-    ctx.fillStyle = c.accent;
-    ctx.fill();
+  // Connectors are an editing affordance, not part of the resting tree:
+  // they appear on the selected/dragged nodes, and while a link is being
+  // dragged only on nodes near the cursor that can actually accept it.
+  if (state.editMode && state.canvasActive) {
+    const { top, bottom } = phraseConnectorYs(n);
+    let ys = [];
+    if (state.link) {
+      const reveal = 170 / Math.max(state.view.scale, 0.2);
+      const anchor = state.link.free === 'child' ? endpointOf(n) : dotOf(n);
+      const near = Math.hypot(state.link.x - anchor.x, state.link.y - anchor.y) <= reveal;
+      if (near && state.link.free === 'child'
+          && canConnect(state.model, state.link.parentId, n.id)) ys = [top];
+      else if (near && state.link.free === 'parent' && isPhrase
+          && canConnect(state.model, n.id, state.link.childId)) ys = [bottom];
+    } else if (selected) {
+      ys = isPhrase ? [top, bottom] : [endpointOf(n).y];
+    }
+    for (const y of ys) {
+      ctx.beginPath();
+      ctx.arc(cx, y, 5, 0, Math.PI * 2);
+      ctx.fillStyle = c.accent;
+      ctx.fill();
+    }
   }
   ctx.restore();
 }

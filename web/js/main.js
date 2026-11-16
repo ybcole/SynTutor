@@ -1,5 +1,5 @@
 import { accountUserId } from './session-scope.js';
-import { fromCanonicalEnvelope } from './syntax-builder.js';
+import { fromCanonicalEnvelope, fromDisplayTree } from './syntax-builder.js';
 import { requestEvidence, renderEvidence, learnerFindingParagraph, evidenceParagraphText } from './explanation-evidence.js';
 import { shouldCollapseExplanation } from './explanation-dedupe.js';
 import { findCanonicalNode, canonicalNodeFacts } from './canonical-view.js';
@@ -210,6 +210,7 @@ function dismissFocus() {
   if (activePreview() && session) {
     setTreeAuthorityNotice(session.payload);
     renderer.setTree(session.payload.tree);
+    syncExploreBuilder(session.payload);
   }
   previewLoading = null;
   focus = null;
@@ -297,6 +298,7 @@ async function showCorrected(variant = 'corrected') {
   focusResult = null;
   setTreeAuthorityNotice(target[cacheKey].payload);
   renderer.setTree(target[cacheKey].payload.tree);
+  syncExploreBuilder(target[cacheKey].payload);
   if (target[cacheKey].scopeId) renderer.focusSubtree(target[cacheKey].scopeId, []);
   log(`${logLabel}: showing re-parsed tree (the learner's text is unchanged)`);
   refreshCorrectionUi();
@@ -307,6 +309,7 @@ function showOriginal() {
   correctionMode = 'original';
   setTreeAuthorityNotice(session.payload);
   renderer.setTree(session.payload.tree);
+  syncExploreBuilder(session.payload);
   renderer.focusNode(focus.nodeId, focus.scopeId, focus.pair);
   renderer.select(focus.nodeId);
   refreshCorrectionUi();
@@ -540,6 +543,31 @@ function initThemeAndMenu() {
     setWorkspaceView('tutor');
   });
 
+  document.querySelector('#exploreBuilderBtn')?.addEventListener('click', () => {
+    // Recompute against the tree that is on screen right now: the canonical
+    // SVG can replace (or step aside for) the raw canvas after the button was
+    // first shown.
+    const tree = exploreTreeFor(exploreSource) || exploreTree;
+    if (!tree) return;
+    if (tree.canonical) {
+      try {
+        enterBuilderMode(tree.canonical);
+        return;
+      } catch (error) {
+        log(`Canonical tree import failed: ${error.message}`);
+      }
+    }
+    if (!tree.display) return;
+    let model;
+    try {
+      model = fromDisplayTree(tree.display);
+    } catch (error) {
+      log(`Syntax Builder import failed: ${error.message}`);
+      return;
+    }
+    enterBuilderMode(null, model);
+  });
+
   document.querySelector('#headerHistoryBtn')?.addEventListener('click', () => {
     openHistoryDrawer();
   });
@@ -693,6 +721,7 @@ function closeSubpanel() {
 
 function teardownWorkspace() {
   invalidateAnalysis('workspace changed');
+  hideExploreBuilder();
   clearTreeAuthorityNotice();
   // Lessons: the picker overlay, the lesson panels, the guide card, the quiz
   // panel in the rail, and the side sub-panel.
@@ -761,12 +790,57 @@ function enterAssessmentMode(assessmentId = null) {
 
 // Syntax Builder: the standalone node editor. No Grammar Tutor pipeline and
 // no diagnostics may fire while it owns the canvas.
-function enterBuilderMode(canonicalTree = null) {
+function enterBuilderMode(canonicalTree = null, model = null) {
   if (canonicalTree) fromCanonicalEnvelope(canonicalTree); // preflight before clearing the current analysis
   teardownWorkspace();
   setQuizMode(false);
   setWorkspaceView('builder');
-  openBuilderView(canonicalTree ? { canonicalTree } : {});
+  if (canonicalTree) openBuilderView({ canonicalTree });
+  else if (model) openBuilderView({ model, reset: true });
+  else openBuilderView({});
+}
+
+// "Explore in Syntax Builder" hands the tree currently painted on the
+// generator canvas to the standalone builder. When the canonical tree is the
+// one on screen, its envelope is used directly so labels, indices and features
+// are identical; otherwise the visible display tree is copied node for node.
+let exploreTree = null;
+let exploreSource = null;
+function hideExploreBuilder() {
+  exploreTree = null;
+  exploreSource = null;
+  const button = document.querySelector('#exploreBuilderBtn');
+  if (button) button.hidden = true;
+}
+function exploreTreeFor(payload) {
+  if (!payload) return null;
+  const host = document.querySelector('#canonicalTreeView');
+  const analysis = payload.br_analysis;
+  const working = !analysis?.tree && Boolean(analysis?.working_tree);
+  const envelope = analysis?.tree || analysis?.working_tree;
+  if (host && !host.hidden && envelope?.root) {
+    const labels = working ? analysis?.working_display_labels : analysis?.display_labels;
+    let canonical = envelope;
+    if (labels && Object.keys(labels).length) {
+      canonical = structuredClone(envelope);
+      const walk = (node) => {
+        const rows = labels[node.id];
+        if (rows?.length) node.display_rows = [...rows];
+        for (const child of node.children || []) walk(child);
+      };
+      walk(canonical.root);
+    }
+    return { canonical, display: payload.tree };
+  }
+  return payload.tree ? { display: payload.tree } : null;
+}
+function syncExploreBuilder(payload) {
+  const button = document.querySelector('#exploreBuilderBtn');
+  if (!button) return;
+  const ready = workspaceView === 'tutor' && !quizMode;
+  exploreSource = ready ? payload : null;
+  exploreTree = ready ? exploreTreeFor(payload) : null;
+  button.hidden = !exploreTree;
 }
 
 // Leaderboard / Achievements: a full-bleed workspace view, docked next to
@@ -1078,6 +1152,7 @@ function applyTheme(theme) {
 // squashed — and stays read-only while the lesson owns the screen.
 function renderTree(tree) {
   if (!renderer) return;
+  hideExploreBuilder();
   if (!tree) {
     renderer.clear();
     return;
@@ -1092,6 +1167,7 @@ function renderTree(tree) {
 // again once the lesson is over.
 function clearCanvas() {
   if (!renderer) return;
+  hideExploreBuilder();
   renderer.clear();
   renderer.setInteractive(true);
 }
@@ -1556,6 +1632,7 @@ function startNewSession() {
 
   renderer.select(null);
   renderer.clear();
+  hideExploreBuilder();
   clearOverlay();
   renderNodeDetail(null, null, null);
   resetFocusState();
@@ -1735,6 +1812,22 @@ function showCanonicalTree(payload) {
         item.dataset.selected = 'true';
         if (item.tagName === 'BUTTON') item.setAttribute('aria-pressed', 'true');
       }
+      for (const item of host.querySelectorAll('[data-tree-parent],[data-tree-sibling]')) {
+        item.removeAttribute('data-tree-parent');
+        item.removeAttribute('data-tree-sibling');
+      }
+      const parent = parents.get(owner.id);
+      if (parent) {
+        for (const item of host.querySelectorAll(`[data-node-id="${CSS.escape(parent.id)}"]`)) {
+          item.dataset.treeParent = 'true';
+        }
+        for (const sibling of parent.children || []) {
+          if (sibling.id === owner.id) continue;
+          for (const item of host.querySelectorAll(`[data-node-id="${CSS.escape(sibling.id)}"]`)) {
+            item.dataset.treeSibling = 'true';
+          }
+        }
+      }
       const pane = document.querySelector('#explainNode');
       if (!pane) return;
       document.querySelector('#emptyExplainState')?.classList.add('hidden');
@@ -1912,6 +2005,7 @@ function showLessonModelTree(payload, focusId = null) {
   applyStatuses(payload.tree, payload.node_details || {}, payload.summary || {},
     payload.explanation_evidence?.candidate_xai, payload.tokens);
   renderer.setTree(payload.tree);
+  hideExploreBuilder();
   if (focusId) renderer.select(focusId);
   // The canvas was hidden while the builder owned it; refit once the browser
   // has had a chance to lay the visible canvas out.
@@ -2010,6 +2104,7 @@ async function analyzeForQuiz(text, index = null) {
   if (input?.value.trim() === clean) renderInputHighlights(clean);
   setEmptyStateVisible(false);
   renderer.setTree(payload.tree);
+  syncExploreBuilder(payload);
   transition(STATES.VIEWING, 'quiz sentence analyzed');
   return payload;
 }
@@ -2149,6 +2244,7 @@ async function executePipeline(opts, request) {
 
   setEmptyStateVisible(false);
   renderer.setTree(payload.tree);
+  syncExploreBuilder(payload);
   if (!quizMode) {
     // The learner sees one grammar paragraph. Correction previews remain
     // available in their separate correction panel when a finding is chosen.
@@ -2470,6 +2566,21 @@ function handleNodeSelect(id) {
   // without yanking the rest of the workspace.
   document.querySelector('#explainNode')
     ?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  let parentId = null;
+  const siblingIds = [];
+  const walkTree = (n, parent) => {
+    if (!n) return false;
+    if (n.id === id) {
+      parentId = parent?.id || null;
+      for (const sibling of parent?.children || []) {
+        if (sibling.id !== id) siblingIds.push(sibling.id);
+      }
+      return true;
+    }
+    return (n.children || []).some(child => walkTree(child, n));
+  };
+  walkTree(payload.tree, null);
+  renderer.setRelated(parentId, siblingIds);
   renderer.select(id);
   // An error node is the entry point of the corrective feedback: it zooms the
   // canvas to the rule's scope and opens the correction panel. A preview tree

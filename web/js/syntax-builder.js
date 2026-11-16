@@ -180,17 +180,33 @@ export function disconnect(model, childId) {
 }
 
 // Connector dot: bottom-centre of a phrase box (drag it to start a new link).
+// Connector anchors hug the visible label, not the (often taller) layout slot:
+// the builder paints text only, so a dot parked on the slot edge reads as
+// floating far above or below the label.
+export function phraseConnectorYs(node) {
+  const features = node.canonicalFeatures || [];
+  if (node.canonicalNotation) {
+    const baseline = node.y + 17;
+    const rows = node.canonicalDisplay?.length
+      ? Math.max(0, node.canonicalDisplay.length - 1)
+      : features.length;
+    return { top: baseline - 18, bottom: baseline + rows * 18 + 18 };
+  }
+  const centre = node.y + node.h / 2;
+  return { top: centre - 20, bottom: centre + 20 };
+}
+
 export function dotOf(node) {
-  return { x: node.x + node.w / 2, y: node.y + node.h + DOT_R + 1, r: DOT_R };
+  const { bottom } = phraseConnectorYs(node);
+  return { x: node.x + node.w / 2, y: bottom, r: DOT_R };
 }
 
 export function dotHit(model, x, y) {
   for (const n of Object.values(model.nodes)) {
     if (n.kind !== NODE.PHRASE) continue;
     const d = dotOf(n);
-    // Generous hit area so clicking just below a phrase box starts a link
-    // instead of dragging the box.
-    if (Math.hypot(x - d.x, y - d.y) <= d.r + 12) return n;
+    // Small, deliberate hit target: the dot itself plus a couple of pixels.
+    if (Math.hypot(x - d.x, y - d.y) <= d.r + 4) return n;
   }
   return null;
 }
@@ -199,7 +215,10 @@ export function dotHit(model, x, y) {
 // it to re-attach the connection to a different parent, or drop it on empty
 // space (or click it) to remove the connection.
 export function endpointOf(node) {
-  return { x: node.x + node.w / 2, y: node.y, r: DOT_R };
+  const y = node.kind === NODE.PHRASE
+    ? phraseConnectorYs(node).top
+    : node.y + node.h / 2 - 20;
+  return { x: node.x + node.w / 2, y, r: DOT_R };
 }
 
 export function endpointHit(model, x, y) {
@@ -208,7 +227,7 @@ export function endpointHit(model, x, y) {
     const n = list[i];
     if (!n.parent) continue;
     const p = endpointOf(n);
-    if (Math.hypot(x - p.x, y - p.y) <= p.r + 4) return n;
+    if (Math.hypot(x - p.x, y - p.y) <= p.r + 2) return n;
   }
   return null;
 }
@@ -358,7 +377,7 @@ export function toCanonicalEnvelope(model, profile = null) {
  function walk(n,depth=0){
   if(seen.has(n.id)||depth>80)throw Error('Tree contains a cycle or exceeds depth 80.');seen.add(n.id);
   const children=childrenOf(model,n.id),raw=clone(n.canonicalData||{}),hadSpan=Object.hasOwn(raw,'token_span');
-  delete raw.children;delete raw.token_span;raw.id=n.id;
+  delete raw.children;delete raw.token_span;delete raw.display_rows;raw.id=n.id;
   if(n.kind===NODE.WORD){
    if(children.length)throw Error('A word cannot contain children.');
    const index=words.indexOf(n);raw.word=n.text.trim();
@@ -398,7 +417,8 @@ export function fromCanonicalEnvelope(envelope){
   const special=raw.gap||raw.empty;
   const n={id,kind:special?NODE.SPECIAL:('word' in raw)?NODE.WORD:NODE.PHRASE,
    type:raw.label||('word' in raw?'word':raw.gap?'GAP':'∅'),text:raw.word|| (special?(raw.gap?'gap':`${raw.label} ∅`):''),
-   x:x*110,y:depth*70,w:84,h:32,parent,order,canonicalData:clone(raw),canonicalFeatures:raw.features,canonicalIndex:raw.index,canonicalTriangle:raw.triangle||false};
+   x:x*110,y:depth*70,w:84,h:32,parent,order,canonicalData:clone(raw),canonicalFeatures:raw.features,canonicalIndex:raw.index,canonicalTriangle:raw.triangle||false,
+   canonicalDisplay:Array.isArray(raw.display_rows)?clone(raw.display_rows):undefined};
   delete n.canonicalData.children;model.nodes[id]=n;
   if(n.kind===NODE.WORD||special)x++;
   else if(raw.triangle){
@@ -410,7 +430,35 @@ export function fromCanonicalEnvelope(envelope){
   const kids=childrenOf(model,id);if(kids.length)n.x=kids[0].x;
   return n;
  }
- walk(envelope.root);return model;
+  walk(envelope.root);
+  for(const n of Object.values(model.nodes))n.canonicalNotation=true;
+  return model;
+}
+// Import the tree the Syntax Generator drew on its canvas. That tree is a
+// display tree (id/type/children, with surface text on the leaves), not a
+// canonical envelope, so it is copied node-for-node into a builder model and
+// then laid out like any other construction.
+export function fromDisplayTree(tree){
+ const root=tree&&(tree.root||tree);
+ if(!root||typeof root!=='object')throw Error('A generated syntax tree is required.');
+ const model=createModel();const used=new Set();let count=0;
+ model.displayImport=true;
+ function walk(raw,parent=null,depth=0,order=0){
+  if(!raw||typeof raw!=='object'||depth>80||++count>500)throw Error('Unsupported tree size or node shape.');
+  let id=typeof raw.id==='string'&&raw.id&&!['__proto__','constructor','prototype'].includes(raw.id)&&!used.has(raw.id)?raw.id:`import-${count}`;
+  while(used.has(id)||model.nodes[id])id=`${id}-x`;used.add(id);
+  const kids=Array.isArray(raw.children)?raw.children:[];
+  const leaf=!kids.length;
+  const n={id,kind:leaf?NODE.WORD:NODE.PHRASE,
+   type:leaf?'word':(raw.label||raw.type||'PHRASE'),
+   text:leaf?String(raw.surface??raw.word??raw.text??raw.type??''):'',
+   x:order*110,y:depth*70,w:84,h:NODE_H,parent,order,
+   tag:leaf?(raw.tag||raw.pos||raw.type||null):null,valid:true};
+  model.nodes[id]=n;
+  for(const [i,child] of kids.entries())walk(child,id,depth+1,i);
+  return n;
+ }
+ walk(root);return model;
 }
 export function addSpecial(model,kind,x=0,y=0){
  const raw=kind==='gap'?{gap:true,index:1}:{empty:true,label:kind,empty_role:{DET:'determiner',C1:'complementiser',E:'ellipsis'}[kind]};

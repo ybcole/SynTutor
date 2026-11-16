@@ -39,7 +39,7 @@ export function createBuilderTools(config){
   if(recover)apply(session.load());else session.save();
  }
  function mutate(fn){const before=JSON.parse(JSON.stringify(snapshot()));try{fn();config.refresh();record();message='';render();}catch(e){apply(before);message=e.message;updateStatus();}}
- function record(){if(!active||!session)return;if(identity!==(config.userId?.()||'guest'))return;session.record(snapshot());updateStatus();}
+ function record(){if(!active||!session)return;if(identity!==(config.userId?.()||'guest'))return;try{session.record(snapshot());}catch{/* imported profiles may be read-only for drafts */}updateStatus();}
  function updateStatus(){const n=host?.querySelector('[data-builder-save]');if(n)n.textContent=message||session?.status||'';}
  function button(text,fn){const b=el('button',text);b.type='button';b.addEventListener('click',fn);return b;}
  function field(name,input){const label=el('label',name);label.append(input);return label;}

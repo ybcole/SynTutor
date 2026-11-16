@@ -183,7 +183,7 @@ export function renderLessonTree(envelope, {
   const branches = new Map();
   const parents = new Map();
   for (const [a,b] of edges) {
-    const line = svgNode('line',{x1:a.x,y1:a.y+12+featureRows(a.node).length*18,x2:b.x,y2:b.y-18,class:'lesson-branch'});
+    const line = svgNode('line',{x1:a.x,y1:a.y+18+featureRows(a.node).length*18,x2:b.x,y2:b.y-18,class:'lesson-branch'});
     if (tracePath) branches.set(b.node.id, line);
     if (tracePath || b.node.gap) parents.set(b.node.id, a.node);
     svg.append(line);
