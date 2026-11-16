@@ -2067,6 +2067,23 @@ class MatrixEvaluator:
                             f"'{self._p(grandparent)}'. They have no time of their "
                             'own; the main verb shows the time.')
         if subj is None:
+            clause_subj = next((n for n in parent.get('children', [])
+                                if n is not child and n.get('type') in {'S', 'SBAR'}
+                                and _has_clause(n)), None)
+            if clause_subj is not None:
+                # A finite subject clause is third-person singular regardless
+                # of the number of any noun inside it ("Running every morning
+                # keeps ...", not *keep).
+                if not _agreement_ok(('3', 'sg'), verb_key(vp_head)):
+                    target = _preserve_case(vp_head['surface'],
+                                            _third_present(_base_form(vp_head)))
+                    return ('error', 'C-SUBJECT-AGREEMENT',
+                            f"The subject '{self._p(clause_subj)}' is a clause and "
+                            f"counts as one thing, so change the verb "
+                            f"'{vp_head['surface']}' to '{target}'.")
+                return ('valid', 'C-PREDICATE',
+                        f"The clause subject '{self._p(clause_subj)}' is singular, "
+                        f"and the verb '{vp_head['surface']}' agrees with it.")
             return ('valid', 'C-PREDICATE',
                     f"The words '{self._p(child)}' are the verb part of "
                     f"'{self._p(parent)}'. There is no subject, so there is nothing "

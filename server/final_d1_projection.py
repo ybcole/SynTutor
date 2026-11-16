@@ -956,8 +956,18 @@ class Projection:
             if tail and tag(tail[0]) == "SBAR" and base in DITRANSITIVE and not self.is_adverbial(tail[0]):
                 frame = "ditrans"
                 complement.append(branch("NP", SUBORDINATE, self.clause(tail.pop(0))))
-            if tail and frame == "trans" and tag(tail[0]) in {"NP", "ADJP", "PP"}:
+            if tail and frame == "trans" and (
+                    tag(tail[0]) in {"NP", "ADJP", "PP"}
+                    or (tag(tail[0]) == "S" and base in COMPLEX)):
                 second = tail[0]
+                if tag(second) == "S":
+                    # Benepar wraps a verbless object-predicative in an S node
+                    # ("keeps him healthy" -> S(ADJP)).  B-R places the AP/PP
+                    # predicative directly under the complex-transitive VP.
+                    small = kids(second)
+                    if len(small) != 1 or tag(small[0]) not in {"ADJP", "PP"}:
+                        raise ProjectionUnavailable("Unsupported verbless object-predicative")
+                    second = small[0]
                 label = tag(second)
                 if base == "find" and label == "NP":
                     raise ProjectionUnavailable("Two noun phrases after find can have ditransitive or object-predicative readings")
@@ -966,7 +976,8 @@ class Projection:
                 elif base in COMPLEX and (label in {"NP", "ADJP"} or base in {"put", "place"}):
                     frame = "complex"
                 if frame != "trans":
-                    complement.append(self.phrase(tail.pop(0)))
+                    complement.append(self.phrase(second))
+                    tail.pop(0)
             if base in {"put", "place"} and frame == "trans" and particle is None and not any(tag(node) == "PRT" for node in tail):
                 raise ProjectionUnavailable(f"{base} has no overt or licensed covert object-predicative")
         elif tail and tag(tail[0]) == "PP" and self.selected_pp(base, tail[0]):
