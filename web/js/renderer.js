@@ -75,6 +75,7 @@ export function createLayout(root, measure, viewportWidth = 800) {
 }
 
 function nodeLabel(node) {
+  if (Array.isArray(node.display_rows) && node.display_rows.length) return node.display_rows.join(' ');
   if (ch(node).length === 0) return node.surface || node.type;
   return node.type;
 }
@@ -127,6 +128,10 @@ export class TreeRenderer {
     this.canvas.addEventListener('wheel', (e) => this._onWheel(e), { passive: false });
     this.canvas.addEventListener('keydown', (e) => this._onKey(e));
     window.addEventListener('resize', () => this._resize());
+    if (typeof ResizeObserver !== 'undefined') {
+      this._resizeObserver = new ResizeObserver(() => this._resize());
+      this._resizeObserver.observe(this.canvas);
+    }
   }
 
   _onKey(e) {
@@ -160,6 +165,8 @@ export class TreeRenderer {
     this.dfsOrder = collectNodes(root).map((n) => n.id);
     this.indexById = new Map(this.dfsOrder.map((id, i) => [id, i]));
     this.selectedId = null;
+    this.hoverId = null;
+    this.related = { parent: null, siblings: new Set() };
     this._fitView();
     this._renderOutline();
     this.draw();
@@ -258,6 +265,17 @@ export class TreeRenderer {
     this.view = target;
     this.needsFit = false;
   }
+  fit() {
+    if (!this.tree) return;
+    this.focus = null;
+    // Always refresh the backing store. The canvas may have been display:none
+    // while the builder was open, which leaves width/height at 0 even after
+    // the element becomes visible again.
+    this._resize();
+    this._layoutTree(this.canvas.clientWidth);
+    this._fitView();
+    this.draw();
+  }
 
   _layoutTree(width) {
     this.compact = width < 600;
@@ -290,7 +308,6 @@ export class TreeRenderer {
   _toWorld(p) {
     return { x: (p.x - this.view.tx) / this.view.scale, y: (p.y - this.view.ty) / this.view.scale };
   }
-
   hitTest(mx, my) {
     return this.layoutData ? this._hitTest(mx, my) : null;
   }
@@ -506,7 +523,7 @@ export class TreeRenderer {
 
     ctx.fillStyle = color;
     if (ch(n).length === 0) {
-      ctx.font = (paired || isSibling) ? '700 15px Inter, system-ui, sans-serif' : '500 15px Inter, system-ui, sans-serif';
+      ctx.font = (paired || isSibling) ? '700 15px system-ui, sans-serif' : '400 15px system-ui, sans-serif';
     } else {
       ctx.font = (isSel || paired || isSibling) ? '700 16px Inter, system-ui, sans-serif' : '600 16px Inter, system-ui, sans-serif';
     }

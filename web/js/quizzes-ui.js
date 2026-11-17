@@ -108,7 +108,7 @@ function attemptScreen(t){
  host.append(button(`Submit assessment${unanswered?` · ${unanswered} unanswered`:''}`,()=>action(()=>store.submit(t.attempt_id)),'lesson-primary'));
 }
 function render(){
- if(!host||host.hidden||!store||!bank)return;const scroll=host.scrollTop;host.replaceChildren(button('Back to Syntax Generator',()=>config.onExit?.()));
+ if(!host||host.hidden||!store||!bank)return;const scroll=host.scrollTop;host.replaceChildren(button('Back to Syntax Studio',()=>config.onExit?.()));
  if(current){host.append(button('← All quizzes',()=>{current=null;message='';render();}));const t=store.attempts[current];if(!t){current=null;catalog();}else if(store.isArchived(t)){current=null;message='This assessment version is archived. Your attempt was retained.';catalog();}else if(t.submitted_at)review(t);else attemptScreen(t);}else catalog();
  footer();host.scrollTop=scroll;
 }

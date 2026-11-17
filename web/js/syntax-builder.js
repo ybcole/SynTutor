@@ -278,23 +278,49 @@ export function seedWords(model, leaves, x, y, withTags = false, gap = 12) {
 export function toTree(model, rootId) {
   let root = rootId ? model.nodes[rootId] : guessRoot(model);
   if (!root || root.kind !== NODE.PHRASE) return null;
+  let nextId = 0;
+  const makeId = () => `builder-node-${++nextId}`;
   const build = (node) => {
     const kids = childrenOf(model, node.id);
+    if (node.kind === NODE.SPECIAL) {
+      return {
+        id: makeId(),
+        type: node.type || (node.canonicalData?.gap ? 'GAP' : 'E'),
+        surface: '',
+        leaf: true,
+        empty: !node.canonicalData?.gap,
+        gap: Boolean(node.canonicalData?.gap),
+        index: node.canonicalIndex,
+        x: node.x,
+      };
+    }
     if (node.kind === NODE.WORD || kids.length === 0) {
-      return { type: node.kind === NODE.WORD ? node.type : node.type, surface: node.text, leaf: true, x: node.x };
+      return { id: makeId(), type: node.kind === NODE.WORD ? node.type : node.type, surface: node.text, leaf: true, x: node.x };
     }
     const children = kids.map(build);
     const ordered = [...children].sort((a, b) => a.x - b.x || (a.order??0)-(b.order??0));
-    return { type: node.type, children: ordered.map(clean), x: node.x };
+    return {
+      id: makeId(),
+      type: node.type,
+      children: ordered.map(clean),
+      x: node.x,
+      ...(node.canonicalData?.display_rows ? { display_rows: node.canonicalData.display_rows } : {}),
+      ...(node.canonicalData?.features ? { features: node.canonicalData.features } : {}),
+    };
   };
   const clean = (n) => {
-    const out = { type: n.type };
+    const out = { id: n.id, type: n.type };
     if (n.leaf) {
       out.surface = n.surface;
       out.leaf = true;
+      if (n.empty) out.empty = true;
+      if (n.gap) out.gap = true;
+      if (n.index !== undefined) out.index = n.index;
     } else {
       out.children = n.children;
     }
+    if (n.display_rows) out.display_rows = n.display_rows;
+    if (n.features) out.features = n.features;
     return out;
   };
   return clean(build(root));
@@ -449,13 +475,17 @@ export function fromDisplayTree(tree){
   while(used.has(id)||model.nodes[id])id=`${id}-x`;used.add(id);
   const kids=Array.isArray(raw.children)?raw.children:[];
   const leaf=!kids.length;
-  const n={id,kind:leaf?NODE.WORD:NODE.PHRASE,
-   type:leaf?'word':(raw.label||raw.type||'PHRASE'),
-   text:leaf?String(raw.surface??raw.word??raw.text??raw.type??''):'',
+  const surface=String(raw.surface??raw.word??raw.text??raw.type??'');
+  const special=Boolean(raw.empty||raw.gap||(leaf&&(/^∅$/.test(surface)||/ ∅$/.test(surface))));
+  const n={id,kind:special?NODE.SPECIAL:(leaf?NODE.WORD:NODE.PHRASE),
+   type:special?(raw.type||raw.label||(raw.gap?'GAP':'E')):(leaf?'word':(raw.label||raw.type||'PHRASE')),
+   text:special?(raw.gap?'gap':`${raw.type||raw.label||'E'} ∅`):(leaf?surface:''),
    x:order*110,y:depth*70,w:84,h:NODE_H,parent,order,
-   tag:leaf?(raw.tag||raw.pos||raw.type||null):null,valid:true};
+   canonicalData:special?{empty:!raw.gap,gap:Boolean(raw.gap),label:raw.type||raw.label}:undefined,
+   canonicalIndex:raw.index,
+   tag:leaf&&!special?(raw.tag||raw.pos||raw.type||null):null,valid:true};
   model.nodes[id]=n;
-  for(const [i,child] of kids.entries())walk(child,id,depth+1,i);
+  if (!special) for(const [i,child] of kids.entries())walk(child,id,depth+1,i);
   return n;
  }
  walk(root);return model;

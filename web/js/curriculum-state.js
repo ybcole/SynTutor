@@ -15,7 +15,7 @@ export function showCurriculumState(host, { title, message, retry, back }) {
   description.textContent = message;
   const controls = document.createElement('div');
   controls.className = 'curriculum-recovery-actions';
-  for (const [label, action] of [['Try again', retry], ['Back to Syntax Generator', back]]) {
+  for (const [label, action] of [['Try again', retry], ['Back to Syntax Studio', back]]) {
     if (!action) continue;
     const button = document.createElement('button');
     button.type = 'button';

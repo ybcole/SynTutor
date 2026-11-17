@@ -1443,10 +1443,9 @@ body.builder-standalone .builder-hint.with-actions {
   min-height: 0;
   display: flex;
   flex-direction: column;
-  padding: 12px clamp(12px, 3vw, 22px) 14px;
-  overflow-x: hidden;
-  overflow-y: auto;
-  background: var(--panel);
+  padding: 0;
+  overflow: hidden;
+  background: transparent;
 }
 /* Pan/zoom viewport: the canonical tree behaves like the parser canvas. */
 .canonical-viewport {
@@ -1454,15 +1453,15 @@ body.builder-standalone .builder-hint.with-actions {
   flex: 1 0 auto;
   min-height: 240px;
   overflow: hidden;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--panel);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   cursor: grab;
   touch-action: none;
   user-select: none;
 }
 .canonical-viewport.is-panning { cursor: grabbing; }
-.canonical-viewport:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.canonical-viewport:focus-visible { outline: none; }
 .canonical-tree-view .canonical-layer {
   position: absolute;
   top: 0;
@@ -1556,10 +1555,7 @@ body.builder-standalone .builder-hint.with-actions {
 #treeCanvas[hidden], .builder-canvas[hidden] { display: none; }
 #treeCanvas:hover { cursor: grab; }
 #treeCanvas:active { cursor: grabbing; }
-#treeCanvas:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: -2px;
-}
+#treeCanvas:focus-visible { outline: none; }
 
 .empty-state-canvas {
   position: absolute;
@@ -2253,7 +2249,17 @@ body:has(#correctionPanel:not([hidden])) #emptyExplainState { display: none; }
   right: 8px;
   bottom: 8px;
   z-index: 8;
-  box-shadow: 0 6px 18px rgb(15 23 42 / 18%);
+  padding: 4px 2px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--muted);
+  font-weight: 550;
+}
+.explore-builder-btn:hover {
+  color: var(--accent-strong);
+  background: transparent;
 }
 .explore-builder-btn[hidden] { display: none; }
 
@@ -2377,6 +2383,22 @@ body:has(#correctionPanel:not([hidden])) #emptyExplainState { display: none; }
 .builder-menu-item.is-phrase { color: var(--builder-phrase-ink); }
 .builder-menu-item.is-phrase:hover { color: #fff; }
 .builder-menu-item.is-current { background: color-mix(in srgb, var(--accent) 16%, transparent); }
+
+.builder-menu-row { display: flex; align-items: stretch; gap: 2px; }
+.builder-menu-row .builder-menu-item { flex: 1 1 auto; min-width: 0; }
+.builder-menu-help {
+  flex: 0 0 26px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--muted, #888);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.builder-menu-help:hover:not(:disabled) { background: var(--accent-soft, #eee); color: var(--accent-strong, #333); }
+.builder-menu-help:disabled { opacity: .25; cursor: default; }
 
 
 /* ------------------------------------------------------------------ */
@@ -3616,8 +3638,12 @@ body.combined-modes .builder-hint {
   padding: 8px 12px 12px;
   max-height: 128px;
   overflow: auto;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 12px;
-  line-height: 1.45;
-  white-space: pre;
+  line-height: 1.5;
 }
+.canvas-tree-text-body ul {
+  margin: 0;
+  padding-inline-start: 18px;
+}
+.canvas-tree-text-body li { margin: 1px 0; }
+.canvas-tree-text-body > ul { padding-inline-start: 16px; }

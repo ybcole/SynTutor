@@ -17,9 +17,9 @@ import {
 import {
   planFocus, contextWords, correctionPreview, matchesPreviewTokens, expectedScopeWords, findScopeNode, findTargetError,
 } from './correction.js';
-import { initLessons, openLessons, closeLessons, renderLessonTree } from './lessons-ui.js?v=2026.11.16c';
+import { initLessons, openLessons, closeLessons, renderLessonTree } from './lessons-ui.js?v=2026.11.16q';
 import { initQuizzes, openQuizzes, closeQuizzes } from './quizzes-ui.js';
-import { initSyntaxBuilder, openBuilderView, mountEmbeddedBuilder, closeBuilderView, isBuilderOpen, clearBuilder, builderDisplayTree, builderTextTree, setCanvasHint, showBuilderPalette } from './syntax-builder-ui.js';
+import { initSyntaxBuilder, openBuilderView, mountEmbeddedBuilder, closeBuilderView, isBuilderOpen, clearBuilder, builderDisplayTree, builderTextTree, setCanvasHint } from './syntax-builder-ui.js';
 import { initHistory, setHistoryEnabled, openHistoryDrawer, closeHistoryDrawer, shouldPersistHistory } from './history.js';
 import { levelFromXp } from './level.js';
 import { createLeaderboardView } from './leaderboard.js';
@@ -360,7 +360,7 @@ const NAV_TARGETS = {
   tutor: '#newSessionBtn',
   history: '#headerHistoryBtn',
   lessons: '.sidebar-item[data-view="lessons"]',
-  builder: '.sidebar-item[data-view="builder"]',
+  builder: '#newSessionBtn',
   leaderboard: '.sidebar-item[data-view="leaderboard"]',
   achievements: '.sidebar-item[data-view="achievements"]',
   quizzes: '.sidebar-item[data-view="quizzes"]',
@@ -377,8 +377,10 @@ let workspaceView = 'tutor';
 let combinedBuilderMode = false;
 let combinedTreeSource = 'generated';
 let lastBuiltTree = null;
-const GENERATOR_MODE_HINT = 'Syntax Generator mode — click a node for its explanation, or switch to Syntax Builder mode to edit this tree.';
-const BUILDER_MODE_HINT = 'Syntax Builder mode — click the canvas to add words and drag a connector dot to link boxes.';
+let lastEnteredSentence = '';
+let builderEdited = false;
+const GENERATOR_MODE_HINT = 'Syntax generator — click a node for its explanation, or switch to Syntax builder to edit your own.';
+const BUILDER_MODE_HINT = 'Syntax builder — click the canvas to add words, drag a connector dot to link boxes, or right-click for categories.';
 // The drawer / side panel currently on top of the workspace, if any.
 let overlayView = null;
 
@@ -493,7 +495,10 @@ export function boot() {
   initSyntaxBuilder({ onStatusChange: (msg) => log(msg), setWorkspaceView, userId: () => activeUserId });
   document.body.classList.add('combined-modes');
   document.addEventListener('syntutor:builder-change', () => {
-    if (combinedBuilderMode) setCanvasTreeText(builderTextTree());
+    if (combinedBuilderMode) {
+      builderEdited = true;
+      setCanvasTreeText(builderTextTree());
+    }
   });
   syncCanvasModeButton();
   setCanvasHint(GENERATOR_MODE_HINT);
@@ -836,7 +841,7 @@ function syncCanvasModeButton() {
   if (!button) return;
   const visible = !quizMode && (workspaceView === 'tutor' || combinedBuilderMode);
   button.hidden = !visible;
-  button.textContent = combinedBuilderMode ? 'Syntax generator mode' : 'Syntax Builder mode';
+  button.textContent = combinedBuilderMode ? 'Syntax generator →' : 'Syntax builder →';
 }
 
 function syncExploreBuilder(payload) {
@@ -855,7 +860,7 @@ function syncExploreBuilder(payload) {
 function displayTreeSentence(tree) {
   const words = [];
   const walk = (node) => {
-    if (!node) return;
+    if (!node || node.empty || node.gap) return;
     const children = node.children || [];
     if (!children.length) {
       if (node.surface) words.push(node.surface);
@@ -867,21 +872,31 @@ function displayTreeSentence(tree) {
   return words.join(' ');
 }
 
-function treeAsText(tree) {
-  if (!tree) return 'No tree yet.';
-  const lines = [];
-  const walk = (node, depth) => {
+function treeAsOutline(tree) {
+  const list = document.createElement('ul');
+  const walk = (node) => {
     if (!node) return;
     const rows = Array.isArray(node.display_rows) ? node.display_rows : [];
     const features = rows.length > 1 ? rows.slice(1) : (node.features || []).map(f => `[${f}]`);
     const label = rows[0] || node.label || node.type || '';
     const word = node.word ?? node.surface;
-    const text = node.gap ? '•' : node.empty ? '∅' : (word ?? [label, ...features].filter(Boolean).join(' '));
-    lines.push(`${'  '.repeat(depth)}${text}`);
-    for (const child of node.children || []) walk(child, depth + 1);
+    const description = node.gap ? '•' : node.empty ? '∅' : (word ?? [label, ...features].filter(Boolean).join(' '));
+    const item = document.createElement('li');
+    item.textContent = description || '△';
+    const children = node.children || [];
+    if (children.length) {
+      const nested = document.createElement('ul');
+      children.forEach(child => {
+        const childItem = walk(child);
+        if (childItem) nested.append(childItem);
+      });
+      item.append(nested);
+    }
+    return item;
   };
-  walk(tree, 0);
-  return lines.join('\n');
+  const root = walk(tree);
+  if (root) list.append(root);
+  return list;
 }
 
 function setCanvasTreeText(tree) {
@@ -893,7 +908,12 @@ function setCanvasTreeText(tree) {
     return;
   }
   details.hidden = false;
-  body.textContent = treeAsText(tree);
+  body.replaceChildren();
+  if (!tree) {
+    body.textContent = 'No tree yet.';
+    return;
+  }
+  body.append(treeAsOutline(tree));
 }
 
 // Combined page: make the generator's tree editable without leaving the
@@ -901,15 +921,27 @@ function setCanvasTreeText(tree) {
 // built tree and drops every node not connected to the chosen root.
 function enterCombinedBuilderMode() {
   if (combinedBuilderMode || quizMode || workspaceView !== 'tutor') return;
+  const entering = document.querySelector('#inputText')?.value?.trim();
+  if (entering) lastEnteredSentence = entering;
+  const errorNodeIds = [...document.querySelectorAll(
+    '#canonicalTreeView [data-node-id][data-legacy-issue="true"], #canonicalTreeView [data-node-id][data-candidate-issue="true"]'
+  )].map((group) => group.getAttribute('data-node-id')).filter(Boolean);
   const source = combinedTreeSource === 'builder' && lastBuiltTree
     ? { display: lastBuiltTree }
     : (exploreTreeFor(exploreSource) || exploreTree);
   setQuizMode(false);
   setWorkspaceView('builder');
   let opened = false;
-  if (source?.canonical) {
+  // Returning from a builder session: keep the exact builder model. A
+  // display-tree round trip loses node tags/features and can change the tree
+  // on every later switch.
+  if (combinedTreeSource === 'builder' && lastBuiltTree) {
+    openBuilderView({ errorNodeIds });
+    opened = true;
+  }
+  if (!opened && source?.canonical) {
     try {
-      openBuilderView({ canonicalTree: source.canonical });
+      openBuilderView({ canonicalTree: source.canonical, errorNodeIds });
       opened = true;
     } catch (error) {
       log(`Canonical tree import failed: ${error.message}`);
@@ -921,18 +953,18 @@ function enterCombinedBuilderMode() {
       try {
         model = fromDisplayTree(source.display);
       } catch (error) {
-        log(`Syntax Builder import failed: ${error.message}`);
+        log(`Syntax builder import failed: ${error.message}`);
       }
     }
     openBuilderView(model ? { model, reset: true } : { reset: true });
   }
   combinedBuilderMode = true;
+  builderEdited = false;
   setActiveNav('tutor');
   document.body.classList.add('combined-modes');
   const topLeft = document.getElementById('builderTopLeft');
   if (topLeft) topLeft.hidden = true;
   setCanvasHint(BUILDER_MODE_HINT);
-  showBuilderPalette();
   syncCanvasModeButton();
   setCanvasTreeText(builderTextTree());
   if (!source) {
@@ -947,7 +979,15 @@ function enterCombinedBuilderMode() {
 function exitCombinedBuilderMode() {
   if (!combinedBuilderMode) return;
   const tree = builderDisplayTree();
-  const sentence = displayTreeSentence(tree);
+  let sentence = displayTreeSentence(tree);
+  // The builder does not model punctuation. If the learner did not change the
+  // words, keep the sentence-final punctuation that was in the input before
+  // the builder opened.
+  const enteringWords = lastEnteredSentence.replace(/[.!?…]+$/, '').trim();
+  if (sentence && enteringWords && enteringWords === sentence) {
+    const tail = lastEnteredSentence.match(/[.!?…]+$/)?.[0] || '';
+    if (tail) sentence += tail;
+  }
   closeBuilderView();
   combinedBuilderMode = false;
   const palette = document.getElementById('builderPalette');
@@ -961,9 +1001,23 @@ function exitCombinedBuilderMode() {
   const treeCanvas = document.querySelector('#treeCanvas');
   if (treeCanvas) treeCanvas.hidden = false;
   renderer.setInteractive(false);
-  if (tree) {
+  // If the learner only switched modes, return to the same canonical tree
+  // view the generator showed before the builder opened. The canvas renderer
+  // has a different notation and font weight, so using it here would make the
+  // tree appear to change on every later switch.
+  const canonicalShown = !builderEdited && showCanonicalTree(session?.payload);
+  if (canonicalShown) {
+    setEmptyStateVisible(false);
+  } else if (tree) {
     renderer.setTree(tree);
     setEmptyStateVisible(false);
+    // The tree canvas may have had zero size while the builder was covering
+    // it. Fit once the tutor canvas is visible so the tree always lands
+    // centred, exactly as if the user pressed Fit.
+    requestAnimationFrame(() => {
+      renderer.fit();
+      setTimeout(() => renderer.fit(), 0);
+    });
   } else {
     renderer.clear();
     setEmptyStateVisible(true);
@@ -1871,16 +1925,8 @@ function showCanonicalTree(payload) {
   canonicalCanvas?.destroy();
   canonicalCanvas = null;
   host.replaceChildren();
-  const visual = renderLessonTree(envelope, {stackFeatures: true, displayLabels, interactive: true});
+  const visual = renderLessonTree(envelope, {stackFeatures: true, displayLabels, interactive: true, showText: false});
   host.append(visual);
-  // The text tree is a read-only reference, anchored bottom-left. It is not a
-  // navigation outline.
-  const textDetails = visual.querySelector('.lesson-tree-text');
-  if (textDetails) {
-    const summary = textDetails.querySelector('summary');
-    if (summary) summary.hidden = false;
-    host.append(textDetails);
-  }
   host.hidden = false;
   // Moves the SVG into a pannable/zoomable viewport; everything below queries
   // the host, so selection keeps working on the moved SVG.
@@ -2868,7 +2914,7 @@ const ONBOARDING_STEPS = [
   {
     sel: '#appSidebar',
     title: 'Learn and build',
-    text: 'Open Lessons for guided practice, or Syntax Builder to construct phrase-structure trees by hand.',
+    text: 'Open Lessons for guided practice, or Syntax builder to construct phrase-structure trees by hand.',
   },
 ];
 

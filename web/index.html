@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SynTutor — Explainable Phrase-Structure Grammar Tutor</title>
+  <title>SynTutor — Syntax</title>
   <meta name="description" content="Understand structure. Explain grammar.">
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/quiz.css" />
@@ -43,14 +43,14 @@
           </button>
         </div>
         <nav class="app-sidebar-nav">
-          <button id="newSessionBtn" class="sidebar-item active" type="button" data-view="tutor" aria-label="Syntax Generator" title="Syntax Generator">
+          <button id="newSessionBtn" class="sidebar-item active" type="button" data-view="tutor" aria-label="Syntax" title="Syntax">
             <span class="sidebar-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 20h9"></path>
                 <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
               </svg>
             </span>
-            <span class="sidebar-label">Syntax Generator</span>
+            <span class="sidebar-label">Syntax</span>
           </button>
           <button id="headerHistoryBtn" class="sidebar-item is-guest-hidden" type="button" data-view="history" aria-label="Open analysis history" title="History" hidden>
             <span class="sidebar-icon" aria-hidden="true">
@@ -73,19 +73,6 @@
           <button class="sidebar-item" type="button" data-view="quizzes" title="Quizzes" aria-label="Quizzes">
             <span class="sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"></rect><path d="m8 8 2 2 4-4M8 15h8"></path></svg></span>
             <span class="sidebar-label">Quizzes</span>
-          </button>
-          <button class="sidebar-item" type="button" data-view="builder" title="Syntax Builder">
-            <span class="sidebar-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="4" r="2"></circle>
-                <circle cx="5" cy="19" r="2"></circle>
-                <circle cx="19" cy="19" r="2"></circle>
-                <line x1="12" y1="6" x2="12" y2="11"></line>
-                <line x1="12" y1="11" x2="5" y2="17"></line>
-                <line x1="12" y1="11" x2="19" y2="17"></line>
-              </svg>
-            </span>
-            <span class="sidebar-label">Syntax Builder</span>
           </button>
           <button class="sidebar-item" type="button" data-view="leaderboard" title="Leaderboard">
             <span class="sidebar-icon" aria-hidden="true">
@@ -231,18 +218,6 @@
             <button type="button" data-builder-zoom="fit" aria-label="Fit syntax tree">Fit</button>
             <button type="button" data-builder-clear aria-label="Clear the canvas">Clear</button>
           </div>
-          <aside id="builderPalette" class="builder-palette" aria-label="Nodes palette" hidden>
-            <div class="builder-palette-head">
-              <div class="builder-palette-title-group">
-                <h3>Nodes</h3>
-              </div>
-              <button id="builderPaletteToggle" class="builder-palette-toggle" type="button" aria-expanded="true" aria-label="Hide nodes palette">Hide</button>
-            </div>
-            <div class="builder-palette-body">
-              <input id="builderPaletteSearch" class="builder-palette-search" type="search" placeholder="Search labels..." aria-label="Search node labels" />
-              <div id="builderPaletteList" class="builder-palette-list"></div>
-            </div>
-          </aside>
           <canvas id="builderCanvas" class="builder-canvas" tabindex="0" aria-label="Syntax builder canvas" hidden></canvas>
           <div id="canvasControls" class="canvas-controls" hidden>
             <button id="builderClear" class="builder-btn" type="button" data-action="clear">Clear</button>
@@ -263,19 +238,16 @@
               <line x1="27" y1="21" x2="20" y2="42" />
               <line x1="37" y1="21" x2="44" y2="42" />
             </svg>
-            <h3 class="empty-tree-title">No Syntax tree to generate yet!</h3>
-            <p class="empty-tree-sub">Enter a sentence to explore its structure and source-based explanations.</p>
+            <h3 class="empty-tree-title">No syntax tree yet</h3>
+            <p class="empty-tree-sub">Type a sentence to analyze it, or choose Syntax builder to build one.</p>
           </div>
-          <button id="exploreBuilderBtn" class="builder-btn builder-btn-primary explore-builder-btn" type="button" hidden>Syntax Builder mode</button>
+          <button id="exploreBuilderBtn" class="builder-btn builder-btn-primary explore-builder-btn" type="button" hidden>Syntax builder →</button>
           <div id="loadingIndicator" class="loading-pill" role="status" aria-hidden="true">
             <span class="loading-spinner" aria-hidden="true"></span>
             <span>Generating syntax tree&hellip;</span>
           </div>
         </div>
-        <details id="canvasTreeText" class="canvas-tree-text" open>
-          <summary>View tree as text</summary>
-          <pre id="canvasTreeTextBody" class="canvas-tree-text-body"></pre>
-        </details>
+
       </section>
 
       <div id="colResizer" class="resizer resizer-col" role="separator" aria-orientation="vertical"
@@ -460,6 +432,6 @@
   </div>
 
   <script src="js/config-hint.js"></script>
-  <script type="module" src="js/main.js?v=2026.11.16c"></script>
+  <script type="module" src="js/main.js?v=2026.11.16q"></script>
 </body>
 </html>

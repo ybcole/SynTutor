@@ -27,7 +27,8 @@ export function enableCanvasView(host, lessonWrap) {
   const fit = () => {
     if (destroyed) return;
     const rect = viewport.getBoundingClientRect();
-    scale = clamp(Math.min((Math.max(rect.width, 100) - 40) / w, (Math.max(rect.height, 100) - 50) / h), .12, 3);
+    const pad = Math.min(24, Math.max(rect.width, 100) / 8, Math.max(rect.height, 100) / 8);
+    scale = clamp(Math.min((Math.max(rect.width, 100) - pad * 2) / w, (Math.max(rect.height, 100) - pad * 2) / h), .2, 1.7);
     tx = (rect.width - w * scale) / 2;
     ty = (rect.height - h * scale) / 2;
     paint();

@@ -1,5 +1,5 @@
 import { showCurriculumState } from './curriculum-state.js';
-import { STAGES, STAGE_TITLES, validateCourse, lessonKey, emptyProgress, canAdvance, lessonXp } from './lesson-core.js?v=2026.11.16c';
+import { STAGES, STAGE_TITLES, validateCourse, lessonKey, emptyProgress, canAdvance, lessonXp } from './lesson-core.js?v=2026.11.16q';
 import { composeLessonPreview } from './lesson-preview.js';
 import { createLessonStore } from './lesson-progress.js';
 import { createFoundationStore } from './foundation-progress.js';
@@ -22,7 +22,7 @@ import { enableCanvasView } from './canvas-view.js';
 import { addConstituentReview, addConstituentTeaching, constituentHeadings, constituentOpeningCheck, constituentReferences } from './constituents-lesson.js';
 import { addSubjectPredicateTeaching, subjectPredicateHeadings, subjectPredicateOpeningCheck, subjectPredicateReferences } from './subject-predicate-lesson.js';
 import { phraseStructureArticles } from './phrase-structure-lessons.js';
-import { cambridgeChapterArticles } from './cambridge-chapter-lessons.js?v=2026.11.16c';
+import { cambridgeChapterArticles } from './cambridge-chapter-lessons.js?v=2026.11.16q';
 import { displayVpLevel, lessonNotation } from './lesson-notation.js';
 import { addLessonKeyTerms } from './lesson-key-terms.js';
 import { addLessonDictionary } from './lesson-dictionary.js';
@@ -107,11 +107,11 @@ function svgNode(name, attrs = {}) { const n = document.createElementNS(SVG_NS,n
 export function renderLessonTree(envelope, {
   focusId = null, blank = null, stackFeatures = false, displayLabels = null,
   interactive = false, onSelectNode = null, zoomControls = false, wordBaseline = 0,
-  highlightWords = false, tracePath = false, lessonCanvas = false,
+  highlightWords = false, tracePath = false, lessonCanvas = false, showText = true,
 } = {}) {
   const wrap = el('div',undefined,'lesson-tree-wrap');
   const root = envelope.root;
-  const hint = el('p', 'Scroll sideways to inspect the whole tree, or open its text view.', 'lesson-tree-hint');
+  const hint = el('p', showText ? 'Scroll sideways to inspect the whole tree, or open its text view.' : 'Scroll sideways to inspect the whole tree.', 'lesson-tree-hint');
   wrap.append(hint);wrap.tabIndex=0;wrap.setAttribute('aria-label','Scrollable syntax tree');
   function label(node, withFeatures = true) {
     const master = displayLabels?.[node.id];
@@ -299,8 +299,11 @@ export function renderLessonTree(envelope, {
     wrap.append(toolbar);
   }
   wrap.append(svg);
-  const text = el('details', undefined, 'lesson-tree-text');
-  text.append(el('summary', lessonCanvas ? 'Read tree as text' : 'Read the tree as text'));
+  let text = null;
+  if (showText) {
+    text = el('details', undefined, 'lesson-tree-text');
+    text.append(el('summary', lessonCanvas ? 'Read tree as text' : 'Read the tree as text'));
+  }
   function list(node) {
     const item = el('li');
     const name = blankFor(node) ? [visibleLabel(node), ...featureRows(node)].filter(Boolean).join(' ')
@@ -327,13 +330,15 @@ export function renderLessonTree(envelope, {
     }
     return item;
   }
-  const ul=el('ul');ul.append(list(root));
-  if (lessonCanvas) {
-    const outline = el('div', undefined, 'lesson-tree-outline tree-outline-body');
-    outline.append(ul);
-    text.append(outline);
-  } else text.append(ul);
-  wrap.append(text);
+  if (text) {
+    const ul=el('ul');ul.append(list(root));
+    if (lessonCanvas) {
+      const outline = el('div', undefined, 'lesson-tree-outline tree-outline-body');
+      outline.append(ul);
+      text.append(outline);
+    } else text.append(ul);
+    wrap.append(text);
+  }
   return wrap;
 }
 function chapterSectionTitle(lesson, id) {

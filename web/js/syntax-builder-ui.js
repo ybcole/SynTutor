@@ -520,7 +520,11 @@ function syncInputToCanvas() {
   const input = document.getElementById('inputText');
   if (!input) return;
   const text = input.value.trim();
-  const words = text ? text.split(/\s+/).filter(Boolean) : [];
+  const words = text
+    ? text.split(/\s+/)
+        .map((word) => word.replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, ''))
+        .filter(Boolean)
+    : [];
   const wordNodes = Object.values(state.model.nodes)
     .filter((node) => node.kind === NODE.WORD)
     .sort((a, b) => a.x - b.x || (a.order ?? 0) - (b.order ?? 0));
@@ -531,7 +535,7 @@ function syncInputToCanvas() {
   let added = [];
   if (!phrases.length) {
     for (const node of wordNodes) removeNode(state.model, node.id);
-    added = addWordsFromText(state.model, text, 60, 240);
+    added = addWordsFromText(state.model, words.join(' '), 60, 240);
     layoutWordRow(added, 60, 240);
   } else if (words.length > current.length
       && words.slice(0, current.length).join(' ') === current.join(' ')) {
@@ -539,10 +543,34 @@ function syncInputToCanvas() {
     const startX = last ? last.x + last.w + 12 : 60;
     added = addWordsFromText(state.model, words.slice(current.length).join(' '), startX, 240);
     layoutWordRow(added, startX, 240);
-  } else {
-    state.onStatus('Clear the canvas or remove phrase nodes before changing the word list.');
-    syncCanvasToInput();
+  } else if (words.length === current.length) {
+    // Editing a word in place keeps the tree structure intact.
+    let updated = false;
+    for (let i = 0; i < wordNodes.length; i += 1) {
+      if (wordNodes[i].text !== words[i]) {
+        wordNodes[i].text = words[i];
+        sizeNode(wordNodes[i]);
+        updated = true;
+      }
+    }
+    if (updated) {
+      validateWords(wordNodes);
+      changed();
+      draw();
+    }
     return;
+  } else {
+    // A deletion or a general rewrite cannot preserve the old branch
+    // structure. Start from the words in the input panel so typing/deleting
+    // always works instead of silently snapping back.
+    state.model = createModel();
+    state.selection.clear();
+    state.snapped = false;
+    state.snappedLayout = null;
+    state.nodeErrors = new Map();
+    added = addWordsFromText(state.model, words.join(' '), 60, 240);
+    layoutWordRow(added, 60, 240);
+    state.onStatus('Word list changed — rebuild the tree from the words.');
   }
   if (added.length) validateWords(added);
   changed();
@@ -597,8 +625,10 @@ export function builderDisplayTree() {
     // The builder paints word labels without POS tags; keep the generator
     // display consistent instead of printing the internal "word" type.
     const clearLeafTags = (node) => {
-      if (!node?.children?.length) {
-        if (node) node.type = '';
+      if (!node) return;
+      if (node.empty || node.gap) return;
+      if (!node.children?.length) {
+        node.type = '';
         return;
       }
       for (const child of node.children) clearLeafTags(child);
@@ -636,7 +666,10 @@ export function getSentenceFromLeaves() {
 // listener never runs the pipeline — the blur handler does, and it is
 // disabled while the builder owns the workspace).
 function syncCanvasToInput() {
-  const sentence = getSentenceFromLeaves();
+  let sentence = getSentenceFromLeaves();
+  const inputNow = document.getElementById('inputText');
+  const tail = inputNow?.value.match(/[.!?…]+$/)?.[0] || '';
+  if (sentence && tail) sentence += tail;
   if (embedded) return sentence;
   const input = document.getElementById('inputText');
   if (!input) return sentence;
@@ -714,7 +747,8 @@ export function mountEmbeddedBuilder(stage, exercise) {
 
 export function openBuilderView(opts = {}) {
   state.canonicalProfile = opts.canonicalTree?.convention_profile
-    || (opts.challenge ? state.canonicalProfile : builderProfile())
+    || opts.canonicalProfile
+    || state.canonicalProfile
     || builderProfile();
   if (opts.canonicalTree) {state.model = fromCanonicalEnvelope(opts.canonicalTree);state.targetId=null;resetTransientState();}
   document.querySelector('#appSidebarBackdrop')?.classList.remove('active');
@@ -738,7 +772,7 @@ export function openBuilderView(opts = {}) {
   // Lessons and quizzes build in place on this canvas; only the standalone
   // Syntax Builder (no challenge) highlights its own sidebar tab, unless the
   // caller asks for a specific tab via `opts.sidebarView`.
-  const sidebarView = opts.sidebarView || (opts.challenge ? null : 'builder');
+  const sidebarView = opts.sidebarView || (opts.challenge ? null : 'tutor');
   if (sidebarView) markSidebar(sidebarView);
   state.challenge = opts.challenge || null;
   state.onComplete = opts.onComplete || null;
@@ -751,6 +785,20 @@ export function openBuilderView(opts = {}) {
     // from the previous exercise survives the swap.
     state.model = opts.model;
     resetTransientState();
+  }
+  state.nodeErrors = new Map();
+  if (opts.errorNodeIds?.length) {
+    for (const id of opts.errorNodeIds) {
+      const node = state.model.nodes[id];
+      if (!node) continue;
+      state.nodeErrors.set(id, {
+        type: node.type,
+        surface: node.text || '',
+        status: 'error',
+        role: 'Grammar finding',
+        text: 'This node is marked by the current grammar analysis.',
+      });
+    }
   }
   if (state.challenge && !opts.model) seedForChallenge(state.challenge);
   // A fresh exercise starts from a known viewport; a previous pan/zoom must
@@ -1059,7 +1107,6 @@ function eventPos(e) {
   const rect = state.canvas.getBoundingClientRect();
   return { sx: e.clientX - rect.left, sy: e.clientY - rect.top };
 }
-
 // ---------------------------------------------------------------------------
 // Input wiring
 // ---------------------------------------------------------------------------
@@ -1140,7 +1187,6 @@ function wireCanvas(canvas) {
 function onMouseDown(e) {
   const { sx, sy } = eventPos(e);
   const w = toWorld(sx, sy);
-  showBuilderPalette();
   if (!state.canvasActive) {
     state.canvasActive = true;
     draw();
@@ -1456,16 +1502,6 @@ function onMouseUp(e) {
   state.canvas.style.cursor = '';
   if (dragged?.moved) {syncCanvasToInput();tools?.record();tools?.render();document.dispatchEvent(new CustomEvent('syntutor:builder-change'));}
   if (!dragged?.moved && state.selection.size && !panned?.moved) explainSelected();
-  // A plain click on empty canvas starts a new word box straight away — the
-  // standalone builder has no separate "edit mode" to enter first.
-  if (panned && !panned.moved && e.button === 0 && !state.challenge && !embedded) {
-    openInlineEditor(panned.world, e.clientX, e.clientY, '', (text) => {
-      if (!text.trim()) return;
-      const made = addWordsFromText(state.model, text, panned.world.x, panned.world.y);
-      validateWords(made);
-      changed();
-    });
-  }
 }
 
 function nodeLabel(node) {
@@ -1801,6 +1837,8 @@ function openMenu(clientX, clientY, world, node) {
 }
 
 function menuItem(label, node, world) {
+  const row = document.createElement('div');
+  row.className = 'builder-menu-row';
   const btn = document.createElement('button');
   btn.type = 'button';
   btn.className = 'builder-menu-item';
@@ -1833,7 +1871,27 @@ function menuItem(label, node, world) {
     changed();
     explainSelected();
   });
-  return btn;
+  row.append(btn);
+
+  const route = nodeLessonRoute(label);
+  const help = document.createElement('button');
+  help.type = 'button';
+  help.className = 'builder-menu-help';
+  help.textContent = '?';
+  help.title = route ? `View ${label} in lessons` : 'No lesson page yet';
+  help.setAttribute('aria-label', route
+    ? `View ${label} in lessons`
+    : `No lesson page for ${label}`);
+  help.disabled = !route;
+  if (route) {
+    help.addEventListener('click', (event) => {
+      event.stopPropagation();
+      closeMenu();
+      openNodeLesson(label);
+    });
+  }
+  row.append(help);
+  return row;
 }
 
 function closeMenuOnOutside(e) {
@@ -2967,7 +3025,6 @@ function render() {
   const canvas = state.canvas;
   if (!ctx || !canvas) return;
   const dpr = state.dpr;
-  const { ox, oy, scale } = state.view;
 
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr); // clear background
@@ -2993,6 +3050,7 @@ function render() {
   for (const n of nodes) {
     if (!locked || !locked.has(n.id)) sizeNode(n);
   }
+  const { ox, oy, scale } = state.view;
 
   ctx.save();
   ctx.setTransform(dpr * scale, 0, 0, dpr * scale, dpr * ox, dpr * oy);
