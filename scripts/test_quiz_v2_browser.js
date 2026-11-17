@@ -1,4 +1,4 @@
-import {gradeQuestion,normalizeResponseText} from '../web/js/quiz-mixed-eval.js';
+import {gradeQuestion} from '../web/js/quiz-mixed-eval.js';
 // Optional browser runner. Install Playwright outside the app or set
 // QUIZ_V2_PLAYWRIGHT_MODULE to its index.mjs; no runtime dependency is added.
 import assert from 'node:assert/strict';
@@ -87,14 +87,13 @@ try{
   assert.ok(!(await quiz.innerText()).includes('Scores and explanations unlock after submission.'),'redundant intro text removed');
   assert.equal(await quiz.locator('.quiz-chapter').count(),11);
   assert.equal(await quiz.locator('.quiz-topic-card .quiz-card-count').count(),0,'redundant card question counts removed');
-  assert.equal(await quiz.locator('.quiz-chapter-footer > button').count(),11,'every chapter has a direct General Chapter Quiz action');
+  assert.equal(await quiz.locator('.quiz-chapter-footer button').count(),11,'every chapter has a direct General Chapter Quiz action');
   assert.equal(await quiz.locator('.quiz-topic-card.is-general').count(),0,'General quiz is accessed through the chapter action');
   assert.deepEqual((await quiz.locator('.quiz-chapter .quiz-chapter-title').allTextContents()).map(t=>t.replace(/^Chapter \d+: /,'')),syntaxLessons);
   const sectionOrder=await quiz.evaluate(()=>['.quiz-special-section.is-review','.quiz-folder-panel','.lesson-track-tabs','.quiz-special-section.is-master','.quiz-chapters-section'].map(s=>document.querySelector(s).getBoundingClientRect().top));
   assert.ok(sectionOrder[0]<sectionOrder[1]&&sectionOrder[1]<=sectionOrder[2]&&sectionOrder[2]<sectionOrder[3]&&sectionOrder[3]<sectionOrder[4],'Review your Errors sits above Syntax/Grammar folder tabs, followed by Master Quizzes and Chapter Quizzes');
   assert.equal(await quiz.locator('.quiz-folder-panel .quiz-special-section.is-review').count(),0,'Review your Errors is isolated outside the track folder and chapter containers');
   const initialSyntaxReview=quiz.locator('.quiz-special-section.is-review');
-  assert.equal(await initialSyntaxReview.locator('.quiz-track-tag').count(),0);
   assert.equal(await initialSyntaxReview.getByRole('button').isDisabled(),true,'Review your errors is disabled when track has no errors');
   assert.equal(await quiz.locator('[data-chapter="br-01"] .quiz-chapter-header .quiz-difficulty-tag').innerText(),'Easy');
   assert.equal(await quiz.locator('[data-chapter="br-06"] .quiz-chapter-header .quiz-difficulty-tag').innerText(),'Medium');
@@ -105,7 +104,6 @@ try{
   assert.deepEqual((await quiz.locator('.quiz-chapter .quiz-chapter-title').allTextContents()).map(t=>t.replace(/^Chapter \d+: /,'')),cambridgeLessons);
   await quiz.locator('[data-chapter="cgel-ch01"] .quiz-subtopics > summary').click();
   assert.equal(await quiz.locator('[data-chapter="cgel-ch01"]').getByText('What this course covers').count(),0,'non-assessable Chapter 1 overview remains excluded');
-  await quiz.locator('[data-chapter="cgel-ch01"]').getByText('Prescriptive and descriptive approaches').waitFor();
   assert.ok(await quiz.locator('[data-chapter="cgel-ch01"]').getByText('Prescriptive and descriptive approaches').isVisible(),'assessable Chapter 1 topics appear in Quiz');
   const stackMetrics=await quiz.locator('[data-chapter="cgel-ch01"] .quiz-topic-list .quiz-topic-card').evaluateAll(cards=>cards.map(c=>({
     top:c.getBoundingClientRect().top,
@@ -119,16 +117,14 @@ try{
   await quiz.locator('[data-chapter="cgel-ch01"]').scrollIntoViewIfNeeded();
   const assertChapterFooter=async card=>{
     const geometry=await card.evaluate(n=>{
+      const box=n.getBoundingClientRect(),sub=n.querySelector('.quiz-subtopics').getBoundingClientRect();
       const footer=n.querySelector('.quiz-chapter-footer').getBoundingClientRect();
-      const action=n.querySelector('.quiz-chapter-footer > button').getBoundingClientRect();
-      const summary=n.querySelector('.quiz-subtopics > summary').getBoundingClientRect();
-      const list=n.querySelector('.quiz-topic-list').getBoundingClientRect();
-      return {footer,action,summary,list,open:n.querySelector('details').open};
+      const action=n.querySelector('.quiz-chapter-footer button').getBoundingClientRect();
+      return {box,sub,footer,action};
     });
-    assert.ok(Math.abs(geometry.action.right-geometry.footer.right)<2,'General Quiz action aligns right');
-    assert.ok(Math.abs(geometry.summary.left-geometry.footer.left)<2,'subtopic disclosure aligns left');
-    assert.ok(Math.abs((geometry.summary.top+geometry.summary.bottom)/2-(geometry.action.top+geometry.action.bottom)/2)<3,'footer controls share a row');
-    if(geometry.open)assert.ok(geometry.list.top>=geometry.action.bottom-1,'expanded subtopics follow footer controls');
+    assert.ok(geometry.footer.top>=geometry.sub.bottom-1,'General Quiz footer follows subtopics');
+    assert.ok(Math.abs(geometry.action.right-geometry.footer.right)<2,'General Quiz action aligns to footer right edge');
+    assert.ok(geometry.box.bottom-geometry.action.bottom<30,'General Quiz action sits at bottom of chapter card');
   };
   await assertChapterFooter(quiz.locator('[data-chapter="cgel-ch01"]'));
   await quiz.locator('[data-chapter="cgel-ch01"] .quiz-chapter-footer').scrollIntoViewIfNeeded();
@@ -170,7 +166,7 @@ try{
       await quiz.locator('.quiz-textarea').blur();
     }else if(kind==='sentence_reconstruction'){
       while(await quiz.locator('.quiz-recon-remove').count())await quiz.locator('.quiz-recon-remove').first().click();
-      let rest=normalizeResponseText(q.accepted_answers[0],{stripTrailingPeriod:true}),remaining=q.tokens.map((t,i)=>({t:normalizeResponseText(t,{stripTrailingPeriod:true}),i}));
+      let rest=q.accepted_answers[0],remaining=q.tokens.map((t,i)=>({t,i}));
       const correct=[];
       while(rest){
         const token=remaining.find(x=>rest===x.t||rest.startsWith(x.t+' '));
@@ -319,8 +315,7 @@ try{
   await quiz.getByRole('button',{name:'All quizzes',exact:true}).click();
   await quiz.getByRole('button',{name:'Grammar',exact:true}).click();
   const cambridgePers=quiz.locator('.quiz-topic-card.is-review').filter({has:page.getByRole('heading',{name:'Review your Errors',exact:true})});
-  assert.ok((await cambridgePers.locator('.quiz-card-desc').innerText()).startsWith('Focus on '),'Review your errors shows personalized error-based description once mistakes exist');
-  assert.equal(await cambridgePers.locator('.quiz-track-tag').count(),0);
+  assert.ok((await cambridgePers.locator('.quiz-card-desc').innerText()).includes('based on your previous mistakes'),'Review your errors shows personalized error-based description once mistakes exist');
   await cambridgePers.getByRole('button',{name:'Start quiz',exact:true}).click();
   await quiz.getByRole('heading',{name:'Question 1 of 5',exact:true}).waitFor();
   const camPersKinds=new Set();

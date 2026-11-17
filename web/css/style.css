@@ -1142,14 +1142,37 @@ body:has(#newSessionBtn.active) #inputClearBtn:not([hidden]) { display: flex; }
   cursor: pointer;
   transition: border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease), transform var(--dur) var(--ease);
 }
-.history-item:hover {
-  border-color:var(--border);
-  background:var(--bg);
+.history-item.is-valid {
+  border-color: color-mix(in srgb, var(--ok) 55%, var(--border));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ok) 35%, transparent);
+}
+.history-item.is-invalid {
+  border-color: color-mix(in srgb, var(--err) 55%, var(--border));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--err) 35%, transparent);
+}
+.history-item:hover,
+.history-item:focus-visible {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+.history-item.is-valid:hover,
+.history-item.is-valid:focus-visible {
+  box-shadow: var(--shadow-sm), inset 0 0 0 1px color-mix(in srgb, var(--ok) 35%, transparent);
+}
+.history-item.is-invalid:hover,
+.history-item.is-invalid:focus-visible {
+  box-shadow: var(--shadow-sm), inset 0 0 0 1px color-mix(in srgb, var(--err) 35%, transparent);
 }
 .history-item:focus-visible {
-  border-color:var(--border);
-  outline:2px solid var(--focus-ring);
-  outline-offset:2px;
+  outline: none;
+  box-shadow: 0 0 0 2px var(--focus-ring);
+}
+.history-item.is-valid:focus-visible {
+  box-shadow: 0 0 0 2px var(--focus-ring), inset 0 0 0 1px color-mix(in srgb, var(--ok) 35%, transparent);
+}
+.history-item.is-invalid:focus-visible {
+  box-shadow: 0 0 0 2px var(--focus-ring), inset 0 0 0 1px color-mix(in srgb, var(--err) 35%, transparent);
 }
 /* The card head and the sentence itself are the two levels that carry the
    text: both must be allowed to shrink, and the sentence truncates to a
@@ -3889,57 +3912,4 @@ body.workspace-view-open .app-main { display: none; }
   margin: 0;
   color: inherit;
   overflow-wrap: anywhere;
-}
-
-/* Shared syntax area: generator above the single, independently saved builder. */
-.syntax-builder-area { display:none; }
-body.syntax-workspace-active .app-main { overflow-y:auto; grid-template-rows: minmax(560px,calc(100dvh - 48px)) auto; align-content:start; }
-body.syntax-workspace-active .syntax-builder-area { display:block; grid-column:1/-1; border:1px solid var(--border); border-radius:16px; padding:18px; background:var(--panel); min-width:0; }
-.syntax-builder-area > header { display:flex; justify-content:space-between; align-items:center; gap:16px; }
-.syntax-builder-area h2 { margin:0; }
-.syntax-builder-area p { color:var(--text-muted); }
-.manual-builder-stage { position:relative; height:560px; overflow:hidden; border:1px solid var(--border); border-radius:12px; margin-top:12px; }
-.manual-builder-stage[hidden] { display:none; }
-.manual-builder-stage .builder-canvas { position:absolute; inset:0; }
-.generator-panel-heading { display:flex; align-items:center; justify-content:flex-start; gap:12px; }
-.generator-panel-heading h1 { font-size:16px; margin:0; order:2; }
-.generator-history-toggle { display:flex; align-items:center; gap:6px; border:1px solid var(--border); background:var(--panel); color:var(--text); border-radius:8px; padding:8px; cursor:pointer; }
-.generator-history-toggle svg { width:20px;height:20px; }
-.generator-history-toggle[hidden] { display:none; }
-.pane-side { position:relative; }
-.pane-side > #historyDrawerBackdrop { position:relative; inset:auto; display:none; opacity:1; visibility:visible; pointer-events:auto; background:none; z-index:1; }
-.pane-side > #historyDrawerBackdrop.active { display:block; }
-.pane-side .history-drawer { width:100%; height:auto; max-height:340px; box-sizing:border-box; transform:none; box-shadow:none; border:1px solid var(--border); border-radius:12px; }
-.history-time-label { display:flex; align-items:center; gap:8px; font-size:13px; }
-.history-time-label select { color:var(--text);background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:6px; }
-.history-item { border:1px solid var(--border);border-left:1px solid var(--border);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px; }
-.hist-title,.hist-time,.hist-reopen { grid-column:1; }
-.hist-time { font-size:12px;color:var(--text-muted); }
-.hist-reopen { font-size:12px;color:var(--accent); }
-.history-item .hist-delete-btn { grid-column:2;grid-row:1/4; }
-@media(max-width:760px){
- body.syntax-workspace-active .app-main { display:flex;flex-direction:column;overflow-y:auto; }
- body.syntax-workspace-active .canvas-wrap { min-height:420px; }
- body.syntax-workspace-active .pane-side { min-height:440px;flex:none; }
- .syntax-builder-area > header { flex-wrap:wrap; }
- .manual-builder-stage { height:480px; }
-}
-.pane-side { display:flex;flex-direction:column; }
-.generator-side-panes { display:grid;grid-template-rows:minmax(0,calc(var(--row-split,0.58)*100%)) minmax(0,1fr);gap:var(--workspace-gap);flex:1;min-height:0; }
-.pane-side .history-drawer { max-height:190px; }
-body:not(.syntax-workspace-active) .generator-panel-heading { display:none; }
-@media(max-width:760px){ .generator-side-panes { display:flex;flex-direction:column; } }
-#manualBuilderInputWrap { display:flex;flex-direction:column;gap:6px;margin-top:12px;font-size:13px; }
-#manualBuilderInputWrap[hidden] { display:none; }
-#manualBuilderText { resize:vertical;min-height:50px;background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:10px;font:inherit; }
-.generator-panel-heading,.syntax-builder-area > header { color:var(--text); }
-.syntax-builder-area > header .lesson-primary { display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;border:0;border-radius:8px;padding:10px 14px;cursor:pointer; }
-@media(max-width:760px){
- body.syntax-workspace-active .pane-side { min-height:0;height:auto; }
- .generator-side-panes { flex:none; }
- .syntax-builder-area { flex-shrink:0; }
-}
-@media(max-width:760px){
- .manual-builder-stage .builder-toolbar { top:48px; }
- .manual-builder-stage .builder-palette { top:88px;max-height:170px; }
 }

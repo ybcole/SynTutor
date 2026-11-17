@@ -88,7 +88,7 @@ const server = createServer(async (req, res) => {
 
 await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
 const base = `http://127.0.0.1:${server.address().port}`;
-const browser = await chromium.launch({ headless: true, ...(process.env.QUIZ_V2_CHROMIUM_PATH?{executablePath:process.env.QUIZ_V2_CHROMIUM_PATH}:{}) });
+const browser = await chromium.launch({ headless: true });
 
 try {
   const page = await browser.newPage({ viewport: { width: 1360, height: 920 } });
@@ -151,7 +151,7 @@ try {
   assert.equal(parseRequests.length, 2, 'Enter submits revised multiline input cleanly');
 
   // 2. Syntax Builder: Top-left Clear/Edit, Floating draggable Nodes panel, bottom-left Nodes toggle, Construct vs Done editing, Fit & connector alignment.
-  await page.locator('#openInlineBuilder').click();
+  await page.locator('.sidebar-item[data-view="builder"]').click();
   await page.locator('#builderCanvas').waitFor({ state: 'visible' });
   assert.equal(await page.locator('#builderPalette').isHidden(), true, 'Nodes palette stays hidden outside Edit mode');
   assert.equal(await page.locator('#builderNodesToggle').isHidden(), true, 'Bottom-left Nodes toggle stays hidden outside Edit mode');
@@ -209,7 +209,7 @@ try {
   // Verify bottom-left Nodes toggle stays anchored bottom-left and floating palette is draggable without panning canvas.
   const togglePos = await page.evaluate(() => {
     const t = document.getElementById('builderNodesToggle').getBoundingClientRect();
-    const s = document.querySelector('#inlineBuilderStage').getBoundingClientRect();
+    const s = document.querySelector('.canvas-stage').getBoundingClientRect();
     return { leftOffset: t.left - s.left, bottomOffset: s.bottom - t.bottom };
   });
   assert.ok(togglePos.leftOffset < 32 && togglePos.bottomOffset < 32, 'Nodes toggle anchors at bottom-left of canvas');
@@ -267,7 +267,7 @@ try {
 
   await page.locator('#builderPaletteList [data-palette-label="NP"]').click();
   await page.locator('#builderPaletteSearch').fill('');
-  await page.locator('#manualBuilderText').fill('small birds');
+  await ta.fill('small birds');
   await page.waitForTimeout(260);
   await page.locator('#builderPaletteList [data-palette-label="NP"]').click();
   await snap('builder-palette-edit.png');
@@ -339,7 +339,7 @@ try {
   // Re-enter Edit mode, build complete S -> birds tree, and click Construct to arrange hierarchically.
   await page.locator('[data-builder-edit]').click();
   await page.locator('[data-builder-clear]').click();
-  await page.locator('#manualBuilderText').fill('birds');
+  await ta.fill('birds');
   await page.waitForTimeout(260);
   await page.locator('#builderPaletteList [data-palette-label="S"]').click();
   const sDrag = await page.evaluate(async () => {
@@ -373,19 +373,12 @@ try {
     return Math.abs((s.x + s.w / 2) - (w.x + w.w / 2));
   });
   assert.ok(alignedCenter < 2, `Construct aligns parent S cleanly over child word (delta=${alignedCenter})`);
-  assert.ok((await page.locator('#builderFeedback').innerText()).includes('Constructed tree evaluation'), 'Manual construction evaluation uses its separate feedback panel');
-  const manualBefore=await page.evaluate(async()=>JSON.stringify((await import('/js/syntax-builder-ui.js')).builderModel()));
-  await ta.dblclick();await ta.fill('A separate generated sentence.');await ta.press('Enter');
-  await page.waitForFunction(()=>document.getElementById('inputText').readOnly);
-  assert.equal(await page.evaluate(async()=>JSON.stringify((await import('/js/syntax-builder-ui.js')).builderModel())),manualBefore,'generator analysis preserves the manually constructed tree');
-  await page.locator('#inlineBuilderArea').scrollIntoViewIfNeeded();
+  assert.ok((await page.locator('#explainNode').innerText()).includes('Constructed tree evaluation'), 'Bottom-right evaluation panel remains unchanged after Construct');
   await snap('builder-constructed.png');
-  await page.evaluate(()=>document.documentElement.dataset.theme='dark');await page.waitForTimeout(250);await snap('builder-desktop-dark.png');
-  await page.evaluate(()=>document.documentElement.dataset.theme='light');
 
   // Clear canvas and Fit on a wide long-word sentence scales down cleanly within the canvas without obscuring under palette.
   await page.locator('[data-builder-clear]').click();
-  await page.locator('#manualBuilderText').fill('extraordinarily sophisticated transformations inevitably produce remarkably intricate hierarchical constituencies throughout contemporary linguistics research');
+  await ta.fill('extraordinarily sophisticated transformations inevitably produce remarkably intricate hierarchical constituencies throughout contemporary linguistics research');
   await page.waitForTimeout(300);
   await page.locator('[data-builder-zoom="fit"]').click();
   await page.waitForTimeout(80);
@@ -417,18 +410,7 @@ try {
   assert.equal(await page.locator('#builderPalette').isHidden(), true, 'mobile Nodes toggle hides floating panel');
   await page.locator('#builderNodesToggle').click();
   await page.locator('#builderPalette').waitFor({ state: 'visible' });
-  await page.waitForTimeout(250);
-  await page.locator('[data-builder-zoom="fit"]').click();
-  const mobileControls=await page.evaluate(()=>{
-    const left=document.getElementById('builderTopLeft').getBoundingClientRect(),right=document.getElementById('builderToolbar').getBoundingClientRect();
-    const palette=document.getElementById('builderPalette').getBoundingClientRect();
-    return {left,right,palette};
-  });
-  assert.ok(mobileControls.right.top>=mobileControls.left.bottom,'mobile toolbar rows do not overlap');
-  assert.ok(mobileControls.palette.top>=mobileControls.right.bottom,'mobile palette does not obscure Construct/zoom controls');
   await snap('builder-mobile-dark.png');
-  await page.evaluate(()=>document.documentElement.dataset.theme='light');await page.waitForTimeout(250);await snap('builder-mobile-light.png');
-  await page.evaluate(()=>document.documentElement.dataset.theme='dark');
   const builderMobileOverflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   assert.ok(builderMobileOverflow <= 1, `No mobile horizontal overflow on Syntax Builder (overflow=${builderMobileOverflow})`);
   await page.setViewportSize({ width: 1360, height: 920 });

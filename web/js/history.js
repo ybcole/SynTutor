@@ -55,7 +55,6 @@ export function openHistoryDrawer() {
   if (!enabled) return false;
   hooks.onOpen?.();
   drawerBackdrop()?.classList.add('active');
-  historyButton()?.setAttribute('aria-expanded','true');
   hooks.onOverlay?.('history');
   return true;
 }
@@ -64,8 +63,6 @@ export function openHistoryDrawer() {
 export function closeHistoryDrawer() {
   const wasOpen = Boolean(drawerBackdrop()?.classList.contains('active'));
   drawerBackdrop()?.classList.remove('active');
-  historyButton()?.setAttribute('aria-expanded','false');
-  if(wasOpen)historyButton()?.focus();
   if (wasOpen) hooks.onClose?.();
 }
 
