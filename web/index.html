@@ -52,15 +52,6 @@
             </span>
             <span class="sidebar-label">Syntax Generator</span>
           </button>
-          <button id="headerHistoryBtn" class="sidebar-item is-guest-hidden" type="button" data-view="history" aria-label="Open analysis history" title="History" hidden>
-            <span class="sidebar-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <polyline points="12 6 12 12 16 14"></polyline>
-              </svg>
-            </span>
-            <span class="sidebar-label">History</span>
-          </button>
           <button class="sidebar-item" type="button" data-view="lessons" title="Lessons">
             <span class="sidebar-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -73,19 +64,6 @@
           <button class="sidebar-item" type="button" data-view="quizzes" title="Quizzes" aria-label="Quizzes">
             <span class="sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"></rect><path d="m8 8 2 2 4-4M8 15h8"></path></svg></span>
             <span class="sidebar-label">Quizzes</span>
-          </button>
-          <button class="sidebar-item" type="button" data-view="builder" title="Syntax Builder">
-            <span class="sidebar-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="4" r="2"></circle>
-                <circle cx="5" cy="19" r="2"></circle>
-                <circle cx="19" cy="19" r="2"></circle>
-                <line x1="12" y1="6" x2="12" y2="11"></line>
-                <line x1="12" y1="11" x2="5" y2="17"></line>
-                <line x1="12" y1="11" x2="19" y2="17"></line>
-              </svg>
-            </span>
-            <span class="sidebar-label">Syntax Builder</span>
           </button>
           <button class="sidebar-item" type="button" data-view="leaderboard" title="Leaderboard">
             <span class="sidebar-icon" aria-hidden="true">
@@ -208,28 +186,6 @@
 
       <!-- Left sub-panels: slide out directly beside the rail (History stays
            behind its own ID so every existing listener keeps working). -->
-      <div id="historyDrawerBackdrop" class="drawer-backdrop">
-        <aside class="history-drawer" aria-label="Analysis history">
-          <div class="drawer-header">
-            <h2>Analysis History</h2>
-            <button id="closeDrawerBtn" class="drawer-close" type="button" aria-label="Close history">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-              </svg>
-            </button>
-          </div>
-          <div class="history-toolbar">
-            <div id="historyFilters" class="filter-pills">
-              <button class="filter-pill active" type="button" data-filter="all">All</button>
-              <button class="filter-pill" type="button" data-filter="error">Errors</button>
-              <button class="filter-pill" type="button" data-filter="valid">Valid</button>
-            </div>
-            <button id="clearHistoryBtn" type="button">Clear all</button>
-          </div>
-          <div id="historyList" class="history-list"></div>
-        </aside>
-      </div>
       <!-- Second slide-out sub-panel: Achievements / Leaderboard / quiz-finish
            content (rendered by tree-quiz.js). -->
       <section id="subpanelPlaceholder" class="side-subpanel" aria-label="Side panel"></section>
@@ -299,6 +255,40 @@
            aria-label="Resize the workspace — drag, or double-click to reset" title="Drag to resize · double-click to reset"></div>
 
       <div class="pane-side lesson-right-column">
+        <div class="generator-panel-heading"><h1>Syntax Generator</h1>          <button id="headerHistoryBtn" class="generator-history-toggle is-guest-hidden" type="button" aria-controls="historyDrawerBackdrop" aria-expanded="false" aria-label="Open analysis history" title="History" hidden>
+            <span class="sidebar-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </span>
+            <span>History</span>
+          </button>
+</div>
+      <div id="historyDrawerBackdrop" class="drawer-backdrop">
+        <aside class="history-drawer" aria-label="Analysis history">
+          <div class="drawer-header">
+            <h2>Analysis History</h2>
+            <button id="closeDrawerBtn" class="drawer-close" type="button" aria-label="Close history">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+          <div class="history-toolbar">
+            <label class="history-time-label">Show
+              <select id="historyTimeFilter" aria-label="Analysis history time range">
+                <option value="day">Last 1 day</option><option value="week">Last 7 days</option>
+                <option value="month">Last 30 days</option><option value="all" selected>All time</option>
+              </select>
+            </label>
+            <button id="clearHistoryBtn" type="button">Clear all</button>
+          </div>
+          <div id="historyList" class="history-list"></div>
+        </aside>
+      </div>
+        <div class="generator-side-panes">
         <section class="pane pane-input panel-upper-right">
           <button id="mobileNavBtn" class="menu-btn mobile-nav-btn" type="button" aria-label="Open menu" title="Menu" aria-expanded="false" aria-controls="appSidebar">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -334,7 +324,27 @@
             <p class="empty-explain-title">Ready for Analysis</p>
           </div>
         </section>
+        </div>
       </div>
+      <section id="inlineBuilderArea" class="syntax-builder-area" aria-label="Manual Syntax Builder">
+        <header><div><h2>Syntax Builder</h2><p>Build a tree by hand. Your manual draft stays separate from generated analyses.</p></div>          <button id="openInlineBuilder" class="lesson-primary" type="button" data-view="builder" title="Open manual Syntax Builder" aria-controls="inlineBuilderStage" aria-expanded="false">
+            <span class="sidebar-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="4" r="2"></circle>
+                <circle cx="5" cy="19" r="2"></circle>
+                <circle cx="19" cy="19" r="2"></circle>
+                <line x1="12" y1="6" x2="12" y2="11"></line>
+                <line x1="12" y1="11" x2="5" y2="17"></line>
+                <line x1="12" y1="11" x2="19" y2="17"></line>
+              </svg>
+            </span>
+            <span>Open builder</span>
+          </button>
+</header>
+        <label id="manualBuilderInputWrap" hidden>Manual tree sentence<textarea id="manualBuilderText" rows="2" spellcheck="false" aria-label="Manual tree sentence"></textarea></label>
+        <div id="inlineBuilderStage" class="manual-builder-stage" hidden></div>
+        <div id="builderFeedback" class="node-explainer" aria-live="polite"></div>
+      </section>
     </main>
 
     <div id="lessonsOverlay" class="lessons-overlay">

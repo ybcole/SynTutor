@@ -148,7 +148,7 @@ export function gradeQuestion(q, response) {
     return { correct: ok, response: String(response).trim(), answer: q.display_answer || q.accepted_answers[0] };
   }
   if (q.kind === 'grammar_correction') {
-    const opts = { caseSensitive: Boolean(q.case_sensitive), stripTrailingPeriod: true };
+    const opts = { caseSensitive: Boolean(q.case_sensitive), stripTrailingPeriod: !q.punctuation_sensitive };
     const norm = normalizeResponseText(response, opts);
     const originalNorm = normalizeResponseText(q.stimulus?.sentence || '', opts);
     if (originalNorm && norm === originalNorm) {

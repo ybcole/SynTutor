@@ -1,3 +1,4 @@
+import {reviewFocus} from './quiz-review-focus.js';
 import {chapterDescriptions,topicDescription} from './quiz-catalog-copy.js';
 import { showCurriculumState } from './curriculum-state.js';
 import {validateBank,quizKey,itemsFor,gradeAttempt,questionForLearner,reviewForLearner,MAX_QUIZ_ITEMS} from './quiz-core.js';
@@ -91,19 +92,12 @@ function v2Card(parent,title,spec,opts={}){
   const headRow=el('div',undefined,'quiz-card-head');
   const titleWrap=el('div',undefined,'quiz-card-title-wrap');
   titleWrap.append(el(opts.headingTag||'h3',title));
-  if(opts.trackLabel)titleWrap.append(el('span',opts.trackLabel,'quiz-track-tag'));
+  if(opts.trackLabel&&!isPersonalized)titleWrap.append(el('span',opts.trackLabel,'quiz-track-tag'));
   if(opts.difficulty)titleWrap.append(el('span',formatDiff(opts.difficulty),`quiz-difficulty-tag is-${opts.difficulty}`));
   headRow.append(titleWrap);
   card.append(headRow);
   if(isPersonalized){
-   const missed=missedTopicsForTrack(bank,curriculum,store.attempts,spec.track);
-   const topicList=missed.slice(0,2).map(m=>m.title);
-   const desc=!reason&&topicList.length
-    ?`Practice ${topicList.join(' and ')} based on your previous mistakes.`
-    :!reason
-     ?'Practice concepts from your previous missed questions.'
-     :`Submit a ${opts.trackLabel?opts.trackLabel.toLowerCase()+' ':''}quiz with missed questions to unlock error review.`;
-   card.append(el('p',desc,'quiz-card-desc'));
+   card.append(el('p',reviewFocus(bank,curriculum,store.attempts,spec.track),'quiz-card-desc quiz-review-focus'));
   }
   const statusText=reason&&!isPersonalized
    ?reason
@@ -247,14 +241,16 @@ function curriculumCatalog(){
   card.append(head);
   const details=el('details',undefined,'quiz-subtopics');
   const key=`${trackId}:${chapter.id}`;details.open=expanded.has(key);
-  details.addEventListener('toggle',()=>{if(details.open)expanded.add(key);else expanded.delete(key);});
+  details.addEventListener('toggle',()=>{if(details.open)expanded.add(key);else expanded.delete(key);list.hidden=!details.open;});
   details.append(el('summary','Subtopic quizzes'));
-  const list=el('div',undefined,'quiz-topic-list');
+  const list=el('div',undefined,'quiz-topic-list');list.id=`quiz-topics-${trackId}-${chapter.id}`;details.querySelector('summary').setAttribute('aria-controls',list.id);
   for(const [topicIndex,topic] of chapter.topics.entries()){
    v2Card(list,`Quiz ${topicIndex+1}: ${topic.title}`,{track:trackId,mode:'topic',chapter:chapter.id,topic:topic.id},{description:topicDescription(chapter,topic)});
   }
-  const footer=el('footer',undefined,'quiz-card-footer quiz-chapter-footer');footer.append(start);
-  details.append(list);card.append(details,footer);chaptersGroup.append(card);
+  const footer=el('footer',undefined,'quiz-card-footer quiz-chapter-footer');
+  // Keep the native summary in the footer; reveal its controlled list below.
+  list.hidden=!details.open;
+  footer.append(details,start);card.append(footer,list);chaptersGroup.append(card);
  }
  chaptersSec.append(chaptersGroup);
  sheet.append(chaptersSec);

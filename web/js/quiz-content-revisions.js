@@ -1,6 +1,12 @@
 // Keep original item identities/keys available for historical attempts. Only new
 // selection uses these separately identified corrections; never rewrite a key.
 const corrections = {
+ 'mixed:cgel-ch20:functions:grammar_correction:12': {
+  prompt:'Correct only the final punctuation of this direct question. Use a question mark, with no additional terminal mark.',
+  accepted_answers:['Did anyone check the final totals?'],
+  punctuation_sensitive:true,
+  rationale:'A direct interrogative here ends in a question mark. An extra full stop after that question mark is not part of the required correction.',
+ },
  'mixed:cgel-ch01:truth-entailment:fill_blank:4': {
   prompt:'A report states “Ari shattered the vase”. Even with no further context, “The vase broke” must be true. The first proposition _____ the second.',
   accepted_answers:['entails'],

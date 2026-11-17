@@ -1,3 +1,4 @@
+import {filterHistory,historyTimestamp} from './history-filters.js';
 import { accountUserId } from './session-scope.js';
 import { fromCanonicalEnvelope } from './syntax-builder.js';
 import { requestEvidence, renderEvidence, learnerFindingParagraph, evidenceParagraphText } from './explanation-evidence.js';
@@ -19,7 +20,7 @@ import {
 } from './correction.js';
 import { initLessons, openLessons, closeLessons, renderLessonTree } from './lessons-ui.js?v=2026.11.16c';
 import { initQuizzes, openQuizzes, closeQuizzes } from './quizzes-ui.js';
-import { initSyntaxBuilder, openBuilderView, mountEmbeddedBuilder, closeBuilderView, isBuilderOpen, clearBuilder } from './syntax-builder-ui.js';
+import { initSyntaxBuilder, openBuilderView, mountEmbeddedBuilder, closeBuilderView, isBuilderOpen, isInlineBuilderOpen, clearBuilder } from './syntax-builder-ui.js';
 import { initHistory, setHistoryEnabled, openHistoryDrawer, closeHistoryDrawer, shouldPersistHistory } from './history.js';
 import { levelFromXp } from './level.js';
 import { createLeaderboardView } from './leaderboard.js';
@@ -65,7 +66,8 @@ function refreshAccount() {
     clearTreeAuthorityNotice();
   }
   recordedTexts.clear();
-  cachedHistory = [];
+  cachedHistory = [];historyCacheClient=null;activeHistoryFilter='all';
+  const historyRange=document.getElementById('historyTimeFilter');if(historyRange)historyRange.value='all';
   closeHistoryDrawer();
   renderHistoryItems();
   updateAuthState();
@@ -86,6 +88,7 @@ let historySpans = [];
 
 let cachedHistory = [];
 let activeHistoryFilter = 'all';
+let historyCacheClient=null;
 
 // ---------------------------------------------------------------------------
 // Interactive corrective feedback
@@ -394,6 +397,7 @@ function setActiveNav(viewName) {
 // overlay is on top of it.
 function setWorkspaceView(viewName) {
   workspaceView = VIEW_ALIASES[viewName] || viewName;
+  document.body.classList.toggle('syntax-workspace-active',workspaceView==='tutor');
   syncGeneratorVarietyVisibility();
   if (workspaceView !== 'lessons' && /^#lesson\//.test(location.hash)) {
     history.replaceState(history.state, '', location.pathname + location.search);
@@ -482,6 +486,8 @@ export function boot() {
   initSidebar();
   // The rail starts on the Syntax Generator: exactly one active destination.
   setActiveNav(workspaceView);
+  document.body.classList.add('syntax-workspace-active');
+  document.getElementById('openInlineBuilder')?.addEventListener('click',()=>enterBuilderMode());
   initSyntaxBuilder({ onStatusChange: (msg) => log(msg), setWorkspaceView, userId: () => activeUserId });
   const handleLearningProgress = () => {
     refreshSidebarProgress();
@@ -536,7 +542,7 @@ function initThemeAndMenu() {
   // × clears the canvas instead.
   document.querySelector('#inputClearBtn')?.addEventListener('click', () => {
     if (state === STATES.PROCESSING) return;
-    if (isBuilderOpen()) {
+    if (isBuilderOpen()&&!isInlineBuilderOpen()) {
       clearBuilder();
       syncInputClearBtn();
       return;
@@ -552,7 +558,7 @@ function initThemeAndMenu() {
   });
 
   document.querySelector('#headerHistoryBtn')?.addEventListener('click', () => {
-    openHistoryDrawer();
+    if(document.getElementById('historyDrawerBackdrop').classList.contains('active'))closeHistoryDrawer();else openHistoryDrawer();
   });
 
   initProfileMenu();
@@ -695,7 +701,7 @@ function initSidebar() {
 
 // Tear the workspace down to a clean slate: no module owns anything.
 function closeSubpanel() {
-  document.querySelector('#historyDrawerBackdrop')?.classList.remove('active');
+  closeHistoryDrawer();
   const host = document.querySelector('#subpanelPlaceholder');
   host?.classList.remove('active');
   if (host) host.replaceChildren();
@@ -774,10 +780,10 @@ function enterAssessmentMode(assessmentId = null) {
 // no diagnostics may fire while it owns the canvas.
 function enterBuilderMode(canonicalTree = null) {
   if (canonicalTree) fromCanonicalEnvelope(canonicalTree); // preflight before clearing the current analysis
-  teardownWorkspace();
-  setQuizMode(false);
-  setWorkspaceView('builder');
-  openBuilderView(canonicalTree ? { canonicalTree } : {});
+  if(workspaceView!=='tutor')enterTutorMode();
+  closeHistoryDrawer();
+  if(!isInlineBuilderOpen())openBuilderView({inlineWorkspace:true,...(canonicalTree?{canonicalTree}:{})});
+  document.getElementById('inlineBuilderArea')?.scrollIntoView({behavior:'smooth',block:'start'});
 }
 
 // Leaderboard / Achievements: a full-bleed workspace view, docked next to
@@ -1505,13 +1511,8 @@ function wireEvents() {
     }
   });
 
-  document.querySelectorAll('#historyFilters .filter-pill').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('#historyFilters .filter-pill').forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
-      activeHistoryFilter = btn.dataset.filter;
-      renderHistoryItems();
-    });
+  document.getElementById('historyTimeFilter')?.addEventListener('change',e=>{
+    activeHistoryFilter=e.target.value;renderHistoryItems();
   });
 
   document.querySelector('#clearHistoryBtn')?.addEventListener('click', async () => {
@@ -1539,7 +1540,7 @@ function setHint(editing) {
   // overlay never renders text of its own, so the two can never overlap.
   // The Syntax Builder owns the panel while it is open \u2014 its prompt stays
   // until the builder closes.
-  if (!editing && isBuilderOpen()) return;
+  if (!editing && isBuilderOpen()&&!isInlineBuilderOpen()) return;
   const ta = document.querySelector('#inputText');
   if (ta) {
     ta.placeholder = editing
@@ -1583,7 +1584,7 @@ function enterEditMode() {
   if (!ta) return;
   // The Syntax Builder owns the input box: it mirrors the words on the
   // canvas, so it stays locked (and the canvas stays the only place to type).
-  if (isBuilderOpen()) return;
+  if (isBuilderOpen()&&!isInlineBuilderOpen()) return;
   if (ta.readOnly === false) { ta.focus(); return; }
   editor?.classList.add('editing');
   ta.readOnly = false;
@@ -2314,6 +2315,7 @@ async function executePipeline(opts, request) {
         log(`Warning: Failed to save analysis history \u2014 ${insertError.message}`);
       } else {
         recordedTexts.add(text);
+        historyCacheClient=null;
         log('Stage 6b: analysis history recorded in Supabase');
       }
     } catch (dbErr) {
@@ -2611,18 +2613,22 @@ function handleNodeSelect(id) {
 async function loadAndRenderHistory() {
   const container = document.querySelector('#historyList');
   if (!container) return;
+  if(historyCacheClient===supabase&&supabase){renderHistoryItems();return;}
   container.innerHTML = '<p class="history-empty">Loading past analyses...</p>';
 
   const client = supabase;
   if (!isGuest && client) {
     try {
-      const { data, error } = await client.from('analysis_history')
-        .select('id, sentence, is_valid, constraints_fired, created_at')
-        .order('created_at', { ascending: false })
-        .limit(50);
-      if (client !== supabase) return;
-      if (error) throw error;
-      cachedHistory = data || [];
+      const owner=activeUserId,rows=[];
+      for(let offset=0;;offset+=500){
+        const {data,error}=await client.from('analysis_history')
+          .select('id, sentence, is_valid, constraints_fired, created_at').eq('user_id',owner)
+          .order('created_at',{ascending:false}).order('id',{ascending:false}).range(offset,offset+499);
+        if(client!==supabase||owner!==activeUserId)return;
+        if(error)throw error;
+        rows.push(...(data||[]));if(!data||data.length<500)break;
+      }
+      cachedHistory=rows;historyCacheClient=client;
     } catch {
       if (client !== supabase) return;
       container.textContent = 'History is unavailable. Reopen the drawer to retry.';
@@ -2639,11 +2645,7 @@ function renderHistoryItems() {
   const container = document.querySelector('#historyList');
   if (!container) return;
 
-  const filtered = cachedHistory.filter((entry) => {
-    if (activeHistoryFilter === 'error') return !entry.is_valid;
-    if (activeHistoryFilter === 'valid') return entry.is_valid;
-    return true;
-  });
+  const filtered = filterHistory(cachedHistory,activeHistoryFilter);
 
   if (!filtered.length) {
     container.textContent = '';
@@ -2658,14 +2660,12 @@ function renderHistoryItems() {
 
   container.innerHTML = '';
   filtered.forEach((entry) => {
-    const isError = !entry.is_valid;
-
     const card = document.createElement('div');
-    card.className = `history-item ${isError ? 'is-invalid' : 'is-valid'}`;
+    card.className = 'history-item';
     card.setAttribute('role', 'button');
     card.setAttribute('tabindex', '0');
     card.title = entry.sentence;
-    card.setAttribute('aria-label', `${entry.sentence} — ${entry.is_valid ? 'Valid' : 'Invalid'}`);
+    card.setAttribute('aria-label', `Reopen analysis: ${entry.sentence}`);
 
     const titleP = document.createElement('p');
     // `hist-sentence` carries the single-line ellipsis truncation: a long
@@ -2684,8 +2684,12 @@ function renderHistoryItems() {
       </svg>
     `;
 
-    card.appendChild(titleP);
-    card.appendChild(delBtn);
+    const timestamp=document.createElement('time');timestamp.className='hist-time';
+    const date=new Date(historyTimestamp(entry));
+    timestamp.textContent=Number.isFinite(date.getTime())?date.toLocaleString():'Date unavailable';
+    if(Number.isFinite(date.getTime()))timestamp.dateTime=date.toISOString();
+    const reopen=document.createElement('span');reopen.className='hist-reopen';reopen.textContent='Reopen analysis';
+    card.append(titleP,timestamp,reopen,delBtn);
 
     const openEntry = () => {
       closeHistoryDrawer();
@@ -2694,7 +2698,7 @@ function renderHistoryItems() {
 
     card.addEventListener('click', openEntry);
     card.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
+      if (e.target===card&&(e.key === 'Enter' || e.key === ' ')) {
         e.preventDefault();
         openEntry();
       }

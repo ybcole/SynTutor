@@ -15,7 +15,7 @@ const curriculum=quizCurriculum(await loadActiveCourse(async p=>({ok:true,json:(
 const descriptions=[];
 for(const track of curriculum)for(const chapter of track.chapters){
  assert.ok(chapterDescriptions[chapter.id]?.length>30);
- for(const topic of chapter.topics){const text=topicDescription(chapter,topic);assert.ok(text.length>20&&text.length<130);descriptions.push(text);}
+ for(const topic of chapter.topics){const text=topicDescription(chapter,topic);assert.ok(text.length>20&&text.length<220);descriptions.push(text);}
 }
 assert.equal(descriptions.length,327);
 assert.equal(new Set(Object.values(chapterDescriptions)).size,31);

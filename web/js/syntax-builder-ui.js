@@ -1,7 +1,7 @@
 import {createBuilderTools} from './builder-tools.js';
 import {renderLessonTree} from './lessons-ui.js';
 import { API_BASE } from './config.js';
-import { requestEvidence, renderEvidence } from './explanation-evidence.js';
+import { requestEvidence, renderEvidence as renderEvidenceBase } from './explanation-evidence.js';
 // Syntax Builder view: a free-form canvas node editor for assembling syntax
 // trees by hand. It is shown as a sidebar destination (like Achievements) and
 // also drives the Matrix Quiz's "rebuild the tree" questions.
@@ -27,11 +27,29 @@ import {
   dotOf, dotHit, nodeHit, endpointOf, endpointHit, parentAnchorOf, childAnchorOf, toTree, compareTrees, leavesOf, leafText,
   seedWords, leavesWithTags, childrenOf, getSentenceFromLeaves as sentenceFromLeaves,
 } from './syntax-builder.js';
-import { renderNodeDetail, renderDiagnostic, clearOverlay } from './ui.js';
+import { renderNodeDetail, renderDiagnostic as renderDiagnosticBase, clearOverlay } from './ui.js';
 
 const WORD_FONT = '500 15px Inter, system-ui, sans-serif';
 const TAG_FONT = '600 10px Inter, system-ui, sans-serif';
 const PHRASE_FONT = '600 16px Inter, system-ui, sans-serif';
+let inlineWorkspace=false,inlineHomes=[];
+export const isInlineBuilderOpen=()=>inlineWorkspace&&isBuilderOpen();
+function builderInput(){return document.getElementById(inlineWorkspace?'manualBuilderText':'inputText');}
+function feedbackHost(){return document.getElementById(inlineWorkspace?'builderFeedback':'explainNode');}
+function renderEvidence(evidence,host=feedbackHost(),options={}){return renderEvidenceBase(evidence,host,options);}
+function renderDiagnostic(title,lines){
+ if(!inlineWorkspace)return renderDiagnosticBase(title,lines);
+ const host=feedbackHost();host?.replaceChildren();
+ const heading=document.createElement('h3');heading.textContent=title;host?.append(heading);
+ for(const line of lines){const p=document.createElement('p');p.textContent=line;host?.append(p);}
+}
+function dockInlineBuilder(){
+ const stage=document.getElementById('inlineBuilderStage');stage.hidden=false;document.getElementById('openInlineBuilder').setAttribute('aria-expanded','true');document.getElementById('manualBuilderInputWrap').hidden=false;
+ for(const id of ['builderCanvas','builderTopLeft','builderToolbar','builderPalette','builderNodesTooltip','builderNodesToggle','canvasControls','builderHint','builderTarget']){
+  const node=document.getElementById(id);if(node){inlineHomes.push([node,node.parentElement]);stage.append(node);}
+ }
+}
+function undockInlineBuilder(){document.getElementById('openInlineBuilder').setAttribute('aria-expanded','false');for(const [node,home] of inlineHomes)home.append(node);inlineHomes=[];document.getElementById('inlineBuilderStage').hidden=true;document.getElementById('manualBuilderInputWrap').hidden=true;inlineWorkspace=false;}
 const NODE_H = 34;
 const FEATURE_LINE_H = 12;
 
@@ -218,7 +236,7 @@ function clampPalettePos(host, stage, left, top) {
   const sh = stage.clientHeight || 600;
   const hw = host.offsetWidth || 248;
   const hh = host.offsetHeight || 280;
-  const minTop = 48;
+  const minTop = inlineWorkspace&&sw<=680?88:48;
   const minLeft = 8;
   const maxLeft = Math.max(minLeft, sw - hw - 8);
   const maxTop = Math.max(minTop, sh - hh - 52);
@@ -246,6 +264,7 @@ function setBuilderPaletteOpen(open) {
   paletteOpen = Boolean(open);
   if (paletteOpen) dismissNodesTooltip();
   syncBuilderPalette();
+  if(inlineWorkspace&&state.canvas?.clientWidth<=680){fitBuilderView();draw();}
 }
 
 function visibleViewportInsets() {
@@ -255,7 +274,11 @@ function visibleViewportInsets() {
   const ch = state.canvas.clientHeight || 0;
   const cRect = state.canvas.getBoundingClientRect();
   let left = 24, right = 24;
-  const top = document.body.classList.contains('builder-standalone') ? 56 : 24;
+  let top = document.body.classList.contains('builder-standalone') ? 56 : 24;
+  if(inlineWorkspace&&cw<=680){
+    const pal=document.getElementById('builderPalette');
+    top=pal&&!pal.hidden?Math.max(88,pal.getBoundingClientRect().bottom-cRect.top+12):88;
+  }
   const bottom = state.editMode && !state.challenge ? 54 : 24;
   if (cw > 680) {
     const pal = document.getElementById('builderPalette');
@@ -278,7 +301,7 @@ function visibleViewportInsets() {
       left = Math.max(left, Math.min(r.right - cRect.left + 14, cw * 0.48));
     }
   }
-  return { left, right, top: Math.min(top, ch * 0.25), bottom: Math.min(bottom, ch * 0.25) };
+  return { left, right, top: Math.min(top,inlineWorkspace&&cw<=680?ch-100:ch * 0.25), bottom: Math.min(bottom, ch * 0.25) };
 }
 
 function visibleLeftInset() {
@@ -435,7 +458,7 @@ function syncBuilderPalette() {
 }
 
 function wireBuilderInput() {
-  const input = document.getElementById('inputText');
+  const input = builderInput();
   if (!input || input.dataset.builderInput) return;
   input.dataset.builderInput = 'true';
   input.addEventListener('input', onBuilderInput);
@@ -522,7 +545,7 @@ function setBuilderEditMode(value, { silent = false } = {}) {
     button.textContent = state.editMode ? 'Done editing' : 'Edit mode';
     button.setAttribute('aria-pressed', String(state.editMode));
   }
-  const input = document.getElementById('inputText');
+  const input = builderInput();
   if (input) {
     input.readOnly = false;
     input.placeholder = state.editMode
@@ -546,7 +569,7 @@ function setBuilderEditMode(value, { silent = false } = {}) {
   syncBuilderPalette();
   setCanvasHint('');
   if (state.editMode) {
-    document.getElementById('explainNode')?.replaceChildren();
+    feedbackHost()?.replaceChildren();
     nodesTooltipShownForSession = false;
     maybeShowNodesTooltip();
   } else {
@@ -562,8 +585,8 @@ function setBuilderEditMode(value, { silent = false } = {}) {
   }
 }
 
-function onBuilderInput() {
-  if (!isBuilderOpen() || embedded || state.syncingInput) return;
+function onBuilderInput(event) {
+  if (!isBuilderOpen() || embedded || event.target!==builderInput() || state.syncingInput) return;
   clearTimeout(state.inputSyncTimer);
   state.inputSyncTimer = setTimeout(syncInputToCanvas, 180);
 }
@@ -580,7 +603,7 @@ function layoutWordRow(nodes, startX, y) {
 
 function syncInputToCanvas() {
   if (!isBuilderOpen() || embedded) return;
-  const input = document.getElementById('inputText');
+  const input = builderInput();
   if (!input) return;
   const text = input.value.trim();
   const words = text ? text.split(/\s+/).filter(Boolean) : [];
@@ -631,7 +654,7 @@ export function initSyntaxBuilder({ onStatusChange, setWorkspaceView, userId } =
       draw();
     },
     evaluate:buildTree,select:(id,explain=false)=>{selectOnly(id);draw();if(explain)explainSelected();},
-    showModel:tree=>{const container=document.getElementById('explainNode');if(container){container.replaceChildren(renderLessonTree(tree));}}});
+    showModel:tree=>{const container=feedbackHost();if(container){container.replaceChildren(renderLessonTree(tree));}}});
   wireBuilderToolbar();
   wireBuilderInput();
 }
@@ -661,13 +684,13 @@ export function getSentenceFromLeaves() {
 function syncCanvasToInput() {
   const sentence = getSentenceFromLeaves();
   if (embedded) return sentence;
-  const input = document.getElementById('inputText');
+  const input = builderInput();
   if (!input) return sentence;
   if (input.value === sentence) return sentence;
   state.syncingInput = true;
   try {
     input.value = sentence;
-    const highlights = document.getElementById('inputHighlights');
+    const highlights = inlineWorkspace?null:document.getElementById('inputHighlights');
     if (highlights) highlights.textContent = sentence;
     input.dispatchEvent(new Event('input', { bubbles: true }));
   } finally {
@@ -679,7 +702,7 @@ function syncCanvasToInput() {
 // The input panel's prompt follows the active mode. It lives on the
 // textarea only — the highlight overlay never renders a prompt of its own.
 function setInputPlaceholder(text) {
-  const input = document.getElementById('inputText');
+  const input = builderInput();
   if (input) input.placeholder = text;
 }
 
@@ -768,6 +791,7 @@ export function mountEmbeddedBuilder(stage, exercise) {
 }
 
 export function openBuilderView(opts = {}) {
+  if(opts.inlineWorkspace&&!inlineWorkspace){inlineWorkspace=true;dockInlineBuilder();}
   state.canonicalProfile = opts.canonicalTree?.convention_profile
     || (opts.challenge ? state.canonicalProfile : builderProfile())
     || builderProfile();
@@ -783,18 +807,18 @@ export function openBuilderView(opts = {}) {
   if (topLeft) topLeft.hidden = Boolean(opts.challenge);
   ensureWired();
   canvas.hidden = false;
-  if (treeCanvas) treeCanvas.hidden = true;
-  document.getElementById('canonicalTreeView')?.setAttribute('hidden', '');
-  document.getElementById('emptyTreeState')?.classList.add('hidden');
+  if (treeCanvas&&!inlineWorkspace) treeCanvas.hidden = true;
+  if(!inlineWorkspace)document.getElementById('canonicalTreeView')?.setAttribute('hidden', '');
+  if(!inlineWorkspace)document.getElementById('emptyTreeState')?.classList.add('hidden');
   // The shared canvas overlay (e.g. "No analyzable sentence" from the parser)
   // belongs to the main tree view, not the builder — clear it so it never
   // bleeds into this page.
-  clearOverlay();
+  if(!inlineWorkspace)clearOverlay();
   // Lessons and quizzes build in place on this canvas; only the standalone
   // Syntax Builder (no challenge) highlights its own sidebar tab, unless the
   // caller asks for a specific tab via `opts.sidebarView`.
   const sidebarView = opts.sidebarView || (opts.challenge ? null : 'builder');
-  if (sidebarView) markSidebar(sidebarView);
+  if (sidebarView&&!inlineWorkspace) markSidebar(sidebarView);
   state.challenge = opts.challenge || null;
   state.onComplete = opts.onComplete || null;
   state.solved = false;
@@ -825,10 +849,10 @@ export function openBuilderView(opts = {}) {
     if (modelBtn) modelBtn.hidden = !practice;
   // The builder owns the input panel now: it mirrors the canvas, so it gets
   // the builder's prompt and stays read-only.
-  document.body.classList.add('builder-active');
-  document.body.classList.toggle('builder-standalone', !state.challenge);
+  if(!inlineWorkspace)document.body.classList.add('builder-active');
+  document.body.classList.toggle('builder-standalone', !state.challenge&&!inlineWorkspace);
   document.body.classList.remove('lesson-model');
-  setInputPlaceholder(BUILDER_PLACEHOLDER);
+  if(!inlineWorkspace)setInputPlaceholder(BUILDER_PLACEHOLDER);
   const target = document.getElementById('builderTarget');
   const clear = document.getElementById('builderClear');
   const snap = document.getElementById('builderSnap');
@@ -974,10 +998,11 @@ export function closeBuilderView() {
   document.body.classList.remove('builder-active');
   document.body.classList.remove('builder-standalone');
   setInputPlaceholder(TUTOR_PLACEHOLDER);
-  const input = document.getElementById('inputText');
+  const input = builderInput();
   if (input) input.readOnly = true;
   state.challenge = null;
   state.onComplete = null;
+  if(inlineWorkspace)undockInlineBuilder();
   onBuilderClose();
 }
 
@@ -1042,6 +1067,7 @@ function ensureWired() {
   wireBuilderInput();
   if (wired) return;
   wired = true;
+  new MutationObserver(()=>draw()).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
   state.canvas = document.getElementById('builderCanvas');
   state.ctx = state.canvas.getContext('2d');
   document.getElementById('builderClear')?.addEventListener('click', clearBuilder);
@@ -1061,6 +1087,7 @@ function ensureWired() {
       } else {
         applyPalettePos(document.getElementById('builderPalette'));
         if (state.snapped) applyTreeLayout({ fit: true });
+        else if(inlineWorkspace&&state.canvas.clientWidth<=680)fitBuilderView();
       }
       draw();
     }
@@ -2136,7 +2163,7 @@ async function showBuilderEvidence(nodeId = null) {
     if (version === evidenceRequest && isBuilderOpen()) {
       const node = nodeId ? state.model.nodes[nodeId] : null;
       const detail = node ? describeNode(node) : null;
-      const host = document.querySelector('#explainNode');
+      const host = feedbackHost();
       host?.replaceChildren();
       renderEvidence(data, host, {
         nodeId,
@@ -2153,12 +2180,12 @@ function explainSelected() {
   const ids = [...state.selection];
   const node = ids.length ? state.model.nodes[ids[ids.length - 1]] : null;
   if (!node) {
-    document.getElementById('explainNode')?.replaceChildren();
+    feedbackHost()?.replaceChildren();
     return;
   }
   loadInfo().then(() => {
     showBuilderEvidence(node.id);
-    document.getElementById('explainNode')
+    feedbackHost()
       ?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
   });
 }
@@ -2255,7 +2282,7 @@ function treeIsComplete() {
 }
 
 function showToast(msg, ok) {
-  const stage = document.querySelector('.canvas-stage');
+  const stage = inlineWorkspace?state.canvas.parentElement:document.querySelector('.canvas-stage');
   if (!stage) return;
   let t = stage.querySelector('.builder-toast');
   if (!t) {
