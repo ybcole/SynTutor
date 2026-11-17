@@ -130,6 +130,8 @@
   font-size: 0.9rem;
   line-height: 1.5;
   color: var(--text-muted);
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 .quiz-card-status {
   margin: 0;
@@ -268,7 +270,23 @@
   gap: 8px;
 }
 .quiz-chapter-title { margin: 0; }
-.quiz-chapter-footer { justify-content: flex-end; }
+.quiz-chapter-footer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 12px 20px;
+}
+.quiz-chapter-footer > .lesson-primary { justify-self: end; }
+.quiz-chapter-footer .quiz-subtopics { min-width: 0; }
+@media (max-width: 640px) {
+  .quiz-chapter-footer { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 760px) {
+  /* Keep the shared drawer reachable above the full-screen quiz catalog. */
+  body.quizzes-open .mobile-nav-btn { position: fixed; z-index: 197; }
+  body.quizzes-open .app-sidebar-backdrop { display: block; }
+  .quiz-view > .curriculum-header { padding-left: 56px; }
+}
 .quiz-subtopics { width: 100%; }
 .quiz-subtopics > summary {
   cursor: pointer;

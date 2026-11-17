@@ -1,4 +1,5 @@
 import { builderProfile, paletteFor } from './syntax-builder.js';
+import {applyMixedRevisions} from './quiz-content-revisions.js';
 
 const w = word => ({ word });
 const p = (label, children, extra = {}) => ({ label, children, ...extra });
@@ -146,7 +147,7 @@ function mkSyntaxFix(ch, id, topic, profileCh, prompt, seedRoot, expectedRoot, r
   };
 }
 
-export const syntaxMixedItems = [
+const originalSyntaxMixedItems = [
   // Chapter 1: Sentence structure: constituents (V1: Sentence, Phrase, PHRASE)
   mkBlank(1, '1', 'concepts', 'A group of words that functions as a structural unit inside a larger expression is called a _____.', ['constituent'], 'Burton-Roberts Chapter 1 defines a constituent as a sequence of words forming a single structural unit.'),
   mkBlank(1, '2', 'concepts', 'The constituent test that drops an optional group such as “beside the old well” to see if the rest stays complete is the _____ test.', ['omission'], 'Omission drops a suspected optional constituent to check whether the remaining sequence stays well-formed.'),
@@ -975,4 +976,6 @@ export const syntaxMixedItems = [
   mkRecon(10, '6', 'concepts', ['open the gate', 'them', 'made', 'Rae'], ['Rae made them open the gate'], 'Matrix “made” takes bare infinitival subordinate clause “them open the gate”.'),
   mkBlank(10, '7', 'noun-clause-functions', 'In “the promise to check the lock”, the infinitival clause functions as a _____ of the noun “promise”.', ['complement'], 'Content-taking nouns like “promise” and “claim” take infinitival clauses as complements under NOM.'),
 ];
+
+export const syntaxMixedItems = applyMixedRevisions(originalSyntaxMixedItems,'syntax');
 

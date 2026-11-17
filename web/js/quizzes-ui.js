@@ -6,7 +6,7 @@ import {composeQuizEvidence,requestQuizEvidence,requestEvidence,renderEvidence} 
 import {renderLessonTree} from './lessons-ui.js';
 import {subscribeAuthState} from './auth.js';
 import {loadActiveCourse,quizCurriculum} from './lesson-curriculum.js';
-import {selectQuestions,specKey,eligibleQuestions,questionMetadata,topicPerformance,chapterDifficulty,missedTopicsForTrack,DIFFICULTIES,MAX_MASTER_QUIZ_ITEMS,DEFAULT_MASTER_QUIZ_ITEMS} from './quiz-v2.js';
+import {selectQuestions,specKey,eligibleQuestions,questionMetadata,topicPerformance,chapterDifficulty,personalizedReviewSummary,DIFFICULTIES,MAX_MASTER_QUIZ_ITEMS,DEFAULT_MASTER_QUIZ_ITEMS} from './quiz-v2.js';
 import {makeLessonPractice,validateLessonPractice} from './quiz-lesson-practice.js';
 import {makeAssessmentItems,validateAssessmentItems} from './quiz-assessment-items.js';
 import {applyQuizScope} from './quiz-scope.js';
@@ -91,19 +91,14 @@ function v2Card(parent,title,spec,opts={}){
   const headRow=el('div',undefined,'quiz-card-head');
   const titleWrap=el('div',undefined,'quiz-card-title-wrap');
   titleWrap.append(el(opts.headingTag||'h3',title));
-  if(opts.trackLabel)titleWrap.append(el('span',opts.trackLabel,'quiz-track-tag'));
-  if(opts.difficulty)titleWrap.append(el('span',formatDiff(opts.difficulty),`quiz-difficulty-tag is-${opts.difficulty}`));
+  if(!isPersonalized&&opts.trackLabel)titleWrap.append(el('span',opts.trackLabel,'quiz-track-tag'));
+  if(!isPersonalized&&opts.difficulty)titleWrap.append(el('span',formatDiff(opts.difficulty),`quiz-difficulty-tag is-${opts.difficulty}`));
   headRow.append(titleWrap);
   card.append(headRow);
   if(isPersonalized){
-   const missed=missedTopicsForTrack(bank,curriculum,store.attempts,spec.track);
-   const topicList=missed.slice(0,2).map(m=>m.title);
-   const desc=!reason&&topicList.length
-    ?`Practice ${topicList.join(' and ')} based on your previous mistakes.`
-    :!reason
-     ?'Practice concepts from your previous missed questions.'
-     :`Submit a ${opts.trackLabel?opts.trackLabel.toLowerCase()+' ':''}quiz with missed questions to unlock error review.`;
+   const desc=personalizedReviewSummary(bank,curriculum,store.attempts,spec.track);
    card.append(el('p',desc,'quiz-card-desc'));
+   if(reason&&topicPerformance(bank,curriculum,store.attempts,spec.track).missed.size)card.append(el('p',reason,'quiz-card-error'));
   }
   const statusText=reason&&!isPersonalized
    ?reason
@@ -253,8 +248,8 @@ function curriculumCatalog(){
   for(const [topicIndex,topic] of chapter.topics.entries()){
    v2Card(list,`Quiz ${topicIndex+1}: ${topic.title}`,{track:trackId,mode:'topic',chapter:chapter.id,topic:topic.id},{description:topicDescription(chapter,topic)});
   }
-  const footer=el('footer',undefined,'quiz-card-footer quiz-chapter-footer');footer.append(start);
-  details.append(list);card.append(details,footer);chaptersGroup.append(card);
+  const footer=el('footer',undefined,'quiz-card-footer quiz-chapter-footer');
+  details.append(list);footer.append(details,start);card.append(footer);chaptersGroup.append(card);
  }
  chaptersSec.append(chaptersGroup);
  sheet.append(chaptersSec);

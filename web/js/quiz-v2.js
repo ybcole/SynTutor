@@ -1,6 +1,7 @@
 import { approved, reviewed, rng, shuffled, randomSeed, MAX_QUIZ_ITEMS } from './quiz-core.js';
 import { isRelevantAssessmentQuestion } from './quiz-scope.js';
 import { REQUIRED_CHAPTER_FORMATS, gradeQuestion, isMixedKind } from './quiz-mixed-eval.js';
+import {topicDescriptions} from './quiz-catalog-copy.js';
 
 export const GENERAL_POLICY = Object.freeze({ minimum: 5, perTopic: 1 });
 export const MAX_MASTER_QUIZ_ITEMS = 50;
@@ -180,6 +181,17 @@ export function missedTopicsForTrack(bank, curriculum, attempts, trackId) {
     });
   }
   return entries.sort((a, b) => b.weakness - a.weakness || b.incorrect - a.incorrect);
+}
+
+// Use the same submitted, version-matched, track-scoped evidence as selection.
+// One missed answer warrants practice, not a claim of persistent weakness.
+export function personalizedReviewSummary(bank, curriculum, attempts, trackId) {
+  const focus = missedTopicsForTrack(bank, curriculum, attempts, trackId)
+    .map(m => topicDescriptions[`${m.chapter_id}/${m.subtopic_id}`])
+    .filter(Boolean).slice(0, 2);
+  const track = trackId === 'syntax' ? 'Syntax' : 'Grammar';
+  if (!focus.length) return `Complete ${track} chapter or subtopic quizzes to identify concepts that may need additional practice.`;
+  return `Focus on these skills from your missed answers in submitted ${track} quizzes: ${focus.join(' ')}`;
 }
 
 const difficultyRank = { easy: 0, medium: 1, hard: 2 };
