@@ -180,11 +180,11 @@ button:disabled {
 }
 .sidebar-progress-label {
   display: block;
-  align-self: flex-end;
+  align-self: flex-start;
   max-width: 100%;
   font-weight: 500;
   color: var(--text-muted);
-  text-align: right;
+  text-align: left;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

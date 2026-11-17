@@ -194,7 +194,7 @@ export function selectQuestions(bank, curriculum, spec, attempts = {}, seed = ra
   let selection;
   if (spec.format === 'mixed') {
     const mixedAll = [...new Map((bank.mixed_items || []).map(q => [q.item_id, q])).values()]
-      .filter(q => meta(q)?.track_id === spec.track);
+      .filter(q => !q.retired_from_selection && meta(q)?.track_id === spec.track);
     const formalAll = [...new Map(eligibleQuestions(bank, curriculum, spec.track, 'lesson-assessment').map(q => [q.item_id, q])).values()];
     const reqFormats = REQUIRED_CHAPTER_FORMATS[spec.track] || [];
     if (spec.mode === 'personalized') {

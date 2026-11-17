@@ -2044,6 +2044,7 @@ async function refreshSidebarProgress() {
   const levelBadge = document.getElementById('identityLevelBadge');
   const chip = document.getElementById('identityChip');
   if (!label || !bar) return;
+  label.removeAttribute('title');
   const request = ++sidebarProgressRequest, user = activeUserId, client = supabase;
   const signedIn = progressAvailable();
   box?.classList.toggle('is-guest', !signedIn);
@@ -2075,7 +2076,8 @@ async function refreshSidebarProgress() {
     return;
   }
   const level = levelFromXp(stats.xp);
-  label.textContent = `${level.xp} verified XP`;
+  label.textContent = `${level.xp}/${level.next} XP`;
+  label.title = `${level.xp} total XP; ${level.next} total XP reaches Level ${level.level + 1}. ${level.into}/${level.span} XP earned within this level.`;
   bar.max = level.span;
   bar.value = level.into;
   bar.hidden = false;

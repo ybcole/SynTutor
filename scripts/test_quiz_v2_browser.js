@@ -1,3 +1,4 @@
+import {gradeQuestion} from '../web/js/quiz-mixed-eval.js';
 // Optional browser runner. Install Playwright outside the app or set
 // QUIZ_V2_PLAYWRIGHT_MODULE to its index.mjs; no runtime dependency is added.
 import assert from 'node:assert/strict';
@@ -29,7 +30,7 @@ const server=createServer(async(req,res)=>{
 });
 await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
 const base=`http://127.0.0.1:${server.address().port}`;
-const browser=await chromium.launch({headless:true});
+const browser=await chromium.launch({headless:true,...(process.env.QUIZ_V2_CHROMIUM_PATH?{executablePath:process.env.QUIZ_V2_CHROMIUM_PATH}:{})});
 try{
   const page=await browser.newPage({viewport:{width:1360,height:960}});
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
@@ -85,20 +86,23 @@ try{
   assert.equal(await quiz.locator('.lesson-save-status').count(),0,'no XP footer on quiz selection');
   assert.ok(!(await quiz.innerText()).includes('Scores and explanations unlock after submission.'),'redundant intro text removed');
   assert.equal(await quiz.locator('.quiz-chapter').count(),11);
-  assert.deepEqual((await quiz.locator('.quiz-chapter > summary .quiz-chapter-title').allTextContents()).map(t=>t.replace(/^Chapter \d+: /,'')),syntaxLessons);
+  assert.equal(await quiz.locator('.quiz-topic-card .quiz-card-count').count(),0,'redundant card question counts removed');
+  assert.equal(await quiz.locator('.quiz-chapter-footer button').count(),11,'every chapter has a direct General Chapter Quiz action');
+  assert.equal(await quiz.locator('.quiz-topic-card.is-general').count(),0,'General quiz is accessed through the chapter action');
+  assert.deepEqual((await quiz.locator('.quiz-chapter .quiz-chapter-title').allTextContents()).map(t=>t.replace(/^Chapter \d+: /,'')),syntaxLessons);
   const sectionOrder=await quiz.evaluate(()=>['.quiz-special-section.is-review','.quiz-folder-panel','.lesson-track-tabs','.quiz-special-section.is-master','.quiz-chapters-section'].map(s=>document.querySelector(s).getBoundingClientRect().top));
   assert.ok(sectionOrder[0]<sectionOrder[1]&&sectionOrder[1]<=sectionOrder[2]&&sectionOrder[2]<sectionOrder[3]&&sectionOrder[3]<sectionOrder[4],'Review your Errors sits above Syntax/Grammar folder tabs, followed by Master Quizzes and Chapter Quizzes');
   assert.equal(await quiz.locator('.quiz-folder-panel .quiz-special-section.is-review').count(),0,'Review your Errors is isolated outside the track folder and chapter containers');
   const initialSyntaxReview=quiz.locator('.quiz-special-section.is-review');
   assert.equal(await initialSyntaxReview.getByRole('button').isDisabled(),true,'Review your errors is disabled when track has no errors');
-  assert.equal(await quiz.locator('[data-chapter="br-01"] > summary .quiz-difficulty-tag').innerText(),'Easy');
-  assert.equal(await quiz.locator('[data-chapter="br-06"] > summary .quiz-difficulty-tag').innerText(),'Medium');
-  assert.equal(await quiz.locator('[data-chapter="br-10"] > summary .quiz-difficulty-tag').innerText(),'Hard');
+  assert.equal(await quiz.locator('[data-chapter="br-01"] .quiz-chapter-header .quiz-difficulty-tag').innerText(),'Easy');
+  assert.equal(await quiz.locator('[data-chapter="br-06"] .quiz-chapter-header .quiz-difficulty-tag').innerText(),'Medium');
+  assert.equal(await quiz.locator('[data-chapter="br-10"] .quiz-chapter-header .quiz-difficulty-tag').innerText(),'Hard');
   await snap('quiz-selection-desktop.png');
   await quiz.getByRole('button',{name:'Grammar',exact:true}).click();
   assert.equal(await quiz.locator('.quiz-chapter').count(),20);
-  assert.deepEqual((await quiz.locator('.quiz-chapter > summary .quiz-chapter-title').allTextContents()).map(t=>t.replace(/^Chapter \d+: /,'')),cambridgeLessons);
-  await quiz.locator('[data-chapter="cgel-ch01"] > summary').click();
+  assert.deepEqual((await quiz.locator('.quiz-chapter .quiz-chapter-title').allTextContents()).map(t=>t.replace(/^Chapter \d+: /,'')),cambridgeLessons);
+  await quiz.locator('[data-chapter="cgel-ch01"] .quiz-subtopics > summary').click();
   assert.equal(await quiz.locator('[data-chapter="cgel-ch01"]').getByText('What this course covers').count(),0,'non-assessable Chapter 1 overview remains excluded');
   assert.ok(await quiz.locator('[data-chapter="cgel-ch01"]').getByText('Prescriptive and descriptive approaches').isVisible(),'assessable Chapter 1 topics appear in Quiz');
   const stackMetrics=await quiz.locator('[data-chapter="cgel-ch01"] .quiz-topic-list .quiz-topic-card').evaluateAll(cards=>cards.map(c=>({
@@ -106,11 +110,25 @@ try{
     bottom:c.getBoundingClientRect().bottom,
     desc:(c.querySelector('.quiz-card-desc')?.textContent||'').trim(),
   })));
-  assert.ok(stackMetrics.length===11&&stackMetrics.every(m=>m.desc.length>0),'all subtopic cards and General Quiz have descriptions');
+  assert.ok(stackMetrics.length===10&&stackMetrics.every(m=>m.desc.length>0),'all subtopic quizzes have descriptions');
   for(let i=1;i<stackMetrics.length;i++){
     assert.ok(stackMetrics[i].top>=stackMetrics[i-1].bottom-1,'subtopic quizzes stack vertically one per row');
   }
   await quiz.locator('[data-chapter="cgel-ch01"]').scrollIntoViewIfNeeded();
+  const assertChapterFooter=async card=>{
+    const geometry=await card.evaluate(n=>{
+      const box=n.getBoundingClientRect(),sub=n.querySelector('.quiz-subtopics').getBoundingClientRect();
+      const footer=n.querySelector('.quiz-chapter-footer').getBoundingClientRect();
+      const action=n.querySelector('.quiz-chapter-footer button').getBoundingClientRect();
+      return {box,sub,footer,action};
+    });
+    assert.ok(geometry.footer.top>=geometry.sub.bottom-1,'General Quiz footer follows subtopics');
+    assert.ok(Math.abs(geometry.action.right-geometry.footer.right)<2,'General Quiz action aligns to footer right edge');
+    assert.ok(geometry.box.bottom-geometry.action.bottom<30,'General Quiz action sits at bottom of chapter card');
+  };
+  await assertChapterFooter(quiz.locator('[data-chapter="cgel-ch01"]'));
+  await quiz.locator('[data-chapter="cgel-ch01"] .quiz-chapter-footer').scrollIntoViewIfNeeded();
+  await snap('quiz-chapter-footer-desktop.png');
   await snap('quiz-chapter-stacked.png');
   assert.equal(await quiz.locator('[data-assessment^="quiz-br-"]').count(),0,'Syntax assessments do not leak into Cambridge');
   const cambridgeMaster=quiz.locator('.quiz-practice').filter({has:page.getByRole('heading',{name:'Cambridge Master Quiz',exact:true})});
@@ -147,11 +165,24 @@ try{
       await quiz.locator('.quiz-textarea').fill(wantCorrect?q.accepted_answers[0]:q.stimulus.sentence);
       await quiz.locator('.quiz-textarea').blur();
     }else if(kind==='sentence_reconstruction'){
-      const availCount=await quiz.locator('.quiz-recon-avail').count();
-      for(let c=0;c<availCount;c++)await quiz.locator('.quiz-recon-avail').first().click();
-      if(!wantCorrect&&(await quiz.locator('.quiz-recon-move').count())>0){
-        await quiz.locator('.quiz-recon-move').first().click();
+      while(await quiz.locator('.quiz-recon-remove').count())await quiz.locator('.quiz-recon-remove').first().click();
+      let rest=q.accepted_answers[0],remaining=q.tokens.map((t,i)=>({t,i}));
+      const correct=[];
+      while(rest){
+        const token=remaining.find(x=>rest===x.t||rest.startsWith(x.t+' '));
+        assert.ok(token,`reconstruction accepted answer must be buildable: ${id}`);
+        correct.push(token.i);rest=rest.slice(token.t.length).trim();remaining=remaining.filter(x=>x!==token);
       }
+      let order=correct;
+      if(!wantCorrect){
+        order=null;
+        for(let i=0;i<correct.length&&!order;i++)for(let j=i+1;j<correct.length&&!order;j++){
+          const candidate=[...correct];[candidate[i],candidate[j]]=[candidate[j],candidate[i]];
+          if(!gradeQuestion(q,candidate).correct)order=candidate;
+        }
+        assert.ok(order,'fixture must have a complete incorrect ordering');
+      }
+      for(const idx of order)await quiz.locator(`.quiz-recon-avail[data-token-idx="${idx}"]`).click();
     }else if(kind==='tree_builder'||kind==='syntax_correction'){
       await quiz.locator('.quiz-builder-workspace .first-tree-stage canvas').waitFor();
       assert.equal(await quiz.locator('.first-tree-guide, [data-builder-construct]').count(),0,'no hint or reveal controls during formal syntax-tree quiz');
@@ -233,14 +264,13 @@ try{
   await quiz.getByRole('button',{name:'Syntax',exact:true}).click();
   const chapter=quiz.locator('[data-chapter="br-03"]');
   await chapter.locator('summary').focus();await page.keyboard.press('Enter');
-  assert.equal(await chapter.getAttribute('open'),'');
+  assert.equal(await chapter.locator('.quiz-subtopics').getAttribute('open'),'');
   const approvedTopic=chapter.locator('.quiz-topic-card').filter({has:page.getByRole('heading',{name:/^Quiz \d+: Nouns, noun phrases and lexical categories$/})});
   assert.ok(await approvedTopic.getByRole('button',{name:'Start quiz',exact:true}).isEnabled());
   assert.equal(await quiz.getByRole('button',{name:'Questions Under Review',exact:true}).count(),0);
   await quiz.getByRole('button',{name:'Grammar',exact:true}).click();
-  await quiz.locator('[data-chapter="cgel-ch04"] > summary').click();
-  const cambridgeGeneral=quiz.locator('[data-chapter="cgel-ch04"] .quiz-topic-card').filter({has:page.getByRole('heading',{name:'General Quiz',exact:true})});
-  await cambridgeGeneral.getByRole('button',{name:'Start quiz',exact:true}).click();
+  await quiz.locator('[data-chapter="cgel-ch04"] .quiz-subtopics > summary').click();
+  await quiz.locator('[data-chapter="cgel-ch04"] .quiz-chapter-footer').getByRole('button',{name:/Start Quiz:/}).click();
   await quiz.getByRole('heading',{name:'Question 1 of 13',exact:true}).waitFor();
   await assertNoResults();
   const camKinds=new Set();
@@ -254,8 +284,8 @@ try{
   await quiz.getByRole('button',{name:'All quizzes',exact:true}).click();
   await quiz.getByRole('button',{name:'Syntax',exact:true}).click();
   const synCh3=quiz.locator('[data-chapter="br-03"]');
-  if((await synCh3.getAttribute('open'))===null)await synCh3.locator('> summary').click();
-  await synCh3.locator('.quiz-topic-card').filter({has:page.getByRole('heading',{name:'General Quiz',exact:true})}).getByRole('button',{name:'Start quiz',exact:true}).click();
+  if((await synCh3.locator('.quiz-subtopics').getAttribute('open'))===null)await synCh3.locator('.quiz-subtopics > summary').click();
+  await synCh3.locator('.quiz-chapter-footer').getByRole('button',{name:/Start Quiz:/}).click();
   await quiz.getByRole('heading',{name:'Question 1 of 5',exact:true}).waitFor();
   const synKinds=new Set();
   for(let qIdx=1;qIdx<=5;qIdx++){
@@ -294,7 +324,7 @@ try{
   await quiz.locator('.quiz-score').filter({hasText:'0/5'}).waitFor();
   await quiz.getByRole('button',{name:'All quizzes',exact:true}).click();
   await quiz.getByRole('button',{name:'Syntax',exact:true}).click();
-  await quiz.locator('[data-chapter="br-02"] > summary').click();
+  await quiz.locator('[data-chapter="br-02"] .quiz-subtopics > summary').click();
   const nonBlueprint=quiz.locator('[data-chapter="br-02"] .quiz-topic-card').filter({has:page.getByRole('heading',{name:/^Quiz \d+: Subject and predicate tree exercise$/})});
   assert.ok(await nonBlueprint.getByRole('button',{name:'Start quiz',exact:true}).isEnabled());
   await nonBlueprint.getByRole('button',{name:'Start quiz',exact:true}).click();
@@ -306,8 +336,8 @@ try{
   assert.equal(await quiz.locator('.quiz-lesson-link').count(),0,'consolidated single-lesson quiz does not repeat Read the lesson section under every card');
   await quiz.getByRole('button',{name:'All quizzes',exact:true}).click();
   await quiz.getByRole('button',{name:'Grammar',exact:true}).click();
-  if((await quiz.locator('[data-chapter="cgel-ch01"]').getAttribute('open'))===null){
-   await quiz.locator('[data-chapter="cgel-ch01"] > summary').click();
+  if((await quiz.locator('[data-chapter="cgel-ch01"] .quiz-subtopics').getAttribute('open'))===null){
+   await quiz.locator('[data-chapter="cgel-ch01"] .quiz-subtopics > summary').click();
   }
   await quiz.locator('[data-chapter="cgel-ch01"] .quiz-topic-card').filter({has:page.getByRole('heading',{name:/^Quiz \d+: Prescriptive and descriptive approaches$/})}).getByRole('button',{name:'Start quiz',exact:true}).click();
   await quiz.getByRole('heading',{name:'Question 1 of 5',exact:true}).waitFor();
@@ -365,11 +395,11 @@ try{
   await page.unroute('**/content/**');
   await quiz.getByRole('button',{name:'Grammar',exact:true}).click();
   assert.equal(await quiz.locator('.quiz-chapter').count(),20);
-  await quiz.locator('[data-chapter="cgel-ch01"] > summary').click();
+  await quiz.locator('[data-chapter="cgel-ch01"] .quiz-subtopics > summary').click();
   assert.equal(await quiz.locator('[data-chapter="cgel-ch01"]').getByText('What this course covers').count(),0,'an old offline catalog cannot reintroduce excluded non-assessable topic');
   await quiz.getByRole('button',{name:'Syntax',exact:true}).click();
-  await quiz.locator('[data-chapter="br-03"] > summary').click();
-  await quiz.locator('[data-chapter="br-03"]').getByRole('button',{name:'Resume quiz',exact:true}).click();
+  await quiz.locator('[data-chapter="br-03"] .quiz-subtopics > summary').click();
+  await quiz.locator('[data-chapter="br-03"] .quiz-topic-list').getByRole('button',{name:'Resume quiz',exact:true}).click();
   const restored=await page.evaluate(()=>JSON.parse(localStorage.getItem('syntutor:assessments:v1:guest')));
   assert.deepEqual(restored.attempts[draft.attempt_id].presented,draft.presented);
   await quiz.locator('.quiz-navigator').getByRole('button',{name:/Question 1,.*answered/}).click();
@@ -381,20 +411,8 @@ try{
   await master.getByRole('button',{name:'Start quiz',exact:true}).click();
   await quiz.getByRole('heading',{name:'Question 1 of 15',exact:true}).waitFor();
   await quiz.getByRole('button',{name:'All quizzes',exact:true}).click();
-  const unfinishedDetails=quiz.locator('.quiz-tab-sheet .quiz-unfinished-details');
-  assert.equal(await quiz.locator('.quiz-unfinished-details').count(),1,'exactly one Resume unfinished quizzes section inside main quiz container');
-  assert.equal(await quiz.locator('.quiz-catalog-body > .quiz-unfinished-details').count(),0,'Resume unfinished quizzes is not outside the main quiz container');
-  const resumeOrder=await quiz.evaluate(()=>['.quiz-special-section.is-review','.lesson-track-tabs','.quiz-tab-sheet .quiz-unfinished-details','.quiz-special-section.is-master','.quiz-chapters-section'].map(s=>document.querySelector(s).getBoundingClientRect().top));
-  assert.ok(resumeOrder[0]<resumeOrder[1]&&resumeOrder[1]<resumeOrder[2]&&resumeOrder[2]<resumeOrder[3]&&resumeOrder[3]<resumeOrder[4],'layout order matches Review your Errors -> track tabs -> Resume Unfinished -> Master Quizzes -> Chapter Quizzes');
-  assert.equal(await unfinishedDetails.getAttribute('open'),null,'Resume unfinished quizzes is collapsed by default');
-  assert.equal(await unfinishedDetails.locator('> summary').getAttribute('aria-expanded'),'false');
-  await snap('quiz-unfinished-collapsed.png');
-  await unfinishedDetails.locator('> summary').click();
-  assert.equal(await unfinishedDetails.getAttribute('open'),'','Resume unfinished quizzes expands when clicked');
-  await quiz.locator('.quiz-unfinished-details > summary[aria-expanded="true"]').waitFor();
-  const masterUnfinished=quiz.locator('.quiz-unfinished-row').filter({hasText:'Syntax Master Quiz'}).filter({hasText:'0 of 15 answered'});
-  assert.ok(!/#/.test(await masterUnfinished.innerText()),'no visible attempt ID hash in unfinished row');
-  await masterUnfinished.getByRole('button',{name:/Resume/}).click();
+  assert.equal(await quiz.locator('.quiz-unfinished-details').count(),0,'unfinished section is removed');
+  await master.getByRole('button',{name:'Resume quiz',exact:true}).click();
   await quiz.getByRole('heading',{name:'Question 1 of 15',exact:true}).waitFor();
   assert.equal(await quiz.getByRole('button',{name:'Submit',exact:true}).count(),0,'resumed unfinished Master Quiz hides Submit');
   const synMasterKinds=new Set();
@@ -418,8 +436,11 @@ try{
   assert.ok(personal.presented.every(r=>!missed.includes(r.item_id)));
   assert.equal(personal.spec?.format,'mixed');
   await page.evaluate(()=>switchQuizAccount('quiz-browser-a'));
-  await page.waitForFunction(()=>document.querySelector('#sidebarProgressLabel').textContent.includes('250 verified XP'));
-  assert.equal(await page.locator('#sidebarProgressLabel').innerText(),'250 verified XP');
+  await page.waitForFunction(()=>document.querySelector('#sidebarProgressLabel').textContent.includes('250/360 XP'));
+  assert.equal(await page.locator('#sidebarProgressLabel').innerText(),'250/360 XP');
+  assert.equal(await page.locator('#sidebarProgressBar').getAttribute('max'),'140');
+  assert.equal(await page.locator('#sidebarProgressBar').getAttribute('value'),'30');
+  assert.match(await page.locator('#sidebarProgressLabel').getAttribute('title'),/30\/140 XP earned within this level/);
   assert.equal(await page.locator('#sidebarProgressRemaining').count(),0,'standalone remaining-XP card element removed');
   assert.equal(await page.locator('#identityChip #sidebarProgress').count(),1,'XP progress is integrated inside identityChip');
   assert.equal(await page.locator('#identityLevelBadge').isVisible(),true,'sidebar avatar displays level badge');
@@ -446,7 +467,7 @@ try{
     const ns=getComputedStyle(document.getElementById('identityLabel'));
     return {
       border:s.borderTopWidth,bg:s.backgroundColor,
-      avRight:av.right,nameLeft:name.left,nameTop:name.top,xpTop:xp.top,xpRight:xp.right,barTop:bar.top,
+      avRight:av.right,nameLeft:name.left,nameTop:name.top,xpTop:xp.top,xpLeft:xp.left,xpRight:xp.right,barTop:bar.top,
       barLeft:bar.left,barRight:bar.right,chipRight:chip.right,barHeight:bar.height,
       overflow:ns.textOverflow,nowrap:ns.whiteSpace,
       nameFont:parseFloat(getComputedStyle(document.getElementById('identityLabel')).fontSize),
@@ -457,7 +478,7 @@ try{
   assert.equal(profileGeo.bg,'rgba(0, 0, 0, 0)','integrated profile XP has transparent background');
   assert.ok(profileGeo.nameLeft>=profileGeo.avRight-2&&profileGeo.barLeft>=profileGeo.avRight-2,'username and progress bar sit in column right of avatar');
   assert.ok(profileGeo.nameTop<profileGeo.barTop&&profileGeo.barTop<profileGeo.xpTop,'hierarchy orders username -> progress bar -> verified XP vertically');
-  assert.ok(Math.abs(profileGeo.xpRight-profileGeo.barRight)<=2,'verified XP label aligns to right edge of progress bar');
+  assert.ok(Math.abs(profileGeo.xpLeft-profileGeo.barLeft)<=2,'XP fraction aligns to left edge of progress bar');
   assert.ok(profileGeo.xpFont<profileGeo.nameFont,'verified XP label uses slightly smaller font than username');
   assert.ok(profileGeo.barRight<=profileGeo.chipRight,'progress bar fits proportionally inside profile chip');
   assert.ok(profileGeo.barHeight<=5,'progress bar is thin and understated');
@@ -479,8 +500,25 @@ try{
     assert.equal(await quiz.locator('.quiz-chapter').count(),20,`${width}px ${theme}: all 20 Grammar chapters rendered`);
     const overflow=await quiz.evaluate(n=>n.scrollWidth>n.clientWidth+2);
     assert.equal(overflow,false,`${width}px ${theme}: no horizontal page overflow`);
-    if(width===390&&theme==='dark')await snap('quiz-mobile-dark.png');
+    const firstChapter=quiz.locator('.quiz-chapter').first();
+    await assertChapterFooter(firstChapter);
+    const disclosure=firstChapter.locator('.quiz-subtopics');
+    if(await disclosure.getAttribute('open')===null)await disclosure.locator('> summary').click();
+    await assertChapterFooter(firstChapter);
+    if(width===390&&theme==='dark'){
+      await firstChapter.locator('.quiz-chapter-footer').scrollIntoViewIfNeeded();
+      await snap('quiz-mobile-dark.png');
+    }
   }
+  const history=quiz.locator('.quiz-history');
+  const historySummary=history.locator('> summary');
+  assert.equal(await historySummary.evaluate(n=>getComputedStyle(n).fontWeight),'700');
+  assert.equal(await historySummary.evaluate(n=>getComputedStyle(n).cursor),'pointer');
+  await historySummary.click();
+  assert.equal(await history.getAttribute('open'),'');
+  assert.equal(await historySummary.evaluate(n=>getComputedStyle(n).marginBottom),'12px');
+  await historySummary.click();
+  assert.equal(await history.getAttribute('open'),null);
   assert.deepEqual(errors,[]);
   console.log('PASS formal quiz browser: Preliminaries assessable topics available cleanly in Grammar Quiz (with orientation excluded even on offline cache and mobile/desktop themes), 20-chapter Master minimum & 25 default / 50 max, no cross-track published cards, no pre-submit feedback/keys, post-submit scores/explanations, topic/Master/personalized modes, offline replay and XP isolation; no page errors.');
 }finally{await browser.close();await new Promise(resolve=>server.close(resolve));}

@@ -1,3 +1,4 @@
+import {applyMixedRevisions} from './quiz-content-revisions.js';
 export function cambridgeDiff(chId, kind) {
   const num = chId === 'cgel-clauses' ? 2 : Number(String(chId).replace('cgel-ch', '')) || 1;
   if (num <= 6) return kind === 'grammar_correction' ? 'medium' : 'easy';
@@ -454,7 +455,7 @@ export const baseCambridgeMixedItems = [
   cRecon('cgel-ch20', 'comma-uses', 5, ['rained,', 'although', 'it', 'continued', 'match', 'the'], ['although it rained, the match continued', 'the match continued although it rained'], 'Preposed adverbial clause closes with a comma before the main clause.'),
 ];
 
-export const cambridgeMixedItems = [
+export const cambridgeMixedItems = applyMixedRevisions([
   ...baseCambridgeMixedItems,
   ...extraCambridgeMixedItems,
-];
+]);

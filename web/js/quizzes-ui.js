@@ -1,3 +1,4 @@
+import {chapterDescriptions,topicDescription} from './quiz-catalog-copy.js';
 import { showCurriculumState } from './curriculum-state.js';
 import {validateBank,quizKey,itemsFor,gradeAttempt,questionForLearner,reviewForLearner,MAX_QUIZ_ITEMS} from './quiz-core.js';
 import {createQuizStore} from './quiz-progress.js';
@@ -9,12 +10,11 @@ import {selectQuestions,specKey,eligibleQuestions,questionMetadata,topicPerforma
 import {makeLessonPractice,validateLessonPractice} from './quiz-lesson-practice.js';
 import {makeAssessmentItems,validateAssessmentItems} from './quiz-assessment-items.js';
 import {applyQuizScope} from './quiz-scope.js';
-import {cambridgeChapterData} from './cambridge-chapter-data.js?v=2026.11.16c';
 import {syntaxMixedItems} from './quiz-mixed-syntax.js';
 import {cambridgeMixedItems} from './quiz-mixed-cambridge.js';
 import {validateMixedItems,isResponseProvided,formatReconstructionAnswer,isMixedKind} from './quiz-mixed-eval.js';
 import {addWordsFromText,createModel,fromCanonicalEnvelope} from './syntax-builder.js';
-let host,config={},bank,store,curriculum,current=null,trackId='syntax',busy=false,message='',generation=0,pendingConfirmAttempt=null,lastEarned=null,unfinishedOpen=false,syntaxSourceCache=null,quizBuilderCleanup=null,flushTextDraft=null;
+let host,config={},bank,store,curriculum,current=null,trackId='syntax',busy=false,message='',generation=0,pendingConfirmAttempt=null,lastEarned=null,quizBuilderCleanup=null,flushTextDraft=null;
 const el=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
 const button=(text,fn,cls='')=>{const b=el('button',text,cls);b.type='button';b.addEventListener('click',fn);return b;};
 function iconButton(label,svg,fn,cls='header-icon-btn'){
@@ -28,8 +28,6 @@ const BACK_ARROW_SVG='<svg viewBox="0 0 24 24" width="20" height="20" fill="none
 const PREV_ARROW_SVG='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>';
 const NEXT_ARROW_SVG='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>';
 const formatDiff=d=>d?d[0].toUpperCase()+d.slice(1):'';
-const shortDate=new Intl.DateTimeFormat(undefined,{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});
-const shortDateSeconds=new Intl.DateTimeFormat(undefined,{month:'short',day:'numeric',hour:'numeric',minute:'2-digit',second:'2-digit'});
 const plural=(n,word)=>`${n} ${n===1?word:word+'s'}`;
 const answeredCount=t=>{
  try{return itemsFor(bank,t).filter(q=>isResponseProvided(q,t.responses?.[q.item_id])).length;}
@@ -80,45 +78,14 @@ function attemptHistorySummary(assessment){
  const last=previous.at(-1),best=Math.max(...previous.map(t=>gradeAttempt(bank,t).correct/t.presented.length));
  return `Best ${Math.round(best*100)}% · Last ${gradeAttempt(bank,last).correct}/${last.presented.length} · ${plural(previous.length,'attempt')}`;
 }
-const cleanSummaryText=t=>String(t||'').replace(/\*/g,'').replace(/\s+/g,' ').trim();
-function summarizeSectionTexts(texts){
- for(const raw of texts||[]){
-  const t=cleanSummaryText(raw);
-  if(!t||/^Test (your|it)|^Read |^In (the|this) next/i.test(t))continue;
-  const sentences=t.split(/(?<=[.!?])\s+/).filter(x=>x.length>=30&&!x.endsWith('?')&&!/^(Start with|Look at|Try|Consider|Notice|Take)\b/i.test(x));
-  const hit=sentences.find(x=>x.length<=135)||sentences[0];
-  if(hit)return hit.length>140?hit.slice(0,137).replace(/\s+\S*$/,'')+'…':hit;
- }
- for(const raw of texts||[]){
-  const t=cleanSummaryText(raw);
-  const sentences=t.split(/(?<=[.!?])\s+/).filter(x=>x.length>=20&&!x.endsWith('?'));
-  const hit=sentences.find(x=>x.length<=135)||sentences[0];
-  if(hit)return hit.length>140?hit.slice(0,137).replace(/\s+\S*$/,'')+'…':hit;
- }
- return '';
-}
-function topicDescription(chapterId,topicId,topicTitle){
- const syntaxSec=syntaxSourceCache?.sections?.find(s=>s.lesson_id===chapterId&&s.subtopic_id===topicId);
- if(syntaxSec?.texts?.length){
-  const summary=summarizeSectionTexts(syntaxSec.texts);
-  if(summary)return summary;
- }
- const camSec=cambridgeChapterData[chapterId]?.sections?.find(s=>s.id===topicId);
- if(camSec?.blocks?.length){
-  const texts=camSec.blocks.filter(b=>(b.type==='note'||b.type==='paragraph')&&b.text).map(b=>b.text);
-  const summary=summarizeSectionTexts(texts);
-  if(summary)return summary;
- }
- return `Assess concepts from ${topicTitle}.`;
-}
 function v2Card(parent,title,spec,opts={}){
  const isPersonalized=spec.mode==='personalized';
  const isGeneral=spec.mode==='general';
  const isSubtopic=spec.mode==='topic';
  const activeSpec={...spec,content_tier:'lesson-practice',format:'mixed'};
  const card=el('article',undefined,`curriculum-card quiz-topic-card${opts.featured?' quiz-featured-card':''}${isPersonalized?' is-review':''}${isGeneral?' is-general':''}${isSubtopic?' is-subtopic':''}`);
- let reason='',selection;
- try{selection=selectQuestions(bank,curriculum,activeSpec,store.attempts,0);}catch(e){reason=e.message;}
+ let reason='';
+ try{selectQuestions(bank,curriculum,activeSpec,store.attempts,0);}catch(e){reason=e.message;}
  const assessment={assessment_id:specKey(activeSpec),content_version:'2.0.0'},draft=store.draft(assessment);
  if(opts.featured){
   const headRow=el('div',undefined,'quiz-card-head');
@@ -127,7 +94,6 @@ function v2Card(parent,title,spec,opts={}){
   if(opts.trackLabel)titleWrap.append(el('span',opts.trackLabel,'quiz-track-tag'));
   if(opts.difficulty)titleWrap.append(el('span',formatDiff(opts.difficulty),`quiz-difficulty-tag is-${opts.difficulty}`));
   headRow.append(titleWrap);
-  if(!reason)headRow.append(el('span',`${selection.items.length} questions`,'quiz-card-count'));
   card.append(headRow);
   if(isPersonalized){
    const missed=missedTopicsForTrack(bank,curriculum,store.attempts,spec.track);
@@ -167,49 +133,11 @@ function v2Card(parent,title,spec,opts={}){
    :attemptHistorySummary(assessment);
  if(statusText)mainCol.append(el('p',statusText,reason?'quiz-card-error':'quiz-card-status'));
  const sideCol=el('div',undefined,'quiz-row-side');
- if(!reason)sideCol.append(el('span',`${selection.items.length} questions`,'quiz-card-count'));
  const start=button(draft?'Resume quiz':reason?'Unavailable':'Start quiz',()=>action(()=>draft||store.startV2(curriculum,activeSpec)),'lesson-primary');
  start.disabled=!!reason&&!draft;
  sideCol.append(start);
  card.append(mainCol,sideCol);
  parent.append(card);
-}
-function unfinishedSection(body){
- const unfinished=Object.values(store.attempts).filter(t=>!t.submitted_at&&!store.isArchived(t)).sort((a,b)=>b.started_at.localeCompare(a.started_at));
- if(!unfinished.length)return;
- const details=el('details',undefined,'quiz-unfinished-details');
- details.open=unfinishedOpen;
- const sum=el('summary',`Resume unfinished quizzes (${unfinished.length})`);
- sum.setAttribute('aria-expanded',String(unfinishedOpen));
- details.addEventListener('toggle',()=>{
-  unfinishedOpen=details.open;
-  sum.setAttribute('aria-expanded',String(details.open));
- });
- details.append(sum);
- const minuteKeys=new Map();
- for(const t of unfinished){
-  const title=t.title||assessmentFor(t)?.title||'Quiz';
-  const minKey=`${title}:${t.started_at?shortDate.format(new Date(t.started_at)):''}`;
-  minuteKeys.set(minKey,(minuteKeys.get(minKey)||0)+1);
- }
- const list=el('div',undefined,'quiz-unfinished-list');
- for(const t of unfinished){
-  const title=t.title||assessmentFor(t)?.title||'Quiz';
-  const total=t.presented.length,answered=answeredCount(t),pos=Math.min(total,(t.position||0)+1);
-  const minKey=`${title}:${t.started_at?shortDate.format(new Date(t.started_at)):''}`;
-  const fmt=minuteKeys.get(minKey)>1?shortDateSeconds:shortDate;
-  const startedLabel=t.started_at?fmt.format(new Date(t.started_at)):'';
-  const row=el('div',undefined,'quiz-unfinished-row');
-  const info=el('div',undefined,'quiz-unfinished-info');
-  info.append(el('strong',title));
-  info.append(el('span',`${answered} of ${total} answered · Question ${pos} of ${total}${startedLabel?` · Started ${startedLabel}`:''}`,'quiz-unfinished-meta'));
-  const resumeBtn=button('Resume',()=>{current=t.attempt_id;message='';render();},'lesson-primary');
-  resumeBtn.setAttribute('aria-label',`Resume ${title} (${answered} of ${total} answered, Question ${pos} of ${total})`);
-  row.append(info,resumeBtn);
-  list.append(row);
- }
- details.append(list);
- body.append(details);
 }
 function masterQuizCard(parent,track){
  const master=el('section',undefined,'curriculum-card quiz-practice quiz-featured-card is-master');
@@ -292,7 +220,6 @@ function curriculumCatalog(){
  const nav=el('div',undefined,'lesson-track-tabs');nav.setAttribute('role','group');nav.setAttribute('aria-label','Quiz learning tracks');
  for(const trackItem of curriculum){const b=button(trackTabLabel(trackItem),()=>{trackId=trackItem.id;render();});b.setAttribute('aria-pressed',String(trackId===trackItem.id));nav.append(b);}
  const sheet=el('div',undefined,'quiz-tab-sheet');
- unfinishedSection(sheet);
 
  const masterSec=el('section',undefined,'quiz-special-section is-master');
  masterQuizCard(masterSec,track);
@@ -303,21 +230,31 @@ function curriculumCatalog(){
  const chaptersGroup=el('div',undefined,'quiz-chapters-group');
  for(const chapter of track.chapters){
   const diff=chapterDifficulty(chapter);
-  const details=el('details',undefined,'curriculum-card quiz-chapter');details.dataset.chapter=chapter.id;
+  const card=el('article',undefined,'curriculum-card lesson-module quiz-chapter');card.dataset.chapter=chapter.id;
+  const head=el('div',undefined,'quiz-chapter-header');
+  head.append(el('p',`Chapter ${chapter.chapter}`,'lesson-eyebrow'),el('h2',chapter.title,'quiz-chapter-title'));
+  head.append(el('span',formatDiff(diff),`quiz-difficulty-tag is-${diff}`));
+  head.append(el('p',chapterDescriptions[chapter.id],'quiz-card-desc'));
+  const spec={track:trackId,mode:'general',chapter:chapter.id,content_tier:'lesson-practice',format:'mixed'};
+  const assessment={assessment_id:specKey(spec),content_version:'2.0.0'},draft=store.draft(assessment);
+  let reason='';
+  try{selectQuestions(bank,curriculum,spec,store.attempts,0);}catch(e){reason=e.message;}
+  const status=draft?`In progress · ${answeredCount(draft)}/${draft.presented.length} answered`:attemptHistorySummary(assessment);
+  if(reason||status)head.append(el('p',reason||status,reason?'quiz-card-error':'quiz-card-status'));
+  const start=button(draft?'Resume Quiz':'Start Quiz',()=>action(()=>draft||store.startV2(curriculum,spec)),'lesson-primary');
+  start.setAttribute('aria-label',`${draft?'Resume':'Start'} Quiz: ${chapter.title} — General Chapter Quiz`);
+  start.disabled=!!reason&&!draft;
+  card.append(head);
+  const details=el('details',undefined,'quiz-subtopics');
   const key=`${trackId}:${chapter.id}`;details.open=expanded.has(key);
   details.addEventListener('toggle',()=>{if(details.open)expanded.add(key);else expanded.delete(key);});
-  const summary=el('summary');
-  summary.append(el('span',`Chapter ${chapter.chapter}: ${chapter.title}`,'quiz-chapter-title'));
-  const summaryMeta=el('span',undefined,'quiz-chapter-meta');
-  summaryMeta.append(el('span',formatDiff(diff),`quiz-difficulty-tag is-${diff}`));
-  summary.append(summaryMeta);
-  details.append(summary);
+  details.append(el('summary','Subtopic quizzes'));
   const list=el('div',undefined,'quiz-topic-list');
   for(const [topicIndex,topic] of chapter.topics.entries()){
-   v2Card(list,`Quiz ${topicIndex+1}: ${topic.title}`,{track:trackId,mode:'topic',chapter:chapter.id,topic:topic.id},{description:topicDescription(chapter.id,topic.id,topic.title)});
+   v2Card(list,`Quiz ${topicIndex+1}: ${topic.title}`,{track:trackId,mode:'topic',chapter:chapter.id,topic:topic.id},{description:topicDescription(chapter,topic)});
   }
-  v2Card(list,'General Quiz',{track:trackId,mode:'general',chapter:chapter.id},{difficulty:diff,description:'Comprehensive chapter quiz sampling each assessable subtopic.'});
-  details.append(list);chaptersGroup.append(details);
+  const footer=el('footer',undefined,'quiz-card-footer quiz-chapter-footer');footer.append(start);
+  details.append(list);card.append(details,footer);chaptersGroup.append(card);
  }
  chaptersSec.append(chaptersGroup);
  sheet.append(chaptersSec);
@@ -340,7 +277,7 @@ async function loadContent(){
     loadActiveCourse(),
     fetch('/content/quizzes/syntax-practice-source.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('Practice source unavailable');return r.json();}).catch(()=>null),
   ]);
-  bank=nextBank;curriculum=quizCurriculum(course);syntaxSourceCache=syntaxSource;
+  bank=nextBank;curriculum=quizCurriculum(course);
   // Only public, compact curriculum metadata is cached, never the 12MB course.
    try{localStorage.setItem(cacheKey,JSON.stringify({bank,curriculum,syntaxSource}));}catch{}
     bank.practice_items=validateLessonPractice(makeLessonPractice(curriculum,syntaxSource,{onStale:recordStale,allowMissingSyntax:true}),curriculum);
@@ -352,7 +289,7 @@ async function loadContent(){
    const cached=JSON.parse(localStorage.getItem(cacheKey));
    const nextBank=validateBank(cached.bank);
    if(cached.curriculum?.length!==2||!cached.curriculum.every(t=>t.chapters?.length&&t.chapters.every(c=>c.topics?.length)))throw error;
-     bank=nextBank;curriculum=applyQuizScope(cached.curriculum);syntaxSourceCache=cached.syntaxSource||null;
+     bank=nextBank;curriculum=applyQuizScope(cached.curriculum);
      bank.practice_items=validateLessonPractice(makeLessonPractice(curriculum,cached.syntaxSource,{onStale:recordStale,allowMissingSyntax:true}),curriculum);
      bank.assessment_items=validateAssessmentItems(makeAssessmentItems(bank.practice_items,curriculum),curriculum);
      bank.mixed_items=validateMixedItems([...syntaxMixedItems,...cambridgeMixedItems],curriculum);
@@ -908,7 +845,6 @@ export function initQuizzes(options={}){
  const route=()=>{const match=/^#quiz\/([a-z0-9-]+)$/.exec(location.hash);if(match)config.onNavigate?.(match[1]);};window.addEventListener('hashchange',route);if(/^#quiz\//.test(location.hash))queueMicrotask(route);
 }
 export async function openQuizzes(id=null){
- unfinishedOpen=false;
  cleanupActiveQuestion();
  host.hidden=false;host.setAttribute('aria-busy','false');document.body.classList.add('curriculum-open','quizzes-open');const token=++generation;
   showCurriculumState(host, { message: 'Loading quizzes…' });
