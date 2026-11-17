@@ -19,7 +19,7 @@ import {
 } from './correction.js';
 import { initLessons, openLessons, closeLessons, renderLessonTree } from './lessons-ui.js?v=2026.11.16c';
 import { initQuizzes, openQuizzes, closeQuizzes } from './quizzes-ui.js';
-import { initSyntaxBuilder, openBuilderView, mountEmbeddedBuilder, closeBuilderView, isBuilderOpen, clearBuilder } from './syntax-builder-ui.js';
+import { initSyntaxBuilder, openBuilderView, mountEmbeddedBuilder, closeBuilderView, isBuilderOpen, clearBuilder, builderDisplayTree, builderTextTree, setCanvasHint, showBuilderPalette } from './syntax-builder-ui.js';
 import { initHistory, setHistoryEnabled, openHistoryDrawer, closeHistoryDrawer, shouldPersistHistory } from './history.js';
 import { levelFromXp } from './level.js';
 import { createLeaderboardView } from './leaderboard.js';
@@ -372,6 +372,13 @@ const VIEW_ALIASES = { quiz: 'quizzes' };
 
 // The workspace module currently in charge: 'tutor' | 'lessons' | 'builder'.
 let workspaceView = 'tutor';
+// Combined page: the same canvas is either the syntax generator or the
+// standalone builder. Both trees are transferred across the mode switch.
+let combinedBuilderMode = false;
+let combinedTreeSource = 'generated';
+let lastBuiltTree = null;
+const GENERATOR_MODE_HINT = 'Syntax Generator mode — click a node for its explanation, or switch to Syntax Builder mode to edit this tree.';
+const BUILDER_MODE_HINT = 'Syntax Builder mode — click the canvas to add words and drag a connector dot to link boxes.';
 // The drawer / side panel currently on top of the workspace, if any.
 let overlayView = null;
 
@@ -484,6 +491,13 @@ export function boot() {
   // The rail starts on the Syntax Generator: exactly one active destination.
   setActiveNav(workspaceView);
   initSyntaxBuilder({ onStatusChange: (msg) => log(msg), setWorkspaceView, userId: () => activeUserId });
+  document.body.classList.add('combined-modes');
+  document.addEventListener('syntutor:builder-change', () => {
+    if (combinedBuilderMode) setCanvasTreeText(builderTextTree());
+  });
+  syncCanvasModeButton();
+  setCanvasHint(GENERATOR_MODE_HINT);
+  setCanvasTreeText(null);
   initQuizzes({ userId: () => activeUserId, client: () => supabase, onExit: enterTutorMode, onLesson: enterLessonsMode, onNavigate: enterAssessmentMode });
   initLessons({ userId: () => activeUserId, client: () => supabase, onNavigate: enterLessonsMode, onExit: enterTutorMode, mountBuilder: mountEmbeddedBuilder });
   initResizers();
@@ -543,30 +557,7 @@ function initThemeAndMenu() {
     setWorkspaceView('tutor');
   });
 
-  document.querySelector('#exploreBuilderBtn')?.addEventListener('click', () => {
-    // Recompute against the tree that is on screen right now: the canonical
-    // SVG can replace (or step aside for) the raw canvas after the button was
-    // first shown.
-    const tree = exploreTreeFor(exploreSource) || exploreTree;
-    if (!tree) return;
-    if (tree.canonical) {
-      try {
-        enterBuilderMode(tree.canonical);
-        return;
-      } catch (error) {
-        log(`Canonical tree import failed: ${error.message}`);
-      }
-    }
-    if (!tree.display) return;
-    let model;
-    try {
-      model = fromDisplayTree(tree.display);
-    } catch (error) {
-      log(`Syntax Builder import failed: ${error.message}`);
-      return;
-    }
-    enterBuilderMode(null, model);
-  });
+  document.querySelector('#exploreBuilderBtn')?.addEventListener('click', toggleCombinedCanvasMode);
 
   document.querySelector('#headerHistoryBtn')?.addEventListener('click', () => {
     openHistoryDrawer();
@@ -721,6 +712,10 @@ function closeSubpanel() {
 
 function teardownWorkspace() {
   invalidateAnalysis('workspace changed');
+  combinedBuilderMode = false;
+  combinedTreeSource = 'generated';
+  lastBuiltTree = null;
+  document.getElementById('canvasTreeText')?.setAttribute('hidden', '');
   hideExploreBuilder();
   clearTreeAuthorityNotice();
   // Lessons: the picker overlay, the lesson panels, the guide card, the quiz
@@ -767,6 +762,8 @@ function enterTutorMode() {
   setQuizMode(false);
   setWorkspaceView('tutor');
   startNewSession();
+  syncCanvasModeButton();
+  setCanvasHint(GENERATOR_MODE_HINT);
   syncInputClearBtn();
   // Dismiss the mobile drawer so the workspace is visible again.
   document.querySelector('#appSidebarBackdrop')?.classList.remove('active');
@@ -834,13 +831,159 @@ function exploreTreeFor(payload) {
   }
   return payload.tree ? { display: payload.tree } : null;
 }
-function syncExploreBuilder(payload) {
+function syncCanvasModeButton() {
   const button = document.querySelector('#exploreBuilderBtn');
   if (!button) return;
-  const ready = workspaceView === 'tutor' && !quizMode;
-  exploreSource = ready ? payload : null;
-  exploreTree = ready ? exploreTreeFor(payload) : null;
-  button.hidden = !exploreTree;
+  const visible = !quizMode && (workspaceView === 'tutor' || combinedBuilderMode);
+  button.hidden = !visible;
+  button.textContent = combinedBuilderMode ? 'Syntax generator mode' : 'Syntax Builder mode';
+}
+
+function syncExploreBuilder(payload) {
+  exploreSource = (workspaceView === 'tutor' || combinedBuilderMode) ? payload : null;
+  exploreTree = exploreSource ? exploreTreeFor(exploreSource) : null;
+  if (!combinedBuilderMode) {
+    combinedTreeSource = 'generated';
+    lastBuiltTree = null;
+  }
+  syncCanvasModeButton();
+  setCanvasTreeText(combinedBuilderMode
+    ? builderTextTree()
+    : (exploreTree?.canonical?.root || exploreTree?.display || lastBuiltTree));
+}
+
+function displayTreeSentence(tree) {
+  const words = [];
+  const walk = (node) => {
+    if (!node) return;
+    const children = node.children || [];
+    if (!children.length) {
+      if (node.surface) words.push(node.surface);
+      return;
+    }
+    for (const child of children) walk(child);
+  };
+  walk(tree);
+  return words.join(' ');
+}
+
+function treeAsText(tree) {
+  if (!tree) return 'No tree yet.';
+  const lines = [];
+  const walk = (node, depth) => {
+    if (!node) return;
+    const rows = Array.isArray(node.display_rows) ? node.display_rows : [];
+    const features = rows.length > 1 ? rows.slice(1) : (node.features || []).map(f => `[${f}]`);
+    const label = rows[0] || node.label || node.type || '';
+    const word = node.word ?? node.surface;
+    const text = node.gap ? '•' : node.empty ? '∅' : (word ?? [label, ...features].filter(Boolean).join(' '));
+    lines.push(`${'  '.repeat(depth)}${text}`);
+    for (const child of node.children || []) walk(child, depth + 1);
+  };
+  walk(tree, 0);
+  return lines.join('\n');
+}
+
+function setCanvasTreeText(tree) {
+  const details = document.getElementById('canvasTreeText');
+  const body = document.getElementById('canvasTreeTextBody');
+  if (!details || !body) return;
+  if (workspaceView === 'lessons' || workspaceView === 'quizzes') {
+    details.hidden = true;
+    return;
+  }
+  details.hidden = false;
+  body.textContent = treeAsText(tree);
+}
+
+// Combined page: make the generator's tree editable without leaving the
+// canvas. Entering imports exactly what is on screen; leaving normalizes the
+// built tree and drops every node not connected to the chosen root.
+function enterCombinedBuilderMode() {
+  if (combinedBuilderMode || quizMode || workspaceView !== 'tutor') return;
+  const source = combinedTreeSource === 'builder' && lastBuiltTree
+    ? { display: lastBuiltTree }
+    : (exploreTreeFor(exploreSource) || exploreTree);
+  setQuizMode(false);
+  setWorkspaceView('builder');
+  let opened = false;
+  if (source?.canonical) {
+    try {
+      openBuilderView({ canonicalTree: source.canonical });
+      opened = true;
+    } catch (error) {
+      log(`Canonical tree import failed: ${error.message}`);
+    }
+  }
+  if (!opened) {
+    let model = null;
+    if (source?.display) {
+      try {
+        model = fromDisplayTree(source.display);
+      } catch (error) {
+        log(`Syntax Builder import failed: ${error.message}`);
+      }
+    }
+    openBuilderView(model ? { model, reset: true } : { reset: true });
+  }
+  combinedBuilderMode = true;
+  setActiveNav('tutor');
+  document.body.classList.add('combined-modes');
+  const topLeft = document.getElementById('builderTopLeft');
+  if (topLeft) topLeft.hidden = true;
+  setCanvasHint(BUILDER_MODE_HINT);
+  showBuilderPalette();
+  syncCanvasModeButton();
+  setCanvasTreeText(builderTextTree());
+  if (!source) {
+    const input = document.querySelector('#inputText');
+    if (input) {
+      input.value = '';
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+  }
+}
+
+function exitCombinedBuilderMode() {
+  if (!combinedBuilderMode) return;
+  const tree = builderDisplayTree();
+  const sentence = displayTreeSentence(tree);
+  closeBuilderView();
+  combinedBuilderMode = false;
+  const palette = document.getElementById('builderPalette');
+  if (palette) palette.hidden = true;
+  lastBuiltTree = tree || null;
+  combinedTreeSource = 'builder';
+  setWorkspaceView('tutor');
+  document.body.classList.add('combined-modes');
+  document.getElementById('canonicalTreeView')?.setAttribute('hidden', '');
+  clearTreeAuthorityNotice();
+  const treeCanvas = document.querySelector('#treeCanvas');
+  if (treeCanvas) treeCanvas.hidden = false;
+  renderer.setInteractive(false);
+  if (tree) {
+    renderer.setTree(tree);
+    setEmptyStateVisible(false);
+  } else {
+    renderer.clear();
+    setEmptyStateVisible(true);
+  }
+  const input = document.querySelector('#inputText');
+  if (input) {
+    input.value = sentence;
+    const highlights = document.querySelector('#inputHighlights');
+    if (highlights) highlights.textContent = sentence;
+    input.readOnly = true;
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+  }
+  syncCanvasModeButton();
+  setCanvasHint(GENERATOR_MODE_HINT);
+  setCanvasTreeText(tree);
+}
+
+function toggleCombinedCanvasMode() {
+  if (combinedBuilderMode) exitCombinedBuilderMode();
+  else enterCombinedBuilderMode();
 }
 
 // Leaderboard / Achievements: a full-bleed workspace view, docked next to

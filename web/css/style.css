@@ -3582,3 +3582,42 @@ body.workspace-view-open .app-main { display: none; }
   box-shadow: 0 4px 12px rgb(15 23 42 / 20%);
 }
 .builder-palette-tip[hidden] { display: none; }
+
+/* Combined generator + builder mode */
+.builder-palette { top: 10px; }
+body.combined-modes .builder-hint {
+  top: auto;
+  bottom: 14px;
+  left: 16px;
+  right: 16px;
+  max-width: min(820px, calc(100% - 32px));
+}
+
+/* Tree text below the canvas */
+.canvas-tree-text {
+  flex: 0 0 auto;
+  max-height: 168px;
+  border-top: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  font-size: 12px;
+}
+.canvas-tree-text[hidden] { display: none; }
+.canvas-tree-text > summary {
+  padding: 8px 12px;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-weight: 600;
+  user-select: none;
+}
+.canvas-tree-text[open] > summary { border-bottom: 1px solid var(--border); }
+.canvas-tree-text-body {
+  margin: 0;
+  padding: 8px 12px 12px;
+  max-height: 128px;
+  overflow: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  line-height: 1.45;
+  white-space: pre;
+}

@@ -251,7 +251,7 @@ function hideBuilderPalette() {
   if (host) host.hidden = true;
 }
 
-function showBuilderPalette() {
+export function showBuilderPalette() {
   if (embedded || state.challenge) return;
   const host = document.getElementById('builderPalette');
   if (!host) return;
@@ -413,7 +413,8 @@ function wireBuilderInput() {
 function wireBuilderToolbar() {  const bar = document.getElementById('builderToolbar');
   if (!bar || bar.dataset.wired) return;
   bar.dataset.wired = 'true';
-  document.querySelector('[data-builder-clear]')?.addEventListener('click', clearBuilder);
+  document.querySelectorAll('[data-builder-clear]').forEach(button =>
+    button.addEventListener('click', clearBuilder));
   const zoom = (factor) => {
     state.view.scale = Math.max(0.15, Math.min(4, state.view.scale * factor));
     draw();
@@ -574,6 +575,46 @@ export function initSyntaxBuilder({ onStatusChange, setWorkspaceView, userId } =
 
 export function builderModel() {
   return state.model;
+}
+
+// Normalize the current builder tree and return the display tree used by the
+// generator canvas. Only the connected root component is exported, so nodes
+// the learner added but never attached disappear when leaving builder mode.
+export function builderDisplayTree() {
+  if (!isBuilderOpen()) return null;
+  if (Object.keys(state.model.nodes).length) {
+    try {
+      const layout = applyTreeLayout({ fit: true });
+      if (layout) {
+        state.snapped = true;
+        state.snappedLayout = layout;
+      }
+    } catch { /* keep the current layout */ }
+    draw();
+  }
+  const tree = toTree(state.model);
+  if (tree) {
+    // The builder paints word labels without POS tags; keep the generator
+    // display consistent instead of printing the internal "word" type.
+    const clearLeafTags = (node) => {
+      if (!node?.children?.length) {
+        if (node) node.type = '';
+        return;
+      }
+      for (const child of node.children) clearLeafTags(child);
+    };
+    clearLeafTags(tree);
+  }
+  return tree;
+}
+
+export function builderSentenceText() {
+  return getSentenceFromLeaves();
+}
+
+// Textual tree for the panel below the canvas; no layout side effects.
+export function builderTextTree() {
+  return toTree(state.model);
 }
 
 // ---------------------------------------------------------------------------
@@ -1413,7 +1454,7 @@ function onMouseUp(e) {
   state.drag = null;
   state.pan = null;
   state.canvas.style.cursor = '';
-  if (dragged?.moved) {syncCanvasToInput();tools?.record();tools?.render();}
+  if (dragged?.moved) {syncCanvasToInput();tools?.record();tools?.render();document.dispatchEvent(new CustomEvent('syntutor:builder-change'));}
   if (!dragged?.moved && state.selection.size && !panned?.moved) explainSelected();
   // A plain click on empty canvas starts a new word box straight away — the
   // standalone builder has no separate "edit mode" to enter first.
@@ -2177,6 +2218,9 @@ function changed() {
   // standalone builder keeps its existing Build-tree validation instead.
   if (state.challenge) flagStructuralIssues();
   tools?.record();tools?.render();
+  if (typeof document !== 'undefined') {
+    document.dispatchEvent(new CustomEvent('syntutor:builder-change'));
+  }
 }
 
 // Paint disconnected nodes and empty phrase boxes. Skipped while the model is

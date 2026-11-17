@@ -229,6 +229,7 @@
             <button type="button" data-builder-zoom="in" aria-label="Zoom in on syntax tree">+</button>
             <button type="button" data-builder-zoom="out" aria-label="Zoom out of syntax tree">&minus;</button>
             <button type="button" data-builder-zoom="fit" aria-label="Fit syntax tree">Fit</button>
+            <button type="button" data-builder-clear aria-label="Clear the canvas">Clear</button>
           </div>
           <aside id="builderPalette" class="builder-palette" aria-label="Nodes palette" hidden>
             <div class="builder-palette-head">
@@ -265,12 +266,16 @@
             <h3 class="empty-tree-title">No Syntax tree to generate yet!</h3>
             <p class="empty-tree-sub">Enter a sentence to explore its structure and source-based explanations.</p>
           </div>
-          <button id="exploreBuilderBtn" class="builder-btn builder-btn-primary explore-builder-btn" type="button" hidden>Explore in Syntax Builder</button>
+          <button id="exploreBuilderBtn" class="builder-btn builder-btn-primary explore-builder-btn" type="button" hidden>Syntax Builder mode</button>
           <div id="loadingIndicator" class="loading-pill" role="status" aria-hidden="true">
             <span class="loading-spinner" aria-hidden="true"></span>
             <span>Generating syntax tree&hellip;</span>
           </div>
         </div>
+        <details id="canvasTreeText" class="canvas-tree-text" open>
+          <summary>View tree as text</summary>
+          <pre id="canvasTreeTextBody" class="canvas-tree-text-body"></pre>
+        </details>
       </section>
 
       <div id="colResizer" class="resizer resizer-col" role="separator" aria-orientation="vertical"
