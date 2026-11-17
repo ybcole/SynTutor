@@ -6,7 +6,7 @@ import {composeQuizEvidence,requestQuizEvidence,requestEvidence,renderEvidence} 
 import {renderLessonTree} from './lessons-ui.js';
 import {subscribeAuthState} from './auth.js';
 import {loadActiveCourse,quizCurriculum} from './lesson-curriculum.js';
-import {selectQuestions,specKey,eligibleQuestions,questionMetadata,topicPerformance,chapterDifficulty,personalizedReviewSummary,DIFFICULTIES,MAX_MASTER_QUIZ_ITEMS,DEFAULT_MASTER_QUIZ_ITEMS} from './quiz-v2.js';
+import {selectQuestions,specKey,eligibleQuestions,questionMetadata,topicPerformance,personalizedReviewSummary,DIFFICULTIES,MAX_MASTER_QUIZ_ITEMS,DEFAULT_MASTER_QUIZ_ITEMS} from './quiz-v2.js';
 import {makeLessonPractice,validateLessonPractice} from './quiz-lesson-practice.js';
 import {makeAssessmentItems,validateAssessmentItems} from './quiz-assessment-items.js';
 import {applyQuizScope} from './quiz-scope.js';
@@ -29,10 +29,6 @@ const PREV_ARROW_SVG='<svg viewBox="0 0 24 24" width="20" height="20" fill="none
 const NEXT_ARROW_SVG='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>';
 const formatDiff=d=>d?d[0].toUpperCase()+d.slice(1):'';
 const plural=(n,word)=>`${n} ${n===1?word:word+'s'}`;
-const answeredCount=t=>{
- try{return itemsFor(bank,t).filter(q=>isResponseProvided(q,t.responses?.[q.item_id])).length;}
- catch{return t.presented.filter(q=>t.responses?.[q.item_id]!==undefined&&t.responses?.[q.item_id]!==null).length;}
-};
 const KIND_LABELS={
  fill_blank:'Fill in the blanks',
  grammar_correction:'Grammar error correction',
@@ -92,7 +88,6 @@ function v2Card(parent,title,spec,opts={}){
   const titleWrap=el('div',undefined,'quiz-card-title-wrap');
   titleWrap.append(el(opts.headingTag||'h3',title));
   if(!isPersonalized&&opts.trackLabel)titleWrap.append(el('span',opts.trackLabel,'quiz-track-tag'));
-  if(!isPersonalized&&opts.difficulty)titleWrap.append(el('span',formatDiff(opts.difficulty),`quiz-difficulty-tag is-${opts.difficulty}`));
   headRow.append(titleWrap);
   card.append(headRow);
   if(isPersonalized){
@@ -103,7 +98,7 @@ function v2Card(parent,title,spec,opts={}){
   const statusText=reason&&!isPersonalized
    ?reason
    :draft
-    ?`In progress · ${answeredCount(draft)}/${draft.presented.length} answered`
+    ?null
     :attemptHistorySummary(assessment);
   if(statusText)card.append(el('p',statusText,reason&&!isPersonalized?'quiz-card-error':'quiz-card-status'));
   const cardFoot=el('div',undefined,'quiz-card-footer');
@@ -117,14 +112,13 @@ function v2Card(parent,title,spec,opts={}){
  const mainCol=el('div',undefined,'quiz-row-main');
  const titleWrap=el('div',undefined,'quiz-card-title-wrap');
  titleWrap.append(el(opts.headingTag||'h3',title));
- if(opts.difficulty)titleWrap.append(el('span',formatDiff(opts.difficulty),`quiz-difficulty-tag is-${opts.difficulty}`));
  mainCol.append(titleWrap);
  const descText=opts.description||(isGeneral?'Covers every assessable subtopic in this chapter.':'');
  if(descText)mainCol.append(el('p',descText,'quiz-card-desc'));
  const statusText=reason
   ?reason
   :draft
-   ?`In progress · ${answeredCount(draft)}/${draft.presented.length} answered`
+   ?null
    :attemptHistorySummary(assessment);
  if(statusText)mainCol.append(el('p',statusText,reason?'quiz-card-error':'quiz-card-status'));
  const sideCol=el('div',undefined,'quiz-row-side');
@@ -187,7 +181,7 @@ function masterQuizCard(parent,track){
   }
   const spec={track:trackId,mode:'master',count:Number(input.value),difficulty:masterDifficulties[trackId],content_tier:masterTier,format:'mixed'};
   const assessment={assessment_id:specKey(spec),content_version:'2.0.0'},draft=store.draft(assessment);
-  const statusLine=draft?`In progress · ${answeredCount(draft)}/${draft.presented.length} answered`:attemptHistorySummary(assessment);
+  const statusLine=draft?null:attemptHistorySummary(assessment);
   if(statusLine)target.append(el('p',statusLine,'quiz-card-status'));
   const foot=el('div',undefined,'quiz-card-footer');
   foot.append(button(draft?'Resume quiz':'Start quiz',()=>action(()=>draft||store.startV2(curriculum,spec)),'lesson-primary'));
@@ -224,20 +218,18 @@ function curriculumCatalog(){
  chaptersSec.append(el('h2','Chapter Quizzes','quiz-section-label'));
  const chaptersGroup=el('div',undefined,'quiz-chapters-group');
  for(const chapter of track.chapters){
-  const diff=chapterDifficulty(chapter);
   const card=el('article',undefined,'curriculum-card lesson-module quiz-chapter');card.dataset.chapter=chapter.id;
   const head=el('div',undefined,'quiz-chapter-header');
   head.append(el('p',`Chapter ${chapter.chapter}`,'lesson-eyebrow'),el('h2',chapter.title,'quiz-chapter-title'));
-  head.append(el('span',formatDiff(diff),`quiz-difficulty-tag is-${diff}`));
   head.append(el('p',chapterDescriptions[chapter.id],'quiz-card-desc'));
   const spec={track:trackId,mode:'general',chapter:chapter.id,content_tier:'lesson-practice',format:'mixed'};
   const assessment={assessment_id:specKey(spec),content_version:'2.0.0'},draft=store.draft(assessment);
   let reason='';
   try{selectQuestions(bank,curriculum,spec,store.attempts,0);}catch(e){reason=e.message;}
-  const status=draft?`In progress · ${answeredCount(draft)}/${draft.presented.length} answered`:attemptHistorySummary(assessment);
+  const status=draft?null:attemptHistorySummary(assessment);
   if(reason||status)head.append(el('p',reason||status,reason?'quiz-card-error':'quiz-card-status'));
-  const start=button(draft?'Resume Quiz':'Start Quiz',()=>action(()=>draft||store.startV2(curriculum,spec)),'lesson-primary');
-  start.setAttribute('aria-label',`${draft?'Resume':'Start'} Quiz: ${chapter.title} — General Chapter Quiz`);
+  const start=button('General Quiz',()=>action(()=>draft||store.startV2(curriculum,spec)),'lesson-primary');
+  start.setAttribute('aria-label',`General Quiz: ${chapter.title} — ${draft?'Resume':'Start'} General Chapter Quiz`);
   start.disabled=!!reason&&!draft;
   card.append(head);
   const details=el('details',undefined,'quiz-subtopics');
@@ -545,18 +537,21 @@ function attemptScreen(t){
  const navigator=el('aside',undefined,'quiz-navigator');
  navigator.setAttribute('aria-label','Question navigator');
  const navHead=el('div',undefined,'quiz-nav-head');
- const navSummary=el('span','','quiz-nav-summary');
- navHead.append(el('h2','Questions'),navSummary);
+ navHead.append(el('h2','Questions'));
  navigator.append(navHead);
- const numGrid=el('div',undefined,'quiz-nav-grid');
+ const questionList=el('ol',undefined,'quiz-nav-list');
  const navButtons=[];
  for(let i=0;i<count;i++){
-  const numBtn=button(String(i+1),()=>action(()=>store.move(t.attempt_id,i)),'quiz-nav-num');
+  const row=el('li');
+  const numBtn=button('',()=>action(()=>store.move(t.attempt_id,i)).then(()=>{
+   host.querySelector('.quiz-nav-row[aria-current="step"]')?.focus();
+  }),'quiz-nav-row');
+  numBtn.append(el('span',String(i+1),'quiz-nav-number'),el('span','','quiz-nav-state'));
   if(i===t.position)numBtn.setAttribute('aria-current','step');
-  numGrid.append(numBtn);
+  row.append(numBtn);questionList.append(row);
   navButtons.push(numBtn);
  }
- navigator.append(numGrid);
+ navigator.append(questionList);
 
  let onClearCurrent=()=>action(()=>store.clearAnswer(t.attempt_id,q.item_id)),mountBuilderNow=null;
  let submitBtn=null;
@@ -571,10 +566,10 @@ function attemptScreen(t){
    if(ok)answered++;
    const btn=navButtons[i];
    const isCurrent=i===t.position;
-   btn.className=`quiz-nav-num${isCurrent?' is-current':''}${ok?' is-answered':''}`;
+   btn.className=`quiz-nav-row${isCurrent?' is-current':''}${ok?' is-answered':''}`;
+   btn.querySelector('.quiz-nav-state').textContent=[isCurrent?'Current':null,ok?'Answered':!isCurrent?'Unanswered':null].filter(Boolean).join(' · ');
    btn.setAttribute('aria-label',`Question ${i+1}, ${[isCurrent?'current':null,ok?'answered':'unanswered'].filter(Boolean).join(', ')}`);
   }
-  navSummary.textContent=`${answered}/${count} answered`;
   const curVal=responses[q.item_id];
   const hasCurrent=curVal!==undefined&&curVal!==null&&(typeof curVal!=='string'||curVal.trim().length>0)&&(!Array.isArray(curVal)||curVal.length>0);
   panelActions.replaceChildren();
@@ -819,6 +814,10 @@ function attemptScreen(t){
  layout.append(main,navigator);
  body.append(layout);
  host.append(body);
+ // Keep the active entry visible after Previous/Next or draft restoration without
+ // scrolling the assessment page down to the navigator on small screens.
+ const activeBounds=navButtons[t.position].getBoundingClientRect(),listBounds=questionList.getBoundingClientRect();
+ if(activeBounds.bottom>listBounds.bottom)questionList.scrollTop+=activeBounds.bottom-listBounds.bottom+3;
  mountBuilderNow?.();
 }
 function render(){

@@ -35,6 +35,7 @@ const base=`http://127.0.0.1:${server.address().port}`;
 const browser=await chromium.launch({headless:true,...(process.env.QUIZ_V2_CHROMIUM_PATH?{executablePath:process.env.QUIZ_V2_CHROMIUM_PATH}:{})});
 try{
   const page=await browser.newPage({viewport:{width:1360,height:960}});
+  page.setDefaultTimeout(15000);
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.addInitScript(()=>{
     localStorage.setItem('syntutor_onboarding_seen','1');
@@ -107,9 +108,13 @@ try{
   assert.equal(await initialSyntaxReview.locator('.quiz-card-title-wrap > span').count(),0,'review heading contains no category or difficulty pill');
   assert.match(await initialSyntaxReview.locator('.quiz-card-desc').innerText(),/^Complete Syntax chapter or subtopic quizzes/);
   assert.equal(await initialSyntaxReview.getByRole('button').isDisabled(),true,'Review your errors is disabled when track has no errors');
-  assert.equal(await quiz.locator('[data-chapter="br-01"] .quiz-chapter-header .quiz-difficulty-tag').innerText(),'Easy');
-  assert.equal(await quiz.locator('[data-chapter="br-06"] .quiz-chapter-header .quiz-difficulty-tag').innerText(),'Medium');
-  assert.equal(await quiz.locator('[data-chapter="br-10"] .quiz-chapter-header .quiz-difficulty-tag').innerText(),'Hard');
+  const assertSelectionPresentation=async()=>{
+    assert.equal(await quiz.locator('.quiz-difficulty-tag').count(),0,'ordinary cards have no difficulty pills');
+    assert.ok((await quiz.locator('.quiz-chapter-footer > button').allTextContents()).every(t=>t==='General Quiz'),'chapter action always reads General Quiz');
+    assert.ok(!/In progress|\d+\/\d+ answered/.test(await quiz.innerText()),'selection panels have no draft answer counts');
+    assert.ok((await quiz.locator('.quiz-card-status').allTextContents()).every(t=>t.trim()),'no empty status wrappers');
+  };
+  await assertSelectionPresentation();
   await snap('quiz-selection-desktop.png');
   await quiz.getByRole('button',{name:'Grammar',exact:true}).click();
   assert.equal(await quiz.locator('.quiz-chapter').count(),20);
@@ -139,17 +144,85 @@ try{
     });
     assert.equal(geometry.overflow,false,'chapter never overflows horizontally');
     assert.ok(Math.abs(geometry.summary.left-geometry.footer.left)<2,'disclosure aligns to footer left');
-    assert.ok(Math.abs(geometry.action.right-geometry.footer.right)<2,'chapter action aligns to footer right');
+    const inset=await card.evaluate(n=>parseFloat(getComputedStyle(n).getPropertyValue('--quiz-row-inset')));
+    assert.ok(Math.abs(geometry.footer.right-geometry.action.right-inset)<2,'chapter action uses the same right inset as subtopic rows');
     if(page.viewportSize().width>640){
       assert.ok(Math.abs((geometry.summary.top+geometry.summary.bottom)/2-(geometry.action.top+geometry.action.bottom)/2)<12,'desktop/tablet controls share a footer row');
-      if(geometry.open)assert.ok(geometry.topics.right<=geometry.action.left,'expanded subtopics do not overlap the chapter action');
+      if(geometry.open)assert.ok(geometry.topics.top>=geometry.action.bottom,'expanded subtopics sit below the chapter action');
     }else{
       assert.ok(geometry.action.top>=geometry.summary.bottom,'mobile actions stack in reading order');
       if(geometry.open)assert.ok(geometry.action.top>=geometry.topics.bottom,'expanded mobile subtopics do not overlap the action');
     }
     if(!geometry.open)assert.ok(geometry.box.bottom-geometry.action.bottom<30,'closed footer is anchored to card bottom');
+    assert.equal(await card.locator('.quiz-chapter-footer > button').innerText(),'General Quiz');
+    if(geometry.open){
+      const rows=await card.locator('.quiz-topic-card').evaluateAll(nodes=>nodes.map(n=>({
+        row:n.getBoundingClientRect(),main:n.querySelector('.quiz-row-main').getBoundingClientRect(),
+        button:n.querySelector('button').getBoundingClientRect(),
+      })));
+      for(const item of rows){
+        assert.ok(Math.abs(item.button.right-geometry.action.right)<=2,'every subtopic action aligns with General Quiz within 2 CSS pixels');
+        assert.ok(Math.abs(item.row.right-geometry.footer.right)<1,'subtopic cards fill the usable chapter width');
+        assert.ok(Math.abs(item.button.right-rows[0].button.right)<1,'all subtopic actions share a right edge');
+        assert.ok(Math.abs(item.button.width-rows[0].button.width)<1&&Math.abs(item.button.height-rows[0].button.height)<1,'Start/Resume actions have consistent dimensions');
+        assert.ok(item.button.right<=item.row.right&&item.main.right<=item.row.right,'row content stays inside its card');
+        if(page.viewportSize().width>900){
+          assert.ok(item.main.right<item.button.left,'wrapping text never overlaps the action');
+          assert.ok(Math.abs((item.main.top+item.main.bottom)/2-(item.button.top+item.button.bottom)/2)<2,'content and action center vertically');
+        }else assert.ok(item.button.top>=item.main.bottom,'narrow rows stack text and action');
+      }
+    }
   };
   await assertChapterFooter(quiz.locator('[data-chapter="cgel-ch01"]'));
+  // Check every chapter and every action against General Quiz, including rows
+  // with long copy, using real expanded/collapsed geometry in both themes.
+  for(const width of [390,768,1360])for(const theme of ['light','dark']){
+    await page.setViewportSize({width,height:900});
+    await page.evaluate(theme=>document.documentElement.setAttribute('data-theme',theme),theme);
+    for(const track of ['Syntax','Grammar']){
+      await quiz.getByRole('button',{name:track,exact:true}).click();
+      const chapters=await quiz.evaluate(async n=>{
+        const cards=[...n.querySelectorAll('.quiz-chapter')];
+        const previous=cards.map(c=>c.querySelector('details').open);
+        cards.forEach(c=>{c.querySelector('details').open=true;});
+        await new Promise(requestAnimationFrame);
+        const metrics=cards.map(c=>{
+          const general=c.querySelector('.quiz-chapter-footer > button').getBoundingClientRect();
+          const footer=c.querySelector('.quiz-chapter-footer').getBoundingClientRect();
+          return {chapter:c.dataset.chapter,generalRight:general.right,footerRight:footer.right,
+            overflow:c.scrollWidth>c.clientWidth+1,
+            rows:[...c.querySelectorAll('.quiz-topic-card')].map(row=>{
+              const b=row.querySelector('button').getBoundingClientRect();
+              const main=row.querySelector('.quiz-row-main');
+              return {right:b.right,width:b.width,height:b.height,cardRight:row.getBoundingClientRect().right,
+                overflow:main.scrollWidth>main.clientWidth+1};
+            })};
+        });
+        cards.forEach(c=>{c.querySelector('details').open=false;});
+        await new Promise(requestAnimationFrame);
+        cards.forEach((c,i)=>{
+          const b=c.querySelector('.quiz-chapter-footer > button').getBoundingClientRect();
+          metrics[i].collapsedRight=b.right;
+          c.querySelector('details').open=previous[i];
+        });
+        await new Promise(requestAnimationFrame);
+        return metrics;
+      });
+      assert.equal(chapters.length,track==='Syntax'?11:20);
+      for(const c of chapters){
+        assert.equal(c.overflow,false,`${width}px ${theme} ${c.chapter}: no overflow`);
+        assert.ok(Math.abs(c.collapsedRight-c.generalRight)<=1,`${c.chapter}: collapsing preserves action alignment`);
+        for(const row of c.rows){
+          assert.ok(Math.abs(row.right-c.generalRight)<=2,`${width}px ${theme} ${c.chapter}: subtopic ${row.right} aligns with General Quiz ${c.generalRight}`);
+          assert.ok(Math.abs(row.cardRight-c.footerRight)<=1,`${c.chapter}: expanded rows use the full footer width`);
+          assert.ok(Math.abs(row.width-128)<=1&&Math.abs(row.height-40)<=1,`${c.chapter}: uniform action dimensions`);
+          assert.equal(row.overflow,false,`${c.chapter}: long copy wraps without clipping`);
+        }
+      }
+      if(width===1360&&theme==='light')console.log('PASS alignment coordinates:',JSON.stringify(chapters.map(c=>({chapter:c.chapter,general:c.generalRight,firstThree:c.rows.slice(0,3).map(r=>r.right)}))));
+    }
+  }
+  await page.setViewportSize({width:1360,height:960});
   await quiz.locator('[data-chapter="cgel-ch01"] .quiz-chapter-footer').scrollIntoViewIfNeeded();
   await snap('quiz-chapter-footer-desktop.png');
   await snap('quiz-chapter-stacked.png');
@@ -176,6 +249,63 @@ try{
   assert.equal(backBtnStyle.bg,'rgba(0, 0, 0, 0)','back button has transparent idle background');
   const numBox=await quiz.locator('.quiz-question .quiz-question-number').boundingBox();
   assert.ok(numBox&&numBox.height>0,'Question X of Y indicator renders cleanly inside question panel');
+  const assertTrackerLayout=async()=>{
+    const m=await quiz.evaluate(n=>{
+      const main=n.querySelector('.quiz-question').getBoundingClientRect();
+      const side=n.querySelector('.quiz-navigator').getBoundingClientRect();
+      const list=n.querySelector('.quiz-nav-list');
+      return {main,side,list:{height:list.clientHeight,scrollHeight:list.scrollHeight},
+        rows:[...list.querySelectorAll('button')].map(b=>({box:b.getBoundingClientRect(),border:getComputedStyle(b).borderTopWidth,radius:getComputedStyle(b).borderRadius})),
+        overflow:n.scrollWidth>n.clientWidth+2};
+    });
+    assert.equal(m.overflow,false,'attempt has no horizontal overflow');
+    assert.equal(await quiz.locator('.quiz-nav-summary').count(),0,'tracker has no answered-count header');
+    assert.ok(!/\d+\/\d+ answered/.test(await quiz.locator('.quiz-navigator').innerText()));
+    assert.equal(await quiz.locator('.quiz-nav-row[aria-current="step"]').count(),1);
+    for(let i=0;i<m.rows.length;i++){
+      assert.equal(m.rows[i].border,'0px','question rows have no surrounding border');
+      assert.equal(m.rows[i].radius,'0px','question rows have no pill/square rounding');
+      if(i)assert.ok(m.rows[i].box.top>=m.rows[i-1].box.bottom,'one question per vertical row');
+    }
+    if(page.viewportSize().width>900){
+      assert.ok(Math.abs(m.main.top-m.side.top)<1&&Math.abs(m.main.bottom-m.side.bottom)<1,'desktop panel top and bottom boundaries match');
+      assert.ok(m.side.width<m.main.width,'sidebar remains narrower');
+      if(m.rows.length>=20)assert.ok(m.list.scrollHeight>m.list.height,'long question lists scroll within the panel');
+    }else assert.ok(m.side.top>=m.main.bottom,'mobile/tablet navigator stacks below assessment');
+  };
+  for(const width of [390,768,1360])for(const theme of ['light','dark']){
+    await page.setViewportSize({width,height:900});
+    await page.evaluate(theme=>document.documentElement.setAttribute('data-theme',theme),theme);
+    await assertTrackerLayout();
+    const last=quiz.locator('.quiz-nav-row').last();
+    await last.focus();await page.keyboard.press('Enter');
+    await quiz.getByRole('heading',{name:'Question 25 of 25',exact:true}).waitFor();
+    assert.equal(await quiz.locator('.quiz-nav-row[aria-current="step"]').evaluate(n=>n===document.activeElement),true,'keyboard navigation retains focus after rendering');
+    const visible=await quiz.locator('.quiz-nav-row').last().evaluate(n=>{
+      const row=n.getBoundingClientRect(),list=n.closest('ol').getBoundingClientRect();
+      return row.top>=list.top&&row.bottom<=list.bottom;
+    });
+    assert.equal(visible,true,'last question is reachable and visible inside the scrollable list');
+    await quiz.locator('.quiz-nav-row').first().focus();await page.keyboard.press('Enter');
+    await page.waitForFunction(()=>document.querySelector('.quiz-nav-row[aria-current="step"]')===document.activeElement&&document.activeElement.textContent.startsWith('1Current'));
+    await page.keyboard.press('Tab');
+    assert.equal(await quiz.locator('.quiz-nav-row').nth(1).evaluate(n=>n===document.activeElement),true,'Tab reaches the next question');
+    await page.keyboard.press(' ');
+    await quiz.getByRole('heading',{name:'Question 2 of 25',exact:true}).waitFor();
+    await last.click();
+    await quiz.getByRole('heading',{name:'Question 25 of 25',exact:true}).waitFor();
+    await quiz.getByRole('button',{name:'Previous question',exact:true}).click();
+    await quiz.getByRole('heading',{name:'Question 24 of 25',exact:true}).waitFor();
+    assert.equal(await quiz.locator('.quiz-nav-row[aria-current="step"]').evaluate(n=>{
+      const row=n.getBoundingClientRect(),list=n.closest('ol').getBoundingClientRect();
+      return row.top>=list.top&&row.bottom<=list.bottom;
+    }),true,'Previous/Next keeps the active question visible in a long list');
+    await quiz.locator('.quiz-nav-row').first().click();
+    await quiz.getByRole('heading',{name:'Question 1 of 25',exact:true}).waitFor();
+    await quiz.evaluate(n=>{n.scrollTop=0;});
+    await snap(`quiz-tracker-${width}-${theme}.png`);
+  }
+  await page.setViewportSize({width:1360,height:960});
   const answerCurrentQuestion=async(wantCorrect=false,recordKinds=null)=>{
     const id=await quiz.locator('[data-quiz-item]').getAttribute('data-quiz-item');
     const kind=await quiz.locator('[data-quiz-item]').getAttribute('data-quiz-kind');
@@ -219,10 +349,15 @@ try{
   };
   const camMasterKinds=new Set();
   await answerCurrentQuestion(true,camMasterKinds);
+  assert.match(await quiz.locator('.quiz-nav-row').first().getAttribute('aria-label'),/current, answered$/);
+  assert.equal(await quiz.locator('.quiz-nav-row .quiz-nav-state').first().innerText(),'Current · Answered');
+  assert.equal(await quiz.locator('.quiz-nav-row .quiz-nav-state').nth(1).innerText(),'Unanswered');
+  const initialResponses=await page.evaluate(()=>Object.values(JSON.parse(localStorage.getItem('syntutor:assessments:v1:guest')).attempts).find(t=>!t.submitted_at).responses);
   await assertNoResults();
   await quiz.getByRole('button',{name:'Next question',exact:true}).click();await assertNoResults();
   await quiz.getByRole('button',{name:'Previous question',exact:true}).click();
   await quiz.locator('.quiz-navigator').getByRole('button',{name:/^Question 1,.*answered/}).waitFor();
+  assert.deepEqual(await page.evaluate(()=>Object.values(JSON.parse(localStorage.getItem('syntutor:assessments:v1:guest')).attempts).find(t=>!t.submitted_at).responses),initialResponses,'question navigation preserves responses');
   await assertNoResults();
   // Question navigator direct jump
   await quiz.locator('.quiz-navigator').getByRole('button',{name:/^Question 4,/}).click();
@@ -293,7 +428,7 @@ try{
   assert.equal(await quiz.getByRole('button',{name:'Questions Under Review',exact:true}).count(),0);
   await quiz.getByRole('button',{name:'Grammar',exact:true}).click();
   await quiz.locator('[data-chapter="cgel-ch04"] .quiz-subtopics > summary').click();
-  await quiz.locator('[data-chapter="cgel-ch04"] .quiz-chapter-footer').getByRole('button',{name:/Start Quiz:/}).click();
+  await quiz.locator('[data-chapter="cgel-ch04"] .quiz-chapter-footer').getByRole('button',{name:/General Quiz:.*Start General Chapter Quiz/}).click();
   await quiz.getByRole('heading',{name:'Question 1 of 13',exact:true}).waitFor();
   await assertNoResults();
   const camKinds=new Set();
@@ -308,11 +443,12 @@ try{
   await quiz.getByRole('button',{name:'Syntax',exact:true}).click();
   const synCh3=quiz.locator('[data-chapter="br-03"]');
   if((await synCh3.locator('.quiz-subtopics').getAttribute('open'))===null)await synCh3.locator('.quiz-subtopics > summary').click();
-  await synCh3.locator('.quiz-chapter-footer').getByRole('button',{name:/Start Quiz:/}).click();
+  await synCh3.locator('.quiz-chapter-footer').getByRole('button',{name:/General Quiz:.*Start General Chapter Quiz/}).click();
   await quiz.getByRole('heading',{name:'Question 1 of 5',exact:true}).waitFor();
   const synKinds=new Set();
   for(let qIdx=1;qIdx<=5;qIdx++){
     await quiz.locator('.quiz-navigator').getByRole('button',{name:new RegExp(`^Question ${qIdx},`)}).click();
+    await assertTrackerLayout();
     await quiz.getByRole('heading',{name:`Question ${qIdx} of 5`,exact:true}).waitFor();
     const k=await quiz.locator('[data-quiz-item]').getAttribute('data-quiz-kind');
     synKinds.add(k);
@@ -404,6 +540,10 @@ try{
   await quiz.getByRole('heading',{name:'Question 1 of 5',exact:true}).waitFor();
   await answerCurrentQuestion(true);
   await assertNoResults();
+  // Builder changes use the same debounced auto-save as text inputs. Capture
+  // the expected draft only after that response has actually reached storage.
+  await page.waitForFunction(itemId=>Object.values(JSON.parse(localStorage.getItem('syntutor:assessments:v1:guest')).attempts)
+    .some(t=>!t.submitted_at&&Object.hasOwn(t.responses||{},itemId)),await quiz.locator('[data-quiz-item]').getAttribute('data-quiz-item'));
   const saved=await page.evaluate(()=>JSON.parse(localStorage.getItem('syntutor:assessments:v1:guest')));
   const draft=Object.values(saved.attempts).find(t=>!t.submitted_at);
   assert.equal(draft.spec?.format,'mixed','subtopic draft uses unified mixed-format engine');
@@ -426,6 +566,7 @@ try{
   await quiz.locator('[data-chapter="br-03"] .quiz-topic-list').getByRole('button',{name:'Resume quiz',exact:true}).click();
   const restored=await page.evaluate(()=>JSON.parse(localStorage.getItem('syntutor:assessments:v1:guest')));
   assert.deepEqual(restored.attempts[draft.attempt_id].presented,draft.presented);
+  assert.deepEqual(restored.attempts[draft.attempt_id].responses,draft.responses,'offline draft restoration keeps all responses');
   await quiz.locator('.quiz-navigator').getByRole('button',{name:/Question 1,.*answered/}).click();
   await quiz.getByRole('heading',{name:'Question 1 of 5',exact:true}).waitFor();
   await assertNoResults();
@@ -520,6 +661,7 @@ try{
     await page.setViewportSize({width,height:900});
     await page.evaluate(theme=>document.documentElement.setAttribute('data-theme',theme),theme);
     await quiz.getByRole('heading',{name:'Quizzes',exact:true}).waitFor();
+    await assertSelectionPresentation();
     await quiz.getByRole('button',{name:'Grammar',exact:true}).click();
     assert.equal(await quiz.locator('.quiz-chapter').count(),20,`${width}px ${theme}: all 20 Grammar chapters rendered`);
     const overflow=await quiz.evaluate(n=>n.scrollWidth>n.clientWidth+2);
@@ -527,6 +669,8 @@ try{
     const firstChapter=quiz.locator('.quiz-chapter').first();
     if(await firstChapter.locator('.quiz-subtopics').getAttribute('open')!==null)await firstChapter.locator('.quiz-subtopics > summary').click();
     await assertChapterFooter(firstChapter);
+    await firstChapter.scrollIntoViewIfNeeded();
+    await snap(`quiz-selection-${width}-${theme}.png`);
     const disclosure=firstChapter.locator('.quiz-subtopics');
     if(await disclosure.getAttribute('open')===null)await disclosure.locator('> summary').click();
     await assertChapterFooter(firstChapter);
@@ -535,6 +679,27 @@ try{
       await snap('quiz-mobile-dark.png');
     }
   }
+  // The chapter action keeps its visible name while resuming the exact saved manifest.
+  await page.setViewportSize({width:1360,height:960});
+  const generalAction=()=>quiz.locator('[data-chapter="cgel-ch01"] .quiz-chapter-footer > button');
+  await generalAction().click();
+  await answerCurrentQuestion(true);
+  await quiz.getByRole('button',{name:'All quizzes',exact:true}).click();
+  const generalDraft=await page.evaluate(()=>Object.values(JSON.parse(localStorage.getItem('syntutor:assessments:v1:guest')).attempts).find(t=>!t.submitted_at&&t.spec?.mode==='general'&&t.spec.chapter==='cgel-ch01'));
+  assert.ok(generalDraft&&Object.keys(generalDraft.responses).length,'General Quiz auto-saves responses');
+  await assertSelectionPresentation();
+  assert.equal(await generalAction().innerText(),'General Quiz');
+  assert.match(await generalAction().getAttribute('aria-label'),/Resume General Chapter Quiz/);
+  await page.reload();await nav('quizzes');
+  await quiz.getByRole('button',{name:'Grammar',exact:true}).click();
+  await assertSelectionPresentation();
+  await generalAction().click();
+  const resumedGeneral=await page.evaluate(id=>JSON.parse(localStorage.getItem('syntutor:assessments:v1:guest')).attempts[id],generalDraft.attempt_id);
+  assert.deepEqual(resumedGeneral.presented,generalDraft.presented);
+  assert.deepEqual(resumedGeneral.responses,generalDraft.responses);
+  await quiz.locator('.quiz-nav-row[aria-current="step"].is-answered').waitFor();
+  await assertNoResults();
+  await quiz.getByRole('button',{name:'All quizzes',exact:true}).click();
   // Seed only local fixture-account attempts; never write a real learner record.
   const seeded=makeV2Attempt({...fixtureBank,mixed_items:[...syntaxMixedItems,...cambridgeMixedItems]},actualCurriculum,
     {track:'syntax',mode:'topic',chapter:'br-01',topic:'concepts',format:'mixed'}, {},123,'seeded-review');
@@ -581,6 +746,12 @@ try{
   assert.equal(await historySummary.evaluate(n=>getComputedStyle(n).marginBottom),'12px');
   await historySummary.click();
   assert.equal(await history.getAttribute('open'),null);
+  await historySummary.click();
+  const historicalScore=(await history.locator('.quiz-history-row button').first().innerText()).match(/(\d+\/\d+) \((\d+)%\)$/);
+  assert.ok(historicalScore,'completed attempts remain available in history');
+  await history.locator('.quiz-history-row button').first().click();
+  await quiz.locator('.quiz-score').filter({hasText:`${historicalScore[1]} correct (${historicalScore[2]}%)`}).waitFor();
+  assert.ok(await quiz.locator('.quiz-review-card').count()>0,'historical responses and explanations remain readable after reload');
   assert.deepEqual(errors,[]);
-  console.log('PASS formal quiz browser: Preliminaries assessable topics available cleanly in Grammar Quiz (with orientation excluded even on offline cache and mobile/desktop themes), 20-chapter Master minimum & 25 default / 50 max, no cross-track published cards, no pre-submit feedback/keys, post-submit scores/explanations, topic/Master/personalized modes, offline replay and XP isolation; no page errors.');
+  console.log('PASS Quiz V2 browser: General Quiz start/resume labels and saved responses; aligned chapter/subtopic actions; no difficulty pills or draft counts; vertical, keyboard-accessible question states and scrolling; equal-height desktop panels including tree builder; 390/768/1360px light/dark layouts; mixed formats, gated results/scoring, offline drafts, history and account/XP isolation; no page errors.');
 }finally{await browser.close();await new Promise(resolve=>server.close(resolve));}
