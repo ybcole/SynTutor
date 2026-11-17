@@ -1,4 +1,5 @@
 import {createBuilderTools} from './builder-tools.js';
+import INVENTORY from './builder-inventory.js';
 import {renderLessonTree} from './lessons-ui.js';
 import { API_BASE } from './config.js';
 import { requestEvidence, renderEvidence } from './explanation-evidence.js';
@@ -186,10 +187,220 @@ const state = {
 
 let tools;
 let embedded = null;
+let palettePos = null;
+let paletteTip = null;
+
+function clampPalettePosition(host, stage, left, top) {
+  const sw = stage.clientWidth || 800;
+  const sh = stage.clientHeight || 600;
+  const hw = host.offsetWidth || 248;
+  const hh = host.offsetHeight || 280;
+  return {
+    left: Math.round(Math.min(Math.max(8, sw - hw - 8), Math.max(8, left))),
+    top: Math.round(Math.min(Math.max(8, sh - hh - 8), Math.max(8, top))),
+  };
+}
+
+function applyPalettePosition(host) {
+  const stage = host?.parentElement;
+  if (!host || !stage || host.hidden || !palettePos) return;
+  const next = clampPalettePosition(host, stage, palettePos.left, palettePos.top);
+  palettePos = next;
+  host.style.left = `${next.left}px`;
+  host.style.top = `${next.top}px`;
+}
+
+function showPaletteTip(help) {
+  const text = help?.dataset.tooltip;
+  if (!text) return;
+  if (!paletteTip) {
+    paletteTip = document.createElement('div');
+    paletteTip.id = 'builderPaletteTip';
+    paletteTip.className = 'builder-palette-tip';
+    paletteTip.setAttribute('role', 'tooltip');
+    document.body.append(paletteTip);
+  }
+  const rect = help.getBoundingClientRect();
+  paletteTip.textContent = text;
+  paletteTip.hidden = false;
+  paletteTip.style.left = `${Math.round(Math.min(innerWidth - 160, Math.max(8, rect.left)))}px`;
+  paletteTip.style.top = `${Math.round(Math.min(innerHeight - 36, rect.bottom + 6))}px`;
+}
+
+function hidePaletteTip() {
+  if (paletteTip) paletteTip.hidden = true;
+}
+
 function currentPalette() {
   return embedded
     ? { labels: embedded.labels || ['PHRASE-a', 'PHRASE-b', 'PHRASE-c'], features: [] }
     : paletteFor(state.canonicalProfile || builderProfile());
+}
+
+// Top-left Nodes palette: appears when the standalone canvas is focused,
+// stays available while its own controls are used, and can be hidden.
+function nodeLessonRoute(label) {
+  const chapter = INVENTORY.labels[label];
+  if (!chapter) return null;
+  return `#lesson/br-${String(chapter).padStart(2, '0')}/concepts`;
+}
+
+function hideBuilderPalette() {
+  hidePaletteTip();
+  const host = document.getElementById('builderPalette');
+  if (host) host.hidden = true;
+}
+
+function showBuilderPalette() {
+  if (embedded || state.challenge) return;
+  const host = document.getElementById('builderPalette');
+  if (!host) return;
+  host.hidden = false;
+  renderBuilderPalette();
+  applyPalettePosition(host);
+}
+
+function insertNodeFromPalette(label) {
+  const nodes = Object.values(state.model.nodes);
+  const cw = state.canvas?.clientWidth || 720;
+  const ch = state.canvas?.clientHeight || 480;
+  const scale = state.view.scale || 1;
+  const phrases = nodes.filter(n => n.kind === NODE.PHRASE);
+  const x = (cw / 2 - state.view.ox) / scale - 42 + (phrases.length % 3) * 22;
+  const y = (ch / 2 - state.view.oy) / scale - 17 + (Math.floor(phrases.length / 3) % 3) * 22;
+  const created = addPhrase(state.model, label, x, y);
+  selectOnly(created.id);
+  closeMenu();
+  changed();
+  draw();
+}
+
+function openNodeLesson(label) {
+  const route = nodeLessonRoute(label);
+  if (!route) return;
+  hideBuilderPalette();
+  document.querySelector('.sidebar-item[data-view="lessons"]')?.click();
+  location.hash = route;
+}
+
+function renderBuilderPalette() {
+  const host = document.getElementById('builderPalette');
+  const list = document.getElementById('builderPaletteList');
+  const search = document.getElementById('builderPaletteSearch');
+  if (!host || !list) return;
+  if (!host.dataset.wired) {
+    host.dataset.wired = 'true';
+    document.getElementById('builderPaletteToggle')?.addEventListener('click', hideBuilderPalette);
+    search?.addEventListener('input', () => renderBuilderPalette());
+    search?.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape') return;
+      search.value = '';
+      renderBuilderPalette();
+      state.canvas?.focus?.();
+    });
+    const head = host.querySelector('.builder-palette-head');
+    let dragging = null;
+    head?.addEventListener('pointerdown', (event) => {
+      if (event.button !== 0 || event.target.closest('button')) return;
+      event.preventDefault();
+      event.stopPropagation();
+      const hostRect = host.getBoundingClientRect();
+      const stageRect = host.parentElement.getBoundingClientRect();
+      dragging = {
+        id: event.pointerId,
+        startX: event.clientX,
+        startY: event.clientY,
+        baseLeft: hostRect.left - stageRect.left,
+        baseTop: hostRect.top - stageRect.top,
+      };
+      palettePos = { left: dragging.baseLeft, top: dragging.baseTop };
+      host.classList.add('is-dragging');
+      head.setPointerCapture?.(event.pointerId);
+    });
+    head?.addEventListener('pointermove', (event) => {
+      if (!dragging || dragging.id !== event.pointerId) return;
+      event.stopPropagation();
+      const next = clampPalettePosition(host, host.parentElement,
+        dragging.baseLeft + (event.clientX - dragging.startX),
+        dragging.baseTop + (event.clientY - dragging.startY));
+      palettePos = next;
+      host.style.left = `${next.left}px`;
+      host.style.top = `${next.top}px`;
+    });
+    const finishDrag = (event) => {
+      if (!dragging || dragging.id !== event.pointerId) return;
+      event.stopPropagation();
+      dragging = null;
+      host.classList.remove('is-dragging');
+      if (head.hasPointerCapture?.(event.pointerId)) head.releasePointerCapture(event.pointerId);
+    };
+    head?.addEventListener('pointerup', finishDrag);
+    head?.addEventListener('pointercancel', finishDrag);
+    host.addEventListener('pointerover', (event) => {
+      const help = event.target.closest?.('.builder-palette-help');
+      if (help && !help.disabled) showPaletteTip(help);
+    });
+    host.addEventListener('pointerout', (event) => {
+      if (event.target.closest?.('.builder-palette-help')) hidePaletteTip();
+    });
+    host.addEventListener('focusin', (event) => {
+      const help = event.target.closest?.('.builder-palette-help');
+      if (help && !help.disabled) showPaletteTip(help);
+    });
+    host.addEventListener('focusout', (event) => {
+      if (event.target.closest?.('.builder-palette-help')) hidePaletteTip();
+    });
+  }
+  const q = (search?.value || '').trim().toLowerCase();
+  const labels = currentPalette().labels.filter(label =>
+    `${label} ${LABEL_EXPANSIONS[label] || ''}`.toLowerCase().includes(q));
+  list.replaceChildren();
+  if (!labels.length) {
+    const empty = document.createElement('p');
+    empty.className = 'builder-palette-empty';
+    empty.textContent = 'No matching label';
+    list.append(empty);
+    return;
+  }
+  for (const label of labels) {
+    const row = document.createElement('div');
+    row.className = 'builder-palette-item';
+    const add = document.createElement('button');
+    add.type = 'button';
+    add.className = 'builder-palette-add';
+    add.dataset.paletteLabel = label;
+    const code = document.createElement('span');
+    code.className = 'builder-palette-code';
+    code.textContent = label;
+    add.append(code);
+    const expansion = LABEL_EXPANSIONS[label];
+    if (expansion) {
+      const desc = document.createElement('span');
+      desc.className = 'builder-palette-desc';
+      desc.textContent = expansion;
+      add.append(desc);
+    }
+    add.setAttribute('aria-label', expansion ? `Add ${label} (${expansion})` : `Add ${label}`);
+    add.addEventListener('click', () => insertNodeFromPalette(label));
+    const route = nodeLessonRoute(label);
+    const help = document.createElement('button');
+    help.type = 'button';
+    help.className = 'builder-palette-help';
+    help.textContent = '?';
+    help.dataset.tooltip = route ? 'View in lessons' : 'No lesson page yet';
+    help.setAttribute('aria-label', route
+      ? `View ${label} in lessons`
+      : `No lesson page for ${label}`);
+    help.disabled = !route;
+    if (route) {
+      help.addEventListener('click', (event) => {
+        event.stopPropagation();
+        openNodeLesson(label);
+      });
+    }
+    row.append(add, help);
+    list.append(row);
+  }
 }
 
 function wireBuilderInput() {
@@ -820,6 +1031,11 @@ function wireCanvas(canvas) {
   canvas.addEventListener('contextmenu', onContextMenu);
   canvas.addEventListener('wheel', onWheel, { passive: false });
   canvas.addEventListener('keydown', onKeyDown);
+  canvas.addEventListener('focusout', (event) => {
+    const palette = document.getElementById('builderPalette');
+    if (state.editor || palette?.contains(event.relatedTarget)) return;
+    hideBuilderPalette();
+  });
   // Connectors belong to the editing session, not to the resting tree.
   // Leaving the canvas snaps the tree and removes them; hovering a label in
   // the unfocused view never brings them back.
@@ -833,6 +1049,12 @@ function wireCanvas(canvas) {
   // when the canvas never held DOM focus (mouse editing does not always move
   // focus). Menu and inline-editor presses are part of the session.
   document.addEventListener('pointerdown', (event) => {
+    const palette = document.getElementById('builderPalette');
+    if (palette && !palette.hidden && event.target !== canvas
+        && !palette.contains(event.target)
+        && !event.target.closest?.('.builder-menu, .builder-inline-input')) {
+      hideBuilderPalette();
+    }
     if (!state.canvasActive) return;
     if (event.target === canvas) return;
     if (event.target.closest?.('.builder-menu, .builder-inline-input')) return;
@@ -877,6 +1099,7 @@ function wireCanvas(canvas) {
 function onMouseDown(e) {
   const { sx, sy } = eventPos(e);
   const w = toWorld(sx, sy);
+  showBuilderPalette();
   if (!state.canvasActive) {
     state.canvasActive = true;
     draw();

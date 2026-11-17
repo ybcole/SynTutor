@@ -230,6 +230,18 @@
             <button type="button" data-builder-zoom="out" aria-label="Zoom out of syntax tree">&minus;</button>
             <button type="button" data-builder-zoom="fit" aria-label="Fit syntax tree">Fit</button>
           </div>
+          <aside id="builderPalette" class="builder-palette" aria-label="Nodes palette" hidden>
+            <div class="builder-palette-head">
+              <div class="builder-palette-title-group">
+                <h3>Nodes</h3>
+              </div>
+              <button id="builderPaletteToggle" class="builder-palette-toggle" type="button" aria-expanded="true" aria-label="Hide nodes palette">Hide</button>
+            </div>
+            <div class="builder-palette-body">
+              <input id="builderPaletteSearch" class="builder-palette-search" type="search" placeholder="Search labels..." aria-label="Search node labels" />
+              <div id="builderPaletteList" class="builder-palette-list"></div>
+            </div>
+          </aside>
           <canvas id="builderCanvas" class="builder-canvas" tabindex="0" aria-label="Syntax builder canvas" hidden></canvas>
           <div id="canvasControls" class="canvas-controls" hidden>
             <button id="builderClear" class="builder-btn" type="button" data-action="clear">Clear</button>
