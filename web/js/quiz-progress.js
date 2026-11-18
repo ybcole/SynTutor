@@ -1,4 +1,6 @@
-import { makeAttempt,validateAttempt,canReviewAttempt,gradeAttempt,summaryFor,quizKey,reinforcement } from './quiz-core.js';
+import { makeAttempt,validateAttempt,canReviewAttempt,gradeAttempt,summaryFor,quizKey,reinforcement,itemsFor } from './quiz-core.js';
+import { isResponseProvided } from './quiz-mixed-eval.js';
+import { makeV2Attempt, publishedBlueprint } from './quiz-v2.js';
 export function createQuizStore(bank,{storage,userId='guest',client=null,timeoutMs=5000}={}) {
   const key=`syntutor:assessments:v1:${userId}`;
   let state={attempts:{},drafts:{}},status='Saved on this device',blocked=false,queue=Promise.resolve();
@@ -16,12 +18,21 @@ export function createQuizStore(bank,{storage,userId='guest',client=null,timeout
     const awards={};
     for (const id of [...dirty]) {
       const attempt = state.attempts[id];
-      if (!attempt || attempt.practice || archived(attempt)) dirty.delete(id);
+      if (!attempt || (attempt.practice && !attempt.quiz_v2) || archived(attempt)) dirty.delete(id);
     }
-    for(const id of [...dirty].sort((a,b)=>state.attempts[a].started_at.localeCompare(state.attempts[b].started_at))){
-      const t=state.attempts[id];
-      const payload=Object.fromEntries(['attempt_id','assessment_id','content_version','seed','presented','responses','position'].map(k=>[k,t[k]]));
-      const {data,error}=await bounded(client.rpc('save_quiz_attempt',{p_attempt:payload,p_submit:Boolean(t.submitted_at)}));
+    for(const id of [...dirty].sort((a,b)=>Number(!!state.attempts[a].quiz_v2)-Number(!!state.attempts[b].quiz_v2)||state.attempts[a].started_at.localeCompare(state.attempts[b].started_at))){
+       const t=state.attempts[id];
+       if(t.quiz_v2&&t.practice){
+         const {error}=await bounded(client.from('quiz_practice_v2').upsert({user_id:userId,attempt_id:id,payload:t},{onConflict:'user_id,attempt_id'}));
+         if(error)throw Error('Quiz account sync unavailable; attempts remain saved on this device. Retry when connected.');
+         t.synced=true;dirty.delete(id);continue;
+       }
+      const keys=t.quiz_v2
+        ? ['attempt_id','assessment_id','content_version','spec','title','diagnostic','seed','presented','responses','position']
+        : ['attempt_id','assessment_id','content_version','seed','presented','responses','position'];
+      const payload=Object.fromEntries(keys.map(k=>[k,t[k]??null]));
+      const rpcName=t.quiz_v2?'save_quiz_v2_attempt':'save_quiz_attempt';
+      const {data,error}=await bounded(client.rpc(rpcName,{p_attempt:payload,p_submit:Boolean(t.submitted_at)}));
       if (error?.code === '22023' && error.message === 'Unknown published assessment version') {
         t.retired = true;
         dirty.delete(id);
@@ -45,7 +56,7 @@ export function createQuizStore(bank,{storage,userId='guest',client=null,timeout
       return result;};
     const locked=()=>globalThis.navigator?.locks?.request?navigator.locks.request(key,run):run();queue=queue.catch(()=>{}).then(locked);return queue;
   }
-  read();for(const t of Object.values(state.attempts))if(!t.practice&&!t.synced)dirty.add(t.attempt_id);
+  read();for(const t of Object.values(state.attempts))if((!t.practice||t.quiz_v2)&&!t.synced)dirty.add(t.attempt_id);
   return {
     get attempts(){return state.attempts;},get status(){return status;},
     draft(assessment){const t=state.attempts[state.drafts[quizKey(assessment)]];return t&&!t.submitted_at&&!archived(t)?t:null;},
@@ -56,27 +67,60 @@ export function createQuizStore(bank,{storage,userId='guest',client=null,timeout
       try{
         const {data,error}=await bounded(client.from('quiz_attempts_v1').select('attempt_id,assessment_id,content_version,seed,presented,responses,position,started_at,submitted_at,correct'));
         if(error)throw error;
-        for(const row of (data||[]).sort((a,b)=>a.started_at.localeCompare(b.started_at))){
+         for(const row of (data||[]).sort((a,b)=>a.started_at.localeCompare(b.started_at))){
           const old=state.attempts[row.attempt_id];
-          if(!old||row.submitted_at)state.attempts[row.attempt_id]={...row,practice:false,synced:true};
+          if(!old||row.submitted_at)state.attempts[row.attempt_id]={...row,practice:false,synced:true,...(old?.flagged?.length?{flagged:old.flagged}:{})};
           if (row.submitted_at) dirty.delete(row.attempt_id);
           if (archived(state.attempts[row.attempt_id])) continue;
           const draft=state.attempts[state.drafts[quizKey(row)]];
           if(row.submitted_at&&draft?.attempt_id===row.attempt_id)delete state.drafts[quizKey(row)];
           else if(!row.submitted_at&&(!draft||draft.submitted_at||row.started_at>draft.started_at))state.drafts[quizKey(row)]=row.attempt_id;
-        }
+         }
+         const v2Rows=await bounded(client.from('quiz_attempts_v2').select('attempt_id,assessment_id,content_version,spec,title,diagnostic,seed,presented,responses,position,started_at,submitted_at,correct'));
+         if(v2Rows?.error)throw v2Rows.error;
+         for(const row of (v2Rows?.data||[]).sort((a,b)=>a.started_at.localeCompare(b.started_at))){
+           const restored={...row,quiz_v2:true,practice:false,xp_policy:'verified-v2',assessment_contract:'quiz-v2-formal-1',includes_unreviewed:false,synced:true};
+           if(!canReviewAttempt(bank,restored))continue;
+           const old=state.attempts[restored.attempt_id];
+           if(!old||old.synced||restored.submitted_at){state.attempts[restored.attempt_id]={...restored,...(old?.flagged?.length?{flagged:old.flagged}:{})};dirty.delete(restored.attempt_id);}
+           const t=state.attempts[restored.attempt_id];
+           if(t.submitted_at){if(state.drafts[quizKey(t)]===t.attempt_id)delete state.drafts[quizKey(t)];}
+           else{
+             const draft=state.attempts[state.drafts[quizKey(t)]];
+             if(!draft||draft.submitted_at||draft.started_at<t.started_at)state.drafts[quizKey(t)]=t.attempt_id;
+           }
+         }
+         const practiceRows=await bounded(client.from('quiz_practice_v2').select('payload'));
+         if(practiceRows?.error)throw practiceRows.error;
+         for(const {payload} of practiceRows?.data||[]){
+           if(!payload?.quiz_v2||!payload.practice||!canReviewAttempt(bank,payload))continue;
+           const old=state.attempts[payload.attempt_id];
+           if(!old||old.synced||payload.submitted_at){state.attempts[payload.attempt_id]={...payload,synced:true};dirty.delete(payload.attempt_id);}
+           const t=state.attempts[payload.attempt_id];
+           if(t.submitted_at){if(state.drafts[quizKey(t)]===t.attempt_id)delete state.drafts[quizKey(t)];}
+           else {
+             const draft=state.attempts[state.drafts[quizKey(t)]];
+             if(!draft||draft.submitted_at||draft.started_at<t.started_at)state.drafts[quizKey(t)]=t.attempt_id;
+           }
+         }
         write();await sync();
       }catch{blocked=true;status='Account sync unavailable; attempts remain saved on this device';}
     },
-    start(assessment,seed){return transact(()=>{const t=makeAttempt(bank,assessment,seed);state.attempts[t.attempt_id]=t;state.drafts[quizKey(t)]=t.attempt_id;dirty.add(t.attempt_id);return t;});},
+     start(assessment,seed){return transact(()=>{const t=makeAttempt(bank,assessment,seed);state.attempts[t.attempt_id]=t;state.drafts[quizKey(t)]=t.attempt_id;dirty.add(t.attempt_id);return t;});},
+     startV2(curriculum,spec,seed){return transact(()=>{const published=publishedBlueprint(bank,curriculum,spec);const t=published?makeAttempt(bank,published,seed):makeV2Attempt(bank,curriculum,spec,state.attempts,seed);state.attempts[t.attempt_id]=t;state.drafts[quizKey(t)]=t.attempt_id;dirty.add(t.attempt_id);return t;});},
     practice(seed){return transact(()=>{const t=reinforcement(bank,state.attempts,seed);state.attempts[t.attempt_id]=t;return t;});},
     answer(id,itemId,answer){return transact(()=>{const t=state.attempts[id];if(!t||t.submitted_at)throw Error('This attempt is read-only. Start a new attempt to retry.');
       const next={...t,synced:false,responses:{...t.responses,[itemId]:answer}};validateAttempt(bank,next);state.attempts[id]=next;dirty.add(id);return next;});},
-    move(id,position){return transact(()=>{const t=state.attempts[id];if(!t||!Number.isInteger(position)||position<0||position>4)throw Error('Invalid question position');t.position=position;if(!t.submitted_at){t.synced=false;dirty.add(id);}return t;});},
-    submit(id){return transact(()=>{const t=state.attempts[id];if(!t)throw Error('Unknown attempt');
+    clearAnswer(id,itemId){return transact(()=>{const t=state.attempts[id];if(!t||t.submitted_at)throw Error('This attempt is read-only. Start a new attempt to retry.');
+      const responses={...t.responses};delete responses[itemId];const next={...t,synced:false,responses};validateAttempt(bank,next);state.attempts[id]=next;dirty.add(id);return next;});},
+    move(id,position){return transact(()=>{const t=state.attempts[id];if(!t||!Number.isInteger(position)||position<0||position>=t.presented.length)throw Error('Invalid question position');t.position=position;if(!t.submitted_at){t.synced=false;dirty.add(id);}return t;});},
+    toggleFlag(id,itemId){return transact(()=>{const t=state.attempts[id];if(!t||t.submitted_at)throw Error('This attempt cannot be modified.');if(!t.presented.some(r=>r.item_id===itemId))throw Error('Unknown question.');const current=Array.isArray(t.flagged)?t.flagged:[];const flagged=current.includes(itemId)?current.filter(x=>x!==itemId):[...current,itemId];const next={...t,flagged};state.attempts[id]=next;return next;});},
+    submit(id,{requireComplete=false}={}){return transact(()=>{const t=state.attempts[id];if(!t)throw Error('Unknown attempt');
       if(t.submitted_at)return {attempt_id:id,earned:0,grade:gradeAttempt(bank,t)};
-      const a=bank.assessments.find(a=>quizKey(a)===quizKey(t));const before=t.practice?0:summaryFor(bank,state.attempts,a).xp_awarded;
-      const grade=gradeAttempt(bank,t);t.submitted_at=new Date().toISOString();t.synced=false;dirty.add(id);delete state.drafts[quizKey(t)];
+      if(requireComplete&&itemsFor(bank,t).some(q=>!isResponseProvided(q,t.responses?.[q.item_id])))throw Error('Answer every question before submitting.');
+      const a=bank.assessments.find(a=>quizKey(a)===quizKey(t))||{assessment_id:t.assessment_id,content_version:t.content_version};
+      const before=t.practice?0:summaryFor(bank,state.attempts,a).xp_awarded;
+      const grade=gradeAttempt(bank,t);if(t.quiz_v2)t.correct=grade.correct;t.submitted_at=new Date().toISOString();t.synced=false;dirty.add(id);delete state.drafts[quizKey(t)];
       return {attempt_id:id,earned:t.practice?0:Math.max(0,grade.target_xp-before),grade};});},
     async retry(){blocked=false;await this.load();},
   };

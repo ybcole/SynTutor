@@ -1,14 +1,19 @@
 // Deterministic assessment manifests and grading; independent of lesson progress.
+import { isMixedKind, gradeQuestion } from './quiz-mixed-eval.js';
 export const quizKey = q => `${q.assessment_id}@${q.content_version}`;
 export const itemKey = q => `${q.item_id}@${q.content_version}`;
-export const targetXp = correct => {
-  if (!Number.isInteger(correct) || correct < 0 || correct > 5) throw new Error('Score must be an integer from 0 to 5.');
-  return Math.max(0,10-2*(5-correct));
+export const MAX_QUIZ_ITEMS = 1000; // Matches the private practice persistence contract.
+export const targetXp = (correct, total = 5) => {
+  if (!Number.isInteger(total) || total < 1) throw new Error('Question count must be positive.');
+  if (!Number.isInteger(correct) || correct < 0 || correct > total) throw new Error('Score must be an integer from 0 to ' + total + '.');
+  return 2 * correct;
 };
 export function rng(seed) { let x=seed>>>0;return ()=>{x=(1664525*x+1013904223)%4294967296;return x/4294967296;}; }
 export function shuffled(values,random) {const a=[...values];for(let i=a.length-1;i>0;i--){const j=Math.floor(random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 export function randomSeed() { return crypto.getRandomValues(new Uint32Array(1))[0]; }
 export function reviewed(row) { return row?.review_status==='INDEPENDENTLY_REVIEWED' && row.independent_review===true && Boolean(row.reviewed_by && row.reviewed_on); }
+export function projectApproved(row) { return row?.review_status==='PROJECT_APPROVED' && row.independent_review===false && Boolean(row.approved_by); }
+export function approved(row) { return reviewed(row) || projectApproved(row); }
 export function validateBank(bank) {
   if(bank?.schema_version!=='1.0.0'||!bank.items?.length||!bank.assessments?.length)throw new Error('Invalid assessment bank.');
   const sources=new Map(bank.sources.map(s=>[s.id,s]));
@@ -35,12 +40,64 @@ export function makeAttempt(bank,assessment,seed=randomSeed(),id=crypto.randomUU
     responses:{},position:0,started_at:new Date().toISOString(),submitted_at:null,practice:false};
 }
 export function itemsFor(bank,attempt) {
-  return attempt.presented.map(ref=>{const q=bank.items.find(q=>q.item_id===ref.item_id&&q.content_version===ref.content_version);if(!q)throw new Error('Assessment content version is unavailable.');return q;});
+  const verifiedFormal = attempt.quiz_v2===true&&attempt.practice===false&&attempt.xp_policy==='verified-v2'
+    &&attempt.assessment_contract==='quiz-v2-formal-1'&&attempt.spec?.content_tier==='lesson-assessment';
+  const practice=attempt.quiz_v2===true&&attempt.practice===true&&attempt.xp_policy==='unscored-v2'&&attempt.spec?.content_tier==='lesson-practice';
+  const formalPractice=attempt.quiz_v2===true&&attempt.practice===true&&attempt.xp_policy==='unscored-v2'
+    &&attempt.assessment_contract==='quiz-v2-formal-1'&&attempt.spec?.content_tier==='lesson-assessment';
+  const items=verifiedFormal?[...bank.items,...(bank.assessment_items||[])].filter(q=>approved(q)&&q.publication_status==='published')
+    :formalPractice?[...bank.items,...(bank.assessment_items||[])]
+    :practice?[...bank.items,...(bank.mixed_items||[]),...(bank.practice_items||[]),...(bank.assessment_items||[])]:bank.items;
+  return attempt.presented.map(ref=>{const q=items.find(q=>q.item_id===ref.item_id&&q.content_version===ref.content_version);if(!q)throw new Error('Assessment content version is unavailable.');return q;});
+}
+// The attempt UI receives a question-only projection: never answer keys,
+// option rationales, source explanations, answer trees or correctness flags.
+export function questionForLearner(bank,attempt,index=attempt.position){
+  const q=itemsFor(bank,attempt)[index];
+  if(!q)throw Error('Unknown question position.');
+  const ref=attempt.presented[index];
+  if(isMixedKind(q.kind)){
+    return {
+      item_id:q.item_id,
+      kind:q.kind,
+      prompt:q.prompt,
+      ...(q.stimulus?{stimulus:{sentence:q.stimulus.sentence}}:{}),
+      ...(q.kind==='sentence_reconstruction'&&Array.isArray(q.tokens)?{
+        tokens:q.tokens,
+        token_order:ref?.token_order||q.tokens.map((_,i)=>i),
+      }:{}),
+      ...(q.kind==='tree_builder'||q.kind==='syntax_correction'?{
+        profile:q.profile||q.expected_tree?.convention_profile,
+        labels:q.labels,
+        seed_tokens:q.seed_tokens,
+        seed_tree:q.seed_tree||null,
+      }:{}),
+    };
+  }
+  return {item_id:q.item_id,kind:q.kind,prompt:q.prompt,
+    ...(q.stimulus?{stimulus:{sentence:q.stimulus.sentence}}:{}),
+    options:q.options.map(o=>({id:o.id,text:o.text,...(o.diagram?{diagram:o.diagram}:{})})),
+  };
+}
+export function reviewForLearner(bank,attempt){
+  if(!attempt.submitted_at)throw Error('Submit the quiz before viewing scores, answers or explanations.');
+  return gradeAttempt(bank,attempt);
 }
 export function validateAttempt(bank,attempt) {
-  if(!attempt||!Array.isArray(attempt.presented)||attempt.presented.length!==5||new Set(attempt.presented.map(r=>r.item_id)).size!==5)throw new Error('Exactly five distinct question versions are required.');
+  const v2 = attempt?.quiz_v2 === true;
+  if (v2) {
+    const validPractice = attempt.practice === true && attempt.xp_policy === 'unscored-v2';
+    const validVerified = attempt.practice === false && attempt.xp_policy === 'verified-v2'
+      && attempt.assessment_contract === 'quiz-v2-formal-1' && attempt.spec?.content_tier === 'lesson-assessment';
+    if (attempt.content_version !== '2.0.0' || (!validPractice && !validVerified)) {
+      throw Error('Quiz V2 requires verified-v2 policy or valid unscored practice metadata.');
+    }
+  }
+  const count = attempt?.presented?.length;
+  if(!attempt||!Array.isArray(attempt.presented)||!Number.isInteger(count)||count<1||count>MAX_QUIZ_ITEMS||(!v2&&count!==5)||new Set(attempt.presented.map(r=>r.item_id)).size!==count)throw new Error('Distinct question versions are required (five for published assessments).');
+  if(v2 && (['topic','personalized'].includes(attempt.spec?.mode) && count!==5)) throw Error('This quiz requires five questions.');
   const items=itemsFor(bank,attempt);
-  if(!attempt.practice){
+  if(!attempt.practice&&!v2){
     const a=bank.assessments.find(a=>quizKey(a)===quizKey(attempt));if(!a)throw new Error('Unknown assessment version.');
     const expected=makeAttempt(bank,a,attempt.seed,attempt.attempt_id).presented;
     // The full deterministic order is preserved for review and reload.
@@ -51,12 +108,34 @@ export function validateAttempt(bank,attempt) {
     })) throw new Error('Assessment manifest does not match its seed/blueprint.');
   }
   for(let i=0;i<items.length;i++){
+    const q=items[i];
+    if(isMixedKind(q.kind)){
+      if(q.kind==='sentence_reconstruction'){
+        const tOrder=attempt.presented[i].token_order;
+        if(!Array.isArray(tOrder)||tOrder.length!==q.tokens.length||new Set(tOrder).size!==q.tokens.length||tOrder.some(idx=>!Number.isInteger(idx)||idx<0||idx>=q.tokens.length)){
+          throw new Error('Invalid token ordering.');
+        }
+      }
+      continue;
+    }
     const order=attempt.presented[i].option_order;
-    if(!Array.isArray(order)||new Set(order).size!==order.length||order.length!==items[i].options.length||order.some(id=>!items[i].options.some(o=>o.id===id)))throw new Error('Invalid option ordering.');
+    if(!Array.isArray(order)||new Set(order).size!==order.length||order.length!==q.options.length||order.some(id=>!q.options.some(o=>o.id===id)))throw new Error('Invalid option ordering.');
   }
   if(!attempt.responses||typeof attempt.responses!=='object'||Array.isArray(attempt.responses)||Object.keys(attempt.responses).some(id=>!items.some(q=>q.item_id===id)))throw new Error('Unexpected answer IDs.');
-  for(const q of items)if(attempt.responses[q.item_id]!=null&&!q.options.some(o=>o.id===attempt.responses[q.item_id]))throw new Error('Unknown answer.');
-  if(!Number.isInteger(attempt.position)||attempt.position<0||attempt.position>4)throw new Error('Invalid question position.');
+  for(const q of items){
+    const resp=attempt.responses[q.item_id];
+    if(resp==null)continue;
+    if(q.kind==='fill_blank'||q.kind==='grammar_correction'){
+      if(typeof resp!=='string'||resp.length>600)throw new Error('Invalid text answer.');
+    }else if(q.kind==='sentence_reconstruction'){
+      if(!Array.isArray(resp)||resp.length>q.tokens.length||new Set(resp).size!==resp.length||resp.some(idx=>!Number.isInteger(idx)||idx<0||idx>=q.tokens.length))throw new Error('Invalid reconstructed order.');
+    }else if(q.kind==='tree_builder'||q.kind==='syntax_correction'){
+      if(typeof resp!=='object'||Array.isArray(resp)||!resp.model||typeof resp.model.nodes!=='object')throw new Error('Invalid syntax tree answer.');
+    }else if(!q.options.some(o=>o.id===resp)){
+      throw new Error('Unknown answer.');
+    }
+  }
+  if(!Number.isInteger(attempt.position)||attempt.position<0||attempt.position>=count)throw new Error('Invalid question position.');
   return items;
 }
 export function canReviewAttempt(bank, attempt) {
@@ -69,10 +148,12 @@ export function canReviewAttempt(bank, attempt) {
 }
 export function gradeAttempt(bank,attempt) {
   const items=validateAttempt(bank,attempt);
-  const results=items.map(q=>({item_id:q.item_id,content_version:q.content_version,pool_id:q.pool_id,lesson_id:q.lesson_id,concept_ids:q.concept_ids,outcome_ids:q.outcome_ids,
-    response:attempt.responses[q.item_id]??null,answer:q.answer,correct:attempt.responses[q.item_id]===q.answer}));
+  const results=items.map(q=>{
+    const graded=gradeQuestion(q,attempt.responses[q.item_id]);
+    return {item_id:q.item_id,content_version:q.content_version,pool_id:q.pool_id,lesson_id:q.lesson_id,concept_ids:q.concept_ids,outcome_ids:q.outcome_ids,...graded};
+  });
   const correct=results.filter(r=>r.correct).length;
-  return {correct,incorrect:5-correct,target_xp:attempt.practice?0:targetXp(correct),results};
+  return {correct,incorrect:items.length-correct,target_xp:attempt.practice?0:targetXp(correct,items.length),results};
 }
 export function summaryFor(bank,attempts,assessment) {
   const rows=Object.values(attempts).filter(t=>!t.practice&&!t.retired&&t.submitted_at&&quizKey(t)===quizKey(assessment)&&canReviewAttempt(bank,t));

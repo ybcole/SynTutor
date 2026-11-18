@@ -5,17 +5,7 @@ import { createLessonStore } from './lesson-progress.js';
 import { createFoundationStore } from './foundation-progress.js';
 import { renderFoundationCheck } from './foundation-check.js';
 import { addFoundationsBookCoverage } from './lesson-presentation.js';
-import { constituentsPilot } from './constituents-pilot.js';
-import { functionsPilot } from './functions-pilot.js';
-import { categoriesPilot } from './categories-pilot.js';
-import { basicVpPilot } from './basic-vp-pilot.js';
-import { adverbialsPilot } from './adverbials-pilot.js';
-import { auxiliariesPilot } from './auxiliaries-pilot.js';
-import { nounPhrasesPilot } from './noun-phrases-pilot.js';
-import { embeddedClausesPilot } from './embedded-clauses-pilot.js';
-import { whClausesPilot } from './wh-clauses-pilot.js';
-import { nonFinitePilot } from './non-finite-pilot.js';
-import { grammarPilot } from './grammar-pilot.js';
+import { pilotArticles, cambridgePilotIds, loadActiveCourse } from './lesson-curriculum.js';
 import { requestEvidence, renderEvidence } from './explanation-evidence.js?v=2026.11.18c';
 import { subscribeAuthState } from './auth.js';
 import { plainName } from './ui.js?v=2026.11.18c';
@@ -50,8 +40,18 @@ const articleLessons = {
 
 let options = {}, course, store, foundations, host, active = null, step = 0, track = 'foundations', busy = false, notice = '', generation = 0, lastFocus = null;
 let reviewStage = null;
+const catalogScroll = { foundations: 0, grammar: 0 };
+const catalogHostScroll = { foundations: 0, grammar: 0 };
 let articlePage = 0, practiceResponses = null, assessmentIndex = 0;
 let closeLessonDictionary;
+let contentsOpen = true;
+function backArrowButton(label, fn) {
+  const b = button('', fn, 'header-icon-btn');
+  b.setAttribute('aria-label', label);
+  b.title = label;
+  b.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>';
+  return b;
+}
 const legacyArticleSections = [
   { id: 'introduction', advances: 'predict' },
   { id: 'concepts', advances: 'understand' },
@@ -59,24 +59,6 @@ const legacyArticleSections = [
   { id: 'application' },
   { id: 'recap', advances: 'worked', references: true },
   { id: 'closing-check', assessment: true },
-];
-const pilotArticles = {
-  'br-01': constituentsPilot,
-  'br-02': functionsPilot,
-  'br-03': categoriesPilot,
-  'br-04': basicVpPilot,
-  'br-05': adverbialsPilot,
-  'br-06': auxiliariesPilot,
-  'br-07': nounPhrasesPilot,
-  'br-08': embeddedClausesPilot,
-  'br-09': whClausesPilot,
-  'br-10': nonFinitePilot,
-  'br-11': grammarPilot,
-};
-const cambridgePilotIds = [
-  'cgel-clauses', 'cgel-ch01', 'cgel-ch03', 'cgel-ch04', 'cgel-ch05', 'cgel-ch06',
-  'cgel-ch07', 'cgel-ch08', 'cgel-ch09', 'cgel-ch10', 'cgel-ch11', 'cgel-ch12', 'cgel-ch13', 'cgel-ch14', 'cgel-ch15',
-  'cgel-ch16', 'cgel-ch17', 'cgel-ch18', 'cgel-ch19', 'cgel-ch20',
 ];
 const previewMode = () => {
   if (!['localhost', '127.0.0.1', '[::1]'].includes(location.hostname)) return null;
@@ -86,9 +68,10 @@ const previewMode = () => {
 const pilotPreview = () => previewMode() && previewMode() !== 'legacy';
 const deviceRelease = () => previewMode() === null;
 const lessonUserId = () => pilotPreview() ? 'guest' : options.userId?.() || 'guest';
+const accountFoundations = () => !pilotPreview() && lessonUserId() !== 'guest' && Boolean(options.client?.());
 const readingScope = () => pilotPreview() ? `preview-${previewMode()}` : lessonUserId();
-const revisedScope = () => deviceRelease() ? `device-review:${lessonUserId()}` : readingScope();
-const mayUseRevisedPrerequisite = () => !deviceRelease() || lessonUserId() === 'guest' || !options.client?.();
+const revisedScope = () => accountFoundations() ? lessonUserId() : (deviceRelease() ? `device-review:${lessonUserId()}` : readingScope());
+const mayUseRevisedPrerequisite = () => !accountFoundations();
 const legacyLessonLinks = { NP: 'br-07', ADJP: 'br-03', VP: 'br-04', S: 'br-02', SBAR: 'br-08', SBARQ: 'br-09' };
 const postTestKeys = ['guided', 'transfer', 'exit'];
 const lessonCanvases = new Map();
@@ -144,12 +127,13 @@ export function renderLessonTree(envelope, {
   measure.font = '15px system-ui, sans-serif';
   const gap = 18;
   const rowHeight = 72;
-  const top = 35;
+  const top = 38;
   const widths = new Map();
   function widthOf(node) {
     if (widths.has(node)) return widths.get(node);
     const children = node.children || [];
-    const width = Math.max(node.id === focusId ? 122 : 56,
+    const boxed = node.id === focusId || (highlightWords && node.id && onSelectNode);
+    const width = Math.max(boxed ? 122 : 56,
       measure.measureText(visibleLabel(node)).width + 28,
       ...featureRows(node).map(feature => measure.measureText(feature).width + 28),
       measure.measureText(node.words?.join(' ') || '').width + 28,
@@ -474,8 +458,37 @@ function articleSectionNav(lesson, progress, sections, mobile = false) {
   }
   nav.append(list);
   if (!mobile) {
-    const sidebar = el('aside', undefined, 'lesson-section-sidebar');
-    sidebar.append(el('p', 'Chapter contents'), nav);
+    const sidebar = el('aside', undefined, `lesson-section-sidebar${contentsOpen ? '' : ' is-collapsed'}`);
+    const drawer = el('div', undefined, 'lesson-section-drawer');
+    const panel = el('div', undefined, 'lesson-section-panel');
+    const panelHead = el('div', undefined, 'lesson-contents-header');
+    panelHead.append(el('span', 'Chapter contents', 'lesson-contents-label'));
+    const syncNavVisibility = () => {
+      nav.inert = !contentsOpen;
+      nav.setAttribute('aria-hidden', String(!contentsOpen));
+      panel.setAttribute('aria-hidden', String(!contentsOpen));
+    };
+    syncNavVisibility();
+    panel.append(panelHead, nav);
+    drawer.append(panel);
+
+    const toggle = el('button', undefined, 'lesson-contents-toggle');
+    toggle.type = 'button';
+    toggle.setAttribute('aria-expanded', String(contentsOpen));
+    toggle.setAttribute('aria-label', contentsOpen ? 'Collapse chapter contents' : 'Expand chapter contents');
+    const chevron = el('span', undefined, 'lesson-contents-chevron');
+    chevron.setAttribute('aria-hidden', 'true');
+    chevron.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>';
+    toggle.append(chevron);
+    toggle.addEventListener('click', () => {
+      contentsOpen = !contentsOpen;
+      sidebar.classList.toggle('is-collapsed', !contentsOpen);
+      toggle.setAttribute('aria-expanded', String(contentsOpen));
+      toggle.setAttribute('aria-label', contentsOpen ? 'Collapse chapter contents' : 'Expand chapter contents');
+      syncNavVisibility();
+      host.querySelector('.lesson-reader')?.classList.toggle('is-nav-collapsed', !contentsOpen);
+    });
+    sidebar.append(drawer, toggle);
     return sidebar;
   }
   const details = el('details', undefined, 'lesson-section-mobile');
@@ -493,6 +506,9 @@ function currentLesson() { return course.lessons.find(l => l.lesson_id===active)
 function progressFor(lesson) {
   const legacy = store.records[lessonKey(lesson)] || emptyProgress();
   return lesson.revised_assessment ? { ...legacy, ...foundations.progress(lesson) } : legacy;
+}
+function isVerifiedCompleted(progress) {
+  return Boolean(Object.hasOwn(progress, 'verified_completed_at') ? progress.verified_completed_at : progress.completed_at);
 }
 
 function recordFoundationVisit(lesson, section) {
@@ -512,7 +528,7 @@ function recordFoundationVisit(lesson, section) {
 }
 async function act(event, afterSave) {
   if (busy) return;const token=generation;const focused=document.activeElement;const focusName=focused?.name,focusValue=focused?.value;let saved;busy=true;render();
-  try { const result=await store.act(currentLesson(),event);if(token!==generation)return;saved=progressFor(currentLesson());notice=result.earned ? (store.status === 'Synced to your account'
+   try { const result=await store.act(currentLesson(),event);if(token!==generation)return;if(result.earned)options.onProgress?.();saved=progressFor(currentLesson());notice=result.earned ? (store.status === 'Synced to your account'
       ? 'Lesson complete. 15 lesson XP awarded for this content version.'
       : 'Lesson complete. 15 lesson XP awarded on this device. Verified account XP requires account sync.') : ''; }
   catch(error) { if(token!==generation)return;notice=error.message; }
@@ -532,6 +548,7 @@ function selectLesson(id, { section, workedExample } = {}) {
   practiceResponses = null;
   assessmentIndex = 0;
   const lesson = currentLesson();
+  if (lesson?.track) track = lesson.track;
   const article = lesson && articleFor(lesson);
   if (article) {
     const sections = articleSections(article);
@@ -544,6 +561,7 @@ function selectLesson(id, { section, workedExample } = {}) {
   }
 }
 function openLesson(id, routeOptions, replace = false) {
+  if (!active && id) catalogHostScroll[track] = host.scrollTop;
   generation++;
   busy = false;
   selectLesson(id, routeOptions);
@@ -552,7 +570,7 @@ function openLesson(id, routeOptions, replace = false) {
   if (article) updateLessonRoute(sectionRoute(lesson, articleSections(article)[articlePage]), replace);
   else updateLessonRoute(lesson ? `#lesson/${id}` : '#lesson/catalog', replace);
   render();
-  host.scrollTop = 0;
+  host.scrollTop = id ? 0 : (catalogHostScroll[track] || 0);
   const heading = routeOptions?.section || routeOptions?.workedExample
     ? host.querySelector('.lesson-stage-body h2') : host.querySelector('h1');
   heading?.focus({ preventScroll: true });
@@ -571,19 +589,19 @@ function progressSummary() {
   const summary = el('aside', undefined, 'lesson-catalog-summary');
   summary.setAttribute('aria-label', 'Course progress');
   const overview = el('section', undefined, 'lesson-summary-card');
-  const completed = course.lessons.filter(lesson => progressFor(lesson).completed_at).length;
+  const completed = course.lessons.filter(lesson => isVerifiedCompleted(progressFor(lesson))).length;
   const revised = course.lessons.filter(lesson => lesson.revised_assessment);
   const retired = new Set(revised.map(lesson => lesson.lesson_id));
   const legacy = Object.fromEntries(Object.entries(store.records).filter(([key]) => !retired.has(key.split('@')[0])));
   const xp = lessonXp(legacy) + revised.reduce((total, lesson) => total + foundations.progress(lesson).verified_xp, 0);
   overview.append(
     el('h2', 'Overall progress'),
-    el('p', `${completed} / ${course.lessons.length} lessons completed · ${xp} lesson XP${deviceRelease() ? ' in this view' : ''}`, 'lesson-total'),
+    el('p', `${completed} / ${course.lessons.length} lessons completed · ${xp} lesson XP${deviceRelease() && !accountFoundations() ? ' in this view' : ''}`, 'lesson-total'),
     progressBar(completed, course.lessons.length, 'Overall lesson progress'),
   );
   for (const group of course.tracks) {
     const lessons = course.lessons.filter(lesson => lesson.track === group.id);
-    const count = lessons.filter(lesson => progressFor(lesson).completed_at).length;
+    const count = lessons.filter(lesson => isVerifiedCompleted(progressFor(lesson))).length;
     overview.append(el('p', `${group.title} · ${count} of ${lessons.length} completed`, 'lesson-track-progress'));
   }
   const activity = el('section', undefined, 'lesson-summary-card');
@@ -599,8 +617,9 @@ function progressSummary() {
     const format = new Intl.DateTimeFormat(undefined, { dateStyle: 'medium' });
     for (const { lesson, progress, date } of recent) {
       const entry = el('li');
-      const status = progress.completed_at ? 'Completed' :
-        lesson.revised_assessment ? 'In progress' : `Part ${progress.stage + 1} of ${STAGES.length}`;
+      const status = isVerifiedCompleted(progress) ? 'Completed' :
+        progress.pending ? 'Pending sync' :
+          lesson.revised_assessment ? 'In progress' : `Part ${progress.stage + 1} of ${STAGES.length}`;
       const time = el('time', format.format(new Date(date)));
       time.dateTime = date;
       entry.append(button(lesson.title, () => openLesson(lesson.lesson_id), 'lesson-activity-link'), el('span', `${status} · `), time);
@@ -612,67 +631,73 @@ function progressSummary() {
   return summary;
 }
 function catalog() {
-  const header = el('header', undefined, 'curriculum-header');
-  const heading = el('h1', 'Lesson modules');
+  const header = el('header', undefined, 'view-header curriculum-header');
+  const heading = el('h1', 'Lesson modules', 'view-title');
   heading.tabIndex = -1;
   header.append(heading);
-  if (deviceRelease() && track === 'foundations') {
-    header.append(el('p', 'Revised Foundations · progress and XP are saved on this device during review.', 'lesson-guide-note'));
-  }
   host.append(header);
   const layout = el('div', undefined, 'lesson-catalog-layout');
   const content = el('div', undefined, 'lesson-catalog-content');
+  const folder = el('div', undefined, 'lesson-folder-panel');
   const tabs=el('div',undefined,'lesson-track-tabs');tabs.setAttribute('role','group');tabs.setAttribute('aria-label','Learning tracks');
-  for (const t of course.tracks) { const b=button(t.title,()=>{track=t.id;render();});b.setAttribute('aria-pressed',String(track===t.id));tabs.append(b); }
-  content.append(tabs);
+  for (const t of course.tracks) {
+    const b=button(t.title,()=>{
+      const curSheet=host.querySelector('.lesson-tab-sheet');
+      if(curSheet)catalogScroll[track]=curSheet.scrollTop;
+      catalogHostScroll[track]=host.scrollTop;
+      track=t.id;
+      render();
+    });
+    b.setAttribute('aria-pressed',String(track===t.id));
+    tabs.append(b);
+  }
+  const sheet = el('div', undefined, 'lesson-tab-sheet');
+  sheet.addEventListener('scroll', () => { catalogScroll[track] = sheet.scrollTop; }, { passive: true });
   const modules = el('div', undefined, 'lesson-modules');
   for (const lesson of course.lessons.filter(l => l.track === track)) {
     const progress = progressFor(lesson);
     const revised = lesson.revised_assessment;
     const completedStages = revised ? progress.visited.length : STAGES.filter(stage => progress.visited.includes(stage)).length;
     const totalStages = revised?.required_sections.length ?? STAGES.length;
-    const started = completedStages > 0 || Object.keys(progress.responses).length > 0 ||
+    const started = completedStages > 0 || Object.keys(progress.responses || {}).length > 0 ||
+      progress.opening_first_response != null || progress.last_correct != null ||
       readingState(lesson).visited.some(id => id !== 'introduction');
-    const chapter = lesson.track === 'foundations' ? `Chapter ${lesson.chapter}` : `Cambridge · Chapter ${lesson.chapter}`;
+    const verifiedComplete = isVerifiedCompleted(progress);
+    const chapter = `Chapter ${lesson.chapter}`;
     const card = el('article', undefined, 'curriculum-card lesson-module');
+    card.dataset.lessonCard = lesson.lesson_id;
     card.append(
       el('p', chapter, 'lesson-eyebrow'),
       el('h2', lesson.title),
     );
     const description = articleFor(lesson)?.description ?? course.module_descriptions?.[lesson.lesson_id];
     if (description) card.append(el('p', description, 'lesson-module-description'));
-    const objective = el('p', undefined, 'lesson-module-objective');
-    objective.append(el('strong', 'Learning objective'), ' ', lesson.outcomes[0].text);
-    card.append(objective);
-    const prerequisites = lesson.prerequisites.filter(pr => {
-      const previous = course.lessons.find(candidate => candidate.lesson_id === pr.lesson_id);
-      if (previous?.revised_assessment && revised) return !progressFor(previous).completed_at;
-      return !store.records[lessonKey(pr)]?.completed_at &&
-        !(mayUseRevisedPrerequisite() && previous?.revised_assessment && progressFor(previous).completed_at);
-    });
-    if (prerequisites.length) {
-      const names = prerequisites.map(pr => course.lessons.find(l => l.lesson_id === pr.lesson_id).title);
-      card.append(el('p', revised ? `Recommended first: ${names.join(', ')}. You can work through this chapter now.`
-        : `Complete ${names.join(', ')} before finishing this lesson. You can start reading now.`, 'lesson-prerequisite'));
+    if (lesson.outcomes?.[0]?.text) {
+      const objective = el('p', undefined, 'lesson-module-objective');
+      objective.append(el('strong', 'Learning objective'), ' ', lesson.outcomes[0].text);
+      card.append(objective);
     }
 
     const footer = el('div', undefined, 'lesson-module-footer');
     const meter = el('div', undefined, 'lesson-module-progress');
     meter.append(el('p', `${completedStages} of ${totalStages} ${revised ? 'required sections visited' : 'stages completed'}`),
       progressBar(completedStages, totalStages, `${lesson.title} progress`));
-    const action = progress.completed_at ? 'Review lesson' : started ? 'Resume lesson' : 'Start lesson';
+    const action = verifiedComplete ? 'Review lesson' : started ? 'Resume lesson' : 'Start lesson';
     const actionStyle = action === 'Resume lesson' ? 'lesson-open lesson-resume lesson-primary' : 'lesson-open';
     footer.append(meter, button(action, () => openLesson(lesson.lesson_id), actionStyle));
     card.append(footer);
     modules.append(card);
   }
-  content.append(modules);
+  sheet.append(modules);
   if (track==='grammar') {
     const planned=el('details',undefined,'lesson-planned');planned.append(el('summary',`${course.planned_modules.length} further topics planned — not published`));
-    const list=el('ul');for(const p of course.planned_modules)list.append(el('li',`${p.title}: ${p.reason}`));planned.append(list);content.append(planned);
+    const list=el('ul');for(const p of course.planned_modules)list.append(el('li',`${p.title}: ${p.reason}`));planned.append(list);sheet.append(planned);
   }
+  folder.append(tabs, sheet);
+  content.append(folder);
   layout.append(content, progressSummary());
   host.append(layout);
+  sheet.scrollTop = catalogScroll[track] || 0;
 }
 function question(lesson,key,p,locked,onAnswer = answer => act({type:'answer',answer}), data = lesson[key]) {
   const section=el('section',undefined,'lesson-question');section.dataset.question=key;
@@ -927,7 +952,7 @@ function articleScreen(lesson, p, article) {
   body.append(heading);
   const layout = el('div', undefined, 'constituent-page');
   layout.append(articleSectionNav(lesson, p, sections, true), body);
-  const frame = el('div', undefined, 'lesson-reader');
+  const frame = el('div', undefined, `lesson-reader${contentsOpen ? '' : ' is-nav-collapsed'}`);
   frame.append(articleSectionNav(lesson, p, sections), layout);
   host.append(frame);
 
@@ -1007,13 +1032,17 @@ function articleScreen(lesson, p, article) {
     const userId = lessonUserId();
     const kind = section.assessment ? 'closing' : section.id === 'introduction' ? 'opening' : null;
     if (kind) body.append(renderFoundationCheck({
-      lesson, progress: p, kind, el, button, userId: revisedScope(), account: !deviceRelease() && userId !== 'guest',
+      lesson, progress: p, kind, el, button, userId: revisedScope(), account: accountFoundations() || (!deviceRelease() && userId !== 'guest'),
       async submit(event, clearDraft) {
         const token = generation;
         const result = await foundations.act(lesson, event);
         clearDraft();
         if (token !== generation || articlePage !== page || host.hidden) return;
-        notice = result.earned > 0 ? `+${result.earned} lesson XP` : '';
+        notice = '';
+        if (result.earned > 0 || result.progress?.completed_at) {
+          options.onProgress?.();
+          window.dispatchEvent(new Event('syntutor:lesson-progress'));
+        }
         render();
         host.querySelector('.lesson-assessment [role="status"]')?.focus();
       },
@@ -1210,27 +1239,32 @@ function lessonScreen() {
   const chapter = lesson.track === 'grammar'
     ? `Cambridge · Chapter ${lesson.chapter}`
     : `Chapter ${lesson.chapter}`;
-  const header = el('header', undefined, article ? 'lesson-header constituent-header' : 'lesson-header');
-  header.append(button('← All lessons', showCatalog));
-  const h1 = el('h1', lesson.title);
+  const header = el('header', undefined, article ? 'view-header lesson-header constituent-header' : 'view-header lesson-header');
+  const leftGroup = el('div', undefined, 'view-header-title-group');
+  leftGroup.append(backArrowButton('All lessons', showCatalog));
+  const h1 = el('h1', lesson.title, 'view-title');
   h1.tabIndex = -1;
   if (article) {
     const chapterTitle = el('div', undefined, 'constituent-chapter');
-    chapterTitle.append(el('p', chapter), h1);
-    header.append(chapterTitle);
+    chapterTitle.append(el('p', chapter), el('span', '·', 'lesson-header-sep'), h1);
+    leftGroup.append(chapterTitle);
   } else {
-    header.append(el('p', chapter, 'lesson-eyebrow'), h1, el('p', lesson.outcomes[0].text, 'lesson-lead'));
+    const titles = el('div', undefined, 'lesson-header-side-by-side');
+    titles.append(el('p', chapter, 'lesson-eyebrow'), el('span', '·', 'lesson-header-sep'), h1);
+    leftGroup.append(titles);
   }
-  if (lesson.revised_assessment) {
-    if (pilotPreview()) header.append(el('p', 'Chapter pilot · progress saved on this device', 'lesson-guide-note'));
-    else if (deviceRelease()) header.append(el('p', 'Progress and XP are saved on this device during review.', 'lesson-guide-note'));
+  header.append(leftGroup);
+  if (lesson.revised_assessment && pilotPreview()) {
+    const rightGroup = el('div', undefined, 'view-header-actions');
+    rightGroup.append(el('p', 'Chapter pilot · progress saved on this device', 'lesson-guide-note'));
+    header.append(rightGroup);
   }
   host.append(header);
   if (article) { articleScreen(lesson, p, article); return; }
   const columns=el('div',undefined,'lesson-columns'),body=el('section',undefined,'lesson-stage-body'),aside=el('aside',undefined,'lesson-evidence-card');
   const partHeading = el('h2', STAGE_TITLES[stage]);
   partHeading.tabIndex = -1;
-  body.append(partHeading);
+  body.append(partHeading, el('p', lesson.outcomes[0].text, 'lesson-lead'));
   const worked = lesson.worked_example;
   if (lesson[key]) body.append(question(lesson,key,p,reviewing));
   if (key==='understand') {
@@ -1273,26 +1307,36 @@ function lessonScreen() {
   if (key === 'exit') host.append(lessonReferences(lesson));
   if (actions.childElementCount) host.append(actions);
 }
+function renderSyncErrorNotice(targetParent) {
+  const signedIn = lessonUserId() !== 'guest';
+  const showSync = signedIn && (accountFoundations() || !deviceRelease() || !active || !currentLesson()?.revised_assessment);
+  const usesRevised = accountFoundations() || Boolean(currentLesson()?.revised_assessment);
+  const activeStatus = usesRevised ? foundations?.status : store?.status;
+  const needsRetry = Boolean(showSync && (activeStatus !== 'Synced to your account' || foundations?.pending));
+  if (!notice && !needsRetry) return;
+  const alert = el('div', undefined, 'lesson-sync-alert');
+  alert.setAttribute('role', 'status');
+  const text = notice || (foundations?.pending ? 'Account sync pending; progress saved on this device.' : activeStatus);
+  if (text) alert.append(el('p', text));
+  if (needsRetry) {
+    alert.append(button('Retry account sync', async () => {
+      const token = generation;
+      const legacy = store;
+      await foundations.retry();
+      await legacy.retry();
+      if (token === generation) render();
+    }));
+  }
+  targetParent.append(alert);
+}
 function render() {
   if (!host || host.hidden || !course || !store) return;
   clearLessonCanvases();
   const scroll=host.scrollTop;host.replaceChildren();
   if(active)lessonScreen();else catalog();
-  const footer = el('footer', undefined, 'lesson-save-status');
-  footer.setAttribute('aria-live', 'polite');
-  if (notice) footer.append(el('p', notice));
-  const localChapter = deviceRelease() && active && currentLesson().revised_assessment;
-  const syncStatus = localChapter ? 'Saved on this device'
-    : foundations.pending ? 'Saved on this device. Account sync is pending.' : store.status;
-  footer.append(el('p', syncStatus));
-  if (!localChapter && lessonUserId() !== 'guest') footer.append(button('Retry account sync', async () => {
-    const token = generation;
-    const legacy = store;
-    await foundations.load();
-    await legacy.retry();
-    if (token === generation) render();
-  }));
-  host.append(footer);host.scrollTop=scroll;
+  const noticeHost = host.querySelector('.constituent-page') || host.querySelector('.lesson-catalog-body') || host;
+  renderSyncErrorNotice(noticeHost);
+  host.scrollTop=scroll;
 }
 export function initLessons(config = {}) {
   options=config;
@@ -1345,6 +1389,8 @@ export async function openLessons(id = null, { workedExample = false, section, f
   const token = ++generation;
   try {
     if (!course) {
+      if(deviceRelease())course=await loadActiveCourse();
+      else {
       const response = await fetch('/content/lessons/course.json', { cache: 'no-cache' });
       if (!response.ok) throw new Error('Lesson catalog unavailable.');
       const catalog = await response.json();
@@ -1358,6 +1404,7 @@ export async function openLessons(id = null, { workedExample = false, section, f
         return [id, await response.json()];
       }));
       course = ids.length ? composeLessonPreview(catalog, pilots) : validateCourse(catalog);
+      }
     }
     if (!store) {
       let storage;
@@ -1370,9 +1417,9 @@ export async function openLessons(id = null, { workedExample = false, section, f
         };
       }
       const config = { storage, userId: lessonUserId(), client: pilotPreview() ? null : options.client?.() };
-      const revised = createFoundationStore(course, deviceRelease() ? {
+      const revised = createFoundationStore(course, accountFoundations() ? config : (deviceRelease() ? {
         ...config, userId: revisedScope(), localOnly: true,
-      } : config);
+      } : config));
       // Signed-in Cambridge completion still uses its server-verified prerequisites.
       const revisedProgress = mayUseRevisedPrerequisite() ? revised.progress : undefined;
       const next = createLessonStore(course, { ...config, revisedProgress });

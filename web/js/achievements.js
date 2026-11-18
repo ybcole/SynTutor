@@ -8,59 +8,25 @@ export function activeAchievementCategory() {
   return activeCategory;
 }
 
-// The inline, horizontally expanding category selector: a trigger pill that
-// unfurls into the full row of categories. Picking a category re-filters the
-// grid, relabels the trigger and folds the row away again; a click outside
-// folds it away too.
-//
-// The listeners live on the document, not on the buttons: the achievements
-// view is re-rendered often, and a re-render must never leave the selector
-// dead.
+// Compact single-row category filter bar for achievements.
+// Listeners live on the document so re-renders never detach filter state.
 export function initAchievementCategorySelector(onChange) {
   filterListener = typeof onChange === 'function' ? onChange : null;
   if (filterDelegateBound) return;
   filterDelegateBound = true;
 
   document.addEventListener('click', (e) => {
-    // 1. The trigger toggles the row.
-    const trigger = e.target.closest('#achievementsCatTrigger');
-    if (trigger) {
-      e.stopPropagation();
-      const wrapper = trigger.closest('#achievementsCatExpander');
-      if (wrapper) {
-        const isOpen = wrapper.classList.toggle('is-open');
-        trigger.setAttribute('aria-expanded', String(isOpen));
-      }
-      return;
-    }
-
-    // 2. A category pill selects and filters.
     const pill = e.target.closest('.cat-pill[data-category]');
-    if (pill && pill.closest('#achievementsCatExpander')) {
-      const category = pill.getAttribute('data-category');
-      const wrapper = pill.closest('#achievementsCatExpander');
-      const label = wrapper.querySelector('#achievementsCatTrigger .cat-trigger-label');
-      if (label) label.textContent = pill.textContent.trim();
-      wrapper.querySelectorAll('.cat-pill').forEach((other) => other.classList.remove('active'));
-      pill.classList.add('active');
-      activeCategory = category;
-      // Fold the row away again.
-      wrapper.classList.remove('is-open');
-      const triggerBtn = wrapper.querySelector('#achievementsCatTrigger');
-      if (triggerBtn) triggerBtn.setAttribute('aria-expanded', 'false');
-      filterListener?.(category);
-      return;
-    }
-
-    // 3. A click anywhere else folds the row away.
-    if (!e.target.closest('#achievementsCatExpander')) {
-      const openWrapper = document.querySelector('#achievementsCatExpander.is-open');
-      if (openWrapper) {
-        openWrapper.classList.remove('is-open');
-        const triggerBtn = openWrapper.querySelector('#achievementsCatTrigger');
-        if (triggerBtn) triggerBtn.setAttribute('aria-expanded', 'false');
-      }
-    }
+    if (!pill || !pill.closest('#achievementsCatExpander')) return;
+    const category = pill.getAttribute('data-category');
+    const wrapper = pill.closest('#achievementsCatExpander');
+    wrapper.querySelectorAll('.cat-pill').forEach((other) => {
+      const selected = other === pill;
+      other.classList.toggle('active', selected);
+      other.setAttribute('aria-pressed', String(selected));
+    });
+    activeCategory = category;
+    filterListener?.(category);
   });
 }
 

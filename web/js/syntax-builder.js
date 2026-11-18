@@ -196,38 +196,44 @@ export function phraseConnectorYs(node) {
   return { top: centre - 20, bottom: centre + 20 };
 }
 
-export function dotOf(node) {
-  const { bottom } = phraseConnectorYs(node);
-  return { x: node.x + node.w / 2, y: bottom, r: DOT_R };
+export function parentAnchorOf(node) {
+  return { x: node.x + node.w / 2, y: node.canonicalNotation || node.generatorNotation ? phraseConnectorYs(node).bottom : node.y + node.h + 2 };
 }
 
-export function dotHit(model, x, y) {
+export function childAnchorOf(model, node) {
+  return { x: node.x + node.w / 2,
+    y: node.canonicalNotation ? node.y + 17 - 18 : node.generatorNotation
+      ? phraseConnectorYs(node).top : node.y + node.h / 2 - (model && childrenOf(model, node.id).length === 0 && node.tag ? 22 : 12) };
+}
+
+// Connector dot: bottom-center branch junction of a phrase node (drag to link a child).
+export function dotOf(node) {
+  const anchor = parentAnchorOf(node);
+  return { x: anchor.x, y: anchor.y, r: DOT_R };
+}
+
+export function dotHit(model, x, y, pad = 12) {
   for (const n of Object.values(model.nodes)) {
-    if (n.kind !== NODE.PHRASE) continue;
+    if (n.kind !== NODE.PHRASE || n.canonicalTriangle || n.canonicalData?.empty) continue;
     const d = dotOf(n);
-    // Small, deliberate hit target: the dot itself plus a couple of pixels.
-    if (Math.hypot(x - d.x, y - d.y) <= d.r + 4) return n;
+    if (Math.hypot(x - d.x, y - d.y) <= d.r + pad) return n;
   }
   return null;
 }
 
-// Endpoint: top-centre of a box, where an existing parent edge meets it. Drag
-// it to re-attach the connection to a different parent, or drop it on empty
-// space (or click it) to remove the connection.
-export function endpointOf(node) {
-  const y = node.kind === NODE.PHRASE
-    ? phraseConnectorYs(node).top
-    : node.y + node.h / 2 - 20;
-  return { x: node.x + node.w / 2, y, r: DOT_R };
+// Shared child anchor for drawing, hit testing and embedded assessments.
+export function endpointOf(node, model = null) {
+  const anchor = childAnchorOf(model, node);
+  return { x: anchor.x, y: anchor.y, r: DOT_R };
 }
 
-export function endpointHit(model, x, y) {
+export function endpointHit(model, x, y, pad = 6) {
   const list = Object.values(model.nodes);
   for (let i = list.length - 1; i >= 0; i -= 1) {
     const n = list[i];
     if (!n.parent) continue;
-    const p = endpointOf(n);
-    if (Math.hypot(x - p.x, y - p.y) <= p.r + 2) return n;
+    const p = endpointOf(n, model);
+    if (Math.hypot(x - p.x, y - p.y) <= p.r + pad) return n;
   }
   return null;
 }
@@ -436,24 +442,57 @@ export function toCanonicalEnvelope(model, profile = null) {
 export function fromCanonicalEnvelope(envelope){
  if(!envelope||!envelope.root||!Array.isArray(envelope.tokens)||!envelope.convention_profile||!Number.isInteger(envelope.convention_profile.chapter)||envelope.convention_profile.chapter<1||envelope.convention_profile.chapter>10||!Array.isArray(envelope.movement)||!Array.isArray(envelope.accepted_alternatives))throw Error('A canonical tree envelope is required.');
  const model=createModel();model.canonicalBase=clone(envelope);model.movement=clone(envelope.movement||[]);model.acceptedAlternatives=clone(envelope.accepted_alternatives||[]);
- let x=0,count=0;const ids=new Set();
+ const estW=(label,features=[])=>{
+  const lines=[label,...features.map(f=>`[${f}]`)].filter(Boolean);
+  const longest=lines.reduce((m,s)=>Math.max(m,String(s).length),0);
+  return Math.max(36,Math.round(longest*8.8+18));
+ };
+ let cursorX=0,count=0;const ids=new Set();
+ const GAP=22,TRI_GAP=14,ROW_H=72;
  function walk(raw,parent=null,depth=0,order=0){
   if(!raw||typeof raw!=='object'||depth>80||++count>500)throw Error('Unsupported tree size or node shape.');
   const id=raw.id||`import-${count}`;if(ids.has(id)||typeof id!=='string'||['__proto__','constructor','prototype'].includes(id))throw Error('Invalid or duplicate node ID.');ids.add(id);
-  const special=raw.gap||raw.empty;
-  const n={id,kind:special?NODE.SPECIAL:('word' in raw)?NODE.WORD:NODE.PHRASE,
-   type:raw.label||('word' in raw?'word':raw.gap?'GAP':'∅'),text:raw.word|| (special?(raw.gap?'gap':`${raw.label} ∅`):''),
-   x:x*110,y:depth*70,w:84,h:32,parent,order,canonicalData:clone(raw),canonicalFeatures:raw.features,canonicalIndex:raw.index,canonicalTriangle:raw.triangle||false,
+  const special=Boolean(raw.gap||raw.empty);
+  const kind=special?NODE.SPECIAL:('word' in raw)?NODE.WORD:NODE.PHRASE;
+  const type=raw.label||('word' in raw?'word':raw.gap?'GAP':'∅');
+  const text=raw.word||(special?(raw.gap?'gap':`${raw.label} ∅`):'');
+  const display=kind===NODE.WORD?text:special?`${text}${raw.index!=null?' '+raw.index:''}${raw.elided?' (elided)':''}`:`${type}${raw.index!=null?' '+raw.index:''}`;
+  const w=estW(display,kind===NODE.PHRASE?(raw.features||[]):[]);
+  const n={id,kind,type,text,
+   x:cursorX,y:depth*ROW_H,w,h:34,parent,order,canonicalData:clone(raw),canonicalFeatures:raw.features,canonicalIndex:raw.index,canonicalTriangle:raw.triangle||false,
    canonicalDisplay:Array.isArray(raw.display_rows)?clone(raw.display_rows):undefined};
   delete n.canonicalData.children;model.nodes[id]=n;
-  if(n.kind===NODE.WORD||special)x++;
-  else if(raw.triangle){
+  if(n.kind===NODE.WORD||special){
+   cursorX+=w+GAP;
+  }else if(raw.triangle){
+   const startX=cursorX;
    for(const [i,word] of raw.words.entries()){
     let wid=`${id}-word-${i}`;while(model.nodes[wid]||ids.has(wid))wid+='x';
-    model.nodes[wid]={id:wid,kind:NODE.WORD,type:'word',text:word,x:x++*110,y:(depth+1)*70,w:84,h:32,parent:id,order:i};ids.add(wid);
+    const ww=estW(word);
+    model.nodes[wid]={id:wid,kind:NODE.WORD,type:'word',text:word,x:cursorX,y:(depth+1)*ROW_H,w:ww,h:34,parent:id,order:i};ids.add(wid);
+    cursorX+=ww+TRI_GAP;
    }
-  }else for(const [i,c] of (raw.children||[]).entries())walk(c,id,depth+1,i);
-  const kids=childrenOf(model,id);if(kids.length)n.x=kids[0].x;
+   cursorX+=GAP-TRI_GAP;
+   const kids=childrenOf(model,id);
+   if(kids.length){
+    const spanCenter=(kids[0].x+kids.at(-1).x+kids.at(-1).w)/2;
+    n.x=Math.max(startX,Math.round(spanCenter-w/2));
+    cursorX=Math.max(cursorX,n.x+w+GAP);
+   }else{
+    cursorX=Math.max(cursorX,n.x+w+GAP);
+   }
+  }else{
+   const startX=cursorX;
+   for(const [i,c] of (raw.children||[]).entries())walk(c,id,depth+1,i);
+   const kids=childrenOf(model,id);
+   if(kids.length){
+    const spanCenter=(kids[0].x+kids.at(-1).x+kids.at(-1).w)/2;
+    n.x=Math.max(startX,Math.round(spanCenter-w/2));
+    cursorX=Math.max(cursorX,n.x+w+GAP);
+   }else{
+    cursorX+=w+GAP;
+   }
+  }
   return n;
  }
   walk(envelope.root);

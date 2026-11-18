@@ -25,27 +25,33 @@ export function renderFoundationCheck({ lesson, progress, kind, el, button, subm
     }
   } catch { /* No saved draft. */ }
   function render(focus = false) {
-    section.replaceChildren(el('h3', title));
+    section.replaceChildren();
+    if (opening) section.append(el('h3', title));
     if (score != null && (opening || !draft)) {
+      const summaryWrap = el('div', undefined, 'lesson-assessment-summary');
       const summary = el('p', opening ? `Opening check complete. ${score} / ${questions.length} correct.`
-        : `Last attempt ${score} / ${questions.length} · Best ${progress.best_correct} / ${questions.length}`);
+        : `Last attempt ${score} / ${questions.length} · Best ${progress.best_correct} / ${questions.length}`, 'lesson-assessment-score');
       summary.setAttribute('role', 'status');
       summary.tabIndex = -1;
-      section.append(summary);
+      summaryWrap.append(summary);
       if (!opening) {
-        section.append(el('p', `${progress.verified_xp} / 15 lesson XP${account ? ' verified' : ' on this device'}`));
-        if (!progress.completed_at) section.append(el('p', 'Visit the remaining required sections to complete the chapter.'));
-        const overview = el('details', undefined, 'lesson-sources');
+        summaryWrap.append(el('p', `${progress.verified_xp} / 15 lesson XP${account ? ' verified' : ' on this device'}`, 'lesson-assessment-xp'));
+      }
+      section.append(summaryWrap);
+      if (!opening) {
+        if (!progress.completed_at) section.append(el('p', 'Visit the remaining required sections to complete the chapter.', 'lesson-guide-note'));
+        const overview = el('details', undefined, 'lesson-sources lesson-overview-details');
         overview.open = true;
         overview.append(el('summary', 'Answers overview'));
-        const list = el('ol');
+        const list = el('ol', undefined, 'lesson-answers-list');
         for (const q of questions) {
           const selected = q.options.find(o => o.id === progress.last_answers?.[q.id]);
           const correct = q.options.find(o => o.id === q.answer);
-          const row = el('li');
+          const isCorrect = selected?.id === correct.id;
+          const row = el('li', undefined, `lesson-answer-item ${isCorrect ? 'is-correct' : 'is-review'}`);
           row.append(el('strong', q.prompt));
-          if (selected) row.append(el('p', `Your answer was ${selected.text}. ${selected.feedback}`));
-          row.append(el('p', `Correct answer: ${correct.text}. ${correct.feedback}`));
+          if (selected) row.append(el('p', `Your answer: ${selected.text}. ${selected.feedback}`, 'lesson-answer-yours'));
+          row.append(el('p', `Correct answer: ${correct.text}. ${correct.feedback}`, 'lesson-answer-key'));
           list.append(row);
         }
         overview.append(list);
@@ -54,7 +60,7 @@ export function renderFoundationCheck({ lesson, progress, kind, el, button, subm
           render(true);
         }, 'lesson-primary'));
       }
-      if (progress.pending) section.append(el('p', 'Saved on this device. Account sync is pending.'));
+      if (progress.pending) section.append(el('p', 'Saved on this device. Account sync is pending.', 'lesson-guide-note'));
       return;
     }
     const index = draft?.index ?? 0;

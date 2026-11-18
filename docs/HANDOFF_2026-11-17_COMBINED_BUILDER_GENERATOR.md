@@ -1,9 +1,9 @@
 # SynTutor Handoff — Combined Generator + Builder
 
-Date: 2026-11-17  
-Branch: `feat/combined-builder-generator`  
-Base commit: `6ffe63e` (`builder-menu`)  
-Working tree: **dirty** — combined-mode and tree-text changes are uncommitted  
+Date: 2026-11-17\
+Branch: `feat/combined-builder-generator`\
+Base commit: `6ffe63e` (`builder-menu`)\
+Working tree: **dirty** — combined-mode and tree-text changes are uncommitted\
 Remote: `origin/feat/combined-builder-generator` is at `6ffe63e`; local is ahead with uncommitted work
 
 This handoff accompanies the exported Kilo Code conversation. Treat the repository as the source of truth; inspect `git status`, the current branch, and the diffs before changing anything.

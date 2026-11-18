@@ -108,6 +108,24 @@
             "type": "string",
             "minLength": 1
           },
+          "track_id": {
+            "enum": ["syntax", "cambridge"]
+          },
+          "chapter_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "subtopic_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "lesson_reference": {
+            "type": "string",
+            "pattern": "^#lesson/"
+          },
+          "source_metadata": {
+            "type": "object"
+          },
           "content_version": {
             "type": "string",
             "minLength": 1

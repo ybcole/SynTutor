@@ -52,15 +52,6 @@
             </span>
             <span class="sidebar-label">Syntax</span>
           </button>
-          <button id="headerHistoryBtn" class="sidebar-item is-guest-hidden" type="button" data-view="history" aria-label="Open analysis history" title="History" hidden>
-            <span class="sidebar-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <polyline points="12 6 12 12 16 14"></polyline>
-              </svg>
-            </span>
-            <span class="sidebar-label">History</span>
-          </button>
           <button class="sidebar-item" type="button" data-view="lessons" title="Lessons">
             <span class="sidebar-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -118,8 +109,15 @@
                     <circle cx="12" cy="7" r="4"></circle>
                   </svg>
                 </span>
+                <span id="identityLevelBadge" class="identity-level-badge" hidden>0</span>
               </span>
-              <span id="identityLabel" class="sidebar-label">Guest</span>
+              <span class="sidebar-label profile-identity-meta">
+                <span id="identityLabel" class="profile-identity-name">Guest</span>
+                <span id="sidebarProgress" class="sidebar-progress is-guest" aria-label="Verified account progression" aria-live="polite">
+                  <progress id="sidebarProgressBar" value="0" max="100" aria-label="XP toward next level" hidden></progress>
+                  <span id="sidebarProgressLabel" class="sidebar-progress-label">Sign in for verified XP.</span>
+                </span>
+              </span>
             </button>
           </span>
         </div>
@@ -134,6 +132,17 @@
             <span class="profile-menu-name" id="profileMenuName">Learner</span>
             <span class="profile-menu-email" id="profileMenuEmail"></span>
           </div>
+          <button id="profileLeaderboardSettings" class="profile-menu-item" type="button" role="menuitem" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+              <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+              <path d="M4 22h16"></path>
+              <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+              <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+              <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
+            </svg>
+            Leaderboard Settings
+          </button>
           <button id="profileAddAccount" class="profile-menu-item" type="button" role="menuitem" hidden>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
@@ -211,12 +220,14 @@
           <canvas id="treeCanvas" tabindex="0" aria-label="Interactive syntax tree; click a node, or use arrow keys and Enter"></canvas>
           <div id="builderTopLeft" class="builder-top-left" hidden>
             <button id="builderClearTop" type="button" data-builder-clear>Clear</button>
+            <button type="button" data-builder-edit aria-pressed="false">Edit mode</button>
           </div>
           <div id="builderToolbar" class="builder-toolbar canonical-zoom" role="group" aria-label="Tree zoom" hidden>
+            <button type="button" data-builder-construct hidden>Construct</button>
             <button type="button" data-builder-zoom="in" aria-label="Zoom in on syntax tree">+</button>
             <button type="button" data-builder-zoom="out" aria-label="Zoom out of syntax tree">&minus;</button>
             <button type="button" data-builder-zoom="fit" aria-label="Fit syntax tree">Fit</button>
-            <button type="button" data-builder-clear aria-label="Clear the canvas">Clear</button>
+            <button id="combinedBuilderClear" type="button" data-builder-clear hidden>Clear</button>
           </div>
           <canvas id="builderCanvas" class="builder-canvas" tabindex="0" aria-label="Syntax builder canvas" hidden></canvas>
           <div id="canvasControls" class="canvas-controls" hidden>
@@ -313,40 +324,39 @@
       </div>
     </div>
 
-    <!-- Leaderboard: a full-bleed workspace view, docked next to the rail —
-     the same surface the lessons catalog uses, not a centered dialog. -->
+    <!-- Leaderboard: a minimal, full-bleed workspace view matching fix/UI. -->
     <div id="leaderboardView" class="workspace-view" aria-hidden="true">
       <header class="view-header leaderboard-header">
         <h2 class="view-title">Leaderboard</h2>
+        <div class="leaderboard-period-control">
+          <select id="leaderboardPeriod" class="leaderboard-select" aria-label="Ranking period">
+            <option value="weekly">Weekly</option>
+            <option value="seasonal">Seasonal</option>
+          </select>
+        </div>
       </header>
       <div class="leaderboard-content-wrapper">
-        <p id="leaderboardLifetime">Sign in to see your private lifetime XP.</p>
-        <label for="leaderboardPeriod">Ranking period</label>
-        <select id="leaderboardPeriod">
-          <option value="weekly">This week</option>
-          <option value="seasonal">This season</option>
-        </select>
-        <p id="leaderboardStatus" class="empty-note" role="status">Public rankings are paused.</p>
-        <p id="leaderboardRank"></p>
-        <div class="standings-table-container" id="leaderboardStandings" hidden>
-          <table class="standings-table" aria-label="Public XP rankings">
-            <thead><tr><th scope="col">Rank</th><th scope="col">Alias</th><th scope="col">Period XP</th></tr></thead>
-            <tbody id="leaderboardEntries"></tbody>
-          </table>
-        </div>
-        <section aria-labelledby="leaderboardPrivacyTitle">
-          <h3 id="leaderboardPrivacyTitle">Participation and privacy</h3>
-          <p>Joining publishes your chosen alias, rank, and verified XP earned after you join. Use a nickname. You can leave at any time and keep your private progress.</p>
-          <form id="leaderboardConsent" hidden>
-            <label for="leaderboardAlias">Public alias</label>
-            <input id="leaderboardAlias" name="alias" required minlength="3" maxlength="24"
-              pattern="[A-Za-z][A-Za-z0-9_\-]{2,23}" placeholder="TreeLearner" autocomplete="off"
-              aria-describedby="leaderboardAliasHelp">
-            <p id="leaderboardAliasHelp">Start with a letter. Use 3–24 letters, numbers, underscores, or hyphens.</p>
-            <button id="leaderboardJoin" type="submit">Join public rankings</button>
-          </form>
-          <button id="leaderboardLeave" type="button" hidden>Leave public rankings</button>
-          <p id="leaderboardPreferenceStatus" role="status"></p>
+        <p id="leaderboardStatusRow" class="empty-note leaderboard-status-note" role="status" hidden>
+          <span id="leaderboardStatus"></span>
+          <button id="leaderboardRetry" class="leaderboard-retry-btn" type="button" hidden>Retry</button>
+        </p>
+        <div class="podium-grid" id="leaderboardPodium" hidden></div>
+        <section class="standings-section" id="leaderboardStandings" hidden>
+          <h3 class="standings-title">Standings</h3>
+          <div class="standings-table-container">
+            <table class="standings-table" aria-label="Public XP rankings">
+              <thead>
+                <tr>
+                  <th scope="col">Rank</th>
+                  <th scope="col">Learner</th>
+                  <th scope="col" class="num">Lessons Completed</th>
+                  <th scope="col" class="num">Quizzes Completed</th>
+                  <th scope="col" class="num">Period XP</th>
+                </tr>
+              </thead>
+              <tbody id="leaderboardEntries"></tbody>
+            </table>
+          </div>
         </section>
       </div>
     </div>
@@ -356,28 +366,17 @@
     <div id="achievementsView" class="workspace-view" aria-hidden="true">
       <header class="view-header achievements-header">
         <h2 class="view-title">Achievements</h2>
-        <div class="achievements-xp-tracker">
-          <div class="xp-tracker-label" id="achievementsProgressLabel" aria-live="polite">Sign in to track your progress.</div>
-          <div class="xp-progress-bar-track" aria-hidden="true">
-            <div class="xp-progress-bar-fill" id="achievementsProgressFill"></div>
-          </div>
-        </div>
       </header>
       <div class="achievements-content-wrapper">
         <div class="achievements-toolbar">
-          <!-- The category selector unfurls inline, lessons-catalog style. -->
-          <div class="expanding-cat-wrapper" id="achievementsCatExpander">
-            <button class="cat-trigger-pill" id="achievementsCatTrigger" type="button" aria-expanded="false" aria-haspopup="true">
-              <span class="cat-trigger-label">All</span>
-              <svg class="cat-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
-            </button>
-            <div class="expanding-cat-pills" id="achievementsCatPills">
-              <button class="cat-pill active" type="button" data-category="all">All</button>
-              <button class="cat-pill" type="button" data-category="learning">Learning Path</button>
-              <button class="cat-pill" type="button" data-category="assessment">Assessment</button>
-              <button class="cat-pill" type="button" data-category="syntax">Syntax Skill</button>
-              <button class="cat-pill" type="button" data-category="consistency">Consistency</button>
-              <button class="cat-pill" type="button" data-category="cross-framework">Cross-framework</button>
+          <div class="achievements-filters" id="achievementsCatExpander">
+            <div class="achievements-cat-pills" id="achievementsCatPills" role="group" aria-label="Filter achievements by category">
+              <button class="cat-pill active" type="button" data-category="all" aria-pressed="true">All</button>
+              <button class="cat-pill" type="button" data-category="learning" aria-pressed="false">Learning Path</button>
+              <button class="cat-pill" type="button" data-category="assessment" aria-pressed="false">Assessment</button>
+              <button class="cat-pill" type="button" data-category="syntax" aria-pressed="false">Syntax Skill</button>
+              <button class="cat-pill" type="button" data-category="consistency" aria-pressed="false">Consistency</button>
+              <button class="cat-pill" type="button" data-category="cross-framework" aria-pressed="false">Cross-framework</button>
             </div>
           </div>
           <div class="achievements-stats-counter" id="achievementsStatsCounter" aria-live="polite">Loading achievements…</div>
@@ -424,6 +423,7 @@
           <p id="authModalStatus" class="auth-modal-status" hidden></p>
 
           <button id="authSubmitBtn" class="auth-primary-btn" type="submit">Sign In</button>
+          <p class="auth-leaderboard-disclosure">Signed-in accounts appear on the public Leaderboard using a nickname from your email (before @) or a generated alias. You can customize or hide it anytime in Leaderboard Settings.</p>
         </form>
 
         <!-- Bottom Switcher Links -->
@@ -431,6 +431,41 @@
           <button id="authSwitchModeBtn" class="auth-text-link" type="button">Need an account? Create one</button>
           <button id="authDismissGuestBtn" class="auth-text-link muted" type="button">Continue as guest</button>
         </div>
+      </div>
+    </div>
+
+    <!-- Account Leaderboard Settings modal: accessible from the account profile menu. -->
+    <div id="leaderboardSettingsModal" class="auth-modal-backdrop" hidden>
+      <div class="auth-modal-card leaderboard-settings-card" role="dialog" aria-modal="true" aria-labelledby="leaderboardSettingsTitle">
+        <button id="leaderboardSettingsCloseBtn" class="auth-modal-close" type="button" aria-label="Close settings">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+
+        <h3 id="leaderboardSettingsTitle" class="auth-modal-title">Leaderboard Settings</h3>
+        <p id="leaderboardPrivacyCopy" class="auth-modal-subtitle">Your public alias (suggested from the part of your email before @, or a random fallback) appears on weekly and seasonal rankings. Your full email address and domain are never shown.</p>
+
+        <div id="leaderboardAliasSuggestion" class="leaderboard-alias-suggestion" hidden>
+          <p id="leaderboardAliasSuggestionCopy" class="leaderboard-suggestion-copy"></p>
+          <button id="leaderboardAdoptEmailAlias" class="leaderboard-adopt-btn" type="button"></button>
+        </div>
+
+        <form id="leaderboardConsent" class="auth-form">
+          <div class="auth-field-group">
+            <div class="leaderboard-alias-label-row">
+              <label for="leaderboardAlias">PUBLIC ALIAS</label>
+              <button id="leaderboardRandomAlias" class="leaderboard-random-btn" type="button">Use random nickname</button>
+            </div>
+            <input id="leaderboardAlias" type="text" required minlength="3" maxlength="24"
+              pattern="[A-Za-z][A-Za-z0-9_\-]{2,23}" placeholder="Learner alias" autocomplete="off"
+              aria-describedby="leaderboardAliasHelp" />
+            <p id="leaderboardAliasHelp" class="leaderboard-help">Start with a letter. Use 3–24 letters, numbers, underscores, or hyphens.</p>
+          </div>
+          <p id="leaderboardPreferenceStatus" class="leaderboard-pref-status" role="status"></p>
+          <div class="leaderboard-settings-actions">
+            <button id="leaderboardJoin" class="auth-primary-btn" type="submit">Save public alias</button>
+            <button id="leaderboardLeave" class="leaderboard-btn-secondary" type="button" hidden>Leave public rankings</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>

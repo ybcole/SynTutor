@@ -25,7 +25,7 @@ import {
   POS_TYPES, NODE, toCanonicalEnvelope, fromCanonicalEnvelope, builderProfile, paletteFor,
   createModel, addWordsFromText, addPhrase, moveNode, setType,
   removeNode, connect, canConnect, disconnect,
-  dotOf, dotHit, nodeHit, endpointOf, endpointHit, phraseConnectorYs, toTree, compareTrees, leavesOf, leafText,
+  dotOf, dotHit, nodeHit, endpointOf, endpointHit, parentAnchorOf, childAnchorOf, phraseConnectorYs, toTree, compareTrees, leavesOf, leafText,
   seedWords, leavesWithTags, childrenOf, getSentenceFromLeaves as sentenceFromLeaves,
 } from './syntax-builder.js';
 import { renderNodeDetail, renderDiagnostic, clearOverlay, plainName } from './ui.js?v=2026.11.18c';
@@ -157,6 +157,7 @@ const state = {
   challenge: null,
   editMode: false,
   canvasActive: false,
+  combined: false,
   inputSyncTimer: 0,
   syncingInput: false,
   onStatus: () => {},
@@ -187,7 +188,24 @@ const state = {
 
 let tools;
 let embedded = null;
+let embeddedResizeObserver = null;
+let paletteOpen = true;
 let palettePos = null;
+let nodesTooltipShownForSession = false;
+
+function dismissNodesTooltip() {
+  const tip = document.getElementById('builderNodesTooltip');
+  if (tip) tip.hidden = true;
+}
+
+function maybeShowNodesTooltip() {
+  if (embedded || state.challenge || !state.editMode || !isBuilderOpen()) return;
+  if (paletteOpen || nodesTooltipShownForSession) return;
+  const tip = document.getElementById('builderNodesTooltip');
+  if (!tip) return;
+  nodesTooltipShownForSession = true;
+  tip.hidden = false;
+}
 let paletteTip = null;
 
 function clampPalettePosition(host, stage, left, top) {
@@ -233,13 +251,120 @@ function hidePaletteTip() {
 
 function currentPalette() {
   return embedded
-    ? { labels: embedded.labels || ['PHRASE-a', 'PHRASE-b', 'PHRASE-c'], features: [] }
+    ? {
+        labels: embedded.labels
+          || (embedded.profile ? paletteFor(embedded.profile).labels : ['PHRASE-a', 'PHRASE-b', 'PHRASE-c']),
+        features: [],
+      }
     : paletteFor(state.canonicalProfile || builderProfile());
+}
+
+function clampPalettePos(host, stage, left, top) {
+  const sw = stage.clientWidth || 800;
+  const sh = stage.clientHeight || 600;
+  const hw = host.offsetWidth || 248;
+  const hh = host.offsetHeight || 280;
+  const minTop = 48;
+  const minLeft = 8;
+  const maxLeft = Math.max(minLeft, sw - hw - 8);
+  const maxTop = Math.max(minTop, sh - hh - 52);
+  return {
+    left: Math.round(Math.min(maxLeft, Math.max(minLeft, left))),
+    top: Math.round(Math.min(maxTop, Math.max(minTop, top))),
+  };
+}
+
+function applyPalettePos(host) {
+  const stage = host?.parentElement;
+  if (!host || !stage || host.hidden) return;
+  if (!palettePos) {
+    host.style.left = '';
+    host.style.top = '';
+    return;
+  }
+  const next = clampPalettePos(host, stage, palettePos.left, palettePos.top);
+  palettePos = next;
+  host.style.left = `${next.left}px`;
+  host.style.top = `${next.top}px`;
+}
+
+function setBuilderPaletteOpen(open) {
+  paletteOpen = Boolean(open);
+  if (paletteOpen) dismissNodesTooltip();
+  syncBuilderPalette();
+}
+
+function visibleViewportInsets() {
+  if (!state.canvas) return { left: 0, right: 0, top: 20, bottom: 20 };
+  if (embedded) return { left: 18, right: 18, top: 18, bottom: 18 };
+  const cw = state.canvas.clientWidth || 0;
+  const ch = state.canvas.clientHeight || 0;
+  const cRect = state.canvas.getBoundingClientRect();
+  let left = 24, right = 24;
+  const top = document.body.classList.contains('builder-standalone') ? 56 : 24;
+  const bottom = state.editMode && !state.challenge ? 54 : 24;
+  if (cw > 680) {
+    const pal = document.getElementById('builderPalette');
+    if (pal && !pal.hidden && !pal.classList.contains('is-collapsed')) {
+      const r = pal.getBoundingClientRect();
+      if (r.width > 0) {
+        const palCenter = (r.left + r.right) / 2 - cRect.left;
+        if (palCenter <= cw * 0.38) {
+          left = Math.max(left, Math.min(r.right - cRect.left + 16, cw * 0.45));
+        } else if (palCenter >= cw * 0.62) {
+          right = Math.max(right, Math.min(cRect.right - r.left + 16, cw * 0.45));
+        }
+      }
+    }
+  }
+  const toolsPanel = document.getElementById('builderTools');
+  if (toolsPanel && !toolsPanel.hidden) {
+    const r = toolsPanel.getBoundingClientRect();
+    if (r.width > 0 && window.innerWidth > 760) {
+      left = Math.max(left, Math.min(r.right - cRect.left + 14, cw * 0.48));
+    }
+  }
+  return { left, right, top: Math.min(top, ch * 0.25), bottom: Math.min(bottom, ch * 0.25) };
+}
+
+function visibleLeftInset() {
+  return visibleViewportInsets().left;
+}
+
+function insertNodeOnCanvas(label) {
+  const nodes = Object.values(state.model.nodes);
+  if (!state.snapped && state.ctx) {
+    for (const n of nodes) sizeNode(n);
+  }
+  const phrases = nodes.filter(n => n.kind === NODE.PHRASE);
+  const cw = state.canvas?.clientWidth || 720;
+  const ch = state.canvas?.clientHeight || 480;
+  const insets = visibleViewportInsets();
+  const scale = state.view.scale || 1;
+  const minWorldX = (insets.left + 16 - state.view.ox) / scale;
+  const maxWorldX = (cw - insets.right - 76 - state.view.ox) / scale;
+  const minWorldY = (insets.top + 12 - state.view.oy) / scale;
+  const maxWorldY = (ch - insets.bottom - 48 - state.view.oy) / scale;
+  const treeLeft = nodes.length ? Math.min(...nodes.map(n => n.x)) : minWorldX + 20;
+  const treeTop = nodes.length ? Math.min(...nodes.map(n => n.y)) : minWorldY + 60;
+  const col = phrases.length % 4;
+  const row = Math.floor(phrases.length / 4) % 3;
+  const rawX = Math.max(minWorldX, treeLeft + col * 76);
+  const x = maxWorldX > minWorldX ? Math.min(rawX, maxWorldX) : rawX;
+  const rawY = Math.max(minWorldY, treeTop - 56 + row * 42);
+  const y = maxWorldY > minWorldY ? Math.min(rawY, maxWorldY) : rawY;
+  const created = addPhrase(state.model, label, x, y);
+  selectOnly(created.id);
+  closeMenu();
+  changed();
+  draw();
+  return created;
 }
 
 // Top-left Nodes palette: appears when the standalone canvas is focused,
 // stays available while its own controls are used, and can be hidden.
 function hideBuilderPalette() {
+  if (!state.combined) { setBuilderPaletteOpen(false); return; }
   hidePaletteTip();
   const host = document.getElementById('builderPalette');
   if (host) host.hidden = true;
@@ -255,18 +380,7 @@ export function showBuilderPalette() {
 }
 
 function insertNodeFromPalette(label) {
-  const nodes = Object.values(state.model.nodes);
-  const cw = state.canvas?.clientWidth || 720;
-  const ch = state.canvas?.clientHeight || 480;
-  const scale = state.view.scale || 1;
-  const phrases = nodes.filter(n => n.kind === NODE.PHRASE);
-  const x = (cw / 2 - state.view.ox) / scale - 42 + (phrases.length % 3) * 22;
-  const y = (ch / 2 - state.view.oy) / scale - 17 + (Math.floor(phrases.length / 3) % 3) * 22;
-  const created = addPhrase(state.model, label, x, y);
-  selectOnly(created.id);
-  closeMenu();
-  changed();
-  draw();
+  return insertNodeOnCanvas(label);
 }
 
 function openNodeLesson(label) {
@@ -285,6 +399,7 @@ function renderBuilderPalette() {
   if (!host.dataset.wired) {
     host.dataset.wired = 'true';
     document.getElementById('builderPaletteToggle')?.addEventListener('click', hideBuilderPalette);
+    document.getElementById('builderNodesToggle')?.addEventListener('click', () => setBuilderPaletteOpen(!paletteOpen));
     search?.addEventListener('input', () => renderBuilderPalette());
     search?.addEventListener('keydown', (event) => {
       if (event.key !== 'Escape') return;
@@ -397,6 +512,31 @@ function renderBuilderPalette() {
   }
 }
 
+function syncBuilderPalette() {
+  if (state.combined) {
+    document.getElementById('builderNodesToggle')?.setAttribute('hidden', '');
+    document.querySelector('[data-builder-construct]')?.setAttribute('hidden', '');
+    return;
+  }
+  const host = document.getElementById('builderPalette');
+  const bottomToggle = document.getElementById('builderNodesToggle');
+  const constructBtn = document.querySelector('[data-builder-construct]');
+  const editingStandalone = Boolean(state.editMode && !embedded && isBuilderOpen() && !state.challenge);
+  if (constructBtn) constructBtn.hidden = !editingStandalone;
+  if (bottomToggle) {
+    bottomToggle.hidden = !editingStandalone;
+    bottomToggle.setAttribute('aria-expanded', String(editingStandalone && paletteOpen));
+    bottomToggle.textContent = paletteOpen ? 'Nodes' : 'Show Nodes';
+  }
+  if (!host) return;
+  const visible = editingStandalone && paletteOpen;
+  host.hidden = !visible;
+  host.classList.remove('is-collapsed');
+  document.body.classList.toggle('builder-editing', editingStandalone);
+  if (editingStandalone) renderBuilderPalette();
+  if (visible) applyPalettePos(host);
+}
+
 function wireBuilderInput() {
   const input = document.getElementById('inputText');
   if (!input || input.dataset.builderInput) return;
@@ -404,7 +544,9 @@ function wireBuilderInput() {
   input.addEventListener('input', onBuilderInput);
 }
 
-function wireBuilderToolbar() {  const bar = document.getElementById('builderToolbar');
+function wireBuilderToolbar() {
+  const bar = document.getElementById('builderToolbar');
+  const topLeft = document.getElementById('builderTopLeft');
   if (!bar || bar.dataset.wired) return;
   bar.dataset.wired = 'true';
   document.querySelectorAll('[data-builder-clear]').forEach(button =>
@@ -413,43 +555,65 @@ function wireBuilderToolbar() {  const bar = document.getElementById('builderToo
     state.view.scale = Math.max(0.15, Math.min(4, state.view.scale * factor));
     draw();
   };
+  (topLeft || bar).querySelector('[data-builder-edit]')?.addEventListener('click', () => setBuilderEditMode(!state.editMode));
+  bar.querySelector('[data-builder-construct]')?.addEventListener('click', buildTree);
   bar.querySelector('[data-builder-zoom="out"]')?.addEventListener('click', () => zoom(0.8));
   bar.querySelector('[data-builder-zoom="in"]')?.addEventListener('click', () => zoom(1.25));
   bar.querySelector('[data-builder-zoom="fit"]')?.addEventListener('click', () => {
-    if (!state.editMode && Object.keys(state.model.nodes).length) {
-      state.snapped = true;
-      if (!applyTreeLayout({ fit: true })) fitBuilderView();
-    } else {
-      fitBuilderView();
-    }
+    fitBuilderView();
     draw();
   });
 }
 
-function fitBuilderView() {
+function measureModelBounds() {
   const nodes = Object.values(state.model.nodes);
-  if (!nodes.length) {
-    state.view = { ox: 60, oy: 60, scale: 1 };
-    return;
+  if (!nodes.length) return null;
+  if (!state.snapped && state.ctx) {
+    for (const node of nodes) sizeNode(node);
   }
   let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
   for (const node of nodes) {
-    const w = nodeWidth(node);
-    const h = nodeHeight(node);
+    const w = node.w || nodeWidth(node);
+    const h = node.h || nodeHeight(node);
+    const tagPad = node.kind === NODE.WORD && node.tag ? 20 : 0;
+    const bottomPad = node.kind === NODE.PHRASE
+      ? (node.canonicalTriangle ? 6 : 12)
+      : (node.valid === false ? 20 : 6);
     minX = Math.min(minX, node.x);
-    minY = Math.min(minY, node.y);
+    minY = Math.min(minY, node.y - tagPad);
     maxX = Math.max(maxX, node.x + w);
-    maxY = Math.max(maxY, node.y + h);
+    maxY = Math.max(maxY, node.y + h + bottomPad);
+    if (node.canonicalTriangle) {
+      const kids = childrenOf(state.model, node.id).sort((a, b) => a.x - b.x);
+      if (kids.length) {
+        const left = kids[0];
+        const right = kids.at(-1);
+        const lx = Math.min(left.x - 4, left.x + left.w / 2 - 20);
+        const rx = Math.max(right.x + right.w + 4, right.x + right.w / 2 + 20);
+        minX = Math.min(minX, lx);
+        maxX = Math.max(maxX, rx);
+      }
+    }
   }
-  const cw = state.canvas?.clientWidth || 800;
-  const ch = state.canvas?.clientHeight || 600;
-  const top = document.body.classList.contains('builder-standalone') ? 110 : 24;
-  const totalW = Math.max(maxX - minX, 1);
-  const totalH = Math.max(maxY - minY, 1);
-  const scale = Math.max(0.15, Math.min((cw - 48) / totalW, (ch - top - 24) / totalH, 1.35));
+  return { minX, minY, maxX, maxY, totalW: Math.max(maxX - minX, 1), totalH: Math.max(maxY - minY, 1) };
+}
+
+function fitBuilderView() {
+  const bounds = measureModelBounds();
+  if (!bounds) {
+    state.view = { ox: 60, oy: 60, scale: 1 };
+    return;
+  }
+  const cw = state.canvas?.clientWidth || state.canvas?.parentElement?.clientWidth || 800;
+  const ch = state.canvas?.clientHeight || state.canvas?.parentElement?.clientHeight || 600;
+  const insets = visibleViewportInsets();
+  const pad = 16;
+  const availW = Math.max(100, cw - insets.left - insets.right - pad * 2);
+  const availH = Math.max(100, ch - insets.top - insets.bottom - pad * 2);
+  const scale = Math.max(0.15, Math.min(availW / bounds.totalW, availH / bounds.totalH, 1.4));
   state.view.scale = scale;
-  state.view.ox = (cw - totalW * scale) / 2 - minX * scale;
-  state.view.oy = top + (ch - top - 24 - totalH * scale) / 2 - minY * scale;
+  state.view.ox = insets.left + pad + (availW - bounds.totalW * scale) / 2 - bounds.minX * scale;
+  state.view.oy = insets.top + pad + (availH - bounds.totalH * scale) / 2 - bounds.minY * scale;
 }
 
 // The standalone builder is always in edit mode: there is no separate view
@@ -491,6 +655,55 @@ function beginBuilderEditing() {
   }
   setCanvasHint('');
   draw();
+}
+
+function setBuilderEditMode(value, { silent = false } = {}) {
+  if (embedded) return;
+  clearTimeout(state.inputSyncTimer);
+  state.editMode = Boolean(value);
+  const button = document.querySelector('[data-builder-edit]');
+  if (button) {
+    button.textContent = state.editMode ? 'Done editing' : 'Edit mode';
+    button.setAttribute('aria-pressed', String(state.editMode));
+  }
+  const input = document.getElementById('inputText');
+  if (input) {
+    input.readOnly = false;
+    input.placeholder = state.editMode
+      ? 'Type a sentence; its words appear on the canvas.'
+      : 'Type a sentence; its words appear on the canvas. Click Edit mode to move them.';
+  }
+  const clear = document.getElementById('builderClear');
+  const snap = document.getElementById('builderSnap');
+  if (clear) clear.hidden = !state.editMode;
+  if (snap) snap.hidden = true;
+  closeMenu();
+  closeEditor();
+  state.link = null;
+  state.drag = null;
+  state.pan = null;
+  state.marquee = null;
+  state.hover = null;
+  state.hoverTarget = null;
+  state.hoverEndpoint = null;
+  clearSelection();
+  syncBuilderPalette();
+  setCanvasHint('');
+  if (state.editMode) {
+    document.getElementById('explainNode')?.replaceChildren();
+    nodesTooltipShownForSession = false;
+    maybeShowNodesTooltip();
+  } else {
+    dismissNodesTooltip();
+    nodesTooltipShownForSession = false;
+  }
+  draw();
+  syncCanvasToInput();
+  if (!silent) {
+    state.onStatus(state.editMode
+      ? 'Editing the tree. Drag dots to connect nodes, then click Construct or Done editing.'
+      : 'Viewing the tree. Click Edit mode to make changes or Construct to lay out and check.');
+  }
 }
 
 function onBuilderInput() {
@@ -581,12 +794,12 @@ export function initSyntaxBuilder({ onStatusChange, setWorkspaceView, userId } =
         const result=await r.json();if(!r.ok||!result.structure?.valid)throw Error(result.error||result.structure?.errors?.join('; ')||'Invalid canonical tree');
       }finally{clearTimeout(timer);}
     },
-    refresh:()=>{evidenceRequest++;state.nodeErrors=new Map();state.lastEvaluation=null;draw();syncCanvasToInput();},
+    refresh:()=>{evidenceRequest++;state.nodeErrors=new Map();state.lastEvaluation=null;syncBuilderPalette();draw();syncCanvasToInput();},
     zoom:factor=>{state.view.scale=Math.max(.15,Math.min(4,state.view.scale*factor));draw();},
     pan:(dx,dy)=>{state.view.ox+=dx;state.view.oy+=dy;draw();},
     fit:()=>{
       if(embedded)fitEmbeddedView();
-      else if(treeIsComplete()){applyTreeLayout({fit:true});state.snapped=true;}
+      else fitBuilderView();
       draw();
     },
     evaluate:buildTree,select:(id,explain=false)=>{selectOnly(id);draw();if(explain)explainSelected();},
@@ -707,6 +920,7 @@ export function mountEmbeddedBuilder(stage, exercise) {
   document.getElementById('builderToolbar')?.setAttribute('hidden', '');
   document.getElementById('builderTopLeft')?.setAttribute('hidden', '');
   document.body.classList.remove('builder-standalone');
+  syncBuilderPalette();
   const canvas = state.canvas;
   const home = canvas.parentElement;
   embedded = exercise;
@@ -715,9 +929,37 @@ export function mountEmbeddedBuilder(stage, exercise) {
   canvas.hidden = false;
   resize();
   tools.open({ embedded: exercise });
+  fitEmbeddedView();
   draw();
+  let lastW = stage.clientWidth;
+  let lastH = stage.clientHeight;
+  embeddedResizeObserver?.disconnect();
+  embeddedResizeObserver = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(() => {
+    if (!embedded || stage !== canvas.parentElement) return;
+    const nw = stage.clientWidth;
+    const nh = stage.clientHeight;
+    if (!nw || !nh || (nw === lastW && nh === lastH)) return;
+    lastW = nw;
+    lastH = nh;
+    resize();
+    fitEmbeddedView();
+    draw();
+  });
+  embeddedResizeObserver?.observe(stage);
   return {
-    check: () => exercise.check(state.model),
+    labels: () => currentPalette().labels,
+    addNode: (label) => insertNodeOnCanvas(label),
+    zoom: (factor) => {
+      state.view.scale = Math.max(0.15, Math.min(4, state.view.scale * factor));
+      draw();
+    },
+    fit: () => {
+      resize();
+      fitEmbeddedView();
+      draw();
+    },
+    check: () => exercise.check?.(state.model),
+    model: () => state.model,
     undo: () => tools.undo(),
     restart: () => tools.restartInline(),
     edit(action) {
@@ -728,6 +970,8 @@ export function mountEmbeddedBuilder(stage, exercise) {
       return feedback;
     },
     destroy() {
+      embeddedResizeObserver?.disconnect();
+      embeddedResizeObserver = null;
       tools.close();
       closeMenu();
       closeEditor();
@@ -735,11 +979,18 @@ export function mountEmbeddedBuilder(stage, exercise) {
       home.append(canvas);
       canvas.hidden = true;
       embedded = null;
+      syncBuilderPalette();
     },
   };
 }
 
 export function openBuilderView(opts = {}) {
+  state.combined = Boolean(opts.combined);
+  document.body.classList.toggle('combined-builder-mode', state.combined);
+  const combinedClear = document.getElementById('combinedBuilderClear');
+  if (combinedClear) combinedClear.hidden = !state.combined;
+  document.getElementById('builderPalette')?.setAttribute('hidden', '');
+  syncBuilderPalette();
   state.canonicalProfile = opts.canonicalTree?.convention_profile
     || opts.canonicalProfile
     || state.canonicalProfile
@@ -887,8 +1138,9 @@ export function openBuilderView(opts = {}) {
     // The standalone builder offers the complete free-analysis inventory
     // unless a caller supplied a specific canonical tree or model.
     if (!opts.canonicalTree && !opts.model) state.canonicalProfile = builderProfile();
-    beginBuilderEditing();
-    if (!treeIsComplete()) {
+    if (state.combined) beginBuilderEditing();
+    else setBuilderEditMode(false, { silent: true });
+    if (state.combined && !treeIsComplete()) {
       setCanvasHint(Object.keys(state.model.nodes).length
         ? 'Click the canvas to add words, right-click for categories, or drag a connector dot to link boxes.'
         : 'Click the canvas to input words, or right-click for categories.');
@@ -941,6 +1193,12 @@ export function closeBuilderView() {
   clearTimeout(state.inputSyncTimer);
   tools?.close();
   state.editMode = false;
+  hidePaletteTip();
+  document.getElementById('builderPalette')?.setAttribute('hidden', '');
+  document.body.classList.remove('combined-builder-mode');
+  dismissNodesTooltip();
+  nodesTooltipShownForSession = false;
+  syncBuilderPalette();
   state.canvasActive = false;
   document.getElementById('builderToolbar')?.setAttribute('hidden', '');
   document.getElementById('builderTopLeft')?.setAttribute('hidden', '');
@@ -1047,8 +1305,12 @@ function ensureWired() {
   window.addEventListener('resize', () => {
     if (isBuilderOpen() || embedded) {
       resize();
-      if(embedded)fitEmbeddedView();
-      else if(state.snapped)applyTreeLayout({fit:true});
+      if (embedded) {
+        fitEmbeddedView();
+      } else {
+        applyPalettePosition(document.getElementById('builderPalette'));
+        if (state.snapped) applyTreeLayout({ fit: true });
+      }
       draw();
     }
   });
@@ -1069,19 +1331,21 @@ function resize() {
 
 // Fitting the lesson canvas keeps the learner’s node positions and branch order.
 function fitEmbeddedView() {
-  const nodes = Object.values(state.model.nodes);
-  if (!nodes.length) return;
-  const left = Math.min(...nodes.map(node => node.x));
-  const right = Math.max(...nodes.map(node => node.x + node.w));
-  const top = Math.min(...nodes.map(node => node.y));
-  const bottom = Math.max(...nodes.map(node => node.y + node.h));
-  const width = state.canvas.clientWidth, height = state.canvas.clientHeight;
-  const scale = Math.max(.15, Math.min(1.2,
-    (width - 36) / (right - left), (height - 36) / (bottom - top)));
+  const bounds = measureModelBounds();
+  if (!bounds) {
+    state.view = { ox: 24, oy: 20, scale: 1 };
+    return;
+  }
+  const width = state.canvas?.clientWidth || state.canvas?.parentElement?.clientWidth || 600;
+  const height = state.canvas?.clientHeight || state.canvas?.parentElement?.clientHeight || 360;
+  const pad = 22;
+  const availW = Math.max(80, width - pad * 2);
+  const availH = Math.max(80, height - pad * 2);
+  const scale = Math.max(0.15, Math.min(1.35, availW / bounds.totalW, availH / bounds.totalH));
   state.view = {
     scale,
-    ox: (width - (right - left) * scale) / 2 - left * scale,
-    oy: (height - (bottom - top) * scale) / 2 - top * scale,
+    ox: pad + (availW - bounds.totalW * scale) / 2 - bounds.minX * scale,
+    oy: pad + (availH - bounds.totalH * scale) / 2 - bounds.minY * scale,
   };
 }
 
@@ -1116,7 +1380,7 @@ function wireCanvas(canvas) {
   canvas.addEventListener('focusout', (event) => {
     const palette = document.getElementById('builderPalette');
     if (state.editor || palette?.contains(event.relatedTarget)) return;
-    hideBuilderPalette();
+    if (state.combined) hideBuilderPalette();
   });
   // Connectors belong to the editing session, not to the resting tree.
   // Leaving the canvas snaps the tree and removes them; hovering a label in
@@ -1132,7 +1396,7 @@ function wireCanvas(canvas) {
   // focus). Menu and inline-editor presses are part of the session.
   document.addEventListener('pointerdown', (event) => {
     const palette = document.getElementById('builderPalette');
-    if (palette && !palette.hidden && event.target !== canvas
+    if (state.combined && palette && !palette.hidden && event.target !== canvas
         && !palette.contains(event.target)
         && !event.target.closest?.('.builder-menu, .builder-inline-input')) {
       hideBuilderPalette();
@@ -1183,6 +1447,7 @@ function onMouseDown(e) {
   const w = toWorld(sx, sy);
   if (!state.canvasActive) {
     state.canvasActive = true;
+    if (state.combined) showBuilderPalette();
     draw();
   }
 
@@ -1222,13 +1487,15 @@ function onMouseDown(e) {
   }
 
   if (e.button === 0) {
-    const dot = dotHit(state.model, w.x, w.y);
+    const dotPad = Math.max(8, 12 / (state.view.scale || 1));
+    const dot = dotHit(state.model, w.x, w.y, dotPad);
     if (dot) {
       state.link = { parentId: dot.id, childId: null, free: 'child', x: w.x, y: w.y, startX: w.x, startY: w.y, moved: false };
       closeMenu();
       return;
     }
-    const endpoint = endpointHit(state.model, w.x, w.y);
+    const epPad = Math.max(6, 8 / (state.view.scale || 1));
+    const endpoint = endpointHit(state.model, w.x, w.y, epPad);
     if (endpoint) {
       const oldParent = endpoint.parent;
       state.link = {
@@ -1363,7 +1630,8 @@ function onMouseMove(e) {
   // hover feedback
   const node = nodeHit(state.model, w.x, w.y);
   const id = node ? node.id : null;
-  const epNode = endpointHit(state.model, w.x, w.y);
+  const epPad = Math.max(6, 8 / (state.view.scale || 1));
+  const epNode = endpointHit(state.model, w.x, w.y, epPad);
   const epId = epNode ? epNode.id : (node && node.parent ? node.id : null);
   if (id !== state.hover || epId !== state.hoverEndpoint) {
     state.hover = id;
@@ -2280,6 +2548,7 @@ function changed() {
   // standalone builder keeps its existing Build-tree validation instead.
   if (state.challenge) flagStructuralIssues();
   tools?.record();tools?.render();
+  embedded?.onChange?.(state.model);
   if (typeof document !== 'undefined') {
     document.dispatchEvent(new CustomEvent('syntutor:builder-change'));
   }
@@ -2767,8 +3036,7 @@ function computeTreeLayout() {
 function applyTreeLayout({ fit = true } = {}) {
   const result = computeTreeLayout();
   if (!result) return null;
-  const { layout, totalW, totalH } = result;
-  let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+  const { layout } = result;
   for (const [id, pos] of layout) {
     const n = state.model.nodes[id];
     if (!n) continue;
@@ -2776,36 +3044,13 @@ function applyTreeLayout({ fit = true } = {}) {
     n.y = pos.y - pos.h / 2;
     n.w = pos.w;
     n.h = pos.h;
-    minX = Math.min(minX, n.x);
-    minY = Math.min(minY, n.y);
-    maxX = Math.max(maxX, n.x + n.w);
-    maxY = Math.max(maxY, n.y + n.h);
   }
-  if (!fit) return layout;
-  const cw = state.canvas.clientWidth;
-  const ch = state.canvas.clientHeight;
-  if (!cw || !ch) return layout;
-  if (!state.challenge && !embedded) {
-    // Standalone builder: the generator's own fit — same padded bounds,
-    // same scale ceiling, same centring.
-    const pad = Math.min(24, cw / 8, ch / 8);
-    const scale = Math.max(0.2, Math.min((cw - pad * 2) / totalW, (ch - pad * 2) / totalH, 1.7));
-    state.view.scale = scale;
-    state.view.ox = (cw - totalW * scale) / 2;
-    state.view.oy = (ch - totalH * scale) / 2;
-    return layout;
+  state.snapped = true;
+  state.snappedLayout = layout;
+  if (fit) {
+    if (embedded) fitEmbeddedView();
+    else fitBuilderView();
   }
-  const totalSpanW = Math.max(maxX - minX, 1);
-  const totalSpanH = Math.max(maxY - minY, 1);
-  const pad=24,toolsPanel=document.getElementById('builderTools');
-  const rect=!embedded&&toolsPanel&&!toolsPanel.hidden?toolsPanel.getBoundingClientRect():null;
-  const left=rect&&innerWidth>760?Math.min(rect.width+30,cw*.48):0;
-  const bottom=rect&&innerWidth<=760?rect.height+20:0;
-  const top=document.body.classList.contains('builder-standalone')?110:60,availableW=Math.max(100,cw-left),availableH=Math.max(120,ch-bottom-top);
-  const scale=Math.max(.15,Math.min((availableW-pad*2)/totalSpanW,(availableH-pad*2)/totalSpanH,1.35));
-  state.view.scale=scale;
-  state.view.ox=left+(availableW-totalSpanW*scale)/2-minX*scale;
-  state.view.oy=top+(availableH-totalSpanH*scale)/2-minY*scale;
   return layout;
 }
 
@@ -2825,6 +3070,7 @@ function normalizeBuilderLayout() {
 // Leaving the canvas ends the editing session: connectors disappear, and a
 // complete tree snaps back into the generator's notation.
 function deactivateBuilderCanvas() {
+  if (!state.combined) return;
   if (!state.canvasActive) return;
   state.canvasActive = false;
   if (!state.editor && !state.menu && !state.link && !state.drag && !state.marquee) {
@@ -2834,14 +3080,13 @@ function deactivateBuilderCanvas() {
 }
 
 async function buildTree() {
-  const layout = applyTreeLayout({ fit: true });
+  const layout = computeTreeLayout();
   if (!layout) {
     state.onStatus('Build a connected tree first — drag connector dots to link nodes.');
     return;
   }
   changed();
-  state.snapped = true;
-  state.snappedLayout = layout;
+  applyTreeLayout({ fit: true });
   draw();
   state.treeCorrect = treeIsComplete();
   draw();
@@ -2980,6 +3225,10 @@ function phraseLines(n) {
 function nodeWidth(n) {
   if (!state.ctx) return 30;
   if (n.kind === NODE.WORD) return measureWord(n.text);
+  if (n.kind === NODE.SPECIAL) {
+    const specialText = `${n.text || '…'}${n.canonicalIndex != null ? ' ' + n.canonicalIndex : ''}${n.canonicalData?.elided ? ' (elided)' : ''}`;
+    return measureWord(specialText);
+  }
   const lines = phraseLines(n);
   state.ctx.save();
   let width = 0;
@@ -2995,8 +3244,15 @@ function nodeWidth(n) {
 
 // Keep each box's measured size in sync with its label (used for hit-testing).
 function sizeNode(n) {
-  n.h = nodeHeight(n);
-  n.w = nodeWidth(n);
+  const prevW = n.w;
+  const nextH = nodeHeight(n);
+  const nextW = nodeWidth(n);
+  if (n.canonicalData && !n._measured && prevW && Math.abs(prevW - nextW) > 0.5) {
+    n.x += (prevW - nextW) / 2;
+    n._measured = true;
+  }
+  n.h = nextH;
+  n.w = nextW;
 }
 
 // Order nodes so parents are painted after children (roots last) — matches the
@@ -3006,6 +3262,7 @@ function paintOrder() {
 }
 
 function draw() {
+  for (const n of Object.values(state.model.nodes)) n.generatorNotation = state.combined && !embedded;
   if (lastEvidenceSnapshot !== null) {
     let current;
     try { current = JSON.stringify(toCanonicalEnvelope(state.model, state.canonicalProfile)); }
@@ -3066,33 +3323,30 @@ function render() {
     if (!n.parent) continue;
     const parent = state.model.nodes[n.parent];
     if (!parent || parent.canonicalTriangle) continue;
-    // Same attachment gaps as the generator: 20px above and below every raw
-    // label, and the canonical SVG anchors: 18px below the parent's last
-    // feature row, 18px above the child baseline.
+    // An edge into a node that failed validation is drawn red, like the tutor.
     const bad = state.nodeErrors.has(n.id);
-    if (n.canonicalNotation) {
-      const parentRows = parent.canonicalDisplay?.length
-        ? Math.max(0, parent.canonicalDisplay.length - 1)
-        : (parent.canonicalFeatures || []).length;
-      drawEdge(ctx,
-        { x: parent.x + parent.w / 2, y: parent.y + 17 + 18 + parentRows * 18 },
-        { x: n.x + n.w / 2, y: n.y + 17 - 18 },
-        bad ? c.error : getCss('--muted', '#64748b'));
-    } else {
-      const childGap = 20;
-      drawEdge(ctx,
-        { x: parent.x + parent.w / 2, y: parent.y + parent.h / 2 + 20 },
-        { x: n.x + n.w / 2, y: n.y + n.h / 2 - childGap },
-        bad ? c.error : undefined);
-    }
+    drawEdge(ctx,
+      parentAnchorOf(parent),
+      childAnchorOf(state.model, n),
+      bad ? c.error : undefined);
   }
 
-  for(const parent of nodes.filter(n=>n.canonicalTriangle)){
-    const kids=childrenOf(state.model,parent.id);if(!kids.length)continue;
-    const apex={x:parent.x+parent.w/2,y:parent.y+parent.h/2+12};
-    const left=kids[0],right=kids.at(-1),bottom=Math.min(...kids.map(n=>n.y+n.h/2))-12;
-    const lx=left.x+left.w/2-20,rx=right.x+right.w/2+20;
-    ctx.beginPath();ctx.moveTo(apex.x,apex.y);ctx.lineTo(lx,bottom);ctx.lineTo(rx,bottom);ctx.closePath();ctx.strokeStyle=c.edge;ctx.stroke();
+  for (const parent of nodes.filter(n => n.canonicalTriangle)) {
+    const kids = childrenOf(state.model, parent.id).sort((a, b) => a.x - b.x);
+    if (!kids.length) continue;
+    const apex = parentAnchorOf(parent);
+    const left = kids[0];
+    const right = kids.at(-1);
+    const bottom = Math.min(...kids.map(n => n.y + 4));
+    const lx = Math.min(left.x - 4, left.x + left.w / 2 - 20);
+    const rx = Math.max(right.x + right.w + 4, right.x + right.w / 2 + 20);
+    ctx.beginPath();
+    ctx.moveTo(apex.x, apex.y);
+    ctx.lineTo(lx, bottom);
+    ctx.lineTo(rx, bottom);
+    ctx.closePath();
+    ctx.strokeStyle = c.edge;
+    ctx.stroke();
   }
 
   // rubber-band link being dragged
@@ -3100,27 +3354,11 @@ function render() {
     if (state.link.free === 'parent') {
       const child = state.model.nodes[state.link.childId];
       if (child) {
-        if (child.canonicalNotation) {
-          drawEdge(ctx,
-            { x: child.x + child.w / 2, y: child.y + 17 - 18 },
-            { x: state.link.x, y: state.link.y },
-            getCss('--muted', '#64748b'));
-        } else {
-          const childGap = 20;
-          drawEdge(ctx, { x: child.x + child.w / 2, y: child.y + child.h / 2 - childGap }, { x: state.link.x, y: state.link.y });
-        }
+        drawEdge(ctx, childAnchorOf(state.model, child), { x: state.link.x, y: state.link.y });
       }
     } else {
       const parent = state.model.nodes[state.link.parentId];
-      if (parent) {
-        const y = parent.canonicalNotation
-          ? parent.y + 17 + 18 + (parent.canonicalDisplay?.length
-            ? Math.max(0, parent.canonicalDisplay.length - 1)
-            : (parent.canonicalFeatures || []).length) * 18
-          : parent.y + parent.h / 2 + 20;
-        drawEdge(ctx, { x: parent.x + parent.w / 2, y }, { x: state.link.x, y: state.link.y },
-          parent.canonicalNotation ? getCss('--muted', '#64748b') : undefined);
-      }
+      if (parent) drawEdge(ctx, parentAnchorOf(parent), { x: state.link.x, y: state.link.y });
     }
   }
 
@@ -3268,19 +3506,31 @@ function drawNode(ctx, n) {
   // Connectors are an editing affordance, not part of the resting tree:
   // they appear on the selected/dragged nodes, and while a link is being
   // dragged only on nodes near the cursor that can actually accept it.
-  if (state.editMode && state.canvasActive) {
+  if (state.editMode && !state.combined) {
+    if (n.parent && hovered) {
+      const ep = endpointOf(n, state.model);
+      ctx.beginPath(); ctx.arc(ep.x, ep.y, 4, 0, Math.PI * 2);
+      ctx.fillStyle = c.accent; ctx.fill();
+    }
+    const d = dotOf(n);
+    if (isPhrase && !n.canonicalTriangle && !n.canonicalData?.empty) {
+      ctx.beginPath(); ctx.arc(d.x, d.y, 4.8, 0, Math.PI * 2);
+      ctx.fillStyle = c.accent; ctx.fill();
+    }
+  }
+  if (state.editMode && state.combined && state.canvasActive) {
     const { top, bottom } = phraseConnectorYs(n);
     let ys = [];
     if (state.link) {
       const reveal = 170 / Math.max(state.view.scale, 0.2);
-      const anchor = state.link.free === 'child' ? endpointOf(n) : dotOf(n);
+      const anchor = state.link.free === 'child' ? endpointOf(n, state.model) : dotOf(n);
       const near = Math.hypot(state.link.x - anchor.x, state.link.y - anchor.y) <= reveal;
       if (near && state.link.free === 'child'
           && canConnect(state.model, state.link.parentId, n.id)) ys = [top];
       else if (near && state.link.free === 'parent' && isPhrase
           && canConnect(state.model, n.id, state.link.childId)) ys = [bottom];
     } else if (selected) {
-      ys = isPhrase ? [top, bottom] : [endpointOf(n).y];
+      ys = isPhrase ? [top, bottom] : [endpointOf(n, state.model).y];
     }
     for (const y of ys) {
       ctx.beginPath();
@@ -3370,9 +3620,8 @@ export function canvasGuideBox(target = {}) {
       const n = phraseOf(target.type);
       if (!n) return null;
       sizeNode(n);
-      const cx = n.x + n.w / 2;
-      const cy = n.y + n.h + 6;
-      return boxOf(cx - 14, cy - 14, cx + 14, cy + 14);
+      const d = dotOf(n);
+      return boxOf(d.x - 14, d.y - 14, d.x + 14, d.y + 14);
     }
     case 'spot': {
       // An empty patch just above the word row (or the view's centre) — where

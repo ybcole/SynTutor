@@ -107,20 +107,33 @@ export function treeStepGuide({ el, button }, label, labels, onSelect) {
   const step = el(labels.length > 1 ? 'summary' : 'div', undefined, 'lesson-tree-step-label');
   const number = el('span', undefined, 'lesson-tree-step-number');
   number.setAttribute('aria-hidden', 'true');
-  step.append(number, title);
+  const total = el('span', `/ ${labels.length}`, 'lesson-tree-step-total');
+  total.setAttribute('aria-hidden', 'true');
+  step.append(number, total, title);
   const choices = el('ol', undefined, 'lesson-tree-step-choices');
   let current = 0;
 
+  const prev = button('←', () => select(current - 1), 'lesson-tree-step-btn lesson-tree-step-prev');
+  prev.dataset.direction = 'previous';
+  prev.setAttribute('aria-label', 'Previous step');
+  prev.title = 'Previous step';
+
+  const next = button('→', () => select(current + 1), 'lesson-tree-step-btn lesson-tree-step-next');
+  next.dataset.direction = 'next';
+  next.setAttribute('aria-label', 'Next step');
+  next.title = 'Next step';
+
+  const pager = el('div', undefined, 'lesson-tree-step-pager');
+  pager.append(prev, next);
+
   function update(index) {
     current = index;
-    const atEnd = index === labels.length - 1;
     number.textContent = String(index + 1);
+    total.textContent = `of ${labels.length}`;
     step.setAttribute('aria-label', `Step ${index + 1} of ${labels.length}: ${labels[index]}${labels.length > 1 ? ' · Choose a step' : ''}`);
     title.textContent = labels[index];
-    arrow.textContent = atEnd ? '←' : '→';
-    arrow.dataset.direction = atEnd ? 'previous' : 'next';
-    arrow.setAttribute('aria-label', atEnd ? 'Previous step' : 'Next step');
-    arrow.title = arrow.getAttribute('aria-label');
+    prev.disabled = index <= 0;
+    next.disabled = index >= labels.length - 1;
     for (const [i, choice] of Array.from(choices.children).entries()) {
       if (i === index) choice.firstElementChild.setAttribute('aria-current', 'step');
       else choice.firstElementChild.removeAttribute('aria-current');
@@ -133,7 +146,6 @@ export function treeStepGuide({ el, button }, label, labels, onSelect) {
     onSelect(index);
   }
 
-  const arrow = button('', () => select(current + (current === labels.length - 1 ? -1 : 1)), 'lesson-tree-step-arrow');
   if (labels.length > 1) {
     for (const [index, text] of labels.entries()) {
       const item = el('li');
@@ -149,7 +161,7 @@ export function treeStepGuide({ el, button }, label, labels, onSelect) {
       if (!picker.contains(event.relatedTarget)) picker.open = false;
     });
     guide.append(picker);
-    navigation.append(guide, arrow);
+    navigation.append(guide, pager);
     navigation.addEventListener('keydown', event => {
       if (event.key === 'Escape' && picker.open) {
         event.preventDefault();
@@ -161,11 +173,12 @@ export function treeStepGuide({ el, button }, label, labels, onSelect) {
       }
     });
   } else {
+    total.hidden = true;
     guide.append(step);
     navigation.append(guide);
   }
   update(0);
-  return { controls: navigation, guide, arrow, update };
+  return { controls: navigation, guide, prev, next, arrow: next, update };
 }
 
 export function addTreeTrace(body, ui, label, steps, options = {}) {

@@ -5,7 +5,7 @@ import { shouldCollapseExplanation } from './explanation-dedupe.js';
 import { findCanonicalNode, canonicalNodeFacts } from './canonical-view.js';
 import { mapLegacyDetailsToCanonical } from './legacy-node-map.js';
 import { enableCanvasView } from './canvas-view.js';
-import { loadClerk, createSupabaseClient, currentUserEmail, isAccountSession, setAuthState, initAuthModal, openAuthModal } from './auth.js';
+import { loadClerk, createSupabaseClient, currentUserEmail, currentVerifiedUserEmail, deriveLeaderboardAlias, isAccountSession, setAuthState, initAuthModal, openAuthModal } from './auth.js';
 import { API_BASE } from './config.js';
 import { TreeRenderer } from './renderer.js';
 import { getSavedTheme, setTheme } from './theme.js';
@@ -478,9 +478,11 @@ export function boot() {
   // The full-bleed views wire their dismissal first, so Escape leaves a view
   // before anything else reacts to it.
   leaderboardView = createLeaderboardView(document.getElementById('leaderboardView'), {
+    settingsRoot: document.getElementById('leaderboardSettingsModal'),
     client: () => supabase,
     account: () => progressAvailable() ? supabase : null,
-    lifetime: loadPlayerProgress,
+    beforeLoad: ensureLeaderboardParticipation,
+    suggestedAlias: () => deriveLeaderboardAlias(currentVerifiedUserEmail(clerk)),
   });
   initWorkspaceViews();
   // The achievements category selector: picking a category re-filters the
@@ -503,8 +505,17 @@ export function boot() {
   syncCanvasModeButton();
   setCanvasHint(GENERATOR_MODE_HINT);
   setCanvasTreeText(null);
-  initQuizzes({ userId: () => activeUserId, client: () => supabase, onExit: enterTutorMode, onLesson: enterLessonsMode, onNavigate: enterAssessmentMode });
-  initLessons({ userId: () => activeUserId, client: () => supabase, onNavigate: enterLessonsMode, onExit: enterTutorMode, mountBuilder: mountEmbeddedBuilder });
+  const handleLearningProgress = () => {
+    refreshSidebarProgress();
+    if (progressAvailable()) loadAchievementBadges();
+    if (activeWorkspaceView === 'achievements') renderAchievements();
+    if (activeWorkspaceView === 'leaderboard') leaderboardView?.open();
+  };
+  initQuizzes({ userId: () => activeUserId, client: () => supabase, onExit: enterTutorMode, onLesson: enterLessonsMode, onNavigate: enterAssessmentMode, mountBuilder: mountEmbeddedBuilder });
+  window.addEventListener('syntutor:quiz-progress', handleLearningProgress);
+  window.addEventListener('syntutor:lesson-progress', handleLearningProgress);
+  initLessons({ userId: () => activeUserId, client: () => supabase, onNavigate: enterLessonsMode, onExit: enterTutorMode, mountBuilder: mountEmbeddedBuilder, onProgress: handleLearningProgress });
+  window.addEventListener('focus', refreshSidebarProgress);
   initResizers();
   syncInputClearBtn();
   // The one auth modal: the sidebar login and the lessons gateway both land
@@ -936,12 +947,12 @@ function enterCombinedBuilderMode() {
   // display-tree round trip loses node tags/features and can change the tree
   // on every later switch.
   if (combinedTreeSource === 'builder' && lastBuiltTree) {
-    openBuilderView({ errorNodeIds });
+    openBuilderView({ combined: true, errorNodeIds });
     opened = true;
   }
   if (!opened && source?.canonical) {
     try {
-      openBuilderView({ canonicalTree: source.canonical, errorNodeIds });
+      openBuilderView({ combined: true, canonicalTree: source.canonical, errorNodeIds });
       opened = true;
     } catch (error) {
       log(`Canonical tree import failed: ${error.message}`);
@@ -956,7 +967,7 @@ function enterCombinedBuilderMode() {
         log(`Syntax builder import failed: ${error.message}`);
       }
     }
-    openBuilderView(model ? { model, reset: true } : { reset: true });
+    openBuilderView(model ? { model, reset: true, combined: true } : { reset: true, combined: true });
   }
   combinedBuilderMode = true;
   builderEdited = false;
@@ -1188,18 +1199,12 @@ let achievementsRender = 0;
 async function renderAchievements() {
   const grid = document.getElementById('achievementsGrid');
   const counter = document.getElementById('achievementsStatsCounter');
-  const fill = document.getElementById('achievementsProgressFill');
-  const label = document.getElementById('achievementsProgressLabel');
   const renderId = ++achievementsRender;
   const client = supabase;
   const signedIn = progressAvailable();
-  if (label) label.textContent = signedIn ? 'Loading verified XP…' : 'Sign in to track your progress.';
-  if (fill) fill.style.width = '0%';
   if (grid) grid.replaceChildren();
   if (counter) counter.textContent = 'Loading achievements…';
-  const [rows, stats] = await Promise.all([
-    loadAchievementBadges(), signedIn ? loadPlayerProgress() : null,
-  ]);
+  const rows = await loadAchievementBadges();
   if (client !== supabase || renderId !== achievementsRender) return;
 
   const category = activeAchievementCategory();
@@ -1208,15 +1213,8 @@ async function renderAchievements() {
   if (counter) {
     const shown = visible.filter(achievement => achievement.unlocked_at).length;
     counter.textContent = !rows ? 'Achievements unavailable. Reopen this view to retry.'
-      : signedIn ? `${shown} of ${visible.length} unlocked`
-        : 'Sign in to earn these badges.';
-  }
-  if (stats) {
-    const level = levelFromXp(stats.xp);
-    if (fill) fill.style.width = `${(level.into / level.span) * 100}%`;
-    if (label) label.textContent = `Level ${stats.level} · ${stats.xp} verified XP (${stats.lesson_xp} lesson + ${stats.quiz_xp} quiz) · ${level.next - level.xp} XP to Level ${stats.level + 1}`;
-  } else if (signedIn && label) {
-    label.textContent = 'Verified XP is unavailable. Reopen this view to retry.';
+      : signedIn ? `${shown} of ${visible.length} achievements earned`
+        : `${visible.length} achievements · Sign in to track yours`;
   }
   if (!grid || !rows) return;
   grid.innerHTML = '';
@@ -1375,7 +1373,53 @@ function setCanvasInteractive(flag) {
   renderer?.setInteractive(flag !== false);
 }
 
+let leaderboardEnrolledSession = null;
+let leaderboardEnrollmentPromise = null;
+
+function ensureLeaderboardParticipation() {
+  if (!progressAvailable()) {
+    leaderboardEnrolledSession = null;
+    leaderboardEnrollmentPromise = null;
+    return Promise.resolve();
+  }
+  const client = supabase;
+  const user = activeUserId;
+  const sessionKey = `${user}:${activeSessionId || ''}`;
+  if (leaderboardEnrolledSession === sessionKey && leaderboardEnrollmentPromise) {
+    return leaderboardEnrollmentPromise;
+  }
+  leaderboardEnrolledSession = sessionKey;
+  const preferredAlias = deriveLeaderboardAlias(currentVerifiedUserEmail(clerk));
+  leaderboardEnrollmentPromise = (async () => {
+    try {
+      let { error } = await client
+        .rpc('ensure_leaderboard_participation', { p_preferred_alias: preferredAlias })
+        .abortSignal(AbortSignal.timeout(6000));
+      // Backward compatibility: hosted Supabase deployments still running 0-arg 20261116000006
+      // return PGRST202 for { p_preferred_alias }; fall back cleanly to 0-arg RPC.
+      if (error?.code === 'PGRST202') {
+        ({ error } = await client
+          .rpc('ensure_leaderboard_participation')
+          .abortSignal(AbortSignal.timeout(6000)));
+      }
+      if (error) throw error;
+      if (activeWorkspaceView === 'leaderboard' && client === supabase && user === activeUserId) {
+        leaderboardView?.open();
+      }
+    } catch (err) {
+      if (leaderboardEnrolledSession === sessionKey) {
+        leaderboardEnrolledSession = null;
+        leaderboardEnrollmentPromise = null;
+      }
+      console.warn('Leaderboard participation sync skipped:', err?.message || err);
+    }
+  })();
+  return leaderboardEnrollmentPromise;
+}
+
 function updateAuthState() {
+  refreshSidebarProgress();
+  ensureLeaderboardParticipation();
   // Publish the session state: the lesson catalog, the achievements and the
   // history all follow it (locks, progress, migration).
   setAuthState({
@@ -1423,6 +1467,7 @@ function renderProfileMenu() {
     const el = document.querySelector(id);
     if (el) el.hidden = hidden;
   };
+  setHidden('#profileLeaderboardSettings', !auth);
   setHidden('#profileAddAccount', !auth);
   setHidden('#profileSwitchAccount', !auth);
   setHidden('#profileMenuDivider', !auth);
@@ -1546,6 +1591,10 @@ async function openProfileAccounts() {
 }
 
 function initProfileMenu() {
+  document.querySelector('#profileLeaderboardSettings')?.addEventListener('click', () => {
+    setProfileMenu(false);
+    leaderboardView?.openSettings();
+  });
   document.querySelector('#profileAddAccount')?.addEventListener('click', () => {
     setProfileMenu(false);
     // A second account: the same modal, framed for a signed-in learner.
@@ -1605,6 +1654,7 @@ function wireEvents() {
     historySpans = [];
     renderInputHighlights(ta.value);
     syncInputClearBtn();
+    if (workspaceView === 'tutor') clearOverlay();
     // A correction is open: re-parse as the learner types so the tree (and
     // the re-check of the error) follow the edit.
     if (focus && workspaceView !== 'builder') scheduleLiveReparse();
@@ -1639,9 +1689,13 @@ function wireEvents() {
     if (ta.readOnly === true && e.target.closest?.('.sentence-span')) enterEditMode();
   });
   ta.addEventListener('blur', () => {
-    // The Syntax Builder owns the workspace: no Grammar Tutor pipeline and
-    // no diagnostics may run while it is open.
-    if (workspaceView === 'builder' || workspaceView === 'lessons' || workspaceView === 'quizzes') return;
+    // Only the Syntax Generator runs its pipeline on blur, and only while editing.
+    if (workspaceView !== 'tutor' || ta.readOnly) return;
+    if (!ta.value.trim()) {
+      returnToLocked();
+      syncCanvasEmptyState();
+      return;
+    }
     if (quizMode) {
       returnToLocked();
       setQuizHintText();
@@ -1656,10 +1710,10 @@ function wireEvents() {
     if (changed) runPipeline(focus ? { index: focus.sentenceIndex } : {});
   });
   ta.addEventListener('click', () => {
-    if (workspaceView !== 'builder') activateSentenceAtCaret();
+    if (workspaceView === 'tutor') activateSentenceAtCaret();
   });
   ta.addEventListener('keydown', (e) => {
-    if (workspaceView === 'builder') return;
+    if (workspaceView !== 'tutor' || e.target !== ta || e.isComposing) return;
     if (e.key === 'Escape' && ta.readOnly === false) {
       // Exit edit mode: blur re-locks the textarea and the blur handler
       // reruns the pipeline only when the text actually changed.
@@ -1667,15 +1721,32 @@ function wireEvents() {
       ta.blur();
       return;
     }
-    if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
-      e.preventDefault();
-      if (workspaceView !== 'builder') runPipeline();
+    if (e.key !== 'Enter') return;
+    if (ta.readOnly) {
+      if (!e.shiftKey) {
+        e.preventDefault();
+        if (e.metaKey || e.ctrlKey) runPipeline();
+        else activateSentenceAtCaret();
+      }
       return;
     }
-    if (e.key === 'Enter' && ta.readOnly) {
-      e.preventDefault();
-      activateSentenceAtCaret();
+    // Shift+Enter inserts a normal newline inside multiline sentence input.
+    if (e.shiftKey && !e.metaKey && !e.ctrlKey) return;
+    e.preventDefault();
+    if (!ta.value.trim()) {
+      showCanvasMessage('error', 'Enter a sentence', ['Type some English text above, then press Enter.']);
+      return;
     }
+    clearOverlay();
+    if (quizMode) {
+      returnToLocked();
+      setQuizHintText();
+      const currentIndex = (session?.payload?.meta?.target_sentence || 1) - 1;
+      analyzeForQuiz(ta.value, currentIndex);
+      return;
+    }
+    returnToLocked();
+    runPipeline(focus ? { index: focus.sentenceIndex } : {});
   });
 
   const drawer = document.querySelector('#historyDrawerBackdrop');
@@ -2242,6 +2313,63 @@ async function loadPlayerProgress() {
   }
 }
 
+let sidebarProgressRequest = 0;
+async function refreshSidebarProgress() {
+  const box = document.getElementById('sidebarProgress');
+  const label = document.getElementById('sidebarProgressLabel');
+  const bar = document.getElementById('sidebarProgressBar');
+  const levelBadge = document.getElementById('identityLevelBadge');
+  const chip = document.getElementById('identityChip');
+  if (!label || !bar) return;
+  label.removeAttribute('title');
+  const request = ++sidebarProgressRequest, user = activeUserId, client = supabase;
+  const signedIn = progressAvailable();
+  box?.classList.toggle('is-guest', !signedIn);
+  if (!signedIn) {
+    label.textContent = 'Sign in for verified XP.';
+    bar.value = 0;
+    bar.hidden = true;
+    if (levelBadge) {
+      levelBadge.textContent = '';
+      levelBadge.hidden = true;
+    }
+    if (chip && isGuest) {
+      chip.title = 'Log In / Sign Up';
+      chip.setAttribute('aria-label', 'Log In / Sign Up');
+    }
+    return;
+  }
+  label.textContent = 'Loading verified XP…';
+  bar.value = 0;
+  bar.hidden = true;
+  if (levelBadge) {
+    levelBadge.textContent = '';
+    levelBadge.hidden = true;
+  }
+  const stats = await loadPlayerProgress();
+  if (request !== sidebarProgressRequest || user !== activeUserId || client !== supabase) return;
+  if (!stats) {
+    label.textContent = 'Verified XP unavailable.';
+    return;
+  }
+  const level = levelFromXp(stats.xp);
+  label.textContent = `${level.xp}/${level.next} XP`;
+  label.title = `${level.xp} total XP; ${level.next} total XP reaches Level ${level.level + 1}. ${level.into}/${level.span} XP earned within this level.`;
+  bar.max = level.span;
+  bar.value = level.into;
+  bar.hidden = false;
+  bar.setAttribute('aria-label', `Level ${level.level}: ${level.into} of ${level.span} XP toward Level ${level.level + 1}`);
+  if (levelBadge) {
+    levelBadge.textContent = String(level.level);
+    levelBadge.hidden = false;
+  }
+  if (chip && !isGuest && clerk?.session) {
+    const name = playerDisplayName();
+    chip.title = `${name} · Level ${level.level}`;
+    chip.setAttribute('aria-label', `${name}, Level ${level.level}, ${level.xp} verified XP`);
+  }
+}
+
 async function loadAchievementBadges() {
   try {
     const { data, error } = await supabase.rpc('get_my_achievements').abortSignal(AbortSignal.timeout(6000));
@@ -2351,8 +2479,7 @@ async function executePipeline(opts, request) {
 
   const text = document.querySelector('#inputText').value.trim();
   if (!text) {
-    showCanvasMessage('error', 'No analyzable sentence', ['Enter some English text first, then submit it.']);
-    renderDiagnostic('No analyzable sentence', ['Enter some English text first, then submit it.']);
+    showCanvasMessage('error', 'Enter a sentence', ['Type some English text above, then press Enter.']);
     transition(STATES.IDLE, 'empty input -> back to idle');
     return;
   }
