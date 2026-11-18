@@ -1,8 +1,8 @@
 import {createBuilderTools} from './builder-tools.js';
-import INVENTORY from './builder-inventory.js';
-import {renderLessonTree} from './lessons-ui.js';
+import {renderLessonTree} from './lessons-ui.js?v=2026.11.18c';
+import {nodeLesson, nodeLessonRoute} from './node-lessons.js?v=2026.11.18c';
 import { API_BASE } from './config.js';
-import { requestEvidence, renderEvidence } from './explanation-evidence.js';
+import { requestEvidence, renderEvidence } from './explanation-evidence.js?v=2026.11.18c';
 // Syntax Builder view: a free-form canvas node editor for assembling syntax
 // trees by hand. It is shown as a sidebar destination (like Achievements) and
 // also drives the Matrix Quiz's "rebuild the tree" questions.
@@ -28,7 +28,7 @@ import {
   dotOf, dotHit, nodeHit, endpointOf, endpointHit, phraseConnectorYs, toTree, compareTrees, leavesOf, leafText,
   seedWords, leavesWithTags, childrenOf, getSentenceFromLeaves as sentenceFromLeaves,
 } from './syntax-builder.js';
-import { renderNodeDetail, renderDiagnostic, clearOverlay } from './ui.js';
+import { renderNodeDetail, renderDiagnostic, clearOverlay, plainName } from './ui.js?v=2026.11.18c';
 
 const WORD_FONT = '500 15px Inter, system-ui, sans-serif';
 const TAG_FONT = '600 10px Inter, system-ui, sans-serif';
@@ -239,12 +239,6 @@ function currentPalette() {
 
 // Top-left Nodes palette: appears when the standalone canvas is focused,
 // stays available while its own controls are used, and can be hidden.
-function nodeLessonRoute(label) {
-  const chapter = INVENTORY.labels[label];
-  if (!chapter) return null;
-  return `#lesson/br-${String(chapter).padStart(2, '0')}/concepts`;
-}
-
 function hideBuilderPalette() {
   hidePaletteTip();
   const host = document.getElementById('builderPalette');
@@ -276,7 +270,7 @@ function insertNodeFromPalette(label) {
 }
 
 function openNodeLesson(label) {
-  const route = nodeLessonRoute(label);
+  const route = nodeLessonRoute(label, 'syntax');
   if (!route) return;
   hideBuilderPalette();
   document.querySelector('.sidebar-item[data-view="lessons"]')?.click();
@@ -382,7 +376,7 @@ function renderBuilderPalette() {
     }
     add.setAttribute('aria-label', expansion ? `Add ${label} (${expansion})` : `Add ${label}`);
     add.addEventListener('click', () => insertNodeFromPalette(label));
-    const route = nodeLessonRoute(label);
+    const route = nodeLessonRoute(label, 'syntax');
     const help = document.createElement('button');
     help.type = 'button';
     help.className = 'builder-palette-help';
@@ -1374,6 +1368,8 @@ function onMouseMove(e) {
   if (id !== state.hover || epId !== state.hoverEndpoint) {
     state.hover = id;
     state.hoverEndpoint = epId;
+    state.hoverX = sx;
+    state.hoverY = sy;
     state.canvas.style.cursor = epNode ? 'grab'
       : node ? (node.kind === NODE.PHRASE ? 'grab' : 'pointer') : 'default';
     draw();
@@ -1873,12 +1869,12 @@ function menuItem(label, node, world) {
   });
   row.append(btn);
 
-  const route = nodeLessonRoute(label);
+  const route = nodeLessonRoute(label, 'syntax');
   const help = document.createElement('button');
   help.type = 'button';
   help.className = 'builder-menu-help';
   help.textContent = '?';
-  help.title = route ? `View ${label} in lessons` : 'No lesson page yet';
+  help.title = route ? `Go to lesson: ${nodeLesson(label, 'syntax')?.sectionTitle || label}` : 'No lesson page yet';
   help.setAttribute('aria-label', route
     ? `View ${label} in lessons`
     : `No lesson page for ${label}`);
@@ -2229,10 +2225,18 @@ async function showBuilderEvidence(nodeId = null) {
       renderEvidence(data, host, {
         nodeId,
         legacyDetail: detail?.status === 'error' ? detail : null,
+        nodeType: detail?.type || node?.type,
+        nodeKind: node?.kind === NODE.WORD ? 'word' : 'syntax',
+        nodeFeatures: node?.canonicalFeatures || [],
       });
     }
   } catch (error) {
-    if (version === evidenceRequest && isBuilderOpen()) renderEvidence({ status: "ANALYSIS_UNRESOLVED", diagnostics: [{ message: error.message }], channels: {} });
+    if (version === evidenceRequest && isBuilderOpen()) {
+      const selected = nodeId ? state.model.nodes[nodeId] : null;
+      renderEvidence({ status: "ANALYSIS_UNRESOLVED", diagnostics: [{ message: error.message }], channels: {} }, undefined, {
+        nodeType: selected?.type,
+      });
+    }
   }
 }
 
@@ -3138,6 +3142,35 @@ function render() {
     ctx.fillStyle = c.accent + '20';
     ctx.fillRect(minX, minY, maxX - minX, maxY - minY);
   }
+  ctx.restore();
+  drawHoverTooltip();
+}
+
+function drawHoverTooltip() {
+  const node = state.hover ? state.model.nodes[state.hover] : null;
+  if (!node || state.drag || state.link || state.pan) return;
+  const label = plainName(node.type);
+  if (!label || label === node.type) return;
+  const ctx = state.ctx;
+  const canvas = state.canvas;
+  const dpr = state.dpr;
+  const w = canvas.width / dpr, h = canvas.height / dpr;
+  const x = state.hoverX ?? 0, y = state.hoverY ?? 0;
+  ctx.save();
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.font = '600 12px system-ui, sans-serif';
+  const padX = 10, padY = 7, bh = 26;
+  const bw = ctx.measureText(label).width + padX * 2;
+  const bx = Math.min(Math.max(x + 14, 6), w - bw - 6);
+  const by = Math.min(Math.max(y + 16, 6), h - bh - 6);
+  ctx.fillStyle = 'rgba(22, 17, 43, 0.93)';
+  ctx.beginPath();
+  ctx.roundRect(bx, by, bw, bh, 8);
+  ctx.fill();
+  ctx.fillStyle = '#f2efff';
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(label, bx + padX, by + bh / 2);
   ctx.restore();
 }
 

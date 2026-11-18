@@ -1,6 +1,6 @@
 import { accountUserId } from './session-scope.js';
 import { fromCanonicalEnvelope, fromDisplayTree } from './syntax-builder.js';
-import { requestEvidence, renderEvidence, learnerFindingParagraph, evidenceParagraphText } from './explanation-evidence.js';
+import { requestEvidence, renderEvidence, learnerFindingParagraph, evidenceParagraphText } from './explanation-evidence.js?v=2026.11.18c';
 import { shouldCollapseExplanation } from './explanation-dedupe.js';
 import { findCanonicalNode, canonicalNodeFacts } from './canonical-view.js';
 import { mapLegacyDetailsToCanonical } from './legacy-node-map.js';
@@ -13,13 +13,13 @@ import {
   log,
   clearOverlay, clearDiagnostics, showCanvasMessage, renderNodeDetail,
   renderDiagnostic, renderCorrection, applySentenceSelection, plainName, renderCorrectionPanel,
-} from './ui.js';
+} from './ui.js?v=2026.11.18c';
 import {
   planFocus, contextWords, correctionPreview, matchesPreviewTokens, expectedScopeWords, findScopeNode, findTargetError,
 } from './correction.js';
-import { initLessons, openLessons, closeLessons, renderLessonTree } from './lessons-ui.js?v=2026.11.16q';
-import { initQuizzes, openQuizzes, closeQuizzes } from './quizzes-ui.js';
-import { initSyntaxBuilder, openBuilderView, mountEmbeddedBuilder, closeBuilderView, isBuilderOpen, clearBuilder, builderDisplayTree, builderTextTree, setCanvasHint } from './syntax-builder-ui.js';
+import { initLessons, openLessons, closeLessons, renderLessonTree } from './lessons-ui.js?v=2026.11.18c';
+import { initQuizzes, openQuizzes, closeQuizzes } from './quizzes-ui.js?v=2026.11.18c';
+import { initSyntaxBuilder, openBuilderView, mountEmbeddedBuilder, closeBuilderView, isBuilderOpen, clearBuilder, builderDisplayTree, builderTextTree, setCanvasHint } from './syntax-builder-ui.js?v=2026.11.18c';
 import { initHistory, setHistoryEnabled, openHistoryDrawer, closeHistoryDrawer, shouldPersistHistory } from './history.js';
 import { levelFromXp } from './level.js';
 import { createLeaderboardView } from './leaderboard.js';
@@ -2034,6 +2034,11 @@ function showCanonicalTree(payload) {
         const options = {
           treeRoot: group.closest('#canonicalTreeView'),
           nodeId: owner.id,
+          nodeType: owner.word
+            ? (parents.get(owner.id)?.label || 'WORD')
+            : (owner.label || 'PHRASE'),
+          nodeKind: owner.word ? 'word' : 'syntax',
+          nodeFeatures: owner.features || [],
           legacyDetail: legacyMap.detailForNode(owner.id) || legacyMap.detailForNode(id),
         };
         // Repeated explanations are collapsed, not hidden: a learner who
@@ -2739,7 +2744,12 @@ function handleNodeSelect(id) {
   if (!node || !detail) return;
   // Raw parser nodes have no source-validated B-R word/phrase correspondence.
   // Avoid putting a legacy constraint badge ahead of a learner explanation.
-  renderEvidence(payload?.explanation_evidence, undefined, {legacyDetail: detail});
+  renderEvidence(payload?.explanation_evidence, undefined, {
+    legacyDetail: detail,
+    nodeType: node.type,
+    nodeKind: node.children?.length ? 'syntax' : 'word',
+    nodeFeatures: node.features || [],
+  });
   // Keep the fresh detail card visible in the bottom-right explain pane
   // without yanking the rest of the workspace.
   document.querySelector('#explainNode')

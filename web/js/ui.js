@@ -1,8 +1,25 @@
+import { nodeLesson } from './node-lessons.js?v=2026.11.18c';
+
 const $ = (sel) => document.querySelector(sel);
 
 const PLAIN_NAME = {
-  S: 'Sentence / Clause', NP: 'Noun Phrase', NML: 'Noun Phrase (compound)', NX: 'Noun Phrase',
+  S: 'Sentence / Clause', NP: 'Noun Phrase', NML: 'Nominal', NX: 'Nominal',
   VP: 'Verb Phrase', PP: 'Prepositional Phrase', ADJP: 'Adjective Phrase', ADVP: 'Adverb Phrase',
+  N: 'Noun', NOUN: 'Noun', V: 'Verb', VERB: 'Verb', A: 'Adjective', ADJ: 'Adjective',
+  AP: 'Adjective Phrase', Adv: 'Adverb', ADVERB: 'Adverb', AdvP: 'Adverb Phrase',
+  P: 'Preposition', PREPOSITION: 'Preposition', NOM: 'Nominal', name: 'Proper name',
+  pronoun: 'Pronoun', WORD: 'Word', PHRASE: 'Phrase', ROOT: 'Root',
+  Prt: 'Particle', E: 'Empty category', MOD: 'Modal auxiliary', PERF: 'Perfect auxiliary',
+  PROG: 'Progressive auxiliary', PASS: 'Passive auxiliary', TENSE: 'Tense',
+  'S-bar': 'Subordinate clause (S-bar)', 'S-dbar': 'Subordinate clause (S-dbar)',
+  C: 'Complementizer', C1: 'Complementizer', C2: 'Complementizer',
+  DET: 'Determiner', ART: 'Article', DEM: 'Demonstrative', Q: 'Quantifier',
+  POSS: 'Possessive', 'PRE-DET': 'Predeterminer', QA: 'Quantifier',
+  PartP: 'Participial phrase', 'V-part': 'Verb participle', AUX: 'Auxiliary verb',
+  'V(I)': 'Finite verb', 'V(II)': 'Non-finite verb', CC: 'Coordinating conjunction',
+  CD: 'Cardinal number', CONJP: 'Conjunction Phrase', UCP: 'Coordination Phrase',
+  FRAG: 'Sentence fragment', INTJ: 'Interjection', SQ: 'Inverted question clause',
+  SBARQ: 'Wh-question clause', SINV: 'Inverted declarative clause', SBAR: 'Subordinate clause',
   SBAR: 'Subordinate Clause', SQ: 'Inverted Question Clause', SBARQ: 'Wh-Question Clause',
   SINV: 'Inverted Declarative Clause', FRAG: 'Sentence Fragment', PRT: 'Verb-Particle Phrase',
   INTJ: 'Interjection', ROOT: 'Parse Root', CONJP: 'Conjunction Phrase', UCP: 'Coordination Phrase',
@@ -137,6 +154,24 @@ export function renderNodeDetail(_session, detail, node) {
     ex.textContent = detail.text;
     box.appendChild(ex);
   }
+  appendLessonLink(box, detail.type);
+}
+
+function appendLessonLink(box, type) {
+  const lesson = nodeLesson(type);
+  if (!lesson) return;
+  const link = document.createElement('a');
+  link.className = 'xai-lesson-link';
+  link.href = lesson.route;
+  const lessonLabel = lesson.kind === 'syntax' ? lesson.sectionTitle : lesson.chapterTitle;
+    link.textContent = `Go to lesson: ${lessonLabel}`;
+  link.title = `${lesson.chapterTitle} — ${lesson.sectionTitle}`;
+  link.addEventListener('click', (event) => {
+    event.preventDefault();
+    document.querySelector('.sidebar-item[data-view="lessons"]')?.click();
+    location.hash = lesson.route;
+  });
+  box.appendChild(link);
 }
 
 function label(body, text) {

@@ -1,5 +1,5 @@
 import { showCurriculumState } from './curriculum-state.js';
-import { STAGES, STAGE_TITLES, validateCourse, lessonKey, emptyProgress, canAdvance, lessonXp } from './lesson-core.js?v=2026.11.16q';
+import { STAGES, STAGE_TITLES, validateCourse, lessonKey, emptyProgress, canAdvance, lessonXp } from './lesson-core.js?v=2026.11.18c';
 import { composeLessonPreview } from './lesson-preview.js';
 import { createLessonStore } from './lesson-progress.js';
 import { createFoundationStore } from './foundation-progress.js';
@@ -16,13 +16,14 @@ import { embeddedClausesPilot } from './embedded-clauses-pilot.js';
 import { whClausesPilot } from './wh-clauses-pilot.js';
 import { nonFinitePilot } from './non-finite-pilot.js';
 import { grammarPilot } from './grammar-pilot.js';
-import { requestEvidence, renderEvidence } from './explanation-evidence.js';
+import { requestEvidence, renderEvidence } from './explanation-evidence.js?v=2026.11.18c';
 import { subscribeAuthState } from './auth.js';
+import { plainName } from './ui.js?v=2026.11.18c';
 import { enableCanvasView } from './canvas-view.js';
 import { addConstituentReview, addConstituentTeaching, constituentHeadings, constituentOpeningCheck, constituentReferences } from './constituents-lesson.js';
 import { addSubjectPredicateTeaching, subjectPredicateHeadings, subjectPredicateOpeningCheck, subjectPredicateReferences } from './subject-predicate-lesson.js';
 import { phraseStructureArticles } from './phrase-structure-lessons.js';
-import { cambridgeChapterArticles } from './cambridge-chapter-lessons.js?v=2026.11.16q';
+import { cambridgeChapterArticles } from './cambridge-chapter-lessons.js?v=2026.11.18c';
 import { displayVpLevel, lessonNotation } from './lesson-notation.js';
 import { addLessonKeyTerms } from './lesson-key-terms.js';
 import { addLessonDictionary } from './lesson-dictionary.js';
@@ -211,6 +212,9 @@ export function renderLessonTree(envelope, {
   }
   for (const {node,x,y} of positions) {
     const g=svgNode('g',{'data-node-id':node.id || '',class:node.id===focusId ? 'lesson-tree-focus' : ''});
+    const expanded = plainName(node.label || (node.word ? 'WORD' : 'PHRASE'));
+    const title = svgNode('title'); title.textContent = expanded;
+    g.append(title);
     if (node.id === focusId || (highlightWords && node.id && onSelectNode)) {
       g.append(svgNode('rect', {
         class: 'lesson-tree-focus-box', x: x - 55, y: y - 20,

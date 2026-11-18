@@ -1,6 +1,7 @@
 // One request contract and one evidence renderer for Generator and Builder.
 import { API_BASE } from './config.js';
 import { applyEvidenceFocus, evidenceFocusText } from './xai7-focus.js';
+import { nodeLesson } from './node-lessons.js?v=2026.11.18c';
 
 export async function requestEvidence(tree, nodeId = null, options = {}) {
   const body = { tree: tree || null };
@@ -429,6 +430,25 @@ export function renderEvidence(evidence, host = document.querySelector('#explain
   paragraph.textContent = text;
   panel.append(paragraph);
   renderLegacyDiagnostic(panel, options.legacyDetail);
+  const featureOrder = ['intens', 'complex', 'ditrans', 'prep', 'phrasal', 'trans', 'intrans', 'pres', 'past', '-tense'];
+  const feature = options.nodeKind === 'syntax'
+    ? featureOrder.find((f) => (options.nodeFeatures || []).includes(f) && nodeLesson(f, 'syntax'))
+    : null;
+  const lesson = nodeLesson(feature || options.nodeType || options.legacyDetail?.type, options.nodeKind);
+  if (lesson) {
+    const link = document.createElement('a');
+    link.className = 'xai-lesson-link';
+    link.href = lesson.route;
+    const lessonLabel = lesson.kind === 'syntax' ? lesson.sectionTitle : lesson.chapterTitle;
+    link.textContent = `Go to lesson: ${lessonLabel}`;
+    link.title = `${lesson.chapterTitle} — ${lesson.sectionTitle}`;
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      document.querySelector('.sidebar-item[data-view="lessons"]')?.click();
+      location.hash = lesson.route;
+    });
+    panel.append(link);
+  }
   host.append(panel);
   if (options.treeRoot) applyEvidenceFocus(options.treeRoot, evidence);
 }

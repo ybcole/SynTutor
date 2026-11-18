@@ -1,7 +1,7 @@
 import { showCurriculumState } from './curriculum-state.js';
 import {validateBank,quizKey,itemsFor,gradeAttempt} from './quiz-core.js';
 import {createQuizStore} from './quiz-progress.js';
-import {composeQuizEvidence,requestQuizEvidence,requestEvidence,renderEvidence} from './explanation-evidence.js';
+import {composeQuizEvidence,requestQuizEvidence,requestEvidence,renderEvidence} from './explanation-evidence.js?v=2026.11.18c';
 import {renderLessonTree} from './lessons-ui.js';
 import {subscribeAuthState} from './auth.js';
 let host,config={},bank,store,current=null,mode='all',busy=false,message='',generation=0;
