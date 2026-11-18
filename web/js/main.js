@@ -1,6 +1,6 @@
 import { accountUserId } from './session-scope.js';
 import { fromCanonicalEnvelope, fromDisplayTree } from './syntax-builder.js';
-import { requestEvidence, renderEvidence, learnerFindingParagraph, evidenceParagraphText } from './explanation-evidence.js?v=2026.11.18d';
+import { requestEvidence, renderEvidence, learnerFindingParagraph, evidenceParagraphText } from './explanation-evidence.js?v=2026.11.18e';
 import { shouldCollapseExplanation } from './explanation-dedupe.js';
 import { findCanonicalNode, canonicalNodeFacts } from './canonical-view.js';
 import { mapLegacyDetailsToCanonical } from './legacy-node-map.js';
@@ -13,13 +13,13 @@ import {
   log,
   clearOverlay, clearDiagnostics, showCanvasMessage, renderNodeDetail,
   renderDiagnostic, renderCorrection, applySentenceSelection, plainName, renderCorrectionPanel,
-} from './ui.js?v=2026.11.18d';
+} from './ui.js?v=2026.11.18e';
 import {
   planFocus, contextWords, correctionPreview, matchesPreviewTokens, expectedScopeWords, findScopeNode, findTargetError,
 } from './correction.js';
-import { initLessons, openLessons, closeLessons, renderLessonTree } from './lessons-ui.js?v=2026.11.18d';
-import { initQuizzes, openQuizzes, closeQuizzes } from './quizzes-ui.js?v=2026.11.18d';
-import { initSyntaxBuilder, openBuilderView, mountEmbeddedBuilder, closeBuilderView, isBuilderOpen, clearBuilder, builderDisplayTree, builderTextTree, setCanvasHint } from './syntax-builder-ui.js?v=2026.11.18d';
+import { initLessons, openLessons, closeLessons, renderLessonTree } from './lessons-ui.js?v=2026.11.18e';
+import { initQuizzes, openQuizzes, closeQuizzes } from './quizzes-ui.js?v=2026.11.18e';
+import { initSyntaxBuilder, openBuilderView, mountEmbeddedBuilder, closeBuilderView, isBuilderOpen, clearBuilder, builderDisplayTree, builderTextTree, setCanvasHint } from './syntax-builder-ui.js?v=2026.11.18e';
 import { initHistory, setHistoryEnabled, openHistoryDrawer, closeHistoryDrawer, shouldPersistHistory } from './history.js';
 import { levelFromXp } from './level.js';
 import { createLeaderboardView } from './leaderboard.js';

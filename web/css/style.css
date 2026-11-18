@@ -7,10 +7,10 @@
   /* Semantic aliases: the lesson chrome names its greys after their role. */
   --text: var(--ink);
   --text-muted: var(--muted);
-  --accent-border: rgba(99, 102, 241, 0.25);
-  --accent: #6d5ae6;
-  --accent-strong: #5946d4;
-  --accent-soft: #efeafc;
+  --accent-border: rgba(37, 99, 235, 0.28);
+  --accent: #2563eb;
+  --accent-strong: #1d4ed8;
+  --accent-soft: #eaf2ff;
   --ok: #2e8b57;
   /* Semantic alias for the success colour (completed stages, solved trees). */
   --success: var(--ok);
@@ -55,10 +55,10 @@
   --muted: #94a3b8;
   --text: var(--ink);
   --text-muted: var(--muted);
-  --accent-border: color-mix(in srgb, #8b7cf1 32%, transparent);
-  --accent: #8b7cf1;
-  --accent-strong: #a295ff;
-  --accent-soft: rgba(109, 90, 230, 0.16);
+  --accent-border: color-mix(in srgb, #60a5fa 34%, transparent);
+  --accent: #60a5fa;
+  --accent-strong: #93c5fd;
+  --accent-soft: rgba(37, 99, 235, 0.18);
   --border: #2e3442;
   --card-border: #2e3442;
   --border-subtle: rgba(255, 255, 255, 0.22);
@@ -477,7 +477,7 @@ button:disabled {
    never highlight at the same time, and the active one is always the module
    the workspace is currently showing. */
 .sidebar-item.active {
-  background: var(--accent-soft, rgba(99, 102, 241, 0.15));
+  background: var(--accent-soft, rgba(37, 99, 235, 0.15));
   color: var(--accent-strong, #818cf8);
 }
 .sidebar-item.active svg {
@@ -969,7 +969,7 @@ body:has(#newSessionBtn.active) #inputClearBtn:not([hidden]) { display: flex; }
 }
 
 [data-theme="dark"] .sentence-selected {
-  background: rgba(109, 90, 230, 0.22);
+  background: rgba(37, 99, 235, 0.22);
 }
 
 /* Locked multi-sentence passages render one interactive span per sentence.
@@ -2609,8 +2609,8 @@ body:has(#correctionPanel:not([hidden])) #emptyExplainState { display: none; }
 /* The primary actions (Check tree / Next) keep the accent fill; the hover
    state must not fall back to the neutral pill background. */
 .builder-btn-primary {
-  background: var(--accent, #6d5ae6);
-  border-color: var(--accent, #6d5ae6);
+  background: var(--accent, #2563eb);
+  border-color: var(--accent, #2563eb);
   color: #fff;
 }
 .builder-btn-primary:hover {
@@ -2764,7 +2764,7 @@ body.builder-active .builder-canvas {
 }
 .builder-menu-code { font-weight: 700; }
 .builder-menu-name { font-size: 11px; font-weight: 500; color: inherit; opacity: .68; }
-.builder-menu-item:hover { background: var(--accent, #6d5ae6); color: #fff; }
+.builder-menu-item:hover { background: var(--accent, #2563eb); color: #fff; }
 .builder-menu-item.is-phrase { color: var(--builder-phrase-ink); }
 .builder-menu-item.is-phrase:hover { color: #fff; }
 .builder-menu-item.is-current { background: color-mix(in srgb, var(--accent) 16%, transparent); }
@@ -3302,7 +3302,7 @@ body.workspace-view-open .app-main { display: none; }
 }
 /* The learner's own row: a soft accent wash with a solid accent edge. */
 .standings-table tr.current-user {
-  background: var(--accent-soft, rgba(99, 102, 241, 0.08));
+  background: var(--accent-soft, rgba(37, 99, 235, 0.08));
   position: relative;
 }
 .standings-table tr.current-user td:first-child {
