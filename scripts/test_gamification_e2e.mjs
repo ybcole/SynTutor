@@ -436,7 +436,7 @@ try {
   const nav = view => page.locator(`.sidebar-item[data-view="${view}"]`).click();
 
   // Verify sidebar verified XP loaded directly from Postgres for Alpha.
-  await page.waitForFunction(() => document.querySelector('#sidebarProgressLabel')?.textContent?.includes('verified XP'));
+  await page.waitForFunction(() => document.querySelector('#sidebarProgressLabel')?.textContent?.match(/^\d+\/\d+ XP$/));
   const sidebarText = await page.locator('#sidebarProgressLabel').textContent();
   assert.ok(!sidebarText.includes('unavailable'), `Sidebar XP loaded cleanly: ${sidebarText}`);
 
@@ -749,7 +749,7 @@ try {
   const cambridgeMaster = quiz.locator('.quiz-practice').filter({ has: page.getByRole('heading', { name: 'Cambridge Master Quiz', exact: true }) });
   assert.equal(await cambridgeMaster.getByRole('spinbutton').inputValue(), '25');
   assert.equal(await cambridgeMaster.getByRole('spinbutton').getAttribute('max'), '50');
-  await quiz.locator('[data-chapter="cgel-ch01"] > summary').click();
+  await quiz.locator('[data-chapter="cgel-ch01"] summary').click();
   await quiz.locator('[data-chapter="cgel-ch01"]').getByRole('button', { name: 'Start quiz', exact: true }).first().click();
   await quiz.getByRole('heading', { name: 'Question 1 of 5', exact: true }).waitFor();
 

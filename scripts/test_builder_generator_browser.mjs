@@ -338,7 +338,7 @@ try {
 
   // Re-enter Edit mode, build complete S -> birds tree, and click Construct to arrange hierarchically.
   await page.locator('[data-builder-edit]').click();
-  await page.locator('[data-builder-clear]').click();
+  await page.locator('[data-builder-clear]:visible').click();
   await ta.fill('birds');
   await page.waitForTimeout(260);
   await page.locator('#builderPaletteList [data-palette-label="S"]').click();
@@ -377,7 +377,7 @@ try {
   await snap('builder-constructed.png');
 
   // Clear canvas and Fit on a wide long-word sentence scales down cleanly within the canvas without obscuring under palette.
-  await page.locator('[data-builder-clear]').click();
+  await page.locator('[data-builder-clear]:visible').click();
   await ta.fill('extraordinarily sophisticated transformations inevitably produce remarkably intricate hierarchical constituencies throughout contemporary linguistics research');
   await page.waitForTimeout(300);
   await page.locator('[data-builder-zoom="fit"]').click();
@@ -586,8 +586,32 @@ try {
   const ch7Labels = await lessons.locator('.first-tree-node-btn').allTextContents();
   assert.ok(ch7Labels.includes('NOM') && ch7Labels.includes('DET') && !ch7Labels.includes('C2'), 'Ch. 7 palette keeps Ch. 7 determiner/nominal scope');
 
+  // Main's combined Studio keeps its automatic editing and tree transfer,
+  // independently of the sidebar Builder's explicit Edit/Construct controls.
+  await page.locator('.sidebar-item[data-view="tutor"]').click();
+  await ta.dblclick();
+  await ta.fill('Birds sing.');
+  await ta.press('Enter');
+  await page.waitForFunction(() => document.querySelector('#inputText').readOnly);
+  await page.locator('#exploreBuilderBtn').click();
+  await page.locator('#builderCanvas').waitFor({state:'visible'});
+  assert.equal(await page.locator('#builderTopLeft').isHidden(),true);
+  assert.equal(await page.locator('#combinedBuilderClear').isVisible(),true);
+  assert.equal(await page.locator('.sidebar-item[data-view="tutor"].active').count(),1);
+  await page.locator('#builderCanvas').click({position:{x:400,y:240}});
+  await page.locator('#builderPalette').waitFor({state:'visible'});
+  assert.ok(await page.locator('.builder-palette-help:not(:disabled)').count());
+  const transferred = await page.evaluate(async()=>JSON.stringify((await import('/js/syntax-builder-ui.js')).builderModel().nodes));
+  await page.locator('#exploreBuilderBtn').click();
+  await page.locator('#exploreBuilderBtn').click();
+  assert.equal(await page.evaluate(async()=>JSON.stringify((await import('/js/syntax-builder-ui.js')).builderModel().nodes)),transferred,'repeated combined-mode switches retain exact model');
+  await page.locator('#combinedBuilderClear').click();
+  assert.equal(await ta.inputValue(),'');
+  await page.locator('#builderCanvas').click({position:{x:400,y:240}});
+  await page.locator('.sidebar-item[data-view="lessons"]').click();
+  assert.equal(await page.locator('#builderPalette').isHidden(),true,'combined palette closes when leaving for Lessons');
   assert.deepEqual(errors, []);
-  console.log('PASS builder/generator/lessons interaction suite: Enter-to-analyze, Shift+Enter, blank blur guard, Builder top-left Clear/Edit + floating palette + bottom-left Nodes toggle + Construct vs Done editing + Fit + connector alignment, Lessons br-01/02/07/08 geometry/Fit/step-labels/palettes, light/dark + desktop/mobile, 0 errors.');
+  console.log('PASS builder/generator/lessons interaction suite: Enter-to-analyze, Shift+Enter, blank blur guard, Builder top-left Clear/Edit + floating palette + bottom-left Nodes toggle + Construct vs Done editing + Fit + connector alignment, Lessons br-01/02/07/08 geometry/Fit/step-labels/palettes, light/dark + desktop/mobile, combined Studio transfer/repeated switches/palette/Clear/teardown, 0 errors.');
 } finally {
   await browser.close();
   await new Promise(resolve => server.close(resolve));

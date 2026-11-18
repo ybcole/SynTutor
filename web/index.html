@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SynTutor — Explainable Phrase-Structure Grammar Tutor</title>
+  <title>SynTutor — Syntax</title>
   <meta name="description" content="Understand structure. Explain grammar.">
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/quiz.css" />
@@ -43,14 +43,14 @@
           </button>
         </div>
         <nav class="app-sidebar-nav">
-          <button id="newSessionBtn" class="sidebar-item active" type="button" data-view="tutor" aria-label="Syntax Generator" title="Syntax Generator">
+          <button id="newSessionBtn" class="sidebar-item active" type="button" data-view="tutor" aria-label="Syntax" title="Syntax">
             <span class="sidebar-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 20h9"></path>
                 <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
               </svg>
             </span>
-            <span class="sidebar-label">Syntax Generator</span>
+            <span class="sidebar-label">Syntax</span>
           </button>
           <button class="sidebar-item" type="button" data-view="builder" title="Syntax Builder">
             <span class="sidebar-icon" aria-hidden="true">
@@ -244,11 +244,12 @@
             <button id="builderClearTop" type="button" data-builder-clear>Clear</button>
             <button type="button" data-builder-edit aria-pressed="false">Edit mode</button>
           </div>
-          <div id="builderToolbar" class="builder-toolbar canonical-zoom" role="group" aria-label="Tree zoom and construction controls" hidden>
+          <div id="builderToolbar" class="builder-toolbar canonical-zoom" role="group" aria-label="Tree zoom" hidden>
             <button type="button" data-builder-construct hidden>Construct</button>
             <button type="button" data-builder-zoom="in" aria-label="Zoom in on syntax tree">+</button>
             <button type="button" data-builder-zoom="out" aria-label="Zoom out of syntax tree">&minus;</button>
             <button type="button" data-builder-zoom="fit" aria-label="Fit syntax tree">Fit</button>
+            <button id="combinedBuilderClear" type="button" data-builder-clear hidden>Clear</button>
           </div>
           <aside id="builderPalette" class="builder-palette" aria-label="Nodes palette" hidden>
             <div id="builderPaletteHead" class="builder-palette-head" title="Drag to move Nodes panel">
@@ -285,14 +286,16 @@
               <line x1="27" y1="21" x2="20" y2="42" />
               <line x1="37" y1="21" x2="44" y2="42" />
             </svg>
-            <h3 class="empty-tree-title">No Syntax tree to generate yet!</h3>
-            <p class="empty-tree-sub">Enter a sentence to explore its structure and source-based explanations.</p>
+            <h3 class="empty-tree-title">No syntax tree yet</h3>
+            <p class="empty-tree-sub">Type a sentence to analyze it, or choose Syntax builder to build one.</p>
           </div>
+          <button id="exploreBuilderBtn" class="builder-btn builder-btn-primary explore-builder-btn" type="button" hidden>Syntax builder →</button>
           <div id="loadingIndicator" class="loading-pill" role="status" aria-hidden="true">
             <span class="loading-spinner" aria-hidden="true"></span>
             <span>Generating syntax tree&hellip;</span>
           </div>
         </div>
+
       </section>
 
       <div id="colResizer" class="resizer resizer-col" role="separator" aria-orientation="vertical"
@@ -501,6 +504,6 @@
   </div>
 
   <script src="js/config-hint.js"></script>
-  <script type="module" src="js/main.js?v=2026.11.16c"></script>
+  <script type="module" src="js/main.js?v=2026.11.16q"></script>
 </body>
 </html>

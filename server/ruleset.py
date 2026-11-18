@@ -490,6 +490,20 @@ ACTION_VERBS = {
     'talk', 'work', 'study', 'watch', 'listen', 'wait', 'sit', 'stand',
     'come', 'go', 'leave', 'arrive', 'help', 'think', 'dream', 'fight',
 }
+# Plural surfaces that denote events/activities rather than people or things.
+# They only trigger the copula+verb-form check when the subject is a human
+# plural ("The boys are walks." -> "are walking"), not in legitimate nominal
+# uses such as "These are walks.".
+BE_EVENT_PLURALS = {
+    'walks', 'runs', 'swims', 'dances', 'talks', 'sleeps', 'jumps', 'laughs',
+    'cries', 'smiles', 'waits', 'exercises', 'studies', 'reads', 'writes',
+    'drives', 'rides', 'flies', 'travels', 'visits', 'shops', 'sings',
+}
+HUMAN_PLURALS = {
+    'boys', 'girls', 'men', 'women', 'children', 'students', 'teachers',
+    'people', 'friends', 'parents', 'players', 'workers', 'doctors',
+    'nurses', 'sisters', 'brothers', 'kids', 'adults', 'teenagers',
+}
 DO_HAVE_SURFACES = {'do', 'does', 'did', 'have', 'has', 'had'}
 
 NEGATIONS = {'not', "n't", 'never', 'no'}
@@ -3245,16 +3259,37 @@ def _check_basic(root, clauses, leaves):
             continue
         nxt = leaves[i + 1]
         nlow = _lower(nxt)
-        if nxt.get('type') not in ('NN', 'NNS') or nlow not in (
-                ACTION_VERBS | STATIVE_SIMPLE):
+        human_plural = i > 0 and lows[i - 1] in HUMAN_PLURALS
+        event_plural = human_plural and nlow in BE_EVENT_PLURALS
+        if nxt.get('type') not in ('NN', 'NNS'):
+            continue
+        if not event_plural and nlow not in (ACTION_VERBS | STATIVE_SIMPLE):
             continue
         # Only treat this as a mis-tagged verb when the subject is a personal
-        # pronoun right before 'be' ("I am work", "He is work").  Otherwise the
-        # noun is a normal complement ("There is work to do", "It is love").
-        if not (i > 0 and leaves[i - 1].get('type') == 'PRP'):
+        # pronoun right before 'be' ("I am work", "He is work") or a human
+        # plural ("The boys are walks"). Otherwise the noun is a normal
+        # complement ("There is work to do", "It is love", "These are walks").
+        if not event_plural and not (i > 0 and leaves[i - 1].get('type') == 'PRP'):
             continue
         if i > 0 and lows[i - 1] in ('a', 'an', 'the', 'this', 'that', 'my',
                                      'your', 'his', 'her', 'our', 'their'):
+            continue
+        if event_plural:
+            base = nlow[:-1] if nlow.endswith('s') else nlow
+            if base.endswith('ie'):
+                base = base[:-2] + 'y'
+            vbg = _vbg_of(base)
+            out.append(_finding(
+                '6.2', 'error', 'C-BE-BASE', 'verb form', nxt['id'],
+                f"After '{lf['surface']}', the noun '{nxt['surface']}' reads as an "
+                f"activity, not a complement for '{lows[i - 1]}'; write the "
+                f"'-ing' form '{vbg}'.",
+                _wordlist_evidence(f"{low} {nlow}", [f"{low} {vbg}"],
+                                   'human subject + be + event noun'),
+                remediation={
+                    'suggested_fix': f"write '{vbg}'",
+                    'edits': [{'node': nxt['id'], 'replacement': vbg}],
+                }))
             continue
         if nlow in STATIVE_SIMPLE:
             out.append(_finding(
@@ -3823,7 +3858,8 @@ def _check_basic(root, clauses, leaves):
         is_participle = tag == 'VBN' or (tag == 'VBD' and lows[i] in VBN_ONLY)
         if is_participle and i > 0 \
                 and leaves[i - 1].get('type') == 'PRP' \
-                and _lower(leaves[i - 1]) in SUBJ_PRON_BARE:
+                and _lower(leaves[i - 1]) in SUBJ_PRON_BARE \
+                and not (i >= 2 and _lower(leaves[i - 2]) in HAVE_FORM):
             try:
                 from licensing import _lemmas
                 base = sorted(_lemmas(lows[i], 'VERB'))[0] if _lemmas(

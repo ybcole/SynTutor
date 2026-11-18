@@ -1,4 +1,4 @@
-import { cambridgeChapterData } from './cambridge-chapter-data.js?v=2026.11.16c';
+import { cambridgeChapterData } from './cambridge-chapter-data.js?v=2026.11.16q';
 
 function articleForChapter(chapter) {
   const dynamic = Array.isArray(chapter.sections) && chapter.sections.length > 0;

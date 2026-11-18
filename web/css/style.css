@@ -838,10 +838,8 @@ body.lessons-overlay-open .pane-input { visibility: hidden; }
 
 /* While the Syntax Builder is open, the input box is a mirror of the canvas:
    it shows the words that are on the canvas and stays read-only, so it reads
-   as a live readout rather than a second editing surface. */
-body.builder-active .input-editor {
-  background: color-mix(in srgb, var(--accent) 5%, transparent);
-}
+   as a live readout rather than a second editing surface. It carries no fill
+   of its own — the words should read as plain text over the pane. */
 body.builder-active #inputText { cursor: default; }
 
 /* The editor fills the upper-right pane edge-to-edge — no card chrome, no
@@ -1819,10 +1817,9 @@ body.builder-standalone .builder-hint.with-actions {
   min-height: 0;
   display: flex;
   flex-direction: column;
-  padding: 12px clamp(12px, 3vw, 22px) 14px;
-  overflow-x: hidden;
-  overflow-y: auto;
-  background: var(--panel);
+  padding: 0;
+  overflow: hidden;
+  background: transparent;
 }
 /* Pan/zoom viewport: the canonical tree behaves like the parser canvas. */
 .canonical-viewport {
@@ -1830,15 +1827,15 @@ body.builder-standalone .builder-hint.with-actions {
   flex: 1 0 auto;
   min-height: 240px;
   overflow: hidden;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--panel);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   cursor: grab;
   touch-action: none;
   user-select: none;
 }
 .canonical-viewport.is-panning { cursor: grabbing; }
-.canonical-viewport:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.canonical-viewport:focus-visible { outline: none; }
 .canonical-tree-view .canonical-layer {
   position: absolute;
   top: 0;
@@ -1932,10 +1929,7 @@ body.builder-standalone .builder-hint.with-actions {
 #treeCanvas[hidden], .builder-canvas[hidden] { display: none; }
 #treeCanvas:hover { cursor: grab; }
 #treeCanvas:active { cursor: grabbing; }
-#treeCanvas:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: -2px;
-}
+#treeCanvas:focus-visible { outline: none; }
 
 .empty-state-canvas {
   position: absolute;
@@ -2624,6 +2618,24 @@ body:has(#correctionPanel:not([hidden])) #emptyExplainState { display: none; }
   border-color: var(--accent-strong, var(--accent));
   color: #fff;
 }
+.explore-builder-btn {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  z-index: 8;
+  padding: 4px 2px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--muted);
+  font-weight: 550;
+}
+.explore-builder-btn:hover {
+  color: var(--accent-strong);
+  background: transparent;
+}
+.explore-builder-btn[hidden] { display: none; }
 
 .builder-canvas {
   position: absolute;
@@ -2745,6 +2757,22 @@ body:has(#correctionPanel:not([hidden])) #emptyExplainState { display: none; }
 .builder-menu-item.is-phrase { color: var(--builder-phrase-ink); }
 .builder-menu-item.is-phrase:hover { color: #fff; }
 .builder-menu-item.is-current { background: color-mix(in srgb, var(--accent) 16%, transparent); }
+
+.builder-menu-row { display: flex; align-items: stretch; gap: 2px; }
+.builder-menu-row .builder-menu-item { flex: 1 1 auto; min-width: 0; }
+.builder-menu-help {
+  flex: 0 0 26px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--muted, #888);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.builder-menu-help:hover:not(:disabled) { background: var(--accent-soft, #eee); color: var(--accent-strong, #333); }
+.builder-menu-help:disabled { opacity: .25; cursor: default; }
 
 
 /* ------------------------------------------------------------------ */
@@ -3829,6 +3857,17 @@ body.workspace-view-open .app-main { display: none; }
 .lesson-tree-wrap [data-node-id][data-xai7-focus="sibling"] > text {
   font-weight: 650;
 }
+/* Local tree relation shown on every selection: the parent is underlined and
+   the selected node's sisters are bold, alongside the evidence focus above. */
+.canonical-tree-view [data-node-id][data-tree-parent] > text,
+.lesson-tree-wrap [data-node-id][data-tree-parent] > text {
+  text-decoration: underline;
+  text-underline-offset: .18em;
+}
+.canonical-tree-view [data-node-id][data-tree-sibling] > text,
+.lesson-tree-wrap [data-node-id][data-tree-sibling] > text {
+  font-weight: 700;
+}
 .canonical-tree-view [data-node-id][data-xai7-issue] > text,
 .lesson-tree-wrap [data-node-id][data-xai7-issue] > text {
   text-decoration: underline wavy;
@@ -3913,3 +3952,251 @@ body.workspace-view-open .app-main { display: none; }
   color: inherit;
   overflow-wrap: anywhere;
 }
+
+/* Syntax Builder: Nodes palette */
+.builder-palette {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 248px;
+  max-width: calc(100% - 20px);
+  max-height: min(440px, calc(100% - 70px));
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm, 0 8px 24px rgb(15 23 42 / 14%));
+  z-index: 12;
+  overflow: hidden;
+}
+.builder-palette[hidden] { display: none; }
+.builder-palette-head {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--border);
+}
+.builder-palette-head h3 { margin: 0; font-size: 12.5px; font-weight: 700; color: var(--text); }
+.builder-palette-toggle {
+  padding: 2px 7px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.builder-palette-toggle:hover, .builder-palette-toggle:focus-visible {
+  border-color: var(--accent);
+  color: var(--text);
+}
+.builder-palette-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 9px 10px 10px;
+}
+.builder-palette-search {
+  flex: 0 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-size: 12px;
+}
+.builder-palette-search:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.builder-palette-list {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-right: 2px;
+  scrollbar-width: thin;
+}
+.builder-palette-row { display: flex; align-items: stretch; gap: 4px; }
+.builder-palette-item {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-size: 12px;
+  text-align: left;
+  cursor: pointer;
+}
+.builder-palette-item:hover, .builder-palette-item:focus-visible {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.builder-palette-code { font-weight: 700; color: var(--accent-strong); flex-shrink: 0; }
+.builder-palette-desc {
+  font-size: 11px;
+  line-height: 1.3;
+  color: var(--text-muted);
+  text-align: right;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+.builder-palette-help {
+  flex: 0 0 auto;
+  width: 26px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--bg);
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.builder-palette-help:hover, .builder-palette-help:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent-strong);
+  background: var(--accent-soft);
+}
+.builder-palette-help:disabled { opacity: .45; cursor: not-allowed; }
+.builder-palette-empty { margin: 4px 0; font-size: 12px; color: var(--text-muted); }
+@media (max-width: 760px) {
+  .builder-palette { width: 210px; max-height: min(340px, calc(100% - 70px)); }
+}
+
+/* Nodes palette refinements */
+.builder-palette { top: 50px; }
+.builder-palette-head { cursor: grab; touch-action: none; user-select: none; }
+.builder-palette.is-dragging .builder-palette-head { cursor: grabbing; }
+.builder-palette-item {
+  display: flex;
+  align-items: stretch;
+  gap: 4px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--bg);
+  min-height: 34px;
+}
+.builder-palette-item:hover, .builder-palette-item:focus-within {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.builder-palette-add {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+  padding: 6px 8px;
+  border: 0;
+  border-radius: 6px 0 0 6px;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 12px;
+  text-align: left;
+  cursor: pointer;
+}
+.builder-palette-add:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.builder-palette-help {
+  align-self: center;
+  margin-right: 4px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.builder-palette-help:hover, .builder-palette-help:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent-strong);
+  background: var(--accent-soft);
+}
+.builder-palette-help:disabled { opacity: .5; cursor: not-allowed; }
+.builder-palette-tip {
+  position: fixed;
+  z-index: 9999;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: var(--ink, #1e2029);
+  color: var(--bg, #fff);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.3;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgb(15 23 42 / 20%);
+}
+.builder-palette-tip[hidden] { display: none; }
+
+/* Combined generator + builder mode */
+.builder-palette { top: 10px; }
+body.combined-modes .builder-hint {
+  top: auto;
+  bottom: 14px;
+  left: 16px;
+  right: 16px;
+  max-width: min(820px, calc(100% - 32px));
+}
+
+/* Tree text below the canvas */
+.canvas-tree-text {
+  flex: 0 0 auto;
+  max-height: 168px;
+  border-top: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  font-size: 12px;
+}
+.canvas-tree-text[hidden] { display: none; }
+.canvas-tree-text > summary {
+  padding: 8px 12px;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-weight: 600;
+  user-select: none;
+}
+.canvas-tree-text[open] > summary { border-bottom: 1px solid var(--border); }
+.canvas-tree-text-body {
+  margin: 0;
+  padding: 8px 12px 12px;
+  max-height: 128px;
+  overflow: auto;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.canvas-tree-text-body ul {
+  margin: 0;
+  padding-inline-start: 18px;
+}
+.canvas-tree-text-body li { margin: 1px 0; }
+.canvas-tree-text-body > ul { padding-inline-start: 16px; }
+
+/* Keep the standalone editor toolbar clear of the combined-view palette. */
+body.builder-standalone:not(.combined-builder-mode) .builder-palette { top: 50px; }

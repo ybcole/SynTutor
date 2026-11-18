@@ -345,6 +345,10 @@ try{
       await quiz.locator(`input[value="${choice}"]`).check();
     }
     await page.waitForFunction(()=>document.querySelector('#quizzesView').getAttribute('aria-busy')==='false');
+    if(kind==='sentence_reconstruction')await page.waitForFunction(id=>{
+      const saved=Object.keys(localStorage).filter(k=>k.startsWith('syntutor:assessments:v1:')).flatMap(k=>Object.values(JSON.parse(localStorage.getItem(k)).attempts)).find(t=>!t.submitted_at&&t.responses[id])?.responses[id];
+      return saved?.length===document.querySelectorAll('.quiz-recon-chip').length;
+    },id);
     return {id,kind,q};
   };
   const camMasterKinds=new Set();

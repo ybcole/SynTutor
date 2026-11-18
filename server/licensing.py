@@ -164,6 +164,15 @@ def _candidate_stems(low, tag):
 EXTRA_PARTICIPLES = {'lit', 'lighted', 'hidden', 'hung', 'shown', 'spelt',
                      'dreamt', 'learnt', 'burnt', 'woken', 'broadcast',
                      'burst', 'slit', 'widened'}
+# Directional/locational adverbs the lexicon lists only as nouns or
+# prepositions.  They are normal RB terminals, so do not downgrade them to
+# "unverified" when the parser tags them RB.
+EXTRA_ADVERBS = {
+    'inside', 'outside', 'upstairs', 'downstairs', 'overseas', 'underground',
+    'ahead', 'abroad', 'back', 'forward', 'backward', 'backwards',
+    'forwards', 'upward', 'downward', 'upwards', 'downwards', 'afterward',
+    'afterwards', 'sideways', 'lengthwise',
+}
 
 
 def _classify_leaf(low, tag, upos):
@@ -248,6 +257,9 @@ def check_lexicon(leaves, skip_ids=frozenset()):
         stats['content'] += 1
         low = surface.lower()
         if low in HIGH_FREQ:
+            stats['licensed'] += 1
+            continue
+        if upos == 'ADV' and low in EXTRA_ADVERBS:
             stats['licensed'] += 1
             continue
         status, info = _classify_leaf(low, tag, upos)

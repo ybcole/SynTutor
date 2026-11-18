@@ -1,16 +1,28 @@
-import { foundationsGlossary } from './foundations-glossary.js';
+import { linguisticDictionary } from './linguistic-dictionary.js';
 
+// docs/LINGUISTIC_DICTIONARY.md is the single definition source for both
+// lesson books. Its generated entries also drive term matching here.
 const terms = new Map();
 const notation = new Map();
-for (const [chapter, section, entries] of foundationsGlossary) {
-  for (const [title, definition, aliases] of entries) {
-    const entry = { title, definition, chapter, section };
-    for (const alias of [title, ...(aliases?.split('|') ?? [])]) {
-      const key = alias.toLowerCase();
-      // Uppercase notation such as PASS should match only its written form.
-      const exact = /[A-Z]/.test(alias) && !/[a-z]/.test(alias) ? alias : null;
-      (exact ? notation : terms).set(exact || key, entry);
-    }
+const pluralAliases = (term) => {
+  if (/s$/i.test(term)) return [];
+  if (/[^aeiou]y$/i.test(term)) return [`${term.slice(0, -1)}ies`];
+  if (/(x|z|ch|sh)$/i.test(term)) return [`${term}es`];
+  return [`${term}s`];
+};
+const headwords = new Set(linguisticDictionary.map((entry) => entry.term.toLowerCase()));
+for (const source of linguisticDictionary) {
+  const entry = { title: source.term, definition: source.definition };
+  const aliases = [...(source.aliases || [])];
+  for (const plural of pluralAliases(source.term)) {
+    if (!headwords.has(plural.toLowerCase()) && !aliases.includes(plural)) aliases.push(plural);
+  }
+  for (const alias of [source.term, ...aliases]) {
+    if (!alias) continue;
+    const key = alias.toLowerCase();
+    // Uppercase notation such as PASS should match only its written form.
+    const exact = /[A-Z]/.test(alias) && !/[a-z]/.test(alias) ? alias : null;
+    (exact ? notation : terms).set(exact || key, entry);
   }
 }
 
@@ -68,8 +80,6 @@ function annotate(body, resolve, entries = [], includeFoundations = true) {
       const entry = customNotation.get(spelling) ?? customTerms.get(spelling.toLowerCase())
         ?? (includeFoundations ? notation.get(spelling) ?? terms.get(spelling.toLowerCase()) : undefined);
       if (!entry) continue;
-      const target = resolve(entry);
-      if (!target) continue;
       const trigger = document.createElement('button');
       trigger.type = 'button';
       trigger.className = seen.has(entry)
@@ -80,7 +90,7 @@ function annotate(body, resolve, entries = [], includeFoundations = true) {
       trigger.setAttribute('aria-label', `Define ${spelling}`);
       trigger.setAttribute('aria-expanded', 'false');
       fragment.append(node.textContent.slice(cursor, match.index), trigger);
-      matches.set(trigger, { entry, target });
+      matches.set(trigger, { entry });
       cursor = match.index + spelling.length;
     }
     if (cursor) {
@@ -105,8 +115,7 @@ export function addLessonDictionary(body, {
   const title = document.createElement('strong');
   const definition = document.createElement('span');
   definition.id = 'lesson-dictionary-text';
-  const link = document.createElement('a');
-  panel.append(title, definition, link);
+  panel.append(title, definition);
 
   let active = null;
   let closeTimer;
@@ -145,13 +154,9 @@ export function addLessonDictionary(body, {
     if (active === trigger) return;
     close();
     active = trigger;
-    const { entry, target } = matches.get(trigger);
+    const { entry } = matches.get(trigger);
     title.textContent = entry.title;
     definition.textContent = entry.definition;
-    link.textContent = entry.course
-      ? `${entry.course} · Chapter ${entry.chapter} · ${target.title}`
-      : `Chapter ${entry.chapter} · ${target.title}`;
-    link.href = target.href;
     trigger.setAttribute('aria-expanded', 'true');
     trigger.setAttribute('aria-controls', panel.id);
     trigger.setAttribute('aria-describedby', definition.id);
@@ -185,10 +190,6 @@ export function addLessonDictionary(body, {
   }, { signal });
   body.addEventListener('click', event => {
     if (matches.has(event.target)) open(event.target);
-    else if (event.target === link && event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
-      event.preventDefault();
-      navigate(matches.get(active).target);
-    }
   }, { signal });
   document.addEventListener('pointerdown', event => {
     if (active && !active.contains(event.target) && !panel.contains(event.target)) close();

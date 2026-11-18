@@ -33,7 +33,7 @@ export function enableCanvasView(host, lessonWrap) {
     const padBottom = 18;
     const availW = Math.max(80, rect.width - padX * 2);
     const availH = Math.max(80, rect.height - padTop - padBottom);
-    scale = clamp(Math.min(availW / w, availH / h), 0.12, 2.2);
+    scale = clamp(Math.min(availW / w, availH / h), 0.12, 1.7);
     tx = padX + (availW - w * scale) / 2;
     ty = padTop + (availH - h * scale) / 2;
     paint();

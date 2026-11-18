@@ -75,6 +75,7 @@ export function createLayout(root, measure, viewportWidth = 800) {
 }
 
 function nodeLabel(node) {
+  if (Array.isArray(node.display_rows) && node.display_rows.length) return node.display_rows.join(' ');
   if (ch(node).length === 0) return node.surface || node.type;
   return node.type;
 }
@@ -127,6 +128,10 @@ export class TreeRenderer {
     this.canvas.addEventListener('wheel', (e) => this._onWheel(e), { passive: false });
     this.canvas.addEventListener('keydown', (e) => this._onKey(e));
     window.addEventListener('resize', () => this._resize());
+    if (typeof ResizeObserver !== 'undefined') {
+      this._resizeObserver = new ResizeObserver(() => this._resize());
+      this._resizeObserver.observe(this.canvas);
+    }
   }
 
   _onKey(e) {
@@ -160,6 +165,8 @@ export class TreeRenderer {
     this.dfsOrder = collectNodes(root).map((n) => n.id);
     this.indexById = new Map(this.dfsOrder.map((id, i) => [id, i]));
     this.selectedId = null;
+    this.hoverId = null;
+    this.related = { parent: null, siblings: new Set() };
     this._fitView();
     this._renderOutline();
     this.draw();
@@ -167,10 +174,16 @@ export class TreeRenderer {
 
   select(id) {
     this.selectedId = id;
+    if (!id) this.related = { parent: null, siblings: new Set() };
     this.outline?.querySelectorAll('[data-node]').forEach(button => {
       if (button.dataset.node === id) button.setAttribute('aria-current', 'true');
       else button.removeAttribute('aria-current');
     });
+    this.draw();
+  }
+
+  setRelated(parentId = null, siblingIds = []) {
+    this.related = { parent: parentId, siblings: new Set(siblingIds) };
     this.draw();
   }
 
@@ -221,6 +234,7 @@ export class TreeRenderer {
     this.selectedId = null;
     this.hoverId = null;
     this.focus = null;
+    this.related = { parent: null, siblings: new Set() };
     this.view = { scale: 1, tx: 0, ty: 0 };
     this._renderOutline();
     this.draw();
@@ -250,6 +264,17 @@ export class TreeRenderer {
     if (!target) return;
     this.view = target;
     this.needsFit = false;
+  }
+  fit() {
+    if (!this.tree) return;
+    this.focus = null;
+    // Always refresh the backing store. The canvas may have been display:none
+    // while the builder was open, which leaves width/height at 0 even after
+    // the element becomes visible again.
+    this._resize();
+    this._layoutTree(this.canvas.clientWidth);
+    this._fitView();
+    this.draw();
   }
 
   _layoutTree(width) {
@@ -283,7 +308,6 @@ export class TreeRenderer {
   _toWorld(p) {
     return { x: (p.x - this.view.tx) / this.view.scale, y: (p.y - this.view.ty) / this.view.scale };
   }
-
   hitTest(mx, my) {
     return this.layoutData ? this._hitTest(mx, my) : null;
   }
@@ -404,7 +428,9 @@ export class TreeRenderer {
       for (const c of ch(l.node)) {
         const cl = this.layoutData.layout.get(c.id);
         const status = c.edgeResult ? c.edgeResult.status : 'neutral';
-        const gap = cl.leaf ? 23 : LABEL_GAP;
+        // One gap above and below every label: the incoming and outgoing
+        // branches sit symmetrically on the node.
+        const gap = LABEL_GAP;
         // While a correction is focused, everything outside the error's scope
         // fades back so the rule and its linked nodes stand out.
         const dimEdge = this.focus
@@ -481,6 +507,10 @@ export class TreeRenderer {
     // together is painted in the error colour.
     const dim = this.focus && !this.focus.inScope.has(n.id);
     const paired = this.focus && this.focus.pair.includes(n.id);
+    // Evidence focus: the parent is underlined, the selected node's sisters are
+    // set bold, exactly as the canonical tree view presents them.
+    const isParent = this.related?.parent === n.id;
+    const isSibling = this.related?.siblings?.has(n.id);
 
     ctx.save();
     if (dim) ctx.globalAlpha = 0.18;
@@ -493,13 +523,22 @@ export class TreeRenderer {
 
     ctx.fillStyle = color;
     if (ch(n).length === 0) {
-      ctx.font = paired ? '700 15px Inter, system-ui, sans-serif' : '500 15px Inter, system-ui, sans-serif';
+      ctx.font = (paired || isSibling) ? '700 15px system-ui, sans-serif' : '400 15px system-ui, sans-serif';
     } else {
-      ctx.font = (isSel || paired) ? '700 16px Inter, system-ui, sans-serif' : '600 16px Inter, system-ui, sans-serif';
+      ctx.font = (isSel || paired || isSibling) ? '700 16px Inter, system-ui, sans-serif' : '600 16px Inter, system-ui, sans-serif';
     }
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(nodeLabel(n), l.x, l.y + 3);
+    if (isParent) {
+      const textWidth = ctx.measureText(nodeLabel(n)).width;
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(l.x - textWidth / 2, l.y + 14);
+      ctx.lineTo(l.x + textWidth / 2, l.y + 14);
+      ctx.stroke();
+    }
 
     if (ch(n).length === 0) {
       ctx.fillStyle = colors.edgeText;

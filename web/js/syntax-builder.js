@@ -179,15 +179,31 @@ export function disconnect(model, childId) {
   return true;
 }
 
-// Parent/child branch attachment anchors: shared by edge drawing, connector dots, and hit-testing.
+// Connector dot: bottom-centre of a phrase box (drag it to start a new link).
+// Connector anchors hug the visible label, not the (often taller) layout slot:
+// the builder paints text only, so a dot parked on the slot edge reads as
+// floating far above or below the label.
+export function phraseConnectorYs(node) {
+  const features = node.canonicalFeatures || [];
+  if (node.canonicalNotation) {
+    const baseline = node.y + 17;
+    const rows = node.canonicalDisplay?.length
+      ? Math.max(0, node.canonicalDisplay.length - 1)
+      : features.length;
+    return { top: baseline - 18, bottom: baseline + rows * 18 + 18 };
+  }
+  const centre = node.y + node.h / 2;
+  return { top: centre - 20, bottom: centre + 20 };
+}
+
 export function parentAnchorOf(node) {
-  return { x: node.x + node.w / 2, y: node.y + node.h + 2 };
+  return { x: node.x + node.w / 2, y: node.canonicalNotation || node.generatorNotation ? phraseConnectorYs(node).bottom : node.y + node.h + 2 };
 }
 
 export function childAnchorOf(model, node) {
-  const childIsLeaf = model ? childrenOf(model, node.id).length === 0 : node.kind !== NODE.PHRASE;
-  const childGap = childIsLeaf && node.tag ? 22 : 12;
-  return { x: node.x + node.w / 2, y: node.y + node.h / 2 - childGap };
+  return { x: node.x + node.w / 2,
+    y: node.canonicalNotation ? node.y + 17 - 18 : node.generatorNotation
+      ? phraseConnectorYs(node).top : node.y + node.h / 2 - (model && childrenOf(model, node.id).length === 0 && node.tag ? 22 : 12) };
 }
 
 // Connector dot: bottom-center branch junction of a phrase node (drag to link a child).
@@ -205,9 +221,9 @@ export function dotHit(model, x, y, pad = 12) {
   return null;
 }
 
-// Endpoint: top-center branch junction where an existing parent edge enters a node.
+// Shared child anchor for drawing, hit testing and embedded assessments.
 export function endpointOf(node, model = null) {
-  const anchor = model ? childAnchorOf(model, node) : { x: node.x + node.w / 2, y: node.y + 4 };
+  const anchor = childAnchorOf(model, node);
   return { x: anchor.x, y: anchor.y, r: DOT_R };
 }
 
@@ -268,23 +284,49 @@ export function seedWords(model, leaves, x, y, withTags = false, gap = 12) {
 export function toTree(model, rootId) {
   let root = rootId ? model.nodes[rootId] : guessRoot(model);
   if (!root || root.kind !== NODE.PHRASE) return null;
+  let nextId = 0;
+  const makeId = () => `builder-node-${++nextId}`;
   const build = (node) => {
     const kids = childrenOf(model, node.id);
+    if (node.kind === NODE.SPECIAL) {
+      return {
+        id: makeId(),
+        type: node.type || (node.canonicalData?.gap ? 'GAP' : 'E'),
+        surface: '',
+        leaf: true,
+        empty: !node.canonicalData?.gap,
+        gap: Boolean(node.canonicalData?.gap),
+        index: node.canonicalIndex,
+        x: node.x,
+      };
+    }
     if (node.kind === NODE.WORD || kids.length === 0) {
-      return { type: node.kind === NODE.WORD ? node.type : node.type, surface: node.text, leaf: true, x: node.x };
+      return { id: makeId(), type: node.kind === NODE.WORD ? node.type : node.type, surface: node.text, leaf: true, x: node.x };
     }
     const children = kids.map(build);
     const ordered = [...children].sort((a, b) => a.x - b.x || (a.order??0)-(b.order??0));
-    return { type: node.type, children: ordered.map(clean), x: node.x };
+    return {
+      id: makeId(),
+      type: node.type,
+      children: ordered.map(clean),
+      x: node.x,
+      ...(node.canonicalData?.display_rows ? { display_rows: node.canonicalData.display_rows } : {}),
+      ...(node.canonicalData?.features ? { features: node.canonicalData.features } : {}),
+    };
   };
   const clean = (n) => {
-    const out = { type: n.type };
+    const out = { id: n.id, type: n.type };
     if (n.leaf) {
       out.surface = n.surface;
       out.leaf = true;
+      if (n.empty) out.empty = true;
+      if (n.gap) out.gap = true;
+      if (n.index !== undefined) out.index = n.index;
     } else {
       out.children = n.children;
     }
+    if (n.display_rows) out.display_rows = n.display_rows;
+    if (n.features) out.features = n.features;
     return out;
   };
   return clean(build(root));
@@ -367,7 +409,7 @@ export function toCanonicalEnvelope(model, profile = null) {
  function walk(n,depth=0){
   if(seen.has(n.id)||depth>80)throw Error('Tree contains a cycle or exceeds depth 80.');seen.add(n.id);
   const children=childrenOf(model,n.id),raw=clone(n.canonicalData||{}),hadSpan=Object.hasOwn(raw,'token_span');
-  delete raw.children;delete raw.token_span;raw.id=n.id;
+  delete raw.children;delete raw.token_span;delete raw.display_rows;raw.id=n.id;
   if(n.kind===NODE.WORD){
    if(children.length)throw Error('A word cannot contain children.');
    const index=words.indexOf(n);raw.word=n.text.trim();
@@ -417,7 +459,8 @@ export function fromCanonicalEnvelope(envelope){
   const display=kind===NODE.WORD?text:special?`${text}${raw.index!=null?' '+raw.index:''}${raw.elided?' (elided)':''}`:`${type}${raw.index!=null?' '+raw.index:''}`;
   const w=estW(display,kind===NODE.PHRASE?(raw.features||[]):[]);
   const n={id,kind,type,text,
-   x:cursorX,y:depth*ROW_H,w,h:34,parent,order,canonicalData:clone(raw),canonicalFeatures:raw.features,canonicalIndex:raw.index,canonicalTriangle:raw.triangle||false};
+   x:cursorX,y:depth*ROW_H,w,h:34,parent,order,canonicalData:clone(raw),canonicalFeatures:raw.features,canonicalIndex:raw.index,canonicalTriangle:raw.triangle||false,
+   canonicalDisplay:Array.isArray(raw.display_rows)?clone(raw.display_rows):undefined};
   delete n.canonicalData.children;model.nodes[id]=n;
   if(n.kind===NODE.WORD||special){
    cursorX+=w+GAP;
@@ -452,7 +495,39 @@ export function fromCanonicalEnvelope(envelope){
   }
   return n;
  }
- walk(envelope.root);return model;
+  walk(envelope.root);
+  for(const n of Object.values(model.nodes))n.canonicalNotation=true;
+  return model;
+}
+// Import the tree the Syntax Generator drew on its canvas. That tree is a
+// display tree (id/type/children, with surface text on the leaves), not a
+// canonical envelope, so it is copied node-for-node into a builder model and
+// then laid out like any other construction.
+export function fromDisplayTree(tree){
+ const root=tree&&(tree.root||tree);
+ if(!root||typeof root!=='object')throw Error('A generated syntax tree is required.');
+ const model=createModel();const used=new Set();let count=0;
+ model.displayImport=true;
+ function walk(raw,parent=null,depth=0,order=0){
+  if(!raw||typeof raw!=='object'||depth>80||++count>500)throw Error('Unsupported tree size or node shape.');
+  let id=typeof raw.id==='string'&&raw.id&&!['__proto__','constructor','prototype'].includes(raw.id)&&!used.has(raw.id)?raw.id:`import-${count}`;
+  while(used.has(id)||model.nodes[id])id=`${id}-x`;used.add(id);
+  const kids=Array.isArray(raw.children)?raw.children:[];
+  const leaf=!kids.length;
+  const surface=String(raw.surface??raw.word??raw.text??raw.type??'');
+  const special=Boolean(raw.empty||raw.gap||(leaf&&(/^∅$/.test(surface)||/ ∅$/.test(surface))));
+  const n={id,kind:special?NODE.SPECIAL:(leaf?NODE.WORD:NODE.PHRASE),
+   type:special?(raw.type||raw.label||(raw.gap?'GAP':'E')):(leaf?'word':(raw.label||raw.type||'PHRASE')),
+   text:special?(raw.gap?'gap':`${raw.type||raw.label||'E'} ∅`):(leaf?surface:''),
+   x:order*110,y:depth*70,w:84,h:NODE_H,parent,order,
+   canonicalData:special?{empty:!raw.gap,gap:Boolean(raw.gap),label:raw.type||raw.label}:undefined,
+   canonicalIndex:raw.index,
+   tag:leaf&&!special?(raw.tag||raw.pos||raw.type||null):null,valid:true};
+  model.nodes[id]=n;
+  if (!special) for(const [i,child] of kids.entries())walk(child,id,depth+1,i);
+  return n;
+ }
+ walk(root);return model;
 }
 export function addSpecial(model,kind,x=0,y=0){
  const raw=kind==='gap'?{gap:true,index:1}:{empty:true,label:kind,empty_role:{DET:'determiner',C1:'complementiser',E:'ellipsis'}[kind]};
