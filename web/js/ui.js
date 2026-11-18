@@ -1,4 +1,4 @@
-import { nodeLesson } from './node-lessons.js?v=2026.11.18c';
+import { nodeLesson } from './node-lessons.js?v=2026.11.18d';
 
 const $ = (sel) => document.querySelector(sel);
 

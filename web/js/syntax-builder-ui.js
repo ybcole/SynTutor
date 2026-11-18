@@ -1,8 +1,8 @@
 import {createBuilderTools} from './builder-tools.js';
-import {renderLessonTree} from './lessons-ui.js?v=2026.11.18c';
-import {nodeLesson, nodeLessonRoute} from './node-lessons.js?v=2026.11.18c';
+import {renderLessonTree} from './lessons-ui.js?v=2026.11.18d';
+import {nodeLesson, nodeLessonRoute} from './node-lessons.js?v=2026.11.18d';
 import { API_BASE } from './config.js';
-import { requestEvidence, renderEvidence } from './explanation-evidence.js?v=2026.11.18c';
+import { requestEvidence, renderEvidence } from './explanation-evidence.js?v=2026.11.18d';
 // Syntax Builder view: a free-form canvas node editor for assembling syntax
 // trees by hand. It is shown as a sidebar destination (like Achievements) and
 // also drives the Matrix Quiz's "rebuild the tree" questions.
@@ -28,7 +28,7 @@ import {
   dotOf, dotHit, nodeHit, endpointOf, endpointHit, parentAnchorOf, childAnchorOf, phraseConnectorYs, toTree, compareTrees, leavesOf, leafText,
   seedWords, leavesWithTags, childrenOf, getSentenceFromLeaves as sentenceFromLeaves,
 } from './syntax-builder.js';
-import { renderNodeDetail, renderDiagnostic, clearOverlay, plainName } from './ui.js?v=2026.11.18c';
+import { renderNodeDetail, renderDiagnostic, clearOverlay, plainName } from './ui.js?v=2026.11.18d';
 
 const WORD_FONT = '500 15px Inter, system-ui, sans-serif';
 const TAG_FONT = '600 10px Inter, system-ui, sans-serif';

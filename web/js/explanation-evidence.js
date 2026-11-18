@@ -1,7 +1,7 @@
 // One request contract and one evidence renderer for Generator and Builder.
 import { API_BASE } from './config.js';
 import { applyEvidenceFocus, evidenceFocusText } from './xai7-focus.js';
-import { nodeLesson } from './node-lessons.js?v=2026.11.18c';
+import { nodeLesson } from './node-lessons.js?v=2026.11.18d';
 
 export async function requestEvidence(tree, nodeId = null, options = {}) {
   const body = { tree: tree || null };
