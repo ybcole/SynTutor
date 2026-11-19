@@ -28,12 +28,17 @@ Run locally:
 
 ```
 pip install -r requirements.txt
-python -m spacy download en_core_web_md
 python -c "import benepar; benepar.download('benepar_en3')"
 python3 server/webapp.py     # Flask backend: serves the front end + /api
 ```
 
 (The stdlib `http.server` variant is still available as `python3 server/app.py`.)
+
+Vercel deploys the frontend from GitHub `main`. Release backend changes from
+the same revision to the [Hugging Face Space](https://huggingface.co/spaces/ybcole/syntutor).
+The Space installs `en_core_web_md` from `requirements.txt` and prepares
+`benepar_en3` before launching the API. Check that the Space's `/api/health`
+returns `ready: true` and that the Vercel app can analyze a sentence.
 
 ## Project navigation
 

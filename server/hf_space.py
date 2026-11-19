@@ -19,7 +19,6 @@ os.environ['GRADIO_SSR_MODE'] = 'false'
 
 import importlib.util
 import sys
-import threading
 import time
 
 import spaces  # noqa: E402,F401  (must precede any torch-importing module)
@@ -51,30 +50,20 @@ def _zerogpu_noop(value: str = 'ok') -> str:
     return value
 
 
-def _warm_models():
-    import parse_engine
-    try:
-        parse_engine.load_models()
-        print('[syntutor] models ready', flush=True)
-        return
-    except Exception:
-        pass
-    try:
-        parse_engine._load_error = None
-        import spacy.cli
-        spacy.cli.download('en_core_web_md')
-        import benepar
-        benepar.download('benepar_en3')
-    except Exception as exc:  # noqa: BLE001
-        print(f'[syntutor] model download failed: {exc}', flush=True)
-    try:
-        parse_engine.load_models()
-        print('[syntutor] models ready after download', flush=True)
-    except Exception as exc:  # noqa: BLE001
-        print(f'[syntutor] model load failed: {exc}', flush=True)
+def _prepare_models():
+    import benepar
+    import nltk
 
+    from parse_engine import PARSER_MODEL, load_models
 
-threading.Thread(target=_warm_models, daemon=True).start()
+    # The Space installs spaCy's English pipeline from requirements.txt.
+    # Install Benepar data before probing readiness or accepting API traffic.
+    try:
+        nltk.data.find(f'models/{PARSER_MODEL}/')
+    except LookupError:
+        benepar.download(PARSER_MODEL, raise_on_error=True)
+    load_models()
+    print('[syntutor] models ready', flush=True)
 
 
 with gr.Blocks(title='SynTutor') as demo:
@@ -210,6 +199,7 @@ def _mount(app, path, endpoint, methods):
 
 
 def main():
+    _prepare_models()
     port = int(os.environ.get('PORT') or os.environ.get('GRADIO_SERVER_PORT') or '7860')
     app, _local_url, _share_url = demo.launch(
         server_name='0.0.0.0',
@@ -230,4 +220,5 @@ def main():
         time.sleep(3600)
 
 
-main()
+if __name__ == '__main__':
+    main()
