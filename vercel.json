@@ -1,5 +1,24 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "framework": null
+  "framework": null,
+  "fluid": true,
+  "build": {
+    "env": {
+      "VERCEL_SUPPORT_LARGE_FUNCTIONS": "1"
+    }
+  },
+  "functions": {
+    "api/nlp.py": {
+      "includeFiles": "{server/**,grammar/**,sources/**,web/content/**,docs/canonical-burton-roberts-tree.schema.json,docs/xai/*.schema.json,vercel_models/**}",
+      "excludeFiles": "{server/test_*.py,dist/**,node_modules/**,archive/**,supabase/**,benchmarks/**,evaluation/**,artifacts/**,**/*.pdf}",
+      "maxDuration": 60
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/:endpoint(health|parse|words|evaluate|explain|repair-check)",
+      "destination": "/api/nlp?__syntutor_route=:endpoint"
+    }
+  ]
 }

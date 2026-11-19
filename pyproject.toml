@@ -1,0 +1,7 @@
+[project]
+name = "syntutor"
+version = "2.0.0"
+requires-python = ">=3.12,<3.13"
+
+[tool.vercel.scripts]
+vercel-install = "python -m ensurepip && python -m pip install -r requirements.txt -r scripts/vercel-requirements.txt && python scripts/prepare_vercel_models.py"

@@ -1,13 +1,12 @@
-# The static content generator reads these three modules as text.
-# Only dist/ is published; the rest of the backend stays out of the build input.
-server/*
-!server/ruleset.py
-!server/matrix.py
-!server/licensing.py
+# Vercel publishes dist/ and packages the backend separately as a function.
+server/test_*.py
 scripts/audit_rules.py
-requirements.txt
 supabase/
 docs/*
 !docs/LINGUISTIC_DICTIONARY.md
+!docs/canonical-burton-roberts-tree.schema.json
+!docs/xai/
+docs/xai/*
+!docs/xai/diagnosis-repair-pre.schema.json
 **/__pycache__/
 **/*.pyc

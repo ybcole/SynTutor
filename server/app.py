@@ -14,7 +14,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse
 
 from parse_engine import ParseFailure
-from api import build_payload, model_status as _model_status, word_info
+from analysis_api import build_payload, model_status as _model_status, word_info
 from br_tree import CONVENTIONS
 from explanations import explain_request
 from tree_evaluation import evaluate_request

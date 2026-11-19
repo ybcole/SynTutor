@@ -34,11 +34,10 @@ python3 server/webapp.py     # Flask backend: serves the front end + /api
 
 (The stdlib `http.server` variant is still available as `python3 server/app.py`.)
 
-Vercel deploys the frontend from GitHub `main`. Release backend changes from
-the same revision to the [Hugging Face Space](https://huggingface.co/spaces/ybcole/syntutor).
-The Space installs `en_core_web_md` from `requirements.txt` and prepares
-`benepar_en3` before launching the API. Check that the Space's `/api/health`
-returns `ready: true` and that the Vercel app can analyze a sentence.
+Vercel deploys the frontend and Python API together from GitHub `main`.
+The build packages the parser and correction models for the same-origin API.
+After deployment, check `/api/health` for `ready: true` and analyze a sentence
+in the app.
 
 ## Project navigation
 

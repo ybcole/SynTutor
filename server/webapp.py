@@ -16,7 +16,7 @@ import os
 
 from flask import Flask, Response, jsonify, request, send_from_directory
 
-from api import ParseFailure, build_payload, health_payload, word_info
+from analysis_api import ParseFailure, build_payload, health_payload, word_info
 from br_tree import CONVENTIONS
 from explanations import explain_request
 from tree_evaluation import evaluate_request

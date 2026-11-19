@@ -3,10 +3,8 @@ export const CLERK_CONFIG = {
   publishableKey: 'pk_test_YXNzdXJpbmctZWxlcGhhbnQtMzU4NC5jbGVyay5hY2NvdW50cy5kZXYk',
 };
 
-// Base URL of the SynTutor NLP backend (no trailing slash).
-// Leave '' to call same-origin '/api/parse' (local `python3 server/app.py`).
-// Set to your deployed backend, e.g. 'https://syntutor-api.onrender.com'.
-export const API_BASE = 'https://ybcole-syntutor.hf.space'; // deployed backend
+// Vercel and the local Flask server both serve the NLP API on the app's origin.
+export const API_BASE = '';
 
 export const SUPABASE_CONFIG = {
   url: 'https://bgjzmnqqeqfcttjpotwg.supabase.co',
