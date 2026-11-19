@@ -6,3 +6,5 @@ lemminflect>=0.2.3,<0.3
 flask>=3.0,<4
 symspellpy>=6.10,<7
 jsonschema>=4.23,<5
+
+en_core_web_md @ https://github.com/explosion/spacy-models/releases/download/en_core_web_md-3.8.0/en_core_web_md-3.8.0-py3-none-any.whl

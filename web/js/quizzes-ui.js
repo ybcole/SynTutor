@@ -2,7 +2,7 @@ import {chapterDescriptions,topicDescription} from './quiz-catalog-copy.js';
 import { showCurriculumState } from './curriculum-state.js';
 import {validateBank,quizKey,itemsFor,gradeAttempt,questionForLearner,reviewForLearner,MAX_QUIZ_ITEMS} from './quiz-core.js';
 import {createQuizStore} from './quiz-progress.js';
-import {composeQuizEvidence,requestQuizEvidence,requestEvidence,renderEvidence} from './explanation-evidence.js?v=2026.11.18e';
+import {composeQuizEvidence,requestQuizEvidence,requestEvidence,renderEvidence} from './explanation-evidence.js?v=2026.11.18f';
 import {renderLessonTree} from './lessons-ui.js';
 import {subscribeAuthState} from './auth.js';
 import {loadActiveCourse,quizCurriculum} from './lesson-curriculum.js';
