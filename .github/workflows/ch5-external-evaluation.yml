@@ -18,6 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          fetch-depth: 0
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - uses: actions/setup-python@v5
         with:
@@ -41,9 +42,11 @@ jobs:
       - name: Test evaluation scoring
         run: python -m unittest discover -s docs/audits/technical_evaluation -p 'test_evaluation.py'
       - name: Execute current production pipeline
-        run: python -B docs/audits/technical_evaluation/run_technical_evaluation.py
+        shell: bash
+        run: python -B docs/audits/technical_evaluation/run_technical_evaluation.py 2>&1 | tee docs/audits/technical_evaluation/development-run.log
       - name: Execute sentence-disjoint validation
-        run: python -B docs/audits/technical_evaluation/run_holdout_evaluation.py
+        shell: bash
+        run: python -B docs/audits/technical_evaluation/run_holdout_evaluation.py 2>&1 | tee docs/audits/technical_evaluation/validation-run.log
       - name: Verify raw results and write source manifest
         run: |
           python docs/audits/technical_evaluation/verify_metrics.py
@@ -57,4 +60,5 @@ jobs:
             docs/audits/technical_evaluation/*.csv
             docs/audits/technical_evaluation/*.json
             docs/audits/technical_evaluation/*.txt
+            docs/audits/technical_evaluation/*.log
           if-no-files-found: error
