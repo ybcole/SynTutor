@@ -1,0 +1,25 @@
+[eval] Loading spaCy + Benepar + RoBERTa-CoLA once...
+You are using the default legacy behaviour of the <class 'transformers.models.t5.tokenization_t5.T5Tokenizer'>. This is expected, and simply means that the `legacy` (previous) behavior will be used so nothing changes for you. If you want to use the new behaviour, set `legacy=False`. This should only be set if you understand what it means, and thoroughly read the reason why this was added as explained in https://github.com/huggingface/transformers/pull/24565
+Some weights of the model checkpoint at textattack/roberta-base-CoLA were not used when initializing RobertaForSequenceClassification: ['roberta.pooler.dense.bias', 'roberta.pooler.dense.weight']
+- This IS expected if you are initializing RobertaForSequenceClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing RobertaForSequenceClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+[eval] Models loaded in 6.01s
+[5.1.1] Running 476 sentences (400 external stratified + 76 internal)...
+[5.1.1] Batched RoBERTa-CoLA complete in 20.3s
+You're using a T5TokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+Passing a tuple of `past_key_values` is deprecated and will be removed in Transformers v4.48.0. You should pass an instance of `EncoderDecoderCache` instead, e.g. `past_key_values=EncoderDecoderCache.from_legacy_cache(past_key_values)`.
+[5.1.1] 100/476 (30.7s)
+[5.1.1] 200/476 (38.3s)
+[5.1.1] 300/476 (47.9s)
+[5.1.1] 400/476 (57.2s)
+[5.1.1] 476/476 (63.8s)
+[5.1.2] Running PARSEVAL on all 216 published Burton-Roberts IMG trees...
+[5.1.2] Complete in 10.1s (216 book trees + 10 course + 20 heldout)
+[5.1.3] Running full api.build_payload() XAI checks on 120 sentences...
+[syntutor] corrector unavailable: We couldn't connect to 'https://huggingface.co' to load this file, couldn't find it in the cached files and it looks like distilbert-base-uncased is not the path to a directory containing a file named config.json.
+Checkout your internet connection or see how to run the library in offline mode at 'https://huggingface.co/docs/transformers/installation#offline-mode'.
+[5.1.3] 30/120 (24.4s)
+[5.1.3] 60/120 (45.2s)
+[5.1.3] 90/120 (64.3s)
+[5.1.3] 120/120 (88.8s)
+[eval] ALL DONE in 168.7s!

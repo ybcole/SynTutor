@@ -1,0 +1,24 @@
+{
+  "evaluation_commit": "dbfa208341c99cb4fa522736a01ded20d41d7aa6",
+  "production_base_commit": "5f582552504fb2d584fa02f4dfa55f1a704e3be1",
+  "production_reference_files_unchanged": true,
+  "verified_development_records": 476,
+  "verified_additional_validation_records": 320,
+  "reference_nontriangle_count": 83,
+  "sample_history": "Both supplied samples were already examined before this source-reproduction run. Historical untouched status is not certified.",
+  "jfleg_label_policy": "Source-versus-correction proxy labels; not independently adjudicated binary grammaticality.",
+  "files": {
+    "FROZEN_UNTOUCHED_HOLDOUT.csv": "90919d6b6001bb3c09cfcda8cde8f1698a03d86bddbe792c3aecf8a0324e503b",
+    "HOLDOUT_PREDICTIONS.csv": "70dfb684cb265753fbffe5ecfdd233fafecf6da7076eea247d538e5085f24914",
+    "HUMAN_REVIEW_WORKSHEET.csv": "d757672dfd7eca58d7bdee82206efb9e2fa5ef3776ac6e8a47435021d53b2a3e",
+    "METRICS_SUMMARY.csv": "3e6a0da2501a3e83a447b60fc9dfe39bbb303957aedeea38e11b163f6bc4ce9e",
+    "RAW_PREDICTIONS.csv": "920e0e82a91938524c65bf455300346b683895aa3a65c04832fe88c9e815a725",
+    "_computed_results.json": "f44267bd5dbf69da71dad7eeb92e656969d9a81a4536f55a298524e771c3bea8",
+    "_holdout_results.json": "0fb2b453210b17c4012adc9d4d28007345e5d8b5ae65e37f03700d9d59aa32f3",
+    "run_holdout_evaluation.py": "455d9c0215d195632a02b6572aab9d773d85b0b16cbefda3e2f5828e16210470",
+    "run_technical_evaluation.py": "9d8ee2c35e8b5b768296dca0c9dbe893bab66765841bbdb83ed1e311b0a5496d",
+    "test_evaluation.py": "0079e4aff59ce321708b45cf25670aba7e410849d8d994dbf9835478a715cdef",
+    "verify_metrics.py": "5055267342c0750e166beac15ecb4b996baf45c39f628c156544f431c7677dd2",
+    "verify_release_evidence.py": "12929176cb460ba94a55aa47c087a20a44a98f9f099ce54dd902ff93ae58a88f"
+  }
+}
