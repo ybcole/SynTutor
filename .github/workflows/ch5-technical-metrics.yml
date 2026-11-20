@@ -1,0 +1,42 @@
+name: Chapter 5 development diagnostic metrics
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/ch5_technical_metrics.py'
+      - '.github/workflows/ch5-technical-metrics.yml'
+      - 'scripts/audit_rules.py'
+      - 'server/**'
+      - 'requirements.txt'
+  workflow_dispatch:
+
+jobs:
+  evaluate-development-corpus:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install model-backed runtime
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+          python -c "import torch; open('/tmp/syntutor-torch.txt', 'w').write('torch==' + torch.__version__ + '\\n')"
+          python -m pip install -r requirements.txt -c /tmp/syntutor-torch.txt
+      - name: Install Benepar model
+        run: |
+          python - <<'PY'
+          import benepar
+          benepar.download('benepar_en3')
+          PY
+      - name: Calculate development confusion matrix and classification scores
+        run: python scripts/ch5_technical_metrics.py --output artifacts/ch5-technical-development.json
+      - name: Upload auditable per-sentence results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ch5-technical-development
+          path: artifacts/ch5-technical-development.json
+          if-no-files-found: warn
