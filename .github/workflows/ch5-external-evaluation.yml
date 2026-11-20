@@ -1,0 +1,60 @@
+name: Chapter 5 external evaluation
+on:
+  pull_request:
+    branches: [main]
+    paths: ['docs/audits/technical_evaluation/**', '.github/workflows/ch5-external-evaluation.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  external-evaluation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      OMP_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+      TOKENIZERS_PARALLELISM: 'false'
+      PYTHONPATH: server
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install runtime
+        run: |
+          python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -r requirements.txt sentencepiece protobuf
+      - name: Download and require actual models
+        run: |
+          python - <<'PY'
+          import benepar
+          benepar.download('benepar_en3')
+          from transformers import AutoTokenizer, AutoModelForSequenceClassification
+          AutoTokenizer.from_pretrained('textattack/roberta-base-CoLA')
+          AutoModelForSequenceClassification.from_pretrained('textattack/roberta-base-CoLA')
+          import detector
+          assert detector.load_detector() is not None, detector._LOAD_ERROR
+          PY
+      - name: Test evaluation scoring
+        run: python -m unittest discover -s docs/audits/technical_evaluation -p 'test_evaluation.py'
+      - name: Execute current production pipeline
+        run: python -B docs/audits/technical_evaluation/run_technical_evaluation.py
+      - name: Execute sentence-disjoint validation
+        run: python -B docs/audits/technical_evaluation/run_holdout_evaluation.py
+      - name: Verify raw results and write source manifest
+        run: |
+          python docs/audits/technical_evaluation/verify_metrics.py
+          python docs/audits/technical_evaluation/verify_release_evidence.py
+          python -m pip freeze > docs/audits/technical_evaluation/runtime-freeze.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ch5-external-evaluation
+          path: |
+            docs/audits/technical_evaluation/*.csv
+            docs/audits/technical_evaluation/*.json
+            docs/audits/technical_evaluation/*.txt
+          if-no-files-found: error
