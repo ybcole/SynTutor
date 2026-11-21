@@ -54,6 +54,7 @@ def run_probes(cases, schema):
                        findings=[(item['rule_id'], item['surface'], item['violation'])
                                  for item in payload['unified_findings']['findings']],
                        corrected=payload['summary'].get('corrected_sentence'),
+                       correction_impact=(payload['summary'].get('correction') or {}).get('impact'),
                        explanation=payload['learner_explanation'])
         except ParseFailure as exc:
             row.update(execution_status='unsupported_input', error=str(exc))
@@ -132,7 +133,10 @@ def main():
     write_json(args.output / 'probe-metrics.json', stats)
     repairs = [dict(text=row['text'], corrected=row['corrected'], **audit_correction_safety(
         row['text'], row['corrected'], [finding[0] for finding in row['findings']],
-        independent_check_correction)) for row in rows if row.get('corrected')]
+        independent_check_correction,
+        whole_sentence_clean=(row.get('correction_impact') or {}).get('whole_sentence_clean'),
+        unresolved_tokens=(row.get('correction_impact') or {}).get('unresolved_tokens')))
+        for row in rows if row.get('corrected')]
     write_json(args.output / 'correction-audit.json', repairs)
 
     with (HERE / 'FROZEN_INDEPENDENT_EVAL_V4.csv').open(encoding='utf-8') as source:

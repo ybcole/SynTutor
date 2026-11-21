@@ -5777,7 +5777,13 @@ def _check_syntax_constraints(root, clauses, leaves):
         if obj_head is None:
             continue
         # Exclude time/measure/distance adjunct NPs ('sleep three hours', 'wait a minute')
+        # and coordinated temporal NP+PP adjuncts ('arrive tomorrow or on Friday').
         if _lower(obj_head) in _TIME_MEASURE_NP_HEADS:
+            continue
+        if (any(c.get('type') == 'CC' for c in obj_np.get('children', []))
+                and any(c.get('type') == 'PP' for c in obj_np.get('children', []))
+                and any(_np_head_leaf(c) is not None and _lower(_np_head_leaf(c)) in _TIME_MEASURE_NP_HEADS
+                        for c in obj_np.get('children', []) if c.get('type') == 'NP')):
             continue
         # Exclude cognate objects ('smile a smile', 'die a death', 'laugh a laugh')
         if _lower(obj_head)[:4] == _lower(v_leaf)[:4]:
@@ -6787,6 +6793,74 @@ def _check_syntax_constraints(root, clauses, leaves):
                 _tree_evidence(adjp['id'], 'non-expletive subject + tough adj + filled infinitive',
                                [{'node': adj_lf['id']}, {'node': o_np['id']}])))
             break
+
+    # --- 6.25 Copular predicative complement compatibility ------------------- #
+    # Strictly singular personal pronoun subject ('I', 'he', 'she') + copular
+    # 'be' ('am', 'is', 'was') + bare plural/inflected-s NP ('I am scares
+    # tomorrow.', 'I am teachers.', 'He is doctors.').
+    # Protects plural subjects ('They are teachers.', 'Those are scares.'),
+    # inanimate specificational subjects ('The problem is delays.'), reciprocal
+    # predicates ('I am friends with her.'), and singularia/idiomatic predicates.
+    _PREDICATIVE_PLURAL_EXEMPT = {
+        'friends', 'partners', 'neighbors', 'neighbours', 'allies', 'roommates',
+        'classmates', 'colleagues', 'equals', 'strangers', 'enemies', 'rivals',
+        'evens', 'quits', 'nuts', 'bananas', 'bonkers', 'pants', 'toast',
+        'news', 'physics', 'mathematics', 'maths', 'politics', 'ethics',
+        'economics', 'linguistics', 'statistics', 'series', 'species', 'means',
+        'headquarters', 'crossroads', 'works', 'blues', 'chills', 'jitters',
+        'nerves', 'sweats', 'odds', 'tops', 'seconds', 'thirds', 'twins',
+    }
+    for clause in clauses:
+        ckids = clause.get('children', [])
+        subj_np = next((c for c in ckids if c.get('type') == 'NP'), None)
+        vp_nd = next((c for c in ckids if c.get('type') == 'VP'), None)
+        if subj_np is None or vp_nd is None:
+            continue
+        subj_lvs = _leaves(subj_np)
+        if len(subj_lvs) != 1 or _lower(subj_lvs[0]) not in {'i', 'he', 'she'}:
+            continue
+        vkids = [c for c in vp_nd.get('children', []) if c.get('type') not in (',', '.', '?', '!', 'ADVP', 'RB')]
+        if len(vkids) < 2:
+            continue
+        be_lf = vkids[0]
+        if be_lf.get('children') or _lower(be_lf) not in {'am', 'is', 'was'}:
+            continue
+        comp_nd = vkids[1]
+        if comp_nd.get('type') != 'NP':
+            continue
+        comp_lvs = _leaves(comp_nd)
+        if len(comp_lvs) != 1:
+            continue
+        comp_lf = comp_lvs[0]
+        if comp_lf.get('type') != 'NNS':
+            continue
+        comp_low = _lower(comp_lf)
+        if comp_low in _PREDICATIVE_PLURAL_EXEMPT or comp_lf['surface'][:1].isupper():
+            continue
+        # Protect reciprocal / partitive follow-ups ('friends with ...', 'masters of ...')
+        trailing = vkids[2:]
+        if any(t.get('type') == 'PP' and _leaves(t) and _lower(_leaves(t)[0]) in {'with', 'to', 'of'} for t in trailing):
+            continue
+        subj_s = subj_lvs[0]['surface']
+        be_s = be_lf['surface']
+        comp_s = comp_lf['surface']
+        if comp_lf.get('fpos') in {'ADJ', 'VERB'} or comp_lf.get('fdep') == 'acomp':
+            msg = (f"After '{subj_s} {be_s}', '{comp_s}' cannot serve directly as a "
+                   f"predicative complement here: as a plural noun it disagrees in number "
+                   f"with '{subj_s}', and as an inflected verb form it cannot follow '{be_s}' "
+                   f"(which selects an adjective, a singular noun phrase, an '-ing' participle, "
+                   f"or a past participle).")
+            rule_lbl = 'singular personal subject + be + incompatible bare plural or inflected form'
+        else:
+            msg = (f"The singular subject '{subj_s}' with '{be_s}' does not agree in number "
+                   f"with the bare plural noun '{comp_s}'. Use a singular noun phrase with an "
+                   f"article (such as 'a' or 'an') or use a plural subject.")
+            rule_lbl = 'singular personal subject + be + bare plural predicative noun'
+        out.append(_finding(
+            '6.25', 'error', 'C-COPULA', 'copular complement',
+            comp_lf['id'], msg,
+            _tree_evidence(vp_nd['id'], rule_lbl,
+                           [{'node': subj_lvs[0]['id']}, {'node': be_lf['id']}, {'node': comp_lf['id']}])))
 
     return out
 

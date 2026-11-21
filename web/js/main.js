@@ -61,6 +61,7 @@ function refreshAccount() {
   document.getElementById('logPanel')?.replaceChildren();
   invalidateAnalysis('account changed');
   if (workspaceView === 'tutor') {
+    clearPersistedTutorSnapshot();
     startNewSession();
     clearTreeAuthorityNotice();
   }
@@ -74,6 +75,7 @@ function refreshAccount() {
 const STATES = { IDLE: 'IDLE', PROCESSING: 'PROCESSING', VIEWING: 'VIEWING', EXPLORING: 'EXPLORING', END: 'END' };
 const HIGHLIGHT_STATUSES = new Set(['valid', 'error']);
 const HIGHLIGHT_CLASSES = { valid: '', error: 'word-invalid' };
+const TUTOR_SESSION_KEY = 'syntutor_tutor_session_v1';
 
 let state = STATES.IDLE;
 let analysisRequest = 0;
@@ -83,6 +85,10 @@ let lastAnalyzedText = null;
 let quizMode = false;
 const recordedTexts = new Set();
 let historySpans = [];
+let preservedTutorSession = null;
+let selectedCanonicalNodeId = null;
+let activeCanonicalClearSelection = null;
+let onboardingShownThisVisit = false;
 
 let cachedHistory = [];
 let activeHistoryFilter = 'all';
@@ -511,10 +517,10 @@ export function boot() {
     if (activeWorkspaceView === 'achievements') renderAchievements();
     if (activeWorkspaceView === 'leaderboard') leaderboardView?.open();
   };
-  initQuizzes({ userId: () => activeUserId, client: () => supabase, onExit: enterTutorMode, onLesson: enterLessonsMode, onNavigate: enterAssessmentMode, mountBuilder: mountEmbeddedBuilder });
+  initQuizzes({ userId: () => activeUserId, client: () => supabase, onExit: () => enterTutorMode({ reset: false }), onLesson: enterLessonsMode, onNavigate: enterAssessmentMode, mountBuilder: mountEmbeddedBuilder });
   window.addEventListener('syntutor:quiz-progress', handleLearningProgress);
   window.addEventListener('syntutor:lesson-progress', handleLearningProgress);
-  initLessons({ userId: () => activeUserId, client: () => supabase, onNavigate: enterLessonsMode, onExit: enterTutorMode, mountBuilder: mountEmbeddedBuilder, onProgress: handleLearningProgress });
+  initLessons({ userId: () => activeUserId, client: () => supabase, onNavigate: enterLessonsMode, onExit: () => enterTutorMode({ reset: false }), mountBuilder: mountEmbeddedBuilder, onProgress: handleLearningProgress });
   window.addEventListener('focus', refreshSidebarProgress);
   initResizers();
   syncInputClearBtn();
@@ -524,8 +530,9 @@ export function boot() {
   clerk?.addListener(refreshAccount);
   refreshAccount();
   transition(STATES.IDLE, 'system ready');
+  const restored = restoreTutorSessionFromStorage();
   log(`SynTutor engine ready \u2014 full-stack pipeline: spaCy + benepar + rule matrix (${isGuest ? 'guest mode' : 'authenticated'})`);
-  maybeStartOnboarding();
+  maybeStartOnboarding({ hasRestoredSession: restored });
 }
 
 function initThemeAndMenu() {
@@ -548,7 +555,7 @@ function initThemeAndMenu() {
   });
 
   document.querySelector('#newSessionBtn')?.addEventListener('click', () => {
-    enterTutorMode();
+    enterTutorMode({ reset: false });
   });
 
   // The subtle × in the upper-right of the input pane: clears the text,
@@ -563,14 +570,15 @@ function initThemeAndMenu() {
       syncInputClearBtn();
       return;
     }
+    clearPersistedTutorSnapshot();
     startNewSession();
     syncInputClearBtn();
   });
 
   // "Done" leaves the standalone Syntax Builder and lands back in the plain
-  // analyzer — put Syntax Generator (and its clear affordance) in charge.
+  // analyzer — put Syntax Generator (and its preserved session) in charge.
   document.querySelector('#builderDone')?.addEventListener('click', () => {
-    setWorkspaceView('tutor');
+    enterTutorMode({ reset: false });
   });
 
   document.querySelector('#exploreBuilderBtn')?.addEventListener('click', toggleCombinedCanvasMode);
@@ -693,8 +701,8 @@ function initSidebar() {
           break;
         default:
           // Syntax Generator: leave any lesson/quiz/builder session and
-          // return to the plain analyzer.
-          enterTutorMode();
+          // restore the user's analyzer session when returning.
+          enterTutorMode({ reset: false });
           close();
       }
     });
@@ -726,7 +734,140 @@ function closeSubpanel() {
   setOverlayView(null);
 }
 
+function captureCurrentTutorSnapshot() {
+  if (!session?.payload || !session?.inputText) return null;
+  return {
+    v: 1,
+    inputText: session.inputText,
+    payload: session.payload,
+    sentenceIndex: session.sentence_index ?? 0,
+    historySpans: [...historySpans],
+    focusState: focus ? {
+      ...focus,
+      corrected: focus.corrected || null,
+      alternativeCorrected: focus.alternativeCorrected || null,
+    } : null,
+    correctionMode,
+    focusResult: focusResult ? { ...focusResult } : null,
+    selectedNodeId: selectedCanonicalNodeId || renderer?.selectedId || null,
+    variety: document.querySelector('#generatorVariety')?.value || null,
+    isOnboardingDemo: Boolean(session.isOnboardingDemo),
+  };
+}
+
+function persistTutorSnapshot(snapshot) {
+  if (!snapshot?.payload || !snapshot?.inputText?.trim()) return;
+  preservedTutorSession = snapshot;
+  if (snapshot.isOnboardingDemo) return;
+  try {
+    sessionStorage.setItem(TUTOR_SESSION_KEY, JSON.stringify(snapshot));
+  } catch {
+    // sessionStorage unavailable or quota exceeded — in-memory snapshot remains.
+  }
+}
+
+function clearPersistedTutorSnapshot() {
+  preservedTutorSession = null;
+  selectedCanonicalNodeId = null;
+  activeCanonicalClearSelection = null;
+  try {
+    sessionStorage.removeItem(TUTOR_SESSION_KEY);
+  } catch {
+    // sessionStorage unavailable.
+  }
+}
+
+function readStoredTutorSnapshot() {
+  try {
+    const raw = sessionStorage.getItem(TUTOR_SESSION_KEY);
+    if (!raw) return null;
+    const snap = JSON.parse(raw);
+    if (!snap || snap.v !== 1 || typeof snap.inputText !== 'string' || !snap.inputText.trim()
+        || !snap.payload?.tree || !snap.payload?.parse || snap.isOnboardingDemo) {
+      return null;
+    }
+    return snap;
+  } catch {
+    return null;
+  }
+}
+
+function restoreTutorSession(snap) {
+  if (!snap?.payload?.tree || !snap?.payload?.parse || !snap?.inputText?.trim()) return false;
+  const payload = snap.payload;
+  const text = snap.inputText;
+  const varietySelect = document.querySelector('#generatorVariety');
+  if (varietySelect && snap.variety) varietySelect.value = snap.variety;
+
+  applyStatuses(payload.tree, payload.node_details || {}, payload.summary || {},
+    payload.explanation_evidence?.candidate_xai, payload.tokens || []);
+  session = buildSession(payload, text);
+  if (Number.isInteger(snap.sentenceIndex)) session.sentence_index = snap.sentenceIndex;
+  session.isOnboardingDemo = Boolean(snap.isOnboardingDemo);
+  lastAnalyzedText = text;
+  historySpans = Array.isArray(snap.historySpans) && snap.historySpans.length
+    ? snap.historySpans
+    : buildHighlightSpans(text, payload);
+  setChatTitle(text);
+
+  const input = document.querySelector('#inputText');
+  if (input) {
+    input.value = text;
+    syncInputClearBtn();
+  }
+  returnToLocked(payload);
+  applySentenceSelection(payload);
+
+  setEmptyStateVisible(false);
+  renderer.setTree(payload.tree);
+  syncExploreBuilder(payload);
+  setTreeAuthorityNotice(payload);
+
+  focus = snap.focusState ? { ...snap.focusState } : null;
+  correctionMode = snap.correctionMode || 'original';
+  focusResult = snap.focusResult ? { ...snap.focusResult } : null;
+  if (focus) {
+    const preview = activePreview();
+    if (preview?.payload) {
+      setTreeAuthorityNotice(preview.payload);
+      renderer.setTree(preview.payload.tree);
+      syncExploreBuilder(preview.payload);
+      if (preview.scopeId) renderer.focusSubtree(preview.scopeId, []);
+    } else if (focus.nodeId) {
+      renderer.focusNode(focus.nodeId, focus.scopeId, focus.pair);
+      renderer.select(focus.nodeId);
+    }
+  }
+  refreshCorrectionUi();
+
+  const targetNodeId = snap.selectedNodeId || null;
+  const canonicalHost = document.querySelector('#canonicalTreeView');
+  const nodeGroup = targetNodeId && canonicalHost && !canonicalHost.hidden
+    ? canonicalHost.querySelector(`[data-node-id="${CSS.escape(targetNodeId)}"]`)
+    : null;
+  if (nodeGroup) {
+    nodeGroup.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    transition(STATES.EXPLORING, 'restored session with selected node');
+  } else {
+    renderEvidence(payload.explanation_evidence, undefined, localEvidenceOptions(payload));
+    transition(STATES.VIEWING, 'restored session without re-running NLP');
+  }
+  requestAnimationFrame(() => canonicalCanvas?.fit?.());
+  return true;
+}
+
+function restoreTutorSessionFromStorage() {
+  if (workspaceView !== 'tutor' || /^#(?:lesson|quiz)\//.test(location.hash)) return false;
+  const snap = readStoredTutorSnapshot();
+  if (!snap) return false;
+  preservedTutorSession = snap;
+  return restoreTutorSession(snap);
+}
+
 function teardownWorkspace() {
+  if (workspaceView === 'tutor' && !quizMode && session?.payload && lastAnalyzedText) {
+    persistTutorSnapshot(captureCurrentTutorSnapshot());
+  }
   invalidateAnalysis('workspace changed');
   combinedBuilderMode = false;
   combinedTreeSource = 'generated';
@@ -750,7 +891,7 @@ function teardownWorkspace() {
   // The canvas overlay and the node inspector belong to the Grammar Tutor.
   clearDiagnostics();
   // ...and so does the correction panel: a correction never survives a
-  // switch to another workspace module.
+  // switch to another workspace module (snapshot was already saved above).
   resetFocusState();
   // Back to the plain analyzer surfaces.
   const tree = document.querySelector('#treeCanvas');
@@ -772,12 +913,21 @@ function teardownWorkspace() {
   editor?.classList.remove('editing');
 }
 
-// Syntax Generator: the plain analyzer, with a fresh session.
-function enterTutorMode() {
+// Syntax Generator: restore preserved sentence analysis unless explicit reset is requested.
+function enterTutorMode({ reset = false } = {}) {
+  if (!reset && workspaceView === 'tutor' && !quizMode && !activeWorkspaceView && !isBuilderOpen()
+      && session?.payload) {
+    document.querySelector('#appSidebarBackdrop')?.classList.remove('active');
+    return;
+  }
   teardownWorkspace();
   setQuizMode(false);
   setWorkspaceView('tutor');
-  startNewSession();
+  const restored = !reset && restoreTutorSession(preservedTutorSession || readStoredTutorSnapshot());
+  if (!restored) {
+    if (reset) clearPersistedTutorSnapshot();
+    startNewSession();
+  }
   syncCanvasModeButton();
   setCanvasHint(GENERATOR_MODE_HINT);
   syncInputClearBtn();
@@ -1654,7 +1804,12 @@ function wireEvents() {
     historySpans = [];
     renderInputHighlights(ta.value);
     syncInputClearBtn();
-    if (workspaceView === 'tutor') clearOverlay();
+    if (workspaceView === 'tutor') {
+      clearOverlay();
+      if (!focus && ta.value.trim() !== (lastAnalyzedText || '').trim()) {
+        clearPersistedTutorSnapshot();
+      }
+    }
     // A correction is open: re-parse as the learner types so the tree (and
     // the re-check of the error) follow the edit.
     if (focus && workspaceView !== 'builder') scheduleLiveReparse();
@@ -1776,6 +1931,19 @@ function wireEvents() {
       setProfileMenu(false);
       return;
     }
+    if (onboardingEls && !onboardingEls.root.hidden) return;
+    if (document.querySelector('#authModal:not([hidden]), #leaderboardSettingsModal:not([hidden])')) return;
+    if (activeWorkspaceView || workspaceView !== 'tutor' || quizMode || isBuilderOpen()) return;
+    if (ta && ta.readOnly === false) return;
+    if (activeCanonicalClearSelection && selectedCanonicalNodeId) {
+      e.preventDefault();
+      activeCanonicalClearSelection();
+      return;
+    }
+    if (renderer?.selectedId) {
+      e.preventDefault();
+      handleNodeSelect(null);
+    }
   });
 
   document.querySelectorAll('#historyFilters .filter-pill').forEach((btn) => {
@@ -1881,6 +2049,7 @@ function returnToLocked(payload = null) {
 function startNewSession() {
   if (state === STATES.PROCESSING) return;
 
+  clearPersistedTutorSnapshot();
   clearTreeAuthorityNotice();
   closeLessons();
   closeQuizzes();
@@ -1932,6 +2101,7 @@ function activateSentenceAtCaret() {
 }
 
 function failPipeline(title, lines) {
+  clearPersistedTutorSnapshot();
   session = null;
   historySpans = [];
   resetFocusState();
@@ -1993,6 +2163,8 @@ function localEvidenceOptions(payload, nodeId = null) {
 }
 
 function clearCanonicalTree() {
+  activeCanonicalClearSelection = null;
+  selectedCanonicalNodeId = null;
   const host = document.querySelector('#canonicalTreeView');
   if (host && !host.hidden) {
     canonicalCanvas?.destroy();
@@ -2055,6 +2227,7 @@ function showCanonicalTree(payload) {
   let requestVersion = 0;
   const clearSelection = () => {
     ++requestVersion;
+    selectedCanonicalNodeId = null;
     for (const item of host.querySelectorAll('[data-selected],[data-tree-parent],[data-tree-sibling],[data-xai7-focus]')) {
       item.removeAttribute('data-selected');
       item.removeAttribute('data-tree-parent');
@@ -2064,15 +2237,20 @@ function showCanonicalTree(payload) {
     }
     document.querySelector('#explainNode')?.replaceChildren();
     renderEvidence(payload.explanation_evidence, undefined, localEvidenceOptions(payload));
+    if (session?.payload === payload) persistTutorSnapshot(captureCurrentTutorSnapshot());
   };
+  activeCanonicalClearSelection = clearSelection;
   host.onkeydown = (event) => {
     if (event.key !== 'Escape') return;
+    if (!selectedCanonicalNodeId) return;
     event.preventDefault();
     event.stopPropagation();
     clearSelection();
   };
   host.onclick = (event) => {
-    if (event.target.closest('svg') && !event.target.closest('[data-node-id]')) clearSelection();
+    if (event.defaultPrevented || canonicalCanvas?.wasDragged?.()) return;
+    if (event.target.closest('[data-node-id], button, a, input, select, .canonical-zoom')) return;
+    if (selectedCanonicalNodeId) clearSelection();
   };
   for (const group of host.querySelectorAll('[data-node-id]')) {
     const id = group.getAttribute('data-node-id');
@@ -2107,7 +2285,12 @@ function showCanonicalTree(payload) {
     group.setAttribute('aria-label', `Inspect Burton-Roberts ${accessibleLabel}${facts.surface ? ` for ${facts.surface}` : ''}`);
     group.setAttribute('aria-pressed', 'false');
     const select = async () => {
+      if (group.dataset.selected === 'true') {
+        clearSelection();
+        return;
+      }
       const selectedVersion = ++requestVersion;
+      selectedCanonicalNodeId = id;
       for (const item of host.querySelectorAll('[data-selected]')) {
         item.removeAttribute('data-selected');
         item.setAttribute('aria-pressed', 'false');
@@ -2117,6 +2300,7 @@ function showCanonicalTree(payload) {
         item.dataset.selected = 'true';
         item.setAttribute('aria-pressed', 'true');
       }
+      if (session?.payload === payload) persistTutorSnapshot(captureCurrentTutorSnapshot());
       for (const item of host.querySelectorAll('[data-tree-parent],[data-tree-sibling]')) {
         item.removeAttribute('data-tree-parent');
         item.removeAttribute('data-tree-sibling');
@@ -2541,6 +2725,9 @@ async function executePipeline(opts, request) {
     const variety = document.querySelector('#generatorVariety')?.value;
     const out = await postParse(text, opts.index, variety);
     if (request !== analysisRequest) return;
+    if (opts.isOnboardingSeed && document.querySelector('#inputText')?.value?.trim() !== ONBOARDING_SENTENCE) {
+      return;
+    }
     if (out.error) {
       const { status, error, hint } = out.error;
       const title = status === 503
@@ -2582,6 +2769,8 @@ async function executePipeline(opts, request) {
   log(`Stage 6: explanations generated \u2014 basic + ${payload.explainers.contrastive ? 'contrastive' : '(none)'}`);
 
   session = buildSession(payload, text);
+  session.isOnboardingDemo = Boolean(opts.isOnboardingSeed);
+  selectedCanonicalNodeId = null;
   lastAnalyzedText = text;
   setChatTitle(text);
 
@@ -2614,6 +2803,8 @@ async function executePipeline(opts, request) {
     renderEvidence(payload.explanation_evidence, undefined, localEvidenceOptions(payload));
   }
   transition(STATES.VIEWING, 'output ready -> viewing');
+  persistTutorSnapshot(captureCurrentTutorSnapshot());
+  if (onboardingEls && !onboardingEls.root.hidden) window.requestAnimationFrame(positionOnboarding);
   log('Stage 7: syntax tree rendered \u2014 Interaction Loop active (node details cached in session)');
 
   // The correction target (if any) is re-checked against the new analysis:
@@ -2858,6 +3049,10 @@ function applyStatuses(tree, details, summary, candidateXai = null, tokens = [])
 function handleNodeSelect(id) {
   if (quizMode) return;
   if (workspaceView !== 'tutor') return;
+  if (id && renderer?.selectedId === id) {
+    handleNodeSelect(null);
+    return;
+  }
   if (!id || !session) {
     if (session) {
       // Empty canvas: the node selection goes, the open correction stays —
@@ -3030,13 +3225,12 @@ function renderHistoryItems() {
 }
 
 // ---------------------------------------------------------------------------
-// First-visit onboarding — a step-by-step spotlight tour of the workspace
+// Visit onboarding — spotlight tour over the four workspace zones
 // ---------------------------------------------------------------------------
-// Runs once per browser. It preloads a friendly example sentence so the tree,
-// the analysis, and every zone the tour points at are populated, then walks
-// four steps: input panel, canvas/tree, bottom-right analysis, and the sidebar
-// (Lessons / Syntax Builder). Skip / Next / Back / Got it are all supported.
-const ONBOARDING_KEY = 'syntutor_onboarding_seen';
+// Displays immediately on every new visit or reload (once per page load, never
+// reopening on internal navigation between views). When no user session was
+// restored, preloads a friendly example sentence asynchronously so all zones
+// stay interactive without delaying the initial tour.
 const ONBOARDING_SENTENCE = 'The clever boy reads a book.';
 const ONBOARDING_STEPS = [
   {
@@ -3064,20 +3258,24 @@ const ONBOARDING_STEPS = [
 let onboardingStep = 0;
 let onboardingEls = null;
 
-function maybeStartOnboarding() {
+function maybeStartOnboarding({ hasRestoredSession = false } = {}) {
+  if (onboardingShownThisVisit) return;
   if (workspaceView !== 'tutor' || /^#(?:lesson|quiz)\//.test(location.hash)) return;
-  let seen = false;
-  try { seen = localStorage.getItem(ONBOARDING_KEY) === '1'; } catch { seen = false; }
-  if (seen) return;
-  // First visit: seed the example sentence so the canvas and analysis are
-  // populated for the tour. isReplay keeps it out of the analysis history.
-  const ta = document.querySelector('#inputText');
-  if (ta) ta.value = ONBOARDING_SENTENCE;
-  syncInputClearBtn();
-  Promise.resolve()
-    .then(() => runPipeline({ isReplay: true }))
-    .catch(() => {})
-    .finally(() => window.setTimeout(showOnboarding, 400));
+  onboardingShownThisVisit = true;
+  if (!hasRestoredSession) {
+    const ta = document.querySelector('#inputText');
+    if (ta && !ta.value.trim()) {
+      ta.value = ONBOARDING_SENTENCE;
+      renderInputHighlights(ONBOARDING_SENTENCE);
+    }
+    syncInputClearBtn();
+  }
+  showOnboarding();
+  if (!hasRestoredSession) {
+    Promise.resolve()
+      .then(() => runPipeline({ isReplay: true, isOnboardingSeed: true }))
+      .catch(() => {});
+  }
 }
 
 function ensureOnboarding() {
@@ -3186,13 +3384,13 @@ function showOnboarding() {
   onboardingStep = 0;
   root.hidden = false;
   renderOnboarding();
+  positionOnboarding();
   document.addEventListener('keydown', onOnboardingKeydown);
   window.addEventListener('resize', positionOnboarding);
   window.addEventListener('scroll', positionOnboarding, true);
 }
 
 function finishOnboarding() {
-  try { localStorage.setItem(ONBOARDING_KEY, '1'); } catch { /* storage unavailable */ }
   if (onboardingEls) onboardingEls.root.hidden = true;
   document.removeEventListener('keydown', onOnboardingKeydown);
   window.removeEventListener('resize', positionOnboarding);

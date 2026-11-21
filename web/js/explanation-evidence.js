@@ -422,23 +422,29 @@ export function supportedLocalFindings(payload) {
 }
 
 const FINDING_LESSONS = {
-  agreement: '#lesson/cgel-ch05/number-countability',
-  determiner: '#lesson/cgel-ch05/determiner',
-  quantifier: '#lesson/cgel-ch05/quantification',
-  auxiliary: '#lesson/br-06/concepts',
-  pronoun: '#lesson/cgel-ch05/pronouns',
-  negation: '#lesson/br-06/negation',
-  clause: '#lesson/br-08/worked-example',
-  transitivity: '#lesson/br-04/concepts',
-  preposition: '#lesson/cgel-ch07/prepositions-heads',
-  modifier: '#lesson/cgel-ch06/adverbs',
-  comparative: '#lesson/cgel-ch13/comparison-preliminaries',
-  question: '#lesson/br-09/concepts',
-  island: '#lesson/br-09/concepts',
-  coordination: '#lesson/cgel-ch15/coordination-overview',
-  punctuation: '#lesson/cgel-ch20/primary-terminals',
-  morphology: '#lesson/cgel-ch03/verb-phrase',
-  spelling: '#lesson/cgel-ch05/nouns-nps',
+  agreement: { route: '#lesson/cgel-ch05/number-countability', title: 'Number and agreement' },
+  determiner: { route: '#lesson/cgel-ch05/determiner', title: 'The determiner function' },
+  quantifier: { route: '#lesson/cgel-ch05/quantification', title: 'Quantification and determinatives' },
+  auxiliary: { route: '#lesson/br-06/concepts', title: 'Auxiliaries, modals and tense' },
+  predicative: { route: '#lesson/br-04/predicatives', title: 'Intensive and complex transitive verbs' },
+  infinitive: { route: '#lesson/br-10/worked-example', title: 'To-infinitive verb phrases' },
+  voice: { route: '#lesson/br-06/chain', title: 'Perfect, progressive and passive auxiliaries' },
+  aspect: { route: '#lesson/br-06/chain', title: 'Perfect, progressive and passive auxiliaries' },
+  pronoun: { route: '#lesson/cgel-ch05/pronouns', title: 'Pronouns and pronoun-headed NPs' },
+  negation: { route: '#lesson/br-06/negation', title: 'Negation and auxiliary do' },
+  clause: { route: '#lesson/br-08/worked-example', title: 'Complementisers and subordinate clauses' },
+  conditional: { route: '#lesson/br-08/worked-example', title: 'Complementisers and subordinate clauses' },
+  relative: { route: '#lesson/br-09/concepts', title: 'Relative clauses and fronting' },
+  transitivity: { route: '#lesson/br-04/concepts', title: 'Lexical verbs and complements' },
+  preposition: { route: '#lesson/cgel-ch07/prepositions-heads', title: 'Prepositions and prepositional phrases' },
+  modifier: { route: '#lesson/cgel-ch06/adverbs', title: 'Adjectives, adverbs and modifiers' },
+  comparative: { route: '#lesson/cgel-ch13/comparison-preliminaries', title: 'Comparison and comparatives' },
+  question: { route: '#lesson/br-09/concepts', title: 'Main wh-questions and fronting' },
+  island: { route: '#lesson/br-09/concepts', title: 'Wh-fronting and typed gaps' },
+  coordination: { route: '#lesson/cgel-ch15/coordination-overview', title: 'Coordination' },
+  punctuation: { route: '#lesson/cgel-ch20/primary-terminals', title: 'Sentence punctuation' },
+  morphology: { route: '#lesson/cgel-ch03/verb-phrase', title: 'Verb forms and inflection' },
+  spelling: { route: '#lesson/cgel-ch05/nouns-nps', title: 'Nouns and word forms' },
 };
 
 export function renderEvidence(evidence, host = document.querySelector('#explainNode'), options = {}) {
@@ -518,9 +524,16 @@ export function renderEvidence(evidence, host = document.querySelector('#explain
     ? featureOrder.find((f) => (options.nodeFeatures || []).includes(f) && nodeLesson(f, 'syntax'))
     : null;
   const findingLesson = findings.map(row => FINDING_LESSONS[row.lesson]).find(Boolean);
+  const conceptLesson = selected?.lesson?.route
+    ? {route: selected.lesson.route, kind: 'syntax', chapterTitle: selected.lesson.label, sectionTitle: selected.lesson.label}
+    : null;
   const lesson = findingLesson
-    ? {route: findingLesson, kind: 'finding', chapterTitle: 'Related grammar lesson', sectionTitle: 'Related grammar lesson'}
-    : nodeLesson(feature || options.nodeType || options.legacyDetail?.type, options.nodeKind);
+    ? {route: findingLesson.route, kind: 'finding', chapterTitle: findingLesson.title, sectionTitle: findingLesson.title}
+    : conceptLesson
+      ? conceptLesson
+      : selected?.suppress_category_lesson
+        ? null
+        : nodeLesson(feature || options.nodeType || options.legacyDetail?.type, options.nodeKind);
   if (lesson) {
     const link = document.createElement('a');
     link.className = 'xai-lesson-link';

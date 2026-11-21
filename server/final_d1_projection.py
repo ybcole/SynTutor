@@ -586,7 +586,7 @@ class Projection:
             result = branch("NP", NOUN, self.modifier([nodes[0]]), self.np(nodes[1:], nonrestrictive))
             result["notes"] = ["The focusing adverb modifies the following NP."]
             return result
-        if len(nodes) == 3 and tag(nodes[1]) == "CC":
+        if len(nodes) == 3 and tag(nodes[1]) == "CC" and any(tag(p) == "PP" for p in (nodes[0], nodes[2])):
             left = self.temporal_pp(nodes[0])
             right = self.temporal_pp(nodes[2])
             if left is not None and right is not None:
@@ -837,7 +837,7 @@ class Projection:
             elif tag(mod) in {"PP", "ADJP", "ADVP"}:
                 phrase = self.phrase(mod)
             elif tag(mod) == "NP" and self.is_time_np(mod):
-                phrase = self.temporal_pp(mod)
+                phrase = self.phrase(mod)
             elif leaf(mod) and tag(mod) in ADJ_TAGS:
                 phrase = self.modifier([mod], adjective=True)
             elif leaf(mod) and tag(mod) in ADV_TAGS:
@@ -900,7 +900,7 @@ class Projection:
         if tag(node) == "S" and self.is_nonfinite(node):
             return self.nonfinite(node)
         if tag(node) == "NP" and self.is_time_np(node):
-            return self.temporal_pp(node)
+            return self.phrase(node)
         return self.phrase(node)
 
     def attach(self, tree, label, leading=(), trailing=()):
@@ -1385,6 +1385,7 @@ class Projection:
             return False
         parts = kids(node)
         return (len(parts) == 3 and tag(parts[1]) == "CC"
+                and any(tag(p) == "PP" for p in (parts[0], parts[2]))
                 and self.temporal_pp(parts[0]) is not None
                 and self.temporal_pp(parts[2]) is not None)
 

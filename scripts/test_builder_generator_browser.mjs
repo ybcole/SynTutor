@@ -113,6 +113,17 @@ try {
   });
 
   await page.goto(base);
+  const skipOnboarding = page.locator('#onboarding .onboarding-skip');
+  if (await skipOnboarding.isVisible().catch(() => false)) {
+    await skipOnboarding.click();
+    await page.locator('#onboarding').waitFor({ state: 'hidden' });
+  }
+  const clearBtnInit = page.locator('#inputClearBtn');
+  if (await clearBtnInit.isVisible().catch(() => false)) {
+    await clearBtnInit.click();
+  }
+  await page.waitForFunction(() => !document.querySelector('#loadingIndicator')?.classList.contains('visible'));
+  parseRequests = [];
   const snap = async name => {
     if (process.env.QUIZ_V2_SCREENSHOT_DIR) {
       await page.screenshot({ path: path.join(process.env.QUIZ_V2_SCREENSHOT_DIR, name) });
@@ -150,151 +161,70 @@ try {
   await page.waitForFunction(() => document.querySelector('#inputText')?.readOnly === true);
   assert.equal(parseRequests.length, 2, 'Enter submits revised multiline input cleanly');
 
-  // 2. Syntax Builder: Top-left Clear/Edit, Floating draggable Nodes panel, bottom-left Nodes toggle, Construct vs Done editing, Fit & connector alignment.
-  await page.locator('.sidebar-item[data-view="builder"]').click();
+  // 2. Unified Syntax Builder (via #exploreBuilderBtn): toolbar, right-click .builder-menu search & node insertion, Fit, connector-dot drag, wide Fit, mobile dark.
+  await page.locator('#exploreBuilderBtn').click();
   await page.locator('#builderCanvas').waitFor({ state: 'visible' });
-  assert.equal(await page.locator('#builderPalette').isHidden(), true, 'Nodes palette stays hidden outside Edit mode');
-  assert.equal(await page.locator('#builderNodesToggle').isHidden(), true, 'Bottom-left Nodes toggle stays hidden outside Edit mode');
-  assert.equal(await page.locator('[data-builder-construct]').isHidden(), true, 'Construct button stays hidden outside Edit mode');
-  const topLeftButtons = await page.locator('#builderTopLeft button:visible').allInnerTexts();
-  assert.deepEqual(topLeftButtons, ['Clear', 'Edit mode'], 'Normal mode places Clear and Edit mode side by side top-left');
+  assert.equal(await page.locator('.sidebar-item[data-view="tutor"].active').count(), 1, 'Integrated Syntax Builder keeps Syntax nav active');
+  assert.equal(await page.locator('#builderTopLeft').isHidden(), true, 'Combined Syntax Builder hides legacy standalone Edit/Clear top-left bar');
+  assert.equal(await page.locator('[data-builder-construct]').isHidden(), true, 'Combined Syntax Builder hides legacy Construct button');
+  const combinedToolbarButtons = await page.locator('#builderToolbar button:visible').allInnerTexts();
+  assert.deepEqual(combinedToolbarButtons, ['+', '−', 'Fit', 'Clear'], 'Combined Builder toolbar exposes +, −, Fit, and Clear');
 
-  await page.locator('[data-builder-edit]').click();
-  await page.locator('#builderPalette').waitFor({ state: 'visible' });
-  await page.locator('#builderNodesToggle').waitFor({ state: 'visible' });
-  await page.locator('[data-builder-construct]').waitFor({ state: 'visible' });
-  const editLeftButtons = await page.locator('#builderTopLeft button:visible').allInnerTexts();
-  assert.deepEqual(editLeftButtons, ['Clear', 'Done editing'], 'Edit mode toggles top-left button to Done editing');
-  const editRightButtons = await page.locator('#builderToolbar button:visible').allInnerTexts();
-  assert.deepEqual(editRightButtons, ['Construct', '+', '−', 'Fit'], 'Edit mode places Construct before +, -, Fit top-right');
-
-  // Move pointer off toolbar before checking resting neutral button styles (no permanent purple border/fill on Done editing or Construct).
+  await page.locator('#combinedBuilderClear').click();
   await page.mouse.move(700, 400);
   const buttonAudit = await page.evaluate(() => {
-    const clear = document.getElementById('builderClearTop');
-    const doneEdit = document.querySelector('[data-builder-edit]');
-    const construct = document.querySelector('[data-builder-construct]');
+    const clear = document.getElementById('combinedBuilderClear');
     const fit = document.querySelector('[data-builder-zoom="fit"]');
-    const nodesBtn = document.getElementById('builderNodesToggle');
-    const hint = document.getElementById('builderHint');
-    const grip = document.querySelector('.builder-palette-grip');
-    const headText = document.getElementById('builderPaletteHead')?.innerText?.replace(/\s+/g, ' ').trim();
     const s = el => {
       const cs = getComputedStyle(el);
       return { bg: cs.backgroundColor, border: cs.borderColor, color: cs.color, h: el.getBoundingClientRect().height };
     };
-    return {
-      clear: s(clear), doneEdit: s(doneEdit), construct: s(construct), fit: s(fit), nodesBtn: s(nodesBtn),
-      hintVisible: hint ? getComputedStyle(hint).display !== 'none' && !hint.hidden : false,
-      gripText: grip?.textContent,
-      headText,
-      tooltipVisibleWhenOpen: !document.getElementById('builderNodesTooltip')?.hidden,
-    };
+    return { clear: s(clear), fit: s(fit) };
   });
-  assert.equal(buttonAudit.hintVisible, false, 'Persistent overlapping canvas hint stays removed in Syntax Builder Edit mode');
-  assert.equal(buttonAudit.tooltipVisibleWhenOpen, false, 'Tooltip does not show when floating Nodes panel is already visible');
-  assert.equal(buttonAudit.gripText, '::', 'Floating Nodes header includes subtle :: drag indicator');
-  assert.ok(buttonAudit.headText.startsWith(':: Nodes'), 'Header shows :: before Nodes');
-  assert.equal(buttonAudit.doneEdit.bg, buttonAudit.clear.bg, 'Done editing uses neutral background matching Clear');
-  assert.equal(buttonAudit.doneEdit.border, buttonAudit.clear.border, 'Done editing uses neutral border matching Clear');
-  assert.equal(buttonAudit.construct.bg, buttonAudit.fit.bg, 'Construct uses neutral background matching Fit');
-  assert.equal(buttonAudit.construct.border, buttonAudit.fit.border, 'Construct uses neutral border matching Fit');
-  assert.ok(buttonAudit.clear.h <= 34 && buttonAudit.construct.h <= 34, 'Toolbar buttons use compact sizing');
+  assert.equal(buttonAudit.clear.bg, buttonAudit.fit.bg, 'Clear uses neutral background matching Fit');
+  assert.equal(buttonAudit.clear.border, buttonAudit.fit.border, 'Clear uses neutral border matching Fit');
+  assert.ok(buttonAudit.clear.h <= 34 && buttonAudit.fit.h <= 34, 'Toolbar buttons use compact sizing');
 
-  // Verify category descriptions wrap completely without ellipsis truncation.
-  const truncatedDescCount = await page.locator('#builderPaletteList .builder-palette-desc').evaluateAll(els =>
-    els.filter(el => el.scrollWidth > el.clientWidth + 2).length);
-  assert.equal(truncatedDescCount, 0, 'Category descriptions wrap cleanly without horizontal truncation');
+  // Right-click canvas opens .builder-menu with searchable labels and lesson help links.
+  await page.locator('#builderCanvas').click({ button: 'right', position: { x: 380, y: 220 } });
+  await page.locator('.builder-menu').waitFor({ state: 'visible' });
+  await page.locator('.builder-menu-search').fill('Noun Phrase');
+  await page.locator('.builder-menu-search').press('Enter');
+  assert.equal(parseRequests.length, 2, 'Enter in builder menu search never triggers Syntax Generator');
+  const filteredLabels = await page.locator('.builder-menu .builder-menu-code').allInnerTexts();
+  assert.ok(filteredLabels.includes('NP'), 'Builder menu search finds NP');
+  assert.ok(await page.locator('.builder-menu-help:not(:disabled)').count() > 0, 'Builder menu exposes enabled lesson help links');
 
-  // Verify bottom-left Nodes toggle stays anchored bottom-left and floating palette is draggable without panning canvas.
-  const togglePos = await page.evaluate(() => {
-    const t = document.getElementById('builderNodesToggle').getBoundingClientRect();
-    const s = document.querySelector('.canvas-stage').getBoundingClientRect();
-    return { leftOffset: t.left - s.left, bottomOffset: s.bottom - t.bottom };
-  });
-  assert.ok(togglePos.leftOffset < 32 && togglePos.bottomOffset < 32, 'Nodes toggle anchors at bottom-left of canvas');
-
-  const palBeforeDrag = await page.locator('#builderPalette').boundingBox();
-  const headBox = await page.locator('#builderPaletteHead').boundingBox();
-  await page.mouse.move(headBox.x + 40, headBox.y + 12);
-  await page.mouse.down();
-  await page.mouse.move(headBox.x + 120, headBox.y + 42, { steps: 6 });
-  await page.mouse.up();
-  const palAfterDrag = await page.locator('#builderPalette').boundingBox();
-  assert.ok(palAfterDrag.x > palBeforeDrag.x + 50, 'Dragging palette header moves floating Nodes panel');
-
-  // Search input interaction inside panel must NOT drag the floating panel.
-  const searchBox = await page.locator('#builderPaletteSearch').boundingBox();
-  await page.mouse.move(searchBox.x + 20, searchBox.y + 10);
-  await page.mouse.down();
-  await page.mouse.move(searchBox.x + 60, searchBox.y + 20, { steps: 3 });
-  await page.mouse.up();
-  const palAfterSearchDrag = await page.locator('#builderPalette').boundingBox();
-  assert.equal(Math.round(palAfterSearchDrag.x), Math.round(palAfterDrag.x), 'Interacting with search input does not drag Nodes panel');
-
-  // Hide panel, exit Edit mode, and re-enter Edit mode -> tooltip points at Show Nodes once; clicking Show Nodes dismisses it and restores dragged position.
-  await page.locator('#builderNodesToggle').click();
-  assert.equal(await page.locator('#builderPalette').isHidden(), true, 'Bottom-left Nodes toggle hides floating palette');
-  assert.equal(await page.locator('#builderNodesTooltip').isHidden(), true, 'Hiding panel during active session does not repeatedly show tooltip');
-  await page.locator('[data-builder-edit]').click(); // Exit Edit mode
-  await page.locator('[data-builder-edit]').click(); // Re-enter Edit mode with panel hidden
-  await page.locator('#builderNodesTooltip').waitFor({ state: 'visible' });
-  const tipGeom = await page.evaluate(() => {
-    const tip = document.getElementById('builderNodesTooltip').getBoundingClientRect();
-    const btn = document.getElementById('builderNodesToggle').getBoundingClientRect();
-    return { text: document.getElementById('builderNodesTooltip').textContent, aboveBtn: tip.bottom <= btn.top + 4, alignedLeft: Math.abs(tip.left - btn.left) < 16 };
-  });
-  assert.ok(tipGeom.text.includes('Nodes') && tipGeom.aboveBtn && tipGeom.alignedLeft, 'Tooltip points concisely right above Show Nodes');
-  await snap('builder-tooltip-show-nodes.png');
-
-  await page.locator('#builderNodesToggle').click();
-  assert.equal(await page.locator('#builderNodesTooltip').isHidden(), true, 'Clicking Show Nodes immediately dismisses tooltip');
-  await page.locator('#builderPalette').waitFor({ state: 'visible' });
-  const palReopened = await page.locator('#builderPalette').boundingBox();
-  assert.ok(Math.abs(palReopened.x - palAfterDrag.x) <= 4, 'Reopening Nodes restores remembered floating position');
-
-  // Snap palette back near left edge for clean edit screenshot/tests.
-  await page.mouse.move(palReopened.x + 40, palReopened.y + 12);
-  await page.mouse.down();
-  await page.mouse.move(palBeforeDrag.x + 40, palBeforeDrag.y + 12, { steps: 5 });
-  await page.mouse.up();
-
-  await page.locator('#builderPaletteSearch').fill('Noun Phrase');
-  await page.locator('#builderPaletteSearch').press('Enter');
-  assert.equal(parseRequests.length, 2, 'Enter in node search never triggers Syntax Generator');
-  const filteredLabels = await page.locator('#builderPaletteList [data-palette-label]').allInnerTexts();
-  assert.ok(filteredLabels.some(t => t.startsWith('NP')), 'Nodes search finds NP');
-
-  await page.locator('#builderPaletteList [data-palette-label="NP"]').click();
-  await page.locator('#builderPaletteSearch').fill('');
+  await page.locator('.builder-menu .builder-menu-item', { has: page.locator('.builder-menu-code', { hasText: /^NP$/ }) }).first().click();
   await ta.fill('small birds');
   await page.waitForTimeout(260);
-  await page.locator('#builderPaletteList [data-palette-label="NP"]').click();
+  await page.locator('#builderCanvas').click({ button: 'right', position: { x: 480, y: 220 } });
+  await page.locator('.builder-menu').waitFor({ state: 'visible' });
+  await page.locator('.builder-menu .builder-menu-item', { has: page.locator('.builder-menu-code', { hasText: /^NP$/ }) }).first().click();
   await snap('builder-palette-edit.png');
 
-  // Fit on incomplete/disconnected tree centers cleanly to the right of #builderPalette without changing parents.
+  // Fit on incomplete/disconnected tree centers cleanly without forcing grammatical connections.
   await page.locator('[data-builder-zoom="out"]').click();
   await page.locator('[data-builder-zoom="out"]').click();
   await page.locator('[data-builder-zoom="fit"]').click();
   await page.waitForTimeout(80);
   const fitState = await page.evaluate(async () => {
-    const mod = await import('/js/syntax-builder-ui.js');
+    const mod = await import('/js/syntax-builder-ui.js?v=2026.11.18f');
     const sb = await import('/js/syntax-builder.js');
     const model = mod.builderModel();
-    const pal = document.getElementById('builderPalette').getBoundingClientRect();
-    const canvas = document.getElementById('builderCanvas').getBoundingClientRect();
     const nodes = Object.values(model.nodes);
     const parentCount = nodes.filter(n => n.parent).length;
     const phrases = nodes.filter(n => n.kind === 'phrase');
     const dot = sb.dotOf(phrases[0]);
-    return { palRight: pal.right - canvas.left, canvasW: canvas.width, parentCount, phraseX: phrases[0].x, dotX: dot.x, dotY: dot.y, phraseY: phrases[0].y, phraseH: phrases[0].h };
+    const anchor = sb.parentAnchorOf(phrases[0]);
+    return { parentCount, phraseX: phrases[0].x, dotX: dot.x, dotY: dot.y, anchorY: anchor.y, phraseY: phrases[0].y, phraseH: phrases[0].h };
   });
   assert.equal(fitState.parentCount, 0, 'Fit never forces grammatical connections on incomplete trees');
-  assert.equal(fitState.dotY, fitState.phraseY + fitState.phraseH + 2, 'Connector dot aligns flush with phrase bottom branch junction');
+  assert.equal(fitState.dotY, fitState.anchorY, 'Connector dot aligns flush with phrase bottom branch junction');
 
   // Pointer drag from NP's connector dot onto a word node creates a branch connection cleanly.
   const dragCoords = await page.evaluate(async () => {
-    const mod = await import('/js/syntax-builder-ui.js');
+    const mod = await import('/js/syntax-builder-ui.js?v=2026.11.18f');
     const model = mod.builderModel();
     const nodes = Object.values(model.nodes);
     const phrase = nodes.find(n => n.kind === 'phrase');
@@ -315,129 +245,53 @@ try {
   await page.mouse.down();
   await page.mouse.move(dragCoords.wordX, dragCoords.wordY, { steps: 6 });
   await page.mouse.up();
-  const connectedPosBeforeDone = await page.evaluate(async () => {
-    const mod = await import('/js/syntax-builder-ui.js');
+  const connectedPos = await page.evaluate(async () => {
+    const mod = await import('/js/syntax-builder-ui.js?v=2026.11.18f');
     const nodes = Object.values(mod.builderModel().nodes);
     const p = nodes.find(n => n.kind === 'phrase' && Object.values(mod.builderModel().nodes).some(c => c.parent === n.id));
-    return { connected: nodes.filter(n => n.parent).length, x: p.x, y: p.y };
+    return { connected: nodes.filter(n => n.parent).length, x: p?.x, y: p?.y };
   });
-  assert.equal(connectedPosBeforeDone.connected, 1, 'dragging connector dot onto child node establishes branch parent');
+  assert.equal(connectedPos.connected, 1, 'dragging connector dot onto child node establishes branch parent');
 
-  // Clicking Done editing exits Edit mode WITHOUT automatically reconstructing or shifting the learner's tree.
-  await page.locator('[data-builder-edit]').click();
-  assert.equal(await page.locator('#builderPalette').isHidden(), true, 'Done editing hides floating palette');
-  assert.equal(await page.locator('#builderNodesToggle').isHidden(), true, 'Done editing hides bottom-left toggle');
-  assert.equal(await page.locator('[data-builder-construct]').isHidden(), true, 'Done editing hides Construct');
-  const posAfterDone = await page.evaluate(async () => {
-    const mod = await import('/js/syntax-builder-ui.js');
-    const nodes = Object.values(mod.builderModel().nodes);
-    const p = nodes.find(n => n.kind === 'phrase' && Object.values(mod.builderModel().nodes).some(c => c.parent === n.id));
-    return { x: p.x, y: p.y };
-  });
-  assert.deepEqual(posAfterDone, { x: connectedPosBeforeDone.x, y: connectedPosBeforeDone.y }, 'Done editing preserves manual tree geometry');
-
-  // Re-enter Edit mode, build complete S -> birds tree, and click Construct to arrange hierarchically.
-  await page.locator('[data-builder-edit]').click();
-  await page.locator('[data-builder-clear]:visible').click();
-  await ta.fill('birds');
-  await page.waitForTimeout(260);
-  await page.locator('#builderPaletteList [data-palette-label="S"]').click();
-  const sDrag = await page.evaluate(async () => {
-    const mod = await import('/js/syntax-builder-ui.js');
-    const nodes = Object.values(mod.builderModel().nodes);
-    const phrase = nodes.find(n => n.type === 'S');
-    const word = nodes.find(n => n.kind === 'word');
-    const pBox = mod.canvasGuideBox({ kind: 'phrase', type: 'S' });
-    const dBox = mod.canvasGuideBox({ kind: 'dot', type: 'S' });
-    const scale = pBox.width / (phrase.w + 24);
-    const ox = pBox.left - (phrase.x - 12) * scale;
-    const oy = pBox.top - (phrase.y - 12) * scale;
-    return {
-      dotX: dBox.left + dBox.width / 2,
-      dotY: dBox.top + dBox.height / 2,
-      wordX: ox + (word.x + word.w / 2) * scale,
-      wordY: oy + (word.y + word.h / 2) * scale,
-    };
-  });
-  await page.mouse.move(sDrag.dotX, sDrag.dotY);
-  await page.mouse.down();
-  await page.mouse.move(sDrag.wordX, sDrag.wordY, { steps: 6 });
-  await page.mouse.up();
-  await page.locator('[data-builder-construct]').click();
-  await page.waitForTimeout(160);
-  const alignedCenter = await page.evaluate(async () => {
-    const mod = await import('/js/syntax-builder-ui.js');
-    const nodes = Object.values(mod.builderModel().nodes);
-    const s = nodes.find(n => n.type === 'S');
-    const w = nodes.find(n => n.kind === 'word');
-    return Math.abs((s.x + s.w / 2) - (w.x + w.w / 2));
-  });
-  assert.ok(alignedCenter < 2, `Construct aligns parent S cleanly over child word (delta=${alignedCenter})`);
-  assert.ok((await page.locator('#explainNode').innerText()).includes('Constructed tree evaluation'), 'Bottom-right evaluation panel remains unchanged after Construct');
-  await snap('builder-constructed.png');
-
-  // Clear canvas and Fit on a wide long-word sentence scales down cleanly within the canvas without obscuring under palette.
-  await page.locator('[data-builder-clear]:visible').click();
-  await ta.fill('extraordinarily sophisticated transformations inevitably produce remarkably intricate hierarchical constituencies throughout contemporary linguistics research');
+  // Clear canvas and Fit on a wide long-word sentence scales down cleanly within the canvas boundaries.
+  await page.locator('#combinedBuilderClear').click();
+  await page.locator('#builderCanvas').dblclick({ position: { x: 200, y: 240 } });
+  await page.locator('.builder-inline-input').waitFor({ state: 'visible' });
+  await page.locator('.builder-inline-input').fill('extraordinarily sophisticated transformations inevitably produce remarkably intricate hierarchical constituencies throughout contemporary linguistics research');
+  await page.locator('.builder-inline-input').press('Enter');
   await page.waitForTimeout(300);
   await page.locator('[data-builder-zoom="fit"]').click();
   await page.waitForTimeout(80);
   const wideFit = await page.evaluate(async () => {
-    const mod = await import('/js/syntax-builder-ui.js');
+    const mod = await import('/js/syntax-builder-ui.js?v=2026.11.18f');
     const words = Object.values(mod.builderModel().nodes).filter(n => n.kind === 'word');
     const wBox = mod.canvasGuideBox({ kind: 'words' });
-    const pal = document.getElementById('builderPalette').getBoundingClientRect();
     const canvas = document.getElementById('builderCanvas').getBoundingClientRect();
     const worldSpan = Math.max(...words.map(w => w.x + w.w)) - Math.min(...words.map(w => w.x)) + 24;
     return {
       scale: wBox.width / worldSpan,
       worldSpan,
-      availableW: canvas.right - pal.right,
+      availableW: canvas.width,
       wordsLeft: wBox.left,
-      palRight: pal.right,
+      canvasLeft: canvas.left,
       wordsRight: wBox.left + wBox.width,
       canvasRight: canvas.right,
     };
   });
   assert.ok(wideFit.scale < 1, `wide sentence scales down on Fit (got scale=${wideFit.scale}, worldSpan=${wideFit.worldSpan}, availableW=${wideFit.availableW})`);
-  assert.ok(wideFit.wordsLeft >= wideFit.palRight - 2, 'Fit positions wide tree clear of floating Nodes palette');
+  assert.ok(wideFit.wordsLeft >= wideFit.canvasLeft - 2, 'Fit keeps wide tree within left canvas boundary');
   assert.ok(wideFit.wordsRight <= wideFit.canvasRight + 2, 'Fit keeps wide tree within right canvas boundary');
 
-  // Mobile dark check on Syntax Builder toggle & palette + zero overflow.
+  // Mobile dark check on Syntax Builder + zero horizontal overflow.
   await page.setViewportSize({ width: 390, height: 844 });
   await page.evaluate(() => document.documentElement.setAttribute('data-theme', 'dark'));
-  await page.locator('#builderNodesToggle').click();
-  assert.equal(await page.locator('#builderPalette').isHidden(), true, 'mobile Nodes toggle hides floating panel');
-  await page.locator('#builderNodesToggle').click();
-  await page.locator('#builderPalette').waitFor({ state: 'visible' });
+  await page.waitForTimeout(100);
   await snap('builder-mobile-dark.png');
   const builderMobileOverflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   assert.ok(builderMobileOverflow <= 1, `No mobile horizontal overflow on Syntax Builder (overflow=${builderMobileOverflow})`);
   await page.setViewportSize({ width: 1360, height: 920 });
   await page.evaluate(() => document.documentElement.setAttribute('data-theme', 'light'));
-
-  // Subtle Show Nodes tooltip stays visible across time, canvas clicks, pan/zoom until Show Nodes is clicked or Edit mode is exited.
-  await page.locator('#builderNodesToggle').click();
-  await page.locator('[data-builder-edit]').click();
-  await page.locator('[data-builder-edit]').click();
-  await page.locator('#builderNodesTooltip').waitFor({ state: 'visible' });
-  const tipStyle = await page.evaluate(() => {
-    const cs = getComputedStyle(document.getElementById('builderNodesTooltip'));
-    return { fontSize: parseFloat(cs.fontSize), fontWeight: Number(cs.fontWeight), shadow: cs.boxShadow };
-  });
-  assert.ok(tipStyle.fontSize <= 12 && tipStyle.fontWeight <= 400 && tipStyle.shadow === 'none', `Tooltip is compact and visually subtle (${JSON.stringify(tipStyle)})`);
-  await page.locator('#builderCanvas').click({ position: { x: 400, y: 240 } });
-  await page.mouse.move(700, 420);
-  await page.locator('[data-builder-zoom="in"]').click();
-  await page.waitForTimeout(3800);
-  assert.equal(await page.locator('#builderNodesTooltip').isVisible(), true, 'Tooltip remains visible across canvas clicks, pointer move, zoom, and elapsed time until Show Nodes is clicked');
-  await snap('builder-tooltip-show-nodes.png');
-  await page.locator('#builderNodesToggle').click();
-  assert.equal(await page.locator('#builderNodesTooltip').isHidden(), true, 'Clicking Show Nodes immediately dismisses tooltip');
-  await page.locator('#builderPalette').waitFor({ state: 'visible' });
-  await page.locator('[data-builder-edit]').click();
-  assert.equal(await page.locator('#builderPalette').isHidden(), true, 'leaving Edit mode hides Nodes palette');
-  assert.equal(await page.locator('#builderNodesTooltip').isHidden(), true, 'leaving Edit mode keeps tooltip hidden');
+  await page.locator('#exploreBuilderBtn').click();
 
   // 3. Lessons Embedded Tree Exercises: Ch. 1 visible PHRASE-a/b/c + Ch. 3 B-R labels + read-only diagrams untouched.
   await page.locator('.sidebar-item[data-view="lessons"]').click();
@@ -462,7 +316,7 @@ try {
   // Repair "the red gate" using visible PHRASE-b + connector-dot drags (PHRASE-a -> PHRASE-b, PHRASE-b -> red & gate).
   const ch1Drag = async (parentType, childMatch) => {
     const pts = await page.evaluate(async ({ parentType, childMatch }) => {
-      const mod = await import('/js/syntax-builder-ui.js');
+      const mod = await import('/js/syntax-builder-ui.js?v=2026.11.18f');
       const model = mod.builderModel();
       const nodes = Object.values(model.nodes);
       const pNode = nodes.find(n => n.kind === 'phrase' && n.type === parentType);
@@ -511,7 +365,7 @@ try {
   assert.deepEqual(ch8Labels, ['S-bar', 'C', 'S'], 'Ch. 8 exercise scopes Add a node to S-bar, C, S');
 
   const ch8Geom = await page.evaluate(async () => {
-    const mod = await import('/js/syntax-builder-ui.js');
+    const mod = await import('/js/syntax-builder-ui.js?v=2026.11.18f');
     const nodes = Object.values(mod.builderModel().nodes);
     const sBar = nodes.find(n => n.type === 'S-bar');
     const sNode = nodes.find(n => n.type === 'S');
@@ -598,20 +452,22 @@ try {
   assert.equal(await page.locator('#builderTopLeft').isHidden(),true);
   assert.equal(await page.locator('#combinedBuilderClear').isVisible(),true);
   assert.equal(await page.locator('.sidebar-item[data-view="tutor"].active').count(),1);
-  await page.locator('#builderCanvas').click({position:{x:400,y:240}});
-  await page.locator('#builderPalette').waitFor({state:'visible'});
-  assert.ok(await page.locator('.builder-palette-help:not(:disabled)').count());
-  const transferred = await page.evaluate(async()=>JSON.stringify((await import('/js/syntax-builder-ui.js')).builderModel().nodes));
+  await page.locator('#builderCanvas').click({button:'right',position:{x:400,y:240}});
+  await page.locator('.builder-menu').waitFor({state:'visible'});
+  assert.ok(await page.locator('.builder-menu-help:not(:disabled)').count());
+  await page.keyboard.press('Escape');
+  const transferred = await page.evaluate(async()=>JSON.stringify((await import('/js/syntax-builder-ui.js?v=2026.11.18f')).builderModel().nodes));
   await page.locator('#exploreBuilderBtn').click();
   await page.locator('#exploreBuilderBtn').click();
-  assert.equal(await page.evaluate(async()=>JSON.stringify((await import('/js/syntax-builder-ui.js')).builderModel().nodes)),transferred,'repeated combined-mode switches retain exact model');
+  assert.equal(await page.evaluate(async()=>JSON.stringify((await import('/js/syntax-builder-ui.js?v=2026.11.18f')).builderModel().nodes)),transferred,'repeated combined-mode switches retain exact model');
   await page.locator('#combinedBuilderClear').click();
   assert.equal(await ta.inputValue(),'');
-  await page.locator('#builderCanvas').click({position:{x:400,y:240}});
+  await page.locator('#builderCanvas').click({button:'right',position:{x:400,y:240}});
+  await page.locator('.builder-menu').waitFor({state:'visible'});
   await page.locator('.sidebar-item[data-view="lessons"]').click();
-  assert.equal(await page.locator('#builderPalette').isHidden(),true,'combined palette closes when leaving for Lessons');
+  assert.equal(await page.locator('.builder-menu').count(),0,'combined builder menu closes when leaving for Lessons');
   assert.deepEqual(errors, []);
-  console.log('PASS builder/generator/lessons interaction suite: Enter-to-analyze, Shift+Enter, blank blur guard, Builder top-left Clear/Edit + floating palette + bottom-left Nodes toggle + Construct vs Done editing + Fit + connector alignment, Lessons br-01/02/07/08 geometry/Fit/step-labels/palettes, light/dark + desktop/mobile, combined Studio transfer/repeated switches/palette/Clear/teardown, 0 errors.');
+  console.log('PASS builder/generator/lessons interaction suite: Enter-to-analyze, Shift+Enter, blank blur guard, unified Builder toolbar + right-click menu/search/help + Fit + connector alignment + wide Fit, Lessons br-01/02/07/08 geometry/Fit/step-labels/palettes, light/dark + desktop/mobile, combined Studio transfer/repeated switches/Clear/teardown, 0 errors.');
 } finally {
   await browser.close();
   await new Promise(resolve => server.close(resolve));

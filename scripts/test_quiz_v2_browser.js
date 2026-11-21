@@ -67,15 +67,17 @@ try{
     return route.abort();
   });
   await page.goto(base);
+  const skipOnboarding=page.locator('#onboarding .onboarding-skip');
+  if(await skipOnboarding.isVisible().catch(()=>false)){await skipOnboarding.click();await page.locator('#onboarding').waitFor({state:'hidden'});}
   const nav=async view=>page.locator(`.sidebar-item[data-view="${view}"]`).click();
   const sidebarViews=await page.locator('.app-sidebar-nav > .sidebar-item').evaluateAll(nodes=>nodes.map(n=>n.dataset.view));
-  assert.equal(sidebarViews[sidebarViews.indexOf('tutor')+1],'builder');
-  assert.equal(sidebarViews.filter(v=>v==='builder').length,1);
-  assert.deepEqual(sidebarViews,['tutor','builder','history','lessons','quizzes','leaderboard','achievements'],'other sidebar destinations retain their relative order');
-  for(const view of ['builder','tutor']){
-    await nav(view);
-    assert.equal(await page.locator(`.sidebar-item[data-view="${view}"].active`).count(),1,'destination keeps its active navigation style');
-  }
+  assert.deepEqual(sidebarViews,['tutor','lessons','quizzes','leaderboard','achievements'],'sidebar destinations match current navigation order');
+  // Integrated Syntax Builder is reached from Syntax via #exploreBuilderBtn while Syntax stays active in the rail.
+  await page.locator('#exploreBuilderBtn').click();
+  await page.locator('#builderCanvas').waitFor({state:'visible'});
+  assert.equal(await page.locator('.sidebar-item[data-view="tutor"].active').count(),1,'Syntax rail destination stays active in integrated Builder mode');
+  await page.locator('#exploreBuilderBtn').click();
+  assert.equal(await page.locator('.sidebar-item[data-view="tutor"].active').count(),1,'destination keeps its active navigation style');
   await nav('lessons');
   const lessons=page.locator('#curriculumView');
   await lessons.locator('.lesson-module h2').first().waitFor();
@@ -723,23 +725,23 @@ try{
     assert.equal(await seededReview.locator('.quiz-card-title-wrap > span').count(),0);
     await seededReview.scrollIntoViewIfNeeded();await snap(`quiz-review-${width}-${theme}.png`);
   }
-  for(const view of ['leaderboard','achievements','history']){
+  for(const view of ['leaderboard','achievements']){
     await nav(view);
     assert.equal(await page.locator(`.sidebar-item[data-view="${view}"].active`).count(),1,`${view} route keeps active highlighting`);
-    if(view==='history')await page.keyboard.press('Escape');
   }
   await nav('quizzes');
   await page.evaluate(()=>switchQuizAccount('quiz-review-empty'));
   await seededReview.getByText(/^Complete Syntax chapter or subtopic quizzes/).waitFor();
   assert.equal(await seededReview.getByRole('button').isDisabled(),true,'another account never inherits seeded errors');
   await page.evaluate(()=>switchQuizAccount(null));
-  // The same sidebar order and active destinations survive the mobile drawer.
+  // The same sidebar order and active destinations survive the mobile drawer, including integrated Builder mode.
   await page.setViewportSize({width:390,height:900});
   const openMobileNav=async()=>{if(await page.locator('#mobileNavBtn').getAttribute('aria-expanded')!=='true')await page.locator('#mobileNavBtn').click();};
-  await openMobileNav();await nav('builder');
-  assert.equal(await page.locator('.sidebar-item[data-view="builder"].active').count(),1);
   await openMobileNav();await nav('tutor');
   assert.equal(await page.locator('.sidebar-item[data-view="tutor"].active').count(),1);
+  await page.locator('#exploreBuilderBtn').click();
+  await page.locator('#builderCanvas').waitFor({state:'visible'});
+  await page.locator('#exploreBuilderBtn').click();
   await openMobileNav();await nav('quizzes');
   const history=quiz.locator('.quiz-history');
   const historySummary=history.locator('> summary');

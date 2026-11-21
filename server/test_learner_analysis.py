@@ -162,6 +162,14 @@ class LearnerAnalysisTest(unittest.TestCase):
             ('Naomi and Lee walks to class.', 'C-SUBJECT-AGREEMENT'),
             ('She bought a books.', 'C-DETERMINER-AGREEMENT'),
             ('I went home, she stayed there.', 'C-COMMA-SPLICE'),
+            ('She decided to goes.', 'C-TO-BASE'),
+            ("I don't know nothing.", 'C-DOUBLE-NEGATIVE'),
+            ('The letter was write by him.', 'C-LEXICON-MALFORMED'),
+            ('The book wrote by him.', 'C-PASSIVE'),
+            ('This is the man who I saw him.', 'C-RESUMPTIVE-RELATIVE'),
+            ('There is many books on the table.', 'C-EXISTENTIAL'),
+            ('She is knowing the answer.', 'C-STATIVE-PROGRESSIVE'),
+            ('If it will rain tomorrow, we will stay inside.', 'C-CONDITIONAL-WILL'),
         ]
         for sentence, expected_code in cases:
             with self.subTest(ungrammatical=sentence, expected=expected_code):
@@ -198,6 +206,17 @@ class LearnerAnalysisTest(unittest.TestCase):
             'Naomi and Lee walk to class.',
             'She bought a few books.',
             'I went home, and she stayed there.',
+            'She decided to go.',
+            "I don't know anything.",
+            'The letter was written by him.',
+            'The book was written by him.',
+            'This is the man who I saw.',
+            'There are many books on the table.',
+            'She knows the answer.',
+            'If it rains tomorrow, we will stay inside.',
+            'She sang a song yesterday.',
+            'The brand became popular.',
+            'Brang arrived in Manila.',
         ]
         for sentence in controls:
             with self.subTest(grammatical_control=sentence):

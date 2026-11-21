@@ -95,6 +95,7 @@ FAMILIES = {
     'determiner_noun_agreement': DETERMINERS,
     'auxiliary_complement': AUXILIARIES,
     'plain_verb_complement': AUXILIARIES,
+    'infinitive_to_base': {'C-TO-BASE'},
     'modal_syntax': {'C-MODAL-TO', 'C-MODAL-OF', 'C-MODAL-ABLE', 'C-MODAL-STACK'},
     'pronoun_case': CASE,
     'article_onset': {'C-ARTICLE-MISMATCH'},
@@ -194,12 +195,61 @@ def local_relationships(leaves):
     for index, leaf in leaves.items():
         head_id = leaf.get('fhead')
         head = leaves.get(head_id)
+        surface = leaf['surface']
+        word = surface.lower().replace('’', "'")
+        dep, tag = leaf.get('fdep'), leaf.get('type')
+
+        # Modal syntax checks depend on adjacent tokens and must run even when
+        # the modal itself is spaCy ROOT ('She must to leave now.').
+        if tag == 'MD' and word in MODAL_SURFACES:
+            nxt = leaves.get(index + 1)
+            if nxt is not None:
+                nlow = nxt['surface'].lower()
+                if nlow == 'to' and nxt.get('type') == 'TO':
+                    yield {'kind': 'modal_syntax', 'participants': [index, index + 1],
+                           'target': index + 1, 'matches': False,
+                           'text': f'The modal auxiliary “{surface}” connects directly to a plain verb without “to”.',
+                           'lesson': 'auxiliary'}
+                elif nlow == 'of':
+                    yield {'kind': 'modal_syntax', 'participants': [index, index + 1],
+                           'target': index + 1, 'matches': False,
+                           'text': f'After the modal “{surface}”, use the auxiliary “have” rather than “of”.',
+                           'lesson': 'auxiliary'}
+                elif nxt.get('type') == 'MD' and nlow in MODAL_SURFACES:
+                    yield {'kind': 'modal_syntax', 'participants': [index, index + 1],
+                           'target': index + 1, 'matches': False,
+                           'text': f'Standard English uses only one central modal per clause, not “{surface} {nxt["surface"]}”.',
+                           'lesson': 'auxiliary'}
+
+        # 7a. Auxiliary 'be' followed directly by a finite 3sg verb ('She is sleeps today.')
+        # Must run before the head_id == index skip because spaCy often makes 'is' ROOT
+        # and tags 'sleeps' as attr/NOUN when Benepar parses (VP (VBZ is) (VP (VBZ sleeps))).
+        if word in BE_SURFACES_LEAF:
+            nxt = leaves.get(index + 1)
+            if (nxt is not None and nxt.get('type') == 'VBZ'
+                    and nxt['surface'].lower() not in BE_SURFACES_LEAF):
+                yield {'kind': 'auxiliary_complement', 'participants': [index, index + 1],
+                       'target': index + 1, 'matches': False,
+                       'text': f'After the auxiliary “{surface}”, use an -ing participle or past participle rather than the finite form “{nxt["surface"]}”.',
+                       'lesson': 'auxiliary'}
+
         if head is None or head_id == index:
             continue
-        surface, governor = leaf['surface'], head['surface']
-        word, head_word = surface.lower().replace('’', "'"), governor.lower()
-        dep, tag = leaf.get('fdep'), leaf.get('type')
+        governor = head['surface']
+        head_word = governor.lower()
         head_deps = dependents.get(head_id, [])
+
+        # Infinitival 'to' + non-base verb ('decided to stays', 'tried to went')
+        if (dep == 'aux' and word == 'to' and tag == 'TO'
+                and head.get('type') in {'VB', 'VBZ', 'VBP', 'VBD'}
+                and head.get('ftag') == head.get('type')
+                and (head.get('type') != 'VBD' or head_word in PAST_ONLY)):
+            base = _base_form(head)
+            if head.get('type') in {'VBZ', 'VBD'} or (head.get('type') == 'VBP' and head_word != base):
+                yield {'kind': 'infinitive_to_base', 'participants': [index, head_id],
+                       'target': head_id, 'matches': False,
+                       'text': f'After the infinitive marker “to”, use the plain (base) form “{base}” rather than “{governor}”.',
+                       'lesson': 'infinitive'}
 
         # 1. Subject-verb agreement (present VBP/VBZ + past 'was'/'were')
         if dep in {'nsubj', 'nsubjpass'} and tag in {'NN', 'NNS', 'NNP', 'NNPS', 'PRP'}:
@@ -323,26 +373,7 @@ def local_relationships(leaves):
                        'text': (f'“{surface}” is {auxiliary} and selects the plain form “{base}”.'
                                 + (f' “{governor}” has a different form.' if head_word != base else '')),
                        'lesson': 'auxiliary'}
-        if tag == 'MD' and word in MODAL_SURFACES:
-            nxt = leaves.get(index + 1)
-            if nxt is not None:
-                nlow = nxt['surface'].lower()
-                if nlow == 'to' and nxt.get('type') == 'TO':
-                    yield {'kind': 'modal_syntax', 'participants': [index, index + 1],
-                           'target': index + 1, 'matches': False,
-                           'text': f'The modal auxiliary “{surface}” connects directly to a plain verb without “to”.',
-                           'lesson': 'auxiliary'}
-                elif nlow == 'of':
-                    yield {'kind': 'modal_syntax', 'participants': [index, index + 1],
-                           'target': index + 1, 'matches': False,
-                           'text': f'After the modal “{surface}”, use the auxiliary “have” rather than “of”.',
-                           'lesson': 'auxiliary'}
-                elif nxt.get('type') == 'MD' and nlow in MODAL_SURFACES:
-                    yield {'kind': 'modal_syntax', 'participants': [index, index + 1],
-                           'target': index + 1, 'matches': False,
-                           'text': f'Standard English uses only one central modal per clause, not “{surface} {nxt["surface"]}”.',
-                           'lesson': 'auxiliary'}
-
+        # 7b. Modals handled above even when ROOT.
         # 8. Double comparative ('more taller', 'most tallest')
         if (word in {'more', 'most'} and head.get('type') in {'JJR', 'JJS'}
                 and index < head_id):
@@ -373,12 +404,13 @@ def local_relationships(leaves):
 def _evidence_token_ids(evidence, nodes, tokens, fallback_span):
     """Extract witnessed parser token indices from a rule finding's evidence."""
     ids = []
-    for item in (evidence or {}).get('supporting') or []:
-        nid = item.get('node') if isinstance(item, dict) else None
-        nd = nodes.get(nid) if nid else None
-        sp = nd.get('span') if isinstance(nd, dict) else None
-        if sp and len(sp) == 2 and sp[0] < sp[1] and sp[0] in tokens:
-            ids.append(sp[0])
+    for key in ('supporting', 'conflict'):
+        for item in (evidence or {}).get(key) or []:
+            nid = item.get('node') if isinstance(item, dict) else None
+            nd = nodes.get(nid) if nid else None
+            sp = nd.get('span') if isinstance(nd, dict) else None
+            if sp and len(sp) == 2 and sp[0] < sp[1] and sp[0] in tokens:
+                ids.append(sp[0])
     if not ids and fallback_span and len(fallback_span) == 2 and fallback_span[0] in tokens:
         ids.append(fallback_span[0])
     return sorted(set(ids))
@@ -418,9 +450,47 @@ _STRUCTURAL_LESSON_MAP = {
     'C-INDIRECT-Q-ORDER': 'question',
     'C-COMMA-SPLICE': 'punctuation',
     'C-TIME-PLACE-PREP': 'preposition',
+    'C-PREP-CHOICE': 'preposition',
+    'C-WRONG-PREPOSITION': 'preposition',
+    'C-MISSING-PREP': 'preposition',
+    'C-EXTRA-PREP': 'preposition',
+    'C-ADJ-PREP': 'preposition',
+    'C-PREP-GERUND': 'infinitive',
+    'C-TO-BASE': 'infinitive',
+    'C-CAUSATIVE-TO': 'infinitive',
+    'C-GERUND-INFINITIVE': 'infinitive',
+    'C-GERUND-INFIN': 'infinitive',
     'C-SPACING-REPEAT': 'spelling',
+    'C-TO_TOO': 'spelling',
     'C-PARALLEL': 'coordination',
+    'C-CORRELATIVE-AGREE': 'coordination',
     'C-MODAL-ABLE': 'auxiliary',
+    'C-PASSIVE': 'voice',
+    'C-STATIVE-PROGRESSIVE': 'aspect',
+    'C-STATIVE-PROG': 'aspect',
+    'C-VBN-SIMPLE-PAST': 'auxiliary',
+    'C-WAS-WERE': 'agreement',
+    'C-EXISTENTIAL': 'agreement',
+    'C-EXISTENTIAL-VERB': 'agreement',
+    'C-INDEF-AGREE': 'agreement',
+    'C-INDEFINITE-AGREE': 'agreement',
+    'C-PLURAL-ONLY': 'determiner',
+    'C-COUNT-MASS': 'quantifier',
+    'C-RESUMPTIVE-RELATIVE': 'relative',
+    'C-INDIRECT-WH-INVERSION': 'question',
+    'C-CONDITIONAL-WILL': 'conditional',
+    'C-DOUBLE-NEGATIVE': 'negation',
+    'C-DOUBLE-SUBJECT': 'clause',
+    'C-COPULA': 'predicative',
+    'C-FINITE-VERB': 'clause',
+    'C-RUNON': 'punctuation',
+    'C-MOD-POS': 'modifier',
+    'C-ADJ-ORDER': 'modifier',
+    'C-INTENSIFIER': 'modifier',
+    'C-COMPARATIVE-STRUCT': 'comparative',
+    'C-POSSESSIVE-S': 'determiner',
+    'C-REDUNDANCY': 'modifier',
+    'C-NUMERAL': 'quantifier',
 }
 
 
@@ -473,7 +543,7 @@ def supported_findings(analysis, details):
                 if not r['matches'] and code in FAMILIES[r['kind']]
                 and (
                     span[0] <= r['target'] < span[1]
-                    or (r['kind'] in {'uncountable_article', 'modal_syntax', 'quantifier_noun_agreement', 'determiner_stacking'}
+                    or (r['kind'] in {'uncountable_article', 'modal_syntax', 'quantifier_noun_agreement', 'determiner_stacking', 'auxiliary_complement'}
                         and any(span[0] <= p < span[1] for p in r['participants']))
                 )
             ]
@@ -516,6 +586,21 @@ def supported_findings(analysis, details):
                             expected = stem
                 else:
                     expected = None
+                if (not expected and code == 'C-LEXICON-MALFORMED' and source.startswith('forms of ')
+                        and '(VBN)' in source and len(evidence.get('accepted', [])) == 1):
+                    aux_ids = [i for i, o in leaves.items()
+                               if o.get('fhead') == span[0] and o.get('fdep') in {'aux', 'auxpass'}]
+                    gov_id = leaf.get('fhead')
+                    gov_leaf = leaves.get(gov_id)
+                    if (not aux_ids and gov_leaf is not None and gov_id != span[0]
+                            and gov_leaf['surface'].lower() in {
+                                'am', 'is', 'are', 'was', 'were', 'be', 'been', 'being',
+                                'has', 'have', 'had', 'get', 'gets', 'got',
+                            }):
+                        aux_ids = [gov_id]
+                    if aux_ids:
+                        expected = evidence['accepted'][0]
+                        participants = aux_ids
                 if not expected or expected not in evidence.get('accepted', []):
                     continue
                 targets = [span[0]]
@@ -594,20 +679,37 @@ def supported_findings(analysis, details):
                 targets = [span[0]]
                 lesson = 'punctuation'
             elif code in {
-                'C-NPI-LICENSING', 'C-DOUBLE-NEG', 'C-SUPERLATIVE-QUANT',
-                'C-EXISTENTIAL-DEFINITENESS', 'C-RAISING-CONTROL',
-                'C-TOUGH-COMPLEMENT', 'C-ELLIPSIS-HEAD',
+                'C-NPI-LICENSING', 'C-DOUBLE-NEG', 'C-DOUBLE-NEGATIVE',
+                'C-SUPERLATIVE-QUANT', 'C-EXISTENTIAL-DEFINITENESS',
+                'C-EXISTENTIAL', 'C-EXISTENTIAL-VERB',
+                'C-RAISING-CONTROL', 'C-TOUGH-COMPLEMENT', 'C-ELLIPSIS-HEAD',
                 'C-INTRANSITIVE-OBJECT', 'C-INTRANSITIVE-PASSIVE',
                 'C-STRANDED-PREP',
                 'C-WH-ISLAND', 'C-ADJUNCT-ISLAND', 'C-COMPLEX-NP-ISLAND',
                 'C-LEFT-BRANCH-ISLAND', 'C-COORD-ISLAND', 'C-FILLED-GAP',
-                'C-QUESTION-INVERSION', 'C-INDIRECT-Q-ORDER',
-                'C-REFLEXIVE-ANTECEDENT', 'C-RELATIVE-AGREE',
-                'C-PARALLEL', 'C-MODAL-ABLE',
+                'C-QUESTION-INVERSION', 'C-INDIRECT-Q-ORDER', 'C-INDIRECT-WH-INVERSION',
+                'C-REFLEXIVE-ANTECEDENT', 'C-RELATIVE-AGREE', 'C-RESUMPTIVE-RELATIVE',
+                'C-PARALLEL', 'C-CORRELATIVE-AGREE', 'C-MODAL-ABLE',
+                'C-TO-BASE', 'C-CAUSATIVE-TO', 'C-GERUND-INFINITIVE', 'C-GERUND-INFIN',
+                'C-PREP-GERUND', 'C-ADJ-PREP', 'C-PREP-CHOICE', 'C-WRONG-PREPOSITION',
+                'C-MISSING-PREP', 'C-EXTRA-PREP', 'C-PLURAL-ONLY', 'C-COUNT-MASS',
+                'C-PASSIVE', 'C-STATIVE-PROGRESSIVE', 'C-STATIVE-PROG',
+                'C-VBN-SIMPLE-PAST', 'C-WAS-WERE', 'C-CONDITIONAL-WILL',
+                'C-DOUBLE-SUBJECT', 'C-COPULA', 'C-FINITE-VERB', 'C-RUNON',
+                'C-MOD-POS', 'C-ADJ-ORDER', 'C-INTENSIFIER', 'C-COMPARATIVE-STRUCT',
+                'C-POSSESSIVE-S', 'C-INDEF-AGREE', 'C-INDEFINITE-AGREE',
+                'C-TO_TOO', 'C-REDUNDANCY', 'C-NUMERAL',
             }:
                 # Require explicit structural tree or wordlist witness attached by
                 # ruleset.py — fabricated details without real evidence are rejected.
                 if not (isinstance(evidence, dict) and (evidence.get('rule') or evidence.get('source'))):
+                    continue
+                # Guard: do not misdiagnose a missing-apostrophe contraction clause
+                # ('If you dont know.') as C-FINITE-VERB when negative_contraction
+                # already witnesses an auxiliary + lexical verb.
+                if code == 'C-FINITE-VERB' and any(
+                        lf.get('negative_contraction') for lf in leaves.values()
+                        if span[0] <= lf.get('span', [0])[0] < span[1]):
                     continue
                 ev_ids = _evidence_token_ids(evidence, nodes, tokens, span)
                 if not ev_ids:

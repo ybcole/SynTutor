@@ -211,7 +211,7 @@ def _morph_variants(word):
     if w.endswith('es') and len(w) > 3:
         out.add(w[:-2])
         out.add(w[:-1])
-    if w.endswith('s') and len(w) > 2:
+    if w.endswith('s') and len(w) > 3:
         out.add(w[:-1])
     for suf in ('ing', 'edly', 'ed', 'ly', 'er', 'est', 'ness', 'ment'):
         if w.endswith(suf) and len(w) > len(suf) + 2:
@@ -259,6 +259,9 @@ def known_word(word):
     for variant in _morph_variants(core):
         if variant in words:
             return True
+    engine = _get_symspell()
+    if engine is not None and engine.words.get(core, 0) >= 1_000_000:
+        return True
     return False
 
 
@@ -353,24 +356,81 @@ if __name__ == '__main__':
 def uncertain_function_words(analysis):
     """Identify an unresolved orthographic reading in a closed grammatical slot.
 
-    A possible omitted vowel can explain the token, but the surrounding phrase
-    often permits several completions. Report the uncertainty without choosing
-    a determiner or changing the candidate text.
+    A possible omitted vowel or common transposition can explain the token, but
+    the surrounding phrase often permits several completions (or a proper name).
+    Report the uncertainty without silently rewriting the candidate text.
     """
     forms = {'a', 'an', 'the', 'this', 'that', 'these', 'those', 'my', 'your',
              'his', 'her', 'its', 'our', 'their', 'whose', 'which', 'what'}
+    transposed_dets = {'teh', 'hte', 'tihs', 'taht', 'tey'}
     rows = []
+    seen_ids = set()
     nodes = analysis.get('nodes')
-    for node in nodes.values() if isinstance(nodes, dict) else ():
-        if node.get('type') not in {'DT', 'PRP$'} or node.get('children') or has_name_evidence(node):
-            continue
+    if not isinstance(nodes, dict):
+        return rows
+    leaves = sorted(
+        (n for n in nodes.values() if not n.get('children') and not n.get('punct')
+         and n.get('span') and len(n['span']) == 2),
+        key=lambda n: n['span'][0],
+    )
+    by_idx = {n['span'][0]: n for n in leaves}
+    for node in leaves:
+        idx = node['span'][0]
         word = node['surface']
         if not word.isascii() or not word.isalpha() or len(word) < 3 or word.isupper():
             continue
         low = word.lower()
         if low in forms:
             continue
-        if any(low == form[:i] + form[i + 1:] for form in forms
-               for i, char in enumerate(form) if char in 'aeiou'):
-            rows.append({'token_id': node['span'][0], 'surface': word})
+        if (node.get('type') in {'DT', 'PRP$'} and not has_name_evidence(node)
+                and any(low == form[:i] + form[i + 1:] for form in forms
+                        for i, char in enumerate(form) if char in 'aeiou')):
+            seen_ids.add(idx)
+            rows.append({'token_id': idx, 'surface': word})
+            continue
+        nxt = by_idx.get(idx + 1)
+        if (low in transposed_dets and not node.get('fentity')
+                and (node.get('type') in {'DT', 'PRP$'}
+                     or (nxt is not None and nxt.get('type') in {'NN', 'NNS', 'JJ'}
+                         and node.get('fdep') in {'det', 'compound', 'amod'}))):
+            seen_ids.add(idx)
+            rows.append({'token_id': idx, 'surface': word})
+    return rows
+
+
+def unresolved_spelling_tokens(analysis):
+    """Return tokens in a candidate/corrected parse whose spelling remains uncertain.
+
+    Combines uncertain closed-class determiners (e.g. 'Ths', 'Teh') with any
+    remaining unedited lowercase tokens that have a clear dictionary typo
+    candidate, while protecting capitalized proper names and known words.
+    """
+    rows = list(uncertain_function_words(analysis))
+    seen = {row['token_id'] for row in rows}
+    nodes = analysis.get('nodes')
+    if not isinstance(nodes, dict):
+        return rows
+    by_idx = {
+        n['span'][0]: n
+        for n in nodes.values()
+        if not n.get('children') and n.get('span') and len(n['span']) == 2
+    }
+    for node in sorted(by_idx.values(), key=lambda n: n['span'][0]):
+        if node.get('punct') or has_name_evidence(node):
+            continue
+        span = node['span']
+        if span[0] in seen:
+            continue
+        word = node.get('surface', '')
+        if not word.isascii() or not word.isalpha() or not word.islower() or len(word) < 4:
+            continue
+        nxt = by_idx.get(span[0] + 1)
+        nxt_surface = nxt.get('surface', '') if nxt else ''
+        if nxt_surface and (nxt_surface.startswith(("'", '\u2019')) or nxt_surface.lower() == "n't"):
+            if known_word(word + nxt_surface):
+                continue
+        if not known_word(word) and strong_typo_candidate(word):
+            seen.add(span[0])
+            rows.append({'token_id': span[0], 'surface': word})
+    rows.sort(key=lambda r: r['token_id'])
     return rows

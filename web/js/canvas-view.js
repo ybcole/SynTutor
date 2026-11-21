@@ -19,7 +19,7 @@ export function enableCanvasView(host, lessonWrap) {
   const vb = svg.viewBox?.baseVal;
   const w = Number(vb?.width) || Number(svg.getAttribute('width')) || 400;
   const h = Number(vb?.height) || Number(svg.getAttribute('height')) || 200;
-  let scale = 1, tx = 0, ty = 0, dragging = null, destroyed = false;
+  let scale = 1, tx = 0, ty = 0, dragging = null, destroyed = false, justDragged = false;
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
   const paint = () => {
     if (!destroyed) layer.style.transform = 'translate(' + tx + 'px, ' + ty + 'px) scale(' + scale + ')';
@@ -65,18 +65,24 @@ export function enableCanvasView(host, lessonWrap) {
   };
   const down = event => {
     if (event.button !== 0 || event.target.closest('button, [data-node-id], a, input')) return;
-    dragging = {id:event.pointerId, x:event.clientX, y:event.clientY, tx, ty};
+    justDragged = false;
+    dragging = {id:event.pointerId, x:event.clientX, y:event.clientY, tx, ty, moved:false};
     viewport.classList.add('is-panning');
     viewport.setPointerCapture?.(event.pointerId);
   };
   const move = event => {
     if (!dragging || dragging.id !== event.pointerId) return;
-    tx = dragging.tx + event.clientX - dragging.x;
-    ty = dragging.ty + event.clientY - dragging.y;
+    const dx = event.clientX - dragging.x;
+    const dy = event.clientY - dragging.y;
+    if (Math.hypot(dx, dy) > 4) dragging.moved = true;
+    tx = dragging.tx + dx;
+    ty = dragging.ty + dy;
     paint();
   };
   const up = event => {
     if (!dragging || dragging.id !== event.pointerId) return;
+    justDragged = dragging.moved;
+    if (justDragged) setTimeout(() => { justDragged = false; }, 0);
     dragging = null;
     viewport.classList.remove('is-panning');
     if (viewport.hasPointerCapture?.(event.pointerId)) viewport.releasePointerCapture(event.pointerId);
@@ -108,6 +114,11 @@ export function enableCanvasView(host, lessonWrap) {
   requestAnimationFrame(fit);
   return {
     fit, zoom,
+    wasDragged() {
+      const dragged = justDragged;
+      justDragged = false;
+      return dragged;
+    },
     destroy() {
       if (destroyed) return;
       destroyed = true;

@@ -277,11 +277,14 @@ def build_payload(text, sentence_index=0, convention_version=None,
                     corrected_analysis['root'], text=correction['corrected_sentence'])
                 correction['impact'] = _correction_impact(
                     details, corrected_result, correction['corrected_sentence'])
-                from spellcheck import uncertain_function_words
-                unresolved = uncertain_function_words(corrected_analysis)
+                from spellcheck import unresolved_spelling_tokens
+                unresolved = unresolved_spelling_tokens(corrected_analysis)
                 if unresolved:
                     correction['impact']['unresolved_tokens'] = unresolved
                     correction['impact']['whole_sentence_clean'] = False
+                correction['impact']['completeness'] = (
+                    'complete' if correction['impact'].get('whole_sentence_clean') else 'partial'
+                )
             except Exception as exc:  # correction annotations survive a parser fallback
                 correction['corrected_candidate_parse'] = None
                 correction['corrected_br_analysis'] = {

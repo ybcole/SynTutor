@@ -55,8 +55,17 @@ def audit_correction_safety(
     corr: str,
     constraints: list[str],
     ind_fn: Any,
+    *,
+    whole_sentence_clean: bool | None = None,
+    unresolved_tokens: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
-    """Independent automated safety + meaning-preservation audit of one repair."""
+    """Independent automated safety + meaning-preservation audit of one repair.
+
+    Explicitly distinguishes ``independent_morph_syntax_clean`` (the edit did
+    not introduce new morph/syntax/lexical defects, while skipping unchanged
+    original tokens) from ``spelling_complete`` / ``correction_completeness``
+    (whether unresolved typos or uncertain tokens remain in ``corr``).
+    """
     ind = ind_fn(orig, corr)
     issues = list(ind["issues"])
     # 1. Polarity preservation (unless C-DOUBLE-NEG or C-NPI-LICENSING)
@@ -87,12 +96,39 @@ def audit_correction_safety(
     c_o, c_c = Counter(w_orig), Counter(w_corr)
     tok_edits = sum((c_o - c_c).values()) + sum((c_c - c_o).values())
     edit_ratio = round(tok_edits / max(1, len(w_orig)), 4)
+
+    # 5. Distinguish edit safety from overall spelling completeness
+    remaining_uncertain = [
+        item["surface"] for item in (unresolved_tokens or [])
+        if isinstance(item, dict) and item.get("surface")
+    ]
+    try:
+        import spellcheck
+        for w in re.findall(r"[A-Za-z]+(?:['\u2019][A-Za-z]+)?", corr):
+            if ("'" in w or "\u2019" in w) and spellcheck.known_word(w):
+                continue
+            if (w.islower() and w.isalpha() and len(w) >= 4 and not spellcheck.known_word(w)
+                    and spellcheck.strong_typo_candidate(w) and w not in remaining_uncertain):
+                remaining_uncertain.append(w)
+    except Exception:
+        pass
+    spelling_complete = (len(remaining_uncertain) == 0) and (whole_sentence_clean is not False)
+    completeness = "complete" if spelling_complete else "partial_review_required"
+
     return {
         "independent_morph_syntax_clean": len(issues) == 0,
+        "spelling_complete": spelling_complete,
+        "correction_completeness": completeness,
+        "remaining_uncertain_tokens": remaining_uncertain,
         "polarity_preserved": polarity_preserved,
         "token_edit_distance": tok_edits,
         "edit_ratio": edit_ratio,
         "issues": issues,
+        "completeness_note": (
+            "independent_morph_syntax_clean checks newly introduced defects only "
+            "(unchanged original words are skipped) and does not certify full "
+            "spelling completeness or human linguistic validity."
+        ),
     }
 
 
